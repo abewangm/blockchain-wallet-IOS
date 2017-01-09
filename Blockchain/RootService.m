@@ -1832,6 +1832,34 @@ void (^secondPasswordSuccess)(NSString *);
     [self.receiveViewController doCurrencyConversion];
 }
 
+- (void)didPushTransaction
+{
+    DestinationAddressSource source = self.sendViewController.addressSource;
+    NSString *eventName;
+    
+    if (source == DestinationAddressSourceQR) {
+        eventName = WALLET_EVENT_TX_FROM_QR;
+    } else if (source == DestinationAddressSourcePaste) {
+        eventName = WALLET_EVENT_TX_FROM_PASTE;
+    } else if (source == DestinationAddressSourceURI) {
+        eventName = WALLET_EVENT_TX_FROM_URI;
+    } else if (source == DestinationAddressSourceAddressBook) {
+        eventName = WALLET_EVENT_TX_FROM_ADDRESS_BOOK;
+    } else if (source == DestinationAddressSourceNone) {
+        DLog(@"Destination address source none");
+        return;
+    } else {
+        DLog(@"Unknown destination address source %d", source);
+        return;
+    }
+    
+    NSURLSession *session = [SessionManager sharedSession];
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingFormat:URL_SUFFIX_WALLET_EVENT_NAME_ARGUMENT, eventName]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
+    request.HTTPMethod = @"POST";
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
@@ -1886,9 +1914,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSupport
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, SUPPORT_URL] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, URL_SUPPORT] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_SUPPORT]];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
@@ -3199,7 +3227,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToValidateCertificate
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, SUPPORT_URL]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, URL_SUPPORT]] preferredStyle:UIAlertControllerStyleAlert];
     alert.view.tag = TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Close App

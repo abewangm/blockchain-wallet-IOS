@@ -23,7 +23,7 @@ typedef enum {
     TransactionTypeRegular = 100,
     TransactionTypeSweep = 200,
     TransactionTypeSweepAndConfirm = 300,
-}TransactionType;
+} TransactionType;
 
 @interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate>
 
@@ -288,7 +288,7 @@ BOOL displayingLocalSymbolSend;
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
         if ([app.wallet isBitcoinAddress:toField.text]) {
-            [self didSelectToAddress:self.toAddress];
+            [self selectToAddress:self.toAddress];
         } else {
             toField.text = @"";
             self.toAddress = @"";
@@ -296,7 +296,7 @@ BOOL displayingLocalSymbolSend;
     }
     else {
         toField.text = [app.wallet getLabelForAccount:self.toAccount];
-        [self didSelectToAccount:self.toAccount];
+        [self selectToAccount:self.toAccount];
     }
 }
 
@@ -343,7 +343,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self didSelectFromAddress:address];
     
-    [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    [self selectToAccount:[app.wallet getDefaultAccountIndex]];
     
     [app.wallet transferFundsToDefaultAccountFromAddress:address];
 }
@@ -893,6 +893,8 @@ BOOL displayingLocalSymbolSend;
     } else {
         self.amountFromURLHandler = 0;
     }
+    
+    _addressSource = DestinationAddressSourceURI;
 }
 
 - (NSString *)labelForLegacyAddress:(NSString *)address
@@ -1327,9 +1329,12 @@ BOOL displayingLocalSymbolSend;
         self.sendToAddress = true;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
-            [self didSelectToAddress:self.toAddress];
+            [self selectToAddress:self.toAddress];
             return NO;
         }
+        
+        _addressSource = DestinationAddressSourcePaste;
+
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -1352,6 +1357,33 @@ BOOL displayingLocalSymbolSend;
                                         [NSNumberFormatter formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
                               forState:UIControlStateNormal];
     }
+}
+
+- (void)selectToAddress:(NSString *)address
+{
+    self.sendToAddress = true;
+    
+    toField.text = [self labelForLegacyAddress:address];
+    self.toAddress = address;
+    DLog(@"toAddress: %@", address);
+    
+    [app.wallet changePaymentToAddress:address];
+    
+    [self doCurrencyConversion];
+}
+
+- (void)selectToAccount:(int)account
+{
+    self.sendToAddress = false;
+    
+    toField.text = [app.wallet getLabelForAccount:account];
+    self.toAccount = account;
+    self.toAddress = @"";
+    DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    [app.wallet changePaymentToAccount:account];
+    
+    [self doCurrencyConversion];
 }
 
 # pragma mark - AddressBook delegate
@@ -1380,15 +1412,9 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectToAddress:(NSString *)address
 {
-    self.sendToAddress = true;
+    [self selectToAddress:address];
     
-    toField.text = [self labelForLegacyAddress:address];
-    self.toAddress = address;
-    DLog(@"toAddress: %@", address);
-    
-    [app.wallet changePaymentToAddress:address];
-    
-    [self doCurrencyConversion];
+    _addressSource = DestinationAddressSourceAddressBook;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1410,16 +1436,9 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectToAccount:(int)account
 {
-    self.sendToAddress = false;
+    [self selectToAccount:account];
     
-    toField.text = [app.wallet getLabelForAccount:account];
-    self.toAccount = account;
-    self.toAddress = @"";
-    DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
-    
-    [app.wallet changePaymentToAccount:account];
-    
-    [self doCurrencyConversion];
+    _addressSource = DestinationAddressSourceAddressBook;
 }
 
 #pragma mark - Fee Calculation
@@ -1677,7 +1696,7 @@ BOOL displayingLocalSymbolSend;
                 self.toAddress = address;
                 self.sendToAddress = true;
                 DLog(@"toAddress: %@", self.toAddress);
-                [self didSelectToAddress:self.toAddress];
+                [self selectToAddress:self.toAddress];
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {
@@ -1700,6 +1719,8 @@ BOOL displayingLocalSymbolSend;
                 }
                 
                 [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+                
+                _addressSource = DestinationAddressSourceQR;
             });
         }
     }
