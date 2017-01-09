@@ -15,6 +15,8 @@
 
 - (void)didSelectQRCode;
 - (void)didSelectShareLink;
+
+- (void)dismissContactController;
 @end
 
 @interface BCCreateContactView : UIView <UITextFieldDelegate>

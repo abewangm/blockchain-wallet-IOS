@@ -39,10 +39,12 @@
 
             CGFloat buttonHeight = 100;
             
+            promptLabel.text = BC_STRING_SHARE_INVITE_METHOD;
+            
             UIButton *showQRButton = [[UIButton alloc] initWithFrame:CGRectMake(20, promptLabel.frame.origin.y + promptLabel.frame.size.height + 16, self.frame.size.width - 40, buttonHeight)];
             showQRButton.backgroundColor = COLOR_BUTTON_BLUE;
             showQRButton.layer.cornerRadius = 8;
-            [showQRButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_IS_WITH_ME_RIGHT_NOW, contactName] forState:UIControlStateNormal];
+            [showQRButton setTitle:BC_STRING_VIA_QR_CODE_IN_PERSON forState:UIControlStateNormal];
             showQRButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             showQRButton.titleLabel.textAlignment = NSTextAlignmentCenter;
             [showQRButton addTarget:self action:@selector(createQRCode) forControlEvents:UIControlEventTouchUpInside];
@@ -53,9 +55,17 @@
             showLinkButton.layer.cornerRadius = 8;
             showLinkButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             showLinkButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-            [showLinkButton setTitle:[NSString stringWithFormat:BC_STRING_ARGUMENT_IS_UNAVAILABLE_RIGHT_NOW, contactName] forState:UIControlStateNormal];
+            [showLinkButton setTitle:BC_STRING_USING_A_LINK forState:UIControlStateNormal];
             [showLinkButton addTarget:self action:@selector(shareLink) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:showLinkButton];
+            
+            UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+            doneButton.backgroundColor = COLOR_BUTTON_BLUE;
+            doneButton.layer.cornerRadius = 4;
+            [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+            [doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:doneButton];
+            doneButton.center = CGPointMake(showLinkButton.center.x, showLinkButton.frame.origin.y + showLinkButton.frame.size.height + 100);
             
         } else {
             
@@ -122,6 +132,11 @@
     [self.delegate didSelectShareLink];
 
     [self createContact];
+}
+
+- (void)dismissContactController
+{
+    [self.delegate dismissContactController];
 }
 
 - (void)createContact

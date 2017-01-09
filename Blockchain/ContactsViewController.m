@@ -221,6 +221,11 @@ typedef enum {
     self.contactType = CreateContactTypeLink;
 }
 
+- (void)dismissContactController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Actions
 
 - (void)contactClicked:(Contact *)contact
@@ -402,6 +407,14 @@ typedef enum {
         CGRect frame = qrCodeView.frame;
         frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
         qrCodeView.frame = frame;
+        
+        UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+        doneButton.backgroundColor = COLOR_BUTTON_BLUE;
+        doneButton.layer.cornerRadius = 4;
+        [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+        [doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
+        [qrCodeView addSubview:doneButton];
+        doneButton.center = CGPointMake(qrCodeView.center.x, qrCodeView.frame.size.height - 100);
         
         [self.createContactNavigationController pushViewController:viewController animated:YES];
     } else if (self.contactType == CreateContactTypeLink) {
