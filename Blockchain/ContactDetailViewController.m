@@ -11,6 +11,7 @@
 #import "BCNavigationController.h"
 #import "BCQRCodeView.h"
 #import "Blockchain-Swift.h"
+#import "BCContactRequestView.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -18,8 +19,16 @@ const int rowExtendedPublicKey = 1;
 const int rowTrust = 2;
 const int rowFetchMDID = 3;
 
-@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+typedef enum {
+    RequestTypeSendReason,
+    RequestTypeReceiveReason,
+    RequestTypeSendAmount,
+    RequestTypeReceiveAmount
+} RequestType;
+
+@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ContactRequestDelegate>
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @end
 
 @implementation ContactDetailViewController
@@ -286,15 +295,46 @@ const int rowFetchMDID = 3;
 
 - (void)sendClicked
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [app closeSideMenu];
-        [app performSelector:@selector(showSendCoins) withObject:nil afterDelay:ANIMATION_DURATION];
-    }];
+    [self createRequest:RequestTypeSendReason title:BC_STRING_SEND reason:nil];
+    
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [app closeSideMenu];
+//        [app performSelector:@selector(showSendCoins) withObject:nil afterDelay:ANIMATION_DURATION];
+//    }];
 }
 
 - (void)requestClicked
 {
+    [self createRequest:RequestTypeReceiveReason title:BC_STRING_RECEIVE reason:nil];
+}
+
+- (void)createRequest:(RequestType)requestType title:(NSString *)title reason:(NSString *)reason;
+{
+    BOOL willSend;
+    if (requestType == RequestTypeSendReason || requestType == RequestTypeSendAmount) {
+        willSend = YES;
+    } else if (requestType == RequestTypeReceiveReason || requestType == RequestTypeReceiveAmount) {
+        willSend = NO;
+    } else {
+        DLog(@"Unknown request type");
+        return;
+    }
     
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContactName:self.contact.name reason:reason willSend:willSend];
+    contactRequestView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
+    
+    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
+        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:title];
+        [self presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
+    } else {
+        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [contactRequestView showKeyboard];
+    });
 }
 
 - (void)didGetMessages
@@ -316,6 +356,28 @@ const int rowFetchMDID = 3;
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
     }];
+}
+
+#pragma mark - Contact Request Delegate
+
+- (void)promptRequestAmount:(NSString *)reason
+{
+    [self createRequest:RequestTypeReceiveAmount title:BC_STRING_RECEIVE reason:reason];
+}
+
+- (void)promptSendAmount:(NSString *)reason
+{
+    [self createRequest:RequestTypeSendAmount title:BC_STRING_RECEIVE reason:reason];
+}
+
+- (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount
+{
+    DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
+}
+
+- (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
+{
+    DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
 }
 
 @end
