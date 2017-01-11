@@ -1,28 +1,31 @@
 //
-//  ContactTableViewCell.m
+//  ContactTransactionTableViewCell.m
 //  Blockchain
 //
-//  Created by Kevin Wu on 12/19/16.
-//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
+//  Created by kevinwu on 1/11/17.
+//  Copyright © 2017 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "ContactTableViewCell.h"
-@interface ContactTableViewCell()
+#import "ContactTransactionTableViewCell.h"
+@interface ContactTransactionTableViewCell()
 @property (nonatomic) BOOL isSetup;
 @end
-@implementation ContactTableViewCell
+@implementation ContactTransactionTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithTransaction:(ContactTransaction *)transaction style:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.transaction = transaction;
+    }
     return self;
 }
 
-- (void)configureWithContact:(Contact *)contact actionRequired:(BOOL)actionRequired
+- (void)configureWithTransaction:(Transaction *)transaction actionRequired:(BOOL)actionRequired
 {
     if (self.isSetup) {
         self.actionImageView.hidden = !actionRequired;
-        self.mainLabel.text = contact.name ? contact.name : contact.identifier;
+        self.mainLabel.text = @"test text";
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return;
     }
@@ -34,9 +37,9 @@
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2 - 2, self.frame.size.width - mainLabelOriginX - 28, 30)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2, self.frame.size.width - mainLabelOriginX - 28, 30)];
     [self.contentView addSubview:self.mainLabel];
-    self.mainLabel.text = contact.name ? contact.name : contact.identifier;
+    self.mainLabel.text = @"test text";
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     
     self.isSetup = YES;

@@ -12,6 +12,8 @@
 #import "BCQRCodeView.h"
 #import "Blockchain-Swift.h"
 #import "BCContactRequestView.h"
+#import "ContactTransactionTableViewCell.h"
+#import "ContactTransaction.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -52,7 +54,7 @@ typedef enum {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_DETAIL];
+    [self.tableView registerClass:[ContactTransactionTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION];
     
     [self.tableView reloadData];
 }
@@ -81,7 +83,7 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return self.contact.invitationSent ? 4 : 3;
+        return 3;
     }
     
     DLog(@"Invalid section");
@@ -90,57 +92,19 @@ typedef enum {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_DETAIL forIndexPath:indexPath];
-
-    if (indexPath.section == sectionMain) {
-        
-        cell.textLabel.textColor = [UIColor blackColor];
-        
-        if (indexPath.row == rowName) {
-            cell.textLabel.text = self.contact.name ? self.contact.name : self.contact.identifier;
-            cell.accessoryView = nil;
-        } else if (indexPath.row == rowExtendedPublicKey) {
-            cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-            cell.accessoryView = nil;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == rowTrust) {
-            cell.textLabel.text = BC_STRING_TRUST_USER;
-            UISwitch *switchForTrust = [[UISwitch alloc] init];
-            switchForTrust.on = self.contact.trusted;
-            [switchForTrust addTarget:self action:@selector(toggleTrust) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = switchForTrust;
-        } else if (indexPath.row == rowFetchMDID) {
-            cell.textLabel.text = BC_STRING_FETCH_MDID;
-            cell.accessoryView = nil;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else {
-            DLog(@"Invalid row for main section");
-            return nil;
-        }
-    }
-
+    ContactTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION forIndexPath:indexPath];
+    
+    ContactTransaction *transaction = [[ContactTransaction alloc] init];
+    transaction.transactionState = ContactTransactionStateSendReadyToSend;
+    
+    [cell configureWithTransaction:transaction actionRequired:YES];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == sectionMain) {
-        if (indexPath.row == rowName) {
-            [self changeContactName];
-        } else if (indexPath.row == rowExtendedPublicKey) {
-            if (!self.contact.xpub) {
-                [app.wallet fetchExtendedPublicKey:self.contact.identifier];
-            } else {
-                [self showExtendedPublicKey];
-            }
-        } else if (indexPath.row == rowFetchMDID) {
-            [app.wallet completeRelation:self.contact.identifier];
-        } else {
-            DLog(@"Invalid selected row for main section");
-        }
-    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

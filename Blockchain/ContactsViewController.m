@@ -135,13 +135,8 @@ typedef enum {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
     Contact *contact = self.contacts[indexPath.row];
-    cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.text = contact.name ? contact.name : contact.identifier;
-    
-    NSArray *messages = [app.wallet.messages objectForKey:contact.mdid];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", [messages count]];
+    [cell configureWithContact:contact actionRequired:YES];
     
     return cell;
 }

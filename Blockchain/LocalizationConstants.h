@@ -441,6 +441,16 @@
 #define BC_STRING_PROMPT_AMOUNT_RECEIVE_ARGUMENT NSLocalizedString(@"How much do you want %@ to send? *This is just a suggestion. The actual amount might differ.", nil)
 #define BC_STRING_PROMPT_REASON_SEND_ARGUMENT_ARGUMENT NSLocalizedString(@"Why would you like to send %@ bitcoin (This will be shared with %@)?", nil)
 #define BC_STRING_PROMPT_AMOUNT_SEND_ARGUMENT NSLocalizedString(@"How much do you want to send to %@?", nil)
+
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR_ARGUMENT NSLocalizedString(@"Waiting for %@ to accept", nil)
+#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
+#define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept/deny", nil)
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
+
+#define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
+#define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)
+#define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
+
 #define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
 #define BC_STRING_TRANSACTIONS_WITH_ARGUMENT NSLocalizedString(@"Transactions with %@", nil)
 #define BC_STRING_TRUST_USER NSLocalizedString(@"Trust user", nil)
