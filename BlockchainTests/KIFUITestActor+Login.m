@@ -51,30 +51,38 @@
 
 - (void)confirmSendAmountDecimalPeriod
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
-    [self enterTextIntoCurrentFirstResponder:@"0.10"];
-    [self waitForAnimationsToFinish];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
-    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
+    [self confirmSendAmountWithText:@"0.10"];
 }
 
 - (void)confirmSendAmountDecimalComma
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
-    [self enterTextIntoCurrentFirstResponder:@"0,10"];
-    [self waitForAnimationsToFinish];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
-    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
+    [self confirmSendAmountWithText:@"0,10"];
 }
 
 - (void)confirmSendAmountDecimalArabicComma
 {
+    [self confirmSendAmountWithText:@"0٫10"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaAndText
+{
+    [self confirmSendAmountWithText:@"٠٫١٠"];
+}
+
+- (void)confirmSendAmountDecimalCommaArabicText
+{
+    [self confirmSendAmountWithText:@"٠,١٠"];
+}
+
+- (void)confirmSendAmountDecimalPeriodArabicText
+{
+    [self confirmSendAmountWithText:@"٠.١٠"];
+}
+
+- (void)confirmSendAmountWithText:(NSString *)text
+{
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
-    [self enterTextIntoCurrentFirstResponder:@"0٫10"];
+    [self enterTextIntoCurrentFirstResponder:text];
     [self waitForAnimationsToFinish];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];

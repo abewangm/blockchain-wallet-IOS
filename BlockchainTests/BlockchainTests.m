@@ -27,12 +27,15 @@
 }
 
 - (void)testExample {
-//    [tester goToSend];
-//    [tester typeInAddress];
-//    
-//    [tester confirmSendAmountDecimalPeriod];
-//    [tester confirmSendAmountDecimalComma];
-//    [tester confirmSendAmountDecimalArabicComma];
+    [tester goToSend];
+    [tester typeInAddress];
+    
+    [tester confirmSendAmountDecimalPeriod];
+    [tester confirmSendAmountDecimalComma];
+    [tester confirmSendAmountDecimalArabicComma];
+    [tester confirmSendAmountDecimalArabicCommaAndText];
+    [tester confirmSendAmountDecimalCommaArabicText];
+    [tester confirmSendAmountDecimalPeriodArabicText];
     
     [tester goToReceive];
     
