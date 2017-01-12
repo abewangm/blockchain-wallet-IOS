@@ -27,6 +27,8 @@
 - (void)didSelectToAddress:(NSString*)address;
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectToAccount:(int)account;
+@optional
+- (void)didSelectWatchOnlyAddress:(NSString*)address;
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {
@@ -34,7 +36,7 @@
     IBOutlet UITableView *tableView;
 }
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)showOwnAddresses;
+- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable accountsOnly:(BOOL)_accountsOnly;
 
 @property(nonatomic, strong) NSMutableArray *addressBookAddresses;
 @property(nonatomic, strong) NSMutableArray *addressBookAddressLabels;

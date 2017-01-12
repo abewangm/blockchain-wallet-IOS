@@ -16,10 +16,12 @@
 #import "DeviceIdentifier.h"
 #include <libkern/OSAtomic.h>
 #include <sys/sysctl.h>
-
+#import "KeychainItemWrapper+Credentials.h"
 #include <execinfo.h>
 #import "NSString+URLEncode.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "NSURLSession+SendSynchronousRequest.h"
+#import "SessionManager.h"
 
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";
@@ -102,7 +104,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
                           walletIsInitialized? @"TRUE" : @"FALSE",
                           [DeviceIdentifier deviceName],
                           [[NSLocale preferredLanguages] firstObject],
-                          [app hashedGuid],
+                          [KeychainItemWrapper hashedGuid],
                           [exception reason],
                           [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]
                           ];
@@ -116,12 +118,12 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
     NSHTTPURLResponse * repsonse = NULL;
     NSError * error = NULL;
     
-   [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:url] returningResponse:&repsonse error:&error];
+    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] delegate:app.certificatePinner returningResponse:&repsonse error:&error sessionDescription:nil];
 }
 
 - (void)handleException:(NSException *)exception
 {
-    BOOL walletIsLoaded = [app.wallet.webView isLoaded];
+    BOOL walletIsLoaded = NO;
     BOOL walletIsInitialized = [app.wallet isInitialized];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{

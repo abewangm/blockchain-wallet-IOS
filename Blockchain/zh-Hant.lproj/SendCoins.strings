@@ -61,8 +61,8 @@
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "取消";
+/* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
+"Pgx-k8-cTb.normalTitle" = "下一步取消";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "總數:";

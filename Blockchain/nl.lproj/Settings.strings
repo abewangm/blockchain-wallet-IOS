@@ -1,14 +1,14 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Winkel Hint";
+"0zs-bt-hEl.text" = "Hint opslaan";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Controleer of E-mail";
+"8Ha-3e-Nqx.text" = "E-mail verifiëren";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Verificatie in twee stappen";
+"8Zy-R2-HoW.text" = "Tweeledige verificatiemethode";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Bevestig het nieuwe wachtwoord";
+"Ii6-KE-x0B.placeholder" = "Nieuw wachtwoord bevestigen";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
 "Kmb-pO-dHq.text" = "Zwak";
@@ -17,28 +17,28 @@
 "VKs-B5-luJ.placeholder" = "Nieuw wachtwoord";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Back-up frase";
+"WVd-f2-ZLG.text" = "Backupregel";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "TORs blokkeren";
+"Wor-ZR-sPS.text" = "TOR's blokkeren";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Uw portemonnee beschermen tegen onrechtmatige toegang door 2-Step verificatie in te schakelen. U kunt een gratis app of uw gsm-nummer gebruiken om te beveiligen uw portemonnee. Deze code wordt gevraagd wanneer u uitproberen voor vlaag uw portemonnee.";
+"bFL-5O-fcl.text" = "Bescherm uw portemonnee tegen onbevoegde toegang door 2-ledige verificatie in te schakelen. U kunt ervoor kiezen om een gratis app of uw mobiele telefoonnummer te gebruiken om uw portemonnee te beveiligen. Deze code wordt gevraagd wanneer u uw portemonnee probeert te openen.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Mobiele verbinding";
+"f52-8F-scW.text" = "Mobiel linken";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "Gebruik uw gsm-nummer";
+"g8G-4j-qpJ.normalTitle" = "Gebruik uw mobiele telefoonnummer";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "2-stap inschakelen";
+"gIP-mj-Hh2.text" = "2-ledige verificatie inschakelen";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Voltooi de stappen hieronder voor de ultieme beveiliging";
+"u5x-QP-acV.text" = "Rond de onderstaand stappen af voor ultieme veiligheid";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
-"wnC-Xd-1Er.title" = "Beveiligingscentrum";
+"wnC-Xd-1Er.title" = "Veiligheidscentrum";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "zd5-DZ-hsS"; */
 "zd5-DZ-hsS.placeholder" = "Wachtwoord";

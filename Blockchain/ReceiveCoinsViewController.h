@@ -20,27 +20,25 @@
 
 #import "Wallet.h"
 
-@interface ReceiveCoinsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
-    IBOutlet UITableView *tableView;
+@interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
-    IBOutlet UIImageView *qrCodePaymentImageView;
-    IBOutlet UIButton *moreActionsButton;
     
     // Label Address
     IBOutlet UIView *labelAddressView;
     IBOutlet UITextField *labelTextField;
     IBOutlet UILabel *labelAddressLabel;
-    IBOutlet UIView *requestCoinsView;
-    
-    IBOutlet UILabel *optionsTitleLabel;
     
     // Amount buttons and field
     IBOutlet UITextField *entryField;
     IBOutlet UILabel *btcLabel;
+    UILabel *receiveBtcLabel;
     IBOutlet UITextField *btcAmountField;
     IBOutlet UILabel *fiatLabel;
+    UILabel *receiveFiatLabel;
     IBOutlet UITextField *fiatAmountField;
     
+    IBOutlet UIButton *doneButton;
+    UIButton *informationButton;
     // Keyboard accessory view
     IBOutlet UIView *amountKeyboardAccessoryView;
 }
@@ -50,16 +48,26 @@
 
 @property(nonatomic, strong) NSString *clickedAddress;
 
-- (IBAction)shareClicked:(id)sender;
-- (IBAction)moreActionsClicked:(id)sender;
-- (IBAction)labelAddressClicked:(id)sender;
+@property(nonatomic) UIView *bottomContainerView;
+@property(nonatomic) UITextField *receiveBtcField;
+@property(nonatomic) UITextField *receiveFiatField;
+@property(nonatomic) UILabel *receiveToLabel;
+@property(nonatomic) UIView *headerView;
+
 - (IBAction)archiveAddressClicked:(id)sender;
-- (IBAction)copyAddressClicked:(id)sender;
 - (IBAction)labelSaveClicked:(id)sender;
 
+- (void)storeRequestedAmount;
+- (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
+
 - (void)reload;
+- (void)reloadMainAddress;
+- (void)clearAmounts;
 
 - (void)hideKeyboard;
+- (void)hideKeyboardForced;
 - (void)showKeyboard;
+
+- (void)doCurrencyConversion;
 
 @end

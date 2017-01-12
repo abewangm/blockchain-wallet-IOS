@@ -3,16 +3,18 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 12/2/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SecurityCenterViewController.h"
 #import "SettingsTableViewController.h"
 #import "SettingsTwoStepViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "Blockchain-Swift.h"
 
 @interface SecurityCenterViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *securityLevelImageView;
+@property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *verifyEmailButton;
 @property (strong, nonatomic) IBOutlet UILabel *verifyEmailLabel;
@@ -22,21 +24,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *backupPhraseLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *backupPhraseCheckImageView;
 
-@property (strong, nonatomic) IBOutlet UIButton *linkMobileButton;
-@property (strong, nonatomic) IBOutlet UILabel *linkMobileLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *linkMobileCheckImageView;
-
-@property (strong, nonatomic) IBOutlet UIButton *storeHintButton;
-@property (strong, nonatomic) IBOutlet UILabel *storeHintLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *storeHintCheckImageView;
-
 @property (strong, nonatomic) IBOutlet UIButton *enableTwoStepButton;
 @property (strong, nonatomic) IBOutlet UILabel *enableTwoStepLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *enableTwoStepCheckImageView;
-
-@property (strong, nonatomic) IBOutlet UIButton *blockTorButton;
-@property (strong, nonatomic) IBOutlet UILabel *blockTorLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *blockTorCheckImageView;
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
@@ -59,6 +49,8 @@
         self.settingsController = [[SettingsTableViewController alloc] init];
     }
     
+    [self.settingsController updateEmailAndMobileStrings];
+    
     [self updateUI];
 }
 
@@ -70,17 +62,8 @@
     self.backupPhraseCheckImageView.image = [self.backupPhraseCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.backupPhraseCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
     
-    self.linkMobileCheckImageView.image = [self.linkMobileCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.linkMobileCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
-    
-    self.storeHintCheckImageView.image = [self.storeHintCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.storeHintCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
-    
     self.enableTwoStepCheckImageView.image = [self.enableTwoStepCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.enableTwoStepCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
-    
-    self.blockTorCheckImageView.image = [self.blockTorCheckImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.blockTorCheckImageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -94,23 +77,24 @@
 {
     [self updateEmail];
     [self updatePhrase];
-    [self updateMobile];
-    [self updateHint];
     [self updateTwoStep];
-    [self updateTor];
     
-    int completedItems = [app.wallet securityCenterScore];
+    int score = [app.wallet securityCenterScore];
     
-    self.progressView.progress = (float)completedItems/6;
-    if (completedItems < 6 && completedItems > 2) {
+    int completedItemsCount = [app.wallet securityCenterCompletedItemsCount];
+    self.progressView.progress = (float)completedItemsCount/3;
+    if (score == 1) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security2"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_YELLOW;
-    } else if (completedItems == 6) {
+        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
+    } else if (score > 1) {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security3"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_GREEN;
+        self.instructionsLabel.text = completedItemsCount == 3 ? BC_STRING_SECURITY_CENTER_COMPLETED : BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
     } else {
         self.securityLevelImageView.image = [UIImage imageNamed:@"security1"];
         self.progressView.progressTintColor = COLOR_SECURITY_CENTER_RED;
+        self.instructionsLabel.text = BC_STRING_SECURITY_CENTER_INSTRUCTIONS;
     }
 }
 
@@ -134,26 +118,6 @@
     self.backupPhraseCheckImageView.hidden = hasBackedUpPhrase ? NO : YES;
 }
 
-- (void)updateMobile
-{
-    BOOL hasLinkedMobileNumber = [app.wallet hasVerifiedMobileNumber];
-    self.linkMobileLabel.text = hasLinkedMobileNumber ? BC_STRING_MOBILE_LINKED : BC_STRING_LINK_MOBILE;
-    self.linkMobileLabel.textColor = hasLinkedMobileNumber ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
-    self.linkMobileButton.enabled = hasLinkedMobileNumber ? NO : YES;
-    [self.linkMobileButton setImage: hasLinkedMobileNumber ? [UIImage imageNamed:@"phoneb"] : [UIImage imageNamed:@"phone"] forState:UIControlStateNormal];
-    self.linkMobileCheckImageView.hidden = hasLinkedMobileNumber ? NO : YES;
-}
-
-- (void)updateHint
-{
-    BOOL hasStoredPasswordHint = [app.wallet hasStoredPasswordHint];
-    self.storeHintLabel.text = hasStoredPasswordHint ? BC_STRING_HINT_STORED : BC_STRING_STORE_HINT;
-    self.storeHintLabel.textColor = hasStoredPasswordHint ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
-    self.storeHintButton.enabled = hasStoredPasswordHint ? NO : YES;
-    [self.storeHintButton setImage: hasStoredPasswordHint ? [UIImage imageNamed:@"keyb"] : [UIImage imageNamed:@"key"] forState:UIControlStateNormal];
-    self.storeHintCheckImageView.hidden = hasStoredPasswordHint ? NO : YES;
-}
-
 - (void)updateTwoStep
 {
     BOOL hasEnabledTwoStep = [app.wallet hasEnabledTwoStep];
@@ -162,16 +126,6 @@
     self.enableTwoStepButton.enabled = hasEnabledTwoStep ? NO : YES;
     [self.enableTwoStepButton setImage: hasEnabledTwoStep ? [UIImage imageNamed:@"2fab"] : [UIImage imageNamed:@"2fa"] forState:UIControlStateNormal];
     self.enableTwoStepCheckImageView.hidden = hasEnabledTwoStep ? NO : YES;
-}
-
-- (void)updateTor
-{
-    BOOL hasBlockedTorRequests = [app.wallet hasBlockedTorRequests];
-    self.blockTorLabel.text = hasBlockedTorRequests ? BC_STRING_TOR_BLOCKED : BC_STRING_BLOCK_TOR;
-    self.blockTorLabel.textColor = hasBlockedTorRequests ? COLOR_SECURITY_CENTER_GREEN : COLOR_TEXT_FIELD_BORDER_GRAY;
-    self.blockTorButton.enabled = hasBlockedTorRequests ? NO : YES;
-    [self.blockTorButton setImage: hasBlockedTorRequests ? [UIImage imageNamed:@"torb"] : [UIImage imageNamed:@"tor"] forState:UIControlStateNormal];
-    self.blockTorCheckImageView.hidden = hasBlockedTorRequests ? NO : YES;
 }
 
 - (IBAction)verifyEmailButtonTapped:(UIButton *)sender
@@ -186,31 +140,15 @@
         self.backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
-    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     self.backupController.wallet = app.wallet;
     
     self.backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:self.backupController animated:YES completion:nil];
 }
 
-- (IBAction)linkMobileTapped:(UIButton *)sender
-{
-    [self.settingsController linkMobileTapped];
-}
-
-- (IBAction)storeHintTapped:(UIButton *)sender
-{
-    [self.settingsController storeHintTapped];
-}
-
 - (IBAction)enableTwoStepTapped:(UIButton *)sender
 {
     [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
-}
-
-- (IBAction)blockTorTapped:(UIButton *)sender
-{
-    [self.settingsController blockTorTapped];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

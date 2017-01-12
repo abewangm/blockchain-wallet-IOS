@@ -54,12 +54,12 @@ https://blockchain.info/Wallet/login";
 "380.text" = "Bienvenido al Monedero Blockchain";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Todavía no tiene ninguna transacción";
+"387.text" = "No hay transacciones recientes";
 
 /* (No Commment) */
 "394.text" = "Contraseña:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
 "395.placeholder" = "Contraseña (mínimo 10 caracteres)";
 
 /* (No Commment) */

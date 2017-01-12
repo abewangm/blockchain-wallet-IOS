@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/13/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,9 +14,10 @@
 - (void)reload;
 
 - (void)verifyEmailTapped;
-- (void)linkMobileTapped;
-- (void)storeHintTapped;
 - (void)changeTwoStepTapped;
-- (void)blockTorTapped;
+- (void)updateEmailAndMobileStrings;
 
+// Called from reminder modal
+- (void)showBackup;
+- (void)showTwoStep;
 @end

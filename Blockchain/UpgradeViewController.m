@@ -3,16 +3,15 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/1/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "UpgradeViewController.h"
-#import "UpgradeDetailsViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 #import "UILabel+MultiLineAutoSize.h"
 
-@interface UpgradeViewController () <UIAlertViewDelegate>
+@interface UpgradeViewController ()
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
@@ -34,17 +33,20 @@
 
 - (IBAction)upgradeTapped:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_UPGRADE_DETAILS sender:nil];
-}
-
-- (void)dismissSelf
-{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)cancelButtonTapped:(UIButton *)sender
-{
-    [self dismissSelf];
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
+    app.topViewControllerDelegate = nil;
+    
+    [app.wallet loading_start_upgrade_to_hd];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [app closeSideMenu];
+        [app.wallet performSelector:@selector(upgradeToV3Wallet) withObject:nil afterDelay:0.1f];
+    });
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSArray *)imageNamesArray
@@ -139,8 +141,7 @@
     
     [self setupCaptionLabels];
     
-    self.upgradeWalletButton.titleLabel.text = BC_STRING_UPGRADE_BUTTON_TITLE;
-    self.askMeLaterButton.titleLabel.text = BC_STRING_ASK_ME_LATER;
+    [self.upgradeWalletButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [[self imageNamesArray] count];
@@ -159,6 +160,7 @@
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    app.topViewControllerDelegate = nil;
 }
 
 - (void)viewDidLayoutSubviews
@@ -217,6 +219,13 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self setTextForCaptionLabel];
+}
+
+#pragma mark Top View Delegate
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

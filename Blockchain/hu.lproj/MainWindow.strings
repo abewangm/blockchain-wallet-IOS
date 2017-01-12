@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Lépjen a beállítások / pénztárca információkat.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Tranzakciók";
 
@@ -28,9 +31,6 @@
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Ha használja a régi pénztárca, kattintson a beállítások gombra, és kattintson a eszközök fülre. Ha-a ' használ a új béta pénztárca, nyissa meg a Settings / pénztárca információkat.";
-
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
@@ -53,13 +53,13 @@
 "380.text" = "Üdvözöljük a Blockchain pénztárca";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Még nincs tranzakció";
+"387.text" = "Nem közelmúltbeli ügyletek";
 
 /* (No Commment) */
 "394.text" = "Jelszó:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Jelszó (Minimum 10 karakter)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Jelszó";
 
 /* (No Commment) */
 "396.text" = "Megerősítése:";

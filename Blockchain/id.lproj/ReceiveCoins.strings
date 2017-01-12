@@ -5,7 +5,7 @@
 "48.normalTitle" = "Simpan";
 
 /* (No Commment) */
-"56.text" = "Label Email";
+"56.text" = "Namai Alamat";
 
 /* (No Commment) */
 "57.text" = "Alamat";
@@ -29,19 +29,19 @@
 "80.normalTitle" = "ALAMAT DIARSIPKAN";
 
 /* (No Commment) */
-"81.normalTitle" = "ALAMAT DILABEL";
+"81.normalTitle" = "NAMAI ALAMAT";
 
 /* (No Commment) */
-"88.normalTitle" = "PERMINTAAN PEMBAYARAN";
+"88.normalTitle" = "MINTA PEMBAYARAN";
 
-/* Class = "UILabel"; text = "Bitcoin Address "; ObjectID = "90"; */
-"90.text" = "Alamat Bitcoin ";
+/* (No Commment) */
+"90.text" = "Alamat Bitcoin";
 
 /* (No Commment) */
 "91.text" = "1PqtuSjPKDGqst5yadi3rF2XCxFsVDn5UH";
 
 /* (No Commment) */
-"92.normalTitle" = "ALAMAT SALIN";
+"92.normalTitle" = "SALIN ALAMAT";
 
 /* (No Commment) */
 "100.text" = "Jumlah:";
@@ -50,16 +50,16 @@
 "120.text" = "5 BTC = $10";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "E60-hZ-tDl"; */
-"E60-hZ-tDl.placeholder" = "0.000";
+"E60-hZ-tDl.placeholder" = "0,000";
 
 /* (No Commment) */
 "GwZ-6f-89z.normalTitle" = "BTC";
 
-/* Class = "UITextField"; text = "Only to control keyboard"; ObjectID = "OFk-NR-2Sp"; */
-"OFk-NR-2Sp.text" = "Hanya untuk mengontrol keyboard";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ZHr-29-NdG"; */
+"ZHr-29-NdG.normalTitle" = "Selesai";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "a9y-3I-Drw"; */
-"a9y-3I-Drw.placeholder" = "0.00";
+"a9y-3I-Drw.placeholder" = "0,00";
 
 /* (No Commment) */
 "i1j-pG-caF.normalTitle" = "Pindai Kunci Pribadi";

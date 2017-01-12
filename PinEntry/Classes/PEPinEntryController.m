@@ -23,20 +23,13 @@
 ********************************************************************************/
 
 #import "PEPinEntryController.h"
-#import "AppDelegate.h"
+#import "QRCodeGenerator.h"
+#import "RootService.h"
+#import "KeychainItemWrapper+SwipeAddresses.h"
 
 #define PS_VERIFY	0
 #define PS_ENTER1	1
 #define PS_ENTER2	2
-
-static NSString *getVersionLabelString()
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
-    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
-    NSString *build = infoDictionary[@"CFBundleVersion"];
-    NSString *versionAndBuild = [NSString stringWithFormat:@"%@ b%@", version, build];
-    return[NSString stringWithFormat:@"%@", versionAndBuild];
-}
 
 static PEViewController *EnterController()
 {
@@ -44,7 +37,7 @@ static PEViewController *EnterController()
 	c.prompt = BC_STRING_PLEASE_ENTER_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
     
 	return c;
 }
@@ -55,7 +48,7 @@ static PEViewController *NewController()
 	c.prompt = BC_STRING_PLEASE_ENTER_NEW_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
 
     return c;
 }
@@ -66,7 +59,7 @@ static PEViewController *VerifyController()
 	c.prompt = BC_STRING_CONFIRM_PIN;
 	c.title = @"";
 
-    c.versionLabel.text = getVersionLabelString();
+    c.versionLabel.text = [app getVersionLabelString];
 
 	return c;
 }
@@ -132,6 +125,110 @@ static PEViewController *VerifyController()
     [pinController resetPin];
 }
 
+- (void)setupQRCode
+{
+#ifdef ENABLE_SWIPE_TO_RECEIVE
+    if (self.verifyOnly &&
+        [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
+        [KeychainItemWrapper getSwipeAddresses]) {
+        
+        pinController.swipeLabel.alpha = 1;
+        pinController.swipeLabel.hidden = NO;
+        
+        pinController.swipeLabelImageView.alpha = 1;
+        pinController.swipeLabelImageView.hidden = NO;
+        
+        [pinController.scrollView setContentSize:CGSizeMake(pinController.scrollView.frame.size.width *2, pinController.scrollView.frame.size.height)];
+        [pinController.scrollView setPagingEnabled:YES];
+        pinController.scrollView.delegate = self;
+        
+        [pinController.scrollView setUserInteractionEnabled:YES];
+        
+        if (!self.addressLabel) {
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+            [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
+            [self.addressLabel setTextColor:[UIColor whiteColor]];
+            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            self.addressLabel.adjustsFontSizeToFitWidth = YES;
+            [pinController.scrollView addSubview:self.addressLabel];
+        }
+        
+        NSString *nextAddress = [[KeychainItemWrapper getSwipeAddresses] firstObject];
+        
+        if (nextAddress) {
+            
+            void (^error)() = ^() {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_INTERNET_CONNECTION message:BC_STRING_SWIPE_TO_RECEIVE_NO_INTERNET_CONNECTION_WARNING preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    self.qrCodeImageView.hidden = YES;
+                    self.addressLabel.text = BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION;
+                }]];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [app.wallet subscribeToSwipeAddress:nextAddress];
+                    
+                    if (!self.qrCodeImageView) {
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        [pinController.scrollView addSubview:self.qrCodeImageView];
+                    }
+                    
+                    QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+                    
+                    self.qrCodeImageView.hidden = NO;
+                    self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                    self.addressLabel.text = nextAddress;
+                }]];
+                self.errorAlert = alert;
+            };
+            
+            void (^failure)() = ^() {
+                [KeychainItemWrapper removeFirstSwipeAddress];
+                [self setupQRCode];
+                self.errorAlert = nil;
+            };
+            
+            void (^success)() = ^() {
+                [app.wallet subscribeToSwipeAddress:nextAddress];
+                
+                if (!self.qrCodeImageView) {
+                    self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                    [pinController.scrollView addSubview:self.qrCodeImageView];
+                }
+                
+                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+                
+                self.qrCodeImageView.hidden = NO;
+                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                self.addressLabel.text = nextAddress;
+                self.errorAlert = nil;
+            };
+            
+            [app checkForUnusedAddress:nextAddress success:success failure:failure error:error];
+
+        } else {
+            self.qrCodeImageView.hidden = YES;
+            self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
+        }
+    } else {
+        pinController.swipeLabel.hidden = YES;
+        pinController.swipeLabelImageView.hidden = YES;
+    }
+#else
+    pinController.swipeLabel.hidden = YES;
+    pinController.swipeLabelImageView.hidden = YES;
+#endif
+}
+
+- (void)paymentReceived
+{
+    if ([KeychainItemWrapper getSwipeAddresses].count > 0) {
+        [KeychainItemWrapper removeFirstSwipeAddress];
+        [self setupQRCode];
+    } else {
+        [self.qrCodeImageView removeFromSuperview];
+        self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
+    }
+}
+
 - (void)pinEntryControllerDidEnteredPin:(PEViewController *)controller
 {
 	switch (pinStage) {
@@ -164,12 +261,13 @@ static PEViewController *VerifyController()
 		}
 		case PS_ENTER2:
 			if([controller.pin intValue] != pinEntry1) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH delegate:nil cancelButtonTitle:BC_STRING_OK otherButtonTitles:nil];
-                [alertView show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_PIN_NO_MATCH preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
 				PEViewController *c = NewController();
 				c.delegate = self;
 				self.viewControllers = [NSArray arrayWithObjects:c, [self.viewControllers objectAtIndex:0], nil];
 				[self popViewControllerAnimated:NO];
+                [self presentViewController:alert animated:YES completion:nil];
 			} else {
 				[self.pinDelegate pinEntryController:self changedPin:[controller.pin intValue]];
 			}
@@ -203,7 +301,7 @@ static PEViewController *VerifyController()
         self.debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [self.debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+        [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
         [self.view addSubview:self.debugButton];
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }
@@ -221,6 +319,14 @@ static PEViewController *VerifyController()
 {
     if (longPress.state == UIGestureRecognizerStateBegan) {
         [app showDebugMenu:DEBUG_PRESENTER_PIN_VERIFY];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x > 0 && self.errorAlert) {
+        [self presentViewController:self.errorAlert animated:YES completion:nil];
+        self.errorAlert = nil;
     }
 }
 

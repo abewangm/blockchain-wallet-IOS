@@ -18,9 +18,8 @@
  * MA 02110-1301  USA
  */
 
-#import "JSBridgeWebView.h"
 #import "MultiAddressResponse.h"
-
+#import "SRWebSocket.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
@@ -40,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet;
+@class Wallet, Transaction, JSValue, JSContext;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -83,7 +82,7 @@
 - (void)estimateTransactionSize:(uint64_t)size;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
-- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
 - (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
@@ -93,18 +92,30 @@
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword;
+- (void)updateLoadedAllTransactions:(NSNumber *)loadedAll;
+- (void)receivedTransactionMessage;
+- (void)paymentReceivedOnPINScreen:(NSString *)amount;
+- (void)didReceivePaymentNotice:(NSString *)notice;
+- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
+- (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
+- (void)didSetDefaultAccount;
+- (void)didChangeLocalCurrency;
+- (void)setupBackupTransferAll:(id)transferAllController;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, JSBridgeWebViewDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
 }
 
 // Core Wallet Init Properties
+@property (readonly, nonatomic) JSContext *context;
+
 @property(nonatomic, strong) NSString *guid;
 @property(nonatomic, strong) NSString *sharedKey;
 @property(nonatomic, strong) NSString *password;
 
+@property(nonatomic, strong) NSString *sessionToken;
+
 @property(nonatomic, strong) id<WalletDelegate> delegate;
-@property(nonatomic, strong) JSBridgeWebView *webView;
 
 @property(nonatomic) uint64_t final_balance;
 @property(nonatomic) uint64_t total_sent;
@@ -113,6 +124,7 @@
 @property(nonatomic, strong) NSMutableDictionary *transactionProgressListeners;
 
 @property(nonatomic) NSDictionary *accountInfo;
+@property(nonatomic) BOOL hasLoadedAccountInfo;
 
 @property(nonatomic) NSString *lastScannedWatchOnlyAddress;
 @property(nonatomic) NSString *lastImportedAddress;
@@ -124,15 +136,26 @@
 @property int recoveredAccountIndex;
 
 @property BOOL didPairAutomatically;
+@property BOOL isFilteringTransactions;
+@property BOOL isFetchingTransactions;
 @property BOOL isSyncing;
 @property BOOL isNew;
 @property NSString *twoFactorInput;
 @property (nonatomic) NSDictionary *currencySymbols;
 
+@property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
+@property (nonatomic) SRWebSocket *webSocket;
+@property (nonatomic) NSTimer *webSocketTimer;
+@property (nonatomic) NSString *swipeAddressToSubscribe;
+
+@property (nonatomic) int lastLabelledAddressesCount;
+
 - (id)init;
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
 - (void)loadBlankWallet;
+
+- (void)resetSyncStatus;
 
 - (NSDictionary *)addressBook;
 
@@ -149,6 +172,8 @@
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 - (Boolean)isAddressArchived:(NSString *)address;
+
+- (void)subscribeToSwipeAddress:(NSString *)address;
 
 - (void)addToAddressBook:(NSString *)address label:(NSString *)label;
 
@@ -167,7 +192,7 @@
 - (BOOL)isInitialized;
 - (BOOL)hasEncryptedWalletData;
 
-- (CGFloat)getStrengthForPassword:(NSString *)password;
+- (float)getStrengthForPassword:(NSString *)password;
 
 - (BOOL)needsSecondPassword;
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
@@ -177,7 +202,8 @@
 - (void)getWalletAndHistory;
 
 - (uint64_t)getLegacyAddressBalance:(NSString *)address;
-- (uint64_t)parseBitcoinValue:(NSString *)input;
+- (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField;
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale;
 
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;
@@ -201,9 +227,8 @@
 - (BOOL)isAccountAvailable:(int)account;
 - (int)getIndexOfActiveAccount:(int)account;
 
-- (void)filterTransactionsByImportedAddresses;
-- (void)filterTransactionsByAccount:(int)account;
-- (void)removeTransactionsFilter;
+- (void)fetchMoreTransactions;
+- (void)reloadFilter;
 
 - (int)getAllTransactionsCount;
 
@@ -214,6 +239,7 @@
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
 - (BOOL)isRecoveryPhraseVerified;
 - (void)markRecoveryPhraseVerified;
+- (int)getFilteredOrDefaultAccountIndex;
 - (int)getDefaultAccountIndex;
 - (void)setDefaultAccount:(int)index;
 - (int)getActiveAccountsCount;
@@ -224,6 +250,7 @@
 
 - (uint64_t)getTotalActiveBalance;
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses;
+- (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses;
 - (uint64_t)getBalanceForAccount:(int)account;
 
 - (NSString *)getLabelForAccount:(int)account;
@@ -232,6 +259,7 @@
 - (void)createAccountWithLabel:(NSString *)label;
 - (void)generateNewKey;
 
+- (NSString *)getReceiveAddressOfDefaultAccount;
 - (NSString *)getReceiveAddressForAccount:(int)account;
 
 - (NSString *)getXpubForAccount:(int)accountIndex;
@@ -248,29 +276,40 @@
 
 - (NSDictionary *)filteredWalletJSON;
 
+- (int)getDefaultAccountLabelledAddressesCount;
+
 // Settings
 - (void)getAccountInfo;
+- (NSString *)getEmail;
+- (NSString *)getSMSNumber;
+- (BOOL)getSMSVerifiedStatus;
+- (NSDictionary *)getFiatCurrencies;
+- (NSDictionary *)getBtcCurrencies;
+- (int)getTwoStepType;
+- (BOOL)getEmailVerifiedStatus;
+
 - (void)changeEmail:(NSString *)newEmail;
 - (void)resendVerificationEmail:(NSString *)email;
 - (void)getAllCurrencySymbols;
 - (void)changeMobileNumber:(NSString *)newMobileNumber;
 - (void)verifyMobileNumber:(NSString *)code;
-- (void)updatePasswordHint:(NSString *)hint;
 - (void)enableTwoStepVerificationForSMS;
 - (void)disableTwoStepVerification;
 - (void)changePassword:(NSString *)changedPassword;
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
-- (void)changeTorBlocking:(BOOL)willEnable;
+- (void)enableSMSNotifications;
+- (void)disableSMSNotifications;
+- (BOOL)emailNotificationsEnabled;
+- (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
 - (BOOL)hasVerifiedMobileNumber;
-- (BOOL)hasStoredPasswordHint;
 - (BOOL)hasEnabledTwoStep;
-- (BOOL)hasBlockedTorRequests;
 - (int)securityCenterScore;
+- (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
 - (void)createNewPayment;
@@ -283,19 +322,30 @@
 - (void)sweepPaymentRegularThenConfirm;
 - (void)sweepPaymentAdvanced:(uint64_t)fee;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
-- (void)getInfoForTransferAllFundsToDefaultAccount;
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword;
+- (void)setupBackupTransferAll:(id)transferAllController;
+- (void)getInfoForTransferAllFundsToAccount;
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
 - (void)getFeeBounds:(uint64_t)fee;
 - (void)changeForcedFee:(uint64_t)fee;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
+- (void)incrementReceiveIndexOfDefaultAccount;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;
 
 - (void)updateServerURL:(NSString *)newURL;
+
+// Transaction Details
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter;
+
+- (JSValue *)executeJSSynchronous:(NSString *)command;
 
 @end

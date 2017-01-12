@@ -1,0 +1,117 @@
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
+"2Ig-LA-4kK.text" = "CurrAmt";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
+"4.normalTitle" = "继续";
+
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
+"6ll-Xx-4fm.text" = "BtcAmt";
+
+/* (No Commment) */
+"6zi-8R-Tmt.normalTitle" = "BTC";
+
+/* Class = "UILabel"; text = "From"; ObjectID = "7"; */
+"7.text" = "发送";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
+"7ho-GV-ikp.text" = "BTC";
+
+/* (No Commment) */
+"8LN-Tc-WVh.normalTitle" = "完成";
+
+/* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
+"9B2-23-8j5.text" = "CurrAmt";
+
+/* (No Commment) */
+"13.text" = "接收者";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
+"52.placeholder" = "0.000";
+
+/* (No Commment) */
+"52.text" = "0.00";
+
+/* (No Commment) */
+"57.text" = "5 BTC = $10";
+
+/* (No Commment) */
+"61.text" = "标签:";
+
+/* Class = "UITextField"; placeholder = "Label"; ObjectID = "62"; */
+"62.placeholder" = "标签";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "63"; */
+"63.normalTitle" = "保存";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "64"; */
+"64.text" = "地址";
+
+/* (No Commment) */
+"65.text" = "地址:";
+
+/* (No Commment) */
+"67.text" = "标签地址";
+
+/* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
+"Cbp-Qe-FKP.normalTitle" = "自定义费用";
+
+/* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
+"FB0-NP-5do.text" = "费用:";
+
+/* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
+"IUn-6N-qeo.text" = "BtcAmt";
+
+/* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
+"Pgx-k8-cTb.normalTitle" = "取消下一个";
+
+/* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
+"Ubr-KG-egH.text" = "总计:";
+
+/* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
+"ZcA-OM-4nq.text" = "发送者：";
+
+/* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
+"Zgn-Wx-Uwx.text" = "请稍候";
+
+/* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
+"Zhm-Jw-P4C.text" = "费用";
+
+/* (No Commment) */
+"aKC-Q2-phD.text" = "发送付款";
+
+/* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
+"aeG-gf-oXV.text" = "金额：";
+
+/* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
+"d7n-Ue-QXL.normalTitle" = "可用资金";
+
+/* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
+"fpY-AA-We5.text" = "接收者";
+
+/* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
+"p7q-Ud-nYh.placeholder" = "0.000";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
+"pPu-bJ-k6p.normalTitle" = "继续";
+
+/* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
+"qx4-XV-uhn.placeholder" = "0.00";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
+"sXf-3w-qdy.normalTitle" = "发送";
+
+/* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
+"t8M-NC-003.text" = "CurrTotal";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
+"vGH-md-Ck3.text" = "美元";
+
+/* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
+"vzP-xG-GPO.text" = "BtcTotal";
+
+/* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
+"yGR-Eh-YG1.text" = "接收者:";
+
+/* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
+"zyc-E3-FOM.text" = "任何地址";
+

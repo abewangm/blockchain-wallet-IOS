@@ -1,26 +1,26 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Proteger fundos novamente";
+"1Hq-6D-ut1.normalTitle" = "Fazer backup dos fundos novamente";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Proteger fundos novamente";
+"1Hq-6D-ut1.text" = "Fazer backup dos fundos novamente";
 
 /* (No Commment) */
-"3kJ-3U-lFe.text" = "Tente novamente";
+"3kJ-3U-lFe.text" = "Por favor, tente novamente";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Verifique se você anotou a frase de segurança";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Insira as seguintes palavras de sua Frase de Recuperação para completar o processo de backup.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Mantenha pressionado para revelar a palavra";
 
 /* (No Commment) */
-"07q-RX-CeI.text" = "Tente novamente";
+"07q-RX-CeI.text" = "Por favor, tente novamente";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Proteger fundos";
+"9A7-TT-PzN.title" = "Fazer backup dos fundos";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Você não protegeu seus fundos ainda";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Oh não! Você ainda não fez backup de seus fundos.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "Esta ação requer a segunda senha da sua carteira de bitcoin. Digite-a abaixo e pressione “Continuar”.";
@@ -29,7 +29,7 @@
 "9hR-tm-aq5.placeholder" = "primeira palavra";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Segunda senha exigida";
+"74J-f3-Lhq.title" = "Segunda senha Requerida";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Palavra anterior";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "Pronto";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Não faça uma captura de tela!
 Você pode comprometer a segurança da sua carteira";
 
@@ -48,23 +48,23 @@ Você pode comprometer a segurança da sua carteira";
 "Fda-Z4-3e7.placeholder" = "sexta palavra";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Como recuperar a carteira";
+"NaV-Bk-o1b.text" = "Como recuperar a sua carteira";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "unicórnio";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
-"T3S-Dk-HAh.text" = "Tente novamente";
+"T3S-Dk-HAh.text" = "Por favor, tente novamente";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "VERIFICAR PROTEÇÃO";
+"T4p-mz-siC.normalTitle" = "VERIFICAR BACKUP";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Escreva as palavras em uma folha de papel na exata ordem em que aparecem e guarde-a em um local seguro
+"UCL-i9-UDp.text" = "Anote as palavras num papel na ordem exata em que aparecem, e guarde-o em local seguro
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Perdeu sua frase de recuperação de 12 palavras?";
+"Yh8-Gm-6op.text" = "Perdeu sua Frase de Recuperação de 12 palavras?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "PRÓXIMA PALAVRA";
@@ -72,8 +72,8 @@ Você pode comprometer a segurança da sua carteira";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Próxima palavra";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Proteger seus fundos garante que você não perderá acesso aos bitcoins (exceto endereços importados), mesmo que esqueça sua senha ou que o serviço esteja indisponível.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Por favor, dedique alguns minutos para garantir que consegue acessar seus bitcoins (exceto em endereços importadas), mesmo em caso de perda da senha ou indisponibilidade de nossos serviços. Prometemos que fazer isso é rápido, painless e vale a pena.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "terceira palavra";
@@ -82,11 +82,11 @@ Você pode comprometer a segurança da sua carteira";
 "mUc-u7-Zcj.text" = "Palavra 5 de 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Proteger carteira";
+"mYR-MQ-mS2.title" = "Fazer Backup da Carteira";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
 "nuD-nb-tAt.normalTitle" = "Continuar";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Proteger carteira";
+"xmf-pK-R3X.title" = "Fazer Backup da Carteira";
 

@@ -1,70 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PEViewController">
             <connections>
                 <outlet property="cancelButton" destination="CMP-hL-rTn" id="yUl-cd-Bad"/>
                 <outlet property="keyboard" destination="4" id="14"/>
-                <outlet property="pin0" destination="5" id="9"/>
-                <outlet property="pin1" destination="6" id="10"/>
-                <outlet property="pin2" destination="7" id="11"/>
-                <outlet property="pin3" destination="8" id="12"/>
-                <outlet property="promptLabel" destination="15" id="16"/>
+                <outlet property="pin0" destination="5" id="eOD-UG-4Y3"/>
+                <outlet property="pin1" destination="6" id="FhN-uJ-tg7"/>
+                <outlet property="pin2" destination="7" id="MXD-Ge-vpX"/>
+                <outlet property="pin3" destination="8" id="Yky-Tu-I9X"/>
+                <outlet property="promptLabel" destination="15" id="Zfl-Bw-OnY"/>
+                <outlet property="scrollView" destination="OHm-a6-xhh" id="Zac-Xw-wIq"/>
+                <outlet property="swipeLabel" destination="NfS-0O-G6S" id="DBW-Z6-rjf"/>
+                <outlet property="swipeLabelImageView" destination="YIU-2C-T7a" id="jz7-iq-Psn"/>
                 <outlet property="versionLabel" destination="C16-0H-UUa" id="xXQ-pW-cty"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1">
+        <view contentMode="scaleToFill" id="1" customClass="UIScrollView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="4" customClass="PENumpadView">
-                    <rect key="frame" x="0.0" y="264" width="320" height="216"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="13"/>
-                    </connections>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="5">
-                    <rect key="frame" x="32" y="142" width="49" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="6">
-                    <rect key="frame" x="101" y="142" width="49" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="7">
-                    <rect key="frame" x="170" y="142" width="49" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="8">
-                    <rect key="frame" x="239" y="142" width="49" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your passcode" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="15">
-                    <rect key="frame" x="26" y="213" width="268" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockchain_b" id="OPk-OR-rQR">
                     <rect key="frame" x="138" y="51" width="45" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v 2.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C16-0H-UUa">
-                    <rect key="frame" x="15" y="234" width="290" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CMP-hL-rTn">
                     <rect key="frame" x="260" y="25" width="48" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -80,6 +45,61 @@
                     <rect key="frame" x="85" y="95" width="150" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OHm-a6-xhh">
+                    <rect key="frame" x="0.0" y="120" width="320" height="360"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v 2.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C16-0H-UUa">
+                            <rect key="frame" x="8" y="123" width="146" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to receive -&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NfS-0O-G6S">
+                            <rect key="frame" x="41" y="123" width="252" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" id="4" customClass="PENumpadView">
+                            <rect key="frame" x="0.0" y="144" width="320" height="216"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="13"/>
+                            </connections>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" image="PEPin-off.png" id="8">
+                            <rect key="frame" x="226" y="13" width="49" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="5">
+                            <rect key="frame" x="47" y="13" width="49" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your passcode" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="15">
+                            <rect key="frame" x="41" y="84" width="238" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="6">
+                            <rect key="frame" x="108" y="13" width="49" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PEPin-off.png" id="7">
+                            <rect key="frame" x="167" y="13" width="49" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YIU-2C-T7a">
+                            <rect key="frame" x="297" y="126" width="15" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -90,9 +110,4 @@
         <image name="blockchain_b" width="37" height="45"/>
         <image name="blockchain_logo_small" width="102" height="11"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -3,13 +3,13 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 1/12/16.
-//  Copyright © 2016 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "AccountsAndAddressesNavigationController.h"
 #import "AccountsAndAddressesViewController.h"
 #import "AccountsAndAddressesDetailViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "PrivateKeyReader.h"
 #import "SendViewController.h"
 
@@ -197,16 +197,9 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
-        app.topViewControllerDelegate = nil;
     }];
     
-    if (!app.sendViewController) {
-        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
-    }
-    
-    [app showSendCoins];
-    
-    [app.sendViewController getInfoForTransferAllFundsToDefaultAccount];
+    [app setupTransferAllFunds];
 }
 
 #pragma mark - Navigation

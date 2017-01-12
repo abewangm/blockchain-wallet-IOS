@@ -1,35 +1,35 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Záložní prostředky znovu";
+"1Hq-6D-ut1.normalTitle" = "Zálohovat prostředky znovu";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Záložní prostředky znovu";
+"1Hq-6D-ut1.text" = "Zálohovat prostředky znovu";
 
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Zkuste to prosím znovu";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Ověřte, zda napsal záložní fráze";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Zadáním následujících slov z fráze pro obnovení dokončíte proces zálohování.";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "Stiskněte a podržte odhalit slovo";
+"6zt-Xf-txg.text" = "Slovo zobrazíte stisknutím a podržením";
 
 /* (No Commment) */
 "07q-RX-CeI.text" = "Zkuste to prosím znovu";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Zálohování fondy";
+"9A7-TT-PzN.title" = "Zálohovat prostředky";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Jste nezálohovali své prostředky dosud";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Ale ne! Zatím jste ještě nezálohovali svoje prostředky.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Tato akce vyžaduje druhé heslo pro peněženku bitcoin. Prosím, zadejte a stiskněte tlačítko pokračovat.";
+"9WK-My-5CL.text" = "Tato akce vyžaduje druhé heslo k Vaší bitcoinové peněžence. Zadejte ho níže a stiskněte Pokračovat.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "první slovo";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Druhé heslo je vyžadováno";
+"74J-f3-Lhq.title" = "Je vyžadováno druhé heslo";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Předchozí slovo";
@@ -40,18 +40,18 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "Hotovo";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "Neberte si snímek!
-Můžete ohrozit bezpečnost vaší peněženky";
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "Nevytvářejte kopii obrazovky!
+Můžete ohrozit zabezpečení své peněženky";
 
 /* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "šesté slovo";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "Jak obnovit vaši peněženku";
+"NaV-Bk-o1b.text" = "Jak si můžete obnovit svoji peněženku";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
-"Okr-VE-yvm.text" = "Jednorožec";
+"Okr-VE-yvm.text" = "unicorn";
 
 /* Class = "UILabel"; text = "Please try again"; ObjectID = "T3S-Dk-HAh"; */
 "T3S-Dk-HAh.text" = "Zkuste to prosím znovu";
@@ -60,11 +60,11 @@ Můžete ohrozit bezpečnost vaší peněženky";
 "T4p-mz-siC.normalTitle" = "OVĚŘIT ZÁLOHU";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Zapište se slova v přesném pořadí, se objeví na list papíru a uložit ji někam do bezpečí
+"UCL-i9-UDp.text" = "Zapište si slova v přesném pořadí na kousek papíru a uschovejte ho na bezpečné místo
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Ztratil 12 slovo oživení fráze?";
+"Yh8-Gm-6op.text" = "Ztratili jste 12ti slovnou frázi pro obnovení?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "DALŠÍ SLOVO";
@@ -72,21 +72,21 @@ Můžete ohrozit bezpečnost vaší peněženky";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Další slovo";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Zálohování vašich financí zajišťuje, že nebudete ztratíte přístup k vaší bitcoins (kromě importované adresy), i v případě, že zapomenete své heslo nebo je-li naše služba přestane být k dispozici.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Věnujte prosím několik minut svého času a ověřte, zda máte přístup ke svým bitcoinům (s výjimkou bitcoinů v importovaných adresách), i když zapomenete svoje heslo nebo budou naše služby nedostupné. Slibujeme, že to půjde rychle, bezbolestně a vyplatí se to.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "třetí slovo";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "Slovo 5 z 12";
+"mUc-u7-Zcj.text" = "Slovo 5 / 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "Zálohování Peněženka";
+"mYR-MQ-mS2.title" = "Zálohovat peněženku";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
-"nuD-nb-tAt.normalTitle" = "Pokračovat v";
+"nuD-nb-tAt.normalTitle" = "Pokračovat";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "Zálohování Peněženka";
+"xmf-pK-R3X.title" = "Zálohovat peněženku";
 

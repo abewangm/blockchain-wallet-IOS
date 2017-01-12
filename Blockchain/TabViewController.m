@@ -7,7 +7,7 @@
 //
 
 #import "TabViewcontroller.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation TabViewcontroller
 
@@ -17,6 +17,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // Default selected: transactions
     selectedIndex = TAB_TRANSACTIONS;
     

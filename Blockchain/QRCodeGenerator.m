@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 1/29/16.
-//  Copyright © 2016 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "QRCodeGenerator.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation QRCodeGenerator
 
@@ -22,7 +22,7 @@
 {
     app.btcFormatter.usesGroupingSeparator = NO;
     NSLocale *currentLocale = app.btcFormatter.locale;
-    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+    app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
     NSString *amountString = [app.btcFormatter stringFromNumber:[NSNumber numberWithDouble:amount]];
     app.btcFormatter.locale = currentLocale;
     app.btcFormatter.usesGroupingSeparator = YES;

@@ -7,8 +7,8 @@
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Prøv venligst igen";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Kontroller, at du skrev ned backup sætningen";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Angiv følgende ord fra din opsving sætning til at fuldføre den sikkerhedskopi oparbejde.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Tryk og hold for at afsløre ordet";
@@ -19,8 +19,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "Backup midler";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Du har endnu ikke sikkerhedskopieret dine penge";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Åh intet! Du ikke har sikkerhedskopieret dine penge endnu.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "Denne handling kræver en anden adgangskode til tegnebogen bitcoin. Angiv det venligst nedenfor og tryk på Fortsæt.";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "Gjort";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Ikke tage et screenshot!
 Du kan bringe din tegnebog sikkerhed";
 
@@ -72,8 +72,8 @@ Du kan bringe din tegnebog sikkerhed";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Næste ord";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Sikkerhedskopiering af dine midler sikrer, at du ikke mister adgang til din bitcoins (undtagen importerede adresser), selv hvis du glemmer din adgangskode, eller hvis vores tjeneste ikke er tilgængelig.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Bedes du tage et par minutter til at sikre, at du kan få adgang til din bitcoin (undtagen i importerede adresser), selv hvis du glemmer din adgangskode, eller hvis vores tjeneste ikke er tilgængelig. Vi lover at gøre det er hurtig, smertefri, og det værd.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "tredje ord";

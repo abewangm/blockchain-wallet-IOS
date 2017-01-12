@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "Valitse asetukset / lompakon tiedot.";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "Tapahtumat";
 
@@ -28,9 +31,6 @@
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "Jos käytät vanhaa lompakko, napsauta Asetukset-painiketta ja valitse laitteet-välilehdessä. Jos käytät uusi beta lompakko, mene asetukset / lompakon tiedot.";
-
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
@@ -53,13 +53,13 @@
 "380.text" = "Tervetuloa Blockchain lompakko";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "Yhtään tapahtumaa ei ole vielä";
+"387.text" = "Viimeaikaisten tapahtumien";
 
 /* (No Commment) */
 "394.text" = "Salasana:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "Salasana (min. 10 merkkiä)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "Salasana";
 
 /* (No Commment) */
 "396.text" = "Vahvista:";

@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 9/23/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCWelcomeView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "LocalizationConstants.h"
 #import "DebugTableViewController.h"
 
@@ -18,8 +18,7 @@ Boolean shouldShowAnimation;
 
 -(id)init
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UIWindow *window = appDelegate.window;
+    UIWindow *window = app.window;
     
     shouldShowAnimation = true;
     
@@ -77,7 +76,7 @@ Boolean shouldShowAnimation;
         debugButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [debugButton setTitle:BC_STRING_DEBUG forState:UIControlStateNormal];
+        [debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
         [debugButton addGestureRecognizer:longPressGesture];

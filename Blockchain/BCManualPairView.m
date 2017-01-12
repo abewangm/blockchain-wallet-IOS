@@ -3,16 +3,19 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 9/25/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCManualPairView.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "Blockchain-Swift.h"
 
 @implementation BCManualPairView
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     saveButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
@@ -76,7 +79,7 @@
     }
     else if (textField == verifyTwoFactorTextField) {
         [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-        app.wallet.twoFactorInput = textField.text;
+        app.wallet.twoFactorInput = [textField.text uppercaseString];
         [self continueClicked:textField];
     } else {
         [self continueClicked:textField];
@@ -91,7 +94,7 @@
     NSString *password = passwordTextField.text;
     
     if ([guid length] != 36) {
-        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER delegate:nil];
+        [app standardNotify:BC_STRING_ENTER_YOUR_CHARACTER_WALLET_IDENTIFIER title:BC_STRING_INVALID_IDENTIFIER];
         
         [walletIdentifierTextField becomeFirstResponder];
         
@@ -106,6 +109,10 @@
         return;
     }
     
+    if (![app checkInternetConnection]) {
+        return;
+    }
+    
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
         
@@ -117,11 +124,11 @@
 - (void)verifyTwoFactorSMS
 {
     UIAlertController *alertForVerifyingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_VERIFY_ENTER_CODE message:[NSString stringWithFormat:BC_STRING_ENTER_ARGUMENT_TWO_FACTOR_CODE, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] preferredStyle:UIAlertControllerStyleAlert];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet resendTwoFactorSMS];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        app.wallet.twoFactorInput = [[[alertForVerifyingMobileNumber textFields] firstObject].text stringByReplacingOccurrencesOfString:@" " withString:@""];
+        app.wallet.twoFactorInput = [[[[alertForVerifyingMobileNumber textFields] firstObject].text uppercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self continueClicked:nil];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];

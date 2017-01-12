@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 17/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SendViewController.h"
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCAddressSelectionView.h"
 #import "TabViewController.h"
 #import "UncaughtExceptionHandler.h"
@@ -17,6 +17,7 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
+#import "TransferAllFundsBuilder.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -24,7 +25,7 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 }TransactionType;
 
-@interface SendViewController () <UITextFieldDelegate>
+@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate>
 
 @property (nonatomic) TransactionType transactionType;
 
@@ -32,6 +33,7 @@ typedef enum {
 @property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
 @property (nonatomic) uint64_t dust;
+@property (nonatomic) uint64_t txSize;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 
@@ -40,10 +42,12 @@ typedef enum {
 @property (nonatomic) uint64_t estimatedTransactionSize;
 @property (nonatomic) BOOL customFeeMode;
 
+@property (nonatomic) BOOL isReloading;
+
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
-@property (nonatomic) NSString *temporarySecondPassword;
+@property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
 @end
 
@@ -91,19 +95,17 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidLoad];
     
-    // force Payment initialization in JS
-    [self resetPayment];
-    
     toField.accessibilityLabel = BC_STRING_SELECT_ADDRESS;
     continuePaymentButton.accessibilityLabel = BC_STRING_SEND_BUTTON;
     fiatAmountField.accessibilityLabel = BC_STRING_AMOUNT_FIELD;
-    
+
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
     self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
     
@@ -112,7 +114,8 @@ BOOL displayingLocalSymbolSend;
     toField.placeholder = BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT;
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    
+
+    toField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [toField setReturnKeyType:UIReturnKeyDone];
     
     [self reload];
@@ -138,13 +141,15 @@ BOOL displayingLocalSymbolSend;
     if ([app.wallet hasAccount]) {
         // Default setting: send from default account
         self.sendFromAddress = false;
-        int defaultAccountIndex = [app.wallet getDefaultAccountIndex];
+        int defaultAccountIndex = [app.wallet getFilteredOrDefaultAccountIndex];
         self.fromAccount = defaultAccountIndex;
+        if (self.isReloading) return; // didSelectFromAccount will be called in reloadAfterMultiAddressResponse
         [self didSelectFromAccount:self.fromAccount];
     }
     else {
         // Default setting: send from any address
         self.sendFromAddress = true;
+        if (self.isReloading) return; // didSelectFromAddress will be called in reloadAfterMultiAddressResponse
         [self didSelectFromAddress:self.fromAddress];
     }
 }
@@ -161,6 +166,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reload
 {
+    self.isReloading = YES;
+    
     [self clearToAddressAndAmountFields];
 
     if (![app.wallet isInitialized]) {
@@ -178,11 +185,13 @@ BOOL displayingLocalSymbolSend;
     // Default: send to address
     self.sendToAddress = true;
     
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self populateFieldsFromURLHandlerIfAvailable];
     
     [self reloadFromAndToFields];
     
-    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self reloadSymbols];
     
     [self updateFundsAvailable];
     
@@ -198,12 +207,14 @@ BOOL displayingLocalSymbolSend;
     self.confirmPaymentView.customizeFeeButton.hidden = NO;
     sendProgressCancelButton.hidden = YES;
     
-    self.transferAllMode = NO;
     self.isSending = NO;
+    self.isReloading = NO;
 }
 
 - (void)reloadAfterMultiAddressResponse
 {
+    [self hideSelectFromAndToButtonsIfAppropriate];
+    
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
@@ -211,18 +222,20 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.customFeeMode];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
+}
+
+- (void)reloadSymbols
+{
+    [self reloadLocalAndBtcSymbolsFromLatestResponse];
+    [self updateFundsAvailable];
 }
 
 - (void)hideSelectFromAndToButtonsIfAppropriate
 {
     // If we only have one account and no legacy addresses -> can't change from address
-    if ([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-        && [app.wallet getActiveAccountsCount] == 1) {
+    if ([app.wallet getActiveAccountsCount] + [[app.wallet activeLegacyAddresses] count] == 1) {
         
         [selectFromButton setHidden:YES];
-        [self hideFromField];
         
         if ([app.wallet addressBook].count == 0) {
             [addressBookButton setHidden:YES];
@@ -231,7 +244,6 @@ BOOL displayingLocalSymbolSend;
         }
     }
     else {
-        [self showFromField];
         [selectFromButton setHidden:NO];
         [addressBookButton setHidden:NO];
     }
@@ -264,7 +276,7 @@ BOOL displayingLocalSymbolSend;
     if (self.sendFromAddress) {
         if (self.fromAddress.length == 0) {
             selectAddressTextField.text = BC_STRING_ANY_ADDRESS;
-            availableAmount = [app.wallet getTotalBalanceForActiveLegacyAddresses];
+            availableAmount = [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses];
         }
         else {
             selectAddressTextField.text = [self labelForLegacyAddress:self.fromAddress];
@@ -328,29 +340,18 @@ BOOL displayingLocalSymbolSend;
 {
     app.topViewControllerDelegate = nil;
     
-    [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, 1, [[app.wallet spendableActiveLegacyAddresses] count]]];
+    [app showBusyViewWithLoadingText:BC_STRING_TRANSFER_ALL_PREPARING_TRANSFER];
     
-    [app.wallet getInfoForTransferAllFundsToDefaultAccount];
+    [app.wallet getInfoForTransferAllFundsToAccount];
 }
 
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
 {
-    [self reload];
-
-    self.sendFromAddress = true;
-    
-    [self resetPayment];
-    
-    if (!address || [address isEqualToString:@""]) {
-        self.fromAddress = address;
-        [self reloadFromField];
-    } else {
-        [self didSelectFromAddress:address];
-    }
+    [self didSelectFromAddress:address];
     
     [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
     
-    [app.wallet sweepPaymentRegularThenConfirm];
+    [app.wallet transferFundsToDefaultAccountFromAddress:address];
 }
 
 - (void)sendFromWatchOnlyAddress
@@ -396,7 +397,7 @@ BOOL displayingLocalSymbolSend;
              [paymentSentAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                  if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_APP_REVIEW_PROMPT]) {
                      
-                     if ([app.wallet getAllTransactionsCount] <= 10) {
+                     if ([app.wallet getAllTransactionsCount] < NUMBER_OF_TRANSACTIONS_REQUIRED_FOR_FOR_APP_STORE_REVIEW_PROMPT) {
                          return;
                      }
                      
@@ -404,7 +405,7 @@ BOOL displayingLocalSymbolSend;
                      
                      if (promptDate) {
                          NSTimeInterval secondsSincePrompt = [[NSDate date] timeIntervalSinceDate:promptDate];
-                         NSTimeInterval secondsUntilPromptingAgain = APP_STORE_REVIEW_PROMPT_TIME;
+                         NSTimeInterval secondsUntilPromptingAgain = TIME_INTERVAL_APP_STORE_REVIEW_PROMPT;
 #ifdef ENABLE_DEBUG_MENU
                          id customTimeValue = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
                          if (customTimeValue) {
@@ -509,48 +510,63 @@ BOOL displayingLocalSymbolSend;
 
 - (void)transferAllFundsToDefaultAccount
 {
-    [self transferAllFundsToDefaultAccountWithSecondPassword:nil];
+    __weak SendViewController *weakSelf = self;
+    
+    self.transferAllPaymentBuilder.on_before_send = ^() {
+        
+        SendViewController *strongSelf = weakSelf;
+        
+        [weakSelf hideKeyboard];
+        
+        [weakSelf disablePaymentButtons];
+        
+        [strongSelf->sendProgressActivityIndicator startAnimating];
+        
+        if (weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount - [weakSelf.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount) {
+            strongSelf->sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount - [weakSelf.transferAllPaymentBuilder.transferAllAddressesToTransfer count] + 1, weakSelf.transferAllPaymentBuilder.transferAllAddressesInitialCount];
+        }
+        
+        [app showModalWithContent:strongSelf->sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            UIButton *cancelButton = strongSelf->sendProgressCancelButton;
+            strongSelf->sendProgressCancelButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - cancelButton.frame.size.height, cancelButton.frame.size.width, cancelButton.frame.size.height);
+        }];
+        
+        weakSelf.isSending = YES;
+    };
+    
+    self.transferAllPaymentBuilder.on_prepare_next_transfer = ^(NSArray *transferAllAddressesToTransfer) {
+        weakSelf.fromAddress = transferAllAddressesToTransfer[0];
+    };
+    
+    self.transferAllPaymentBuilder.on_success = ^(NSString *secondPassword) {
+        
+    };
+    
+    self.transferAllPaymentBuilder.on_error = ^(NSString *error, NSString *secondPassword) {
+        
+        SendViewController *strongSelf = weakSelf;
+
+        [app closeAllModals];
+
+        [strongSelf->sendProgressActivityIndicator stopAnimating];
+        
+        [weakSelf enablePaymentButtons];
+        
+        [weakSelf reload];
+    };
+
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:nil];
 }
 
-- (void)continueTransferringFunds
+- (void)didFinishTransferFunds:(NSString *)summary
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
-    
-    if ([self.transferAllAddressesToTransfer count] > 0) {
-        [self.transferAllAddressesTransferred addObject:self.transferAllAddressesToTransfer[0]];
-    }
-    
-    if ([self.transferAllAddressesToTransfer count] > 1 && self.transferAllMode) {
-        [self.transferAllAddressesToTransfer removeObjectAtIndex:0];
-        self.fromAddress = self.transferAllAddressesToTransfer[0];
-        [app.wallet setupFollowingTransferForAllFundsToDefaultAccount:self.transferAllAddressesToTransfer[0] secondPassword:self.temporarySecondPassword];
-    } else {
-        [self.transferAllAddressesToTransfer removeAllObjects];
-        [self finishedTransferFunds];
-    }
-}
-
-- (void)finishedTransferFunds
-{
-    NSString *summary;
-    if (self.transferAllAddressesUnspendable > 0) {
-        
-        NSString *addressOrAddressesTransferred = self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        NSString *addressOrAddressesSkipped = self.transferAllAddressesUnspendable == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        
-        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL, self.transferAllAddressesInitialCount - self.transferAllAddressesUnspendable, addressOrAddressesTransferred, self.transferAllAddressesUnspendable, addressOrAddressesSkipped];
-    } else {
-        
-        NSString *addressOrAddressesTransferred = [self.transferAllAddressesTransferred count] == 1 ? [BC_STRING_ADDRESS lowercaseString] : [BC_STRING_ADDRESSES lowercaseString];
-        
-        summary = [NSString stringWithFormat:BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT, [self.transferAllAddressesTransferred count], addressOrAddressesTransferred];
-    }
-    
-    NSString *message = [self.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
+    NSString *message = [self.transferAllPaymentBuilder.transferAllAddressesTransferred count] > 0 ? [NSString stringWithFormat:@"%@\n\n%@", summary, BC_STRING_PAYMENT_ASK_TO_ARCHIVE_TRANSFERRED_ADDRESSES] : summary;
     
     UIAlertController *alertForPaymentsSent = [UIAlertController alertControllerWithTitle:BC_STRING_PAYMENTS_SENT message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    if ([self.transferAllAddressesTransferred count] > 0) {
+    if ([self.transferAllPaymentBuilder.transferAllAddressesTransferred count] > 0) {
         [alertForPaymentsSent addAction:[UIAlertAction actionWithTitle:BC_STRING_ARCHIVE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self archiveTransferredAddresses];
         }]];
@@ -581,94 +597,9 @@ BOOL displayingLocalSymbolSend;
     [self reload];
 }
 
-- (void)transferAllFundsToDefaultAccountWithSecondPassword:(NSString *)_secondPassword
-{
-    transactionProgressListeners *listener = [[transactionProgressListeners alloc] init];
-    
-    listener.on_start = ^() {
-    };
-    
-    listener.on_begin_signing = ^() {
-    };
-    
-    listener.on_sign_progress = ^(int input) {
-    };
-    
-    listener.on_finish_signing = ^() {
-    };
-    
-    listener.on_success = ^(NSString*secondPassword) {
-        
-        DLog(@"SendViewController: on_success_transfer_all for address %@", [self.transferAllAddressesToTransfer firstObject]);
-        
-        self.temporarySecondPassword = secondPassword;
-        
-        // Fields are automatically reset by reload, called by MyWallet.wallet.getHistory() after a utx websocket message is received. However, we cannot rely on the websocket 100% of the time.
-        [app.wallet performSelector:@selector(getHistoryIfNoTransactionMessage) withObject:nil afterDelay:DELAY_GET_HISTORY_BACKUP];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(continueTransferringFunds) name:NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD object:nil];
-    };
-    
-    listener.on_error = ^(NSString* error, NSString* secondPassword) {
-        DLog(@"Send error: %@", error);
-        
-        if ([error containsString:ERROR_ALL_OUTPUTS_ARE_VERY_SMALL]) {
-            self.transferAllAddressesUnspendable++;
-            self.temporarySecondPassword = secondPassword;
-            [self continueTransferringFunds];
-            DLog(@"Output too small; continuing transfer all");
-            return;
-        }
-        
-        [app closeAllModals];
-        
-        if ([error isEqualToString:ERROR_UNDEFINED]) {
-            [app standardNotify:BC_STRING_SEND_ERROR_NO_INTERNET_CONNECTION];
-        } else if ([error isEqualToString:ERROR_FAILED_NETWORK_REQUEST]) {
-            [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION];
-        } else if (error && error.length != 0)  {
-            [app standardNotify:error];
-        }
-        
-        [sendProgressActivityIndicator stopAnimating];
-        
-        [self enablePaymentButtons];
-        
-        [self reload];
-        
-        [app.wallet getHistory];
-    };
-    
-    [self hideKeyboard];
-    
-    [self disablePaymentButtons];
-    
-    [sendProgressActivityIndicator startAnimating];
-    
-    if (self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] <= self.transferAllAddressesInitialCount) {
-        sendProgressModalText.text = [NSString stringWithFormat:BC_STRING_TRANSFER_ALL_FROM_ADDRESS_ARGUMENT_ARGUMENT, self.transferAllAddressesInitialCount - [self.transferAllAddressesToTransfer count] + 1, self.transferAllAddressesInitialCount];
-    }
-    
-    [app showModalWithContent:sendProgressModal closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        UIButton *cancelButton = sendProgressCancelButton;
-        sendProgressCancelButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - cancelButton.frame.size.height, cancelButton.frame.size.width, cancelButton.frame.size.height);
-    }];
-    
-    app.wallet.didReceiveMessageForLastTransaction = NO;
-    self.isSending = YES;
-    
-    [app.wallet sendPaymentWithListener:listener secondPassword:_secondPassword];
-}
-
 - (void)sendDuringTransferAll:(NSString *)secondPassword
 {
-    if (self.transferAllMode) {
-        [self transferAllFundsToDefaultAccountWithSecondPassword:secondPassword];
-    } else {
-        [self finishedTransferFunds];
-    }
+    [self.transferAllPaymentBuilder transferAllFundsToAccountWithSecondPassword:secondPassword];
 }
 
 - (void)didErrorDuringTransferAll:(NSString *)error secondPassword:(NSString *)secondPassword
@@ -681,12 +612,14 @@ BOOL displayingLocalSymbolSend;
 
 - (uint64_t)getInputAmountInSatoshi
 {
-    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
     if (displayingLocalSymbol) {
+        NSString *language = btcAmountField.textInputMode.primaryLanguage;
+        NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+        
+        NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
     } else {
-        return [app.wallet parseBitcoinValue:amountString];
+        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
     }
 }
 
@@ -701,11 +634,11 @@ BOOL displayingLocalSymbolSend;
         
         uint64_t spendableAmount = maxAmount + self.feeFromTransactionProposal;
         
-        NSString *wantToSendAmountString = [app formatMoney:amountInSatoshi localCurrency:NO];
-        NSString *spendableAmountString = [app formatMoney:spendableAmount localCurrency:NO];
-        NSString *feeAmountString = [app formatMoney:self.feeFromTransactionProposal localCurrency:NO];
+        NSString *wantToSendAmountString = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:NO];
+        NSString *spendableAmountString = [NSNumberFormatter formatMoney:spendableAmount localCurrency:NO];
+        NSString *feeAmountString = [NSNumberFormatter formatMoney:self.feeFromTransactionProposal localCurrency:NO];
         
-        NSString *canSendAmountString = [app formatMoney:maxAmount localCurrency:NO];
+        NSString *canSendAmountString = [NSNumberFormatter formatMoney:maxAmount localCurrency:NO];
         
         NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
         
@@ -725,10 +658,7 @@ BOOL displayingLocalSymbolSend;
             self.transactionType = TransactionTypeSweepAndConfirm;
             
             if (self.customFeeMode) {
-                
-                NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                
-                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValue:btcAmountString]];
+                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValueFromTextField:feeField]];
             } else {
                 [app.wallet sweepPaymentRegularThenConfirm];
             }
@@ -760,7 +690,7 @@ BOOL displayingLocalSymbolSend;
             [self enablePaymentButtons];
         } onResume:nil];
         
-        if (self.transferAllMode) {
+        if ([self transferAllMode]) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -801,13 +731,13 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fromLabel.text = [NSString stringWithFormat:@"%@\n%@", fromAddressLabel, fromAddressString];
         self.confirmPaymentView.toLabel.text = [NSString stringWithFormat:@"%@\n%@", toAddressLabel, toAddressString];
         
-        self.confirmPaymentView.fiatAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:TRUE];
-        self.confirmPaymentView.btcAmountLabel.text = [app formatMoney:amountInSatoshi localCurrency:FALSE];
+        self.confirmPaymentView.fiatAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:TRUE];
+        self.confirmPaymentView.btcAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:FALSE];
         
-        self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
+        self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
         
-        if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE]) {
+        if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE]) {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
         } else {
@@ -815,8 +745,23 @@ BOOL displayingLocalSymbolSend;
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor darkGrayColor];
         }
         
-        self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+        self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
+        self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
+        
+        if (!self.customFeeMode) {
+            NSDecimalNumber *last = [NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:[[app.wallet.currencySymbols objectForKey:DICTIONARY_KEY_USD][DICTIONARY_KEY_LAST] doubleValue]] decimalValue]];
+            NSDecimalNumber *conversionToUSD = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:SATOSHI] decimalValue]] decimalNumberByDividingBy:last];
+            NSDecimalNumber *feeConvertedToUSD = [(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:feeTotal] decimalNumberByDividingBy:conversionToUSD];
+            
+            NSDecimalNumber *feeRatio = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:feeTotal] decimalValue] ] decimalNumberByDividingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:amountTotal]];
+            NSDecimalNumber *normalFeeRatio = [NSDecimalNumber decimalNumberWithDecimal:[ONE_PERCENT_DECIMAL decimalValue]];
+
+            if ([feeConvertedToUSD compare:[NSDecimalNumber decimalNumberWithDecimal:[FIFTY_CENTS_DECIMAL decimalValue]]] == NSOrderedDescending && self.txSize > TX_SIZE_ONE_KILOBYTE && [feeRatio compare:normalFeeRatio] == NSOrderedDescending) {
+                UIAlertController *highFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_HIGH_FEE_WARNING_TITLE message:BC_STRING_HIGH_FEE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+                [highFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                [self.view.window.rootViewController presentViewController:highFeeAlert animated:YES completion:nil];
+            }
+        }
     });
 }
 
@@ -832,7 +777,7 @@ BOOL displayingLocalSymbolSend;
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
 {
     sendProgressModalText.text = BC_STRING_CANCELLING;
-    self.transferAllMode = NO;
+    self.transferAllPaymentBuilder.userCancelledNext = YES;
     [self performSelector:@selector(cancelAndReloadIfTransferFails) withObject:nil afterDelay:10.0];
 }
 
@@ -872,21 +817,19 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
     }
     else {
         
-        fiatAmountField.text = [app formatAmount:amountInSatoshi localCurrency:YES];
-        btcAmountField.text = [app formatAmount:amountInSatoshi localCurrency:NO];
+        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
+        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
     }
     
     if (self.customFeeMode) {
-        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        uint64_t typedFee = [app.wallet parseBitcoinValue:btcAmountString];
+        uint64_t typedFee = [app.wallet parseBitcoinValueFromTextField:feeField];
         uint64_t spendableAmount = 0;
         if (typedFee < customFeeOriginalAvailableAmount) {
             spendableAmount = customFeeOriginalAvailableAmount - typedFee;
@@ -950,7 +893,7 @@ BOOL displayingLocalSymbolSend;
 {
     self.addressFromURLHandler = addressString;
     
-    if ([app stringHasBitcoinValue:amountString]) {
+    if ([NSNumberFormatter stringHasBitcoinValue:amountString]) {
         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountString];
         self.amountFromURLHandler = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
     } else {
@@ -971,6 +914,13 @@ BOOL displayingLocalSymbolSend;
     }
     
     return address;
+}
+
+- (void)hideKeyboardForced
+{
+    // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
+    [fiatAmountField becomeFirstResponder];
+    [self hideKeyboard];
 }
 
 - (void)hideKeyboard
@@ -1011,19 +961,19 @@ BOOL displayingLocalSymbolSend;
     NSString *keepUserInputFee;
     
     if (feeIsTooHigh) {
-        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.upperRecommendedLimit localCurrency:NO]];
+        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.upperRecommendedLimit localCurrency:NO]];
         suggestedFee = self.upperRecommendedLimit;
         useSuggestedFee = BC_STRING_LOWER_FEE;
         keepUserInputFee = BC_STRING_KEEP_HIGHER_FEE;
     } else {
-        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [app formatMoney:fee localCurrency:NO], [app formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
+        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
         suggestedFee = self.lowerRecommendedLimit;
         useSuggestedFee = BC_STRING_INCREASE_FEE;
         keepUserInputFee = BC_STRING_KEEP_LOWER_FEE;
     }
     UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
+        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
         [self changeForcedFee:suggestedFee afterEvaluation:YES];
     }]];
     [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -1040,16 +990,16 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showWarningForInsufficientFundsAndLowFee:(uint64_t)fee suggestedFee:(uint64_t)suggestedFee suggestedAmount:(uint64_t)suggestedAmount
 {
-    NSString *feeString = [app formatMoney:fee localCurrency:NO];
-    NSString *suggestedFeeString = [app formatMoney:suggestedFee localCurrency:NO];
-    NSString *suggestedAmountString = [app formatMoney:suggestedAmount localCurrency:NO];
+    NSString *feeString = [NSNumberFormatter formatMoney:fee localCurrency:NO];
+    NSString *suggestedFeeString = [NSNumberFormatter formatMoney:suggestedFee localCurrency:NO];
+    NSString *suggestedAmountString = [NSNumberFormatter formatMoney:suggestedAmount localCurrency:NO];
     
     UIAlertController *alertForInsufficientFundsAndLowFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:[NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_MUST_LOWER_AMOUNT_SUGGESTED_FEE_ARGUMENT_SUGGESTED_AMOUNT_ARGUMENT, feeString, suggestedFeeString, suggestedAmountString] preferredStyle:UIAlertControllerStyleAlert];
     [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_KEEP_LOWER_FEE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeForcedFee:fee afterEvaluation:YES];
     }]];
     [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_USE_RECOMMENDED_VALUES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [app formatAmount:suggestedFee localCurrency:NO];
+        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
         amountInSatoshi = suggestedAmount;
         [self doCurrencyConversion];
         [self changeForcedFee:suggestedFee afterEvaluation:YES];
@@ -1089,8 +1039,6 @@ BOOL displayingLocalSymbolSend;
     self.customFeeMode = YES;
     customFeeOriginalAvailableAmount = 0.0;
     
-    [self hideSelectFromAndToButtonsIfAppropriate];
-    
     [self reloadAfterMultiAddressResponse];
 }
 
@@ -1100,8 +1048,6 @@ BOOL displayingLocalSymbolSend;
     self.customFeeMode = NO;
     customFeeOriginalAvailableAmount = 0.0;
     
-    [self hideSelectFromAndToButtonsIfAppropriate];
-    
     [self reloadAfterMultiAddressResponse];
 }
 
@@ -1109,7 +1055,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && !fromLabel.hidden) {
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
             [self changeYPosition:43 ofView:lineBelowFromField];
             
             [self changeYPosition:52 ofView:toLabel];
@@ -1142,57 +1088,33 @@ BOOL displayingLocalSymbolSend;
 - (void)arrangeViewsToDefaultMode
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [self changeYPosition:47 ofView:lineBelowFromField];
-            
-        [self changeYPosition:61 ofView:toLabel];
-        [self changeYPosition:57 ofView:toField];
-        [self changeYPosition:57 ofView:addressBookButton];
-        [self changeYPosition:96 ofView:lineBelowToField];
         
-        [self changeYPosition:98 ofView:bottomContainerView];
-        [self changeYPosition:12 ofView:btcLabel];
-        [self changeYPosition:8 ofView:btcAmountField];
-        [self changeYPosition:12 ofView:fiatLabel];
-        [self changeYPosition:8 ofView:fiatAmountField];
-        [self changeYPosition:61 ofView:lineBelowAmountFields];
+        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+            [self changeYPosition:47 ofView:lineBelowFromField];
             
-        [self changeYPosition:72 ofView:feeField];
-        [self changeYPosition:75 ofView:feeLabel];
-        [self changeYPosition:109 ofView:lineBelowFeeField];
+            [self changeYPosition:61 ofView:toLabel];
+            [self changeYPosition:57 ofView:toField];
+            [self changeYPosition:57 ofView:addressBookButton];
+            [self changeYPosition:96 ofView:lineBelowToField];
             
-        [self changeYPosition:36 ofView:fundsAvailableButton];
+            [self changeYPosition:98 ofView:bottomContainerView];
+            [self changeYPosition:12 ofView:btcLabel];
+            [self changeYPosition:8 ofView:btcAmountField];
+            [self changeYPosition:12 ofView:fiatLabel];
+            [self changeYPosition:8 ofView:fiatAmountField];
+            [self changeYPosition:61 ofView:lineBelowAmountFields];
+            
+            [self changeYPosition:72 ofView:feeField];
+            [self changeYPosition:75 ofView:feeLabel];
+            [self changeYPosition:109 ofView:lineBelowFeeField];
+            
+            [self changeYPosition:36 ofView:fundsAvailableButton];
+        }
         
         feeField.hidden = YES;
         feeLabel.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
-}
-
-- (void)hideFromField
-{
-    fromLabel.hidden = YES;
-    lineBelowFromField.hidden = YES;
-    selectAddressTextField.hidden = YES;
-    selectFromButton.hidden = YES;
-    
-    [self changeYPosition:fromLabel.frame.origin.y ofView:toLabel];
-    [self changeYPosition:selectAddressTextField.frame.origin.y ofView:toField];
-    [self changeYPosition:lineBelowFromField.frame.origin.y ofView:lineBelowToField];
-    [self changeYPosition:lineBelowFromField.frame.origin.y + 2 ofView:bottomContainerView];
-}
-
-- (void)showFromField
-{
-    fromLabel.hidden = NO;
-    lineBelowFromField.hidden = NO;
-    selectAddressTextField.hidden = NO;
-    selectFromButton.hidden = NO;
-    
-    if (self.customFeeMode) {
-        [self arrangeViewsToFeeMode];
-    } else {
-        [self arrangeViewsToDefaultMode];
-    }
 }
 
 - (void)changeYPosition:(CGFloat)newY ofView:(UIView *)view
@@ -1202,45 +1124,50 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateSendBalance:(NSNumber *)balance
 {
-    if (self.customFeeMode) {
-        customFeeOriginalAvailableAmount = [balance longLongValue];
-    }
-    availableAmount = [balance longLongValue];
+    uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
     
-    [self doCurrencyConversionAfterMultiAddress];
+    if (self.customFeeMode) {
+        customFeeOriginalAvailableAmount = newBalance;
+    }
+    
+    availableAmount = newBalance;
+    
+    if (!self.transferAllPaymentBuilder || self.transferAllPaymentBuilder.userCancelledNext) {
+        [self doCurrencyConversionAfterMultiAddress];
+    }
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
 {
     if ([addressesUsed count] == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_DUST];
+            [self showErrorBeforeSending:BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST];
             [app hideBusyView];
         });
         return;
     }
-
-    self.transferAllAddressesToTransfer = [[NSMutableArray alloc] initWithArray:addressesUsed];
-    self.transferAllAddressesTransferred = [[NSMutableArray alloc] init];
-    self.transferAllAddressesInitialCount = (int)[self.transferAllAddressesToTransfer count];
-    self.transferAllAddressesUnspendable = 0;
     
-    [self reload];
-
-    [self didSelectToAccount:[app.wallet getDefaultAccountIndex]];
+    if ([amount longLongValue] + [fee longLongValue] > [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app standardNotifyAutoDismissingController:BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY title:BC_STRING_WARNING_TITLE];
+            [app hideBusyView];
+        });
+    }
+    
+    self.fromAddress = @"";
+    self.sendFromAddress = YES;
+    self.sendToAddress = NO;
+    self.toAccount = [app.wallet getDefaultAccountIndex];
+    toField.text = [app.wallet getLabelForAccount:[app.wallet getDefaultAccountIndex]];
     
     self.feeFromTransactionProposal = [fee longLongValue];
     amountInSatoshi = [amount longLongValue];
-    
-    [self didSelectFromAddress:@""];
-    
+        
     selectAddressTextField.text = [addressesUsed count] == 1 ? [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, [addressesUsed count]] : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [addressesUsed count]];
     
     [self disablePaymentButtons];
     
-    self.transferAllMode = YES;
-    
-    [app.wallet setupFirstTransferForAllFundsToDefaultAccount:[addressesUsed firstObject] secondPassword:nil];
+    [self.transferAllPaymentBuilder setupFirstTransferWithAddressesUsed:addressesUsed];
 }
 
 - (void)showSummaryForTransferAll
@@ -1252,16 +1179,26 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     self.confirmPaymentView.customizeFeeButton.hidden = YES;
-    sendProgressCancelButton.hidden = NO;
+    sendProgressCancelButton.hidden = [self.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= 1;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (BOOL)transferAllMode
+{
+    return self.transferAllPaymentBuilder && !self.transferAllPaymentBuilder.userCancelledNext;
 }
 
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access Send textField when not initialized!");
+        return NO;
+    }
+    
     if (textField == selectAddressTextField) {
         // If we only have one account and no legacy addresses -> can't change from address
         if (!([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
@@ -1300,7 +1237,8 @@ BOOL displayingLocalSymbolSend;
         
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSArray  *commas = [newString componentsSeparatedByString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+        NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
+        NSArray  *commas = [newString componentsSeparatedByString:[locale objectForKey:NSLocaleDecimalSeparator]];
         
         // Only one comma or point in input field allowed
         if ([points count] > 2 || [commas count] > 2)
@@ -1348,12 +1286,9 @@ BOOL displayingLocalSymbolSend;
             }
         }
         
-        // Convert input amount to internal value
-        NSString *amountString = [newString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
         if (textField == feeField) {
             
-            uint64_t fee = [app.wallet parseBitcoinValue:amountString];
+            uint64_t fee = [app.wallet parseBitcoinValueFromString:newString locale:locale];
             
             if (fee > BTC_LIMIT_IN_SATOSHI) {
                 return NO;
@@ -1379,10 +1314,12 @@ BOOL displayingLocalSymbolSend;
         }
         
         if (textField == fiatAmountField) {
+            // Convert input amount to internal value
+            NSString *amountString = [newString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else if (textField == btcAmountField) {
-            amountInSatoshi = [app.wallet parseBitcoinValue:amountString];
+            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString locale:locale];
         }
         
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
@@ -1414,9 +1351,13 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFundsAvailable
 {
-    [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
-                                    [app formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
-                          forState:UIControlStateNormal];
+    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[NSNumberFormatter formatAmount:availableAmount localCurrency:YES]]) {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSNumberFormatter formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
+    } else {
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
+                                        [NSNumberFormatter formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                              forState:UIControlStateNormal];
+    }
 }
 
 # pragma mark - AddressBook delegate
@@ -1540,11 +1481,12 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     self.feeFromTransactionProposal = [fee longLongValue];
     self.recommendedForcedFee = [fee longLongValue];
     self.dust = dust == nil ? 0 : [dust longLongValue];
+    self.txSize = [txSize longLongValue];
     
     if (self.getTransactionFeeSuccess) {
         self.getTransactionFeeSuccess();
@@ -1568,17 +1510,13 @@ BOOL displayingLocalSymbolSend;
     if (afterEvaluation) {
         [app.wallet changeForcedFee:absoluteFee];
     } else {
-        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        [app.wallet getFeeBounds:[app.wallet parseBitcoinValue:btcAmountString]];
+        [app.wallet getFeeBounds:[app.wallet parseBitcoinValueFromTextField:feeField]];
     }
 }
 
 - (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
 {
-    NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    uint64_t typedFee = [app.wallet parseBitcoinValue:btcAmountString];
+    uint64_t typedFee = [app.wallet parseBitcoinValueFromTextField:feeField];
     
     if ([confirmationEstimation isMemberOfClass:[NSNull class]]) {
         [self showWarningForInsufficientFundsAndLowFee:typedFee suggestedFee:[[maxFees lastObject] longLongValue] suggestedAmount:[[maxAmounts lastObject] longLongValue]];
@@ -1615,24 +1553,28 @@ BOOL displayingLocalSymbolSend;
     uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
     uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
     
-    self.confirmPaymentView.fiatFeeLabel.text = [app formatMoney:feeTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcFeeLabel.text = [app formatMoney:feeTotal localCurrency:FALSE];
+    self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
     
-    self.confirmPaymentView.fiatTotalLabel.text = [app formatMoney:amountTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcTotalLabel.text = [app formatMoney:amountTotal localCurrency:FALSE];
+    self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
+    self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
     
-    NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    [app.wallet changeForcedFee:[app.wallet parseBitcoinValue:btcAmountString]];
+    [app.wallet changeForcedFee:[app.wallet parseBitcoinValueFromTextField:feeField]];
 }
 
 #pragma mark - Actions
+
+- (void)setupTransferAll
+{
+    self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:YES];
+    self.transferAllPaymentBuilder.delegate = self;
+}
 
 - (void)archiveTransferredAddresses
 {
     [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_ARCHIVING_ADDRESSES]];
                                       
-    [app.wallet archiveTransferredAddresses:self.transferAllAddressesTransferred];
+    [app.wallet archiveTransferredAddresses:self.transferAllPaymentBuilder.transferAllAddressesTransferred];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedArchivingTransferredAddresses) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
 }
@@ -1645,7 +1587,12 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)selectFromAddressClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES];
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access select from screen when not initialized!");
+        return;
+    }
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:YES allSelectable:NO accountsOnly:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_FROM onDismiss:nil onResume:nil];
@@ -1653,7 +1600,12 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)addressBookClicked:(id)sender
 {
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO];
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access select to screen when not initialized!");
+        return;
+    }
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet showOwnAddresses:NO allSelectable:YES accountsOnly:NO];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];
@@ -1734,7 +1686,7 @@ BOOL displayingLocalSymbolSend;
                 [self didSelectToAddress:self.toAddress];
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
-                if ([app stringHasBitcoinValue:amountStringFromDictionary]) {
+                if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {
                     if (app.latestResponse.symbol_btc) {
                         NSDecimalNumber *amountDecimalNumber = [NSDecimalNumber decimalNumberWithString:amountStringFromDictionary];
                         amountInSatoshi = [[amountDecimalNumber decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI]] longLongValue];
@@ -1790,9 +1742,7 @@ BOOL displayingLocalSymbolSend;
     
     if (self.customFeeMode) {
         
-        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        uint64_t customFee = [app.wallet parseBitcoinValue:btcAmountString];
+        uint64_t customFee = [app.wallet parseBitcoinValueFromTextField:feeField];
         
         if (customFee >= customFeeOriginalAvailableAmount) {
             [app standardNotifyAutoDismissingController:BC_STRING_PLEASE_LOWER_CUSTOM_FEE];
@@ -1813,7 +1763,7 @@ BOOL displayingLocalSymbolSend;
     
     [self changeToCustomFeeMode];
     
-    feeField.text = [app formatAmount:self.feeFromTransactionProposal localCurrency:NO];
+    feeField.text = [NSNumberFormatter formatAmount:self.feeFromTransactionProposal localCurrency:NO];
 }
 
 - (IBAction)feeInformationClicked:(UIButton *)sender
@@ -1825,7 +1775,7 @@ BOOL displayingLocalSymbolSend;
         message = [message stringByAppendingString:BC_STRING_FEE_INFORMATION_MESSAGE_APPEND_REGULAR_SEND];
     }
     
-    if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SIMULATE_SURGE]) {
+    if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE]) {
         message = [message stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", BC_STRING_SURGE_OCCURRING_MESSAGE]];
     }
 
@@ -1867,7 +1817,19 @@ BOOL displayingLocalSymbolSend;
     }
     
     uint64_t value = amountInSatoshi;
-    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    // Convert input amount to internal value
+    NSString *language = btcAmountField.textInputMode.primaryLanguage;
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    NSString *europeanComma = @",";
+    NSString *arabicComma= @"٫";
+    
+    if ([amountString containsString:europeanComma]) {
+        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:europeanComma withString:@"."];
+    } else if ([amountString containsString:arabicComma]) {
+        amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:arabicComma withString:@"."];
+    }
     if (value <= 0 || [amountString doubleValue] <= 0) {
         [self showErrorBeforeSending:BC_STRING_INVALID_SEND_VALUE];
         return;
@@ -1882,10 +1844,7 @@ BOOL displayingLocalSymbolSend;
     if (feeField.hidden) {
         [self checkMaxFee];
     } else {
-
-        NSString *btcAmountString = [feeField.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        [self changeForcedFee:[app.wallet parseBitcoinValue:btcAmountString] afterEvaluation:NO];
+        [self changeForcedFee:[app.wallet parseBitcoinValueFromTextField:feeField] afterEvaluation:NO];
     }
     
     [app.wallet getSurgeStatus];

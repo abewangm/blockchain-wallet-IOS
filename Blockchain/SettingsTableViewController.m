@@ -3,17 +3,19 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/13/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SettingsTableViewController.h"
 #import "SettingsSelectorTableViewController.h"
-#import "SettingsAboutViewController.h"
+#import "SettingsWebViewController.h"
 #import "SettingsBitcoinUnitTableViewController.h"
 #import "SecurityCenterViewController.h"
 #import "SettingsTwoStepViewController.h"
 #import "Blockchain-Swift.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "KeychainItemWrapper+SwipeAddresses.h"
+#import "SettingsAboutUsViewController.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -25,32 +27,39 @@ const int walletInformationIdentifier = 0;
 const int preferencesSectionEmailFooter = 1;
 const int preferencesEmail = 0;
 
-const int preferencesSectionNotificationsFooter = 2;
+const int preferencesSectionSMSFooter = 2;
 const int preferencesMobileNumber = 0;
-const int preferencesNotifications = 1;
 
-const int preferencesSectionEnd = 3;
+const int preferencesSectionNotificationsFooter = 3;
+const int preferencesEmailNotifications = 0;
+const int preferencesSMSNotifications = 1;
+
+const int preferencesSectionEnd = 4;
 const int displayLocalCurrency = 0;
 const int displayBtcUnit = 1;
 
-const int securitySection = 4;
+const int securitySection = 5;
 const int securityTwoStep = 0;
-const int securityPasswordHint = 1;
-const int securityPasswordChange = 2;
-const int securityTorBlocking = 3;
-const int securityWalletRecoveryPhrase = 4;
+const int securityPasswordChange = 1;
+const int securityWalletRecoveryPhrase = 2;
 
-const int PINSection = 5;
+const int PINSection = 6;
 const int PINChangePIN = 0;
-#ifdef TOUCH_ID_ENABLED
+#if defined(ENABLE_TOUCH_ID) && defined(ENABLE_SWIPE_TO_RECEIVE)
 const int PINTouchID = 1;
-#else
+const int PINSwipeToReceive = 2;
+#elif ENABLE_TOUCH_ID
+const int PINTouchID = 1;
+const int PINSwipeToReceive = -1;
+#elif ENABLE_SWIPE_TO_RECEIVE
+const int PINSwipeToReceive = 1;
 const int PINTouchID = -1;
 #endif
 
-const int aboutSection = 6;
-const int aboutTermsOfService = 0;
-const int aboutPrivacyPolicy = 1;
+const int aboutSection = 7;
+const int aboutUs = 0;
+const int aboutTermsOfService = 1;
+const int aboutPrivacyPolicy = 2;
 
 @interface SettingsTableViewController () <UITextFieldDelegate>
 
@@ -82,10 +91,12 @@ const int aboutPrivacyPolicy = 1;
     [self reload];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAfterMultiAddressResponse) name:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -117,17 +128,29 @@ const int aboutPrivacyPolicy = 1;
     [self getAllCurrencySymbols];
 }
 
+- (void)reloadAfterMultiAddressResponse
+{
+    [self.backupController reload];
+
+    [self updateAccountInfo];
+    [self updateCurrencySymbols];
+}
+
 - (void)getAllCurrencySymbols
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetCurrencySymbols) name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     
     [app.wallet getAllCurrencySymbols];
 }
 
-- (void)updateCurrencySymbols
+- (void)didGetCurrencySymbols
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
+    [self updateCurrencySymbols];
+}
 
+- (void)updateCurrencySymbols
+{
     self.allCurrencySymbolsDictionary = app.wallet.currencySymbols;
     
     [self reloadTableView];
@@ -135,20 +158,25 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)getAccountInfo
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
     
     [app.wallet getAccountInfo];
 }
 
-- (void)updateAccountInfo
+- (void)didGetAccountInfo
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    [self updateAccountInfo];
+}
+
+- (void)updateAccountInfo
+{
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
     
     DLog(@"SettingsTableViewController: gotAccountInfo");
     
-    if (app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES] != nil) {
-        self.availableCurrenciesDictionary = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
+    if ([app.wallet getFiatCurrencies] != nil) {
+        self.availableCurrenciesDictionary = [app.wallet getFiatCurrencies];
     }
     
     [self updateEmailAndMobileStrings];
@@ -166,13 +194,13 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)updateEmailAndMobileStrings
 {
-    NSString *emailString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    NSString *emailString = [app.wallet getEmail];
     
     if (emailString != nil) {
         self.emailString = emailString;
     }
     
-    NSString *mobileNumberString = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
+    NSString *mobileNumberString = [app.wallet getSMSNumber];
     
     if (mobileNumberString != nil) {
         self.mobileNumberString = mobileNumberString;
@@ -256,6 +284,68 @@ const int aboutPrivacyPolicy = 1;
     }
 }
 
+#pragma mark - Actions
+
+- (void)walletIdentifierClicked
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        DLog("User confirmed copying GUID");
+        [UIPasteboard generalPasteboard].string = app.wallet.guid;
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancelAction];
+    [alert addAction:copyAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)emailClicked
+{
+    if (![self hasAddedEmail]) {
+        [self alertUserToChangeEmail:NO];
+    } else if ([app.wallet hasVerifiedEmail]) {
+        [self alertUserToChangeEmail:YES];
+    } else {
+        [self alertUserToVerifyEmail];
+    }
+}
+
+- (void)mobileNumberClicked
+{
+    if ([app.wallet getSMSNumber].length > 0) {
+        if ([app.wallet getSMSVerifiedStatus] == YES) {
+            [self alertUserToChangeMobileNumber];
+        } else {
+            [self alertUserToVerifyMobileNumber];
+        }
+    } else {
+        [self alertUserToChangeMobileNumber];
+    }
+}
+
+- (void)aboutUsClicked
+{
+    SettingsAboutUsViewController *aboutViewController = [[SettingsAboutUsViewController alloc] init];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:nil];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)termsOfServiceClicked
+{
+    SettingsWebViewController *aboutViewController = [[SettingsWebViewController alloc] init];
+    aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:URL_SUFFIX_TERMS_OF_SERVICE];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:BC_STRING_SETTINGS_TERMS_OF_SERVICE];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)showPrivacyPolicy
+{
+    SettingsWebViewController *aboutViewController = [[SettingsWebViewController alloc] init];
+    aboutViewController.urlTargetString = [URL_SERVER stringByAppendingString:URL_SUFFIX_PRIVACY_POLICY];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:BC_STRING_SETTINGS_PRIVACY_POLICY];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 #pragma mark - Change Fee per KB
 
 - (NSString *)convertFloatToString:(float)floatNumber forDisplay:(BOOL)isForDisplay
@@ -275,7 +365,7 @@ const int aboutPrivacyPolicy = 1;
         
         if (![numbersAndDecimalCharacterSet isSupersetOfSet:characterSetFromString]) {
             // Current keypad will not support this character set; return string with known decimal separators "," and "."
-            feePerKbFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+            feePerKbFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
             
             if ([decimalSeparator isEqualToString:@"."]) {
                 return [feePerKbFormatter stringFromNumber:amountNumber];;
@@ -293,12 +383,12 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSString *)getMobileNumber
 {
-    return app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER];
+    return [app.wallet getSMSNumber];
 }
 
 - (void)alertUserToChangeMobileNumber
 {
-    if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+    if ([app.wallet getTwoStepType] == TWO_STEP_AUTH_TYPE_SMS) {
         UIAlertController *alertToDisableTwoFactorSMS = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] message:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_MUST_DISABLE_TWO_FACTOR_SMS_ARGUMENT, self.mobileNumberString] preferredStyle:UIAlertControllerStyleAlert];
         [alertToDisableTwoFactorSMS addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         if (self.alertTargetViewController) {
@@ -336,10 +426,49 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changeMobileNumber:(NSString *)newNumber
 {
-    [app.wallet changeMobileNumber:newNumber];
-    
     self.enteredMobileNumberString = newNumber;
+    
+    if ([app.wallet SMSNotificationsEnabled]) {
+        [self alertUserAboutDisablingSMSNotifications:newNumber];
+    } else {
+        [app.wallet changeMobileNumber:newNumber];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+    }
+}
 
+- (void)alertUserAboutDisablingSMSNotifications:(NSString *)newNumber
+{
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER message:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self disableNotificationsThenChangeMobileNumber:newNumber];
+    }]];
+    
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    }
+}
+
+- (void)disableNotificationsThenChangeMobileNumber:(NSString *)newNumber
+{
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
+    [app.wallet disableSMSNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)changeMobileNumberAfterDisablingNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    
+    [app.wallet changeMobileNumber:self.enteredMobileNumberString];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
 }
@@ -350,6 +479,8 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
     
     self.mobileNumberString = self.enteredMobileNumberString;
+    
+    [self getAccountInfo];
     
     [self alertUserToVerifyMobileNumber];
 }
@@ -429,6 +560,17 @@ const int aboutPrivacyPolicy = 1;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
 }
 
+#pragma mark - Change Swipe to Receive
+
+- (void)switchSwipeToReceiveTapped
+{
+    BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+    [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+    
+    // Clear all swipe addresses in case default account has changed
+    if (!swipeToReceiveEnabled) [KeychainItemWrapper removeAllSwipeAddresses];
+}
+
 #pragma mark - Change Touch ID
 
 - (void)switchTouchIDTapped
@@ -453,7 +595,7 @@ const int aboutPrivacyPolicy = 1;
     BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     
     if (!(touchIDEnabled == YES)) {
-        UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertForTogglingTouchID = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN message:BC_STRING_TOUCH_ID_WARNING preferredStyle:UIAlertControllerStyleAlert];
         [alertForTogglingTouchID addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINTouchID inSection:PINSection];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -468,24 +610,27 @@ const int aboutPrivacyPolicy = 1;
     }
 }
 
-#pragma mark - Change email notifications
+#pragma mark - Change notifications
 
-- (BOOL)notificationsEnabled
+- (BOOL)emailNotificationsEnabled
 {
-    NSArray *notificationsType = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_TYPE];
-    int notificationsOn = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_NOTIFICATIONS_ON] intValue];
-    return notificationsType && [notificationsType count] > 0 && [notificationsType containsObject:@1] && (notificationsOn == DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE || notificationsOn == DICTIONARY_VALUE_NOTIFICATION_RECEIVE);;
+    return [app.wallet emailNotificationsEnabled];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    return [app.wallet SMSNotificationsEnabled];
 }
 
 - (void)toggleEmailNotifications
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesSectionNotificationsFooter];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:preferencesSectionNotificationsFooter];
     
     if ([app checkInternetConnection]) {
-        if ([self notificationsEnabled]) {
+        if ([self emailNotificationsEnabled]) {
             [app.wallet disableEmailNotifications];
         } else {
-            if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue] == YES) {
+            if ([app.wallet getEmailVerifiedStatus] == YES) {
                 [app.wallet enableEmailNotifications];
             } else {
                 [self alertUserOfError:BC_STRING_PLEASE_VERIFY_EMAIL_ADDRESS_FIRST];
@@ -496,40 +641,41 @@ const int aboutPrivacyPolicy = 1;
         
         UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
         changeEmailNotificationsCell.userInteractionEnabled = NO;
-        [self addObserversForChangingEmailNotifications];
+        [self addObserversForChangingNotifications];
     } else {
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-
 }
 
-- (void)addObserversForChangingEmailNotifications
+- (void)addObserversForChangingNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailNotificationsSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailNotificationsSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeNotificationsSuccess) name:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeNotificationsError) name:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR object:nil];
 }
 
-- (void)removeObserversForChangingEmailNotifications
+- (void)removeObserversForChangingNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR object:nil];
 }
 
-- (void)changeEmailNotificationsSuccess
+- (void)changeNotificationsSuccess
 {
-    [self removeObserversForChangingEmailNotifications];
+    [self removeObserversForChangingNotifications];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     [navigationController.busyView fadeIn];
     
-    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications]];
+    UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:preferencesSectionNotificationsFooter]];
+    UITableViewCell *changeSMSNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesSMSNotifications inSection:preferencesSectionNotificationsFooter]];
+    changeSMSNotificationsCell.userInteractionEnabled = YES;
     changeEmailNotificationsCell.userInteractionEnabled = YES;
 }
 
-- (void)changeEmailNotificationsError
+- (void)changeNotificationsError
 {
-    [self removeObserversForChangingEmailNotifications];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesNotifications inSection:preferencesNotifications];
+    [self removeObserversForChangingNotifications];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:preferencesSectionNotificationsFooter];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
     changeEmailNotificationsCell.userInteractionEnabled = YES;
@@ -537,13 +683,43 @@ const int aboutPrivacyPolicy = 1;
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)toggleSMSNotifications
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesSMSNotifications inSection:preferencesSectionNotificationsFooter];
+    
+    if ([app checkInternetConnection]) {
+        if ([self SMSNotificationsEnabled]) {
+            [app.wallet disableSMSNotifications];
+        } else {
+            if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+                [app.wallet enableSMSNotifications];
+            } else {
+                [self alertUserOfError:BC_STRING_PLEASE_VERIFY_MOBILE_NUMBER_FIRST];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                return;
+            }
+        }
+        
+        UITableViewCell *changeSMSNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        changeSMSNotificationsCell.userInteractionEnabled = NO;
+        [self addObserversForChangingNotifications];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 #pragma mark - Change Two Step
+
+- (void)showTwoStep
+{
+    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
+}
 
 - (void)alertUserToChangeTwoStepVerification
 {
     NSString *alertTitle;
     BOOL isTwoStepEnabled = YES;
-    int twoStepType = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+    int twoStepType = [app.wallet getTwoStepType];
     if (twoStepType == TWO_STEP_AUTH_TYPE_SMS) {
         alertTitle = [NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS];
     } else if (twoStepType == TWO_STEP_AUTH_TYPE_GOOGLE) {
@@ -574,12 +750,12 @@ const int aboutPrivacyPolicy = 1;
 {
     if ([app checkInternetConnection]) {
         
-        if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] == TWO_STEP_AUTH_TYPE_NONE) {
+        if ([app.wallet getTwoStepType] == TWO_STEP_AUTH_TYPE_NONE) {
             self.isEnablingTwoStepSMS = YES;
-            if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
+            if ([app.wallet getSMSVerifiedStatus] == YES) {
                 [self enableTwoStepForSMS];
             } else {
-                [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionNotificationsFooter]];
+                [self mobileNumberClicked];
             }
         } else {
             [self disableTwoStep];
@@ -639,12 +815,12 @@ const int aboutPrivacyPolicy = 1;
 
 - (BOOL)hasAddedEmail
 {
-    return [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL] ? YES : NO;
+    return [app.wallet getEmail] ? YES : NO;
 }
 
 - (NSString *)getUserEmail
 {
-    return [app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL];
+    return [app.wallet getEmail];
 }
 
 - (void)alertUserToChangeEmail:(BOOL)hasAddedEmail
@@ -660,7 +836,20 @@ const int aboutPrivacyPolicy = 1;
         }
     }]];
     [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changeEmail:[[alertForChangingEmail textFields] firstObject].text];
+        
+        NSString *newEmail = [[alertForChangingEmail textFields] firstObject].text;
+        
+        if ([[[newEmail lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""] isEqualToString:[[[self getUserEmail] lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
+            [self alertUserOfError:BC_STRING_SETTINGS_NEW_EMAIL_MUST_BE_DIFFERENT];
+            return;
+        }
+        
+        if ([app.wallet emailNotificationsEnabled]) {
+            [self alertUserAboutDisablingEmailNotifications:newEmail];
+        } else {
+            [self changeEmail:newEmail];
+        }
+        
     }]];
     [alertForChangingEmail addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
@@ -677,6 +866,39 @@ const int aboutPrivacyPolicy = 1;
     }
 }
 
+- (void)alertUserAboutDisablingEmailNotifications:(NSString *)newEmail
+{
+    self.enteredEmailString = newEmail;
+    
+    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS message:BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self disableNotificationsThenChangeEmail:newEmail];
+    }]];
+    
+    if (self.alertTargetViewController) {
+        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
+    } else {
+        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
+    }
+}
+
+- (void)disableNotificationsThenChangeEmail:(NSString *)newEmail
+{
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    [navigationController.busyView fadeIn];
+    
+    [app.wallet disableEmailNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+}
+
+- (void)changeEmailAfterDisablingNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [self changeEmail:self.enteredEmailString];
+}
+
 - (void)alertUserToVerifyEmail
 {
     UIAlertController *alertForVerifyingEmail = [UIAlertController alertControllerWithTitle:[[NSString alloc] initWithFormat:BC_STRING_VERIFICATION_EMAIL_SENT_TO_ARGUMENT, self.emailString] message:BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK preferredStyle:UIAlertControllerStyleAlert];
@@ -689,6 +911,12 @@ const int aboutPrivacyPolicy = 1;
         dispatch_after(delayTime, dispatch_get_main_queue(), ^{
             [self alertUserToChangeEmail:YES];
         });
+    }]];
+    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
+        if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+            [[UIApplication sharedApplication] openURL:mailURL];
+        }
     }]];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self getAccountInfo];
@@ -735,157 +963,6 @@ const int aboutPrivacyPolicy = 1;
     });
 }
 
-#pragma mark - Change Password Hint
-
-- (void)alertUserToChangePasswordHint
-{
-    UIAlertController *alertForChangingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_HINT_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForChangingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_UPDATE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *passwordHint = [[alertForChangingPasswordHint textFields] firstObject].text;
-        if ([[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] || !passwordHint) {
-            [self alertUserThatAllWhiteSpaceCharactersClearsHint];
-        } else {
-            if ([self isHintValid:passwordHint]) {
-                [self changePasswordHint:passwordHint];
-            }
-        }
-    }]];
-    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
-    [alertForChangingPasswordHint addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagChangePasswordHint;
-        secureTextField.returnKeyType = UIReturnKeyDone;
-        secureTextField.text = passwordHint;
-    }];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingPasswordHint animated:YES completion:nil];
-    };
-}
-
-- (void)alertUserThatAllWhiteSpaceCharactersClearsHint
-{
-    UIAlertController *alertForClearingPasswordHint = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT message:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_WARNING_ALL_WHITESPACE preferredStyle:UIAlertControllerStyleAlert];
-    [alertForClearingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForClearingPasswordHint addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changePasswordHint:@""];
-    }]];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForClearingPasswordHint animated:YES completion:nil];
-    }
-}
-
-- (void)changePasswordHint:(NSString *)hint
-{
-    UITableViewCell *changePasswordHintCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
-    changePasswordHintCell.userInteractionEnabled = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordHintSuccess) name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordHintError) name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
-    [app.wallet updatePasswordHint:hint];
-}
-
-- (BOOL)isHintValid:(NSString *)hint
-{
-    if ([app.wallet isCorrectPassword:hint]) {
-        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_PASSWORD];
-        return NO;
-    } else if ([app.wallet validateSecondPassword:hint]) {
-        [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_SAME_AS_SECOND_PASSWORD];
-        return NO;
-    }
-    return YES;
-}
-
-- (void)changePasswordHintSuccess
-{
-    [self resetPasswordHintCell];
-    [self alertUserOfSuccess:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_SUCCESS];
-}
-
-- (void)changePasswordHintError
-{
-    [self resetPasswordHintCell];
-    [self alertUserOfError:BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD_HINT_ERROR_INVALID_CHARACTERS];
-}
-
-- (void)resetPasswordHintCell
-{
-    UITableViewCell *changePasswordHintCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
-    changePasswordHintCell.userInteractionEnabled = YES;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
-}
-
-#pragma mark - Change Tor Blocking
-
-- (void)changeTorBlockingTapped
-{
-    BOOL torBlockingEnabled = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
-    NSString *alertTitle;
-    NSString *alertActionTitle;
-    if (torBlockingEnabled == YES) {
-        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_BLOCKED;
-        alertActionTitle = BC_STRING_ALLOW;
-    } else {
-        alertTitle = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS_ALLOWED;
-        alertActionTitle = BC_STRING_BLOCK;
-    }
-    
-    UIAlertController *alertForChangingTorBlocking = [UIAlertController alertControllerWithTitle:alertTitle message:BC_STRING_SETTINGS_SECURITY_TOR_BLOCKING_DESCRIPTION preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:securityTorBlocking inSection:securitySection];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }]];
-    [alertForChangingTorBlocking addAction:[UIAlertAction actionWithTitle:alertActionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self updateTorBlocking:!torBlockingEnabled];
-    }]];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingTorBlocking animated:YES completion:nil];
-    }}
-
-- (void)updateTorBlocking:(BOOL)willEnable
-{
-    if ([app checkInternetConnection]) {
-        [app.wallet changeTorBlocking:willEnable];
-        [self addObserversForUpdatingTorBlocking];
-    }
-}
-
-- (void)updateTorSuccess
-{
-    [self removeObserversForUpdatingTorBlocking];
-    if ([app.wallet hasBlockedTorRequests]) {
-        [self alertUserOfSuccess:BC_STRING_TOR_ALLOWED];
-    } else {
-        [self alertUserOfSuccess:BC_STRING_TOR_BLOCKED];
-    }
-}
-
-- (void)updateTorError
-{
-    [self removeObserversForUpdatingTorBlocking];
-}
-
-- (void)addObserversForUpdatingTorBlocking
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorSuccess) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorError) name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
-}
-
-- (void)removeObserversForUpdatingTorBlocking
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_ERROR object:nil];
-}
-
 #pragma mark - Wallet Recovery Phrase
 
 - (void)showBackup
@@ -895,8 +972,8 @@ const int aboutPrivacyPolicy = 1;
         self.backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     }
     
-    // Pass the wallet to the backup navigation controller, so we don't have to make the AppDelegate available in Swift.
     self.backupController.wallet = app.wallet;
+    self.backupController.app = app;
     
     self.backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:self.backupController animated:YES completion:nil];
@@ -906,7 +983,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)changePassword
 {
-    [self performSegueWithIdentifier:@"changePassword" sender:nil];
+    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CHANGE_PASSWORD sender:nil];
 }
 
 #pragma mark - TextField Delegate
@@ -974,22 +1051,22 @@ const int aboutPrivacyPolicy = 1;
 
 #pragma mark - Segue
 
+- (void)performSingleSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([[self navigationController] topViewController] == self) {
+        [self performSegueWithIdentifier:identifier sender:sender];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_CURRENCY]) {
         SettingsSelectorTableViewController *settingsSelectorTableViewController = segue.destinationViewController;
         settingsSelectorTableViewController.itemsDictionary = self.availableCurrenciesDictionary;
         settingsSelectorTableViewController.allCurrencySymbolsDictionary = self.allCurrencySymbolsDictionary;
-    } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_ABOUT]) {
-        SettingsAboutViewController *aboutViewController = segue.destinationViewController;
-        if ([sender isEqualToString:SEGUE_SENDER_TERMS_OF_SERVICE]) {
-            aboutViewController.urlTargetString = [[app serverURL] stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX];
-        } else if ([sender isEqualToString:SEGUE_SENDER_PRIVACY_POLICY]) {
-            aboutViewController.urlTargetString = [[app serverURL] stringByAppendingString:PRIVACY_POLICY_URL_SUFFIX];
-        }
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_BTC_UNIT]) {
         SettingsBitcoinUnitTableViewController *settingsBtcUnitTableViewController = segue.destinationViewController;
-        settingsBtcUnitTableViewController.itemsDictionary = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES];
+        settingsBtcUnitTableViewController.itemsDictionary = [app.wallet getBtcCurrencies];
     } else if ([segue.identifier isEqualToString:SEGUE_IDENTIFIER_TWO_STEP]) {
         SettingsTwoStepViewController *twoStepViewController = (SettingsTwoStepViewController *)segue.destinationViewController;
         twoStepViewController.settingsController = self;
@@ -1007,15 +1084,7 @@ const int aboutPrivacyPolicy = 1;
         case walletInformationSection: {
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_COPY_GUID message:BC_STRING_SETTINGS_COPY_GUID_WARNING preferredStyle:UIAlertControllerStyleActionSheet];
-                    UIAlertAction *copyAction = [UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                        DLog("User confirmed copying GUID");
-                        [UIPasteboard generalPasteboard].string = app.wallet.guid;
-                    }];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil];
-                    [alert addAction:cancelAction];
-                    [alert addAction:copyAction];
-                    [self presentViewController:alert animated:YES completion:nil];
+                    [self walletIdentifierClicked];
                     return;
                 }
             }
@@ -1024,58 +1093,42 @@ const int aboutPrivacyPolicy = 1;
         case preferencesSectionEmailFooter: {
             switch (indexPath.row) {
                 case preferencesEmail: {
-                    if (![self hasAddedEmail]) {
-                        [self alertUserToChangeEmail:NO];
-                    } else if ([app.wallet hasVerifiedEmail]) {
-                        [self alertUserToChangeEmail:YES];
-                    } else {
-                        [self alertUserToVerifyEmail];
-                    } return;
+                    [self emailClicked];
+                    return;
+                }
+            }
+            return;
+        }
+        case preferencesSectionSMSFooter: {
+            switch (indexPath.row) {
+                case preferencesMobileNumber: {
+                    [self mobileNumberClicked];
+                    return;
                 }
             }
             return;
         }
         case preferencesSectionNotificationsFooter: {
-            switch (indexPath.row) {
-                case preferencesMobileNumber: {
-                    if ([app.wallet.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_NUMBER]) {
-                        if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
-                            [self alertUserToChangeMobileNumber];
-                        } else {
-                            [self alertUserToVerifyMobileNumber];
-                        }
-                    } else {
-                        [self alertUserToChangeMobileNumber];
-                    }
-                    return;
-                }
-            }
             return;
         }
         case preferencesSectionEnd: {
             switch (indexPath.row) {
                 case displayLocalCurrency: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
                 case displayBtcUnit: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
+                    [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
             }
         }
         case securitySection: {
             if (indexPath.row == securityTwoStep) {
-                [self performSegueWithIdentifier:SEGUE_IDENTIFIER_TWO_STEP sender:nil];
-                return;
-            } else if (indexPath.row == securityPasswordHint) {
-                [self alertUserToChangePasswordHint];
+                [self showTwoStep];
                 return;
             } else if (indexPath.row == securityPasswordChange) {
                 [self changePassword];
-                return;
-            } else if (indexPath.row == securityTorBlocking) {
-                [self changeTorBlockingTapped];
                 return;
             } else if (indexPath.row == securityWalletRecoveryPhrase) {
                 [self showBackup];
@@ -1094,12 +1147,16 @@ const int aboutPrivacyPolicy = 1;
         }
         case aboutSection: {
             switch (indexPath.row) {
+                case aboutUs: {
+                    [self aboutUsClicked];
+                    return;
+                }
                 case aboutTermsOfService: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_TERMS_OF_SERVICE];
+                    [self termsOfServiceClicked];
                     return;
                 }
                 case aboutPrivacyPolicy: {
-                    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_ABOUT sender:SEGUE_SENDER_PRIVACY_POLICY];
+                    [self showPrivacyPolicy];
                     return;
                 }
             }
@@ -1110,7 +1167,7 @@ const int aboutPrivacyPolicy = 1;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 8;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -1118,11 +1175,20 @@ const int aboutPrivacyPolicy = 1;
     switch (section) {
         case walletInformationSection: return 1;
         case preferencesSectionEmailFooter: return 1;
+        case preferencesSectionSMSFooter: return 1;
         case preferencesSectionNotificationsFooter: return 2;
         case preferencesSectionEnd: return 2;
-        case securitySection: return [app.wallet didUpgradeToHd] ? 5 : 4;
-        case PINSection: return PINTouchID < 0 ? 1 : 2;
-        case aboutSection: return 2;
+        case securitySection: return [app.wallet didUpgradeToHd] ? 3 : 2;
+        case PINSection: {
+            if (PINTouchID > 0 && PINSwipeToReceive > 0) {
+                return 3;
+            } else if (PINTouchID > 0 || PINSwipeToReceive > 0) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+        case aboutSection: return 3;
         default: return 0;
     }
 }
@@ -1145,7 +1211,9 @@ const int aboutPrivacyPolicy = 1;
 {
     switch (section) {
         case preferencesSectionEmailFooter: return BC_STRING_SETTINGS_EMAIL_FOOTER;
+        case preferencesSectionSMSFooter: return BC_STRING_SETTINGS_SMS_FOOTER;
         case preferencesSectionNotificationsFooter: return BC_STRING_SETTINGS_NOTIFICATIONS_FOOTER;
+        case PINSection: {return PINSwipeToReceive > 0 ? BC_STRING_SETTINGS_SWIPE_TO_RECEIVE_IN_FIVES_FOOTER : nil;}
         default: return nil;
     }
 }
@@ -1179,7 +1247,7 @@ const int aboutPrivacyPolicy = 1;
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
-                    if ([self getUserEmail] != nil && [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue] == YES) {
+                    if ([self getUserEmail] != nil && [app.wallet getEmailVerifiedStatus] == YES) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {
@@ -1190,10 +1258,9 @@ const int aboutPrivacyPolicy = 1;
                 }
             }
         }
-        case preferencesSectionNotificationsFooter: {
+        case preferencesSectionSMSFooter: {
             switch (indexPath.row) {
                 case preferencesMobileNumber: {
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
                     if ([app.wallet hasVerifiedMobileNumber]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
@@ -1205,13 +1272,26 @@ const int aboutPrivacyPolicy = 1;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return [self adjustFontForCell:cell];
                 }
-                case preferencesNotifications: {
+            }
+        }
+        case preferencesSectionNotificationsFooter: {
+            switch (indexPath.row) {
+                case preferencesEmailNotifications: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL_NOTIFICATIONS;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     UISwitch *switchForEmailNotifications = [[UISwitch alloc] init];
-                    switchForEmailNotifications.on = [self notificationsEnabled];
+                    switchForEmailNotifications.on = [self emailNotificationsEnabled];
                     [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
                     cell.accessoryView = switchForEmailNotifications;
+                    return cell;
+                }
+                case preferencesSMSNotifications: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_SMS_NOTIFICATIONS;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    UISwitch *switchForSMSNotifications = [[UISwitch alloc] init];
+                    switchForSMSNotifications.on = [self SMSNotificationsEnabled];
+                    [switchForSMSNotifications addTarget:self action:@selector(toggleSMSNotifications) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForSMSNotifications;
                     return cell;
                 }
             }
@@ -1244,7 +1324,7 @@ const int aboutPrivacyPolicy = 1;
             if (indexPath.row == securityTwoStep) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    int authType = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+                    int authType = [app.wallet getTwoStepType];
                     cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     if (authType == TWO_STEP_AUTH_TYPE_SMS) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
@@ -1260,35 +1340,9 @@ const int aboutPrivacyPolicy = 1;
                     }
                     return [self adjustFontForCell:cell];
                 }
-            else if (indexPath.row == securityPasswordHint) {
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_PASSWORD_HINT;
-                    if ([app.wallet hasStoredPasswordHint]) {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_STORED;
-                    } else {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_NOT_STORED;
-                    }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
-                }
             else if (indexPath.row == securityPasswordChange) {
                     cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
-                }
-            else if (indexPath.row == securityTorBlocking) {
-                    cell.textLabel.font = [SettingsTableViewController fontForCell];
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TOR_REQUESTS;
-                    BOOL torBlockingEnabled = [app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    if (torBlockingEnabled) {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                        cell.detailTextLabel.text = BC_STRING_BLOCKED;
-                    } else {
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                        cell.detailTextLabel.text = BC_STRING_ALLOWED;
-                    }
                     return [self adjustFontForCell:cell];
                 }
             else if (indexPath.row == securityWalletRecoveryPhrase) {
@@ -1318,7 +1372,7 @@ const int aboutPrivacyPolicy = 1;
                 cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.font = [SettingsTableViewController fontForCell];
-                cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_USE_TOUCH_ID_AS_PIN;
+                cell.textLabel.text = BC_STRING_SETTINGS_PIN_USE_TOUCH_ID_AS_PIN;
                 UISwitch *switchForTouchID = [[UISwitch alloc] init];
                 BOOL touchIDEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
                 switchForTouchID.on = touchIDEnabled;
@@ -1326,10 +1380,29 @@ const int aboutPrivacyPolicy = 1;
                 cell.accessoryView = switchForTouchID;
                 return cell;
             }
+            if (indexPath.row == PINSwipeToReceive) {
+                cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.font = [SettingsTableViewController fontForCell];
+                cell.textLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
+                UISwitch *switchForSwipeToReceive = [[UISwitch alloc] init];
+                BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+                switchForSwipeToReceive.on = swipeToReceiveEnabled;
+                [switchForSwipeToReceive addTarget:self action:@selector(switchSwipeToReceiveTapped) forControlEvents:UIControlEventTouchUpInside];
+                cell.accessoryView = switchForSwipeToReceive;
+                return cell;
+            }
         }
         case aboutSection: {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             switch (indexPath.row) {
+                case aboutUs: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_ABOUT_US;
+                    return cell;
+                }
                 case aboutTermsOfService: {
                     cell.textLabel.text = BC_STRING_SETTINGS_TERMS_OF_SERVICE;
                     return cell;
@@ -1349,7 +1422,7 @@ const int aboutPrivacyPolicy = 1;
         return indexPath;
     }
     
-    BOOL hasLoadedAccountInfoDictionary = app.wallet.accountInfo ? YES : NO;
+    BOOL hasLoadedAccountInfoDictionary = app.wallet.hasLoadedAccountInfo ? YES : NO;
     
     if (!hasLoadedAccountInfoDictionary || [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LOADED_SETTINGS] boolValue] == NO) {
         [self alertUserOfErrorLoadingSettings];
@@ -1363,27 +1436,12 @@ const int aboutPrivacyPolicy = 1;
 
 - (void)verifyEmailTapped
 {
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmail inSection:preferencesSectionEmailFooter]];
-}
-
-- (void)linkMobileTapped
-{
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesMobileNumber inSection:preferencesSectionNotificationsFooter]];
-}
-
-- (void)storeHintTapped
-{
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:securityPasswordHint inSection:securitySection]];
+    [self emailClicked];
 }
 
 - (void)changeTwoStepTapped
 {
     [self alertUserToChangeTwoStepVerification];
-}
-
-- (void)blockTorTapped
-{
-    [self changeTorBlockingTapped];
 }
 
 @end

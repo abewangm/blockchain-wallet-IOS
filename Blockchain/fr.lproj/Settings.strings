@@ -2,10 +2,10 @@
 "0zs-bt-hEl.text" = "Enregistrer l’indice";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "Vérifier l’e-mail";
+"8Ha-3e-Nqx.text" = "Vérifier l’adresse e-mail";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "Vérification en deux étapes";
+"8Zy-R2-HoW.text" = "Validation en deux étapes";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "Confirmez le nouveau mot de passe";
@@ -17,13 +17,13 @@
 "VKs-B5-luJ.placeholder" = "Nouveau mot de passe";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Phrase de sauvegarde";
+"WVd-f2-ZLG.text" = "Phrase de récupération";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
 "Wor-ZR-sPS.text" = "Bloquer les TOR";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Protégez votre portefeuille contre tout accès non autorisé en activant la vérification en 2 étapes. Vous pouvez utiliser soit une application gratuite ou votre numéro de portable pour sécuriser votre portefeuille. Ce code vous sera demandé lorsque vous essaierez d'accéder à votre portefeuille.";
+"bFL-5O-fcl.text" = "Protégez votre portefeuille contre tout accès non autorisé en activant la validation en 2 étapes. Pour sécuriser votre portefeuille, vous pouvez soit utiliser une application gratuite, soit votre numéro de portable. Ce code vous sera demandé lorsque vous essaierez d'accéder à votre portefeuille.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
 "f52-8F-scW.text" = "Jumeler le portable";
@@ -32,7 +32,7 @@
 "g8G-4j-qpJ.normalTitle" = "Utilisez votre numéro de portable";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "Activez les 2 étapes";
+"gIP-mj-Hh2.text" = "Activez la validation en deux étapes";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
 "u5x-QP-acV.text" = "Terminez les étapes ci-dessous pour une sécurité optimale";

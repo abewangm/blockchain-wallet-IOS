@@ -1,3 +1,6 @@
+/* Class = "UITextView"; text = "Go to s"; ObjectID = "1RS-t6-JqX"; */
+"1RS-t6-JqX.text" = "सेटिंग्स पर जाएँ / बटुआ जानकारी।";
+
 /* (No Commment) */
 "2je-u4-PB2.text" = "लेन-देन";
 
@@ -28,8 +31,8 @@
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
-/* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "यदि आप पुराने बटुए का उपयोग कर रहे हैं, खाता सेटिंग बटन क्लिक करें और डिवाइस टैब चुनें। यदि आप हमारी नई बीटा बटुए का उपयोग कर रहे हैं, सेटिंग्स पर जाएँ / बटुआ जानकारी।";
+/* (No Commment) */
+"364.text" = "सेटिंग्स पर जाएँ / बटुआ Informationweifwohefwoihfwef.";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +56,13 @@
 "380.text" = "Blockchain बटुए में आपका स्वागत है";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "अभी तक कोई लेनदेन";
+"387.text" = "कोई हाल ही में लेन-देन";
 
 /* (No Commment) */
 "394.text" = "पासवर्ड:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "पासवर्ड (कम से कम 10 वर्ण)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "पासवर्ड";
 
 /* (No Commment) */
 "396.text" = "की पुष्टि करें:";

@@ -7,8 +7,8 @@
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "请重试";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "验证您已记下备份短语";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "从你的恢复短语完成备份过程输入下列单词。";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "长按可显示该词";
@@ -19,8 +19,8 @@
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
 "9A7-TT-PzN.title" = "备份资金";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "您尚未备份您的资金";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "哦不 ！你还没有收到您的资金的备份。";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
 "9WK-My-5CL.text" = "此操作要求您为比特币钱包输入二级密码。请在下方输入并按“继续”。";
@@ -40,7 +40,7 @@
 /* (No Commment) */
 "EQM-OM-jK8.normalTitle" = "完成";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "不抓取屏幕截图!
 您可能会损害您钱包的安全性";
 
@@ -72,8 +72,8 @@
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "下一个词";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "备份您的资金，即使您忘记密码或服务不可用，也会确保您不会失去对比特币的访问(导入的地址除外)。";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "请花几分钟时间，以确保您可以访问您的比特币 （中导入地址除外），即使您忘记了您的密码，或者如果我们的服务变得不可用。我们保证这样做是快速，无痛，也值得。";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "第三个词";

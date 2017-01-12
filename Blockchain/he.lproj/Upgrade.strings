@@ -1,16 +1,16 @@
 /* (No Commment) */
 "4cR-kX-YUY.text" = "לאשר את השדרוג";
 
-/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "D5e-zI-7dK"; */
+/* (No Commment) */
 "D5e-zI-7dK.text" = "Lorem ipsum dolor לשבת er עילית lamet, consectetaur cillium adipisicing pecu, sed לעשות eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut למשל המודעה במיני veniam, quis nostrud exercitation ullamco laboris ut על תנאי aliquip ex ea commodo consequat. כשנעצר dolor irure aute ב reprehenderit ב voluptate velit esse cillum dolore האיחוד האירופי fugiat והנה pariatur. Excepteur sint occaecat cupidatat ללא proident, הנסיך של העולם ב לכמה qui officia deserunt mollit ענים מזהה laborum est. נאם conscient טה ליבר כדי גורם טאם poen legum odioque civiuda.";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Ebu-XV-0mt"; */
+/* (No Commment) */
 "Ebu-XV-0mt.normalTitle" = "ביטול";
 
-/* Class = "UIButton"; normalTitle = "Upgrade Now"; ObjectID = "Gk5-cB-fZg"; */
-"Gk5-cB-fZg.normalTitle" = "שדרג עכשיו";
+/* (No Commment) */
+"Gk5-cB-fZg.normalTitle" = "המשך";
 
-/* Class = "UIButton"; normalTitle = "Ask Me Later"; ObjectID = "HuT-V7-syg"; */
+/* Class = "UIButton"; normalTitle = "Logout and Forget Wallet"; ObjectID = "HuT-V7-syg"; */
 "HuT-V7-syg.normalTitle" = ". תשאל אותי מאוחר יותר";
 
 /* Class = "UIButton"; normalTitle = "Upgrade"; ObjectID = "cZ9-x2-KGM"; */

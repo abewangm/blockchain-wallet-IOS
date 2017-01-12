@@ -29,13 +29,11 @@
     IBOutlet UIButton * btcButton;
     IBOutlet BCInsetLabel *watchOnlyLabel;
     
-    IBOutlet UIImageView *pendingIcon;
-    IBOutlet UILabel *pendingText;
-    
     IBOutlet UILabel *actionLabel;    
+    IBOutlet UIImageView *warningImageView;
 }
 
--(IBAction)transactionClicked:(UIButton *)button;
+-(IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
 -(IBAction)btcbuttonclicked:(id)sender;
 
 @property(nonatomic, strong)  Transaction * transaction;

@@ -4,5 +4,8 @@
 
 #import <UIKit/UIKit.h>
 #import "wallet.h"
+#import "RootService.h"
 #import "BCFadeView.h"
 #import "UIViewController+AutoDismiss.h"
+#import "TransferAllFundsViewController.h"
+#import "BCNavigationController.h"

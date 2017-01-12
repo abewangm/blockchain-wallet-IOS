@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 10/9/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCWebViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface BCWebViewController ()
 
@@ -137,10 +137,9 @@ NSMutableArray *visitedPages;
 {
     // External sites open in the system browser
     NSString *hostname = [[request URL] host];
-    if ([hostname rangeOfString:HOST_NAME_WALLET_SERVER].location == NSNotFound &&
-        [hostname rangeOfString:HOST_NAME_DEV_SERVER].location == NSNotFound) {
+    if ([hostname rangeOfString:HOST_NAME_WALLET_SERVER].location == NSNotFound) {
         [[UIApplication sharedApplication] openURL:[request URL]];
-        
+
         return FALSE;
     }
     

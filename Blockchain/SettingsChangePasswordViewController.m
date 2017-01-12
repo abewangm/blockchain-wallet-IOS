@@ -3,12 +3,13 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 11/26/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCFadeView.h"
 #import "SettingsChangePasswordViewController.h"
+#import "Blockchain-Swift.h"
 
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;
@@ -16,6 +17,8 @@
 @property (nonatomic) IBOutlet BCTextField *mainPasswordTextField;
 @property (nonatomic) IBOutlet BCTextField *newerPasswordTextField;
 @property (nonatomic) IBOutlet BCTextField *confirmNewPasswordTextField;
+
+@property (nonatomic) float passwordStrength;
 @end
 
 
@@ -52,6 +55,7 @@
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
     [self clearTextFields];
+    self.passwordStrength = 0;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -153,7 +157,7 @@
     UIColor *color;
     NSString *description;
     
-    CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
+    float passwordStrength = [app.wallet getStrengthForPassword:password];
 
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
@@ -172,6 +176,8 @@
         description = BC_STRING_PASSWORD_STRENGTH_STRONG;
     }
     
+    self.passwordStrength = passwordStrength;
+    
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         self.passwordFeedbackLabel.text = description;
         self.passwordFeedbackLabel.textColor = color;
@@ -188,25 +194,41 @@
         return NO;
     }
     
-    if ([self.newerPasswordTextField.text length] < 10 || [self.newerPasswordTextField.text length] > 255) {
-        [self alertUserOfError:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+    if ([self.newerPasswordTextField.text length] == 0) {
         [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_NO_PASSWORD_ENTERED];
+        return NO;
+    }
+    
+    NSString *email = [app.wallet getEmail];
+    if (email && [self.newerPasswordTextField.text isEqualToString:email]) {
+        [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
+        return NO;
+    }
+    
+    if (self.passwordStrength < 25) {
+        [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
+        return NO;
+    }
+    
+    if ([self.newerPasswordTextField.text length] > 255) {
+        [self.newerPasswordTextField becomeFirstResponder];
+        [self alertUserOfError:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         return NO;
     }
     
     if (![self.newerPasswordTextField.text isEqualToString:[self.confirmNewPasswordTextField text]]) {
+        if (![self.newerPasswordTextField isFirstResponder]) {
+            [self.confirmNewPasswordTextField becomeFirstResponder];
+        }
         [self alertUserOfError:BC_STRING_PASSWORDS_DO_NOT_MATCH];
-        [self.confirmNewPasswordTextField becomeFirstResponder];
         return NO;
     }
     
     if ([app.wallet isCorrectPassword:self.newerPasswordTextField.text]) {
         [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT];
-        return NO;
-    }
-    
-    if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT] isEqualToString:self.newerPasswordTextField.text]) {
-        [self alertUserOfError:BC_STRING_NEW_PASSWORD_MUST_BE_DIFFERENT_FROM_HINT];
         return NO;
     }
     

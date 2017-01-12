@@ -1,35 +1,35 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "เงินสำรองอีก";
+"1Hq-6D-ut1.normalTitle" = "สำรองเงินอีกครั้ง";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "เงินสำรองอีก";
+"1Hq-6D-ut1.text" = "สำรองเงินอีกครั้ง";
 
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "โปรดลองอีกครั้ง";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "ตรวจสอบว่า เขียนลงวลีสำรอง";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "กรอกคำต่อไปนี้จากวลีเพื่อการกู้คืนของคุณเพื่อดำเนินกระบวนการสำรองข้อมูลให้เสร็จสิ้น";
 
 /* (No Commment) */
-"6zt-Xf-txg.text" = "กดค้างไว้เพื่อเปิดเผยคำ";
+"6zt-Xf-txg.text" = "กดค้างเพื่อเปิดชมคำ";
 
 /* (No Commment) */
 "07q-RX-CeI.text" = "โปรดลองอีกครั้ง";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "กองทุนสำรอง";
+"9A7-TT-PzN.title" = "สำรองเงิน";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "คุณไม่สำรองเงินของคุณได้";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "โอ้ ไม่นะ! คุณยังไม่ได้สำรองเงินของคุณ";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "การดำเนินการนี้ต้องใช้รหัสผ่านที่สองสำหรับกระเป๋าสตางค์ของคุณ bitcoin รหัสด้านล่าง และกดดำเนินการต่อไป";
+"9WK-My-5CL.text" = "การดำเนินการนี้ต้องการใช้รหัสผ่านที่สองสำหรับกระเป๋าเงิน bitcoin ของคุณ โปรดกรอกมันด้านล่างและกด ดำเนินการต่อ";
 
 /* (No Commment) */
-"9hR-tm-aq5.placeholder" = "คำแรก";
+"9hR-tm-aq5.placeholder" = "คำที่หนึ่ง";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "ต้องการรหัสผ่านที่สอง";
+"74J-f3-Lhq.title" = "จำเป็นต้องมีรหัสผ่านที่สอง";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "คำก่อนหน้า";
@@ -38,17 +38,17 @@
 "CBl-1W-VP8.placeholder" = "รหัสผ่าน";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "เสร็จแล้ว";
+"EQM-OM-jK8.normalTitle" = "เสร็จ";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
-"FDO-ui-cGo.text" = "ไม่ใช้หน้าจอ
-คุณสามารถ jeopardize รักษาความปลอดภัยของกระเป๋าสตางค์ของคุณ";
-
-/* (No Commment) */
-"Fda-Z4-3e7.placeholder" = "หกคำ";
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
+"FDO-ui-cGo.text" = "อย่าถ่ายภาพหน้าจอ!
+คุณจะบั่นทอนความปลอดภัยของกระเป๋าเงินของคุณ";
 
 /* (No Commment) */
-"NaV-Bk-o1b.text" = "วิธีการคืนค่ากระเป๋าสตางค์ของคุณ";
+"Fda-Z4-3e7.placeholder" = "คำที่หก";
+
+/* (No Commment) */
+"NaV-Bk-o1b.text" = "วิธีการกู้คืนกระเป๋าเงินของคุณ";
 
 /* Class = "UILabel"; text = "unicorn"; ObjectID = "Okr-VE-yvm"; */
 "Okr-VE-yvm.text" = "ยูนิคอร์น";
@@ -57,14 +57,14 @@
 "T3S-Dk-HAh.text" = "โปรดลองอีกครั้ง";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "ตรวจสอบการสำรองข้อมูล";
+"T4p-mz-siC.normalTitle" = "ยืนยันการสำรองข้อมูล";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "เขียนคำลงในใบสั่งแน่นอนจะปรากฏบนกระดาษ และเก็บไว้ที่ไหนสักแห่งที่ปลอดภัย
+"UCL-i9-UDp.text" = "เขียนคำในลำดับที่แม่นยำดังที่แสดงลงบนกระดาษและเก็บไว้ในที่ที่ปลอดภัย
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "วลีของคุณกู้คืน 12 คำที่หายไป";
+"Yh8-Gm-6op.text" = "ทำวลีเพื่อการกู้คืน 12 คำสูญหาย?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "คำถัดไป";
@@ -72,21 +72,21 @@
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "คำถัดไป";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "สำรองเงินของคุณให้แน่ใจว่า คุณจะไม่เสียเข้ากับ bitcoins ของคุณ (ยกเว้นที่อยู่นำเข้า), ถ้าคุณลืมรหัสผ่าน หรือถ้าเราบริการไม่พร้อมใช้งาน";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "โปรดใช้เวลาสองสามนาทีเพื่อยืนยันว่าคุณสามารถเข้าถึง bitcoin ของคุณได้ (ยกเว้นในที่อยู่ที่นำเข้า) แม้ว่าคุณจะลืมรหัสผ่านของคุณหรือเมื่อบริการของเราไม่สามารถใช้งานได้แล้ว เราสัญญาว่าคุณสามารถทำได้อย่างรวดเร็ว ไร้ความยุ่งยาก และคุ้มค่า";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "คำที่สาม";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "คำที่ 5 ของ 12";
+"mUc-u7-Zcj.text" = "คำที่ 5 จาก 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
-"mYR-MQ-mS2.title" = "กระเป๋าสำรอง";
+"mYR-MQ-mS2.title" = "สำรองกระเป๋าเงิน";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "nuD-nb-tAt"; */
-"nuD-nb-tAt.normalTitle" = "ดำเนินการต่อไป";
+"nuD-nb-tAt.normalTitle" = "ดำเนินการต่อ";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "xmf-pK-R3X"; */
-"xmf-pK-R3X.title" = "กระเป๋าสำรอง";
+"xmf-pK-R3X.title" = "สำรองกระเป๋าเงิน";
 

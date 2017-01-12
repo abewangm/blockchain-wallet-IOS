@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by User on 12/19/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -3,14 +3,15 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 10/01/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "TransactionsViewController.h"
 #import "Transaction.h"
 #import "TransactionTableCell.h"
 #import "MultiAddressResponse.h"
-#import "AppDelegate.h"
+#import "RootService.h"
+#import "TransactionDetailViewController.h"
 
 @implementation TransactionsViewController
 
@@ -18,13 +19,20 @@
 @synthesize latestBlock;
 
 BOOL animateNextCell;
+BOOL hasZeroTotalBalance = NO;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [data.transactions count];
+    NSInteger transactionCount = [data.transactions count];
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
+        [app.wallet fetchMoreTransactions];
+    }
+#endif
+    return transactionCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -36,7 +44,7 @@ int lastNumberTransactions = INT_MAX;
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
     }
-        
+    
     cell.transaction = transaction;
         
     [cell reload];
@@ -51,10 +59,29 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.lastSelectedIndexPath = indexPath;
+    
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil];
-        
+    [cell transactionClicked:nil indexPath:indexPath];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)_tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    if (!self.loadedAllTransactions) {
+        if (indexPath.row == (int)[data.transactions count] - 1) {
+            // If user scrolled down at all or if the user clicked fetch more and the table isn't filled, fetch
+            if (_tableView.contentOffset.y > 0 || (_tableView.contentOffset.y <= 0 && self.clickedFetchMore)) {
+                [app.wallet fetchMoreTransactions];
+            } else {
+                [self showMoreButton];
+            }
+        } else {
+            [self hideMoreButton];
+        }
+    }
+#endif
 }
 
 - (void)drawRect:(CGRect)rect
@@ -83,8 +110,10 @@ int lastNumberTransactions = INT_MAX;
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
         
+#ifdef ENABLE_TRANSACTION_FILTERING
         self.filterIndex = FILTER_INDEX_ALL;
-        filterLabel.text = BC_STRING_TOTAL_BALANCE;
+#endif
+        
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
@@ -92,18 +121,43 @@ int lastNumberTransactions = INT_MAX;
     else if (self.data.transactions.count == 0) {
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+        if (!self.loadedAllTransactions) {
+            [self showMoreButton];
+        } else {
+            [self hideMoreButton];
+        }
+#endif
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
         [noTransactionsView removeFromSuperview];
         
         // Balance
-        [balanceBigButton setTitle:[app formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[app formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
     }
+}
+
+- (void)showMoreButton
+{
+    self.moreButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 50);
+    self.moreButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - self.moreButton.frame.size.height/2);
+    self.moreButton.hidden = NO;
+}
+
+- (void)hideMoreButton
+{
+    self.moreButton.hidden = YES;
+}
+
+- (void)fetchMoreClicked
+{
+    self.clickedFetchMore = YES;
+    [self reload];
 }
 
 - (void)setLatestBlock:(LatestBlock *)_latestBlock
@@ -131,6 +185,13 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)reload
 {
+    [self reloadData];
+    
+    [self.detailViewController didGetHistory];
+}
+
+- (void)reloadData
+{
     [self setText];
     
     [tableView reloadData];
@@ -140,6 +201,18 @@ int lastNumberTransactions = INT_MAX;
     [self animateFirstCell];
     
     [self reloadLastNumberOfTransactions];
+    
+    // This should be done when request has finished but there is no callback
+    if (refreshControl && refreshControl.isRefreshing) {
+        [refreshControl endRefreshing];
+    }
+}
+
+- (void)reloadSymbols
+{
+    [self reloadData];
+    
+    [self.detailViewController reloadSymbols];
 }
 
 - (void)reloadNewTransactions
@@ -172,7 +245,9 @@ int lastNumberTransactions = INT_MAX;
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
-        [self performSelector:@selector(postReceivePaymentNotification) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
+    } else {
+        hasZeroTotalBalance = [app.wallet getTotalActiveBalance] == 0;
     }
 }
 
@@ -187,13 +262,30 @@ int lastNumberTransactions = INT_MAX;
 - (void)loadTransactions
 {
     lastNumberTransactions = data.n_transactions;
-    
-    [app.wallet getHistory];
-    
-    // This should be done when request has finished but there is no callback
-    if (refreshControl && refreshControl.isRefreshing) {
-        [refreshControl endRefreshing];
+
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    if (self.loadedAllTransactions) {
+        self.loadedAllTransactions = NO;
+        self.clickedFetchMore = YES;
+        [app.wallet getHistory];
+    } else {
+        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:0] == 0;
+        BOOL tableViewIsFilled = ![[self.tableView indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:[data.transactions count] - 1 inSection:0]];
+        
+        if (tableViewIsEmpty) {
+            [self fetchMoreClicked];
+        } else if (tableViewIsFilled) {
+            self.clickedFetchMore = YES;
+           [app.wallet getHistory];
+        } else {
+           [self fetchMoreClicked];
+        }
     }
+#else
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+#endif
 }
 
 - (NSDecimalNumber *)getAmountForReceivedTransaction:(Transaction *)transaction
@@ -203,9 +295,16 @@ int lastNumberTransactions = INT_MAX;
     return number;
 }
 
-- (void)postReceivePaymentNotification
+- (void)paymentReceived
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RECEIVE_PAYMENT object:nil userInfo:[NSDictionary dictionaryWithObject:[self getAmountForReceivedTransaction:[data.transactions firstObject]] forKey:DICTIONARY_KEY_AMOUNT]];
+    Transaction *transaction = [data.transactions firstObject];
+    if ([transaction.txType isEqualToString:TX_TYPE_SENT]) return;
+    
+    BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
+                             [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&
+                             ![app.wallet isRecoveryPhraseVerified]);
+    
+    [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
 }
 
 - (void)changeFilterLabel:(NSString *)newText
@@ -232,6 +331,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (uint64_t)getBalance
 {
+#ifdef ENABLE_TRANSACTION_FILTERING
     if (self.filterIndex == FILTER_INDEX_ALL) {
         return [app.wallet getTotalActiveBalance];
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
@@ -239,6 +339,14 @@ int lastNumberTransactions = INT_MAX;
     } else {
         return [app.wallet getBalanceForAccount:(int)self.filterIndex];
     }
+#else
+    return [app.wallet getTotalActiveBalance];
+#endif
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
 }
 
 #pragma mark - View lifecycle
@@ -247,11 +355,14 @@ int lastNumberTransactions = INT_MAX;
 {
     [super viewDidLoad];
     
+    self.loadedAllTransactions = NO;
+    
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.scrollsToTop = YES;
     
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
@@ -262,12 +373,26 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
+#if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    self.moreButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.moreButton setTitle:BC_STRING_LOAD_MORE_TRANSACTIONS forState:UIControlStateNormal];
+    self.moreButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.moreButton.backgroundColor = [UIColor whiteColor];
+    [self.moreButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+    [self.view addSubview:self.moreButton];
+    [self.moreButton addTarget:self action:@selector(fetchMoreClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.moreButton.hidden = YES;
+#endif
+    
+    filterLabel.adjustsFontSizeToFitWidth = YES;
+    
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
     
+#ifdef ENABLE_TRANSACTION_FILTERING
     self.filterIndex = FILTER_INDEX_ALL;
-    filterLabel.text = BC_STRING_TOTAL_BALANCE;
+#endif
     
     [self reload];
 }
@@ -303,21 +428,23 @@ int lastNumberTransactions = INT_MAX;
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
     
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2)) {
-        [self showFilterLabel];
-        app.mainLogoImageView.hidden = YES;
-    } else {
-        [self hideFilterLabel];
-        app.mainLogoImageView.hidden = NO;
-    }
+#ifdef ENABLE_TRANSACTION_FILTERING
+    [app reloadTransactionFilterLabel];
+#else
+    [self hideFilterLabel];
+    app.mainLogoImageView.hidden = NO;
+#endif
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+#ifdef ENABLE_TRANSACTION_FILTERING
+    app.wallet.isFetchingTransactions = NO;
+    filterLabel.hidden = YES;
+#endif
     app.mainLogoImageView.hidden = YES;
     app.mainTitleLabel.hidden = NO;
-    filterLabel.hidden = YES;
 }
 
 @end

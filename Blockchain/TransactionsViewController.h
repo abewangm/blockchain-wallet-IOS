@@ -18,10 +18,12 @@
  * MA 02110-1301  USA
  */
 
+#import "TransactionDetailViewController.h"
+
 @class MultiAddressResponse;
 @class LatestBlock;
 
-@interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TransactionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
 {
     IBOutlet UITableView *tableView;
     
@@ -41,8 +43,14 @@
 @property(nonatomic, strong) LatestBlock *latestBlock;
 
 @property(nonatomic) NSInteger filterIndex;
+@property(nonatomic) BOOL loadedAllTransactions;
+@property(nonatomic) UIButton *moreButton;
+@property(nonatomic) BOOL clickedFetchMore;
+@property(nonatomic) NSIndexPath *lastSelectedIndexPath;
+@property(nonatomic) TransactionDetailViewController *detailViewController;
 
 - (void)reload;
+- (void)reloadSymbols;
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;

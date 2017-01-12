@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.0</string>
+	<string>2.3.9</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -30,6 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>bitcoin</string>
+				<string>blockchain-wallet</string>
 			</array>
 		</dict>
 	</array>
@@ -37,26 +38,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>merchant-directory.blockchain.info</key>
-			<dict>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>service-dynamic-fee.dev.blockchain.co.uk</key>
-			<dict>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>NSCameraUsageDescription</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Blockchain needs access to your location to show you nearby businesses that accept Bitcoin</string>
 	<key>NSMainNibFile</key>

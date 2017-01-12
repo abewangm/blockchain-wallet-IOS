@@ -3,18 +3,19 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 1/14/16.
-//  Copyright © 2016 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2016 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "AccountsAndAddressesNavigationController.h"
 #import "AccountsAndAddressesDetailViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "BCEditAccountView.h"
 #import "BCEditAddressView.h"
 #import "BCQRCodeView.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 #import "SendViewController.h"
+#import "Blockchain-Swift.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
 const int numberOfSectionsAddressUnarchived = 1; // 2 if watch only
@@ -137,7 +138,7 @@ typedef enum {
 {
 #ifdef ENABLE_TRANSFER_FUNDS
     if (self.address) {
-        return [app.wallet getLegacyAddressBalance:self.address] > [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
+        return [app.wallet getLegacyAddressBalance:self.address] >= [app.wallet dust] && ![app.wallet isWatchOnlyLegacyAddress:self.address] && ![self isArchived] && [app.wallet didUpgradeToHd];
     } else {
         return NO;
     }
@@ -152,8 +153,9 @@ typedef enum {
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [app closeSideMenu];
-        app.topViewControllerDelegate = nil;
     }];
+    
+    app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
         app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
@@ -164,6 +166,8 @@ typedef enum {
     [app showSendCoins];
 
     [app.sendViewController transferFundsToDefaultAccountFromAddress:self.address];
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)labelAddressClicked

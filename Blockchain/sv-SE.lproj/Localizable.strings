@@ -1,5 +1,14 @@
+/* No comment provided by engineer. */
+" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure." = " Någon med tillgång till din återhämtning fras har tillgång till din bitcoin så var noga med att hålla den offline någonstans mycket trygg och säker.";
+
+/* (No Commment) */
+" We recommend the fee below for the transaction at this time." = " Vi rekommenderar avgiften nedan för transaktionen vid denna tid.";
+
 /* (No Commment) */
 "%@ BTC" = "%@ BTC";
+
+/* (No Commment) */
+"%@ Confirmations" = "%@ bekräftelser";
 
 /* (No Commment) */
 "%@ copied to clipboard" = "%@ kopieras till Urklipp";
@@ -26,7 +35,7 @@
 "%lld seconds ago" = "%lld sekunder sedan";
 
 /* (No Commment) */
-"* Minimum 10 characters" = "* Minst 10 tecken";
+"%lu Recipients" = "%lu mottagare";
 
 /* No comment provided by engineer. */
 "1 hour ago" = "1 timme sedan";
@@ -54,6 +63,9 @@
 
 /* (No Commment) */
 "2-step Verification is currently enabled." = "2-stegs verifikation är aktiverat.";
+
+/* (No Commment) */
+"A connection cannot be established because the server certificate could not be validated. Please check your network settings and ensure that you are using a secure connection." = "En anslutning inte kan fastställas eftersom certifikatet inte kunde verifieras. Vänligen kontrollera dina nätverksinställningar och kontrollera att du använder en säker anslutning.";
 
 /* (No Commment) */
 "API URL" = "API URL";
@@ -95,13 +107,28 @@
 "Allowed" = "Tillåtna";
 
 /* (No Commment) */
-"Amount must be above dust threshold (%lld Satoshi)" = "Beloppet måste vara damm tröskelvärdet (%lld Satoshi)";
+"Amount" = "Belopp";
+
+/* (No Commment) */
+"Amount must be greater than or equal to the dust threshold (%lld Satoshi)" = "Beloppet måste vara större än eller lika med tröskelvärdet som damm (%lld Satoshi)";
+
+/* (No Commment) */
+"An error occurred due to interruptions during PIN verification. Please close the app and try again." = "Ett fel uppstod på grund av avbrott under PIN-verifiering. Stäng programmet och försök igen.";
 
 /* (No Commment) */
 "An error occurred validating your PIN code with the remote server. You may be offline or Blockchain may be experiencing difficulties. Would you like retry validation or instead enter your password manually?" = "Ett fel uppstod validera din PIN-kod med fjärrservern. Du kan vara offline eller Blockchain kan uppleva svårigheter. Vill du försöka igen validering eller istället ange lösenordet manuellt?";
 
 /* (No Commment) */
 "An error occurred while changing 2-Step verification." = "Ett fel inträffade vid ändring 2-steg verifiering.";
+
+/* (No Commment) */
+"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again." = "Ett fel uppstod när kopiera din adress till Urklipp. Se nytt välja måladress eller starta om app och försök igen.";
+
+/* (No Commment) */
+"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device." = "Ett fel uppstod när spara ändringar. Se till att du inte är inloggad i din plånbok på en annan enhet.";
+
+/* (No Commment) */
+"An error occurred while updating your spendable balance. Please check your internet connection and try again." = "Ett fel uppstod när du uppdaterar din spendable balans. Kontrollera din internet-anslutning och försök igen.";
 
 /* (No Commment) */
 "An error was encountered loading your wallet. You may be offline or Blockchain is experiencing difficulties. Please close the application and try again later or re-pair your device." = "Ett fel påträffades laddar din plånbok. Du kan vara offline eller Blockchain upplever svårigheter. Stäng programmet och försök igen senare eller åter koppla enheten.";
@@ -111,6 +138,9 @@
 
 /* (No Commment) */
 "Any address" = "Alla adresser";
+
+/* (No Commment) */
+"App Store review prompt timer (seconds)" = "App Store granskning snabb timer (sekunder)";
 
 /* (No Commment) */
 "Archive" = "Arkiv";
@@ -188,7 +218,7 @@
 "Blocked" = "Blockerade";
 
 /* (No Commment) */
-"Calculating: Address %d of %d" = "Beräkna: Adress %1$d av %2$d";
+"Calculating: Address %@ of %@" = "Beräkna: Adress %1$@ av %2$@";
 
 /* (No Commment) */
 "Camera Access Denied" = "Kameraåtkomst nekad";
@@ -236,16 +266,13 @@
 "Complete the steps below for ultimate security" = "Stegen nedan för ultimat säkerhet";
 
 /* (No Commment) */
-"Completely updated design and user experience" = "Helt uppdaterad design och användarupplevelse";
-
-/* (No Commment) */
 "Confirm Payment" = "Bekräfta betalning";
 
 /* (No Commment) */
-"Confirm Upgrade" = "Bekräfta uppgradering";
+"Confirm your PIN" = "Bekräfta din PIN-kod";
 
 /* (No Commment) */
-"Confirm your PIN" = "Bekräfta din PIN-kod";
+"Confirmed" = "Bekräftat";
 
 /* (No Commment) */
 "Connection timed out. Please check your internet connection." = "Connection timeout. Kontrollera din internet-anslutning.";
@@ -269,6 +296,12 @@
 "Copy xPub" = "Kopiera xPub";
 
 /* (No Commment) */
+"Could not find transaction with hash %@ when reloading data" = "Kunde inte hitta transaktion med hash-%@ när omlastning data";
+
+/* (No Commment) */
+"Could not get value when sent - please check your internet connection and try again." = "Kunde inte få värde när skickade - vänligen kontrollera internetanslutningen och försök igen.";
+
+/* (No Commment) */
 "Create" = "Skapa";
 
 /* (No Commment) */
@@ -282,9 +315,6 @@
 
 /* (No Commment) */
 "Creating" = "Att skapa";
-
-/* (No Commment) */
-"Creating HD Wallet" = "Skapa HD plånbok";
 
 /* (No Commment) */
 "Creating V3 Wallet" = "Att skapa V3 plånbok";
@@ -302,10 +332,10 @@
 "Current rate: %@ BTC" = "Nuvarande pris: %@ BTC";
 
 /* (No Commment) */
-"Customize the way you organize your bitcoins in your Blockchain Wallet" = "Anpassa hur du ordna dina bitcoins i plånboken Blockchain";
+"Customize the way you organize your bitcoin in your Blockchain Wallet" = "Anpassa hur du ordna din bitcoin i plånboken Blockchain";
 
 /* (No Commment) */
-"Customized fund management" = "Anpassade fondförvaltning";
+"Date" = "Datum";
 
 /* (No Commment) */
 "Debug" = "Debug";
@@ -321,6 +351,12 @@
 
 /* (No Commment) */
 "Default" = "Standard";
+
+/* (No Commment) */
+"Description" = "Beskrivning";
+
+/* (No Commment) */
+"Details" = "Detaljer";
 
 /* (No Commment) */
 "Disable" = "Inaktivera";
@@ -374,16 +410,22 @@
 "Enable Location Services" = "Aktivera platstjänster";
 
 /* (No Commment) */
-"Enable notifications to receive an email whenever you receive bitcoins. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivera meddelanden ta emot ett e-postmeddelande när du tar emot bitcoins. Bara märkt adresser och importerade är adresser berättigade att utlösa meddelanden.";
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin. Only labeled addresses and imported addresses are eligible to trigger notifications." = "Aktivera meddelanden ta emot en email eller SMS-meddelande när du tar emot bitcoin. Bara märkt adresser och importerade är adresser berättigade att utlösa meddelanden.";
 
 /* (No Commment) */
 "Enable this option to prevent IP addresses that are known to be part of the Tor anonymizing network from accessing your wallet. The Tor network is frequently used by hackers attempting to access Blockchain users' wallets." = "Aktivera alternativet att förhindra IP-adresser som är kända för att vara del av Tor anonymizing network från att komma åt din plånbok. Tor-nätverket används ofta av hackare som försöker få åtkomst till Blockchain användarnas plånböcker.";
 
 /* (No Commment) */
+"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Five addresses will be loaded consecutively, after which logging in is required to show new addresses." = "Aktivera alternativet för att avslöja en ta emot-adress när du svep åt höger på skärmen PIN att göra mottagande bitcoin ännu snabbare. Fem adresser kommer att läsas in efter varandra, varefter inloggning krävs för att visa nya adresser.";
+
+/* (No Commment) */
+"Enable this option to reveal a receive address when you swipe left on the PIN screen, making receiving bitcoin even faster. Only one address will be loaded, logging in is required to show a new address." = "Aktivera alternativet för att avslöja en ta emot-adress när du svep åt höger på skärmen PIN att göra mottagande bitcoin ännu snabbare. Endast en adress kommer att laddas, inloggning krävs för att visa en ny adress.";
+
+/* (No Commment) */
 "Enabling this feature will allow all users with a registered Touch ID fingerprint on this device to access to your wallet." = "Aktiverar den här funktionen kan alla användare med ett registrerat Touch ID fingeravtryck på den här enheten får tillgång till din plånbok.";
 
 /* (No Commment) */
-"Enhanced Privacy" = "Utökad sekretess";
+"Enjoying the Blockchain Wallet? Please take a moment to leave a review in the App Store and let others know about it." = "Njuter av Blockchain plånboken? Ta en stund att lämna en recension i App Store och låta andra veta om det.";
 
 /* (No Commment) */
 "Enter %@ amount" = "Ange %@ belopp";
@@ -422,6 +464,9 @@
 "Failed To Load Wallet" = "Kunde inte ladda plånboken";
 
 /* (No Commment) */
+"Failed to validate server certificate" = "Det gick inte att validera servercertifikat";
+
+/* (No Commment) */
 "Fee is too high (0.01 BTC limit)" = "Avgiften är för hög (0,01 BTC gräns)";
 
 /* (No Commment) */
@@ -434,6 +479,9 @@
 "Finished Signing Inputs" = "Färdiga undertecknandet ingångar";
 
 /* (No Commment) */
+"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive." = "För ökad integritet genererar vi en unik adress för varje betalning. Alla adresser genereras i plånboken kan fortfarande ta emot medel, även om de inte längre visas under ta emot.";
+
+/* (No Commment) */
 "For your safety, we recommend you to transfer any balances in your imported addresses into your Blockchain wallet." = "För din säkerhet rekommenderar vi dig att överföra alla saldon i dina importerade adresser i plånboken Blockchain.";
 
 /* (No Commment) */
@@ -441,6 +489,9 @@
 
 /* (No Commment) */
 "Found %d, with %@" = "Hittade %1$d, med %2$@";
+
+/* (No Commment) */
+"From" = "Från";
 
 /* (No Commment) */
 "From and destination address have to be different" = "Från och måladressen måste vara olika";
@@ -464,7 +515,7 @@
 "Identifier" = "Identifierare";
 
 /* (No Commment) */
-"If you are a merchant, show your xPub and use the Blockchain Merchant app to receive funds safely and privately." = "Om du är en köpman, visar din xPub och använda Blockchain köpman app att ta emot medel säkert och privat.";
+"If you are a merchant, view your extended public key (xPub) and use the Blockchain Merchant app to receive funds." = "Om du är en köpman, Visa din utökade offentliga nyckel (xPub) och använda den Blockchain köpmannen app att ta emot medel.";
 
 /* (No Commment) */
 "Import Private Key" = "Import-nyckel";
@@ -551,6 +602,9 @@
 "Invalid verification code. Please try again." = "Ogiltig verifieringskod. Försök igen.";
 
 /* No comment provided by engineer. */
+"It is important to make sure you write down your words exactly as they appear here and " = "Det är viktigt att se till att du skriver ner dina ord exakt som de visas här och ";
+
+/* No comment provided by engineer. */
 "Just now" = "Just nu";
 
 /* (No Commment) */
@@ -561,6 +615,9 @@
 
 /* (No Commment) */
 "Keep your xPub private. Someone with access to your xPub will be able to see all of your funds and transactions." = "Hålla din xPub privat. Någon med tillgång till din xPub kommer att kunna se alla dina fonder och transaktioner.";
+
+/* (No Commment) */
+"Key already imported" = "Nyckeln redan importerad";
 
 /* (No Commment) */
 "Label" = "Etikett";
@@ -575,7 +632,16 @@
 "Label must have less than 18 characters" = "Etiketten måste ha mindre än 18 tecken";
 
 /* (No Commment) */
+"Large Transaction" = "Stora transaktionsvolymer";
+
+/* (No Commment) */
+"Learn More" = "Lära sig mer";
+
+/* (No Commment) */
 "Link Mobile" = "Link Mobile";
+
+/* (No Commment) */
+"Load More Transactions" = "Ladda fler transaktioner";
 
 /* (No Commment) */
 "Loading External Page" = "Laddar extern sida";
@@ -594,6 +660,9 @@
 
 /* (No Commment) */
 "Logout" = "Logga ut";
+
+/* (No Commment) */
+"Logout and forget wallet" = "Logga ut och glöm plånboken";
 
 /* (No Commment) */
 "Lower fee" = "Lägre avgift";
@@ -635,6 +704,9 @@
 "Name" = "Namn";
 
 /* (No Commment) */
+"Needs BIP38 Password" = "Behöver BIP38 lösenord";
+
+/* (No Commment) */
 "New Address" = "Ny adress";
 
 /* (No Commment) */
@@ -644,13 +716,13 @@
 "New Mobile Number" = "Nya mobilnummer";
 
 /* (No Commment) */
+"New PIN must be different" = "Ny PIN-kod måste vara olika";
+
+/* (No Commment) */
 "New password must be different" = "Nya lösenordet måste vara olika";
 
 /* (No Commment) */
 "New password must be different from your password hint" = "Nya lösenordet måste vara olika från lösenordsledtråden";
-
-/* (No Commment) */
-"News, Price & Charts" = "Nyheter, Pris & diagram";
 
 /* No comment provided by engineer. */
 "Next word" = "Nästa ord";
@@ -680,16 +752,16 @@
 "Not now" = "Inte nu";
 
 /* (No Commment) */
-"Note that once upgraded, you cannot go back to the previous version, but all your bitcoins and your transaction history will be kept." = "Observera att när uppgraderat, du kan inte gå tillbaka till den tidigare versionen, men alla dina bitcoins och din transaktionshistorik kommer att hållas.";
-
-/* (No Commment) */
 "Notifications" = "Anmälningar";
 
 /* No comment provided by engineer. */
-"Now you can restore your funds using the 12 word recovery phrase in case you lose your wallet's password" = "Nu kan du återställa dina fonder med 12 ordet återhämtning om du förlorar din plånbok lösenord";
-
-/* No comment provided by engineer. */
 "OK" = "Okej";
+
+/* (No Commment) */
+"Open %@?" = "Öppna %@?";
+
+/* (No Commment) */
+"Open Mail App" = "Öppna Mail App";
 
 /* (No Commment) */
 "PIN" = "PIN-KOD";
@@ -728,7 +800,10 @@
 "Password changed. Please login to continue." = "Ändra lösenord. Vänligen logga in för att fortsätta.";
 
 /* (No Commment) */
-"Password must 10 characters or longer" = "Lösenord måste 10 tecken eller längre";
+"Password must be different from your email" = "Lösenordet måste vara olika från din e-post";
+
+/* (No Commment) */
+"Password must be less than or equal to 255 characters" = "Lösenordet måste vara mindre än eller lika med 255 tecken";
 
 /* (No Commment) */
 "Passwords do not match" = "Lösenorden matchar inte";
@@ -741,6 +816,12 @@
 
 /* (No Commment) */
 "Payments Sent" = "Betalningar skickas";
+
+/* (No Commment) */
+"Pending" = "Väntande";
+
+/* (No Commment) */
+"Pending (%@ Confirmations)" = "Väntande (%@ bekräftelser)";
 
 /* (No Commment) */
 "Phrase Backed" = "Fras backas";
@@ -765,9 +846,6 @@
 
 /* (No Commment) */
 "Please choose from the options below." = "Välj bland alternativen nedan.";
-
-/* (No Commment) */
-"Please describe in detail the issue you are experiencing, along with any steps we can take to reproduce it." = "Beskriv i detalj den frågan du upplever, tillsammans med alla åtgärder vi kan vidta för att reproducera den.";
 
 /* (No Commment) */
 "Please enter a fee greater than 0 BTC and at most 0.01 BTC" = "Skriv in en avgift som är större än 0 BTC och högst 0,01 BTC";
@@ -800,10 +878,12 @@
 "Please select a different address to send from." = "Välj en annan adress att skicka från.";
 
 /* (No Commment) */
-"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vänligen skicka betalning till bitcoin adress (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjälpa? < /a >): %@";
+"Please send %@ to bitcoin address.
+%@" = "Behaga sända %1$@ till bitcoin adress.
+%2$@";
 
 /* (No Commment) */
-"Please send payment to bitcoin address. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@" = "Vänligen skicka betalning till bitcoin adress. FAQ: (https://blockchain.info/wallet/bitcoin-faq): %@";
+"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@" = "Vänligen skicka betalning till bitcoin adress (< en href = \"https://blockchain.info/wallet/bitcoin-faq\" > hjälpa? < /a >): %@";
 
 /* No comment provided by engineer. */
 "Please try again" = "Behaga försök igen";
@@ -812,7 +892,13 @@
 "Please verify your email address first." = "Kontrollera din e-postadress först.";
 
 /* (No Commment) */
+"Please verify your mobile number first." = "Kontrollera först ditt mobilnummer.";
+
+/* (No Commment) */
 "Preferences" = "Preferenser";
+
+/* (No Commment) */
+"Preparing transfer" = "Förbereda överföringen";
 
 /* (No Commment) */
 "Privacy Policy" = "Privacy Policy";
@@ -824,10 +910,19 @@
 "Processing key" = "Bearbetningen nyckel";
 
 /* (No Commment) */
+"Rate Blockchain Wallet" = "Betygsätt Blockchain plånbok";
+
+/* (No Commment) */
 "Receive" = "Ta emot";
 
 /* (No Commment) */
+"Receive to..." = "Får till...";
+
+/* (No Commment) */
 "Received" = "Fick";
+
+/* (No Commment) */
+"Recipients" = "Mottagare";
 
 /* (No Commment) */
 "Recover Funds" = "Återkräva medel";
@@ -837,6 +932,9 @@
 
 /* (No Commment) */
 "Regular" = "Regelbundna";
+
+/* (No Commment) */
+"Request" = "Begäran";
 
 /* (No Commment) */
 "Request Amount" = "Begäran belopp";
@@ -860,10 +958,10 @@
 "Retry Validation" = "Försök igen validering";
 
 /* (No Commment) */
-"Robust security center" = "Robust Trygghet Centrerat";
+"SMS" = "SMS";
 
 /* (No Commment) */
-"SMS" = "SMS";
+"SMS Notifications" = "SMS-meddelanden";
 
 /* (No Commment) */
 "Save" = "Spara";
@@ -881,7 +979,7 @@
 "Scan QR code" = "Skanna QR-kod";
 
 /* (No Commment) */
-"Scan this code or copy it into your Blockchain Merchant app to securely receive Bitcoin." = "Skanna den här koden eller kopiera den till din Blockchain köpman app att säkert få Bitcoin.";
+"Scan or copy this code into your Blockchain Merchant app to securely receive Bitcoin." = "Skanna eller kopiera denna kod till din Blockchain köpman app att säkert få Bitcoin.";
 
 /* No comment provided by engineer. */
 "Second Password Incorrect" = "Andra lösenord felaktigt";
@@ -894,6 +992,9 @@
 
 /* (No Commment) */
 "Security Center" = "Security Center";
+
+/* (No Commment) */
+"Security Center completed - your wallet is safe and secure" = "Security Center klar - plånboken är trygg och säker";
 
 /* (No Commment) */
 "Send" = "Skicka";
@@ -926,10 +1027,10 @@
 "Settings" = "Inställningar";
 
 /* (No Commment) */
-"Shared Coin is not supported in the new version at this time." = "Delade mynt stöds inte i den nya versionen på denna tid.";
+"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dela din xPub tillåter andra att spåra din transaktionshistorik. Som personer kan kunna störa dig åtkomst till din plånbok, bara dela din xPub med människor du litar på.";
 
 /* (No Commment) */
-"Sharing your xPub authorizes others to track your transaction history. As authorized persons may be able to disrupt you from accessing your wallet, only share your xPub with people you trust." = "Dela din xPub tillåter andra att spåra din transaktionshistorik. Som personer kan kunna störa dig åtkomst till din plånbok, bara dela din xPub med människor du litar på.";
+"Show all 'Dont Show Again' alerts" = "Visa alla \"Dont Visa mer\" varningar";
 
 /* No comment provided by engineer. */
 "Signal %d was raised." = "Signal %d togs upp.";
@@ -941,10 +1042,13 @@
 "Signing Inputs" = "Underteckna ingångar";
 
 /* (No Commment) */
-"Simplified backup and recovery" = "Förenklad säkerhetskopiering och återställning";
+"Simulate surge" = "Simulera våg";
 
 /* (No Commment) */
-"Simulate surge" = "Simulera våg";
+"Some funds cannot be transferred automatically." = "Vissa fonder kan inte överföras automatiskt.";
+
+/* (No Commment) */
+"Status" = "Status";
 
 /* (No Commment) */
 "Store Hint" = "Store tips";
@@ -967,8 +1071,14 @@
 /* (No Commment) */
 "Surge Occurring" = "Surge inträffar";
 
+/* (No Commment) */
+"Swipe to receive" = "Svep för att få";
+
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisera plånbok";
+
+/* (No Commment) */
+"Tap to copy this address. Share it with the sender via email or text." = "Tryck på för att kopiera denna adress. Dela med avsändaren via email eller text.";
 
 /* (No Commment) */
 "Terms of Service" = "Villkor för tjänsten";
@@ -989,10 +1099,10 @@
 "The private key you are attempting to import is encrypted. Please enter the password below." = "Den privata nyckeln som du försöker importera krypteras. Skriv in lösenordet nedan.";
 
 /* (No Commment) */
-"The upgrade takes just a second and your bitcoins and history will be safe. Here is what’s better:" = "Uppgraderingen tar bara en sekund och dina bitcoins och historien kommer att vara säker. Här är vad är bättre:";
+"There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";
 
 /* (No Commment) */
-"There was a problem verifying your identity." = "Det gick inte att verifiera din identitet.";
+"There was an error importing this private key" = "Det gick inte att importera denna privata nyckel";
 
 /* (No Commment) */
 "These options are recommended for advanced users only. Continue?" = "Dessa alternativ rekommenderas endast för avancerade användare. Vill du fortsätta?";
@@ -1004,10 +1114,16 @@
 "This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
 
 /* (No Commment) */
+"This address has already been used. Please login." = "Denna adress har redan använts. Vänligen logga in.";
+
+/* (No Commment) */
 "This address is not watch-only." = "Denna adress är inte bara titta på.";
 
 /* (No Commment) */
 "This is a watch-only address. To spend your funds from this wallet, please scan your private key." = "Detta är en klocka-bara adress. För att spendera dina pengar från denna plånbok, vänligen skanna din privata nyckel.";
+
+/* (No Commment) */
+"This is an oversized bitcoin transaction. Your wallet needs to consolidate many smaller payments you've received in the past. This requires a relatively high fee in order to be confirmed quickly. If it’s fine for the transaction to take longer to confirm, you can reduce the fee manually by tapping \"Customize Fee.\"" = "Detta är en överdimensionerad bitcoin-transaktion. Plånboken behöver konsolidera många mindre betalningar du har fått tidigare. Detta kräver en relativt hög avgift för att bekräftas snabbt. Om det går bra för transaktionen ta längre tid att bekräfta, kan du minska avgiften manuellt genom att trycka på \"Anpassa avgift.\"";
 
 /* (No Commment) */
 "This is archived. Though you cannot send funds from here, any and all funds will remain safe. Simply unarchive to start using it again." = "Här arkiveras. Om du inte kan skicka pengar från här, kommer att alla medel förbli säker. Helt enkelt hämta från Arkiv om du vill börja använda den igen.";
@@ -1022,14 +1138,13 @@
 "This transaction requires a higher fee for dust consumption due to the small amount of change to be returned." = "Denna transaktion kräver en högre avgift för damm konsumtion på grund av den lilla mängden byte som ska returneras.";
 
 /* (No Commment) */
-"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoins in this wallet will be inaccessible!!" = "Detta kommer att radera alla plånbok data på enheten. Vänligen bekräfta när du har din plånbok information sparas på andra håll annars alla bitcoins i denna plånbok kommer att vara otillgängliga!";
+"This will allow the following alerts: Receive to watch-only, App Store review prompt, and Transfer All Funds." = "Detta gör att de följande varningarna: få till watch-bara, App Store granskning snabb och överföra alla medel.";
 
 /* (No Commment) */
-"To: %@
-%@
-Total Amount: %@
-Fee: %@
-(%@)" = "Till: %1$@%2$@ totala belopp: %3$@ avgift: %4$@ (%5$@)";
+"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!" = "Detta kommer att radera alla plånbok data på enheten. Vänligen bekräfta när du har din plånbok information sparas på andra håll annars någon bitcoin i denna plånbok kommer att vara otillgängliga!";
+
+/* (No Commment) */
+"To" = "Till";
 
 /* (No Commment) */
 "Tor Requests" = "Tor förfrågningar";
@@ -1062,16 +1177,16 @@ Fee: %@
 "Transaction" = "Transaktion";
 
 /* (No Commment) */
-"Transaction Fee" = "Transaktionsavgift";
-
-/* (No Commment) */
 "Transaction Fees" = "Transaktionsavgifter";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions and depend on current network conditions. We recommend the fee below for the transaction at this time." = "Transaktionsavgifter påverka hur snabbt Bitcoin gruvdrift nätverket kommer att bekräfta dina transaktioner och beror på aktuella nätverksförhållandena. Vi rekommenderar avgiften nedan för transaktionen vid denna tid.";
+"Transaction fee: %@" = "Transaktionsavgift: %@";
 
 /* (No Commment) */
-"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions. We recommend the fee shown for this transaction at this time." = "Transaktionsavgifter påverka hur snabbt Bitcoin gruvdrift nätverket kommer att bekräfta dina transaktioner och beror på de aktuella nätverksförhållandena. Vi rekommenderar den avgift som visas för den här transaktionen vid denna tid.";
+"Transaction fees impact how quickly the Bitcoin mining network will confirm your transactions, and depend on the current network conditions." = "Transaktionsavgifter påverka hur snabbt Bitcoin gruvdrift nätverket kommer att bekräfta dina transaktioner och beror på de aktuella nätverksförhållandena.";
+
+/* (No Commment) */
+"Transactions" = "Transaktioner";
 
 /* (No Commment) */
 "Transactions with no fees may take a long time to confirm or may not be confirmed at all. Would you like to continue?" = "Transaktioner med inga avgifter kan ta lång tid att bekräfta eller inte kan bekräftas på alla. Vill du fortsätta?";
@@ -1134,13 +1249,7 @@ Fee: %@
 "Upgrade" = "Uppgradera";
 
 /* (No Commment) */
-"Upgrade Now" = "Uppgradera nu";
-
-/* (No Commment) */
 "Upgrade Wallet" = "Uppgradera plånbok";
-
-/* (No Commment) */
-"Upgrade to HD" = "Uppgradering till HD";
 
 /* (No Commment) */
 "Upgrade to V3" = "Uppgradera till V3";
@@ -1149,19 +1258,22 @@ Fee: %@
 "Use Touch ID as PIN" = "Använda Touch-ID som PIN";
 
 /* (No Commment) */
-"Use all %@" = "Använda alla %@";
-
-/* (No Commment) */
 "Use all funds" = "Använda alla medel";
 
 /* (No Commment) */
 "Use recommended values" = "Använd rekommenderade värden";
 
 /* (No Commment) */
+"Use total available minus fee: %@" = "Användning totalt tillgängliga minus avgift: %@";
+
+/* (No Commment) */
 "User Declined" = "Användaren minskade";
 
 /* No comment provided by engineer. */
 "VERIFY BACKUP" = "VERIFIERA BACKUP";
+
+/* (No Commment) */
+"Value when sent: %@" = "Värde när skickade: %@";
 
 /* (No Commment) */
 "Verification email has been sent to %@." = "Bekräftande email har skickats till %@.";
@@ -1194,9 +1306,6 @@ Fee: %@
 "Wallet Recovery Phrase" = "Plånbok återhämtning fras";
 
 /* (No Commment) */
-"Wallet version %lld not supported" = "Plånbok version %lld stöds inte";
-
-/* (No Commment) */
 "Warning" = "Varning";
 
 /* (No Commment) */
@@ -1212,13 +1321,6 @@ Fee: %@
 "We'll send the hint to your confirmed email address in case you request it." = "Vi skickar tipset till din bekräftat e-postadress om du begär det.";
 
 /* (No Commment) */
-"We've designed a whole new
-wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse för dig";
-
-/* (No Commment) */
-"We've included some significant privacy and security improvements. Once you click update you won't be able to go back to your old wallet" = "Vi har inkluderat några betydande förbättringar av integritet och säkerhet. När du klickar på uppdatera kommer inte du att kunna gå tillbaka till din gamla plånbok";
-
-/* (No Commment) */
 "Weak" = "Svag";
 
 /* (No Commment) */
@@ -1227,8 +1329,17 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 /* (No Commment) */
 "Welcome" = "Välkommen";
 
+/* No comment provided by engineer. */
+"Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin." = "Bra gjort! Skulle du förlora ditt lösenord, kan du återställa medel i denna plånbok även om fått i framtiden (utom importerade adresser) med 12 ordet återhämtning. Kom ihåg att hålla din återhämtning fras offline någonstans mycket trygg och säker. Någon med tillgång till din återhämtning fras har tillgång till din bitcoin.";
+
 /* (No Commment) */
 "We’ve detected a previous installation of Blockchain Wallet on your phone." = "Vi har upptäckt en tidigare installation av Blockchain plånbok på telefonen.";
+
+/* (No Commment) */
+"What's this for?" = "Vad är detta för?";
+
+/* (No Commment) */
+"Where" = "Där";
 
 /* (No Commment) */
 "Would you like to add the bitcoin address %@ to your address book?" = "Vill du lägga till bitcoin adressen %@ i din adressbok?";
@@ -1237,13 +1348,16 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "Would you like to archive the addresses used?" = "Vill du arkivera de adresser som används?";
 
 /* No comment provided by engineer. */
-"Write down your Recovery Phrase and keep it somewhere very safe and secure. Remember that anyone who knows your Recovery Phrase has access to your bitcoins." = "Skriv ner din återhämtning fras och hålla det någonstans mycket trygg och säker. Kom ihåg att alla som känner din återhämtning fras har tillgång till dina bitcoins.";
+"Write the following 12 words onto a " = "Skriv följande 12 ord på ett ";
 
 /* (No Commment) */
 "Wrong BIP38 Password" = "Fel BIP38 lösenord";
 
 /* (No Commment) */
 "Yes" = "Ja";
+
+/* (No Commment) */
+"Yes, rate Blockchain Wallet" = "Ja, Betygsätt Blockchain plånbok";
 
 /* No comment provided by engineer. */
 "Yesterday" = "Igår";
@@ -1258,7 +1372,7 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "You are now running our most secure Bitcoin wallet" = "Du nu kör vår säkraste Bitcoin plånbok";
 
 /* No comment provided by engineer. */
-"You backed up your funds successfully" = "Du säkerhetskopierat dina medel framgångsrikt";
+"You backed up your funds successfully." = "Du säkerhetskopierat dina medel framgångsrikt.";
 
 /* (No Commment) */
 "You can enable 2-step Verification via SMS on your mobile phone. In order to use other authentication methods instead, please login to our web wallet." = "Du kan aktivera 2-steg verifiering via SMS på din mobiltelefon. Använda andra autentiseringsmetoder i stället, vänligen logga in på vår web plånbok.";
@@ -1270,7 +1384,7 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "You do not have an account set up for Mail. Please contact %@" = "Du har inte ett konto för Mail. Vänligen kontakta %@";
 
 /* (No Commment) */
-"You have no addresses with a spendable balance above the required dust threshold." = "Du har inga adresser med spendable balansera tröskelvärdet krävs damm.";
+"You have no addresses with a spendable balance greater than or equal to the required dust threshold." = "Du har inga adresser med en spendable saldo större än eller lika med tröskelvärdet som krävs damm.";
 
 /* (No Commment) */
 "You have no available funds to send from this address" = "Du har inga tillgängliga medel att skicka från denna adress";
@@ -1306,6 +1420,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "You specified an unusually high transaction fee of %@. Even if you lower the fee to %@, you can expect the transaction to confirm within the next 10 minutes (one block)." = "Du angav en ovanligt hög transaktionsavgift för %1$@. Även om du sänker avgiften till %2$@, kan du förvänta dig transaktionen till bekräfta inom de nästa 10 minuterna (1 kvarter).";
 
 /* (No Commment) */
+"You will be leaving the app." = "Du kommer att lämna app.";
+
+/* (No Commment) */
 "You've successfully imported a private key." = "Du har lyckosam importerat en privat nyckel.";
 
 /* (No Commment) */
@@ -1324,6 +1441,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 "Your mobile number has been verified." = "Ditt mobilnummer har verifierats.";
 
 /* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication, helping to secure your wallet from unauthorized access." = "Mobiltelefonen kan användas för att aktivera tvåfaktorsautentisering, skyddar din plånbok från obehörig åtkomst.";
+
+/* (No Commment) */
 "Your new password hint contains invalid characters. Please try again." = "Din ny lösenordsledtråd innehåller ogiltiga tecken. Försök igen.";
 
 /* (No Commment) */
@@ -1337,6 +1457,9 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 
 /* (No Commment) */
 "Your password hint has been updated." = "Lösenordsledtråden har uppdaterats.";
+
+/* (No Commment) */
+"Your password is not strong enough. Please choose a different password." = "Ditt lösenord är inte tillräckligt stark. Välj ett annat lösenord.";
 
 /* (No Commment) */
 "Your transferred funds will be safe and secure, and you'll benefit from increased privacy and convenient backup and recovery features." = "Ditt överförda medlen kommer att vara trygg och säker, och du kommer att få ökad integritet och praktiska funktioner för säkerhetskopiering och återställning.";
@@ -1371,14 +1494,17 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 /* (No Commment) */
 "from" = "från";
 
-/* (No Commment) */
-"iOS Support Request" = "iOS supportärende";
+/* No comment provided by engineer. */
+"in this order." = "i den här ordningen.";
 
 /* No comment provided by engineer. */
 "ninth word" = "nionde word";
 
 /* (No Commment) */
 "or Continue" = "eller Fortsätt";
+
+/* No comment provided by engineer. */
+"piece of paper." = "pappersark.";
 
 /* No comment provided by engineer. */
 "second word" = "andra ordet";
@@ -1398,3 +1524,47 @@ wallet experience for you" = "Vi har utformat en helt ny plånbok upplevelse fö
 /* No comment provided by engineer. */
 "twelfth word" = "tolfte word";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vi rekommenderar den angivna avgiften för transaktionen vid denna tid.";
+
+/* No comment provided by engineer. */
+"Fee" = "Avgift";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Vänligen kontakta support: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Överföringsbelopp";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Värde när emot: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Överföra alla pengar";
+
+/* (No Commment) */
+"Transfer all" = "Överföra alla";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "Överför importerade adresser?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Importerade adresser backas inte upp av din återhämtning fras. För att säkra dessa fonder, rekommenderar vi att överföra dessa saldon som ska inkluderas i säkerhetskopian.";
+
+/* (No Commment) */
+"About Us" = "Om oss";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Du har för närvarande e-anmälningar aktiverat. Ändra din e-post kommer att inaktivera e-postmeddelanden.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Du ha SMS-aviseringar aktiverats. Ändra din e-post kommer att inaktivera SMS meddelanden.";
+
+/* (No Commment) */
+"All rights reserved." = "Alla rättigheter reserverade.";
+
+/* (No Commment) */
+"Rate us" = "Betygsätt oss";
+
+/* (No Commment) */
+"Free Merchant app" = "Köpman gratisapp";

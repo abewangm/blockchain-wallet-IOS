@@ -1,14 +1,14 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Veuillez refaire la sauvegarde des fonds";
+"1Hq-6D-ut1.normalTitle" = "Sauvegarder à nouveau les fonds";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Veuillez refaire la sauvegarde des fonds";
+"1Hq-6D-ut1.text" = "Sauvegarder à nouveau les fonds";
 
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Veuillez réessayer";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Vérifiez que vous avez saisi la phrase de sauvegarde";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Pour terminer le processus de récupération, saisissez les mots suivants de votre phrase secrète.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Appuyez et maintenez pour visualiser le mot";
@@ -17,13 +17,13 @@
 "07q-RX-CeI.text" = "Veuillez réessayer";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Sauvegarder les fonds";
+"9A7-TT-PzN.title" = "Procédure de récupération des fonds sécurisée";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Vous n'avez pas encore sauvegardé vos fonds";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Oh non ! Vous n'avez pas encore effectué la procédure de récupération des fonds sécurisée.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Cette action requiert le deuxième mot de passe pour votre portefeuille bitcoin. Veuillez le saisir ci-dessous et appuyer sur continuer.";
+"9WK-My-5CL.text" = "Cette action requière le deuxième mot de passe de votre portefeuille bitcoin. Veuillez le saisir ci-dessous et appuyez sur continuer.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "premier mot";
@@ -38,11 +38,11 @@
 "CBl-1W-VP8.placeholder" = "Mot de passe";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Exécuté";
+"EQM-OM-jK8.normalTitle" = "C'est fait !";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Ne faites pas de capture d'écran !
-Vous pouvez compromettre la sécurité de votre portefeuille";
+Vous pourriez compromettre la sécurité de votre portefeuille";
 
 /* (No Commment) */
 "Fda-Z4-3e7.placeholder" = "sixième mot";
@@ -57,10 +57,10 @@ Vous pouvez compromettre la sécurité de votre portefeuille";
 "T3S-Dk-HAh.text" = "Veuillez réessayer";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "VÉRIFIER LA SAUVEGARDE";
+"T4p-mz-siC.normalTitle" = "VÉRIFIEZ LA PROCÉDURE DE RÉCUPÉRATION SÉCURISÉE";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Écrivez sur une feuille de papier les mots dans l'ordre où ils apparaissent et conservez-les dans un endroit sûr
+"UCL-i9-UDp.text" = "Écrivez les mots dans l'ordre exact dans lequel ils apparaissent sur une feuille de papier et conservez-le dans un endroit sûr
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
@@ -72,8 +72,8 @@ Vous pouvez compromettre la sécurité de votre portefeuille";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Mot suivant";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Sauvegarder vos fonds vous garantie de ne pas perdre l'accès à vos bitcoins (sauf des adresses importées), même si vous avez oublié votre mot de passe ou si notre service n'est plus disponible.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Veuillez prendre quelques minutes pour vous assurer que vous pouvez accéder à vos bitcoins (sauf dans les adresses importées), même en cas d'oubli votre mot de passe ou si notre service n'est pas disponible. Nous vous assurons que cette procédure est rapide, sans embuches et que cela en vaudra la peine.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "troisième mot";

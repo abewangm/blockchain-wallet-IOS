@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 22/07/2014.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "PairingCodeParser.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation PairingCodeParser
 
@@ -112,20 +112,23 @@ BOOL isReadingQRCode;
         AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
         if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
             // do something useful with results
+            [self stopReadingQRCode];
+            
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self stopReadingQRCode];
                 
                 [videoPreviewLayer removeFromSuperlayer];
+                
                 [self dismissViewControllerAnimated:YES completion:nil];
-                
-                [app.wallet loadBlankWallet];
-                
-                app.wallet.delegate = self;
-                
+
                 [app showBusyViewWithLoadingText:BC_STRING_PARSING_PAIRING_CODE];
                 
-                [app.wallet parsePairingCode:[metadataObj stringValue]];
             });
+            
+            [app.wallet loadBlankWallet];
+            
+            app.wallet.delegate = self;
+            
+            [app.wallet parsePairingCode:[metadataObj stringValue]];
         }
     }
 }
@@ -137,7 +140,7 @@ BOOL isReadingQRCode;
     if (self.error) {
         if ([message containsString:ERROR_INVALID_PAIRING_VERSION_CODE]) {
             self.error(BC_STRING_INVALID_PAIRING_CODE);
-        } else if ([message containsString:ERROR_TYPE_MUST_START_WITH_NUMBER]){
+        } else if ([message containsString:ERROR_TYPE_MUST_START_WITH_NUMBER] || [message containsString:ERROR_FIRST_ARGUMENT_MUST_BE_STRING]){
             self.error(BC_STRING_ERROR_PLEASE_REFRESH_PAIRING_CODE);
         } else {
             self.error(message);

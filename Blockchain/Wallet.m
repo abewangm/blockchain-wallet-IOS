@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 16/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "Wallet.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "Transaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "MultiAddressResponse.h"
@@ -18,6 +18,24 @@
 #import "NSData+Hex.h"
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import "ModuleXMLHTTPRequest.h"
+#import "KeychainItemWrapper+Credentials.h"
+#import <openssl/evp.h>
+#import "SessionManager.h"
+#import "NSURLRequest+SRWebSocket.h"
+#import <CommonCrypto/CommonKeyDerivation.h>
+#import "HDNode.h"
+
+#import "BTCKey.h"
+#import "BTCData.h"
+#import "KeyPair.h"
+
+@interface Wallet ()
+@property (nonatomic) JSContext *context;
+@property (nonatomic) BOOL isSettingDefaultAccount;
+@property (nonatomic) NSMutableDictionary *timers;
+@end
 
 @implementation transactionProgressListeners
 @end
@@ -44,7 +62,6 @@
 
 @synthesize delegate;
 @synthesize password;
-@synthesize webView;
 @synthesize sharedKey;
 @synthesize guid;
 
@@ -54,16 +71,673 @@
     
     if (self) {
         _transactionProgressListeners = [NSMutableDictionary dictionary];
-        webView = [[JSBridgeWebView alloc] initWithFrame:CGRectZero];
-        webView.JSDelegate = self;
     }
     
     return self;
 }
 
-- (void)dealloc
+- (void)loadJS
 {
-    self.webView.JSDelegate = nil;
+    NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
+    NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
+    NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
+    NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
+    
+    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
+    self.context = [[JSContext alloc] init];
+    
+    [self.context evaluateScript:@"var console = {};"];
+    
+    NSSet *names = [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
+    
+    for (NSString *name in names) {
+        self.context[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
+    
+    self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+        NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
+        // type of Number
+        NSString *lineNumber = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_LINE] toString];
+        
+        DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
+    };
+
+    __weak Wallet *weakSelf = self;
+    
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, double timeout) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
+                                                          target:[NSBlockOperation blockOperationWithBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [callback callWithArguments:nil];
+            });
+        }]
+                                                        selector:@selector(main)
+                                                        userInfo:nil
+                                                         repeats:NO];
+        
+        weakSelf.timers[uuid] = timer;
+        [timer fire];
+    };
+    
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
+        
+        NSString *uuid = [[NSUUID alloc] init].UUIDString;
+        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
+                                                          target:[NSBlockOperation blockOperationWithBlock:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [callback callWithArguments:nil];
+            });
+        }]
+                                                        selector:@selector(main)
+                                                        userInfo:nil
+                                                         repeats:YES];
+        weakSelf.timers[uuid] = timer;
+        [timer fire];
+    };
+    
+    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+    
+#pragma mark Decryption
+    
+    self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
+        NSData *signatureData = BTCDataFromHex(signature);
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
+    };
+    
+    self.context[@"objc_pbkdf2_sync"] = ^(NSString *mnemonicBuffer, NSString *saltBuffer, int iterations, int keylength, NSString *digest) {
+        // Salt data getting from salt string.
+        NSData *saltData = [saltBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Data of String to generate Hash key(hexa decimal string).
+        NSData *passwordData = [mnemonicBuffer dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // Hash key (hexa decimal) string data length.
+        NSMutableData *hashKeyData = [NSMutableData dataWithLength:keylength];
+        
+        // Key Derivation using PBKDF2 algorithm.
+        int result = CCKeyDerivationPBKDF(kCCPBKDF2, passwordData.bytes, passwordData.length, saltData.bytes, saltData.length, kCCPRFHmacAlgSHA512, iterations, hashKeyData.mutableBytes, hashKeyData.length);
+        
+        return [hashKeyData hexadecimalString];
+    };
+    
+    self.context[@"objc_sjcl_misc_pbkdf2"] = ^(NSString *_password, id _salt, int iterations, int keylength, NSString *hmacSHA1) {
+        
+        uint8_t * finalOut = malloc(keylength);
+        
+        uint8_t * _saltBuff = NULL;
+        size_t _saltBuffLen = 0;
+        
+        if ([_salt isKindOfClass:[NSArray class]]) {
+            _saltBuff = alloca([_salt count]);
+            _saltBuffLen = [_salt count];
+            
+            {
+                int ii = 0;
+                for (NSNumber * number in _salt) {
+                    _saltBuff[ii] = [number shortValue];
+                    ++ii;
+                }
+            }
+        } else if ([_salt isKindOfClass:[NSString class]]) {
+            _saltBuff = (uint8_t*)[_salt UTF8String];
+            _saltBuffLen = [_salt length];
+        } else {
+            DLog(@"Scrypt salt unsupported type");
+            return [[NSData new] hexadecimalString];
+        }
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
+            return [[NSData new] hexadecimalString];
+        };
+        
+        return [[NSData dataWithBytesNoCopy:finalOut length:keylength] hexadecimalString];
+    };
+    
+    self.context[@"objc_get_satoshi"] = ^() {
+        return SATOSHI;
+    };
+    
+    self.context[@"objc_on_error_maintenance_mode"] = ^(){
+        [weakSelf on_error_maintenance_mode];
+    };
+    
+    self.context[@"objc_on_error_pin_code_get_timeout"] = ^(){
+        [weakSelf on_error_pin_code_get_timeout];
+    };
+    
+    self.context[@"objc_on_error_pin_code_get_empty_response"] = ^(){
+        [weakSelf on_error_pin_code_get_empty_response];
+    };
+    
+    self.context[@"objc_on_error_pin_code_put_error"] = ^(NSString *error){
+        [weakSelf on_error_pin_code_put_error:error];
+    };
+    
+    self.context[@"objc_on_error_creating_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_account:error];
+    };
+    
+    self.context[@"objc_on_pin_code_get_response"] = ^(NSDictionary *response) {
+        [weakSelf on_pin_code_get_response:response];
+    };
+    
+    self.context[@"objc_loading_start_download_wallet"] = ^(){
+        [weakSelf loading_start_download_wallet];
+    };
+    
+    self.context[@"objc_loading_start_get_wallet_and_history"] = ^() {
+        [weakSelf loading_start_get_wallet_and_history];
+    };
+    
+    self.context[@"objc_loading_stop"] = ^(){
+        [weakSelf loading_stop];
+    };
+    
+    self.context[@"objc_did_load_wallet"] = ^(){
+        [weakSelf did_load_wallet];
+    };
+    
+    self.context[@"objc_did_decrypt"] = ^(){
+        [weakSelf did_decrypt];
+    };
+    
+    self.context[@"objc_error_other_decrypting_wallet"] = ^(NSString *error) {
+        [weakSelf error_other_decrypting_wallet:error];
+    };
+    
+    self.context[@"objc_loading_start_decrypt_wallet"] = ^(){
+        [weakSelf loading_start_decrypt_wallet];
+    };
+    
+    self.context[@"objc_loading_start_build_wallet"] = ^(){
+        [weakSelf loading_start_build_wallet];
+    };
+    
+    self.context[@"objc_loading_start_multiaddr"] = ^(){
+        [weakSelf loading_start_multiaddr];
+    };
+    
+#pragma mark Multiaddress
+    
+    self.context[@"objc_did_set_latest_block"] = ^(){
+        [weakSelf did_set_latest_block];
+    };
+    
+    self.context[@"objc_did_multiaddr"] = ^(){
+        [weakSelf did_multiaddr];
+    };
+    
+    self.context[@"objc_loading_start_get_history"] = ^(){
+        [weakSelf loading_start_get_history];
+    };
+    
+    self.context[@"objc_on_get_history_success"] = ^(){
+        [weakSelf on_get_history_success];
+    };
+    
+    self.context[@"objc_on_error_get_history"] = ^(NSString *error) {
+        [weakSelf on_error_get_history:error];
+    };
+    
+    self.context[@"objc_update_loaded_all_transactions"] = ^(NSNumber *index) {
+        [weakSelf update_loaded_all_transactions:index];
+    };
+    
+    self.context[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
+        [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
+    };
+    
+    self.context[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
+        [weakSelf on_get_fiat_at_time_error:error];
+    };
+    
+#pragma mark Send Screen
+    
+    self.context[@"objc_update_send_balance"] = ^(NSNumber *balance) {
+        [weakSelf update_send_balance:balance];
+    };
+    
+    self.context[@"objc_update_surge_status"] = ^(NSNumber *surgeStatus) {
+        [weakSelf update_surge_status:surgeStatus];
+    };
+    
+    self.context[@"objc_did_change_forced_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
+        [weakSelf did_change_forced_fee:fee dust:dust];
+    };
+    
+    self.context[@"objc_update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, id expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
+        [weakSelf update_fee_bounds:absoluteFeeBounds confirmationEstimation:expectedBlock maxAmounts:maxSpendableAmounts maxFees:sweepFees];
+    };
+    
+    self.context[@"objc_update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
+        [weakSelf update_max_amount:maxAmount fee:fee dust:dust willConfirm:willConfirm];
+    };
+    
+    self.context[@"objc_check_max_amount_fee"] = ^(NSNumber *amount, NSNumber *fee) {
+        [weakSelf check_max_amount:amount fee:fee];
+    };
+    
+    self.context[@"objc_did_get_fee_dust_txSize"] = ^(NSNumber *fee, NSNumber *dust, NSNumber *txSize) {
+        [weakSelf did_get_fee:fee dust:dust txSize:txSize];
+    };
+    
+    self.context[@"objc_tx_on_success_secondPassword"] = ^(NSString *success, NSString *secondPassword) {
+        [weakSelf tx_on_success:success secondPassword:secondPassword];
+    };
+    
+    self.context[@"objc_tx_on_start"] = ^(NSString *transactionId) {
+        [weakSelf tx_on_start:transactionId];
+    };
+    
+    self.context[@"objc_tx_on_begin_signing"] = ^(NSString *transactionId) {
+        [weakSelf tx_on_begin_signing:transactionId];
+    };
+    
+    self.context[@"objc_tx_on_sign_progress_input"] = ^(NSString *transactionId, NSString *input) {
+        [weakSelf tx_on_sign_progress:transactionId input:input];
+    };
+    
+    self.context[@"objc_tx_on_finish_signing"] = ^(NSString *transactionId) {
+        [weakSelf tx_on_finish_signing:transactionId];
+    };
+    
+    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error) {
+        [weakSelf on_error_update_fee:error];
+    };
+    
+    self.context[@"objc_on_success_import_key_for_sending_from_watch_only"] = ^() {
+        [weakSelf on_success_import_key_for_sending_from_watch_only];
+    };
+    
+    self.context[@"objc_on_error_import_key_for_sending_from_watch_only"] = ^(NSString *error) {
+        [weakSelf on_error_import_key_for_sending_from_watch_only:error];
+    };
+    
+    self.context[@"objc_on_payment_notice"] = ^(NSString *notice) {
+        [weakSelf on_payment_notice:notice];
+    };
+    
+    self.context[@"objc_tx_on_error_error_secondPassword"] = ^(NSString *txId, NSString *error, NSString *secondPassword) {
+        [weakSelf tx_on_error:txId error:error secondPassword:secondPassword];
+    };
+    
+#pragma mark Wallet Creation/Pairing
+    
+    self.context[@"objc_on_create_new_account_sharedKey_password"] = ^(NSString *_guid, NSString *_sharedKey, NSString *_password) {
+        [weakSelf on_create_new_account:_guid sharedKey:_sharedKey password:_password];
+    };
+    
+    self.context[@"objc_didParsePairingCode"] = ^(NSDictionary *pairingCode) {
+        [weakSelf didParsePairingCode:pairingCode];
+    };
+    
+    self.context[@"objc_errorParsingPairingCode"] = ^(NSString *error) {
+        [weakSelf errorParsingPairingCode:error];
+    };
+    
+    self.context[@"objc_error_restoring_wallet"] = ^(){
+        [weakSelf error_restoring_wallet];
+    };
+    
+    self.context[@"objc_on_pin_code_put_response"] = ^(NSDictionary *response) {
+        [weakSelf on_pin_code_put_response:response];
+    };
+    
+    self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword) {
+        [weakSelf getSecondPassword:nil success:secondPassword error:nil];
+    };
+    
+    self.context[@"objc_get_private_key_password"] = ^(JSValue *privateKeyPassword) {
+        [weakSelf getPrivateKeyPassword:nil success:privateKeyPassword error:nil];
+    };
+    
+    self.context[@"objc_on_resend_two_factor_sms_success"] = ^() {
+        [weakSelf on_resend_two_factor_sms_success];
+    };
+    
+    self.context[@"objc_on_resend_two_factor_sms_error"] = ^(NSString *error) {
+        [weakSelf on_resend_two_factor_sms_error:error];
+    };
+    
+#pragma mark Accounts/Addresses
+    
+    self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
+        DLog(@"objc_getObjCRandomValues");
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
+        if (!fileHandle) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
+        }
+        NSData *data = [fileHandle readDataOfLength:[count intValue]];
+        return [data hexadecimalString];
+    };
+    
+    self.context[@"objc_crypto_scrypt_salt_n_r_p_dkLen"] = ^(id _password, id salt, NSNumber *N, NSNumber *r, NSNumber *p, NSNumber *derivedKeyLen, JSValue *success, JSValue *error) {
+        [weakSelf crypto_scrypt:_password salt:salt n:N r:r p:p dkLen:derivedKeyLen success:success error:error];
+    };
+    
+    self.context[@"objc_loading_start_create_new_address"] = ^() {
+        [weakSelf loading_start_create_new_address];
+    };
+    
+    self.context[@"objc_on_error_creating_new_address"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_address:error];
+    };
+    
+    self.context[@"objc_on_generate_key"] = ^() {
+        [weakSelf on_generate_key];
+    };
+    
+    self.context[@"objc_on_add_new_account"] = ^() {
+        [weakSelf on_add_new_account];
+    };
+    
+    self.context[@"objc_on_error_account_name_in_use"] = ^() {
+        [weakSelf on_error_account_name_in_use];
+    };
+    
+    self.context[@"objc_on_error_add_new_account"] = ^(NSString *error) {
+        [weakSelf on_error_add_new_account:error];
+    };
+    
+    self.context[@"objc_loading_start_new_account"] = ^() {
+        [weakSelf loading_start_new_account];
+    };
+    
+    self.context[@"objc_on_add_private_key_start"] = ^() {
+        [weakSelf on_add_private_key_start];
+    };
+    
+    self.context[@"objc_on_add_incorrect_private_key"] = ^(NSString *address) {
+        [weakSelf on_add_incorrect_private_key:address];
+    };
+    
+    self.context[@"objc_on_add_private_key_to_legacy_address"] = ^(NSString *address) {
+        [weakSelf on_add_private_key_to_legacy_address:address];
+    };
+    
+    self.context[@"objc_on_add_key"] = ^(NSString *key) {
+        [weakSelf on_add_key:key];
+    };
+    
+    self.context[@"objc_on_error_adding_private_key"] = ^(NSString *error) {
+        [weakSelf on_error_adding_private_key:error];
+    };
+    
+    self.context[@"objc_on_add_incorrect_private_key"] = ^(NSString *key) {
+        [weakSelf on_add_incorrect_private_key:key];
+    };
+    
+    self.context[@"objc_on_error_adding_private_key_watch_only"] = ^(NSString *key) {
+        [weakSelf on_error_adding_private_key_watch_only:key];
+    };
+    
+    self.context[@"objc_update_transfer_all_amount_fee_addressesUsed"] = ^(NSNumber *amount, NSNumber *fee, NSArray *addressesUsed) {
+        [weakSelf update_transfer_all_amount:amount fee:fee addressesUsed:addressesUsed];
+    };
+    
+    self.context[@"objc_loading_start_transfer_all"] = ^(NSNumber *index, NSNumber *totalAddreses) {
+        [weakSelf loading_start_transfer_all:index totalAddresses:totalAddreses];
+    };
+    
+    self.context[@"objc_on_error_transfer_all_secondPassword"] = ^(NSString *error, NSString *secondPassword) {
+        [weakSelf on_error_transfer_all:error secondPassword:secondPassword];
+    };
+    
+    self.context[@"objc_send_transfer_all"] = ^(NSString *secondPassword) {
+        [weakSelf send_transfer_all:secondPassword];
+    };
+    
+    self.context[@"objc_show_summary_for_transfer_all"] = ^() {
+        [weakSelf show_summary_for_transfer_all];
+    };
+    
+    self.context[@"objc_did_archive_or_unarchive"] = ^() {
+        [weakSelf did_archive_or_unarchive];
+    };
+    
+#pragma mark State
+    
+    self.context[@"objc_reload"] = ^() {
+        [weakSelf reload];
+    };
+    
+    self.context[@"objc_on_backup_wallet_start"] = ^() {
+        [weakSelf on_backup_wallet_start];
+    };
+    
+    self.context[@"objc_on_backup_wallet_success"] = ^() {
+        [weakSelf on_backup_wallet_success];
+    };
+    
+    self.context[@"objc_on_backup_wallet_error"] = ^() {
+        [weakSelf on_backup_wallet_error];
+    };
+    
+    self.context[@"objc_on_get_session_token"] = ^(NSString *token) {
+        [weakSelf on_get_session_token:token];
+    };
+    
+    self.context[@"objc_ws_on_open"] = ^() {
+        [weakSelf ws_on_open];
+    };
+    
+    self.context[@"objc_on_tx_received"] = ^() {
+        [weakSelf on_tx_received];
+    };
+    
+    self.context[@"objc_makeNotice_id_message"] = ^(NSString *type, NSString *_id, NSString *message) {
+        [weakSelf makeNotice:type id:_id message:message];
+    };
+    
+    self.context[@"objc_upgrade_success"] = ^() {
+        [weakSelf upgrade_success];
+    };
+    
+#pragma mark Recovery
+    
+    self.context[@"objc_loading_start_generate_uuids"] = ^() {
+        [weakSelf loading_start_generate_uuids];
+    };
+    
+    self.context[@"objc_loading_start_recover_wallet"] = ^() {
+        [weakSelf loading_start_recover_wallet];
+    };
+    
+    self.context[@"objc_on_success_recover_with_passphrase"] = ^(NSDictionary *totalReceived, NSString *finalBalance) {
+        [weakSelf on_success_recover_with_passphrase:totalReceived];
+    };
+    
+    self.context[@"objc_on_error_recover_with_passphrase"] = ^(NSString *error) {
+        [weakSelf on_error_recover_with_passphrase:error];
+    };
+    
+#pragma mark Settings
+    
+    self.context[@"objc_on_get_account_info_success"] = ^(NSString *accountInfo) {
+        [weakSelf on_get_account_info_success:accountInfo];
+    };
+    
+    self.context[@"objc_on_get_all_currency_symbols_success"] = ^(NSString *currencies) {
+        [weakSelf on_get_all_currency_symbols_success:currencies];
+    };
+    
+    self.context[@"objc_on_error_creating_new_address"] = ^(NSString *error) {
+        [weakSelf on_error_creating_new_address:error];
+    };
+    
+    self.context[@"objc_on_progress_recover_with_passphrase_finalBalance"] = ^(NSString *totalReceived, NSString *finalBalance) {
+        [weakSelf on_progress_recover_with_passphrase:totalReceived finalBalance:finalBalance];
+    };
+    
+    self.context[@"objc_on_success_get_recovery_phrase"] = ^(NSString *recoveryPhrase) {
+        [weakSelf on_success_get_recovery_phrase:recoveryPhrase];
+    };
+    
+    self.context[@"objc_on_change_local_currency_success"] = ^() {
+        [weakSelf on_change_local_currency_success];
+    };
+    
+    self.context[@"objc_on_change_currency_error"] = ^() {
+        [weakSelf on_change_currency_error];
+    };
+    
+    self.context[@"objc_on_change_email_success"] = ^() {
+        [weakSelf on_change_email_success];
+    };
+    
+    self.context[@"objc_on_change_notifications_success"] = ^() {
+        [weakSelf on_change_notifications_success];
+    };
+    
+    self.context[@"objc_on_change_notifications_error"] = ^() {
+        [weakSelf on_change_notifications_error];
+    };
+    
+    self.context[@"objc_on_change_two_step_success"] = ^() {
+        [weakSelf on_change_two_step_success];
+    };
+    
+    self.context[@"objc_on_change_two_step_error"] = ^() {
+        [weakSelf on_change_two_step_error];
+    };
+    
+    self.context[@"objc_on_change_password_success"] = ^() {
+        [weakSelf on_change_password_success];
+    };
+    
+    self.context[@"objc_on_change_password_error"] = ^() {
+        [weakSelf on_change_password_error];
+    };
+    
+    self.context[@"objc_on_verify_mobile_number_success"] = ^() {
+        [weakSelf on_verify_mobile_number_success];
+    };
+    
+    self.context[@"objc_on_verify_mobile_number_error"] = ^() {
+        [weakSelf on_verify_mobile_number_error];
+    };
+    
+    self.context[@"objc_on_change_mobile_number_success"] = ^() {
+        [weakSelf on_change_mobile_number_success];
+    };
+    
+    self.context[@"objc_on_resend_verification_email_success"] = ^() {
+        [weakSelf on_resend_verification_email_success];
+    };
+    
+    self.context[@"objc_show_email_authorization_alert"] = ^() {
+        [weakSelf show_email_authorization_alert];
+    };
+    
+    self.context[@"objc_on_fetch_needs_two_factor_code"] = ^() {
+        [weakSelf on_fetch_needs_two_factor_code];
+    };
+    
+    self.context[@"objc_wrong_two_factor_code"] = ^(NSString *error) {
+        [weakSelf wrong_two_factor_code:error];
+    };
+    
+    [self.context evaluateScript:jsSource];
+    
+    self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.context[@"HDNode"] = [HDNode class];
+    [self login];
+}
+
+- (void)setupWebSocket
+{
+    NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
+    [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
+
+#ifdef ENABLE_CERTIFICATE_PINNING
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+        NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
+        CFDataRef certDataRef = (__bridge CFDataRef)certData;
+        SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);
+        id certificate = (__bridge id)certRef;
+        
+        [webSocketRequest setSR_SSLPinnedCertificates:@[certificate]];
+        [webSocketRequest setSR_comparesPublicKeys:YES];
+        
+        CFRelease(certRef);
+    }
+#endif
+    
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
+    self.webSocket.delegate = self;
+    
+    [self.webSocketTimer invalidate];
+    self.webSocketTimer = nil;
+    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                     target:self
+                                   selector:@selector(pingWebSocket)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [self.webSocket open];
+}
+
+- (void)pingWebSocket
+{
+    if (self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendPing:[@"{ op: \"ping\" }" dataUsingEncoding:NSUTF8StringEncoding] error:&error];
+        if (error) DLog(@"Error sending ping: %@", [error localizedDescription]);
+    } else {
+        DLog(@"reconnecting websocket");
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToXPub:(NSString *)xPub
+{
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"xpub_sub\",\"xpub\":\"%@\"}", xPub] error:&error];
+        if (error) DLog(@"Error subscribing to xpub: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToAddress:(NSString *)address
+{    
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", address] error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
+}
+
+- (void)subscribeToSwipeAddress:(NSString *)address
+{    
+    self.swipeAddressToSubscribe = address;
+
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        NSError *error;
+        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] error:&error];
+        if (error) DLog(@"Error subscribing to swipe address: %@", [error localizedDescription]);
+    } else {
+        [self setupWebSocket];
+    }
 }
 
 - (void)apiGetPINValue:(NSString*)key pin:(NSString*)pin
@@ -72,7 +746,7 @@
     
     [self useDebugSettingsIfSet];
     
-    [self.webView executeJS:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.apiGetPINValue(\"%@\", \"%@\")", key, pin]];
 }
 
 - (void)loadWalletWithGuid:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
@@ -92,64 +766,119 @@
     [self loadWalletWithGuid:nil sharedKey:nil password:nil];
 }
 
-- (void)loadJS
+- (void)login
 {
-    NSError *error = nil;
-    NSString *walletHTML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"wallet-ios" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
-    
-    NSMutableString *connectSrcString = [NSMutableString stringWithString:HTML_CONNECT_SRC_DEFAULT];
-
-    // Append debug endpoints to the connect-src of the content security policy
-#ifdef ENABLE_DEBUG_MENU
-    [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL]]];
-    [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL]]];
-    [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL]]];
-    [connectSrcString appendString:[NSString stringWithFormat:@" %@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL]]];
-#endif
-    
-    walletHTML = [walletHTML stringByReplacingOccurrencesOfString:HTML_CONNECT_SRC_PLACEHOLDER withString:connectSrcString];
-    
-    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];
-    
-    [webView loadHTMLString:walletHTML baseURL:baseURL];
-}
-
-#pragma mark - WebView handlers
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    DLog(@"webViewDidStartLoad:");
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    DLog(@"WebView: didFailLoadWithError:");
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    DLog(@"webViewDidFinishLoad:");
-    
     [self useDebugSettingsIfSet];
     
-    if (self.isNew) {
-        [self getAllCurrencySymbols];
+    if ([delegate respondsToSelector:@selector(walletJSReady)]) {
+        [delegate walletJSReady];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletJSReady!", [delegate class]);
     }
     
-    if ([delegate respondsToSelector:@selector(walletJSReady)])
-        [delegate walletJSReady];
-    
-    if ([delegate respondsToSelector:@selector(walletDidLoad)])
+    if ([delegate respondsToSelector:@selector(walletDidLoad)]) {
         [delegate walletDidLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidLoad!", [delegate class]);
+    }
     
     if (self.guid && self.password) {
         DLog(@"Fetch Wallet");
         
-        if (!self.twoFactorInput) {
-            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS]];
-        } else {
-            [self.webView executeJS:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sharedKey escapeStringForJS], [self.password escapeStringForJS], [self.twoFactorInput escapeStringForJS]];
-        }
+        NSString *escapedSharedKey = self.sharedKey == nil ? @"" : [self.sharedKey escapeStringForJS];
+        NSString *escapedSessionToken = self.sessionToken == nil ? @"" : [self.sessionToken escapeStringForJS];
+        NSString *escapedTwoFactorInput = self.twoFactorInput == nil ? @"" : [self.twoFactorInput escapeStringForJS];
+        
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.login(\"%@\", \"%@\", false, \"%@\", \"%@\", \"%@\")", [self.guid escapeStringForJS], escapedSharedKey, [self.password escapeStringForJS], escapedSessionToken, escapedTwoFactorInput]];
+    }
+}
+
+- (void)resetSyncStatus
+{
+    // Some changes to the wallet requiring syncing afterwards need only specific updates to the UI; reloading the entire Receive screen, for example, is not necessary when setting the default account. Unfortunately information about the specific function that triggers backup is lost by the time multiaddress is called.
+    
+    self.isSettingDefaultAccount = NO;
+}
+
+- (void)setupBackupTransferAll:(id)transferAllController
+{
+    if ([delegate respondsToSelector:@selector(setupBackupTransferAll:)]) {
+        [delegate setupBackupTransferAll:transferAllController];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector setupBackupTransferAll!", [delegate class]);
+    }}
+
+# pragma mark - Socket Delegate
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket
+{
+    DLog(@"websocket opened");
+    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+
+    NSError *error;
+    [webSocket sendString:message error:&error];
+    if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
+{
+    DLog(@"websocket failed with error: %@", [error localizedDescription]);
+    if ([error.localizedDescription isEqualToString:WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE]) {
+        [app failedToValidateCertificate];
+    }
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
+{
+    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
+        // Socket will reopen when app becomes active and after decryption
+        return;
+    }
+    
+    DLog(@"websocket closed: code %li, reason: %@", code, reason);
+    if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        DLog(@"reconnecting websocket");
+        [self setupWebSocket];
+    }
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
+{
+    DLog(@"received websocket message string");
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
+    
+    if (self.swipeAddressToSubscribe) {
+        NSDictionary *message = [string getJSONObject];
+        NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            if (error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // TODO: add alert for error here
+                });
+                return;
+            }
+            
+            uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
+            if (amountReceived > 0) {
+                if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                        [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
+                    }
+                } else {
+                    DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+                }
+            }
+        }];
+        
+        [task resume];
+        
+        self.swipeAddressToSubscribe = nil;
+        
+        [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
     }
 }
 
@@ -158,8 +887,7 @@
 - (BOOL)isInitialized
 {
     // Initialized when the webView is loaded and the wallet is initialized (decrypted and in-memory wallet built)
-    BOOL isInitialized = ([self.webView isLoaded] &&
-            [[self.webView executeJSSynchronous:@"MyWallet.getIsInitialized()"] boolValue]);
+    BOOL isInitialized = [[self.context evaluateScript:@"MyWallet.getIsInitialized()"] toBool];
     if (!isInitialized) {
         DLog(@"Warning: Wallet not initialized!");
     }
@@ -170,9 +898,9 @@
 - (BOOL)hasEncryptedWalletData
 {
     if ([self isInitialized])
-        return [[self.webView executeJSSynchronous:@"MyWalletPhone.hasEncryptedWalletData()"] boolValue];
+    return [[self.context evaluateScript:@"MyWalletPhone.hasEncryptedWalletData()"] toBool];
     else
-        return NO;
+    return NO;
 }
 
 - (void)pinServerPutKeyOnPinServerServer:(NSString*)key value:(NSString*)value pin:(NSString*)pin
@@ -180,38 +908,34 @@
     if (![self isInitialized]) {
         return;
     }
-    [self.webView executeJS:@"MyWalletPhone.pinServerPutKeyOnPinServerServer(\"%@\", \"%@\", \"%@\")", key, value, pin];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.pinServerPutKeyOnPinServerServer(\"%@\", \"%@\", \"%@\")", key, value, pin]];
 }
 
 - (NSString*)encrypt:(NSString*)data password:(NSString*)_password pbkdf2_iterations:(int)pbkdf2_iterations
 {
-    return [self.webView executeJSSynchronous:@"WalletCrypto.encrypt(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"WalletCrypto.encrypt(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
 }
 
 - (NSString*)decrypt:(NSString*)data password:(NSString*)_password pbkdf2_iterations:(int)pbkdf2_iterations
 {
-    return [self.webView executeJSSynchronous:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
 }
 
-- (CGFloat)getStrengthForPassword:(NSString *)passwordString
+- (float)getStrengthForPassword:(NSString *)passwordString
 {
-    if (![self.webView isLoaded]) {
-        return 0;
-    }
-    
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.get_password_strength(\"%@\")", [passwordString escapeStringForJS]] floatValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPasswordStrength(\"%@\")", [passwordString escapeStringForJS]]] toDouble];
 }
 
 - (void)getHistory
 {
     if ([self isInitialized])
-        [self.webView executeJS:@"MyWalletPhone.get_history()"];
+    [self.context evaluateScript:@"MyWalletPhone.get_history()"];
 }
 
 - (void)getWalletAndHistory
 {
     if ([self isInitialized])
-        [self.webView executeJS:@"MyWalletPhone.get_wallet_and_history()"];
+    [self.context evaluateScript:@"MyWalletPhone.get_wallet_and_history()"];
 }
 
 - (void)getHistoryIfNoTransactionMessage
@@ -222,36 +946,11 @@
     }
 }
 
-- (void)filterTransactionsByImportedAddresses
-{
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity('imported')"];
-}
-
-- (void)filterTransactionsByAccount:(int)account
-{
-    [self updateTransactionsWithCommand:[NSString stringWithFormat:@"MyWalletPhone.getTransactionsWithIdentity(%d)", account]];
-}
-
-- (void)removeTransactionsFilter
-{
-    [self updateTransactionsWithCommand:@"MyWalletPhone.getTransactionsWithIdentity()"];
-}
-
-- (void)updateTransactionsWithCommand:(NSString *)command
+- (void)fetchMoreTransactions
 {
     if ([self isInitialized]) {
-        
-        NSMutableArray *filteredTransactions = [NSMutableArray array];
-        
-        NSArray *transactions = [self filteredTransactions:command];
-        
-        for (NSDictionary *dict in transactions) {
-            Transaction *tx = [Transaction fromJSONDict:dict];
-            
-            [filteredTransactions addObject:tx];
-        }
-        
-        [delegate didFilterTransactions:filteredTransactions];
+        self.isFetchingTransactions = YES;
+        [self.context evaluateScript:@"MyWalletPhone.fetchMoreTransactions()"];
     }
 }
 
@@ -261,28 +960,12 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllTransactionsCount()"] intValue];
-}
-
-- (NSArray *)filteredTransactions:(NSString *)command
-{
-    if ([self isInitialized]) {
-        
-        NSString *filteredTransactionsJSON = [self.webView executeJSSynchronous:[NSString stringWithFormat:@"JSON.stringify(%@)", command]];
-        
-        return [filteredTransactionsJSON getJSONObject];
-    }
-    
-    return nil;
+    return [[[self.context evaluateScript:@"MyWalletPhone.getAllTransactionsCount()"] toNumber] intValue];
 }
 
 - (void)getAllCurrencySymbols
 {
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_all_currency_symbols())"];
+    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getAllCurrencySymbols())"];
 }
 
 - (void)changeLocalCurrency:(NSString *)currencyCode
@@ -291,7 +974,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_local_currency(\"%@\")", [currencyCode escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeLocalCurrency(\"%@\")", [currencyCode escapeStringForJS]]];
 }
 
 - (void)changeBtcCurrency:(NSString *)btcCode
@@ -300,7 +983,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_btc_currency(\"%@\")", [btcCode escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeBtcCurrency(\"%@\")", [btcCode escapeStringForJS]]];
 }
 
 - (void)getAccountInfo
@@ -309,7 +992,79 @@
         return;
     }
     
-    [self.webView executeJS:@"JSON.stringify(MyWalletPhone.get_account_info())"];
+    [self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getAccountInfo())"];
+}
+
+- (NSString *)getEmail
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getEmail()"] toString];
+}
+
+- (NSString *)getSMSNumber
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"] toString];
+}
+
+- (BOOL)getSMSVerifiedStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getSMSVerifiedStatus()"] toBool];
+}
+
+- (NSDictionary *)getFiatCurrencies
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
+}
+
+- (NSDictionary *)getBtcCurrencies
+{
+    if (![self isInitialized]) {
+        return nil;
+    }
+    
+    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_BTC_CURRENCIES];
+}
+
+- (int)getTwoStepType
+{
+    if (![self isInitialized]) {
+        return -1;
+    }
+    
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue];
+}
+
+- (BOOL)getEmailVerifiedStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getEmailVerifiedStatus()"] toBool];
+}
+
+- (BOOL)getTorBlockingStatus
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
 }
 
 - (void)changeEmail:(NSString *)newEmail
@@ -318,7 +1073,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_email_account(\"%@\")", [newEmail escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeEmail(\"%@\")", [newEmail escapeStringForJS]]];
 }
 
 - (void)resendVerificationEmail:(NSString *)email
@@ -327,7 +1082,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.resend_verification_email(\"%@\")", [email escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resendEmailConfirmation(\"%@\")", [email escapeStringForJS]]];
 }
 
 - (void)changeMobileNumber:(NSString *)newMobileNumber
@@ -336,7 +1091,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_mobile_number(\"%@\")", [newMobileNumber escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeMobileNumber(\"%@\")", [newMobileNumber escapeStringForJS]]];
 }
 
 - (void)verifyMobileNumber:(NSString *)code
@@ -345,7 +1100,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.verify_mobile_number(\"%@\")", [code escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.verifyMobile(\"%@\")", [code escapeStringForJS]]];
 }
 
 - (void)enableTwoStepVerificationForSMS
@@ -354,7 +1109,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.enable_two_step_verification_sms()"];
+    [self.context evaluateScript:@"MyWalletPhone.setTwoFactorSMS()"];
 }
 
 - (void)disableTwoStepVerification
@@ -363,16 +1118,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.disable_two_step_verification()"];
-}
-
-- (void)updatePasswordHint:(NSString *)hint
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.webView executeJS:@"MyWalletPhone.update_password_hint(\"%@\")", [hint escapeStringForJS]];
+    [self.context evaluateScript:@"MyWalletPhone.unsetTwoFactor()"];
 }
 
 - (void)changePassword:(NSString *)changedPassword
@@ -381,7 +1127,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.change_password(\"%@\")", [changedPassword escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePassword(\"%@\")", [changedPassword escapeStringForJS]]];
 }
 
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword
@@ -390,7 +1136,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isCorrectMainPassword(\"%@\")", [inputedPassword escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isCorrectMainPassword(\"%@\")", [inputedPassword escapeStringForJS]]] toBool];
 }
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
@@ -398,9 +1144,9 @@
     NSString * txProgressID;
     
     if (secondPassword) {
-        txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend(\"%@\")", [secondPassword escapeStringForJS]];
+        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(true, \"%@\")", [secondPassword escapeStringForJS]]] toString];
     } else {
-        txProgressID = [self.webView executeJSSynchronous:@"MyWalletPhone.quickSend()"];
+        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(true)"] toString];
     }
     
     if (listener) {
@@ -408,27 +1154,84 @@
     }
 }
 
-- (uint64_t)parseBitcoinValue:(NSString*)input
+- (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    if (![self.webView isLoaded]) {
-        return 0;
+    NSString * txProgressID;
+    
+    if (secondPassword) {
+        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(false, \"%@\")", [secondPassword escapeStringForJS]]] toString];
+    } else {
+        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(false)"] toString];
     }
     
-    return [[self.webView executeJSSynchronous:@"Helpers.precisionToSatoshiBN(\"%@\").toString()", input] longLongValue];
+    if (listener) {
+        [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+}
+
+- (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
+{
+    // The reason to to check for textInputMode.primaryLanguage is that [NSLocale currentLocale] will still return the system language (which can be different from the textInputMode.primaryLanguage) when the keyboard is using Eastern Arabic numerals.
+    // However, we cannot always rely on textInputMode.primaryLanguage - in the Receive screen, the textInputModes for the amount fields in the keyboard input accessory view are null when the keyboard is not visible.
+    // Therefore, use [NSLocale currentLocale] if textInputMode is unavailable.
+    NSString *language = textField.textInputMode.primaryLanguage;
+    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
+    
+    return [self parseBitcoinValueFromString:textField.text locale:locale];
+}
+
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale
+{
+    __block NSString *requestedAmountString;
+    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR]) {
+        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+        [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
+        
+        NSError *error;
+        NSRange range = NSMakeRange(0, [inputString length]);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
+        
+        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
+        
+        NSMutableString *replaced = [inputString mutableCopy];
+        __block NSInteger offset = 0;
+        [regex enumerateMatchesInString:inputString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
+            NSString *key = [inputString substringWithRange:range1];
+            NSString *value = easternArabicNumeralDictionary[key];
+            if (value != nil) {
+                NSRange range = [result range]; // range of the matched pattern
+                // Update location according to previous modifications:
+                range.location += offset;
+                [replaced replaceCharactersInRange:range withString:value];
+                offset += value.length - range.length; // Update offset
+            }
+            requestedAmountString = [NSString stringWithString:replaced];
+        }];
+    } else {
+        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        if (![requestedAmountString containsString:@"."]) {
+            requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        }
+    }
+
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.precisionToSatoshiBN(\"%@\", %lld).toString()", [requestedAmountString escapeStringForJS], app.latestResponse.symbol_btc.conversion]] toNumber] longLongValue];
 }
 
 // Make a request to blockchain.info to get the session id SID in a cookie. This cookie is around for new instances of UIWebView and will be used to let the server know the user is trying to gain access from a new device. The device is recognized based on the SID.
 - (void)loadWalletLogin
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/wallet/login", [app serverURL]]];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:requestObj];
+    if (!self.sessionToken) {
+        [self getSessionToken];
+    }
 }
 
 - (void)parsePairingCode:(NSString*)code
 {
     [self useDebugSettingsIfSet];
-    [self.webView executeJS:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]]];
 }
 
 // Pairing code JS callbacks
@@ -436,22 +1239,28 @@
 - (void)didParsePairingCode:(NSDictionary *)dict
 {
     DLog(@"didParsePairingCode:");
-
-    if ([delegate respondsToSelector:@selector(didParsePairingCode:)])
+    
+    if ([delegate respondsToSelector:@selector(didParsePairingCode:)]) {
         [delegate didParsePairingCode:dict];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didParsePairingCode:!", [delegate class]);
+    }
 }
 
 - (void)errorParsingPairingCode:(NSString *)message
 {
     DLog(@"errorParsingPairingCode:");
     
-    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)])
+    if ([delegate respondsToSelector:@selector(errorParsingPairingCode:)]) {
         [delegate errorParsingPairingCode:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorParsingPairingCode:!", [delegate class]);
+    }
 }
 
 - (void)newAccount:(NSString*)__password email:(NSString *)__email
 {
-    [self.webView executeJS:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.newAccount(\"%@\", \"%@\", \"%@\")", [__password escapeStringForJS], [__email escapeStringForJS], BC_STRING_MY_BITCOIN_WALLET]];
 }
 
 - (BOOL)needsSecondPassword
@@ -460,7 +1269,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isDoubleEncrypted"] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.isDoubleEncrypted"]] toBool];
 }
 
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
@@ -469,7 +1278,7 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.validateSecondPassword(\"%@\")", [secondPassword escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.validateSecondPassword(\"%@\")", [secondPassword escapeStringForJS]]] toBool];
 }
 
 - (void)getFinalBalance
@@ -478,9 +1287,7 @@
         return;
     }
     
-    [self.webView executeJSWithCallback:^(NSString * final_balance) {
-        self.final_balance = [final_balance longLongValue];
-    } command:@"MyWallet.wallet.finalBalance"];
+    self.final_balance = [[[self.context evaluateScript:@"MyWallet.wallet.finalBalance"] toNumber] longLongValue];
 }
 
 - (void)getTotalSent
@@ -489,9 +1296,7 @@
         return;
     }
     
-    [self.webView executeJSWithCallback:^(NSString * total_sent) {
-        self.total_sent = [total_sent longLongValue];
-    } command:@"MyWallet.wallet.totalSent"];
+    self.total_sent = [[[self.context evaluateScript:@"MyWallet.wallet.totalSent"] toNumber] longLongValue];
 }
 
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address
@@ -501,7 +1306,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]] boolValue];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]]] toBool];
     } else {
         return NO;
     }
@@ -514,7 +1319,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").label", [address escapeStringForJS]];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.labelForLegacyAddress(\"%@\")", [address escapeStringForJS]]] toString];
     } else {
         return nil;
     }
@@ -526,7 +1331,7 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(\"%@\")", [address escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isArchived(\"%@\")", [address escapeStringForJS]]] toBool];
 }
 
 - (Boolean)isActiveAccountArchived:(int)account
@@ -535,7 +1340,7 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(MyWalletPhone.getIndexOfActiveAccount(%d))", account] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isArchived(MyWalletPhone.getIndexOfActiveAccount(%d))", account]] toBool];
 }
 
 - (Boolean)isAccountArchived:(int)account
@@ -544,7 +1349,7 @@
         return FALSE;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isArchived(%d)", account] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isArchived(%d)", account]] toBool];
 }
 
 - (BOOL)isBitcoinAddress:(NSString*)string
@@ -553,7 +1358,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]]] toBool];
 }
 
 - (NSArray*)allLegacyAddresses
@@ -562,9 +1367,9 @@
         return nil;
     }
     
-    NSString * allAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.addresses)"];
+    NSString * allAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.addresses)"] toString];
     
-    return [allAddressesJSON getJSONObject];        
+    return [allAddressesJSON getJSONObject];
 }
 
 - (NSArray*)activeLegacyAddresses
@@ -573,7 +1378,7 @@
         return nil;
     }
     
-    NSString *activeAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.activeAddresses)"];
+    NSString *activeAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.activeAddresses)"] toString];
     
     return [activeAddressesJSON getJSONObject];
 }
@@ -584,7 +1389,7 @@
         return nil;
     }
     
-    NSString *spendableActiveAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.spendableActiveAddresses)"];
+    NSString *spendableActiveAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.spendableActiveAddresses)"] toString];
     
     return [spendableActiveAddressesJSON getJSONObject];
 }
@@ -595,7 +1400,7 @@
         return nil;
     }
     
-    NSString *activeAddressesJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.getLegacyArchivedAddresses())"];
+    NSString *activeAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.getLegacyArchivedAddresses())"] toString];
     
     return [activeAddressesJSON getJSONObject];
 }
@@ -608,7 +1413,7 @@
     
     self.isSyncing = YES;
     
-    [self.webView executeJS:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setLabelForAddress(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]]];
 }
 
 - (void)toggleArchiveLegacyAddress:(NSString*)address
@@ -619,9 +1424,7 @@
     
     self.isSyncing = YES;
     
-    [self.webView executeJS:@"MyWalletPhone.toggleArchived(\"%@\")", [address escapeStringForJS]];
-    
-    [self getHistory];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.toggleArchived(\"%@\")", [address escapeStringForJS]]];
 }
 
 - (void)toggleArchiveAccount:(int)account
@@ -632,9 +1435,7 @@
     
     self.isSyncing = YES;
     
-    [self.webView executeJS:@"MyWalletPhone.toggleArchived(%d)", account];
-    
-    [self getHistory];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.toggleArchived(%d)", account]];
 }
 
 - (void)archiveTransferredAddresses:(NSArray *)transferredAddresses
@@ -643,7 +1444,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.archiveTransferredAddresses(\"%@\")", [[transferredAddresses jsonString] escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.archiveTransferredAddresses(\"%@\")", [[transferredAddresses jsonString] escapeStringForJS]]];
 }
 
 - (uint64_t)getLegacyAddressBalance:(NSString*)address
@@ -654,7 +1455,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[self.webView executeJSSynchronous:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]] longLongValue];
+        return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]]] toNumber] longLongValue];
     } else {
         DLog(@"Wallet error: Tried to get balance of address %@, which was not found in this wallet", address);
         return errorBalance;
@@ -667,7 +1468,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.addKey(\"%@\")", [privateKeyString escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addKey(\"%@\")", [privateKeyString escapeStringForJS]]] toBool];
 }
 
 - (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress
@@ -676,7 +1477,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.addKeyToLegacyAddress(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addKeyToLegacyAddress(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]]] toBool];
 }
 
 - (void)sendFromWatchOnlyAddress:(NSString *)watchOnlyAddress privateKey:(NSString *)privateKeyString
@@ -685,7 +1486,7 @@
         return;
     }
     
-    [self.webView executeJS:[NSString stringWithFormat:@"MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]]];
 }
 
 - (NSDictionary*)addressBook
@@ -694,7 +1495,7 @@
         return [[NSDictionary alloc] init];
     }
     
-    NSString * addressBookJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWallet.wallet.addressBook)"];
+    NSString * addressBookJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.addressBook)"] toString];
     
     return [addressBookJSON getJSONObject];
 }
@@ -705,12 +1506,12 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]]];
 }
 
 - (void)clearLocalStorage
 {
-    [self.webView executeJS:@"localStorage.clear();"];
+    [self.context evaluateScript:@"localStorage.clear();"];
 }
 
 - (NSString*)detectPrivateKeyFormat:(NSString*)privateKeyString
@@ -719,7 +1520,7 @@
         return nil;
     }
     
-   return [self.webView executeJSSynchronous:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]]] toString];
 }
 
 - (void)createNewPayment
@@ -728,7 +1529,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.createNewPayment()"];
+    [self.context evaluateScript:@"MyWalletPhone.createNewPayment()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
@@ -737,7 +1538,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(%d, %d)", fromInt, isAdvanced];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentFrom(%d, %d)", fromInt, isAdvanced]];
 }
 
 - (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced
@@ -746,7 +1547,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentFrom(\"%@\", %d)", [fromString escapeStringForJS], isAdvanced];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentFrom(\"%@\", %d)", [fromString escapeStringForJS], isAdvanced]];
 }
 
 - (void)changePaymentToAccount:(int)toInt
@@ -755,7 +1556,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentTo(%d)", toInt];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentTo(%d)", toInt]];
 }
 
 - (void)changePaymentToAddress:(NSString *)toString
@@ -764,7 +1565,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentTo(\"%@\")", [toString escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentTo(\"%@\")", [toString escapeStringForJS]]];
 }
 
 - (void)changePaymentAmount:(uint64_t)amount
@@ -773,34 +1574,43 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changePaymentAmount(%lld)", amount];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changePaymentAmount(%lld)", amount]];
 }
 
-- (void)getInfoForTransferAllFundsToDefaultAccount
+- (void)getInfoForTransferAllFundsToAccount
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getInfoForTransferAllFundsToDefaultAccount()"];
+    [self.context evaluateScript:@"MyWalletPhone.getInfoForTransferAllFundsToAccount()"];
 }
 
-- (void)setupFirstTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
+- (void)setupFirstTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(true, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToAccount(%d, true, \"%@\", \"%@\", %d)", account, [address escapeStringForJS], [secondPassword escapeStringForJS], useSendPayment]];
 }
 
-- (void)setupFollowingTransferForAllFundsToDefaultAccount:(NSString *)address secondPassword:(NSString *)secondPassword
+- (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.transferAllFundsToDefaultAccount(false, \"%@\", \"%@\")", [address escapeStringForJS], [secondPassword escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferAllFundsToAccount(%d, false, \"%@\", \"%@\", %d)", account, [address escapeStringForJS], [secondPassword escapeStringForJS], useSendPayment]];
+}
+
+- (void)transferFundsToDefaultAccountFromAddress:(NSString *)address
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferFundsToDefaultAccountFromAddress(\"%@\")", [address escapeStringForJS]]];
 }
 
 - (void)sweepPaymentRegular
@@ -809,7 +1619,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentRegular()"];
+    [self.context evaluateScript:@"MyWalletPhone.sweepPaymentRegular()"];
 }
 
 - (void)sweepPaymentRegularThenConfirm
@@ -818,7 +1628,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentRegularThenConfirm()"];
+    [self.context evaluateScript:@"MyWalletPhone.sweepPaymentRegularThenConfirm()"];
 }
 
 - (void)sweepPaymentAdvanced:(uint64_t)fee
@@ -827,7 +1637,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentAdvanced(%lld)", fee];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sweepPaymentAdvanced(%lld)", fee]];
 }
 
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee
@@ -836,7 +1646,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentAdvancedThenConfirm(%lld)", fee];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sweepPaymentAdvancedThenConfirm(%lld)", fee]];
 }
 
 - (void)sweepPaymentThenConfirm:(BOOL)willConfirm isAdvanced:(BOOL)isAdvanced
@@ -845,7 +1655,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.sweepPaymentThenConfirm(%d, %d)", willConfirm, isAdvanced];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sweepPaymentThenConfirm(%d, %d)", willConfirm, isAdvanced]];
 }
 
 - (void)checkIfOverspending
@@ -854,7 +1664,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.checkIfUserIsOverSpending()"];
+    [self.context evaluateScript:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
 - (void)changeForcedFee:(uint64_t)fee
@@ -863,7 +1673,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.changeForcedFee(%lld)", fee];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeForcedFee(%lld)", fee]];
 }
 
 - (void)getFeeBounds:(uint64_t)fee
@@ -872,7 +1682,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getFeeBounds(%lld)", fee];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFeeBounds(%lld)", fee]];
 }
 
 - (void)getTransactionFee
@@ -881,7 +1691,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.getTransactionFee()"];
+    [self.context evaluateScript:@"MyWalletPhone.getTransactionFee()"];
 }
 
 - (void)getSurgeStatus
@@ -890,7 +1700,7 @@
         return;
     }
     
-    return [self.webView executeJS:@"MyWalletPhone.getSurgeStatus()"];
+    [self.context evaluateScript:@"MyWalletPhone.getSurgeStatus()"];
 }
 
 - (uint64_t)dust
@@ -899,7 +1709,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.dust()"] longLongValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.dust()"] toNumber] longLongValue];
 }
 
 - (void)generateNewKey
@@ -908,7 +1718,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.generateNewAddress()"];
+    [self.context evaluateScript:@"MyWalletPhone.generateNewAddress()"];
 }
 
 - (BOOL)checkIfWalletHasAddress:(NSString *)address
@@ -917,35 +1727,26 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.checkIfWalletHasAddress(\"%@\")", [address escapeStringForJS]] ] toBool];
 }
 
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase
 {
-    if (![self.webView isLoaded]) {
-        return;
-    }
-    
     [self useDebugSettingsIfSet];
     
     self.emptyAccountIndex = 0;
     self.recoveredAccountIndex = 0;
-    [self.webView executeJS:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.recoverWithPassphrase(\"%@\",\"%@\",\"%@\")", [email escapeStringForJS], [recoveryPassword escapeStringForJS], [passphrase escapeStringForJS]]];
 }
 
 - (void)resendTwoFactorSMS
 {
-    if ([self.webView isLoaded]) {
-        [self.webView executeJS:@"MyWalletPhone.resendTwoFactorSms(\"%@\")", [self.guid escapeStringForJS]];
-    }
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.resendTwoFactorSms(\"%@\", \"%@\")", [self.guid escapeStringForJS], [self.sessionToken escapeStringForJS]]];
 }
 
 - (NSString *)get2FAType
 {
-    if ([self.webView isLoaded]) {
-        return [self.webView executeJSSynchronous:@"MyWalletPhone.get2FAType()"];
-    }
-    return nil;
+    return [[self.context evaluateScript:@"MyWalletPhone.get2FAType()"] toString];
 }
 
 - (void)enableEmailNotifications
@@ -954,7 +1755,7 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.enableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.enableEmailNotifications()"];
 }
 
 - (void)disableEmailNotifications
@@ -963,43 +1764,40 @@
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.disableNotifications()"];
+    [self.context evaluateScript:@"MyWalletPhone.disableEmailNotifications()"];
 }
 
-- (void)changeTorBlocking:(BOOL)willEnable
+- (void)enableSMSNotifications
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.webView executeJS:@"MyWalletPhone.update_tor_ip_block(%d)", willEnable];
+    [self.context evaluateScript:@"MyWalletPhone.enableSMSNotifications()"];
 }
 
-- (void)on_update_tor_success
+- (void)disableSMSNotifications
 {
-    DLog(@"on_update_tor_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-}
-
-- (void)on_update_tor_error
-{
-    DLog(@"on_update_tor_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TOR_BLOCKING_SUCCESS object:nil];
-}
+    if (![self isInitialized]) {
+        return;
+    }
     
+    [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
+}
+
 - (void)updateServerURL:(NSString *)newURL
 {
-    [self.webView executeJS:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]]];
 }
 
 - (void)updateWebSocketURL:(NSString *)newURL
 {
-    [self.webView executeJS:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateWebsocketURL(\"%@\")", [newURL escapeStringForJS]]];
 }
 
 - (void)updateAPIURL:(NSString *)newURL
 {
-    [self.webView executeJS:@"MyWalletPhone.updateAPIURL(\"%@\")", [newURL escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateAPIURL(\"%@\")", [newURL escapeStringForJS]]];
 }
 
 - (NSDictionary *)filteredWalletJSON
@@ -1008,7 +1806,7 @@
         return nil;
     }
     
-    NSString * filteredWalletJSON = [self.webView executeJSSynchronous:@"JSON.stringify(MyWalletPhone.filteredWalletJSON())"];
+    NSString * filteredWalletJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.filteredWalletJSON())"] toString];
     
     return [filteredWalletJSON getJSONObject];
 }
@@ -1019,7 +1817,7 @@
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.getXpubForAccount(%d)", accountIndex];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getXpubForAccount(%d)", accountIndex]] toString];
 }
 
 - (BOOL)isAccountNameValid:(NSString *)name
@@ -1028,7 +1826,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isAccountNameValid(\"%@\")", [name escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isAccountNameValid(\"%@\")", [name escapeStringForJS]]] toBool];
 }
 
 - (BOOL)isAddressAvailable:(NSString *)address
@@ -1037,7 +1835,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isAddressAvailable(\"%@\")", [address escapeStringForJS]] boolValue];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isAddressAvailable(\"%@\")", [address escapeStringForJS]]] toBool];
 }
 
 - (BOOL)isAccountAvailable:(int)account
@@ -1045,8 +1843,8 @@
     if (![self isInitialized]) {
         return NO;
     }
-
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.isAccountAvailable(%d)", account] boolValue];
+    
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isAccountAvailable(%d)", account]] toBool];
 }
 
 - (int)getIndexOfActiveAccount:(int)account
@@ -1055,7 +1853,66 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getIndexOfActiveAccount(%d)", account] intValue];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getIndexOfActiveAccount(%d)", account]] toNumber] intValue];
+}
+
+- (void)getSessionToken
+{
+    [self.context evaluateScript:@"MyWalletPhone.getSessionToken()"];
+}
+
+- (BOOL)emailNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.emailNotificationsEnabled()"] toBool];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
+}
+
+- (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    NSString *text = [note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (text.length == 0) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.deleteNote(\"%@\")", [hash escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    }
+}
+
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+}
+
+
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter
+{
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(%li, \"%@\")", (long)filter, transaction.myHash]] toString];
+}
+
+- (void)incrementReceiveIndexOfDefaultAccount
+{
+    [self.context evaluateScript:@"MyWalletPhone.incrementReceiveIndexOfDefaultAccount()"];
+}
+
+- (int)getDefaultAccountLabelledAddressesCount
+{
+    return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
+}
+
+- (JSValue *)executeJSSynchronous:(NSString *)command
+{
+    return [self.context evaluateScript:command];
 }
 
 # pragma mark - Transaction handlers
@@ -1188,9 +2045,9 @@
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_RECOVERING_WALLET];
 }
 
-- (void)loading_start_transfer_all:(NSNumber *)addressIndex
+- (void)loading_start_transfer_all:(NSNumber *)addressIndex totalAddresses:(NSNumber *)totalAddresses
 {
-    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, [addressIndex intValue], [[self spendableActiveLegacyAddresses] count]]];
+    [app showBusyViewWithLoadingText:[NSString stringWithFormat:BC_STRING_TRANSFER_ALL_CALCULATING_AMOUNTS_AND_FEES_ARGUMENT_OF_ARGUMENT, addressIndex, totalAddresses]];
 }
 
 - (void)loading_stop
@@ -1201,7 +2058,7 @@
 
 - (void)upgrade_success
 {
-    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
     
     [app reloadTransactionFilterLabel];
 }
@@ -1226,12 +2083,12 @@
 - (void)on_fetch_needs_two_factor_code
 {
     DLog(@"on_fetch_needs_two_factor_code");
-    NSString *twoFactorType = [app.wallet get2FAType];
-    if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_GOOGLE) {
+    int twoFactorType = [[app.wallet get2FAType] intValue];
+    if (twoFactorType == TWO_STEP_AUTH_TYPE_GOOGLE) {
         [app verifyTwoFactorGoogle];
-    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_SMS) {
+    } else if (twoFactorType == TWO_STEP_AUTH_TYPE_SMS) {
         [app verifyTwoFactorSMS];
-    } else if ([twoFactorType intValue] == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
+    } else if (twoFactorType == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
         [app verifyTwoFactorYubiKey];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_INVALID_AUTHENTICATION_TYPE];
@@ -1246,28 +2103,38 @@
     
     DLog(@"did_set_latest_block");
     
-    [self.webView executeJSWithCallback:^(NSString* latestBlockJSON) {
-        
-        [self parseLatestBlockJSON:latestBlockJSON];
-        
-    } command:@"JSON.stringify(MyWallet.wallet.latestBlock)"];
+    [self parseLatestBlockJSON:[[self.context evaluateScript:@"MyWalletPhone.didSetLatestBlock()"] toString]];
 }
 
 - (void)parseLatestBlockJSON:(NSString*)latestBlockJSON
 {
-    if ([latestBlockJSON isEqualToString:@"null"]) {
+    if ([latestBlockJSON isEqualToString:@""]) {
         return;
     }
     
-    NSDictionary *dict = [latestBlockJSON getJSONObject];
+    id dict = [latestBlockJSON getJSONObject];
     
-    LatestBlock *latestBlock = [[LatestBlock alloc] init];
-    
-    latestBlock.height = [[dict objectForKey:@"height"] intValue];
-    latestBlock.time = [[dict objectForKey:@"time"] longLongValue];
-    latestBlock.blockIndex = [[dict objectForKey:@"block_index"] intValue];
-    
-    [delegate didSetLatestBlock:latestBlock];
+    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
+        LatestBlock *latestBlock = [[LatestBlock alloc] init];
+        
+        latestBlock.height = [[dict objectForKey:@"height"] intValue];
+        latestBlock.time = [[dict objectForKey:@"time"] longLongValue];
+        latestBlock.blockIndex = [[dict objectForKey:@"block_index"] intValue];
+        
+        if ([delegate respondsToSelector:@selector(didSetLatestBlock:)]) {
+            [delegate didSetLatestBlock:latestBlock];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didSetLatestBlock:!", [delegate class]);
+        }
+    } else {
+        DLog(@"Error: could not get JSON object from latest block JSON");
+    }
+}
+
+- (void)reloadFilter
+{
+    self.isFilteringTransactions = YES;
+    [self did_multiaddr];
 }
 
 - (void)did_multiaddr
@@ -1280,39 +2147,43 @@
     
     [self getFinalBalance];
     
-    NSString *filter;
-    
+    NSString *filter = @"";
+#ifdef ENABLE_TRANSACTION_FILTERING
     int filterIndex = (int)app.transactionsViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
     } else if (filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
-        filter = @"imported";
+        filter = TRANSACTION_FILTER_IMPORTED;
     } else {
         filter = [NSString stringWithFormat:@"%d", filterIndex];
     }
+#endif
     
-    [self.webView executeJSWithCallback:^(NSString * multiAddrJSON) {
-        MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
-
-        if (!self.isSyncing) {
-            [self loading_stop];
-        }
-        
+    NSString *multiAddrJSON = [[self.context evaluateScript:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(\"%@\"))", filter]] toString];
+    
+    MultiAddressResponse *response = [self parseMultiAddrJSON:multiAddrJSON];
+    
+    if (!self.isSyncing) {
+        [self loading_stop];
+    }
+    
+    if ([delegate respondsToSelector:@selector(didGetMultiAddressResponse:)]) {
         [delegate didGetMultiAddressResponse:response];
-        
-    } command:[NSString stringWithFormat:@"JSON.stringify(MyWalletPhone.getMultiAddrResponse(\"%@\"))", filter]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetMultiAddressResponse:!", [delegate class]);
+    }
 }
 
 - (MultiAddressResponse *)parseMultiAddrJSON:(NSString*)multiAddrJSON
 {
     if (multiAddrJSON == nil)
-        return nil;
+    return nil;
     
     NSDictionary *dict = [multiAddrJSON getJSONObject];
     
     MultiAddressResponse *response = [[MultiAddressResponse alloc] init];
-        
+    
     response.final_balance = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_FINAL_BALANCE] longLongValue];
     response.total_received = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_TOTAL_RECEIVED] longLongValue];
     response.n_transactions = [[dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_NUMBER_TRANSACTIONS] unsignedIntValue];
@@ -1328,20 +2199,6 @@
         [response.transactions addObject:tx];
     }
     
-    {
-        NSDictionary *symbolLocalDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL] ;
-        if (symbolLocalDict) {
-            response.symbol_local = [CurrencySymbol symbolFromDict:symbolLocalDict];
-        }
-    }
-    
-    {
-        NSDictionary *symbolBTCDict = [dict objectForKey:DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC] ;
-        if (symbolBTCDict) {
-            response.symbol_btc = [CurrencySymbol symbolFromDict:symbolBTCDict];
-        }
-    }
-    
     return response;
 }
 
@@ -1350,23 +2207,25 @@
     DLog(@"on_tx_received");
     
     self.didReceiveMessageForLastTransaction = YES;
-
-    [app playBeepSound];
     
-    [app.transactionsViewController animateNextCellAfterReload];
+    if ([delegate respondsToSelector:@selector(receivedTransactionMessage)]) {
+        [delegate receivedTransactionMessage];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector receivedTransactionMessage!", [delegate class]);
+    }
 }
 
-- (void)getPrivateKeyPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
+- (void)getPrivateKeyPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
 {
     [app getPrivateKeyPassword:^(NSString *privateKeyPassword) {
-        _success(privateKeyPassword);
+        [success callWithArguments:@[privateKeyPassword]];
     } error:_error];
 }
 
-- (void)getSecondPassword:(NSString *)canDiscard success:(void(^)(id))_success error:(void(^)(id))_error
+- (void)getSecondPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
 {
     [app getSecondPassword:^(NSString *secondPassword) {
-        _success(secondPassword);
+        [success callWithArguments:@[secondPassword]];
     } error:_error];
 }
 
@@ -1383,19 +2242,13 @@
     }
     
     // Don't display an error message for this notice, instead show a note in the sideMenu
-    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {        
+    if ([message isEqualToString:@"For Improved security add an email address to your account."]) {
         return;
     }
     
     NSRange invalidEmailStringRange = [message rangeOfString:@"update-email-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
     if (invalidEmailStringRange.location != NSNotFound) {
         [self performSelector:@selector(on_update_email_error) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
-        return;
-    }
-    
-    NSRange authorizationRequiredStringRange = [message rangeOfString:@"Authorization Required" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (authorizationRequiredStringRange.location != NSNotFound) {
-        [app standardNotifyAutoDismissingController:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_MESSAGE title:BC_STRING_MANUAL_PAIRING_AUTHORIZATION_REQUIRED_TITLE];
         return;
     }
     
@@ -1411,22 +2264,22 @@
         return;
     }
     
-    NSRange updatePasswordHintErrorStringRange = [message rangeOfString:@"password-hint1-error" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (updatePasswordHintErrorStringRange.location != NSNotFound) {
-        [self performSelector:@selector(on_update_password_hint_error) withObject:nil afterDelay:0.1f];
-        return;
-    }
-    
     NSRange incorrectPasswordErrorStringRange = [message rangeOfString:@"please check that your password is correct" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
-    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![app guid]) {
+    if (incorrectPasswordErrorStringRange.location != NSNotFound && ![KeychainItemWrapper guid]) {
         // Error message shown in error_other_decrypting_wallet without guid
         return;
     }
     
+    NSRange errorSavingWalletStringRange = [message rangeOfString:@"Error Saving Wallet" options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
+    if (errorSavingWalletStringRange.location != NSNotFound) {
+        [app standardNotify:BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES];
+        return;
+    }
+    
     if ([type isEqualToString:@"error"]) {
-        [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:message title:BC_STRING_ERROR];
     } else if ([type isEqualToString:@"info"]) {
-        [app standardNotify:message title:BC_STRING_INFORMATION delegate:nil];
+        [app standardNotify:message title:BC_STRING_INFORMATION];
     }
 }
 
@@ -1440,18 +2293,18 @@
         NSRange identifierRange = [message rangeOfString:BC_STRING_IDENTIFIER options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         NSRange connectivityErrorRange = [message rangeOfString:ERROR_FAILED_NETWORK_REQUEST options:NSCaseInsensitiveSearch range:NSMakeRange(0, message.length) locale:[NSLocale currentLocale]];
         if (identifierRange.location != NSNotFound) {
-            [app standardNotify:message title:BC_STRING_ERROR delegate:nil];
+            [app standardNotify:message title:BC_STRING_ERROR];
             [self error_restoring_wallet];
             return;
         } else if (connectivityErrorRange.location != NSNotFound) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+                [app standardNotify:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION title:BC_STRING_ERROR];
             });
             [self error_restoring_wallet];
             return;
         }
         
-        if (![app guid]) {
+        if (![KeychainItemWrapper guid]) {
             // This error is used whe trying to login with incorrect passwords or when the account is locked, so present an alert if the app has no guid, since it currently conflicts with makeNotice when backgrounding after changing password in-app
             [app standardNotifyAutoDismissingController:message];
         }
@@ -1461,30 +2314,37 @@
 - (void)error_restoring_wallet
 {
     DLog(@"error_restoring_wallet");
-    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)])
+    if ([delegate respondsToSelector:@selector(walletFailedToDecrypt)]) {
         [delegate walletFailedToDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_decrypt
 {
     DLog(@"did_decrypt");
     
-    if (self.didPairAutomatically) {
-        self.didPairAutomatically = NO;
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL] title:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE delegate:nil];
+    if (self.webSocket) {
+        [self.webSocket closeWithCode:WEBSOCKET_CODE_DECRYPTED_WALLET reason:WEBSOCKET_CLOSE_REASON_DECRYPTED_WALLET];
+    } else {
+        [self setupWebSocket];
     }
     
-    self.sharedKey = [self.webView executeJSSynchronous:@"MyWallet.wallet.sharedKey"];
-    self.guid = [self.webView executeJSSynchronous:@"MyWallet.wallet.guid"];
-
-    if ([delegate respondsToSelector:@selector(walletDidDecrypt)])
+    self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
+    self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
+    
+    if ([delegate respondsToSelector:@selector(walletDidDecrypt)]) {
         [delegate walletDidDecrypt];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidDecrypt!", [delegate class]);
+    }
 }
 
 - (void)did_load_wallet
 {
     DLog(@"did_load_wallet");
-
+    
     if (self.isNew) {
         
         NSString *currencyCode = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
@@ -1493,26 +2353,30 @@
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
     }
-    
-    self.isNew = NO;
-    
-    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)])
+        
+    if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         [delegate walletDidFinishLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
+    }
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
 {
     DLog(@"on_create_new_account:");
     
-    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)])
+    if ([delegate respondsToSelector:@selector(didCreateNewAccount:sharedKey:password:)]) {
         [delegate didCreateNewAccount:_guid sharedKey:_sharedKey password:_password];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateNewAccount:sharedKey:password:!", [delegate class]);
+    }
 }
 
 - (void)on_add_private_key_start
 {
     DLog(@"on_add_private_key_start");
     self.isSyncing = YES;
-
+    
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_IMPORT_KEY];
 }
 
@@ -1520,9 +2384,15 @@
 {
     DLog(@"on_add_private_key");
     self.isSyncing = YES;
-
+    
+    if (![self isWatchOnlyLegacyAddress:address]) {
+        [self subscribeToAddress:address];
+    }
+    
     if ([delegate respondsToSelector:@selector(didImportKey:)]) {
         [delegate didImportKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportKey:!", [delegate class]);
     }
 }
 
@@ -1533,16 +2403,22 @@
     
     if ([delegate respondsToSelector:@selector(didImportIncorrectPrivateKey:)]) {
         [delegate didImportIncorrectPrivateKey:address];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportIncorrectPrivateKey:!", [delegate class]);
     }
 }
 
-- (void)on_add_private_key_to_legacy_address
+- (void)on_add_private_key_to_legacy_address:(NSString *)address
 {
     DLog(@"on_add_private_key_to_legacy_address:");
     self.isSyncing = YES;
     
+    [self subscribeToAddress:address];
+    
     if ([delegate respondsToSelector:@selector(didImportPrivateKeyToLegacyAddress)]) {
         [delegate didImportPrivateKeyToLegacyAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didImportPrivateKeyToLegacyAddress!", [delegate class]);
     }
 }
 
@@ -1550,6 +2426,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKey:)]) {
         [delegate didFailToImportPrivateKey:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKey:!", [delegate class]);
     }
 }
 
@@ -1557,6 +2435,8 @@
 {
     if ([delegate respondsToSelector:@selector(didFailToImportPrivateKeyForWatchOnlyAddress:)]) {
         [delegate didFailToImportPrivateKeyForWatchOnlyAddress:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailToImportPrivateKeyForWatchOnlyAddress:!", [delegate class]);
     }
 }
 
@@ -1564,56 +2444,77 @@
 {
     DLog(@"on_error_creating_new_account:");
     
-    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)])
+    if ([delegate respondsToSelector:@selector(errorCreatingNewAccount:)]) {
         [delegate errorCreatingNewAccount:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorCreatingNewAccount:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_put_error:(NSString*)message
 {
     DLog(@"on_error_pin_code_put_error:");
     
-    if ([delegate respondsToSelector:@selector(didFailPutPin:)])
+    if ([delegate respondsToSelector:@selector(didFailPutPin:)]) {
         [delegate didFailPutPin:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailPutPin:!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_put_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_put_response: %@", responseObject);
     
-    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)])
+    if ([delegate respondsToSelector:@selector(didPutPinSuccess:)]) {
         [delegate didPutPinSuccess:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didPutPinSuccess:!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_timeout
 {
     DLog(@"on_error_pin_code_get_timeout");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)])
-    [delegate didFailGetPinTimeout];
+    if ([delegate respondsToSelector:@selector(didFailGetPinTimeout)]) {
+        [delegate didFailGetPinTimeout];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinTimeout!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_empty_response
 {
     DLog(@"on_error_pin_code_get_empty_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)])
-    [delegate didFailGetPinNoResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinNoResponse)]) {
+        [delegate didFailGetPinNoResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinNoResponse!", [delegate class]);
+    }
 }
 
 - (void)on_error_pin_code_get_invalid_response
 {
     DLog(@"on_error_pin_code_get_invalid_response");
     
-    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)])
-    [delegate didFailGetPinInvalidResponse];
+    if ([delegate respondsToSelector:@selector(didFailGetPinInvalidResponse)]) {
+        [delegate didFailGetPinInvalidResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailGetPinInvalidResponse!", [delegate class]);
+    }
 }
 
 - (void)on_pin_code_get_response:(NSDictionary*)responseObject
 {
     DLog(@"on_pin_code_get_response:");
     
-    if ([delegate respondsToSelector:@selector(didGetPinResponse:)])
+    if ([delegate respondsToSelector:@selector(didGetPinResponse:)]) {
         [delegate didGetPinResponse:responseObject];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetPinResponse:!", [delegate class]);
+    }
 }
 
 - (void)on_error_maintenance_mode
@@ -1633,45 +2534,71 @@
 {
     DLog(@"on_backup_wallet_error");
     
-    if ([delegate respondsToSelector:@selector(didFailBackupWallet)])
+    if ([delegate respondsToSelector:@selector(didFailBackupWallet)]) {
         [delegate didFailBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailBackupWallet!", [delegate class]);
+    }
+    
+    [self resetSyncStatus];
 }
 
 - (void)on_backup_wallet_success
 {
     DLog(@"on_backup_wallet_success");
-    if ([delegate respondsToSelector:@selector(didBackupWallet)])
+    if ([delegate respondsToSelector:@selector(didBackupWallet)]) {
         [delegate didBackupWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBackupWallet!", [delegate class]);
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     // Hide the busy view if previously syncing
     [self loading_stop];
     self.isSyncing = NO;
+    
+    if (self.isSettingDefaultAccount) {
+        if ([self.delegate respondsToSelector:@selector(didSetDefaultAccount)]) {
+            [self.delegate didSetDefaultAccount];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didSetDefaultAccount!", [delegate class]);
+        }
+    }
 }
 
 - (void)did_fail_set_guid
 {
     DLog(@"did_fail_set_guid");
     
-    if ([delegate respondsToSelector:@selector(walletFailedToLoad)])
+    if ([delegate respondsToSelector:@selector(walletFailedToLoad)]) {
         [delegate walletFailedToLoad];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector walletFailedToLoad!", [delegate class]);
+    }
 }
 
 - (void)on_change_local_currency_success
 {
     DLog(@"on_change_local_currency_success");
     [self getHistory];
+    
+    if ([delegate respondsToSelector:@selector(didChangeLocalCurrency)]) {
+        [delegate didChangeLocalCurrency];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeLocalCurrency!", [delegate class]);
+    }
 }
 
 - (void)on_change_currency_error
 {
     DLog(@"on_change_local_currency_error");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_UPDATING_TITLE];
 }
 
 - (void)on_get_account_info_success:(NSString *)accountInfo
 {
     DLog(@"on_get_account_info");
     self.accountInfo = [accountInfo getJSONObject];
+    self.hasLoadedAccountInfo = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
 }
 
@@ -1731,18 +2658,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_TWO_STEP_ERROR object:nil];
 }
 
-- (void)on_update_password_hint_success
-{
-    DLog(@"on_update_password_hint_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_SUCCESS object:nil];
-}
-
-- (void)on_update_password_hint_error
-{
-    DLog(@"on_update_password_hint_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_PASSWORD_HINT_ERROR object:nil];
-}
-
 - (void)on_change_password_success
 {
     DLog(@"on_change_password_success");
@@ -1758,19 +2673,20 @@
 - (void)on_get_history_success
 {
     DLog(@"on_get_history_success");
-    if (self.isSyncing) {
-        // Required to prevent user input while archiving/unarchiving addresses
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
-- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     DLog(@"update_fee");
     DLog(@"Wallet: fee is %@", fee);
-    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:)]) {
-        [self.delegate didGetFee:fee dust:dust];
+    if ([self.delegate respondsToSelector:@selector(didGetFee:dust:txSize:)]) {
+        [self.delegate didGetFee:fee dust:dust txSize:txSize];
     }
 }
 
@@ -1783,7 +2699,7 @@
 }
 
 - (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
-{    
+{
     DLog(@"update_fee_bounds:confirmationEstimation:maxAmounts:maxFees");
     
     if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:maxAmounts:maxFees:)]) {
@@ -1820,13 +2736,13 @@
 - (void)on_error_update_fee:(NSDictionary *)error
 {
     DLog(@"on_error_update_fee");
-    
-    NSString *message = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS]) {
+    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
+    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
     } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
-        uint64_t threshold = [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue];
-        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_DUST_THRESHOLD, threshold]];
+        uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
+        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
     } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
         [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
     } else {
@@ -1838,21 +2754,37 @@
     }
 }
 
+- (void)on_payment_notice:(NSString *)notice
+{
+    if ([delegate respondsToSelector:@selector(didReceivePaymentNotice:)]) {
+        [delegate didReceivePaymentNotice:notice];
+    } else {
+        DLog(@"Delegate of class %@ does not respond to selector didReceivePaymentNotice!", [delegate class]);
+    }
+}
+
 - (void)on_generate_key
 {
     DLog(@"on_generate_key");
-    [delegate didGenerateNewAddress];
+    if ([delegate respondsToSelector:@selector(didGenerateNewAddress)]) {
+        [delegate didGenerateNewAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGenerateNewAddress!", [delegate class]);
+    }
 }
 
-- (void)on_error_generating_new_address:(NSString*)error
+- (void)on_error_creating_new_address:(NSString*)error
 {
-    DLog(@"on_error_generating_new_address");
+    DLog(@"on_error_creating_new_address");
     [app standardNotify:error];
 }
 
 - (void)on_add_new_account
 {
     DLog(@"on_add_new_account");
+    
+    [self subscribeToXPub:[self getXpubForAccount:[self getActiveAccountsCount] - 1]];
+    
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
 }
 
@@ -1872,8 +2804,11 @@
 {
     DLog(@"on_recover_with_passphrase_success_guid:sharedKey:password:");
     
-    if ([delegate respondsToSelector:@selector(didRecoverWallet)])
+    if ([delegate respondsToSelector:@selector(didRecoverWallet)]) {
         [delegate didRecoverWallet];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRecoverWallet!", [delegate class]);
+    }
     
     [self loadWalletWithGuid:recoveredWalletDictionary[@"guid"] sharedKey:recoveredWalletDictionary[@"sharedKey"] password:recoveredWalletDictionary[@"password"]];
 }
@@ -1882,7 +2817,7 @@
 {
     DLog(@"on_error_recover_with_passphrase:");
     [self loading_stop];
-    if (!error) {
+    if ([error isEqualToString:ERROR_INVALID_PASSPHRASE]) {
         [app standardNotifyAutoDismissingController:BC_STRING_INVALID_RECOVERY_PHRASE];
     } else if ([error isEqualToString:@""]) {
         [app standardNotifyAutoDismissingController:BC_STRING_NO_INTERNET_CONNECTION];
@@ -1891,8 +2826,11 @@
     } else {
         [app standardNotifyAutoDismissingController:error];
     }
-    if ([delegate respondsToSelector:@selector(didFailRecovery)])
+    if ([delegate respondsToSelector:@selector(didFailRecovery)]) {
         [delegate didFailRecovery];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailRecovery!", [delegate class]);
+    }
 }
 
 - (void)on_progress_recover_with_passphrase:(NSString *)totalReceived finalBalance:(NSString *)finalBalance
@@ -1905,20 +2843,20 @@
     } else {
         self.emptyAccountIndex = 0;
         self.recoveredAccountIndex++;
-        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [app formatMoney:fundsInAccount]]];
+        [app updateBusyViewLoadingText:[NSString stringWithFormat:BC_STRING_LOADING_RECOVERING_WALLET_ARGUMENT_FUNDS_ARGUMENT, self.recoveredAccountIndex, [NSNumberFormatter formatMoney:fundsInAccount]]];
     }
 }
 
 - (void)on_error_downloading_account_settings
 {
     DLog(@"on_error_downloading_account_settings");
-    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE delegate:nil];
+    [app standardNotify:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE title:BC_STRING_SETTINGS_ERROR_LOADING_TITLE];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:USER_DEFAULTS_KEY_LOADED_SETTINGS];
 }
 
 - (void)on_update_email_error
 {
-    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR delegate:nil];
+    [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS title:BC_STRING_ERROR];
 }
 
 - (void)on_error_get_history:(NSString *)error
@@ -1939,22 +2877,22 @@
     [app standardNotifyAutoDismissingController:error];
 }
 
-- (void)wrong_two_factor_code
+- (void)wrong_two_factor_code:(NSString *)error
 {
     self.twoFactorInput = nil;
-    [app standardNotifyAutoDismissingController:BC_STRING_SETTINGS_VERIFY_INVALID_CODE];
+    [app standardNotifyAutoDismissingController:error];
 }
 
-- (void)on_change_email_notifications_success
+- (void)on_change_notifications_success
 {
-    DLog(@"on_change_email_notifications_success");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_SUCCESS object:nil];
+    DLog(@"on_change_notifications_success");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_SUCCESS object:nil];
 }
 
-- (void)on_change_email_notifications_error
+- (void)on_change_notifications_error
 {
-    DLog(@"on_change_email_notifications_error");
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_EMAIL_NOTIFICATIONS_ERROR object:nil];
+    DLog(@"on_change_notifications_error");
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_CHANGE_NOTIFICATIONS_ERROR object:nil];
 }
 
 - (void)return_to_addresses_screen
@@ -2040,6 +2978,54 @@
     }
 }
 
+- (void)update_loaded_all_transactions:(NSNumber *)loadedAll
+{
+    DLog(@"loaded_all_transactions");
+    
+    if ([self.delegate respondsToSelector:@selector(updateLoadedAllTransactions:)]) {
+        [self.delegate updateLoadedAllTransactions:loadedAll];
+    }
+}
+
+- (void)on_get_session_token:(NSString *)token
+{
+    DLog(@"on_get_session_token:");
+    self.sessionToken = token;
+}
+
+- (void)show_email_authorization_alert
+{
+    DLog(@"show_email_authorization_alert");
+    [app authorizationRequired];
+}
+
+- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
+{
+    DLog(@"on_get_fiat_at_time_success");
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime:currencyCode!", [delegate class]);
+    }
+}
+
+- (void)on_get_fiat_at_time_error:(NSString *)error
+{
+    DLog(@"on_get_fiat_at_time_error");
+    if ([self.delegate respondsToSelector:@selector(didErrorWhenGettingFiatAtTime:)]) {
+        [self.delegate didErrorWhenGettingFiatAtTime:error];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
+    }
+}
+
+- (void)did_archive_or_unarchive
+{
+    DLog(@"did_archive_or_unarchive");
+    
+    [self.webSocket closeWithCode:WEBSOCKET_CODE_ARCHIVE_UNARCHIVE reason:WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToV3Wallet
@@ -2049,7 +3035,7 @@
     }
     
     DLog(@"Creating HD Wallet");
-    [self.webView executeJS:@"MyWalletPhone.upgradeToV3(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.upgradeToV3(\"%@\");", NSLocalizedString(@"My Bitcoin Wallet", nil)]];
 }
 
 - (Boolean)hasAccount
@@ -2058,7 +3044,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isUpgradedToHD"] boolValue];
+    return [[self.context evaluateScript:@"MyWallet.wallet.isUpgradedToHD"] toBool];
 }
 
 - (Boolean)didUpgradeToHd
@@ -2067,7 +3053,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.isUpgradedToHD"] boolValue];
+    return [[self.context evaluateScript:@"MyWallet.wallet.isUpgradedToHD"] toBool];
 }
 
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
@@ -2076,7 +3062,7 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", [secondPassword escapeStringForJS]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRecoveryPhrase(\"%@\")", [secondPassword escapeStringForJS]]];
 }
 
 - (BOOL)isRecoveryPhraseVerified {
@@ -2088,7 +3074,7 @@
         return NO;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.hdwallet.isMnemonicVerified"] boolValue];
+    return [[self.context evaluateScript:@"MyWallet.wallet.hdwallet.isMnemonicVerified"] toBool];
 }
 
 - (void)markRecoveryPhraseVerified
@@ -2097,7 +3083,7 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"MyWallet.wallet.hdwallet.verifyMnemonic()"];
+    [self.context evaluateScript:@"MyWallet.wallet.hdwallet.verifyMnemonic()"];
 }
 
 - (int)getActiveAccountsCount
@@ -2106,7 +3092,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getActiveAccountsCount()"] intValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getActiveAccountsCount()"] toNumber] intValue];
 }
 
 - (int)getAllAccountsCount
@@ -2115,7 +3101,22 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getAllAccountsCount()"] intValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getAllAccountsCount()"] toNumber] intValue];
+}
+
+- (int)getFilteredOrDefaultAccountIndex
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    NSInteger filterIntex = [app filterIndex];
+    
+    if (filterIntex != FILTER_INDEX_ALL && filterIntex!= FILTER_INDEX_IMPORTED_ADDRESSES && 0 <= filterIntex < [self getActiveAccountsCount]) {
+        return (int)filterIntex;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toInt32];
 }
 
 - (int)getDefaultAccountIndex
@@ -2124,7 +3125,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getDefaultAccountIndex()"] intValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountIndex()"] toNumber] intValue];
 }
 
 - (void)setDefaultAccount:(int)index
@@ -2133,7 +3134,9 @@
         return;
     }
     
-    [self.webView executeJSSynchronous:@"MyWalletPhone.setDefaultAccount(%d)", index];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setDefaultAccount(%d)", index]];
+    
+    self.isSettingDefaultAccount = YES;
 }
 
 - (BOOL)hasLegacyAddresses
@@ -2142,7 +3145,7 @@
         return false;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.addresses.length > 0"] boolValue];
+    return [[self.context evaluateScript:@"MyWallet.wallet.addresses.length > 0"] toBool];
 }
 
 - (uint64_t)getTotalActiveBalance
@@ -2151,7 +3154,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActive"] longLongValue];
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActive"] toNumber] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses
@@ -2160,7 +3163,16 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWallet.wallet.balanceSpendableActiveLegacy"] longLongValue];
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActiveLegacy"] toNumber] longLongValue];
+}
+
+- (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses
+{
+    if (![self isInitialized]) {
+        return 0;
+    }
+    
+    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceSpendableActiveLegacy"] toNumber] longLongValue];
 }
 
 - (uint64_t)getBalanceForAccount:(int)account
@@ -2169,7 +3181,7 @@
         return 0;
     }
     
-    return [[self.webView executeJSSynchronous:@"MyWalletPhone.getBalanceForAccount(%d)", account] longLongValue];
+    return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getBalanceForAccount(%d)", account]] toNumber] longLongValue];
 }
 
 - (NSString *)getLabelForAccount:(int)account
@@ -2178,7 +3190,7 @@
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.getLabelForAccount(%d)", account];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getLabelForAccount(%d)", account]] toString];
 }
 
 - (void)setLabelForAccount:(int)account label:(NSString *)label
@@ -2187,7 +3199,7 @@
         self.isSyncing = YES;
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         
-        [self.webView executeJSSynchronous:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]]];
     }
 }
 
@@ -2201,9 +3213,14 @@
         
         // Wait a little bit to make sure the loading text is showing - then execute the blocking and kind of long create account
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.webView executeJSSynchronous:@"MyWalletPhone.createAccount(\"%@\")", [label escapeStringForJS]];
+            [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createAccount(\"%@\")", [label escapeStringForJS]]];
         });
     }
+}
+
+- (NSString *)getReceiveAddressOfDefaultAccount
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getReceiveAddressOfDefaultAccount()"] toString];
 }
 
 - (NSString *)getReceiveAddressForAccount:(int)account
@@ -2212,14 +3229,14 @@
         return nil;
     }
     
-    return [self.webView executeJSSynchronous:@"MyWalletPhone.getReceivingAddressForAccount(%d)", account];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getReceivingAddressForAccount(%d)", account]] toString];
 }
 
 - (void)setPbkdf2Iterations:(int)iterations
 {
     DLog(@"Setting PBKDF2 Iterations");
     
-    [self.webView executeJSSynchronous:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setPbkdf2Iterations(%d)", iterations]];
 }
 
 #pragma mark - Callbacks from JS to Obj-C for HD wallet
@@ -2240,32 +3257,32 @@
 
 #pragma mark - Callbacks from javascript localstorage
 
-- (void)getKey:(NSString*)key success:(void (^)(NSString*))success 
+- (void)getKey:(NSString*)key success:(void (^)(NSString*))success
 {
-    id value = [[NSUserDefaults standardUserDefaults] valueForKey:key];
+    id value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     
     DLog(@"getKey:%@", key);
     
     success(value);
 }
 
-- (void)saveKey:(NSString*)key value:(NSString*)value 
+- (void)saveKey:(NSString*)key value:(NSString*)value
 {
     DLog(@"saveKey:%@", key);
-
-    [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)removeKey:(NSString*)key 
+- (void)removeKey:(NSString*)key
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)clearKeys 
+- (void)clearKeys
 {
     NSString * appDomain = [[NSBundle mainBundle] bundleIdentifier];
     
@@ -2276,7 +3293,7 @@
 
 # pragma mark - Cyrpto helpers, called from JS
 
-- (void)crypto_scrypt:(id)_password salt:(id)salt n:(NSNumber*)N r:(NSNumber*)r p:(NSNumber*)p dkLen:(NSNumber*)derivedKeyLen success:(void(^)(id))_success error:(void(^)(id))_error
+- (void)crypto_scrypt:(id)_password salt:(id)salt n:(NSNumber*)N r:(NSNumber*)r p:(NSNumber*)p dkLen:(NSNumber*)derivedKeyLen success:(JSValue *)_success error:(JSValue *)_error
 {
     [app showBusyViewWithLoadingText:BC_STRING_DECRYPTING_PRIVATE_KEY];
     
@@ -2285,18 +3302,17 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (data) {
-                _success([data hexadecimalString]);
+                [_success callWithArguments:@[[data hexadecimalString]]];
             } else {
                 [app hideBusyView];
-
-                _error(@"Scrypt Error");
+                [_error callWithArguments:@[@"Scrypt Error"]];
             }
         });
     });
 }
 
 - (NSData*)_internal_crypto_scrypt:(id)_password salt:(id)_salt n:(uint64_t)N r:(uint32_t)r p:(uint32_t)p dkLen:(uint32_t)derivedKeyLen
-{    
+{
     uint8_t * _passwordBuff = NULL;
     size_t _passwordBuffLen = 0;
     if ([_password isKindOfClass:[NSArray class]]) {
@@ -2311,7 +3327,7 @@
             }
         }
     } else if ([_password isKindOfClass:[NSString class]]) {
-         _passwordBuff = (uint8_t*)[_password UTF8String];
+        _passwordBuff = (uint8_t*)[_password UTF8String];
         _passwordBuffLen = [_password length];
     } else {
         DLog(@"Scrypt password unsupported type");
@@ -2320,11 +3336,11 @@
     
     uint8_t * _saltBuff = NULL;
     size_t _saltBuffLen = 0;
-
+    
     if ([_salt isKindOfClass:[NSArray class]]) {
         _saltBuff = alloca([_salt count]);
         _saltBuffLen = [_salt count];
-
+        
         {
             int ii = 0;
             for (NSNumber * number in _salt) {
@@ -2360,7 +3376,7 @@
     NSException * exception = [[NSException alloc] initWithName:@"Uncaught Exception" reason:decription userInfo:nil];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{
-        [UncaughtExceptionHandler logException:exception walletIsLoaded:[self.webView isLoaded] walletIsInitialized:[self isInitialized]];
+        [UncaughtExceptionHandler logException:exception walletIsLoaded:YES walletIsInitialized:[self isInitialized]];
     });
 #endif
     
@@ -2371,55 +3387,45 @@
 
 - (BOOL)hasVerifiedEmail
 {
-    return [[self.accountInfo objectForKey:DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED] boolValue];
+    return [self getEmailVerifiedStatus];
 }
 
 - (BOOL)hasVerifiedMobileNumber
 {
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue];
-}
-
-- (BOOL)hasStoredPasswordHint
-{
-    NSString *passwordHint = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_PASSWORD_HINT];
-    return ![[passwordHint stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] && passwordHint;
+    return [self getSMSVerifiedStatus];
 }
 
 - (BOOL)hasEnabledTwoStep
 {
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TWO_STEP_TYPE] intValue] != 0;
-}
-
-- (BOOL)hasBlockedTorRequests
-{
-    return [self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_TOR_BLOCKING] boolValue];
+    return [self getTwoStepType] != 0;
 }
 
 - (int)securityCenterScore
 {
-    int completedItems = 0;
-    
-    if ([self hasVerifiedEmail]) {
-        completedItems++;
+    if (self.isRecoveryPhraseVerified && [self hasEnabledTwoStep] && [self hasVerifiedEmail]) {
+        return 2;
+    } else if (self.isRecoveryPhraseVerified && [self hasEnabledTwoStep]) {
+        return 2;
+    } else if (self.isRecoveryPhraseVerified && [self hasVerifiedEmail]) {
+        return 1;
+    } else if ([self hasEnabledTwoStep] && [self hasVerifiedEmail]) {
+        return 1;
+    } else {
+        return 0;
     }
-    if (self.isRecoveryPhraseVerified) {
-        completedItems++;
-    }
-    if ([self hasVerifiedMobileNumber]) {
-        completedItems++;
-    }
-    if ([self hasStoredPasswordHint]) {
-        completedItems++;
-    }
-    if ([self hasEnabledTwoStep]) {
-        completedItems++;
-    }
-    if ([self hasBlockedTorRequests]) {
-        completedItems++;
-    }
-    return completedItems;
 }
+
+- (int)securityCenterCompletedItemsCount
+{
+    int count = 0;
     
+    if (self.isRecoveryPhraseVerified) count++;
+    if ([self hasEnabledTwoStep]) count++;
+    if ([self hasVerifiedEmail]) count++;
+    
+    return count;
+}
+
 #pragma mark - Debugging
 
 - (void)useDebugSettingsIfSet
@@ -2438,6 +3444,16 @@
     if (apiURL) {
         [self updateAPIURL:apiURL];
     }
+    
+    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    NSString *network;
+    if (testnetOn) {
+        network = NETWORK_TESTNET;
+    } else {
+        network = NETWORK_MAINNET;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeNetwork(\"%@\")", [network escapeStringForJS]]];
 }
 
 @end

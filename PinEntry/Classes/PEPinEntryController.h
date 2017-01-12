@@ -41,7 +41,7 @@
 @class PEViewController;
 
 
-@interface PEPinEntryController : UINavigationController <PEViewControllerDelegate>
+@interface PEPinEntryController : UINavigationController <PEViewControllerDelegate, UIScrollViewDelegate>
 {
 	BOOL verifyOnly;
     BOOL verifyOptional;
@@ -57,8 +57,14 @@
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic) UIButton *debugButton;
 
+// Swipe-to-receive
+@property (nonatomic) UIImageView *qrCodeImageView;
+@property (nonatomic) UILabel *addressLabel;
+@property (nonatomic) UIAlertController *errorAlert;
+- (void)paymentReceived;
+- (void)setupQRCode;
 
--(void)reset;
+- (void)reset;
 
 + (PEPinEntryController *)pinVerifyController;
 + (PEPinEntryController *)pinVerifyControllerClosable;

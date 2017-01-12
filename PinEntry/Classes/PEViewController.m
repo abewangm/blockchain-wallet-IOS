@@ -42,36 +42,45 @@
 {
 	[super viewDidLoad];
     
-    // Move up pin entry views for bigger screens
-    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
-        int moveUp = 60;
-        
-        CGRect frame = pin0.frame;
-        frame.origin.y -= moveUp;
-        pin0.frame = frame;
-        
-        frame = pin1.frame;
-        frame.origin.y -= moveUp;
-        pin1.frame = frame;
-        
-        frame = pin2.frame;
-        frame.origin.y -= moveUp;
-        pin2.frame = frame;
-        
-        frame = pin3.frame;
-        frame.origin.y -= moveUp;
-        pin3.frame = frame;
-        
-        frame = promptLabel.frame;
-        frame.origin.y -= 48;
-        promptLabel.frame = frame;
-    }
+//    // Move up pin entry views for bigger screens
+//    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
+//        int moveUp = 60;
+//        
+//        CGRect frame = pin0.frame;
+//        frame.origin.y -= moveUp;
+//        pin0.frame = frame;
+//        
+//        frame = pin1.frame;
+//        frame.origin.y -= moveUp;
+//        pin1.frame = frame;
+//        
+//        frame = pin2.frame;
+//        frame.origin.y -= moveUp;
+//        pin2.frame = frame;
+//        
+//        frame = pin3.frame;
+//        frame.origin.y -= moveUp;
+//        pin3.frame = frame;
+//        
+//        frame = promptLabel.frame;
+//        frame.origin.y -= 48;
+//        promptLabel.frame = frame;
+//    }
     
     pins[0] = pin0;
 	pins[1] = pin1;
 	pins[2] = pin2;
 	pins[3] = pin3;
 	self.pin = @"";
+    
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, self.scrollView.frame.size.width, 360);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
+    self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];
+    self.swipeLabelImageView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    self.swipeLabelImageView.image = [self.swipeLabelImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.swipeLabelImageView setTintColor:[UIColor whiteColor]];
 }
 
 - (IBAction)cancelChangePin:(id)sender

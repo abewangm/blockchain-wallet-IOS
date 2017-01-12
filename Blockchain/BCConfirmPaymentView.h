@@ -3,7 +3,7 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 10/2/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *fiatTotalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *btcTotalLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (strong, nonatomic) IBOutlet UIButton *reallyDoPaymentButton;
 @end

@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "JumlTerkini";
+"2Ig-LA-4kK.text" = "CurrAmt";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
 "4.normalTitle" = "Lanjutkan";
@@ -17,19 +17,19 @@
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "Sudah Selesai";
+"8LN-Tc-WVh.normalTitle" = "Selesai";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "JumlTerkini";
+"9B2-23-8j5.text" = "CurrAmt";
 
 /* (No Commment) */
 "13.text" = "Untuk";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
-"52.placeholder" = "0.000";
+"52.placeholder" = "0,000";
 
 /* (No Commment) */
-"52.text" = "0.00";
+"52.text" = "0,00";
 
 /* (No Commment) */
 "57.text" = "5 BTC = $10";
@@ -50,19 +50,19 @@
 "65.text" = "Alamat:";
 
 /* (No Commment) */
-"67.text" = "Label Email";
+"67.text" = "Namai Alamat";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "Menyesuaikan biaya";
+"Cbp-Qe-FKP.normalTitle" = "Biaya Penyesuaian";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Biaya: ";
+"FB0-NP-5do.text" = "Biaya:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "Batal";
+/* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
+"Pgx-k8-cTb.normalTitle" = "Batalkan selanjutnya";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "Total:";
@@ -71,7 +71,7 @@
 "ZcA-OM-4nq.text" = "Dari:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Harap tunggu";
+"Zgn-Wx-Uwx.text" = "Harap Tunggu";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
 "Zhm-Jw-P4C.text" = "Biaya";
@@ -80,7 +80,7 @@
 "aKC-Q2-phD.text" = "Mengirim Pembayaran";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Jumlah: ";
+"aeG-gf-oXV.text" = "Jumlah:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
 "d7n-Ue-QXL.normalTitle" = "Dana tersedia";
@@ -89,19 +89,19 @@
 "fpY-AA-We5.text" = "Untuk";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
-"p7q-Ud-nYh.placeholder" = "0.000";
+"p7q-Ud-nYh.placeholder" = "0,000";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "pPu-bJ-k6p"; */
 "pPu-bJ-k6p.normalTitle" = "Lanjutkan";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
-"qx4-XV-uhn.placeholder" = "0.00";
+"qx4-XV-uhn.placeholder" = "0,00";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
-"sXf-3w-qdy.normalTitle" = "Mengirim";
+"sXf-3w-qdy.normalTitle" = "Kirim";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "TotTerkini";
+"t8M-NC-003.text" = "CurrTotal";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
 "vGH-md-Ck3.text" = "USD";

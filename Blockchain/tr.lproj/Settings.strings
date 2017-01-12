@@ -1,41 +1,41 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "Mağaza ipucu";
+"0zs-bt-hEl.text" = "Mağaza İpucu";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
-"8Ha-3e-Nqx.text" = "E-posta doğrulamak";
+"8Ha-3e-Nqx.text" = "E-posta Doğrula";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "İki adım doğrulama";
+"8Zy-R2-HoW.text" = "İki-Aşamalı Doğrulama";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
-"Ii6-KE-x0B.placeholder" = "Yeni parolayı onayla";
+"Ii6-KE-x0B.placeholder" = "Yeni Şifreyi Onayla";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
 "Kmb-pO-dHq.text" = "Zayıf";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
-"VKs-B5-luJ.placeholder" = "Yeni parola";
+"VKs-B5-luJ.placeholder" = "Yeni Şifre";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "Yedek ifade";
+"WVd-f2-ZLG.text" = "Yedekleme İfadesi";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "TORs engellemek";
+"Wor-ZR-sPS.text" = "TOR bağlantılarını engelle";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "Cüzdanını 2-adım doğrulama etkinleştirerek yetkisiz erişime karşı korumak. Cüzdanını güvenliğini sağlamak için a özgür app veya cep telefonu numaranızı kullanmayı tercih edebilirsiniz. Cüzdanını erişmeye çalıştığınızda bu kod istenecektir.";
+"bFL-5O-fcl.text" = "2-Aşamalı Doğrulamayı etkinleştirerek cüzdanınızı yetkisiz erişime karşı koruyun. Cüzdanınızı güvende tutmak için ücretsiz bir uygulama veya cep telefonu numaranızı kullanabilirsiniz. Bu kod, cüzdanınıza web tarayıcısıyla erişmeyi denediğinizde istenilecektir.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "Bağlantı cep";
+"f52-8F-scW.text" = "Cep Telefonunu Bağla";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
 "g8G-4j-qpJ.normalTitle" = "Cep telefonu numaranızı kullanın";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
-"gIP-mj-Hh2.text" = "2-adım etkinleştirme";
+"gIP-mj-Hh2.text" = "2- Aşamalı Doğrulamayı Etkinleştir";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "Son güvenlik için aşağıdaki adımları tamamlayın";
+"u5x-QP-acV.text" = "En yüksek güvenlik için aşağıdaki adımları tamamlayın";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
 "wnC-Xd-1Er.title" = "Güvenlik Merkezi";

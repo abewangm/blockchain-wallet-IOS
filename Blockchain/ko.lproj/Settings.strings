@@ -1,41 +1,41 @@
 /* Class = "UILabel"; text = "Store Hint"; ObjectID = "0zs-bt-hEl"; */
-"0zs-bt-hEl.text" = "스토어 힌트";
+"0zs-bt-hEl.text" = "저장 힌트";
 
 /* Class = "UILabel"; text = "Verify Email"; ObjectID = "8Ha-3e-Nqx"; */
 "8Ha-3e-Nqx.text" = "이메일 확인";
 
 /* Class = "UILabel"; text = "Two-Step Verification"; ObjectID = "8Zy-R2-HoW"; */
-"8Zy-R2-HoW.text" = "2 단계 확인";
+"8Zy-R2-HoW.text" = "2 단계 인증";
 
 /* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "Ii6-KE-x0B"; */
 "Ii6-KE-x0B.placeholder" = "새 암호 확인";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Kmb-pO-dHq"; */
-"Kmb-pO-dHq.text" = "약한";
+"Kmb-pO-dHq.text" = "약함";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "VKs-B5-luJ"; */
 "VKs-B5-luJ.placeholder" = "새 암호";
 
 /* Class = "UILabel"; text = "Backup Phrase"; ObjectID = "WVd-f2-ZLG"; */
-"WVd-f2-ZLG.text" = "백업 문구";
+"WVd-f2-ZLG.text" = "백업 구절";
 
 /* Class = "UILabel"; text = "Block TORs"; ObjectID = "Wor-ZR-sPS"; */
-"Wor-ZR-sPS.text" = "블록 TORs";
+"Wor-ZR-sPS.text" = "TORs 차단";
 
 /* Class = "UILabel"; text = "Protect your wallet from unauthorized access by enabling 2-Step Verification. You can choose to use a free app or your mobile phone number to secure your wallet. This code will be requested when you try to access your wallet."; ObjectID = "bFL-5O-fcl"; */
-"bFL-5O-fcl.text" = "2 단계 인증을 사용 하 여 당신의 지갑이 무단된 액세스 로부터 보호 합니다. 무료 애플 리 케이 션 또는 귀하의 휴대 전화 번호를 사용 하 여 당신의 지갑을 보안 하도록 선택할 수 있습니다. 이 코드는 당신의 지갑에 액세스 하려고 할 때 요청 됩니다.";
+"bFL-5O-fcl.text" = "2 단계 인증을 사용해서 불법 접근으로부터 지갑을 보호하세요 지갑 보안에 무료 앱 또는 휴대폰 번호 사용을 선택할 수 있습니다. 지갑에 접근하려고 할 때 이 코드를 요청 받을 것입니다.";
 
 /* Class = "UILabel"; text = "Link Mobile"; ObjectID = "f52-8F-scW"; */
-"f52-8F-scW.text" = "링크 모바일";
+"f52-8F-scW.text" = "모바일 연결";
 
 /* Class = "UIButton"; normalTitle = "Use your mobile phone number"; ObjectID = "g8G-4j-qpJ"; */
-"g8G-4j-qpJ.normalTitle" = "귀하의 휴대 전화 번호를 사용 하 여";
+"g8G-4j-qpJ.normalTitle" = "귀하 휴대폰 번호를 쓰세요";
 
 /* Class = "UILabel"; text = "Enable 2-Step"; ObjectID = "gIP-mj-Hh2"; */
 "gIP-mj-Hh2.text" = "2 단계 사용";
 
 /* Class = "UILabel"; text = "Complete the steps below for ultimate security"; ObjectID = "u5x-QP-acV"; */
-"u5x-QP-acV.text" = "궁극적인 보안을 위해 아래 단계를 완료";
+"u5x-QP-acV.text" = "최고 보안을 위해 아래 단계를 마치세요";
 
 /* Class = "UIViewController"; title = "Security Center"; ObjectID = "wnC-Xd-1Er"; */
 "wnC-Xd-1Er.title" = "보안 센터";

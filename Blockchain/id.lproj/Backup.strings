@@ -1,14 +1,14 @@
 /* Class = "UIButton"; normalTitle = "Backup funds again"; ObjectID = "1Hq-6D-ut1"; */
-"1Hq-6D-ut1.normalTitle" = "Dana Cadangan lagi";
+"1Hq-6D-ut1.normalTitle" = "Dana cadangan lagi";
 
 /* (No Commment) */
-"1Hq-6D-ut1.text" = "Dana Cadangan lagi";
+"1Hq-6D-ut1.text" = "Dana cadangan lagi";
 
 /* (No Commment) */
 "3kJ-3U-lFe.text" = "Silakan coba lagi";
 
-/* Class = "UILabel"; text = "Verify that you wrote down the backup phrase"; ObjectID = "4Nq-ue-tXr"; */
-"4Nq-ue-tXr.text" = "Pastikan Anda menulis frasa cadangan";
+/* Class = "UILabel"; text = "Enter the following words from your Recovery Phrase to complete the backup process."; ObjectID = "4Nq-ue-tXr"; */
+"4Nq-ue-tXr.text" = "Masukkan kata-kata berikut dari Frasa Pemulihan Anda untuk menyelesaikan proses pencadangan.";
 
 /* (No Commment) */
 "6zt-Xf-txg.text" = "Tekan dan tahan untuk menampilkan katanya";
@@ -17,30 +17,30 @@
 "07q-RX-CeI.text" = "Silakan coba lagi";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "9A7-TT-PzN"; */
-"9A7-TT-PzN.title" = "Dana Cadangan";
+"9A7-TT-PzN.title" = "Cadangkan Dana";
 
-/* Class = "UILabel"; text = "You have not backed up your wallet yet"; ObjectID = "9Hu-uO-gJl"; */
-"9Hu-uO-gJl.text" = "Anda belum mencadangkan dana Anda";
+/* Class = "UILabel"; text = "Oh no! You haven't backed up your funds yet."; ObjectID = "9Hu-uO-gJl"; */
+"9Hu-uO-gJl.text" = "Oh tidak! Anda belum mencadangkan dana Anda.";
 
 /* Class = "UILabel"; text = "This action requires the second password for your bitcoin wallet. Please enter it below and press continue."; ObjectID = "9WK-My-5CL"; */
-"9WK-My-5CL.text" = "Tindakan ini memerlukan sandi kedua untuk bitcoin dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
+"9WK-My-5CL.text" = "Tindakan ini memerlukan kata sandi kedua untuk dompet bitcoin Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
 
 /* (No Commment) */
 "9hR-tm-aq5.placeholder" = "kata pertama";
 
 /* Class = "UINavigationItem"; title = "Second Password Required"; ObjectID = "74J-f3-Lhq"; */
-"74J-f3-Lhq.title" = "Sandi Kedua Diperlukan";
+"74J-f3-Lhq.title" = "Kata Sandi Kedua Diperlukan";
 
 /* Class = "UIButton"; normalTitle = "Previous word"; ObjectID = "AFH-AI-Rgk"; */
 "AFH-AI-Rgk.normalTitle" = "Kata sebelumnya";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CBl-1W-VP8"; */
-"CBl-1W-VP8.placeholder" = "Sandi";
+"CBl-1W-VP8.placeholder" = "Kata Sandi";
 
 /* (No Commment) */
-"EQM-OM-jK8.normalTitle" = "Sudah Selesai";
+"EQM-OM-jK8.normalTitle" = "Selesai";
 
-/* Class = "UILabel"; text = "Don't take a screenshot! You can jeopardize your wallet's security"; ObjectID = "FDO-ui-cGo"; */
+/* Class = "UILabel"; text = "It is important to make sure you write down your words exactly as they appear here and in this order."; ObjectID = "FDO-ui-cGo"; */
 "FDO-ui-cGo.text" = "Jangan mencuplik layar!
 Anda dapat membahayakan keamanan dompet Anda";
 
@@ -57,14 +57,14 @@ Anda dapat membahayakan keamanan dompet Anda";
 "T3S-Dk-HAh.text" = "Silakan coba lagi";
 
 /* (No Commment) */
-"T4p-mz-siC.normalTitle" = "MEMVERIFIKASI CADANGAN";
+"T4p-mz-siC.normalTitle" = "VERIFIKASI CADANGAN";
 
 /* Class = "UILabel"; text = "Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust."; ObjectID = "UCL-i9-UDp"; */
-"UCL-i9-UDp.text" = "Menuliskan kata-kata dalam urutan yang tepat sesuai yang tampak pada selembar kertas, dan menyimpannya di tempat yang aman
+"UCL-i9-UDp.text" = "Tulis kata-kata dalam urutan yang tepat sesuai yang tampak pada selembar kertas, dan simpan di tempat yang aman
 ";
 
 /* Class = "UILabel"; text = "Lost your 12 word recovery phrase?"; ObjectID = "Yh8-Gm-6op"; */
-"Yh8-Gm-6op.text" = "Anda kehilangan 12 kata pemulihan frasa?";
+"Yh8-Gm-6op.text" = "Anda kehilangan 12 kata frasa pemulihan Anda?";
 
 /* Class = "UIButton"; normalTitle = "NEXT WORD"; ObjectID = "dkQ-nj-Pkf"; */
 "dkQ-nj-Pkf.normalTitle" = "KATA BERIKUTNYA";
@@ -72,14 +72,14 @@ Anda dapat membahayakan keamanan dompet Anda";
 /* Class = "UIButton"; normalTitle = "Next word"; ObjectID = "eaO-py-9rY"; */
 "eaO-py-9rY.normalTitle" = "Kata berikutnya";
 
-/* Class = "UILabel"; text = "Backing up your funds ensures you will not lose access to your bitcoins (except imported addresses), even if you forget your password or our service becomes unavailable."; ObjectID = "eyR-AW-SMc"; */
-"eyR-AW-SMc.text" = "Mencadangkan dana Anda memastikan bahwa Anda tidak akan kehilangan akses ke bitcoin Anda (kecuali alamat yang diimpor), bahkan jika Anda lupa sandi atau saat layanan kami tidak tersedia.";
+/* Class = "UILabel"; text = "Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it."; ObjectID = "eyR-AW-SMc"; */
+"eyR-AW-SMc.text" = "Harap luangkan waktu beberapa menit untuk memastikan Anda dapat mengakses bitcoin Anda (kecuali alamat yang diimpor), bahkan jika Anda lupa kata sandi Anda atau jika layanan kami tidak tersedia. Kami janji melakukannya cepat, tanpa rasa sakit, dan layak.";
 
 /* (No Commment) */
 "kcC-2S-PfL.placeholder" = "kata ketiga";
 
 /* Class = "UILabel"; text = "Word 5 of 12"; ObjectID = "mUc-u7-Zcj"; */
-"mUc-u7-Zcj.text" = "5 dari 12 kata";
+"mUc-u7-Zcj.text" = "Kata ke 5 dari 12";
 
 /* Class = "UINavigationItem"; title = "Backup Wallet"; ObjectID = "mYR-MQ-mS2"; */
 "mYR-MQ-mS2.title" = "Dompet Cadangan";

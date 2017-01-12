@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -344,7 +344,7 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receive_icon_hi" id="JWr-AQ-QOY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_downward" id="JWr-AQ-QOY">
                     <rect key="frame" x="150" y="62" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -442,7 +442,9 @@
                     <rect key="frame" x="123" y="196" width="90" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Customize Fee"/>
+                    <state key="normal" title="Customize Fee">
+                        <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="customizeFeeClicked:" destination="-1" eventType="touchUpInside" id="Dbt-ek-ZBN"/>
                     </connections>
@@ -460,6 +462,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="arrowImageView" destination="JWr-AQ-QOY" id="PF1-pS-4M6"/>
                 <outlet property="btcAmountLabel" destination="IUn-6N-qeo" id="2cb-i6-6XZ"/>
                 <outlet property="btcFeeLabel" destination="6ll-Xx-4fm" id="qti-sQ-cI9"/>
                 <outlet property="btcTotalLabel" destination="vzP-xG-GPO" id="f2m-Cb-nwT"/>
@@ -475,9 +478,9 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow_downward" width="26" height="26"/>
         <image name="cancel" width="11" height="11"/>
         <image name="disclosure" width="11" height="17"/>
         <image name="icon_support" width="26" height="26"/>
-        <image name="receive_icon_hi" width="29" height="24"/>
     </resources>
 </document>

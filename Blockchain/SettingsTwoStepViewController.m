@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 12/4/15.
-//  Copyright © 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright © 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SettingsTwoStepViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation SettingsTwoStepViewController
 

@@ -1,38 +1,38 @@
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "2Ig-LA-4kK"; */
-"2Ig-LA-4kK.text" = "CurrAmt";
+"2Ig-LA-4kK.text" = "MvctMktr";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "4"; */
 "4.normalTitle" = "Devam";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "6ll-Xx-4fm"; */
-"6ll-Xx-4fm.text" = "BtcAmt";
+"6ll-Xx-4fm.text" = "BtcMktr";
 
 /* (No Commment) */
 "6zi-8R-Tmt.normalTitle" = "BTC";
 
 /* Class = "UILabel"; text = "From"; ObjectID = "7"; */
-"7.text" = "Kaynak";
+"7.text" = "Gönderen";
 
 /* Class = "UILabel"; text = "BTC"; ObjectID = "7ho-GV-ikp"; */
 "7ho-GV-ikp.text" = "BTC";
 
 /* (No Commment) */
-"8LN-Tc-WVh.normalTitle" = "Bitmiş";
+"8LN-Tc-WVh.normalTitle" = "Tamamlandı";
 
 /* Class = "UILabel"; text = "CurrAmt"; ObjectID = "9B2-23-8j5"; */
-"9B2-23-8j5.text" = "CurrAmt";
+"9B2-23-8j5.text" = "MvctMktr";
 
 /* (No Commment) */
-"13.text" = "Hedef";
+"13.text" = "Alıcı";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "52"; */
 "52.placeholder" = "0.000";
 
 /* (No Commment) */
-"52.text" = "0,00";
+"52.text" = "0.00";
 
 /* (No Commment) */
-"57.text" = "5 BTC = 10 $";
+"57.text" = "5 BTC = 10$";
 
 /* (No Commment) */
 "61.text" = "Etiket:";
@@ -50,43 +50,43 @@
 "65.text" = "Adres:";
 
 /* (No Commment) */
-"67.text" = "Etiket adres";
+"67.text" = "Etiket Adresi";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "Ücret özelleştirmek";
+"Cbp-Qe-FKP.normalTitle" = "Ücreti Kişiselleştir";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "Ücreti: ";
+"FB0-NP-5do.text" = "Ücret:";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
-"IUn-6N-qeo.text" = "BtcAmt";
+"IUn-6N-qeo.text" = "BtcMktr";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "İptal";
+/* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
+"Pgx-k8-cTb.normalTitle" = "Sonrakini iptal et";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
-"Ubr-KG-egH.text" = "Toplam Sonuç:";
+"Ubr-KG-egH.text" = "Toplam:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
-"ZcA-OM-4nq.text" = "Kaynak:";
+"ZcA-OM-4nq.text" = "Gönderen:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
-"Zgn-Wx-Uwx.text" = "Lütfen bekleyin";
+"Zgn-Wx-Uwx.text" = "Lütfen Bekleyin";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "Ücreti";
+"Zhm-Jw-P4C.text" = "Ücret";
 
 /* (No Commment) */
-"aKC-Q2-phD.text" = "Ödeme gönderme";
+"aKC-Q2-phD.text" = "Ödeme Gönderiliyor";
 
 /* Class = "UILabel"; text = "Amount: "; ObjectID = "aeG-gf-oXV"; */
-"aeG-gf-oXV.text" = "Tutar: ";
+"aeG-gf-oXV.text" = "Miktar:";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "Fon kullanılabilir";
+"d7n-Ue-QXL.normalTitle" = "Para mevcut";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
-"fpY-AA-We5.text" = "Hedef";
+"fpY-AA-We5.text" = "Alıcı";
 
 /* Class = "UITextField"; placeholder = "0.000"; ObjectID = "p7q-Ud-nYh"; */
 "p7q-Ud-nYh.placeholder" = "0.000";
@@ -95,23 +95,23 @@
 "pPu-bJ-k6p.normalTitle" = "Devam";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "qx4-XV-uhn"; */
-"qx4-XV-uhn.placeholder" = "0,00";
+"qx4-XV-uhn.placeholder" = "0.00";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sXf-3w-qdy"; */
 "sXf-3w-qdy.normalTitle" = "Gönder";
 
 /* Class = "UILabel"; text = "CurrTotal"; ObjectID = "t8M-NC-003"; */
-"t8M-NC-003.text" = "CurrTotal";
+"t8M-NC-003.text" = "MvctToplam";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "vGH-md-Ck3"; */
 "vGH-md-Ck3.text" = "USD";
 
 /* Class = "UILabel"; text = "BtcTotal"; ObjectID = "vzP-xG-GPO"; */
-"vzP-xG-GPO.text" = "BtcTotal";
+"vzP-xG-GPO.text" = "BtcToplam";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "Hedef:";
+"yGR-Eh-YG1.text" = "Alıcı:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
-"zyc-E3-FOM.text" = "Herhangi bir adres";
+"zyc-E3-FOM.text" = "Herhangi bir Adres";
 

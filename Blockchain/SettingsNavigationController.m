@@ -3,13 +3,13 @@
 //  Blockchain
 //
 //  Created by Kevin Wu on 7/13/15.
-//  Copyright (c) 2015 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2015 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SettingsNavigationController.h"
 #import "SettingsTableViewController.h"
 #import "SecurityCenterViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @interface SettingsNavigationController ()
 @end
@@ -100,6 +100,7 @@
 {
     if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]] || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        app.topViewControllerDelegate = nil;
     } else {
         [self popViewControllerAnimated:YES];
     }
@@ -112,6 +113,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
 }
 
+- (void)reloadAfterMultiAddressResponse
+{
+    [self.busyView fadeOut];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
+}
+
 - (void)showSecurityCenter
 {
     [self popToRootViewControllerAnimated:NO];
@@ -122,6 +130,51 @@
 - (void)showSettings
 {
     [self popToRootViewControllerAnimated:NO];
+}
+
+- (void)showBackup
+{
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *tableViewController = (SettingsTableViewController *)self.visibleViewController;
+        [tableViewController showBackup];
+    } else {
+        DLog(@"Error: Settings Navigation Controller's visible view controller is not a SettingsTableViewController!");
+    }
+}
+
+- (void)showTwoStep
+{
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *tableViewController = (SettingsTableViewController *)self.visibleViewController;
+        [tableViewController showTwoStep];
+    } else {
+        DLog(@"Error: Settings Navigation Controller's visible view controller is not a SettingsTableViewController!");
+    }
+}
+
+#pragma mark Top View Controller Delegate
+
+- (void)showBusyViewWithLoadingText:(NSString *)text
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)updateBusyViewLoadingText:(NSString *)text
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)hideBusyView
+{
+    //TODO: use this delegate method instead of handling busy views manually from view controllers
+    return;
+}
+
+- (void)presentAlertController:(UIAlertController *)alertController
+{
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

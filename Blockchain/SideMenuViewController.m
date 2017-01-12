@@ -3,11 +3,11 @@
 //  Blockchain
 //
 //  Created by Mark Pfluger on 10/3/14.
-//  Copyright (c) 2014 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2014 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "SideMenuViewController.h"
-#import "AppDelegate.h"
+#import "RootService.h"
 #import "ECSlidingViewController.h"
 #import "BCCreateAccountView.h"
 #import "BCEditAccountView.h"
@@ -154,7 +154,7 @@ int accountEntries = 0;
 {
     // Total entries: 1 entry for the total balance, 1 for each HD account, 1 for the total legacy addresses balance (if needed)
     int numberOfAccounts = [app.wallet getActiveAccountsCount];
-    balanceEntries = numberOfAccounts + 1;
+    balanceEntries = [[app.wallet activeLegacyAddresses] count] > 0 ? numberOfAccounts + 1 : numberOfAccounts;
     accountEntries = numberOfAccounts;
 }
 
@@ -182,7 +182,7 @@ int accountEntries = 0;
 - (Boolean)showBalances
 {
     // Return true if the user has upgraded and either legacy adresses or multiple accounts
-    return [app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2);
+    return [app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2);
 }
 
 - (void)removeTransactionsFilter
@@ -219,10 +219,10 @@ int accountEntries = 0;
 {
     if ([self showBalances]) {
         if (indexPath.section != 1) {
-            
+#ifdef ENABLE_TRANSACTION_FILTERING
             BOOL deselected = NO;
             
-            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1) {
+            if (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1 && [[app.wallet activeLegacyAddresses] count] > 0) {
                 if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
                     deselected = YES;
                 } else {
@@ -245,7 +245,7 @@ int accountEntries = 0;
                 [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
                 headerView.backgroundView = backgroundView;
             }
-            
+#endif
             return;
         }
     }
@@ -304,7 +304,7 @@ int accountEntries = 0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2))) {
         return BALANCE_ENTRY_HEIGHT;
     }
     
@@ -314,13 +314,18 @@ int accountEntries = 0;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     // Total Balance
-    if (section == 0 && ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2))) {
+    if (section == 0 && ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2))) {
+#ifdef ENABLE_TRANSACTION_FILTERING
         UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
-        
         UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];
         [backgroundView setBackgroundColor: [app filterIndex] == FILTER_INDEX_ALL ? COLOR_BLOCKCHAIN_LIGHT_BLUE : COLOR_BLOCKCHAIN_BLUE];
         view.backgroundView = backgroundView;
-        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTransactionsFilter)];
+        [view addGestureRecognizer:tapGestureRecognizer];
+#else
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
+        view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+#endif
         uint64_t totalBalance = [app.wallet getTotalActiveBalance];
         
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 10, self.tableView.frame.size.width - 100, 18)];
@@ -334,13 +339,10 @@ int accountEntries = 0;
         [view addSubview:icon];
         
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
-        amountLabel.text = [app formatMoney:totalBalance localCurrency:app->symbolLocal];;
+        amountLabel.text = [NSNumberFormatter formatMoney:totalBalance localCurrency:app->symbolLocal];;
         amountLabel.textColor = [UIColor whiteColor];
         amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
         [view addSubview:amountLabel];
-        
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTransactionsFilter)];
-        [view addGestureRecognizer:tapGestureRecognizer];
         
         BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, BALANCE_ENTRY_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
         bottomSeparator.backgroundColor = [self.tableView separatorColor];
@@ -413,12 +415,12 @@ int accountEntries = 0;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
         if ([images[indexPath.row] isEqualToString:@"security"]) {
-            int completedItems = [app.wallet securityCenterScore];
+            int securityCenterScore = [app.wallet securityCenterScore];
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             
-            if (completedItems < 6 && completedItems > 2) {
+            if (securityCenterScore == 1) {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
-            } else if (completedItems == 6) {
+            } else if (securityCenterScore > 1) {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
             } else {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
@@ -435,25 +437,28 @@ int accountEntries = 0;
         if (cell == nil) {
             cell = [[AccountTableCell alloc] init];
             cell.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-            
+#ifdef ENABLE_TRANSACTION_FILTERING
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-            
-            cell.editButton.hidden = YES;
-            
             UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
             [v setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
             cell.selectedBackgroundView = v;
+#else
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+#endif
+            cell.editButton.hidden = YES;
         }
         // Account balances
         if (indexPath.row < accountEntries) {
             int accountIdx = [app.wallet getIndexOfActiveAccount:(int)indexPath.row];
             uint64_t accountBalance = [app.wallet getBalanceForAccount:accountIdx];
-            cell.amountLabel.text = [app formatMoney:accountBalance localCurrency:app->symbolLocal];
+            cell.amountLabel.text = [NSNumberFormatter formatMoney:accountBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = [app.wallet getLabelForAccount:accountIdx];
             cell.accountIdx = accountIdx;
+#ifdef ENABLE_TRANSACTION_FILTERING
             if ([app filterIndex] == accountIdx) {
                 [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
             };
+#endif
 #ifdef DISABLE_EDITING_ACCOUNTS
             cell.editButton.hidden = YES;
 #endif
@@ -462,11 +467,13 @@ int accountEntries = 0;
         else {
             uint64_t legacyBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
             [cell.iconImage setImage:[UIImage imageNamed:@"importedaddress"]];
-            cell.amountLabel.text = [app formatMoney:legacyBalance localCurrency:app->symbolLocal];
+            cell.amountLabel.text = [NSNumberFormatter formatMoney:legacyBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_IMPORTED_ADDRESSES;
+#ifdef ENABLE_TRANSACTION_FILTERING
             if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
                 [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
             }
+#endif
         }
         
         

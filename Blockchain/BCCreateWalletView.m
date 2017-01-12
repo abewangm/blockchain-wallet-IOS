@@ -3,12 +3,12 @@
 //  Blockchain
 //
 //  Created by Ben Reeves on 18/03/2012.
-//  Copyright (c) 2012 Qkos Services Ltd. All rights reserved.
+//  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
 #import "BCCreateWalletView.h"
 
-#import "AppDelegate.h"
+#import "RootService.h"
 
 @implementation BCCreateWalletView
 
@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
@@ -76,8 +78,9 @@
 
 #ifdef DEBUG
     emailTextField.text = @"test@doesnotexist.tld";
-    passwordTextField.text = @"testpassword";
-    password2TextField.text = @"testpassword";
+    passwordTextField.text = @"testpassword!";
+    password2TextField.text = @"testpassword!";
+    [self checkPasswordStrength];
 #endif
     
     _recoveryPhraseView.recoveryPassphraseTextField.delegate = self;
@@ -132,11 +135,11 @@
                                    [NSCharacterSet whitespaceCharacterSet]];
         
         [app.wallet loading_start_recover_wallet];
-        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
-        
         [self.recoveryPhraseView.recoveryPassphraseTextField resignFirstResponder];
         self.recoveryPhraseView.recoveryPassphraseTextField.hidden = YES;
 
+        [app.wallet recoverWithEmail:emailTextField.text password:passwordTextField.text passphrase:trimmedRecoveryPhrase];
+        
         app.wallet.delegate = app;
     }
 }
@@ -150,13 +153,15 @@
     };
     
     [self hideKeyboard];
-    
-    // Load the JS without a wallet
-    [app.wallet loadBlankWallet];
-    
+        
     // Get callback when wallet is done loading
     // Continue in walletJSReady callback
     app.wallet.delegate = self;
+
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_WALLET];
+
+    // Load the JS without a wallet
+    [app.wallet performSelector:@selector(loadBlankWallet) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 
@@ -170,7 +175,7 @@
 
 - (IBAction)termsOfServiceClicked:(id)sender
 {
-    [app pushWebViewController:[[app serverURL] stringByAppendingString:TERMS_OF_SERVICE_URL_SUFFIX] title:BC_STRING_TERMS_OF_SERVICE];
+    [app pushWebViewController:[URL_SERVER stringByAppendingString:URL_SUFFIX_TERMS_OF_SERVICE] title:BC_STRING_TERMS_OF_SERVICE];
     [emailTextField becomeFirstResponder];
 }
 
@@ -187,21 +192,19 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
         
     app.wallet.delegate = app;
-        
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL]
-                      title:BC_STRING_DID_CREATE_NEW_WALLET_TITLE
-                   delegate:nil];
     
     app.wallet.isNew = YES;
+    
+    [app.wallet getAllCurrencySymbols];
 }
 
 - (void)errorCreatingNewAccount:(NSString*)message
 {
     if ([message isEqualToString:@""]) {
-        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR delegate:nil];
+        [app standardNotify:BC_STRING_NO_INTERNET_CONNECTION title:BC_STRING_ERROR];
     } else if ([message isEqualToString:ERROR_TIMEOUT_REQUEST]){
         [app standardNotify:BC_STRING_TIMED_OUT];
-    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST]){
+    } else if ([message isEqualToString:ERROR_FAILED_NETWORK_REQUEST] || [message containsString:ERROR_TIMEOUT_ERROR] || [[message stringByReplacingOccurrencesOfString:@" " withString:@""] containsString:ERROR_STATUS_ZERO]){
         [app performSelector:@selector(standardNotify:) withObject:BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION afterDelay:DELAY_KEYBOARD_DISMISSAL];
     } else {
         [app standardNotify:message];
@@ -259,7 +262,7 @@
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
 
-- (void)didFailRecovery
+- (void)showPassphraseTextField
 {
     self.recoveryPhraseView.recoveryPassphraseTextField.hidden = NO;
 }
@@ -275,11 +278,10 @@
 
 - (void)clearSensitiveTextFields
 {
-    DLog(@"");
-    
     passwordTextField.text = nil;
     password2TextField.text = nil;
     passwordStrengthMeter.progress = 0;
+    self.passwordStrength = 0;
     
     passwordTextField.layer.borderColor = COLOR_TEXT_FIELD_BORDER_GRAY.CGColor;
     passwordFeedbackLabel.textColor = [UIColor darkGrayColor];
@@ -297,7 +299,7 @@
     UIColor *color;
     NSString *description;
     
-    CGFloat passwordStrength = [app.wallet getStrengthForPassword:password];
+    float passwordStrength = [app.wallet getStrengthForPassword:password];
 
     if (passwordStrength < 25) {
         color = COLOR_PASSWORD_STRENGTH_WEAK;
@@ -315,6 +317,8 @@
         color = COLOR_PASSWORD_STRENGTH_STRONG;
         description = BC_STRING_PASSWORD_STRENGTH_STRONG;
     }
+    
+    self.passwordStrength = passwordStrength;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         passwordFeedbackLabel.text = description;
@@ -343,8 +347,26 @@
     
     self.tmpPassword = passwordTextField.text;
     
-    if ([self.tmpPassword length] < 10 || [self.tmpPassword length] > 255) {
-        [app standardNotify:BC_STRING_PASSWORD_MUST_10_CHARACTERS_OR_LONGER];
+    if (!self.tmpPassword || [self.tmpPassword length] == 0) {
+        [app standardNotify:BC_STRING_NO_PASSWORD_ENTERED];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([self.tmpPassword isEqualToString:emailTextField.text]) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_DIFFERENT_FROM_YOUR_EMAIL];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (self.passwordStrength < 25) {
+        [app standardNotify:BC_STRING_PASSWORD_NOT_STRONG_ENOUGH];
+        [passwordTextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if ([self.tmpPassword length] > 255) {
+        [app standardNotify:BC_STRING_PASSWORD_MUST_BE_LESS_THAN_OR_EQUAL_TO_255_CHARACTERS];
         [passwordTextField becomeFirstResponder];
         return NO;
     }
@@ -352,6 +374,10 @@
     if (![self.tmpPassword isEqualToString:[password2TextField text]]) {
         [app standardNotify:BC_STRING_PASSWORDS_DO_NOT_MATCH];
         [password2TextField becomeFirstResponder];
+        return NO;
+    }
+    
+    if (![app checkInternetConnection]) {
         return NO;
     }
     

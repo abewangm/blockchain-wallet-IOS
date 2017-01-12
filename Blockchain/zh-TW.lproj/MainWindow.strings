@@ -29,7 +29,7 @@
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "如果您正在使用的那個舊錢包，按一下帳戶設置按鈕並選擇設備選項卡。如果您正在使用我們新的 Beta 版錢包，請轉到設置 / 錢包資訊。";
+"364.text" = "如果您正在使用的那個舊錢包，按一下帳戶設置按鈕並選擇設備選項卡。如果您正在使用我們新的錢包，請轉到設置 / 錢包資訊。";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
@@ -53,13 +53,13 @@
 "380.text" = "歡迎來到 Blockchain 錢包";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "然而沒有交易記錄";
+"387.text" = "沒有最近的交易";
 
 /* (No Commment) */
 "394.text" = "密碼:";
 
-/* Class = "UITextField"; placeholder = "Password (Minimum 10 characters)"; ObjectID = "395"; */
-"395.placeholder" = "密碼 (至少 10 個字元)";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "395"; */
+"395.placeholder" = "密碼";
 
 /* (No Commment) */
 "396.text" = "確認:";
