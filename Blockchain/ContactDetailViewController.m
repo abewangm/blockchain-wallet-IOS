@@ -14,6 +14,7 @@
 #import "BCContactRequestView.h"
 #import "ContactTransactionTableViewCell.h"
 #import "ContactTransaction.h"
+#import "TransactionDetailViewController.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -105,6 +106,11 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+//    Transaction *transaction =
+//    
+//    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+//    detailViewController.transaction = transaction;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -150,6 +156,7 @@ typedef enum {
         renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
         renameButton.backgroundColor = COLOR_BUTTON_BLUE;
+        [renameButton addTarget:self action:@selector(renameContact) forControlEvents:UIControlEventTouchUpInside];
         renameButton.layer.cornerRadius = 4;
         [view addSubview:renameButton];
         
@@ -187,7 +194,7 @@ typedef enum {
 
 #pragma mark - Actions
 
-- (void)changeContactName
+- (void)renameContact
 {
     UIAlertController *alertForChangingName = [UIAlertController alertControllerWithTitle:BC_STRING_CHANGE_NAME message:nil preferredStyle:UIAlertControllerStyleAlert];
     
