@@ -31,8 +31,6 @@
 #define BC_STRING_NO NSLocalizedString(@"No", nil)
 #define BC_STRING_YES NSLocalizedString(@"Yes", nil)
 #define BC_STRING_SEND NSLocalizedString(@"Send", nil)
-#define BC_STRING_SEND_BUTTON NSLocalizedString(@"SendButton", nil)
-#define BC_STRING_CONFIRM_SEND_BUTTON NSLocalizedString(@"ConfirmSendButton", nil)
 #define BC_STRING_AMOUNT_FIELD NSLocalizedString(@"AmountField", nil)
 #define BC_STRING_SELECT_ADDRESS NSLocalizedString(@"SelectAddress", nil)
 #define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)

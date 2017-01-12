@@ -10,5 +10,10 @@
 
 @interface KIFUITestActor (Login)
 - (void)createNewWallet;
+- (void)goToSend;
+- (void)typeInAddress;
 - (void)send;
+- (void)confirmAmountDecimalPeriod;
+- (void)confirmAmountDecimalComma;
+- (void)confirmAmountDecimalArabicComma;
 @end

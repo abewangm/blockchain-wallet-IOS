@@ -19,10 +19,9 @@
 		230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2D81C5BF1A700336683 /* BCQRCodeView.m */; };
 		230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */; };
 		23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */; };
-		231FF2CD1B56F9F1009EEB02 /* SettingsAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */; };
-		231FF7751CBFEC1300792308 /* BlockchainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF7741CBFEC1300792308 /* BlockchainTests.m */; };
 		231A66EE1DB9434B0043F862 /* HDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 231A66ED1DB9434B0043F862 /* HDNode.m */; };
 		231FF2CD1B56F9F1009EEB02 /* SettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF2CC1B56F9F1009EEB02 /* SettingsWebViewController.m */; };
+		231FF7751CBFEC1300792308 /* BlockchainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF7741CBFEC1300792308 /* BlockchainTests.m */; };
 		2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232232191B44D4CB00E5DF26 /* UpgradeViewController.m */; };
 		2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322D3901D75CEEF000E5AC1 /* SessionManager.m */; };
 		2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322DC851D771831000E5AC1 /* SRDelegateController.m */; };
@@ -418,15 +417,13 @@
 		230FD2DB1C5BFB4300336683 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentView.h; sourceTree = "<group>"; };
 		23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentView.m; sourceTree = "<group>"; };
-		231FF2CB1B56F9F1009EEB02 /* SettingsAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutViewController.h; sourceTree = "<group>"; };
-		231FF2CC1B56F9F1009EEB02 /* SettingsAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutViewController.m; sourceTree = "<group>"; };
-		231FF7721CBFEC1300792308 /* BlockchainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockchainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		231FF7741CBFEC1300792308 /* BlockchainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockchainTests.m; sourceTree = "<group>"; };
-		231FF7761CBFEC1300792308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		231A66EC1DB9434B0043F862 /* HDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNode.h; sourceTree = "<group>"; };
 		231A66ED1DB9434B0043F862 /* HDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNode.m; sourceTree = "<group>"; };
 		231FF2CB1B56F9F1009EEB02 /* SettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWebViewController.h; sourceTree = "<group>"; };
 		231FF2CC1B56F9F1009EEB02 /* SettingsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWebViewController.m; sourceTree = "<group>"; };
+		231FF7721CBFEC1300792308 /* BlockchainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockchainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		231FF7741CBFEC1300792308 /* BlockchainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockchainTests.m; sourceTree = "<group>"; };
+		231FF7761CBFEC1300792308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		232232181B44D4CB00E5DF26 /* UpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeViewController.h; sourceTree = "<group>"; };
 		232232191B44D4CB00E5DF26 /* UpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeViewController.m; sourceTree = "<group>"; };
 		2322D38F1D75CEEF000E5AC1 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
@@ -794,7 +791,6 @@
 		23F601A31D09C931009102BF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		23F720F01C32DC0A00577738 /* DebugTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugTableViewController.h; sourceTree = "<group>"; };
 		23F720F11C32DC0A00577738 /* DebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugTableViewController.m; sourceTree = "<group>"; };
-		295D4302DF2456FE25430442 /* Pods-BlockchainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockchainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlockchainTests/Pods-BlockchainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		23F8DE511DAEB11C001899AE /* BCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCNavigationController.h; sourceTree = "<group>"; };
 		23F8DE521DAEB11C001899AE /* BCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCNavigationController.m; sourceTree = "<group>"; };
 		23FB5C051D9ABB450008C6AB /* TransactionDetailDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionDetailDescriptionCell.h; sourceTree = "<group>"; };
@@ -818,6 +814,7 @@
 		23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailTableCell.m; sourceTree = "<group>"; };
 		23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+SendSynchronousRequest.h"; sourceTree = "<group>"; };
 		23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+SendSynchronousRequest.m"; sourceTree = "<group>"; };
+		295D4302DF2456FE25430442 /* Pods-BlockchainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockchainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlockchainTests/Pods-BlockchainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6710DA0C1A8E82D80089DDED /* BCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLine.h; sourceTree = "<group>"; };
@@ -1074,8 +1071,8 @@
 				231FF7761CBFEC1300792308 /* Info.plist */,
 			);
 			path = BlockchainTests;
-                        sourceTree = "<group>";
-                };
+			sourceTree = "<group>";
+		};
 		2322DC811D771831000E5AC1 /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -1742,12 +1739,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 231FF77B1CBFEC1300792308 /* Build configuration list for PBXNativeTarget "BlockchainTests" */;
 			buildPhases = (
-				85D9154A19FF3B98F0EDACD7 /* Check Pods Manifest.lock */,
+				85D9154A19FF3B98F0EDACD7 /* [CP] Check Pods Manifest.lock */,
 				231FF76E1CBFEC1300792308 /* Sources */,
 				231FF76F1CBFEC1300792308 /* Frameworks */,
 				231FF7701CBFEC1300792308 /* Resources */,
-				1733E9C680589CCF1AFB0F65 /* Embed Pods Frameworks */,
-				3657ECCC52C5D4E58CB4DE3F /* Copy Pods Resources */,
+				1733E9C680589CCF1AFB0F65 /* [CP] Embed Pods Frameworks */,
+				3657ECCC52C5D4E58CB4DE3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1927,14 +1924,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1733E9C680589CCF1AFB0F65 /* Embed Pods Frameworks */ = {
+		1733E9C680589CCF1AFB0F65 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1984,14 +1981,14 @@
 			shellPath = /bin/sh;
 			shellScript = "cd ${SRCROOT} && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der";
 		};
-		3657ECCC52C5D4E58CB4DE3F /* Copy Pods Resources */ = {
+		3657ECCC52C5D4E58CB4DE3F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1999,19 +1996,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlockchainTests/Pods-BlockchainTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85D9154A19FF3B98F0EDACD7 /* Check Pods Manifest.lock */ = {
+		85D9154A19FF3B98F0EDACD7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

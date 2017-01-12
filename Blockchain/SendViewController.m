@@ -95,9 +95,9 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidLoad];
     
-    toField.accessibilityLabel = BC_STRING_SELECT_ADDRESS;
-    continuePaymentButton.accessibilityLabel = BC_STRING_SEND_BUTTON;
-    fiatAmountField.accessibilityLabel = BC_STRING_AMOUNT_FIELD;
+    toField.accessibilityLabel = ACCESSIBILITY_LABEL_SELECT_ADDRESS;
+    continuePaymentButton.accessibilityLabel = ACCESSIBILITY_LABEL_CONTINUE_PAYMENT;
+    fiatAmountField.accessibilityLabel = ACCESSIBILITY_LABEL_AMOUNT_FIELD;
 
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -199,7 +199,7 @@ BOOL displayingLocalSymbolSend;
     
     [self changeToDefaultFeeMode];
     
-    self.confirmPaymentView.reallyDoPaymentButton.accessibilityLabel = BC_STRING_CONFIRM_SEND_BUTTON;
+    self.confirmPaymentView.reallyDoPaymentButton.accessibilityLabel = ACCESSIBILITY_LABEL_CONFIRM_PAYMENT;
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];

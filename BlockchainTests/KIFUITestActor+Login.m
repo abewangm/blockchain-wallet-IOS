@@ -7,7 +7,7 @@
 //
 
 #import "KIFUITestActor+Login.h"
-#import "LocalizationConstants.h"
+#import "Blockchain-Prefix.pch"
 
 @implementation KIFUITestActor (Login)
 
@@ -22,18 +22,62 @@
 
 - (void)send
 {
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_SEND];
-    [self tapViewWithAccessibilityLabel:BC_STRING_SEND];
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_SELECT_ADDRESS];
-    [self tapViewWithAccessibilityLabel:BC_STRING_SELECT_ADDRESS];
-    [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
-    [self tapViewWithAccessibilityLabel:BC_STRING_AMOUNT_FIELD];
-    [self enterTextIntoCurrentFirstResponder:@"0.05"];
+    [self goToSend];
+    [self typeInAddress];
+    
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self enterTextIntoCurrentFirstResponder:@"0.10"];
     [self waitForAnimationsToFinish];
-    [self tapViewWithAccessibilityLabel:BC_STRING_SEND_BUTTON];
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CONFIRM_SEND_BUTTON];
-    [self tapViewWithAccessibilityLabel:BC_STRING_CONFIRM_SEND_BUTTON];
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_TRANSACTION];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONFIRM_PAYMENT];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONFIRM_PAYMENT];
 }
+
+- (void)goToSend
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_TAB];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_TAB];
+}
+
+- (void)typeInAddress
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SELECT_ADDRESS];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SELECT_ADDRESS];
+    [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
+}
+
+- (void)confirmAmountDecimalPeriod
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self enterTextIntoCurrentFirstResponder:@"0.10"];
+    [self waitForAnimationsToFinish];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+}
+
+- (void)confirmAmountDecimalComma
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self enterTextIntoCurrentFirstResponder:@"0,10"];
+    [self waitForAnimationsToFinish];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+}
+
+- (void)confirmAmountDecimalArabicComma
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self enterTextIntoCurrentFirstResponder:@"0٫10"];
+    [self waitForAnimationsToFinish];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+}
+
 
 @end

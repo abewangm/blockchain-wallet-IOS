@@ -45,6 +45,8 @@
                 [self.backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
                 [self.backButton addTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [topBarView addSubview:self.backButton];
+                
+                self.backButton.accessibilityLabel = ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON;
             }
             else if (closeType == ModalCloseTypeClose) {
                 self.closeButton = [[UIButton alloc] initWithFrame:CGRectMake(window.frame.size.width - 80, 15, 80, 51)];
