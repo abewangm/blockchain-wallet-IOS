@@ -20,12 +20,22 @@
     [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
 }
 
+#pragma mark - Helpers
+
+- (NSString *)getRandomReceiveAmount
+{
+    float randomNumber = ((float)arc4random() / 0x100000000 * (100 - 0.01)) + 0.01;
+    return [NSString stringWithFormat:@"%.2f", randomNumber];
+}
+
+#pragma mark - Send
+
 - (void)send
 {
     [self goToSend];
     [self typeInAddress];
     
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
     [self enterTextIntoCurrentFirstResponder:@"0.10"];
     [self waitForAnimationsToFinish];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
@@ -46,38 +56,69 @@
     [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
 }
 
-- (void)confirmAmountDecimalPeriod
+- (void)confirmSendAmountDecimalPeriod
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
     [self enterTextIntoCurrentFirstResponder:@"0.10"];
     [self waitForAnimationsToFinish];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
 }
 
-- (void)confirmAmountDecimalComma
+- (void)confirmSendAmountDecimalComma
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
     [self enterTextIntoCurrentFirstResponder:@"0,10"];
     [self waitForAnimationsToFinish];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
 }
 
-- (void)confirmAmountDecimalArabicComma
+- (void)confirmSendAmountDecimalArabicComma
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
     [self enterTextIntoCurrentFirstResponder:@"0٫10"];
     [self waitForAnimationsToFinish];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE_PAYMENT];
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_AMOUNT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SEND_FIAT_FIELD];
 }
 
+#pragma mark - Receive
+
+- (void)goToReceive
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_TAB];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_TAB];
+}
+
+- (void)confirmReceiveAmountDecimalPeriod
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
+    [self enterTextIntoCurrentFirstResponder:[self getRandomReceiveAmount]];
+    [self waitForAnimationsToFinish];
+}
+
+- (void)confirmReceiveAmountDecimalComma
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
+    [self enterTextIntoCurrentFirstResponder:[[self getRandomReceiveAmount] stringByReplacingOccurrencesOfString:@"." withString:@","]];
+    [self waitForAnimationsToFinish];
+}
+
+- (void)confirmReceiveAmountDecimalArabicComma
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
+    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
+    [self enterTextIntoCurrentFirstResponder:[[self getRandomReceiveAmount] stringByReplacingOccurrencesOfString:@"." withString:@"٫"]];
+    [self waitForAnimationsToFinish];
+}
 
 @end

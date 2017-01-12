@@ -97,7 +97,7 @@ BOOL displayingLocalSymbolSend;
     
     toField.accessibilityLabel = ACCESSIBILITY_LABEL_SELECT_ADDRESS;
     continuePaymentButton.accessibilityLabel = ACCESSIBILITY_LABEL_CONTINUE_PAYMENT;
-    fiatAmountField.accessibilityLabel = ACCESSIBILITY_LABEL_AMOUNT_FIELD;
+    fiatAmountField.accessibilityLabel = ACCESSIBILITY_LABEL_SEND_FIAT_FIELD;
 
     btcAmountField.inputAccessoryView = amountKeyboardAccessoryView;
     fiatAmountField.inputAccessoryView = amountKeyboardAccessoryView;

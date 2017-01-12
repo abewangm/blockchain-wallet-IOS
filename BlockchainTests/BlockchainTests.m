@@ -27,12 +27,17 @@
 }
 
 - (void)testExample {
-    [tester goToSend];
-    [tester typeInAddress];
-    [tester confirmAmountDecimalPeriod];
-    [tester confirmAmountDecimalComma];
-    [tester confirmAmountDecimalArabicComma];
+//    [tester goToSend];
+//    [tester typeInAddress];
+//    
+//    [tester confirmSendAmountDecimalPeriod];
+//    [tester confirmSendAmountDecimalComma];
+//    [tester confirmSendAmountDecimalArabicComma];
     
+    [tester goToReceive];
+    [tester confirmReceiveAmountDecimalPeriod];
+    [tester confirmReceiveAmountDecimalComma];
+    [tester confirmReceiveAmountDecimalArabicComma];
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

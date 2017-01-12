@@ -13,7 +13,11 @@
 - (void)goToSend;
 - (void)typeInAddress;
 - (void)send;
-- (void)confirmAmountDecimalPeriod;
-- (void)confirmAmountDecimalComma;
-- (void)confirmAmountDecimalArabicComma;
+- (void)confirmSendAmountDecimalPeriod;
+- (void)confirmSendAmountDecimalComma;
+- (void)confirmSendAmountDecimalArabicComma;
+- (void)goToReceive;
+- (void)confirmReceiveAmountDecimalPeriod;
+- (void)confirmReceiveAmountDecimalComma;
+- (void)confirmReceiveAmountDecimalArabicComma;
 @end

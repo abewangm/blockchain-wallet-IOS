@@ -150,6 +150,9 @@ NSString *detailLabel;
     self.receiveFiatField.delegate = self;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
+    self.receiveFiatField.accessibilityLabel = ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD;
+    fiatAmountField.accessibilityLabel = ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY;
+    
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
     whereLabel.font = [UIFont systemFontOfSize:13];
     whereLabel.textColor = [UIColor lightGrayColor];
