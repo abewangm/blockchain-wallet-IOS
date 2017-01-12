@@ -17,7 +17,6 @@
 - (void)confirmSendAmountDecimalComma;
 - (void)confirmSendAmountDecimalArabicComma;
 - (void)goToReceive;
-- (void)confirmReceiveAmountDecimalPeriod;
-- (void)confirmReceiveAmountDecimalComma;
-- (void)confirmReceiveAmountDecimalArabicComma;
+- (uint64_t)confirmReceiveAmount:(NSString *)randomAmount;
+- (uint64_t)computeBitcoinValue:(NSString *)amount;
 @end

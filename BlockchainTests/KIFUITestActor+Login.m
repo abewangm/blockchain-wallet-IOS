@@ -8,6 +8,7 @@
 
 #import "KIFUITestActor+Login.h"
 #import "Blockchain-Prefix.pch"
+#import "RootService.h"
 
 @implementation KIFUITestActor (Login)
 
@@ -18,14 +19,6 @@
     
     [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
     [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
-}
-
-#pragma mark - Helpers
-
-- (NSString *)getRandomReceiveAmount
-{
-    float randomNumber = ((float)arc4random() / 0x100000000 * (100 - 0.01)) + 0.01;
-    return [NSString stringWithFormat:@"%.2f", randomNumber];
 }
 
 #pragma mark - Send
@@ -97,28 +90,20 @@
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_TAB];
 }
 
-- (void)confirmReceiveAmountDecimalPeriod
+- (uint64_t)confirmReceiveAmount:(NSString *)randomAmount
 {
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
     [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
-    [self enterTextIntoCurrentFirstResponder:[self getRandomReceiveAmount]];
+    [self enterTextIntoCurrentFirstResponder:randomAmount];
     [self waitForAnimationsToFinish];
+    
+    UITextField *textField = (UITextField *)[self waitForViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
+    return [app.wallet parseBitcoinValueFromTextField:textField];
 }
 
-- (void)confirmReceiveAmountDecimalComma
+- (uint64_t)computeBitcoinValue:(NSString *)amount
 {
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
-    [self enterTextIntoCurrentFirstResponder:[[self getRandomReceiveAmount] stringByReplacingOccurrencesOfString:@"." withString:@","]];
-    [self waitForAnimationsToFinish];
-}
-
-- (void)confirmReceiveAmountDecimalArabicComma
-{
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD];
-    [self clearTextFromViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY];
-    [self enterTextIntoCurrentFirstResponder:[[self getRandomReceiveAmount] stringByReplacingOccurrencesOfString:@"." withString:@"٫"]];
-    [self waitForAnimationsToFinish];
+    return [app.wallet parseBitcoinValueFromString:amount locale:[NSLocale localeWithLocaleIdentifier:@"en-US"]];
 }
 
 @end

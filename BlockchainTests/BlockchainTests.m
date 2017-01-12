@@ -35,11 +35,21 @@
 //    [tester confirmSendAmountDecimalArabicComma];
     
     [tester goToReceive];
-    [tester confirmReceiveAmountDecimalPeriod];
-    [tester confirmReceiveAmountDecimalComma];
-    [tester confirmReceiveAmountDecimalArabicComma];
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    NSString *randomAmountPeriod = [self getRandomReceiveAmount];
+    uint64_t decimalResult = [tester confirmReceiveAmount:randomAmountPeriod];
+    uint64_t computedDecimalResult = [tester computeBitcoinValue:randomAmountPeriod];
+    XCTAssertEqual(decimalResult, computedDecimalResult, @"Decimal result must be equal");
+    
+    NSString *randomAmountComma = [self getRandomReceiveAmount];
+    uint64_t commaResult = [tester confirmReceiveAmount:[randomAmountComma stringByReplacingOccurrencesOfString:@"." withString:@","]];
+    uint64_t computedCommaResult = [tester computeBitcoinValue:randomAmountComma];
+    XCTAssertEqual(commaResult, computedCommaResult, @"Comma result must be equal");
+    
+    NSString *randomAmountArabicComma = [self getRandomReceiveAmount];
+    uint64_t arabicCommaResult = [tester confirmReceiveAmount:[randomAmountArabicComma stringByReplacingOccurrencesOfString:@"." withString:@"٫"]];
+    uint64_t computedArabicCommaResult = [tester computeBitcoinValue:randomAmountArabicComma];
+    XCTAssertEqual(arabicCommaResult, computedArabicCommaResult, @"Arabic comma result must be equal");
 }
 
 - (void)testPerformanceExample {
@@ -47,6 +57,14 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+#pragma mark - Helpers
+
+- (NSString *)getRandomReceiveAmount
+{
+    float randomNumber = ((float)arc4random() / 0x100000000 * (100 - 0.01)) + 0.01;
+    return [NSString stringWithFormat:@"%.2f", randomNumber];
 }
 
 @end
