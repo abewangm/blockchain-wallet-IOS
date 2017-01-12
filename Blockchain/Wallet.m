@@ -1183,7 +1183,7 @@
 - (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale
 {
     __block NSString *requestedAmountString;
-    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR]) {
+    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR] || [inputString containsString:@"٫"]) {
         // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         numberFormatter.decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
