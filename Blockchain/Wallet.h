@@ -214,8 +214,7 @@
 
 - (uint64_t)getLegacyAddressBalance:(NSString *)address;
 - (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField;
-- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale;
-
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString;
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;
 
