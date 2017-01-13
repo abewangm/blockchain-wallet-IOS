@@ -1171,24 +1171,14 @@
 
 - (uint64_t)parseBitcoinValueFromTextField:(UITextField *)textField
 {
-    // The reason to to check for textInputMode.primaryLanguage is that [NSLocale currentLocale] will still return the system language (which can be different from the textInputMode.primaryLanguage) when the keyboard is using Eastern Arabic numerals.
-    // However, we cannot always rely on textInputMode.primaryLanguage - in the Receive screen, the textInputModes for the amount fields in the keyboard input accessory view are null when the keyboard is not visible.
-    // Therefore, use [NSLocale currentLocale] if textInputMode is unavailable.
-    NSString *language = textField.textInputMode.primaryLanguage;
-    NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-    
-    return [self parseBitcoinValueFromString:textField.text locale:locale];
+    return [self parseBitcoinValueFromString:textField.text];
 }
 
-- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString locale:(NSLocale *)locale
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
 {
     __block NSString *requestedAmountString;
-    if ([locale.localeIdentifier isEqualToString:LOCALE_IDENTIFIER_AR] || [inputString containsString:@"٫"]) {
+    if ([inputString containsString:@"٫"]) {
         // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        numberFormatter.decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
-        [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
-        
         NSError *error;
         NSRange range = NSMakeRange(0, [inputString length]);
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
@@ -1211,10 +1201,7 @@
             requestedAmountString = [NSString stringWithString:replaced];
         }];
     } else {
-        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        if (![requestedAmountString containsString:@"."]) {
-            requestedAmountString = [inputString stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        }
+        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:@"," withString:@"."];
     }
 
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.precisionToSatoshiBN(\"%@\", %lld).toString()", [requestedAmountString escapeStringForJS], app.latestResponse.symbol_btc.conversion]] toNumber] longLongValue];
