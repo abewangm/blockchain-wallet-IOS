@@ -30,12 +30,26 @@
     [tester goToSend];
     [tester typeInAddress];
     
-    [tester confirmSendAmountDecimalPeriod];
-    [tester confirmSendAmountDecimalComma];
-    [tester confirmSendAmountDecimalArabicComma];
-    [tester confirmSendAmountDecimalArabicCommaAndText];
-    [tester confirmSendAmountDecimalCommaArabicText];
-    [tester confirmSendAmountDecimalPeriodArabicText];
+    [tester confirmSendAmountDecimalPeriodDecimalFirst];
+    [tester confirmSendAmountDecimalPeriodZeroThenDecimal];
+    [tester confirmSendAmountDecimalPeriodNumberThenDecimal];
+    [tester confirmSendAmountDecimalPeriodArabicTextDecimalFirst];
+    [tester confirmSendAmountDecimalPeriodArabicTextZeroThenDecimal];
+    [tester confirmSendAmountDecimalPeriodArabicTextNumberThenDecimal];
+    
+    [tester confirmSendAmountDecimalCommaDecimalFirst];
+    [tester confirmSendAmountDecimalCommaZeroThenDecimal];
+    [tester confirmSendAmountDecimalCommaNumberThenDecimal];
+    [tester confirmSendAmountDecimalCommaArabicTextDecimalFirst];
+    [tester confirmSendAmountDecimalCommaArabicTextZeroThenDecimal];
+    [tester confirmSendAmountDecimalCommaArabicTextNumberThenDecimal];
+    
+    [tester confirmSendAmountDecimalArabicCommaDecimalFirst];
+    [tester confirmSendAmountDecimalArabicCommaZeroThenDecimal];
+    [tester confirmSendAmountDecimalArabicCommaNumberThenDecimal];
+    [tester confirmSendAmountDecimalArabicCommaAndTextDecimalFirst];
+    [tester confirmSendAmountDecimalArabicCommaAndTextZeroThenDecimal];
+    [tester confirmSendAmountDecimalArabicCommaAndTextNumberThenDecimal];
     
     [tester goToReceive];
     

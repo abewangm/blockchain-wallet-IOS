@@ -13,12 +13,27 @@
 - (void)goToSend;
 - (void)typeInAddress;
 - (void)send;
-- (void)confirmSendAmountDecimalPeriod;
-- (void)confirmSendAmountDecimalComma;
-- (void)confirmSendAmountDecimalArabicComma;
-- (void)confirmSendAmountDecimalArabicCommaAndText;
-- (void)confirmSendAmountDecimalCommaArabicText;
-- (void)confirmSendAmountDecimalPeriodArabicText;
+
+- (void)confirmSendAmountDecimalPeriodDecimalFirst;
+- (void)confirmSendAmountDecimalPeriodZeroThenDecimal;
+- (void)confirmSendAmountDecimalPeriodNumberThenDecimal;
+- (void)confirmSendAmountDecimalPeriodArabicTextDecimalFirst;
+- (void)confirmSendAmountDecimalPeriodArabicTextZeroThenDecimal;
+- (void)confirmSendAmountDecimalPeriodArabicTextNumberThenDecimal;
+
+- (void)confirmSendAmountDecimalCommaDecimalFirst;
+- (void)confirmSendAmountDecimalCommaZeroThenDecimal;
+- (void)confirmSendAmountDecimalCommaNumberThenDecimal;
+- (void)confirmSendAmountDecimalCommaArabicTextDecimalFirst;
+- (void)confirmSendAmountDecimalCommaArabicTextZeroThenDecimal;
+- (void)confirmSendAmountDecimalCommaArabicTextNumberThenDecimal;
+
+- (void)confirmSendAmountDecimalArabicCommaDecimalFirst;
+- (void)confirmSendAmountDecimalArabicCommaZeroThenDecimal;
+- (void)confirmSendAmountDecimalArabicCommaNumberThenDecimal;
+- (void)confirmSendAmountDecimalArabicCommaAndTextDecimalFirst;
+- (void)confirmSendAmountDecimalArabicCommaAndTextZeroThenDecimal;
+- (void)confirmSendAmountDecimalArabicCommaAndTextNumberThenDecimal;
 
 - (void)goToReceive;
 - (uint64_t)confirmReceiveAmount:(NSString *)randomAmount;

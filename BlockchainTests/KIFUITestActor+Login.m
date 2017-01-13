@@ -49,34 +49,100 @@
     [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
 }
 
-- (void)confirmSendAmountDecimalPeriod
+// Period separator
+
+- (void)confirmSendAmountDecimalPeriodDecimalFirst
+{
+    [self confirmSendAmountWithText:@".10"];
+}
+
+- (void)confirmSendAmountDecimalPeriodZeroThenDecimal
 {
     [self confirmSendAmountWithText:@"0.10"];
 }
 
-- (void)confirmSendAmountDecimalComma
+- (void)confirmSendAmountDecimalPeriodNumberThenDecimal
+{
+    [self confirmSendAmountWithText:@"1.10"];
+}
+
+- (void)confirmSendAmountDecimalPeriodArabicTextDecimalFirst
+{
+    [self confirmSendAmountWithText:@".١٠"];
+}
+
+- (void)confirmSendAmountDecimalPeriodArabicTextZeroThenDecimal
+{
+    [self confirmSendAmountWithText:@"٠.١٠"];
+}
+
+- (void)confirmSendAmountDecimalPeriodArabicTextNumberThenDecimal
+{
+    [self confirmSendAmountWithText:@"١.١٠"];
+}
+
+// Comma separator
+
+- (void)confirmSendAmountDecimalCommaDecimalFirst
+{
+    [self confirmSendAmountWithText:@",10"];
+}
+
+- (void)confirmSendAmountDecimalCommaZeroThenDecimal
 {
     [self confirmSendAmountWithText:@"0,10"];
 }
 
-- (void)confirmSendAmountDecimalArabicComma
+- (void)confirmSendAmountDecimalCommaNumberThenDecimal
 {
-    [self confirmSendAmountWithText:@"0٫10"];
+    [self confirmSendAmountWithText:@"1,10"];
 }
 
-- (void)confirmSendAmountDecimalArabicCommaAndText
+- (void)confirmSendAmountDecimalCommaArabicTextDecimalFirst
 {
-    [self confirmSendAmountWithText:@"٠٫١٠"];
+    [self confirmSendAmountWithText:@",١٠"];
 }
 
-- (void)confirmSendAmountDecimalCommaArabicText
+- (void)confirmSendAmountDecimalCommaArabicTextZeroThenDecimal
 {
     [self confirmSendAmountWithText:@"٠,١٠"];
 }
 
-- (void)confirmSendAmountDecimalPeriodArabicText
+- (void)confirmSendAmountDecimalCommaArabicTextNumberThenDecimal
 {
-    [self confirmSendAmountWithText:@"٠.١٠"];
+    [self confirmSendAmountWithText:@"١,١٠"];
+}
+
+// Arabic Comma separator
+
+- (void)confirmSendAmountDecimalArabicCommaDecimalFirst
+{
+    [self confirmSendAmountWithText:@"٫10"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaZeroThenDecimal
+{
+    [self confirmSendAmountWithText:@"0٫10"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaNumberThenDecimal
+{
+    [self confirmSendAmountWithText:@"1٫10"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaAndTextDecimalFirst
+{
+    [self confirmSendAmountWithText:@"٫١٠"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaAndTextZeroThenDecimal
+{
+    [self confirmSendAmountWithText:@"٠٫١٠"];
+}
+
+- (void)confirmSendAmountDecimalArabicCommaAndTextNumberThenDecimal
+{
+    [self confirmSendAmountWithText:@"١٫١٠"];
 }
 
 - (void)confirmSendAmountWithText:(NSString *)text
@@ -111,7 +177,7 @@
 
 - (uint64_t)computeBitcoinValue:(NSString *)amount
 {
-    return [app.wallet parseBitcoinValueFromString:amount locale:[NSLocale localeWithLocaleIdentifier:@"en-US"]];
+    return [app.wallet parseBitcoinValueFromString:amount];
 }
 
 @end
