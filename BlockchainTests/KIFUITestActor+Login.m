@@ -21,6 +21,19 @@
     [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
 }
 
+- (void)enterPIN
+{
+    [self waitForViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NUMPAD_VIEW];
+    
+    // 5s simulator
+    CGPoint pinKeyTwo = CGPointMake(154, 362);
+    
+    [self tapScreenAtPoint:pinKeyTwo];
+    [self tapScreenAtPoint:pinKeyTwo];
+    [self tapScreenAtPoint:pinKeyTwo];
+    [self tapScreenAtPoint:pinKeyTwo];
+}
+
 #pragma mark - Send
 
 - (void)send
@@ -49,6 +62,18 @@
     [self enterTextIntoCurrentFirstResponder:@"1MdLTHM5xTNuu7D12fyce5MqtchnRmuijq"];
 }
 
+// No decimal
+
+- (void)confirmSendAmountNoDecimal
+{
+    [self confirmSendAmountWithText:@"1"];
+}
+
+- (void)confirmSendAmountArabicNumeralsNoDecimal
+{
+    [self confirmSendAmountWithText:@"١"];
+}
+
 // Period separator
 
 - (void)confirmSendAmountDecimalPeriodDecimalFirst
@@ -64,6 +89,11 @@
 - (void)confirmSendAmountDecimalPeriodNumberThenDecimal
 {
     [self confirmSendAmountWithText:@"1.10"];
+}
+
+- (void)confirmSendAmountDecimalPeriodArabicTextNoDecimal
+{
+    [self confirmSendAmountWithText:@"١"];
 }
 
 - (void)confirmSendAmountDecimalPeriodArabicTextDecimalFirst

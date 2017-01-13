@@ -601,4 +601,4 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_RECEIVE_TAB @"receiveTab"
 #define ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD @"receiveFiatField"
 #define ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY @"receiveFiatFieldInputAccessory"
-
+#define ACCESSIBILITY_LABEL_NUMPAD_VIEW @"numPadView"

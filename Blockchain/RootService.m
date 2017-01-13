@@ -1971,6 +1971,8 @@ void (^secondPasswordSuccess)(NSString *);
     self.wallet.didPairAutomatically = NO;
     
     [self hideBusyView];
+    
+    self.pinEntryViewController.view.accessibilityLabel = ACCESSIBILITY_LABEL_NUMPAD_VIEW;
 }
 
 - (void)showStatusBar

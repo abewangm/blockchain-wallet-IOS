@@ -59,7 +59,6 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 - (id)init
 {
     self.isEnabled = TRUE;
-    self.accessibilityLabel = @"numpadView";
 	return [self initWithFrame:CGRectMake(0, 460-216, 320, 216)];
 }
 

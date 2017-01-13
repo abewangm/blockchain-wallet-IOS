@@ -27,8 +27,14 @@
 }
 
 - (void)testExample {
+    
+    [tester enterPIN];
+    
     [tester goToSend];
     [tester typeInAddress];
+    
+    [tester confirmSendAmountNoDecimal];
+    [tester confirmSendAmountArabicNumeralsNoDecimal];
     
     [tester confirmSendAmountDecimalPeriodDecimalFirst];
     [tester confirmSendAmountDecimalPeriodZeroThenDecimal];
