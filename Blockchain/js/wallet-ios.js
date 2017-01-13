@@ -1981,7 +1981,7 @@ MyWalletPhone.getMessages = function() {
         objc_on_get_messages_success(messages);
     };
     
-    MyWallet.wallet.contacts.getMessages().then(success).catch(function(e){console.log('Error getting messages');console.log(e)});
+    MyWallet.wallet.contacts.digestNewMessages().then(success).catch(function(e){console.log('Error getting messages');console.log(e)});
 }
 
 MyWalletPhone.readMessage = function(identifier) {
@@ -2018,6 +2018,33 @@ MyWalletPhone.deleteContact = function(identifier) {
     MyWallet.wallet.contacts.delete(identifier);
     
     save();
+}
+
+MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount) {
+    
+    var success = function(info) {
+        objc_on_send_payment_request_success(info);
+    };
+    
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+                                                          
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount) {
+    
+    var success = function(info) {
+        objc_on_request_payment_request_success(info);
+    };
+    
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+
+MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash) {
+    
+    var success = function(info) {
+        objc_on_send_payment_request_response_success(info);
+    };
+    
+    MyWallet.wallet.contacts.sendPRR(userId, txHash).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

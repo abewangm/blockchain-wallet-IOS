@@ -338,6 +338,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRUSTED @"trusted"
 #define DICTIONARY_KEY_XPUB @"xpub"
 #define DICTIONARY_KEY_SENDER @"sender"
+#define DICTIONARY_KEY_TRANSACTION_LIST @"facilitatedTxList"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"

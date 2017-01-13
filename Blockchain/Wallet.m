@@ -710,6 +710,18 @@
         [weakSelf objc_on_send_message_success:[contact toString]];
     };
     
+    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info) {
+        [weakSelf on_send_payment_request_success:info];
+    };
+    
+    self.context[@"objc_on_request_payment_request_success"] = ^(JSValue *info) {
+        [weakSelf on_request_payment_request_success:info];
+    };
+    
+    self.context[@"objc_on_send_payment_request_response_success"] = ^(JSValue *info) {
+        [weakSelf on_send_payment_request_response_success:info];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2037,6 +2049,21 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContact(\"%@\")", [contactIdentifier escapeStringForJS]]];
 }
 
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld)", [userId escapeStringForJS], amount]];
+}
+
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld)", [userId escapeStringForJS], amount]];
+}
+
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS]]];
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3217,7 +3244,7 @@
 {
     DLog(@"on_get_messages_success");
     if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
-        _messages = [self convertMessagesToDictionary:[messages toArray]];
+        _messages = nil;
         [self.delegate didGetMessages];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
@@ -3241,6 +3268,36 @@
         [self.delegate didSendMessage:contact];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didSendMessage!", [delegate class]);
+    }
+}
+
+- (void)on_send_payment_request_success:(JSValue *)info
+{
+    DLog(@"on_send_payment_request_success");
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:)]) {
+        [self.delegate didSendPaymentRequest:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest!", [delegate class]);
+    }
+}
+
+- (void)on_request_payment_request_success:(JSValue *)info
+{
+    DLog(@"on_request_payment_request_success");
+    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
+        [self.delegate didRequestPaymentRequest:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest!", [delegate class]);
+    }
+}
+
+- (void)on_send_payment_request_response_success:(JSValue *)info
+{
+    DLog(@"on_send_payment_request_response_success");
+    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
+        [self.delegate didRequestPaymentRequest:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest!", [delegate class]);
     }
 }
 
@@ -3606,27 +3663,6 @@
 #endif
     
     [app standardNotify:decription];
-}
-
-#pragma mark - Messages Helpers
-
-- (NSDictionary *)convertMessagesToDictionary:(NSArray *)messages
-{
-    // Convert array of messages to dictionary of @{mdid : messages}
-    
-    NSMutableDictionary *messagesDictionary = [NSMutableDictionary new];
-    
-    for (NSDictionary *message in messages) {
-        NSString *mdid = [message objectForKey:DICTIONARY_KEY_SENDER];
-        
-        NSArray *messagesFromContact = [messagesDictionary objectForKey:mdid];
-        NSMutableArray *updatedMessagesFromContact = [[NSMutableArray alloc] initWithArray:messagesFromContact];
-        [updatedMessagesFromContact addObject:message];
-        
-        [messagesDictionary setObject:updatedMessagesFromContact forKey:mdid];
-    }
-    
-    return messagesDictionary;
 }
 
 #pragma mark - Settings Helpers

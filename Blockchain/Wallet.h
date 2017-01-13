@@ -110,6 +110,8 @@
 - (void)didGetMessages;
 - (void)didReadMessage:(NSString *)message;
 - (void)didSendMessage:(NSString *)contact;
+- (void)didSendPaymentRequest:(NSDictionary *)info;
+- (void)didRequestPaymentRequest:(NSDictionary *)info;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
@@ -372,4 +374,8 @@
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
 - (void)deleteContact:(NSString *)contactIdentifier;
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount;
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount;
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash;
+
 @end

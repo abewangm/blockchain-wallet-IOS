@@ -1970,6 +1970,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didSendMessage:contact];
 }
 
+
+
 #pragma mark - Show Screens
 
 - (void)showContacts

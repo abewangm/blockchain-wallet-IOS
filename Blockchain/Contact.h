@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) NSString *surname;
 @property (nonatomic, readonly) BOOL trusted;
 @property (nonatomic, readonly) NSString *xpub;
+@property (nonatomic, readonly) NSDictionary *transactionList;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

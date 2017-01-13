@@ -180,7 +180,7 @@
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else {
-            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString locale:locale];
+            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
         }
         
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
@@ -266,12 +266,10 @@
 
 - (void)notifyContact
 {
-    NSLocale *locale = [self.receiveBtcField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:self.receiveBtcField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
-    
     if (self.willSend) {
-        [self.delegate createSendRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text locale:locale]];
+        [self.delegate createSendRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
     } else {
-        [self.delegate createReceiveRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text locale:locale]];
+        [self.delegate createReceiveRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
     }
 }
 

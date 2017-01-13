@@ -107,8 +107,10 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    [app.wallet completeRelation:self.contact.identifier];
+    
 //    Transaction *transaction =
-//    
+//
 //    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
 //    detailViewController.transaction = transaction;
 }
@@ -344,6 +346,8 @@ typedef enum {
 - (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount
 {
     DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
+    
+    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount];
 }
 
 - (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount

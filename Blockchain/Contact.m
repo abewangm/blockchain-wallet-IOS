@@ -25,6 +25,7 @@
         _surname = [dictionary objectForKey:DICTIONARY_KEY_SURNAME];
         _trusted = [[dictionary objectForKey:DICTIONARY_KEY_TRUSTED] boolValue];
         _xpub = [dictionary objectForKey:DICTIONARY_KEY_XPUB];
+        _transactionList = [dictionary objectForKey:DICTIONARY_KEY_TRANSACTION_LIST];
     }
     return self;
 }
