@@ -1336,11 +1336,10 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
+            _addressSource = DestinationAddressSourcePaste;
             return NO;
         }
         
-        _addressSource = DestinationAddressSourcePaste;
-
         DLog(@"toAddress: %@", self.toAddress);
     }
     
@@ -1420,7 +1419,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAddress:address];
     
-    _addressSource = DestinationAddressSourceAddressBook;
+    _addressSource = DestinationAddressSourceDropDown;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1444,7 +1443,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAccount:account];
     
-    _addressSource = DestinationAddressSourceAddressBook;
+    _addressSource = DestinationAddressSourceDropDown;
 }
 
 #pragma mark - Fee Calculation
@@ -1704,6 +1703,8 @@ BOOL displayingLocalSymbolSend;
                 DLog(@"toAddress: %@", self.toAddress);
                 [self selectToAddress:self.toAddress];
                 
+                _addressSource = DestinationAddressSourceQR;
+                
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {
                     if (app.latestResponse.symbol_btc) {
@@ -1726,7 +1727,6 @@ BOOL displayingLocalSymbolSend;
                 
                 [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
                 
-                _addressSource = DestinationAddressSourceQR;
             });
         }
     }

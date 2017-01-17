@@ -1843,8 +1843,8 @@ void (^secondPasswordSuccess)(NSString *);
         eventName = WALLET_EVENT_TX_FROM_PASTE;
     } else if (source == DestinationAddressSourceURI) {
         eventName = WALLET_EVENT_TX_FROM_URI;
-    } else if (source == DestinationAddressSourceAddressBook) {
-        eventName = WALLET_EVENT_TX_FROM_ADDRESS_BOOK;
+    } else if (source == DestinationAddressSourceDropDown) {
+        eventName = WALLET_EVENT_TX_FROM_DROPDOWN;
     } else if (source == DestinationAddressSourceNone) {
         DLog(@"Destination address source none");
         return;
@@ -1854,10 +1854,18 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     NSURLSession *session = [SessionManager sharedSession];
-    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingFormat:URL_SUFFIX_WALLET_EVENT_NAME_ARGUMENT, eventName]];
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingFormat:URL_SUFFIX_EVENT_NAME_ARGUMENT, eventName]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
     request.HTTPMethod = @"POST";
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            DLog(@"Error saving address input: %@", [error localizedDescription]);
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 #pragma mark - Show Screens

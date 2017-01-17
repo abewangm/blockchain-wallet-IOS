@@ -269,11 +269,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_SURVEY @"https://blockchain.co1.qualtrics.com/SE/?SID=SV_8c6uSMW5eBV9nal"
 
-#define URL_SUFFIX_WALLET_EVENT_NAME_ARGUMENT @"/wallet-event?name=%@"
+#define URL_SUFFIX_EVENT_NAME_ARGUMENT @"/event?name=%@"
 #define WALLET_EVENT_TX_FROM_QR @"wallet_ios_tx_from_qr"
 #define WALLET_EVENT_TX_FROM_PASTE @"wallet_ios_tx_from_paste"
 #define WALLET_EVENT_TX_FROM_URI @"wallet_ios_tx_from_uri"
-#define WALLET_EVENT_TX_FROM_ADDRESS_BOOK @"wallet_ios_tx_from_addressbook"
+#define WALLET_EVENT_TX_FROM_DROPDOWN @"wallet_ios_tx_from_dropdown"
 
 #define URL_INFORMATION_RECEIVE @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
 

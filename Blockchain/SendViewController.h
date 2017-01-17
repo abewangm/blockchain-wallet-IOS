@@ -78,7 +78,7 @@ typedef enum {
     DestinationAddressSourceQR,
     DestinationAddressSourcePaste,
     DestinationAddressSourceURI,
-    DestinationAddressSourceAddressBook,
+    DestinationAddressSourceDropDown,
 } DestinationAddressSource;
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
