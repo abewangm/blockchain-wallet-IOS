@@ -14,5 +14,5 @@
 @property (nonatomic) UIImageView *actionImageView;
 @property (nonatomic) UILabel *mainLabel;
 
-- (void)configureWithTransaction:(ContactTransaction *)transaction;
+- (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name;
 @end

@@ -21,10 +21,10 @@
     return self;
 }
 
-- (void)configureWithTransaction:(ContactTransaction *)transaction
+- (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name
 {
     if (self.isSetup) {
-        [self reloadTextAndImage:transaction];
+        [self reloadTextAndImage:transaction contactName:name];
         return;
     }
     
@@ -39,15 +39,15 @@
     [self.contentView addSubview:self.mainLabel];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     
-    [self reloadTextAndImage:transaction];
+    [self reloadTextAndImage:transaction contactName:name];
     
     self.isSetup = YES;
 }
 
-- (void)reloadTextAndImage:(ContactTransaction *)transaction
+- (void)reloadTextAndImage:(ContactTransaction *)transaction contactName:(NSString *)name
 {
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.mainLabel.text = @"Waiting for address";
+        self.mainLabel.text = [NSString stringWithFormat:@"Sending %lld - Waiting for %@ to accept", transaction.intendedAmount, name];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
         self.mainLabel.text = [NSString stringWithFormat:@"Receiving %lld - Accept/Deny", transaction.intendedAmount];
@@ -55,6 +55,9 @@
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
         self.mainLabel.text = [NSString stringWithFormat:@"Sending %lld - Ready to send", transaction.intendedAmount];
         self.actionImageView.hidden = NO;
+    } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Requested %lld - Waiting for payment", transaction.intendedAmount];
+        self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
         self.actionImageView.hidden = NO;

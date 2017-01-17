@@ -99,7 +99,7 @@ typedef enum {
     
     ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
     
-    [cell configureWithTransaction:transaction];
+    [cell configureWithTransaction:transaction contactName:self.contact.name];
     
     return cell;
 }
