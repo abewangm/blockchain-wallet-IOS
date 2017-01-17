@@ -14,6 +14,5 @@
 @property (nonatomic) UIImageView *actionImageView;
 @property (nonatomic) UILabel *mainLabel;
 
-- (void)configureWithTransaction:(Transaction *)transaction actionRequired:(BOOL)actionRequired;
-
+- (void)configureWithTransaction:(ContactTransaction *)transaction;
 @end

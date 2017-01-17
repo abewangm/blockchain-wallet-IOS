@@ -326,6 +326,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
 
+#define DICTIONARY_KEY_STATE @"state"
+#define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
+#define DICTIONARY_KEY_ROLE @"role"
+
 #define DICTIONARY_KEY_ID @"id"
 #define DICTIONARY_KEY_COMPANY @"company"
 #define DICTIONARY_KEY_EMAIL @"email"
@@ -455,6 +459,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define STORYBOARD_NAME_SETTINGS @"Settings"
 #define STORYBOARD_NAME_BACKUP @"Backup"
 #define STORYBOARD_NAME_UPGRADE @"Upgrade"
+
+#define TRANSACTION_STATE_WAITING_PAYMENT @"waiting_payment"
+#define TRANSACTION_STATE_WAITING_ADDRESS @"waiting_address"
+
+#define TRANSACTION_ROLE_PR_INITIATOR @"pr_initiator"
+#define TRANSACTION_ROLE_PR_RECEIVER @"pr_receiver"
+#define TRANSACTION_ROLE_RPR_INITIATOR @"rpr_initiator"
+#define TRANSACTION_ROLE_RPR_RECEIVER @"rpr_receiver"
 
 #define NAVIGATION_CONTROLLER_NAME_ACCOUNTS_AND_ADDRESSES @"AccountsAndAddressesNavigationController"
 #define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"

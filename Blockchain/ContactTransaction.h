@@ -18,5 +18,14 @@ typedef enum {
 } ContactTransactionState;
 
 @interface ContactTransaction : Transaction
-@property (nonatomic) ContactTransactionState transactionState;
+
+@property (nonatomic, readonly) ContactTransactionState transactionState;
+@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSString *state;
+@property (nonatomic, readonly) uint64_t intendedAmount;
+@property (nonatomic, readonly) NSString *role;
+@property (nonatomic, readonly) NSString *address;
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

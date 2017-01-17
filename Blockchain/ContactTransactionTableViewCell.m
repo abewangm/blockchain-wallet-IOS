@@ -21,12 +21,10 @@
     return self;
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction actionRequired:(BOOL)actionRequired
+- (void)configureWithTransaction:(ContactTransaction *)transaction
 {
     if (self.isSetup) {
-        self.actionImageView.hidden = !actionRequired;
-        self.mainLabel.text = @"test text";
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [self reloadTextAndImage:transaction];
         return;
     }
     
@@ -39,10 +37,30 @@
     CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2, self.frame.size.width - mainLabelOriginX - 28, 30)];
     [self.contentView addSubview:self.mainLabel];
-    self.mainLabel.text = @"test text";
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     
+    [self reloadTextAndImage:transaction];
+    
     self.isSetup = YES;
+}
+
+- (void)reloadTextAndImage:(ContactTransaction *)transaction
+{
+    if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
+        self.mainLabel.text = @"Waiting for address";
+        self.actionImageView.hidden = YES;
+    } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Receiving %lld - Accept/Deny", transaction.intendedAmount];
+        self.actionImageView.hidden = NO;
+    } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Sending %lld - Ready to send", transaction.intendedAmount];
+        self.actionImageView.hidden = NO;
+    } else {
+        self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
+        self.actionImageView.hidden = NO;
+    }
+
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)prepareForReuse

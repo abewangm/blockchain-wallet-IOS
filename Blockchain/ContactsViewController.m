@@ -225,6 +225,8 @@ typedef enum {
 
 - (void)contactClicked:(Contact *)contact
 {
+    [app.wallet completeRelation:contact.identifier];
+    
     self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }

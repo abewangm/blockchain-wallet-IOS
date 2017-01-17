@@ -84,7 +84,7 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 3;
+        return self.contact.transactionList.count;
     }
     
     DLog(@"Invalid section");
@@ -95,10 +95,11 @@ typedef enum {
 {
     ContactTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION forIndexPath:indexPath];
     
-    ContactTransaction *transaction = [[ContactTransaction alloc] init];
-    transaction.transactionState = ContactTransactionStateSendReadyToSend;
+    NSDictionary *dictionary = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
-    [cell configureWithTransaction:transaction actionRequired:YES];
+    ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
+    
+    [cell configureWithTransaction:transaction];
     
     return cell;
 }
@@ -107,12 +108,13 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [app.wallet completeRelation:self.contact.identifier];
+    NSDictionary *dictionary = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
-//    Transaction *transaction =
-//
-//    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-//    detailViewController.transaction = transaction;
+    ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
+    
+    if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
+        [self acceptOrDenyPayment:transaction.intendedAmount];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -310,6 +312,15 @@ typedef enum {
     });
 }
 
+- (void)acceptOrDenyPayment:(uint64_t)amount
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, self.contact.name, [NSNumberFormatter formatMoney:amount localCurrency:NO]] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)didGetMessages
 {
     [self.tableView reloadData];
@@ -347,12 +358,14 @@ typedef enum {
 {
     DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
     
-    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount];
+    [app.wallet requestPaymentRequest:self.contact.identifier amount:amount];
 }
 
 - (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
 {
     DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
+    
+    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount];
 }
 
 @end
