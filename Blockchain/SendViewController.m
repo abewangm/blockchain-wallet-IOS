@@ -1242,7 +1242,7 @@ BOOL displayingLocalSymbolSend;
         
         // Only 1 leading zero
         if (points.count == 1 || commas.count == 1) {
-            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]] && [textField.text isEqualToString:@"0"]) {
+            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:@","] && ![string isEqualToString:@"٫"] && [textField.text isEqualToString:@"0"]) {
                 return NO;
             }
         }
@@ -1284,7 +1284,7 @@ BOOL displayingLocalSymbolSend;
         
         if (textField == feeField) {
             
-            uint64_t fee = [app.wallet parseBitcoinValueFromString:newString locale:locale];
+            uint64_t fee = [app.wallet parseBitcoinValueFromString:newString];
             
             if (fee > BTC_LIMIT_IN_SATOSHI) {
                 return NO;
@@ -1311,11 +1311,17 @@ BOOL displayingLocalSymbolSend;
         
         if (textField == fiatAmountField) {
             // Convert input amount to internal value
-            NSString *amountString = [newString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            if (![amountString containsString:@"."]) {
+                amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            }
+            if (![amountString containsString:@"."]) {
+                amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+            }
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else if (textField == btcAmountField) {
-            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString locale:locale];
+            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
         }
         
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {

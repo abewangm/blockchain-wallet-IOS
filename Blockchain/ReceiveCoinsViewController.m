@@ -779,7 +779,7 @@ NSString *detailLabel;
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else {
-            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString locale:locale];
+            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
         }
         
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {

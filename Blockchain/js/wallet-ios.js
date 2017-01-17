@@ -325,6 +325,8 @@ MyWalletPhone.toggleArchived = function(accountOrAddress) {
     if (didArchive) {
         MyWalletPhone.get_history();
     }
+    
+    objc_did_archive_or_unarchive();
 }
 
 MyWalletPhone.archiveTransferredAddresses = function(addresses) {
