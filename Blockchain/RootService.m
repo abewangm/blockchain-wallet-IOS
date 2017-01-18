@@ -44,6 +44,7 @@
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
 #import "ContactsViewController.h"
+#import "ContactTransaction.h"
 
 @implementation RootService
 
@@ -2877,9 +2878,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self showSettings:showBackupBlock];
 }
 
-- (void)setupPaymentAmount:(uint64_t)amount toAddress:(NSString *)address
+- (void)setupPaymentRequest:(ContactTransaction *)transaction
 {
     [self closeSideMenu];
+    
+    self.pendingPaymentRequestTransaction = transaction;
     
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
@@ -2887,8 +2890,36 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_tabViewController setActiveViewController:_sendViewController animated:NO index:0];
     
-    [_sendViewController setAmountFromUrlHandler:amount withToAddress:address];
+    [_sendViewController setAmountFromUrlHandler:transaction.intendedAmount withToAddress:transaction.address];
     [_sendViewController reload];
+}
+
+- (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction
+{
+    if (self.pendingPaymentRequestTransaction) {
+        
+        BOOL amountsMatch = self.pendingPaymentRequestTransaction.intendedAmount == llabs(transaction.amount) - llabs(transaction.fee);
+        BOOL destinationAddressesMatch = NO;
+        
+        for (NSDictionary *destination in transaction.to) {
+            if ([[destination objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString:self.pendingPaymentRequestTransaction.address]) {
+                destinationAddressesMatch = YES;
+                break;
+            }
+        }
+        
+        if (amountsMatch && destinationAddressesMatch) {
+            [app.wallet sendPaymentRequestResponse:self.pendingPaymentRequestTransaction.contactIdentifier transactionHash:transaction.myHash];
+        } else {
+            if (!amountsMatch) {
+                DLog(@"Error: pending address %@ does not match any transaction addresses %@", self.pendingPaymentRequestTransaction.address, transaction.to);
+            }
+            if (!destinationAddressesMatch) {
+                DLog(@"Error: pending amount %lld does not match transaction amount %lld", self.pendingPaymentRequestTransaction.amount, transaction.amount);
+            }
+        }
+        self.pendingPaymentRequestTransaction = nil;
+    }
 }
 
 #pragma mark - Pin Entry Delegates

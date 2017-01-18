@@ -298,7 +298,11 @@ int lastNumberTransactions = INT_MAX;
 - (void)paymentReceived
 {
     Transaction *transaction = [data.transactions firstObject];
-    if ([transaction.txType isEqualToString:TX_TYPE_SENT]) return;
+    
+    if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
+        [app checkIfPaymentRequestFulfilled:transaction];
+        return;
+    };
     
     BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
                              [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&

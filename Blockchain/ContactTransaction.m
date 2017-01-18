@@ -19,9 +19,9 @@
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
         
         if ([_state isEqualToString:TRANSACTION_STATE_WAITING_PAYMENT]) {
-            if ([_role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
+            if ([_role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
                 _transactionState = ContactTransactionStateReceiveWaitingForPayment;
-            } else if ([_role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER] || [_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
+            } else if ([_role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER] || [_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
                 _transactionState = ContactTransactionStateSendReadyToSend;
             }
         } else if ([_state isEqualToString:TRANSACTION_STATE_WAITING_ADDRESS]) {

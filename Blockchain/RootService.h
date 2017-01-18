@@ -31,7 +31,7 @@
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController;
+@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction;
 
 @interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate> {
     
@@ -107,6 +107,7 @@
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
+@property (nonatomic) ContactTransaction *pendingPaymentRequestTransaction;
 
 // Certificate Pinning
 @property (nonatomic) CertificatePinner *certificatePinner;
@@ -206,9 +207,10 @@
 - (IBAction)logoutClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
-- (void)setupPaymentAmount:(uint64_t)amount toAddress:(NSString *)address;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
+- (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;

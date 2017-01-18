@@ -26,6 +26,9 @@ typedef enum {
 @property (nonatomic, readonly) NSString *role;
 @property (nonatomic, readonly) NSString *address;
 
+// Pending requests
+@property (nonatomic) NSString *contactIdentifier;
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
