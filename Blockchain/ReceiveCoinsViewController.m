@@ -559,7 +559,7 @@ NSString *detailLabel;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
         if (showBackupReminder) {
-            [app showBackupReminder];
+            [app showBackupReminder:YES];
         } else if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) {
             [self showKeyboard];
         }
