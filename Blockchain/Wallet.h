@@ -377,6 +377,6 @@
 - (void)deleteContact:(NSString *)contactIdentifier;
 - (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
-- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash;
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
 
 @end

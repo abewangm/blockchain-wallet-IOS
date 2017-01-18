@@ -884,10 +884,12 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
 }
 
-- (void)setAmountFromUrlHandler:(uint64_t)amount withToAddress:(NSString*)addressString
+- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString
 {
     self.addressFromURLHandler = addressString;
     self.amountFromURLHandler = amount;
+    
+    _addressSource = DestinationAddressSourceContact;
 }
 
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString

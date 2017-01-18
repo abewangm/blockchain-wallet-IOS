@@ -30,6 +30,12 @@
             } else if ([_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
                 _transactionState = ContactTransactionStateReceiveAcceptOrDenyPayment;
             }
+        } else if ([_state isEqualToString:TRANSACTION_STATE_PAYMENT_BROADCASTED]) {
+            if ([_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER]) {
+                _transactionState = ContactTransactionStateCompletedSend;
+            } else if ([_role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
+                _transactionState = ContactTransactionStateCompletedReceive;
+            }
         }
     }
     return self;

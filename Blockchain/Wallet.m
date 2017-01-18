@@ -2059,9 +2059,9 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, \"%@\", \"%@\")", [userId escapeStringForJS], amount, [requestId escapeStringForJS], [note escapeStringForJS]]];
 }
 
-- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
 }
 
 # pragma mark - Transaction handlers

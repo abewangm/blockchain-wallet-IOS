@@ -2038,13 +2038,13 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
     MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
-MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash) {
+MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
     
     var success = function(info) {
         objc_on_send_payment_request_response_success(info);
     };
     
-    MyWallet.wallet.contacts.sendPRR(userId, txHash).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

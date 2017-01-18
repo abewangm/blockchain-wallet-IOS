@@ -58,6 +58,12 @@
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
         self.mainLabel.text = [NSString stringWithFormat:@"Requested %lld - Waiting for payment", transaction.intendedAmount];
         self.actionImageView.hidden = YES;
+    } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Sent %lld", transaction.intendedAmount];
+        self.actionImageView.hidden = YES;
+    } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Received %lld", transaction.intendedAmount];
+        self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
         self.actionImageView.hidden = NO;

@@ -284,6 +284,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WALLET_EVENT_TX_FROM_PASTE @"wallet_ios_tx_from_paste"
 #define WALLET_EVENT_TX_FROM_URI @"wallet_ios_tx_from_uri"
 #define WALLET_EVENT_TX_FROM_DROPDOWN @"wallet_ios_tx_from_dropdown"
+#define WALLET_EVENT_TX_FROM_CONTACTS @"wallet_ios_tx_from_contacts"
 
 #define URL_INFORMATION_RECEIVE @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
 
@@ -468,6 +469,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TRANSACTION_STATE_WAITING_PAYMENT @"waiting_payment"
 #define TRANSACTION_STATE_WAITING_ADDRESS @"waiting_address"
+#define TRANSACTION_STATE_PAYMENT_BROADCASTED @"payment_broadcasted"
 
 #define TRANSACTION_ROLE_PR_INITIATOR @"pr_initiator"
 #define TRANSACTION_ROLE_PR_RECEIVER @"pr_receiver"

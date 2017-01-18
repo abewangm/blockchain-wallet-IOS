@@ -79,6 +79,7 @@ typedef enum {
     DestinationAddressSourcePaste,
     DestinationAddressSourceURI,
     DestinationAddressSourceDropDown,
+    DestinationAddressSourceContact
 } DestinationAddressSource;
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
@@ -113,7 +114,7 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)setAmountFromUrlHandler:(uint64_t)amount withToAddress:(NSString*)string;
+- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)string;
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;

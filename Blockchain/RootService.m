@@ -1984,6 +1984,8 @@ void (^secondPasswordSuccess)(NSString *);
         eventName = WALLET_EVENT_TX_FROM_URI;
     } else if (source == DestinationAddressSourceDropDown) {
         eventName = WALLET_EVENT_TX_FROM_DROPDOWN;
+    } else if (source == DestinationAddressSourceContact) {
+        eventName = WALLET_EVENT_TX_FROM_CONTACTS;
     } else if (source == DestinationAddressSourceNone) {
         DLog(@"Destination address source none");
         return;
@@ -2890,7 +2892,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_tabViewController setActiveViewController:_sendViewController animated:NO index:0];
     
-    [_sendViewController setAmountFromUrlHandler:transaction.intendedAmount withToAddress:transaction.address];
+    [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address];
     [_sendViewController reload];
 }
 
@@ -2909,7 +2911,7 @@ void (^secondPasswordSuccess)(NSString *);
         }
         
         if (amountsMatch && destinationAddressesMatch) {
-            [app.wallet sendPaymentRequestResponse:self.pendingPaymentRequestTransaction.contactIdentifier transactionHash:transaction.myHash];
+            [app.wallet sendPaymentRequestResponse:self.pendingPaymentRequestTransaction.contactIdentifier transactionHash:transaction.myHash transactionIdentifier:self.pendingPaymentRequestTransaction.identifier];
         } else {
             if (!amountsMatch) {
                 DLog(@"Error: pending address %@ does not match any transaction addresses %@", self.pendingPaymentRequestTransaction.address, transaction.to);
