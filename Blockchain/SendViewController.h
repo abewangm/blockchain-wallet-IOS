@@ -83,8 +83,6 @@ typedef enum {
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
 
-@property(nonatomic, strong) NSString *addressFromURLHandler;
-
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;
 @property int fromAccount;
@@ -104,10 +102,10 @@ typedef enum {
 - (IBAction)addressBookClicked:(id)sender;
 - (IBAction)closeKeyboardClicked:(id)sender;
 
-- (void)didSelectFromAddress:(NSString *)address;
-- (void)didSelectToAddress:(NSString *)address;
-- (void)didSelectFromAccount:(int)account;
-- (void)didSelectToAccount:(int)account;
+- (void)selectFromAddress:(NSString *)address;
+- (void)selectToAddress:(NSString *)address;
+- (void)selectFromAccount:(int)account;
+- (void)selectToAccount:(int)account;
 
 - (void)updateSendBalance:(NSNumber *)balance;
 
@@ -115,7 +113,8 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
+- (void)setAmountFromUrlHandler:(uint64_t)amount withToAddress:(NSString*)string;
+- (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 

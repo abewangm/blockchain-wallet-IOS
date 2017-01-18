@@ -408,7 +408,7 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
-    [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
+    [_sendViewController setAmountStringFromUrlHandler:amount withToAddress:addr];
     [_sendViewController reload];
     
     return YES;

@@ -36,6 +36,7 @@ typedef enum {
 @property (nonatomic) uint64_t txSize;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
+@property (nonatomic) NSString *addressFromURLHandler;
 
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
@@ -883,7 +884,13 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
 }
 
-- (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
+- (void)setAmountFromUrlHandler:(uint64_t)amount withToAddress:(NSString*)addressString
+{
+    self.addressFromURLHandler = addressString;
+    self.amountFromURLHandler = amount;
+}
+
+- (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {
     self.addressFromURLHandler = addressString;
     
@@ -1364,6 +1371,28 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)selectFromAddress:(NSString *)address
+{
+    self.sendFromAddress = true;
+    
+    NSString *addressOrLabel;
+    NSString *label = [app.wallet labelForLegacyAddress:address];
+    if (label && ![label isEqualToString:@""]) {
+        addressOrLabel = label;
+    }
+    else {
+        addressOrLabel = address;
+    }
+    
+    selectAddressTextField.text = addressOrLabel;
+    self.fromAddress = address;
+    DLog(@"fromAddress: %@", address);
+    
+    [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
+    
+    [self doCurrencyConversion];
+}
+
 - (void)selectToAddress:(NSString *)address
 {
     self.sendToAddress = true;
@@ -1373,6 +1402,23 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAddress: %@", address);
     
     [app.wallet changePaymentToAddress:address];
+    
+    [self doCurrencyConversion];
+}
+
+- (void)selectFromAccount:(int)account
+{
+    self.sendFromAddress = false;
+    
+    availableAmount = [app.wallet getBalanceForAccount:account];
+    
+    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
+    self.fromAccount = account;
+    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
+    
+    [self updateFundsAvailable];
     
     [self doCurrencyConversion];
 }
@@ -1395,24 +1441,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectFromAddress:(NSString *)address
 {
-    self.sendFromAddress = true;
-    
-    NSString *addressOrLabel;
-    NSString *label = [app.wallet labelForLegacyAddress:address];
-    if (label && ![label isEqualToString:@""]) {
-        addressOrLabel = label;
-    }
-    else {
-        addressOrLabel = address;
-    }
-    
-    selectAddressTextField.text = addressOrLabel;
-    self.fromAddress = address;
-    DLog(@"fromAddress: %@", address);
-    
-    [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
-    
-    [self doCurrencyConversion];
+    [self selectFromAddress:address];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -1424,19 +1453,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectFromAccount:(int)account
 {
-    self.sendFromAddress = false;
-    
-    availableAmount = [app.wallet getBalanceForAccount:account];
-    
-    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
-    self.fromAccount = account;
-    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
-    
-    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
-    
-    [self updateFundsAvailable];
-    
-    [self doCurrencyConversion];
+    [self selectFromAccount:account];
 }
 
 - (void)didSelectToAccount:(int)account
