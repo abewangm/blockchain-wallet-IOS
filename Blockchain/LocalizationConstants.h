@@ -579,6 +579,8 @@
 #define BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN NSLocalizedString(@"This address has already been used. Please login.", nil)
 #define BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES NSLocalizedString(@"Please login to load more addresses.", nil)
 
+#define BC_STRING_ERROR_TICKER NSLocalizedString(@"An error occurred while retrieving currency conversion rates. Please try again later.", nil)
+
 #define BC_STRING_DESCRIPTION NSLocalizedString(@"Description", nil)
 #define BC_STRING_DETAILS NSLocalizedString(@"Details", nil)
 #define BC_STRING_VALUE_WHEN_SENT_ARGUMENT NSLocalizedString(@"Value when sent: %@", nil)
