@@ -112,6 +112,7 @@
 - (void)didSendMessage:(NSString *)contact;
 - (void)didSendPaymentRequest:(NSDictionary *)info;
 - (void)didRequestPaymentRequest:(NSDictionary *)info;
+- (void)didPushTransaction;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {

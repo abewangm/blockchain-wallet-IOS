@@ -668,7 +668,7 @@ NSString *detailLabel;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:BC_STRING_INFORMATION_RECEIVE preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LEARN_MORE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:INFORMATION_RECEIVE_URL]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_INFORMATION_RECEIVE]];
     }]];
     [self presentViewController:alert animated:YES completion:nil];
 }

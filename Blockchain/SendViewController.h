@@ -73,6 +73,16 @@
 
 @property (strong, nonatomic) IBOutlet BCConfirmPaymentView *confirmPaymentView;
 
+typedef enum {
+    DestinationAddressSourceNone,
+    DestinationAddressSourceQR,
+    DestinationAddressSourcePaste,
+    DestinationAddressSourceURI,
+    DestinationAddressSourceDropDown,
+} DestinationAddressSource;
+
+@property (nonatomic, readonly) DestinationAddressSource addressSource;
+
 @property(nonatomic, strong) NSString *addressFromURLHandler;
 
 @property(nonatomic, strong) NSString *fromAddress;

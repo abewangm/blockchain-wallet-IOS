@@ -2119,6 +2119,12 @@
             listener.on_success(secondPassword);
         }
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didPushTransaction)]) {
+        [self.delegate didPushTransaction];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didPushTransaction!", [delegate class]);
+    }
 }
 
 - (void)tx_on_error:(NSString*)txProgressID error:(NSString*)error secondPassword:(NSString *)secondPassword
