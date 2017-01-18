@@ -113,7 +113,9 @@ typedef enum {
     ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
     
     if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        [self acceptOrDenyPayment:transaction.intendedAmount];
+        [self acceptOrDenyPayment:transaction];
+    } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+        [self sendPayment:transaction];
     }
 }
 
@@ -271,11 +273,6 @@ typedef enum {
 - (void)sendClicked
 {
     [self createRequest:RequestTypeSendReason title:BC_STRING_SEND reason:nil];
-    
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        [app closeSideMenu];
-//        [app performSelector:@selector(showSendCoins) withObject:nil afterDelay:ANIMATION_DURATION];
-//    }];
 }
 
 - (void)requestClicked
@@ -312,13 +309,21 @@ typedef enum {
     });
 }
 
-- (void)acceptOrDenyPayment:(uint64_t)amount
+- (void)acceptOrDenyPayment:(ContactTransaction *)transaction
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, self.contact.name, [NSNumberFormatter formatMoney:amount localCurrency:NO]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, self.contact.name, [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO]] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet sendPaymentRequest:self.contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)sendPayment:(ContactTransaction *)transaction
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [app setupPaymentAmount:transaction.intendedAmount toAddress:transaction.address];
+    }];
 }
 
 - (void)didGetMessages
@@ -358,14 +363,14 @@ typedef enum {
 {
     DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
     
-    [app.wallet requestPaymentRequest:self.contact.identifier amount:amount];
+    [app.wallet requestPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
 }
 
 - (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
 {
     DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
     
-    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount];
+    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
 }
 
 @end

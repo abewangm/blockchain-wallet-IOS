@@ -2049,14 +2049,14 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContact(\"%@\")", [contactIdentifier escapeStringForJS]]];
 }
 
-- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld)", [userId escapeStringForJS], amount]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, \"%@\", \"%@\")", [userId escapeStringForJS], amount, [requestId escapeStringForJS], [note escapeStringForJS]]];
 }
 
-- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld)", [userId escapeStringForJS], amount]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, \"%@\", \"%@\")", [userId escapeStringForJS], amount, [requestId escapeStringForJS], [note escapeStringForJS]]];
 }
 
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash

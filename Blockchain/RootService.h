@@ -206,6 +206,7 @@
 - (IBAction)logoutClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
+- (void)setupPaymentAmount:(uint64_t)amount toAddress:(NSString *)address;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 

@@ -2020,22 +2020,22 @@ MyWalletPhone.deleteContact = function(identifier) {
     save();
 }
 
-MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount) {
+MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
         objc_on_send_payment_request_success(info);
     };
     
-    MyWallet.wallet.contacts.sendPR(userId, intendedAmount).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
                                                           
-MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount) {
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
         objc_on_request_payment_request_success(info);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash) {

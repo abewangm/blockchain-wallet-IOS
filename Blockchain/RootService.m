@@ -2877,6 +2877,20 @@ void (^secondPasswordSuccess)(NSString *);
     [self showSettings:showBackupBlock];
 }
 
+- (void)setupPaymentAmount:(uint64_t)amount toAddress:(NSString *)address
+{
+    [self closeSideMenu];
+    
+    if (!_sendViewController) {
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [_tabViewController setActiveViewController:_sendViewController animated:NO index:0];
+    
+    [_sendViewController setAmountFromUrlHandler:amount withToAddress:address];
+    [_sendViewController reload];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback
