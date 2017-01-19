@@ -66,6 +66,7 @@
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 16, self.view.frame.size.width - 100, 30)];
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.center = CGPointMake(iconImageView.center.x, titleLabel.center.y);
     titleLabel.textColor = [UIColor darkGrayColor];
@@ -76,6 +77,7 @@
     detailLabel.font = [UIFont systemFontOfSize:14];
     detailLabel.textColor = [UIColor darkGrayColor];
     detailLabel.textAlignment = NSTextAlignmentCenter;
+    detailLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:detailLabel];
     
     NSString *detailLabelString;
