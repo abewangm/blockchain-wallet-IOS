@@ -7,6 +7,8 @@
 //
 
 #import "ContactTransactionTableViewCell.h"
+#import "NSNumberFormatter+Currencies.h"
+
 @interface ContactTransactionTableViewCell()
 @property (nonatomic) BOOL isSetup;
 @end
@@ -46,23 +48,25 @@
 
 - (void)reloadTextAndImage:(ContactTransaction *)transaction contactName:(NSString *)name
 {
+    NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
+    
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sending %lld - Waiting for %@ to accept", transaction.intendedAmount, name];
+        self.mainLabel.text = [NSString stringWithFormat:@"Sending %@ - Waiting for %@ to accept", amount, name];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Receiving %lld - Accept/Deny", transaction.intendedAmount];
+        self.mainLabel.text = [NSString stringWithFormat:@"Receiving %@ - Accept/Deny", amount];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sending %lld - Ready to send", transaction.intendedAmount];
+        self.mainLabel.text = [NSString stringWithFormat:@"Sending %@ - Ready to send", amount];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Requested %lld - Waiting for payment", transaction.intendedAmount];
+        self.mainLabel.text = [NSString stringWithFormat:@"Requested %@ - Waiting for payment", amount];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sent %lld", transaction.intendedAmount];
+        self.mainLabel.text = [NSString stringWithFormat:@"Sent %@", amount];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Received %lld", transaction.intendedAmount];
+        self.mainLabel.text = [NSString stringWithFormat:@"Received %@", amount];
         self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
