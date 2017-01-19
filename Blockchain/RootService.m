@@ -2900,7 +2900,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (self.pendingPaymentRequestTransaction) {
         
-        BOOL amountsMatch = self.pendingPaymentRequestTransaction.intendedAmount == llabs(transaction.amount) - llabs(transaction.fee);
+        uint64_t transactionAmount = llabs(transaction.amount) - llabs(transaction.fee);
+        BOOL amountsMatch = self.pendingPaymentRequestTransaction.intendedAmount == transactionAmount;
         BOOL destinationAddressesMatch = NO;
         
         for (NSDictionary *destination in transaction.to) {
@@ -2914,10 +2915,10 @@ void (^secondPasswordSuccess)(NSString *);
             [app.wallet sendPaymentRequestResponse:self.pendingPaymentRequestTransaction.contactIdentifier transactionHash:transaction.myHash transactionIdentifier:self.pendingPaymentRequestTransaction.identifier];
         } else {
             if (!amountsMatch) {
-                DLog(@"Error: pending address %@ does not match any transaction addresses %@", self.pendingPaymentRequestTransaction.address, transaction.to);
+                DLog(@"Error: pending amount %lld does not match transaction amount %lld", self.pendingPaymentRequestTransaction.intendedAmount, transactionAmount);
             }
             if (!destinationAddressesMatch) {
-                DLog(@"Error: pending amount %lld does not match transaction amount %lld", self.pendingPaymentRequestTransaction.amount, transaction.amount);
+                DLog(@"Error: pending address %@ does not match any transaction addresses %@", self.pendingPaymentRequestTransaction.address, transaction.to);
             }
         }
         self.pendingPaymentRequestTransaction = nil;
