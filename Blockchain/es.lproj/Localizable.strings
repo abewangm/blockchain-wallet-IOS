@@ -140,7 +140,7 @@
 "Any address" = "Cualquier dirección";
 
 /* (No Commment) */
-"App Store review prompt timer (seconds)" = "Cronometro App Store review prompt timer (segundos)";
+"App Store review prompt timer (seconds)" = "Cronometro  App Store review prompt timer (segundos)";
 
 /* (No Commment) */
 "Archive" = "Archivar";
@@ -296,7 +296,7 @@
 "Copy xPub" = "Copiar xPub";
 
 /* (No Commment) */
-"Could not find transaction with hash %@ when reloading data" = "Al volver a cargar los datos, no se pudo encontrar la transacción con comprobación aleatoria %@";
+"Could not find transaction with hash %@ when reloading data" = "Al volver a cargar los datos, no se pudo encontrar la transacción con comprobación aleatoria %@ ";
 
 /* (No Commment) */
 "Could not get value when sent - please check your internet connection and try again." = "Al enviar no se pudo obtener el valor, comprueba tu conexión a internet y vuelve a intentarlo.";
@@ -335,7 +335,7 @@
 "Customize the way you organize your bitcoin in your Blockchain Wallet" = "Personaliza la forma en que organizas tu Bitcoin en tu monedero Blockchain";
 
 /* (No Commment) */
-"Date" = "Fecha";
+"Date" = "Date";
 
 /* (No Commment) */
 "Debug" = "Depurar";
@@ -866,9 +866,6 @@
 "Please enter your recovery phrase with words separated by spaces" = "Introduce tu frase de recuperación con las palabras separadas por espacios";
 
 /* (No Commment) */
-"Please login to load more addresses." = "Por favor inicia sesión para cargar más direcciones.";
-
-/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Por favor, reduce la comisión a un moto que sea más bajo que tu saldo";
 
 /* (No Commment) */
@@ -1075,7 +1072,7 @@
 "Surge Occurring" = "Está ocurriendo un aumento repentino";
 
 /* (No Commment) */
-"Swipe to receive" = "Desliza para recibir.";
+"Swipe to receive" = " Desliza para recibir.";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronizando el monedero";
@@ -1541,3 +1538,84 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "Valor al momento de la recepción: %@";
+
+/* (No Commment) */
+"Transfer All Funds" = "Transferir todos los fondos";
+
+/* (No Commment) */
+"Transfer all" = "Transferir todo";
+
+/* (No Commment) */
+"Transfer imported addresses?" = "¿Transferir las direcciones importadas?";
+
+/* (No Commment) */
+"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup." = "Las direcciones importadas no están respaldadas por su Frase de Recuperación. Para asegurar estos fondos, recomendamos transferir estos saldos para incluirlos en su copia de seguridad.";
+
+/* (No Commment) */
+"About Us" = "Acerca de nosotros";
+
+/* (No Commment) */
+"You currently have email notifications enabled. Changing your email will disable email notifications." = "Actualmente, las notificaciones por correo electrónico están activadas. Cambiar el correo electrónico inhabilitará las notificaciones por correo electrónico.";
+
+/* (No Commment) */
+"You currently have SMS notifications enabled. Changing your email will disable SMS notifications." = "Actualmente, las notificaciones de SMS están habilitadas Cambiar el correo electrónico inhabilitará las notificaciones por SMS.";
+
+/* (No Commment) */
+"All rights reserved." = "Todos los derechos reservados.";
+
+/* (No Commment) */
+"Rate us" = "Califíquenos";
+
+/* (No Commment) */
+"Free Merchant app" = "Aplicación gratuita para comerciantes";
+
+/* (No Commment) */
+"Cannot open Mail App" = "No se pudo abrir la aplicación de correo";
+
+/* (No Commment) */
+"Cannot open URL %@" = "No se pudo abrir la dirección %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "¿Le gustaría contarnos sobre su experiencia con Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Abandonará la aplicación.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Compruebe su bandeja de entrada";
+
+/* (No Commment) */
+"Continue To Mail" = "Continuar al correo";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Busque un correo electrónico de Blockchain y haga clic en el enlace de verificación para completar la configuración de su billetera.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Respaldar sus fondos";
+
+/* (No Commment) */
+"Backup Now" = "Respaldar ahora";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Felicitaciones, ¡tiene bitcoin! Ahora respaldemos su billetera para asegurarnos de que pueda acceder a sus bitcoins si olvida su contraseña.";
+
+/* (No Commment) */
+"2-Step Verification" = "Verificación de dos pasos";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Evite el acceso no autorizado a su billetera. Habilite la verificación de dos pasos para aumentar la seguridad de su billetera.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Habilite las notificaciones para recibir un correo electrónico o un mensaje de texto cuando reciba bitcoins.";
+
+/* (No Commment) */
+"Not Now" = "Ahora no";
+
+/* (No Commment) */
+"I'll do this later" = "Lo haré más tarde";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Podría correr el riesgo de gastar dos veces.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Para su seguridad, no conservamos ninguna contraseña. Respalde su billetera para asegurar que sus bitcoins estén seguras en caso de que pierda su contraseña.";
