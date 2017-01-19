@@ -1917,7 +1917,7 @@ MyWalletPhone.createContact = function(name, id) {
     
     var save = MyWalletPhone.getSaveContactsFunction();
     
-    MyWallet.wallet.contacts.createInvitation({name: name}, {id: id}).then(save).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
+    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
 }
 
 MyWalletPhone.readInvitation = function(invitation, invitationString) {
