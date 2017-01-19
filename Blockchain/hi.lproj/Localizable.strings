@@ -1568,3 +1568,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "नि: शुल्क व्यापारी app";
+
+/* (No Commment) */
+"Cannot open Mail App" = "मेल अनुप्रयोग खोलें नहीं कर सकता";
+
+/* (No Commment) */
+"Cannot open URL %@" = "URL %@ को नहीं खोल सकता";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "आप हमें ब् लॉकचेन के साथ अपने अनुभव के बारे में बताने के लिए चाहते हैं?";
+
+/* (No Commment) */
+"You will be leaving the app." = "आप app जा रही हो जाएगा।";
+
+/* (No Commment) */
+"Check Your Inbox" = "अपने इनबॉक्स की जाँच करें";
+
+/* (No Commment) */
+"Continue To Mail" = "मेल करने के लिए जारी रखें";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "ब् लॉकचेन से एक ईमेल के लिए देखो और अपने बटुए का सेटअप पूरा करने के लिए सत्यापन लिंक पर क्लिक करें।";
+
+/* (No Commment) */
+"Backup Your Funds" = "बैकअप आपके धन";
+
+/* (No Commment) */
+"Backup Now" = "अब बैकअप लें";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "बधाई हो, आप bitcoin है! अब चलो तुम अपने bitcoins उपयोग कर सकते हैं यदि आप अपना पासवर्ड भूल गए हैं यह सुनिश्चित करने के लिए अपने बटुए का बैकअप।";
+
+/* (No Commment) */
+"2-Step Verification" = "2-चरणीय सत्यापन";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "अपने बटुए को अनधिकृत पहुँच को रोकने। बटुआ सुरक्षा बढ़ाने के लिए 2-चरणीय सत् यापन सक्षम करें।";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "जब भी आप bitcoin प्राप्त एक ईमेल या एसएमएस संदेश प्राप्त करने के लिए सूचनाएँ सक्षम करें।";
+
+/* (No Commment) */
+"Not Now" = "अभी नहीं";
+
+/* (No Commment) */
+"I'll do this later" = "मैं यह बाद में कर लेंगे";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "एक डबल खर्च के लिए जोखिम में हो सकता है।";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "आपकी सुरक्षा के लिए, हम किसी भी पासवर्ड फ़ाइल पर न रखें। बैकअप आपके bitcoins सुनिश्चित करने के लिए अपने बटुए सुरक्षित हैं मामले में आप अपना पासवर्ड खो।";

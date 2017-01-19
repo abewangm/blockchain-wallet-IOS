@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Vapaa kauppa app";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Ei voi avata Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Ei voi avata URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Haluatko kertoa meille kokemuksiasi Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Oletko lähdössä app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Ruudullinen sinun luontainen";
+
+/* (No Commment) */
+"Continue To Mail" = "Edelleen Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Etsiä sähköpostia Blockchain ja napsauta vahvistuslinkkiä lompakko-asennusohjelman suorittamiseksi.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Taaksepäin rahat";
+
+/* (No Commment) */
+"Backup Now" = "Varmuuskopiointi nyt";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Onnea olet bitcoin! Nyt let's varmuuskopiointi lompakon varmistaa, voit käsitellä teidän bitcoins, jos unohdat salasanasi.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-vaiheinen vahvistus";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Estä lompakko. Ota 2-vaiheinen vahvistus lompakko turvallisuuden lisäämiseksi.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Ottaa käyttöön ilmoitukset vastaanottamaan sähköpostia tai tekstiviestin aina, kun vastaanotat bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Ei nyt";
+
+/* (No Commment) */
+"I'll do this later" = "Teen tämän myöhemmin";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Saattavat altistua kahden kuluttaa.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa sinun bitcoins ovat turvallisia, jos menetät sinun tunnussana.";

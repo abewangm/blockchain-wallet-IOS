@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Aplikace pro obchodování zdarma";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Nelze otevřít poštovní aplikace";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Nelze otevřít adresu URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Chcete nám sdělit vaše názory Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Můžete přímo z aplikace.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Kontrola složky Doručená pošta";
+
+/* (No Commment) */
+"Continue To Mail" = "Pokračovat na Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Zkuste vyhledat e-mail od Blockchain a klepněte na odkaz pro ověření k dokončení nastavení peněženky.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Zálohovat vaše prostředky";
+
+/* (No Commment) */
+"Backup Now" = "(Zálohovat nyní)";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Gratulujeme máte bitcoin! Teď vám umožní zálohovat vaše peněženka zajistit vaše bitcoiny můžete přistupovat, pokud zapomenete své heslo.";
+
+/* (No Commment) */
+"2-Step Verification" = "2 dvoufázové ověření";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Zabraňte neoprávněnému přístupu k peněžence. Povolte ověřování krok 2 pro zvýšení bezpečnosti peněženku.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Povolte upozornění vždy, když obdržíte bitcoin obdržet e-mail nebo SMS zprávu.";
+
+/* (No Commment) */
+"Not Now" = "Teď ne";
+
+/* (No Commment) */
+"I'll do this later" = "Udělám to později";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Může být v ohrožení pro dvojitá útrata.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pro vaši bezpečnost Nedržíme žádné hesla v souboru. Zálohování vaší peněžence zajistit vaše Bitcoiny jsou bezpečné, v případě, že ztratíte své heslo.";
