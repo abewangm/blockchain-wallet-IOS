@@ -457,6 +457,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)registerDeviceForPushNotifications
 {
+    // TODO: test deregistering from the server
+    
     NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, URL_SERVER, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
     [notificationsRequest setHTTPMethod:@"POST"];
     
