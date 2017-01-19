@@ -21,6 +21,8 @@
 - (void)didGetMessages;
 - (void)didReadMessage:(NSString *)message;
 - (void)didSendMessage:(NSString *)contact;
+- (void)didSendPaymentRequest;
+- (void)didRequestPaymentRequest;
 
 // Detail Controller
 - (void)didChangeTrust;

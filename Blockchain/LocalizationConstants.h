@@ -441,9 +441,12 @@
 #define BC_STRING_PROMPT_AMOUNT_RECEIVE_ARGUMENT NSLocalizedString(@"How much do you want %@ to send? *This is just a suggestion. The actual amount might differ.", nil)
 #define BC_STRING_PROMPT_REASON_SEND_ARGUMENT_ARGUMENT NSLocalizedString(@"Why would you like to send %@ bitcoin (This will be shared with %@)?", nil)
 #define BC_STRING_PROMPT_AMOUNT_SEND_ARGUMENT NSLocalizedString(@"How much do you want to send to %@?", nil)
+#define BC_STRING_CONFIRM_SEND_REQUEST NSLocalizedString(@"Confirm Send Request", nil)
+#define BC_STRING_CONFIRM_RECEIVE_REQUEST NSLocalizedString(@"Confirm Receive Request", nil)
+#define BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Ask to send %@ to %@ for %@?", nil)
+#define BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Request %@ from %@ for %@?", nil)
 
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
-
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR_ARGUMENT NSLocalizedString(@"Waiting for %@ to accept", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept/deny", nil)

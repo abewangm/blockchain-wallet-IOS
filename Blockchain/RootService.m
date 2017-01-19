@@ -389,9 +389,7 @@ void (^secondPasswordSuccess)(NSString *);
         
         showType = ShowTypeNewContact;
         
-        if (!_contactsViewController) {
-            _contactsViewController = [[ContactsViewController alloc] initWithInvitation:identifier name:name];
-        }
+        _contactsViewController = [[ContactsViewController alloc] initWithInvitation:identifier name:name];
         
         return YES;
     }
@@ -2009,6 +2007,16 @@ void (^secondPasswordSuccess)(NSString *);
     }];
     
     [dataTask resume];
+}
+
+- (void)didSendPaymentRequest:(NSDictionary *)info
+{
+    [self.contactsViewController didSendPaymentRequest];
+}
+
+- (void)didRequestPaymentRequest:(NSDictionary *)info
+{
+    [self.contactsViewController didRequestPaymentRequest];
 }
 
 #pragma mark - Show Screens

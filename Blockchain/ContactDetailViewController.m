@@ -351,6 +351,20 @@ typedef enum {
     }];
 }
 
+- (void)didSendPaymentRequest
+{
+    if (self.presentedViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)didRequestPaymentRequest
+{
+    if (self.presentedViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 #pragma mark - Contact Request Delegate
 
 - (void)promptRequestAmount:(NSString *)reason
@@ -365,16 +379,26 @@ typedef enum {
 
 - (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount
 {
-    DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
-    
-    [app.wallet requestPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], self.contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
+        
+        [app.wallet requestPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
 {
-    DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
-    
-    [app.wallet sendPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_RECEIVE_REQUEST message:[NSString stringWithFormat:BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], self.contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
+        
+        [app.wallet sendPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
 }
 
 @end

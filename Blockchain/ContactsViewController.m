@@ -85,6 +85,9 @@ typedef enum {
     if (self.invitationFromURL && self.nameFromURL) {
         [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
     }
+    
+    self.invitationFromURL = nil;
+    self.nameFromURL = nil;
 }
 
 - (void)reload
@@ -453,6 +456,16 @@ typedef enum {
 - (void)didSendMessage:(NSString *)contact
 {
     [self.detailViewController didSendMessage:contact];
+}
+
+- (void)didSendPaymentRequest
+{
+    [self.detailViewController didSendPaymentRequest];
+}
+
+- (void)didRequestPaymentRequest
+{
+    [self.detailViewController didRequestPaymentRequest];
 }
 
 @end

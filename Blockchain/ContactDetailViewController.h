@@ -15,4 +15,6 @@
 - (void)didGetMessages:(Contact *)contact;
 - (void)didReadMessage:(NSString *)message;
 - (void)didSendMessage:(NSString *)message;
+- (void)didSendPaymentRequest;
+- (void)didRequestPaymentRequest;
 @end
