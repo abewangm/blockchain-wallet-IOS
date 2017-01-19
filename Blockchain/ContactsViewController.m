@@ -89,11 +89,7 @@ typedef enum {
 
 - (void)reload
 {
-    self.contacts = [self getContacts];
-    
     [app.wallet getMessages];
-    
-    [self.tableView reloadData];
 }
 
 - (NSArray *)getContacts
@@ -425,9 +421,16 @@ typedef enum {
 
 - (void)didGetMessages
 {
+    self.contacts = [self getContacts];
+
     [self.tableView reloadData];
     
-    [self.detailViewController didGetMessages];
+    if (self.detailViewController.contact.identifier) {
+        NSDictionary *contactsDict = [app.wallet getContacts];
+        Contact *updatedContact = [[Contact alloc] initWithDictionary:[contactsDict objectForKey:self.detailViewController.contact.identifier]];
+        
+        [self.detailViewController didGetMessages:updatedContact];
+    }
 }
 
 - (void)didChangeTrust

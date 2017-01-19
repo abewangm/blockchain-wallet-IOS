@@ -328,8 +328,10 @@ typedef enum {
     }];
 }
 
-- (void)didGetMessages
+- (void)didGetMessages:(Contact *)contact
 {
+    self.contact = contact;
+    
     [self.tableView reloadData];
 }
 

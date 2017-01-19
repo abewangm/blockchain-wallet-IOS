@@ -3284,6 +3284,9 @@
 - (void)on_send_payment_request_success:(JSValue *)info
 {
     DLog(@"on_send_payment_request_success");
+    
+    [self getMessages];
+
     if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:)]) {
         [self.delegate didSendPaymentRequest:[info toDictionary]];
     } else {
@@ -3294,6 +3297,9 @@
 - (void)on_request_payment_request_success:(JSValue *)info
 {
     DLog(@"on_request_payment_request_success");
+    
+    [self getMessages];
+
     if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
         [self.delegate didRequestPaymentRequest:[info toDictionary]];
     } else {
@@ -3304,6 +3310,9 @@
 - (void)on_send_payment_request_response_success:(JSValue *)info
 {
     DLog(@"on_send_payment_request_response_success");
+    
+    [self getMessages];
+
     if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
         [self.delegate didRequestPaymentRequest:[info toDictionary]];
     } else {
