@@ -11,7 +11,8 @@
 enum {
     ReminderTypeEmail,
     ReminderTypeTwoFactor,
-    ReminderTypeBackup
+    ReminderTypeBackupJustReceivedBitcoin,
+    ReminderTypeBackupHasBitcoin
 };
 
 typedef NSInteger ReminderType;

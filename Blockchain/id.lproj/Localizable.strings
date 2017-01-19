@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Aplikasi Perdagangan Gratis";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Tidak dapat membuka Aplikasi Surat";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Tidak dapat membuka URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Apakah Anda ingin memberitahu kami tentang pengalaman Anda dengan Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Anda akan meninggalkan aplikasi.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Periksa Kotak Masuk Anda";
+
+/* (No Commment) */
+"Continue To Mail" = "Lanjutkan Ke Surat";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Cari surel dari Blockchain dan klik tautan verifikasi untuk menyelesaikan penyiapan dompet Anda.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Cadangkan Dana Anda";
+
+/* (No Commment) */
+"Backup Now" = "Cadangkan Sekarang";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Selamat, Anda memiliki bitcoin! Sekarang mari kita cadangkan dompet Anda untuk memastikan Anda dapat mengakses Bitcoin Anda jika Anda lupa kata sandi Anda.";
+
+/* (No Commment) */
+"2-Step Verification" = "Verifikasi 2 Langkah";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Mencegah akses tidak sah ke dompet Anda. Aktifkan verifikasi 2-langkah untuk meningkatkan keamanan dompet.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Aktifkan pemberitahuan untuk menerima surel atau pesan SMS setiap kali Anda menerima bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Tidak Sekarang";
+
+/* (No Commment) */
+"I'll do this later" = "Aku akan melakukannya nanti";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Mungkin berisiko untuk pembelanjaan ganda.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Untuk keamanan Anda, kami tidak menyimpan kata sandi pada berkas. Cadangan dompet Anda untuk memastikan Bitcoin Anda aman jika Anda kehilangan kata sandi Anda.";

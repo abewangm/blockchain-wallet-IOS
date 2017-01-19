@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Drum liber app comerciant";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Nu pot deschide Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Nu pot deschide URL-ul %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Doriţi să ne spuneţi despre experienţa dumneavoastră cu Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Te va lăsa app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Verificaţi Inbox";
+
+/* (No Commment) */
+"Continue To Mail" = "Continua să Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Uita-te pentru un e-mail la Blockchain şi faceţi clic pe linkul de verificare pentru a finaliza configurarea de portofel.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Fondurile de rezervă";
+
+/* (No Commment) */
+"Backup Now" = "Rezervă acum";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Felicitari, ai bitcoin! Acum haideţi să spate portofel pentru a asigura puteţi accesa bitcoins dumneavoastră în cazul în care uitaţi parola.";
+
+/* (No Commment) */
+"2-Step Verification" = "Verificare în 2 paşi";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Prevenirea accesului neautorizat la portofel. Permite verificarea 2-pas pentru a spori securitatea portofel.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Activare notificări pentru a primi un e-mail sau mesaj SMS ori de câte ori primiţi bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "nu acum";
+
+/* (No Commment) */
+"I'll do this later" = "Voi face acest lucru mai târziu";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Poate fi la risc pentru un dublu de cheltuieli.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pentru securitate, nu păstrăm nici parolele pe dosar. Rezervă portofel pentru a asigura bitcoins dumneavoastră sunt în siguranţă în cazul în care ai pierdut parola.";

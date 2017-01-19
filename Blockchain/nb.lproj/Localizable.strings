@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Gratis kjøpmann app";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Kan ikke åpne Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Kan ikke åpne URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Ønsker du å fortelle oss om din erfaring med Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du forlater programmet.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Sjekk innboksen";
+
+/* (No Commment) */
+"Continue To Mail" = "Fortsette å innlevere";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Se etter en e-post fra Blockchain, og klikk bekreftelseskoblingen for å fullføre din lommebok oppsett.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Sikkerhetskopiere dine midler";
+
+/* (No Commment) */
+"Backup Now" = "Backup nå";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Gratulerer, har du bitcoin! Nå la oss sikkerhetskopien lommeboken for å sikre at du får din bitcoins hvis du glemmer passordet.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-trinns bekreftelse";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Forhindre uautorisert tilgang til din konto. Aktiver 2-trinns bekreftelse å øke lommebok sikkerheten.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Aktivere varsler å motta epost eller SMS-melding når du mottar bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "ikke nå";
+
+/* (No Commment) */
+"I'll do this later" = "Jeg gjør dette senere";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Kan være utsatt for en dobbel-utgifter.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhet holde vi ikke passord på fil. Backup lommeboken for å sikre din bitcoins er trygt i tilfelle du mister passordet.";

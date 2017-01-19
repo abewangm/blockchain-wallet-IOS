@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "التطبيق التجاري مجاناً";
+
+/* (No Commment) */
+"Cannot open Mail App" = "لا يمكن فتح \"التطبيق البريد\"";
+
+/* (No Commment) */
+"Cannot open URL %@" = "لا يمكن فتح عنوان URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "هل تريد أن تخبرنا عن تجربتك مع بلوكتشاين؟";
+
+/* (No Commment) */
+"You will be leaving the app." = "سوف يغادر التطبيق.";
+
+/* (No Commment) */
+"Check Your Inbox" = "تحقق من علبة الوارد الخاصة بك";
+
+/* (No Commment) */
+"Continue To Mail" = "مواصلة للبريد";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "ابحث عن رسالة بالبريد إلكتروني من بلوكتشين، وانقر فوق ارتباط التحقق من الصحة لإكمال الإعداد المحفظة الخاصة بك.";
+
+/* (No Commment) */
+"Backup Your Funds" = "النسخ الاحتياطي الخاصة بك الأموال";
+
+/* (No Commment) */
+"Backup Now" = "النسخ الاحتياطي الآن";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "مبروك، لديك بيتكوين! الآن دعنا النسخ الاحتياطي المحفظة الخاصة بك لضمان يمكنك الوصول الخاص بك بيتكوينس إذا كنت قد نسيت كلمة المرور الخاصة بك.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-خطوة التحقق";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "منع الوصول غير المصرح به إلى محفظتك. تمكين التحقق من خطوتين لزيادة الأمن المحفظة.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "تمكين إعلامات تلقي بريد إلكتروني أو رسالة SMS عند تلقي بيتكوين.";
+
+/* (No Commment) */
+"Not Now" = "ليس الآن";
+
+/* (No Commment) */
+"I'll do this later" = "سأفعل ذلك في وقت لاحق";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "قد تكون في خطر لقضاء مزدوج.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "لتحقيق الأمان، نحن لا تحتفظ بأي كلمات المرور في ملف. النسخ الاحتياطي المحفظة الخاصة بك التأكد من بيتكوينس الخاص بك آمنة في حالة فقدان كلمة المرور الخاصة بك.";

@@ -2016,7 +2016,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if ([app.wallet getTotalActiveBalance] > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
-            [self showBackupReminder];
+            [self showBackupReminder:NO];
         } else {
             [self checkIfSettingsLoadedAndShowTwoFactorReminder];
         }
@@ -2057,9 +2057,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showBackupReminder
+- (void)showBackupReminder:(BOOL)firstReceive
 {
-    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeBackup];
+    ReminderType reminderType = firstReceive ? ReminderTypeBackupJustReceivedBitcoin : ReminderTypeBackupHasBitcoin;
+    
+    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:reminderType];
     backupController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:backupController];
     navigationController.navigationBarHidden = YES;
@@ -2562,7 +2564,7 @@ void (^secondPasswordSuccess)(NSString *);
         [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
     } else {
         if (showBackupReminder) {
-            [self showBackupReminder];
+            [self showBackupReminder:YES];
         }
     }
 }

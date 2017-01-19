@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Prost app trgovskih";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Ne more odpreti Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Ne more odpreti URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Bi radi, da nas obvestite o svojih izkušnjah z Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Vas bo zapušča app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Ček vaš v medkrovju";
+
+/* (No Commment) */
+"Continue To Mail" = "Še naprej verižna srajca";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Pogled za e-pošto iz Blockchain in pritisnite na verifikacijsko povezavo za dokončanje nastavitve denarnice.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Prislon vaš sredstva";
+
+/* (No Commment) */
+"Backup Now" = "Varnostno kopiranje sedaj";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Čestitke, ste bitcoin! Zdaj let's backup vaše denarnice za zagotovitev vaš bitcoins lahko dostopate, če pozabite geslo.";
+
+/* (No Commment) */
+"2-Step Verification" = "Preverjanje v 2 korakih";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Preprečujejo nepooblaščen dostop do vaše denarnice. Omogoči preverjanje 2-korak za povečanje varnosti denarnico.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Omogočanje obvestil za prejemanje e-pošte ali SMS sporočilo vsakokrat, ko prejmete bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "ne zdaj";
+
+/* (No Commment) */
+"I'll do this later" = "Bom to naredil kasneje";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Lahko obstaja tveganje za dvojno preživijo.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašo varnost, ne hranimo poljuben parola naprej pila. Varnostno kopiranje vaše denarnice za zagotovitev vaš bitcoins so varne, v primeru, da ste izgubili geslo.";

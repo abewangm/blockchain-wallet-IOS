@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "無料マーチャントアプリ";
+
+/* (No Commment) */
+"Cannot open Mail App" = "メールアプリを開くことができません";
+
+/* (No Commment) */
+"Cannot open URL %@" = "URL %@を開くことができません";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Blockchainについてのご意見をお聞かせください。";
+
+/* (No Commment) */
+"You will be leaving the app." = "アプリを終了しようとしています。";
+
+/* (No Commment) */
+"Check Your Inbox" = "受信箱を確認する";
+
+/* (No Commment) */
+"Continue To Mail" = "メールを開く";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Blockchainからのメールを探して認証リンクをクリックしてウォレット設定を完了してください。";
+
+/* (No Commment) */
+"Backup Your Funds" = "資金をバックアップする";
+
+/* (No Commment) */
+"Backup Now" = "今すぐバックアップ";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "おめでとうございます、現在ビットコインを所持しています！今度はウォレットをバックアップして、パスワードを忘れた場合でもビットコインにアクセスできるようにしましょう。";
+
+/* (No Commment) */
+"2-Step Verification" = "2段階認証";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "ウォレットへの不正アクセスを予防しましょう。2段階認証を有効にしてウォレットのセキュリティを増加しましょう。";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "ビットコインを受け取る度にメールもしくはSMSメッセージを受け取る通知を有効にする。";
+
+/* (No Commment) */
+"Not Now" = "後で";
+
+/* (No Commment) */
+"I'll do this later" = "後で設定する";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "二重支出のリスクがある場合があります。";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "セキュリティのために当社はファイルにパスワードを保管しません。ウォレットをバックアップするとパスワードを失った場合でもビットコインの安全性が保たれます。";

@@ -178,7 +178,7 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
-- (void)showBackupReminder;
+- (void)showBackupReminder:(BOOL)firstReceive;
 
 - (void)reloadTransactionFilterLabel;
 

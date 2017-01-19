@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "ฟรีแอป Merchant";
+
+/* (No Commment) */
+"Cannot open Mail App" = "ไม่สามารถเปิดแอปเมลได้";
+
+/* (No Commment) */
+"Cannot open URL %@" = "ไม่สามารถเปิด URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "คุณต้องการบอกเราเกี่ยวกับประสบการณ์ของคุณกับ Blockchain หรือไม่?";
+
+/* (No Commment) */
+"You will be leaving the app." = "คุณจะออกจากแอป";
+
+/* (No Commment) */
+"Check Your Inbox" = "ตรวจสอบกล่องข้อความของคุณ";
+
+/* (No Commment) */
+"Continue To Mail" = "ดำเนินการต่อไปยังเมล";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "มองหาอีเมลจาก Blockchain แล้วคลิกลิงก์ยืนยันเพื่อทำการตั้งค่ากระเป๋าเงินของคุณให้เสร็จสิ้น";
+
+/* (No Commment) */
+"Backup Your Funds" = "สำรองข้อมูลเงินทุนของคุณ";
+
+/* (No Commment) */
+"Backup Now" = "สำรองข้อมูลตอนนี้";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "ยินดีด้วย คุณมี bitcoin! ตอนนี้ มาสำรองข้อมูลกระเป๋าเงินของคุณกันเพื่อยืนยันว่าคุณจะสามารถเข้าถึง bitcoin ของคุณได้หากคุณลืมรหัสผ่าน";
+
+/* (No Commment) */
+"2-Step Verification" = "การยืนยัน 2 ขั้นตอน";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "ป้องกันการเข้าถึงกระเป๋าเงินของคุณโดยไม่ได้รับอนุญาต เปิดใช้งานการยืนยัน 2 ขั้นตอนเพื่อเพิ่มความปลอดภัยของกระเป๋าเงิน";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "เปิดใช้การแจ้งเตือนเพื่อรับอีเมลหรือข้อความ SMS เมื่อคุณได้รับ bitcoin";
+
+/* (No Commment) */
+"Not Now" = "ไม่ใช่ตอนนี้";
+
+/* (No Commment) */
+"I'll do this later" = "ฉันจะทำในภายหลัง";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "อาจมีความเสี่ยงสำหรับการใช้จ่ายสองครั้ง";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า bitcoin ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
