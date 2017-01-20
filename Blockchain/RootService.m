@@ -718,7 +718,9 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     if (self.topViewControllerDelegate) {
-        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+        if (self.pinEntryViewController) {
+            [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
             [self.topViewControllerDelegate presentAlertController:alert];
         }
     } else if (self.pinEntryViewController) {
