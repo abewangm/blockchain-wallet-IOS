@@ -617,6 +617,12 @@ BOOL displayingLocalSymbolSend;
         NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
         
         NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        if (![amountString containsString:@"."]) {
+            amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        }
+        if (![amountString containsString:@"."]) {
+            amountString = [amountString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+        }
         return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
     } else {
         return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
@@ -1316,9 +1322,6 @@ BOOL displayingLocalSymbolSend;
         if (textField == fiatAmountField) {
             // Convert input amount to internal value
             NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            if (![amountString containsString:@"."]) {
-                amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            }
             if (![amountString containsString:@"."]) {
                 amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
             }
