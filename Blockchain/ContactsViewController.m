@@ -37,6 +37,8 @@ typedef enum {
 @property (nonatomic) NSString *invitationFromURL;
 @property (nonatomic) NSString *nameFromURL;
 
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @property (nonatomic) CreateContactType contactType;
 
 @end
@@ -66,6 +68,8 @@ typedef enum {
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
+    
+    [self setupPullToRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,6 +92,25 @@ typedef enum {
     
     self.invitationFromURL = nil;
     self.nameFromURL = nil;
+}
+
+- (void)refreshControlActivated
+{
+    [app.topViewControllerDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+}
+
+- (void)setupPullToRefresh
+{
+    // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl setTintColor:[UIColor grayColor]];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshControlActivated)
+                  forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
 }
 
 - (void)reload
@@ -433,6 +456,10 @@ typedef enum {
         Contact *updatedContact = [[Contact alloc] initWithDictionary:[contactsDict objectForKey:self.detailViewController.contact.identifier]];
         
         [self.detailViewController didGetMessages:updatedContact];
+    }
+    
+    if (self.refreshControl && self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
     }
 }
 

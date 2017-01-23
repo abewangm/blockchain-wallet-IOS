@@ -68,7 +68,6 @@
 		236D7ED91CBD8B3900836EF2 /* DeviceIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D7ED81CBD8B3900836EF2 /* DeviceIdentifier.m */; };
 		237356B61DF894CF003940A7 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 237356B51DF894CF003940A7 /* Contact.m */; };
 		237356B91DF8B4EE003940A7 /* ContactDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */; };
-		237356BC1DF9C45E003940A7 /* ContactMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237356BB1DF9C45E003940A7 /* ContactMessagesViewController.m */; };
 		237451C91D624C1C00CF7049 /* RootService.m in Sources */ = {isa = PBXBuildFile; fileRef = 237451C81D624C1C00CF7049 /* RootService.m */; };
 		2378271A1B7E472D00E9EE03 /* BCSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237827191B7E472D00E9EE03 /* BCSecureTextField.swift */; };
 		237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 237C9E8F1C482132000754F7 /* AccountsAndAddressesDetailViewController.m */; };
@@ -547,8 +546,6 @@
 		237356B51DF894CF003940A7 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		237356B71DF8B4EE003940A7 /* ContactDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailViewController.h; sourceTree = "<group>"; };
 		237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailViewController.m; sourceTree = "<group>"; };
-		237356BA1DF9C45E003940A7 /* ContactMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactMessagesViewController.h; sourceTree = "<group>"; };
-		237356BB1DF9C45E003940A7 /* ContactMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactMessagesViewController.m; sourceTree = "<group>"; };
 		237451C71D624C1C00CF7049 /* RootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootService.h; sourceTree = "<group>"; };
 		237451C81D624C1C00CF7049 /* RootService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootService.m; sourceTree = "<group>"; };
 		2374BFA41B750D6E00A53FBE /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Backup.strings; sourceTree = "<group>"; };
@@ -1483,8 +1480,6 @@
 			children = (
 				232D7DDF1E018E7800A7A2ED /* ContactNewMessageViewController.h */,
 				232D7DE01E018E7800A7A2ED /* ContactNewMessageViewController.m */,
-				237356BA1DF9C45E003940A7 /* ContactMessagesViewController.h */,
-				237356BB1DF9C45E003940A7 /* ContactMessagesViewController.m */,
 				237356B71DF8B4EE003940A7 /* ContactDetailViewController.h */,
 				237356B81DF8B4EE003940A7 /* ContactDetailViewController.m */,
 				23964BFE1DC93882001323BE /* ContactsViewController.h */,
@@ -1968,7 +1963,6 @@
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,
 				23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */,
-				237356BC1DF9C45E003940A7 /* ContactMessagesViewController.m in Sources */,
 				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
 				23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */,
 				23444F871DCD217E00573C8C /* BTCNetwork.m in Sources */,

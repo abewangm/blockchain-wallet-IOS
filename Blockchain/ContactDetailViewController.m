@@ -33,6 +33,7 @@ typedef enum {
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
+@property (nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation ContactDetailViewController
@@ -59,6 +60,8 @@ typedef enum {
     [self.tableView registerClass:[ContactTransactionTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION];
     
     [self.tableView reloadData];
+    
+    [self setupPullToRefresh];
 }
 
 - (void)setContact:(Contact *)contact
@@ -370,6 +373,10 @@ typedef enum {
     
     [self.tableView reloadData];
     [self.transactionDetailViewController didGetHistory];
+    
+    if (self.refreshControl && self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
+    }
 }
 
 - (void)didReadMessage:(NSString *)message
@@ -400,6 +407,25 @@ typedef enum {
     if (self.presentedViewController) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)refreshControlActivated
+{
+    [app.topViewControllerDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+}
+
+- (void)setupPullToRefresh
+{
+    // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl setTintColor:[UIColor grayColor]];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshControlActivated)
+                  forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
 }
 
 #pragma mark - Contact Request Delegate

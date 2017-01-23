@@ -142,8 +142,6 @@
 @property(nonatomic) NSString *lastImportedAddress;
 @property(nonatomic) BOOL didReceiveMessageForLastTransaction;
 
-@property(nonatomic, readonly) NSDictionary *messages;
-
 // HD properties:
 @property NSString *recoveryPhrase;
 @property int emptyAccountIndex;

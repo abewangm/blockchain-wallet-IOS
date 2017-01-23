@@ -2835,10 +2835,8 @@
 {
     DLog(@"on_get_history_success");
     
-    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
-    if (!self.isSyncing) {
-        [self loading_stop];
-    }
+    [self getMessages];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
@@ -3254,7 +3252,10 @@
 {
     DLog(@"on_get_messages_success");
     if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
-        _messages = nil;
+        // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+        if (!self.isSyncing) {
+            [self loading_stop];
+        }
         [self.delegate didGetMessages];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
