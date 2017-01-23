@@ -14,6 +14,7 @@
 #import "BCContactRequestView.h"
 #import "ContactTransactionTableViewCell.h"
 #import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -335,10 +336,13 @@ typedef enum {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = [self getTransactionDetails:transaction];
     detailViewController.transactionIndex = row;
-
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    detailViewController.busyViewDelegate = navigationController;
+    
     self.transactionDetailViewController = detailViewController;
     
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (Transaction *)getTransactionDetails:(ContactTransaction *)contactTransaction
@@ -365,6 +369,7 @@ typedef enum {
     self.contact = contact;
     
     [self.tableView reloadData];
+    [self.transactionDetailViewController didGetHistory];
 }
 
 - (void)didReadMessage:(NSString *)message

@@ -991,6 +991,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.latestBlock = block;
     [_transactionsViewController reload];
+    [_contactsViewController reload];
 }
 
 - (void)getAccountInfo
