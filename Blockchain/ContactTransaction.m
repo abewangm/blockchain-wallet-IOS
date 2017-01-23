@@ -17,6 +17,7 @@
         _intendedAmount = [[dictionary objectForKey:DICTIONARY_KEY_INTENDED_AMOUNT] longLongValue];
         _role = [dictionary objectForKey:DICTIONARY_KEY_ROLE];
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
+        self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
         
         if ([_state isEqualToString:TRANSACTION_STATE_WAITING_PAYMENT]) {
             if ([_role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {

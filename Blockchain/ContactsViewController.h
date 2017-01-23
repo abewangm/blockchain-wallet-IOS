@@ -27,4 +27,5 @@
 // Detail Controller
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
+- (NSString *)currentTransactionHash;
 @end

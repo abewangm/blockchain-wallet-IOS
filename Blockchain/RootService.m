@@ -788,6 +788,16 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (NSString *)getCurrentDetailViewControllerHash
+{
+    return [self isViewingContacts] ? [self.contactsViewController currentTransactionHash] : self.transactionsViewController.detailViewController.transaction.myHash;
+}
+
+- (BOOL)isViewingContacts
+{
+    return self.topViewControllerDelegate != nil;
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -1883,26 +1893,25 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
-    if (self.transactionsViewController.lastSelectedIndexPath.row < latestResponse.transactions.count) {
-        
-        Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
-        
-        if ([transaction.myHash isEqualToString:self.transactionsViewController.detailViewController.transaction.myHash]) {
+    BOOL didFindTransaction = NO;
+    for (Transaction *transaction in app.latestResponse.transactions) {
+        if ([transaction.myHash isEqualToString:[self getCurrentDetailViewControllerHash]]) {
             NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
             if (components.count > 1 && [[components lastObject] length] == 1) {
                 fiatAmount = [fiatAmount stringByAppendingString:@"0"];
             }
             
             [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
-        } else {
-            DLog(@"didGetFiatAtTime: will not set fiat amount because latest transaction hash does not match detail controller's transaction hash. This can occur when receiving a transaction while on the detail view controller.");
+            didFindTransaction = YES;
+            break;
         }
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
-    } else {
-        DLog(@"Transaction detail error: last selected transaction index is outside bounds of transactions from latest response!");
     }
-
+    
+    if (!didFindTransaction) {
+        DLog(@"didGetFiatAtTime: will not set fiat amount because the detail controller's transaction hash cannot be found.");
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error

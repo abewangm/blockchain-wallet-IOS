@@ -17,4 +17,6 @@
 - (void)didSendMessage:(NSString *)message;
 - (void)didSendPaymentRequest;
 - (void)didRequestPaymentRequest;
+
+- (NSString *)getTransactionHash;
 @end

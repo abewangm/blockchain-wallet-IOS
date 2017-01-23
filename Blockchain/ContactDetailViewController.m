@@ -13,7 +13,6 @@
 #import "Blockchain-Swift.h"
 #import "BCContactRequestView.h"
 #import "ContactTransactionTableViewCell.h"
-#import "ContactTransaction.h"
 #import "TransactionDetailViewController.h"
 
 const int sectionMain = 0;
@@ -32,6 +31,7 @@ typedef enum {
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ContactRequestDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
+@property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
 @end
 
 @implementation ContactDetailViewController
@@ -116,6 +116,8 @@ typedef enum {
         [self acceptOrDenyPayment:transaction];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
         [self sendPayment:transaction];
+    } else if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
+        [self showTransactionDetail:transaction forRow:indexPath.row];
     }
 }
 
@@ -328,6 +330,36 @@ typedef enum {
     }];
 }
 
+- (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
+{
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = [self getTransactionDetails:transaction];
+    detailViewController.transactionIndex = row;
+
+    self.transactionDetailViewController = detailViewController;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+- (Transaction *)getTransactionDetails:(ContactTransaction *)contactTransaction
+{
+    Transaction *transactionWithDetail;
+    BOOL didFindTransaction = NO;
+    for (Transaction *transaction in app.latestResponse.transactions) {
+        if ([transaction.myHash isEqualToString:contactTransaction.myHash]) {
+            transactionWithDetail = transaction;
+            didFindTransaction = YES;
+            break;
+        }
+    }
+    if (!didFindTransaction) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, contactTransaction.myHash]];
+        }];
+    }
+    return transactionWithDetail;
+}
+
 - (void)didGetMessages:(Contact *)contact
 {
     self.contact = contact;
@@ -399,6 +431,11 @@ typedef enum {
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
+}
+
+- (NSString *)getTransactionHash
+{
+    return self.transactionDetailViewController.transaction.myHash;
 }
 
 @end
