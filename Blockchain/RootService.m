@@ -2028,6 +2028,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didRequestPaymentRequest];
 }
 
+- (void)didChangeContactName:(NSDictionary *)info
+{
+    [self.contactsViewController didChangeContactName];
+}
+
+- (void)didDeleteContact:(NSDictionary *)info
+{
+    [self.contactsViewController.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

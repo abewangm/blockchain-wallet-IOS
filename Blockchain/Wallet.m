@@ -724,6 +724,14 @@
         [weakSelf on_send_payment_request_response_success:info];
     };
     
+    self.context[@"objc_on_change_contact_name_success"] = ^(JSValue *info) {
+        [weakSelf on_change_contact_name_success:info];
+    };
+    
+    self.context[@"objc_on_delete_contact_success"] = ^(JSValue *info) {
+        [weakSelf on_delete_contact_success:info];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -1980,6 +1988,7 @@
     
 - (void)loadContacts
 {
+    // MyWalletPhone.loadContacts calls getMessages, which digests the messages
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
 }
 
@@ -3364,6 +3373,28 @@
         [self.delegate didRequestPaymentRequest:[info toDictionary]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest!", [delegate class]);
+    }
+}
+
+- (void)on_change_contact_name_success:(JSValue *)info
+{
+    DLog(@"on_change_contact_name_success");
+    
+    if ([self.delegate respondsToSelector:@selector(didChangeContactName:)]) {
+        [self.delegate didChangeContactName:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeContactName!", [delegate class]);
+    }
+}
+
+- (void)on_delete_contact_success:(JSValue *)info
+{
+    DLog(@"on_delete_contact_success");
+
+    if ([self.delegate respondsToSelector:@selector(didDeleteContact:)]) {
+        [self.delegate didDeleteContact:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didDeleteContact!", [delegate class]);
     }
 }
 

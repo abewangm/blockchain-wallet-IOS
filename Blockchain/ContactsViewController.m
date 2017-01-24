@@ -487,4 +487,9 @@ typedef enum {
     [self.detailViewController didRequestPaymentRequest];
 }
 
+- (void)didChangeContactName
+{
+    [self reload];
+}
+
 @end

@@ -68,12 +68,19 @@ typedef enum {
 {
     _contact = contact;
     
+    [self updateNavigationTitle];
     [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self updateNavigationTitle];
+}
+
+- (void)updateNavigationTitle
+{
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = self.contact.name ? self.contact.name : self.contact.identifier;
 }

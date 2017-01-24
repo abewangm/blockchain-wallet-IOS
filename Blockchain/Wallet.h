@@ -112,6 +112,8 @@
 - (void)didSendMessage:(NSString *)contact;
 - (void)didSendPaymentRequest:(NSDictionary *)info;
 - (void)didRequestPaymentRequest:(NSDictionary *)info;
+- (void)didChangeContactName:(NSDictionary *)info;
+- (void)didDeleteContact:(NSDictionary *)info;
 - (void)didPushTransaction;
 @end
 

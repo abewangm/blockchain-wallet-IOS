@@ -2005,19 +2005,25 @@ MyWalletPhone.sendMessage = function(message, contact) {
 MyWalletPhone.changeName = function(newName, identifier) {
     
     var save = MyWalletPhone.getSaveContactsFunction();
+    var success = function(info) {
+        objc_on_change_contact_name_success(info);
+    };
     
     MyWallet.wallet.contacts.list[identifier].name = newName;
     
-    save();
+    save().then(success);
 }
 
 MyWalletPhone.deleteContact = function(identifier) {
     
     var save = MyWalletPhone.getSaveContactsFunction();
+    var success = function(info) {
+        objc_on_delete_contact_success(info);
+    };
 
     MyWallet.wallet.contacts.delete(identifier);
     
-    save();
+    save().then(success);
 }
 
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {

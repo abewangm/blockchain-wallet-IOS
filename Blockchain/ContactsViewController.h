@@ -23,6 +23,7 @@
 - (void)didSendMessage:(NSString *)contact;
 - (void)didSendPaymentRequest;
 - (void)didRequestPaymentRequest;
+- (void)didChangeContactName;
 
 // Detail Controller
 - (void)didChangeTrust;
