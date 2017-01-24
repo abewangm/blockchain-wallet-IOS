@@ -330,7 +330,7 @@ typedef enum {
     transaction.contactIdentifier = self.contact.identifier;
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [app setupPaymentRequest:transaction];
+        [app setupPaymentRequest:transaction forContactName:self.contact.name];
     }];
 }
 

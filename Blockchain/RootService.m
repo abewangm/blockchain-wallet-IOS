@@ -2899,7 +2899,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self showSettings:showBackupBlock];
 }
 
-- (void)setupPaymentRequest:(ContactTransaction *)transaction
+- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name
 {
     [self closeSideMenu];
     
@@ -2911,7 +2911,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_tabViewController setActiveViewController:_sendViewController animated:NO index:0];
     
-    [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address];
+    [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address contactName:name];
     [_sendViewController reload];
 }
 

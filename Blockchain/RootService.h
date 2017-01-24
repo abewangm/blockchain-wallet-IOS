@@ -207,7 +207,7 @@
 - (IBAction)logoutClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
-- (void)setupPaymentRequest:(ContactTransaction *)transaction;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;

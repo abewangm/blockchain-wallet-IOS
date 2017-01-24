@@ -37,6 +37,7 @@ typedef enum {
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 @property (nonatomic) NSString *addressFromURLHandler;
+@property (nonatomic) NSDictionary *contactInfo;
 
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
@@ -288,7 +289,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
-        if ([app.wallet isBitcoinAddress:toField.text]) {
+        if ([app.wallet isBitcoinAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
         } else {
             toField.text = @"";
@@ -716,7 +717,12 @@ BOOL displayingLocalSymbolSend;
         }
         
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressString = self.sendToAddress ? self.toAddress : @"";
+        
+        BOOL shouldRemoveToAddress = NO;
+        NSString *contactName = [self.contactInfo objectForKey:self.toAddress];
+        shouldRemoveToAddress = contactName && ![contactName isEqualToString:@""];
+        
+        NSString *toAddressString = self.sendToAddress ? (shouldRemoveToAddress ? @"" : self.toAddress) : @"";
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([toAddressLabel isEqualToString:toAddressString]) {
@@ -884,10 +890,11 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
 }
 
-- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString
+- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
 {
     self.addressFromURLHandler = addressString;
     self.amountFromURLHandler = amount;
+    self.contactInfo = @{addressString: name};
     
     _addressSource = DestinationAddressSourceContact;
 }
@@ -916,6 +923,9 @@ BOOL displayingLocalSymbolSend;
         NSString *label = [app.wallet labelForLegacyAddress:address];
         if (label && ![label isEqualToString:@""])
             return label;
+    } else if (self.contactInfo) {
+        NSString *name = [self.contactInfo objectForKey:address];
+        if (name && ![name isEqualToString:@""]) return name;
     }
     
     return address;
