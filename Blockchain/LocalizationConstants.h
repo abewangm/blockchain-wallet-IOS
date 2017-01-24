@@ -452,6 +452,13 @@
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept/deny", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
 
+#define BC_STRING_SENDING_ARGUMENT_WAITING_FOR_ARGUMENT_TO_ACCEPT NSLocalizedString(@"Sending %@ - Waiting for %@ to accept", nil)
+#define BC_STRING_RECEIVING_ARGUMENT_ACCEPT_OR_DENY NSLocalizedString(@"Receiving %@ - Accept/Deny", nil)
+#define BC_STRING_SENDING_ARGUMENT_READY_TO_SEND NSLocalizedString(@"Sending %@ - Ready to send", nil)
+#define BC_STRING_REQUESTED_ARGUMENT_WAITING_FOR_PAYMENT NSLocalizedString(@"Requested %@ - Waiting for payment", nil)
+#define BC_STRING_SENT_ARGUMENT NSLocalizedString(@"Sent %@", nil)
+#define BC_STRING_RECEIVED_ARGUMENT NSLocalizedString(@"Received %@", nil)
+
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
 #define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)

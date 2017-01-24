@@ -51,22 +51,22 @@
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
     
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sending %@ - Waiting for %@ to accept", amount, name];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_WAITING_FOR_ARGUMENT_TO_ACCEPT, amount, name];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Receiving %@ - Accept/Deny", amount];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_RECEIVING_ARGUMENT_ACCEPT_OR_DENY, amount];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sending %@ - Ready to send", amount];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_READY_TO_SEND, amount];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Requested %@ - Waiting for payment", amount];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_WAITING_FOR_PAYMENT, amount];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Sent %@", amount];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT, amount];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        self.mainLabel.text = [NSString stringWithFormat:@"Received %@", amount];
+        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_RECEIVED_ARGUMENT, amount];
         self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
