@@ -7,6 +7,7 @@
 //
 
 #import "Contact.h"
+#import "ContactTransaction.h"
 
 @implementation Contact
 
@@ -25,7 +26,17 @@
         _surname = [dictionary objectForKey:DICTIONARY_KEY_SURNAME];
         _trusted = [[dictionary objectForKey:DICTIONARY_KEY_TRUSTED] boolValue];
         _xpub = [dictionary objectForKey:DICTIONARY_KEY_XPUB];
-        _transactionList = [dictionary objectForKey:DICTIONARY_KEY_TRANSACTION_LIST];
+        
+        NSDictionary *transactionListDict = [dictionary objectForKey:DICTIONARY_KEY_TRANSACTION_LIST];
+        NSArray *transactionListArray = [transactionListDict allValues];
+        
+        NSMutableDictionary *finalTransactionList = [NSMutableDictionary new];
+        for (NSDictionary *facilitatedTransaction in transactionListArray) {
+            ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:facilitatedTransaction];
+            [finalTransactionList setObject:transaction forKey:transaction.identifier];
+        }
+        
+        _transactionList = [finalTransactionList copy];
     }
     return self;
 }

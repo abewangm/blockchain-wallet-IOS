@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SideMenuViewCell : UITableViewCell
-
+@property (nonatomic, readonly) UIImageView *dotImageView;
+@property (nonatomic) BOOL showDot;
 @end

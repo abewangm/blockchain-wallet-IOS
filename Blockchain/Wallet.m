@@ -9,6 +9,8 @@
 #import "Wallet.h"
 #import "RootService.h"
 #import "Transaction.h"
+#import "Contact.h"
+#import "ContactTransaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "MultiAddressResponse.h"
 #import "UncaughtExceptionHandler.h"
@@ -1981,9 +1983,28 @@
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
 }
 
-- (NSDictionary *)getContacts
+- (void)getUpdatedContacts
 {
-    return [[self.context evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
+    NSDictionary *contacts = [[self.context evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
+    
+    NSMutableDictionary *finalDictionary = [NSMutableDictionary new];
+    for (NSDictionary *contactDict in [contacts allValues]) {
+        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
+        [finalDictionary setObject:contact forKey:contact.identifier];
+    }
+    
+    self.contacts = [finalDictionary copy];
+    
+    if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
+        // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+        if (!self.isSyncing) {
+            [self loading_stop];
+        }
+        [self.delegate didGetMessages];
+
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
+    }
 }
     
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString
@@ -2066,6 +2087,39 @@
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
+}
+
+- (BOOL)actionRequiredForContacts
+{
+    NSArray *contacts = [self.contacts allValues];
+    
+    for (Contact *contact in contacts) {
+        
+        // Check for any pending invitations
+        if (!contact.mdid &&
+            contact.invitationReceived &&
+            ![contact.invitationReceived isEqualToString:@""]) {
+            return YES;
+        }
+        
+        if ([self actionRequiredForContact:contact]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)actionRequiredForContact:(Contact *)contact
+{
+    // Check for any pending requests
+    for (ContactTransaction *transaction in [contact.transactionList allValues]) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 # pragma mark - Transaction handlers
@@ -3251,15 +3305,7 @@
 - (void)objc_on_get_messages_success:(JSValue *)messages
 {
     DLog(@"on_get_messages_success");
-    if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
-        // Keep showing busy view to prevent user input while archiving/unarchiving addresses
-        if (!self.isSyncing) {
-            [self loading_stop];
-        }
-        [self.delegate didGetMessages];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
-    }
+    [self getUpdatedContacts];
 }
 
 - (void)objc_on_read_message_success:(NSString *)message

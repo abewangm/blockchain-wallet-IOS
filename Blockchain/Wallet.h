@@ -39,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction, JSValue, JSContext;
+@class Wallet, Transaction, JSValue, JSContext, Contact;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -161,6 +161,8 @@
 @property (nonatomic) NSString *swipeAddressToSubscribe;
 
 @property (nonatomic) int lastLabelledAddressesCount;
+
+@property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
 
 - (id)init;
 
@@ -360,7 +362,6 @@
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
 // Contacts
-- (NSDictionary *)getContacts;
 - (void)getMessages;
 - (void)readMessage:(NSString *)identifier;
 - (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier;
@@ -376,5 +377,6 @@
 - (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
-
+- (BOOL)actionRequiredForContacts;
+- (BOOL)actionRequiredForContact:(Contact *)contact;
 @end

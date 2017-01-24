@@ -29,7 +29,6 @@ typedef enum {
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
-@property (nonatomic) NSArray *contacts;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
@@ -118,24 +117,13 @@ typedef enum {
     [app.wallet getMessages];
 }
 
-- (NSArray *)getContacts
-{
-    NSArray *contactsArray = [[app.wallet getContacts] allValues];
-    NSMutableArray *contacts = [NSMutableArray new];
-    for (NSDictionary *contactDict in contactsArray) {
-        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
-        [contacts addObject:contact];
-    }
-    return contacts;
-}
-
 - (void)updateContactDetail
 {
     [self reload];
     
     NSString *contactIdentifier = self.detailViewController.contact.identifier;
     
-    Contact *reloadedContact = [[Contact alloc] initWithDictionary:[[app.wallet getContacts] objectForKey:contactIdentifier]];
+    Contact *reloadedContact = [app.wallet.contacts objectForKey:contactIdentifier];
     
     self.detailViewController.contact = reloadedContact;
 }
@@ -149,16 +137,18 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.contacts.count;
+    return [app.wallet.contacts allValues].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
-    Contact *contact = self.contacts[indexPath.row];
+    Contact *contact = [app.wallet.contacts allValues][indexPath.row];
     
-    [cell configureWithContact:contact actionRequired:YES];
+    BOOL actionRequired = [app.wallet actionRequiredForContact:contact];
+    
+    [cell configureWithContact:contact actionRequired:actionRequired];
     
     return cell;
 }
@@ -167,7 +157,7 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    Contact *contact = self.contacts[indexPath.row];
+    Contact *contact = [app.wallet.contacts allValues][indexPath.row];
     [self contactClicked:contact];
 }
 
@@ -447,13 +437,10 @@ typedef enum {
 
 - (void)didGetMessages
 {
-    self.contacts = [self getContacts];
-
     [self.tableView reloadData];
     
     if (self.detailViewController.contact.identifier) {
-        NSDictionary *contactsDict = [app.wallet getContacts];
-        Contact *updatedContact = [[Contact alloc] initWithDictionary:[contactsDict objectForKey:self.detailViewController.contact.identifier]];
+        Contact *updatedContact = [app.wallet.contacts objectForKey:self.detailViewController.contact.identifier];
         
         [self.detailViewController didGetMessages:updatedContact];
     }

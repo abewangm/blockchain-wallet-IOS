@@ -427,9 +427,16 @@ int accountEntries = 0;
             } else {
                 [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
             }
+            
+            cell.showDot = NO;
+            
         } else if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+            
+            cell.showDot = [app.wallet actionRequiredForContacts];
+        } else {
+            cell.showDot = NO;
         }
         
         return cell;

@@ -99,9 +99,7 @@ typedef enum {
 {
     ContactTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
-    
-    ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
+    ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
     [cell configureWithTransaction:transaction contactName:self.contact.name];
     
@@ -112,9 +110,7 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *dictionary = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
-    
-    ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:dictionary];
+    ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
     if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
         [self acceptOrDenyPayment:transaction];
