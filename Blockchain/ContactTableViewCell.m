@@ -27,14 +27,14 @@
         return;
     }
     
-    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, (self.frame.size.height - 26)/2, 26, 26)];
+    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, (self.frame.size.height - 13)/2, 13, 13)];
     [self.contentView addSubview:self.actionImageView];
-    self.actionImageView.image = [UIImage imageNamed:@"icon_support"];
+    self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2 - 2, self.frame.size.width - mainLabelOriginX - 28, 30)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2, self.frame.size.width - mainLabelOriginX - 28, 30)];
     [self.contentView addSubview:self.mainLabel];
     self.mainLabel.text = contact.name ? contact.name : contact.identifier;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;

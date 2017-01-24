@@ -30,9 +30,9 @@
         return;
     }
     
-    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, (self.frame.size.height - 26)/2, 26, 26)];
+    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, (self.frame.size.height - 13)/2, 13, 13)];
     [self.contentView addSubview:self.actionImageView];
-    self.actionImageView.image = [UIImage imageNamed:@"icon_support"];
+    self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
