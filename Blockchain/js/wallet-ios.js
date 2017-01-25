@@ -1396,12 +1396,12 @@ SharedMetadata.sign = function (keyPair, message) {
     return new Buffer(objc_message_sign(keyPair, message), 'hex');
 }
 
-SharedMetadata.prototype.encryptFor = function (message, contact) {console.log(JSON.stringify(contact));
+SharedMetadata.prototype.encryptFor = function (message, contact) {
     var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
     return WalletCrypto.encryptDataWithKey(message, sharedKey);
 };
 
-SharedMetadata.prototype.decryptFrom = function (message, contact) {console.log(JSON.stringify(contact));
+SharedMetadata.prototype.decryptFrom = function (message, contact) {
     var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
     return WalletCrypto.decryptDataWithKey(message, sharedKey);
 };
@@ -1978,10 +1978,17 @@ MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
 MyWalletPhone.getMessages = function() {
     
     var success = function(messages) {
+        console.log('digested new messages');
         objc_on_get_messages_success(messages);
     };
     
-    MyWallet.wallet.contacts.digestNewMessages().then(success).catch(function(e){console.log('Error getting messages');console.log(e)});
+    var error = function(error) {
+        console.log('Error getting messages');
+        console.log(error);
+        objc_on_get_messages_error(error);
+    };
+    
+    MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
 }
 
 MyWalletPhone.readMessage = function(identifier) {

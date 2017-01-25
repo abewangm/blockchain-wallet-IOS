@@ -281,12 +281,24 @@ typedef enum {
 
 - (void)sendClicked
 {
-    [self createRequest:RequestTypeSendReason title:BC_STRING_SEND reason:nil];
+    if (!self.contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, self.contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
+    } else {
+        [self createRequest:RequestTypeSendReason title:BC_STRING_SEND reason:nil];
+    }
 }
 
 - (void)requestClicked
 {
-    [self createRequest:RequestTypeReceiveReason title:BC_STRING_RECEIVE reason:nil];
+    if (!self.contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, self.contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
+    } else {
+        [self createRequest:RequestTypeReceiveReason title:BC_STRING_RECEIVE reason:nil];
+    }
 }
 
 - (void)createRequest:(RequestType)requestType title:(NSString *)title reason:(NSString *)reason;

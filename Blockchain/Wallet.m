@@ -701,15 +701,19 @@
     };
     
     self.context[@"objc_on_get_messages_success"] = ^(JSValue *messages) {
-        [weakSelf objc_on_get_messages_success:messages];
+        [weakSelf on_get_messages_success:messages];
+    };
+    
+    self.context[@"objc_on_get_messages_error"] = ^(JSValue *error) {
+        [weakSelf on_get_messages_error:[error toString]];
     };
     
     self.context[@"objc_on_read_message_success"] = ^(JSValue *message) {
-        [weakSelf objc_on_read_message_success:[message toString]];
+        [weakSelf on_read_message_success:[message toString]];
     };
     
     self.context[@"objc_on_send_message_success"] = ^(JSValue *contact) {
-        [weakSelf objc_on_send_message_success:[contact toString]];
+        [weakSelf on_send_message_success:[contact toString]];
     };
     
     self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info) {
@@ -3311,15 +3315,21 @@
     }
 }
 
-- (void)objc_on_get_messages_success:(JSValue *)messages
+- (void)on_get_messages_success:(JSValue *)messages
 {
     DLog(@"on_get_messages_success");
     [self getUpdatedContacts];
 }
 
-- (void)objc_on_read_message_success:(NSString *)message
+- (void)on_get_messages_error:(NSString *)error
 {
-    DLog(@"objc_on_read_message_success");
+    DLog(@"on_get_messages_error");
+    [self getUpdatedContacts];
+}
+
+- (void)on_read_message_success:(NSString *)message
+{
+    DLog(@"on_read_message_success");
     if ([self.delegate respondsToSelector:@selector(didReadMessage:)]) {
         [self.delegate didReadMessage:message];
     } else {
@@ -3327,9 +3337,9 @@
     }
 }
 
-- (void)objc_on_send_message_success:(NSString *)contact
+- (void)on_send_message_success:(NSString *)contact
 {
-    DLog(@"objc_on_read_message_success");
+    DLog(@"on_read_message_success");
     if ([self.delegate respondsToSelector:@selector(didSendMessage:)]) {
         [self.delegate didSendMessage:contact];
     } else {
