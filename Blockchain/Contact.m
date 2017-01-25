@@ -36,7 +36,7 @@
             [finalTransactionList setObject:transaction forKey:transaction.identifier];
         }
         
-        _transactionList = [finalTransactionList copy];
+        _transactionList = [[NSDictionary alloc] initWithDictionary:finalTransactionList];
     }
     return self;
 }

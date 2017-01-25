@@ -418,6 +418,11 @@ void (^secondPasswordSuccess)(NSString *);
     DLog(@"User received remote notification");
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
+{
+    DLog(@"User received remote notification");
+}
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     const char *data = [deviceToken bytes];
@@ -428,6 +433,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     self.deviceToken = [token copy];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
+{
+    DLog(@"didReceiveRemoteNotification");
 }
 
 #pragma mark - Setup
@@ -684,6 +694,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_sendViewController reloadSymbols];
     
+    [_contactsViewController reloadSymbols];
     [_transactionsViewController reloadSymbols];
     [_accountsAndAddressesNavigationController reload];
     [sideMenuViewController reload];

@@ -19,4 +19,5 @@
 - (void)didRequestPaymentRequest;
 
 - (NSString *)getTransactionHash;
+- (void)reloadSymbols;
 @end

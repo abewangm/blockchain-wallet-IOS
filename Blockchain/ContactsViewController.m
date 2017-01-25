@@ -369,6 +369,11 @@ typedef enum {
     [self.createContactNavigationController presentViewController:activityController animated:YES completion:nil];
 }
 
+- (void)reloadSymbols
+{
+    // [self.detailViewController reloadSymbols];
+}
+
 #pragma mark - Helpers
 
 - (NSString *)JSDictionaryForInvitation:(NSString *)identifier name:(NSString *)name;

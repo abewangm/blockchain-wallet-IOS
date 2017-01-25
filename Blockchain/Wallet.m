@@ -677,7 +677,7 @@
     };
     
     self.context[@"objc_on_read_invitation_success"] = ^(JSValue *invitation, NSString *identifier) {
-        [weakSelf on_read_invitation_success:[invitation toDictionary] identifier:identifier];
+        [weakSelf on_read_invitation_success:invitation identifier:identifier];
     };
     
     self.context[@"objc_on_complete_relation_success"] = ^() {
@@ -1998,15 +1998,15 @@
 
 - (void)getUpdatedContacts
 {
-    NSDictionary *contacts = [[self.context evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
-    
+    NSDictionary *contacts = [[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
+
     NSMutableDictionary *finalDictionary = [NSMutableDictionary new];
     for (NSDictionary *contactDict in [contacts allValues]) {
         Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
         [finalDictionary setObject:contact forKey:contact.identifier];
     }
     
-    self.contacts = [finalDictionary copy];
+    self.contacts = [[NSDictionary alloc] initWithDictionary:finalDictionary];
     
     if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
         // Keep showing busy view to prevent user input while archiving/unarchiving addresses
@@ -3255,11 +3255,11 @@
     }
 }
 
-- (void)on_read_invitation_success:(NSDictionary *)invitation identifier:(NSString *)identifier
+- (void)on_read_invitation_success:(JSValue *)invitation identifier:(NSString *)identifier
 {
     DLog(@"on_read_invitation_success");
     if ([self.delegate respondsToSelector:@selector(didReadInvitation:identifier:)]) {
-        [self.delegate didReadInvitation:invitation identifier:identifier];
+        [self.delegate didReadInvitation:[invitation toDictionary] identifier:identifier];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitation!", [delegate class]);
     }

@@ -29,4 +29,5 @@
 - (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
 - (NSString *)currentTransactionHash;
+- (void)reloadSymbols;
 @end

@@ -443,6 +443,11 @@ typedef enum {
     tableViewController.refreshControl = self.refreshControl;
 }
 
+- (void)reloadSymbols
+{
+    [self.transactionDetailViewController reloadSymbols];
+}
+
 #pragma mark - Contact Request Delegate
 
 - (void)promptRequestAmount:(NSString *)reason
