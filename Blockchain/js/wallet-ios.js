@@ -1896,7 +1896,27 @@ MyWalletPhone.loadContacts = function() {
 MyWalletPhone.getContacts = function() {
     console.log('Getting contacts');
     console.log(JSON.stringify(MyWallet.wallet.contacts.list));
-    return MyWallet.wallet.contacts.list;
+    var list = MyWallet.wallet.contacts.list;
+    
+    var listToReturn = Blockchain.R.map(function(contact) {
+      return {
+        company: contact.company,
+        email: contact.email,
+        id: contact.id,
+        invitationReceived: contact.invitationReceived,
+        invitationSent: contact.invitationSent,
+        mdid: contact.mdid,
+        name: contact.name,
+        note: contact.note,
+        pubKey: contact.pubKey,
+        surname: contact.surname,
+        trusted: contact.trusted,
+        xpub: contact.xpub,
+        facilitatedTxList: contact.facilitatedTxList
+      }
+    }, list);
+    
+    return listToReturn;
 }
 
 MyWalletPhone.getSaveContactsFunction = function() {

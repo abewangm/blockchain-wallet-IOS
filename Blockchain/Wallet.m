@@ -1998,10 +1998,10 @@
 
 - (void)getUpdatedContacts
 {
-    NSDictionary *contacts = [[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary];
+    NSArray *contacts = [[[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary] allValues];
 
     NSMutableDictionary *finalDictionary = [NSMutableDictionary new];
-    for (NSDictionary *contactDict in [contacts allValues]) {
+    for (NSDictionary *contactDict in contacts) {
         Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
         [finalDictionary setObject:contact forKey:contact.identifier];
     }

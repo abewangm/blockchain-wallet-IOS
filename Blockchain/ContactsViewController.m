@@ -371,7 +371,7 @@ typedef enum {
 
 - (void)reloadSymbols
 {
-    // [self.detailViewController reloadSymbols];
+    [self.detailViewController reloadSymbols];
 }
 
 #pragma mark - Helpers
