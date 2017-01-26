@@ -85,6 +85,13 @@ typedef enum {
     [self updateNavigationTitle];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.transactionToFind = nil;
+}
+
 - (void)updateNavigationTitle
 {
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
@@ -339,20 +346,25 @@ typedef enum {
 
 - (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
 {
-    BCNavigationController *currentNavigationController = (BCNavigationController *)self.navigationController;
-    [currentNavigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
     
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     
     Transaction *detailTransaction = [self getTransactionDetails:transaction];
     if (detailTransaction) {
         detailViewController.transaction = detailTransaction;
-        [currentNavigationController hideBusyView];
     } else {
-        
+
         // If transaction cannot be found, it's possible that the websocket is not working and the user tapped on a received transaction that is present in the shared metadata service but not yet retrieved from multiaddress.
         
+        BCNavigationController *currentNavigationController = (BCNavigationController *)self.navigationController;
+        [currentNavigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+        
         if (self.findAttempts >= maxFindAttempts) {
+
+            self.transactionToFind = nil;
+            
+            [currentNavigationController hideBusyView];
+            
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, transaction.myHash] preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
             [self presentViewController:alert animated:YES completion:nil];
@@ -400,7 +412,6 @@ typedef enum {
     
     if (self.transactionToFind) {
         [self showTransactionDetail:self.transactionToFind forRow:0];
-        self.transactionToFind = nil;
     }
     
     if (self.refreshControl && self.refreshControl.isRefreshing) {
