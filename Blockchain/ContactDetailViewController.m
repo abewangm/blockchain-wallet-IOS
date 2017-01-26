@@ -22,6 +22,8 @@ const int rowExtendedPublicKey = 1;
 const int rowTrust = 2;
 const int rowFetchMDID = 3;
 
+const int maxFindAttempts = 2;
+
 typedef enum {
     RequestTypeSendReason,
     RequestTypeReceiveReason,
@@ -34,6 +36,8 @@ typedef enum {
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) ContactTransaction *transactionToFind;
+@property (nonatomic) int findAttempts;
 @end
 
 @implementation ContactDetailViewController
@@ -51,6 +55,8 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.findAttempts = 0;
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -333,35 +339,56 @@ typedef enum {
 
 - (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
 {
+    BCNavigationController *currentNavigationController = (BCNavigationController *)self.navigationController;
+    [currentNavigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    detailViewController.transaction = [self getTransactionDetails:transaction];
+    
+    Transaction *detailTransaction = [self getTransactionDetails:transaction];
+    if (detailTransaction) {
+        detailViewController.transaction = detailTransaction;
+        [currentNavigationController hideBusyView];
+    } else {
+        
+        // If transaction cannot be found, it's possible that the websocket is not working and the user tapped on a received transaction that is present in the shared metadata service but not yet retrieved from multiaddress.
+        
+        if (self.findAttempts >= maxFindAttempts) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, transaction.myHash] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        
+        self.findAttempts++;
+        
+        [self getHistoryToFindTransaction:transaction];
+        return;
+    }
+    
     detailViewController.transactionIndex = row;
     
-    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
-    detailViewController.busyViewDelegate = navigationController;
+    TransactionDetailNavigationController *newNavigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    detailViewController.busyViewDelegate = newNavigationController;
     
     self.transactionDetailViewController = detailViewController;
     
-    [self presentViewController:navigationController animated:YES completion:nil];
+    [self presentViewController:newNavigationController animated:YES completion:nil];
 }
 
 - (Transaction *)getTransactionDetails:(ContactTransaction *)contactTransaction
 {
-    Transaction *transactionWithDetail;
-    BOOL didFindTransaction = NO;
     for (Transaction *transaction in app.latestResponse.transactions) {
         if ([transaction.myHash isEqualToString:contactTransaction.myHash]) {
-            transactionWithDetail = transaction;
-            didFindTransaction = YES;
-            break;
+            return transaction;
         }
     }
-    if (!didFindTransaction) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, contactTransaction.myHash]];
-        }];
-    }
-    return transactionWithDetail;
+    return nil;
+}
+    
+- (void)getHistoryToFindTransaction:(ContactTransaction *)transaction
+{
+    self.transactionToFind = transaction;
+    [app.wallet getHistory];
 }
 
 - (void)didGetMessages:(Contact *)contact
@@ -370,6 +397,11 @@ typedef enum {
     
     [self.tableView reloadData];
     [self.transactionDetailViewController didGetHistory];
+    
+    if (self.transactionToFind) {
+        [self showTransactionDetail:self.transactionToFind forRow:0];
+        self.transactionToFind = nil;
+    }
     
     if (self.refreshControl && self.refreshControl.isRefreshing) {
         [self.refreshControl endRefreshing];
