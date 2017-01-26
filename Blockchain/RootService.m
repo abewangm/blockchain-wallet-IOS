@@ -1981,16 +1981,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didGetMessages];
 }
 
-- (void)didReadMessage:(NSString *)message
-{
-    [self.contactsViewController didReadMessage:message];
-}
-
-- (void)didSendMessage:(NSString *)contact
-{
-    [self.contactsViewController didSendMessage:contact];
-}
-
 - (void)didPushTransaction
 {
     DestinationAddressSource source = self.sendViewController.addressSource;

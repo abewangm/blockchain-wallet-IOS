@@ -472,16 +472,6 @@ typedef enum {
     return [self.detailViewController getTransactionHash];
 }
 
-- (void)didReadMessage:(NSString *)message
-{
-    [self.detailViewController didReadMessage:message];
-}
-
-- (void)didSendMessage:(NSString *)contact
-{
-    [self.detailViewController didSendMessage:contact];
-}
-
 - (void)didSendPaymentRequest
 {
     [self.detailViewController didSendPaymentRequest];

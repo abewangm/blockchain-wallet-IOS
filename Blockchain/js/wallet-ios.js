@@ -2011,24 +2011,6 @@ MyWalletPhone.getMessages = function() {
     MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
 }
 
-MyWalletPhone.readMessage = function(identifier) {
-    
-    var success = function(message) {
-        objc_on_read_message_success(message);
-    };
-    
-    MyWallet.wallet.contacts.readMessage(identifier).then(success).catch(function(e){console.log('Error reading message');console.log(e)});
-}
-
-MyWalletPhone.sendMessage = function(message, contact) {
-    
-    var success = function() {
-        objc_on_send_message_success(contact);
-    };
-    
-    MyWallet.wallet.contacts.sendMessage(contact, 101, message).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
-}
-
 MyWalletPhone.changeName = function(newName, identifier) {
     
     var save = MyWalletPhone.getSaveContactsFunction();

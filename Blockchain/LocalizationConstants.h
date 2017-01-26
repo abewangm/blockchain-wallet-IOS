@@ -465,14 +465,6 @@
 
 #define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
 #define BC_STRING_TRANSACTIONS_WITH_ARGUMENT NSLocalizedString(@"Transactions with %@", nil)
-#define BC_STRING_TRUST_USER NSLocalizedString(@"Trust user", nil)
-#define BC_STRING_FETCH_MDID NSLocalizedString(@"Fetch MDID", nil)
-#define BC_STRING_TRUST_USER_ALERT_TITLE NSLocalizedString(@"Trust user?", nil)
-#define BC_STRING_TRUST_USER_ALERT_MESSAGE NSLocalizedString(@"You will be able to send and receive messages from this user.", nil)
-#define BC_STRING_UNTRUST_USER_ALERT_TITLE NSLocalizedString(@"Untrust user?", nil)
-#define BC_STRING_UNTRUST_USER_ALERT_MESSAGE NSLocalizedString(@"You will no longer be able to send or receive messages from this user.", nil)
-#define BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_MESSAGE NSLocalizedString(@"In order to send messages, you and the user must trust each other. Tap on the switch to add trust, and have the user do the same for your contact.", nil)
-#define BC_STRING_MUST_TRUST_USER_BEFORE_SENDING_MESSAGE_TITLE NSLocalizedString(@"Cannot send messages", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)
 #define BC_STRING_MESSAGES NSLocalizedString(@"Messages", nil)
@@ -484,6 +476,10 @@
 #define BC_STRING_CHANGE_NAME NSLocalizedString(@"Change name", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
+#define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"Request Sent", nil)
+#define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT NSLocalizedString(@"%@ has been notified that you would like to send them Bitcoin. When %@ accepts, we will notify you and you can complete the transaction.", nil)
+#define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS NSLocalizedString(@"%@ has been notified that you would like them to send you Bitcoin. We will notify you of any incoming payments.", nil)
+
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)

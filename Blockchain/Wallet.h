@@ -105,11 +105,8 @@
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didCompleteRelation;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
-- (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
 - (void)didGetMessages;
-- (void)didReadMessage:(NSString *)message;
-- (void)didSendMessage:(NSString *)contact;
 - (void)didSendPaymentRequest:(NSDictionary *)info;
 - (void)didRequestPaymentRequest:(NSDictionary *)info;
 - (void)didChangeContactName:(NSDictionary *)info;
@@ -365,14 +362,10 @@
 
 // Contacts
 - (void)getMessages;
-- (void)readMessage:(NSString *)identifier;
-- (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)completeRelation:(NSString *)identifier;
 - (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
-- (void)addTrust:(NSString *)contactIdentifier;
-- (void)deleteTrust:(NSString *)contactIdentifier;
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
 - (void)deleteContact:(NSString *)contactIdentifier;

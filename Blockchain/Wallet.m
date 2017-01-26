@@ -688,14 +688,6 @@
         [weakSelf on_accept_relation_success:invitation name:name];
     };
     
-    self.context[@"objc_on_add_trust_success"] = ^(JSValue *result) {
-        [weakSelf on_add_trust_success:result];
-    };
-    
-    self.context[@"objc_on_delete_trust_success"] = ^(JSValue *result) {
-        [weakSelf on_delete_trust_success:result];
-    };
-    
     self.context[@"objc_on_fetch_xpub_success"] = ^(NSString *xpub) {
         [weakSelf on_fetch_xpub_success:xpub];
     };
@@ -706,14 +698,6 @@
     
     self.context[@"objc_on_get_messages_error"] = ^(JSValue *error) {
         [weakSelf on_get_messages_error:[error toString]];
-    };
-    
-    self.context[@"objc_on_read_message_success"] = ^(JSValue *message) {
-        [weakSelf on_read_message_success:[message toString]];
-    };
-    
-    self.context[@"objc_on_send_message_success"] = ^(JSValue *contact) {
-        [weakSelf on_send_message_success:[contact toString]];
     };
     
     self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info) {
@@ -2063,16 +2047,6 @@
     [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
 }
 
-- (void)readMessage:(NSString *)identifier
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.readMessage(\"%@\")", [identifier escapeStringForJS]]];
-}
-
-- (void)sendMessage:(NSString *)message toContact:(NSString *)contactIdentifier
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendMessage(\"%@\", \"%@\")", [message escapeStringForJS], [contactIdentifier escapeStringForJS]]];
-}
-
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeName(\"%@\", \"%@\")", [newName escapeStringForJS], [contactIdentifier escapeStringForJS]]];
@@ -3285,26 +3259,6 @@
     }
 }
 
-- (void)on_add_trust_success:(JSValue *)result
-{
-    DLog(@"on_add_trust_success");
-    if ([self.delegate respondsToSelector:@selector(didChangeTrust)]) {
-        [self.delegate didChangeTrust];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
-    }
-}
-
-- (void)on_delete_trust_success:(JSValue *)result
-{
-    DLog(@"on_delete_trust_success");
-    if ([self.delegate respondsToSelector:@selector(didChangeTrust)]) {
-        [self.delegate didChangeTrust];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didChangeTrust!", [delegate class]);
-    }
-}
-
 - (void)on_fetch_xpub_success:(NSString *)xpub
 {
     DLog(@"on_fetch_xpub_success");
@@ -3325,26 +3279,6 @@
 {
     DLog(@"on_get_messages_error");
     [self getUpdatedContacts];
-}
-
-- (void)on_read_message_success:(NSString *)message
-{
-    DLog(@"on_read_message_success");
-    if ([self.delegate respondsToSelector:@selector(didReadMessage:)]) {
-        [self.delegate didReadMessage:message];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didReadMessage!", [delegate class]);
-    }
-}
-
-- (void)on_send_message_success:(NSString *)contact
-{
-    DLog(@"on_read_message_success");
-    if ([self.delegate respondsToSelector:@selector(didSendMessage:)]) {
-        [self.delegate didSendMessage:contact];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didSendMessage!", [delegate class]);
-    }
 }
 
 - (void)on_send_payment_request_success:(JSValue *)info
