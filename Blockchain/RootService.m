@@ -421,6 +421,9 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
 {
     DLog(@"User received remote notification");
+    showType = ShowTypeNewContact;
+    NSString *invitationSent = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+    _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

@@ -36,6 +36,8 @@ typedef enum {
 @property (nonatomic) NSString *invitationFromURL;
 @property (nonatomic) NSString *nameFromURL;
 
+@property (nonatomic) NSString *invitationSentIdentifier;
+
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) CreateContactType contactType;
@@ -51,6 +53,14 @@ typedef enum {
     if (self = [super init]) {
         self.invitationFromURL = identifier;
         self.nameFromURL = name;
+    }
+    return self;
+}
+
+- (id)initWithAcceptedInvitation:(NSString *)invitationSent
+{
+    if (self = [super init]) {
+        self.invitationSentIdentifier = invitationSent;
     }
     return self;
 }
@@ -87,10 +97,21 @@ typedef enum {
     
     if (self.invitationFromURL && self.nameFromURL) {
         [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
+    } else if (self.invitationSentIdentifier) {
+        
+        NSArray *allContacts = [app.wallet.contacts allValues];
+        for (Contact *contact in allContacts) {
+            if ([contact.invitationSent isEqualToString:self.invitationSentIdentifier]) {
+                [app.wallet completeRelation:contact.identifier];
+                break;
+            }
+        }
     }
     
     self.invitationFromURL = nil;
     self.nameFromURL = nil;
+    
+    self.invitationSentIdentifier = nil;
 }
 
 - (void)refreshControlActivated
@@ -401,7 +422,8 @@ typedef enum {
 
 - (void)didCompleteRelation
 {
-    DLog(@"Read invitation sent success");
+    DLog(@"Complete relation success");
+    [self reload];
 }
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict

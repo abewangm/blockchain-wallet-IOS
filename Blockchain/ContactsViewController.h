@@ -11,6 +11,7 @@
 @interface ContactsViewController : UIViewController
 
 - (id)initWithInvitation:(NSString *)identifier name:(NSString *)name;
+- (id)initWithAcceptedInvitation:(NSString *)invitationSent;
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
