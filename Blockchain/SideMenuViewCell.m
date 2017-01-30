@@ -13,7 +13,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backup_blue_circle"]];
+        _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backup_red_circle"]];
         [self.contentView addSubview:self.dotImageView];
     }
     return self;
