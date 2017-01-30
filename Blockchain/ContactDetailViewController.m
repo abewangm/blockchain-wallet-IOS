@@ -107,20 +107,7 @@ typedef enum {
     [super viewDidAppear:animated];
     
     if (self.messageToSelect) {
-        NSArray *allTransactions = [self.contact.transactionList allValues];
-        NSInteger rowToSelect = -1;
-        
-        for (int index = 0; index < [allTransactions count]; index++) {
-            ContactTransaction *transaction = allTransactions[index];
-            if ([transaction.identifier isEqualToString:self.messageToSelect]) {
-                rowToSelect = index;
-                break;
-            }
-        }
-        
-        if (rowToSelect >= 0) {
-            [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionMain]];
-        }
+        [self selectMessage:self.messageToSelect];
         self.messageToSelect = nil;
     }
 }
@@ -254,6 +241,24 @@ typedef enum {
 }
 
 #pragma mark - Actions
+
+- (void)selectMessage:(NSString *)messageIdentifier
+{
+    NSArray *allTransactions = [self.contact.transactionList allValues];
+    NSInteger rowToSelect = -1;
+    
+    for (int index = 0; index < [allTransactions count]; index++) {
+        ContactTransaction *transaction = allTransactions[index];
+        if ([transaction.identifier isEqualToString:messageIdentifier]) {
+            rowToSelect = index;
+            break;
+        }
+    }
+    
+    if (rowToSelect >= 0) {
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionMain]];
+    }
+}
 
 - (void)renameContact
 {

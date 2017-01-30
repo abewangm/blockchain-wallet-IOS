@@ -74,6 +74,28 @@ typedef enum {
     return self;
 }
 
+- (void)showAcceptedInvitation:(NSString *)invitationSent
+{
+    NSArray *allContacts = [app.wallet.contacts allValues];
+    for (Contact *contact in allContacts) {
+        if ([contact.invitationSent isEqualToString:invitationSent]) {
+            [app.wallet completeRelation:contact.identifier];
+            break;
+        }
+    }
+}
+
+- (void)showRequest:(NSString *)messageIdentifier;
+{
+    NSArray *allContacts = [app.wallet.contacts allValues];
+    for (Contact *contact in allContacts) {
+        if ([contact.transactionList objectForKey:messageIdentifier]) {
+            [self loadMessage:messageIdentifier forContact:contact];
+            break;
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -107,21 +129,9 @@ typedef enum {
     if (self.invitationFromURL && self.nameFromURL) {
         [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
     } else if (self.invitationSentIdentifier) {
-        NSArray *allContacts = [app.wallet.contacts allValues];
-        for (Contact *contact in allContacts) {
-            if ([contact.invitationSent isEqualToString:self.invitationSentIdentifier]) {
-                [app.wallet completeRelation:contact.identifier];
-                break;
-            }
-        }
+        [self showAcceptedInvitation:self.invitationSentIdentifier];
     } else if (self.messageIdentifier) {
-        NSArray *allContacts = [app.wallet.contacts allValues];
-        for (Contact *contact in allContacts) {
-            if ([contact.transactionList objectForKey:self.messageIdentifier]) {
-                [self loadMessage:self.messageIdentifier forContact:contact];
-                break;
-            }
-        }
+        [self showRequest:self.messageIdentifier];
     }
     
     self.invitationFromURL = nil;
@@ -284,6 +294,13 @@ typedef enum {
 - (void)loadMessage:(NSString *)messageIdentifier forContact:(Contact *)contact
 {
     [app.wallet completeRelation:contact.identifier];
+    
+    if ([self.navigationController.visibleViewController isEqual:self.detailViewController]) {
+        
+        // Do not push another detail controller if user is viewing detail controller while receiving push notification
+        [self.detailViewController selectMessage:messageIdentifier];
+        return;
+    }
     
     self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact selectMessage:messageIdentifier];
     [self.navigationController pushViewController:self.detailViewController animated:YES];
