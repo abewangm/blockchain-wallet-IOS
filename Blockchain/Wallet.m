@@ -2093,7 +2093,7 @@
             if (actionCount > 1) break;
         }
         
-        actionCount = actionCount + [self numberOfActionsRequiredForContact:contact];
+        actionCount = actionCount + [self minimumNumberOfActionsRequiredForContact:contact];
         if (actionCount > 1) break;
     }
     
@@ -2106,14 +2106,14 @@
     }
 }
 
-- (int)numberOfActionsRequiredForContact:(Contact *)contact
+- (int)minimumNumberOfActionsRequiredForContact:(Contact *)contact
 {
     int numberOfActionsRequired = 0;
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
-            if (numberOfActionsRequired > 1) break;
+            if (numberOfActionsRequired > 1) break; // No need to loop through all actions since all we need to know is whether numberOfActionsRequired is greater than 1
         }
     }
     
