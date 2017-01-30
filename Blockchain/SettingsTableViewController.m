@@ -1183,7 +1183,11 @@ const int aboutPrivacyPolicy = 2;
         case walletInformationSection: return 1;
         case preferencesSectionEmailFooter: return 1;
         case preferencesSectionSMSFooter: return 1;
+#ifdef ENABLE_DEBUG_MENU
         case preferencesSectionNotificationsFooter: return 3;
+#else
+        case preferencesSectionNotificationsFooter: return 2;
+#endif
         case preferencesSectionEnd: return 2;
         case securitySection: return [app.wallet didUpgradeToHd] ? 3 : 2;
         case PINSection: {

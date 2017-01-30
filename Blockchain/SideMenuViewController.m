@@ -30,7 +30,11 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
+#ifdef ENABLE_DEBUG_MENU
 const int menuEntries = 7;
+#else
+const int menuEntries = 6;
+#endif
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -398,8 +402,11 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
+#ifdef ENABLE_DEBUG_MENU
         titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
-        
+#else
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+#endif
         NSString *upgradeOrSecurityCenterImage;
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
@@ -409,9 +416,11 @@ int accountEntries = 0;
             upgradeOrSecurityCenterImage = @"security";
         }
         NSMutableArray *images;
-
+#ifdef ENABLE_DEBUG_MENU
         images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"contacts_icon", @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
-        
+#else
+        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+#endif
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];

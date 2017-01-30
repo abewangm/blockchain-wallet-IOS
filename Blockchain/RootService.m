@@ -202,7 +202,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showWelcomeOrPinScreen];
     
+#ifdef ENABLE_DEBUG_MENU
     [self requestAuthorizationForPushNotifications];
+#endif
     
     return YES;
 }
@@ -1042,7 +1044,9 @@ void (^secondPasswordSuccess)(NSString *);
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
+#ifdef ENABLE_DEBUG_MENU
     [self registerDeviceForPushNotifications];
+#endif
     
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
