@@ -38,6 +38,7 @@ typedef enum {
 @property (nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic) ContactTransaction *transactionToFind;
 @property (nonatomic) int findAttempts;
+@property (nonatomic) NSString *messageToSelect;
 @end
 
 @implementation ContactDetailViewController
@@ -48,6 +49,15 @@ typedef enum {
 {
     if (self = [super init]) {
         _contact = contact;
+    }
+    return self;
+}
+
+- (id)initWithContact:(Contact *)contact selectMessage:(NSString *)messageIdentifier
+{
+    if (self = [super init]) {
+        _contact = contact;
+        _messageToSelect = messageIdentifier;
     }
     return self;
 }
@@ -90,6 +100,29 @@ typedef enum {
     [super viewWillDisappear:animated];
     
     self.transactionToFind = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.messageToSelect) {
+        NSArray *allTransactions = [self.contact.transactionList allValues];
+        NSInteger rowToSelect = -1;
+        
+        for (int index = 0; index < [allTransactions count]; index++) {
+            ContactTransaction *transaction = allTransactions[index];
+            if ([transaction.identifier isEqualToString:self.messageToSelect]) {
+                rowToSelect = index;
+                break;
+            }
+        }
+        
+        if (rowToSelect >= 0) {
+            [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionMain]];
+        }
+        self.messageToSelect = nil;
+    }
 }
 
 - (void)updateNavigationTitle

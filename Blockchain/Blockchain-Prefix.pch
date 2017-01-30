@@ -333,10 +333,19 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
 
+#define PUSH_NOTIFICATION_TYPE_PAYMENT @"payment"
+#define PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST @"contact_request"
+
 #define DICTIONARY_KEY_STATE @"state"
 #define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
 #define DICTIONARY_KEY_ROLE @"role"
 #define DICTIONARY_KEY_TX_HASH @"tx_hash"
+
+#define DICTIONARY_KEY_APS @"aps"
+#define DICTIONARY_KEY_TYPE @"type"
+#define DICTIONARY_KEY_ALERT @"alert"
+#define DICTIONARY_KEY_TITLE @"title"
+#define DICTIONARY_KEY_BODY @"body"
 
 #define DICTIONARY_KEY_ID @"id"
 #define DICTIONARY_KEY_COMPANY @"company"

@@ -1889,7 +1889,7 @@ MyWalletPhone.getECDSA = function() {
 MyWalletPhone.loadContacts = function() {
     console.log('Loading contacts then getting messages');
     MyWallet.wallet.loadContacts().then(function(discard) {
-        MyWalletPhone.getMessages();
+        MyWalletPhone.getMessages(true);
     });
 }
 
@@ -1995,11 +1995,11 @@ MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
     MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
 
-MyWalletPhone.getMessages = function() {
+MyWalletPhone.getMessages = function(isFirstLoad) {
     
     var success = function(messages) {
         console.log('digested new messages');
-        objc_on_get_messages_success(messages);
+        objc_on_get_messages_success(messages, isFirstLoad);
     };
     
     var error = function(error) {

@@ -426,6 +426,9 @@
 #define BC_STRING_VIA_QR_CODE_IN_PERSON NSLocalizedString(@"Via QR Code (in-person)", nil)
 #define BC_STRING_USING_A_LINK NSLocalizedString(@"Using a Link", nil)
 #define BC_STRING_SHARE_INVITE_METHOD NSLocalizedString(@"How would you like to share this invite?", nil)
+#define BC_STRING_GO_TO_CONTACTS NSLocalizedString(@"Go to Contacts", nil)
+#define BC_STRING_GO_TO_CONTACTS_TO_ACCEPT NSLocalizedString(@"Go to Contacts to accept.", nil)
+#define BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT NSLocalizedString(@"You have received a request from a contact.", nil)
 
 #define BC_STRING_SOMEONE_SENT_ME_AN_INVITATION_CODE NSLocalizedString(@"Someone sent me an invitation code", nil)
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)

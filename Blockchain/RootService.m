@@ -415,15 +415,68 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
 {
-    DLog(@"User received remote notification");
+    NSString *type = [notification.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
+    NSString *invitationSent = [notification.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+    
+    DLog(@"User received remote notification %@ of type %@", invitationSent, type);
+    
+    NSDictionary *alert = [[notification.request.content.userInfo objectForKey:DICTIONARY_KEY_APS] objectForKey:DICTIONARY_KEY_ALERT];
+    NSString *title = [alert objectForKey:DICTIONARY_KEY_TITLE];
+    NSString *message = [alert objectForKey:DICTIONARY_KEY_BODY];
+    
+    // Refresh side menu
+    [self.wallet getMessages];
+    
+    if ([self.wallet isInitialized]) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
+            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                _contactsViewController = [[ContactsViewController alloc] initWithMessageIdentifier:invitationSent];
+            }
+            [self showContacts];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+        
+        if (self.topViewControllerDelegate) {
+            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                [self.topViewControllerDelegate presentAlertController:alert];
+            }
+        } else if (self.pinEntryViewController) {
+            [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    } else if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        
+        if (self.pinEntryViewController) {
+            [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            // Use should be on logged out/enter password modal
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    } else {
+        DLog(@"Received push notification while unpaired");
+    }
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
 {
     DLog(@"User received remote notification");
-    showType = ShowTypeNewContact;
+    NSString *type = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
     NSString *invitationSent = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
-    _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
+    
+    showType = ShowTypeNewContact;
+    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+        _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
+    } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+        _contactsViewController = [[ContactsViewController alloc] initWithMessageIdentifier:invitationSent];
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -899,14 +952,6 @@ void (^secondPasswordSuccess)(NSString *);
         [self forceHDUpgradeForLegacyWallets];
     }
     
-    if (showType == ShowTypeSendCoins) {
-        [self showSendCoins];
-    } else if (showType == ShowTypeNewContact) {
-        [self showContacts];
-    }
-    
-    showType = ShowTypeNone;
-    
     self.changedPassword = NO;
     
     [self setAccountData:wallet.guid sharedKey:wallet.sharedKey];
@@ -964,6 +1009,18 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     [self registerDeviceForPushNotifications];
+    
+    if (showType == ShowTypeSendCoins) {
+        [self showSendCoins];
+    } else if (showType == ShowTypeNewContact) {
+        [self showContacts];
+        showType = ShowTypeNone;
+        
+        // Contacts will already be loaded, and calling loadContacts may show an alert to direct the user to contacts.
+        return;
+    }
+    
+    [self.wallet loadContacts];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -1979,8 +2036,18 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didFetchExtendedPublicKey];
 }
 
-- (void)didGetMessages
+- (void)didGetMessages:(BOOL)isFirstLoad
 {
+    if (isFirstLoad && self.wallet.contactsActionRequired == ContactActionRequiredSingle) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self showContacts];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
+    
+    [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
 }
 

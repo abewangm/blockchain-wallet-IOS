@@ -12,6 +12,7 @@
 
 - (id)initWithInvitation:(NSString *)identifier name:(NSString *)name;
 - (id)initWithAcceptedInvitation:(NSString *)invitationSent;
+- (id)initWithMessageIdentifier:(NSString *)messageIdentifier;
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;

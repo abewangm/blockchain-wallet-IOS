@@ -692,8 +692,8 @@
         [weakSelf on_fetch_xpub_success:xpub];
     };
     
-    self.context[@"objc_on_get_messages_success"] = ^(JSValue *messages) {
-        [weakSelf on_get_messages_success:messages];
+    self.context[@"objc_on_get_messages_success"] = ^(JSValue *messages, JSValue *firstLoad) {
+        [weakSelf on_get_messages_success:messages firstLoad:firstLoad];
     };
     
     self.context[@"objc_on_get_messages_error"] = ^(JSValue *error) {
@@ -1980,7 +1980,7 @@
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
 }
 
-- (void)getUpdatedContacts
+- (void)getUpdatedContacts:(BOOL)isFirstLoad
 {
     NSArray *contacts = [[[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary] allValues];
 
@@ -1992,12 +1992,14 @@
     
     self.contacts = [[NSDictionary alloc] initWithDictionary:finalDictionary];
     
-    if ([self.delegate respondsToSelector:@selector(didGetMessages)]) {
+    [self updateActionsRequired];
+    
+    if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
         // Keep showing busy view to prevent user input while archiving/unarchiving addresses
         if (!self.isSyncing) {
             [self loading_stop];
         }
-        [self.delegate didGetMessages];
+        [self.delegate didGetMessages:isFirstLoad];
 
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
@@ -2076,8 +2078,9 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
 }
 
-- (BOOL)actionRequiredForContacts
+- (void)updateActionsRequired
 {
+    int actionCount = 0;
     NSArray *contacts = [self.contacts allValues];
     
     for (Contact *contact in contacts) {
@@ -2086,15 +2089,35 @@
         if (!contact.mdid &&
             contact.invitationReceived &&
             ![contact.invitationReceived isEqualToString:@""]) {
-            return YES;
+            actionCount++;
+            if (actionCount > 1) break;
         }
         
-        if ([self actionRequiredForContact:contact]) {
-            return YES;
+        actionCount = actionCount + [self numberOfActionsRequiredForContact:contact];
+        if (actionCount > 1) break;
+    }
+    
+    if (actionCount == 0) {
+        self.contactsActionRequired = ContactActionRequiredNone;
+    } else if (actionCount == 1) {
+        self.contactsActionRequired = ContactActionRequiredSingle;
+    } else if (actionCount > 1) {
+        self.contactsActionRequired = ContactActionRequiredMultiple;
+    }
+}
+
+- (int)numberOfActionsRequiredForContact:(Contact *)contact
+{
+    int numberOfActionsRequired = 0;
+    // Check for any pending requests
+    for (ContactTransaction *transaction in [contact.transactionList allValues]) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+            numberOfActionsRequired++;
+            if (numberOfActionsRequired > 1) break;
         }
     }
     
-    return NO;
+    return numberOfActionsRequired;
 }
 
 - (BOOL)actionRequiredForContact:(Contact *)contact
@@ -3269,16 +3292,16 @@
     }
 }
 
-- (void)on_get_messages_success:(JSValue *)messages
+- (void)on_get_messages_success:(JSValue *)messages firstLoad:(JSValue *)isFirstLoad
 {
     DLog(@"on_get_messages_success");
-    [self getUpdatedContacts];
+    [self getUpdatedContacts:[isFirstLoad toBool]];
 }
 
 - (void)on_get_messages_error:(NSString *)error
 {
     DLog(@"on_get_messages_error");
-    [self getUpdatedContacts];
+    [self getUpdatedContacts:NO];
 }
 
 - (void)on_send_payment_request_success:(JSValue *)info

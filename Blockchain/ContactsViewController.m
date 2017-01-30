@@ -37,6 +37,7 @@ typedef enum {
 @property (nonatomic) NSString *nameFromURL;
 
 @property (nonatomic) NSString *invitationSentIdentifier;
+@property (nonatomic) NSString *messageIdentifier;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
@@ -61,6 +62,14 @@ typedef enum {
 {
     if (self = [super init]) {
         self.invitationSentIdentifier = invitationSent;
+    }
+    return self;
+}
+
+- (id)initWithMessageIdentifier:(NSString *)messageIdentifier
+{
+    if (self = [super init]) {
+        self.messageIdentifier = messageIdentifier;
     }
     return self;
 }
@@ -98,11 +107,18 @@ typedef enum {
     if (self.invitationFromURL && self.nameFromURL) {
         [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
     } else if (self.invitationSentIdentifier) {
-        
         NSArray *allContacts = [app.wallet.contacts allValues];
         for (Contact *contact in allContacts) {
             if ([contact.invitationSent isEqualToString:self.invitationSentIdentifier]) {
                 [app.wallet completeRelation:contact.identifier];
+                break;
+            }
+        }
+    } else if (self.messageIdentifier) {
+        NSArray *allContacts = [app.wallet.contacts allValues];
+        for (Contact *contact in allContacts) {
+            if ([contact.transactionList objectForKey:self.messageIdentifier]) {
+                [self loadMessage:self.messageIdentifier forContact:contact];
                 break;
             }
         }
@@ -112,6 +128,7 @@ typedef enum {
     self.nameFromURL = nil;
     
     self.invitationSentIdentifier = nil;
+    self.messageIdentifier = nil;
 }
 
 - (void)refreshControlActivated
@@ -261,6 +278,14 @@ typedef enum {
     [app.wallet completeRelation:contact.identifier];
     
     self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
+}
+
+- (void)loadMessage:(NSString *)messageIdentifier forContact:(Contact *)contact
+{
+    [app.wallet completeRelation:contact.identifier];
+    
+    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact selectMessage:messageIdentifier];
     [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 

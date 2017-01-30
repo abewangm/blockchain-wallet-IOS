@@ -11,6 +11,8 @@
 @interface ContactDetailViewController : UIViewController
 @property (nonatomic) Contact *contact;
 - (id)initWithContact:(Contact *)contact;
+- (id)initWithContact:(Contact *)contact selectMessage:(NSString *)messageIdentifier;
+
 - (void)showExtendedPublicKey;
 - (void)didGetMessages:(Contact *)contact;
 - (void)didSendPaymentRequest;

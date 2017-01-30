@@ -106,7 +106,7 @@
 - (void)didCompleteRelation;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didFetchExtendedPublicKey;
-- (void)didGetMessages;
+- (void)didGetMessages:(BOOL)isFirstLoad;
 - (void)didSendPaymentRequest:(NSDictionary *)info;
 - (void)didRequestPaymentRequest:(NSDictionary *)info;
 - (void)didChangeContactName:(NSDictionary *)info;
@@ -162,6 +162,13 @@
 @property (nonatomic) int lastLabelledAddressesCount;
 
 @property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
+
+typedef enum {
+    ContactActionRequiredNone,
+    ContactActionRequiredSingle,
+    ContactActionRequiredMultiple,
+} ContactActionRequired;
+@property (nonatomic) ContactActionRequired contactsActionRequired;
 
 - (id)init;
 
@@ -361,6 +368,7 @@
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
 // Contacts
+- (void)loadContacts;
 - (void)getMessages;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
@@ -372,6 +380,5 @@
 - (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
-- (BOOL)actionRequiredForContacts;
 - (BOOL)actionRequiredForContact:(Contact *)contact;
 @end
