@@ -176,7 +176,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 1) {
-        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] showOwnAddresses:YES allSelectable:YES accountsOnly:YES];
+        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] selectMode:SelectModeTransferTo];
         selectorView.delegate = self;
         selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
         

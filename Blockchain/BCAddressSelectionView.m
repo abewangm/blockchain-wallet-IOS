@@ -26,24 +26,22 @@
 @synthesize wallet;
 @synthesize delegate;
 
-bool showFromAddresses;
-bool allSelectable;
-bool accountsOnly;
+SelectMode selectMode;
 
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable accountsOnly:(BOOL)_accountsOnly
+- (id)initWithWallet:(Wallet *)_wallet selectMode:(SelectMode)_selectMode
 {
     if ([super initWithFrame:CGRectZero]) {
         [[NSBundle mainBundle] loadNibNamed:@"BCAddressSelectionView" owner:self options:nil];
         
+        selectMode = _selectMode;
+        
         self.wallet = _wallet;
         // The From Address View shows accounts and legacy addresses with their balance. Entries with 0 balance are not selectable.
         // The To Address View shows address book entries, account and legacy addresses without a balance.
-        showFromAddresses = _showFromAddresses;
-        allSelectable = _allSelectable;
         
         addressBookAddresses = [NSMutableArray array];
         addressBookAddressLabels = [NSMutableArray array];
@@ -55,7 +53,7 @@ int legacyAddressesSectionNumber;
         legacyAddressLabels = [NSMutableArray array];
         
         // Select from address
-        if (_showFromAddresses) {
+        if ([self showFromAddresses]) {
             // First show the HD accounts with positive balance
             for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
                 if ([app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:i]] > 0) {
@@ -73,7 +71,7 @@ int legacyAddressesSectionNumber;
             }
             
             // Then show user's active legacy addresses with a positive balance
-            if (!_accountsOnly) {
+            if (![self accountsOnly]) {
                 for (NSString * addr in _wallet.activeLegacyAddresses) {
                     if ([_wallet getLegacyAddressBalance:addr] > 0) {
                         [legacyAddresses addObject:addr];
@@ -109,7 +107,7 @@ int legacyAddressesSectionNumber;
             }
             
             // Finally show all the user's active legacy addresses
-            if (!_accountsOnly) {
+            if (![self accountsOnly]) {
                 for (NSString * addr in _wallet.activeLegacyAddresses) {
                     [legacyAddresses addObject:addr];
                     [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
@@ -151,11 +149,26 @@ int legacyAddressesSectionNumber;
     return self;
 }
 
+- (BOOL)showFromAddresses
+{
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo;
+}
+
+- (BOOL)accountsOnly
+{
+    return selectMode == SelectModeTransferTo;
+}
+
+- (BOOL)allSelectable
+{
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo;
+}
+
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL shouldCloseModal = YES;
     
-    if (showFromAddresses) {
+    if ([self showFromAddresses]) {
         if (indexPath.section == accountsSectionNumber) {
             [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
         }
@@ -163,7 +176,9 @@ int legacyAddressesSectionNumber;
             
             NSString *legacyAddress = [legacyAddresses objectAtIndex:[indexPath row]];
             
-            if (allSelectable && [app.wallet isWatchOnlyLegacyAddress:legacyAddress] && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
+            if ([self allSelectable] &&
+                [app.wallet isWatchOnlyLegacyAddress:legacyAddress] &&
+                ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {
                 if ([delegate respondsToSelector:@selector(didSelectWatchOnlyAddress:)]) {
                     [delegate didSelectWatchOnlyAddress:legacyAddress];
                     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -195,7 +210,7 @@ int legacyAddressesSectionNumber;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (showFromAddresses) {
+    if ([self showFromAddresses]) {
         return  1 + (legacyAddresses.count > 0 ? 1 : 0);
     }
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
@@ -214,7 +229,7 @@ int legacyAddressesSectionNumber;
     
     NSString *labelString;
     
-    if (showFromAddresses) {
+    if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
             labelString = nil;
         }
@@ -241,7 +256,7 @@ int legacyAddressesSectionNumber;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (showFromAddresses) {
+    if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
             return accounts.count;
         }
@@ -316,7 +331,7 @@ int legacyAddressesSectionNumber;
             isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
         }
         
-        if (showFromAddresses) {
+        if ([self showFromAddresses]) {
             uint64_t balance = 0;
             if (section == addressBookSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
@@ -330,7 +345,7 @@ int legacyAddressesSectionNumber;
             cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
             
             // Cells with empty balance can't be clicked and are dimmed
-            if (balance == 0 && !allSelectable) {
+            if (balance == 0 && ![self allSelectable]) {
                 cell.userInteractionEnabled = NO;
                 cell.labelLabel.alpha = 0.5;
                 cell.addressLabel.alpha = 0.5;

@@ -36,7 +36,14 @@
     IBOutlet UITableView *tableView;
 }
 
-- (id)initWithWallet:(Wallet*)_wallet showOwnAddresses:(BOOL)_showFromAddresses allSelectable:(BOOL)_allSelectable accountsOnly:(BOOL)_accountsOnly;
+typedef enum {
+    SelectModeSendFrom = 100,
+    SelectModeSendTo = 200,
+    SelectModeReceiveTo = 300,
+    SelectModeTransferTo = 400,
+}SelectMode;
+
+- (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;
 
 @property(nonatomic, strong) NSMutableArray *addressBookAddresses;
 @property(nonatomic, strong) NSMutableArray *addressBookAddressLabels;
