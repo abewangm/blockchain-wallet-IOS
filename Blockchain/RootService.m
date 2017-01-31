@@ -431,22 +431,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if ([self.wallet isInitialized]) {
         
-        void (^goToContactsWithNotification)() = ^() {
-            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
-            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
-                _contactsViewController = [[ContactsViewController alloc] initWithMessageIdentifier:identifier];
-            }
-            [self showContacts];
-        };
-        
-        void (^reloadContactsWithNotification)() = ^() {
-            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                [_contactsViewController showAcceptedInvitation:identifier];
-            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
-                [_contactsViewController showRequest:identifier];
-            }
-        };
+        UIAlertController *alert;
         
         if (self.topViewControllerDelegate) {
             
@@ -457,38 +442,115 @@ void (^secondPasswordSuccess)(NSString *);
                 if ([navigationController.visibleViewController isEqual:_contactsViewController]) isViewingContacts = YES;
             }
             
-            NSString *alertMessage = isViewingContacts ? message : [NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT];
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-
             if (isViewingContacts) {
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    if (reloadContactsWithNotification) reloadContactsWithNotification();
-                }]];
+                
+                // User is viewing contacts
+                
+                if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [_contactsViewController showAcceptedInvitation:identifier];
+                    }]];
+                } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                            [app closeSideMenu];
+                            [app closeAllModals];
+                            [_tabViewController setActiveViewController:_transactionsViewController];
+                            [_transactionsViewController selectPayment:identifier];
+                        }];
+                    }]];
+                }
+
             } else {
-               [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                
+                // User is viewing some other top view controller
+                
+                if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                            [app closeSideMenu];
+                            [app closeAllModals];
+                            _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
+                            [self showContacts];
+                        }];
+                    }]];
+                } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                            [app closeSideMenu];
+                            [app closeAllModals];
+                            [_tabViewController setActiveViewController:_transactionsViewController];
+                            [_transactionsViewController selectPayment:identifier];
+                        }];
+                    }]];
+                }
             }
             
             if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
                 [self.topViewControllerDelegate presentAlertController:alert];
             }
         } else if (self.pinEntryViewController) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            
+            // On PIN screen
+            
+            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            }
             [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
         } else {
-            UIAlertController *alert =  [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                if (goToContactsWithNotification) goToContactsWithNotification();
-            }]];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+            
+            // Not on PIN screen, no top view controller
+            
+            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [app closeAllModals];
+                    _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
+                    [self showContacts];
+                }]];
+            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                
+                if (_tabViewController.activeViewController == _transactionsViewController) {
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app closeSideMenu];
+                        [_transactionsViewController selectPayment:identifier];
+                    }]];
+                } else {
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app closeSideMenu];
+                        [_tabViewController setActiveViewController:_transactionsViewController];
+                        [_transactionsViewController selectPayment:identifier];
+                    }]];
+                }
+            }
             [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
     } else if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        // Logged out
+        UIAlertController *alert;
+        if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+            alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+            alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        }
         
         if (self.pinEntryViewController) {
             [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];

@@ -145,19 +145,17 @@ const int maxFindAttempts = 2;
     
     ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
-    if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        [self acceptOrDenyPayment:transaction];
-    } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        [self sendPayment:transaction];
-    } else if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
+    if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
         [self showTransactionDetail:transaction forRow:indexPath.row];
+    } else {
+        DLog(@"Error: transaciton state not completed!");
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 250;
+        return 96;
     }
     return 0;
 }
@@ -168,31 +166,9 @@ const int maxFindAttempts = 2;
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160)];
         
-        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width, 30)];
-        promptLabel.text = BC_STRING_I_WANT_TO_COLON;
-        [view addSubview:promptLabel];
-        
-        UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(20, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.view.frame.size.width - 40, 50)];
-        [sendButton setTitle:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_BITCOIN, self.contact.name] forState:UIControlStateNormal];
-        sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        sendButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        sendButton.backgroundColor = COLOR_BUTTON_RED;
-        [sendButton addTarget:self action:@selector(sendClicked) forControlEvents:UIControlEventTouchUpInside];
-        sendButton.layer.cornerRadius = 4;
-        [view addSubview:sendButton];
-        
-        UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(20, sendButton.frame.origin.y + sendButton.frame.size.height + 8,  self.view.frame.size.width - 40, 50)];
-        requestButton.backgroundColor = COLOR_BUTTON_GREEN;
-        [requestButton setTitle:[NSString stringWithFormat:BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT, self.contact.name] forState:UIControlStateNormal];
-        requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        requestButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        [requestButton addTarget:self action:@selector(requestClicked) forControlEvents:UIControlEventTouchUpInside];
-        requestButton.layer.cornerRadius = 4;
-        [view addSubview:requestButton];
-        
         CGFloat smallButtonWidth = self.view.frame.size.width/2 - 20 - 5;
         
-        UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, requestButton.frame.origin.y + requestButton.frame.size.height + 8, smallButtonWidth, 40)];
+        UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 8, smallButtonWidth, 40)];
         [renameButton setTitle:BC_STRING_RENAME_CONTACT forState:UIControlStateNormal];
         renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
@@ -201,7 +177,7 @@ const int maxFindAttempts = 2;
         renameButton.layer.cornerRadius = 4;
         [view addSubview:renameButton];
         
-        UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 5, renameButton.frame.origin.y, smallButtonWidth, 40)];
+        UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 5, 8, smallButtonWidth, 40)];
         [deleteButton setTitle:BC_STRING_DELETE_CONTACT forState:UIControlStateNormal];
         deleteButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         deleteButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
@@ -305,76 +281,6 @@ const int maxFindAttempts = 2;
     [self presentViewController:alertForDeletingContact animated:YES completion:nil];
 }
 
-- (void)sendClicked
-{
-    if (!self.contact.mdid) {
-        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, self.contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
-        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:errorAlert animated:YES completion:nil];
-    } else {
-        [self createRequest:RequestTypeSendReason title:BC_STRING_SEND reason:nil];
-    }
-}
-
-- (void)requestClicked
-{
-    if (!self.contact.mdid) {
-        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, self.contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
-        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:errorAlert animated:YES completion:nil];
-    } else {
-        [self createRequest:RequestTypeReceiveReason title:BC_STRING_RECEIVE reason:nil];
-    }
-}
-
-- (void)createRequest:(RequestType)requestType title:(NSString *)title reason:(NSString *)reason;
-{
-    BOOL willSend;
-    if (requestType == RequestTypeSendReason || requestType == RequestTypeSendAmount) {
-        willSend = YES;
-    } else if (requestType == RequestTypeReceiveReason || requestType == RequestTypeReceiveAmount) {
-        willSend = NO;
-    } else {
-        DLog(@"Unknown request type");
-        return;
-    }
-    
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContactName:self.contact.name reason:reason willSend:willSend];
-    contactRequestView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
-    
-    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
-        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:title];
-        [self presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
-    } else {
-        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
-    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [contactRequestView showKeyboard];
-    });
-}
-
-- (void)acceptOrDenyPayment:(ContactTransaction *)transaction
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, self.contact.name, [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO]] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet sendPaymentRequest:self.contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)sendPayment:(ContactTransaction *)transaction
-{
-    transaction.contactIdentifier = self.contact.identifier;
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        [app setupPaymentRequest:transaction forContactName:self.contact.name];
-    }];
-}
-
 - (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
 {
     
@@ -450,28 +356,6 @@ const int maxFindAttempts = 2;
     }
 }
 
-- (void)didSendPaymentRequest
-{
-    if (self.presentedViewController) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alert animated:YES completion:nil];
-        }];
-    }
-}
-
-- (void)didRequestPaymentRequest
-{
-    if (self.presentedViewController) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, self.contact.name, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alert animated:YES completion:nil];
-        }];
-    }
-}
-
 - (void)refreshControlActivated
 {
     [app.topViewControllerDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
@@ -494,42 +378,6 @@ const int maxFindAttempts = 2;
 - (void)reloadSymbols
 {
     [self.transactionDetailViewController reloadSymbols];
-}
-
-#pragma mark - Contact Request Delegate
-
-- (void)promptRequestAmount:(NSString *)reason
-{
-    [self createRequest:RequestTypeReceiveAmount title:BC_STRING_RECEIVE reason:reason];
-}
-
-- (void)promptSendAmount:(NSString *)reason
-{
-    [self createRequest:RequestTypeSendAmount title:BC_STRING_RECEIVE reason:reason];
-}
-
-- (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], self.contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
-        
-        [app.wallet requestPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_RECEIVE_REQUEST message:[NSString stringWithFormat:BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], self.contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
-        
-        [app.wallet sendPaymentRequest:self.contact.identifier amount:amount requestId:nil note:reason];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
 }
 
 - (NSString *)getTransactionHash

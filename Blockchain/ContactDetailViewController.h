@@ -17,9 +17,6 @@
 
 - (void)showExtendedPublicKey;
 - (void)didGetMessages:(Contact *)contact;
-- (void)didSendPaymentRequest;
-- (void)didRequestPaymentRequest;
-
 - (NSString *)getTransactionHash;
 - (void)reloadSymbols;
 @end

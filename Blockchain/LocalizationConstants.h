@@ -430,6 +430,8 @@
 #define BC_STRING_GO_TO_CONTACTS_TO_ACCEPT NSLocalizedString(@"Go to Contacts to accept.", nil)
 #define BC_STRING_GO_TO_REQUEST NSLocalizedString(@"Go to request", nil)
 #define BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT NSLocalizedString(@"You have received a request from a contact.", nil)
+#define BC_STRING_GO_TO_TRANSACTIONS NSLocalizedString(@"Go to transactions", nil)
+#define BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT NSLocalizedString(@"Go to transactions to accept.", nil)
 
 #define BC_STRING_SOMEONE_SENT_ME_AN_INVITATION_CODE NSLocalizedString(@"Someone sent me an invitation code", nil)
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)

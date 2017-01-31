@@ -174,7 +174,7 @@
 
 - (void)presentAlertController:(UIAlertController *)alertController
 {
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self.visibleViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

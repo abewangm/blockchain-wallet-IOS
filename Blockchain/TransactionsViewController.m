@@ -12,6 +12,8 @@
 #import "MultiAddressResponse.h"
 #import "RootService.h"
 #import "TransactionDetailViewController.h"
+#import "Contact.h"
+#import "ContactTransaction.h"
 
 @implementation TransactionsViewController
 
@@ -351,6 +353,30 @@ int lastNumberTransactions = INT_MAX;
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
+}
+
+#pragma mark - Contacts
+
+- (void)selectPayment:(NSString *)payment
+{
+    
+}
+
+- (void)acceptOrDenyPayment:(ContactTransaction *)transaction forContact:(Contact *)contact
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, contact.name, [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO]] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet sendPaymentRequest:contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)sendPayment:(ContactTransaction *)transaction toContact:(Contact *)contact
+{
+    transaction.contactIdentifier = contact.identifier;
+    
+    [app setupPaymentRequest:transaction forContactName:contact.name];
 }
 
 #pragma mark - View lifecycle

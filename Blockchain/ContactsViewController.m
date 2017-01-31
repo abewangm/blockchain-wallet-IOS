@@ -536,16 +536,6 @@ typedef enum {
     return [self.detailViewController getTransactionHash];
 }
 
-- (void)didSendPaymentRequest
-{
-    [self.detailViewController didSendPaymentRequest];
-}
-
-- (void)didRequestPaymentRequest
-{
-    [self.detailViewController didRequestPaymentRequest];
-}
-
 - (void)didChangeContactName
 {
     [self reload];

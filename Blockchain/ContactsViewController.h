@@ -24,8 +24,6 @@
 
 // Messages Controller
 - (void)didGetMessages;
-- (void)didSendPaymentRequest;
-- (void)didRequestPaymentRequest;
 - (void)didChangeContactName;
 
 // Detail Controller
