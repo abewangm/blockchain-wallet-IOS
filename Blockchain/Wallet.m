@@ -2083,6 +2083,8 @@
     int actionCount = 0;
     NSArray *contacts = [self.contacts allValues];
     
+    ContactActionRequired firstAction;
+    
     for (Contact *contact in contacts) {
         
         // Check for any pending invitations
@@ -2090,17 +2092,20 @@
             contact.invitationReceived &&
             ![contact.invitationReceived isEqualToString:@""]) {
             actionCount++;
+            firstAction = ContactActionRequiredSingleRequest;
             if (actionCount > 1) break;
         }
         
-        actionCount = actionCount + [self minimumNumberOfActionsRequiredForContact:contact];
+        int actionCountForContact = [self minimumNumberOfActionsRequiredForContact:contact];
+        if (actionCountForContact > 0) firstAction = ContactActionRequiredSinglePayment;
+        actionCount = actionCount + actionCountForContact;
         if (actionCount > 1) break;
     }
     
     if (actionCount == 0) {
         self.contactsActionRequired = ContactActionRequiredNone;
     } else if (actionCount == 1) {
-        self.contactsActionRequired = ContactActionRequiredSingle;
+        self.contactsActionRequired = firstAction;
     } else if (actionCount > 1) {
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }

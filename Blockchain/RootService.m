@@ -58,6 +58,7 @@ typedef enum {
     ShowTypeNone = 100,
     ShowTypeSendCoins = 200,
     ShowTypeNewContact = 300,
+    ShowTypeNewPayment = 400
 } ShowType;
 
 ShowType showType;
@@ -293,6 +294,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     app.transactionsViewController.loadedAllTransactions = NO;
+    app.transactionsViewController.messageIdentifier = nil;
     app.wallet.isFetchingTransactions = NO;
     app.wallet.isFilteringTransactions = NO;
     
@@ -569,11 +571,12 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *type = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
     NSString *invitationSent = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
     
-    showType = ShowTypeNewContact;
     if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+        showType = ShowTypeNewContact;
         _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
     } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
-        _contactsViewController = [[ContactsViewController alloc] initWithMessageIdentifier:invitationSent];
+        showType = ShowTypeNewPayment;
+        _transactionsViewController.messageIdentifier = invitationSent;
     }
 }
 
@@ -1112,13 +1115,16 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
+    } else if (showType == ShowTypeNewPayment) {
+        [_tabViewController setActiveViewController:_transactionsViewController];
     } else if (showType == ShowTypeNewContact) {
         [self showContacts];
-        showType = ShowTypeNone;
         
         // Contacts will already be loaded by the ContactsViewController, and calling loadContacts in this case may show an unnecessary alert to direct the user to contacts.
         return;
     }
+    
+    showType = ShowTypeNone;
     
     [self.wallet loadContacts];
 }
@@ -2138,13 +2144,26 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetMessages:(BOOL)isFirstLoad
 {
-    if (isFirstLoad && self.wallet.contactsActionRequired == ContactActionRequiredSingle) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self showContacts];
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    if (isFirstLoad) {
+        if (self.wallet.contactsActionRequired == ContactActionRequiredSingleRequest) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self showContacts];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else if (self.wallet.contactsActionRequired == ContactActionRequiredSinglePayment) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                // Needs message data passed
+                // [_transactionsViewController selectPayment:_transactionsViewController.messageIdentifier];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else if (_transactionsViewController.messageIdentifier) {
+            [_transactionsViewController selectPayment:_transactionsViewController.messageIdentifier];
+        }
     }
     
     [sideMenuViewController reloadTableView];

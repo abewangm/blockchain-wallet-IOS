@@ -48,6 +48,7 @@
 @property(nonatomic) BOOL clickedFetchMore;
 @property(nonatomic) NSIndexPath *lastSelectedIndexPath;
 @property(nonatomic) TransactionDetailViewController *detailViewController;
+@property(nonatomic) NSString *messageIdentifier;
 
 - (void)reload;
 - (void)reloadSymbols;

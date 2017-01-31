@@ -165,7 +165,8 @@
 
 typedef enum {
     ContactActionRequiredNone,
-    ContactActionRequiredSingle,
+    ContactActionRequiredSingleRequest,
+    ContactActionRequiredSinglePayment,
     ContactActionRequiredMultiple,
 } ContactActionRequired;
 @property (nonatomic) ContactActionRequired contactsActionRequired;

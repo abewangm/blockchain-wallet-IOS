@@ -359,7 +359,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)selectPayment:(NSString *)payment
 {
-    
+    self.messageIdentifier = nil;
 }
 
 - (void)acceptOrDenyPayment:(ContactTransaction *)transaction forContact:(Contact *)contact
