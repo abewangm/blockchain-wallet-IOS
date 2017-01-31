@@ -2129,12 +2129,12 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didSendPaymentRequest:(NSDictionary *)info
 {
-    [self.contactsViewController didSendPaymentRequest];
+    [self.receiveViewController didSendPaymentRequest];
 }
 
 - (void)didRequestPaymentRequest:(NSDictionary *)info
 {
-    [self.contactsViewController didRequestPaymentRequest];
+    [self.sendViewController didRequestPaymentRequest];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info

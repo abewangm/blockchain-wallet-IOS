@@ -70,4 +70,6 @@
 
 - (void)doCurrencyConversion;
 
+- (void)didSendPaymentRequest;
+
 @end

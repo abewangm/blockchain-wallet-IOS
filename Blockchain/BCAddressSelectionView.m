@@ -11,8 +11,11 @@
 #import "RootService.h"
 #import "ReceiveTableCell.h"
 #import "SendViewController.h"
+#import "Contact.h"
 
 @implementation BCAddressSelectionView
+
+@synthesize contacts;
 
 @synthesize addressBookAddresses;
 @synthesize addressBookAddressLabels;
@@ -28,6 +31,7 @@
 
 SelectMode selectMode;
 
+int contactsSectionNumber;
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
@@ -42,6 +46,8 @@ int legacyAddressesSectionNumber;
         self.wallet = _wallet;
         // The From Address View shows accounts and legacy addresses with their balance. Entries with 0 balance are not selectable.
         // The To Address View shows address book entries, account and legacy addresses without a balance.
+        
+        contacts = [NSMutableArray new];
         
         addressBookAddresses = [NSMutableArray array];
         addressBookAddressLabels = [NSMutableArray array];
@@ -89,11 +95,18 @@ int legacyAddressesSectionNumber;
             }
             
             addressBookSectionNumber = -1;
-            accountsSectionNumber = 0;
-            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? 1 : -1;
+            contactsSectionNumber = contacts.count > 0 ? 0 : -1;
+            accountsSectionNumber = contactsSectionNumber + 1;
+            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
         }
         // Select to address
         else {
+            
+            // Show contacts
+            for (Contact *contact in [_wallet.contacts allValues]) {
+                [contacts addObject:contact];
+            }
+            
             // Show the address book
             for (NSString * addr in [_wallet.addressBook allKeys]) {
                 [addressBookAddresses addObject:addr];
@@ -114,7 +127,8 @@ int legacyAddressesSectionNumber;
                 }
             }
             
-            accountsSectionNumber = 0;
+            contactsSectionNumber = contacts.count > 0 ? 0 : -1;
+            accountsSectionNumber = contactsSectionNumber + 1;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
             if (addressBookAddresses.count > 0) {
                 addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : accountsSectionNumber + 1;
@@ -201,6 +215,10 @@ int legacyAddressesSectionNumber;
         else if (indexPath.section == legacyAddressesSectionNumber) {
             [delegate didSelectToAddress:[legacyAddresses objectAtIndex:[indexPath row]]];
         }
+        else if (indexPath.section == contactsSectionNumber) {
+            [delegate didSelectContact:[contacts objectAtIndex:[indexPath row]]];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
     }
     
     if (shouldCloseModal && !app.topViewControllerDelegate) {
@@ -211,7 +229,7 @@ int legacyAddressesSectionNumber;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self showFromAddresses]) {
-        return  1 + (legacyAddresses.count > 0 ? 1 : 0);
+        return 1 + (legacyAddresses.count > 0 ? 1 : 0);
     }
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
 }
@@ -231,6 +249,9 @@ int legacyAddressesSectionNumber;
         else if (section == legacyAddressesSectionNumber) {
             return BC_STRING_IMPORTED_ADDRESSES;
         }
+        else if (section == contactsSectionNumber) {
+            return BC_STRING_CONTACTS;
+        }
     }
     else {
         if (section == addressBookSectionNumber) {
@@ -241,6 +262,9 @@ int legacyAddressesSectionNumber;
         }
         else if (section == legacyAddressesSectionNumber) {
             return BC_STRING_IMPORTED_ADDRESSES;
+        }
+        else if (section == contactsSectionNumber) {
+            return BC_STRING_CONTACTS;
         }
     }
     
@@ -257,6 +281,9 @@ int legacyAddressesSectionNumber;
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
         }
+        else if (section == contactsSectionNumber) {
+            return contacts.count;
+        }
     }
     else {
         if (section == addressBookSectionNumber) {
@@ -268,6 +295,9 @@ int legacyAddressesSectionNumber;
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
         }
+        else if (section == contactsSectionNumber) {
+            return contacts.count;
+        }
     }
     
     assert(false); // Should never get here
@@ -276,7 +306,7 @@ int legacyAddressesSectionNumber;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == accountsSectionNumber) {
+    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber) {
         return ROW_HEIGHT_ACCOUNT;
     }
     
@@ -307,6 +337,11 @@ int legacyAddressesSectionNumber;
         else if (section == legacyAddressesSectionNumber) {
             label = [legacyAddressLabels objectAtIndex:row];
             cell.addressLabel.text = [legacyAddresses objectAtIndex:row];
+        }
+        else if (section == contactsSectionNumber) {
+            Contact *contact = [contacts objectAtIndex:row];
+            label = contact.name;
+            cell.addressLabel.text = nil;
         }
         
         if (label)

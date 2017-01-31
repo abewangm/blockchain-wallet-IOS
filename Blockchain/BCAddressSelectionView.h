@@ -20,13 +20,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class Wallet;
+@class Wallet, Contact;
 
 @protocol AddressSelectionDelegate <NSObject>
 - (void)didSelectFromAddress:(NSString*)address;
 - (void)didSelectToAddress:(NSString*)address;
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectToAccount:(int)account;
+- (void)didSelectContact:(Contact *)contact;
 @optional
 - (void)didSelectWatchOnlyAddress:(NSString*)address;
 @end
@@ -44,6 +45,8 @@ typedef enum {
 }SelectMode;
 
 - (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;
+
+@property(nonatomic, strong) NSMutableArray *contacts;
 
 @property(nonatomic, strong) NSMutableArray *addressBookAddresses;
 @property(nonatomic, strong) NSMutableArray *addressBookAddressLabels;

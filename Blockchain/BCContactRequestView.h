@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 @class BCSecureTextField;
 
+typedef enum {
+    RequestTypeSendReason,
+    RequestTypeReceiveReason,
+    RequestTypeSendAmount,
+    RequestTypeReceiveAmount
+} RequestType;
+
 @protocol ContactRequestDelegate
 - (void)promptSendAmount:(NSString *)reason;
 - (void)promptRequestAmount:(NSString *)reason;

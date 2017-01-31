@@ -24,13 +24,6 @@ const int rowFetchMDID = 3;
 
 const int maxFindAttempts = 2;
 
-typedef enum {
-    RequestTypeSendReason,
-    RequestTypeReceiveReason,
-    RequestTypeSendAmount,
-    RequestTypeReceiveAmount
-} RequestType;
-
 @interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ContactRequestDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
