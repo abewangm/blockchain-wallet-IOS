@@ -371,6 +371,7 @@ typedef enum {
 
 // Contacts
 - (void)loadContacts;
+- (void)loadContactsThenGetMessages;
 - (void)getMessages;
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;

@@ -461,7 +461,7 @@ void (^secondPasswordSuccess)(NSString *);
                         [_tabViewController dismissViewControllerAnimated:YES completion:^{
                             [app closeSideMenu];
                             [app closeAllModals];
-                            [_tabViewController setActiveViewController:_transactionsViewController];
+                            [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
                             [_transactionsViewController selectPayment:identifier];
                         }];
                     }]];
@@ -489,15 +489,17 @@ void (^secondPasswordSuccess)(NSString *);
                         [_tabViewController dismissViewControllerAnimated:YES completion:^{
                             [app closeSideMenu];
                             [app closeAllModals];
-                            [_tabViewController setActiveViewController:_transactionsViewController];
+                            [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
                             [_transactionsViewController selectPayment:identifier];
                         }];
                     }]];
                 }
             }
             
-            if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+            if (self.topViewControllerDelegate && [self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
                 [self.topViewControllerDelegate presentAlertController:alert];
+            } else {
+                [_tabViewController presentViewController:alert animated:YES completion:nil];
             }
         } else if (self.pinEntryViewController) {
             
@@ -520,6 +522,7 @@ void (^secondPasswordSuccess)(NSString *);
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     [app closeAllModals];
+                    [app closeSideMenu];
                     _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
                     [self showContacts];
                 }]];
@@ -528,14 +531,16 @@ void (^secondPasswordSuccess)(NSString *);
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
                 
                 if (_tabViewController.activeViewController == _transactionsViewController) {
-                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app closeAllModals];
                         [app closeSideMenu];
                         [_transactionsViewController selectPayment:identifier];
                     }]];
                 } else {
                     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app closeAllModals];
                         [app closeSideMenu];
-                        [_tabViewController setActiveViewController:_transactionsViewController];
+                        [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
                         [_transactionsViewController selectPayment:identifier];
                     }]];
                 }
@@ -1116,18 +1121,17 @@ void (^secondPasswordSuccess)(NSString *);
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
     } else if (showType == ShowTypeNewPayment) {
-        [_tabViewController setActiveViewController:_transactionsViewController];
+        [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:1];
     } else if (showType == ShowTypeNewContact) {
+        [self.wallet loadContacts];
         [self showContacts];
-        
-        // Contacts will already be loaded by the ContactsViewController, and calling loadContacts in this case may show an unnecessary alert to direct the user to contacts.
         return;
     }
     
     showType = ShowTypeNone;
 
 #ifdef ENABLE_DEBUG_MENU
-    [self.wallet loadContacts];
+    [self.wallet loadContactsThenGetMessages];
 #endif
 }
 

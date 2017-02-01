@@ -1973,11 +1973,15 @@
 }
 
 #pragma mark - Contacts
-    
+
 - (void)loadContacts
 {
-    // MyWalletPhone.loadContacts calls getMessages, which digests the messages
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
+}
+
+- (void)loadContactsThenGetMessages
+{
+    [self.context evaluateScript:@"MyWalletPhone.loadContactsThenGetMessages()"];
 }
 
 - (void)getUpdatedContacts:(BOOL)isFirstLoad

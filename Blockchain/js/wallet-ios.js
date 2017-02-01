@@ -1887,6 +1887,11 @@ MyWalletPhone.getECDSA = function() {
 }
 
 MyWalletPhone.loadContacts = function() {
+    console.log('Loading contacts');
+    MyWallet.wallet.loadContacts();
+}
+
+MyWalletPhone.loadContactsThenGetMessages = function() {
     console.log('Loading contacts then getting messages');
     MyWallet.wallet.loadContacts().then(function(discard) {
         MyWalletPhone.getMessages(true);
