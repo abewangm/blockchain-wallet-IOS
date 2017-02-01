@@ -2587,8 +2587,6 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
     }
-    
-    [self loadContacts];
 }
 
 - (void)on_create_new_account:(NSString*)_guid sharedKey:(NSString*)_sharedKey password:(NSString*)_password
