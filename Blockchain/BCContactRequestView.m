@@ -10,8 +10,12 @@
 #import "RootService.h"
 #import "BCLine.h"
 #import "Blockchain-Swift.h"
+#import "Contact.h"
 
 @interface BCContactRequestView ()
+
+@property (nonatomic) Contact *contact;
+
 @property (nonatomic) NSString *reason;
 @property (nonatomic) UIButton *nextButton;
 
@@ -24,13 +28,14 @@
 
 @implementation BCContactRequestView
 
-- (id)initWithContactName:(NSString *)name reason:(NSString *)reason willSend:(BOOL)willSend
+- (id)initWithContact:(Contact *)contact reason:(NSString *)reason willSend:(BOOL)willSend
 {
     UIWindow *window = app.window;
     
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
     
     if (self) {
+        self.contact = contact;
         _willSend = willSend;
         self.reason = reason;
         
@@ -53,7 +58,7 @@
         self.nextButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
         
         if (reason) {
-            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForAmount], name];
+            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForAmount], contact.name];
             [self.nextButton addTarget:self action:@selector(notifyContact) forControlEvents:UIControlEventTouchUpInside];
             
             UIView *bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.frame.size.width, 100)];
@@ -95,7 +100,7 @@
             [bottomContainerView addSubview:self.receiveFiatField];
             
         } else {
-            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], name, name];
+            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, contact.name];
             [self.nextButton addTarget:self action:@selector(promptAmount) forControlEvents:UIControlEventTouchUpInside];
             
             
@@ -258,18 +263,18 @@
 - (void)promptAmount
 {
     if (self.willSend) {
-        [self.delegate promptSendAmount:self.textField.text];
+        [self.delegate promptSendAmount:self.textField.text forContact:self.contact];
     } else {
-        [self.delegate promptRequestAmount:self.textField.text];
+        [self.delegate promptRequestAmount:self.textField.text forContact:self.contact];
     }
 }
 
 - (void)notifyContact
 {
     if (self.willSend) {
-        [self.delegate createSendRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
+        [self.delegate createSendRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
     } else {
-        [self.delegate createReceiveRequestWithReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
+        [self.delegate createReceiveRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
     }
 }
 

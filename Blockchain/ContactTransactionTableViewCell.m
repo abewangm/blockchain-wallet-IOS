@@ -30,16 +30,17 @@
         return;
     }
     
-    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, (self.frame.size.height - 13)/2, 13, 13)];
+    self.actionImageView = [[UIImageView alloc] init];
     [self.contentView addSubview:self.actionImageView];
     self.actionImageView.image = [UIImage imageNamed:@"backup_red_circle"];
     
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.accessoryType = UITableViewCellAccessoryNone;
     
-    CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2, self.frame.size.width - mainLabelOriginX - 28, 30)];
+    self.mainLabel = [[UILabel alloc] init];
+    self.mainLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:self.mainLabel];
-    self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.textColor = [UIColor grayColor];
+    self.mainLabel.numberOfLines = 3;
     
     [self reloadTextAndImage:transaction contactName:name];
     
@@ -51,16 +52,16 @@
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
     
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_WAITING_FOR_ARGUMENT_TO_ACCEPT, amount, name];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name], [NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, name]];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_RECEIVING_ARGUMENT_ACCEPT_OR_DENY, amount];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT, amount, name],BC_STRING_ACCEPT_OR_DENY];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_READY_TO_SEND, amount];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name],BC_STRING_READY_TO_SEND];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_WAITING_FOR_PAYMENT, amount];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT, amount, name], BC_STRING_WAITING_FOR_PAYMENT];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
         self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT, amount];
@@ -73,7 +74,16 @@
         self.actionImageView.hidden = NO;
     }
 
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.accessoryType = UITableViewCellAccessoryNone;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.actionImageView.frame = CGRectMake(15, (self.frame.size.height - 13)/2, 13, 13);
+    CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
+    self.mainLabel.frame = CGRectMake(mainLabelOriginX, (self.frame.size.height - 60)/2, self.frame.size.width - mainLabelOriginX - 28, 60);
 }
 
 - (void)prepareForReuse

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class BCSecureTextField;
+@class BCSecureTextField, Contact;
 
 typedef enum {
     RequestTypeSendReason,
@@ -17,10 +17,10 @@ typedef enum {
 } RequestType;
 
 @protocol ContactRequestDelegate
-- (void)promptSendAmount:(NSString *)reason;
-- (void)promptRequestAmount:(NSString *)reason;
-- (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount;
-- (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount;
+- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact;
+- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact;
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount;
+- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount;
 @end
 
 @interface BCContactRequestView : UIView <UITextFieldDelegate>
@@ -28,7 +28,7 @@ typedef enum {
 @property (nonatomic) id<ContactRequestDelegate> delegate;
 @property (nonatomic, readonly) BOOL willSend;
 
-- (id)initWithContactName:(NSString *)name reason:(NSString *)reason willSend:(BOOL)willSend;
+- (id)initWithContact:(Contact *)contact reason:(NSString *)reason willSend:(BOOL)willSend;
 - (void)showKeyboard;
 
 @end

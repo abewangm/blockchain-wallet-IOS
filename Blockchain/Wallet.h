@@ -39,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction, JSValue, JSContext, Contact;
+@class Wallet, Transaction, JSValue, JSContext, Contact, ContactTransaction;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -107,8 +107,8 @@
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didFetchExtendedPublicKey;
 - (void)didGetMessages:(BOOL)isFirstLoad;
-- (void)didSendPaymentRequest:(NSDictionary *)info;
-- (void)didRequestPaymentRequest:(NSDictionary *)info;
+- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didPushTransaction;
@@ -162,6 +162,7 @@
 @property (nonatomic) int lastLabelledAddressesCount;
 
 @property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
+@property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
 
 typedef enum {
     ContactActionRequiredNone,

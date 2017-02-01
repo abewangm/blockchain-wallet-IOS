@@ -9,7 +9,7 @@
 #import "ContactTransaction.h"
 
 @implementation ContactTransaction
-- (id)initWithDictionary:(NSDictionary *)dictionary
+- (id)initWithDictionary:(NSDictionary *)dictionary contactIdentifier:(NSString *)identifier
 {
     if (self = [super init]) {
         _identifier = [dictionary objectForKey:DICTIONARY_KEY_ID];
@@ -17,6 +17,9 @@
         _intendedAmount = [[dictionary objectForKey:DICTIONARY_KEY_INTENDED_AMOUNT] longLongValue];
         _role = [dictionary objectForKey:DICTIONARY_KEY_ROLE];
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
+        _reason = [dictionary objectForKey:DICTIONARY_KEY_REASON];
+        _contactIdentifier = identifier;
+        
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
         
         if ([_state isEqualToString:TRANSACTION_STATE_WAITING_PAYMENT]) {

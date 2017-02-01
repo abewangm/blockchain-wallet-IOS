@@ -340,6 +340,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
 #define DICTIONARY_KEY_ROLE @"role"
 #define DICTIONARY_KEY_TX_HASH @"tx_hash"
+#define DICTIONARY_KEY_REASON @"reason"
 
 #define DICTIONARY_KEY_APS @"aps"
 #define DICTIONARY_KEY_TYPE @"type"

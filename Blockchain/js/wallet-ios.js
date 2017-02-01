@@ -2038,7 +2038,7 @@ MyWalletPhone.deleteContact = function(identifier) {
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
-        objc_on_send_payment_request_success(info);
+        objc_on_send_payment_request_success(info, userId);
     };
     
     MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
@@ -2047,7 +2047,7 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
 MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
-        objc_on_request_payment_request_success(info);
+        objc_on_request_payment_request_success(info, userId);
     };
     
     MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(function(e){console.log('Error sending message');console.log(e)});

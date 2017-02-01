@@ -700,12 +700,12 @@
         [weakSelf on_get_messages_error:[error toString]];
     };
     
-    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info) {
-        [weakSelf on_send_payment_request_success:info];
+    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
+        [weakSelf on_send_payment_request_success:info identifier:userId];
     };
     
-    self.context[@"objc_on_request_payment_request_success"] = ^(JSValue *info) {
-        [weakSelf on_request_payment_request_success:info];
+    self.context[@"objc_on_request_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
+        [weakSelf on_request_payment_request_success:info identifier:userId];
     };
     
     self.context[@"objc_on_send_payment_request_response_success"] = ^(JSValue *info) {
@@ -1992,6 +1992,8 @@
     
     self.contacts = [[NSDictionary alloc] initWithDictionary:finalDictionary];
     
+    self.pendingContactTransactions = [NSMutableArray new];
+    // Update pendingContactTransactions
     [self updateActionsRequired];
     
     if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
@@ -2082,7 +2084,7 @@
 {
     int actionCount = 0;
     NSArray *contacts = [self.contacts allValues];
-    
+
     ContactActionRequired firstAction;
     
     for (Contact *contact in contacts) {
@@ -2093,13 +2095,11 @@
             ![contact.invitationReceived isEqualToString:@""]) {
             actionCount++;
             firstAction = ContactActionRequiredSingleRequest;
-            if (actionCount > 1) break;
         }
         
-        int actionCountForContact = [self minimumNumberOfActionsRequiredForContact:contact];
+        int actionCountForContact = [self numberOfActionsRequiredForContact:contact];
         if (actionCountForContact > 0) firstAction = ContactActionRequiredSinglePayment;
         actionCount = actionCount + actionCountForContact;
-        if (actionCount > 1) break;
     }
     
     if (actionCount == 0) {
@@ -2111,14 +2111,16 @@
     }
 }
 
-- (int)minimumNumberOfActionsRequiredForContact:(Contact *)contact
+- (int)numberOfActionsRequiredForContact:(Contact *)contact
 {
     int numberOfActionsRequired = 0;
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
-            if (numberOfActionsRequired > 1) break; // No need to loop through all actions since all we need to know is whether numberOfActionsRequired is greater than 1
+        }
+        if (transaction.transactionState != ContactTransactionStateCompletedSend && transaction.transactionState != ContactTransactionStateCompletedReceive) {
+            [self.pendingContactTransactions addObject:transaction];
         }
     }
     
@@ -3307,29 +3309,29 @@
     [self getUpdatedContacts:NO];
 }
 
-- (void)on_send_payment_request_success:(JSValue *)info
+- (void)on_send_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
 {
     DLog(@"on_send_payment_request_success");
     
     [self getMessages];
 
-    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:)]) {
-        [self.delegate didSendPaymentRequest:[info toDictionary]];
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:name:)]) {
+        [self.delegate didSendPaymentRequest:[info toDictionary] name:[app.wallet.contacts objectForKey:[userId toString]].name];
     } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest!", [delegate class]);
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest:name:!", [delegate class]);
     }
 }
 
-- (void)on_request_payment_request_success:(JSValue *)info
+- (void)on_request_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
 {
     DLog(@"on_request_payment_request_success");
     
     [self getMessages];
 
-    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
-        [self.delegate didRequestPaymentRequest:[info toDictionary]];
+    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:name:)]) {
+        [self.delegate didRequestPaymentRequest:[info toDictionary] name:[app.wallet.contacts objectForKey:[userId toString]].name];
     } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest!", [delegate class]);
+        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest:name!", [delegate class]);
     }
 }
 
@@ -3338,12 +3340,6 @@
     DLog(@"on_send_payment_request_response_success");
     
     [self getMessages];
-
-    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:)]) {
-        [self.delegate didRequestPaymentRequest:[info toDictionary]];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest!", [delegate class]);
-    }
 }
 
 - (void)on_change_contact_name_success:(JSValue *)info

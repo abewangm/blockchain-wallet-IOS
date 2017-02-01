@@ -14,6 +14,7 @@
 #import "TransactionDetailViewController.h"
 #import "Contact.h"
 #import "ContactTransaction.h"
+#import "ContactTransactionTableViewCell.h"
 
 @implementation TransactionsViewController
 
@@ -26,46 +27,90 @@ BOOL hasZeroTotalBalance = NO;
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
 
+const int sectionContactsPending = 0;
+const int sectionMain = 1;
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger transactionCount = [data.transactions count];
+    if (section == sectionContactsPending) {
+        return app.wallet.pendingContactTransactions.count;
+    } else if (section == sectionMain) {
+        NSInteger transactionCount = [data.transactions count];
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
-    if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
-        [app.wallet fetchMoreTransactions];
-    }
+        if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
+            [app.wallet fetchMoreTransactions];
+        }
 #endif
-    return transactionCount;
+        return transactionCount;
+    } else {
+        DLog(@"Transactions view controller error: invalid section %lu", section);
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
+    if (indexPath.section == sectionContactsPending) {
+        ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
+        ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
+        NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+        [cell configureWithTransaction:contactTransaction contactName:name];
+        return cell;
+    } else if (indexPath.section == sectionMain) {
+        Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
-    TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+        TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
         
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+        }
+        
+        cell.transaction = transaction;
+        
+        [cell reload];
+        
+        // Selected cell color
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        [cell setSelectedBackgroundView:v];
+        
+        return cell;
+    } else {
+        DLog(@"Invalid section %lu", indexPath.section);
+        return nil;
     }
-    
-    cell.transaction = transaction;
-        
-    [cell reload];
-        
-    // Selected cell color
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-    [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-    [cell setSelectedBackgroundView:v];
-        
-    return cell;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.lastSelectedIndexPath = indexPath;
-    
-    TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil indexPath:indexPath];
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == sectionContactsPending) {
+        
+        ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
+        Contact *contact = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier];
+        
+        if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
+            [self acceptOrDenyPayment:contactTransaction forContact:contact];
+        } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
+            [self sendPayment:contactTransaction toContact:contact];
+        } else {
+            DLog(@"No action needed on transaction");
+        }
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (indexPath.section == sectionMain) {
+        self.lastSelectedIndexPath = indexPath;
+        
+        TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        [cell transactionClicked:nil indexPath:indexPath];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else {
+        DLog(@"Invalid section %lu", indexPath.section);
+    }
 }
 
 - (void)tableView:(UITableView *)_tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +165,7 @@ int lastNumberTransactions = INT_MAX;
         [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
     }
     // Data loaded, but no transactions yet
-    else if (self.data.transactions.count == 0) {
+    else if (self.data.transactions.count == 0 && app.wallet.pendingContactTransactions.count == 0) {
         [tableView.tableHeaderView addSubview:noTransactionsView];
         
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
@@ -232,7 +277,7 @@ int lastNumberTransactions = INT_MAX;
         
         NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:numNewTransactions];
         for (int i = 0; i < numNewTransactions; i++) {
-            [rows addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            [rows addObject:[NSIndexPath indexPathForRow:i inSection:sectionMain]];
         }
         
         [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationFade];
@@ -243,7 +288,7 @@ int lastNumberTransactions = INT_MAX;
 {
     // Animate the first cell
     if (data.transactions.count > 0 && animateNextCell) {
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
@@ -271,7 +316,7 @@ int lastNumberTransactions = INT_MAX;
         self.clickedFetchMore = YES;
         [app.wallet getHistory];
     } else {
-        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:0] == 0;
+        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:sectionMain] == 0;
         BOOL tableViewIsFilled = ![[self.tableView indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:[data.transactions count] - 1 inSection:0]];
         
         if (tableViewIsEmpty) {
@@ -369,13 +414,11 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendPaymentRequest:contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)sendPayment:(ContactTransaction *)transaction toContact:(Contact *)contact
-{
-    transaction.contactIdentifier = contact.identifier;
-    
+{    
     [app setupPaymentRequest:transaction forContactName:contact.name];
 }
 
@@ -393,6 +436,8 @@ int lastNumberTransactions = INT_MAX;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.scrollsToTop = YES;
+    
+    [self.tableView registerClass:[ContactTransactionTableViewCell class] forCellReuseIdentifier:@"contactTransaction"];
     
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];

@@ -69,7 +69,4 @@
 - (void)showKeyboard;
 
 - (void)doCurrencyConversion;
-
-- (void)didSendPaymentRequest;
-
 @end

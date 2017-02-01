@@ -2166,6 +2166,7 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
+    [_transactionsViewController reload];
     [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
 }
@@ -2208,14 +2209,33 @@ void (^secondPasswordSuccess)(NSString *);
     [dataTask resume];
 }
 
-- (void)didSendPaymentRequest:(NSDictionary *)info
+- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name
 {
-    [self.receiveViewController didSendPaymentRequest];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }];
+    } else {
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
-- (void)didRequestPaymentRequest:(NSDictionary *)info
+- (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
 {
-    [self.sendViewController didRequestPaymentRequest];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }];
+    } else {
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
@@ -3109,7 +3129,7 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
-    [_tabViewController setActiveViewController:_sendViewController animated:NO index:0];
+    [_tabViewController setActiveViewController:_sendViewController animated:YES index:0];
     
     [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address contactName:name];
     [_sendViewController reload];

@@ -24,7 +24,7 @@ const int rowFetchMDID = 3;
 
 const int maxFindAttempts = 2;
 
-@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ContactRequestDelegate>
+@interface ContactDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;

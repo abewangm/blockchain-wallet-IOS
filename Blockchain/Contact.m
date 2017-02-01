@@ -32,7 +32,7 @@
         
         NSMutableDictionary *finalTransactionList = [NSMutableDictionary new];
         for (NSDictionary *facilitatedTransaction in transactionListArray) {
-            ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:facilitatedTransaction];
+            ContactTransaction *transaction = [[ContactTransaction alloc] initWithDictionary:facilitatedTransaction contactIdentifier:_identifier];
             [finalTransactionList setObject:transaction forKey:transaction.identifier];
         }
         

@@ -461,10 +461,13 @@
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept/deny", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
 
-#define BC_STRING_SENDING_ARGUMENT_WAITING_FOR_ARGUMENT_TO_ACCEPT NSLocalizedString(@"Sending %@ - Waiting for %@ to accept", nil)
-#define BC_STRING_RECEIVING_ARGUMENT_ACCEPT_OR_DENY NSLocalizedString(@"Receiving %@ - Accept/Deny", nil)
-#define BC_STRING_SENDING_ARGUMENT_READY_TO_SEND NSLocalizedString(@"Sending %@ - Ready to send", nil)
-#define BC_STRING_REQUESTED_ARGUMENT_WAITING_FOR_PAYMENT NSLocalizedString(@"Requested %@ - Waiting for payment", nil)
+#define BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT NSLocalizedString(@"Waiting for %@ to accept", nil)
+#define BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Receiving %@ from %@", nil)
+#define BC_STRING_ACCEPT_OR_DENY NSLocalizedString(@"Accept/Deny", nil)
+#define BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT NSLocalizedString(@"Sending %@ to %@", nil)
+#define BC_STRING_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
+#define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
+#define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
 #define BC_STRING_SENT_ARGUMENT NSLocalizedString(@"Sent %@", nil)
 #define BC_STRING_RECEIVED_ARGUMENT NSLocalizedString(@"Received %@", nil)
 

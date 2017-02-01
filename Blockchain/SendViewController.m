@@ -54,7 +54,6 @@ typedef enum {
 
 @property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
-@property (nonatomic) Contact *selectedContact;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 
 @end
@@ -239,7 +238,7 @@ BOOL displayingLocalSymbolSend;
         
         [selectFromButton setHidden:YES];
         
-        if ([app.wallet addressBook].count == 0) {
+        if ([app.wallet addressBook].count == 0 && [[app.wallet.contacts allValues] count] == 0) {
             [addressBookButton setHidden:YES];
         } else {
             [addressBookButton setHidden:NO];
@@ -1483,22 +1482,20 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectContact:(Contact *)contact
 {
-    self.selectedContact = contact;
-    
-    if (!self.selectedContact.mdid) {
-        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, self.selectedContact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, self.selectedContact.name] preferredStyle:UIAlertControllerStyleAlert];
+    if (!contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
     } else {
-        [self createSendRequest:RequestTypeSendReason reason:nil];
+        [self createSendRequest:RequestTypeSendReason forContact:contact reason:nil];
     }
 }
 
 #pragma mark - Contacts
 
-- (void)createSendRequest:(RequestType)requestType reason:(NSString *)reason
+- (void)createSendRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContactName:self.selectedContact.name reason:reason willSend:YES];
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact reason:reason willSend:YES];
     contactRequestView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
@@ -1515,41 +1512,30 @@ BOOL displayingLocalSymbolSend;
     });
 }
 
-- (void)didRequestPaymentRequest
-{
-    if (app.tabViewController.presentedViewController) {
-        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, self.selectedContact.name, self.selectedContact.name] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [app.tabViewController presentViewController:alert animated:YES completion:nil];
-        }];
-    }
-}
-
 #pragma mar - Contact Request Delegate
 
-- (void)promptRequestAmount:(NSString *)reason
+- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
 {
     DLog(@"Send error: prompted request amount");
 }
 
-- (void)promptSendAmount:(NSString *)reason
+- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact
 {
-    [self createSendRequest:RequestTypeSendAmount reason:reason];
+    [self createSendRequest:RequestTypeSendAmount forContact:contact reason:reason];
 }
 
-- (void)createReceiveRequestWithReason:(NSString *)reason amount:(uint64_t)amount
+- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount
 {
     DLog(@"Send error: created receive request");
 }
 
-- (void)createSendRequestWithReason:(NSString *)reason amount:(uint64_t)amount
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], self.selectedContact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
         
-        [app.wallet requestPaymentRequest:self.selectedContact.identifier amount:amount requestId:nil note:reason];
+        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
