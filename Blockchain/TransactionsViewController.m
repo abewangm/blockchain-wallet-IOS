@@ -27,8 +27,13 @@ BOOL hasZeroTotalBalance = NO;
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
 
+#ifdef ENABLE_DEBUG_MENU
 const int sectionContactsPending = 0;
 const int sectionMain = 1;
+#else
+const int sectionContactsPending = -1;
+const int sectionMain = 0;
+#endif
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -347,7 +352,9 @@ const int sectionMain = 1;
     Transaction *transaction = [data.transactions firstObject];
     
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
+#ifdef ENABLE_DEBUG_MENU
         [app checkIfPaymentRequestFulfilled:transaction];
+#endif
         return;
     };
     

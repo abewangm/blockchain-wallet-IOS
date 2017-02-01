@@ -108,6 +108,7 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
+#ifdef ENABLE_DEBUG_MENU
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
     requestButton.backgroundColor = COLOR_BUTTON_RED;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -117,14 +118,18 @@ NSString *detailLabel;
     [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(requestButton.frame.size.width, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
+    [shareButton setTitle:BC_STRING_SHARE_REQUEST forState:UIControlStateNormal];
+#else
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
+    [shareButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+#endif
     shareButton.backgroundColor = COLOR_BUTTON_GREEN;
     [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [shareButton setTitle:BC_STRING_SHARE_REQUEST forState:UIControlStateNormal];
     shareButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:shareButton];
     [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - shareButton.frame.size.height, self.view.frame.size.width, 100)];
     [self.view addSubview:self.bottomContainerView];
     
     BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];

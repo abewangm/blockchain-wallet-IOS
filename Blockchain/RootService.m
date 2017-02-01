@@ -1125,8 +1125,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     showType = ShowTypeNone;
-    
+
+#ifdef ENABLE_DEBUG_MENU
     [self.wallet loadContacts];
+#endif
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response

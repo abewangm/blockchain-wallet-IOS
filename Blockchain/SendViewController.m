@@ -238,11 +238,19 @@ BOOL displayingLocalSymbolSend;
         
         [selectFromButton setHidden:YES];
         
+#ifdef ENABLE_DEBUG_MENU
         if ([app.wallet addressBook].count == 0 && [[app.wallet.contacts allValues] count] == 0) {
             [addressBookButton setHidden:YES];
         } else {
             [addressBookButton setHidden:NO];
         }
+#else
+        if ([app.wallet addressBook].count == 0) {
+            [addressBookButton setHidden:YES];
+        } else {
+            [addressBookButton setHidden:NO];
+        }
+#endif
     }
     else {
         [selectFromButton setHidden:NO];
