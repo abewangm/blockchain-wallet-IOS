@@ -443,8 +443,7 @@ int accountEntries = 0;
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
             
-            cell.showDot = app.wallet.contactsActionRequired == ContactActionRequiredSingle ||
-            app.wallet.contactsActionRequired == ContactActionRequiredMultiple;
+            cell.showDot = app.wallet.contactsActionRequired != ContactActionRequiredNone;
         } else {
             cell.showDot = NO;
         }
