@@ -42,6 +42,7 @@ typedef enum {
     SelectModeSendTo = 200,
     SelectModeReceiveTo = 300,
     SelectModeTransferTo = 400,
+    SelectModeContact = 500
 }SelectMode;
 
 - (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;

@@ -109,12 +109,21 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BUTTON_GREEN;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
+    requestButton.backgroundColor = COLOR_BUTTON_RED;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
+    requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:requestButton];
-    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(requestButton.frame.size.width, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
+    shareButton.backgroundColor = COLOR_BUTTON_GREEN;
+    [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareButton setTitle:BC_STRING_SHARE_REQUEST forState:UIControlStateNormal];
+    shareButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.view addSubview:shareButton];
+    [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
     self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
     [self.view addSubview:self.bottomContainerView];
@@ -628,6 +637,19 @@ NSString *detailLabel;
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
+}
+
+- (void)request
+{
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access request button when not initialized!");
+        return;
+    }
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
+    addressSelectionView.delegate = self;
+    
+    [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
 }
 
 - (void)share

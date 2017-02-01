@@ -107,23 +107,25 @@ int legacyAddressesSectionNumber;
                 [contacts addObject:contact];
             }
             
-            // Show the address book
-            for (NSString * addr in [_wallet.addressBook allKeys]) {
-                [addressBookAddresses addObject:addr];
-                [addressBookAddressLabels addObject:[app.sendViewController labelForLegacyAddress:addr]];
-            }
-            
-            // Then show the HD accounts
-            for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
-                [accounts addObject:[NSNumber numberWithInt:i]];
-                [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
-            }
-            
-            // Finally show all the user's active legacy addresses
-            if (![self accountsOnly]) {
-                for (NSString * addr in _wallet.activeLegacyAddresses) {
-                    [legacyAddresses addObject:addr];
-                    [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+            if (selectMode != SelectModeContact) {
+                // Show the address book
+                for (NSString * addr in [_wallet.addressBook allKeys]) {
+                    [addressBookAddresses addObject:addr];
+                    [addressBookAddressLabels addObject:[app.sendViewController labelForLegacyAddress:addr]];
+                }
+                
+                // Then show the HD accounts
+                for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
+                    [accounts addObject:[NSNumber numberWithInt:i]];
+                    [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
+                }
+                
+                // Finally show all the user's active legacy addresses
+                if (![self accountsOnly]) {
+                    for (NSString * addr in _wallet.activeLegacyAddresses) {
+                        [legacyAddresses addObject:addr];
+                        [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
+                    }
                 }
             }
             
