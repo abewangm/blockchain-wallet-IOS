@@ -42,6 +42,10 @@
     self.mainLabel.textColor = [UIColor grayColor];
     self.mainLabel.numberOfLines = 3;
     
+    self.separator = [[UIView alloc] init];
+    self.separator.backgroundColor = [UIColor lightGrayColor];
+    [self.contentView addSubview:self.separator];
+    
     [self reloadTextAndImage:transaction contactName:name];
     
     self.isSetup = YES;
@@ -84,6 +88,7 @@
     self.actionImageView.frame = CGRectMake(15, (self.frame.size.height - 13)/2, 13, 13);
     CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
     self.mainLabel.frame = CGRectMake(mainLabelOriginX, (self.frame.size.height - 60)/2, self.frame.size.width - mainLabelOriginX - 28, 60);
+    self.separator.frame = CGRectMake(0, 0, self.frame.size.width, 0.5);
 }
 
 - (void)prepareForReuse

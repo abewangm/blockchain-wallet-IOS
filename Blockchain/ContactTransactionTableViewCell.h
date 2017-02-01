@@ -13,6 +13,7 @@
 @property (nonatomic) ContactTransaction *transaction;
 @property (nonatomic) UIImageView *actionImageView;
 @property (nonatomic) UILabel *mainLabel;
+@property (nonatomic) UIView *separator;
 
 - (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name;
 @end
