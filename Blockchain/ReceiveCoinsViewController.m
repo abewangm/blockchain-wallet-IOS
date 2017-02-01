@@ -918,7 +918,7 @@ NSString *detailLabel;
     });
 }
 
-#pragma mar - Contact Request Delegate
+#pragma mark - Contact Request Delegate
 
 - (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
 {
