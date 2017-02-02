@@ -474,7 +474,7 @@ void (^secondPasswordSuccess)(NSString *);
                 if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
                     alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
                     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
-                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         [_tabViewController dismissViewControllerAnimated:YES completion:^{
                             [app closeSideMenu];
                             [app closeAllModals];
@@ -2222,6 +2222,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (app.tabViewController.presentedViewController) {
         [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            app.topViewControllerDelegate = nil;
             [app.tabViewController presentViewController:alert animated:YES completion:nil];
         }];
     } else {
@@ -2236,7 +2237,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     if (app.tabViewController.presentedViewController) {
         [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-
+            app.topViewControllerDelegate = nil;
             [app.tabViewController presentViewController:alert animated:YES completion:nil];
         }];
     } else {
