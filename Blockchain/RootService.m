@@ -2599,7 +2599,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -2621,11 +2621,8 @@ void (^secondPasswordSuccess)(NSString *);
         NSArray *transactions = addressInfo[@"txs"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (transactions.count > 0) {
-                if (failureBlock) failureBlock();
-            } else {
-                if (successBlock) successBlock();
-            }
+            BOOL isUnused = transactions.count == 0;
+            return successBlock(address, isUnused);
         });
         
     }];
