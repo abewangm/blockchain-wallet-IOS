@@ -196,7 +196,7 @@
 
 - (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
-- (IBAction)securityCenterClicked:(id)sender;
+- (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 

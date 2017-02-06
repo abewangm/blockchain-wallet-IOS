@@ -265,7 +265,7 @@ int accountEntries = 0;
         [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
-            [app securityCenterClicked:nil];
+            [app backupFundsClicked:nil];
         }
         else {
             [app showHdUpgrade];
@@ -387,44 +387,36 @@ int accountEntries = 0;
             [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
             cell.selectedBackgroundView = v;
         }
-        NSString *upgradeOrSecurityCenterTitle;
+        NSString *upgradeOrBackupTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE;
+            upgradeOrBackupTitle = BC_STRING_UPGRADE;
         }
         else {
-            upgradeOrSecurityCenterTitle = BC_STRING_SECURITY_CENTER;
+            upgradeOrBackupTitle = BC_STRING_BACKUP_FUNDS;
         }
         
         NSMutableArray *titles;
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
         
-        NSString *upgradeOrSecurityCenterImage;
+        NSString *upgradeOrBackupImage;
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
-            upgradeOrSecurityCenterImage = @"icon_upgrade";
+            upgradeOrBackupImage = @"icon_upgrade";
         }
         else {
-            upgradeOrSecurityCenterImage = @"security";
+            upgradeOrBackupImage = @"security";
         }
         NSMutableArray *images;
 
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
         if ([images[indexPath.row] isEqualToString:@"security"]) {
-            int securityCenterScore = [app.wallet securityCenterScore];
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            
-            if (securityCenterScore == 1) {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
-            } else if (securityCenterScore > 1) {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
-            } else {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
-            }
+            [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
         }
         
         return cell;

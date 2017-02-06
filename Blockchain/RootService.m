@@ -2208,10 +2208,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (IBAction)securityCenterClicked:(id)sender
+- (IBAction)backupFundsClicked:(id)sender
 {
     if (!_tabViewController.presentedViewController) {
-        [self showSecurityCenter];
+        [self showBackup];
     }
 }
 
@@ -2708,11 +2708,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBackup
 {
-    void (^showBackupBlock)() = ^() {
-        [self.settingsNavigationController showBackup];
-    };
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
+    BackupViewController *backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     
-    [self showSettings:showBackupBlock];
+    backupController.wallet = app.wallet;
+    backupController.app = app;
+    
+    backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.tabViewController presentViewController:backupController animated:YES completion:nil];
 }
 
 - (void)showTwoStep

@@ -8,7 +8,6 @@
 
 #import "SettingsNavigationController.h"
 #import "SettingsTableViewController.h"
-#import "SecurityCenterViewController.h"
 #import "RootService.h"
 
 @interface SettingsNavigationController ()
@@ -81,7 +80,7 @@
 {
     [super viewDidLayoutSubviews];
 
-    if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+    if (self.viewControllers.count == 1) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -98,7 +97,7 @@
 
 - (void)backButtonClicked:(UIButton *)sender
 {
-    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]] || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
         app.topViewControllerDelegate = nil;
     } else {
@@ -118,13 +117,6 @@
     [self.busyView fadeOut];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
-}
-
-- (void)showSecurityCenter
-{
-    [self popToRootViewControllerAnimated:NO];
-
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_SECURITY_CENTER sender:nil];
 }
 
 - (void)showSettings

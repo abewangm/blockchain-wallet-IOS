@@ -10,7 +10,6 @@
 #import "SettingsSelectorTableViewController.h"
 #import "SettingsWebViewController.h"
 #import "SettingsBitcoinUnitTableViewController.h"
-#import "SecurityCenterViewController.h"
 #import "SettingsTwoStepViewController.h"
 #import "Blockchain-Swift.h"
 #import "RootService.h"
@@ -181,10 +180,7 @@ const int aboutPrivacyPolicy = 2;
     
     [self updateEmailAndMobileStrings];
     
-    if ([self.alertTargetViewController isMemberOfClass:[SecurityCenterViewController class]]) {
-        SecurityCenterViewController *securityViewController = (SecurityCenterViewController *)self.alertTargetViewController;
-        [securityViewController updateUI];
-    } else if ([self.alertTargetViewController isMemberOfClass:[SettingsTwoStepViewController class]]) {
+    if ([self.alertTargetViewController isMemberOfClass:[SettingsTwoStepViewController class]]) {
         SettingsTwoStepViewController *twoStepViewController = (SettingsTwoStepViewController *)self.alertTargetViewController;
         [twoStepViewController updateUI];
     }
