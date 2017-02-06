@@ -144,6 +144,7 @@ typedef enum {
 
 - (void)enablePaymentButtons;
 
+- (void)hideSelectFromAndToButtonsIfAppropriate;
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;
 

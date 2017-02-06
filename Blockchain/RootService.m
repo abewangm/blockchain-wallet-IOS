@@ -2172,6 +2172,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
+    [self.sendViewController hideSelectFromAndToButtonsIfAppropriate];
+
     [_transactionsViewController reload];
     [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
