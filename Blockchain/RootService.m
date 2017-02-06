@@ -2161,8 +2161,12 @@ void (^secondPasswordSuccess)(NSString *);
         } else if (self.wallet.contactsActionRequired == ContactActionRequiredSinglePayment) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                // Needs message data passed
-                // [_transactionsViewController selectPayment:_transactionsViewController.messageIdentifier];
+                for (ContactTransaction *transaction in self.wallet.pendingContactTransactions) {
+                    if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+                        [_transactionsViewController selectPayment:transaction.identifier];
+                        break;
+                    }
+                }
             }]];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
             

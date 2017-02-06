@@ -411,6 +411,20 @@ const int sectionMain = 0;
 
 - (void)selectPayment:(NSString *)payment
 {
+    NSArray *allTransactions = app.wallet.pendingContactTransactions;
+    NSInteger rowToSelect = -1;
+    
+    for (int index = 0; index < [allTransactions count]; index++) {
+        ContactTransaction *transaction = allTransactions[index];
+        if ([transaction.identifier isEqualToString:payment]) {
+            rowToSelect = index;
+            break;
+        }
+    }
+    
+    if (rowToSelect >= 0) {
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionContactsPending]];
+    }
     self.messageIdentifier = nil;
 }
 
