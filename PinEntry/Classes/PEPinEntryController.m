@@ -179,30 +179,31 @@ static PEViewController *VerifyController()
                 }]];
                 self.errorAlert = alert;
             };
-            
-            void (^failure)() = ^() {
-                [KeychainItemWrapper removeFirstSwipeAddress];
-                [self setupQRCode];
-                self.errorAlert = nil;
-            };
-            
-            void (^success)() = ^() {
-                [app.wallet subscribeToSwipeAddress:nextAddress];
+
+            void (^success)(NSString *, BOOL) = ^(NSString *address, BOOL isUnused) {
                 
-                if (!self.qrCodeImageView) {
-                    self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
-                    [pinController.scrollView addSubview:self.qrCodeImageView];
+                if (isUnused) {
+                    [app.wallet subscribeToSwipeAddress:nextAddress];
+                    
+                    if (!self.qrCodeImageView) {
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        [pinController.scrollView addSubview:self.qrCodeImageView];
+                    }
+                    
+                    QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+                    
+                    self.qrCodeImageView.hidden = NO;
+                    self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                    self.addressLabel.text = nextAddress;
+                    self.errorAlert = nil;
+                } else {
+                    [KeychainItemWrapper removeFirstSwipeAddress];
+                    [self setupQRCode];
+                    self.errorAlert = nil;
                 }
-                
-                QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-                
-                self.qrCodeImageView.hidden = NO;
-                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-                self.addressLabel.text = nextAddress;
-                self.errorAlert = nil;
             };
             
-            [app checkForUnusedAddress:nextAddress success:success failure:failure error:error];
+            [app checkForUnusedAddress:nextAddress success:success error:error];
 
         } else {
             self.qrCodeImageView.hidden = YES;

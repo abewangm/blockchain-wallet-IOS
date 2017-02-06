@@ -138,6 +138,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
 #define DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
 #define DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER NSLocalizedString(@"Security reminder prompt timer (seconds)", nil)
+#define DEBUG_STRING_ZERO_VALUE_TICKER NSLocalizedString(@"Simulate zero ticker values", nil)
 
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
@@ -414,6 +415,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
 #define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET @"testnet"
+#define USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER @"zeroTicker"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT @"hasSeenSurveyPrompt"

@@ -21,6 +21,7 @@ const int rowAppStoreReviewPromptTimer = 7;
 const int rowCertificatePinning = 8;
 const int rowTestnet = 9;
 const int rowSecurityReminderTimer = 10;
+const int rowZeroTickerValue = 11;
 
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
@@ -106,6 +107,12 @@ const int rowSecurityReminderTimer = 10;
     [self.tableView reloadData];
 }
 
+- (void)toggleZeroTicker
+{
+    BOOL zeroTickerOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
+    [[NSUserDefaults standardUserDefaults] setBool:!zeroTickerOn forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
+}
+
 - (void)showFilteredWalletJSON
 {
     UIViewController *viewController = [[UIViewController alloc] init];
@@ -125,7 +132,7 @@ const int rowSecurityReminderTimer = 10;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 11;
+    return 12;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -201,6 +208,15 @@ const int rowSecurityReminderTimer = 10;
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER;
             break;
+        }
+        case rowZeroTickerValue: {
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.textLabel.text = DEBUG_STRING_ZERO_VALUE_TICKER;
+            UISwitch *zeroTickerToggle = [[UISwitch alloc] init];
+            BOOL zeroTickerOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
+            zeroTickerToggle.on = zeroTickerOn;
+            [zeroTickerToggle addTarget:self action:@selector(toggleZeroTicker) forControlEvents:UIControlEventTouchUpInside];
+            cell.accessoryView = zeroTickerToggle;
         }
         default:
             break;

@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Gratis købmand app";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Kan ikke åbne Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Kan ikke åbne URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Vil du gerne fortælle os om din erfaring med Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du vil forlade app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Tjek din indbakke";
+
+/* (No Commment) */
+"Continue To Mail" = "Fortsat Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Se efter en e-mail fra Blockchain og klik på bekræftelseslink for at fuldføre din tegnebog opsætning.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Backup dine penge";
+
+/* (No Commment) */
+"Backup Now" = "Sikkerhedskopi nu";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Tillykke, har du bitcoin! Nu lad os backup din tegnebog for at sikre, at du kan få adgang til din bitcoins, hvis du glemmer din adgangskode.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-trins verifikation";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Forhindre uautoriseret adgang til din tegnebog. Aktiver 2-trins kontrol at øge tegnebog sikkerhed.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Aktiver meddelelser til at modtage en e-mail eller SMS besked, hver gang du modtager bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Ikke nu";
+
+/* (No Commment) */
+"I'll do this later" = "Jeg vil gøre det senere";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Kan være i fare for en dobbelt forbrug.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhed, må vi ikke holde eventuelle adgangskoder på fil. Backup din pung til at sikre din bitcoins er sikker, hvis du mister din adgangskode.";

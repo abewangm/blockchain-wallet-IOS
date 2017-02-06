@@ -312,7 +312,8 @@
 #define BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE NSLocalizedString(@"Look for an email from Blockchain and click the verification link to complete your wallet setup.", nil)
 #define BC_STRING_REMINDER_BACKUP_TITLE NSLocalizedString(@"Backup Your Funds", nil)
 #define BC_STRING_REMINDER_BACKUP_NOW NSLocalizedString(@"Backup Now", nil)
-#define BC_STRING_REMINDER_BACKUP_MESSAGE NSLocalizedString(@"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password.", nil)
+#define BC_STRING_REMINDER_BACKUP_MESSAGE_FIRST_BITCOIN NSLocalizedString(@"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password.", nil)
+#define BC_STRING_REMINDER_BACKUP_MESSAGE_HAS_BITCOIN NSLocalizedString(@"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password.", nil)
 #define BC_STRING_REMINDER_TWO_FACTOR_TITLE NSLocalizedString(@"2-Step Verification", nil)
 #define BC_STRING_REMINDER_TWO_FACTOR_MESSAGE NSLocalizedString(@"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security.", nil)
 #define BC_STRING_SECURITY_CENTER_INSTRUCTIONS NSLocalizedString(@"Complete the steps below for ultimate security", nil)
@@ -520,6 +521,8 @@
 #define BC_STRING_ERROR_SAVING_WALLET_CHECK_FOR_OTHER_DEVICES NSLocalizedString(@"An error occurred while saving your changes. Please make sure you are not logged into your wallet on another device.", nil)
 #define BC_STRING_ADDRESS_ALREADY_USED_PLEASE_LOGIN NSLocalizedString(@"This address has already been used. Please login.", nil)
 #define BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES NSLocalizedString(@"Please login to load more addresses.", nil)
+
+#define BC_STRING_ERROR_TICKER NSLocalizedString(@"An error occurred while retrieving currency conversion rates. Please try again later.", nil)
 
 #define BC_STRING_DESCRIPTION NSLocalizedString(@"Description", nil)
 #define BC_STRING_DETAILS NSLocalizedString(@"Details", nil)

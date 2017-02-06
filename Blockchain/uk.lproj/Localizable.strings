@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Безкоштовна програма Merchant";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Неможливо відчинити поштову програму";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Неможливо відчинити URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Чи не могли б ви поділитись своїм досвідом користування Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Ви залишите програму.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Перевірте свої вхідні повідомлення";
+
+/* (No Commment) */
+"Continue To Mail" = "Продовжити у пошті";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Прочитайте повідомлення від Blockchain і натисніть верифікаційне посилання, щоб завершити налаштування свого гаманця.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Зробити резервну копію своїх коштів";
+
+/* (No Commment) */
+"Backup Now" = "Зробити резервну копію зараз";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Вітаємо, у вас є bitcoin! Зараз давайте зробимо резервну копію вашого гаманця, щоб бути впевненими, що ви матимете доступ до своїх коштів, якщо забудете свій пароль.";
+
+/* (No Commment) */
+"2-Step Verification" = "Двофакторна автентифікація";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Запобігає неавторизованому доступу до вашого гаманця. Щоб захистити свій гаманець ще краще, увімкніть двофакторну автентифікацію.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Увімкніть сповіщення, щоб отримувати електронне повідомлення або СМС при кожному надходженні bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Не зараз";
+
+/* (No Commment) */
+"I'll do this later" = "Я зроблю це пізніше";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Може виникнути небезпека подвійний витрат.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашої ж безпеки, ми не зберігаємо будь-які паролі у файлі. Зробіть резервну копію свого гаманця, щоб бути впевненими, що ви матимете доступ до своїх біткоїнів, якщо втратите свій пароль.";

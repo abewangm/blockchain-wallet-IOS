@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "App סוחר חינם";
+
+/* (No Commment) */
+"Cannot open Mail App" = "אין אפשרות לפתוח דואר App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "לא ניתן לפתוח כתובת URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "רוצה לספר לנו על החוויה שלך עם Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = ". תעזוב את האפליקציה.";
+
+/* (No Commment) */
+"Check Your Inbox" = "בדוק בתיבת הדואר הנכנס שלך";
+
+/* (No Commment) */
+"Continue To Mail" = "המשך ל- Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "לחפש הודעת דוא ל מ- Blockchain ולחץ על הקישור אימות כדי להשלים את ההתקנה את הארנק שלך.";
+
+/* (No Commment) */
+"Backup Your Funds" = "לגבות את הכספים שלך";
+
+/* (No Commment) */
+"Backup Now" = "גיבוי עכשיו";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "מזל טוב, יש לך ביטקוין! עכשיו בואו לגבות את הארנק שלך כדי להבטיח שתוכל לגשת bitcoins שלך במקרה שתשכח את הסיסמה שלך.";
+
+/* (No Commment) */
+"2-Step Verification" = "אימות דו-שלבי";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "למנוע גישה לא מורשית הארנק שלך. לאפשר אימות דו-שלבי לשפר את האבטחה הארנק.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "לאפשר הודעות כדי לקבל דואר אלקטרוני או הודעת SMS בכל פעם שאתה מקבל ביטקוין.";
+
+/* (No Commment) */
+"Not Now" = "לא עכשיו";
+
+/* (No Commment) */
+"I'll do this later" = "אני אעשה את זה מאוחר יותר";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "עשויים להיות בסיכון לבלות כפול.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "למען ביטחונכם, אנחנו לא שומרים כל הסיסמאות על קובץ. גיבוי את הארנק שלך כדי להבטיח bitcoins שלך בטוחים, אם איבדת את סיסמתך.";

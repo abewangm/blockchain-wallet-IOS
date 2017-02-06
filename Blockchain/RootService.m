@@ -145,6 +145,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
+
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
@@ -718,7 +723,9 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     if (self.topViewControllerDelegate) {
-        if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+        if (self.pinEntryViewController) {
+            [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else if ([self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
             [self.topViewControllerDelegate presentAlertController:alert];
         }
     } else if (self.pinEntryViewController) {
@@ -2050,7 +2057,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if ([app.wallet getTotalActiveBalance] > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
-            [self showBackupReminder];
+            [self showBackupReminder:NO];
         } else {
             [self checkIfSettingsLoadedAndShowTwoFactorReminder];
         }
@@ -2091,9 +2098,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showBackupReminder
+- (void)showBackupReminder:(BOOL)firstReceive
 {
-    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeBackup];
+    ReminderType reminderType = firstReceive ? ReminderTypeBackupJustReceivedBitcoin : ReminderTypeBackupHasBitcoin;
+    
+    ReminderModalViewController *backupController = [[ReminderModalViewController alloc] initWithReminderType:reminderType];
     backupController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:backupController];
     navigationController.navigationBarHidden = YES;
@@ -2596,7 +2605,7 @@ void (^secondPasswordSuccess)(NSString *);
         [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
     } else {
         if (showBackupReminder) {
-            [self showBackupReminder];
+            [self showBackupReminder:YES];
         }
     }
 }
@@ -2631,7 +2640,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -2653,11 +2662,8 @@ void (^secondPasswordSuccess)(NSString *);
         NSArray *transactions = addressInfo[@"txs"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (transactions.count > 0) {
-                if (failureBlock) failureBlock();
-            } else {
-                if (successBlock) successBlock();
-            }
+            BOOL isUnused = transactions.count == 0;
+            return successBlock(address, isUnused);
         });
         
     }];

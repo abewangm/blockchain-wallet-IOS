@@ -178,7 +178,7 @@
 - (void)showAccountsAndAddresses;
 - (void)showDebugMenu:(int)presenter;
 - (void)showHdUpgrade;
-- (void)showBackupReminder;
+- (void)showBackupReminder:(BOOL)firstReceive;
 
 - (void)reloadTransactionFilterLabel;
 
@@ -230,7 +230,7 @@
 - (void)endBackgroundUpdateTask;
 
 - (NSString *)getVersionLabelString;
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock;
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock;
 @end
 
 extern RootService *app;

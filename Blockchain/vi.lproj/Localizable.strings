@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Ứng dụng Cổng thanh toán Miễn phí";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Không thể mở Ứng dụng Mail";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Không thể mở URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Bạn có muốn cho chúng tôi biết trải nghiệm của mình với Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Bạn sẽ rời khỏi ứng dụng.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Kiểm tra Hộp thư của Bạn";
+
+/* (No Commment) */
+"Continue To Mail" = "Tiếp tục đến Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Tìm một email từ Blockchain và nhấn vào liên kết xác minh để hoàn tất quá trình thiết lập ví của bạn.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Sao lưu các Khoản tiền của Bạn";
+
+/* (No Commment) */
+"Backup Now" = "Sao lưu Ngay";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Chúc mừng, bạn có bitcoin! Bây giờ hãy sao lưu ví của bạn để đảm bảo bạn vẫn có thể truy cập bitcoin của mình nếu quên mật khẩu.";
+
+/* (No Commment) */
+"2-Step Verification" = "Xác minh 2 bước";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Ngăn chặn truy cập trái phép đến ví của bạn. Kích hoạt xác minh 2 bước để tăng cường bảo mật cho ví.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Kích hoạt thông báo để nhận email hoặc tin nhắn SMS mỗi khi bạn nhận được bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Không phải Bây giờ";
+
+/* (No Commment) */
+"I'll do this later" = "Để sau";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Chi tiêu gấp đôi có thể gặp nguy hiểm.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Để bảo mật cho bạn, chúng tôi không lưu trữ bất kỳ mật khẩu nào. Sao lưu ví của bạn để đảm bảo bitcoin được an toàn trong trường hợp bạn quên mật khẩu.";

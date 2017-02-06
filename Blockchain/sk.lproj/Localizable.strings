@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Zadarmo obchodné aplikácie";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Nemožno otvoriť aplikáciu Pošta";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Nemôžete otvoriť URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Chceli by ste nám povedať o svoje skúsenosti s databáze Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Ste opustili aplikáciu.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Kontrola priečinka Doručená pošta";
+
+/* (No Commment) */
+"Continue To Mail" = "Pokračovať na Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Hľadajte e-mail od databáze Blockchain a kliknite na overovacie prepojenie na dokončenie nastavenia peòa¾enky.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Zálohovanie vašich finančných prostriedkov";
+
+/* (No Commment) */
+"Backup Now" = "Zálohovať";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Gratulujeme, ste bitcoin! Teraz poďme zálohovať vašu peňaženku zabezpečiť, môžete prístup vaše Bitcoiny, ak zabudnete svoje heslo.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-úrovňové overenie";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Zabrániť neoprávnenému prístupu do peňaženky. Povoliť 2-krok overenia na zvýšenie bezpečnosti peňaženku.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Zapnúť upozornenia na prijímanie e-mailu alebo SMS správy vždy, keď dostanete bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "teraz nie";
+
+/* (No Commment) */
+"I'll do this later" = "Budem robiť to neskôr";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Možné riziko pre double utratiť.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pre vašu bezpečnosť sme nevedú žiadne heslá v súbore. Záložné vaša peňaženka zabezpečiť vaše Bitcoiny sú bezpečné, v prípade, že heslo stratíte.";

@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Szabad kereskedelmi app";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Nem lehet megnyitni a Mail App";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Nem lehet megnyitni az URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Szeretne, hogy meséljen a tapasztalat-val Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Ön elhagyja az app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Ellenőrizze a bejövõ";
+
+/* (No Commment) */
+"Continue To Mail" = "Mail továbbra is";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Keressen egy e-mailt Blockchain, és kattintson a linkre ellenőrzés befejezéséhez a mobiltárca beállításait.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Hát a pénzed";
+
+/* (No Commment) */
+"Backup Now" = "Hát most";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Gratula akkor bitcoin! Most nézzük hát a pénztárca annak biztosítása érdekében, elérhetjük a bitcoins, ha elfelejti a jelszavát.";
+
+/* (No Commment) */
+"2-Step Verification" = "2. lépés ellenőrzés";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Megakadályoz jogosulatlan belépés-hoz tárcátok. 2. lépés ellenőrzés pénztárca a biztonság növelése érdekében engedélyezze.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Engedélyezi az értesítéseket szeretne kapni egy e-mailben vagy SMS-t kapni bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "ne most";
+
+/* (No Commment) */
+"I'll do this later" = "Én is csinál ez később";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Lehet, hogy veszélyezteti a kettős költeni.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Az Ön biztonsága érdekében a jelszó, a fájl nem tartjuk. Hát a pénztárca annak biztosítása érdekében, a bitcoins biztonságosak abban az esetben, ha elveszíti a jelszavát.";
