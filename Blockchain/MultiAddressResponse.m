@@ -50,13 +50,15 @@
     symbol.symbol = [dict objectForKey:DICTIONARY_KEY_SYMBOL];
     NSNumber *last = [dict objectForKey:DICTIONARY_KEY_LAST];
     
+#ifdef ENABLE_DEBUG_MENU
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER]) last = 0;
+#endif
     if (!last || [last isEqualToNumber:@0]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2*ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [app standardNotify:BC_STRING_ERROR_TICKER];
         });
         return nil;
     }
-    
     symbol.conversion = [[[(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI] decimalNumberByDividingBy: (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:[last doubleValue]]] stringValue] longLongValue];
     symbol.name = [currencyNames objectForKey:symbol.code];
     
