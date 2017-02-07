@@ -59,7 +59,7 @@
         
         if (reason) {
             promptLabel.text = [NSString stringWithFormat:[self getPromptTextForAmount], contact.name];
-            [self.nextButton addTarget:self action:@selector(notifyContact) forControlEvents:UIControlEventTouchUpInside];
+            [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
             UIView *bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.frame.size.width, 100)];
             [self addSubview:bottomContainerView];
@@ -269,12 +269,22 @@
     }
 }
 
-- (void)notifyContact
+- (void)completeRequest
+{
+    if ([self.receiveFiatField isFirstResponder]) {
+        [self notifyContact:self.receiveFiatField];
+
+    } else if ([self.receiveBtcField isFirstResponder]) {
+        [self notifyContact:self.receiveBtcField];
+    }
+}
+
+- (void)notifyContact:(UITextField *)lastSelectedField
 {
     if (self.willSend) {
-        [self.delegate createSendRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
+        [self.delegate createSendRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text] lastSelectedField:lastSelectedField];
     } else {
-        [self.delegate createReceiveRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text]];
+        [self.delegate createReceiveRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text] lastSelectedField:lastSelectedField];
     }
 }
 

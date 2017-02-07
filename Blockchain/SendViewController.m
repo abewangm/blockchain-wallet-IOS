@@ -1532,18 +1532,21 @@ BOOL displayingLocalSymbolSend;
     [self createSendRequest:RequestTypeSendAmount forContact:contact reason:reason];
 }
 
-- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount
+- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
 {
     DLog(@"Send error: created receive request");
 }
 
-- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
-        
-        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
+        [textField resignFirstResponder];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
+        });
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];

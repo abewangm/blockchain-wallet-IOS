@@ -2223,6 +2223,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name
 {
+    [app hideBusyView];
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
@@ -2239,6 +2241,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
 {
+    [app hideBusyView];
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
