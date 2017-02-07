@@ -2229,6 +2229,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (app.tabViewController.presentedViewController) {
         [app.tabViewController dismissViewControllerAnimated:YES completion:^{
             app.topViewControllerDelegate = nil;
+            [app closeAllModals];
             [app.tabViewController presentViewController:alert animated:YES completion:nil];
         }];
     } else {
@@ -2244,6 +2245,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (app.tabViewController.presentedViewController) {
         [app.tabViewController dismissViewControllerAnimated:YES completion:^{
             app.topViewControllerDelegate = nil;
+            [app closeAllModals];
             [app.tabViewController presentViewController:alert animated:YES completion:nil];
         }];
     } else {
