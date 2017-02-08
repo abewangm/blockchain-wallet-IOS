@@ -211,6 +211,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
 #define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
 
+#define NOTIFICATION_KEY_SHARE_CONTACT_LINK @"shareContactLink"
+
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 
 // Notifications used in settings

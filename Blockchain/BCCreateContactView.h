@@ -22,6 +22,7 @@
 @interface BCCreateContactView : UIView <UITextFieldDelegate>
 @property (nonatomic, strong) BCSecureTextField *textField;
 @property (nonatomic) id<CreateContactDelegate> delegate;
+@property (nonatomic) BOOL shouldShowDoneButton;
 - (id)initWithContactName:(NSString *)contactName senderName:(NSString *)senderName;
 
 @end

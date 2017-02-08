@@ -24,7 +24,7 @@ typedef enum {
     CreateContactTypeLink
 } CreateContactType;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
@@ -276,6 +276,8 @@ typedef enum {
     self.contactType = CreateContactTypeLink;
 }
 
+#pragma mark - Create Contact/Done Button Delegate
+
 - (void)dismissContactController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -427,9 +429,11 @@ typedef enum {
     NSString *shareLink = [PREFIX_BLOCKCHAIN_URI stringByAppendingFormat:@"invite?id=%@&name=%@", [identifier escapeStringForJS], [sharedInfo escapeStringForJS]];
     NSArray *items = @[shareLink];
     
-    UIActivityViewController *activityController = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     
-    [self.createContactNavigationController presentViewController:activityController animated:YES completion:nil];
+    [self.createContactNavigationController presentViewController:activityController animated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SHARE_CONTACT_LINK object:nil];
+    }];
 }
 
 - (void)reloadSymbols
@@ -478,6 +482,7 @@ typedef enum {
     if (self.contactType == CreateContactTypeQR) {
         BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
         qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
+        qrCodeView.doneButtonDelegate = self;
         
         UIViewController *viewController = [UIViewController new];
         [viewController.view addSubview:qrCodeView];
@@ -485,14 +490,6 @@ typedef enum {
         CGRect frame = qrCodeView.frame;
         frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
         qrCodeView.frame = frame;
-        
-        UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-        doneButton.backgroundColor = COLOR_BUTTON_BLUE;
-        doneButton.layer.cornerRadius = 4;
-        [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
-        [doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
-        [qrCodeView addSubview:doneButton];
-        doneButton.center = CGPointMake(qrCodeView.center.x, qrCodeView.frame.size.height - 100);
         
         [self.createContactNavigationController pushViewController:viewController animated:YES];
     } else if (self.contactType == CreateContactTypeLink) {

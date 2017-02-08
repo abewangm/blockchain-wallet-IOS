@@ -12,6 +12,7 @@
 
 @interface BCCreateContactView ()
 @property (nonatomic) UIButton *nextButton;
+@property (nonatomic) UIButton *doneButton;
 @property (nonatomic) NSString *contactName;
 @property (nonatomic) NSString *senderName;
 @end
@@ -59,13 +60,14 @@
             [showLinkButton addTarget:self action:@selector(shareLink) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:showLinkButton];
             
-            UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-            doneButton.backgroundColor = COLOR_BUTTON_BLUE;
-            doneButton.layer.cornerRadius = 4;
-            [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
-            [doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:doneButton];
-            doneButton.center = CGPointMake(showLinkButton.center.x, showLinkButton.frame.origin.y + showLinkButton.frame.size.height + 100);
+            self.doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+            self.doneButton.backgroundColor = COLOR_BUTTON_BLUE;
+            self.doneButton.layer.cornerRadius = 4;
+            [self.doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+            [self.doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:self.doneButton];
+            self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
+            self.doneButton.hidden = YES;
             
         } else {
             
@@ -103,6 +105,19 @@
     return self;
 }
 
+- (void)setShouldhowDoneButton:(BOOL)shouldShowDoneButton
+{
+    _shouldShowDoneButton = shouldShowDoneButton;
+    self.doneButton.hidden = !shouldShowDoneButton;
+}
+
+- (void)showDoneButton
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_SHARE_CONTACT_LINK object:nil];
+    
+    self.doneButton.hidden = NO;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.nextButton sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -129,6 +144,8 @@
 
 - (void)shareLink
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showDoneButton) name:NOTIFICATION_KEY_SHARE_CONTACT_LINK object:nil];
+    
     [self.delegate didSelectShareLink];
 
     [self createContact];
