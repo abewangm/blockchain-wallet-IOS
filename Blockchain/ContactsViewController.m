@@ -244,26 +244,42 @@ typedef enum {
 
 - (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName
 {
-    BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:contactName senderName:senderName];
-    createContactSharingView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
-    
-    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    if ([self nameIsEmpty:senderName]) {
+        UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_ENTER_A_NAME preferredStyle:UIAlertControllerStyleAlert];
+        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+    } else {
+        BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:contactName senderName:senderName];
+        createContactSharingView.delegate = self;
+        
+        BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
+        
+        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    }
 }
 
 - (void)didCreateContactName:(NSString *)name
 {
-    BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
-    createContactSenderNameView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
-    
-    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [createContactSenderNameView.textField becomeFirstResponder];
-    });
+    if ([self nameIsEmpty:name]) {
+        UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_ENTER_A_NAME preferredStyle:UIAlertControllerStyleAlert];
+        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+    } else if ([self nameAlreadyExists:name]) {
+        UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_CONTACT_ALREADY_EXISTS preferredStyle:UIAlertControllerStyleAlert];
+        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+    } else {
+        BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
+        createContactSenderNameView.delegate = self;
+        
+        BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
+        
+        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [createContactSenderNameView.textField becomeFirstResponder];
+        });
+    }
 }
 
 - (void)didSelectQRCode
@@ -446,6 +462,25 @@ typedef enum {
 - (NSString *)JSDictionaryForInvitation:(NSString *)identifier name:(NSString *)name;
 {
     return [NSString stringWithFormat:@"{name: \"%@\", invitationReceived: \"%@\"}", [name escapeStringForJS], [identifier escapeStringForJS]];
+}
+
+- (BOOL)nameIsEmpty:(NSString *)name
+{
+    NSCharacterSet *inverted = [[NSCharacterSet whitespaceAndNewlineCharacterSet] invertedSet];
+    NSRange range = [name rangeOfCharacterFromSet:inverted];
+    return range.location == NSNotFound;
+}
+
+- (BOOL)nameAlreadyExists:(NSString *)name
+{
+    NSArray *allContacts = [app.wallet.contacts allValues];
+    for (Contact *contact in allContacts) {
+        if ([contact.name isEqualToString:name]) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - Wallet Callbacks

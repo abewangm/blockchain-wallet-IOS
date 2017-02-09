@@ -424,6 +424,8 @@
 #define BC_STRING_INVITE_SOMEONE_TO_CONNECT NSLocalizedString(@"Invite someone to connect", nil)
 #define BC_STRING_WHO_ARE_YOU_CONNECTING_WITH NSLocalizedString(@"Who are you connecting with?", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
+#define BC_STRING_PLEASE_ENTER_A_NAME NSLocalizedString(@"Please enter a name.", nil)
+#define BC_STRING_CONTACT_ALREADY_EXISTS NSLocalizedString(@"A contact with this name already exists.", nil)
 #define BC_STRING_VIA_QR_CODE_IN_PERSON NSLocalizedString(@"Via QR Code (in-person)", nil)
 #define BC_STRING_USING_A_LINK NSLocalizedString(@"Using a Link", nil)
 #define BC_STRING_SHARE_INVITE_METHOD NSLocalizedString(@"How would you like to share this invite?", nil)
