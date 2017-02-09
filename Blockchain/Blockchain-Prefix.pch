@@ -26,8 +26,6 @@
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
 
-#define APP_STORE_ID_MERCHANT @"id947009571"
-
 #pragma mark - Colors
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -114,7 +112,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
-#define COPYRIGHT_YEAR @"2016"
+#define COPYRIGHT_YEAR @"2017"
 #define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
 #define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
 #define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)

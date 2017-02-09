@@ -51,22 +51,11 @@
     [rateUsButton setTitle:BC_STRING_RATE_US forState:UIControlStateNormal];
     [self.view addSubview:rateUsButton];
     [rateUsButton addTarget:self action:@selector(rateApp) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *merchantAppButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - buttonWidth)/2, rateUsButton.frame.origin.y + rateUsButton.frame.size.height + 16, buttonWidth, 40)];
-    merchantAppButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [merchantAppButton setTitle:BC_STRING_FREE_MERCHANT_APP forState:UIControlStateNormal];
-    [self.view addSubview:merchantAppButton];
-    [merchantAppButton addTarget:self action:@selector(getMerchantApp) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)rateApp
 {
     [app rateApp];
-}
-
-- (void)getMerchantApp
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[APP_STORE_LINK_PREFIX stringByAppendingString:APP_STORE_ID_MERCHANT]]];
 }
 
 @end
