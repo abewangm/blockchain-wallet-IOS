@@ -1568,3 +1568,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Köpman gratisapp";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Kan inte öppna appen e-post";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Kan inte öppna URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Vill du berätta om din erfarenhet med Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du kommer att lämna appen.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Kontrollera din inkorg";
+
+/* (No Commment) */
+"Continue To Mail" = "Fortsätta till Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Leta efter ett e-postmeddelande från Blockchain och klicka på verifieringslänken för att slutföra din plånbok setup.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Säkerhetskopiera dina fonder";
+
+/* (No Commment) */
+"Backup Now" = "Säkerhetskopiera nu";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Grattis, har du bitcoin! Nu låt oss backningen din plånbok för att säkerställa att du kan komma åt dina bitcoins om du glömmer ditt lösenord.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-stegsverifikation";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Förhindra obehörig åtkomst till plånboken. Aktivera 2-stegsverifikation att öka plånbok säkerhet.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Aktivera meddelanden ta emot en email eller SMS-meddelande när du tar emot bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Inte nu";
+
+/* (No Commment) */
+"I'll do this later" = "Jag gör det senare";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Kan vara i riskzonen för en dubbel spendera.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina bitcoins är säkra om du förlorar ditt lösenord.";

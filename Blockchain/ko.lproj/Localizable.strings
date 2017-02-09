@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "무료 판매자 앱";
+
+/* (No Commment) */
+"Cannot open Mail App" = "메일 앱 열 수 없음";
+
+/* (No Commment) */
+"Cannot open URL %@" = "URL %@ 열 수 없음";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "귀하 블록체인 체험에 대해 얘기해 주시겠습니까?";
+
+/* (No Commment) */
+"You will be leaving the app." = "앱에서 나가게 됩니다.";
+
+/* (No Commment) */
+"Check Your Inbox" = "받은 편지함 확인";
+
+/* (No Commment) */
+"Continue To Mail" = "메일 계속";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "블록체인에서 온 메일을 찾은 후 인증 링크를 클릭 해서 지갑 설정을 끝내세요.";
+
+/* (No Commment) */
+"Backup Your Funds" = "귀하 자금 백업";
+
+/* (No Commment) */
+"Backup Now" = "지금 백업";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "축하합니다, 비트코인이 있습니다! 이제 암호를 잊더라도 비트코인에 접근할 수 있도록 지갑 백업을 합시다.";
+
+/* (No Commment) */
+"2-Step Verification" = "2 단계 인증";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "지갑 불법 접근 차단. 지갑 보안 성을 높이기 위해 2 단계 인증 사용 설정을 하세요.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "비트코인을 받을 때 마다 이메일이나 문자를 받도록 알림 사용 설정을 하세요.";
+
+/* (No Commment) */
+"Not Now" = "나중에";
+
+/* (No Commment) */
+"I'll do this later" = "나중에 할게요";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "이중 지출 위험 있음.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "귀하 보안을 위해 우리는 암호를 보관하지 않습니다. 암호를 잊더라도 비트코인이 안전하게 하려면 지갑을 백업하세요.";

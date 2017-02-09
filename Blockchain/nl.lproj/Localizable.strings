@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Gratis handelsapp";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Kan Mail-app niet openen";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Kan URL % niet openen";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Wilt u ons meer vertellen over uw ervaring met Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "U zult nu de app verlaten.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Controleer uw inbox";
+
+/* (No Commment) */
+"Continue To Mail" = "Verder gaan naar e-mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Zoek een e-mail van Blockchain en klik op de verificatielink om de setup van uw portemonnee te vervolledigen.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Fondsen back-uppen";
+
+/* (No Commment) */
+"Backup Now" = "Nu back-uppen";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Gefeliciteerd, u heeft bitcoin! Laat ons nu uw portemonnee back-uppen om ervoor te zorgen dat u toegang hebt tot uw bitcoins als u uw wachtwoord vergeet.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-staps verificatie";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Voorkom ongeoorloofde toegang tot uw portemonnee. Schakel 2-staps verificatie in om de veiligheid van uw portemonnee te verhogen.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Schakel meldingen in om een e-mail of sms te ontvangen wanneer u bitcoin ontvangt.";
+
+/* (No Commment) */
+"Not Now" = "Niet nu";
+
+/* (No Commment) */
+"I'll do this later" = "Ik doe dit later";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Kan risico lopen voor dubbele uitgave.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Voor uw veiligheid bewaren wij geen wachtwoorden in bestanden. Back-up uw portemonnee om ervoor te zorgen dat uw bitcoins veilig zijn in geval u uw wachtwoord verliest.";

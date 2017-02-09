@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Бесплатное приложение для торговцев";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Невозможно открыть почтовое приложение";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Невозможно открыть URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Не могли бы вы нам рассказать о своем опыте работы с Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Вы покинете приложение.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Проверьте свою входящую почту";
+
+/* (No Commment) */
+"Continue To Mail" = "Продолжить в почте";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Прочтите письмо от Blockchain и нажмите ссылку подтверждения, чтобы завершить настройки кошелька.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Сделать резервную копию своих денег";
+
+/* (No Commment) */
+"Backup Now" = "Сделать резервную копию сейчас";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Поздравляем, у вас есть биткойн! А сейчас создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам, если вы забудете пароль.";
+
+/* (No Commment) */
+"2-Step Verification" = "Двухфакторная аутентификация";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Предотвращает несанкционированный доступ к вашему кошельку. Чтобы повысить защищенность кошелька, активируйте двухфакторную аутентификацию.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Активируйте уведомления, чтобы получать сообщения по электронной почте или СМС каждый раз, когда вы получаете биткойн.";
+
+/* (No Commment) */
+"Not Now" = "Не сейчас";
+
+/* (No Commment) */
+"I'll do this later" = "Я сделаю это позже";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Может быть опасность возникновения двойной расходов.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";

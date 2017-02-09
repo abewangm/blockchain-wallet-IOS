@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "App commerciale gratuita";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Impossibile aprire l'applicazione Mail";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Impossibile aprire l'URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Vuoi parlarci della tua esperienza con Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Uscirai dall'applicazione.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Controlla la tua casella di posta in entrata";
+
+/* (No Commment) */
+"Continue To Mail" = "Vai a email";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Cerca una email da Blockchain e fai clic sul link di verifica per completare il setup del tuo portafoglio.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Fai un backup dei tuoi fondi";
+
+/* (No Commment) */
+"Backup Now" = "Fai un backup ora";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Congratulazioni, ora hai dei bitcoin! adesso fai un backup del tuo portafoglio per essere certo di poter accedere ai tuoi bitcoins se dimentichi la tua password.";
+
+/* (No Commment) */
+"2-Step Verification" = "Verifica in due fasi";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Previeni accessi non desiderati al tuo portafoglio. Abilita la verifica in due fasi per aumentare la sicurezza del tuo portafoglio.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Attiva le notifiche per ricevere una email o un SMS quando ricevi dei bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Non adesso";
+
+/* (No Commment) */
+"I'll do this later" = "Lo farò più tardi";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Potrebbe esserci il rischio di un doppio pagamento.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Per la tua sicurezza, non registriamo nei nostri file nessuna password. Fai un backup del tuo portafoglio per essere certo che i tuoi bitcoin siano al sicuro se dovessi perdere la tua password.";

@@ -345,6 +345,12 @@ NSString *detailLabel;
         NSString *language = fiatAmountField.textInputMode.primaryLanguage;
         NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
         NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        if (![requestedAmountString containsString:@"."]) {
+            requestedAmountString = [requestedAmountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        }
+        if (![requestedAmountString containsString:@"."]) {
+            requestedAmountString = [requestedAmountString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+        }
         return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
     }
     
@@ -576,7 +582,7 @@ NSString *detailLabel;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
         if (showBackupReminder) {
-            [app showBackupReminder];
+            [app showBackupReminder:YES];
         } else if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) {
             [self showKeyboard];
         }
@@ -805,7 +811,11 @@ NSString *detailLabel;
         uint64_t amountInSatoshi = 0;
 
         if (textField == fiatAmountField) {
-            NSString *amountString = [newString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            // Convert input amount to internal value
+            NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            if (![amountString containsString:@"."]) {
+                amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+            }
             amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
         }
         else {

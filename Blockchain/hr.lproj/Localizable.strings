@@ -1556,3 +1556,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Besplatno primanje kreditnih aplikacija";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Ne mogu otvoriti Mail aplikacija";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Nije moguće otvoriti URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Želite li nam reći o svom iskustvu s Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Otići će aplikaciju.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Provjerite vaše mape pristigle pošte";
+
+/* (No Commment) */
+"Continue To Mail" = "Nastavak na Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Potražite poruku e-pošte iz Blockchain i kliknite vezu za potvrdu da biste dovršili instalaciju novčanik.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Sigurnosna kopija sredstva";
+
+/* (No Commment) */
+"Backup Now" = "Napravi sigurnosnu kopiju sada";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Čestitam, imate bitcoin! Sada neka je backup novčanik kako bi se osiguralo možete pristupiti tvoj bitcoins ako zaboravite lozinku.";
+
+/* (No Commment) */
+"2-Step Verification" = "Potvrda u 2 koraka";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Spriječiti neovlašteni pristup vašem novčaniku. Omogućiti potvrdu u 2 koraka za povećanje sigurnosti novčanik.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Omogući obavijesti primati e-mail ili SMS poruku svaki put kada zaprimite bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Ne sad";
+
+/* (No Commment) */
+"I'll do this later" = "Ja ću to učiniti kasnije";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Može postojati rizik za dvostruko potrošiti.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašu sigurnost, ne čuvajte lozinke na datoteku. Sigurnosna kopija novčanik kako bi se osiguralo tvoj bitcoins su sigurna u slučaju da izgubite lozinku.";

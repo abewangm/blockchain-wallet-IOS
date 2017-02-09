@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "免費的商業應用程式";
+
+/* (No Commment) */
+"Cannot open Mail App" = "無法打開郵件應用程式";
+
+/* (No Commment) */
+"Cannot open URL %@" = "無法打開 URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "你想告訴我們關於你與 Blockchain 的經歷嗎？";
+
+/* (No Commment) */
+"You will be leaving the app." = "你將離開該應用程式。";
+
+/* (No Commment) */
+"Check Your Inbox" = "檢查您的收件匣";
+
+/* (No Commment) */
+"Continue To Mail" = "繼續到郵件";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "從 Blockchain 尋找一封電子郵件並按一下驗證連結來完成你的錢包安裝。";
+
+/* (No Commment) */
+"Backup Your Funds" = "備份您的資金";
+
+/* (No Commment) */
+"Backup Now" = "現在備份";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "恭喜你，比特幣 ！現在讓我們來備份你的錢包，以確保您可以訪問您的比特幣，如果您忘記了您的密碼。";
+
+/* (No Commment) */
+"2-Step Verification" = "2 步認證";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "你的錢包防止未經授權的訪問。啟用 2 步進行驗證，以增加錢包的安全性。";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "啟用通知來接收電子郵件或 SMS 消息，每當您收到比特幣。";
+
+/* (No Commment) */
+"Not Now" = "不是現在";
+
+/* (No Commment) */
+"I'll do this later" = "後來多一次就這樣了";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "可能是在花的雙重風險。";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "為了您的安全，我們沒有做任何的密碼檔。備份你的錢包，以確保您的比特幣是安全的以防你失去您的密碼。";

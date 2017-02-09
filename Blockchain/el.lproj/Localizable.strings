@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Δωρεάν εμπορική εφαρμογή";
+
+/* (No Commment) */
+"Cannot open Mail App" = "Δεν είναι δυνατό να ανοίξετε App αλληλογραφίας";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Δεν είναι δυνατό να ανοίξει το URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Θα θέλατε να μας πείτε για την εμπειρία σας με Blockchain;";
+
+/* (No Commment) */
+"You will be leaving the app." = "Θα φύγετε από το app.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Ελέγξτε τα Εισερχόμενά σας";
+
+/* (No Commment) */
+"Continue To Mail" = "Συνεχίσει να αλληλογραφίας";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Αναζητήστε ένα μήνυμα ηλεκτρονικού ταχυδρομείου από Blockchain και κάντε κλικ στο σύνδεσμο επαλήθευσης για να ολοκληρώσετε τη ρύθμιση του πορτοφολιού σας.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Δημιουργία αντιγράφων ασφαλείας σας κεφάλαια";
+
+/* (No Commment) */
+"Backup Now" = "Δημιουργία αντιγράφων ασφαλείας τώρα";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Συγχαρητήρια, έχετε bitcoin! Τώρα ας δημιουργία αντιγράφων ασφαλείας το πορτοφόλι σας ώστε να μπορείτε να έχετε πρόσβαση τα bitcoins σας, αν ξεχάσετε τον κωδικό πρόσβασής σας.";
+
+/* (No Commment) */
+"2-Step Verification" = "Επαλήθευση σε 2 βήματα";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Αποτροπή μη εξουσιοδοτημένης πρόσβασης στο πορτοφόλι σας. Για να ενεργοποιήσετε την επαλήθευση σε 2 βήματα για την αύξηση της ασφάλειας πορτοφόλι.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Για να ενεργοποιήσετε τις ειδοποιήσεις για να λάβετε ένα email ή ένα μήνυμα SMS κάθε φορά που λαμβάνετε το bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Όχι τώρα";
+
+/* (No Commment) */
+"I'll do this later" = "Εγώ θα κάνω αυτό αργότερα";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Μπορεί να είναι σε κίνδυνο για μια διπλή δαπάνη.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα bitcoins σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";

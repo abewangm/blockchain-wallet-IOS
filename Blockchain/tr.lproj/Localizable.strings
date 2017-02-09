@@ -1571,3 +1571,54 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Ücretsiz Ticaret uygulaması";
+
+/* (No Commment) */
+"Cannot open Mail App" = "E-posta Uygulaması Açılamıyor";
+
+/* (No Commment) */
+"Cannot open URL %@" = "URL %@ Açılamıyor";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Blockchain ile olan deneyiminiz hakkında bize konuşmak ister misiniz?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Uygulamadan çıkacaksınız.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Gelen Kutunuzu Kontrol Edin";
+
+/* (No Commment) */
+"Continue To Mail" = "E-postaya Devam Edin";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Blockchain tarafından gönderilen bir e-postaya bakın ve cüzdan kurulumunuzu tamamlamak için doğrulama bağlantısına tıklayın.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Paranızı Yedekleyin";
+
+/* (No Commment) */
+"Backup Now" = "Hemen Yedekleyin";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Tebrikle, bitcoininiz var! Şimdi şifrenizi unutmanız halinde bitcoinlerinize erişiminizi garanti etmek için cüzdanınızı yedeklememize izin verin.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-Aşamalı Doğrulama";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Cüzdanınıza yetkisiz erişimi engelleyin. Cüzdan güvenliğini artırmak için 2-aşamalı doğrulamayı etkinleştirin.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Her bitcoin aldığınızda bir e-posta veya SMS mesajı almak için bildirimleri etkinleştirin.";
+
+/* (No Commment) */
+"Not Now" = "Şimdi Değil";
+
+/* (No Commment) */
+"I'll do this later" = "Bunu daha sonra yapacağım";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Çift harcama riski altında olabilir.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Güvenliğiniz için hiçbir şifreyi dosyada tutmuyoruz. Şifrenizi kaybetmeniz durumunda bitcoinlerinizin güvende olduğunu garanti etmek için cüzdanınız yedekleyin.";
