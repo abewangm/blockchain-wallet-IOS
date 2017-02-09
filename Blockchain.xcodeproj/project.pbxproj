@@ -988,6 +988,7 @@
 		C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTransactionTableViewCell.m; sourceTree = "<group>"; };
 		C75F70E81E2685CA005B4EAF /* ContactTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTransaction.h; sourceTree = "<group>"; };
 		C75F70E91E2685CA005B4EAF /* ContactTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTransaction.m; sourceTree = "<group>"; };
+		C790E0F21E4913F00063D141 /* Blockchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blockchain.entitlements; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
 		C9BE91681945D8F600FD516D /* PENumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PENumpadView.m; sourceTree = "<group>"; };
 		C9BE91691945D8F600FD516D /* PEPinEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPinEntryController.h; sourceTree = "<group>"; };
@@ -1441,6 +1442,7 @@
 		9FB3637B14B60128004BEA02 /* Blockchain */ = {
 			isa = PBXGroup;
 			children = (
+				C790E0F21E4913F00063D141 /* Blockchain.entitlements */,
 				9FB3638414B60128004BEA02 /* AppDelegate.h */,
 				9FB3638514B60128004BEA02 /* AppDelegate.m */,
 				67D95A271B3DDC900012EBB1 /* Constants.swift */,
@@ -1767,6 +1769,14 @@
 						DevelopmentTeam = NZ6PH75U7K;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2672,6 +2682,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Blockchain/Blockchain.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NZ6PH75U7K;
@@ -2690,6 +2701,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;
 				PRODUCT_NAME = Blockchain;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Blockchain/Blockchain-Bridging-Header.h";
@@ -2708,6 +2720,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Blockchain/Blockchain.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NZ6PH75U7K;
@@ -2726,6 +2739,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;
 				PRODUCT_NAME = Blockchain;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Blockchain/Blockchain-Bridging-Header.h";
