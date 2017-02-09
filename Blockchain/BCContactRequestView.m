@@ -119,6 +119,14 @@
     return self;
 }
 
+- (void)setTypedAmount:(uint64_t)typedAmount
+{
+    if (typedAmount > 0) {
+        self.receiveFiatField.text = [NSNumberFormatter formatAmount:typedAmount localCurrency:YES];
+        self.receiveBtcField.text = [NSNumberFormatter formatAmount:typedAmount localCurrency:NO];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return YES;

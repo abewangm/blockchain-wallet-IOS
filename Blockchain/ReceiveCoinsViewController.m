@@ -907,6 +907,7 @@ NSString *detailLabel;
 - (void)createReceiveRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
     BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact reason:reason willSend:NO];
+    [contactRequestView setTypedAmount:[self getInputAmountInSatoshi]];
     contactRequestView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];

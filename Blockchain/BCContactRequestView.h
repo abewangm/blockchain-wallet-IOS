@@ -29,6 +29,7 @@ typedef enum {
 @property (nonatomic, readonly) BOOL willSend;
 
 - (id)initWithContact:(Contact *)contact reason:(NSString *)reason willSend:(BOOL)willSend;
+- (void)setTypedAmount:(uint64_t)typedAmount;
 - (void)showKeyboard;
 
 @end
