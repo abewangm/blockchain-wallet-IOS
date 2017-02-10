@@ -146,7 +146,9 @@ const int maxFindAttempts = 2;
     ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
     
     if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        [self showTransactionDetail:transaction forRow:indexPath.row];
+        if (!self.presentedViewController) {
+            [self showTransactionDetail:transaction forRow:indexPath.row];
+        }
     } else {
         DLog(@"Error: transaciton state not completed!");
     }

@@ -206,7 +206,10 @@ typedef enum {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     Contact *contact = [app.wallet.contacts allValues][indexPath.row];
-    [self contactClicked:contact];
+    
+    if (self.navigationController.topViewController == self) {
+        [self contactClicked:contact];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
