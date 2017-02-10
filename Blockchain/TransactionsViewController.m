@@ -62,29 +62,43 @@ const int sectionMain = 0;
 {
     if (indexPath.section == sectionContactsPending) {
         ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
+        
         ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
+        
         NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
         [cell configureWithTransaction:contactTransaction contactName:name];
+        
         return cell;
     } else if (indexPath.section == sectionMain) {
         Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
-        TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+        ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
         
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+        if (contactTransaction) {
+            ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
+            
+            NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            [cell configureWithTransaction:contactTransaction contactName:name];
+            
+            return cell;
+        } else {
+            TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+            
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+            }
+            
+            cell.transaction = transaction;
+            
+            [cell reload];
+            
+            // Selected cell color
+            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+            [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+            [cell setSelectedBackgroundView:v];
+            
+            return cell;
         }
-        
-        cell.transaction = transaction;
-        
-        [cell reload];
-        
-        // Selected cell color
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-        [cell setSelectedBackgroundView:v];
-        
-        return cell;
     } else {
         DLog(@"Invalid section %lu", indexPath.section);
         return nil;

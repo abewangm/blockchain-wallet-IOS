@@ -1981,18 +1981,11 @@
 - (void)getUpdatedContacts:(BOOL)isFirstLoad
 {
     NSArray *contacts = [[[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary] allValues];
-
-    NSMutableDictionary *finalDictionary = [NSMutableDictionary new];
-    for (NSDictionary *contactDict in contacts) {
-        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
-        [finalDictionary setObject:contact forKey:contact.identifier];
-    }
-    
-    self.contacts = [[NSDictionary alloc] initWithDictionary:finalDictionary];
     
     self.pendingContactTransactions = [NSMutableArray new];
-    // Update pendingContactTransactions
-    [self updateActionsRequired];
+    self.completedContactTransactions = [NSMutableDictionary new];
+
+    [self iterateAndUpdateContacts:contacts];
     
     if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
         // Keep showing busy view to prevent user input while archiving/unarchiving addresses
@@ -2078,14 +2071,16 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
 }
 
-- (void)updateActionsRequired
+- (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;
-    NSArray *contacts = [self.contacts allValues];
-
     ContactActionRequired firstAction;
     
-    for (Contact *contact in contacts) {
+    NSMutableDictionary *allContactsDict = [NSMutableDictionary new];
+    
+    for (NSDictionary *contactDict in allContacts) {
+        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
+        [allContactsDict setObject:contact forKey:contact.identifier];
         
         // Check for any pending invitations
         if (!contact.mdid &&
@@ -2107,6 +2102,8 @@
     } else if (actionCount > 1) {
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }
+    
+    self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
 }
 
 - (int)numberOfActionsRequiredForContact:(Contact *)contact
@@ -2119,6 +2116,8 @@
         }
         if (transaction.transactionState != ContactTransactionStateCompletedSend && transaction.transactionState != ContactTransactionStateCompletedReceive) {
             [self.pendingContactTransactions addObject:transaction];
+        } else if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
+            [self.completedContactTransactions setObject:transaction forKey:transaction.myHash];
         }
     }
     
