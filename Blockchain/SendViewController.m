@@ -882,11 +882,11 @@ BOOL displayingLocalSymbolSend;
 {
     continuePaymentButton.enabled = YES;
     [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    [continuePaymentButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
     
     [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     continuePaymentAccessoryButton.enabled = YES;
-    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
