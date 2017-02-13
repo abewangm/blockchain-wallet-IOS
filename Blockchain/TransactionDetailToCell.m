@@ -32,6 +32,7 @@
     }
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.mainLabel.font.pointSize];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_TO;
     self.mainLabel.textColor = [UIColor lightGrayColor];
@@ -45,6 +46,7 @@
     } else {
         CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+        self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.accessoryLabel.font.pointSize];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;

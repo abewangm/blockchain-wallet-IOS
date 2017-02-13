@@ -89,6 +89,7 @@ const CGFloat rowHeightValueReceived = 92;
     UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
     updateButton.backgroundColor = COLOR_BUTTON_GREEN;
     [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [updateButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:updateButton.titleLabel.font.pointSize]];
     [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
     [updateButton addTarget:self action:@selector(saveNote) forControlEvents:UIControlEventTouchUpInside];
     [inputAccessoryView addSubview:updateButton];

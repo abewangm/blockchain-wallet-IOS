@@ -29,6 +29,7 @@
     }
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, 20.5)];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.mainLabel.font.pointSize];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_FROM;
     self.mainLabel.textColor = [UIColor lightGrayColor];
@@ -36,6 +37,7 @@
     
     CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
+    self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.accessoryLabel.font.pointSize];
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.text = transaction.from.label;
