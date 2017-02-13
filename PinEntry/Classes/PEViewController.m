@@ -80,7 +80,7 @@
     self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];
     self.swipeLabelImageView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     self.swipeLabelImageView.image = [self.swipeLabelImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.swipeLabelImageView setTintColor:[UIColor whiteColor]];
+    [self.swipeLabelImageView setTintColor:COLOR_BLOCKCHAIN_BLUE];
 }
 
 - (IBAction)cancelChangePin:(id)sender

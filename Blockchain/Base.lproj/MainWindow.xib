@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIApplication">
             <connections>
@@ -403,7 +408,7 @@ http://blockchain.info/wallet</string>
                                 <rect key="frame" x="20" y="0.0" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -425,7 +430,7 @@ http://blockchain.info/wallet</string>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6sh-r5-yAx" userLabel="Balance Small Button">
                                             <rect key="frame" x="20" y="42" width="280" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                             <state key="normal" title="1.12345 BTC">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -434,14 +439,14 @@ http://blockchain.info/wallet</string>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bzM-Ub-MUU" userLabel="Balance Big Button">
                                             <rect key="frame" x="20" y="4" width="280" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="35"/>
                                             <state key="normal" title="345.68 USD">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.08235294118" green="0.2274509804" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
                         </view>
@@ -530,7 +535,7 @@ http://blockchain.info/wallet</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.08235294118" green="0.2274509804" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view opaque="NO" contentMode="scaleToFill" id="284" userLabel="Tab Bar">
                         <rect key="frame" x="0.0" y="433" width="320" height="47"/>
