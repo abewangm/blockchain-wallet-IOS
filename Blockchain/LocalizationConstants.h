@@ -377,7 +377,7 @@
 #define BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS_WARNING_DISABLE_NOTIFICATIONS NSLocalizedString(@"You currently have email notifications enabled. Changing your email will disable email notifications.", nil)
 #define BC_STRING_SETTINGS_EMAIL_VERIFIED NSLocalizedString(@"Your email has been verified.", nil)
 #define BC_STRING_SETTINGS_WALLET_ID NSLocalizedString (@"Wallet ID", nil)
-#define BC_STRING_SETTINGS_WALLET_INFORMATION NSLocalizedString (@"Wallet Information", nil)
+#define BC_STRING_SETTINGS_PROFILE NSLocalizedString (@"Profile", nil)
 #define BC_STRING_SETTINGS_CHANGE_MOBILE_NUMBER NSLocalizedString(@"Change Mobile Number", nil)
 #define BC_STRING_SETTINGS_NEW_MOBILE_NUMBER NSLocalizedString(@"New Mobile Number", nil)
 #define BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS NSLocalizedString(@"You currently have SMS notifications enabled. Changing your email will disable SMS notifications.", nil)
