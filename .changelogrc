@@ -1,0 +1,72 @@
+{
+    "app_name": "Blockchain Wallet V3 iOS",
+    "repo_url": "https://github.com/blockchain/My-Wallet-V3-iOS",
+    "file": "Changelog.md",
+    "sections": [
+        {
+            "title": "Bug Fixes",
+            "grep": "^fix"
+        },
+        {
+          "title": "Dependencies",
+          "grep": "^dep"
+        },
+        {
+            "title": "Features",
+            "grep": "^feat"
+        },
+        {
+            "title": "Documentation",
+            "grep": "^docs"
+        },
+        {
+            "title": "Breaking changes",
+            "grep": "BREAKING"
+        },
+        {
+            "title": "Refactor",
+            "grep": "^refactor"
+        },
+        {
+            "title": "Style",
+            "grep": "^style"
+        },
+        {
+            "title": "Copy",
+            "grep": "^copy"
+        },
+        {
+            "title": "Test",
+            "grep": "^test"
+        },
+        {
+            "title": "Developer Tools",
+            "grep": "^dev"
+        },
+        {
+            "title": "Build Process",
+            "grep": "^build"
+        },
+        {
+            "title": "Chore",
+            "grep": "^chore"
+        },
+        {
+            "title": "Branchs merged",
+            "grep": "^Merge branch"
+        },
+        {
+            "title" : "Pull requests merged",
+            "grep": "^Merge pull request"
+        },
+        {
+            "title" : "Prototype/Concept",
+            "grep": "^prototype"
+        },
+        {
+            "title" : "Updates",
+            "grep": "update"
+        }
+    ]
+}
+
