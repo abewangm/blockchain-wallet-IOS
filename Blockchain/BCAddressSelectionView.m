@@ -201,36 +201,42 @@ int legacyAddressesSectionNumber;
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.contentView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mainView.frame.size.width, 45)];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, mainView.frame.size.width, 14)];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    
+    [view addSubview:label];
+    
+    NSString *labelString;
+    
     if (showFromAddresses) {
         if (section == accountsSectionNumber) {
-            return nil;
+            labelString = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
-            return BC_STRING_IMPORTED_ADDRESSES;
+            labelString = BC_STRING_IMPORTED_ADDRESSES;
         }
     }
     else {
         if (section == addressBookSectionNumber) {
-            return BC_STRING_ADDRESS_BOOK;
+            labelString = BC_STRING_ADDRESS_BOOK;
         }
         else if (section == accountsSectionNumber) {
-            return nil;
+            labelString = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
-            return BC_STRING_IMPORTED_ADDRESSES;
+            labelString = BC_STRING_IMPORTED_ADDRESSES;
         }
     }
     
-    assert(false); // Should never get here
-    return nil;
+    label.text = [labelString uppercaseString];
+    
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -257,6 +263,11 @@ int legacyAddressesSectionNumber;
     
     assert(false); // Should never get here
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 45.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
