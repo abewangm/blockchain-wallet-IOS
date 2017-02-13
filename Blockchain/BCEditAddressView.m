@@ -24,7 +24,7 @@
         
         UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, 290, 21)];
         addressLabel.textColor = [UIColor darkGrayColor];
-        addressLabel.font = [UIFont systemFontOfSize:17.0];
+        addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         addressLabel.text = address;
         addressLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:addressLabel];

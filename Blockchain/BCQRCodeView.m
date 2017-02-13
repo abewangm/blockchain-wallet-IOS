@@ -42,7 +42,7 @@ const float imageWidth = 190;
     UILabel *qrCodeHeaderLabel;
     if (qrHeaderText) {
         qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 280, 60)];
-        qrCodeHeaderLabel.font = [UIFont systemFontOfSize:15.0];
+        qrCodeHeaderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15.0];
         qrCodeHeaderLabel.textColor = [UIColor grayColor];
         qrCodeHeaderLabel.numberOfLines = 5;
         qrCodeHeaderLabel.textAlignment = NSTextAlignmentCenter;
@@ -56,7 +56,7 @@ const float imageWidth = 190;
     [self addSubview:self.qrCodeImageView];
     
     self.qrCodeFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 15, 280, 20.5)];
-    self.qrCodeFooterLabel.font = [UIFont systemFontOfSize:17.0];
+    self.qrCodeFooterLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     self.qrCodeFooterLabel.textAlignment = NSTextAlignmentCenter;
     self.qrCodeFooterLabel.adjustsFontSizeToFitWidth = YES;
     

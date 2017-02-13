@@ -24,7 +24,7 @@
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
         labelLabel.text = BC_STRING_NAME;
         labelLabel.textColor = [UIColor darkGrayColor];
-        labelLabel.font = [UIFont systemFontOfSize:17.0];
+        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         [self addSubview:labelLabel];
         
         _labelTextField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
