@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     self.tableView = [[UITableView alloc] initWithFrame:app.window.frame style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -256,11 +256,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_FOREGROUND_GRAY;
-    label.font = [UIFont systemFontOfSize:14.0];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
     
     [view addSubview:label];
     
@@ -282,7 +282,7 @@
     } else
         @throw @"Unknown Section";
     
-    label.text = [labelString uppercaseString];
+    label.text = labelString;
     
     return view;
 }
@@ -321,7 +321,7 @@
         
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-            cell.backgroundColor = COLOR_BACKGROUND_GRAY;
+            cell.backgroundColor = [UIColor whiteColor];
             
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 

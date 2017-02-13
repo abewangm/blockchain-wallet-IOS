@@ -234,7 +234,7 @@ int legacyAddressesSectionNumber;
         }
     }
     
-    label.text = [labelString uppercaseString];
+    label.text = labelString;
     
     return view;
 }

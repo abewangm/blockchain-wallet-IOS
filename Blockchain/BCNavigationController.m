@@ -36,7 +36,7 @@
     [self.view addSubview:topBar];
     
     self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
-    self.headerLabel.font = [UIFont systemFontOfSize:22.0];
+    self.headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:22.0];
     self.headerLabel.textColor = [UIColor whiteColor];
     self.headerLabel.textAlignment = NSTextAlignmentCenter;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
@@ -76,7 +76,7 @@
     
     UILabel *busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BUSY_VIEW_LABEL_WIDTH, BUSY_VIEW_LABEL_HEIGHT)];
     busyLabel.adjustsFontSizeToFitWidth = YES;
-    busyLabel.font = [UIFont systemFontOfSize:BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE];
+    busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE];
     busyLabel.alpha = BUSY_VIEW_LABEL_ALPHA;
     busyLabel.textAlignment = NSTextAlignmentCenter;
     busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
