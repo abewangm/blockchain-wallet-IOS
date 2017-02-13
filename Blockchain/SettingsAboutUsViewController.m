@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat imageWidth = self.view.frame.size.width - 120;
     
@@ -34,8 +34,9 @@
     CGFloat labelWidth = self.view.frame.size.width - 30;
 
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, bannerImageView.frame.origin.y + bannerImageView.frame.size.height + 16, labelWidth, 90)];
+    infoLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
     infoLabel.textAlignment = NSTextAlignmentCenter;
-    infoLabel.textColor = [UIColor whiteColor];
+    infoLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
     infoLabel.numberOfLines = 3;
     infoLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@", ABOUT_STRING_BLOCKCHAIN_WALLET, [app getVersionLabelString], [NSString stringWithFormat:@"%@ %@ %@", ABOUT_STRING_COPYRIGHT_LOGO, COPYRIGHT_YEAR, ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA], BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED];
     
@@ -48,6 +49,8 @@
 {
     UIButton *rateUsButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - buttonWidth)/2, aboveView.frame.origin.y + aboveView.frame.size.height + 16, buttonWidth, 40)];
     rateUsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [rateUsButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+    rateUsButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
     [rateUsButton setTitle:BC_STRING_RATE_US forState:UIControlStateNormal];
     [self.view addSubview:rateUsButton];
     [rateUsButton addTarget:self action:@selector(rateApp) forControlEvents:UIControlEventTouchUpInside];
