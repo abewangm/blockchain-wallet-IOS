@@ -145,7 +145,7 @@ int legacyAddressesSectionNumber;
             tableView.scrollEnabled = YES;
         }
         
-        tableView.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
         
     }
     return self;
@@ -204,7 +204,7 @@ int legacyAddressesSectionNumber;
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.contentView.backgroundColor = [UIColor whiteColor];
+    header.contentView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -277,7 +277,7 @@ int legacyAddressesSectionNumber;
     
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-        cell.backgroundColor = COLOR_BACKGROUND_GRAY;
+        cell.backgroundColor = [UIColor whiteColor];
         
         
         NSString *label;
