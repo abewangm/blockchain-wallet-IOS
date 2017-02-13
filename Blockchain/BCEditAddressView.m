@@ -43,7 +43,7 @@
         saveButton.backgroundColor = COLOR_BUTTON_GRAY;
         [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
         [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [saveButton addTarget:self action:@selector(labelSaveClicked) forControlEvents:UIControlEventTouchUpInside];
         

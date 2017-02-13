@@ -32,7 +32,7 @@
     [self.view addSubview:topBar];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
-    headerLabel.font = [UIFont systemFontOfSize:22.0];
+    headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:22.0];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
@@ -68,7 +68,7 @@
     textWithSpinnerView.center = busyView.center;
     
     self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 230, 30)];
-    self.busyLabel.font = [UIFont systemFontOfSize:14.0];
+    self.busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
     self.busyLabel.alpha = 0.75;
     self.busyLabel.textAlignment = NSTextAlignmentCenter;
     self.busyLabel.adjustsFontSizeToFitWidth = YES;

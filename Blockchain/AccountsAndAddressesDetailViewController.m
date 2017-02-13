@@ -456,8 +456,8 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
-    cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     BOOL canTransferFromAddress = [self canTransferFromAddress];

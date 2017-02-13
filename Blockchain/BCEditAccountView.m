@@ -42,7 +42,7 @@
         editAccountButton.backgroundColor = COLOR_BUTTON_GRAY;
         [editAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
         [editAccountButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        editAccountButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        editAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [editAccountButton addTarget:self action:@selector(editAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         
