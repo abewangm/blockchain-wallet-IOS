@@ -446,7 +446,7 @@ http://blockchain.info/wallet</string>
                                             </state>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.08235294118" green="0.2274509804" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.070000000000000007" green="0.16862745100000001" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
                         </view>
@@ -530,12 +530,12 @@ http://blockchain.info/wallet</string>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLG-96-OpG">
                                 <rect key="frame" x="43" y="27" width="229" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.08235294118" green="0.2274509804" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.070000000000000007" green="0.16862745098039217" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view opaque="NO" contentMode="scaleToFill" id="284" userLabel="Tab Bar">
                         <rect key="frame" x="0.0" y="433" width="320" height="47"/>
