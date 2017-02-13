@@ -1190,24 +1190,32 @@ const int aboutPrivacyPolicy = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.textLabel.font = [SettingsTableViewController fontForCell];
-    cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
-    cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+    NSString *cellIdentifier = [NSString stringWithFormat:@"s%li-r%li", indexPath.section, (long)indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        if (indexPath.section == sectionProfile && indexPath.row == walletInformationIdentifier) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        } else {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+            cell.textLabel.font = [SettingsTableViewController fontForCell];
+            cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        }
+    }
     
     switch (indexPath.section) {
         case sectionProfile: {
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
-                    UITableViewCell *cellWithSubtitle = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-                    cellWithSubtitle.textLabel.font = [SettingsTableViewController fontForCell];
-                    cellWithSubtitle.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
-                    cellWithSubtitle.detailTextLabel.text = app.wallet.guid;
-                    cellWithSubtitle.detailTextLabel.font = [SettingsTableViewController fontForCellSubtitle];
-                    cellWithSubtitle.detailTextLabel.textColor = [UIColor grayColor];
-                    cellWithSubtitle.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-                    return cellWithSubtitle;
+                    cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
+                    cell.detailTextLabel.text = app.wallet.guid;
+                    cell.detailTextLabel.font = [SettingsTableViewController fontForCellSubtitle];
+                    cell.detailTextLabel.textColor = [UIColor grayColor];
+                    cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                    return cell;
                 }
                 case preferencesEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
@@ -1279,46 +1287,46 @@ const int aboutPrivacyPolicy = 2;
                     }
                     return cell;
                 }
-
+                    
             }
         }
         case sectionSecurity: {
             if (indexPath.row == securityTwoStep) {
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    int authType = [app.wallet getTwoStepType];
-                    cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                    if (authType == TWO_STEP_AUTH_TYPE_SMS) {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
-                    } else if (authType == TWO_STEP_AUTH_TYPE_GOOGLE) {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE;
-                    } else if (authType == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY;
-                    } else if (authType == TWO_STEP_AUTH_TYPE_NONE) {
-                        cell.detailTextLabel.text = BC_STRING_DISABLED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                    } else {
-                        cell.detailTextLabel.text = BC_STRING_UNKNOWN;
-                    }
-                    return [self adjustFontForCell:cell];
+                cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                int authType = [app.wallet getTwoStepType];
+                cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                if (authType == TWO_STEP_AUTH_TYPE_SMS) {
+                    cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS;
+                } else if (authType == TWO_STEP_AUTH_TYPE_GOOGLE) {
+                    cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_GOOGLE;
+                } else if (authType == TWO_STEP_AUTH_TYPE_YUBI_KEY) {
+                    cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY;
+                } else if (authType == TWO_STEP_AUTH_TYPE_NONE) {
+                    cell.detailTextLabel.text = BC_STRING_DISABLED;
+                    cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                } else {
+                    cell.detailTextLabel.text = BC_STRING_UNKNOWN;
                 }
+                return [self adjustFontForCell:cell];
+            }
             else if (indexPath.row == securityPasswordChange) {
-                    cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
-                }
+                cell.textLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return [self adjustFontForCell:cell];
+            }
             else if (indexPath.row == securityWalletRecoveryPhrase) {
-                    cell.textLabel.font = [SettingsTableViewController fontForCell];
-                    cell.textLabel.text = BC_STRING_WALLET_RECOVERY_PHRASE;
-                    if (app.wallet.isRecoveryPhraseVerified) {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
-                    } else {
-                        cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
-                    }
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    return [self adjustFontForCell:cell];
+                cell.textLabel.font = [SettingsTableViewController fontForCell];
+                cell.textLabel.text = BC_STRING_WALLET_RECOVERY_PHRASE;
+                if (app.wallet.isRecoveryPhraseVerified) {
+                    cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
+                    cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
+                } else {
+                    cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
+                    cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                }
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                return [self adjustFontForCell:cell];
             } else if (indexPath.row == PINChangePIN) {
                 cell.textLabel.text = BC_STRING_CHANGE_PIN;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -1371,6 +1379,8 @@ const int aboutPrivacyPolicy = 2;
             }
         }        default: return nil;
     }
+    
+    return cell;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
