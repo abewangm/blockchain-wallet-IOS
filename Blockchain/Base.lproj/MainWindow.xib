@@ -58,7 +58,7 @@
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="left" text="loading" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="263">
                             <rect key="frame" x="6" y="53" width="238" height="31"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

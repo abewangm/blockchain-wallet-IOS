@@ -331,7 +331,7 @@ int accountEntries = 0;
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 10, self.tableView.frame.size.width - 100, 18)];
         headerLabel.text = BC_STRING_TOTAL_BALANCE;
         headerLabel.textColor = [UIColor whiteColor];
-        headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
         [view addSubview:headerLabel];
         
         UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wallet.png"]];
@@ -341,7 +341,7 @@ int accountEntries = 0;
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
         amountLabel.text = [NSNumberFormatter formatMoney:totalBalance localCurrency:app->symbolLocal];;
         amountLabel.textColor = [UIColor whiteColor];
-        amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        amountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
         [view addSubview:amountLabel];
         
         BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, BALANCE_ENTRY_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
