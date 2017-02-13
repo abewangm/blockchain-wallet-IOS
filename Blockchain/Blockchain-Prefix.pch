@@ -171,6 +171,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define FONT_MONTSERRAT_LIGHT @"Montserrat-Light"
 #define FONT_MONTSERRAT_EXTRALIGHT @"Montserrat-ExtraLight"
 
+#define FONT_GILL_SANS_REGULAR @"GillSans"
+#define FONT_GILL_SANS_LIGHT @"GillSans-Light"
+
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
 #define FONT_HELVETICA_NUEUE_MEDIUM @"HelveticaNeue-Medium"
 

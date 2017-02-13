@@ -106,9 +106,10 @@ NSString *detailLabel;
 - (void)setupBottomViews
 {
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BUTTON_GREEN;
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
     [self.view addSubview:requestButton];
     [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
@@ -123,13 +124,13 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
-    receiveBtcLabel.font = [UIFont systemFontOfSize:13];
+    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     receiveBtcLabel.textColor = [UIColor lightGrayColor];
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     [self.bottomContainerView addSubview:receiveBtcLabel];
     
     self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + 53, 10, 117, 30)];
-    self.receiveBtcField.font = [UIFont systemFontOfSize:13];
+    self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -137,13 +138,13 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:self.receiveBtcField];
     
     receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
-    receiveFiatLabel.font = [UIFont systemFontOfSize:13];
+    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     receiveFiatLabel.textColor = [UIColor lightGrayColor];
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
     
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
-    self.receiveFiatField.font = [UIFont systemFontOfSize:13];
+    self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
@@ -151,9 +152,10 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
-    whereLabel.font = [UIFont systemFontOfSize:13];
+    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     whereLabel.textColor = [UIColor lightGrayColor];
     whereLabel.text = BC_STRING_WHERE;
+    whereLabel.adjustsFontSizeToFitWidth = YES;
     [self.bottomContainerView addSubview:whereLabel];
     
     UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
@@ -163,7 +165,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:selectDestinationButton];
     
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
-    self.receiveToLabel.font = [UIFont systemFontOfSize:13];
+    self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     [self.bottomContainerView addSubview:self.receiveToLabel];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
     [self.receiveToLabel addGestureRecognizer:tapGesture];
@@ -254,7 +256,7 @@ NSString *detailLabel;
     [self.view addSubview:self.headerView];
     
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
-    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont systemFontOfSize:12] : [UIFont systemFontOfSize:14];
+    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:12] : [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:14];
     instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
     instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
@@ -271,7 +273,7 @@ NSString *detailLabel;
         
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 18)];
         
-        mainAddressLabel.font = [UIFont systemFontOfSize:15];
+        mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
         mainAddressLabel.textColor = [UIColor blackColor];
         [mainAddressLabel setMinimumScaleFactor:.5f];
