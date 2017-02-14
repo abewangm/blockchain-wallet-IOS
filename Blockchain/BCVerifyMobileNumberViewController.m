@@ -79,6 +79,8 @@
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
+    
+    [self addObserversForVerifyingMobileNumber];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,6 +93,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     [self removeObserversForVerifyingMobileNumber];
 }
 
@@ -146,8 +149,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
     
-    [self addObserversForVerifyingMobileNumber];
-    
     [self reload];
 }
 
@@ -167,15 +168,11 @@
 
 - (void)verifyMobileNumberSuccess
 {
-    [self removeObserversForVerifyingMobileNumber];
-    
     [self reload];
 }
 
 - (void)verifyMobileNumberError
 {
-    [self removeObserversForVerifyingMobileNumber];
-    
     [self reload];
 }
 

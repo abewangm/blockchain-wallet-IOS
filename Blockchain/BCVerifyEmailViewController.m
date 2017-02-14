@@ -76,18 +76,12 @@
 {
     [super viewWillAppear:animated];
     
-    self.emailField.text = [self getEmail];
-    
-    if ([self getVerifiedStatus]) {
-        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_AQUA;
-        self.verifiedStatusLabel.text = BC_STRING_SETTINGS_VERIFIED;
-    } else {
-        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED;
-        self.verifiedStatusLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
-    }
+    [self reload];
     
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS_EMAIL;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetAccountInfo) name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -97,7 +91,27 @@
     [self.emailField becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+}
+
 #pragma mark - Actions
+
+- (void)reload
+{
+    self.emailField.text = [self getEmail];
+    
+    if ([self getVerifiedStatus]) {
+        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_AQUA;
+        self.verifiedStatusLabel.text = BC_STRING_SETTINGS_VERIFIED;
+    } else {
+        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED;
+        self.verifiedStatusLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
+    }
+}
 
 - (NSString *)getEmail
 {
@@ -111,7 +125,23 @@
 
 - (void)changeEmail
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+
     [self.delegate changeEmail:self.emailField.text];
+}
+
+- (void)changeEmailSuccess
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+    
+    [self reload];
+}
+
+- (void)didGetAccountInfo
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS object:nil];
+    
+    [self reload];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
