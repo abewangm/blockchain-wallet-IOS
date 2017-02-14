@@ -46,6 +46,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_RED UIColorFromRGB(0xF26C57)
 
 #define COLOR_BLOCKCHAIN_GREEN UIColorFromRGB(0x199D69)
+#define COLOR_BLOCKCHAIN_RED_WARNING UIColorFromRGB(0xB83940)
 
 #define COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
 

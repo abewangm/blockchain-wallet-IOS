@@ -493,7 +493,7 @@ typedef enum {
                         cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                     } else {
                         cell.textLabel.text = BC_STRING_ARCHIVE;
-                        cell.textLabel.textColor = [UIColor redColor];
+                        cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                     }
                 } else {
                     cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
@@ -531,7 +531,7 @@ typedef enum {
                             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                         } else {
                             cell.textLabel.text = BC_STRING_ARCHIVE;
-                            cell.textLabel.textColor = [UIColor redColor];
+                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                         }
                     }
                 } else {
@@ -549,7 +549,7 @@ typedef enum {
             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
         } else {
             cell.textLabel.text = BC_STRING_ARCHIVE;
-            cell.textLabel.textColor = [UIColor redColor];
+            cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
         }
         return cell;
     }

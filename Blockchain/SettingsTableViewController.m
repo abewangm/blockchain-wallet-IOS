@@ -1236,7 +1236,7 @@ const int aboutPrivacyPolicy = 2;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                     }
                     return [self adjustFontForCell:cell];
                 }
@@ -1247,7 +1247,7 @@ const int aboutPrivacyPolicy = 2;
                         cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                     } else {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
-                        cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                        cell.detailTextLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                     }
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return [self adjustFontForCell:cell];
@@ -1314,7 +1314,7 @@ const int aboutPrivacyPolicy = 2;
                     cell.detailTextLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_YUBI_KEY;
                 } else if (authType == TWO_STEP_AUTH_TYPE_NONE) {
                     cell.detailTextLabel.text = BC_STRING_DISABLED;
-                    cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    cell.detailTextLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                 } else {
                     cell.detailTextLabel.text = BC_STRING_UNKNOWN;
                 }
@@ -1333,7 +1333,7 @@ const int aboutPrivacyPolicy = 2;
                     cell.detailTextLabel.textColor = COLOR_BUTTON_GREEN;
                 } else {
                     cell.detailTextLabel.text = BC_STRING_SETTINGS_UNCONFIRMED;
-                    cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
+                    cell.detailTextLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 return [self adjustFontForCell:cell];

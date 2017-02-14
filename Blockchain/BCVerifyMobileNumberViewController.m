@@ -109,7 +109,7 @@
         self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_GREEN;
         self.verifiedStatusLabel.text = BC_STRING_SETTINGS_VERIFIED;
     } else {
-        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED;
+        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
         self.verifiedStatusLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
     }
 }
