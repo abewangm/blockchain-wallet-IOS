@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     self.tableView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
@@ -66,15 +67,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_LOCAL_CURRENCY];
     
-    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
-    cell.textLabel.text = self.namesArray[indexPath.row];
-    
-    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
-    if ([currencyCode isEqualToString:self.selectedCurrencyCode]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER_LOCAL_CURRENCY];
+        cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
     }
+    
+    cell.textLabel.text = self.namesArray[indexPath.row];
+    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
+    cell.accessoryType = [currencyCode isEqualToString:self.selectedCurrencyCode] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;
 }
