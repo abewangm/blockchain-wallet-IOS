@@ -446,7 +446,7 @@ http://blockchain.info/wallet</string>
                                             </state>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.070000000000000007" green="0.16862745100000001" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.023529411764705882" green="0.2196078431372549" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
                         </view>
@@ -535,7 +535,7 @@ http://blockchain.info/wallet</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.070000000000000007" green="0.16862745098039217" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view opaque="NO" contentMode="scaleToFill" id="284" userLabel="Tab Bar">
                         <rect key="frame" x="0.0" y="433" width="320" height="47"/>

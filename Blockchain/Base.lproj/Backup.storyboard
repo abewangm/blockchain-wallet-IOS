@@ -159,13 +159,13 @@
                                                         </subviews>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.070000000000000007" green="0.16862745100000001" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.023529411764705882" green="0.2196078431372549" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="jOl-Wq-Cg3" id="xWu-5a-zjb"/>
                                                 </connections>
                                             </scrollView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AFH-AI-Rgk">
                                         <rect key="frame" x="0.0" y="464" width="159" height="40"/>

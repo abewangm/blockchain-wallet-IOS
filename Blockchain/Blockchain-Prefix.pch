@@ -31,12 +31,12 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define COLOR_BLOCKCHAIN_BLUE UIColorFromRGB(0x153a62)
+#define COLOR_BLOCKCHAIN_DARK_BLUE UIColorFromRGB(0x153a62)
 #define COLOR_BLOCKCHAIN_LIGHTEST_BLUE UIColorFromRGB(0xb2d5e5)
 #define COLOR_BLOCKCHAIN_LIGHT_BLUE UIColorFromRGB(0x10ade4)
 #define COLOR_BLOCKCHAIN_MEDIUM_BLUE UIColorFromRGB(0x3558a8)
 #define COLOR_BLOCKCHAIN_GRAY_BLUE UIColorFromRGB(0x799eb2)
-#define COLOR_BLOCKCHAIN_NAVY_BLUE UIColorFromRGB(0x004a7c)
+#define COLOR_BLOCKCHAIN_BLUE UIColorFromRGB(0x004a7c)
 
 #define COLOR_BLOCKCHAIN_LIGHT_YELLOW UIColorFromRGB(0xFFE6B4)
 #define COLOR_BLOCKCHAIN_YELLOW UIColorFromRGB(0xFFCF62)

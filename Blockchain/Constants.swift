@@ -11,7 +11,7 @@ import UIKit
 struct Constants {
     struct Colors {
         static let TextFieldBorderGray = UIColorFromRGB(0xcdcdcd)
-        static let BlockchainBlue = UIColorFromRGB(0x153a62)
+        static let BlockchainBlue = UIColorFromRGB(0x004a7c)
         static let BlockchainLightBlue = UIColorFromRGB(0x10ade4)
         static let BlockchainLightestBlue = UIColorFromRGB(0xb2d5e5)
         static let SecondaryGray = UIColorFromRGB(0xebebeb)
