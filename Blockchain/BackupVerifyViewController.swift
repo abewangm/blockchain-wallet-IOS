@@ -67,7 +67,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: .disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
-        verifyButton?.titleLabel!.font = UIFont.boldSystemFont(ofSize: 15)
+        verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: 15.0)
+
         verifyButton?.isEnabled = true
         verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)
         verifyButton?.isEnabled = false
@@ -158,7 +159,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func textFieldDidChange() {
         if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
-            verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
             verifyButton?.isEnabled = true
             verifyButton?.setTitleColor(UIColor.white, for: UIControlState())
         } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {

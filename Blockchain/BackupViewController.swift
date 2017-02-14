@@ -44,8 +44,8 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
             lostRecoveryPhraseLabel.textAlignment = .center;
             
             // Override any font changes
-            backupWalletAgainButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14);
-            lostRecoveryPhraseLabel.font = UIFont.boldSystemFont(ofSize: 14);
+            backupWalletAgainButton.titleLabel?.font = UIFont(name:"Montserrat-Regular", size: 14);
+            lostRecoveryPhraseLabel.font = UIFont(name:"GillSans", size: 14);
             
             if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
                 let alertToTransferAll = UIAlertController(title: NSLocalizedString("Transfer imported addresses?", comment:""), message: NSLocalizedString("Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", comment:""), preferredStyle: .alert)

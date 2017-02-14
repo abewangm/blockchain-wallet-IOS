@@ -11,11 +11,11 @@ import UIKit
 struct Constants {
     struct Colors {
         static let TextFieldBorderGray = UIColorFromRGB(0xcdcdcd)
-        static let BlockchainBlue = UIColorFromRGB(0x1b8ac7)
-        static let BlockchainLightBlue = UIColorFromRGB(0x62b5db)
-        static let BlockchainLightestBlue = UIColorFromRGB(0xa0d7ec)
+        static let BlockchainBlue = UIColorFromRGB(0x153a62)
+        static let BlockchainLightBlue = UIColorFromRGB(0x10ade4)
+        static let BlockchainLightestBlue = UIColorFromRGB(0xb2d5e5)
         static let SecondaryGray = UIColorFromRGB(0xebebeb)
-        static let SentRed = UIColorFromRGB(0xff8889)
+        static let SentRed = UIColorFromRGB(0xF26C57)
     }
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65

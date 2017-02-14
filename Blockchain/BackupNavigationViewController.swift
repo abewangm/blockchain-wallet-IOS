@@ -41,7 +41,7 @@ import UIKit
         self.view.addSubview(topBar!);
         
         let headerLabel = UILabel(frame:CGRect(x: 80, y: 17.5, width: self.view.frame.size.width - 160, height: 40));
-        headerLabel.font = UIFont.systemFont(ofSize: 22.0)
+        headerLabel.font = UIFont(name:"Montserrat-Regular", size: 22.0)
         headerLabel.textColor = UIColor.white
         headerLabel.textAlignment = .center;
         headerLabel.adjustsFontSizeToFitWidth = true;
@@ -68,7 +68,7 @@ import UIKit
         textWithSpinnerView.center = busyView!.center;
         
         let busyLabel = UILabel(frame:CGRect(x: 0, y: 0, width: Constants.Measurements.BusyViewLabelWidth, height: Constants.Measurements.BusyViewLabelHeight))
-        busyLabel.font = UIFont.systemFont(ofSize: Constants.Measurements.BusyViewLabelFontSystemSize);
+        busyLabel.font = UIFont(name:"Montserrat-Regular", size: Constants.Measurements.BusyViewLabelFontSystemSize);
         busyLabel.alpha = Constants.Measurements.BusyViewLabelAlpha;
         busyLabel.adjustsFontSizeToFitWidth = true;
         busyLabel.textAlignment = .center
