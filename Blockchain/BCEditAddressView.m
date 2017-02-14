@@ -34,7 +34,7 @@
         self.labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [self addSubview:self.labelTextField];
         self.labelTextField.frame = CGRectMake(15, 37, 290, 30);
-        
+        self.labelTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.labelTextField.font.pointSize];
         self.labelTextField.returnKeyType = UIReturnKeyDone;
         self.labelTextField.delegate = self;
         

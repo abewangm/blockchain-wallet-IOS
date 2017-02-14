@@ -87,7 +87,7 @@ const CGFloat rowHeightValueReceived = 92;
     inputAccessoryView.backgroundColor = [UIColor redColor];
     
     UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
-    updateButton.backgroundColor = COLOR_BUTTON_GREEN;
+    updateButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [updateButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:updateButton.titleLabel.font.pointSize]];
     [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
