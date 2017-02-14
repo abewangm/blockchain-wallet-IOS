@@ -30,10 +30,10 @@
     
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, app.window.frame.size.width, 46);
-    createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    createButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [createButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    createButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+    createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [createButton addTarget:self action:@selector(confirmChangePassword) forControlEvents:UIControlEventTouchUpInside];
     
     self.mainPasswordTextField.inputAccessoryView = createButton;
