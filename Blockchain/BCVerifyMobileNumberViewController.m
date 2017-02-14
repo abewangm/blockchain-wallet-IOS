@@ -88,6 +88,8 @@
     [super viewDidAppear:animated];
     
     [self.mobileNumberField becomeFirstResponder];
+    
+    [self.delegate showVerifyAlertIfNeeded];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

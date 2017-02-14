@@ -103,6 +103,7 @@
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
+@property (nonatomic) BOOL isVerifyingMobileNumber;
 
 // Certificate Pinning
 @property (nonatomic) CertificatePinner *certificatePinner;
