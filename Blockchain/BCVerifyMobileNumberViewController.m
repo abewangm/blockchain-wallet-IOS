@@ -106,7 +106,7 @@
     self.mobileNumberField.text = self.mobileNumberField.text.length > 0 && [mobileNumber isEqualToString:@""] ? self.mobileNumberField.text : mobileNumber;
     
     if ([self getVerifiedStatus]) {
-        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_AQUA;
+        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_GREEN;
         self.verifiedStatusLabel.text = BC_STRING_SETTINGS_VERIFIED;
     } else {
         self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED;

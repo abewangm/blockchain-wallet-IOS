@@ -214,8 +214,6 @@ const int aboutPrivacyPolicy = 2;
     return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
 }
 
-
-
 - (UITableViewCell *)adjustFontForCell:(UITableViewCell *)cell
 {
     UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];

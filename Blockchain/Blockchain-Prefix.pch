@@ -45,6 +45,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_LIGHT_RED UIColorFromRGB(0xF9B0A1)
 #define COLOR_BLOCKCHAIN_RED UIColorFromRGB(0xF26C57)
 
+#define COLOR_BLOCKCHAIN_GREEN UIColorFromRGB(0x199D69)
+
 #define COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
 
 #define COLOR_BLOCKCHAIN_UPGRADE_BLUE UIColorFromRGB(0xdae7ed)
@@ -56,7 +58,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BUTTON_LIGHT_BLUE UIColorFromRGB(0x5cb2d6)
 #define COLOR_BUTTON_BLUE UIColorFromRGB(0x609dcd)
 #define COLOR_BUTTON_RED UIColorFromRGB(0xe88787)
-#define COLOR_BUTTON_GREEN COLOR_BLOCKCHAIN_AQUA
+#define COLOR_BUTTON_GREEN COLOR_BLOCKCHAIN_GREEN
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
@@ -68,7 +70,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_LINE_GRAY UIColorFromRGB(0xcdcdcd)
 
-#define COLOR_LABEL_BALANCE_GREEN COLOR_BLOCKCHAIN_AQUA
+#define COLOR_LABEL_BALANCE_GREEN COLOR_BLOCKCHAIN_GREEN
 
 #define COLOR_BACKGROUND_GRAY UIColorFromRGB(0xf7f7f7)
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)

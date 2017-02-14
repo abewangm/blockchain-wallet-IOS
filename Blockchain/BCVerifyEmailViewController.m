@@ -105,7 +105,7 @@
     self.emailField.text = [self getEmail];
     
     if ([self getVerifiedStatus]) {
-        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_AQUA;
+        self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_GREEN;
         self.verifiedStatusLabel.text = BC_STRING_SETTINGS_VERIFIED;
     } else {
         self.verifiedStatusLabel.textColor = COLOR_BLOCKCHAIN_RED;
