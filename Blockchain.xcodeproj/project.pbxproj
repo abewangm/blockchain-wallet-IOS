@@ -206,6 +206,7 @@
 		C790E11C1E52061B0063D141 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10A1E5206020063D141 /* Montserrat-SemiBoldItalic.ttf */; };
 		C790E11D1E52061B0063D141 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10B1E5206020063D141 /* Montserrat-Thin.ttf */; };
 		C790E11E1E52061B0063D141 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */; };
+		C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
 		C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916A1945D8F600FD516D /* PEPinEntryController.m */; };
 		C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916C1945D8F600FD516D /* PEViewController.m */; };
@@ -991,6 +992,8 @@
 		C790E10A1E5206020063D141 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBoldItalic.ttf"; path = "Fonts/Montserrat/Montserrat-SemiBoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E10B1E5206020063D141 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Thin.ttf"; path = "Fonts/Montserrat/Montserrat-Thin.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ThinItalic.ttf"; path = "Fonts/Montserrat/Montserrat-ThinItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E11F1E5345160063D141 /* BCVerifyEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCVerifyEmailViewController.h; sourceTree = "<group>"; };
+		C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyEmailViewController.m; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
 		C9BE91681945D8F600FD516D /* PENumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PENumpadView.m; sourceTree = "<group>"; };
 		C9BE91691945D8F600FD516D /* PEPinEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPinEntryController.h; sourceTree = "<group>"; };
@@ -1474,6 +1477,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C790E11F1E5345160063D141 /* BCVerifyEmailViewController.h */,
+				C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */,
 				23B731D11E01AC1100129770 /* ReminderModalViewController.h */,
 				23B731D21E01AC1100129770 /* ReminderModalViewController.m */,
 				23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */,
@@ -1989,6 +1994,7 @@
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
+				C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,

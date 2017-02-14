@@ -15,6 +15,7 @@
 #import "RootService.h"
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "SettingsAboutUsViewController.h"
+#import "BCVerifyEmailViewController.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -52,7 +53,7 @@ const int aboutUs = 0;
 const int aboutTermsOfService = 1;
 const int aboutPrivacyPolicy = 2;
 
-@interface SettingsTableViewController () <UITextFieldDelegate>
+@interface SettingsTableViewController () <UITextFieldDelegate, EmailDelegate>
 
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
@@ -291,13 +292,20 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)emailClicked
 {
-    if (![self hasAddedEmail]) {
-        [self alertUserToChangeEmail:NO];
-    } else if ([app.wallet hasVerifiedEmail]) {
-        [self alertUserToChangeEmail:YES];
-    } else {
-        [self alertUserToVerifyEmail];
-    }
+    BCVerifyEmailViewController *verifyEmailController = [[BCVerifyEmailViewController alloc] initWithEmailDelegate:self];
+    [self.navigationController pushViewController:verifyEmailController animated:YES];
+}
+
+#pragma mark - Email Delegate
+
+- (BOOL)isEmailVerified
+{
+    return [app.wallet hasVerifiedEmail];
+}
+
+- (NSString *)getEmail
+{
+    return [app.wallet getEmail];
 }
 
 - (void)mobileNumberClicked
@@ -894,13 +902,6 @@ const int aboutPrivacyPolicy = 2;
     UIAlertController *alertForVerifyingEmail = [UIAlertController alertControllerWithTitle:[[NSString alloc] initWithFormat:BC_STRING_VERIFICATION_EMAIL_SENT_TO_ARGUMENT, self.emailString] message:BC_STRING_PLEASE_CHECK_AND_CLICK_EMAIL_VERIFICATION_LINK preferredStyle:UIAlertControllerStyleAlert];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_EMAIL_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self resendVerificationEmail];
-    }]];
-    [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_NEW_EMAIL_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // Give time for the alertView to fully dismiss, otherwise its keyboard will pop up if entered email is invalid
-        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC);
-        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-            [self alertUserToChangeEmail:YES];
-        });
     }]];
     [alertForVerifyingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_OPEN_MAIL_APP style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSURL *mailURL = [NSURL URLWithString:PREFIX_MAIL_URI];
