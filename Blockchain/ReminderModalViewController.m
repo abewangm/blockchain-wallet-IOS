@@ -35,8 +35,8 @@
     
     UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     continueButton.center = CGPointMake(centerX, self.view.frame.size.height - 90);
-    continueButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    continueButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
     continueButton.layer.cornerRadius = 4;
     [self.view addSubview:continueButton];
     
@@ -45,7 +45,7 @@
     cancelButton.backgroundColor = [UIColor whiteColor];
     [cancelButton setTitleColor:COLOR_TEXT_GRAY forState:UIControlStateNormal];
     [cancelButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
-    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
     cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     cancelButton.layer.cornerRadius = 4;
     [cancelButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
@@ -65,7 +65,7 @@
     [self.view addSubview:iconImageView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, iconImageView.frame.origin.y + iconImageView.frame.size.height + 16, self.view.frame.size.width - 100, 30)];
-    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:20];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.center = CGPointMake(iconImageView.center.x, titleLabel.center.y);
@@ -74,7 +74,7 @@
     
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, 270, 200)];
     detailLabel.numberOfLines = 0;
-    detailLabel.font = [UIFont systemFontOfSize:14];
+    detailLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:14];
     detailLabel.textColor = [UIColor darkGrayColor];
     detailLabel.textAlignment = NSTextAlignmentCenter;
     detailLabel.adjustsFontSizeToFitWidth = YES;
