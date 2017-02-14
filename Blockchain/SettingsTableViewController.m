@@ -345,8 +345,8 @@ const int aboutPrivacyPolicy = 2;
 - (void)showVerifyAlertIfNeeded
 {
     if (app.isVerifyingMobileNumber) {
-        app.isVerifyingMobileNumber = NO;
         [self alertUserToVerifyMobileNumber];
+        app.isVerifyingMobileNumber = NO;
     }
 }
 
