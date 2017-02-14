@@ -16,6 +16,7 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "SettingsAboutUsViewController.h"
 #import "BCVerifyEmailViewController.h"
+#import "BCVerifyMobileNumberViewController.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -53,7 +54,7 @@ const int aboutUs = 0;
 const int aboutTermsOfService = 1;
 const int aboutPrivacyPolicy = 2;
 
-@interface SettingsTableViewController () <UITextFieldDelegate, EmailDelegate>
+@interface SettingsTableViewController () <UITextFieldDelegate, EmailDelegate, MobileNumberDelegate>
 
 @property (nonatomic, copy) NSDictionary *availableCurrenciesDictionary;
 @property (nonatomic, copy) NSDictionary *allCurrencySymbolsDictionary;
@@ -308,17 +309,45 @@ const int aboutPrivacyPolicy = 2;
     return [app.wallet getEmail];
 }
 
+- (void)changeEmail:(NSString *)emailString
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
+    
+    self.enteredEmailString = emailString;
+    
+    [app.wallet changeEmail:emailString];
+}
+
+#pragma mark - Mobile Delegate
+
+- (BOOL)isMobileVerified
+{
+    return [app.wallet hasVerifiedMobileNumber];
+}
+
+- (NSString *)getMobileNumber
+{
+    return [app.wallet getSMSNumber];
+}
+
+- (void)changeMobileNumber:(NSString *)newNumber
+{
+    self.enteredMobileNumberString = newNumber;
+    
+    if ([app.wallet SMSNotificationsEnabled]) {
+        [self alertUserAboutDisablingSMSNotifications:newNumber];
+    } else {
+        [app.wallet changeMobileNumber:newNumber];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+    }
+}
+
 - (void)mobileNumberClicked
 {
-    if ([app.wallet getSMSNumber].length > 0) {
-        if ([app.wallet getSMSVerifiedStatus] == YES) {
-            [self alertUserToChangeMobileNumber];
-        } else {
-            [self alertUserToVerifyMobileNumber];
-        }
-    } else {
-        [self alertUserToChangeMobileNumber];
-    }
+    BCVerifyMobileNumberViewController *verifyMobileNumberController = [[BCVerifyMobileNumberViewController alloc] initWithMobileDelegate:self];
+    [self.navigationController pushViewController:verifyMobileNumberController animated:YES];
 }
 
 - (void)aboutUsClicked
@@ -379,11 +408,6 @@ const int aboutPrivacyPolicy = 2;
 
 #pragma mark - Change Mobile Number
 
-- (NSString *)getMobileNumber
-{
-    return [app.wallet getSMSNumber];
-}
-
 - (void)alertUserToChangeMobileNumber
 {
     if ([app.wallet getTwoStepType] == TWO_STEP_AUTH_TYPE_SMS) {
@@ -419,20 +443,6 @@ const int aboutPrivacyPolicy = 2;
         [self.alertTargetViewController presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
     } else {
         [self presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
-    }
-}
-
-- (void)changeMobileNumber:(NSString *)newNumber
-{
-    self.enteredMobileNumberString = newNumber;
-    
-    if ([app.wallet SMSNotificationsEnabled]) {
-        [self alertUserAboutDisablingSMSNotifications:newNumber];
-    } else {
-        [app.wallet changeMobileNumber:newNumber];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
     }
 }
 
@@ -497,8 +507,8 @@ const int aboutPrivacyPolicy = 2;
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY_MOBILE_RESEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self changeMobileNumber:self.mobileNumberString];
     }]];
-    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self alertUserToChangeMobileNumber];
+    [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self verifyMobileNumber:[[alertForVerifyingMobileNumber textFields] firstObject].text];
     }]];
     [alertForVerifyingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // If the user cancels right after adding a legitimate number, update accountInfo
@@ -931,15 +941,6 @@ const int aboutPrivacyPolicy = 2;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS object:nil];
     
     [self alertUserToVerifyEmail];
-}
-
-- (void)changeEmail:(NSString *)emailString
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
-    
-    self.enteredEmailString = emailString;
-    
-    [app.wallet changeEmail:emailString];
 }
 
 - (void)changeEmailSuccess

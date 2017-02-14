@@ -1004,7 +1004,11 @@
         return nil;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"] toString];
+    JSValue *smsNumber = [self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"];
+    
+    if ([smsNumber isUndefined]) return @"";
+    
+    return [smsNumber toString];
 }
 
 - (BOOL)getSMSVerifiedStatus
