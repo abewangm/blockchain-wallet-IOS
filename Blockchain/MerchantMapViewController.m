@@ -140,6 +140,7 @@
 {
     // Button to center user location on map
     MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    self.toolbar.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.toolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
 }
 
