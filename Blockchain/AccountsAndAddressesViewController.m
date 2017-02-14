@@ -362,7 +362,7 @@
             cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
         } else {
             cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
-            cell.balanceLabel.textColor = COLOR_BLOCKCHAIN_AQUA;
+            cell.balanceLabel.textColor = COLOR_BLOCKCHAIN_GREEN;
         }
         cell.balanceLabel.minimumScaleFactor = 0.75f;
         [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];
