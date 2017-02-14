@@ -17,6 +17,12 @@
 
 @implementation SettingsSelectorTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tableView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+}
+
 - (CurrencySymbol *)getLocalSymbolFromLatestResponse
 {
     return app.latestResponse.symbol_local;
@@ -62,6 +68,7 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
     cell.textLabel.text = self.namesArray[indexPath.row];
     
     NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];

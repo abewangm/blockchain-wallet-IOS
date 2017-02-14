@@ -124,7 +124,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
-    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
     receiveBtcLabel.textColor = [UIColor lightGrayColor];
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     [self.bottomContainerView addSubview:receiveBtcLabel];
@@ -138,7 +138,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:self.receiveBtcField];
     
     receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
-    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
     receiveFiatLabel.textColor = [UIColor lightGrayColor];
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
@@ -152,7 +152,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
-    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
     whereLabel.textColor = [UIColor lightGrayColor];
     whereLabel.text = BC_STRING_WHERE;
     whereLabel.adjustsFontSizeToFitWidth = YES;

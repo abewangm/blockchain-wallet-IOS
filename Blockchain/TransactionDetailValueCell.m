@@ -61,7 +61,7 @@
     
     // Value when sent label
     self.fiatValueWhenSentLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.amountButton.frame.origin.y + self.amountButton.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right - self.contentView.layoutMargins.left, 20.5)];
-    self.fiatValueWhenSentLabel.font =  [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    self.fiatValueWhenSentLabel.font =  [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:14];
     
     [self setupValueWhenSentLabelText:transaction];
     
@@ -72,7 +72,7 @@
     // Transaction fee label
     if (![transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
         self.transactionFeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.fiatValueWhenSentLabel.frame.origin.y + self.fiatValueWhenSentLabel.frame.size.height + 2, self.frame.size.width - self.contentView.layoutMargins.right - self.contentView.layoutMargins.left, 20.5)];
-        self.transactionFeeLabel.font =  [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+        self.transactionFeeLabel.font =  [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:14];
         self.transactionFeeLabel.textColor = [UIColor lightGrayColor];
         self.transactionFeeLabel.text = [NSString stringWithFormat:BC_STRING_TRANSACTION_FEE_ARGUMENT, [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(transaction.fee)]];
         self.transactionFeeLabel.adjustsFontSizeToFitWidth = YES;

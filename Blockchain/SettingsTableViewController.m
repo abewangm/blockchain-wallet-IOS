@@ -206,12 +206,12 @@ const int aboutPrivacyPolicy = 2;
 
 + (UIFont *)fontForCell
 {
-    return [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
+    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
 }
 
 + (UIFont *)fontForCellSubtitle
 {
-    return [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
 }
 
 

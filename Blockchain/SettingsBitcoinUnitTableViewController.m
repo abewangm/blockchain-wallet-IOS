@@ -18,6 +18,12 @@
 
 @implementation SettingsBitcoinUnitTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tableView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+}
+
 - (void)alertForErrorLoadingSettings
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
@@ -83,6 +89,7 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     cell.textLabel.text = self.namesArray[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
 
     NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
     
