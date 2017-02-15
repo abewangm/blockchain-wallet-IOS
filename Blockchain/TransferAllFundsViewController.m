@@ -133,10 +133,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        
+        NSInteger addressCount = [self.addressesUsed count];
+        NSString *addressesString = @"";
+        if (addressCount == 1) {
+            addressesString = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, addressCount];
+        } else if (addressCount > 1) {
+            addressesString = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, addressCount];
+        }
+        
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_FROM;
         cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
-        cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [self.addressesUsed count]];
+        cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : addressesString;
         cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
