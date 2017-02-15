@@ -2400,6 +2400,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)setupTransferAllFunds
 {
+    self.transferAllFundsModalController = nil;
     app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
