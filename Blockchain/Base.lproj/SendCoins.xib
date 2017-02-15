@@ -464,7 +464,7 @@
                 <button opaque="NO" contentMode="left" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="llH-jD-d80">
                     <rect key="frame" x="235" y="202" width="70" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="icon_support"/>
+                    <state key="normal" image="help"/>
                     <connections>
                         <action selector="feeInformationClicked:" destination="-1" eventType="touchUpInside" id="ar4-F4-S7S"/>
                     </connections>
@@ -493,7 +493,7 @@
         <image name="arrow_downward" width="26" height="26"/>
         <image name="cancel" width="11" height="11"/>
         <image name="disclosure" width="11" height="17"/>
-        <image name="icon_support" width="26" height="26"/>
+        <image name="help" width="36" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

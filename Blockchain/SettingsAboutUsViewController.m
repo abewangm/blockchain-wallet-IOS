@@ -22,12 +22,12 @@
     CGFloat imageWidth = self.view.frame.size.width - 120;
     
     UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, 100, imageWidth, 80)];
-    logoImageView.image = [UIImage imageNamed:@"blockchain_b_large"];
+    logoImageView.image = [UIImage imageNamed:@"logo"];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:logoImageView];
     
     UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, logoImageView.frame.origin.y + logoImageView.frame.size.height + 16, imageWidth, 50)];
-    bannerImageView.image = [UIImage imageNamed:@"blockchain_wallet_logo"];
+    bannerImageView.image = [UIImage imageNamed:@"text"];
     bannerImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:bannerImageView];
     

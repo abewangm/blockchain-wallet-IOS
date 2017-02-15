@@ -28,7 +28,7 @@ Boolean shouldShowAnimation;
         self.backgroundColor = [UIColor whiteColor];
         
         // Logo
-        UIImage *logo = [UIImage imageNamed:@"welcome_logo"];
+        UIImage *logo = [UIImage imageNamed:@"logo_both"];
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake((window.frame.size.width -logo.size.width) / 2, 80, logo.size.width, logo.size.height)];
         imageView.image = logo;
         imageView.alpha = 0;

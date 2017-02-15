@@ -281,7 +281,7 @@ NSString *detailLabel;
         [self.headerView addSubview:mainAddressLabel];
         
         informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
-        [informationButton setImage:[UIImage imageNamed:@"icon_support"] forState:UIControlStateNormal];
+        [informationButton setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
         informationButton.center = self.view.center;
         informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
         [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

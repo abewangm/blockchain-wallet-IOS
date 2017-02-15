@@ -53,6 +53,9 @@
     NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {
+        
+        // button.imageEdgeInsets = UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+        
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
         [button setTitle:label forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:10]];

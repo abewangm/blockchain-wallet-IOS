@@ -13,7 +13,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.imageView.frame = CGRectMake(15, 15, 26, 26);
-    self.imageView.contentMode = UIViewContentModeCenter;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
     if (self.detailTextLabel.text != nil) {
         self.textLabel.frame = CGRectMake(55, 10, 200, 21);

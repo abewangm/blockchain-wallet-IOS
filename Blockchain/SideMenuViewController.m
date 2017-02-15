@@ -404,11 +404,11 @@ int accountEntries = 0;
             upgradeOrBackupImage = @"icon_upgrade";
         }
         else {
-            upgradeOrBackupImage = @"security";
+            upgradeOrBackupImage = @"lock";
         }
         NSMutableArray *images;
 
-        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings", @"wallet", @"merchant", @"help", @"logout"]];
         
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;

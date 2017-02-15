@@ -50,7 +50,7 @@
                         <action selector="cancelChangePin:" destination="-1" eventType="touchUpInside" id="gni-17-gMF"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockchain_logo_small" id="6uE-iJ-p4y">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="6uE-iJ-p4y">
                     <rect key="frame" x="85" y="95" width="150" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -117,7 +117,7 @@
     <resources>
         <image name="PEPin-off.png" width="49" height="49"/>
         <image name="blockchain_b" width="36" height="45"/>
-        <image name="blockchain_logo_small" width="102" height="11"/>
+        <image name="logo" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
