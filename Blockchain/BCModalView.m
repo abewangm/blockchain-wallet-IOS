@@ -19,7 +19,7 @@
     self = [super initWithFrame:CGRectMake(0, 0, window.frame.size.width, window.frame.size.height)];
     
     if (self) {
-        self.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        self.backgroundColor = [UIColor whiteColor];
         self.closeType = closeType;
         
         if (showHeader) {

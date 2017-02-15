@@ -1356,6 +1356,8 @@ void (^secondPasswordSuccess)(NSString *);
     } @catch (NSException * e) {
         DLog(@"Animation Exception %@", e);
     }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didFailBackupWallet
@@ -2041,6 +2043,8 @@ void (^secondPasswordSuccess)(NSString *);
     [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
     
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)showSecurityReminder

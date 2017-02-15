@@ -96,6 +96,11 @@ Boolean shouldShowAnimation;
     }
 }
 
+- (void)didMoveToWindow
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
 - (void)didMoveToSuperview
 {
     // If the animation has started already, don't show it again until init is called again
