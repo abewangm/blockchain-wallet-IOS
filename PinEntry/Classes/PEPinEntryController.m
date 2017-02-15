@@ -147,8 +147,8 @@ static PEViewController *VerifyController()
         if (!self.addressLabel) {
             self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
-            [self.addressLabel setTextColor:[UIColor whiteColor]];
-            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            [self.addressLabel setTextColor:COLOR_BLOCKCHAIN_BLUE];
+            [self.addressLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12]];
             self.addressLabel.adjustsFontSizeToFitWidth = YES;
             [pinController.scrollView addSubview:self.addressLabel];
         }
