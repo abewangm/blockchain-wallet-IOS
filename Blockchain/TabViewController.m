@@ -63,7 +63,7 @@
         button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width);
         
         button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
-        [button setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+        [button setTitleColor:COLOR_TEXT_DARK_GRAY forState:UIControlStateNormal];
         [button setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateHighlighted];
         
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
