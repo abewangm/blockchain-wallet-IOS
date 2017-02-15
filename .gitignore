@@ -90,5 +90,8 @@ Images.xcassets/text.imageset/*.png
 Images.xcassets/send.imageset/*.png
 Images.xcassets/receive.imageset/*.png
 Images.xcassets/tx.imageset/*.png
+Images.xcassets/send_blue.imageset/*.png
+Images.xcassets/receive_blue.imageset/*.png
+Images.xcassets/tx_blue.imageset/*.png
 Images.xcassets/keypad.imageset/*.png
 Images.xcassets/blockchain_wallet_logo.imageset/*.png
