@@ -174,8 +174,8 @@ void (^secondPasswordSuccess)(NSString *);
     NSSetUncaughtExceptionHandler(&HandleException);
 #endif
     
-    // White status bar
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    // Black status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         self.loadingText = [notification object];
@@ -1911,6 +1911,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:completionBlock];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)showSupport
@@ -2000,6 +2002,8 @@ void (^secondPasswordSuccess)(NSString *);
     self.wallet.didPairAutomatically = NO;
     
     [self hideBusyView];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)showStatusBar
@@ -2229,6 +2233,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [app.window.rootViewController.view addSubview:self.pinEntryViewController.view];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)changePIN
@@ -2247,6 +2253,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
     
     [app.window.rootViewController.view addSubview:self.pinEntryViewController.view];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)clearPin
@@ -2278,6 +2286,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     self.pinEntryViewController = nil;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (IBAction)logoutClicked:(id)sender
