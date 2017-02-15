@@ -45,11 +45,10 @@
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+    self.closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    self.closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.closeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [self.closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [self.closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
+    [self.closeButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:self.closeButton];
     

@@ -45,10 +45,11 @@
     headerLabel.text = BC_STRING_MERCHANT;
     [topBarView addSubview:headerLabel];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70, 15, 80, 51)];
-    [closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
-    closeButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    closeButton.center = CGPointMake(closeButton.center.x, headerLabel.center.y);
+    [closeButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBarView addSubview:closeButton];
     

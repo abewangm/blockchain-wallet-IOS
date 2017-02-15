@@ -84,8 +84,9 @@ static PEViewController *VerifyController()
     PEViewController *c = EnterController();
     PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
     c.delegate = n;
-    [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    c.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 1.5);
+    [c.cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;
     n->pinStage = PS_VERIFY;
@@ -99,8 +100,9 @@ static PEViewController *VerifyController()
 	PEViewController *c = EnterController();
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
-    [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    c.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 1.5);
+    [c.cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;
 	n->pinStage = PS_VERIFY;

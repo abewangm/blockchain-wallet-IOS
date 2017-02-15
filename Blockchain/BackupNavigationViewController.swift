@@ -23,6 +23,7 @@ import UIKit
         }
     }
     var busyView : BCFadeView?
+    var headerLabel: UILabel?
     
     func finishTransitioning() {
        isTransitioning = false
@@ -40,13 +41,13 @@ import UIKit
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        let headerLabel = UILabel(frame:CGRect(x: 80, y: 17.5, width: self.view.frame.size.width - 160, height: 40));
-        headerLabel.font = UIFont(name:"Montserrat-Regular", size: 22.0)
-        headerLabel.textColor = UIColor.white
-        headerLabel.textAlignment = .center;
-        headerLabel.adjustsFontSizeToFitWidth = true;
-        headerLabel.text = NSLocalizedString("Backup Funds", comment: "");
-        topBar!.addSubview(headerLabel);
+        headerLabel = UILabel(frame:CGRect(x: 80, y: 17.5, width: self.view.frame.size.width - 160, height: 40));
+        headerLabel?.font = UIFont(name:"Montserrat-Regular", size: 22.0)
+        headerLabel?.textColor = UIColor.white
+        headerLabel?.textAlignment = .center;
+        headerLabel?.adjustsFontSizeToFitWidth = true;
+        headerLabel?.text = NSLocalizedString("Backup Funds", comment: "");
+        topBar!.addSubview(headerLabel!);
         
         closeButton = UIButton(type: UIButtonType.custom)
         closeButton!.contentHorizontalAlignment = .left;
@@ -96,11 +97,10 @@ import UIKit
         
         if (viewControllers.count == 1) {
             closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
-            closeButton!.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
+            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
             closeButton!.contentHorizontalAlignment = .right
-            closeButton!.titleLabel?.adjustsFontSizeToFitWidth = true
-            closeButton!.setTitle(NSLocalizedString("Close", comment: ""), for: UIControlState())
-            closeButton!.setImage(nil, for: UIControlState())
+            closeButton!.center = CGPoint(x: closeButton!.center.x, y: headerLabel!.center.y);
+            closeButton!.setImage(UIImage(named:"cancel"), for: UIControlState())
         } else {
             closeButton!.frame = CGRect(x: 0, y: 12, width: 85, height: 51);
             closeButton!.setTitle("", for: UIControlState())

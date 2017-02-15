@@ -80,12 +80,10 @@
     [topBarView addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [closeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
-    closeButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [closeButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    closeButton.center = CGPointMake(closeButton.center.x, headerLabel.center.y);
     [closeButton addTarget:self action:@selector(closeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [topBarView addSubview:closeButton];
     closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;

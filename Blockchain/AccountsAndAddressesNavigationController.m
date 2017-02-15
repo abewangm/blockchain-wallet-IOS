@@ -100,11 +100,10 @@
     
     if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        self.backButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-        [self.backButton setImage:nil forState:UIControlStateNormal];
+        self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
+        [self.backButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
     } else {
         self.backButton.frame = CGRectMake(0, 12, 85, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
