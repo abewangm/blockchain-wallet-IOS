@@ -280,8 +280,9 @@ NSString *detailLabel;
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
         
-        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 19, 19)];
         [informationButton setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+        informationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         informationButton.center = self.view.center;
         informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
         [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
