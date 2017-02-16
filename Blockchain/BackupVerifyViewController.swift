@@ -134,12 +134,16 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             }
             
             if valid {
+                let backupNavigation = self.navigationController as? BackupNavigationViewController
+                backupNavigation?.busyView?.fadeIn()
+
                 word1?.resignFirstResponder()
                 word2?.resignFirstResponder()
                 word3?.resignFirstResponder()
-                wallet!.markRecoveryPhraseVerified()
-                let backupNavigation = self.navigationController as? BackupNavigationViewController
-                backupNavigation?.busyView?.fadeIn()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.wallet!.markRecoveryPhraseVerified()
+                }
             }
         }
     }

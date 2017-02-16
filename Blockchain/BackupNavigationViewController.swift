@@ -89,7 +89,7 @@ import UIKit
         view.addSubview(busyView!);
         view.bringSubview(toFront: busyView!);
         
-        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: NSNotification.Name(rawValue: "reloadSettingsAndSecurityCenter"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
