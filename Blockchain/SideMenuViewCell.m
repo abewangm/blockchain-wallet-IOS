@@ -24,8 +24,8 @@
     
     self.backgroundColor = [UIColor clearColor];
     self.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
-    self.textLabel.textColor = [UIColor darkTextColor];
-    self.textLabel.highlightedTextColor = [UIColor whiteColor];
+    self.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    self.textLabel.highlightedTextColor = COLOR_TEXT_DARK_GRAY;
 }
 
 @end
