@@ -73,7 +73,7 @@ module.exports = (grunt) ->
     "shell:svg:wallet:36"
     "shell:svg:close_large:30"
     "shell:svg:logo:45"
-    "shell:svg:logo_large:90"
+    "shell:svg:logo_large:80"
     "shell:svg:logo_both:110:130"
     "shell:svg:receive_blue:24"
     "shell:svg:send_blue:24"

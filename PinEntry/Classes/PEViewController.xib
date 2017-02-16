@@ -103,7 +103,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_large" id="OPk-OR-rQR">
-                    <rect key="frame" x="115" y="50" width="90" height="90"/>
+                    <rect key="frame" x="120" y="55" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -113,7 +113,7 @@
     </objects>
     <resources>
         <image name="PEPin-off.png" width="26" height="26"/>
-        <image name="logo_large" width="90" height="90"/>
+        <image name="logo_large" width="80" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
