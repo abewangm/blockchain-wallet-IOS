@@ -476,8 +476,8 @@ int accountEntries = 0;
             float leftInset = (indexPath.section != 1) ? 56 : 15;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
             
-            // No separator for last entry of each section
-            if (indexPath.section == 1) {
+            // No separator for non-account side menu items
+            if ((indexPath.section == 0 && indexPath.row == balanceEntries - 1) || indexPath.section == 1) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }
         } else {
