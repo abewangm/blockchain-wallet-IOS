@@ -45,7 +45,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         closeButton!.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
         closeButton!.contentHorizontalAlignment = .right
         closeButton!.center = CGPoint(x: closeButton!.center.x, y: headerLabel.center.y);
-        closeButton!.setImage(UIImage(named:"cancel"), for: UIControlState())
+        closeButton!.setImage(UIImage(named:"close"), for: UIControlState())
         closeButton!.addTarget(self, action:#selector(SecondPasswordViewController.close(_:)), for: UIControlEvents.touchUpInside);
         topBar!.addSubview(closeButton!);
         

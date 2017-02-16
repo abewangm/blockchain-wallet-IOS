@@ -32,7 +32,7 @@ Images.xcassets/blockchain_logo_small.imageset/*.png
 Images.xcassets/map.imageset/*.png
 Images.xcassets/qrscanner.imageset/*.png
 Images.xcassets/blockchain_logo.imageset/*.png
-Images.xcassets/sidebar.imageset/*.png
+Images.xcassets/menu.imageset/*.png
 Images.xcassets/transaction_pending.imageset/*.png
 Images.xcassets/backup_blue_circle.imageset/*.png
 Images.xcassets/backup_exclamation_mark.imageset/*.png
@@ -42,7 +42,7 @@ Images.xcassets/icon_backup_incomplete.imageset/*.png
 Images.xcassets/icon_merchant.imageset/*.png
 Images.xcassets/icon_support.imageset/*.png
 Images.xcassets/icon_upgrade.imageset/*.png
-Images.xcassets/cancel.imageset/*.png
+Images.xcassets/close.imageset/*.png
 Images.xcassets/icon_share.imageset/*.png
 Images.xcassets/thumbs.imageset/*.png
 Images.xcassets/upgrade1.imageset/*.png

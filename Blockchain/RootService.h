@@ -78,7 +78,6 @@
 @property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
 @property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
 
-@property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;

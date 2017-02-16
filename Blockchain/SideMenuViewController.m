@@ -477,18 +477,12 @@ int accountEntries = 0;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
             
             // No separator for last entry of each section
-            if ((indexPath.section == 0 && indexPath.row == balanceEntries - 1) ||
-                (indexPath.section == 1 && indexPath.row == menuEntries - 1)) {
+            if (indexPath.section == 1) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }
         } else {
-            // Custom separator inset
-            [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
-            
-            // No separator for last entry of each section
-            if (indexPath.row == menuEntries - 1) {
-                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-            }
+            // No separator
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
         }
     }
 }

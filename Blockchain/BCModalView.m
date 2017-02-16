@@ -50,7 +50,7 @@
                 self.closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 15, 80, 51)];
                 self.closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
                 self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-                [self.closeButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+                [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
                 self.closeButton.center = CGPointMake(self.closeButton.center.x, headerLabel.center.y);
                 [self.closeButton addTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [topBarView addSubview:self.closeButton];

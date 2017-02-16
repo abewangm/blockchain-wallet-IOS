@@ -84,7 +84,7 @@
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
         self.backButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        [self.backButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+        [self.backButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
         self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
     } else {
         self.backButton.frame = CGRectMake(0, 12, 85, 51);

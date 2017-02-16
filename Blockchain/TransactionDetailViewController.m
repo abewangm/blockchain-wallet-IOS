@@ -96,7 +96,7 @@ const CGFloat rowHeightValueReceived = 92;
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(updateButton.frame.size.width - 50, 0, 50, BUTTON_HEIGHT)];
     cancelButton.backgroundColor = COLOR_BUTTON_GRAY_CANCEL;
-    [cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    [cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
     [inputAccessoryView addSubview:cancelButton];
     

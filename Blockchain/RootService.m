@@ -558,7 +558,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
     [_transactionsViewController showFilterLabel];
-    self.mainLogoImageView.hidden = YES;
     
     [_sendViewController resetFromAddress];
     [_receiveViewController reloadMainAddress];
@@ -574,7 +573,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
     [_transactionsViewController showFilterLabel];
-    self.mainLogoImageView.hidden = YES;
     
     [self.wallet reloadFilter];
     
@@ -586,7 +584,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController hideFilterLabel];
-    self.mainLogoImageView.hidden = NO;
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -2165,7 +2162,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
     if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
-        app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];
         } else {
@@ -2173,7 +2169,6 @@ void (^secondPasswordSuccess)(NSString *);
         }
     } else {
         [_transactionsViewController hideFilterLabel];
-        app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
     }
 #endif
 }

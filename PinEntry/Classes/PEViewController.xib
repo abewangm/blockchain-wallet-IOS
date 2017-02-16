@@ -91,7 +91,7 @@
                     </subviews>
                 </scrollView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CMP-hL-rTn">
-                    <rect key="frame" x="272" y="27" width="48" height="30"/>
+                    <rect key="frame" x="272" y="22" width="48" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal">

@@ -25,7 +25,7 @@
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
     closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [closeButton setImage:[[UIImage imageNamed:@"cancel"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [closeButton setImage:[[UIImage imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     closeButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
     closeButton.center = CGPointMake(closeButton.center.x, closeButton.center.y);
     [closeButton addTarget:self action:@selector(closeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
