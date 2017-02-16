@@ -42,9 +42,6 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
             backupIconImageView.tintColor = Constants.Colors.SuccessGreen
             backupWalletButton.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
             
-            // Override any font changes
-            backupWalletAgainButton.titleLabel?.font = UIFont(name:"Montserrat-Regular", size: 14);
-            
             if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
                 let alertToTransferAll = UIAlertController(title: NSLocalizedString("Transfer imported addresses?", comment:""), message: NSLocalizedString("Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", comment:""), preferredStyle: .alert)
                 alertToTransferAll.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .cancel, handler: nil))
@@ -72,8 +69,8 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if (backupWalletAgainButton?.isHidden == false) {
-            backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), for: UIControlState())
+        if (wallet!.isRecoveryPhraseVerified()) {
+            backupWalletButton?.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
         } else {
             backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), for: UIControlState())
         }
