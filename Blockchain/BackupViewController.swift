@@ -31,10 +31,16 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         backupWalletButton.clipsToBounds = true
         backupWalletButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
+        if let image = backupIconImageView.image {
+            backupIconImageView.image? = image.withRenderingMode(.alwaysTemplate)
+            backupIconImageView.tintColor = Constants.Colors.WarningRed
+        }
+        
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel.text = NSLocalizedString("You backed up your funds successfully.", comment: "");
             explanation.text = NSLocalizedString("Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin.", comment: "")
-            backupIconImageView.image = UIImage(named: "thumbs")
+            backupIconImageView.image = UIImage(named: "success")?.withRenderingMode(.alwaysTemplate)
+            backupIconImageView.tintColor = Constants.Colors.SuccessGreen
             backupWalletButton.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), for: UIControlState())
             backupWalletAgainButton.isHidden = false
             backupWalletAgainButton.titleLabel?.textAlignment = .center;

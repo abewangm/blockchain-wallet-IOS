@@ -58,7 +58,7 @@
                                     <action selector="backupWalletButtonTapped:" destination="g04-JJ-JLu" eventType="touchUpInside" id="czX-2d-xFa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_backup_incomplete" id="yp5-t8-iIg">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" id="yp5-t8-iIg">
                                 <rect key="frame" x="135" y="24" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -385,7 +385,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_backup_incomplete" width="26" height="26"/>
+        <image name="lock" width="36" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -393,7 +393,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="U0S-3m-R5I"/>
         <segue reference="dla-jc-Bti"/>
-        <segue reference="o31-rh-3dv"/>
     </inferredMetricsTieBreakers>
 </document>

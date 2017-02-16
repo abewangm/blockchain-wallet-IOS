@@ -15,6 +15,8 @@ struct Constants {
         static let BlockchainLightBlue = UIColorFromRGB(0x10ade4)
         static let BlockchainLightestBlue = UIColorFromRGB(0xb2d5e5)
         static let SecondaryGray = UIColorFromRGB(0xebebeb)
+        static let SuccessGreen = UIColorFromRGB(0x199D69)
+        static let WarningRed = UIColorFromRGB(0xB83940)
         static let SentRed = UIColorFromRGB(0xF26C57)
     }
     struct Measurements {
