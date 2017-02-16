@@ -124,6 +124,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define OFFSET_TEXTVIEW_ADJUSTED_TOP CGPointMake(0, 3.5)
 
+#define FONT_SIZE_TOP_BAR_TEXT 20.0
+
 #pragma mark - Strings
 
 #define COPYRIGHT_YEAR @"2017"
