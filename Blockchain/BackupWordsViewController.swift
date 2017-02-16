@@ -104,10 +104,12 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     func updatePreviousWordButton() {
         if wordsPageControl!.currentPage == 0 {
             previousWordButton?.isEnabled = false
-            previousWordButton?.setTitleColor(UIColor.lightGray, for: UIControlState())
+            previousWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+            previousWordButton?.backgroundColor = Constants.Colors.DisabledGray
         } else {
             previousWordButton?.isEnabled = true
-            previousWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+            previousWordButton?.setTitleColor(UIColor.white, for: UIControlState())
+            previousWordButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
         }
     }
 
@@ -137,8 +139,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
                 nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton?.setTitle(NSLocalizedString("Done", comment:""), for: UIControlState())
             } else if wordsPageControl!.currentPage == count-2 {
-                nextWordButton?.backgroundColor = Constants.Colors.SecondaryGray
-                nextWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+                nextWordButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
+                nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), for: UIControlState())
             }
             
