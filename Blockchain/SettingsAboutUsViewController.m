@@ -17,12 +17,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
+    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [closeButton setImage:[[UIImage imageNamed:@"cancel"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    closeButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
+    closeButton.center = CGPointMake(closeButton.center.x, closeButton.center.y);
+    [closeButton addTarget:self action:@selector(closeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:closeButton];
     CGFloat imageWidth = self.view.frame.size.width - 120;
     
     UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, 100, imageWidth, 80)];
-    logoImageView.image = [UIImage imageNamed:@"logo"];
+    logoImageView.image = [UIImage imageNamed:@"logo_large"];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:logoImageView];
     
@@ -59,6 +70,11 @@
 - (void)rateApp
 {
     [app rateApp];
+}
+
+- (void)closeButtonClicked
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

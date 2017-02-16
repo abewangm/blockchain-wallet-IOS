@@ -359,8 +359,7 @@ const int aboutPrivacyPolicy = 2;
 - (void)aboutUsClicked
 {
     SettingsAboutUsViewController *aboutViewController = [[SettingsAboutUsViewController alloc] init];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:aboutViewController title:nil];
-    [self presentViewController:navigationController animated:YES completion:nil];
+    [self presentViewController:aboutViewController animated:YES completion:nil];
 }
 
 - (void)termsOfServiceClicked
