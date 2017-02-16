@@ -147,7 +147,7 @@ static PEViewController *VerifyController()
         [pinController.scrollView setUserInteractionEnabled:YES];
         
         if (!self.addressLabel) {
-            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 300, 320, 30)];
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
             [self.addressLabel setTextColor:COLOR_BLOCKCHAIN_BLUE];
             [self.addressLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12]];
@@ -169,7 +169,7 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     
@@ -188,7 +188,7 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     

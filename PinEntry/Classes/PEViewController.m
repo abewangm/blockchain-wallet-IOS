@@ -73,7 +73,15 @@
 	pins[3] = pin3;
 	self.pin = @"";
     
-    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, self.scrollView.frame.size.width, 360);
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        pin0.frame = CGRectOffset(pin0.frame, 0, 60);
+        pin1.frame = CGRectOffset(pin1.frame, 0, 60);
+        pin2.frame = CGRectOffset(pin2.frame, 0, 60);
+        pin3.frame = CGRectOffset(pin3.frame, 0, 60);
+        promptLabel.frame = CGRectOffset(promptLabel.frame, 0, 60);
+    }
+    
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, self.scrollView.frame.size.width, 380);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
