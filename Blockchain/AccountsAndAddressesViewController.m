@@ -269,14 +269,16 @@
     if (section == 0) {
         labelString = nil;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     } else
