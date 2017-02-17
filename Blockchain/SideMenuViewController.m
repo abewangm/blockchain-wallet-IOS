@@ -410,11 +410,6 @@ int accountEntries = 0;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
-        if ([images[indexPath.row] isEqualToString:@"security"]) {
-            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
-        }
-        
         return cell;
     }
     else {
