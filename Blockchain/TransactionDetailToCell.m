@@ -35,12 +35,12 @@
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_TO;
-    self.mainLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
     
     if (transaction.to.count > 1) {
         self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
-        self.detailTextLabel.textColor = [UIColor lightGrayColor];
+        self.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
         self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
@@ -50,7 +50,7 @@
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
-        self.accessoryLabel.textColor = [UIColor blackColor];
+        self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
         [self.contentView addSubview:self.accessoryLabel];
         self.accessoryType = UITableViewCellAccessoryNone;
     }

@@ -847,7 +847,7 @@ BOOL displayingLocalSymbolSend;
         } else {
             [self enablePaymentButtons];
             
-            feeField.textColor = [UIColor blackColor];
+            feeField.textColor = COLOR_TEXT_DARK_GRAY;
             [self removeHighlightFromAmounts];
         }
     }
@@ -863,8 +863,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)removeHighlightFromAmounts
 {
-    btcAmountField.textColor = [UIColor blackColor];
-    fiatAmountField.textColor = [UIColor blackColor];
+    btcAmountField.textColor = COLOR_TEXT_DARK_GRAY;
+    fiatAmountField.textColor = COLOR_TEXT_DARK_GRAY;
 }
 
 - (void)disablePaymentButtons
@@ -1306,7 +1306,7 @@ BOOL displayingLocalSymbolSend;
                 textField.textColor = [UIColor redColor];
                 [self disablePaymentButtons];
             } else {
-                textField.textColor = [UIColor blackColor];
+                textField.textColor = COLOR_TEXT_DARK_GRAY;
                 [self enablePaymentButtons];
             }
             

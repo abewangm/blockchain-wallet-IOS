@@ -32,7 +32,7 @@
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_STATUS;
-    self.mainLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
     [self.contentView addSubview:self.mainLabel];
     

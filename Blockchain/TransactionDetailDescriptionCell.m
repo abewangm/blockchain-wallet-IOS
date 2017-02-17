@@ -34,7 +34,7 @@
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
     self.mainLabel.text = BC_STRING_DESCRIPTION;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
-    self.mainLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 160, 0)];
@@ -43,6 +43,7 @@
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
     [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15]];
+    self.textView.textColor = COLOR_TEXT_DARK_GRAY;
     
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
     
@@ -150,7 +151,7 @@
     UIImageView *pencilImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, pencilImageViewHeight, pencilImageViewHeight)];
     pencilImageView.image = [UIImage imageNamed:@"pencil"];
     pencilImageView.image = [pencilImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [pencilImageView setTintColor:[UIColor lightGrayColor]];
+    [pencilImageView setTintColor:COLOR_PENCIL_LIGHT_GRAY];
     pencilImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.editButton addSubview:pencilImageView];
     
