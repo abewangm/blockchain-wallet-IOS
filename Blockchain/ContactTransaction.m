@@ -19,7 +19,8 @@
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
         _reason = [dictionary objectForKey:DICTIONARY_KEY_REASON];
         _contactIdentifier = identifier;
-        
+        _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue];
+
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
         
         if ([_state isEqualToString:TRANSACTION_STATE_WAITING_PAYMENT]) {

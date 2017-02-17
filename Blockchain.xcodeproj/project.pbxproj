@@ -199,6 +199,7 @@
 		C75F70E41E241D69005B4EAF /* BCContactRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E31E241D69005B4EAF /* BCContactRequestView.m */; };
 		C75F70E71E2684FF005B4EAF /* ContactTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */; };
 		C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E91E2685CA005B4EAF /* ContactTransaction.m */; };
+		C790E0F81E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
 		C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916A1945D8F600FD516D /* PEPinEntryController.m */; };
 		C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916C1945D8F600FD516D /* PEViewController.m */; };
@@ -989,6 +990,8 @@
 		C75F70E81E2685CA005B4EAF /* ContactTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTransaction.h; sourceTree = "<group>"; };
 		C75F70E91E2685CA005B4EAF /* ContactTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTransaction.m; sourceTree = "<group>"; };
 		C790E0F21E4913F00063D141 /* Blockchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blockchain.entitlements; sourceTree = "<group>"; };
+		C790E0F61E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TimeAgoString.h"; sourceTree = "<group>"; };
+		C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TimeAgoString.m"; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
 		C9BE91681945D8F600FD516D /* PENumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PENumpadView.m; sourceTree = "<group>"; };
 		C9BE91691945D8F600FD516D /* PEPinEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPinEntryController.h; sourceTree = "<group>"; };
@@ -1313,6 +1316,8 @@
 		9F1831F315176F2200FB3D52 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C790E0F61E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.h */,
+				C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */,
 				23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */,
 				23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */,
 				23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */,
@@ -2018,6 +2023,7 @@
 				67E9674E19DF285000305358 /* SideMenuViewController.m in Sources */,
 				9FCA4D161514949500ECDFBE /* ReceiveCoinsViewController.m in Sources */,
 				2322DCBD1D771831000E5AC1 /* SRHTTPConnectMessage.m in Sources */,
+				C790E0F81E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m in Sources */,
 				230FD2D31C5BD04000336683 /* BCEditAddressView.m in Sources */,
 				23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */,
 				23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */,

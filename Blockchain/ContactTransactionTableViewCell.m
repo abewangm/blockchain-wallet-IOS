@@ -8,6 +8,7 @@
 
 #import "ContactTransactionTableViewCell.h"
 #import "NSNumberFormatter+Currencies.h"
+#import "NSDateFormatter+TimeAgoString.h"
 
 @interface ContactTransactionTableViewCell()
 @property (nonatomic) BOOL isSetup;
@@ -38,9 +39,9 @@
     
     self.mainLabel = [[UILabel alloc] init];
     self.mainLabel.font = [UIFont systemFontOfSize:12];
-    [self.contentView addSubview:self.mainLabel];
     self.mainLabel.textColor = [UIColor grayColor];
     self.mainLabel.numberOfLines = 3;
+    [self.contentView addSubview:self.mainLabel];
     
     self.separator = [[UIView alloc] init];
     self.separator.backgroundColor = [UIColor lightGrayColor];
@@ -55,23 +56,26 @@
 {
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
     
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.lastUpdated];
+    NSString *dateString = [NSString stringWithFormat:@"%@ %@", BC_STRING_LAST_UPDATED, [NSDateFormatter timeAgoStringFromDate:date]];
+    
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name], [NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, name]];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name], [NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, name], dateString];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT, amount, name],BC_STRING_ACCEPT_OR_DENY];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT, amount, name],BC_STRING_ACCEPT_OR_DENY, dateString];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name],BC_STRING_READY_TO_SEND];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name],BC_STRING_READY_TO_SEND, dateString];
         self.actionImageView.hidden = NO;
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT, amount, name], BC_STRING_WAITING_FOR_PAYMENT];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT, amount, name], BC_STRING_WAITING_FOR_PAYMENT, dateString];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT, amount];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT, amount], dateString];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        self.mainLabel.text = [NSString stringWithFormat:BC_STRING_RECEIVED_ARGUMENT, amount];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVED_ARGUMENT, amount], dateString];
         self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];

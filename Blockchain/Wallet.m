@@ -720,6 +720,10 @@
         [weakSelf on_delete_contact_success:info];
     };
     
+    self.context[@"objc_get_time_since_1970"] = ^() {
+        return [[NSDate date] timeIntervalSince1970];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
