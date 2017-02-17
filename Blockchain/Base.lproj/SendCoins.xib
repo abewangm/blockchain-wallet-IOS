@@ -254,7 +254,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.48627450980392156" green="0.49019607843137253" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                    <state key="normal" image="cancel">
+                    <state key="normal" image="close">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -496,7 +496,7 @@
     </objects>
     <resources>
         <image name="arrow_downward" width="26" height="26"/>
-        <image name="cancel" width="11" height="11"/>
+        <image name="close" width="18" height="18"/>
         <image name="disclosure" width="11" height="17"/>
         <image name="help" width="36" height="36"/>
     </resources>
