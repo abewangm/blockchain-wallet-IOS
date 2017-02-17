@@ -33,7 +33,7 @@ module.exports = (grunt) ->
     "shell:svg:menu:14:20"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"
-    "shell:svg:check:15"
+    "shell:svg:check:20"
     "shell:svg:warning:26"
     "shell:svg:arrow_downward:26"
     "shell:svg:pencil:26"
