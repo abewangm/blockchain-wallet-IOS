@@ -282,7 +282,33 @@ typedef enum {
 
 #pragma mark - Table View Delegate
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [self getFooterViewForSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    UIView *view = [self getFooterViewForSection:section];
+    return view.frame.size.height;
+}
+
+- (UIView *)getFooterViewForSection:(NSInteger)section
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, self.tableView.frame.size.width - 30, 50)];
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    label.numberOfLines = 0;
+    label.textColor = [UIColor grayColor];
+    label.text = [self getStringForFooterInSection:section];
+    [label sizeToFit];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, label.frame.size.height + 16)];
+    [view addSubview:label];
+    
+    return view;
+}
+
+- (NSString *)getStringForFooterInSection:(NSInteger)section
 {
     BOOL canTransferFromAddress = [self canTransferFromAddress];
     
@@ -497,6 +523,7 @@ typedef enum {
                     }
                 } else {
                     cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
@@ -506,6 +533,7 @@ typedef enum {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 if (self.address) {
                     cell.textLabel.text = BC_STRING_ADDRESS;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.detailTextLabel.text = self.address;
                 } else {
                     if ([app.wallet getDefaultAccountIndex] != self.account) {
@@ -514,7 +542,7 @@ typedef enum {
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     } else {
                         cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-                        cell.textLabel.textColor = [UIColor blackColor];
+                        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     }
                 }
                 return cell;
@@ -536,6 +564,7 @@ typedef enum {
                     }
                 } else {
                     cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 return cell;
