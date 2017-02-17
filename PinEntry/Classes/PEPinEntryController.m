@@ -305,6 +305,7 @@ static PEViewController *VerifyController()
         self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
         [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
+        [self.debugButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         [self.view addSubview:self.debugButton];
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }
