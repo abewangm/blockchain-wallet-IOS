@@ -125,7 +125,7 @@ NSString *detailLabel;
     
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
     receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-    receiveBtcLabel.textColor = [UIColor lightGrayColor];
+    receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     [self.bottomContainerView addSubview:receiveBtcLabel];
     
@@ -135,17 +135,19 @@ NSString *detailLabel;
     self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
     self.receiveBtcField.delegate = self;
+    self.receiveBtcField.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveBtcField];
     
     receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
     receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-    receiveFiatLabel.textColor = [UIColor lightGrayColor];
+    receiveFiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
     
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
     self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    self.receiveFiatField.textColor = COLOR_TEXT_DARK_GRAY;
     self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
     self.receiveFiatField.delegate = self;
@@ -153,7 +155,7 @@ NSString *detailLabel;
     
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
     whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-    whereLabel.textColor = [UIColor lightGrayColor];
+    whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
     whereLabel.text = BC_STRING_WHERE;
     whereLabel.adjustsFontSizeToFitWidth = YES;
     [self.bottomContainerView addSubview:whereLabel];
@@ -166,6 +168,7 @@ NSString *detailLabel;
     
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
     self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    self.receiveToLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveToLabel];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
     [self.receiveToLabel addGestureRecognizer:tapGesture];
@@ -257,7 +260,7 @@ NSString *detailLabel;
     
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
     instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:12] : [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:14];
-    instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
+    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
     instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
     instructionsLabel.numberOfLines = 0;
@@ -275,7 +278,7 @@ NSString *detailLabel;
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
-        mainAddressLabel.textColor = [UIColor blackColor];
+        mainAddressLabel.textColor = COLOR_TEXT_DARK_GRAY;;
         [mainAddressLabel setMinimumScaleFactor:.5f];
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
