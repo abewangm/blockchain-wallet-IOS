@@ -91,7 +91,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
-#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x1b8ac7)
+#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE COLOR_BLOCKCHAIN_LIGHT_BLUE
 
 #pragma mark - Measurements
 
@@ -446,9 +446,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_REMINDER_MODAL_DATE @"reminderModalDate"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
-
-#define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
-#define REUSE_IDENTIFIER_SWIPE_TO_RECEIVE @"swipeToReceive"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"

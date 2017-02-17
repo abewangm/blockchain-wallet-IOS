@@ -305,7 +305,6 @@ int legacyAddressesSectionNumber;
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
         cell.backgroundColor = [UIColor whiteColor];
         
-        
         NSString *label;
         if (section == addressBookSectionNumber) {
             label = [addressBookAddressLabels objectAtIndex:row];

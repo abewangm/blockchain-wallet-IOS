@@ -1213,6 +1213,7 @@ const int aboutPrivacyPolicy = 2;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+            cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
             cell.textLabel.font = [SettingsTableViewController fontForCell];
             cell.detailTextLabel.font = [SettingsTableViewController fontForCell];
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -1225,6 +1226,7 @@ const int aboutPrivacyPolicy = 2;
             switch (indexPath.row) {
                 case walletInformationIdentifier: {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
                     cell.detailTextLabel.text = app.wallet.guid;
                     cell.detailTextLabel.font = [SettingsTableViewController fontForCellSubtitle];
@@ -1347,8 +1349,6 @@ const int aboutPrivacyPolicy = 2;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 return cell;
             } else if (indexPath.row == PINTouchID) {
-                cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN];
                 cell.textLabel.adjustsFontSizeToFitWidth = YES;
                 cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1361,8 +1361,6 @@ const int aboutPrivacyPolicy = 2;
                 cell.accessoryView = switchForTouchID;
                 return cell;
             } else if (indexPath.row == PINSwipeToReceive) {
-                cell = [tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER_SWIPE_TO_RECEIVE];
                 cell.textLabel.adjustsFontSizeToFitWidth = YES;
                 cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
