@@ -1340,10 +1340,6 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
-RNG.randomBytes = function(nBytes) {
-    return Buffer(objc_getRandomBytes(nBytes), 'hex');
-}
-
 MyWallet.socketConnect = function() {
     // override socketConnect to prevent memory leaks
 }

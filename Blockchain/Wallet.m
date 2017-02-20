@@ -83,7 +83,7 @@
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
     [self.context evaluateScript:@"var console = {};"];
@@ -414,14 +414,14 @@
     
 #pragma mark Accounts/Addresses
     
-    self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
-        DLog(@"objc_getObjCRandomValues");
+    self.context[@"objc_getRandomValues"] = ^(JSValue *buffer) {
+        DLog(@"objc_getRandomValues");
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
         if (!fileHandle) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
-        NSData *data = [fileHandle readDataOfLength:[count intValue]];
+        NSData *data = [fileHandle readDataOfLength:[[buffer toArray] count]];
         return [data hexadecimalString];
     };
     
