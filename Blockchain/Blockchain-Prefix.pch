@@ -520,7 +520,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
 #define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@\n%@"
-#define JAVASCRIPTCORE_GLOBAL_CRYPTO @"var objcCrypto = function (Buffer) { return {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray); intArray.set(new Buffer(result, 'hex')); }}};"
+#define JAVASCRIPTCORE_GLOBAL_CRYPTO @"var objcBufferStore; var objcCrypto = function (Buffer) { return {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray); if (Buffer) objcBufferStore = Buffer; intArray.set(new Buffer(result, 'hex')); }}};"
 #define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
 #define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
 #define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
