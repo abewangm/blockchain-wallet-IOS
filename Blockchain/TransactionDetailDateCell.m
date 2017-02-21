@@ -33,15 +33,18 @@
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
     self.mainLabel.text = BC_STRING_DATE;
-    self.mainLabel.textColor = [UIColor lightGrayColor];
+    self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
     
     CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+    self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.accessoryLabel.font.pointSize];
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.text = dateString;
+    self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.accessoryLabel];
     
     self.isSetup = YES;

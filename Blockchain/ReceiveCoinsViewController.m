@@ -110,10 +110,12 @@ NSString *detailLabel;
 {
 #ifdef ENABLE_DEBUG_MENU
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BUTTON_RED;
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
+    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
     requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+
     [self.view addSubview:requestButton];
     [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
     
@@ -123,9 +125,9 @@ NSString *detailLabel;
     UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
     [shareButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
 #endif
-    shareButton.backgroundColor = COLOR_BUTTON_GREEN;
+    shareButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    shareButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [shareButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
     [self.view addSubview:shareButton];
     [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
@@ -140,37 +142,40 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
-    receiveBtcLabel.font = [UIFont systemFontOfSize:13];
-    receiveBtcLabel.textColor = [UIColor lightGrayColor];
+    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     [self.bottomContainerView addSubview:receiveBtcLabel];
     
     self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + 53, 10, 117, 30)];
-    self.receiveBtcField.font = [UIFont systemFontOfSize:13];
+    self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
     self.receiveBtcField.delegate = self;
+    self.receiveBtcField.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveBtcField];
     
     receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 136, 15, 40, 21)];
-    receiveFiatLabel.font = [UIFont systemFontOfSize:13];
-    receiveFiatLabel.textColor = [UIColor lightGrayColor];
+    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    receiveFiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
     
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
-    self.receiveFiatField.font = [UIFont systemFontOfSize:13];
+    self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+    self.receiveFiatField.textColor = COLOR_TEXT_DARK_GRAY;
     self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
     self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
     self.receiveFiatField.delegate = self;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
     UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
-    whereLabel.font = [UIFont systemFontOfSize:13];
-    whereLabel.textColor = [UIColor lightGrayColor];
+    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
     whereLabel.text = BC_STRING_WHERE;
+    whereLabel.adjustsFontSizeToFitWidth = YES;
     [self.bottomContainerView addSubview:whereLabel];
     
     UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
@@ -180,7 +185,8 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:selectDestinationButton];
     
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
-    self.receiveToLabel.font = [UIFont systemFontOfSize:13];
+    self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    self.receiveToLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveToLabel];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
     [self.receiveToLabel addGestureRecognizer:tapGesture];
@@ -271,8 +277,8 @@ NSString *detailLabel;
     [self.view addSubview:self.headerView];
     
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
-    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont systemFontOfSize:12] : [UIFont systemFontOfSize:14];
-    instructionsLabel.textColor = COLOR_FOREGROUND_GRAY;
+    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:12] : [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:14];
+    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
     instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
     instructionsLabel.numberOfLines = 0;
@@ -288,15 +294,16 @@ NSString *detailLabel;
         
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 18)];
         
-        mainAddressLabel.font = [UIFont systemFontOfSize:15];
+        mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
-        mainAddressLabel.textColor = [UIColor blackColor];
+        mainAddressLabel.textColor = COLOR_TEXT_DARK_GRAY;;
         [mainAddressLabel setMinimumScaleFactor:.5f];
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
         
-        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
-        [informationButton setImage:[UIImage imageNamed:@"icon_support"] forState:UIControlStateNormal];
+        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 19, 19)];
+        [informationButton setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+        informationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         informationButton.center = self.view.center;
         informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
         [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

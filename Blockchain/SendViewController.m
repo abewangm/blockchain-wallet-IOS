@@ -867,7 +867,7 @@ BOOL displayingLocalSymbolSend;
         } else {
             [self enablePaymentButtons];
             
-            feeField.textColor = [UIColor blackColor];
+            feeField.textColor = COLOR_TEXT_DARK_GRAY;
             [self removeHighlightFromAmounts];
         }
     }
@@ -883,8 +883,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)removeHighlightFromAmounts
 {
-    btcAmountField.textColor = [UIColor blackColor];
-    fiatAmountField.textColor = [UIColor blackColor];
+    btcAmountField.textColor = COLOR_TEXT_DARK_GRAY;
+    fiatAmountField.textColor = COLOR_TEXT_DARK_GRAY;
 }
 
 - (void)disablePaymentButtons
@@ -902,11 +902,11 @@ BOOL displayingLocalSymbolSend;
 {
     continuePaymentButton.enabled = YES;
     [continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [continuePaymentButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    [continuePaymentButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
     
     [continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     continuePaymentAccessoryButton.enabled = YES;
-    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_GREEN];
+    [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
 - (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
@@ -1338,7 +1338,7 @@ BOOL displayingLocalSymbolSend;
                 textField.textColor = [UIColor redColor];
                 [self disablePaymentButtons];
             } else {
-                textField.textColor = [UIColor blackColor];
+                textField.textColor = COLOR_TEXT_DARK_GRAY;
                 [self enablePaymentButtons];
             }
             

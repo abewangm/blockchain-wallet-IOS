@@ -63,11 +63,12 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     override func viewDidAppear(_ animated: Bool) {
         verifyButton = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46))
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: UIControlState())
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: .disabled)
+        verifyButton?.setTitle(NSLocalizedString("Verify", comment:""), for: UIControlState())
+        verifyButton?.setTitle(NSLocalizedString("Verify", comment:""), for: .disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
-        verifyButton?.titleLabel!.font = UIFont.boldSystemFont(ofSize: 15)
+        verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: 15.0)
+
         verifyButton?.isEnabled = true
         verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)
         verifyButton?.isEnabled = false
@@ -133,12 +134,16 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             }
             
             if valid {
+                let backupNavigation = self.navigationController as? BackupNavigationViewController
+                backupNavigation?.busyView?.fadeIn()
+
                 word1?.resignFirstResponder()
                 word2?.resignFirstResponder()
                 word3?.resignFirstResponder()
-                wallet!.markRecoveryPhraseVerified()
-                let backupNavigation = self.navigationController as? BackupNavigationViewController
-                backupNavigation?.busyView?.fadeIn()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.wallet!.markRecoveryPhraseVerified()
+                }
             }
         }
     }
@@ -158,7 +163,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func textFieldDidChange() {
         if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
-            verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
             verifyButton?.isEnabled = true
             verifyButton?.setTitleColor(UIColor.white, for: UIControlState())
         } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {

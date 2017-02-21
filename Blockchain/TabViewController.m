@@ -53,16 +53,18 @@
     NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {
+                
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
         [button setTitle:label forState:UIControlStateNormal];
+        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:10]];
         CGSize titleSize = [label sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
         
         CGSize imageSize = button.imageView.image.size;
         button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width);
         
         button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
-        [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_GRAY forState:UIControlStateNormal];
-        [button setTitleColor:COLOR_TAB_BAR_BUTTON_TEXT_BLUE forState:UIControlStateHighlighted];
+        [button setTitleColor:COLOR_TEXT_DARK_GRAY forState:UIControlStateNormal];
+        [button setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateHighlighted];
         
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
     }

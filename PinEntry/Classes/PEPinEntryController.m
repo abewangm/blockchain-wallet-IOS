@@ -84,8 +84,9 @@ static PEViewController *VerifyController()
     PEViewController *c = EnterController();
     PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
     c.delegate = n;
-    [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    c.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    [c.cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;
     n->pinStage = PS_VERIFY;
@@ -99,8 +100,9 @@ static PEViewController *VerifyController()
 	PEViewController *c = EnterController();
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
-    [c.cancelButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    c.cancelButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    [c.cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;
 	n->pinStage = PS_VERIFY;
@@ -145,10 +147,10 @@ static PEViewController *VerifyController()
         [pinController.scrollView setUserInteractionEnabled:YES];
         
         if (!self.addressLabel) {
-            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 260, 320, 30)];
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 300, 320, 30)];
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
-            [self.addressLabel setTextColor:[UIColor whiteColor]];
-            [self.addressLabel setFont:[UIFont systemFontOfSize:12]];
+            [self.addressLabel setTextColor:COLOR_BLOCKCHAIN_BLUE];
+            [self.addressLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12]];
             self.addressLabel.adjustsFontSizeToFitWidth = YES;
             [pinController.scrollView addSubview:self.addressLabel];
         }
@@ -167,7 +169,7 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     
@@ -186,7 +188,7 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 20, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     
@@ -303,6 +305,7 @@ static PEViewController *VerifyController()
         self.debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self.debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
         [self.debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
+        [self.debugButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         [self.view addSubview:self.debugButton];
         [self.debugButton addGestureRecognizer:self.longPressGesture];
     }

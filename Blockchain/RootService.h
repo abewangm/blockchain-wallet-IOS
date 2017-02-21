@@ -80,7 +80,6 @@
 @property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
 @property (strong, nonatomic) ContactsViewController *contactsViewController;
 
-@property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
@@ -107,6 +106,8 @@
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
+@property (nonatomic) BOOL isVerifyingMobileNumber;
+
 @property (nonatomic) ContactTransaction *pendingPaymentRequestTransaction;
 
 // Certificate Pinning
@@ -202,7 +203,7 @@
 - (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)contactsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
-- (IBAction)securityCenterClicked:(id)sender;
+- (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 

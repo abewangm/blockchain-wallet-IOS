@@ -542,7 +542,6 @@ const int sectionMain = 0;
     [app reloadTransactionFilterLabel];
 #else
     [self hideFilterLabel];
-    app.mainLogoImageView.hidden = NO;
 #endif
 }
 
@@ -553,7 +552,6 @@ const int sectionMain = 0;
     app.wallet.isFetchingTransactions = NO;
     filterLabel.hidden = YES;
 #endif
-    app.mainLogoImageView.hidden = YES;
     app.mainTitleLabel.hidden = NO;
 }
 

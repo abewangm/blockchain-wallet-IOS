@@ -86,11 +86,11 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIImage imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PEKeyboard-3%@.png", detail]] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
+    [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
     
     if(activeClip >= 0) {
         [[UIBezierPath bezierPathWithRect:Buttons[activeClip]] addClip];
-        [[UIImage imageWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PEKeyboard-4%@.png", detail]] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
+        [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
     }
 }
 

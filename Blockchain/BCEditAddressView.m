@@ -24,7 +24,7 @@
         
         UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, 290, 21)];
         addressLabel.textColor = [UIColor darkGrayColor];
-        addressLabel.font = [UIFont systemFontOfSize:17.0];
+        addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         addressLabel.text = address;
         addressLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:addressLabel];
@@ -34,7 +34,7 @@
         self.labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         [self addSubview:self.labelTextField];
         self.labelTextField.frame = CGRectMake(15, 37, 290, 30);
-        
+        self.labelTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:self.labelTextField.font.pointSize];
         self.labelTextField.returnKeyType = UIReturnKeyDone;
         self.labelTextField.delegate = self;
         
@@ -43,7 +43,7 @@
         saveButton.backgroundColor = COLOR_BUTTON_GRAY;
         [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
         [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [saveButton addTarget:self action:@selector(labelSaveClicked) forControlEvents:UIControlEventTouchUpInside];
         

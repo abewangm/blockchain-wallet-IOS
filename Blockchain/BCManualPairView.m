@@ -18,10 +18,10 @@
 
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
-    saveButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    saveButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [saveButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
     [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    saveButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+    saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     
     [saveButton addTarget:self action:@selector(continueClicked:) forControlEvents:UIControlEventTouchUpInside];
     

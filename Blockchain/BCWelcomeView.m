@@ -25,10 +25,10 @@ Boolean shouldShowAnimation;
     self = [super initWithFrame:CGRectMake(0, 0, window.frame.size.width, window.frame.size.height - 20)];
     
     if (self) {
-        self.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        self.backgroundColor = [UIColor whiteColor];
         
         // Logo
-        UIImage *logo = [UIImage imageNamed:@"welcome_logo"];
+        UIImage *logo = [UIImage imageNamed:@"logo_both"];
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake((window.frame.size.width -logo.size.width) / 2, 80, logo.size.width, logo.size.height)];
         imageView.image = logo;
         imageView.alpha = 0;
@@ -37,36 +37,37 @@ Boolean shouldShowAnimation;
         
         // Buttons
         self.createWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.createWalletButton.frame = CGRectMake(40, self.frame.size.height - 220, 240, BUTTON_HEIGHT);
-        self.createWalletButton.layer.cornerRadius = 16;
-        self.createWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.createWalletButton.frame = CGRectMake(40, self.frame.size.height - 230, 240, BUTTON_HEIGHT);
+        self.createWalletButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+        self.createWalletButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         self.createWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         self.createWalletButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.createWalletButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
-        [self.createWalletButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+        [self.createWalletButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.createWalletButton setTitle:[BC_STRING_CREATE_NEW_WALLET uppercaseString] forState:UIControlStateNormal];
-        [self.createWalletButton setBackgroundColor:[UIColor whiteColor]];
+        [self.createWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
         [self addSubview:self.createWalletButton];
         self.createWalletButton.enabled = NO;
         self.createWalletButton.alpha = 0.0;
         
         self.existingWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.existingWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.existingWalletButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         self.existingWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        self.existingWalletButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
         [self.existingWalletButton setTitle:BC_STRING_LOG_IN_TO_WALLET forState:UIControlStateNormal];
-        self.existingWalletButton.frame = CGRectMake(20, self.frame.size.height - 160, 280, BUTTON_HEIGHT);
+        self.existingWalletButton.frame = CGRectMake(40, self.frame.size.height - 160, 240, BUTTON_HEIGHT);
         [self.existingWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
         [self addSubview:self.existingWalletButton];
         self.existingWalletButton.enabled = NO;
         self.existingWalletButton.alpha = 0.0;
         
         self.recoverWalletButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.recoverWalletButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        self.recoverWalletButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
         self.recoverWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [self.recoverWalletButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         [self.recoverWalletButton setTitle:BC_STRING_RECOVER_FUNDS forState:UIControlStateNormal];
-        self.recoverWalletButton.frame = CGRectMake(0, 0, 230, BUTTON_HEIGHT);
-        self.recoverWalletButton.center = CGPointMake(self.frame.size.width / 2, self.existingWalletButton.center.y + BUTTON_HEIGHT);
-        [self.recoverWalletButton setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        self.recoverWalletButton.frame = CGRectMake(40, self.frame.size.height - 90, 240, BUTTON_HEIGHT);
+        [self.recoverWalletButton setBackgroundColor:[UIColor clearColor]];
         [self addSubview:self.recoverWalletButton];
         self.recoverWalletButton.enabled = NO;
         self.recoverWalletButton.alpha = 0.0;
@@ -76,6 +77,7 @@ Boolean shouldShowAnimation;
         debugButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [debugButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
         [debugButton setTitle:DEBUG_STRING_DEBUG forState:UIControlStateNormal];
+        [debugButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         longPressGesture.minimumPressDuration = DURATION_LONG_PRESS_GESTURE_DEBUG;
         [debugButton addGestureRecognizer:longPressGesture];
@@ -93,6 +95,11 @@ Boolean shouldShowAnimation;
     if (longPress.state == UIGestureRecognizerStateBegan) {
         [app showDebugMenu:DEBUG_PRESENTER_WELCOME_VIEW];
     }
+}
+
+- (void)didMoveToWindow
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)didMoveToSuperview
@@ -125,9 +132,9 @@ Boolean shouldShowAnimation;
 - (void)setupVersionLabel
 {
     UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 30, self.frame.size.width - 30, 20)];
-    versionLabel.font = [UIFont systemFontOfSize:12];
+    versionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
     versionLabel.textAlignment = NSTextAlignmentRight;
-    versionLabel.textColor = [UIColor whiteColor];
+    versionLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
 
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = infoDictionary[@"CFBundleShortVersionString"];

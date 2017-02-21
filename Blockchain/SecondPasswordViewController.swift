@@ -33,7 +33,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(topBar!);
         
         let headerLabel = UILabel(frame:CGRect(x: 80, y: 20.5, width: self.view.frame.size.width - 160, height: 40));
-        headerLabel.font = UIFont.systemFont(ofSize: 13.0)
+        headerLabel.font = UIFont(name:"Montserrat-Regular", size: 13.0)
         headerLabel.textColor = UIColor.white
         headerLabel.textAlignment = .center;
         headerLabel.adjustsFontSizeToFitWidth = true;
@@ -41,19 +41,13 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         topBar!.addSubview(headerLabel);
         
         closeButton = UIButton(type: UIButtonType.custom)
-        closeButton!.contentHorizontalAlignment = .left;
-        closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-        closeButton!.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), for: .highlighted);
+        closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
+        closeButton!.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+        closeButton!.contentHorizontalAlignment = .right
+        closeButton!.center = CGPoint(x: closeButton!.center.x, y: headerLabel.center.y);
+        closeButton!.setImage(UIImage(named:"close"), for: UIControlState())
         closeButton!.addTarget(self, action:#selector(SecondPasswordViewController.close(_:)), for: UIControlEvents.touchUpInside);
         topBar!.addSubview(closeButton!);
-        
-        closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
-        closeButton!.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        closeButton!.contentHorizontalAlignment = .right
-        closeButton!.titleLabel?.adjustsFontSizeToFitWidth = true
-        closeButton!.setTitle(NSLocalizedString("Close", comment: ""), for: UIControlState())
-        closeButton!.setImage(nil, for: UIControlState())
         
         password?.returnKeyType = .done
     }

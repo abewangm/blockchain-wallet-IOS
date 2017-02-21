@@ -271,7 +271,7 @@ int accountEntries = 0;
         [app supportClicked:nil];
     } else if (row == MENU_CELL_INDEX_UPGRADE) {
         if (didUpgradeToHD) {
-            [app securityCenterClicked:nil];
+            [app backupFundsClicked:nil];
         }
         else {
             [app showHdUpgrade];
@@ -324,7 +324,7 @@ int accountEntries = 0;
 #ifdef ENABLE_TRANSACTION_FILTERING
         UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, BALANCE_ENTRY_HEIGHT)];
         UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];
-        [backgroundView setBackgroundColor: [app filterIndex] == FILTER_INDEX_ALL ? COLOR_BLOCKCHAIN_LIGHT_BLUE : COLOR_BLOCKCHAIN_BLUE];
+        [backgroundView setBackgroundColor: [app filterIndex] == FILTER_INDEX_ALL ? COLOR_BLOCKCHAIN_DARK_BLUE : COLOR_BLOCKCHAIN_BLUE];
         view.backgroundView = backgroundView;
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeTransactionsFilter)];
         [view addGestureRecognizer:tapGestureRecognizer];
@@ -337,17 +337,13 @@ int accountEntries = 0;
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 10, self.tableView.frame.size.width - 100, 18)];
         headerLabel.text = BC_STRING_TOTAL_BALANCE;
         headerLabel.textColor = [UIColor whiteColor];
-        headerLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
         [view addSubview:headerLabel];
-        
-        UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wallet.png"]];
-        icon.frame = CGRectMake(18, 13, 20, 18);
-        [view addSubview:icon];
         
         UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 24, self.tableView.frame.size.width - 100, 30)];
         amountLabel.text = [NSNumberFormatter formatMoney:totalBalance localCurrency:app->symbolLocal];;
         amountLabel.textColor = [UIColor whiteColor];
-        amountLabel.font = [UIFont boldSystemFontOfSize:17.0];
+        amountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
         [view addSubview:amountLabel];
         
         BCLine *bottomSeparator = [[BCLine alloc] initWithFrame:CGRectMake(56, BALANCE_ENTRY_HEIGHT, self.tableView.frame.size.width, 1.0/[UIScreen mainScreen].scale)];
@@ -390,58 +386,46 @@ int accountEntries = 0;
             cell = [[SideMenuViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
             
             UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
-            [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+            [v setBackgroundColor:COLOR_TABLE_VIEW_CELL_SELECTED_LIGHT_GRAY];
             cell.selectedBackgroundView = v;
         }
-        NSString *upgradeOrSecurityCenterTitle;
+        NSString *upgradeOrBackupTitle;
         if (!app.wallet.didUpgradeToHd) {
-            upgradeOrSecurityCenterTitle = BC_STRING_UPGRADE;
+            upgradeOrBackupTitle = BC_STRING_UPGRADE;
         }
         else {
-            upgradeOrSecurityCenterTitle = BC_STRING_SECURITY_CENTER;
+            upgradeOrBackupTitle = BC_STRING_BACKUP_FUNDS;
         }
         
         NSMutableArray *titles;
 #ifdef ENABLE_DEBUG_MENU
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
 #else
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
 #endif
-        NSString *upgradeOrSecurityCenterImage;
+        NSString *upgradeOrBackupImage;
+        
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
-            upgradeOrSecurityCenterImage = @"icon_upgrade";
+            upgradeOrBackupImage = @"icon_upgrade";
         }
         else {
-            upgradeOrSecurityCenterImage = @"security";
+            upgradeOrBackupImage = @"lock";
         }
         NSMutableArray *images;
 #ifdef ENABLE_DEBUG_MENU
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"contacts_icon", @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"contacts_icon", @"settings", @"wallet", @"merchant", @"help", @"logout"]];
 #else
-        images = [NSMutableArray arrayWithArray:@[upgradeOrSecurityCenterImage, @"settings_icon", @"icon_wallet", @"icon_merchant", @"icon_support", @"logout_icon"]];
+        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings", @"wallet", @"merchant", @"help", @"logout"]];
 #endif
+
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
-        if ([images[indexPath.row] isEqualToString:@"security"]) {
-            int securityCenterScore = [app.wallet securityCenterScore];
+        if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            
-            if (securityCenterScore == 1) {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_YELLOW];
-            } else if (securityCenterScore > 1) {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_GREEN];
-            } else {
-                [cell.imageView setTintColor:COLOR_SECURITY_CENTER_RED];
-            }
-            
-            cell.showDot = NO;
-            
-        } else if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
-            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [cell.imageView setTintColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+            [cell.imageView setTintColor:COLOR_DARK_GRAY];
             
             cell.showDot = app.wallet.contactsActionRequired != ContactActionRequiredNone;
         } else {
@@ -461,7 +445,7 @@ int accountEntries = 0;
 #ifdef ENABLE_TRANSACTION_FILTERING
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
-            [v setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+            [v setBackgroundColor:COLOR_BLOCKCHAIN_DARK_BLUE];
             cell.selectedBackgroundView = v;
 #else
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -487,7 +471,6 @@ int accountEntries = 0;
         // Total legacy balance
         else {
             uint64_t legacyBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
-            [cell.iconImage setImage:[UIImage imageNamed:@"importedaddress"]];
             cell.amountLabel.text = [NSNumberFormatter formatMoney:legacyBalance localCurrency:app->symbolLocal];
             cell.labelLabel.text = BC_STRING_IMPORTED_ADDRESSES;
 #ifdef ENABLE_TRANSACTION_FILTERING
@@ -510,19 +493,13 @@ int accountEntries = 0;
             float leftInset = (indexPath.section != 1) ? 56 : 15;
             [cell setSeparatorInset:UIEdgeInsetsMake(0, leftInset, 0, 0)];
             
-            // No separator for last entry of each section
-            if ((indexPath.section == 0 && indexPath.row == balanceEntries - 1) ||
-                (indexPath.section == 1 && indexPath.row == menuEntries - 1)) {
+            // No separator for non-account side menu items
+            if ((indexPath.section == 0 && indexPath.row == balanceEntries - 1) || indexPath.section == 1) {
                 [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
             }
         } else {
-            // Custom separator inset
-            [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 0)];
-            
-            // No separator for last entry of each section
-            if (indexPath.row == menuEntries - 1) {
-                [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
-            }
+            // No separator
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, CGRectGetWidth(cell.bounds)-15)];
         }
     }
 }

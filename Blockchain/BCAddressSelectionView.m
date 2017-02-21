@@ -159,7 +159,7 @@ int legacyAddressesSectionNumber;
             tableView.scrollEnabled = YES;
         }
         
-        tableView.backgroundColor = [UIColor whiteColor];
+        tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
         
     }
     return self;
@@ -236,42 +236,48 @@ int legacyAddressesSectionNumber;
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.contentView.backgroundColor = [UIColor whiteColor];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mainView.frame.size.width, 45)];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, mainView.frame.size.width, 14)];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    
+    [view addSubview:label];
+    
+    NSString *labelString;
+    
     if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
-            return nil;
+            labelString = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
-            return BC_STRING_IMPORTED_ADDRESSES;
+            labelString = BC_STRING_IMPORTED_ADDRESSES;
         }
         else if (section == contactsSectionNumber) {
-            return BC_STRING_CONTACTS;
+            labelString = BC_STRING_CONTACTS;
         }
     }
     else {
         if (section == addressBookSectionNumber) {
-            return BC_STRING_ADDRESS_BOOK;
+            labelString = BC_STRING_ADDRESS_BOOK;
         }
         else if (section == accountsSectionNumber) {
-            return nil;
+            labelString = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
-            return BC_STRING_IMPORTED_ADDRESSES;
+            labelString = BC_STRING_IMPORTED_ADDRESSES;
         }
         else if (section == contactsSectionNumber) {
-            return BC_STRING_CONTACTS;
+            labelString = BC_STRING_CONTACTS;
         }
     }
     
-    assert(false); // Should never get here
-    return nil;
+    label.text = labelString;
+    
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -306,6 +312,11 @@ int legacyAddressesSectionNumber;
     return 0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 45.0f;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber) {
@@ -324,8 +335,7 @@ int legacyAddressesSectionNumber;
     
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-        cell.backgroundColor = COLOR_BACKGROUND_GRAY;
-        
+        cell.backgroundColor = [UIColor whiteColor];
         
         NSString *label;
         if (section == addressBookSectionNumber) {

@@ -19,9 +19,9 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "launchImage-iPhone4s.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "launchImage-iPhone4s.png",
       "scale" : "2x"
     },
     {

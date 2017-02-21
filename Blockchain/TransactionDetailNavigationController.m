@@ -20,7 +20,7 @@
     [self.view addSubview:topBar];
     
     self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
-    self.headerLabel.font = [UIFont systemFontOfSize:22.0];
+    self.headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     self.headerLabel.textColor = [UIColor whiteColor];
     self.headerLabel.textAlignment = NSTextAlignmentCenter;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
@@ -29,11 +29,10 @@
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+    self.closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    self.closeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.closeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-    [self.closeButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-    [self.closeButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
+    [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:self.closeButton];
     
@@ -60,7 +59,7 @@
     
     UILabel *busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BUSY_VIEW_LABEL_WIDTH, BUSY_VIEW_LABEL_HEIGHT)];
     busyLabel.adjustsFontSizeToFitWidth = YES;
-    busyLabel.font = [UIFont systemFontOfSize:BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE];
+    busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:BUSY_VIEW_LABEL_FONT_SYSTEM_SIZE];
     busyLabel.alpha = BUSY_VIEW_LABEL_ALPHA;
     busyLabel.textAlignment = NSTextAlignmentCenter;
     busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
