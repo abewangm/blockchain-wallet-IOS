@@ -1982,7 +1982,7 @@
     [self.context evaluateScript:@"MyWalletPhone.loadContactsThenGetMessages()"];
 }
 
-- (void)getUpdatedContacts:(BOOL)isFirstLoad
+- (void)getUpdatedContacts:(BOOL)isFirstLoad newMessages:(NSArray *)newMessages
 {
     NSArray *contacts = [[[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary] allValues];
     
@@ -1991,15 +1991,25 @@
 
     [self iterateAndUpdateContacts:contacts];
     
-    if ([self.delegate respondsToSelector:@selector(didGetMessages:)]) {
-        // Keep showing busy view to prevent user input while archiving/unarchiving addresses
-        if (!self.isSyncing) {
-            [self loading_stop];
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
+    }
+    
+    if (isFirstLoad) {
+        if ([self.delegate respondsToSelector:@selector(didGetMessagesOnFirstLoad)]) {
+            
+            [self.delegate didGetMessagesOnFirstLoad];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didGetMessagesOnFirstLoad!", [delegate class]);
         }
-        [self.delegate didGetMessages:isFirstLoad];
-
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didGetMessages!", [delegate class]);
+    } else if (newMessages.count > 0) {
+        if ([self.delegate respondsToSelector:@selector(didGetNewMessages:)]) {
+            
+            [self.delegate didGetNewMessages:newMessages];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didGetNewMessages!", [delegate class]);
+        }
     }
 }
     
@@ -3301,13 +3311,13 @@
 - (void)on_get_messages_success:(JSValue *)messages firstLoad:(JSValue *)isFirstLoad
 {
     DLog(@"on_get_messages_success");
-    [self getUpdatedContacts:[isFirstLoad toBool]];
+    [self getUpdatedContacts:[isFirstLoad toBool] newMessages:[messages toArray]];
 }
 
 - (void)on_get_messages_error:(NSString *)error
 {
     DLog(@"on_get_messages_error");
-    [self getUpdatedContacts:NO];
+    [self getUpdatedContacts:NO newMessages:nil];
 }
 
 - (void)on_send_payment_request_success:(JSValue *)info identifier:(JSValue *)userId

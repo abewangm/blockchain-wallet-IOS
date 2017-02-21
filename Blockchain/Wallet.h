@@ -106,7 +106,8 @@
 - (void)didCompleteRelation;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didFetchExtendedPublicKey;
-- (void)didGetMessages:(BOOL)isFirstLoad;
+- (void)didGetNewMessages:(NSArray *)newMessages;
+- (void)didGetMessagesOnFirstLoad;
 - (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name;
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
 - (void)didChangeContactName:(NSDictionary *)info;
