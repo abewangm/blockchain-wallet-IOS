@@ -2007,7 +2007,7 @@
         } else {
             DLog(@"Error: delegate of class %@ does not respond to selector didGetMessagesOnFirstLoad!", [delegate class]);
         }
-    } else if (newMessages.count > 0) {
+    } else {
         if ([self.delegate respondsToSelector:@selector(didGetNewMessages:)]) {
             
             [self.delegate didGetNewMessages:newMessages];
