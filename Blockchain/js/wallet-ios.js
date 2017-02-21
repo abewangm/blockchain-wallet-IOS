@@ -342,7 +342,7 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
     currentPayment.on('error', function(errorObject) {
                       var errorDictionary = {'message': {'error': errorObject['error']}};
                         objc_on_error_update_fee(errorDictionary);
