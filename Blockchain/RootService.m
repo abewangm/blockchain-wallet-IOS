@@ -2042,8 +2042,10 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didGetNewMessages:(NSArray *)newMessages
 {
     if (pushNotificationPendingAction) {
+        
         NSString *type = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
-        NSString *identifier = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+        
+        NSString *identifier = [[[newMessages firstObject] objectForKey:DICTIONARY_KEY_PAYLOAD] objectForKey:DICTIONARY_KEY_ID];
         
         DLog(@"User received remote notification %@ of type %@", identifier, type);
         

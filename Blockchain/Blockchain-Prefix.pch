@@ -377,6 +377,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_ALERT @"alert"
 #define DICTIONARY_KEY_TITLE @"title"
 #define DICTIONARY_KEY_BODY @"body"
+#define DICTIONARY_KEY_PAYLOAD @"payload"
 
 #define DICTIONARY_KEY_ID @"id"
 #define DICTIONARY_KEY_COMPANY @"company"
