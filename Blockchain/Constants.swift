@@ -28,6 +28,8 @@ struct Constants {
         static let BusyViewLabelHeight : CGFloat = 30
         static let BusyViewLabelAlpha : CGFloat = 0.75
         static let BusyViewLabelFontSystemSize : CGFloat = 14.0
+        
+        static let ScreenHeightIphone4S : CGFloat = 480
     }
     struct Defaults {
         static let NumberOfRecoveryPhraseWords = 12
