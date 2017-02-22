@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Гаманець успішно спаровано.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Фраза для відновлення доступу до гаманця";
+"Recovery Phrase" = "Фраза для відновлення доступу до";
 
 /* (No Commment) */
 "Warning" = "Попередження";

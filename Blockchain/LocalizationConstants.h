@@ -400,7 +400,7 @@
 #define BC_STRING_VERIFY_EMAIL NSLocalizedString(@"Verify Email", nil)
 #define BC_STRING_EMAIL_VERIFIED NSLocalizedString(@"Email Verified", nil)
 #define BC_STRING_BACKUP_PHRASE NSLocalizedString(@"Backup Phrase", nil)
-#define BC_STRING_WALLET_RECOVERY_PHRASE NSLocalizedString(@"Wallet Recovery Phrase", nil)
+#define BC_STRING_WALLET_RECOVERY_PHRASE NSLocalizedString(@"Recovery Phrase", nil)
 #define BC_STRING_PHRASE_BACKED NSLocalizedString(@"Phrase Backed", nil)
 #define BC_STRING_LINK_MOBILE NSLocalizedString(@"Link Mobile", nil)
 #define BC_STRING_MOBILE_LINKED NSLocalizedString(@"Mobile Linked", nil)

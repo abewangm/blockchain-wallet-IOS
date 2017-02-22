@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "지갑 페어링 성공.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "지갑 복구 구절";
+"Recovery Phrase" = "복구 구절";
 
 /* (No Commment) */
 "Warning" = "경고";

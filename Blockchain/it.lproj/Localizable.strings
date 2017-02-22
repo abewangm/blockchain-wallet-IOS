@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Portafoglio associato con successo.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Frase di backup portafoglio";
+"Recovery Phrase" = "Frase di backup";
 
 /* (No Commment) */
 "Warning" = "Avviso";

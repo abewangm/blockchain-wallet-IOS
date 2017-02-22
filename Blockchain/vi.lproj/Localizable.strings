@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Ví được kết nối thành công.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Nhóm từ khôi phục Ví";
+"Recovery Phrase" = "Nhóm từ khôi phục";
 
 /* (No Commment) */
 "Warning" = "Cảnh báo";

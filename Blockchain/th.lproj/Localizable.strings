@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "จับคู่กระเป๋าเงินสำเร็จแล้ว";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "วลีเพื่อการกู้คืนกระเป๋าเงิน";
+"Recovery Phrase" = "วลีเพื่อการกู้คืน";
 
 /* (No Commment) */
 "Warning" = "คำเตือน";

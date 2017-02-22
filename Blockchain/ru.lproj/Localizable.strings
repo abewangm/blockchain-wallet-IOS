@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Сопряжение выполнено.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Фраза для восстановления кошелька";
+"Recovery Phrase" = "Восстановительная Фраза";
 
 /* (No Commment) */
 "Warning" = "Предупреждение";

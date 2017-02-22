@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Walletkombination war erfolgreich.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Wiederherstellungspasswort für Wallet";
+"Recovery Phrase" = "Wiederherstellungspasswort";
 
 /* (No Commment) */
 "Warning" = "Warnhinweis";
