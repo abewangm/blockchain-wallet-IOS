@@ -34,7 +34,15 @@
         [super loadView];
     }
     
-    UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16, self.view.frame.size.width - 80, 140)];
+    CGFloat promptFrameAdjustY = 0;
+    CGFloat textFieldFrameAdjustY = 0;
+    
+    if ([[UIScreen mainScreen] bounds].size.height > HEIGHT_IPHONE_4S) {
+        promptFrameAdjustY = 8;
+        textFieldFrameAdjustY = 20;
+    }
+    
+    UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16 + promptFrameAdjustY, self.view.frame.size.width - 80, 140)];
     promptLabel.numberOfLines = 7;
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:15];
@@ -46,7 +54,7 @@
     
     promptLabel.center = CGPointMake(self.view.center.x, promptLabel.center.y);
     
-    self.mobileNumberField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 16, 200, 30)];
+    self.mobileNumberField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 16 + textFieldFrameAdjustY, promptLabel.frame.size.width, 26)];
     self.mobileNumberField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:18];
     self.mobileNumberField.textColor = COLOR_TEXT_DARK_GRAY;
     self.mobileNumberField.placeholder = BC_STRING_SETTINGS_MOBILE_NUMBER;
@@ -67,7 +75,7 @@
     
     self.mobileNumberField.inputAccessoryView = updateButton;
     
-    self.verifiedStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.mobileNumberField.frame.origin.y + self.mobileNumberField.frame.size.height + 8, 150, 50)];
+    self.verifiedStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.mobileNumberField.frame.origin.y + self.mobileNumberField.frame.size.height + 8, 150, 26)];
     self.verifiedStatusLabel.textAlignment = NSTextAlignmentCenter;
     self.verifiedStatusLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
     [self.view addSubview:self.verifiedStatusLabel];
