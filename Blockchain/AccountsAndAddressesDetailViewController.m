@@ -206,12 +206,22 @@ typedef enum {
             [app standardNotifyAutoDismissingController:BC_STRING_AT_LEAST_ONE_ADDRESS_REQUIRED];
         } else {
             [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-            [app.wallet toggleArchiveLegacyAddress:self.address];
+            [self performSelector:@selector(toggleArchiveLegacyAddress) withObject:nil afterDelay:ANIMATION_DURATION];
         }
     } else {
         [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        [app.wallet toggleArchiveAccount:self.account];
+        [self performSelector:@selector(toggleArchiveAccount) withObject:nil afterDelay:ANIMATION_DURATION];
     }
+}
+
+- (void)toggleArchiveLegacyAddress
+{
+    [app.wallet toggleArchiveLegacyAddress:self.address];
+}
+
+- (void)toggleArchiveAccount
+{
+    [app.wallet toggleArchiveAccount:self.account];
 }
 
 #pragma mark - Navigation
