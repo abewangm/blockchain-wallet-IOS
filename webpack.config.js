@@ -25,7 +25,8 @@ module.exports = {
           options: {
             presets: [
               ['es2015', { modules: false }]
-            ]
+            ],
+            plugins: ['transform-object-assign']
           }
         }
       },
