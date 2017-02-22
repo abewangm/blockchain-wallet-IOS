@@ -283,19 +283,6 @@ NSString *detailLabel;
         [mainAddressLabel setAdjustsFontSizeToFitWidth:YES];
         [self.headerView addSubview:mainAddressLabel];
         
-        informationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 19, 19)];
-        [informationButton setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
-        informationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        informationButton.center = self.view.center;
-        informationButton.frame = CGRectMake(informationButton.frame.origin.x, self.headerView.frame.size.height + 4, informationButton.frame.size.width, informationButton.frame.size.height);
-        [informationButton addTarget:self action:@selector(informationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:informationButton];
-        
-        if (![app.wallet didUpgradeToHd]) {
-            informationButton.alpha = 0.0;
-            informationButton.userInteractionEnabled = NO;
-        }
-        
         [self setupTapGestureForMainLabel];
     }
 }
@@ -523,8 +510,6 @@ NSString *detailLabel;
             [labelTextField becomeFirstResponder];
         }
     });
-    
-    [self hideInformationButton];
 }
 
 - (void)hideKeyboardForced
@@ -541,28 +526,6 @@ NSString *detailLabel;
     [labelTextField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
-    
-    if (didClickAccount) {
-        [self showInformationButton];
-    }
-}
-
-- (void)hideInformationButton
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        informationButton.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        informationButton.userInteractionEnabled = NO;
-    }];
-}
-
-- (void)showInformationButton
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        informationButton.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        informationButton.userInteractionEnabled = YES;
-    }];
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
@@ -675,16 +638,6 @@ NSString *detailLabel;
     self.receiveFiatField.text = nil;
 }
 
-- (void)informationButtonClicked:(UIButton *)sender
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:BC_STRING_INFORMATION_RECEIVE preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_LEARN_MORE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_INFORMATION_RECEIVE]];
-    }]];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -695,13 +648,6 @@ NSString *detailLabel;
     }
     
     if (app.slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            informationButton.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            informationButton.userInteractionEnabled = YES;
-        }];
-        
         return NO;
     }
     
@@ -842,9 +788,6 @@ NSString *detailLabel;
         mainLabel = addr;
     }
     
-    informationButton.alpha = 0.0;
-    informationButton.userInteractionEnabled = NO;
-    
     [self updateUI];
 }
 
@@ -861,8 +804,6 @@ NSString *detailLabel;
     didClickAccount = YES;
     
     mainLabel = [app.wallet getLabelForAccount:account];
-    
-    [self showInformationButton];
     
     [self updateUI];
 }
