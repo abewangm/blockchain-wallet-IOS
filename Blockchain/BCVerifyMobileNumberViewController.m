@@ -62,7 +62,7 @@
     [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     updateButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
-    [updateButton addTarget:self action:@selector(changeMobileNumber) forControlEvents:UIControlEventTouchUpInside];
+    [updateButton addTarget:self action:@selector(updateButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.updateButton = updateButton;
     
     self.mobileNumberField.inputAccessoryView = updateButton;
@@ -90,9 +90,9 @@
 {
     [super viewDidAppear:animated];
     
-    [self.mobileNumberField becomeFirstResponder];
-    
-    [self.delegate showVerifyAlertIfNeeded];
+    if (![self.delegate showVerifyAlertIfNeeded]) {
+        [self.mobileNumberField becomeFirstResponder];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -129,6 +129,13 @@
     return [self.delegate isMobileVerified];
 }
 
+- (void)updateButtonClicked
+{
+    [self.mobileNumberField resignFirstResponder];
+    
+    [self performSelector:@selector(changeMobileNumber) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+}
+
 - (void)changeMobileNumber
 {
     [self addObserversForChangingMobileNumber];
@@ -137,7 +144,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self changeMobileNumber];
+    [self updateButtonClicked];
     return YES;
 }
 

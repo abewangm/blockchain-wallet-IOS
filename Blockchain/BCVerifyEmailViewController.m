@@ -63,7 +63,7 @@
     [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     updateButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
-    [updateButton addTarget:self action:@selector(changeEmail) forControlEvents:UIControlEventTouchUpInside];
+    [updateButton addTarget:self action:@selector(updateButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.updateButton = updateButton;
     
     self.emailField.inputAccessoryView = updateButton;
@@ -126,10 +126,17 @@
     return [self.delegate isEmailVerified];
 }
 
+- (void)updateButtonClicked
+{
+    [self.emailField resignFirstResponder];
+    
+    [self performSelector:@selector(changeEmail) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+}
+
 - (void)changeEmail
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeEmailSuccess) name:NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS object:nil];
-
+    
     [self.delegate changeEmail:self.emailField.text];
 }
 
@@ -149,7 +156,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self changeEmail];
+    [self updateButtonClicked];
     return YES;
 }
 

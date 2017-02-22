@@ -263,7 +263,7 @@ const int aboutPrivacyPolicy = 2;
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForSuccess animated:YES completion:nil];
     } else {
-        [self presentViewController:alertForSuccess animated:YES completion:nil];
+        [self.navigationController presentViewController:alertForSuccess animated:YES completion:nil];
     }
     
     [self reload];
@@ -276,7 +276,7 @@ const int aboutPrivacyPolicy = 2;
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForError animated:YES completion:nil];
     } else {
-        [self presentViewController:alertForError animated:YES completion:nil];
+        [self.navigationController presentViewController:alertForError animated:YES completion:nil];
     }
 }
 
@@ -348,12 +348,16 @@ const int aboutPrivacyPolicy = 2;
     }
 }
 
-- (void)showVerifyAlertIfNeeded
+- (BOOL)showVerifyAlertIfNeeded
 {
-    if (app.isVerifyingMobileNumber) {
+    BOOL shouldShowVerifyAlert = app.isVerifyingMobileNumber;
+    
+    if (shouldShowVerifyAlert) {
         [self alertUserToVerifyMobileNumber];
         app.isVerifyingMobileNumber = NO;
     }
+    
+    return shouldShowVerifyAlert;
 }
 
 - (void)mobileNumberClicked
@@ -541,7 +545,7 @@ const int aboutPrivacyPolicy = 2;
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
     } else {
-        [self presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
+        [self.navigationController presentViewController:alertForVerifyingMobileNumber animated:YES completion:nil];
     }}
 
 - (void)verifyMobileNumber:(NSString *)code
@@ -953,7 +957,7 @@ const int aboutPrivacyPolicy = 2;
     if (self.alertTargetViewController) {
         [self.alertTargetViewController presentViewController:alertForVerifyingEmail animated:YES completion:nil];
     } else {
-        [self presentViewController:alertForVerifyingEmail animated:YES completion:nil];
+        [self.navigationController presentViewController:alertForVerifyingEmail animated:YES completion:nil];
     }}
 
 - (void)resendVerificationEmail

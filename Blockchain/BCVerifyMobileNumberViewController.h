@@ -11,7 +11,7 @@
 - (BOOL)isMobileVerified;
 - (NSString *)getMobileNumber;
 - (void)changeMobileNumber:(NSString *)numberString;
-- (void)showVerifyAlertIfNeeded;
+- (BOOL)showVerifyAlertIfNeeded;
 @end
 @interface BCVerifyMobileNumberViewController : UIViewController
 @property (nonatomic) UIViewController<MobileNumberDelegate> *delegate;
