@@ -586,10 +586,24 @@ const int aboutPrivacyPolicy = 2;
 - (void)switchSwipeToReceiveTapped
 {
     BOOL swipeToReceiveEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
-    [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
     
-    // Clear all swipe addresses in case default account has changed
-    if (!swipeToReceiveEnabled) [KeychainItemWrapper removeAllSwipeAddresses];
+    if (!swipeToReceiveEnabled) {
+        UIAlertController *swipeToReceiveAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE message:BC_STRING_SETTINGS_SWIPE_TO_RECEIVE_IN_FIVES_FOOTER preferredStyle:UIAlertControllerStyleAlert];
+        [swipeToReceiveAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_ENABLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+            // Clear all swipe addresses in case default account has changed
+            if (!swipeToReceiveEnabled) [KeychainItemWrapper removeAllSwipeAddresses];
+        }]];
+        [swipeToReceiveAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:PINSwipeToReceive inSection:sectionSecurity];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }]];
+        [self presentViewController:swipeToReceiveAlert animated:YES completion:nil];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:!swipeToReceiveEnabled forKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED];
+        // Clear all swipe addresses in case default account has changed
+        if (!swipeToReceiveEnabled) [KeychainItemWrapper removeAllSwipeAddresses];
+    }
 }
 
 #pragma mark - Change Touch ID
