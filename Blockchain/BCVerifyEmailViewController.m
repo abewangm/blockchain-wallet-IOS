@@ -39,6 +39,7 @@
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:15];
     promptLabel.text = BC_STRING_SETTINGS_EMAIL_PROMPT;
+    promptLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.view addSubview:promptLabel];
     
     [promptLabel sizeToFit];
@@ -46,7 +47,9 @@
     promptLabel.center = CGPointMake(self.view.center.x, promptLabel.center.y);
     
     self.emailField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 16, 200, 30)];
-    self.emailField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    self.emailField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:18];
+    self.emailField.textColor = COLOR_TEXT_DARK_GRAY;
+    self.emailField.placeholder = BC_STRING_SETTINGS_EMAIL;
     self.emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.emailField.textAlignment = NSTextAlignmentCenter;
     self.emailField.returnKeyType = UIReturnKeyDone;
