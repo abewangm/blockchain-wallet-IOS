@@ -42,7 +42,7 @@ const float imageWidth = 190;
     UILabel *qrCodeHeaderLabel;
     if (qrHeaderText) {
         qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 280, 60)];
-        qrCodeHeaderLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:15.0];
+        qrCodeHeaderLabel.font = [UIFont fontWithName:FONT_GILL_SANS_LIGHT size:15.0];
         qrCodeHeaderLabel.textColor = COLOR_TEXT_DARK_GRAY;
         qrCodeHeaderLabel.numberOfLines = 5;
         qrCodeHeaderLabel.textAlignment = NSTextAlignmentCenter;

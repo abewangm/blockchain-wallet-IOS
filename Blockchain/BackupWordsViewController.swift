@@ -80,7 +80,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         let blackTextBeginning = NSAttributedString(string:  NSLocalizedString("Write the following 12 words onto a ", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.black])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont(name:"GillSans", size: 14.0) as Any])
+        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans", size: 14.0) as Any])
         
         let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
             [NSForegroundColorAttributeName: UIColor.black])
@@ -94,7 +94,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     func setupBottomInstructionLabel() {
         let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont(name:"GillSans", size: 14.0) as Any])
+        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans", size: 14.0) as Any])
         
         let finalText = NSMutableAttributedString(attributedString: blackText)
         finalText.append(boldText)

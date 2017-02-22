@@ -19,6 +19,7 @@ struct Constants {
         static let WarningRed = UIColorFromRGB(0xB83940)
         static let SentRed = UIColorFromRGB(0xF26C57)
         static let DisabledGray = UIColorFromRGB(0xEBEBEB)
+        static let DarkGray = UIColorFromRGB(0x4c4c4c)
     }
     struct Measurements {
         static let DefaultHeaderHeight : CGFloat = 65
