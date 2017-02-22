@@ -78,15 +78,12 @@
 
 - (void)loadJS
 {
-    NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
-    NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
-    NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
+    NSString *jsPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_BUNDLE_NAME ofType:JAVASCRIPTCORE_TYPE_JS];
+    NSString *jsSource = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
-    [self.context evaluateScript:@"var console = {};"];
+    [self.context evaluateScript:JAVASCRIPTCORE_CONSOLE_INIT];
     
     NSSet *names = [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
     
@@ -654,7 +651,7 @@
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
-    self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.context[@"MyWalletPhone"][@"Bitcoin"][@"HDNode"] = [HDNode class];
     self.context[@"HDNode"] = [HDNode class];
     [self login];
 }
@@ -807,7 +804,7 @@
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     DLog(@"websocket opened");
-    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWalletPhone.MyWallet.getSocketOnOpenMessage()"] toString];
     
     NSError *error;
     [webSocket sendString:message error:&error];
@@ -839,7 +836,7 @@
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
 {
     DLog(@"received websocket message string");
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
     
     if (self.swipeAddressToSubscribe) {
         NSDictionary *message = [string getJSONObject];
@@ -881,7 +878,7 @@
 - (BOOL)isInitialized
 {
     // Initialized when the webView is loaded and the wallet is initialized (decrypted and in-memory wallet built)
-    BOOL isInitialized = [[self.context evaluateScript:@"MyWallet.getIsInitialized()"] toBool];
+    BOOL isInitialized = [[self.context evaluateScript:@"MyWalletPhone.MyWallet.getIsInitialized()"] toBool];
     if (!isInitialized) {
         DLog(@"Warning: Wallet not initialized!");
     }
@@ -907,12 +904,12 @@
 
 - (NSString*)encrypt:(NSString*)data password:(NSString*)_password pbkdf2_iterations:(int)pbkdf2_iterations
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"WalletCrypto.encrypt(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.WalletCrypto.encrypt(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
 }
 
 - (NSString*)decrypt:(NSString*)data password:(NSString*)_password pbkdf2_iterations:(int)pbkdf2_iterations
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.WalletCrypto.decryptPasswordWithProcessedPin(\"%@\", \"%@\", %d)", [data escapeStringForJS], [_password escapeStringForJS], pbkdf2_iterations]] toString];
 }
 
 - (float)getStrengthForPassword:(NSString *)passwordString
@@ -1254,7 +1251,7 @@
         return false;
     }
     
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.isDoubleEncrypted"]] toBool];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.isDoubleEncrypted"]] toBool];
 }
 
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
@@ -1263,7 +1260,7 @@
         return FALSE;
     }
     
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.validateSecondPassword(\"%@\")", [secondPassword escapeStringForJS]]] toBool];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.validateSecondPassword(\"%@\")", [secondPassword escapeStringForJS]]] toBool];
 }
 
 - (void)getFinalBalance
@@ -1272,7 +1269,7 @@
         return;
     }
     
-    self.final_balance = [[[self.context evaluateScript:@"MyWallet.wallet.finalBalance"] toNumber] longLongValue];
+    self.final_balance = [[[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.finalBalance"] toNumber] longLongValue];
 }
 
 - (void)getTotalSent
@@ -1281,7 +1278,7 @@
         return;
     }
     
-    self.total_sent = [[[self.context evaluateScript:@"MyWallet.wallet.totalSent"] toNumber] longLongValue];
+    self.total_sent = [[[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.totalSent"] toNumber] longLongValue];
 }
 
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address
@@ -1291,7 +1288,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]]] toBool];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.key(\"%@\").isWatchOnly", [address escapeStringForJS]]] toBool];
     } else {
         return NO;
     }
@@ -1343,7 +1340,7 @@
         return false;
     }
     
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]]] toBool];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]]] toBool];
 }
 
 - (NSArray*)allLegacyAddresses
@@ -1352,7 +1349,7 @@
         return nil;
     }
     
-    NSString * allAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.addresses)"] toString];
+    NSString * allAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.MyWallet.wallet.addresses)"] toString];
     
     return [allAddressesJSON getJSONObject];
 }
@@ -1363,7 +1360,7 @@
         return nil;
     }
     
-    NSString *activeAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.activeAddresses)"] toString];
+    NSString *activeAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.MyWallet.wallet.activeAddresses)"] toString];
     
     return [activeAddressesJSON getJSONObject];
 }
@@ -1374,7 +1371,7 @@
         return nil;
     }
     
-    NSString *spendableActiveAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.spendableActiveAddresses)"] toString];
+    NSString *spendableActiveAddressesJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.MyWallet.wallet.spendableActiveAddresses)"] toString];
     
     return [spendableActiveAddressesJSON getJSONObject];
 }
@@ -1440,7 +1437,7 @@
     }
     
     if ([self checkIfWalletHasAddress:address]) {
-        return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]]] toNumber] longLongValue];
+        return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.key(\"%@\").balance", [address escapeStringForJS]]] toNumber] longLongValue];
     } else {
         DLog(@"Wallet error: Tried to get balance of address %@, which was not found in this wallet", address);
         return errorBalance;
@@ -1480,7 +1477,7 @@
         return [[NSDictionary alloc] init];
     }
     
-    NSString * addressBookJSON = [[self.context evaluateScript:@"JSON.stringify(MyWallet.wallet.addressBook)"] toString];
+    NSString * addressBookJSON = [[self.context evaluateScript:@"JSON.stringify(MyWalletPhone.MyWallet.wallet.addressBook)"] toString];
     
     return [addressBookJSON getJSONObject];
 }
@@ -1868,9 +1865,9 @@
 {
     NSString *text = [note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (text.length == 0) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.deleteNote(\"%@\")", [hash escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.deleteNote(\"%@\")", [hash escapeStringForJS]]];
     } else {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.MyWallet.wallet.setNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
     }
 }
 
@@ -2322,8 +2319,8 @@
         [self setupWebSocket];
     }
     
-    self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
-    self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
+    self.sharedKey = [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.sharedKey"] toString];
+    self.guid = [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.guid"] toString];
     
     if ([delegate respondsToSelector:@selector(walletDidDecrypt)]) {
         [delegate walletDidDecrypt];
@@ -3035,7 +3032,7 @@
         return NO;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.isUpgradedToHD"] toBool];
+    return [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.isUpgradedToHD"] toBool];
 }
 
 - (Boolean)didUpgradeToHd
@@ -3044,7 +3041,7 @@
         return NO;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.isUpgradedToHD"] toBool];
+    return [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.isUpgradedToHD"] toBool];
 }
 
 - (void)getRecoveryPhrase:(NSString *)secondPassword;
@@ -3065,7 +3062,7 @@
         return NO;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.hdwallet.isMnemonicVerified"] toBool];
+    return [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.hdwallet.isMnemonicVerified"] toBool];
 }
 
 - (void)markRecoveryPhraseVerified
@@ -3074,7 +3071,7 @@
         return;
     }
     
-    [self.context evaluateScript:@"MyWallet.wallet.hdwallet.verifyMnemonic()"];
+    [self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.hdwallet.verifyMnemonic()"];
 }
 
 - (int)getActiveAccountsCount
@@ -3136,7 +3133,7 @@
         return false;
     }
     
-    return [[self.context evaluateScript:@"MyWallet.wallet.addresses.length > 0"] toBool];
+    return [[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.addresses.length > 0"] toBool];
 }
 
 - (uint64_t)getTotalActiveBalance
@@ -3145,7 +3142,7 @@
         return 0;
     }
     
-    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActive"] toNumber] longLongValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.balanceActive"] toNumber] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForActiveLegacyAddresses
@@ -3154,7 +3151,7 @@
         return 0;
     }
     
-    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceActiveLegacy"] toNumber] longLongValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.balanceActiveLegacy"] toNumber] longLongValue];
 }
 
 - (uint64_t)getTotalBalanceForSpendableActiveLegacyAddresses
@@ -3163,7 +3160,7 @@
         return 0;
     }
     
-    return [[[self.context evaluateScript:@"MyWallet.wallet.balanceSpendableActiveLegacy"] toNumber] longLongValue];
+    return [[[self.context evaluateScript:@"MyWalletPhone.MyWallet.wallet.balanceSpendableActiveLegacy"] toNumber] longLongValue];
 }
 
 - (uint64_t)getBalanceForAccount:(int)account

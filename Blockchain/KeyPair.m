@@ -42,12 +42,12 @@
 
 - (JSValue *)d
 {
-    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"BigInteger.fromBuffer(new Buffer('%@', 'hex'))", [[self.key.privateKey hexadecimalString] escapeStringForJS]]];
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"MyWalletPhone.BigInteger.fromBuffer(new MyWalletPhone.Buffer('%@', 'hex'))", [[self.key.privateKey hexadecimalString] escapeStringForJS]]];
 }
 
 - (JSValue *)Q
 {
-    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"BigInteger.fromBuffer(new Buffer('%@', 'hex'))", [[self.key.publicKey hexadecimalString] escapeStringForJS]]];
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"MyWalletPhone.BigInteger.fromBuffer(new MyWalletPhone.Buffer('%@', 'hex'))", [[self.key.publicKey hexadecimalString] escapeStringForJS]]];
 }
 
 + (KeyPair *)fromPublicKey:(NSString *)buffer buffer:(JSValue *)network
@@ -112,7 +112,7 @@
 
 - (JSValue *)bufferFromData:(NSData *)data
 {
-    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [[data hexadecimalString] escapeStringForJS]]];
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new MyWalletPhone.Buffer('%@', 'hex')", [[data hexadecimalString] escapeStringForJS]]];
 }
 
 @end
