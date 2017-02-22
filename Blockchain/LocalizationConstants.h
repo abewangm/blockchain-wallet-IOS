@@ -36,7 +36,6 @@
 #define BC_STRING_NO_AVAILABLE_FUNDS NSLocalizedString(@"You have no available funds to send from this address", nil)
 #define BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD NSLocalizedString(@"Amount must be greater than or equal to the dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
-#define BC_STRING_INFORMATION_RECEIVE NSLocalizedString(@"For increased privacy, we generate a unique address for every payment. All addresses generated in your wallet can still receive funds, even if they no longer appear under Receive.", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
 #define BC_STRING_LOAD_MORE_TRANSACTIONS NSLocalizedString(@"Load More Transactions", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
