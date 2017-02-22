@@ -43,7 +43,7 @@
 {
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = nil;
+    navigationController.headerLabel.text = BC_STRING_ADDRESSES;
     
     if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
