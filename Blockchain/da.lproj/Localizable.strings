@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhed, må vi ikke holde eventuelle adgangskoder på fil. Backup din pung til at sikre din bitcoins er sikker, hvis du mister din adgangskode.";
+
+/* (No Commment) */
+"Wallets" = "Tegnebøger";

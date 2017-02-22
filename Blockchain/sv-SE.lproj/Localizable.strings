@@ -1619,3 +1619,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina bitcoins är säkra om du förlorar ditt lösenord.";
+
+/* (No Commment) */
+"Wallets" = "Plånböcker";

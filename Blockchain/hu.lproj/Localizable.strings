@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Az Ön biztonsága érdekében a jelszó, a fájl nem tartjuk. Hát a pénztárca annak biztosítása érdekében, a bitcoins biztonságosak abban az esetben, ha elveszíti a jelszavát.";
+
+/* (No Commment) */
+"Wallets" = "Pénztárca";

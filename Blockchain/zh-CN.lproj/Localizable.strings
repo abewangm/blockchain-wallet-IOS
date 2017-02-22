@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "为了您的安全，我们不会对任何密码备案。备份您的钱包，从而在您丢失密码时确保您的比特币是安全的。";
+
+/* (No Commment) */
+"Wallets" = "钱包";

@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Untuk keselamatan anda, kami tidak menyimpan mana-mana kata laluan pada fail. Sandaran dompet anda untuk memastikan anda bitcoins adalah selamat sekiranya anda hilang kata laluan anda.";
+
+/* (No Commment) */
+"Wallets" = "Dompet";

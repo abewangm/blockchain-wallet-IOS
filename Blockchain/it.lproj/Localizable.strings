@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Per la tua sicurezza, non registriamo nei nostri file nessuna password. Fai un backup del tuo portafoglio per essere certo che i tuoi bitcoin siano al sicuro se dovessi perdere la tua password.";
+
+/* (No Commment) */
+"Wallets" = "Portafogli";

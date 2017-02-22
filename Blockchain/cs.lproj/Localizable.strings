@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pro vaši bezpečnost neuchováváme žádná hesla. Zálohujte svou peněženku, abyste zajistili, že vaše bitcoiny budou v bezpečí, i když zapomenete své heslo.";
+
+/* (No Commment) */
+"Wallets" = "Peněženkám";

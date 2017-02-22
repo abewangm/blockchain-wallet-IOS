@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า bitcoin ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
+
+/* (No Commment) */
+"Wallets" = "กระเป๋าสตางค์";

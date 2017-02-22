@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "セキュリティのために当社はファイルにパスワードを保管しません。ウォレットをバックアップするとパスワードを失った場合でもビットコインの安全性が保たれます。";
+
+/* (No Commment) */
+"Wallets" = "ウォレット";

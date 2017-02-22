@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašo varnost, ne hranimo poljuben parola naprej pila. Varnostno kopiranje vaše denarnice za zagotovitev vaš bitcoins so varne, v primeru, da ste izgubili geslo.";
+
+/* (No Commment) */
+"Wallets" = "Denarnice";

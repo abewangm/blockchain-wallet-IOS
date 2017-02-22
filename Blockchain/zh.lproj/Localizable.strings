@@ -1541,3 +1541,6 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "收到时的值： %@";
+
+/* (No Commment) */
+"Wallets" = "钱包";

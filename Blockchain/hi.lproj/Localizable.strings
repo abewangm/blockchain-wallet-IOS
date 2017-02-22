@@ -1619,3 +1619,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "आपकी सुरक्षा के लिए, हम किसी भी पासवर्ड फ़ाइल पर न रखें। बैकअप आपके bitcoins सुनिश्चित करने के लिए अपने बटुए सुरक्षित हैं मामले में आप अपना पासवर्ड खो।";
+
+/* (No Commment) */
+"Wallets" = "जेब";
