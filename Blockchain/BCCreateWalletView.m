@@ -182,14 +182,14 @@
     emailTextField.text = nil;
     passwordTextField.text = nil;
     password2TextField.text = nil;
-    
+
+    app.wallet.delegate = app;
+
     // Reset wallet
     [app forgetWallet];
         
     // Load the newly created wallet
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
-        
-    app.wallet.delegate = app;
     
     app.wallet.isNew = YES;
     
