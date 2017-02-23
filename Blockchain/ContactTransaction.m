@@ -19,7 +19,7 @@
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
         _reason = [dictionary objectForKey:DICTIONARY_KEY_REASON];
         _contactIdentifier = identifier;
-        _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue];
+        _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
 
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
         

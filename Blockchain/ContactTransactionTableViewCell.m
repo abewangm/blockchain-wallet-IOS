@@ -57,7 +57,7 @@
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.lastUpdated];
-    NSString *dateString = [NSString stringWithFormat:@"%@ %@", BC_STRING_LAST_UPDATED, [NSDateFormatter timeAgoStringFromDate:date]];
+    NSString *dateString = [NSDateFormatter timeAgoStringFromDate:date];
     
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
         self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT, amount, name], [NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, name], dateString];
