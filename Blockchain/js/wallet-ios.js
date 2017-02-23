@@ -2032,7 +2032,11 @@ MyWalletPhone.getMessages = function(isFirstLoad) {
         objc_on_get_messages_error(error);
     };
     
-    MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
+    if (MyWallet.wallet.contacts) {
+        MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
+    } else {
+        console.log('MyWalletPhone.getMessages error: contacts not loaded');
+    }
 }
 
 MyWalletPhone.changeName = function(newName, identifier) {
