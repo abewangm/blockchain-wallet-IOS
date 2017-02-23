@@ -18,6 +18,9 @@
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
 #import "TransferAllFundsBuilder.h"
+#import "BCContactRequestView.h"
+#import "Contact.h"
+#import "BCNavigationController.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -25,7 +28,7 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
-@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate>
+@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, ContactRequestDelegate>
 
 @property (nonatomic) TransactionType transactionType;
 
@@ -36,6 +39,8 @@ typedef enum {
 @property (nonatomic) uint64_t txSize;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
+@property (nonatomic) NSString *addressFromURLHandler;
+@property (nonatomic) NSDictionary *contactInfo;
 
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
@@ -48,6 +53,8 @@ typedef enum {
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
 @property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
+
+@property (nonatomic) BCNavigationController *contactRequestNavigationController;
 
 @end
 
@@ -231,11 +238,19 @@ BOOL displayingLocalSymbolSend;
         
         [selectFromButton setHidden:YES];
         
+#ifdef ENABLE_DEBUG_MENU
+        if ([app.wallet addressBook].count == 0 && [[app.wallet.contacts allValues] count] == 0) {
+            [addressBookButton setHidden:YES];
+        } else {
+            [addressBookButton setHidden:NO];
+        }
+#else
         if ([app.wallet addressBook].count == 0) {
             [addressBookButton setHidden:YES];
         } else {
             [addressBookButton setHidden:NO];
         }
+#endif
     }
     else {
         [selectFromButton setHidden:NO];
@@ -287,7 +302,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
-        if ([app.wallet isBitcoinAddress:toField.text]) {
+        if ([app.wallet isBitcoinAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
         } else {
             toField.text = @"";
@@ -721,7 +736,12 @@ BOOL displayingLocalSymbolSend;
         }
         
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
-        NSString *toAddressString = self.sendToAddress ? self.toAddress : @"";
+        
+        BOOL shouldRemoveToAddress = NO;
+        NSString *contactName = [self.contactInfo objectForKey:self.toAddress];
+        shouldRemoveToAddress = contactName && ![contactName isEqualToString:@""];
+        
+        NSString *toAddressString = self.sendToAddress ? (shouldRemoveToAddress ? @"" : self.toAddress) : @"";
         
         // When a legacy wallet has no label, labelForLegacyAddress returns the address, so remove the string
         if ([toAddressLabel isEqualToString:toAddressString]) {
@@ -889,7 +909,16 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
-- (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
+- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
+{
+    self.addressFromURLHandler = addressString;
+    self.amountFromURLHandler = amount;
+    self.contactInfo = @{addressString: name};
+    
+    _addressSource = DestinationAddressSourceContact;
+}
+
+- (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {
     self.addressFromURLHandler = addressString;
     
@@ -913,6 +942,9 @@ BOOL displayingLocalSymbolSend;
         NSString *label = [app.wallet labelForLegacyAddress:address];
         if (label && ![label isEqualToString:@""])
             return label;
+    } else if (self.contactInfo) {
+        NSString *name = [self.contactInfo objectForKey:address];
+        if (name && ![name isEqualToString:@""]) return name;
     }
     
     return address;
@@ -1367,6 +1399,28 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)selectFromAddress:(NSString *)address
+{
+    self.sendFromAddress = true;
+    
+    NSString *addressOrLabel;
+    NSString *label = [app.wallet labelForLegacyAddress:address];
+    if (label && ![label isEqualToString:@""]) {
+        addressOrLabel = label;
+    }
+    else {
+        addressOrLabel = address;
+    }
+    
+    selectAddressTextField.text = addressOrLabel;
+    self.fromAddress = address;
+    DLog(@"fromAddress: %@", address);
+    
+    [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
+    
+    [self doCurrencyConversion];
+}
+
 - (void)selectToAddress:(NSString *)address
 {
     self.sendToAddress = true;
@@ -1376,6 +1430,23 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAddress: %@", address);
     
     [app.wallet changePaymentToAddress:address];
+    
+    [self doCurrencyConversion];
+}
+
+- (void)selectFromAccount:(int)account
+{
+    self.sendFromAddress = false;
+    
+    availableAmount = [app.wallet getBalanceForAccount:account];
+    
+    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
+    self.fromAccount = account;
+    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
+    
+    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
+    
+    [self updateFundsAvailable];
     
     [self doCurrencyConversion];
 }
@@ -1398,24 +1469,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectFromAddress:(NSString *)address
 {
-    self.sendFromAddress = true;
-    
-    NSString *addressOrLabel;
-    NSString *label = [app.wallet labelForLegacyAddress:address];
-    if (label && ![label isEqualToString:@""]) {
-        addressOrLabel = label;
-    }
-    else {
-        addressOrLabel = address;
-    }
-    
-    selectAddressTextField.text = addressOrLabel;
-    self.fromAddress = address;
-    DLog(@"fromAddress: %@", address);
-    
-    [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
-    
-    [self doCurrencyConversion];
+    [self selectFromAddress:address];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -1427,19 +1481,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didSelectFromAccount:(int)account
 {
-    self.sendFromAddress = false;
-    
-    availableAmount = [app.wallet getBalanceForAccount:account];
-    
-    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
-    self.fromAccount = account;
-    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
-    
-    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
-    
-    [self updateFundsAvailable];
-    
-    [self doCurrencyConversion];
+    [self selectFromAccount:account];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -1447,6 +1489,71 @@ BOOL displayingLocalSymbolSend;
     [self selectToAccount:account];
     
     _addressSource = DestinationAddressSourceDropDown;
+}
+
+- (void)didSelectContact:(Contact *)contact
+{
+    if (!contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+    } else {
+        [self createSendRequest:RequestTypeSendReason forContact:contact reason:nil];
+    }
+}
+
+#pragma mark - Contacts
+
+- (void)createSendRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
+{
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact reason:reason willSend:YES];
+    [contactRequestView setTypedAmount:[self getInputAmountInSatoshi]];
+    contactRequestView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
+    
+    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
+        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_SEND];
+        [app.tabViewController presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
+    } else {
+        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [contactRequestView showKeyboard];
+    });
+}
+
+#pragma mark - Contact Request Delegate
+
+- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
+{
+    DLog(@"Send error: prompted request amount");
+}
+
+- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact
+{
+    [self createSendRequest:RequestTypeSendAmount forContact:contact reason:reason];
+}
+
+- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
+{
+    DLog(@"Send error: created receive request");
+}
+
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SEND_REQUEST message:[NSString stringWithFormat:BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
+        [textField resignFirstResponder];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
+        });
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Fee Calculation
@@ -1691,7 +1798,7 @@ BOOL displayingLocalSymbolSend;
             
             // do something useful with results
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSDictionary *dict = [app parseURI:[metadataObj stringValue]];
+                NSDictionary *dict = [app parseURI:[metadataObj stringValue] prefix:PREFIX_BITCOIN_URI];
                 
                 NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 

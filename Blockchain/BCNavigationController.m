@@ -31,9 +31,9 @@
     
     app.topViewControllerDelegate = self;
     
-    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
-    topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.view addSubview:topBar];
+    self.topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
+    self.topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [self.view addSubview:self.topBar];
     
     self.headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
     self.headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
@@ -41,7 +41,7 @@
     self.headerLabel.textAlignment = NSTextAlignmentCenter;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
     self.headerLabel.text = self.headerTitle;
-    [topBar addSubview:self.headerLabel];
+    [self.topBar addSubview:self.headerLabel];
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
@@ -50,7 +50,7 @@
     [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [topBar addSubview:self.closeButton];
+    [self.topBar addSubview:self.closeButton];
     
     self.backButton = [[UIButton alloc] initWithFrame:CGRectZero];
     self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
@@ -59,7 +59,7 @@
     [self.backButton setTitle:@"" forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
-    [topBar addSubview:self.backButton];
+    [self.topBar addSubview:self.backButton];
     
     [self setupBusyView];
 }
@@ -116,6 +116,7 @@
     } else {
         self.backButton.hidden = YES;
         self.closeButton.hidden = NO;
+        self.topRightButton.hidden = YES;
     }
 }
 
@@ -170,6 +171,19 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
     });
+}
+
+- (UIButton *)createTopRightButton
+{
+    self.topRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.topRightButton.frame = self.closeButton.frame;
+    self.topRightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    self.topRightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.topRightButton setTitleEdgeInsets:self.closeButton.titleEdgeInsets];
+    [self.topRightButton setTitleColor:self.closeButton.currentTitleColor forState:UIControlStateHighlighted];
+    [self.topBar addSubview:self.topRightButton];
+    
+    return self.topRightButton;
 }
 
 @end

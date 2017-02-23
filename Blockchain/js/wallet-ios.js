@@ -31,6 +31,8 @@ var BIP39 = Blockchain.BIP39;
 var Networks = Blockchain.Networks;
 var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
+var SharedMetadata = Blockchain.SharedMetadata;
+var Contacts = Blockchain.Contacts;
 
 var MyWalletPhone = module.exports = {};
 
@@ -49,7 +51,7 @@ API_CODE = '35e77459-723f-48b0-8c9e-6e9e8f54fbd3';
 min = false;
 
 // Set the API code for the iOS Wallet for the server calls
-BlockchainAPI.API_CODE = API_CODE;
+//BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
@@ -364,7 +366,7 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
     currentPayment.on('error', function(errorObject) {
                       var errorDictionary = {'message': {'error': errorObject['error']}};
                         objc_on_error_update_fee(errorDictionary);
@@ -1052,7 +1054,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
         objc_didParsePairingCode(pairing_code);
     };
     
-    var error = function (e) {
+    var error = function (e) {console.log(e);
         objc_errorParsingPairingCode(e);
     };
     
@@ -1106,7 +1108,7 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
                 error(''+e);
             }
         };
-        var requestError = function (res) {
+        var requestError = function (res) {console.log(JSON.stringify(res));
             error('Pairing Code Server Error');
         };
         
@@ -1401,6 +1403,28 @@ BIP39.mnemonicToSeed = function(mnemonic, enteredPassword) {
 Metadata.verify = function (address, signature, message) {
     return objc_message_verify(address, signature.toString('hex'), message);
 }
+
+Metadata.sign = function (keyPair, message) {
+    return new Buffer(objc_message_sign(keyPair, message), 'hex');
+}
+
+SharedMetadata.verify = function (address, signature, message) {
+    return objc_message_verify_base64(address, signature, message);
+}
+
+SharedMetadata.sign = function (keyPair, message) {
+    return new Buffer(objc_message_sign(keyPair, message), 'hex');
+}
+
+SharedMetadata.prototype.encryptFor = function (message, contact) {
+    var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
+    return WalletCrypto.encryptDataWithKey(message, sharedKey);
+};
+
+SharedMetadata.prototype.decryptFrom = function (message, contact) {
+    var sharedKey = new Buffer(objc_get_shared_key(contact.pubKey, this._keyPair), 'hex');
+    return WalletCrypto.decryptDataWithKey(message, sharedKey);
+};
 
 // TODO what should this value be?
 MyWallet.getNTransactionsPerPage = function() {
@@ -1880,6 +1904,191 @@ MyWalletPhone.getNetworks = function() {
 
 MyWalletPhone.getECDSA = function() {
     return ECDSA;
+}
+
+MyWalletPhone.loadContacts = function() {
+    console.log('Loading contacts');
+    MyWallet.wallet.loadContacts();
+}
+
+MyWalletPhone.loadContactsThenGetMessages = function() {
+    console.log('Loading contacts then getting messages');
+    MyWallet.wallet.loadContacts().then(function(discard) {
+        MyWalletPhone.getMessages(true);
+    });
+}
+
+MyWalletPhone.getContacts = function() {
+    console.log('Getting contacts');
+    console.log(JSON.stringify(MyWallet.wallet.contacts.list));
+    var list = MyWallet.wallet.contacts.list;
+    
+    var listToReturn = Blockchain.R.map(function(contact) {
+      return {
+        company: contact.company,
+        email: contact.email,
+        id: contact.id,
+        invitationReceived: contact.invitationReceived,
+        invitationSent: contact.invitationSent,
+        mdid: contact.mdid,
+        name: contact.name,
+        note: contact.note,
+        pubKey: contact.pubKey,
+        surname: contact.surname,
+        trusted: contact.trusted,
+        xpub: contact.xpub,
+        facilitatedTxList: contact.facilitatedTxList
+      }
+    }, list);
+    
+    return listToReturn;
+}
+
+MyWalletPhone.getSaveContactsFunction = function() {
+    var save = function(info) {
+        return MyWallet.wallet.contacts.save().then(function(discard) {
+            return info;
+        });
+    }
+    
+    return save;
+}
+
+MyWalletPhone.createContact = function(name, id) {
+    
+    var success = function(invitation) {
+        objc_on_create_invitation_success(invitation);
+    };
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    
+    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
+}
+
+MyWalletPhone.readInvitation = function(invitation, invitationString) {
+    objc_on_read_invitation_success(invitation, invitationString);
+}
+
+MyWalletPhone.completeRelation = function(invitation) {
+    
+    var success = function() {
+        objc_on_complete_relation_success();
+    };
+    
+    MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
+}
+
+MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
+    
+    var success = function() {
+        objc_on_accept_relation_success(name, identifier);
+    };
+
+    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
+}
+
+MyWalletPhone.addTrust = function(contactIdentifier) {
+    
+    var success = function(invitation) {
+        objc_on_add_trust_success(invitation);
+    };
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    
+    MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
+}
+
+MyWalletPhone.deleteTrust = function(contactIdentifier) {
+    
+    var success = function(invitation) {
+        objc_on_delete_trust_success(invitation);
+    };
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    
+    MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
+}
+
+MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
+    
+    var success = function(xpub) {
+        objc_on_fetch_xpub_success(xpub);
+    };
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    
+    MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
+}
+
+MyWalletPhone.getMessages = function(isFirstLoad) {
+    
+    var success = function(messages) {
+        console.log('digested new messages');
+        objc_on_get_messages_success(messages, isFirstLoad);
+    };
+    
+    var error = function(error) {
+        console.log('Error getting messages');
+        console.log(error);
+        objc_on_get_messages_error(error);
+    };
+    
+    MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
+}
+
+MyWalletPhone.changeName = function(newName, identifier) {
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    var success = function(info) {
+        objc_on_change_contact_name_success(info);
+    };
+    
+    MyWallet.wallet.contacts.list[identifier].name = newName;
+    
+    save().then(success);
+}
+
+MyWalletPhone.deleteContact = function(identifier) {
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    var success = function(info) {
+        objc_on_delete_contact_success(info);
+    };
+
+    MyWallet.wallet.contacts.delete(identifier);
+    
+    save().then(success);
+}
+
+MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
+    
+    var success = function(info) {
+        objc_on_send_payment_request_success(info, userId);
+    };
+    
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+                                                          
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
+    
+    var success = function(info) {
+        objc_on_request_payment_request_success(info, userId);
+    };
+    
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+
+MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
+    
+    var success = function(info) {
+        objc_on_send_payment_request_response_success(info);
+    };
+    
+    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+}
+
+MyWalletPhone.getTime = function() {
+    return objc_get_time_since_1970();
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

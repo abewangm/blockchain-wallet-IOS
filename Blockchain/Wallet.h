@@ -39,7 +39,7 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction, JSValue, JSContext;
+@class Wallet, Transaction, JSValue, JSContext, Contact, ContactTransaction;
 
 @protocol WalletDelegate <NSObject>
 @optional
@@ -101,6 +101,17 @@
 - (void)didSetDefaultAccount;
 - (void)didChangeLocalCurrency;
 - (void)setupBackupTransferAll:(id)transferAllController;
+- (void)didCreateInvitation:(NSDictionary *)invitation;
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+- (void)didCompleteRelation;
+- (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
+- (void)didFetchExtendedPublicKey;
+- (void)didGetNewMessages:(NSArray *)newMessages;
+- (void)didGetMessagesOnFirstLoad;
+- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didChangeContactName:(NSDictionary *)info;
+- (void)didDeleteContact:(NSDictionary *)info;
 - (void)didPushTransaction;
 @end
 
@@ -150,6 +161,18 @@
 @property (nonatomic) NSString *swipeAddressToSubscribe;
 
 @property (nonatomic) int lastLabelledAddressesCount;
+
+@property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
+@property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
+@property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
+
+typedef enum {
+    ContactActionRequiredNone,
+    ContactActionRequiredSingleRequest,
+    ContactActionRequiredSinglePayment,
+    ContactActionRequiredMultiple,
+} ContactActionRequired;
+@property (nonatomic) ContactActionRequired contactsActionRequired;
 
 - (id)init;
 
@@ -348,4 +371,19 @@
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
+// Contacts
+- (void)loadContacts;
+- (void)loadContactsThenGetMessages;
+- (void)getMessages;
+- (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
+- (void)readInvitation:(NSString *)invitation;
+- (void)completeRelation:(NSString *)identifier;
+- (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
+- (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
+- (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
+- (void)deleteContact:(NSString *)contactIdentifier;
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
+- (BOOL)actionRequiredForContact:(Contact *)contact;
 @end

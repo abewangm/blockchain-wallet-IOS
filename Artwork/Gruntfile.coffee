@@ -29,6 +29,7 @@ module.exports = (grunt) ->
     "shell:psd:upgrade1:548"
     "shell:psd:upgrade2:548"
     "shell:psd:upgrade3:548"
+    "shell:svg:backup_red_circle:13"
     "shell:svg:menu:14:20"
     "shell:svg:backup_blue_circle:40"
     "shell:svg:backup_exclamation_mark:40"

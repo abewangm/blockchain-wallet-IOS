@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol DoneButtonDelegate
+- (void)dismissContactController;
+@end
 @interface BCQRCodeView : UIView
 @property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) NSString *address;
 @property (nonatomic) UILabel *qrCodeFooterLabel;
 @property (nonatomic) UILabel *qrCodeHeaderLabel;
 
-- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText;
+@property (nonatomic) id<DoneButtonDelegate> doneButtonDelegate;
+
+- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText addAddressPrefix:(BOOL)addPrefix;
 
 @end

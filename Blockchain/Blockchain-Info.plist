@@ -11,7 +11,7 @@
 	<key>CFBundleIconFiles</key>
 	<array/>
 	<key>CFBundleIdentifier</key>
-	<string>com.rainydayapps.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,6 +31,7 @@
 			<array>
 				<string>bitcoin</string>
 				<string>blockchain-wallet</string>
+				<string>blockchain</string>
 			</array>
 		</dict>
 	</array>
@@ -44,6 +45,10 @@
 	<string>Blockchain needs access to your location to show you nearby businesses that accept Bitcoin</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-ExtraLight.ttf</string>

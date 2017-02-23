@@ -38,9 +38,9 @@
     [app applicationWillEnterForeground:application];
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    return [app application:application handleOpenURL:url];
+    return [app application:application openURL:url options:options];
 }
 
 @end

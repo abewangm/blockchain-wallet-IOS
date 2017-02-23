@@ -9,6 +9,8 @@
 #import "Wallet.h"
 #import "RootService.h"
 #import "Transaction.h"
+#import "Contact.h"
+#import "ContactTransaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
 #import "MultiAddressResponse.h"
 #import "UncaughtExceptionHandler.h"
@@ -30,6 +32,7 @@
 #import "BTCKey.h"
 #import "BTCData.h"
 #import "KeyPair.h"
+#import "NSData+BTCData.h"
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
@@ -145,6 +148,22 @@
     };
     
 #pragma mark Decryption
+    
+    self.context[@"objc_message_sign"] = ^(KeyPair *keyPair, NSString *message, JSValue *network) {
+         return [[keyPair.key signatureForMessage:message] hexadecimalString];
+    };
+    
+    self.context[@"objc_get_shared_key"] = ^(KeyPair *publicKey, KeyPair *privateKey) {
+        return [BTCSHA256([[publicKey.key diffieHellmanWithPrivateKey:privateKey.key] publicKey]) hexadecimalString];
+    };
+
+    self.context[@"objc_message_verify_base64"] = ^(NSString *address, NSString *signature, NSString *message) {
+        NSData *signatureData = [[NSData alloc] initWithBase64EncodedString:signature options:kNilOptions];
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
+    };
     
     self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
         NSData *signatureData = BTCDataFromHex(signature);
@@ -648,6 +667,60 @@
         [weakSelf wrong_two_factor_code:error];
     };
     
+#pragma mark Contacts
+    
+    self.context[@"objc_on_create_invitation_success"] = ^(JSValue *invitation) {
+        [weakSelf on_create_invitation_success:invitation];
+    };
+    
+    self.context[@"objc_on_read_invitation_success"] = ^(JSValue *invitation, NSString *identifier) {
+        [weakSelf on_read_invitation_success:invitation identifier:identifier];
+    };
+    
+    self.context[@"objc_on_complete_relation_success"] = ^() {
+        [weakSelf on_complete_relation_success];
+    };
+    
+    self.context[@"objc_on_accept_relation_success"] = ^(NSString *name, NSString *invitation) {
+        [weakSelf on_accept_relation_success:invitation name:name];
+    };
+    
+    self.context[@"objc_on_fetch_xpub_success"] = ^(NSString *xpub) {
+        [weakSelf on_fetch_xpub_success:xpub];
+    };
+    
+    self.context[@"objc_on_get_messages_success"] = ^(JSValue *messages, JSValue *firstLoad) {
+        [weakSelf on_get_messages_success:messages firstLoad:firstLoad];
+    };
+    
+    self.context[@"objc_on_get_messages_error"] = ^(JSValue *error) {
+        [weakSelf on_get_messages_error:[error toString]];
+    };
+    
+    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
+        [weakSelf on_send_payment_request_success:info identifier:userId];
+    };
+    
+    self.context[@"objc_on_request_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
+        [weakSelf on_request_payment_request_success:info identifier:userId];
+    };
+    
+    self.context[@"objc_on_send_payment_request_response_success"] = ^(JSValue *info) {
+        [weakSelf on_send_payment_request_response_success:info];
+    };
+    
+    self.context[@"objc_on_change_contact_name_success"] = ^(JSValue *info) {
+        [weakSelf on_change_contact_name_success:info];
+    };
+    
+    self.context[@"objc_on_delete_contact_success"] = ^(JSValue *info) {
+        [weakSelf on_delete_contact_success:info];
+    };
+    
+    self.context[@"objc_get_time_since_1970"] = ^() {
+        return [[NSDate date] timeIntervalSince1970];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -797,7 +870,8 @@
         [delegate setupBackupTransferAll:transferAllController];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector setupBackupTransferAll!", [delegate class]);
-    }}
+    }
+}
 
 # pragma mark - Socket Delegate
 
@@ -1897,6 +1971,186 @@
     return [self.context evaluateScript:command];
 }
 
+#pragma mark - Contacts
+
+- (void)loadContacts
+{
+    [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
+}
+
+- (void)loadContactsThenGetMessages
+{
+    [self.context evaluateScript:@"MyWalletPhone.loadContactsThenGetMessages()"];
+}
+
+- (void)getUpdatedContacts:(BOOL)isFirstLoad newMessages:(NSArray *)newMessages
+{
+    NSArray *contacts = [[[[JSContext currentContext] evaluateScript:@"MyWalletPhone.getContacts()"] toDictionary] allValues];
+    
+    self.pendingContactTransactions = [NSMutableArray new];
+    self.completedContactTransactions = [NSMutableDictionary new];
+
+    [self iterateAndUpdateContacts:contacts];
+    
+    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
+    if (!self.isSyncing) {
+        [self loading_stop];
+    }
+    
+    if (isFirstLoad) {
+        if ([self.delegate respondsToSelector:@selector(didGetMessagesOnFirstLoad)]) {
+            
+            [self.delegate didGetMessagesOnFirstLoad];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didGetMessagesOnFirstLoad!", [delegate class]);
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(didGetNewMessages:)]) {
+            
+            [self.delegate didGetNewMessages:newMessages];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector didGetNewMessages!", [delegate class]);
+        }
+    }
+}
+    
+- (void)createContactWithName:(NSString *)name ID:(NSString *)idString
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createContact(\"%@\", \"%@\")", [name escapeStringForJS], [idString escapeStringForJS]]];
+}
+
+- (void)readInvitation:(NSString *)invitation
+{
+    // Do not use escape string here - already escaped in ContactsViewController.
+    NSString *string = [NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@, \"%@\")", invitation, [invitation escapeStringForJS]];
+    [self.context evaluateScript:string];
+}
+
+- (void)completeRelation:(NSString *)identifier
+{
+    // Do not use escape string here - already escaped in ContactsViewController.
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.completeRelation(\"%@\")", [identifier escapeStringForJS]]];
+}
+
+- (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptRelation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
+}
+
+- (void)addTrust:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
+- (void)deleteTrust:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
+- (void)fetchExtendedPublicKey:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.fetchExtendedPublicKey(\"%@\")",[contactIdentifier escapeStringForJS]]];
+}
+
+- (void)getMessages
+{
+    [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
+}
+
+- (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeName(\"%@\", \"%@\")", [newName escapeStringForJS], [contactIdentifier escapeStringForJS]]];
+}
+
+- (void)deleteContact:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContact(\"%@\")", [contactIdentifier escapeStringForJS]]];
+}
+
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
+{
+    NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, \"%@\")", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS]]];
+}
+
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
+{
+    NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\")", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS]]];
+}
+
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
+}
+
+- (void)iterateAndUpdateContacts:(NSArray *)allContacts
+{
+    int actionCount = 0;
+    ContactActionRequired firstAction;
+    
+    NSMutableDictionary *allContactsDict = [NSMutableDictionary new];
+    
+    for (NSDictionary *contactDict in allContacts) {
+        Contact *contact = [[Contact alloc] initWithDictionary:contactDict];
+        [allContactsDict setObject:contact forKey:contact.identifier];
+        
+        // Check for any pending invitations
+        if (!contact.mdid &&
+            contact.invitationReceived &&
+            ![contact.invitationReceived isEqualToString:@""]) {
+            actionCount++;
+            firstAction = ContactActionRequiredSingleRequest;
+        }
+        
+        int actionCountForContact = [self numberOfActionsRequiredForContact:contact];
+        if (actionCountForContact > 0) firstAction = ContactActionRequiredSinglePayment;
+        actionCount = actionCount + actionCountForContact;
+    }
+    
+    if (actionCount == 0) {
+        self.contactsActionRequired = ContactActionRequiredNone;
+    } else if (actionCount == 1) {
+        self.contactsActionRequired = firstAction;
+    } else if (actionCount > 1) {
+        self.contactsActionRequired = ContactActionRequiredMultiple;
+    }
+    
+    self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
+}
+
+- (int)numberOfActionsRequiredForContact:(Contact *)contact
+{
+    int numberOfActionsRequired = 0;
+    // Check for any pending requests
+    for (ContactTransaction *transaction in [contact.transactionList allValues]) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+            numberOfActionsRequired++;
+        }
+        if (transaction.transactionState != ContactTransactionStateCompletedSend && transaction.transactionState != ContactTransactionStateCompletedReceive) {
+            [self.pendingContactTransactions addObject:transaction];
+        } else if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
+            [self.completedContactTransactions setObject:transaction forKey:transaction.myHash];
+        }
+    }
+    
+    return numberOfActionsRequired;
+}
+
+- (BOOL)actionRequiredForContact:(Contact *)contact
+{
+    // Check for any pending requests
+    for (ContactTransaction *transaction in [contact.transactionList allValues]) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -2662,10 +2916,8 @@
 {
     DLog(@"on_get_history_success");
     
-    // Keep showing busy view to prevent user input while archiving/unarchiving addresses
-    if (!self.isSyncing) {
-        [self loading_stop];
-    }
+    [self getMessages];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
@@ -3004,6 +3256,123 @@
         [self.delegate didErrorWhenGettingFiatAtTime:error];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didErrorWhenGettingFiatAtTime!", [delegate class]);
+    }
+}
+
+- (void)on_create_invitation_success:(JSValue *)invitation
+{
+    DLog(@"on_create_invitation_success");
+    if ([self.delegate respondsToSelector:@selector(didCreateInvitation:)]) {
+        [self.delegate didCreateInvitation:[invitation toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_read_invitation_success:(JSValue *)invitation identifier:(NSString *)identifier
+{
+    DLog(@"on_read_invitation_success");
+    if ([self.delegate respondsToSelector:@selector(didReadInvitation:identifier:)]) {
+        [self.delegate didReadInvitation:[invitation toDictionary] identifier:identifier];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_complete_relation_success
+{
+    DLog(@"on_read_invitation_sent_success");
+    if ([self.delegate respondsToSelector:@selector(didCompleteRelation)]) {
+        [self.delegate didCompleteRelation];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitationSent!", [delegate class]);
+    }
+}
+
+- (void)on_accept_relation_success:(NSString *)invitation name:(NSString *)name
+{
+    DLog(@"on_accept_relation_success");
+    if ([self.delegate respondsToSelector:@selector(didAcceptRelation:name:)]) {
+        [self.delegate didAcceptRelation:invitation name:name];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didAcceptInvitation!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_xpub_success:(NSString *)xpub
+{
+    DLog(@"on_fetch_xpub_success");
+    if ([self.delegate respondsToSelector:@selector(didFetchExtendedPublicKey)]) {
+        [self.delegate didFetchExtendedPublicKey];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchExtendedPublicKey!", [delegate class]);
+    }
+}
+
+- (void)on_get_messages_success:(JSValue *)messages firstLoad:(JSValue *)isFirstLoad
+{
+    DLog(@"on_get_messages_success");
+    [self getUpdatedContacts:[isFirstLoad toBool] newMessages:[messages toArray]];
+}
+
+- (void)on_get_messages_error:(NSString *)error
+{
+    DLog(@"on_get_messages_error");
+    [self getUpdatedContacts:NO newMessages:nil];
+}
+
+- (void)on_send_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
+{
+    DLog(@"on_send_payment_request_success");
+    
+    [self getMessages];
+
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:name:)]) {
+        [self.delegate didSendPaymentRequest:[info toDictionary] name:[app.wallet.contacts objectForKey:[userId toString]].name];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest:name:!", [delegate class]);
+    }
+}
+
+- (void)on_request_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
+{
+    DLog(@"on_request_payment_request_success");
+    
+    [self getMessages];
+
+    if ([self.delegate respondsToSelector:@selector(didRequestPaymentRequest:name:)]) {
+        [self.delegate didRequestPaymentRequest:[info toDictionary] name:[app.wallet.contacts objectForKey:[userId toString]].name];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRequestPaymentRequest:name!", [delegate class]);
+    }
+}
+
+- (void)on_send_payment_request_response_success:(JSValue *)info
+{
+    DLog(@"on_send_payment_request_response_success");
+    
+    [self getMessages];
+}
+
+- (void)on_change_contact_name_success:(JSValue *)info
+{
+    DLog(@"on_change_contact_name_success");
+    
+    if ([self.delegate respondsToSelector:@selector(didChangeContactName:)]) {
+        [self.delegate didChangeContactName:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didChangeContactName!", [delegate class]);
+    }
+}
+
+- (void)on_delete_contact_success:(JSValue *)info
+{
+    DLog(@"on_delete_contact_success");
+
+    if ([self.delegate respondsToSelector:@selector(didDeleteContact:)]) {
+        [self.delegate didDeleteContact:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didDeleteContact!", [delegate class]);
     }
 }
 

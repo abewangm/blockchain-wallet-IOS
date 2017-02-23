@@ -16,12 +16,15 @@
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
 #import "Blockchain-Swift.h"
+#import "BCContactRequestView.h"
+#import "Contact.h"
 
-@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
+@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate, ContactRequestDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
 @property (nonatomic) BOOL firstLoading;
+@property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -105,15 +108,30 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
+#ifdef ENABLE_DEBUG_MENU
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
     [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
+    requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+
     [self.view addSubview:requestButton];
-    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(requestButton.frame.size.width, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
+    [shareButton setTitle:BC_STRING_SHARE_REQUEST forState:UIControlStateNormal];
+#else
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
+    [shareButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+#endif
+    shareButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
+    [self.view addSubview:shareButton];
+    [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - shareButton.frame.size.height, self.view.frame.size.width, 100)];
     [self.view addSubview:self.bottomContainerView];
     
     BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];
@@ -601,6 +619,19 @@ NSString *detailLabel;
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
 }
 
+- (void)request
+{
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access request button when not initialized!");
+        return;
+    }
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
+    addressSelectionView.delegate = self;
+    
+    [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
+}
+
 - (void)share
 {
     if (![app.wallet isInitialized]) {
@@ -816,6 +847,71 @@ NSString *detailLabel;
 - (void)didSelectWatchOnlyAddress:(NSString *)address
 {
     [self alertUserOfWatchOnlyAddress:address];
+}
+
+- (void)didSelectContact:(Contact *)contact
+{
+    if (!contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+    } else {
+        [self createReceiveRequest:RequestTypeReceiveReason forContact:contact reason:nil];
+    }
+}
+
+#pragma mark - Contacts
+
+- (void)createReceiveRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
+{
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact reason:reason willSend:NO];
+    [contactRequestView setTypedAmount:[self getInputAmountInSatoshi]];
+    contactRequestView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
+    
+    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
+        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_RECEIVE];
+        [app.tabViewController presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
+    } else {
+        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [contactRequestView showKeyboard];
+    });
+}
+
+#pragma mark - Contact Request Delegate
+
+- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
+{
+    [self createReceiveRequest:RequestTypeSendAmount forContact:contact reason:reason];
+}
+
+- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact
+{
+    DLog(@"Receive error: prompted send amount");
+}
+
+- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_RECEIVE_REQUEST message:[NSString stringWithFormat:BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
+        [textField resignFirstResponder];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [app.wallet sendPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
+        });
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
+{
+    DLog(@"Receive error: created send request");
 }
 
 @end

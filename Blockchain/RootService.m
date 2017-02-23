@@ -43,6 +43,8 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
+#import "ContactsViewController.h"
+#import "ContactTransaction.h"
 
 @implementation RootService
 
@@ -52,7 +54,14 @@ RootService * app;
 @synthesize modalView;
 @synthesize latestResponse;
 
-BOOL showSendCoins = NO;
+typedef enum {
+    ShowTypeNone = 100,
+    ShowTypeSendCoins = 200,
+    ShowTypeNewContact = 300,
+    ShowTypeNewPayment = 400
+} ShowType;
+
+ShowType showType;
 
 enum {
     ShowReminderTypeNone,
@@ -66,6 +75,8 @@ ShowReminderType showReminderType;
 
 SideMenuViewController *sideMenuViewController;
 UIImageView *curtainImageView;
+
+UNNotification *pushNotificationPendingAction;
 
 void (^addPrivateKeySuccess)(NSString *);
 void (^secondPasswordSuccess)(NSString *);
@@ -199,6 +210,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showWelcomeOrPinScreen];
     
+#ifdef ENABLE_DEBUG_MENU
+    [self requestAuthorizationForPushNotifications];
+#endif
+    
     return YES;
 }
 
@@ -286,6 +301,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     app.transactionsViewController.loadedAllTransactions = NO;
+    app.transactionsViewController.messageIdentifier = nil;
     app.wallet.isFetchingTransactions = NO;
     app.wallet.isFilteringTransactions = NO;
     
@@ -358,7 +374,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self performSelector:@selector(showPinModalIfBackgroundedDuringLoad) withObject:nil afterDelay:0.3];
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     if (![self isPinSet]) {
         if ([[url absoluteString] isEqualToString:[NSString stringWithFormat:@"%@%@", PREFIX_BLOCKCHAIN_WALLET_URI, @"loginAuthorized"]]) {
@@ -369,30 +385,129 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
-    if ([[url absoluteString] hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+    NSString *absoluteURL = [url absoluteString];
+    
+    if ([absoluteURL hasPrefix:PREFIX_BLOCKCHAIN_WALLET_URI]) {
+        // redirect from browser to app - do nothing.
+        return YES;
+    } else if ([absoluteURL hasPrefix:PREFIX_BLOCKCHAIN_URI]) {
+        
+        [app closeModalWithTransition:kCATransitionFade];
+
+        NSDictionary *dict = [self parseURI:absoluteURL prefix:PREFIX_BLOCKCHAIN_URI];
+        NSString *identifier = [dict objectForKey:DICTIONARY_KEY_ID];
+        NSString *name = [dict objectForKey:DICTIONARY_KEY_NAME];
+        
+        showType = ShowTypeNewContact;
+        
+        _contactsViewController = [[ContactsViewController alloc] initWithInvitation:identifier name:name];
+        
         return YES;
     }
     
     [app closeModalWithTransition:kCATransitionFade];
     
-    NSDictionary *dict = [self parseURI:[url absoluteString]];
+    NSDictionary *dict = [self parseURI:absoluteURL prefix:PREFIX_BITCOIN_URI];
     NSString * addr = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
     NSString * amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
     
-    showSendCoins = YES;
+    showType = ShowTypeSendCoins;
     
     if (!_sendViewController) {
         // really no reason to lazyload anymore...
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
-    [_sendViewController setAmountFromUrlHandler:amount withToAddress:addr];
+    [_sendViewController setAmountStringFromUrlHandler:amount withToAddress:addr];
     [_sendViewController reload];
     
     return YES;
 }
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    pushNotificationPendingAction = notification;
+    
+    [self.wallet getMessages];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
+{
+    DLog(@"User received remote notification");
+    NSString *type = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
+    NSString *invitationSent = [response.notification.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+    
+    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+        showType = ShowTypeNewContact;
+        _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:invitationSent];
+    } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+        showType = ShowTypeNewPayment;
+        _transactionsViewController.messageIdentifier = invitationSent;
+    }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    const char *data = [deviceToken bytes];
+    NSMutableString *token = [NSMutableString string];
+    
+    for (NSUInteger i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    self.deviceToken = [token copy];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
+{
+    DLog(@"didReceiveRemoteNotification");
+}
+
 #pragma mark - Setup
+
+- (void)requestAuthorizationForPushNotifications
+{
+    if (SYSTEM_VERSION_LESS_THAN(@"10.0")) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    } else {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+             if (!error) {
+                 [[UIApplication sharedApplication] registerForRemoteNotifications];
+                 DLog( @"Push registration success." );
+             } else {
+                 DLog( @"Push registration FAILED" );
+                 DLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
+                 DLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
+             }  
+         }];
+    }
+}
+
+- (void)registerDeviceForPushNotifications
+{
+    // TODO: test deregistering from the server
+    
+    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, URL_SERVER, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
+    [notificationsRequest setHTTPMethod:@"POST"];
+    
+    NSURLSessionDataTask *dataTask = [[SessionManager sharedSession] dataTaskWithRequest:notificationsRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            DLog(@"Error registering device with backend: %@", [error localizedDescription]);
+        }
+        NSError *jsonError;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (jsonError) {
+            DLog(@"Error parsing response from registering device with backend: %@", [error localizedDescription]);
+        } else {
+            DLog(@"Register notifications result: %@", result);
+        }
+    }];
+    
+    [dataTask resume];
+}
 
 - (void)setupBtcFormatter
 {
@@ -599,6 +714,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_sendViewController reloadSymbols];
     
+    [_contactsViewController reloadSymbols];
     [_transactionsViewController reloadSymbols];
     [_accountsAndAddressesNavigationController reload];
     [sideMenuViewController reload];
@@ -703,6 +819,16 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (NSString *)getCurrentDetailViewControllerHash
+{
+    return [self isViewingContacts] ? [self.contactsViewController currentTransactionHash] : self.transactionsViewController.detailViewController.transaction.myHash;
+}
+
+- (BOOL)isViewingContacts
+{
+    return self.topViewControllerDelegate != nil;
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -792,11 +918,6 @@ void (^secondPasswordSuccess)(NSString *);
         [self forceHDUpgradeForLegacyWallets];
     }
     
-    if (showSendCoins) {
-        [self showSendCoins];
-        showSendCoins = NO;
-    }
-    
     self.changedPassword = NO;
     
     [self setAccountData:wallet.guid sharedKey:wallet.sharedKey];
@@ -852,6 +973,26 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    
+#ifdef ENABLE_DEBUG_MENU
+    [self registerDeviceForPushNotifications];
+#endif
+    
+    if (showType == ShowTypeSendCoins) {
+        [self showSendCoins];
+    } else if (showType == ShowTypeNewPayment) {
+        [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:1];
+    } else if (showType == ShowTypeNewContact) {
+        [self.wallet loadContacts];
+        [self showContacts];
+        return;
+    }
+    
+    showType = ShowTypeNone;
+
+#ifdef ENABLE_DEBUG_MENU
+    [self.wallet loadContactsThenGetMessages];
+#endif
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -1042,13 +1183,13 @@ void (^secondPasswordSuccess)(NSString *);
     return dict;
 }
 
-- (NSDictionary*)parseURI:(NSString*)urlString
+- (NSDictionary*)parseURI:(NSString*)urlString prefix:(NSString *)urlPrefix
 {
     if (!urlString) {
         return nil;
     }
     
-    if (![urlString hasPrefix:PREFIX_BITCOIN_URI]) {
+    if (![urlString hasPrefix:urlPrefix]) {
         return [NSDictionary dictionaryWithObject:urlString forKey:DICTIONARY_KEY_ADDRESS];
     }
     
@@ -1799,26 +1940,25 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
 {
-    if (self.transactionsViewController.lastSelectedIndexPath.row < latestResponse.transactions.count) {
-        
-        Transaction *transaction = latestResponse.transactions[self.transactionsViewController.lastSelectedIndexPath.row];
-        
-        if ([transaction.myHash isEqualToString:self.transactionsViewController.detailViewController.transaction.myHash]) {
+    BOOL didFindTransaction = NO;
+    for (Transaction *transaction in app.latestResponse.transactions) {
+        if ([transaction.myHash isEqualToString:[self getCurrentDetailViewControllerHash]]) {
             NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
             if (components.count > 1 && [[components lastObject] length] == 1) {
                 fiatAmount = [fiatAmount stringByAppendingString:@"0"];
             }
             
             [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
-        } else {
-            DLog(@"didGetFiatAtTime: will not set fiat amount because latest transaction hash does not match detail controller's transaction hash. This can occur when receiving a transaction while on the detail view controller.");
+            didFindTransaction = YES;
+            break;
         }
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
-    } else {
-        DLog(@"Transaction detail error: last selected transaction index is outside bounds of transactions from latest response!");
     }
-
+    
+    if (!didFindTransaction) {
+        DLog(@"didGetFiatAtTime: will not set fiat amount because the detail controller's transaction hash cannot be found.");
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error
@@ -1840,6 +1980,234 @@ void (^secondPasswordSuccess)(NSString *);
     [self.receiveViewController doCurrencyConversion];
 }
 
+- (void)didCreateInvitation:(NSDictionary *)invitation
+{
+    [self.contactsViewController didCreateInvitation:invitation];
+}
+
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+{
+    [self.contactsViewController didReadInvitation:invitation identifier:identifier];
+}
+
+- (void)didCompleteRelation
+{
+    [self.contactsViewController didCompleteRelation];
+}
+
+- (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
+{
+    // TODO: Push notification for user who sent invitation should occur to prompt to call or call readInvitationSent to get MDID
+    
+    [self.contactsViewController didAcceptRelation:invitation name:name];
+}
+
+- (void)didChangeTrust
+{
+    [self.contactsViewController didChangeTrust];
+}
+
+- (void)didFetchExtendedPublicKey
+{
+    [self.contactsViewController didFetchExtendedPublicKey];
+}
+
+- (void)didGetMessagesOnFirstLoad
+{
+    if (self.wallet.contactsActionRequired == ContactActionRequiredSingleRequest) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self showContacts];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    } else if (self.wallet.contactsActionRequired == ContactActionRequiredSinglePayment) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            for (ContactTransaction *transaction in self.wallet.pendingContactTransactions) {
+                if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+                    [_transactionsViewController selectPayment:transaction.identifier];
+                    break;
+                }
+            }
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+        
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    } else if (_transactionsViewController.messageIdentifier) {
+        [_transactionsViewController selectPayment:_transactionsViewController.messageIdentifier];
+    }
+    
+    [self reloadMessageViews];
+}
+
+- (void)didGetNewMessages:(NSArray *)newMessages
+{
+    if (pushNotificationPendingAction) {
+        
+        NSString *type = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
+        
+        NSString *identifier = [[[newMessages firstObject] objectForKey:DICTIONARY_KEY_PAYLOAD] objectForKey:DICTIONARY_KEY_ID];
+        
+        DLog(@"User received remote notification %@ of type %@", identifier, type);
+        
+        NSDictionary *alert = [[pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_APS] objectForKey:DICTIONARY_KEY_ALERT];
+        NSString *title = [alert objectForKey:DICTIONARY_KEY_TITLE];
+        NSString *message = [alert objectForKey:DICTIONARY_KEY_BODY];
+        
+        if ([self.wallet isInitialized]) {
+            
+            UIAlertController *alert;
+            
+            if (self.topViewControllerDelegate) {
+                
+                BOOL isViewingContacts = NO;
+                
+                BCNavigationController *navigationController = (BCNavigationController *)self.topViewControllerDelegate;
+                if ([navigationController isMemberOfClass:[BCNavigationController class]]) {
+                    if ([navigationController.visibleViewController isEqual:_contactsViewController]) isViewingContacts = YES;
+                }
+                
+                if (isViewingContacts) {
+                    
+                    // User is viewing contacts
+                    
+                    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                        alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [_contactsViewController showAcceptedInvitation:identifier];
+                        }]];
+                    } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                        alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                                [app closeSideMenu];
+                                [app closeAllModals];
+                                [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                                [_transactionsViewController selectPayment:identifier];
+                            }];
+                        }]];
+                    }
+                    
+                } else {
+                    
+                    // User is viewing some other top view controller
+                    
+                    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                        alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                                [app closeSideMenu];
+                                [app closeAllModals];
+                                _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
+                                [self showContacts];
+                            }];
+                        }]];
+                    } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                        alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [_tabViewController dismissViewControllerAnimated:YES completion:^{
+                                [app closeSideMenu];
+                                [app closeAllModals];
+                                [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                                [_transactionsViewController selectPayment:identifier];
+                            }];
+                        }]];
+                    }
+                }
+                
+                if (self.topViewControllerDelegate && [self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                    [self.topViewControllerDelegate presentAlertController:alert];
+                } else {
+                    [_tabViewController presentViewController:alert animated:YES completion:nil];
+                }
+            } else if (self.pinEntryViewController) {
+                
+                // On PIN screen
+                
+                if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                }
+                [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            } else {
+                
+                // Not on PIN screen, no top view controller
+                
+                if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app closeAllModals];
+                        [app closeSideMenu];
+                        _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
+                        [self showContacts];
+                    }]];
+                } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                    alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
+                    
+                    if (_tabViewController.activeViewController == _transactionsViewController) {
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [app closeAllModals];
+                            [app closeSideMenu];
+                            [_transactionsViewController selectPayment:identifier];
+                        }]];
+                    } else {
+                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [app closeAllModals];
+                            [app closeSideMenu];
+                            [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                            [_transactionsViewController selectPayment:identifier];
+                        }]];
+                    }
+                }
+                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            }
+        } else if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+            
+            // Logged out
+            UIAlertController *alert;
+            if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            }
+            
+            if (self.pinEntryViewController) {
+                [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            } else {
+                // Use should be on logged out/enter password modal
+                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            }
+        } else {
+            DLog(@"Got messages while unpaired - possibly received push notification while unpaired");
+        }
+    }
+    
+    pushNotificationPendingAction = nil;
+    
+    [self reloadMessageViews];
+}
+
+- (void)reloadMessageViews
+{
+    [self.sendViewController hideSelectFromAndToButtonsIfAppropriate];
+
+    [_transactionsViewController reload];
+    [sideMenuViewController reloadTableView];
+    [self.contactsViewController didGetMessages];
+}
+
 - (void)didPushTransaction
 {
     DestinationAddressSource source = self.sendViewController.addressSource;
@@ -1853,6 +2221,8 @@ void (^secondPasswordSuccess)(NSString *);
         eventName = WALLET_EVENT_TX_FROM_URI;
     } else if (source == DestinationAddressSourceDropDown) {
         eventName = WALLET_EVENT_TX_FROM_DROPDOWN;
+    } else if (source == DestinationAddressSourceContact) {
+        eventName = WALLET_EVENT_TX_FROM_CONTACTS;
     } else if (source == DestinationAddressSourceNone) {
         DLog(@"Destination address source none");
         return;
@@ -1876,7 +2246,67 @@ void (^secondPasswordSuccess)(NSString *);
     [dataTask resume];
 }
 
+- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name
+{
+    [app hideBusyView];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            app.topViewControllerDelegate = nil;
+            [app closeAllModals];
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }];
+    } else {
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
+{
+    [app hideBusyView];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            app.topViewControllerDelegate = nil;
+            [app closeAllModals];
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }];
+    } else {
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+- (void)didChangeContactName:(NSDictionary *)info
+{
+    [self.contactsViewController didChangeContactName];
+}
+
+- (void)didDeleteContact:(NSDictionary *)info
+{
+    [self.contactsViewController.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark - Show Screens
+
+- (void)showContacts
+{
+    if (!_contactsViewController) {
+        _contactsViewController = [ContactsViewController new];
+    }
+    
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.contactsViewController title:BC_STRING_CONTACTS];
+    
+    self.topViewControllerDelegate = navigationController;
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [_tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
 
 - (void)showAccountsAndAddresses
 {
@@ -2189,6 +2619,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (!_tabViewController.presentedViewController) {
         [app showAccountsAndAddresses];
+    }
+}
+
+- (IBAction)contactsClicked:(id)sender
+{
+    if (!_tabViewController.presentedViewController) {
+        [app showContacts];
     }
 }
 
@@ -2723,6 +3160,51 @@ void (^secondPasswordSuccess)(NSString *);
     };
     
     [self showSettings:showBackupBlock];
+}
+
+- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name
+{
+    [self closeSideMenu];
+    
+    self.pendingPaymentRequestTransaction = transaction;
+    
+    if (!_sendViewController) {
+        _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+    }
+    
+    [_tabViewController setActiveViewController:_sendViewController animated:YES index:0];
+    
+    [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address contactName:name];
+    [_sendViewController reload];
+}
+
+- (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction
+{
+    if (self.pendingPaymentRequestTransaction) {
+        
+        uint64_t transactionAmount = llabs(transaction.amount) - llabs(transaction.fee);
+        BOOL amountsMatch = self.pendingPaymentRequestTransaction.intendedAmount == transactionAmount;
+        BOOL destinationAddressesMatch = NO;
+        
+        for (NSDictionary *destination in transaction.to) {
+            if ([[destination objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString:self.pendingPaymentRequestTransaction.address]) {
+                destinationAddressesMatch = YES;
+                break;
+            }
+        }
+        
+        if (amountsMatch && destinationAddressesMatch) {
+            [app.wallet sendPaymentRequestResponse:self.pendingPaymentRequestTransaction.contactIdentifier transactionHash:transaction.myHash transactionIdentifier:self.pendingPaymentRequestTransaction.identifier];
+        } else {
+            if (!amountsMatch) {
+                DLog(@"Error: pending amount %lld does not match transaction amount %lld", self.pendingPaymentRequestTransaction.intendedAmount, transactionAmount);
+            }
+            if (!destinationAddressesMatch) {
+                DLog(@"Error: pending address %@ does not match any transaction addresses %@", self.pendingPaymentRequestTransaction.address, transaction.to);
+            }
+        }
+        self.pendingPaymentRequestTransaction = nil;
+    }
 }
 
 #pragma mark - Pin Entry Delegates

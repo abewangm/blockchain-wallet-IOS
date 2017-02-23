@@ -30,7 +30,11 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
+#ifdef ENABLE_DEBUG_MENU
+const int menuEntries = 7;
+#else
 const int menuEntries = 6;
+#endif
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -257,6 +261,8 @@ int accountEntries = 0;
     
     if (row == MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES) {
         [app accountsAndAddressesClicked:nil];
+    } else if (row == MENU_CELL_INDEX_CONTACTS) {
+        [app contactsClicked:nil];
     } else if (row == MENU_CELL_INDEX_SETTINGS) {
         [app accountSettingsClicked:nil];
     } else if (row == MENU_CELL_INDEX_MERCHANT){
@@ -392,9 +398,13 @@ int accountEntries = 0;
         }
         
         NSMutableArray *titles;
+#ifdef ENABLE_DEBUG_MENU
+        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
+#else
         titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
-        
+#endif
         NSString *upgradeOrBackupImage;
+        
         if (!app.wallet.didUpgradeToHd) {
             // XXX upgrade icon
             upgradeOrBackupImage = @"icon_upgrade";
@@ -403,12 +413,24 @@ int accountEntries = 0;
             upgradeOrBackupImage = @"lock";
         }
         NSMutableArray *images;
-
+#ifdef ENABLE_DEBUG_MENU
+        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"contacts_icon", @"settings", @"wallet", @"merchant", @"help", @"logout"]];
+#else
         images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings", @"wallet", @"merchant", @"help", @"logout"]];
-        
+#endif
+
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
+        
+        if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
+            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [cell.imageView setTintColor:COLOR_DARK_GRAY];
+            
+            cell.showDot = app.wallet.contactsActionRequired != ContactActionRequiredNone;
+        } else {
+            cell.showDot = NO;
+        }
         
         return cell;
     }

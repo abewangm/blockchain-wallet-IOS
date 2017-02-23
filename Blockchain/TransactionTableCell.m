@@ -12,6 +12,7 @@
 #import "TransactionsViewController.h"
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
+#import "NSDateFormatter+TimeAgoString.h"
 
 @implementation TransactionTableCell
 
@@ -28,35 +29,7 @@
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
         
-        long long secondsAgo  = -round([date timeIntervalSinceNow]);
-        
-        if (secondsAgo <= 1) { // Just now
-            dateLabel.text = NSLocalizedString(@"Just now", nil);
-        } else if (secondsAgo < 60) { // 0 - 59 seconds
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld seconds ago", nil), secondsAgo];
-        } else if (secondsAgo / 60 == 1) { // 1 minute
-            dateLabel.text = NSLocalizedString(@"1 minute ago", nil);
-        } else if (secondsAgo < 60 * 60) {  // 1 to 59 minutes
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld minutes ago", nil), secondsAgo / 60];
-        } else if (secondsAgo / 60 / 60 == 1) { // 1 hour ago
-            dateLabel.text = NSLocalizedString(@"1 hour ago", nil);
-        } else if ([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInToday:)] && secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
-        } else if([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInYesterday:)] && [[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
-            dateLabel.text = NSLocalizedString(@"Yesterday", nil);
-        } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d" options:0 locale:[NSLocale currentLocale]];
-            [dateFormatter setDateFormat:longFormatWithoutYear];
-            
-            dateLabel.text = [dateFormatter stringFromDate:date];
-        } else { // month + year (last year or earlier)
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
-            [dateFormatter setDateFormat:longFormatWithoutYear];
-            
-            dateLabel.text = [dateFormatter stringFromDate:date];
-        }
+        dateLabel.text = [NSDateFormatter timeAgoStringFromDate:date];
 
     } else {
         dateLabel.hidden = YES;

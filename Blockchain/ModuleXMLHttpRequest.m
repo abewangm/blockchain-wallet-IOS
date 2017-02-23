@@ -39,9 +39,8 @@
     _onError = [JSManagedValue managedValueWithValue:onerror];
     [[[JSContext currentContext] virtualMachine] addManagedReference:_onError withOwner:self];
 }
+
 -(JSValue*)onerror { return _onError.value; }
-
-
 
 -(void)send:(id)inputData
 {

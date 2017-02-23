@@ -26,13 +26,14 @@
 #import "TransferAllFundsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
+#import <UserNotifications/UserNotifications.h>
 #import "ReminderModalViewController.h"
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController;
+@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, ReminderModalDelegate> {
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate> {
     
     Wallet *wallet;
     
@@ -77,6 +78,7 @@
 @property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
 @property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
 @property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
+@property (strong, nonatomic) ContactsViewController *contactsViewController;
 
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
@@ -92,6 +94,8 @@
 
 @property (strong, nonatomic) TransferAllFundsViewController *transferAllFundsModalController;
 
+@property(nonatomic) NSString *deviceToken;
+
 // PIN Entry
 @property (nonatomic, strong) PEPinEntryController *pinEntryViewController;
 @property (nonatomic, copy) void (^pinViewControllerCallback)(BOOL);
@@ -104,6 +108,8 @@
 @property (nonatomic) BOOL changedPassword;
 @property (nonatomic) BOOL isVerifyingMobileNumber;
 
+@property (nonatomic) ContactTransaction *pendingPaymentRequestTransaction;
+
 // Certificate Pinning
 @property (nonatomic) CertificatePinner *certificatePinner;
 
@@ -112,7 +118,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application;
 - (void)applicationDidEnterBackground:(UIApplication *)application;
 - (void)applicationWillEnterForeground:(UIApplication *)application;
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
 
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey;
 
@@ -140,7 +146,7 @@
 - (void)closeModalWithTransition:(NSString *)transition;
 - (void)closeAllModals;
 
-- (NSDictionary*)parseURI:(NSString*)string;
+- (NSDictionary*)parseURI:(NSString*)urlString prefix:(NSString *)urlPrefix;
 
 // Wallet Delegate
 - (void)didSetLatestBlock:(LatestBlock*)block;
@@ -195,14 +201,17 @@
 - (IBAction)manualPairClicked:(id)sender;
 
 - (IBAction)accountsAndAddressesClicked:(id)sender;
+- (IBAction)contactsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
+- (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;

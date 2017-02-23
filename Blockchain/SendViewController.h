@@ -79,11 +79,10 @@ typedef enum {
     DestinationAddressSourcePaste,
     DestinationAddressSourceURI,
     DestinationAddressSourceDropDown,
+    DestinationAddressSourceContact
 } DestinationAddressSource;
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
-
-@property(nonatomic, strong) NSString *addressFromURLHandler;
 
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;
@@ -104,10 +103,10 @@ typedef enum {
 - (IBAction)addressBookClicked:(id)sender;
 - (IBAction)closeKeyboardClicked:(id)sender;
 
-- (void)didSelectFromAddress:(NSString *)address;
-- (void)didSelectToAddress:(NSString *)address;
-- (void)didSelectFromAccount:(int)account;
-- (void)didSelectToAccount:(int)account;
+- (void)selectFromAddress:(NSString *)address;
+- (void)selectToAddress:(NSString *)address;
+- (void)selectFromAccount:(int)account;
+- (void)selectToAccount:(int)account;
 
 - (void)updateSendBalance:(NSNumber *)balance;
 
@@ -115,7 +114,8 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
+- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)string contactName:(NSString *)name;
+- (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 
@@ -144,6 +144,7 @@ typedef enum {
 
 - (void)enablePaymentButtons;
 
+- (void)hideSelectFromAndToButtonsIfAppropriate;
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;
 

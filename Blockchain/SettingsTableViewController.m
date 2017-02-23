@@ -30,8 +30,16 @@ const int preferencesMobileNumber = 2;
 const int sectionPreferences = 1;
 const int preferencesEmailNotifications = 0;
 const int preferencesSMSNotifications = 1;
+
+#ifdef ENABLE_DEBUG_MENU
+const int preferencesPushNotifications = 2;
+const int displayLocalCurrency = 3;
+const int displayBtcUnit = 4;
+#else
+const int preferencesPushNotifications = -1;
 const int displayLocalCurrency = 2;
 const int displayBtcUnit = 3;
+#endif
 
 const int sectionSecurity = 2;
 const int securityTwoStep = 0;
@@ -448,7 +456,7 @@ const int aboutPrivacyPolicy = 2;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagChangeMobileNumber;
+        secureTextField.tag = TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER;
         secureTextField.delegate = self;
         secureTextField.keyboardType = UIKeyboardTypePhonePad;
         secureTextField.returnKeyType = UIReturnKeyDone;
@@ -537,7 +545,7 @@ const int aboutPrivacyPolicy = 2;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagVerifyMobileNumber;
+        secureTextField.tag = TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER;
         secureTextField.delegate = self;
         secureTextField.returnKeyType = UIReturnKeyDone;
         secureTextField.placeholder = BC_STRING_ENTER_VERIFICATION_CODE;
@@ -661,6 +669,11 @@ const int aboutPrivacyPolicy = 2;
     return [app.wallet SMSNotificationsEnabled];
 }
 
+- (BOOL)pushNotificationsEnabled
+{
+    return NO;
+}
+
 - (void)toggleEmailNotifications
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:sectionPreferences];
@@ -745,6 +758,11 @@ const int aboutPrivacyPolicy = 2;
     } else {
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+- (void)togglePushNotifications
+{
+    
 }
 
 #pragma mark - Change Two Step
@@ -1017,10 +1035,10 @@ const int aboutPrivacyPolicy = 2;
     
     if (self.alertTargetViewController) {
         [self.alertTargetViewController dismissViewControllerAnimated:YES completion:^{
-            if (textField.tag == textFieldTagVerifyMobileNumber) {
+            if (textField.tag == TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER) {
                 [weakSelf verifyMobileNumber:textField.text];
                 
-            } else if (textField.tag == textFieldTagChangeMobileNumber) {
+            } else if (textField.tag == TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER) {
                 [weakSelf changeMobileNumber:textField.text];
             }
         }];
@@ -1028,10 +1046,10 @@ const int aboutPrivacyPolicy = 2;
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
-        if (textField.tag == textFieldTagVerifyMobileNumber) {
+        if (textField.tag == TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER) {
             [weakSelf verifyMobileNumber:textField.text];
             
-        } else if (textField.tag == textFieldTagChangeMobileNumber) {
+        } else if (textField.tag == TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER) {
             [weakSelf changeMobileNumber:textField.text];
         }
     }];
@@ -1179,7 +1197,11 @@ const int aboutPrivacyPolicy = 2;
 {
     switch (section) {
         case sectionProfile: return 3;
+#ifdef ENABLE_DEBUG_MENU
+        case sectionPreferences: return 5;
+#else
         case sectionPreferences: return 4;
+#endif
         case sectionSecurity: {
             NSInteger numberOfRows = 0;
             
@@ -1301,6 +1323,15 @@ const int aboutPrivacyPolicy = 2;
                     cell.accessoryView = switchForSMSNotifications;
                     return cell;
                 }
+                case preferencesPushNotifications: {
+                    cell.textLabel.text = BC_STRING_SETTINGS_PUSH_NOTIFICATIONS;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    UISwitch *switchForPushNotifications = [[UISwitch alloc] init];
+                    switchForPushNotifications.on = [self pushNotificationsEnabled];
+                    [switchForPushNotifications addTarget:self action:@selector(togglePushNotifications) forControlEvents:UIControlEventTouchUpInside];
+                    cell.accessoryView = switchForPushNotifications;
+                    return cell;
+                }
                 case displayLocalCurrency: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
@@ -1322,7 +1353,6 @@ const int aboutPrivacyPolicy = 2;
                     }
                     return cell;
                 }
-                    
             }
         }
         case sectionSecurity: {
