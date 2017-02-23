@@ -413,38 +413,17 @@
     
     self.context[@"objc_getRandomValues"] = ^(JSValue *intArray) {
         DLog(@"objc_getRandomValues");
+        
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
+        
         if (!fileHandle) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
         
         NSUInteger length = [[intArray toArray] count];
-        if (length == 0) {
-            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
-                                           reason:@"Requested random values with array of length 0" userInfo:nil];
-        }
-        
         NSData *data = [fileHandle readDataOfLength:length];
-        
-        __block NSMutableSet *byteSet = [NSMutableSet new];
-        
-        [data enumerateByteRangesUsingBlock:^(const void *bytes,
-                                              NSRange byteRange,
-                                              BOOL *stop) {
-            
-            //To print raw byte values as hex
-            for (NSUInteger i = 0; i < byteRange.length; ++i) {
-                NSString *byte = [NSString stringWithFormat:@"%02x", ((uint8_t*)bytes)[i]];
-                [byteSet addObject:byte];
-            }
-        }];
-        
-        if (length > 1 && [byteSet count] <= 1) {
-            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
-                                           reason:@"All bytes are the same" userInfo:nil];
-        }
-        
+
         if ([data length] != length) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"Data length is not equal to intArray length" userInfo:nil];
