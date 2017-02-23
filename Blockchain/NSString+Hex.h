@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Hex)
-- (BOOL)isHexidecimal;
+- (BOOL)isHexadecimal;
 @end

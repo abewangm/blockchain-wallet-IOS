@@ -10,7 +10,7 @@
 
 @implementation NSString (Hex)
 
-- (BOOL)isHexidecimal
+- (BOOL)isHexadecimal
 {
     NSCharacterSet *chars = [[NSCharacterSet
                               characterSetWithCharactersInString:@"0123456789ABCDEFabcdef"] invertedSet];

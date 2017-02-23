@@ -447,7 +447,7 @@
         
         NSString *hexString = [data hexadecimalString];
         
-        if (![hexString isHexidecimal]) {
+        if (![hexString isHexadecimal]) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"String is not hexidecimal" userInfo:nil];
         }
@@ -2376,6 +2376,7 @@
     }
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
+        
         [delegate walletDidFinishLoad];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);
