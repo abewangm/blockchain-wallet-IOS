@@ -16,6 +16,7 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
+#import "NSString+Hex.h"
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -411,15 +412,47 @@
     
 #pragma mark Accounts/Addresses
     
-    self.context[@"objc_getRandomValues"] = ^(JSValue *buffer) {
+    self.context[@"objc_getRandomValues"] = ^(JSValue *intArray) {
         DLog(@"objc_getRandomValues");
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
         if (!fileHandle) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
-        NSData *data = [fileHandle readDataOfLength:[[buffer toArray] count]];
-        return [data hexadecimalString];
+        NSUInteger length = [[intArray toArray] count];
+        NSData *data = [fileHandle readDataOfLength:length];
+        
+        __block NSMutableSet *byteSet = [NSMutableSet new];
+        
+        [data enumerateByteRangesUsingBlock:^(const void *bytes,
+                                              NSRange byteRange,
+                                              BOOL *stop) {
+            
+            //To print raw byte values as hex
+            for (NSUInteger i = 0; i < byteRange.length; ++i) {
+                NSString *byte = [NSString stringWithFormat:@"%02x", ((uint8_t*)bytes)[i]];
+                [byteSet addObject:byte];
+            }
+        }];
+        
+        if ([byteSet count] <= 1) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"All bytes are the same" userInfo:nil];
+        }
+        
+        if ([data length] != length) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"Data length is not equal to intArray length" userInfo:nil];
+        }
+        
+        NSString *hexString = [data hexadecimalString];
+        
+        if (![hexString isHexidecimal]) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"String is not hexidecimal" userInfo:nil];
+        }
+        
+        return hexString;
     };
     
     self.context[@"objc_crypto_scrypt_salt_n_r_p_dkLen"] = ^(id _password, id salt, NSNumber *N, NSNumber *r, NSNumber *p, NSNumber *derivedKeyLen, JSValue *success, JSValue *error) {
