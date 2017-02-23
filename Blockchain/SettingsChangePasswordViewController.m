@@ -40,6 +40,10 @@
     self.newerPasswordTextField.inputAccessoryView = createButton;
     self.confirmNewPasswordTextField.inputAccessoryView = createButton;
     
+    self.mainPasswordTextField.textColor = COLOR_TEXT_DARK_GRAY;
+    self.newerPasswordTextField.textColor = COLOR_TEXT_DARK_GRAY;
+    self.confirmNewPasswordTextField.textColor = COLOR_TEXT_DARK_GRAY;
+    
     self.mainPasswordTextField.delegate = self;
     self.newerPasswordTextField.delegate = self;
     self.confirmNewPasswordTextField.delegate = self;
