@@ -1496,6 +1496,8 @@ void (^secondPasswordSuccess)(NSString *);
     self.merchantViewController = nil;
     self.receiveViewController = nil;
     
+    self.isVerifyingMobileNumber = NO;
+    
     [KeychainItemWrapper removeGuidFromKeychain];
     [KeychainItemWrapper removeSharedKeyFromKeychain];
     
