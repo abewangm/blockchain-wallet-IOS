@@ -1399,17 +1399,20 @@ void (^secondPasswordSuccess)(NSString *);
     PairingCodeParser * pairingCodeParser = [[PairingCodeParser alloc] initWithSuccess:^(NSDictionary*code) {
         DLog(@"scanAndParse success");
         
-        [app forgetWallet];
-        
-        [app clearPin];
-        
-        [self.wallet loadWalletWithGuid:[code objectForKey:QR_CODE_KEY_GUID] sharedKey:[code objectForKey:QR_CODE_KEY_SHARED_KEY] password:[code objectForKey:QR_CODE_KEY_PASSWORD]];
-        
-        self.wallet.delegate = self;
-        
-        wallet.didPairAutomatically = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [app forgetWallet];
+            
+            [app clearPin];
+            
+            self.wallet.delegate = self;
+            
+            [self.wallet loadWalletWithGuid:[code objectForKey:QR_CODE_KEY_GUID] sharedKey:[code objectForKey:QR_CODE_KEY_SHARED_KEY] password:[code objectForKey:QR_CODE_KEY_PASSWORD]];
+            
+            wallet.didPairAutomatically = YES;
+        });
         
     } error:^(NSString*error) {
+        [app hideBusyView];
         [app standardNotify:error];
     }];
     
