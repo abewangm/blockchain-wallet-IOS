@@ -341,10 +341,10 @@ const int aboutPrivacyPolicy = 2;
     if ([app.wallet SMSNotificationsEnabled]) {
         [self alertUserAboutDisablingSMSNotifications:newNumber];
     } else {
-        [app.wallet changeMobileNumber:newNumber];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+        
+        [app.wallet changeMobileNumber:newNumber];
     }
 }
 
