@@ -185,7 +185,6 @@
 		A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */; };
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
 		C718F37E1E5F443300F58830 /* wallet-ios.js in Resources */ = {isa = PBXBuildFile; fileRef = C718F37D1E5F443300F58830 /* wallet-ios.js */; };
-		C718F3811E5F5B9900F58830 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C718F3801E5F5B9900F58830 /* NSString+Hex.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -971,8 +970,6 @@
 		A2AADC041B0B98720085144B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Backup.strings; sourceTree = "<group>"; };
 		A2AADC071B0B999F0085144B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
 		C718F37D1E5F443300F58830 /* wallet-ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "wallet-ios.js"; sourceTree = "<group>"; };
-		C718F37F1E5F5B9900F58830 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
-		C718F3801E5F5B9900F58830 /* NSString+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hex.m"; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1316,8 +1313,6 @@
 		9F1831F315176F2200FB3D52 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				C718F37F1E5F5B9900F58830 /* NSString+Hex.h */,
-				C718F3801E5F5B9900F58830 /* NSString+Hex.m */,
 				23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */,
 				23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */,
 				23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */,
@@ -2053,7 +2048,6 @@
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
-				C718F3811E5F5B9900F58830 /* NSString+Hex.m in Sources */,
 				23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */,
 				2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,

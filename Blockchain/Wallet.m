@@ -16,7 +16,6 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
-#import "NSString+Hex.h"
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -445,14 +444,7 @@
                                            reason:@"Data length is not equal to intArray length" userInfo:nil];
         }
         
-        NSString *hexString = [data hexadecimalString];
-        
-        if (![hexString isHexadecimal]) {
-            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
-                                           reason:@"String is not hexidecimal" userInfo:nil];
-        }
-        
-        return hexString;
+        return [data hexadecimalString];
     };
     
     self.context[@"objc_crypto_scrypt_salt_n_r_p_dkLen"] = ^(id _password, id salt, NSNumber *N, NSNumber *r, NSNumber *p, NSNumber *derivedKeyLen, JSValue *success, JSValue *error) {
