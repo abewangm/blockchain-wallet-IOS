@@ -45,7 +45,6 @@
 		2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 2326C6C11BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m */; };
 		232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */; };
 		232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */; };
-		23321D7A1BB0730C0005624F /* my-wallet.js in Resources */ = {isa = PBXBuildFile; fileRef = 23321D791BB0730C0005624F /* my-wallet.js */; };
 		2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2343E4021CB434BC008DC7D1 /* NSArray+EncodedJSONString.m */; };
 		23444F7E1DCD213D00573C8C /* BTCKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F7D1DCD213D00573C8C /* BTCKey.m */; };
 		23444F811DCD214800573C8C /* BTCBigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F801DCD214800573C8C /* BTCBigNumber.m */; };
@@ -124,7 +123,6 @@
 		67812A7D1A4A0E6800B04EBF /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67812A7C1A4A0E6800B04EBF /* CoreImage.framework */; };
 		678AD5E919D4610000E9A778 /* BCModalContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 678AD5E819D4610000E9A778 /* BCModalContentView.m */; };
 		678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 678CD7471A2777E600748AA5 /* BCCreateAccountView.m */; };
-		67D2B6EE1A2F2DEF0078782C /* wallet-ios.js in Resources */ = {isa = PBXBuildFile; fileRef = 67D2B6ED1A2F2DEF0078782C /* wallet-ios.js */; };
 		67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D95A251B3DD86B0012EBB1 /* BCTextField.swift */; };
 		67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D95A271B3DDC900012EBB1 /* Constants.swift */; };
 		67E9674E19DF285000305358 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E9674D19DF285000305358 /* SideMenuViewController.m */; };
@@ -140,7 +138,6 @@
 		67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7711A8E547900288753 /* PEPin-on@3x.png */; };
 		67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A4C1ABA092D000C9196 /* RegExCategories.m */; };
 		6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */; };
-		844BC7B01949BD830024160B /* bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 844BC7AF1949BD710024160B /* bridge.js */; };
 		84AEEC661987C49A000E8DC8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AEEC651987C49A000E8DC8 /* CoreLocation.framework */; };
 		84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B601C6197ACD6300DA1829 /* UITextField+Blocks.m */; };
 		84B601CA197AD03800DA1829 /* BCModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B601C9197AD03800DA1829 /* BCModalView.m */; };
@@ -151,7 +148,6 @@
 		84FC02FE19815F1B00B97D5B /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 84FC02FC19815F1B00B97D5B /* sha256.c */; };
 		84FC0301198162AE00B97D5B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC02FF198162AE00B97D5B /* libcrypto.a */; };
 		9F0CBAAA151351F400CD945D /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CBAA9151351F400CD945D /* Wallet.m */; };
-		9F0CBAB015135DF200CD945D /* wallet-ios.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F0CBAAD15135DF200CD945D /* wallet-ios.html */; };
 		9F0CBAD81513CA2600CD945D /* BCFadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CBAD71513CA2600CD945D /* BCFadeView.m */; };
 		9F1831E21516A39500FB3D52 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1831E11516A39500FB3D52 /* NSData+Hex.m */; };
 		9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1831E41516A45700FB3D52 /* NSString+SHA256.m */; };
@@ -225,6 +221,7 @@
 		C9BE91891945D8F600FD516D /* PEPin-off.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE91791945D8F600FD516D /* PEPin-off.png */; };
 		C9BE918A1945D8F600FD516D /* PEPin-on.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE917A1945D8F600FD516D /* PEPin-on.png */; };
 		C9BE918C1945F5FC00FD516D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE918B1945F5FC00FD516D /* Images.xcassets */; };
+		CF0F52731E5CFB3A00D9C4F0 /* bundle.js in Resources */ = {isa = PBXBuildFile; fileRef = CF0F52721E5CFB3A00D9C4F0 /* bundle.js */; };
 		ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */; };
 		ECD244EC19A8AC45004B1F40 /* PEKeyboard-3-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */; };
 		ECD244ED19A8AC45004B1F40 /* PEKeyboard-3-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E319A8AC45004B1F40 /* PEKeyboard-3-edit.png */; };
@@ -476,7 +473,6 @@
 		232ACBF31DAE84720072FB5E /* TransferAllFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferAllFundsViewController.h; sourceTree = "<group>"; };
 		232ACBF41DAE84720072FB5E /* TransferAllFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferAllFundsViewController.m; sourceTree = "<group>"; };
 		232E17F81C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopToRootWithCompletion.swift"; sourceTree = "<group>"; };
-		23321D791BB0730C0005624F /* my-wallet.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "my-wallet.js"; path = "../../Submodules/My-Wallet-V3/dist/my-wallet.js"; sourceTree = "<group>"; };
 		234197861C17BB02004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Upgrade.strings; sourceTree = "<group>"; };
 		234197881C17BB08004B82C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
 		2343E4011CB434BC008DC7D1 /* NSArray+EncodedJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+EncodedJSONString.h"; sourceTree = "<group>"; };
@@ -843,7 +839,6 @@
 		678AD5E819D4610000E9A778 /* BCModalContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalContentView.m; sourceTree = "<group>"; };
 		678CD7461A2777E600748AA5 /* BCCreateAccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCreateAccountView.h; sourceTree = "<group>"; };
 		678CD7471A2777E600748AA5 /* BCCreateAccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCreateAccountView.m; sourceTree = "<group>"; };
-		67D2B6ED1A2F2DEF0078782C /* wallet-ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "wallet-ios.js"; sourceTree = "<group>"; };
 		67D95A251B3DD86B0012EBB1 /* BCTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCTextField.swift; sourceTree = "<group>"; };
 		67D95A271B3DDC900012EBB1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67E9674C19DF285000305358 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
@@ -869,7 +864,6 @@
 		67FA1A4C1ABA092D000C9196 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
 		6E2D90A01BBEC34800B719EC /* BCRecoveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRecoveryView.h; sourceTree = "<group>"; };
 		6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRecoveryView.m; sourceTree = "<group>"; };
-		844BC7AF1949BD710024160B /* bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bridge.js; sourceTree = "<group>"; };
 		84AEEC651987C49A000E8DC8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84B601C5197ACD6300DA1829 /* UITextField+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Blocks.h"; sourceTree = "<group>"; };
 		84B601C6197ACD6300DA1829 /* UITextField+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Blocks.m"; sourceTree = "<group>"; };
@@ -891,7 +885,6 @@
 		84FC02FF198162AE00B97D5B /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Library/OpenSSL-for-iPhone/lib/libcrypto.a"; sourceTree = "<group>"; };
 		9F0CBAA8151351F400CD945D /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
 		9F0CBAA9151351F400CD945D /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wallet.m; sourceTree = "<group>"; };
-		9F0CBAAD15135DF200CD945D /* wallet-ios.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "wallet-ios.html"; sourceTree = "<group>"; };
 		9F0CBAD61513CA2600CD945D /* BCFadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFadeView.h; sourceTree = "<group>"; };
 		9F0CBAD71513CA2600CD945D /* BCFadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFadeView.m; sourceTree = "<group>"; };
 		9F1831E01516A39500FB3D52 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
@@ -1017,6 +1010,7 @@
 		C9BE91791945D8F600FD516D /* PEPin-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-off.png"; sourceTree = "<group>"; };
 		C9BE917A1945D8F600FD516D /* PEPin-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on.png"; sourceTree = "<group>"; };
 		C9BE918B1945F5FC00FD516D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		CF0F52721E5CFB3A00D9C4F0 /* bundle.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bundle.js; sourceTree = "<group>"; };
 		ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-done.png"; sourceTree = "<group>"; };
 		ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-dot.png"; sourceTree = "<group>"; };
 		ECD244E319A8AC45004B1F40 /* PEKeyboard-3-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-edit.png"; sourceTree = "<group>"; };
@@ -1307,10 +1301,7 @@
 		9F0CBAAB15135DF200CD945D /* JavaScript */ = {
 			isa = PBXGroup;
 			children = (
-				844BC7AF1949BD710024160B /* bridge.js */,
-				23321D791BB0730C0005624F /* my-wallet.js */,
-				9F0CBAAD15135DF200CD945D /* wallet-ios.html */,
-				67D2B6ED1A2F2DEF0078782C /* wallet-ios.js */,
+				CF0F52721E5CFB3A00D9C4F0 /* bundle.js */,
 			);
 			name = JavaScript;
 			path = js;
@@ -1857,16 +1848,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0F52731E5CFB3A00D9C4F0 /* bundle.js in Resources */,
 				C790E11A1E52061B0063D141 /* Montserrat-Regular.ttf in Resources */,
 				C790E1161E52061B0063D141 /* Montserrat-Light.ttf in Resources */,
 				23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */,
-				23321D7A1BB0730C0005624F /* my-wallet.js in Resources */,
-				67D2B6EE1A2F2DEF0078782C /* wallet-ios.js in Resources */,
 				C790E1141E52061B0063D141 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */,
 				C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */,
 				67EEE76F1A8E547200288753 /* PEPin-off@3x.png in Resources */,
-				844BC7B01949BD830024160B /* bridge.js in Resources */,
 				ECD244F219A8AC45004B1F40 /* PEKeyboard-4-edit.png in Resources */,
 				C9BE91861945D8F600FD516D /* PEKeyboard-2-edit.png in Resources */,
 				C790E11D1E52061B0063D141 /* Montserrat-Thin.ttf in Resources */,
@@ -1885,7 +1874,6 @@
 				ECD244EF19A8AC45004B1F40 /* PEKeyboard-3.png in Resources */,
 				C790E11E1E52061B0063D141 /* Montserrat-ThinItalic.ttf in Resources */,
 				C9BE918A1945D8F600FD516D /* PEPin-on.png in Resources */,
-				9F0CBAB015135DF200CD945D /* wallet-ios.html in Resources */,
 				C790E1171E52061B0063D141 /* Montserrat-LightItalic.ttf in Resources */,
 				220E376019A3614F00E06996 /* MainWindow.xib in Resources */,
 				C9BE91851945D8F600FD516D /* PEKeyboard-2-dot.png in Resources */,
