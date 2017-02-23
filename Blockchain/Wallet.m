@@ -418,7 +418,13 @@
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
+        
         NSUInteger length = [[intArray toArray] count];
+        if (length == 0) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"Requested random values with array of length 0" userInfo:nil];
+        }
+        
         NSData *data = [fileHandle readDataOfLength:length];
         
         __block NSMutableSet *byteSet = [NSMutableSet new];
@@ -434,7 +440,7 @@
             }
         }];
         
-        if ([byteSet count] <= 1) {
+        if (length > 1 && [byteSet count] <= 1) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"All bytes are the same" userInfo:nil];
         }
