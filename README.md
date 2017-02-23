@@ -12,7 +12,8 @@ Prepare SocketRocket:
 Build JavaScript dependencies:
 
     npm install
-    (cd Submodules/My-Wallet-V3 && npm install)
+    cd Submodules/My-Wallet-V3 && npm install
+    cd ../..
     npm run build
 
 Prepare OpenSSL:
