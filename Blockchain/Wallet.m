@@ -1146,31 +1146,31 @@
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    NSString * txProgressID;
-    
-    if (secondPassword) {
-        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(true, \"%@\")", [secondPassword escapeStringForJS]]] toString];
-    } else {
-        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(true)"] toString];
-    }
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
     
     if (listener) {
         [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+    
+    if (secondPassword) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
     }
 }
 
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    NSString * txProgressID;
-    
-    if (secondPassword) {
-        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(false, \"%@\")", [secondPassword escapeStringForJS]]] toString];
-    } else {
-        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(false)"] toString];
-    }
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
     
     if (listener) {
         [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+    
+    if (secondPassword) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false)", [txProgressID escapeStringForJS]]];
     }
 }
 

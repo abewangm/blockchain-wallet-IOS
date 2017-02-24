@@ -875,11 +875,13 @@ MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
     return MyWallet.wallet.hdwallet.defaultAccount.receiveAddress;
 }
 
-MyWalletPhone.quickSend = function(onSendScreen, secondPassword) {
+MyWalletPhone.createTxProgressId = function() {
+    return ''+Math.round(Math.random()*100000);
+}
+
+MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
     
     console.log('quickSend');
-    
-    var id = ''+Math.round(Math.random()*100000);
     
     var success = function(payment) {
         objc_tx_on_success_secondPassword(id, secondPassword);
