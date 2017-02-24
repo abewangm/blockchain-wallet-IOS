@@ -90,7 +90,7 @@
         [continueButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel *emailLabel = [[UILabel alloc] initWithFrame:titleLabel.frame];
-        emailLabel.font = [UIFont boldSystemFontOfSize:14];
+        emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
         emailLabel.text = self.displayString;
         emailLabel.textAlignment = NSTextAlignmentCenter;
         emailLabel.frame = CGRectOffset(emailLabel.frame, 0, 38);

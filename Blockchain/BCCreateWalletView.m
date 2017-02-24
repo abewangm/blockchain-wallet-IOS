@@ -187,11 +187,11 @@
 
     // Reset wallet
     [app forgetWallet];
-    
-    app.wallet.isNew = YES;
-    
+        
     // Load the newly created wallet
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
+    
+    app.wallet.isNew = YES;
     
     [app.wallet getAllCurrencySymbols];
 }

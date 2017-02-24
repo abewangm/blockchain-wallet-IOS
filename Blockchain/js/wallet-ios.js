@@ -1,19 +1,5 @@
-var assert = require('assert');
-var Buffer = require('buffer').Buffer;
+var Buffer = Blockchain.Buffer;
 
-// Must happen *before* requiring My-Wallet-V3
-global.self = global;
-
-global.crypto = {
-  getRandomValues: function (intArray) {
-    // TODO: Figure out why asserts don't stop execution here
-    var random = objc_getRandomValues(intArray);
-    var randomBuffer = new Buffer(random, 'hex');
-    intArray.set(randomBuffer);
-  }
-}
-
-var Blockchain = require('My-Wallet-V3');
 var MyWallet = Blockchain.MyWallet;
 var WalletStore = Blockchain.WalletStore;
 var WalletCrypto = Blockchain.WalletCrypto;
@@ -22,7 +8,6 @@ var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
-var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var BigInteger = Blockchain.BigInteger;
@@ -32,16 +17,6 @@ var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
 var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
-
-var MyWalletPhone = module.exports = {};
-
-// Expose modules for use in obj-c
-MyWalletPhone.MyWallet = MyWallet;
-MyWalletPhone.WalletCrypto = WalletCrypto;
-MyWalletPhone.Helpers = Helpers;
-MyWalletPhone.Bitcoin = Bitcoin;
-MyWalletPhone.BigInteger = BigInteger;
-MyWalletPhone.Buffer = Buffer
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -54,6 +29,7 @@ min = false;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
+var MyWalletPhone = {};
 var currentPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
@@ -877,11 +853,13 @@ MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
     return MyWallet.wallet.hdwallet.defaultAccount.receiveAddress;
 }
 
-MyWalletPhone.quickSend = function(onSendScreen, secondPassword) {
+MyWalletPhone.createTxProgressId = function() {
+    return ''+Math.round(Math.random()*100000);
+}
+
+MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
     
     console.log('quickSend');
-    
-    var id = ''+Math.round(Math.random()*100000);
     
     var success = function(payment) {
         objc_tx_on_success_secondPassword(id, secondPassword);

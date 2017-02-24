@@ -9,12 +9,17 @@ Prepare SocketRocket:
 
     git submodule update --init
 
-Build JavaScript dependencies:
+Prepare the MyWallet Javascript:
 
+    cd Submodules/My-Wallet-V3
     npm install
-    cd Submodules/My-Wallet-V3 && npm install
-    cd ../..
-    npm run build
+    // Required for JavaScriptCore
+    sed -i '' '1s/^/global.self = global;/' node_modules/whatwg-fetch/fetch.js
+    grunt build
+    // Required for JavaScriptCore
+    grunt build && globalCrypto='var crypto = global.crypto || global.msCrypto' && sed -i '' 's/'"$globalCrypto"'\;/'"$globalCrypto"' || objcCrypto(Buffer)/' dist/my-wallet.js
+    // Required for overriding methods in Objective-C
+    sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js
 
 Prepare OpenSSL:
 
@@ -46,13 +51,10 @@ The reason that the PNG files are not in the repository - even though it would m
 
     open Blockchain.xcodeproj
 
-## Development
+## Build the project
 
-Build project: `cmd-r`
+    cmd-r
 
-Watch JS dependencies for changes: `npm run build:watch`
-
-While `build:watch` is active, you may edit My-Wallet-V3 source code in Submodules, and the changes will be automatically be reflected in the next build.
 
 ## License
 
