@@ -520,6 +520,7 @@ typedef enum {
     if (self.contactType == CreateContactTypeQR) {
         BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
         qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
+        qrCodeView.qrCodeFooterLabel.hidden = YES;
         qrCodeView.doneButtonDelegate = self;
         
         UIViewController *viewController = [UIViewController new];
