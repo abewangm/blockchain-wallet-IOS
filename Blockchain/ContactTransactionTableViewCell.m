@@ -38,7 +38,7 @@
     self.accessoryType = UITableViewCellAccessoryNone;
     
     self.mainLabel = [[UILabel alloc] init];
-    self.mainLabel.font = [UIFont systemFontOfSize:12];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
     self.mainLabel.textColor = [UIColor grayColor];
     self.mainLabel.numberOfLines = 3;
     [self.contentView addSubview:self.mainLabel];
