@@ -8,7 +8,6 @@ var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
-var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var BigInteger = Blockchain.BigInteger;
