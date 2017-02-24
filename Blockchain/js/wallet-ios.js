@@ -2,8 +2,6 @@ var assert = require('assert');
 var Buffer = require('buffer').Buffer;
 
 // Must happen *before* requiring My-Wallet-V3
-global.self = global;
-
 global.crypto = {
   getRandomValues: function (intArray) {
     var random = objc_getRandomValues(intArray);
