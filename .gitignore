@@ -16,14 +16,12 @@ xcuserdata
 profile
 *.moved-aside
 .idea/
-npm-debug.log
 
 Pods/
 Podfile.lock
 Blockchain/APIDefines.h
-node_modules
+Artwork/node_modules
 External/*
-Blockchain/js/bundle.js
 
 Images.xcassets/arrow_downward.imageset/*.png
 Images.xcassets/blockchain_b.imageset/*.png

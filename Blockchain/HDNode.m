@@ -38,7 +38,7 @@
 
 - (JSValue *)chainCode
 {
-    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new MyWalletPhone.Buffer('%@', 'hex')", [self.keychain.chainCode hexadecimalString]]];;
+    return [app.wallet executeJSSynchronous:[NSString stringWithFormat:@"new Buffer('%@', 'hex')", [self.keychain.chainCode hexadecimalString]]];;
 }
 
 - (uint32_t)index
