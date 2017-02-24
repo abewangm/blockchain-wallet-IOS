@@ -233,7 +233,8 @@ int legacyAddressesSectionNumber;
     if ([self showFromAddresses]) {
         return 1 + (legacyAddresses.count > 0 ? 1 : 0);
     }
-    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
+    
+    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0) + (contacts.count > 0 ? 1 : 0);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
