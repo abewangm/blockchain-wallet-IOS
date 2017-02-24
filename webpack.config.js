@@ -45,7 +45,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'navigator': `({userAgent:''})`
     }),
-    new webpack.IgnorePlugin(/^vertx$/),
     new StringReplacePlugin()
   ]
 }
