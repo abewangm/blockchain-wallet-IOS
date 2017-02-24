@@ -242,7 +242,7 @@ int legacyAddressesSectionNumber;
             labelString = BC_STRING_ADDRESS_BOOK;
         }
         else if (section == accountsSectionNumber) {
-            labelString = nil;
+            labelString = BC_STRING_WALLETS;
         }
         else if (section == legacyAddressesSectionNumber) {
             labelString = BC_STRING_IMPORTED_ADDRESSES;
