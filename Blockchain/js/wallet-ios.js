@@ -6,9 +6,10 @@ global.self = global;
 
 global.crypto = {
   getRandomValues: function (intArray) {
-    // TODO: Figure out why asserts don't stop execution here
     var random = objc_getRandomValues(intArray);
+    assert(Helpers.isHex(random), 'Unexpected non-hex result from objc_getRandomValues');
     var randomBuffer = new Buffer(random, 'hex');
+    assert(randomBuffer.length === intArray.length, 'Expected buffer and arg intArray to have equal length');
     intArray.set(randomBuffer);
   }
 }
