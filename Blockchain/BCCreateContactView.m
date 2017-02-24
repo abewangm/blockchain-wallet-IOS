@@ -77,6 +77,7 @@
             _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
             _textField.borderStyle = UITextBorderStyleRoundedRect;
             _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
+            _textField.textColor = COLOR_DARK_GRAY;
             _textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
             _textField.autocorrectionType = UITextAutocorrectionTypeNo;
             _textField.spellCheckingType = UITextSpellCheckingTypeNo;

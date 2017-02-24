@@ -43,7 +43,7 @@
 
         UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 80)];
         promptLabel.textColor = [UIColor darkGrayColor];
-        promptLabel.font = [UIFont systemFontOfSize:17.0];
+        promptLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         promptLabel.numberOfLines = 0;
         [self addSubview:promptLabel];
         
@@ -55,7 +55,7 @@
         self.nextButton.backgroundColor = COLOR_BUTTON_BLUE;
         [self.nextButton setTitle:BC_STRING_NEXT forState:UIControlStateNormal];
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.nextButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        self.nextButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         if (reason) {
             promptLabel.text = [NSString stringWithFormat:[self getPromptTextForAmount], contact.name];
@@ -72,13 +72,14 @@
             [bottomContainerView addSubview:lineBelowAmounts];
             
             self.receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
-            self.receiveBtcLabel.font = [UIFont systemFontOfSize:13];
-            self.receiveBtcLabel.textColor = [UIColor lightGrayColor];
+            self.receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+            self.receiveBtcLabel.textColor = COLOR_DARK_GRAY;
             self.receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
             [bottomContainerView addSubview:self.receiveBtcLabel];
             
             self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.receiveBtcLabel.frame.origin.x + 53, 10, 117, 30)];
-            self.receiveBtcField.font = [UIFont systemFontOfSize:13];
+            self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+            self.receiveBtcField.textColor = COLOR_DARK_GRAY;
             self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
             self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
             self.receiveBtcField.inputAccessoryView = self.nextButton;
@@ -86,13 +87,14 @@
             [bottomContainerView addSubview:self.receiveBtcField];
             
             self.receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 136, 15, 40, 21)];
-            self.receiveFiatLabel.font = [UIFont systemFontOfSize:13];
-            self.receiveFiatLabel.textColor = [UIColor lightGrayColor];
+            self.receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+            self.receiveFiatLabel.textColor = COLOR_DARK_GRAY;
             self.receiveFiatLabel.text = app.latestResponse.symbol_local.code;
             [bottomContainerView addSubview:self.receiveFiatLabel];
             
             self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
-            self.receiveFiatField.font = [UIFont systemFontOfSize:13];
+            self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+            self.receiveFiatField.textColor = COLOR_DARK_GRAY;
             self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
             self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
             self.receiveFiatField.inputAccessoryView = _nextButton;
@@ -105,6 +107,8 @@
             
             
             _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
+            _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
+            _textField.textColor = COLOR_DARK_GRAY;
             _textField.borderStyle = UITextBorderStyleRoundedRect;
             _textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
             _textField.autocorrectionType = UITextAutocorrectionTypeNo;

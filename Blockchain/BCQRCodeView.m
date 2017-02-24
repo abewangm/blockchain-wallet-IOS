@@ -76,6 +76,7 @@ const float imageWidth = 190;
     self.doneButton.backgroundColor = COLOR_BUTTON_BLUE;
     self.doneButton.layer.cornerRadius = 4;
     [self.doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    self.doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
     [self.doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.doneButton];
     self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
