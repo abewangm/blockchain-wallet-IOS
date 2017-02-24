@@ -1935,7 +1935,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Stop execution with an error if any one step fails\nset -ue\n\n# update submodule source\ngit submodule update ${SRCROOT}/Submodules/My-Wallet-V3\n\n# reinstall node modules, npm run build, and run tests\ncd ${SRCROOT}\nrm -rf node_modules/ Blockchain/js/bundle.js\nnpm install\ncd Submodules/My-Wallet-V3\nrm -rf node_modules/\nnpm install\ngrunt clean\ncd ../..\nnpm run build\ncd Submodules/My-Wallet-V3\n./node_modules/karma/bin/karma start karma.conf.js --single-run\n# TODO: run tests on bundle.js";
+			shellScript = "# update submodule source\ngit submodule update ${SRCROOT}/Submodules/My-Wallet-V3\n\n# reinstall node modules, npm run build, and run tests\ncd ${SRCROOT}\nnpm install\ncd Submodules/My-Wallet-V3\nrm -rf node_modules/\nnpm install\ngrunt clean\ncd ../..\nnpm run build\ncd Submodules/My-Wallet-V3\n./node_modules/karma/bin/karma start karma.conf.js --single-run\n# TODO: run tests on bundle.js";
 		};
 		23321D7B1BB084320005624F /* Build Image Assets from PSDs */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1949,7 +1949,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Stop execution with an error if any one step fails\nset -ue\n\n# Install dependencies\nbrew install imagemagick\ncd ${SRCROOT}/Artwork\nnpm install -g grunt-cli\nnpm install\nnpm install -g svgexport\n\n# Build images\ngrunt";
+			shellScript = "# Install dependencies\nbrew install imagemagick\ncd ${SRCROOT}/Artwork\nnpm install -g grunt-cli\nnpm install\nnpm install -g svgexport\n\n# Build images\ngrunt";
 		};
 		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */ = {
 			isa = PBXShellScriptBuildPhase;
