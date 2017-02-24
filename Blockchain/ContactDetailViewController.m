@@ -172,6 +172,7 @@ const int maxFindAttempts = 2;
         
         UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 8, smallButtonWidth, 40)];
         [renameButton setTitle:BC_STRING_RENAME_CONTACT forState:UIControlStateNormal];
+        renameButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
         renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
         renameButton.backgroundColor = COLOR_BUTTON_BLUE;
@@ -181,6 +182,7 @@ const int maxFindAttempts = 2;
         
         UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 5, 8, smallButtonWidth, 40)];
         [deleteButton setTitle:BC_STRING_DELETE_CONTACT forState:UIControlStateNormal];
+        deleteButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
         deleteButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         deleteButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
         deleteButton.backgroundColor = COLOR_BUTTON_RED;
@@ -189,8 +191,8 @@ const int maxFindAttempts = 2;
         [view addSubview:deleteButton];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width, 14)];
-        label.textColor = COLOR_FOREGROUND_GRAY;
-        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = COLOR_BLOCKCHAIN_BLUE;
+        label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
         label.text = [[NSString stringWithFormat:BC_STRING_TRANSACTIONS_WITH_ARGUMENT, self.contact.name] uppercaseString];
 
         [view addSubview:label];
