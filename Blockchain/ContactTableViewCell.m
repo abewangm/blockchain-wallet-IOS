@@ -36,6 +36,7 @@
     CGFloat mainLabelOriginX = self.actionImageView.frame.origin.x + self.actionImageView.frame.size.width + 8;
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(mainLabelOriginX, (self.frame.size.height - 30)/2, self.frame.size.width - mainLabelOriginX - 28, 30)];
     [self.contentView addSubview:self.mainLabel];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
     self.mainLabel.text = contact.name ? contact.name : contact.identifier;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     

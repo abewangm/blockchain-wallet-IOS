@@ -220,11 +220,11 @@ typedef enum {
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_FOREGROUND_GRAY;
-    label.font = [UIFont systemFontOfSize:14.0];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
     
     [view addSubview:label];
     
@@ -233,12 +233,14 @@ typedef enum {
     if (section == 0) {
         labelString = BC_STRING_CONTACTS;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
-    }
+    } else
+        @throw @"Unknown Section";
     
-    label.text = [labelString uppercaseString];
+    label.text = labelString;
     
     return view;
 }
