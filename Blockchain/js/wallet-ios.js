@@ -2047,7 +2047,13 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
         objc_on_send_payment_request_success(info, userId);
     };
     
-    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    var error = function(error) {
+        console.log('Error sending message')
+        console.log(error);
+        objc_on_send_payment_request_error(error);
+    };
+    
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(error);
 }
                                                           
 MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
@@ -2056,7 +2062,13 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
         objc_on_request_payment_request_success(info, userId);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    var error = function(error) {
+        console.log('Error sending message')
+        console.log(error);
+        objc_on_request_payment_request_error(error);
+    };
+    
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {

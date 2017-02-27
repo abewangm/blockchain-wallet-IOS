@@ -714,12 +714,24 @@
         [weakSelf on_send_payment_request_success:info identifier:userId];
     };
     
+    self.context[@"objc_on_send_payment_request_error"] = ^(JSValue *error) {
+        [weakSelf on_send_payment_request_error:error];
+    };
+    
     self.context[@"objc_on_request_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
         [weakSelf on_request_payment_request_success:info identifier:userId];
     };
     
+    self.context[@"objc_on_request_payment_request_error"] = ^(JSValue *error) {
+        [weakSelf on_request_payment_request_error:error];
+    };
+    
     self.context[@"objc_on_send_payment_request_response_success"] = ^(JSValue *info) {
         [weakSelf on_send_payment_request_response_success:info];
+    };
+    
+    self.context[@"objc_on_send_payment_request_response_error"] = ^(JSValue *error) {
+        [weakSelf on_send_payment_request_response_error:error];
     };
     
     self.context[@"objc_on_change_contact_name_success"] = ^(JSValue *info) {
@@ -3346,6 +3358,42 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest:name:!", [delegate class]);
     }
+}
+
+- (void)on_send_payment_request_error:(JSValue *)error
+{
+    DLog(@"on_send_payment_request_error");
+    
+    [app hideBusyView];
+    
+    NSString *message = [error toString];
+    
+    if ([message containsString:ERROR_GAP]) {
+        message = BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS;
+    }
+    
+    [app standardNotify:message];
+}
+
+- (void)on_request_payment_request_error:(JSValue *)error
+{
+    DLog(@"on_request_payment_request_error");
+    
+    NSString *message = [error toString];
+    
+    if ([message containsString:ERROR_GAP]) {
+        message = BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS;
+    }
+    
+    [app standardNotify:[error toString]];
+}
+
+- (void)on_send_payment_request_response_error:(JSValue *)error
+{
+    DLog(@"on_send_payment_request_response_error");
+    
+    [app hideBusyView];
+    [app standardNotify:[error toString]];
 }
 
 - (void)on_request_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
