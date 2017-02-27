@@ -316,11 +316,6 @@
 #define BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE NSLocalizedString(@"Look for an email from Blockchain and click the verification link to complete your wallet setup.", nil)
 #define BC_STRING_REMINDER_BACKUP_TITLE NSLocalizedString(@"Backup Your Funds", nil)
 #define BC_STRING_REMINDER_BACKUP_NOW NSLocalizedString(@"Backup Now", nil)
-#define BC_STRING_BACKUP_NEEDED_BODY_TEXT_ONE NSLocalizedString(@"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password.", nil)
-#define BC_STRING_BACKUP_NEEDED_BODY_TEXT_TWO NSLocalizedString(@"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure.", nil)
-#define BC_STRING_BACKUP_WORDS_INSTRUCTIONS NSLocalizedString(@"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", nil)
-#define BC_STRING_PREVIOUS NSLocalizedString(@"PREVIOUS", nil)
-#define BC_STRING_NEXT NSLocalizedString(@"NEXT", nil)
 #define BC_STRING_REMINDER_BACKUP_MESSAGE_FIRST_BITCOIN NSLocalizedString(@"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password.", nil)
 #define BC_STRING_REMINDER_BACKUP_MESSAGE_HAS_BITCOIN NSLocalizedString(@"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password.", nil)
 #define BC_STRING_REMINDER_TWO_FACTOR_TITLE NSLocalizedString(@"2-Step Verification", nil)
@@ -569,3 +564,15 @@
 #define BC_STRING_NEW_ZEALAND_DOLLAR NSLocalizedString(@"New Zealand Dollar", @"")
 #define BC_STRING_BRAZIL_REAL NSLocalizedString(@"Brazil Real", @"")
 #define BC_STRING_RUSSIAN_RUBLE NSLocalizedString(@"Russian Ruble", @"")
+
+#pragma mark - Swift files
+
+#define BC_STRING_BACKUP_COMPLETE NSLocalizedString(@"Backup Complete", nil)
+#define BC_STRING_BACKUP_NEEDED NSLocalizedString(@"Backup Needed", nil)
+#define BC_STRING_BACKUP_COMPLETED_EXPLANATION NSLocalizedString(@"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure.", nil)
+#define BC_STRING_BACKUP_NEEDED_BODY_TEXT_ONE NSLocalizedString(@"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password.", nil)
+#define BC_STRING_BACKUP_NEEDED_BODY_TEXT_TWO NSLocalizedString(@"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure.", nil)
+#define BC_STRING_BACKUP_WORDS_INSTRUCTIONS NSLocalizedString(@"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", nil)
+#define BC_STRING_PREVIOUS NSLocalizedString(@"PREVIOUS", nil)
+#define BC_STRING_NEXT NSLocalizedString(@"NEXT", nil)
+#define BC_STRING_BACKUP_AGAIN NSLocalizedString(@"BACKUP AGAIN", nil)

@@ -14,7 +14,6 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     @IBOutlet weak var backupWalletButton: UIButton!
     @IBOutlet weak var explanation: UILabel!
     @IBOutlet weak var backupIconImageView: UIImageView!
-    @IBOutlet weak var backupWalletAgainButton: UIButton!
     
     var wallet : Wallet?
     var app : RootService?
@@ -40,11 +39,11 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         backupWalletButton?.setTitle(NSLocalizedString("START BACKUP", comment: ""), for: UIControlState())
         
         if wallet!.isRecoveryPhraseVerified() {
-            summaryLabel.text = NSLocalizedString("You backed up your funds successfully.", comment: "");
-            explanation.text = NSLocalizedString("Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin.", comment: "")
+            summaryLabel.text = NSLocalizedString("Backup Complete", comment: "");
+            explanation.text = NSLocalizedString("Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure.", comment: "")
             backupIconImageView.image = UIImage(named: "success")?.withRenderingMode(.alwaysTemplate)
             backupIconImageView.tintColor = Constants.Colors.SuccessGreen
-            backupWalletButton.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
+            backupWalletButton.setTitle(NSLocalizedString("BACKUP AGAIN", comment: ""), for: UIControlState())
             
             if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
                 let alertToTransferAll = UIAlertController(title: NSLocalizedString("Transfer imported addresses?", comment:""), message: NSLocalizedString("Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", comment:""), preferredStyle: .alert)
@@ -74,7 +73,7 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if (wallet!.isRecoveryPhraseVerified()) {
-            backupWalletButton?.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
+            backupWalletButton?.setTitle(NSLocalizedString("BACKUP AGAIN", comment: ""), for: UIControlState())
         } else {
             backupWalletButton?.setTitle(NSLocalizedString("START BACKUP", comment: ""), for: UIControlState())
         }
@@ -90,10 +89,6 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         } else {
             performSegue(withIdentifier: "backupWords", sender: nil)
         }
-    }
-    
-    @IBAction func backupWalletAgainButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "backupWords", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
