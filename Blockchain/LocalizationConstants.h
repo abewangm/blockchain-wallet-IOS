@@ -430,7 +430,6 @@
 #define BC_STRING_USING_A_LINK NSLocalizedString(@"Using a Link", nil)
 #define BC_STRING_SHARE_INVITE_METHOD NSLocalizedString(@"How would you like to share this invite?", nil)
 #define BC_STRING_GO_TO_CONTACTS NSLocalizedString(@"Go to Contacts", nil)
-#define BC_STRING_GO_TO_CONTACTS_TO_ACCEPT NSLocalizedString(@"Go to Contacts to accept.", nil)
 #define BC_STRING_GO_TO_REQUEST NSLocalizedString(@"Go to request", nil)
 #define BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT NSLocalizedString(@"You have received a request from a contact.", nil)
 #define BC_STRING_GO_TO_TRANSACTIONS NSLocalizedString(@"Go to transactions", nil)

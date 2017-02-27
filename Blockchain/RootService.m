@@ -1997,8 +1997,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
-    // TODO: Push notification for user who sent invitation should occur to prompt to call or call readInvitationSent to get MDID
-    
     [self.contactsViewController didAcceptRelation:invitation name:name];
 }
 
@@ -2047,7 +2045,13 @@ void (^secondPasswordSuccess)(NSString *);
         
         NSString *type = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_TYPE];
         
-        NSString *identifier = [[[newMessages firstObject] objectForKey:DICTIONARY_KEY_PAYLOAD] objectForKey:DICTIONARY_KEY_ID];
+        NSString *identifier;
+        
+        if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+            identifier = [[[newMessages firstObject] objectForKey:DICTIONARY_KEY_PAYLOAD] objectForKey:DICTIONARY_KEY_ID];
+        } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
+            identifier = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+        }
         
         DLog(@"User received remote notification %@ of type %@", identifier, type);
         
@@ -2096,7 +2100,7 @@ void (^secondPasswordSuccess)(NSString *);
                     // User is viewing some other top view controller
                     
                     if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                        alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                        alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                             [_tabViewController dismissViewControllerAnimated:YES completion:^{
@@ -2130,7 +2134,7 @@ void (^secondPasswordSuccess)(NSString *);
                 // On PIN screen
                 
                 if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
                     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
                 } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
                     alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
@@ -2142,9 +2146,9 @@ void (^secondPasswordSuccess)(NSString *);
                 // Not on PIN screen, no top view controller
                 
                 if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                    alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                    alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
                     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
-                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         [app closeAllModals];
                         [app closeSideMenu];
                         _contactsViewController = [[ContactsViewController alloc] initWithAcceptedInvitation:identifier];
@@ -2176,7 +2180,7 @@ void (^secondPasswordSuccess)(NSString *);
             // Logged out
             UIAlertController *alert;
             if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_CONTACTS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
+                alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
             } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
                 alert = [UIAlertController alertControllerWithTitle:title message:[NSString stringWithFormat:@"%@\n%@", message, BC_STRING_GO_TO_TRANSACTIONS_TO_ACCEPT] preferredStyle:UIAlertControllerStyleAlert];
