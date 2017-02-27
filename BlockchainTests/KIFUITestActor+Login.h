@@ -9,6 +9,8 @@
 #import <KIF/KIF.h>
 
 @interface KIFUITestActor (Login)
+
+- (void)logoutAndForgetWallet;
 - (void)createNewWallet;
 - (void)enterPIN;
 - (void)goToSend;

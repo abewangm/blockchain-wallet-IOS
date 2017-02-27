@@ -26,7 +26,16 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testLogoutAndCreateWallet {
+    
+    [tester enterPIN];
+    
+    [tester logoutAndForgetWallet];
+    
+    [tester createNewWallet];
+}
+
+- (void)testSendAmounts {
     
     [tester enterPIN];
     
@@ -56,7 +65,12 @@
     [tester confirmSendAmountDecimalArabicCommaAndTextDecimalFirst];
     [tester confirmSendAmountDecimalArabicCommaAndTextZeroThenDecimal];
     [tester confirmSendAmountDecimalArabicCommaAndTextNumberThenDecimal];
-    
+}
+
+- (void)testReceiveAmounts {
+
+    [tester enterPIN];
+
     [tester goToReceive];
     
     NSString *randomAmountPeriod = [self getRandomReceiveAmount];

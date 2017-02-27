@@ -60,6 +60,7 @@
     IBOutlet UITextField *mainPasswordTextField;
     IBOutlet UIButton *forgetWalletButton;
     
+    IBOutlet UIButton *menuButton;
 @public
     
     BOOL symbolLocal;

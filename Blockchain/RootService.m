@@ -852,6 +852,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    
+    menuButton.accessibilityLabel = ACCESSIBILITY_LABEL_SIDE_MENU;
+    forgetWalletButton.accessibilityLabel = ACCESSIBILITY_LABEL_FORGET_WALLET;
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response

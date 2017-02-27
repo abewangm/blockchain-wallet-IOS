@@ -31,6 +31,7 @@
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
                 <outlet property="manualPairButton" destination="fI2-PD-Xwa" id="oka-mR-bc6"/>
                 <outlet property="manualPairView" destination="585" id="Z19-6K-4FY"/>
+                <outlet property="menuButton" destination="581" id="hhy-Nm-8ph"/>
                 <outlet property="pairingInstructionsView" destination="351" id="1eI-SB-ZdA"/>
                 <outlet property="scanPairingCodeButton" destination="370" id="UkN-oI-0Re"/>
                 <outlet property="secondPasswordButton" destination="471" id="H2J-Rk-XoH"/>

@@ -19,6 +19,27 @@
     
     [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
     [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
+    
+    // 5s simulator
+    CGPoint alertOkButtonCenterMediumText = CGPointMake(154, 362);
+    
+    [self waitForTimeInterval:8];
+    [self tapScreenAtPoint:alertOkButtonCenterMediumText];
+    [self waitForTimeInterval:.2];
+    
+    [self enterPIN];
+    [self waitForTimeInterval:.1];
+    [self enterPIN];
+    
+    [self waitForTimeInterval:2];
+    CGPoint alertOkButtonCenterShortText = CGPointMake(154, 340);
+    [self tapScreenAtPoint:alertOkButtonCenterShortText];
+    
+    [self waitForTimeInterval:.5];
+    CGPoint topRightClose = CGPointMake(284, 25);
+    [self tapScreenAtPoint:topRightClose];
+
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }
 
 - (void)enterPIN
@@ -32,6 +53,27 @@
     [self tapScreenAtPoint:pinKeyTwo];
     [self tapScreenAtPoint:pinKeyTwo];
     [self tapScreenAtPoint:pinKeyTwo];
+}
+
+- (void)logoutAndForgetWallet
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_LOGOUT];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_LOGOUT];
+    
+    // 5s simulator
+    CGPoint alertOkButtonRight = CGPointMake(175, 340);
+    
+    [self waitForTimeInterval:.2];
+    [self tapScreenAtPoint:alertOkButtonRight];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET];
+    
+    [self waitForTimeInterval:.2];
+    [self tapScreenAtPoint:alertOkButtonRight];
 }
 
 #pragma mark - Send
