@@ -2053,7 +2053,7 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
         objc_on_send_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(error);
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
                                                           
 MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
@@ -2068,7 +2068,7 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
         objc_on_request_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, MyWalletPhone.getTime()).then(success).catch(error);
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
@@ -2078,10 +2078,6 @@ MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier
     };
     
     MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
-}
-
-MyWalletPhone.getTime = function() {
-    return objc_get_time_since_1970();
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {
