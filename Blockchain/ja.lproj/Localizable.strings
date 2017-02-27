@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "発生しているサージ";
 
 /* (No Commment) */
-"Swipe to receive" = "スワイプして受信";
+"Swipe to Receive" = "スワイプして受信";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "ウォレットを同期中";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "ウォレットのペアリングが完了しました。";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "ウォレットリカバリーフレーズ";
+"Recovery Phrase" = "リカバリーフレーズ";
 
 /* (No Commment) */
 "Warning" = "警告";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "セキュリティのために当社はファイルにパスワードを保管しません。ウォレットをバックアップするとパスワードを失った場合でもビットコインの安全性が保たれます。";
+
+/* (No Commment) */
+"Wallets" = "ウォレット";

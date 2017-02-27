@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Prepätia, ktoré sa vyskytujú";
 
 /* (No Commment) */
-"Swipe to receive" = "Potiahnite prstom na prijímanie";
+"Swipe to Receive" = "Potiahnite prstom na Prijímanie";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronizácia peňaženka";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Peňaženka spárované úspešne.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Peňaženka obnovy frázy";
+"Recovery Phrase" = "Obnovy fráza";
 
 /* (No Commment) */
 "Warning" = "Upozornenie";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pre vašu bezpečnosť sme nevedú žiadne heslá v súbore. Záložné vaša peňaženka zabezpečiť vaše Bitcoiny sú bezpečné, v prípade, že heslo stratíte.";
+
+/* (No Commment) */
+"Wallets" = "Peňaženky";

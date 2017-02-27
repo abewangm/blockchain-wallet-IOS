@@ -1,9 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fU5-Zh-AHZ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fU5-Zh-AHZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Backup Navigation View Controller-->
         <scene sceneID="DBS-Jw-oFV">
@@ -12,9 +24,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WKy-zl-69R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -30,60 +42,55 @@
             <objects>
                 <viewController id="g04-JJ-JLu" customClass="BackupViewController" customModule="Blockchain" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6mg-8H-yZs">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fT1-je-Orp">
-                                <rect key="frame" x="40" y="232" width="240" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fT1-je-Orp">
+                                <rect key="frame" x="40" y="238" width="240" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <state key="normal">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backupWalletButtonTapped:" destination="g04-JJ-JLu" eventType="touchUpInside" id="czX-2d-xFa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_backup_incomplete" id="yp5-t8-iIg">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" id="yp5-t8-iIg">
                                 <rect key="frame" x="135" y="24" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eyR-AW-SMc">
-                                <rect key="frame" x="16" y="112" width="288" height="90"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eyR-AW-SMc">
+                                <rect key="frame" x="16" y="140" width="288" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Please take a few minutes to ensure you can access your Bitcoin (except in imported addresses), even if you forget your password or if our service becomes unavailable. We promise doing so is quick, painless, and worth it.</string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Hq-6D-ut1">
                                 <rect key="frame" x="40" y="312" width="240" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Backup funds again">
-                                    <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backupWalletAgainButtonTapped:" destination="g04-JJ-JLu" eventType="touchUpInside" id="TgM-Dr-gpj"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost your 12 word recovery phrase?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yh8-Gm-6op">
-                                <rect key="frame" x="40" y="300" width="240" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Oh no! You haven't backed up your funds yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="1" id="9Hu-uO-gJl">
+                                <rect key="frame" x="16" y="90" width="288" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no! You haven't backed up your funds yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" id="9Hu-uO-gJl">
-                                <rect key="frame" x="16" y="90" width="288" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
@@ -92,7 +99,6 @@
                         <outlet property="backupWalletAgainButton" destination="1Hq-6D-ut1" id="8mZ-X7-6yf"/>
                         <outlet property="backupWalletButton" destination="fT1-je-Orp" id="niQ-vk-Apt"/>
                         <outlet property="explanation" destination="eyR-AW-SMc" id="T8a-ay-FOc"/>
-                        <outlet property="lostRecoveryPhraseLabel" destination="Yh8-Gm-6op" id="HFy-rW-fbn"/>
                         <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
                         <segue destination="jOl-Wq-Cg3" kind="push" identifier="backupWords" id="gRy-Rc-3ar"/>
                         <segue destination="CSo-hh-wVx" kind="push" identifier="verifyBackup" id="U0S-3m-R5I"/>
@@ -107,7 +113,7 @@
             <objects>
                 <viewController id="jOl-Wq-Cg3" customClass="BackupWordsViewController" customModule="Blockchain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yem-z7-0Zh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="o5h-pb-7ix">
@@ -118,24 +124,16 @@
                                         <rect key="frame" x="40" y="16" width="240" height="109"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <string key="text">Write down your Recovery Phrase and keep it somewhere very safe and secure. Anyone who knows your Recovery Phrase has access to your bitcoins, so don’t share this with anyone you don’t trust.</string>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dkQ-nj-Pkf">
-                                        <rect key="frame" x="178" y="530" width="134" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="NEXT WORD">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="12" id="TyO-zN-EB7">
                                         <rect key="frame" x="40" y="124" width="240" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
-                                    <view contentMode="scaleToFill" id="eK4-jm-tVf">
-                                        <rect key="frame" x="40" y="138" width="240" height="100"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="eK4-jm-tVf">
+                                        <rect key="frame" x="40" y="167" width="240" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Jfk-Gx-wg2">
@@ -149,29 +147,29 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unicorn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Okr-VE-yvm">
                                                                 <rect key="frame" x="0.0" y="20" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="40"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.023529411764705882" green="0.2196078431372549" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="jOl-Wq-Cg3" id="xWu-5a-zjb"/>
                                                 </connections>
                                             </scrollView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AFH-AI-Rgk">
                                         <rect key="frame" x="0.0" y="464" width="159" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <state key="normal" title="Previous word">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="previousWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="W2R-8y-WGj"/>
@@ -180,35 +178,36 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eaO-py-9rY">
                                         <rect key="frame" x="161" y="464" width="159" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <state key="normal" title="Next word">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="0qR-0f-O9K"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It is important to make sure you write down your words exactly as they appear here and in this order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
-                                        <rect key="frame" x="40" y="275" width="240" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It is important to make sure you write down your words exactly as they appear here and in this order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
+                                        <rect key="frame" x="40" y="283" width="240" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
-                                        <rect key="frame" x="111" y="246" width="99" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
+                                        <rect key="frame" x="111" y="140" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="mYR-MQ-mS2"/>
                     <connections>
@@ -233,20 +232,20 @@
             <objects>
                 <viewController id="o3I-9v-bZo" customClass="SecondPasswordViewController" customModule="Blockchain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="07q-RX-CeI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="cdd-N4-3oh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" id="J4J-Gw-Zau">
-                                <rect key="frame" x="0.0" y="10" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Second Password Required" id="74J-f3-Lhq"/>
@@ -255,7 +254,8 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="CBl-1W-VP8" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
                                 <rect key="frame" x="15" y="148" width="290" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="o3I-9v-bZo" id="8vO-nM-qMh"/>
@@ -264,20 +264,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This action requires the second password for your bitcoin wallet. Please enter it below and press continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9WK-My-5CL">
                                 <rect key="frame" x="16" y="73" width="288" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nuD-nb-tAt">
-                                <rect key="frame" x="85" y="191" width="150" height="40"/>
+                                <rect key="frame" x="113" y="191" width="150" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="backgroundColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -289,7 +289,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
@@ -306,7 +306,7 @@
             <objects>
                 <viewController id="CSo-hh-wVx" customClass="BackupVerifyViewController" customModule="Blockchain" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W5z-Ci-9GF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="B2V-mx-MA9">
@@ -317,62 +317,58 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="9hR-tm-aq5" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" id="9hR-tm-aq5" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="46" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="CSo-hh-wVx" id="tgj-Rp-qiP"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="Fda-Z4-3e7" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" id="Fda-Z4-3e7" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="122" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="CSo-hh-wVx" id="eYj-Rt-26E"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="kcC-2S-PfL" customClass="BCTextField" customModule="Blockchain" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" id="kcC-2S-PfL" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="84" width="290" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="CSo-hh-wVx" id="taY-bk-vIg"/>
                                                 </connections>
                                             </textField>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3S-Dk-HAh">
-                                                <rect key="frame" x="107" y="165" width="107" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.52205141129999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the following words from your Recovery Phrase to complete the backup process." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4Nq-ue-tXr">
                                                 <rect key="frame" x="15" y="0.0" width="290" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
+                                                <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Backup Wallet" id="9A7-TT-PzN"/>
                     <connections>
+                        <outlet property="instructions" destination="4Nq-ue-tXr" id="YNp-n5-2CE"/>
                         <outlet property="word1" destination="9hR-tm-aq5" id="YVJ-E7-KJC"/>
                         <outlet property="word2" destination="kcC-2S-PfL" id="hCD-OZ-8tt"/>
                         <outlet property="word3" destination="Fda-Z4-3e7" id="Bv0-3F-bgR"/>
-                        <outlet property="wrongWord" destination="T3S-Dk-HAh" id="DLw-Sp-3nw"/>
                         <segue destination="o3I-9v-bZo" kind="modal" identifier="verifyBackupWithSecondPassword" id="5tF-1v-zva"/>
                     </connections>
                 </viewController>
@@ -382,10 +378,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_backup_incomplete" width="26" height="26"/>
+        <image name="lock" width="36" height="36"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="U0S-3m-R5I"/>
-        <segue reference="5tF-1v-zva"/>
+        <segue reference="dla-jc-Bti"/>
+        <segue reference="o31-rh-3dv"/>
     </inferredMetricsTieBreakers>
 </document>

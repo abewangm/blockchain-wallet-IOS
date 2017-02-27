@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Stijging vindt plaats";
 
 /* (No Commment) */
-"Swipe to receive" = "Veeg om te ontvangen";
+"Swipe to Receive" = "Veeg om te Ontvangen";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Portemonnee aan het synchroniseren";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Portemonnee met succes gekoppeld.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Herstelregel voor de portemonnee";
+"Recovery Phrase" = "Herstelregel voor";
 
 /* (No Commment) */
 "Warning" = "Waarschuwing";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Voor uw veiligheid bewaren wij geen wachtwoorden in bestanden. Back-up uw portemonnee om ervoor te zorgen dat uw bitcoins veilig zijn in geval u uw wachtwoord verliest.";
+
+/* (No Commment) */
+"Wallets" = "Portemonnees";

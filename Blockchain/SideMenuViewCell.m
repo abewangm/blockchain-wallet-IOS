@@ -12,8 +12,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.imageView.frame = CGRectMake(15, 15, 26, 26);
-    self.imageView.contentMode = UIViewContentModeCenter;
+    self.imageView.frame = CGRectMake(15, 17.5, 21, 21);
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
     if (self.detailTextLabel.text != nil) {
         self.textLabel.frame = CGRectMake(55, 10, 200, 21);
@@ -23,9 +23,9 @@
     }
     
     self.backgroundColor = [UIColor clearColor];
-    self.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
-    self.textLabel.textColor = [UIColor lightGrayColor];
-    self.textLabel.highlightedTextColor = [UIColor whiteColor];
+    self.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:16];
+    self.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    self.textLabel.highlightedTextColor = COLOR_TEXT_DARK_GRAY;
 }
 
 @end

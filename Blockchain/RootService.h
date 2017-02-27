@@ -78,7 +78,6 @@
 @property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
 @property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
 
-@property (strong, nonatomic) IBOutlet UIImageView *mainLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundUpdateTask;
@@ -103,6 +102,7 @@
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
+@property (nonatomic) BOOL isVerifyingMobileNumber;
 
 // Certificate Pinning
 @property (nonatomic) CertificatePinner *certificatePinner;
@@ -196,7 +196,7 @@
 
 - (IBAction)accountsAndAddressesClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
-- (IBAction)securityCenterClicked:(id)sender;
+- (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 
@@ -230,7 +230,7 @@
 - (void)endBackgroundUpdateTask;
 
 - (NSString *)getVersionLabelString;
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock;
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock;
 @end
 
 extern RootService *app;

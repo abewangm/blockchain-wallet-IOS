@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "الطفرة التي تحدث";
 
 /* (No Commment) */
-"Swipe to receive" = "مرر لتلقي";
+"Swipe to Receive" = "مرر لتلقي";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "مزامنة المحفظة";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "إقران المحفظة بنجاح.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "عبارة استرداد المحفظة";
+"Recovery Phrase" = "عبارة استرداد";
 
 /* (No Commment) */
 "Warning" = "تحذير";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "لتحقيق الأمان، نحن لا تحتفظ بأي كلمات المرور في ملف. النسخ الاحتياطي المحفظة الخاصة بك التأكد من بيتكوينس الخاص بك آمنة في حالة فقدان كلمة المرور الخاصة بك.";
+
+/* (No Commment) */
+"Wallets" = "محافظ";

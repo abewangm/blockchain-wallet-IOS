@@ -83,7 +83,7 @@
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT, walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
     self.context = [[JSContext alloc] init];
     
     [self.context evaluateScript:@"var console = {};"];
@@ -414,14 +414,24 @@
     
 #pragma mark Accounts/Addresses
     
-    self.context[@"objc_getRandomBytes"] = ^(NSNumber *count) {
-        DLog(@"objc_getObjCRandomValues");
+    self.context[@"objc_getRandomValues"] = ^(JSValue *intArray) {
+        DLog(@"objc_getRandomValues");
+        
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
+        
         if (!fileHandle) {
             @throw [NSException exceptionWithName:@"GetRandomValues Exception"
                                            reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
         }
-        NSData *data = [fileHandle readDataOfLength:[count intValue]];
+        
+        NSUInteger length = [[intArray toArray] count];
+        NSData *data = [fileHandle readDataOfLength:length];
+
+        if ([data length] != length) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"Data length is not equal to intArray length" userInfo:nil];
+        }
+        
         return [data hexadecimalString];
     };
     
@@ -731,13 +741,7 @@
 {    
     self.swipeAddressToSubscribe = address;
 
-    if (self.webSocket && self.webSocket.readyState == 1) {
-        NSError *error;
-        [self.webSocket sendString:[NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] error:&error];
-        if (error) DLog(@"Error subscribing to swipe address: %@", [error localizedDescription]);
-    } else {
-        [self setupWebSocket];
-    }
+    [self subscribeToAddress:address];
 }
 
 - (void)apiGetPINValue:(NSString*)key pin:(NSString*)pin
@@ -814,7 +818,7 @@
 {
     DLog(@"websocket opened");
     NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
-
+    
     NSError *error;
     [webSocket sendString:message error:&error];
     if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
@@ -1010,7 +1014,11 @@
         return nil;
     }
     
-    return [[self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"] toString];
+    JSValue *smsNumber = [self.context evaluateScript:@"MyWalletPhone.getSMSNumber()"];
+    
+    if ([smsNumber isUndefined]) return @"";
+    
+    return [smsNumber toString];
 }
 
 - (BOOL)getSMSVerifiedStatus
@@ -1141,31 +1149,31 @@
 
 - (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    NSString * txProgressID;
-    
-    if (secondPassword) {
-        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(true, \"%@\")", [secondPassword escapeStringForJS]]] toString];
-    } else {
-        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(true)"] toString];
-    }
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
     
     if (listener) {
         [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+    
+    if (secondPassword) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
     }
 }
 
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
 {
-    NSString * txProgressID;
-    
-    if (secondPassword) {
-        txProgressID = [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(false, \"%@\")", [secondPassword escapeStringForJS]]] toString];
-    } else {
-        txProgressID = [[self.context evaluateScript:@"MyWalletPhone.quickSend(false)"] toString];
-    }
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
     
     if (listener) {
         [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+    
+    if (secondPassword) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false)", [txProgressID escapeStringForJS]]];
     }
 }
 
@@ -1957,6 +1965,12 @@
             listener.on_success(secondPassword);
         }
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didPushTransaction)]) {
+        [self.delegate didPushTransaction];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didPushTransaction!", [delegate class]);
+    }
 }
 
 - (void)tx_on_error:(NSString*)txProgressID error:(NSString*)error secondPassword:(NSString *)secondPassword
@@ -2342,6 +2356,7 @@
     }
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
+        
         [delegate walletDidFinishLoad];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector walletDidFinishLoad!", [delegate class]);

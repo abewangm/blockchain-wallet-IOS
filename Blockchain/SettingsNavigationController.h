@@ -17,7 +17,6 @@
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
-- (void)showSecurityCenter;
 - (void)showSettings;
 - (void)showBackup;
 - (void)showTwoStep;

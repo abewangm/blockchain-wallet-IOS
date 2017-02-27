@@ -27,9 +27,9 @@
         
         CGFloat fontSize = 13;
         
-        self.mainLabel.font = [self.btcLabel.font fontWithSize:fontSize];
-        self.btcLabel.font = [self.btcLabel.font fontWithSize:fontSize];
-        self.fiatLabel.font = [self.btcLabel.font fontWithSize:fontSize];
+        self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:fontSize];
+        self.btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:fontSize];
+        self.fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:fontSize];
         
         self.mainLabel.adjustsFontSizeToFitWidth = YES;
         self.btcLabel.adjustsFontSizeToFitWidth = YES;

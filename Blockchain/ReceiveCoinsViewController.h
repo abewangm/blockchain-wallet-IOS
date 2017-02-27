@@ -38,7 +38,6 @@
     IBOutlet UITextField *fiatAmountField;
     
     IBOutlet UIButton *doneButton;
-    UIButton *informationButton;
     // Keyboard accessory view
     IBOutlet UIView *amountKeyboardAccessoryView;
 }

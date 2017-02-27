@@ -8,7 +8,6 @@
 
 #import "SettingsNavigationController.h"
 #import "SettingsTableViewController.h"
-#import "SecurityCenterViewController.h"
 #import "RootService.h"
 
 @interface SettingsNavigationController ()
@@ -27,7 +26,7 @@
     [self.view addSubview:topBar];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
-    headerLabel.font = [UIFont systemFontOfSize:22.0];
+    headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
@@ -81,13 +80,12 @@
 {
     [super viewDidLayoutSubviews];
 
-    if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+    if (self.viewControllers.count == 1) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        self.backButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        self.backButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        [self.backButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)];
-        [self.backButton setTitle:BC_STRING_CLOSE forState:UIControlStateNormal];
-        [self.backButton setImage:nil forState:UIControlStateNormal];
+        [self.backButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
     } else {
         self.backButton.frame = CGRectMake(0, 12, 85, 51);
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -98,7 +96,7 @@
 
 - (void)backButtonClicked:(UIButton *)sender
 {
-    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]] || [self.visibleViewController isMemberOfClass:[SecurityCenterViewController class]]) {
+    if ([self.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
         [self dismissViewControllerAnimated:YES completion:nil];
         app.topViewControllerDelegate = nil;
     } else {
@@ -110,21 +108,14 @@
 {
     [self.busyView fadeOut];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS object:nil];
 }
 
 - (void)reloadAfterMultiAddressResponse
 {
     [self.busyView fadeOut];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS object:nil];
-}
-
-- (void)showSecurityCenter
-{
-    [self popToRootViewControllerAnimated:NO];
-
-    [self performSegueWithIdentifier:SEGUE_IDENTIFIER_SECURITY_CENTER sender:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_RELOAD_SETTINGS_AFTER_MULTIADDRESS object:nil];
 }
 
 - (void)showSettings

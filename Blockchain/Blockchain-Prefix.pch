@@ -26,26 +26,43 @@
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
 
-#define APP_STORE_ID_MERCHANT @"id947009571"
-
 #pragma mark - Colors
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define COLOR_BLOCKCHAIN_BLUE UIColorFromRGB(0x1b8ac7)
-#define COLOR_BLOCKCHAIN_LIGHT_BLUE UIColorFromRGB(0x62b5db)
-#define COLOR_BLOCKCHAIN_LIGHTEST_BLUE UIColorFromRGB(0xa0d7ec)
+#define COLOR_BLOCKCHAIN_DARK_BLUE UIColorFromRGB(0x153a62)
+#define COLOR_BLOCKCHAIN_LIGHTEST_BLUE UIColorFromRGB(0xb2d5e5)
+#define COLOR_BLOCKCHAIN_LIGHT_BLUE UIColorFromRGB(0x10ade4)
+#define COLOR_BLOCKCHAIN_MEDIUM_BLUE UIColorFromRGB(0x3558a8)
+#define COLOR_BLOCKCHAIN_GRAY_BLUE UIColorFromRGB(0x799eb2)
+#define COLOR_BLOCKCHAIN_BLUE UIColorFromRGB(0x004a7c)
+
+#define COLOR_BLOCKCHAIN_LIGHT_YELLOW UIColorFromRGB(0xFFE6B4)
+#define COLOR_BLOCKCHAIN_YELLOW UIColorFromRGB(0xFFCF62)
+#define COLOR_BLOCKCHAIN_LIGHT_AQUA UIColorFromRGB(0x84D0D3)
+#define COLOR_BLOCKCHAIN_AQUA UIColorFromRGB(0x00BABC)
+#define COLOR_BLOCKCHAIN_LIGHT_RED UIColorFromRGB(0xF9B0A1)
+#define COLOR_BLOCKCHAIN_RED UIColorFromRGB(0xF26C57)
+
+#define COLOR_BLOCKCHAIN_GREEN UIColorFromRGB(0x199D69)
+#define COLOR_BLOCKCHAIN_RED_WARNING UIColorFromRGB(0xB83940)
+
+#define COLOR_TEXT_DARK_GRAY UIColorFromRGB(0x4c4c4c)
+#define COLOR_PENCIL_LIGHT_GRAY UIColorFromRGB(0xc8c7cc)
+#define COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
+#define COLOR_TABLE_VIEW_CELL_SELECTED_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
+
 #define COLOR_BLOCKCHAIN_UPGRADE_BLUE UIColorFromRGB(0xdae7ed)
 
-#define COLOR_TRANSACTION_RECEIVED UIColorFromRGB(0x85b45b)
-#define COLOR_TRANSACTION_SENT UIColorFromRGB(0xe27e82)
-#define COLOR_TRANSACTION_TRANSFERRED UIColorFromRGB(0x5bacd0)
+#define COLOR_TRANSACTION_RECEIVED COLOR_BLOCKCHAIN_AQUA
+#define COLOR_TRANSACTION_SENT COLOR_BLOCKCHAIN_RED
+#define COLOR_TRANSACTION_TRANSFERRED COLOR_BLOCKCHAIN_GRAY_BLUE
 
 #define COLOR_BUTTON_LIGHT_BLUE UIColorFromRGB(0x5cb2d6)
 #define COLOR_BUTTON_BLUE UIColorFromRGB(0x609dcd)
 #define COLOR_BUTTON_RED UIColorFromRGB(0xe88787)
-#define COLOR_BUTTON_GREEN UIColorFromRGB(0x7eb858)
+#define COLOR_BUTTON_GREEN COLOR_BLOCKCHAIN_GREEN
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
 #define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
@@ -57,14 +74,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_LINE_GRAY UIColorFromRGB(0xcdcdcd)
 
-#define COLOR_LABEL_BALANCE_GREEN UIColorFromRGB(0x6CAD46)
+#define COLOR_LABEL_BALANCE_GREEN COLOR_BLOCKCHAIN_GREEN
 
 #define COLOR_BACKGROUND_GRAY UIColorFromRGB(0xf7f7f7)
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
-
-#define COLOR_SECURITY_CENTER_GREEN UIColorFromRGB(0x3CC476)
-#define COLOR_SECURITY_CENTER_YELLOW UIColorFromRGB(0xFCCC65)
-#define COLOR_SECURITY_CENTER_RED UIColorFromRGB(0xE47F7F)
 
 #define COLOR_TEXT_GRAY UIColorFromRGB(0x9B9B9B)
 #define COLOR_TEXT_FIELD_GRAY UIColorFromRGB(0xd1d1d1)
@@ -79,7 +92,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define COLOR_UPGRADE_TEXT_BLUE UIColorFromRGB(0x1975BB)
 
-#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE UIColorFromRGB(0x1b8ac7)
+#define COLOR_TABLE_VIEW_CELL_TEXT_BLUE COLOR_BLOCKCHAIN_LIGHT_BLUE
 
 #pragma mark - Measurements
 
@@ -112,9 +125,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define OFFSET_TEXTVIEW_ADJUSTED_TOP CGPointMake(0, 3.5)
 
+#define FONT_SIZE_TOP_BAR_TEXT 20.0
+
 #pragma mark - Strings
 
-#define COPYRIGHT_YEAR @"2016"
+#define COPYRIGHT_YEAR @"2017"
 #define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
 #define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
 #define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
@@ -138,6 +153,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_STRING_CERTIFICATE_PINNING @"Certificate Pinning"
 #define DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER NSLocalizedString(@"App Store review prompt timer (seconds)", nil)
 #define DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER NSLocalizedString(@"Security reminder prompt timer (seconds)", nil)
+#define DEBUG_STRING_ZERO_VALUE_TICKER NSLocalizedString(@"Simulate zero ticker values", nil)
 
 #define CERTIFICATE_SERVER_NAME @"blockchain"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
@@ -154,6 +170,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define CELL_IDENTIFIER_TRANSACTION_RECIPIENT @"transactionRecipient"
 
+#define CELL_IDENTIFIER_LOCAL_CURRENCY @"localCurrency"
+#define CELL_IDENTIFIER_BITCOIN_UNIT @"bitcoinUnit"
+
 #define LOCALE_IDENTIFIER_EN_US @"en_US"
 #define LOCALE_IDENTIFIER_AR @"ar"
 
@@ -166,6 +185,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TX_TYPE_TRANSFER @"transfer"
 #define TX_TYPE_SENT @"sent"
 #define TX_TYPE_RECEIVED @"received"
+
+#define FONT_MONTSERRAT_REGULAR @"Montserrat-Regular"
+#define FONT_MONTSERRAT_SEMIBOLD @"Montserrat-SemiBold"
+#define FONT_MONTSERRAT_LIGHT @"Montserrat-Light"
+#define FONT_MONTSERRAT_EXTRALIGHT @"Montserrat-ExtraLight"
+
+#define FONT_GILL_SANS_REGULAR @"GillSans"
+#define FONT_GILL_SANS_LIGHT @"GillSans-Light"
 
 #define FONT_HELVETICA_NUEUE @"Helvetica Neue"
 #define FONT_HELVETICA_NUEUE_MEDIUM @"HelveticaNeue-Medium"
@@ -204,8 +231,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
 
 // Notifications used in settings
-#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER @"reloadSettingsAndSecurityCenter"
-#define NOTIFICATION_KEY_RELOAD_SETTINGS_AND_SECURITY_CENTER_AFTER_MULTIADDRESS @"reloadSettingsAndSecurityCenterAfterMultiAddress"
+#define NOTIFICATION_KEY_RELOAD_SETTINGS @"reloadSettings"
+#define NOTIFICATION_KEY_RELOAD_SETTINGS_AFTER_MULTIADDRESS @"reloadSettingsAfterMultiAddress"
 #define NOTIFICATION_KEY_UPDATE_FEE @"UpdateFee"
 #define NOTIFICATION_KEY_CHECK_MAX_AMOUNT @"CheckMaxAmount"
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
@@ -239,7 +266,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define SEGUE_SENDER_ABOUT_US @"aboutUs"
 #define SEGUE_SENDER_TERMS_OF_SERVICE @"termsOfService"
 #define SEGUE_SENDER_PRIVACY_POLICY @"privacyPolicy"
-#define SEGUE_IDENTIFIER_SECURITY_CENTER @"securityCenter"
 #define SEGUE_IDENTIFIER_DEBUG_MENU @"debugMenu"
 
 #define HOST_NAME_WALLET_SERVER @"blockchain.info"
@@ -269,7 +295,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_SURVEY @"https://blockchain.co1.qualtrics.com/SE/?SID=SV_8c6uSMW5eBV9nal"
 
-#define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
+#define URL_SUFFIX_EVENT_NAME_ARGUMENT @"/event?name=%@"
+#define WALLET_EVENT_TX_FROM_QR @"wallet_ios_tx_from_qr"
+#define WALLET_EVENT_TX_FROM_PASTE @"wallet_ios_tx_from_paste"
+#define WALLET_EVENT_TX_FROM_URI @"wallet_ios_tx_from_uri"
+#define WALLET_EVENT_TX_FROM_DROPDOWN @"wallet_ios_tx_from_dropdown"
+
+#define URL_INFORMATION_RECEIVE @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
 
 #define SOUND_FORMAT @"wav"
 
@@ -408,15 +440,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
 #define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET @"testnet"
+#define USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER @"zeroTicker"
 
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT @"hasSeenSurveyPrompt"
 #define USER_DEFAULTS_KEY_REMINDER_MODAL_DATE @"reminderModalDate"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
-
-#define REUSE_IDENTIFIER_TOUCH_ID_FOR_PIN @"useTouchIDForPIN"
-#define REUSE_IDENTIFIER_SWIPE_TO_RECEIVE @"swipeToReceive"
 
 #define KEYCHAIN_KEY_SHARED_KEY @"sharedKey"
 #define KEYCHAIN_KEY_GUID @"guid"
@@ -442,7 +472,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
 #define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
 
-#define SUPPORT_URL @"https://support.blockchain.com"
+#define URL_SUPPORT @"https://support.blockchain.com"
 
 #define UNSAFE_CHECK_PATH_CYDIA @"/Applications/Cydia.app"
 #define UNSAFE_CHECK_PATH_MOBILE_SUBSTRATE @"/Library/MobileSubstrate/MobileSubstrate.dylib"
@@ -459,8 +489,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
-#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@"
-
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@\n%@"
+#define JAVASCRIPTCORE_GLOBAL_CRYPTO @"var objcCrypto = function (Buffer) { return {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray); intArray.set(new Buffer(result, 'hex')); }}};"
 #define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
 #define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
 #define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
@@ -490,6 +520,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
 #define kConfirmationThreshold 3
+
+#define CORNER_RADIUS_BUTTON 4
 
 // TransactionsViewController
 #define FILTER_INDEX_ALL -1

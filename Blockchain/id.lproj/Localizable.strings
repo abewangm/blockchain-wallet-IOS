@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Lonjakan Terjadi";
 
 /* (No Commment) */
-"Swipe to receive" = "Usap untuk menerima";
+"Swipe to Receive" = "Usap untuk Menerima";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Menyinkronkan Dompet";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Pemasangan Dompet Berhasil.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Frasa Pemulihan Dompet";
+"Recovery Phrase" = "Frasa Pemulihan";
 
 /* (No Commment) */
 "Warning" = "Peringatan";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Untuk keamanan Anda, kami tidak menyimpan kata sandi pada berkas. Cadangan dompet Anda untuk memastikan Bitcoin Anda aman jika Anda kehilangan kata sandi Anda.";
+
+/* (No Commment) */
+"Wallets" = "Dompet";

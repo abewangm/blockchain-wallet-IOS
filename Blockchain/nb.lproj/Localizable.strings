@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Bølge oppstår";
 
 /* (No Commment) */
-"Swipe to receive" = "Dra for å motta";
+"Swipe to Receive" = "Dra for å Motta";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisering lommebok";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Lommebok sammen med hell.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Lommebok utvinning uttrykk";
+"Recovery Phrase" = "Utvinning uttrykk";
 
 /* (No Commment) */
 "Warning" = "Advarsel";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhet holde vi ikke passord på fil. Backup lommeboken for å sikre din bitcoins er trygt i tilfelle du mister passordet.";
+
+/* (No Commment) */
+"Wallets" = "Lommebøker";

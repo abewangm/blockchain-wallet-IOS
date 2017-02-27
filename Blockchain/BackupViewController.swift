@@ -15,7 +15,6 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     @IBOutlet weak var explanation: UILabel!
     @IBOutlet weak var backupIconImageView: UIImageView!
     @IBOutlet weak var backupWalletAgainButton: UIButton!
-    @IBOutlet weak var lostRecoveryPhraseLabel: UILabel!
     
     var wallet : Wallet?
     var app : RootService?
@@ -31,21 +30,17 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         backupWalletButton.clipsToBounds = true
         backupWalletButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
         
+        if let image = backupIconImageView.image {
+            backupIconImageView.image? = image.withRenderingMode(.alwaysTemplate)
+            backupIconImageView.tintColor = Constants.Colors.WarningRed
+        }
+        
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel.text = NSLocalizedString("You backed up your funds successfully.", comment: "");
             explanation.text = NSLocalizedString("Well done! Should you lose your password, you can restore funds in this wallet even if received in the future (except imported addresses) using the 12 word recovery phrase. Remember to keep your Recovery Phrase offline somewhere very safe and secure. Anyone with access to your Recovery Phrase has access to your bitcoin.", comment: "")
-            backupIconImageView.image = UIImage(named: "thumbs")
-            backupWalletButton.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), for: UIControlState())
-            backupWalletAgainButton.isHidden = false
-            backupWalletAgainButton.titleLabel?.textAlignment = .center;
-            backupWalletAgainButton.titleLabel?.adjustsFontSizeToFitWidth = true;
-            lostRecoveryPhraseLabel.isHidden = false
-            lostRecoveryPhraseLabel.adjustsFontSizeToFitWidth = true;
-            lostRecoveryPhraseLabel.textAlignment = .center;
-            
-            // Override any font changes
-            backupWalletAgainButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14);
-            lostRecoveryPhraseLabel.font = UIFont.boldSystemFont(ofSize: 14);
+            backupIconImageView.image = UIImage(named: "success")?.withRenderingMode(.alwaysTemplate)
+            backupIconImageView.tintColor = Constants.Colors.SuccessGreen
+            backupWalletButton.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
             
             if (wallet!.didUpgradeToHd() && wallet!.getTotalBalanceForSpendableActiveLegacyAddresses() >= wallet!.dust() && navigationController!.visibleViewController == self && !transferredAll) {
                 let alertToTransferAll = UIAlertController(title: NSLocalizedString("Transfer imported addresses?", comment:""), message: NSLocalizedString("Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", comment:""), preferredStyle: .alert)
@@ -63,15 +58,8 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         
         explanation.sizeToFit();
         explanation.center = CGPoint(x: view.frame.width/2, y: explanation.center.y)
-        changeYPosition(explanation.frame.origin.y + explanation.frame.size.height + 20, view: backupWalletButton)
-        changeYPosition(backupWalletButton.frame.origin.y + backupWalletButton.frame.size.height + 20, view: lostRecoveryPhraseLabel)
-        changeYPosition(lostRecoveryPhraseLabel.frame.origin.y + 10, view: backupWalletAgainButton)
-        
-        if (backupWalletAgainButton.frame.origin.y + backupWalletAgainButton.frame.size.height > view.frame.size.height) {
-            changeYPosition(view.frame.size.height - backupWalletAgainButton.frame.size.height, view: backupWalletAgainButton)
-            changeYPosition(backupWalletAgainButton.frame.origin.y - 10, view: lostRecoveryPhraseLabel)
-            changeYPosition(lostRecoveryPhraseLabel.frame.origin.y - backupWalletAgainButton.frame.size.height - 20, view: backupWalletButton)
-        }
+        changeYPosition(view.frame.size.height - 40 - backupWalletButton.frame.size.height, view: backupWalletButton)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,8 +69,8 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if (backupWalletAgainButton?.isHidden == false) {
-            backupWalletButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment: ""), for: UIControlState())
+        if (wallet!.isRecoveryPhraseVerified()) {
+            backupWalletButton?.setTitle(backupWalletAgainButton.titleLabel?.text, for: UIControlState())
         } else {
             backupWalletButton?.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), for: UIControlState())
         }

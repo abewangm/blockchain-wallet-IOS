@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "出现了电涌";
 
 /* (No Commment) */
-"Swipe to receive" = "滑动以接收";
+"Swipe to Receive" = "滑动以接收";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同步钱包";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "钱包配对成功。";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "钱包恢复密语";
+"Recovery Phrase" = "恢复密语";
 
 /* (No Commment) */
 "Warning" = "警告";
@@ -1541,3 +1541,6 @@
 
 /* No comment provided by engineer. */
 "Value when received: %@" = "收到时的值： %@";
+
+/* (No Commment) */
+"Wallets" = "钱包";

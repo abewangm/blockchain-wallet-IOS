@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Происходит значительный рост";
 
 /* (No Commment) */
-"Swipe to receive" = "Для получения проведите по экрану";
+"Swipe to Receive" = "Для получения проведите по экрану";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Кошелек синхронизируется";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Сопряжение выполнено.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Фраза для восстановления кошелька";
+"Recovery Phrase" = "Восстановительная Фраза";
 
 /* (No Commment) */
 "Warning" = "Предупреждение";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";
+
+/* (No Commment) */
+"Wallets" = "кошелкам";

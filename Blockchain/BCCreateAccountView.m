@@ -24,10 +24,11 @@
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
         labelLabel.text = BC_STRING_NAME;
         labelLabel.textColor = [UIColor darkGrayColor];
-        labelLabel.font = [UIFont systemFontOfSize:17.0];
+        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         [self addSubview:labelLabel];
         
         _labelTextField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
+        _labelTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_labelTextField.font.pointSize];
         _labelTextField.borderStyle = UITextBorderStyleRoundedRect;
         _labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         _labelTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -42,7 +43,7 @@
         createAccountButton.backgroundColor = COLOR_BUTTON_GRAY;
         [createAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
         [createAccountButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        createAccountButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+        createAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [createAccountButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         

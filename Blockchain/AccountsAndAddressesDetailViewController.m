@@ -206,12 +206,22 @@ typedef enum {
             [app standardNotifyAutoDismissingController:BC_STRING_AT_LEAST_ONE_ADDRESS_REQUIRED];
         } else {
             [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-            [app.wallet toggleArchiveLegacyAddress:self.address];
+            [self performSelector:@selector(toggleArchiveLegacyAddress) withObject:nil afterDelay:ANIMATION_DURATION];
         }
     } else {
         [self showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
-        [app.wallet toggleArchiveAccount:self.account];
+        [self performSelector:@selector(toggleArchiveAccount) withObject:nil afterDelay:ANIMATION_DURATION];
     }
+}
+
+- (void)toggleArchiveLegacyAddress
+{
+    [app.wallet toggleArchiveLegacyAddress:self.address];
+}
+
+- (void)toggleArchiveAccount
+{
+    [app.wallet toggleArchiveAccount:self.account];
 }
 
 #pragma mark - Navigation
@@ -282,7 +292,33 @@ typedef enum {
 
 #pragma mark - Table View Delegate
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [self getFooterViewForSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    UIView *view = [self getFooterViewForSection:section];
+    return view.frame.size.height;
+}
+
+- (UIView *)getFooterViewForSection:(NSInteger)section
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, self.tableView.frame.size.width - 30, 50)];
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    label.numberOfLines = 0;
+    label.textColor = [UIColor grayColor];
+    label.text = [self getStringForFooterInSection:section];
+    [label sizeToFit];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, label.frame.size.height + 16)];
+    [view addSubview:label];
+    
+    return view;
+}
+
+- (NSString *)getStringForFooterInSection:(NSInteger)section
 {
     BOOL canTransferFromAddress = [self canTransferFromAddress];
     
@@ -456,8 +492,8 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
-    cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:15];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     BOOL canTransferFromAddress = [self canTransferFromAddress];
@@ -493,10 +529,11 @@ typedef enum {
                         cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                     } else {
                         cell.textLabel.text = BC_STRING_ARCHIVE;
-                        cell.textLabel.textColor = [UIColor redColor];
+                        cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                     }
                 } else {
                     cell.textLabel.text = self.address? BC_STRING_LABEL : BC_STRING_NAME;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.detailTextLabel.text = self.address ? [app.wallet labelForLegacyAddress:self.address] : [app.wallet getLabelForAccount:self.account];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
@@ -506,6 +543,7 @@ typedef enum {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 if (self.address) {
                     cell.textLabel.text = BC_STRING_ADDRESS;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.detailTextLabel.text = self.address;
                 } else {
                     if ([app.wallet getDefaultAccountIndex] != self.account) {
@@ -514,7 +552,7 @@ typedef enum {
                         cell.accessoryType = UITableViewCellAccessoryNone;
                     } else {
                         cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
-                        cell.textLabel.textColor = [UIColor blackColor];
+                        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     }
                 }
                 return cell;
@@ -531,11 +569,12 @@ typedef enum {
                             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
                         } else {
                             cell.textLabel.text = BC_STRING_ARCHIVE;
-                            cell.textLabel.textColor = [UIColor redColor];
+                            cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                         }
                     }
                 } else {
                     cell.textLabel.text = BC_STRING_EXTENDED_PUBLIC_KEY;
+                    cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 return cell;
@@ -549,7 +588,7 @@ typedef enum {
             cell.textLabel.textColor = COLOR_TABLE_VIEW_CELL_TEXT_BLUE;
         } else {
             cell.textLabel.text = BC_STRING_ARCHIVE;
-            cell.textLabel.textColor = [UIColor redColor];
+            cell.textLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
         }
         return cell;
     }

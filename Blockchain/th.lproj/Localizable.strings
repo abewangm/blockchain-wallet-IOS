@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "มีการเพิ่มด่วน";
 
 /* (No Commment) */
-"Swipe to receive" = "ปัดนิ้วเพื่อรับ";
+"Swipe to Receive" = "ปัดนิ้วเพื่อรับ";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "กำลังซิงค์กระเป๋าเงิน";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "จับคู่กระเป๋าเงินสำเร็จแล้ว";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "วลีเพื่อการกู้คืนกระเป๋าเงิน";
+"Recovery Phrase" = "วลีเพื่อการกู้คืน";
 
 /* (No Commment) */
 "Warning" = "คำเตือน";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า bitcoin ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
+
+/* (No Commment) */
+"Wallets" = "กระเป๋าสตางค์";

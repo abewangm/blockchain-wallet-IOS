@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     self.tableView = [[UITableView alloc] initWithFrame:app.window.frame style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -43,7 +43,7 @@
 {
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = nil;
+    navigationController.headerLabel.text = BC_STRING_ADDRESSES;
     
     if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -256,33 +256,35 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_FOREGROUND_GRAY;
-    label.font = [UIFont systemFontOfSize:14.0];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
     
     [view addSubview:label];
     
     NSString *labelString;
     
     if (section == 0) {
-        labelString = nil;
+        labelString = BC_STRING_WALLETS;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }
     else if (section == 1) {
         labelString = BC_STRING_IMPORTED_ADDRESSES;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
-        [addButton setImage:[UIImage imageNamed:@"new-grey"] forState:UIControlStateNormal];
+        [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newAddressClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     } else
         @throw @"Unknown Section";
     
-    label.text = [labelString uppercaseString];
+    label.text = labelString;
     
     return view;
 }
@@ -321,7 +323,7 @@
         
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
-            cell.backgroundColor = COLOR_BACKGROUND_GRAY;
+            cell.backgroundColor = [UIColor whiteColor];
             
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 
@@ -362,7 +364,7 @@
             cell.balanceLabel.textColor = COLOR_BUTTON_BLUE;
         } else {
             cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
-            cell.balanceLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
+            cell.balanceLabel.textColor = COLOR_BLOCKCHAIN_GREEN;
         }
         cell.balanceLabel.minimumScaleFactor = 0.75f;
         [cell.balanceLabel setAdjustsFontSizeToFitWidth:YES];

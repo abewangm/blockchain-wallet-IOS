@@ -1,9 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.ttf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MerchantMapDetailViewController">
             <connections>
@@ -25,53 +37,53 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERE-KY-CaS">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lz-8o-804">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lz-8o-804">
                             <rect key="frame" x="20" y="123" width="63" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="150" constant="63" id="ytq-Vz-GYB"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ru-T7-Y2x">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" misplaced="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ru-T7-Y2x">
                             <rect key="frame" x="20" y="214" width="88" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="87" id="Wuh-Jp-4nV"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-12-oNo">
                             <rect key="frame" x="20" y="284" width="115" height="20"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="410" horizontalCompressionResistancePriority="520" verticalCompressionResistancePriority="420" misplaced="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSv-mT-4wP">
-                            <rect key="frame" x="20" y="148" width="335" height="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="410" horizontalCompressionResistancePriority="520" verticalCompressionResistancePriority="420" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSv-mT-4wP">
+                            <rect key="frame" x="20" y="150" width="335" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="400" constant="19" id="xd5-8A-kc8"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" red="0.0" green="0.35294117650000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.35294117650000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" misplaced="YES" text="City" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyC-eF-isP">
-                            <rect key="frame" x="20" y="170" width="335" height="18"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.35294117650000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="251" horizontalCompressionResistancePriority="520" text="City" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyC-eF-isP">
+                            <rect key="frame" x="20" y="173" width="335" height="19"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.35294117650000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="620" verticalHuggingPriority="620" horizontalCompressionResistancePriority="610" verticalCompressionResistancePriority="610" misplaced="YES" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNA-h2-cqv">
-                            <rect key="frame" x="20" y="239" width="280" height="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="620" verticalHuggingPriority="620" horizontalCompressionResistancePriority="610" verticalCompressionResistancePriority="610" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNA-h2-cqv">
+                            <rect key="frame" x="20" y="244" width="280" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="600" constant="19" id="ag2-JO-Yvn"/>
                                 <constraint firstAttribute="width" constant="280" id="cGf-fM-def"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="510" verticalHuggingPriority="500" horizontalCompressionResistancePriority="520" verticalCompressionResistancePriority="500" text="Business Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eT-Zk-MsB">
@@ -80,18 +92,18 @@
                                 <constraint firstAttribute="width" priority="600" constant="320" id="sin-6O-zw8"/>
                                 <constraint firstAttribute="height" priority="480" constant="21" id="tMC-uB-25Z"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="22"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" horizontalCompressionResistancePriority="520" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-gH-5aF">
-                            <rect key="frame" x="20" y="303" width="108" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" horizontalCompressionResistancePriority="520" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-gH-5aF">
+                            <rect key="frame" x="20" y="310" width="122" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="108" id="kcQ-F7-Qe5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                             <state key="normal" title="Phone Number">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="phoneNumberAction:" destination="-1" eventType="touchUpInside" id="lcI-Yv-Aq9"/>
@@ -99,8 +111,8 @@
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Website" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-se-iNk">
                             <rect key="frame" x="20" y="360" width="61" height="20"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tN-2r-qiD" customClass="UIControl">
@@ -111,19 +123,19 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcM-tp-wOW">
                             <rect key="frame" x="0.0" y="72" width="375" height="4"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="K7V-ZC-DaJ"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" verticalHuggingPriority="700" horizontalCompressionResistancePriority="520" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXA-tB-ej9">
-                            <rect key="frame" x="20" y="379" width="335" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="510" verticalHuggingPriority="700" horizontalCompressionResistancePriority="520" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXA-tB-ej9">
+                            <rect key="frame" x="20" y="388" width="335" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="400" constant="31" id="17w-Dd-jb5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                             <state key="normal" title="URL">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="webURLAction:" destination="-1" eventType="touchUpInside" id="PQh-Dt-rg7"/>
@@ -167,7 +179,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ERE-KY-CaS" secondAttribute="trailing" id="4lB-3P-yct"/>
                 <constraint firstItem="ERE-KY-CaS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Csz-BR-XSl"/>
@@ -175,7 +187,6 @@
                 <constraint firstItem="ERE-KY-CaS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nZy-Il-aEb"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="296.5" y="252.5"/>
         </view>
     </objects>

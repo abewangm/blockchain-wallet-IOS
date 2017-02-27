@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "浪湧發生";
 
 /* (No Commment) */
-"Swipe to receive" = "刷卡接收";
+"Swipe to Receive" = "刷卡接收";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "同步的錢包";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "配對成功的錢包。";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "錢包恢復短語";
+"Recovery Phrase" = "恢復短語";
 
 /* (No Commment) */
 "Warning" = "警告";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "為了您的安全，我們沒有做任何的密碼檔。備份你的錢包，以確保您的比特幣是安全的以防你失去您的密碼。";
+
+/* (No Commment) */
+"Wallets" = "錢包";

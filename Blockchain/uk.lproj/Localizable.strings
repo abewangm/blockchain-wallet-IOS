@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Пульсація";
 
 /* (No Commment) */
-"Swipe to receive" = "Пролистайте, щоб отримати";
+"Swipe to Receive" = "Пролистайте, щоб Oтримати";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Синхронізація гаманця";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Гаманець успішно спаровано.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Фраза для відновлення доступу до гаманця";
+"Recovery Phrase" = "Фраза для відновлення доступу до";
 
 /* (No Commment) */
 "Warning" = "Попередження";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашої ж безпеки, ми не зберігаємо будь-які паролі у файлі. Зробіть резервну копію свого гаманця, щоб бути впевненими, що ви матимете доступ до своїх біткоїнів, якщо втратите свій пароль.";
+
+/* (No Commment) */
+"Wallets" = "гаманців";

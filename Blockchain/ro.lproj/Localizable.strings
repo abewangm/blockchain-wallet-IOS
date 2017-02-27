@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "La supratensiuni care apar";
 
 /* (No Commment) */
-"Swipe to receive" = "Glisați pentru a primi";
+"Swipe to Receive" = "Glisați pentru a Primi";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronizarea portofel";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Portofel asociat cu succes.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Fraza de recuperare portofel";
+"Recovery Phrase" = "Fraza de recuperare";
 
 /* (No Commment) */
 "Warning" = "Avertisment";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pentru securitate, nu păstrăm nici parolele pe dosar. Rezervă portofel pentru a asigura bitcoins dumneavoastră sunt în siguranţă în cazul în care ai pierdut parola.";
+
+/* (No Commment) */
+"Wallets" = "Portofele";

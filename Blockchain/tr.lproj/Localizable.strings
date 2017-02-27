@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Artış Oluşuyor";
 
 /* (No Commment) */
-"Swipe to receive" = "Almak için kaydırın";
+"Swipe to Receive" = "Almak için kaydırın";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Cüzdan Senkronize Ediliyor";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Cüzdan Başarıyla Eşleştirildi.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Cüzdan Kurtarma İfadesi";
+"Recovery Phrase" = "Kurtarma İfadesi";
 
 /* (No Commment) */
 "Warning" = "Uyarı";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Güvenliğiniz için hiçbir şifreyi dosyada tutmuyoruz. Şifrenizi kaybetmeniz durumunda bitcoinlerinizin güvende olduğunu garanti etmek için cüzdanınız yedekleyin.";
+
+/* (No Commment) */
+"Wallets" = "Cüzdanlar";

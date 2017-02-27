@@ -14,7 +14,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.twoStepButton.layer.borderWidth = 0.5;
     self.twoStepButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 20);
     self.twoStepButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.twoStepButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -23,6 +22,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    navigationController.headerLabel.text = BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION;
+    
     [self updateUI];
 }
 

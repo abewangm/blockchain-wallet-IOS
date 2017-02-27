@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "써지 (Surge) 발생 중";
 
 /* (No Commment) */
-"Swipe to receive" = "스와이프 해서 받기";
+"Swipe to Receive" = "스와이프 해서 받기";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "지갑 동기화 중";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "지갑 페어링 성공.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "지갑 복구 구절";
+"Recovery Phrase" = "복구 구절";
 
 /* (No Commment) */
 "Warning" = "경고";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "귀하 보안을 위해 우리는 암호를 보관하지 않습니다. 암호를 잊더라도 비트코인이 안전하게 하려면 지갑을 백업하세요.";
+
+/* (No Commment) */
+"Wallets" = "지갑";

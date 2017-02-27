@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Hausse en cours";
 
 /* (No Commment) */
-"Swipe to receive" = "Faire glisser pour recevoir";
+"Swipe to Receive" = "Faire glisser pour Recevoir";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synchronisation du portefeuille en cours";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Portefeuille jumelé avec succès.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Phrase de récupération du portefeuille";
+"Recovery Phrase" = "Phrase de récupération";
 
 /* (No Commment) */
 "Warning" = "Avertissement";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pour votre sécurité, nous ne conservons aucun mot de passe sur fichier. Sauvegardez votre portefeuille pour assurer que votre bitcoin sont sécurisés en cas d'oubli de votre mot de passe.";
+
+/* (No Commment) */
+"Wallets" = "Portefeuilles";

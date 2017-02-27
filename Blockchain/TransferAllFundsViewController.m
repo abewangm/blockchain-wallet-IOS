@@ -62,13 +62,14 @@
     
     self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.center.x - 120, self.tableView.frame.origin.y + self.tableView.frame.size.height + 24, 240, 40)];
     self.sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.sendButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    self.sendButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.sendButton setTitle:BC_STRING_TRANSFER_FUNDS forState:UIControlStateNormal];
+    self.sendButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
     [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
     self.sendButton.enabled = NO;
     self.sendButton.clipsToBounds = YES;
-    self.sendButton.layer.cornerRadius = 16;
+    self.sendButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [self.view addSubview:self.sendButton];
 }
 
@@ -132,16 +133,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        
+        NSInteger addressCount = [self.addressesUsed count];
+        NSString *addressesString = @"";
+        if (addressCount == 1) {
+            addressesString = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESS, addressCount];
+        } else if (addressCount > 1) {
+            addressesString = [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, addressCount];
+        }
+        
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_FROM;
-        cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : [NSString stringWithFormat:BC_STRING_ARGUMENT_ADDRESSES, [self.addressesUsed count]];
+        cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
+        cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : addressesString;
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (indexPath.row == 1) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_TO;
+        cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
         cell.detailTextLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         return cell;
@@ -176,7 +190,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 1) {
-        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] showOwnAddresses:YES allSelectable:YES accountsOnly:YES];
+        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] selectMode:SelectModeTransferTo];
         selectorView.delegate = self;
         selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
         

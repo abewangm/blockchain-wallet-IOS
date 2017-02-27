@@ -1072,7 +1072,7 @@
 "Surge Occurring" = "Surge inträffar";
 
 /* (No Commment) */
-"Swipe to receive" = "Svep för att få";
+"Swipe to Receive" = "Svep för att få";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisera plånbok";
@@ -1303,7 +1303,7 @@
 "Wallet Paired Successfully." = "Plånbok Parade framgångsrikt.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Plånbok återhämtning fras";
+"Recovery Phrase" = "återhämtning fras";
 
 /* (No Commment) */
 "Warning" = "Varning";
@@ -1619,3 +1619,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina bitcoins är säkra om du förlorar ditt lösenord.";
+
+/* (No Commment) */
+"Wallets" = "Plånböcker";

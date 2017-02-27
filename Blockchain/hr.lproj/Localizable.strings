@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Val se javljaju";
 
 /* (No Commment) */
-"Swipe to receive" = "Prstom prijeđite prema primati";
+"Swipe to Receive" = "Prstom prijeđite prema Primati";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sinkronizacija novčanik";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Novčanik paru uspješno.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Novčanik oporavak izraz";
+"Recovery Phrase" = "Oporavak izraz";
 
 /* (No Commment) */
 "Warning" = "Upozorenje";
@@ -1607,3 +1607,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašu sigurnost, ne čuvajte lozinke na datoteku. Sigurnosna kopija novčanik kako bi se osiguralo tvoj bitcoins su sigurna u slučaju da izgubite lozinku.";
+
+/* (No Commment) */
+"Wallets" = "Novčanike";

@@ -85,7 +85,6 @@
 		23C543A11D0F415C007A5F58 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C543A01D0F415C007A5F58 /* CFNetwork.framework */; };
 		23C543A31D0F4197007A5F58 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C543A21D0F4197007A5F58 /* libicucore.tbd */; };
 		23C95EA61C0779C600E4692A /* SettingsChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C95EA51C0779C600E4692A /* SettingsChangePasswordViewController.m */; };
-		23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */; };
 		23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D423981D0878BE000054AA /* ModuleXMLHttpRequest.m */; };
 		23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D5DB521C4415AE007AD0A2 /* AccountsAndAddresses.storyboard */; };
 		23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9F26F1B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m */; };
@@ -144,7 +143,6 @@
 		67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67EEE7711A8E547900288753 /* PEPin-on@3x.png */; };
 		67FA1A4D1ABA092D000C9196 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FA1A4C1ABA092D000C9196 /* RegExCategories.m */; };
 		6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */; };
-		844BC7B01949BD830024160B /* bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 844BC7AF1949BD710024160B /* bridge.js */; };
 		84AEEC661987C49A000E8DC8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AEEC651987C49A000E8DC8 /* CoreLocation.framework */; };
 		84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B601C6197ACD6300DA1829 /* UITextField+Blocks.m */; };
 		84B601CA197AD03800DA1829 /* BCModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B601C9197AD03800DA1829 /* BCModalView.m */; };
@@ -155,7 +153,6 @@
 		84FC02FE19815F1B00B97D5B /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 84FC02FC19815F1B00B97D5B /* sha256.c */; };
 		84FC0301198162AE00B97D5B /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FC02FF198162AE00B97D5B /* libcrypto.a */; };
 		9F0CBAAA151351F400CD945D /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CBAA9151351F400CD945D /* Wallet.m */; };
-		9F0CBAB015135DF200CD945D /* wallet-ios.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F0CBAAD15135DF200CD945D /* wallet-ios.html */; };
 		9F0CBAD81513CA2600CD945D /* BCFadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0CBAD71513CA2600CD945D /* BCFadeView.m */; };
 		9F1831E21516A39500FB3D52 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1831E11516A39500FB3D52 /* NSData+Hex.m */; };
 		9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1831E41516A45700FB3D52 /* NSString+SHA256.m */; };
@@ -192,6 +189,26 @@
 		A2599BAA1B0B762400C2EA81 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2599BAC1B0B762400C2EA81 /* Backup.storyboard */; };
 		A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */; };
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
+		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
+		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
+		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
+		C790E1101E52061B0063D141 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FE1E5206020063D141 /* Montserrat-BoldItalic.ttf */; };
+		C790E1111E52061B0063D141 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FF1E5206020063D141 /* Montserrat-ExtraBold.ttf */; };
+		C790E1121E52061B0063D141 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1001E5206020063D141 /* Montserrat-ExtraBoldItalic.ttf */; };
+		C790E1131E52061B0063D141 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1011E5206020063D141 /* Montserrat-ExtraLight.ttf */; };
+		C790E1141E52061B0063D141 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1021E5206020063D141 /* Montserrat-ExtraLightItalic.ttf */; };
+		C790E1151E52061B0063D141 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1031E5206020063D141 /* Montserrat-Italic.ttf */; };
+		C790E1161E52061B0063D141 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1041E5206020063D141 /* Montserrat-Light.ttf */; };
+		C790E1171E52061B0063D141 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1051E5206020063D141 /* Montserrat-LightItalic.ttf */; };
+		C790E1181E52061B0063D141 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1061E5206020063D141 /* Montserrat-Medium.ttf */; };
+		C790E1191E52061B0063D141 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1071E5206020063D141 /* Montserrat-MediumItalic.ttf */; };
+		C790E11A1E52061B0063D141 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1081E5206020063D141 /* Montserrat-Regular.ttf */; };
+		C790E11B1E52061B0063D141 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E1091E5206020063D141 /* Montserrat-SemiBold.ttf */; };
+		C790E11C1E52061B0063D141 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10A1E5206020063D141 /* Montserrat-SemiBoldItalic.ttf */; };
+		C790E11D1E52061B0063D141 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10B1E5206020063D141 /* Montserrat-Thin.ttf */; };
+		C790E11E1E52061B0063D141 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */; };
+		C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */; };
+		C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
 		C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916A1945D8F600FD516D /* PEPinEntryController.m */; };
 		C9BE917D1945D8F600FD516D /* PEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916C1945D8F600FD516D /* PEViewController.m */; };
@@ -712,8 +729,6 @@
 		23CEC6B81BA0C26100F102BF /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/MainWindow.strings"; sourceTree = "<group>"; };
 		23CEC6B91BA0C26100F102BF /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/BCAddressSelectionView.strings"; sourceTree = "<group>"; };
 		23CEC6BA1BA0C26100F102BF /* zh-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-TW"; path = "zh-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		23D3A6271C0F699900DEF737 /* SecurityCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityCenterViewController.h; sourceTree = "<group>"; };
-		23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityCenterViewController.m; sourceTree = "<group>"; };
 		23D423971D0878BE000054AA /* ModuleXMLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleXMLHttpRequest.h; sourceTree = "<group>"; };
 		23D423981D0878BE000054AA /* ModuleXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleXMLHttpRequest.m; sourceTree = "<group>"; };
 		23D5DB511C4415AE007AD0A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountsAndAddresses.storyboard; sourceTree = "<group>"; };
@@ -873,7 +888,6 @@
 		67FA1A4C1ABA092D000C9196 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
 		6E2D90A01BBEC34800B719EC /* BCRecoveryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRecoveryView.h; sourceTree = "<group>"; };
 		6E2D90A11BBEC34800B719EC /* BCRecoveryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRecoveryView.m; sourceTree = "<group>"; };
-		844BC7AF1949BD710024160B /* bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bridge.js; sourceTree = "<group>"; };
 		84AEEC651987C49A000E8DC8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84B601C5197ACD6300DA1829 /* UITextField+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Blocks.h"; sourceTree = "<group>"; };
 		84B601C6197ACD6300DA1829 /* UITextField+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Blocks.m"; sourceTree = "<group>"; };
@@ -895,7 +909,6 @@
 		84FC02FF198162AE00B97D5B /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Library/OpenSSL-for-iPhone/lib/libcrypto.a"; sourceTree = "<group>"; };
 		9F0CBAA8151351F400CD945D /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
 		9F0CBAA9151351F400CD945D /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wallet.m; sourceTree = "<group>"; };
-		9F0CBAAD15135DF200CD945D /* wallet-ios.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "wallet-ios.html"; sourceTree = "<group>"; };
 		9F0CBAD61513CA2600CD945D /* BCFadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFadeView.h; sourceTree = "<group>"; };
 		9F0CBAD71513CA2600CD945D /* BCFadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFadeView.m; sourceTree = "<group>"; };
 		9F1831E01516A39500FB3D52 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
@@ -979,6 +992,28 @@
 		A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupNavigationViewController.swift; sourceTree = "<group>"; };
 		A2AADC041B0B98720085144B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Backup.strings; sourceTree = "<group>"; };
 		A2AADC071B0B999F0085144B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
+		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E0FE1E5206020063D141 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BoldItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E0FF1E5206020063D141 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "Fonts/Montserrat/Montserrat-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1001E5206020063D141 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBoldItalic.ttf"; path = "Fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1011E5206020063D141 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraLight.ttf"; path = "Fonts/Montserrat/Montserrat-ExtraLight.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1021E5206020063D141 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraLightItalic.ttf"; path = "Fonts/Montserrat/Montserrat-ExtraLightItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1031E5206020063D141 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Italic.ttf"; path = "Fonts/Montserrat/Montserrat-Italic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1041E5206020063D141 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "Fonts/Montserrat/Montserrat-Light.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1051E5206020063D141 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-LightItalic.ttf"; path = "Fonts/Montserrat/Montserrat-LightItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1061E5206020063D141 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "Fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1071E5206020063D141 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-MediumItalic.ttf"; path = "Fonts/Montserrat/Montserrat-MediumItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1081E5206020063D141 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "Fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E1091E5206020063D141 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "Fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E10A1E5206020063D141 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBoldItalic.ttf"; path = "Fonts/Montserrat/Montserrat-SemiBoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E10B1E5206020063D141 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Thin.ttf"; path = "Fonts/Montserrat/Montserrat-Thin.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ThinItalic.ttf"; path = "Fonts/Montserrat/Montserrat-ThinItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		C790E11F1E5345160063D141 /* BCVerifyEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCVerifyEmailViewController.h; sourceTree = "<group>"; };
+		C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyEmailViewController.m; sourceTree = "<group>"; };
+		C790E1221E5358540063D141 /* BCVerifyMobileNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCVerifyMobileNumberViewController.h; sourceTree = "<group>"; };
+		C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyMobileNumberViewController.m; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
 		C9BE91681945D8F600FD516D /* PENumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PENumpadView.m; sourceTree = "<group>"; };
 		C9BE91691945D8F600FD516D /* PEPinEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEPinEntryController.h; sourceTree = "<group>"; };
@@ -1308,9 +1343,7 @@
 		9F0CBAAB15135DF200CD945D /* JavaScript */ = {
 			isa = PBXGroup;
 			children = (
-				844BC7AF1949BD710024160B /* bridge.js */,
 				23321D791BB0730C0005624F /* my-wallet.js */,
-				9F0CBAAD15135DF200CD945D /* wallet-ios.html */,
 				67D2B6ED1A2F2DEF0078782C /* wallet-ios.js */,
 			);
 			name = JavaScript;
@@ -1470,6 +1503,7 @@
 		9FB3637C14B60128004BEA02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C790E0F91E5205620063D141 /* Fonts */,
 				2357BA431D53979600BE0BFD /* InfoPlist.strings */,
 				67470A0519D438E000757D46 /* LocalizationConstants.h */,
 				220ADA6819A3796200EB7599 /* Localizable.strings */,
@@ -1484,6 +1518,10 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C790E1221E5358540063D141 /* BCVerifyMobileNumberViewController.h */,
+				C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */,
+				C790E11F1E5345160063D141 /* BCVerifyEmailViewController.h */,
+				C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */,
 				23B731D11E01AC1100129770 /* ReminderModalViewController.h */,
 				23B731D21E01AC1100129770 /* ReminderModalViewController.m */,
 				23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */,
@@ -1531,8 +1569,6 @@
 				23EA61C41B54258D0032B907 /* SettingsTableViewController.m */,
 				23EA61C61B54282D0032B907 /* SettingsNavigationController.h */,
 				23EA61C71B54282D0032B907 /* SettingsNavigationController.m */,
-				23D3A6271C0F699900DEF737 /* SecurityCenterViewController.h */,
-				23D3A6281C0F699900DEF737 /* SecurityCenterViewController.m */,
 				239CD5661C122BDE00997DF5 /* SettingsTwoStepViewController.h */,
 				239CD5671C122BDE00997DF5 /* SettingsTwoStepViewController.m */,
 				23C95EA41C0779C600E4692A /* SettingsChangePasswordViewController.h */,
@@ -1549,6 +1585,39 @@
 				23FDEF991D6CBC7000FC80D6 /* TransactionDetailViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C790E0F91E5205620063D141 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C790E0FA1E52056A0063D141 /* Montserrat */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		C790E0FA1E52056A0063D141 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */,
+				C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */,
+				C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */,
+				C790E0FE1E5206020063D141 /* Montserrat-BoldItalic.ttf */,
+				C790E0FF1E5206020063D141 /* Montserrat-ExtraBold.ttf */,
+				C790E1001E5206020063D141 /* Montserrat-ExtraBoldItalic.ttf */,
+				C790E1011E5206020063D141 /* Montserrat-ExtraLight.ttf */,
+				C790E1021E5206020063D141 /* Montserrat-ExtraLightItalic.ttf */,
+				C790E1031E5206020063D141 /* Montserrat-Italic.ttf */,
+				C790E1041E5206020063D141 /* Montserrat-Light.ttf */,
+				C790E1051E5206020063D141 /* Montserrat-LightItalic.ttf */,
+				C790E1061E5206020063D141 /* Montserrat-Medium.ttf */,
+				C790E1071E5206020063D141 /* Montserrat-MediumItalic.ttf */,
+				C790E1081E5206020063D141 /* Montserrat-Regular.ttf */,
+				C790E1091E5206020063D141 /* Montserrat-SemiBold.ttf */,
+				C790E10A1E5206020063D141 /* Montserrat-SemiBoldItalic.ttf */,
+				C790E10B1E5206020063D141 /* Montserrat-Thin.ttf */,
+				C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */,
+			);
+			name = Montserrat;
 			sourceTree = "<group>";
 		};
 		C9B32CF9194F3F5800BDF3A0 /* Cells */ = {
@@ -1868,15 +1937,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C790E11A1E52061B0063D141 /* Montserrat-Regular.ttf in Resources */,
+				C790E1161E52061B0063D141 /* Montserrat-Light.ttf in Resources */,
 				23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */,
 				23321D7A1BB0730C0005624F /* my-wallet.js in Resources */,
 				67D2B6EE1A2F2DEF0078782C /* wallet-ios.js in Resources */,
+				C790E1141E52061B0063D141 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				239CD5171C12217F00997DF5 /* Upgrade.storyboard in Resources */,
+				C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */,
 				67EEE76F1A8E547200288753 /* PEPin-off@3x.png in Resources */,
-				844BC7B01949BD830024160B /* bridge.js in Resources */,
 				ECD244F219A8AC45004B1F40 /* PEKeyboard-4-edit.png in Resources */,
 				C9BE91861945D8F600FD516D /* PEKeyboard-2-edit.png in Resources */,
+				C790E11D1E52061B0063D141 /* Montserrat-Thin.ttf in Resources */,
+				C790E11C1E52061B0063D141 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				ECD244F119A8AC45004B1F40 /* PEKeyboard-4-dot.png in Resources */,
+				C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */,
 				C9BE917E1945D8F600FD516D /* PEViewController.xib in Resources */,
 				2322DCC51D771831000E5AC1 /* Info.plist in Resources */,
 				C9BE91831945D8F600FD516D /* PEKeyboard-1.png in Resources */,
@@ -1885,35 +1960,45 @@
 				C9BE918C1945F5FC00FD516D /* Images.xcassets in Resources */,
 				ECD244EC19A8AC45004B1F40 /* PEKeyboard-3-dot.png in Resources */,
 				C9BE91811945D8F600FD516D /* PEKeyboard-1-edit.png in Resources */,
+				C790E1131E52061B0063D141 /* Montserrat-ExtraLight.ttf in Resources */,
 				ECD244EF19A8AC45004B1F40 /* PEKeyboard-3.png in Resources */,
+				C790E11E1E52061B0063D141 /* Montserrat-ThinItalic.ttf in Resources */,
 				C9BE918A1945D8F600FD516D /* PEPin-on.png in Resources */,
-				9F0CBAB015135DF200CD945D /* wallet-ios.html in Resources */,
+				C790E1171E52061B0063D141 /* Montserrat-LightItalic.ttf in Resources */,
 				220E376019A3614F00E06996 /* MainWindow.xib in Resources */,
 				C9BE91851945D8F600FD516D /* PEKeyboard-2-dot.png in Resources */,
 				FA63233E1A433DEB00EB3974 /* MerchantMapView.xib in Resources */,
+				C790E1121E52061B0063D141 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				A2599BAA1B0B762400C2EA81 /* Backup.storyboard in Resources */,
 				C9BE91881945D8F600FD516D /* PEKeyboard-2.png in Resources */,
 				67EEE7731A8E547900288753 /* PEPin-on@3x.png in Resources */,
 				C9BE91821945D8F600FD516D /* PEKeyboard-1-next.png in Resources */,
 				ECD244ED19A8AC45004B1F40 /* PEKeyboard-3-edit.png in Resources */,
+				C790E1111E52061B0063D141 /* Montserrat-ExtraBold.ttf in Resources */,
+				C790E1181E52061B0063D141 /* Montserrat-Medium.ttf in Resources */,
 				239CD4C81C12214A00997DF5 /* Settings.storyboard in Resources */,
 				23D5DB501C4415AE007AD0A2 /* AccountsAndAddresses.storyboard in Resources */,
 				9F7480D31514030800BC4292 /* alert-received.wav in Resources */,
 				C9BE917F1945D8F600FD516D /* PEKeyboard-1-done.png in Resources */,
 				C9BE91871945D8F600FD516D /* PEKeyboard-2-next.png in Resources */,
 				ECD244F419A8AC45004B1F40 /* PEKeyboard-4.png in Resources */,
+				C790E1101E52061B0063D141 /* Montserrat-BoldItalic.ttf in Resources */,
 				ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */,
+				C790E1151E52061B0063D141 /* Montserrat-Italic.ttf in Resources */,
+				C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */,
 				ECD244F019A8AC45004B1F40 /* PEKeyboard-4-done.png in Resources */,
 				220E375D19A3614900E06996 /* SendCoins.xib in Resources */,
 				C9BE91841945D8F600FD516D /* PEKeyboard-2-done.png in Resources */,
 				220E375719A3613600E06996 /* BCAddressSelectionView.xib in Resources */,
 				220E374F19A3604500E06996 /* ReceiveCoins.xib in Resources */,
 				9F1831F0151744FC00FB3D52 /* ReceiveCell.xib in Resources */,
+				C790E11B1E52061B0063D141 /* Montserrat-SemiBold.ttf in Resources */,
 				ECD244EE19A8AC45004B1F40 /* PEKeyboard-3-next.png in Resources */,
 				ECD244F319A8AC45004B1F40 /* PEKeyboard-4-next.png in Resources */,
 				67EEE76E1A8E547200288753 /* PEPin-off@2x.png in Resources */,
 				2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */,
 				220ADA6A19A3796200EB7599 /* Localizable.strings in Resources */,
+				C790E1191E52061B0063D141 /* Montserrat-MediumItalic.ttf in Resources */,
 				C9BE91891945D8F600FD516D /* PEPin-off.png in Resources */,
 				9F1831FD1517912900FB3D52 /* beep.wav in Resources */,
 				67EEE7721A8E547900288753 /* PEPin-on@2x.png in Resources */,
@@ -1951,7 +2036,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# update submodule source\ngit submodule update ${SRCROOT}/Submodules/My-Wallet-V3\n\n# reinstall node modules, grunt build, and run tests\ncd ${SRCROOT}/Submodules/My-Wallet-V3 && rm -rf node_modules/ && npm install && grunt clean && sed -i '' '1s/^/global.self = global;/' node_modules/whatwg-fetch/fetch.js && grunt build && globalCrypto='var crypto = global.crypto || global.msCrypto' && sed -i '' 's/'\"$globalCrypto\"'\\;/'\"$globalCrypto\"' || {getRandomValues: function(){}}/' dist/my-wallet.js && sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
+			shellScript = "# update submodule source\ngit submodule update ${SRCROOT}/Submodules/My-Wallet-V3\n\n# reinstall node modules, grunt build, and run tests\ncd ${SRCROOT}/Submodules/My-Wallet-V3 && rm -rf node_modules/ && npm install && grunt clean && sed -i '' '1s/^/global.self = global;/' node_modules/whatwg-fetch/fetch.js && grunt build && globalCrypto='var crypto = global.crypto || global.msCrypto' && sed -i '' 's/'\"$globalCrypto\"'\\;/'\"$globalCrypto\"' || objcCrypto(Buffer)/' dist/my-wallet.js && sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js && ./node_modules/karma/bin/karma start karma.conf.js --single-run";
 		};
 		23321D7B1BB084320005624F /* Build Image Assets from PSDs */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2046,6 +2131,7 @@
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
+				C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,
@@ -2103,7 +2189,6 @@
 				67D95A261B3DD86B0012EBB1 /* BCTextField.swift in Sources */,
 				2322DCC01D771831000E5AC1 /* SRRandom.m in Sources */,
 				23FB5C0D1D9ABB650008C6AB /* TransactionDetailFromCell.m in Sources */,
-				23D3A6291C0F699900DEF737 /* SecurityCenterViewController.m in Sources */,
 				2322DCBA1D771831000E5AC1 /* SRConstants.m in Sources */,
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,
 				23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */,
@@ -2172,6 +2257,7 @@
 				23FB5C161D9ABBB20008C6AB /* TransactionDetailValueCell.m in Sources */,
 				23444F841DCD217000573C8C /* NSData+BTCData.m in Sources */,
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
+				C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,
 				23FB5C071D9ABB450008C6AB /* TransactionDetailDescriptionCell.m in Sources */,

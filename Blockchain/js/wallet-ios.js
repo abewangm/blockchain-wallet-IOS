@@ -8,7 +8,6 @@ var BlockchainSettingsAPI = Blockchain.BlockchainSettingsAPI;
 var Helpers = Blockchain.Helpers;
 var Payment = Blockchain.Payment;
 var WalletNetwork = Blockchain.WalletNetwork;
-var RNG = Blockchain.RNG;
 var Address = Blockchain.Address;
 var Bitcoin = Blockchain.Bitcoin;
 var BigInteger = Blockchain.BigInteger;
@@ -852,11 +851,13 @@ MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
     return MyWallet.wallet.hdwallet.defaultAccount.receiveAddress;
 }
 
-MyWalletPhone.quickSend = function(onSendScreen, secondPassword) {
+MyWalletPhone.createTxProgressId = function() {
+    return ''+Math.round(Math.random()*100000);
+}
+
+MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
     
     console.log('quickSend');
-    
-    var id = ''+Math.round(Math.random()*100000);
     
     var success = function(payment) {
         objc_tx_on_success_secondPassword(id, secondPassword);
@@ -1339,10 +1340,6 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 
 // Overrides
-
-RNG.randomBytes = function(nBytes) {
-    return Buffer(objc_getRandomBytes(nBytes), 'hex');
-}
 
 MyWallet.socketConnect = function() {
     // override socketConnect to prevent memory leaks

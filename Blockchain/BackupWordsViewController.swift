@@ -78,12 +78,12 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     
     func setupTopInstructionLabel() {
         let blackTextBeginning = NSAttributedString(string:  NSLocalizedString("Write the following 12 words onto a ", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.black])
+            [NSForegroundColorAttributeName: Constants.Colors.DarkGray])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14.0)])
+        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans-SemiBold", size: 16.0) as Any])
         
         let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
-            [NSForegroundColorAttributeName: UIColor.black])
+            [NSForegroundColorAttributeName: Constants.Colors.DarkGray])
         
         let finalText = NSMutableAttributedString(attributedString: blackTextBeginning)
         finalText.append(boldText)
@@ -92,9 +92,9 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
     
     func setupBottomInstructionLabel() {
-        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: UIColor.black])
+        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: Constants.Colors.DarkGray])
         
-        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14.0)])
+        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans-SemiBold", size: 16.0) as Any])
         
         let finalText = NSMutableAttributedString(attributedString: blackText)
         finalText.append(boldText)
@@ -104,10 +104,12 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     func updatePreviousWordButton() {
         if wordsPageControl!.currentPage == 0 {
             previousWordButton?.isEnabled = false
-            previousWordButton?.setTitleColor(UIColor.lightGray, for: UIControlState())
+            previousWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+            previousWordButton?.backgroundColor = Constants.Colors.DisabledGray
         } else {
             previousWordButton?.isEnabled = true
-            previousWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+            previousWordButton?.setTitleColor(UIColor.white, for: UIControlState())
+            previousWordButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
         }
     }
 
@@ -137,8 +139,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
                 nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton?.setTitle(NSLocalizedString("Done", comment:""), for: UIControlState())
             } else if wordsPageControl!.currentPage == count-2 {
-                nextWordButton?.backgroundColor = Constants.Colors.SecondaryGray
-                nextWordButton?.setTitleColor(UIColor.darkGray, for: UIControlState())
+                nextWordButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
+                nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), for: UIControlState())
             }
             

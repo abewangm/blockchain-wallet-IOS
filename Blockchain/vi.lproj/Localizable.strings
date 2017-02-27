@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Xuất hiện biến động";
 
 /* (No Commment) */
-"Swipe to receive" = "Vuốt để nhận";
+"Swipe to Receive" = "Vuốt để Nhận";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Đồng bộ Ví";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Ví được kết nối thành công.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Nhóm từ khôi phục Ví";
+"Recovery Phrase" = "Nhóm từ khôi phục";
 
 /* (No Commment) */
 "Warning" = "Cảnh báo";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Để bảo mật cho bạn, chúng tôi không lưu trữ bất kỳ mật khẩu nào. Sao lưu ví của bạn để đảm bảo bitcoin được an toàn trong trường hợp bạn quên mật khẩu.";
+
+/* (No Commment) */
+"Wallets" = "Ví";

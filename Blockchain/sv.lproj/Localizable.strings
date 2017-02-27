@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Surge inträffar";
 
 /* (No Commment) */
-"Swipe to receive" = "Svep för att få";
+"Swipe to Receive" = "Svep för att få";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisera plånbok";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Plånbok Parade framgångsrikt.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Plånbok återhämtning fras";
+"Recovery Phrase" = "återhämtning fras";
 
 /* (No Commment) */
 "Warning" = "Varning";
@@ -1556,3 +1556,6 @@
 
 /* (No Commment) */
 "Free Merchant app" = "Köpman gratisapp";
+
+/* (No Commment) */
+"Wallets" = "Plånböcker";

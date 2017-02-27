@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Aalto, esiintyy";
 
 /* (No Commment) */
-"Swipe to receive" = "Pyyhkäise saada";
+"Swipe to Receive" = "Pyyhkäise Saada";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronointi lompakko";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Lompakko pariksi onnistuneesti.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Lompakko Recovery lause";
+"Recovery Phrase" = "Recovery lause";
 
 /* (No Commment) */
 "Warning" = "Varoitus";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa sinun bitcoins ovat turvallisia, jos menetät sinun tunnussana.";
+
+/* (No Commment) */
+"Wallets" = "Lompakot";

@@ -1072,7 +1072,7 @@
 "Surge Occurring" = "उत्पन्न हो रही वृद्धि";
 
 /* (No Commment) */
-"Swipe to receive" = "प्राप्त करने के लिए ज़ोर से मारना";
+"Swipe to Receive" = "प्राप्त करने के लिए ज़ोर से मारना";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "बटुआ सिंक्रनाइज़ किए जा रहे";
@@ -1303,7 +1303,7 @@
 "Wallet Paired Successfully." = "बटुआ सफलतापूर्वक बनती।";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "बटुआ वसूली वाक्यांश";
+"Recovery Phrase" = "वसूली वाक्यांश";
 
 /* (No Commment) */
 "Warning" = "चेतावनी";
@@ -1619,3 +1619,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "आपकी सुरक्षा के लिए, हम किसी भी पासवर्ड फ़ाइल पर न रखें। बैकअप आपके bitcoins सुनिश्चित करने के लिए अपने बटुए सुरक्षित हैं मामले में आप अपना पासवर्ड खो।";
+
+/* (No Commment) */
+"Wallets" = "जेब";

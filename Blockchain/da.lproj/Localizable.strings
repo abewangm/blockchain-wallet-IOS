@@ -1075,7 +1075,7 @@
 "Surge Occurring" = "Bølge forekommer";
 
 /* (No Commment) */
-"Swipe to receive" = "Stryg til modtager";
+"Swipe to Receive" = "Stryg til Modtager";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Synkronisering tegnebog";
@@ -1306,7 +1306,7 @@
 "Wallet Paired Successfully." = "Tegnebog parret med succes.";
 
 /* (No Commment) */
-"Wallet Recovery Phrase" = "Tegnebog opsving sætning";
+"Recovery Phrase" = "Tegnebog opsving sætning";
 
 /* (No Commment) */
 "Warning" = "Advarsel";
@@ -1622,3 +1622,6 @@
 
 /* (No Commment) */
 "For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhed, må vi ikke holde eventuelle adgangskoder på fil. Backup din pung til at sikre din bitcoins er sikker, hvis du mister din adgangskode.";
+
+/* (No Commment) */
+"Wallets" = "Tegnebøger";

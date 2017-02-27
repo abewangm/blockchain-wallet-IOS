@@ -27,14 +27,24 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         10:NSLocalizedString("eleventh word", comment:""),
         11:NSLocalizedString("twelfth word", comment:"")]
     
+    @IBOutlet weak var instructions: UILabel!
     @IBOutlet weak var word1: UITextField?
     @IBOutlet weak var word2: UITextField?
     @IBOutlet weak var word3: UITextField?
     
-    @IBOutlet weak var wrongWord: UILabel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIScreen.main.bounds.size.height > Constants.Measurements.ScreenHeightIphone4S {
+            instructions?.frame = CGRect(x: instructions!.frame.origin.x, y: 16, width: instructions!.frame.size.width, height: instructions!.frame.size.height)
+            word1?.frame = CGRect(x: word1!.frame.origin.x, y: instructions!.frame.origin.y + instructions!.frame.size.height + 8, width: word1!.frame.size.width, height: word1!.frame.size.height + 16)
+            word2?.frame = CGRect(x: word2!.frame.origin.x, y: word1!.frame.origin.y + word1!.frame.size.height + 8, width: word2!.frame.size.width, height: word2!.frame.size.height + 16)
+            word3?.frame = CGRect(x: word3!.frame.origin.x, y: word2!.frame.origin.y + word2!.frame.size.height + 8, width: word3!.frame.size.width, height: word3!.frame.size.height + 16)
+            
+            word1?.font = UIFont(name: "Montserrat-Regular", size: 18)
+            word2?.font = UIFont(name: "Montserrat-Regular", size: 18)
+            word3?.font = UIFont(name: "Montserrat-Regular", size: 18)
+        }
         
         word1?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
         word2?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
@@ -63,11 +73,12 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     override func viewDidAppear(_ animated: Bool) {
         verifyButton = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46))
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: UIControlState())
-        verifyButton?.setTitle(NSLocalizedString("VERIFY BACKUP", comment:""), for: .disabled)
+        verifyButton?.setTitle(NSLocalizedString("Verify", comment:""), for: UIControlState())
+        verifyButton?.setTitle(NSLocalizedString("Verify", comment:""), for: .disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
-        verifyButton?.titleLabel!.font = UIFont.boldSystemFont(ofSize: 15)
+        verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: 15.0)
+
         verifyButton?.isEnabled = true
         verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)
         verifyButton?.isEnabled = false
@@ -114,15 +125,15 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
                 valid = false
             } else { // Don't mark words as invalid until the user has entered all three
                 if word1!.text != randomWord1 {
-                    word1?.textColor = UIColor.red
+                    word1?.textColor = Constants.Colors.WarningRed
                     valid = false
                 }
                 if word2!.text != randomWord2 {
-                    word2?.textColor = UIColor.red
+                    word2?.textColor = Constants.Colors.WarningRed
                     valid = false
                 }
                 if word3!.text != randomWord3 {
-                    word3?.textColor = UIColor.red
+                    word3?.textColor = Constants.Colors.WarningRed
                     valid = false
                 }
                 
@@ -133,19 +144,22 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             }
             
             if valid {
+                let backupNavigation = self.navigationController as? BackupNavigationViewController
+                backupNavigation?.busyView?.fadeIn()
+
                 word1?.resignFirstResponder()
                 word2?.resignFirstResponder()
                 word3?.resignFirstResponder()
-                wallet!.markRecoveryPhraseVerified()
-                let backupNavigation = self.navigationController as? BackupNavigationViewController
-                backupNavigation?.busyView?.fadeIn()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.wallet!.markRecoveryPhraseVerified()
+                }
             }
         }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.textColor = UIColor.black
-        wrongWord?.isHidden = true
+        textField.textColor = Constants.Colors.DarkGray
         return true
     }
     
@@ -158,7 +172,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     
     func textFieldDidChange() {
         if !word1!.text!.isEmpty && !word2!.text!.isEmpty && !word3!.text!.isEmpty {
-            verifyButton?.backgroundColor = Constants.Colors.BlockchainBlue
+            verifyButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
             verifyButton?.isEnabled = true
             verifyButton?.setTitleColor(UIColor.white, for: UIControlState())
         } else if word1!.text!.isEmpty || word2!.text!.isEmpty || word3!.text!.isEmpty {

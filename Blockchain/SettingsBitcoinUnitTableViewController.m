@@ -18,6 +18,13 @@
 
 @implementation SettingsBitcoinUnitTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.tableView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
 - (void)alertForErrorLoadingSettings
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_ERROR_LOADING_TITLE message:BC_STRING_SETTINGS_ERROR_LOADING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
@@ -81,14 +88,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    cell.textLabel.text = self.namesArray[indexPath.row];
-
-    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_BITCOIN_UNIT];
     
-    if ([currencyCode isEqualToString:self.selectedCurrencyCode]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER_BITCOIN_UNIT];
+        cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
     }
+    
+    cell.textLabel.text = self.namesArray[indexPath.row];
+    NSString *currencyCode = [[self.itemsDictionary allKeysForObject:cell.textLabel.text] firstObject];
+    cell.accessoryType = [currencyCode isEqualToString:self.selectedCurrencyCode] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
     return cell;
 }
 

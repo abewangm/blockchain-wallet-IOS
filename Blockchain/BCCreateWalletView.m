@@ -20,9 +20,9 @@
     
     UIButton *createButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
-    createButton.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    createButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    createButton.titleLabel.font = [UIFont systemFontOfSize:17.0];
+    createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     self.createButton = createButton;
     
     emailTextField.inputAccessoryView = createButton;
@@ -184,14 +184,14 @@
     emailTextField.text = nil;
     passwordTextField.text = nil;
     password2TextField.text = nil;
-    
+
+    app.wallet.delegate = app;
+
     // Reset wallet
     [app forgetWallet];
         
     // Load the newly created wallet
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
-        
-    app.wallet.delegate = app;
     
     app.wallet.isNew = YES;
     

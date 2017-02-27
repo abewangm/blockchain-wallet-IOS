@@ -145,6 +145,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
+
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
@@ -169,8 +174,8 @@ void (^secondPasswordSuccess)(NSString *);
     NSSetUncaughtExceptionHandler(&HandleException);
 #endif
     
-    // White status bar
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    // Black status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
         self.loadingText = [notification object];
@@ -553,7 +558,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
     [_transactionsViewController showFilterLabel];
-    self.mainLogoImageView.hidden = YES;
     
     [_sendViewController resetFromAddress];
     [_receiveViewController reloadMainAddress];
@@ -569,7 +573,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
     [_transactionsViewController showFilterLabel];
-    self.mainLogoImageView.hidden = YES;
     
     [self.wallet reloadFilter];
     
@@ -581,7 +584,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
     [_transactionsViewController hideFilterLabel];
-    self.mainLogoImageView.hidden = NO;
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -1351,6 +1353,8 @@ void (^secondPasswordSuccess)(NSString *);
     } @catch (NSException * e) {
         DLog(@"Animation Exception %@", e);
     }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didFailBackupWallet
@@ -1491,6 +1495,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.merchantViewController = nil;
     self.receiveViewController = nil;
+    
+    self.isVerifyingMobileNumber = NO;
     
     [KeychainItemWrapper removeGuidFromKeychain];
     [KeychainItemWrapper removeSharedKeyFromKeychain];
@@ -1834,6 +1840,42 @@ void (^secondPasswordSuccess)(NSString *);
     [self.receiveViewController doCurrencyConversion];
 }
 
+- (void)didPushTransaction
+{
+    DestinationAddressSource source = self.sendViewController.addressSource;
+    NSString *eventName;
+    
+    if (source == DestinationAddressSourceQR) {
+        eventName = WALLET_EVENT_TX_FROM_QR;
+    } else if (source == DestinationAddressSourcePaste) {
+        eventName = WALLET_EVENT_TX_FROM_PASTE;
+    } else if (source == DestinationAddressSourceURI) {
+        eventName = WALLET_EVENT_TX_FROM_URI;
+    } else if (source == DestinationAddressSourceDropDown) {
+        eventName = WALLET_EVENT_TX_FROM_DROPDOWN;
+    } else if (source == DestinationAddressSourceNone) {
+        DLog(@"Destination address source none");
+        return;
+    } else {
+        DLog(@"Unknown destination address source %d", source);
+        return;
+    }
+    
+    NSURLSession *session = [SessionManager sharedSession];
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingFormat:URL_SUFFIX_EVENT_NAME_ARGUMENT, eventName]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            DLog(@"Error saving address input: %@", [error localizedDescription]);
+        }
+    }];
+    
+    [dataTask resume];
+}
+
 #pragma mark - Show Screens
 
 - (void)showAccountsAndAddresses
@@ -1853,20 +1895,6 @@ void (^secondPasswordSuccess)(NSString *);
     }];
 }
 
-- (void)showSecurityCenter
-{
-    if (!_settingsNavigationController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_SETTINGS bundle: nil];
-        self.settingsNavigationController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_SETTINGS];
-    }
-    
-    self.topViewControllerDelegate = self.settingsNavigationController;
-    [self.settingsNavigationController showSecurityCenter];
-    
-    self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:nil];
-}
-
 - (void)showSettings
 {
     [self showSettings:nil];
@@ -1884,13 +1912,15 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [_tabViewController presentViewController:self.settingsNavigationController animated:YES completion:completionBlock];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)showSupport
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, SUPPORT_URL] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, URL_SUPPORT] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_SUPPORT]];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
@@ -1975,6 +2005,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self hideBusyView];
     
     self.pinEntryViewController.view.accessibilityLabel = ACCESSIBILITY_LABEL_NUMPAD_VIEW;
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)showStatusBar
@@ -2012,6 +2044,8 @@ void (^secondPasswordSuccess)(NSString *);
     [welcomeView.recoverWalletButton addTarget:self action:@selector(showRecoverWallet:) forControlEvents:UIControlEventTouchUpInside];
     
     [app showModalWithContent:welcomeView closeType:ModalCloseTypeNone showHeader:NO headerText:nil onDismiss:nil onResume:nil];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)showSecurityReminder
@@ -2132,7 +2166,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
     if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
-        app.mainLogoImageView.hidden = YES;
         if (_tabViewController.activeViewController == _transactionsViewController) {
             [_transactionsViewController showFilterLabel];
         } else {
@@ -2140,7 +2173,6 @@ void (^secondPasswordSuccess)(NSString *);
         }
     } else {
         [_transactionsViewController hideFilterLabel];
-        app.mainLogoImageView.hidden = _tabViewController.activeViewController == _transactionsViewController ? NO : YES;
     }
 #endif
 }
@@ -2169,10 +2201,10 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (IBAction)securityCenterClicked:(id)sender
+- (IBAction)backupFundsClicked:(id)sender
 {
     if (!_tabViewController.presentedViewController) {
-        [self showSecurityCenter];
+        [self showBackup];
     }
 }
 
@@ -2204,6 +2236,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [app.window.rootViewController.view addSubview:self.pinEntryViewController.view];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)changePIN
@@ -2222,6 +2256,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
     
     [app.window.rootViewController.view addSubview:self.pinEntryViewController.view];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)clearPin
@@ -2253,6 +2289,8 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     self.pinEntryViewController = nil;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (IBAction)logoutClicked:(id)sender
@@ -2375,6 +2413,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)setupTransferAllFunds
 {
+    self.transferAllFundsModalController = nil;
     app.topViewControllerDelegate = nil;
     
     if (!app.sendViewController) {
@@ -2601,7 +2640,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)checkForUnusedAddress:(NSString *)address success:(void (^)())successBlock failure:(void (^)())failureBlock error:(void (^)())errorBlock
+- (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
@@ -2623,11 +2662,8 @@ void (^secondPasswordSuccess)(NSString *);
         NSArray *transactions = addressInfo[@"txs"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (transactions.count > 0) {
-                if (failureBlock) failureBlock();
-            } else {
-                if (successBlock) successBlock();
-            }
+            BOOL isUnused = transactions.count == 0;
+            return successBlock(address, isUnused);
         });
         
     }];
@@ -2672,11 +2708,14 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showBackup
 {
-    void (^showBackupBlock)() = ^() {
-        [self.settingsNavigationController showBackup];
-    };
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_NAME_BACKUP bundle: nil];
+    BackupViewController *backupController = [storyboard instantiateViewControllerWithIdentifier:NAVIGATION_CONTROLLER_NAME_BACKUP];
     
-    [self showSettings:showBackupBlock];
+    backupController.wallet = app.wallet;
+    backupController.app = app;
+    
+    backupController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.tabViewController presentViewController:backupController animated:YES completion:nil];
 }
 
 - (void)showTwoStep
@@ -3205,7 +3244,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)failedToValidateCertificate
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, SUPPORT_URL]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, URL_SUPPORT]] preferredStyle:UIAlertControllerStyleAlert];
     alert.view.tag = TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Close App
