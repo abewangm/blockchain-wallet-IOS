@@ -471,8 +471,8 @@
 #define BC_STRING_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
 #define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
 #define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
-#define BC_STRING_SENT_ARGUMENT NSLocalizedString(@"Sent %@", nil)
-#define BC_STRING_RECEIVED_ARGUMENT NSLocalizedString(@"Received %@", nil)
+#define BC_STRING_SENT_ARGUMENT_TO_ARGUMENT NSLocalizedString(@"Sent %@ to %@", nil)
+#define BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT NSLocalizedString(@"Received %@ from %@", nil)
 
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
 #define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)

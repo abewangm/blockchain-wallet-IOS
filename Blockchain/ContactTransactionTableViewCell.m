@@ -61,7 +61,6 @@
 - (void)reloadTextAndImage:(ContactTransaction *)transaction contactName:(NSString *)name
 {
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO];
-    
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.lastUpdated];
     NSString *dateString = [NSDateFormatter timeAgoStringFromDate:date];
     
@@ -78,10 +77,10 @@
         self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", [NSString stringWithFormat:BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT, amount, name], BC_STRING_WAITING_FOR_PAYMENT, dateString];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT, amount], dateString];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_SENT_ARGUMENT_TO_ARGUMENT, amount, name], dateString];
         self.actionImageView.hidden = YES;
     } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVED_ARGUMENT, amount], dateString];
+        self.mainLabel.text = [NSString stringWithFormat:@"%@\n%@", [NSString stringWithFormat:BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT, amount, name], dateString];
         self.actionImageView.hidden = YES;
     } else {
         self.mainLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
