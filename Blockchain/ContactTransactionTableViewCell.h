@@ -16,4 +16,5 @@
 @property (nonatomic) UIView *separator;
 
 - (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name;
+- (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
 @end

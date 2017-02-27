@@ -77,6 +77,8 @@ const int sectionMain = 0;
         if (contactTransaction) {
             ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
             
+            contactTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
+            
             NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
             [cell configureWithTransaction:contactTransaction contactName:name];
             

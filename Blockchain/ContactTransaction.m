@@ -46,4 +46,26 @@
     return self;
 }
 
++ (ContactTransaction *)transactionWithTransaction:(ContactTransaction *)contactTransaction existingTransaction:(Transaction *)existingTransaction
+{
+    contactTransaction.to = existingTransaction.to;
+    contactTransaction.from = existingTransaction.from;
+    contactTransaction.block_height = existingTransaction.block_height;
+    contactTransaction.confirmations = existingTransaction.confirmations;
+    contactTransaction.fee = existingTransaction.fee;
+    contactTransaction.myHash = existingTransaction.myHash;
+    contactTransaction.txType = existingTransaction.txType;
+    contactTransaction.amount = existingTransaction.amount;
+    contactTransaction.time = existingTransaction.time;
+    contactTransaction.fromWatchOnly = existingTransaction.fromWatchOnly;
+    contactTransaction.toWatchOnly = existingTransaction.toWatchOnly;
+    contactTransaction.note = existingTransaction.note;
+    contactTransaction.doubleSpend = existingTransaction.doubleSpend;
+    contactTransaction.replaceByFee = existingTransaction.replaceByFee;
+    
+    contactTransaction.fiatAmountsAtTime = existingTransaction.fiatAmountsAtTime;
+    
+    return contactTransaction;
+}
+
 @end

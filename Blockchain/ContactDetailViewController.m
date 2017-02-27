@@ -287,9 +287,18 @@ const int maxFindAttempts = 2;
     [self presentViewController:alertForDeletingContact animated:YES completion:nil];
 }
 
+- (Transaction *)getTransactionDetails:(ContactTransaction *)contactTransaction
+{
+    for (Transaction *transaction in app.latestResponse.transactions) {
+        if ([transaction.myHash isEqualToString:contactTransaction.myHash]) {
+            return transaction;
+        }
+    }
+    return nil;
+}
+
 - (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
 {
-    
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     
     Transaction *detailTransaction = [self getTransactionDetails:transaction];
@@ -328,16 +337,6 @@ const int maxFindAttempts = 2;
     self.transactionDetailViewController = detailViewController;
     
     [self presentViewController:newNavigationController animated:YES completion:nil];
-}
-
-- (Transaction *)getTransactionDetails:(ContactTransaction *)contactTransaction
-{
-    for (Transaction *transaction in app.latestResponse.transactions) {
-        if ([transaction.myHash isEqualToString:contactTransaction.myHash]) {
-            return transaction;
-        }
-    }
-    return nil;
 }
     
 - (void)getHistoryToFindTransaction:(ContactTransaction *)transaction

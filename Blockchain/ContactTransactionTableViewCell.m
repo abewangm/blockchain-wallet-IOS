@@ -9,6 +9,10 @@
 #import "ContactTransactionTableViewCell.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "NSDateFormatter+TimeAgoString.h"
+#import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
+#import "Transaction.h"
+#import "RootService.h"
 
 @interface ContactTransactionTableViewCell()
 @property (nonatomic) BOOL isSetup;
@@ -26,6 +30,8 @@
 
 - (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name
 {
+    self.transaction = transaction;
+    
     if (self.isSetup) {
         [self reloadTextAndImage:transaction contactName:name];
         return;
@@ -103,6 +109,23 @@
     self.textLabel.text = nil;
     self.detailTextLabel.text = nil;
     self.actionImageView.hidden = YES;
+}
+
+- (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
+{
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = self.transaction;
+    detailViewController.transactionIndex = indexPath.row;
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    
+    detailViewController.busyViewDelegate = navigationController;
+    navigationController.onDismiss = ^() {
+        app.transactionsViewController.detailViewController = nil;
+    };
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    app.transactionsViewController.detailViewController = detailViewController;
+    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

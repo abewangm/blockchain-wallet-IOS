@@ -33,5 +33,5 @@ typedef enum {
 @property (nonatomic, readonly) NSString *contactIdentifier;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary contactIdentifier:(NSString *)identifier;
-
++ (ContactTransaction *)transactionWithTransaction:(ContactTransaction *)contactTransaction existingTransaction:(Transaction *)existingTransaction;
 @end
