@@ -536,6 +536,8 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)verifyMobileNumberSuccess
 {
+    app.isVerifyingMobileNumber = NO;
+    
     [self removeObserversForVerifyingMobileNumber];
     
     if (self.isEnablingTwoStepSMS) {
