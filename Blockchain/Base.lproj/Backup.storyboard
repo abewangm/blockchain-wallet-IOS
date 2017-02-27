@@ -188,13 +188,6 @@
                                             <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="0qR-0f-O9K"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It is important to make sure you write down your words exactly as they appear here and in this order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
-                                        <rect key="frame" x="40" y="283" width="240" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
-                                        <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
                                         <rect key="frame" x="111" y="140" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -213,7 +206,6 @@
                     <connections>
                         <outlet property="nextWordButton" destination="eaO-py-9rY" id="j3z-ft-74D"/>
                         <outlet property="previousWordButton" destination="AFH-AI-Rgk" id="7VV-aQ-3E1"/>
-                        <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="Itv-FZ-zwG"/>
                         <outlet property="summaryLabel" destination="UCL-i9-UDp" id="9at-Ld-S9k"/>
                         <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>
                         <outlet property="wordsPageControl" destination="TyO-zN-EB7" id="wlk-9H-Djg"/>
