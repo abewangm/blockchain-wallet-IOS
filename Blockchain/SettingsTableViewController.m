@@ -362,6 +362,17 @@ const int aboutPrivacyPolicy = 2;
 
 - (void)mobileNumberClicked
 {
+    if ([app.wallet getTwoStepType] == TWO_STEP_AUTH_TYPE_SMS) {
+        UIAlertController *alertToDisableTwoFactorSMS = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] message:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_MUST_DISABLE_TWO_FACTOR_SMS_ARGUMENT, self.mobileNumberString] preferredStyle:UIAlertControllerStyleAlert];
+        [alertToDisableTwoFactorSMS addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        if (self.alertTargetViewController) {
+            [self.alertTargetViewController presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
+        } else {
+            [self presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
+        }
+        return;
+    }
+    
     BCVerifyMobileNumberViewController *verifyMobileNumberController = [[BCVerifyMobileNumberViewController alloc] initWithMobileDelegate:self];
     [self.navigationController pushViewController:verifyMobileNumberController animated:YES];
 }
@@ -422,44 +433,6 @@ const int aboutPrivacyPolicy = 2;
 }
 
 #pragma mark - Change Mobile Number
-
-- (void)alertUserToChangeMobileNumber
-{
-    if ([app.wallet getTwoStepType] == TWO_STEP_AUTH_TYPE_SMS) {
-        UIAlertController *alertToDisableTwoFactorSMS = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_ENABLED_ARGUMENT, BC_STRING_SETTINGS_SECURITY_TWO_STEP_VERIFICATION_SMS] message:[NSString stringWithFormat:BC_STRING_SETTINGS_SECURITY_MUST_DISABLE_TWO_FACTOR_SMS_ARGUMENT, self.mobileNumberString] preferredStyle:UIAlertControllerStyleAlert];
-        [alertToDisableTwoFactorSMS addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        if (self.alertTargetViewController) {
-            [self.alertTargetViewController presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
-        } else {
-            [self presentViewController:alertToDisableTwoFactorSMS animated:YES completion:nil];
-        }
-        return;
-    }
-    
-    UIAlertController *alertForChangingMobileNumber = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_CHANGE_MOBILE_NUMBER message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        self.isEnablingTwoStepSMS = NO;
-    }]];
-    [alertForChangingMobileNumber addAction:[UIAlertAction actionWithTitle:BC_STRING_SETTINGS_VERIFY style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self changeMobileNumber:[[alertForChangingMobileNumber textFields] firstObject].text];
-    }]];
-    [alertForChangingMobileNumber addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.tag = textFieldTagChangeMobileNumber;
-        secureTextField.delegate = self;
-        secureTextField.keyboardType = UIKeyboardTypePhonePad;
-        secureTextField.returnKeyType = UIReturnKeyDone;
-        secureTextField.text = self.mobileNumberString;
-    }];
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingMobileNumber animated:YES completion:nil];
-    }
-}
 
 - (void)alertUserAboutDisablingSMSNotifications:(NSString *)newNumber
 {
