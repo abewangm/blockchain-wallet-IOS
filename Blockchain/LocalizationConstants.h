@@ -264,6 +264,7 @@
 #define BC_STRING_INCORRECT_PASSWORD NSLocalizedString(@"Incorrect password", nil)
 #define BC_STRING_SECOND_PASSWORD_REQUIRED NSLocalizedString(@"Second Password Required", nil)
 #define BC_STRING_CREATE_NEW_WALLET NSLocalizedString(@"Create New Wallet", nil)
+#define BC_STRING_CREATE_A_WALLET NSLocalizedString(@"Create a Wallet", nil)
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
 #define BC_STRING_REQUEST NSLocalizedString(@"Request", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
@@ -272,7 +273,7 @@
 #define BC_STRING_IMPORT_ADDRESS NSLocalizedString(@"Import address", nil)
 #define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
-#define BC_STRING_LOG_IN_TO_WALLET NSLocalizedString(@"Log in to my Wallet", nil)
+#define BC_STRING_LOG_IN NSLocalizedString(@"Log in", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing Wallet", nil)
 #define BC_STRING_RECOVER_FUNDS NSLocalizedString(@"Recover Funds", nil)
 #define BC_STRING_RECOVER_FUNDS_ONLY_IF_FORGOT_CREDENTIALS NSLocalizedString(@"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?", nil)
