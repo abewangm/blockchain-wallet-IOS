@@ -28,8 +28,10 @@
     IBOutlet UITableView *tableView;
     
     IBOutlet UIView *headerView;
+    
     IBOutlet UIButton *balanceBigButton;
     IBOutlet UIButton *filterAccountButton;
+    IBOutlet UIButton *filterAccountChevronButton;
     
     IBOutlet UIView *noTransactionsView;
         

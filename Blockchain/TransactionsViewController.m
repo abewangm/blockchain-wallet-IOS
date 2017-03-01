@@ -123,7 +123,8 @@ int lastNumberTransactions = INT_MAX;
 #endif
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
-        [filterAccountButton setTitle:@"" forState:UIControlStateNormal];
+        [self changeFilterLabel:@""];
+        filterAccountChevronButton.hidden = YES;
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
@@ -138,7 +139,8 @@ int lastNumberTransactions = INT_MAX;
 #endif
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [filterAccountButton setTitle:[self getFilterLabel] forState:UIControlStateNormal];
+        [self changeFilterLabel:[self getFilterLabel]];
+
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
@@ -146,7 +148,7 @@ int lastNumberTransactions = INT_MAX;
         
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [filterAccountButton setTitle:[self getFilterLabel] forState:UIControlStateNormal];
+        [self changeFilterLabel:[self getFilterLabel]];
     }
 }
 
@@ -318,6 +320,15 @@ int lastNumberTransactions = INT_MAX;
 - (void)changeFilterLabel:(NSString *)newText
 {
     [filterAccountButton setTitle:newText forState:UIControlStateNormal];
+    
+    if (newText.length > 0) {
+        CGFloat currentCenterY = filterAccountButton.center.y;
+        [filterAccountButton sizeToFit];
+        filterAccountButton.center = CGPointMake(self.view.center.x, currentCenterY);
+        
+        filterAccountChevronButton.hidden = NO;
+        filterAccountChevronButton.frame = CGRectMake(filterAccountButton.frame.origin.x + filterAccountButton.frame.size.width, filterAccountButton.frame.origin.y, filterAccountButton.frame.size.height, filterAccountButton.frame.size.height);
+    }
 }
 
 - (CGFloat)heightForFilterTableView
@@ -436,6 +447,9 @@ int lastNumberTransactions = INT_MAX;
     [filterAccountButton.titleLabel setMinimumScaleFactor:.5f];
     [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
+    [filterAccountChevronButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
+    filterAccountChevronButton.imageView.transform = CGAffineTransformMakeScale(-1, 1);
+    filterAccountChevronButton.imageEdgeInsets = UIEdgeInsetsMake(9, 4, 8, 12);
 
     self.filterIndex = FILTER_INDEX_ALL;
 #else
