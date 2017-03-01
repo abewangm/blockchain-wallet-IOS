@@ -32,9 +32,7 @@
     IBOutlet UIButton *filterAccountButton;
     
     IBOutlet UIView *noTransactionsView;
-    
-    IBOutlet UILabel *filterLabel;
-    
+        
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
 }
@@ -54,8 +52,6 @@
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;
-- (void)hideFilterLabel;
-- (void)showFilterLabel;
 - (void)changeFilterLabel:(NSString *)newText;
 
 @end

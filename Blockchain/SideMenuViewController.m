@@ -226,13 +226,12 @@ int accountEntries = 0;
                 if ([app filterIndex] == FILTER_INDEX_IMPORTED_ADDRESSES) {
                     deselected = YES;
                 } else {
-                    [app filterTransactionsByImportedAddresses];
                 }
             } else {
                 if ([app.wallet getIndexOfActiveAccount:(int)indexPath.row] == [app filterIndex]) {
                     deselected = YES;
                 } else {
-                    [app filterTransactionsByAccount:[app.wallet getIndexOfActiveAccount:(int)indexPath.row]];
+                    
                 }
             }
             

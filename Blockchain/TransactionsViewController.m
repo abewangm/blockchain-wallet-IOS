@@ -14,6 +14,9 @@
 #import "TransactionDetailViewController.h"
 #import "BCAddressSelectionView.h"
 
+@interface TransactionsViewController () <AddressSelectionDelegate>
+@end
+
 @implementation TransactionsViewController
 
 @synthesize data;
@@ -314,18 +317,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)changeFilterLabel:(NSString *)newText
 {
-    filterLabel.text = newText;
     [filterAccountButton setTitle:newText forState:UIControlStateNormal];
-}
-
-- (void)hideFilterLabel
-{
-    filterLabel.hidden = YES;
-}
-
-- (void)showFilterLabel
-{
-    filterLabel.hidden = NO;
 }
 
 - (CGFloat)heightForFilterTableView
@@ -373,7 +365,34 @@ int lastNumberTransactions = INT_MAX;
 - (void)showFilterMenu
 {
     BCAddressSelectionView *filterView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeFilter];
+    filterView.delegate = self;
     [app showModalWithContent:filterView closeType:ModalCloseTypeBack headerText:BC_STRING_BALANCES];
+}
+
+#pragma mark - Address Selection Delegate
+
+- (void)didSelectFromAccount:(int)account
+{
+    if (account == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        [app filterTransactionsByImportedAddresses];
+    } else {
+        [app filterTransactionsByAccount:account];
+    }
+}
+
+- (void)didSelectToAddress:(NSString *)address
+{
+    DLog(@"TransactionsViewController Warning: filtering by single imported address!")
+}
+
+- (void)didSelectToAccount:(int)account
+{
+    DLog(@"TransactionsViewController Warning: selected to account!")
+}
+
+- (void)didSelectFromAddress:(NSString *)address
+{
+    DLog(@"TransactionsViewController Warning: selected from address!")
 }
 
 #pragma mark - View lifecycle
@@ -407,8 +426,6 @@ int lastNumberTransactions = INT_MAX;
     [self.moreButton addTarget:self action:@selector(fetchMoreClicked) forControlEvents:UIControlEventTouchUpInside];
     self.moreButton.hidden = YES;
 #endif
-    
-    filterLabel.adjustsFontSizeToFitWidth = YES;
     
     [self setupBlueBackgroundForBounceArea];
     
@@ -458,12 +475,6 @@ int lastNumberTransactions = INT_MAX;
     [super viewWillAppear:animated];
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
-    
-#ifdef ENABLE_TRANSACTION_FILTERING
-    [app reloadTransactionFilterLabel];
-#else
-    [self hideFilterLabel];
-#endif
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -471,7 +482,6 @@ int lastNumberTransactions = INT_MAX;
     [super viewDidDisappear:animated];
 #ifdef ENABLE_TRANSACTION_FILTERING
     app.wallet.isFetchingTransactions = NO;
-    filterLabel.hidden = YES;
 #endif
     app.mainTitleLabel.hidden = NO;
 }

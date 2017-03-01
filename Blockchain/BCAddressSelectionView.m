@@ -161,7 +161,7 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)allSelectable
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo;
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,7 +170,7 @@ int legacyAddressesSectionNumber;
     
     if ([self showFromAddresses]) {
         if (indexPath.section == accountsSectionNumber) {
-            [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+            [delegate didSelectFromAccount:selectMode == SelectModeFilter && accounts.count == indexPath.row ? FILTER_INDEX_IMPORTED_ADDRESSES : [app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
             
@@ -211,9 +211,9 @@ int legacyAddressesSectionNumber;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self showFromAddresses]) {
-        return  1 + (legacyAddresses.count > 0 ? 1 : 0);
+        return  1 + (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
     }
-    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
+    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
