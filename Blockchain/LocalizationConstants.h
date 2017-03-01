@@ -587,3 +587,7 @@
 #define BC_STRING_PREVIOUS NSLocalizedString(@"PREVIOUS", nil)
 #define BC_STRING_NEXT NSLocalizedString(@"NEXT", nil)
 #define BC_STRING_BACKUP_AGAIN NSLocalizedString(@"BACKUP AGAIN", nil)
+#define BC_STRING_TRANSFER_ALL NSLocalizedString(@"Transfer all", nil)
+#define BC_STRING_TRANSFER_ALL_FUNDS NSLocalizedString(@"Transfer All Funds", nil)
+#define BC_STRING_TRANSFER_IMPORTED_ADDRESSES NSLocalizedString(@"Transfer imported addresses?", nil)
+#define BC_STRING_TRANSFER_ALL_BACKUP NSLocalizedString(@"Imported addresses are not backed up by your Recovery Phrase. To secure these funds, we recommend transferring these balances to include in your backup.", nil)
