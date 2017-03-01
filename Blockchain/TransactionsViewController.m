@@ -124,7 +124,6 @@ int lastNumberTransactions = INT_MAX;
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
         [self changeFilterLabel:@""];
-        filterAccountChevronButton.hidden = YES;
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
@@ -326,9 +325,10 @@ int lastNumberTransactions = INT_MAX;
         [filterAccountButton sizeToFit];
         filterAccountButton.center = CGPointMake(self.view.center.x, currentCenterY);
         
-        filterAccountChevronButton.hidden = NO;
         filterAccountChevronButton.frame = CGRectMake(filterAccountButton.frame.origin.x + filterAccountButton.frame.size.width, filterAccountButton.frame.origin.y, filterAccountButton.frame.size.height, filterAccountButton.frame.size.height);
     }
+    
+    filterAccountChevronButton.hidden = filterAccountButton.hidden;
 }
 
 - (CGFloat)heightForFilterTableView
