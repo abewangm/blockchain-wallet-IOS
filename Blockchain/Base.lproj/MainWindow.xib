@@ -432,7 +432,7 @@ http://blockchain.info/wallet</string>
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6sh-r5-yAx" userLabel="Balance Small Button">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6sh-r5-yAx" userLabel="Filter Account Button">
                                             <rect key="frame" x="20" y="42" width="280" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -469,7 +469,7 @@ http://blockchain.info/wallet</string>
             <size key="freeformSize" width="320" height="480"/>
             <connections>
                 <outlet property="balanceBigButton" destination="bzM-Ub-MUU" id="h1K-cG-U9u"/>
-                <outlet property="balanceSmallButton" destination="6sh-r5-yAx" id="dj6-lf-ToR"/>
+                <outlet property="filterAccountButton" destination="6sh-r5-yAx" id="Rkk-XE-J3g"/>
                 <outlet property="filterLabel" destination="eLG-96-OpG" id="MP0-Va-5bI"/>
                 <outlet property="headerView" destination="255" id="q6q-ZV-br0"/>
                 <outlet property="noTransactionsView" destination="385" id="388"/>

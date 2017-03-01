@@ -151,7 +151,7 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)showFromAddresses
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo;
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
 }
 
 - (BOOL)accountsOnly
@@ -213,7 +213,7 @@ int legacyAddressesSectionNumber;
     if ([self showFromAddresses]) {
         return  1 + (legacyAddresses.count > 0 ? 1 : 0);
     }
-    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
+    return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -258,7 +258,7 @@ int legacyAddressesSectionNumber;
 {
     if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
-            return accounts.count;
+            return selectMode == SelectModeFilter && legacyAddresses.count > 0 ? accounts.count + 1 : accounts.count;
         }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
@@ -311,7 +311,7 @@ int legacyAddressesSectionNumber;
             cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
         }
         else if (section == accountsSectionNumber) {
-            label = accountLabels[indexPath.row];
+            label = selectMode == SelectModeFilter && row == accounts.count ? BC_STRING_IMPORTED_ADDRESSES :accountLabels[indexPath.row];
             cell.addressLabel.text = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
@@ -336,7 +336,7 @@ int legacyAddressesSectionNumber;
                 balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
             }
             else if (section == accountsSectionNumber) {
-                balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                balance = selectMode == SelectModeFilter && row == accounts.count ? [app.wallet getTotalBalanceForActiveLegacyAddresses] : [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
             }
             else if (section == legacyAddressesSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];

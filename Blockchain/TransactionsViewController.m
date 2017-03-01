@@ -12,6 +12,7 @@
 #import "MultiAddressResponse.h"
 #import "RootService.h"
 #import "TransactionDetailViewController.h"
+#import "BCAddressSelectionView.h"
 
 @implementation TransactionsViewController
 
@@ -106,6 +107,10 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
+    BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
+    
+    filterAccountButton.hidden = !shouldShowFilterButton;
+    
     // Data not loaded yet
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
@@ -115,7 +120,7 @@ int lastNumberTransactions = INT_MAX;
 #endif
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
+        [filterAccountButton setTitle:@"" forState:UIControlStateNormal];
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
@@ -130,7 +135,7 @@ int lastNumberTransactions = INT_MAX;
 #endif
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [filterAccountButton setTitle:[self getFilterLabel] forState:UIControlStateNormal];
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
@@ -138,7 +143,7 @@ int lastNumberTransactions = INT_MAX;
         
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [filterAccountButton setTitle:[self getFilterLabel] forState:UIControlStateNormal];
     }
 }
 
@@ -310,6 +315,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)changeFilterLabel:(NSString *)newText
 {
     filterLabel.text = newText;
+    [filterAccountButton setTitle:newText forState:UIControlStateNormal];
 }
 
 - (void)hideFilterLabel
@@ -344,9 +350,30 @@ int lastNumberTransactions = INT_MAX;
 #endif
 }
 
+- (NSString *)getFilterLabel
+{
+#ifdef ENABLE_TRANSACTION_FILTERING
+    if (self.filterIndex == FILTER_INDEX_ALL) {
+        return BC_STRING_TOTAL_BALANCE;
+    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        return BC_STRING_IMPORTED_ADDRESSES;
+    } else {
+        return [app.wallet getLabelForAccount:(int)self.filterIndex];
+    }
+#else
+    return nil;
+#endif
+}
+
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
+}
+
+- (void)showFilterMenu
+{
+    BCAddressSelectionView *filterView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeFilter];
+    [app showModalWithContent:filterView closeType:ModalCloseTypeBack headerText:BC_STRING_BALANCES];
 }
 
 #pragma mark - View lifecycle
@@ -367,13 +394,10 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
-    [balanceSmallButton.titleLabel setMinimumScaleFactor:.5f];
-    [balanceSmallButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
-    
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
-    [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    
     self.moreButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.moreButton setTitle:BC_STRING_LOAD_MORE_TRANSACTIONS forState:UIControlStateNormal];
     self.moreButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -391,7 +415,14 @@ int lastNumberTransactions = INT_MAX;
     [self setupPullToRefresh];
     
 #ifdef ENABLE_TRANSACTION_FILTERING
+    
+    [filterAccountButton.titleLabel setMinimumScaleFactor:.5f];
+    [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
+
     self.filterIndex = FILTER_INDEX_ALL;
+#else
+    filterAccountButton.hidden = YES;
 #endif
     
     [self reload];

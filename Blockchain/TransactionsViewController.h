@@ -29,7 +29,7 @@
     
     IBOutlet UIView *headerView;
     IBOutlet UIButton *balanceBigButton;
-    IBOutlet UIButton *balanceSmallButton;
+    IBOutlet UIButton *filterAccountButton;
     
     IBOutlet UIView *noTransactionsView;
     
