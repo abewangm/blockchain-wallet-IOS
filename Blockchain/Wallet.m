@@ -199,7 +199,9 @@
             return [[NSData new] hexadecimalString];
         }
         
-        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
+        const char *passwordString = [_password UTF8String];
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1(passwordString, (int)strlen(passwordString), _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
             return [[NSData new] hexadecimalString];
         };
         
