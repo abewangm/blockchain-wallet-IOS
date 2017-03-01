@@ -273,7 +273,10 @@
 #define BC_STRING_IMPORT_ADDRESS NSLocalizedString(@"Import address", nil)
 #define BC_STRING_CONTINUE NSLocalizedString(@"Continue", nil)
 
-#define BC_STRING_LOG_IN NSLocalizedString(@"Log in", nil)
+#define BC_STRING_LOG_IN NSLocalizedString(@"Log In", nil)
+#define BC_STRING_PASSWORD_MODAL_INSTRUCTIONS NSLocalizedString(@"Please enter your password to log into your Blockchain wallet.", nil)
+#define BC_STRING_FORGOT_PASSWORD NSLocalizedString(@"Forgot Password?", nil)
+#define BC_STRING_OR_START_OVER_AND NSLocalizedString(@"Or start over and ", nil)
 #define BC_STRING_LOGIN_EXISTING_WALLET NSLocalizedString(@"Login existing Wallet", nil)
 #define BC_STRING_RECOVER_FUNDS NSLocalizedString(@"Recover Funds", nil)
 #define BC_STRING_RECOVER_FUNDS_ONLY_IF_FORGOT_CREDENTIALS NSLocalizedString(@"You should always pair or login if you have access to your Wallet ID and password. Recovering your funds will create a new Wallet ID. Would you like to continue?", nil)
@@ -323,6 +326,8 @@
 #define BC_STRING_SETTINGS_ACCOUNT_DETAILS NSLocalizedString(@"Account Details", nil)
 #define BC_STRING_SETTINGS_NOTIFICATIONS NSLocalizedString(@"Notifications", nil)
 #define BC_STRING_SETTINGS_EMAIL NSLocalizedString(@"Email", nil)
+#define BC_STRING_SETTINGS_UPDATE_EMAIL NSLocalizedString(@"Update Email", nil)
+#define BC_STRING_SETTINGS_ENTER_EMAIL_ADDRESS NSLocalizedString(@"Enter Email Address", nil)
 #define BC_STRING_SETTINGS_VERIFIED NSLocalizedString(@"Verified", nil)
 #define BC_STRING_SETTINGS_UNVERIFIED NSLocalizedString(@"Unverified", nil)
 #define BC_STRING_SETTINGS_UNCONFIRMED NSLocalizedString(@"Unconfirmed", nil)
@@ -331,6 +336,8 @@
 #define BC_STRING_SETTINGS_PLEASE_ADD_EMAIL NSLocalizedString(@"Please add an email address", nil)
 #define BC_STRING_SETTINGS_NEW_EMAIL_MUST_BE_DIFFERENT NSLocalizedString(@"New email must be different", nil)
 #define BC_STRING_SETTINGS_MOBILE_NUMBER NSLocalizedString(@"Mobile Number", nil)
+#define BC_STRING_SETTINGS_UPDATE_MOBILE NSLocalizedString(@"Update Mobile", nil)
+#define BC_STRING_SETTINGS_ENTER_MOBILE_NUMBER NSLocalizedString(@"Enter Mobile Number", nil)
 #define BC_STRING_SETTINGS_PREFERENCES NSLocalizedString(@"Preferences", nil)
 #define BC_STRING_SETTINGS_DISPLAY_PREFERENCES NSLocalizedString(@"Display", nil)
 #define BC_STRING_SETTINGS_FEES NSLocalizedString(@"Fees", nil)
@@ -564,6 +571,10 @@
 #define BC_STRING_NEW_ZEALAND_DOLLAR NSLocalizedString(@"New Zealand Dollar", @"")
 #define BC_STRING_BRAZIL_REAL NSLocalizedString(@"Brazil Real", @"")
 #define BC_STRING_RUSSIAN_RUBLE NSLocalizedString(@"Russian Ruble", @"")
+
+#define BC_STRING_BALANCES NSLocalizedString(@"Balances", nil)
+#define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and receive bitcoin.", nil)
+#define BC_STRING_YOUR_TRANSACTIONS NSLocalizedString(@"Your Transactions", nil)
 
 #pragma mark - Swift files
 
