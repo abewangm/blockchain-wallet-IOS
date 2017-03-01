@@ -39,7 +39,7 @@ Once:
     npm install -g grunt-cli
     cd Artwork
     npm install
-    npm install -g svgexport
+    npm -g install svgexport@0.2.8
  
 Whenever you change a PSD or SVG file, run: 
   
