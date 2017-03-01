@@ -26,47 +26,6 @@
     [super tearDown];
 }
 
-- (void)testLogoutAndCreateWallet {
-    
-    [tester enterPIN];
-    
-    [tester logoutAndForgetWallet];
-    
-    [tester createNewWallet];
-}
-
-- (void)testSendAmounts {
-    
-    [tester enterPIN];
-    
-    [tester goToSend];
-    [tester typeInAddress];
-    
-    [tester confirmSendAmountNoDecimal];
-    [tester confirmSendAmountArabicNumeralsNoDecimal];
-    
-    [tester confirmSendAmountDecimalPeriodDecimalFirst];
-    [tester confirmSendAmountDecimalPeriodZeroThenDecimal];
-    [tester confirmSendAmountDecimalPeriodNumberThenDecimal];
-    [tester confirmSendAmountDecimalPeriodArabicTextDecimalFirst];
-    [tester confirmSendAmountDecimalPeriodArabicTextZeroThenDecimal];
-    [tester confirmSendAmountDecimalPeriodArabicTextNumberThenDecimal];
-    
-    [tester confirmSendAmountDecimalCommaDecimalFirst];
-    [tester confirmSendAmountDecimalCommaZeroThenDecimal];
-    [tester confirmSendAmountDecimalCommaNumberThenDecimal];
-    [tester confirmSendAmountDecimalCommaArabicTextDecimalFirst];
-    [tester confirmSendAmountDecimalCommaArabicTextZeroThenDecimal];
-    [tester confirmSendAmountDecimalCommaArabicTextNumberThenDecimal];
-    
-    [tester confirmSendAmountDecimalArabicCommaDecimalFirst];
-    [tester confirmSendAmountDecimalArabicCommaZeroThenDecimal];
-    [tester confirmSendAmountDecimalArabicCommaNumberThenDecimal];
-    [tester confirmSendAmountDecimalArabicCommaAndTextDecimalFirst];
-    [tester confirmSendAmountDecimalArabicCommaAndTextZeroThenDecimal];
-    [tester confirmSendAmountDecimalArabicCommaAndTextNumberThenDecimal];
-}
-
 - (void)testReceiveAmounts {
 
     [tester enterPIN];

@@ -620,7 +620,6 @@ MyWalletPhone.getSessionToken = function() {
 }
 
 MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPassword, sessionToken, twoFACode, twoFAType, success, needs_two_factor_code, wrong_two_factor_code, other_error) {
-
     // Timing
     var t0 = new Date().getTime(), t1;
     

@@ -57,6 +57,7 @@
     closeButton.imageView.image = [closeButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [closeButton setTintColor:COLOR_BLOCKCHAIN_BLUE];
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    closeButton.accessibilityLabel = ACCESSIBILITY_LABEL_CLOSE_BUTTON;
     [self.view addSubview:closeButton];
     
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];

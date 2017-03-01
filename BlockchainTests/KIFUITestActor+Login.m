@@ -10,34 +10,63 @@
 #import "Blockchain-Prefix.pch"
 #import "RootService.h"
 
+// 5s simulator
+const CGPoint alertOkButtonCenterShortText = (CGPoint){154, 340};
+const CGPoint alertOkButtonCenterMediumText = (CGPoint){154, 362};
+const CGPoint alertOkButtonRight = (CGPoint){175, 340};
+const CGPoint pinKeyTwo = (CGPoint){154, 362};
+
 @implementation KIFUITestActor (Login)
+
+- (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_LOG_IN];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_LOG_IN];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_GUID];
+    [self enterText:guid intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_GUID];
+    [self enterText:password intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_PASSWORD];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR_CONTINUE];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_MANUAL_PAIR_CONTINUE];
+    
+    [self setupPIN];
+    
+    [self waitForTimeInterval:2];
+    [self tapScreenAtPoint:alertOkButtonCenterShortText];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+}
+
+- (void)setupPIN
+{
+    [self waitForViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NUMPAD_VIEW];
+    [self enterPIN];
+    [self waitForTimeInterval:.2];
+    [self enterPIN];
+}
 
 - (void)createNewWallet
 {
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CREATE_NEW_WALLET];
-    [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_NEW_WALLET];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
     
-    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
-    [self tapViewWithAccessibilityLabel:BC_STRING_CREATE_WALLET];
-    
-    // 5s simulator
-    CGPoint alertOkButtonCenterMediumText = CGPointMake(154, 362);
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_WALLET];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_WALLET];
     
     [self waitForTimeInterval:8];
     [self tapScreenAtPoint:alertOkButtonCenterMediumText];
-    [self waitForTimeInterval:.2];
     
-    [self enterPIN];
-    [self waitForTimeInterval:.1];
-    [self enterPIN];
+    [self setupPIN];
     
     [self waitForTimeInterval:2];
-    CGPoint alertOkButtonCenterShortText = CGPointMake(154, 340);
     [self tapScreenAtPoint:alertOkButtonCenterShortText];
     
     [self waitForTimeInterval:.5];
-    CGPoint topRightClose = CGPointMake(284, 25);
-    [self tapScreenAtPoint:topRightClose];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
 
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }
@@ -45,9 +74,6 @@
 - (void)enterPIN
 {
     [self waitForViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NUMPAD_VIEW];
-    
-    // 5s simulator
-    CGPoint pinKeyTwo = CGPointMake(154, 362);
     
     [self tapScreenAtPoint:pinKeyTwo];
     [self tapScreenAtPoint:pinKeyTwo];
@@ -57,23 +83,32 @@
 
 - (void)logoutAndForgetWallet
 {
+    [self logout];
+    
+    [self forgetWallet];
+}
+
+- (void)logout
+{
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
     
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_LOGOUT];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_LOGOUT];
     
-    // 5s simulator
-    CGPoint alertOkButtonRight = CGPointMake(175, 340);
-    
     [self waitForTimeInterval:.2];
     [self tapScreenAtPoint:alertOkButtonRight];
-    
+}
+
+- (void)forgetWallet
+{
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET];
     
     [self waitForTimeInterval:.2];
     [self tapScreenAtPoint:alertOkButtonRight];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
 }
 
 #pragma mark - Send

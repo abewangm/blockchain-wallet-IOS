@@ -854,7 +854,6 @@ void (^secondPasswordSuccess)(NSString *);
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     menuButton.accessibilityLabel = ACCESSIBILITY_LABEL_SIDE_MENU;
-    forgetWalletButton.accessibilityLabel = ACCESSIBILITY_LABEL_FORGET_WALLET;
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -970,6 +969,8 @@ void (^secondPasswordSuccess)(NSString *);
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
     mainPasswordTextField.text = @"";
     [mainPasswordView addGestureRecognizer:tapGesture];
+    
+    forgetWalletButton.accessibilityLabel = ACCESSIBILITY_LABEL_FORGET_WALLET;
 }
 
 - (void)beginBackgroundUpdateTask
@@ -2008,7 +2009,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self hideBusyView];
     
     self.pinEntryViewController.view.accessibilityLabel = ACCESSIBILITY_LABEL_NUMPAD_VIEW;
-
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
@@ -2145,6 +2146,7 @@ void (^secondPasswordSuccess)(NSString *);
     scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     manualPairButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     manualPairButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    manualPairButton.accessibilityLabel = ACCESSIBILITY_LABEL_MANUAL_PAIR;
 }
 
 - (void)showRecoverWallet:(id)sender

@@ -27,6 +27,10 @@
     
     walletIdentifierTextField.inputAccessoryView = saveButton;
     passwordTextField.inputAccessoryView = saveButton;
+    
+    walletIdentifierTextField.accessibilityLabel = ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_GUID;
+    passwordTextField.accessibilityLabel = ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_PASSWORD;
+    saveButton.accessibilityLabel = ACCESSIBILITY_LABEL_MANUAL_PAIR_CONTINUE;
 }
 
 - (void)prepareForModalPresentation

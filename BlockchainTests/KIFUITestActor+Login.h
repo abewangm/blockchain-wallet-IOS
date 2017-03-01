@@ -10,6 +10,9 @@
 
 @interface KIFUITestActor (Login)
 
+- (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password;
+- (void)logout;
+- (void)forgetWallet;
 - (void)logoutAndForgetWallet;
 - (void)createNewWallet;
 - (void)enterPIN;
