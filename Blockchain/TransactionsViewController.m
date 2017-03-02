@@ -12,6 +12,10 @@
 #import "MultiAddressResponse.h"
 #import "RootService.h"
 #import "TransactionDetailViewController.h"
+#import "BCAddressSelectionView.h"
+
+@interface TransactionsViewController () <AddressSelectionDelegate>
+@end
 
 @implementation TransactionsViewController
 
@@ -106,6 +110,10 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
+    BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
+    
+    filterAccountButton.hidden = !shouldShowFilterButton;
+    
     // Data not loaded yet
     if (!self.data) {
         [noTransactionsView removeFromSuperview];
@@ -115,7 +123,7 @@ int lastNumberTransactions = INT_MAX;
 #endif
         
         [balanceBigButton setTitle:@"" forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:@"" forState:UIControlStateNormal];
+        [self changeFilterLabel:@""];
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
@@ -130,7 +138,8 @@ int lastNumberTransactions = INT_MAX;
 #endif
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [self changeFilterLabel:[self getFilterLabel]];
+
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
@@ -138,7 +147,7 @@ int lastNumberTransactions = INT_MAX;
         
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [balanceSmallButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:!app->symbolLocal] forState:UIControlStateNormal];
+        [self changeFilterLabel:[self getFilterLabel]];
     }
 }
 
@@ -309,17 +318,17 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)changeFilterLabel:(NSString *)newText
 {
-    filterLabel.text = newText;
-}
-
-- (void)hideFilterLabel
-{
-    filterLabel.hidden = YES;
-}
-
-- (void)showFilterLabel
-{
-    filterLabel.hidden = NO;
+    [filterAccountButton setTitle:newText forState:UIControlStateNormal];
+    
+    if (newText.length > 0) {
+        CGFloat currentCenterY = filterAccountButton.center.y;
+        [filterAccountButton sizeToFit];
+        filterAccountButton.center = CGPointMake(self.view.center.x, currentCenterY);
+        
+        filterAccountChevronButton.frame = CGRectMake(filterAccountButton.frame.origin.x + filterAccountButton.frame.size.width, filterAccountButton.frame.origin.y, filterAccountButton.frame.size.height, filterAccountButton.frame.size.height);
+    }
+    
+    filterAccountChevronButton.hidden = filterAccountButton.hidden;
 }
 
 - (CGFloat)heightForFilterTableView
@@ -344,9 +353,57 @@ int lastNumberTransactions = INT_MAX;
 #endif
 }
 
+- (NSString *)getFilterLabel
+{
+#ifdef ENABLE_TRANSACTION_FILTERING
+    if (self.filterIndex == FILTER_INDEX_ALL) {
+        return BC_STRING_TOTAL_BALANCE;
+    } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        return BC_STRING_IMPORTED_ADDRESSES;
+    } else {
+        return [app.wallet getLabelForAccount:(int)self.filterIndex];
+    }
+#else
+    return nil;
+#endif
+}
+
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
+}
+
+- (void)showFilterMenu
+{
+    BCAddressSelectionView *filterView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeFilter];
+    filterView.delegate = self;
+    [app showModalWithContent:filterView closeType:ModalCloseTypeBack headerText:BC_STRING_BALANCES];
+}
+
+#pragma mark - Address Selection Delegate
+
+- (void)didSelectFromAccount:(int)account
+{
+    if (account == FILTER_INDEX_IMPORTED_ADDRESSES) {
+        [app filterTransactionsByImportedAddresses];
+    } else {
+        [app filterTransactionsByAccount:account];
+    }
+}
+
+- (void)didSelectToAddress:(NSString *)address
+{
+    DLog(@"TransactionsViewController Warning: filtering by single imported address!")
+}
+
+- (void)didSelectToAccount:(int)account
+{
+    DLog(@"TransactionsViewController Warning: selected to account!")
+}
+
+- (void)didSelectFromAddress:(NSString *)address
+{
+    DLog(@"TransactionsViewController Warning: selected from address!")
 }
 
 #pragma mark - View lifecycle
@@ -367,13 +424,10 @@ int lastNumberTransactions = INT_MAX;
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
-    [balanceSmallButton.titleLabel setMinimumScaleFactor:.5f];
-    [balanceSmallButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
-    
     [balanceBigButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
-    [balanceSmallButton addTarget:app action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
     
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
+    
     self.moreButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.moreButton setTitle:BC_STRING_LOAD_MORE_TRANSACTIONS forState:UIControlStateNormal];
     self.moreButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -384,14 +438,22 @@ int lastNumberTransactions = INT_MAX;
     self.moreButton.hidden = YES;
 #endif
     
-    filterLabel.adjustsFontSizeToFitWidth = YES;
-    
     [self setupBlueBackgroundForBounceArea];
     
     [self setupPullToRefresh];
     
 #ifdef ENABLE_TRANSACTION_FILTERING
+    
+    [filterAccountButton.titleLabel setMinimumScaleFactor:.5f];
+    [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
+    [filterAccountChevronButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
+    filterAccountChevronButton.imageView.transform = CGAffineTransformMakeScale(-1, 1);
+    filterAccountChevronButton.imageEdgeInsets = UIEdgeInsetsMake(9, 4, 8, 12);
+
     self.filterIndex = FILTER_INDEX_ALL;
+#else
+    filterAccountButton.hidden = YES;
 #endif
     
     [self reload];
@@ -427,12 +489,6 @@ int lastNumberTransactions = INT_MAX;
     [super viewWillAppear:animated];
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
-    
-#ifdef ENABLE_TRANSACTION_FILTERING
-    [app reloadTransactionFilterLabel];
-#else
-    [self hideFilterLabel];
-#endif
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -440,7 +496,6 @@ int lastNumberTransactions = INT_MAX;
     [super viewDidDisappear:animated];
 #ifdef ENABLE_TRANSACTION_FILTERING
     app.wallet.isFetchingTransactions = NO;
-    filterLabel.hidden = YES;
 #endif
     app.mainTitleLabel.hidden = NO;
 }

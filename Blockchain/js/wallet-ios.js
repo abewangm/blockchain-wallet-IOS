@@ -1363,7 +1363,7 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
 };
 
 WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
-    var retVal = objc_sjcl_misc_pbkdf2(password, salt.toJSON().data, iterations, keylen / 8);
+    var retVal = objc_sjcl_misc_pbkdf2(password, salt.toJSON().data, iterations, (keylen || 256) / 8);
     return new Buffer(retVal, 'hex');
 }
 

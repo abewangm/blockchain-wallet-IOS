@@ -513,6 +513,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Constants
 
 #define SATOSHI 1e8 // 100,000,000
+
 #define MULTI_ADDR_TIME 60.0f // 1 Minute
 
 #define TX_SIZE_ONE_KILOBYTE 1000
@@ -537,6 +538,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
+
+#define MENU_BITCOIN_TICKER_HEIGHT 145
 
 #define MENU_CELL_INDEX_UPGRADE 0
 #define MENU_CELL_INDEX_SETTINGS 1

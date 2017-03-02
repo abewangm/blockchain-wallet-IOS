@@ -14,7 +14,6 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     @IBOutlet weak var wordsPageControl: UIPageControl?
     @IBOutlet weak var wordsProgressLabel: UILabel?
     @IBOutlet weak var wordLabel: UILabel?
-    @IBOutlet weak var screenShotWarningLabel: UILabel?
     @IBOutlet weak var previousWordButton: UIButton!
     @IBOutlet weak var nextWordButton: UIButton!
     @IBOutlet var summaryLabel: UILabel?
@@ -26,11 +25,13 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        previousWordButton?.setTitle(NSLocalizedString("PREVIOUS", comment:""), for: .normal)
+
+        nextWordButton?.setTitle(NSLocalizedString("NEXT", comment:""), for: .normal)
+        
         updatePreviousWordButton()
 
-        setupTopInstructionLabel()
-        
-        setupBottomInstructionLabel()
+        setupInstructionLabel()
         
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .new, context: nil)
         
@@ -76,29 +77,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         })
     }
     
-    func setupTopInstructionLabel() {
-        let blackTextBeginning = NSAttributedString(string:  NSLocalizedString("Write the following 12 words onto a ", comment:""), attributes:
-            [NSForegroundColorAttributeName: Constants.Colors.DarkGray])
-        
-        let boldText = NSAttributedString(string: NSLocalizedString("piece of paper.", comment:""), attributes:[NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans-SemiBold", size: 16.0) as Any])
-        
-        let blackTextEnd = NSAttributedString(string:  NSLocalizedString(" Anyone with access to your Recovery Phrase has access to your bitcoin so be sure to keep it offline somewhere very safe and secure.", comment:""), attributes:
-            [NSForegroundColorAttributeName: Constants.Colors.DarkGray])
-        
-        let finalText = NSMutableAttributedString(attributedString: blackTextBeginning)
-        finalText.append(boldText)
-        finalText.append(blackTextEnd)
-        summaryLabel?.attributedText = finalText
-    }
-    
-    func setupBottomInstructionLabel() {
-        let blackText = NSAttributedString(string:  NSLocalizedString("It is important to make sure you write down your words exactly as they appear here and ", comment:""), attributes:[NSForegroundColorAttributeName: Constants.Colors.DarkGray])
-        
-        let boldText = NSAttributedString(string: NSLocalizedString("in this order.", comment:""), attributes: [NSForegroundColorAttributeName: Constants.Colors.DarkGray, NSFontAttributeName : UIFont(name:"GillSans-SemiBold", size: 16.0) as Any])
-        
-        let finalText = NSMutableAttributedString(attributedString: blackText)
-        finalText.append(boldText)
-        screenShotWarningLabel?.attributedText = finalText
+    func setupInstructionLabel() {
+        summaryLabel?.text = NSLocalizedString("Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", comment:"")
     }
     
     func updatePreviousWordButton() {
@@ -141,7 +121,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
             } else if wordsPageControl!.currentPage == count-2 {
                 nextWordButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
                 nextWordButton?.setTitleColor(UIColor.white, for: UIControlState())
-                nextWordButton?.setTitle(NSLocalizedString("Next word", comment:""), for: UIControlState())
+                nextWordButton?.setTitle(NSLocalizedString("NEXT", comment:""), for: UIControlState())
             }
             
             updatePreviousWordButton()

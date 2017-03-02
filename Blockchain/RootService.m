@@ -557,7 +557,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = accountIndex;
     [_transactionsViewController changeFilterLabel:[app.wallet getLabelForAccount:accountIndex]];
-    [_transactionsViewController showFilterLabel];
     
     [_sendViewController resetFromAddress];
     [_receiveViewController reloadMainAddress];
@@ -572,7 +571,6 @@ void (^secondPasswordSuccess)(NSString *);
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_IMPORTED_ADDRESSES;
     [_transactionsViewController changeFilterLabel:BC_STRING_IMPORTED_ADDRESSES];
-    [_transactionsViewController showFilterLabel];
     
     [self.wallet reloadFilter];
     
@@ -583,7 +581,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
     _transactionsViewController.clickedFetchMore = NO;
     _transactionsViewController.filterIndex = FILTER_INDEX_ALL;
-    [_transactionsViewController hideFilterLabel];
     [self.wallet reloadFilter];
     
     [self showFilterResults];
@@ -847,9 +844,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_sendViewController reload];
-    
-    [self reloadTransactionFilterLabel];
-    
+        
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
@@ -2165,21 +2160,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self showModalWithContent:manualPairView closeType:ModalCloseTypeBack headerText:BC_STRING_MANUAL_PAIRING];
     self.wallet.twoFactorInput = nil;
     [manualPairView clearPasswordTextField];
-}
-
-- (void)reloadTransactionFilterLabel
-{
-#ifdef ENABLE_TRANSACTION_FILTERING
-    if ([app.wallet didUpgradeToHd] && ([app.wallet hasLegacyAddresses] || [app.wallet getActiveAccountsCount] >= 2) && self.filterIndex != FILTER_INDEX_ALL) {
-        if (_tabViewController.activeViewController == _transactionsViewController) {
-            [_transactionsViewController showFilterLabel];
-        } else {
-            [_transactionsViewController hideFilterLabel];
-        }
-    } else {
-        [_transactionsViewController hideFilterLabel];
-    }
-#endif
 }
 
 #pragma mark - Actions

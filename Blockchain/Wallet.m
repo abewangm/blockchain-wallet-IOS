@@ -2062,8 +2062,6 @@
 - (void)upgrade_success
 {
     [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
-    
-    [app reloadTransactionFilterLabel];
 }
 
 #pragma mark - Callbacks from JS to Obj-C

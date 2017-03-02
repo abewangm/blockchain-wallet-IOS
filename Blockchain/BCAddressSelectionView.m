@@ -151,7 +151,7 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)showFromAddresses
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo;
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
 }
 
 - (BOOL)accountsOnly
@@ -161,7 +161,7 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)allSelectable
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo;
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,7 +170,18 @@ int legacyAddressesSectionNumber;
     
     if ([self showFromAddresses]) {
         if (indexPath.section == accountsSectionNumber) {
-            [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+            if (selectMode == SelectModeFilter) {
+                if (indexPath.row == 0) {
+                    [delegate didSelectFromAccount:FILTER_INDEX_ALL];
+                } else if (accounts.count == indexPath.row - 1) {
+                    [delegate didSelectFromAccount:FILTER_INDEX_IMPORTED_ADDRESSES];
+                } else {
+                    [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
+
+                }
+            } else {
+                [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+            }
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
             
@@ -211,7 +222,7 @@ int legacyAddressesSectionNumber;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self showFromAddresses]) {
-        return  1 + (legacyAddresses.count > 0 ? 1 : 0);
+        return  1 + (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
     }
     return (addressBookAddresses.count > 0 ? 1 : 0) + 1 + (legacyAddresses.count > 0 ? 1 : 0);
 }
@@ -231,7 +242,7 @@ int legacyAddressesSectionNumber;
     
     if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
-            labelString = BC_STRING_WALLETS;
+            labelString = selectMode == SelectModeFilter ? @"" : BC_STRING_WALLETS;
         }
         else if (section == legacyAddressesSectionNumber) {
             labelString = BC_STRING_IMPORTED_ADDRESSES;
@@ -258,7 +269,15 @@ int legacyAddressesSectionNumber;
 {
     if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
-            return accounts.count;
+            if (selectMode == SelectModeFilter) {
+                if (legacyAddresses.count > 0) {
+                    return accounts.count + 2;
+                } else {
+                    return accounts.count + 1;
+                }
+            } else {
+                return accounts.count;
+            }
         }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
@@ -311,7 +330,19 @@ int legacyAddressesSectionNumber;
             cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
         }
         else if (section == accountsSectionNumber) {
-            label = accountLabels[indexPath.row];
+            
+            if (selectMode == SelectModeFilter) {
+                if (accounts.count == row - 1) {
+                    label = BC_STRING_IMPORTED_ADDRESSES;
+                } else if (row == 0) {
+                    label = BC_STRING_TOTAL_BALANCE;
+                } else {
+                    label = accountLabels[indexPath.row - 1];
+                }
+            } else {
+                label = accountLabels[indexPath.row];
+            }
+            
             cell.addressLabel.text = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
@@ -336,7 +367,17 @@ int legacyAddressesSectionNumber;
                 balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
             }
             else if (section == accountsSectionNumber) {
-                balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                if (selectMode == SelectModeFilter) {
+                    if (accounts.count == row - 1) {
+                        balance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
+                    } else if (row == 0) {
+                        balance = [app.wallet getTotalActiveBalance];
+                    } else {
+                        balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
+                    }
+                } else {
+                    balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                }
             }
             else if (section == legacyAddressesSectionNumber) {
                 balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
