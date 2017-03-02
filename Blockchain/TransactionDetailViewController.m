@@ -278,6 +278,8 @@ const CGFloat rowHeightValueReceived = 80;
         return rowHeightDefault;
     } else if (indexPath.row == [self getCellRowFrom]) {
         return rowHeightDefault/2 + 20.5/2;
+    } else if (indexPath.row == [self getCellRowStatus]) {
+        return rowHeightDefault + 80;
     }
     return rowHeightDefault;
 }

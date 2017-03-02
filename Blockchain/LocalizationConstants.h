@@ -576,6 +576,8 @@
 #define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and receive bitcoin.", nil)
 #define BC_STRING_YOUR_TRANSACTIONS NSLocalizedString(@"Your Transactions", nil)
 
+#define BC_STRING_VIEW_ON_URL_ARGUMENT NSLocalizedString(@"View on", nil)
+
 #pragma mark - Swift files
 
 #define BC_STRING_BACKUP_COMPLETE NSLocalizedString(@"Backup Complete", nil)

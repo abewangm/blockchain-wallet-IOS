@@ -16,6 +16,7 @@
 @property (nonatomic) UILabel *mainLabel;
 @property (nonatomic) UILabel *accessoryLabel;
 @property (nonatomic) UIButton *accessoryButton;
+@property (nonatomic) UIButton *bannerButton;
 @property (nonatomic) id<StatusDelegate> statusDelegate;
 
 @end

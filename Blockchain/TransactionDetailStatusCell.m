@@ -8,6 +8,8 @@
 
 #import "TransactionDetailStatusCell.h"
 
+#define URL_BLOCKCHAIN_INFO @"blockchain.info"
+
 @implementation TransactionDetailStatusCell
 
 - (void)prepareForReuse
@@ -29,7 +31,7 @@
         return;
     }
     
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, 60)];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_STATUS;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -37,7 +39,7 @@
     [self.contentView addSubview:self.mainLabel];
     
     CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
-    self.accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryButtonXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryButtonXPosition, self.frame.size.height)];
+    self.accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryButtonXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryButtonXPosition, 60)];
     NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, [NSString stringWithFormat:@"%u/%u", transaction.confirmations, kConfirmationThreshold]];
     
     self.accessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -47,6 +49,18 @@
     self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.accessoryButton setTitleColor:COLOR_TABLE_VIEW_CELL_TEXT_BLUE forState:UIControlStateNormal];
     [self.contentView addSubview:self.accessoryButton];
+    
+    self.bannerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.accessoryButton.frame.origin.y + self.accessoryButton.frame.size.height + 32, self.contentView.frame.size.width - 60, 48)];
+    self.bannerButton.titleEdgeInsets = UIEdgeInsetsMake(0, 24, 0, 24);
+    self.bannerButton.titleLabel.textColor = [UIColor whiteColor];
+    self.bannerButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
+    self.bannerButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.bannerButton setTitle:[[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, URL_BLOCKCHAIN_INFO] uppercaseString] forState:UIControlStateNormal];
+    self.bannerButton.layer.cornerRadius = 4;
+    [self.bannerButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
+    self.bannerButton.center = CGPointMake(self.contentView.center.x, self.bannerButton.center.y);
+    [self.contentView addSubview:self.bannerButton];
     
     self.isSetup = YES;
 }
