@@ -33,7 +33,7 @@
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_STATUS;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
     [self.contentView addSubview:self.mainLabel];
     
     CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
@@ -43,7 +43,7 @@
     self.accessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.accessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
     [self.accessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
-    [self.accessoryButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.accessoryButton.titleLabel.font.pointSize]];
+    [self.accessoryButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16]];
     self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.accessoryButton setTitleColor:COLOR_TABLE_VIEW_CELL_TEXT_BLUE forState:UIControlStateNormal];
     [self.contentView addSubview:self.accessoryButton];
