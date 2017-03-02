@@ -191,6 +191,7 @@
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
 		C70F56F31E65D6860054714D /* SendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C70F56F21E65D6850054714D /* SendTests.m */; };
 		C70F56F51E65DC8A0054714D /* LoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C70F56F41E65DC8A0054714D /* LoginTests.m */; };
+		C70F56F81E6878560054714D /* CryptoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C70F56F71E6878560054714D /* CryptoTests.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -997,6 +998,7 @@
 		C70F56F21E65D6850054714D /* SendTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendTests.m; sourceTree = "<group>"; };
 		C70F56F41E65DC8A0054714D /* LoginTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTests.m; sourceTree = "<group>"; };
 		C70F56F61E65DDEA0054714D /* TestAccounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAccounts.h; path = ../TestAccounts.h; sourceTree = "<group>"; };
+		C70F56F71E6878560054714D /* CryptoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoTests.m; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1109,6 +1111,7 @@
 				231FF7741CBFEC1300792308 /* BlockchainTests.m */,
 				C70F56F41E65DC8A0054714D /* LoginTests.m */,
 				C70F56F21E65D6850054714D /* SendTests.m */,
+				C70F56F71E6878560054714D /* CryptoTests.m */,
 				233A5A1F1CBFEE1800187A7B /* KIFUITestActor+Login.h */,
 				233A5A201CBFEE1800187A7B /* KIFUITestActor+Login.m */,
 				231FF7761CBFEC1300792308 /* Info.plist */,
@@ -2114,6 +2117,7 @@
 				233A5A211CBFEE1800187A7B /* KIFUITestActor+Login.m in Sources */,
 				231FF7751CBFEC1300792308 /* BlockchainTests.m in Sources */,
 				C70F56F31E65D6860054714D /* SendTests.m in Sources */,
+				C70F56F81E6878560054714D /* CryptoTests.m in Sources */,
 				C70F56F51E65DC8A0054714D /* LoginTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
