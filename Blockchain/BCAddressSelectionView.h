@@ -38,6 +38,7 @@
 }
 
 typedef enum {
+    SelectModeFilter = 50,
     SelectModeSendFrom = 100,
     SelectModeSendTo = 200,
     SelectModeReceiveTo = 300,

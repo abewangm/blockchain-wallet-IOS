@@ -218,7 +218,9 @@
             return [[NSData new] hexadecimalString];
         }
         
-        if (PKCS5_PBKDF2_HMAC_SHA1([_password UTF8String], (int)_password.length, _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
+        const char *passwordUTF8String = [_password UTF8String];
+        
+        if (PKCS5_PBKDF2_HMAC_SHA1(passwordUTF8String, (int)strlen(passwordUTF8String), _saltBuff, (int)_saltBuffLen, iterations, keylength, finalOut) == 0) {
             return [[NSData new] hexadecimalString];
         };
         
@@ -2322,8 +2324,6 @@
 - (void)upgrade_success
 {
     [app standardNotify:BC_STRING_UPGRADE_SUCCESS title:BC_STRING_UPGRADE_SUCCESS_TITLE];
-    
-    [app reloadTransactionFilterLabel];
 }
 
 #pragma mark - Callbacks from JS to Obj-C

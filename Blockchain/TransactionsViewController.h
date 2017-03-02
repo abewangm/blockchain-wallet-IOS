@@ -28,13 +28,13 @@
     IBOutlet UITableView *tableView;
     
     IBOutlet UIView *headerView;
+    
     IBOutlet UIButton *balanceBigButton;
-    IBOutlet UIButton *balanceSmallButton;
+    IBOutlet UIButton *filterAccountButton;
+    IBOutlet UIButton *filterAccountChevronButton;
     
     IBOutlet UIView *noTransactionsView;
-    
-    IBOutlet UILabel *filterLabel;
-    
+        
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
 }
@@ -55,8 +55,6 @@
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;
-- (void)hideFilterLabel;
-- (void)showFilterLabel;
 - (void)changeFilterLabel:(NSString *)newText;
 - (void)selectPayment:(NSString *)payment;
 

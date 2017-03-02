@@ -70,18 +70,6 @@
                                 <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Hq-6D-ut1">
-                                <rect key="frame" x="40" y="312" width="240" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                <state key="normal" title="Backup funds again">
-                                    <color key="titleColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backupWalletAgainButtonTapped:" destination="g04-JJ-JLu" eventType="touchUpInside" id="TgM-Dr-gpj"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Oh no! You haven't backed up your funds yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="1" id="9Hu-uO-gJl">
                                 <rect key="frame" x="16" y="90" width="288" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -96,7 +84,6 @@
                     <navigationItem key="navigationItem" title="Backup Wallet" id="xmf-pK-R3X"/>
                     <connections>
                         <outlet property="backupIconImageView" destination="yp5-t8-iIg" id="Ame-DW-zKt"/>
-                        <outlet property="backupWalletAgainButton" destination="1Hq-6D-ut1" id="8mZ-X7-6yf"/>
                         <outlet property="backupWalletButton" destination="fT1-je-Orp" id="niQ-vk-Apt"/>
                         <outlet property="explanation" destination="eyR-AW-SMc" id="T8a-ay-FOc"/>
                         <outlet property="summaryLabel" destination="9Hu-uO-gJl" id="WkH-em-VkX"/>
@@ -188,13 +175,6 @@
                                             <action selector="nextWordButtonTapped:" destination="jOl-Wq-Cg3" eventType="touchUpInside" id="0qR-0f-O9K"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It is important to make sure you write down your words exactly as they appear here and in this order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FDO-ui-cGo">
-                                        <rect key="frame" x="40" y="283" width="240" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="16"/>
-                                        <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Word 5 of 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUc-u7-Zcj">
                                         <rect key="frame" x="111" y="140" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -213,7 +193,6 @@
                     <connections>
                         <outlet property="nextWordButton" destination="eaO-py-9rY" id="j3z-ft-74D"/>
                         <outlet property="previousWordButton" destination="AFH-AI-Rgk" id="7VV-aQ-3E1"/>
-                        <outlet property="screenShotWarningLabel" destination="FDO-ui-cGo" id="Itv-FZ-zwG"/>
                         <outlet property="summaryLabel" destination="UCL-i9-UDp" id="9at-Ld-S9k"/>
                         <outlet property="wordLabel" destination="Okr-VE-yvm" id="ynm-yh-sZO"/>
                         <outlet property="wordsPageControl" destination="TyO-zN-EB7" id="wlk-9H-Djg"/>
@@ -386,7 +365,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="U0S-3m-R5I"/>
         <segue reference="dla-jc-Bti"/>
-        <segue reference="o31-rh-3dv"/>
     </inferredMetricsTieBreakers>
 </document>

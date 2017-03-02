@@ -186,8 +186,6 @@
 - (void)showHdUpgrade;
 - (void)showBackupReminder:(BOOL)firstReceive;
 
-- (void)reloadTransactionFilterLabel;
-
 - (IBAction)receiveCoinClicked:(UIButton *)sender;
 - (IBAction)transactionsClicked:(UIButton *)sender;
 - (IBAction)sendCoinsClicked:(UIButton *)sender;
