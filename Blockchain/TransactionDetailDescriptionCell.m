@@ -93,22 +93,22 @@
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
                                                                  attribute:NSLayoutAttributeRight
                                                                  relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.editButton
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:0]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeNotAnAttribute
-                                                                multiplier:1.f constant:49]];
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeRight
+                                                                multiplier:1.f constant:-15]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
                                                                  attribute:NSLayoutAttributeRight
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeRight
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeLeft
                                                                 multiplier:1.f constant:0]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
@@ -146,16 +146,6 @@
 {
     self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, 0, self.contentView.frame.size.width - (self.textView.frame.origin.x + self.textView.frame.size.width), [self.descriptionDelegate getDefaultRowHeight])];
     [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
-    
-    CGFloat pencilImageViewHeight = 24;
-    UIImageView *pencilImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, pencilImageViewHeight, pencilImageViewHeight)];
-    pencilImageView.image = [UIImage imageNamed:@"pencil"];
-    pencilImageView.image = [pencilImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [pencilImageView setTintColor:COLOR_LIGHT_GRAY];
-    pencilImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.editButton addSubview:pencilImageView];
-    
-    [self.editButton bringSubviewToFront:pencilImageView];
     
     [self.contentView addSubview:self.editButton];
 }
