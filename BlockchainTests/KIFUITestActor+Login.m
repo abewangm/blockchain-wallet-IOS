@@ -18,6 +18,8 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
 
 @implementation KIFUITestActor (Login)
 
+#pragma mark - Login
+
 - (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password
 {
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_LOG_IN];
