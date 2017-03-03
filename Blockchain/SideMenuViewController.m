@@ -386,8 +386,10 @@ int accountEntries = 0;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         
-        if (indexPath.row == menuEntries - 1) {
+        if (indexPath.row == MENU_CELL_INDEX_LOGOUT) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_LOGOUT;
+        } else if (indexPath.row == MENU_CELL_INDEX_UPGRADE) {
+            cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_BACKUP;
         }
         
         return cell;

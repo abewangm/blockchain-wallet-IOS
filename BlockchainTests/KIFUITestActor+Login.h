@@ -10,6 +10,10 @@
 
 @interface KIFUITestActor (Login)
 
+- (void)closeSideMenuNavigationController;
+
+- (void)backupFromSideMenu;
+
 - (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password;
 - (void)logout;
 - (void)forgetWallet;

@@ -18,6 +18,67 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
 
 @implementation KIFUITestActor (Login)
 
+#pragma mark - Backup
+
+- (void)backupFromSideMenu
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_BACKUP];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_BACKUP];
+    
+    [self waitForTappableViewWithAccessibilityLabel:@"goToBackupWords"];
+    [self tapViewWithAccessibilityLabel:@"goToBackupWords"];
+    
+    [self waitForTappableViewWithAccessibilityLabel:@"nextWord"];
+    
+    for (int i = 0; i < 12; i++) {
+        [self tapViewWithAccessibilityLabel:@"nextWord"];
+    }
+    
+    NSArray *words = [app.wallet.recoveryPhrase componentsSeparatedByString:@" "];
+    
+    NSArray *indexes = @[NSLocalizedString(@"first word", comment:""),
+                              NSLocalizedString(@"second word", comment:""),
+                              NSLocalizedString(@"third word", comment:""),
+                              NSLocalizedString(@"fourth word", comment:""),
+                              NSLocalizedString(@"fifth word", comment:""),
+                              NSLocalizedString(@"sixth word", comment:""),
+                              NSLocalizedString(@"seventh word", comment:""),
+                              NSLocalizedString(@"eighth word", comment:""),
+                              NSLocalizedString(@"ninth word", comment:""),
+                              NSLocalizedString(@"tenth word", comment:""),
+                              NSLocalizedString(@"eleventh word", comment:""),
+                              NSLocalizedString(@"twelfth word", comment:"")];
+    
+    UITextField *word1 = (UITextField *)[self waitForTappableViewWithAccessibilityLabel:@"verifyWord1"];
+    UITextField *word2 = (UITextField *)[self waitForTappableViewWithAccessibilityLabel:@"verifyWord2"];
+    UITextField *word3 = (UITextField *)[self waitForTappableViewWithAccessibilityLabel:@"verifyWord3"];
+    
+    NSArray *textFields = @[word1, word2, word3];
+    
+    [self waitForTimeInterval:2];
+    
+    for (UITextField *textField in textFields) {
+        NSInteger index = [indexes indexOfObject:textField.placeholder];
+        NSString *word = [words objectAtIndex:index];
+        [self enterText:word intoViewWithAccessibilityLabel:textField.accessibilityLabel];
+    }
+    
+    [self tapViewWithAccessibilityLabel:@"verifyWords"];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
+}
+
+- (void)closeSideMenuNavigationController
+{
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+}
+
 #pragma mark - Login
 
 - (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password

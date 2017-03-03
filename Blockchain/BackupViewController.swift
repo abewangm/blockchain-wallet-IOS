@@ -22,6 +22,8 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        backupWalletButton.accessibilityLabel = Constants.AccessibilityLabels.Backup
+        
         backupWalletButton.setTitle(NSLocalizedString("BACKUP FUNDS", comment: ""), for: UIControlState())
         backupWalletButton.titleLabel?.adjustsFontSizeToFitWidth = true
         backupWalletButton.contentHorizontalAlignment = .center

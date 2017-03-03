@@ -35,6 +35,10 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        word1?.accessibilityLabel = Constants.AccessibilityLabels.VerifyWord1
+        word2?.accessibilityLabel = Constants.AccessibilityLabels.VerifyWord2
+        word3?.accessibilityLabel = Constants.AccessibilityLabels.VerifyWord3
+        
         if UIScreen.main.bounds.size.height > Constants.Measurements.ScreenHeightIphone4S {
             instructions?.frame = CGRect(x: instructions!.frame.origin.x, y: 16, width: instructions!.frame.size.width, height: instructions!.frame.size.height)
             word1?.frame = CGRect(x: word1!.frame.origin.x, y: instructions!.frame.origin.y + instructions!.frame.size.height + 8, width: word1!.frame.size.width, height: word1!.frame.size.height + 16)
@@ -78,6 +82,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
         verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: 15.0)
+        verifyButton?.accessibilityLabel = Constants.AccessibilityLabels.VerifyWords
 
         verifyButton?.isEnabled = true
         verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)

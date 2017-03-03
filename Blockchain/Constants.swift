@@ -34,6 +34,14 @@ struct Constants {
     struct Defaults {
         static let NumberOfRecoveryPhraseWords = 12
     }
+    struct AccessibilityLabels {
+        static let Backup = "goToBackupWords"
+        static let NextWord = "nextWord"
+        static let VerifyWord1 = "verifyWord1"
+        static let VerifyWord2 = "verifyWord2"
+        static let VerifyWord3 = "verifyWord3"
+        static let VerifyWords = "verifyWords"
+    }
 }
 
 // MARK: Helper functions

@@ -27,6 +27,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         previousWordButton?.setTitle(NSLocalizedString("PREVIOUS", comment:""), for: .normal)
 
+        nextWordButton?.accessibilityLabel = Constants.AccessibilityLabels.NextWord
         nextWordButton?.setTitle(NSLocalizedString("NEXT", comment:""), for: .normal)
         
         updatePreviousWordButton()

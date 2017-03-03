@@ -107,6 +107,8 @@ import UIKit
             closeButton!.contentHorizontalAlignment = .left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), for: UIControlState());
         }
+        
+        closeButton!.accessibilityLabel = "closeButton";
     }
     
     func backButtonClicked() {
