@@ -37,8 +37,8 @@ const int cellRowStatus = 6;
 
 const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightWarning = 44;
-const CGFloat rowHeightValue = 116;
-const CGFloat rowHeightValueReceived = 92;
+const CGFloat rowHeightValue = 100;
+const CGFloat rowHeightValueReceived = 80;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
 
@@ -284,6 +284,8 @@ const CGFloat rowHeightValueReceived = 92;
         return rowHeightDefault;
     } else if (indexPath.row == [self getCellRowFrom]) {
         return rowHeightDefault/2 + 20.5/2;
+    } else if (indexPath.row == [self getCellRowStatus]) {
+        return rowHeightDefault + 80;
     }
     return rowHeightDefault;
 }
