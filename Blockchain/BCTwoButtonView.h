@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @protocol TwoButtonDelegate <NSObject>
-- (void)topButtonClicked;
-- (void)bottomButtonClicked;
+- (void)topButtonClicked:(NSString *)senderName;
+- (void)bottomButtonClicked:(NSString *)senderName;
 @end
 
 @interface BCTwoButtonView : UIView
-- (id)initWithTopButtonText:(NSString *)topText bottomButtonText:(NSString *)bottomText;
+- (id)initWithName:(NSString *)name topButtonText:(NSString *)topText bottomButtonText:(NSString *)bottomText;
 @property (nonatomic) UIViewController <TwoButtonDelegate> *delegate;
 @end

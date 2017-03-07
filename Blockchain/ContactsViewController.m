@@ -18,6 +18,9 @@
 #import "ContactTableViewCell.h"
 #import "BCTwoButtonView.h"
 
+#define VIEW_NAME_NEW_CONTACT @"newContact"
+#define VIEW_NAME_USER_WAS_INVITED @"userWasInvited"
+
 const int sectionContacts = 0;
 
 typedef enum {
@@ -300,14 +303,24 @@ typedef enum {
 
 #pragma mark - Two Button View Delegate
 
-- (void)topButtonClicked
+- (void)topButtonClicked:(NSString *)senderName
 {
-    [self createInvitation];
+    if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
+        [self createInvitation];
+    } else if ([senderName isEqualToString:VIEW_NAME_USER_WAS_INVITED]) {
+        [self prepareToReadInvitation];
+    }
 }
 
-- (void)bottomButtonClicked
+- (void)bottomButtonClicked:(NSString *)senderName
 {
-    [self prepareToReadInvitation];
+    if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
+        [self showInvitedView];
+    } else if ([senderName isEqualToString:VIEW_NAME_USER_WAS_INVITED]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:BC_STRING_LINK_INVITE_INSTRUCTIONS preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.createContactNavigationController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Create Contact/Done Button Delegate
@@ -344,7 +357,7 @@ typedef enum {
 
 - (void)newContactClicked:(id)sender
 {
-    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithTopButtonText:BC_STRING_I_WANT_TO_INVITE_SOMEONE bottomButtonText:BC_STRING_SOMEONE_IS_INVITING_ME];
+    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithName:VIEW_NAME_NEW_CONTACT topButtonText:BC_STRING_I_WANT_TO_INVITE_SOMEONE bottomButtonText:BC_STRING_SOMEONE_IS_INVITING_ME];
     twoButtonView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
@@ -352,6 +365,16 @@ typedef enum {
     self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_ADD_NEW_CONTACT];
     
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+}
+
+- (void)showInvitedView
+{
+    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithName:VIEW_NAME_USER_WAS_INVITED topButtonText:BC_STRING_SCAN_QR_CODE bottomButtonText:BC_STRING_SOMEONE_SENT_ME_A_LINK];
+    twoButtonView.delegate = self;
+    
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
+    
+    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
 }
 
 - (void)createInvitation
@@ -419,6 +442,8 @@ typedef enum {
     [self.videoPreviewLayer removeFromSuperlayer];
     
     [app closeModalWithTransition:kCATransitionFade];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection

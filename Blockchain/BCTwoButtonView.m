@@ -10,17 +10,22 @@
 #import "RootService.h"
 
 @interface BCTwoButtonView()
+@property (nonatomic) NSString *name;
 @end
 
 @implementation BCTwoButtonView
 
-- (id)initWithTopButtonText:(NSString *)topText bottomButtonText:(NSString *)bottomText
+- (id)initWithName:(NSString *)name topButtonText:(NSString *)topText bottomButtonText:(NSString *)bottomText
 {
     UIWindow *window = app.window;
     
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
 
     if (self) {
+        
+        self.name = name;
+        
+        self.backgroundColor = [UIColor whiteColor];
         
         CGFloat buttonHeight = 100;
 
@@ -49,12 +54,12 @@
 
 - (void)topButtonClicked
 {
-    [self.delegate topButtonClicked];
+    [self.delegate topButtonClicked:self.name];
 }
 
 - (void)bottomButtonClicked
 {
-    [self.delegate bottomButtonClicked];
+    [self.delegate bottomButtonClicked:self.name];
 }
 
 - (void)dismissContactController
