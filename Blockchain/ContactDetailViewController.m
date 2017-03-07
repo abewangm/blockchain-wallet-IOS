@@ -32,6 +32,9 @@ const int maxFindAttempts = 2;
 @property (nonatomic) ContactTransaction *transactionToFind;
 @property (nonatomic) int findAttempts;
 @property (nonatomic) NSString *messageToSelect;
+
+@property (nonatomic) NSDictionary *transactionList;
+
 @end
 
 @implementation ContactDetailViewController
@@ -42,6 +45,7 @@ const int maxFindAttempts = 2;
 {
     if (self = [super init]) {
         _contact = contact;
+        [self setupTransactionList];
     }
     return self;
 }
@@ -51,8 +55,26 @@ const int maxFindAttempts = 2;
     if (self = [super init]) {
         _contact = contact;
         _messageToSelect = messageIdentifier;
+        [self setupTransactionList];
     }
     return self;
+}
+
+- (void)setupTransactionList
+{
+    NSMutableDictionary *mutableTransactionList = [NSMutableDictionary new];
+    
+    for (id key in self.contact.transactionList) {
+        ContactTransaction *transaction = [self.contact.transactionList objectForKey:key];
+        if (transaction.transactionState == ContactTransactionStateCompletedSend ||
+            transaction.transactionState == ContactTransactionStateCompletedReceive) {
+            [mutableTransactionList setObject:transaction forKey:key];
+        }
+    }
+    
+    self.transactionList = [[NSDictionary alloc] initWithDictionary:mutableTransactionList];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -79,8 +101,8 @@ const int maxFindAttempts = 2;
 {
     _contact = contact;
     
+    [self setupTransactionList];
     [self updateNavigationTitle];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,7 +145,7 @@ const int maxFindAttempts = 2;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return self.contact.transactionList.count;
+        return self.transactionList.count;
     }
     
     DLog(@"Invalid section");
@@ -134,7 +156,7 @@ const int maxFindAttempts = 2;
 {
     ContactTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION forIndexPath:indexPath];
     
-    ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
+    ContactTransaction *transaction = [[self.transactionList allValues] objectAtIndex:indexPath.row];
     
     [cell configureWithTransaction:transaction contactName:self.contact.name];
     
@@ -145,7 +167,7 @@ const int maxFindAttempts = 2;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ContactTransaction *transaction = [[self.contact.transactionList allValues] objectAtIndex:indexPath.row];
+    ContactTransaction *transaction = [[self.transactionList allValues] objectAtIndex:indexPath.row];
     
     if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
         if (!self.presentedViewController) {
@@ -195,7 +217,7 @@ const int maxFindAttempts = 2;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width, 14)];
         label.textColor = COLOR_BLOCKCHAIN_BLUE;
         label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
-        label.text = [[NSString stringWithFormat:BC_STRING_TRANSACTIONS_WITH_ARGUMENT, self.contact.name] uppercaseString];
+        label.text = [BC_STRING_COMPLETED_TRANSACTIONS uppercaseString];
 
         [view addSubview:label];
         
@@ -219,7 +241,7 @@ const int maxFindAttempts = 2;
 
 - (void)selectMessage:(NSString *)messageIdentifier
 {
-    NSArray *allTransactions = [self.contact.transactionList allValues];
+    NSArray *allTransactions = [self.transactionList allValues];
     NSInteger rowToSelect = -1;
     
     for (int index = 0; index < [allTransactions count]; index++) {

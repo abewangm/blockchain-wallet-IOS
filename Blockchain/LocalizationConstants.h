@@ -488,7 +488,7 @@
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
 
 #define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
-#define BC_STRING_TRANSACTIONS_WITH_ARGUMENT NSLocalizedString(@"Transactions with %@", nil)
+#define BC_STRING_COMPLETED_TRANSACTIONS NSLocalizedString(@"Completed Transactions", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)
 #define BC_STRING_MESSAGES NSLocalizedString(@"Messages", nil)
