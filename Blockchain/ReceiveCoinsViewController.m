@@ -108,6 +108,8 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
+    UIEdgeInsets buttonTitleInsets = UIEdgeInsetsMake(0, 8, 0, 8);
+    
 #ifdef ENABLE_DEBUG_MENU
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_AQUA;
@@ -115,7 +117,7 @@ NSString *detailLabel;
     [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
     [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
     requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-
+    requestButton.titleEdgeInsets = buttonTitleInsets;
     [self.view addSubview:requestButton];
     [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
     
@@ -130,7 +132,8 @@ NSString *detailLabel;
     [shareButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
     [self.view addSubview:shareButton];
     [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
-    
+    shareButton.titleEdgeInsets = buttonTitleInsets;
+
     self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - shareButton.frame.size.height, self.view.frame.size.width, 100)];
     [self.view addSubview:self.bottomContainerView];
     
