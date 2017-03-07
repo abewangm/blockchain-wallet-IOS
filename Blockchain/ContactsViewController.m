@@ -479,6 +479,8 @@ typedef enum {
 
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
 {
+    DLog(@"Read invitation success");
+    
     NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
     NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
 
@@ -489,6 +491,7 @@ typedef enum {
 
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
+    DLog(@"Accept relation/invitation success");
     [self reload];
 }
 
