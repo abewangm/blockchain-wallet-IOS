@@ -10,6 +10,7 @@
 #import "Contact.h"
 
 @interface ContactTableViewCell : UITableViewCell
+@property (nonatomic) UIImageView *actionImageView;
 @property (nonatomic) UILabel *mainLabel;
 
 - (void)configureWithContact:(Contact *)contact actionRequired:(BOOL)actionRequired;
