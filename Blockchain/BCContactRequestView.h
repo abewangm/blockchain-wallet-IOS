@@ -26,8 +26,7 @@ typedef enum {
 @property (nonatomic) id<ContactRequestDelegate> delegate;
 @property (nonatomic, readonly) BOOL willSend;
 
-- (id)initWithContact:(Contact *)contact reason:(NSString *)reason willSend:(BOOL)willSend;
-- (void)setTypedAmount:(uint64_t)typedAmount;
+- (id)initWithContact:(Contact *)contact amount:(uint64_t)amount willSend:(BOOL)willSend;
 - (void)showKeyboard;
 
 @end

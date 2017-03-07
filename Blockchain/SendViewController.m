@@ -1506,8 +1506,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)createSendRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact reason:reason willSend:YES];
-    [contactRequestView setTypedAmount:[self getInputAmountInSatoshi]];
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:YES];
     contactRequestView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];

@@ -23,7 +23,7 @@
 
 @implementation BCContactRequestView
 
-- (id)initWithContact:(Contact *)contact reason:(NSString *)reason willSend:(BOOL)willSend
+- (id)initWithContact:(Contact *)contact amount:(uint64_t)amount willSend:(BOOL)willSend
 {
     UIWindow *window = app.window;
     
@@ -32,6 +32,7 @@
     if (self) {
         self.contact = contact;
         _willSend = willSend;
+        self.amount = amount;
         
         self.backgroundColor = [UIColor whiteColor];
 
@@ -50,7 +51,7 @@
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.nextButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, contact.name];
+        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO], contact.name];
         [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
         _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
@@ -69,11 +70,6 @@
     return self;
 }
 
-- (void)setTypedAmount:(uint64_t)typedAmount
-{
-    self.amount = typedAmount;
-}
-
 - (void)showKeyboard
 {
     if (self.textField) {
@@ -83,7 +79,7 @@
 
 - (NSString *)getPromptTextForReason
 {
-    return self.willSend ? BC_STRING_PROMPT_REASON_SEND_ARGUMENT_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_ARGUMENT_ARGUMENT;
+    return self.willSend ? BC_STRING_PROMPT_REASON_SEND_NAME_ARGUMENT_AMOUNT_ARGUMENT_NAME_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_NAME_ARGUMENT_AMOUNT_ARGUMENT_NAME_ARGUMENT;
 }
 
 - (void)completeRequest
