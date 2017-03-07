@@ -16,6 +16,7 @@
 #import "Contact.h"
 #import "ContactDetailViewController.h"
 #import "ContactTableViewCell.h"
+#import "BCTwoButtonView.h"
 
 const int sectionContacts = 0;
 
@@ -24,7 +25,7 @@ typedef enum {
     CreateContactTypeLink
 } CreateContactType;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate, TwoButtonDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
@@ -297,6 +298,18 @@ typedef enum {
     self.contactType = CreateContactTypeLink;
 }
 
+#pragma mark - Two Button View Delegate
+
+- (void)topButtonClicked
+{
+    [self createInvitation];
+}
+
+- (void)bottomButtonClicked
+{
+    [self prepareToReadInvitation];
+}
+
 #pragma mark - Create Contact/Done Button Delegate
 
 - (void)dismissContactController
@@ -331,16 +344,14 @@ typedef enum {
 
 - (void)newContactClicked:(id)sender
 {
-    UIAlertController *createContactOptionsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_INVITE_SOMEONE_TO_CONNECT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self createInvitation];
-    }]];
-    [createContactOptionsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_SOMEONE_SENT_ME_AN_INVITATION_CODE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self prepareToReadInvitation];
-    }]];
+    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithTopButtonText:BC_STRING_I_WANT_TO_INVITE_SOMEONE bottomButtonText:BC_STRING_SOMEONE_IS_INVITING_ME];
+    twoButtonView.delegate = self;
     
-    [self presentViewController:createContactOptionsAlert animated:YES completion:nil];
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
+    
+    self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_ADD_NEW_CONTACT];
+    
+    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
 }
 
 - (void)createInvitation
@@ -348,11 +359,9 @@ typedef enum {
     BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:nil senderName:nil];
     createContactSharingView.delegate = self;
     
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:createContactSharingView];
     
-    self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_CREATE];
-    
-    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [createContactSharingView.textField becomeFirstResponder];
@@ -395,7 +404,7 @@ typedef enum {
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SCAN_QR_CODE view:view];
 
-    [self presentViewController:modalViewController animated:YES completion:nil];
+    [self.createContactNavigationController presentViewController:modalViewController animated:YES completion:nil];
     
     [self.captureSession startRunning];
     

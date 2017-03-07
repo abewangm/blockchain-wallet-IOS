@@ -193,6 +193,7 @@
 		A2599BAA1B0B762400C2EA81 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2599BAC1B0B762400C2EA81 /* Backup.storyboard */; };
 		A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */; };
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
+		C71917F01E6F2701001C180E /* BCTwoButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71917EF1E6F2701001C180E /* BCTwoButtonView.m */; };
 		C75F70E41E241D69005B4EAF /* BCContactRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E31E241D69005B4EAF /* BCContactRequestView.m */; };
 		C75F70E71E2684FF005B4EAF /* ContactTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */; };
 		C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E91E2685CA005B4EAF /* ContactTransaction.m */; };
@@ -996,6 +997,8 @@
 		A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupNavigationViewController.swift; sourceTree = "<group>"; };
 		A2AADC041B0B98720085144B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Backup.strings; sourceTree = "<group>"; };
 		A2AADC071B0B999F0085144B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
+		C71917EE1E6F2701001C180E /* BCTwoButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTwoButtonView.h; sourceTree = "<group>"; };
+		C71917EF1E6F2701001C180E /* BCTwoButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTwoButtonView.m; sourceTree = "<group>"; };
 		C75F70E21E241D69005B4EAF /* BCContactRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactRequestView.h; sourceTree = "<group>"; };
 		C75F70E31E241D69005B4EAF /* BCContactRequestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactRequestView.m; sourceTree = "<group>"; };
 		C75F70E51E2684FF005B4EAF /* ContactTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTransactionTableViewCell.h; sourceTree = "<group>"; };
@@ -1750,6 +1753,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C71917EE1E6F2701001C180E /* BCTwoButtonView.h */,
+				C71917EF1E6F2701001C180E /* BCTwoButtonView.m */,
 				C75F70E51E2684FF005B4EAF /* ContactTransactionTableViewCell.h */,
 				C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */,
 				C75F70E21E241D69005B4EAF /* BCContactRequestView.h */,
@@ -2063,6 +2068,7 @@
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,
 				2322DCB91D771831000E5AC1 /* SRPinningSecurityPolicy.m in Sources */,
+				C71917F01E6F2701001C180E /* BCTwoButtonView.m in Sources */,
 				23F720F21C32DC0A00577738 /* DebugTableViewController.m in Sources */,
 				23D9F2701B602F42006B1B68 /* SettingsBitcoinUnitTableViewController.m in Sources */,
 				23E2FC081C7F60E7004CFF79 /* BCInsetLabel.m in Sources */,
