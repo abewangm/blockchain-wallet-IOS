@@ -429,19 +429,6 @@ typedef enum {
     }
 }
 
-- (void)showInvitationAlert:(NSDictionary *)invitation identifier:(NSString *)identifier
-{
-    NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
-    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitationID] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet acceptRelation:identifier name:name identifier:invitationID];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 - (void)shareInvitationClicked
 {
     NSString *identifier = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
@@ -492,8 +479,11 @@ typedef enum {
 
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
 {
+    NSString *name = [invitation objectForKey:DICTIONARY_KEY_NAME];
+    NSString *invitationID = [invitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self showInvitationAlert:invitation identifier:identifier];
+        [app.wallet acceptRelation:identifier name:name identifier:invitationID];
     });
 }
 
