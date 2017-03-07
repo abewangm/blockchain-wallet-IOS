@@ -168,4 +168,10 @@
     }
 }
 
+- (void)didMoveToSuperview
+{
+    [super didMoveToSuperview];
+    [_textField becomeFirstResponder];
+}
+
 @end
