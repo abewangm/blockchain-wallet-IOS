@@ -279,7 +279,7 @@ const int maxFindAttempts = 2;
 
 - (void)confirmDeleteContact
 {
-    UIAlertController *alertForDeletingContact = [UIAlertController alertControllerWithTitle:BC_STRING_DELETE_CONTACT_ALERT_TITLE message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForDeletingContact = [UIAlertController alertControllerWithTitle:BC_STRING_DELETE_CONTACT_ALERT_TITLE message:BC_STRING_DELETE_CONTACT_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
     [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet deleteContact:self.contact.identifier];
     }]];
