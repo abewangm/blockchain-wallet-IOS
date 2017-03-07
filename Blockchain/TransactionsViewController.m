@@ -156,19 +156,51 @@ const int sectionMain = 0;
 #endif
 }
 
-- (void)drawRect:(CGRect)rect
-{
-	//Setup
-	CGContextRef context = UIGraphicsGetCurrentContext();	
-	CGContextSetShouldAntialias(context, YES);
-	
-    CGContextSetFillColorWithColor(context, [UIColor lightGrayColor].CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, 320, 15));
-}
-
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 65;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 8, self.view.frame.size.width, 14)];
+    label.textColor = COLOR_BLOCKCHAIN_BLUE;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    
+    [view addSubview:label];
+    
+    NSString *labelString;
+    
+    if (section == sectionContactsPending) {
+        labelString = BC_STRING_PAYMENT_REQUESTS;
+    }
+    else if (section == sectionMain) {
+        labelString = BC_STRING_TRANSACTION_HISTORY;
+
+    } else
+        @throw @"Unknown Section";
+    
+    label.text = [labelString uppercaseString];
+    
+    return view;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    //Setup
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetShouldAntialias(context, YES);
+    
+    CGContextSetFillColorWithColor(context, [UIColor lightGrayColor].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, 320, 15));
 }
 
 - (UITableView*)tableView
