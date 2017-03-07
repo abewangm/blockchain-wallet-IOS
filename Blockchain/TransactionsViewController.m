@@ -41,7 +41,7 @@ const int sectionMain = 0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return app.wallet.pendingContactTransactions.count > 0 ? 2 : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
@@ -161,36 +161,44 @@ const int sectionMain = 0;
     return 65;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    if ([self numberOfSectionsInTableView:_tableView] > 1) {
+        return 30;
+    }
+    
+    return 0;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)_tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 8, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_BLOCKCHAIN_BLUE;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
-    
-    [view addSubview:label];
-    
-    NSString *labelString;
-    
-    if (section == sectionContactsPending) {
-        labelString = BC_STRING_PENDING_TRANSACTIONS;
+    if ([self numberOfSectionsInTableView:_tableView] > 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+        view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 8, self.view.frame.size.width, 14)];
+        label.textColor = COLOR_BLOCKCHAIN_BLUE;
+        label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+        
+        [view addSubview:label];
+        
+        NSString *labelString;
+        
+        if (section == sectionContactsPending) {
+            labelString = BC_STRING_PENDING_TRANSACTIONS;
+        }
+        else if (section == sectionMain) {
+            labelString = BC_STRING_TRANSACTION_HISTORY;
+            
+        } else
+            @throw @"Unknown Section";
+        
+        label.text = [labelString uppercaseString];
+        
+        return view;
     }
-    else if (section == sectionMain) {
-        labelString = BC_STRING_TRANSACTION_HISTORY;
-
-    } else
-        @throw @"Unknown Section";
     
-    label.text = [labelString uppercaseString];
-    
-    return view;
+    return nil;
 }
 
 - (void)drawRect:(CGRect)rect
