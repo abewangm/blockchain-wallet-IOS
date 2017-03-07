@@ -909,13 +909,17 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
-- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
+- (void)showSummaryForSendingPaymentRequestAmount:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
 {
     self.addressFromURLHandler = addressString;
     self.amountFromURLHandler = amount;
     self.contactInfo = @{addressString: name};
     
     _addressSource = DestinationAddressSourceContact;
+    
+    [self reload];
+    
+    [self sendPaymentClicked:nil];
 }
 
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString

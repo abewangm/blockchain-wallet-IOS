@@ -3167,8 +3167,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [_tabViewController setActiveViewController:_sendViewController animated:YES index:0];
     
-    [_sendViewController setAmountFromContact:transaction.intendedAmount withToAddress:transaction.address contactName:name];
-    [_sendViewController reload];
+    [_sendViewController showSummaryForSendingPaymentRequestAmount:transaction.intendedAmount withToAddress:transaction.address contactName:name];
 }
 
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction

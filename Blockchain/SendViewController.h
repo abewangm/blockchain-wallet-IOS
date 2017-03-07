@@ -114,7 +114,8 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)setAmountFromContact:(uint64_t)amount withToAddress:(NSString*)string contactName:(NSString *)name;
+- (void)showSummaryForSendingPaymentRequestAmount:(uint64_t)amount withToAddress:(NSString*)string contactName:(NSString *)name;
+
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
