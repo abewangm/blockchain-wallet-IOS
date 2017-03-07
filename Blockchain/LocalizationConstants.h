@@ -430,7 +430,6 @@
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
 #define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add new contact", nil)
-#define BC_STRING_ADDED_NEW_CONTACT NSLocalizedString(@"Added new contact", nil)
 #define BC_STRING_INVITE_SOMEONE_TO_CONNECT NSLocalizedString(@"Invite someone to connect", nil)
 #define BC_STRING_WHO_ARE_YOU_CONNECTING_WITH NSLocalizedString(@"Who are you connecting with?", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)

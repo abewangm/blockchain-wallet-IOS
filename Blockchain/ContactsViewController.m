@@ -499,10 +499,6 @@ typedef enum {
 
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADDED_NEW_CONTACT message:[NSString stringWithFormat:BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER, name, invitation] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
-    
     [self reload];
 }
 
