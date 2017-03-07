@@ -214,10 +214,18 @@ const int maxFindAttempts = 2;
         [deleteButton addTarget:self action:@selector(confirmDeleteContact) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:deleteButton];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width, 14)];
-        label.textColor = COLOR_BLOCKCHAIN_BLUE;
+        UILabel *label = [[UILabel alloc] init];
         label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
-        label.text = [BC_STRING_COMPLETED_TRANSACTIONS uppercaseString];
+        label.textColor = COLOR_BLOCKCHAIN_BLUE;
+        label.frame = CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width - 40, 14);
+
+        if (self.transactionList.count > 0) {
+            label.text = [BC_STRING_COMPLETED_TRANSACTIONS uppercaseString];
+        } else {
+            label.textAlignment = NSTextAlignmentCenter;
+            label.text = [NSString stringWithFormat:BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET, self.contact.name];
+        }
+        
 
         [view addSubview:label];
         

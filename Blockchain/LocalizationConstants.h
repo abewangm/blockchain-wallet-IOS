@@ -466,6 +466,7 @@
 #define BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Ask to send %@ to %@ for %@?", nil)
 #define BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Request %@ from %@ for %@?", nil)
 #define BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS NSLocalizedString(@"Too many payment requests are open. Please complete some of your payment requests first.", nil)
+#define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR_ARGUMENT NSLocalizedString(@"Waiting for %@ to accept", nil)
