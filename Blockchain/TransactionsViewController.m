@@ -180,7 +180,7 @@ const int sectionMain = 0;
     NSString *labelString;
     
     if (section == sectionContactsPending) {
-        labelString = BC_STRING_PAYMENT_REQUESTS;
+        labelString = BC_STRING_PENDING_TRANSACTIONS;
     }
     else if (section == sectionMain) {
         labelString = BC_STRING_TRANSACTION_HISTORY;

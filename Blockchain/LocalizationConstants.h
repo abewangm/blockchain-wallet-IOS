@@ -490,7 +490,7 @@
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
 
 #define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
-#define BC_STRING_PAYMENT_REQUESTS NSLocalizedString(@"Payment Requests", nil)
+#define BC_STRING_PENDING_TRANSACTIONS NSLocalizedString(@"Pending Transactions", nil)
 #define BC_STRING_COMPLETED_TRANSACTIONS NSLocalizedString(@"Completed Transactions", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)
