@@ -402,10 +402,6 @@ int accountEntries = 0;
         if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [cell.imageView setTintColor:COLOR_DARK_GRAY];
-            
-            cell.showDot = app.wallet.contactsActionRequired != ContactActionRequiredNone;
-        } else {
-            cell.showDot = NO;
         }
         
         return cell;
