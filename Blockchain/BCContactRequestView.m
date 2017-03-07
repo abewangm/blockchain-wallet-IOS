@@ -16,14 +16,9 @@
 
 @property (nonatomic) Contact *contact;
 
-@property (nonatomic) NSString *reason;
 @property (nonatomic) UIButton *nextButton;
 
-@property (nonatomic) UILabel *receiveBtcLabel;
-@property (nonatomic) UILabel *receiveFiatLabel;
-
-@property (nonatomic) UITextField *receiveBtcField;
-@property (nonatomic) UITextField *receiveFiatField;
+@property (nonatomic) uint64_t amount;
 @end
 
 @implementation BCContactRequestView
@@ -37,7 +32,6 @@
     if (self) {
         self.contact = contact;
         _willSend = willSend;
-        self.reason = reason;
         
         self.backgroundColor = [UIColor whiteColor];
 
@@ -46,7 +40,6 @@
         promptLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         promptLabel.numberOfLines = 0;
         [self addSubview:promptLabel];
-        
         
         // Input accessory view
         
@@ -57,208 +50,34 @@
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.nextButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        if (reason) {
-            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForAmount], contact.name];
-            [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
+        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, contact.name];
+        [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
-            UIView *bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 8, self.frame.size.width, 100)];
-            [self addSubview:bottomContainerView];
+        _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
+        _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
+        _textField.textColor = COLOR_DARK_GRAY;
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+        _textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textField.spellCheckingType = UITextSpellCheckingTypeNo;
+        [self addSubview:_textField];
             
-            BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.frame.size.width - 15, 1)];
-            BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.frame.size.width - 15, 1)];
-            lineAboveAmounts.backgroundColor = COLOR_LINE_GRAY;
-            lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
-            [bottomContainerView addSubview:lineAboveAmounts];
-            [bottomContainerView addSubview:lineBelowAmounts];
-            
-            self.receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, 40, 21)];
-            self.receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-            self.receiveBtcLabel.textColor = COLOR_DARK_GRAY;
-            self.receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
-            [bottomContainerView addSubview:self.receiveBtcLabel];
-            
-            self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.receiveBtcLabel.frame.origin.x + 53, 10, 117, 30)];
-            self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-            self.receiveBtcField.textColor = COLOR_DARK_GRAY;
-            self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-            self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
-            self.receiveBtcField.inputAccessoryView = self.nextButton;
-            self.receiveBtcField.delegate = self;
-            [bottomContainerView addSubview:self.receiveBtcField];
-            
-            self.receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 136, 15, 40, 21)];
-            self.receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-            self.receiveFiatLabel.textColor = COLOR_DARK_GRAY;
-            self.receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-            [bottomContainerView addSubview:self.receiveFiatLabel];
-            
-            self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.receiveFiatLabel.frame.origin.x + 47, 10, 117, 30)];
-            self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
-            self.receiveFiatField.textColor = COLOR_DARK_GRAY;
-            self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-            self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
-            self.receiveFiatField.inputAccessoryView = _nextButton;
-            self.receiveFiatField.delegate = self;
-            [bottomContainerView addSubview:self.receiveFiatField];
-            
-        } else {
-            promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, contact.name];
-            [self.nextButton addTarget:self action:@selector(promptAmount) forControlEvents:UIControlEventTouchUpInside];
-            
-            
-            _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
-            _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
-            _textField.textColor = COLOR_DARK_GRAY;
-            _textField.borderStyle = UITextBorderStyleRoundedRect;
-            _textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-            _textField.autocorrectionType = UITextAutocorrectionTypeNo;
-            _textField.spellCheckingType = UITextSpellCheckingTypeNo;
-            [self addSubview:_textField];
-            
-            [_textField setReturnKeyType:UIReturnKeyNext];
-            _textField.delegate = self;
-            _textField.inputAccessoryView = self.nextButton;
-        }
+        [_textField setReturnKeyType:UIReturnKeyNext];
+        _textField.delegate = self;
+        _textField.inputAccessoryView = self.nextButton;
     }
     return self;
 }
 
 - (void)setTypedAmount:(uint64_t)typedAmount
 {
-    if (typedAmount > 0) {
-        self.receiveFiatField.text = [NSNumberFormatter formatAmount:typedAmount localCurrency:YES];
-        self.receiveBtcField.text = [NSNumberFormatter formatAmount:typedAmount localCurrency:NO];
-    }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    return YES;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == self.receiveBtcField || textField == self.receiveFiatField) {
-        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSArray  *points = [newString componentsSeparatedByString:@"."];
-        NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
-        NSArray  *commas = [newString componentsSeparatedByString:[locale objectForKey:NSLocaleDecimalSeparator]];
-        
-        // Only one comma or point in input field allowed
-        if ([points count] > 2 || [commas count] > 2)
-            return NO;
-        
-        // Only 1 leading zero
-        if (points.count == 1 || commas.count == 1) {
-            if (range.location == 1 && ![string isEqualToString:@"."] && ![string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]] && [textField.text isEqualToString:@"0"]) {
-                return NO;
-            }
-        }
-        
-        // When entering amount in BTC, max 8 decimal places
-        if ([self.receiveBtcField isFirstResponder]) {
-            // Max number of decimal places depends on bitcoin unit
-            NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
-            
-            if (points.count == 2) {
-                NSString *decimalString = points[1];
-                if (decimalString.length > maxlength) {
-                    return NO;
-                }
-            }
-            else if (commas.count == 2) {
-                NSString *decimalString = commas[1];
-                if (decimalString.length > maxlength) {
-                    return NO;
-                }
-            }
-        }
-        
-        // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else if ([self.receiveFiatField isFirstResponder]) {
-            if (points.count == 2) {
-                NSString *decimalString = points[1];
-                if (decimalString.length > 2) {
-                    return NO;
-                }
-            }
-            else if (commas.count == 2) {
-                NSString *decimalString = commas[1];
-                if (decimalString.length > 2) {
-                    return NO;
-                }
-            }
-        }
-        
-        uint64_t amountInSatoshi = 0;
-        
-        if (textField == self.receiveFiatField) {
-            NSString *amountString = [newString stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
-        }
-        else {
-            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
-        }
-        
-        if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
-            return NO;
-        } else {
-            [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
-            return YES;
-        }
-    } else {
-        return YES;
-    }
-}
-
-- (BOOL)shouldUseBtcField
-{
-    BOOL shouldUseBtcField = YES;
-    
-    if ([self.receiveBtcField isFirstResponder]) {
-        shouldUseBtcField = YES;
-    } else if ([self.receiveFiatField isFirstResponder]) {
-        shouldUseBtcField = NO;
-    }
-
-    return shouldUseBtcField;
-}
-
-- (uint64_t)getInputAmountInSatoshi
-{
-    if ([self shouldUseBtcField]) {
-        return [app.wallet parseBitcoinValueFromTextField:self.receiveBtcField];
-    } else {
-        NSString *language = self.receiveFiatField.textInputMode.primaryLanguage;
-        NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        NSString *requestedAmountString = [self.receiveFiatField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        return app.latestResponse.symbol_local.conversion * [requestedAmountString doubleValue];
-    }
-    
-    return 0;
-}
-
-- (void)doCurrencyConversion
-{
-    uint64_t amount = [self getInputAmountInSatoshi];
-    
-    if ([self shouldUseBtcField]) {
-        self.receiveFiatField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
-    } else {
-        self.receiveBtcField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
-    }
+    self.amount = typedAmount;
 }
 
 - (void)showKeyboard
 {
     if (self.textField) {
         [self.textField becomeFirstResponder];
-    } else {
-        if (app->symbolLocal) {
-            [self.receiveFiatField becomeFirstResponder];
-        } else {
-            [self.receiveBtcField becomeFirstResponder];
-        }
     }
 }
 
@@ -267,36 +86,12 @@
     return self.willSend ? BC_STRING_PROMPT_REASON_SEND_ARGUMENT_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_ARGUMENT_ARGUMENT;
 }
 
-- (NSString *)getPromptTextForAmount
-{
-    return self.willSend ? BC_STRING_PROMPT_AMOUNT_SEND_ARGUMENT : BC_STRING_PROMPT_AMOUNT_RECEIVE_ARGUMENT;
-}
-
-- (void)promptAmount
-{
-    if (self.willSend) {
-        [self.delegate promptSendAmount:self.textField.text forContact:self.contact];
-    } else {
-        [self.delegate promptRequestAmount:self.textField.text forContact:self.contact];
-    }
-}
-
 - (void)completeRequest
 {
-    if ([self.receiveFiatField isFirstResponder]) {
-        [self notifyContact:self.receiveFiatField];
-
-    } else if ([self.receiveBtcField isFirstResponder]) {
-        [self notifyContact:self.receiveBtcField];
-    }
-}
-
-- (void)notifyContact:(UITextField *)lastSelectedField
-{
     if (self.willSend) {
-        [self.delegate createSendRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text] lastSelectedField:lastSelectedField];
+        [self.delegate createSendRequestForContact:self.contact withReason:self.textField.text amount:self.amount lastSelectedField:self.textField];
     } else {
-        [self.delegate createReceiveRequestForContact:self.contact withReason:self.reason amount:[app.wallet parseBitcoinValueFromString:self.receiveBtcField.text] lastSelectedField:lastSelectedField];
+        [self.delegate createReceiveRequestForContact:self.contact withReason:self.textField.text amount:self.amount lastSelectedField:self.textField];
     }
 }
 

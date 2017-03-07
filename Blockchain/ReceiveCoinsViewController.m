@@ -884,16 +884,6 @@ NSString *detailLabel;
 
 #pragma mark - Contact Request Delegate
 
-- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
-{
-    [self createReceiveRequest:RequestTypeSendAmount forContact:contact reason:reason];
-}
-
-- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact
-{
-    DLog(@"Receive error: prompted send amount");
-}
-
 - (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_RECEIVE_REQUEST message:[NSString stringWithFormat:BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];

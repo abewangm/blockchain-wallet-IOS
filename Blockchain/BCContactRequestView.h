@@ -17,8 +17,6 @@ typedef enum {
 } RequestType;
 
 @protocol ContactRequestDelegate
-- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact;
-- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact;
 - (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField;
 - (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField;
 @end

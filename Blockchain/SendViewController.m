@@ -1526,16 +1526,6 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Contact Request Delegate
 
-- (void)promptRequestAmount:(NSString *)reason forContact:(Contact *)contact
-{
-    DLog(@"Send error: prompted request amount");
-}
-
-- (void)promptSendAmount:(NSString *)reason forContact:(Contact *)contact
-{
-    [self createSendRequest:RequestTypeSendAmount forContact:contact reason:reason];
-}
-
 - (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
 {
     DLog(@"Send error: created receive request");
