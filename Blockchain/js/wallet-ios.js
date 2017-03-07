@@ -1955,11 +1955,6 @@ MyWalletPhone.getWebViewLoginData = function () {
   }
 }
 
-MyWalletPhone.isBuyFeatureEnabled = function () {
-  var wallet = MyWallet.wallet
-  return wallet.external && wallet.external.canBuy(wallet.accountInfo, getOptions())
-}
-
 // TODO: move to separate module once a proper bundler is in place
 function getOptions () {
   return ({

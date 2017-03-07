@@ -1929,11 +1929,6 @@
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
 }
 
-- (BOOL)isBuyEnabled
-{
-    return [[self.context evaluateScript:@"MyWalletPhone.isBuyFeatureEnabled()"] toBool];
-}
-
 - (void)watchPendingTrades
 {
     [self.context evaluateScript:@"MyWalletPhone.getPendingTrades()"];

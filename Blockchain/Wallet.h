@@ -284,8 +284,6 @@
 
 - (int)getDefaultAccountLabelledAddressesCount;
 
-- (BOOL)isBuyEnabled;
-
 // Settings
 - (void)getAccountInfo;
 - (NSString *)getEmail;
