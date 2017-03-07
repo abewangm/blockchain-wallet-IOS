@@ -110,7 +110,7 @@ NSString *detailLabel;
 {
 #ifdef ENABLE_DEBUG_MENU
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_AQUA;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
     [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17]];
