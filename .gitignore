@@ -75,6 +75,7 @@ Images.xcassets/email_square.imageset/*.png
 Images.xcassets/close_large.imageset/*.png
 Images.xcassets/lock_large.imageset/*.png
 Images.xcassets/mobile_large.imageset/*.png
+Images.xcassets/backup_red_circle.imageset/*.png
 Images.xcassets/help.imageset/*.png
 Images.xcassets/wallet.imageset/*.png
 Images.xcassets/tx.imageset/*.png
