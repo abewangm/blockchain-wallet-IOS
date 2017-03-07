@@ -2084,7 +2084,7 @@ void (^secondPasswordSuccess)(NSString *);
                             [_tabViewController dismissViewControllerAnimated:YES completion:^{
                                 [app closeSideMenu];
                                 [app closeAllModals];
-                                [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                                [self showTransactions];
                                 [_transactionsViewController selectPayment:identifier];
                             }];
                         }]];
@@ -2112,7 +2112,7 @@ void (^secondPasswordSuccess)(NSString *);
                             [_tabViewController dismissViewControllerAnimated:YES completion:^{
                                 [app closeSideMenu];
                                 [app closeAllModals];
-                                [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                                [self showTransactions];
                                 [_transactionsViewController selectPayment:identifier];
                             }];
                         }]];
@@ -2163,7 +2163,7 @@ void (^secondPasswordSuccess)(NSString *);
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                             [app closeAllModals];
                             [app closeSideMenu];
-                            [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
+                            [self showTransactions];
                             [_transactionsViewController selectPayment:identifier];
                         }]];
                     }
@@ -2261,6 +2261,8 @@ void (^secondPasswordSuccess)(NSString *);
     } else {
         [app.tabViewController presentViewController:alert animated:YES completion:nil];
     }
+    
+    [self showTransactions];
 }
 
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
@@ -2279,6 +2281,8 @@ void (^secondPasswordSuccess)(NSString *);
     } else {
         [app.tabViewController presentViewController:alert animated:YES completion:nil];
     }
+    
+    [self showTransactions];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
@@ -2353,6 +2357,11 @@ void (^secondPasswordSuccess)(NSString *);
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showTransactions
+{
+    [_tabViewController setActiveViewController:_transactionsViewController animated:YES index:1];
 }
 
 - (void)showSendCoins
