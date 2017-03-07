@@ -516,6 +516,11 @@ const int sectionMain = 0;
     DLog(@"TransactionsViewController Warning: selected from address!")
 }
 
+- (void)didSelectContact:(Contact *)contact
+{
+    DLog(@"TransactionsViewController Warning: selected contact!")
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
