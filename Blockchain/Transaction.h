@@ -31,4 +31,7 @@
 @property(nonatomic, strong) InOut *from;
 @property(nonatomic, strong) NSArray *to;
 
+// For displaying contact names
+@property (nonatomic, strong) NSString *contactName;
+
 @end

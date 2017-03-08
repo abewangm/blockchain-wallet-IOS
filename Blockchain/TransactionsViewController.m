@@ -77,34 +77,24 @@ const int sectionMain = 0;
         Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
         ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
+        transaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
         
-        if (contactTransaction) {
-            ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
+        TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
             
-            contactTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
-            
-            NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
-            [cell configureWithTransaction:contactTransaction contactName:name];
-            
-            return cell;
-        } else {
-            TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
-            
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
-            }
-            
-            cell.transaction = transaction;
-            
-            [cell reload];
-            
-            // Selected cell color
-            UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-            [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-            [cell setSelectedBackgroundView:v];
-            
-            return cell;
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
         }
+        
+        cell.transaction = transaction;
+        
+        [cell reload];
+        
+        // Selected cell color
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        [cell setSelectedBackgroundView:v];
+        
+        return cell;
     } else {
         DLog(@"Invalid section %lu", indexPath.section);
         return nil;
