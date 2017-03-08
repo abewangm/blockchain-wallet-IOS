@@ -293,6 +293,11 @@ typedef enum {
 
 - (void)didSelectShareLink
 {
+    if (self.lastCreatedInvitation) {
+        // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked shareLink twice. Delete old contact
+        [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
+    }
+    
     self.contactType = CreateContactTypeLink;
 }
 
