@@ -2297,7 +2297,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didDeleteContact:(NSDictionary *)info
 {
-    [self.contactsViewController.navigationController popToRootViewControllerAnimated:YES];
+    if ([self.contactsViewController.navigationController.viewControllers count] == 1) {
+        [app.wallet getMessages];
+    } else {
+        [self.contactsViewController.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info

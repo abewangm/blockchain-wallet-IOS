@@ -48,6 +48,7 @@ typedef enum {
 
 @property (nonatomic, copy) void (^onCompleteRelation)();
 @property (nonatomic, copy) void (^onFailCompleteRelation)();
+@property (nonatomic, copy) void (^onGetMessages)();
 
 @end
 
@@ -254,18 +255,33 @@ typedef enum {
     if ([self nameIsEmpty:name]) {
         UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_ENTER_A_NAME preferredStyle:UIAlertControllerStyleAlert];
         [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+        
+        if (self.createContactNavigationController) {
+            [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+        } else {
+            [self presentViewController:invalidNameAlert animated:YES completion:nil];
+        }
     } else if ([self nameAlreadyExists:name]) {
         UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_CONTACT_ALREADY_EXISTS preferredStyle:UIAlertControllerStyleAlert];
         [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+        
+        if (self.createContactNavigationController) {
+            [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
+        } else {
+            [self presentViewController:invalidNameAlert animated:YES completion:nil];
+        }
     } else {
         BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
         createContactSenderNameView.delegate = self;
         
         BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
         
-        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+        if (self.createContactNavigationController) {
+            [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+        } else {
+            self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
+            [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+        }
     }
 }
 
@@ -308,7 +324,9 @@ typedef enum {
     self.createContactNavigationController.onPopViewController = nil;
     self.createContactNavigationController.onViewWillDisappear = nil;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.createContactNavigationController = nil;
+    }];
 }
 
 #pragma mark - Actions
@@ -338,21 +356,7 @@ typedef enum {
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
     
-    self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_ADD_NEW_CONTACT];
-    
-    __weak ContactsViewController *weakSelf = self;
-    
-    void (^checkAndDeleteContactInfo)() = ^() {
-        if (weakSelf.lastCreatedInvitation) {
-            NSString *contactId = [weakSelf.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
-            [app.wallet deleteContactAfterStoringInfo:contactId];
-            weakSelf.lastCreatedInvitation = nil;
-        }
-    };
-
-    
-    self.createContactNavigationController.onPopViewController = checkAndDeleteContactInfo;
-    self.createContactNavigationController.onViewWillDisappear = checkAndDeleteContactInfo;
+    self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
     
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
 }
@@ -469,10 +473,30 @@ typedef enum {
 
 - (void)promptToResendInvitationToContact:(Contact *)contact
 {
-    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
-    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, contact.name] message:BC_STRING_RESEND_INVITE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_YES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        __weak ContactsViewController *weakSelf = self;
+        self.onGetMessages = ^() {
+            [weakSelf didCreateContactName:contact.name];
+        };
+        [app.wallet deleteContact:contact.identifier];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DELETE_CONTACT style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self confirmDeleteContact:contact];
+    }]];
     
-    [self presentViewController:errorAlert animated:YES completion:nil];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)confirmDeleteContact:(Contact *)contact
+{
+    UIAlertController *alertForDeletingContact = [UIAlertController alertControllerWithTitle:BC_STRING_DELETE_CONTACT_ALERT_TITLE message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet deleteContact:contact.identifier];
+    }]];
+    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertForDeletingContact animated:YES completion:nil];
 }
 
 #pragma mark - Helpers
@@ -499,6 +523,26 @@ typedef enum {
     }
     
     return NO;
+}
+
+- (BCNavigationController *)navigationControllerForNewContact:(BCModalViewController *)modalViewController
+{
+    BCNavigationController *controller = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_ADD_NEW_CONTACT];
+    
+    __weak ContactsViewController *weakSelf = self;
+    
+    void (^checkAndDeleteContactInfo)() = ^() {
+        if (weakSelf.lastCreatedInvitation) {
+            NSString *contactId = [weakSelf.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
+            [app.wallet deleteContactAfterStoringInfo:contactId];
+            weakSelf.lastCreatedInvitation = nil;
+        }
+    };
+    
+    controller.onPopViewController = checkAndDeleteContactInfo;
+    controller.onViewWillDisappear = checkAndDeleteContactInfo;
+    
+    return controller;
 }
 
 #pragma mark - Wallet Callbacks
@@ -586,6 +630,11 @@ typedef enum {
     
     if (self.refreshControl && self.refreshControl.isRefreshing) {
         [self.refreshControl endRefreshing];
+    }
+    
+    if (self.onGetMessages) {
+        self.onGetMessages();
+        self.onGetMessages = nil;
     }
 }
 
