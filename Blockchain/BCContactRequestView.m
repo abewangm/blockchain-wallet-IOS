@@ -36,7 +36,7 @@
         
         self.backgroundColor = [UIColor whiteColor];
 
-        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 80)];
+        UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 8, window.frame.size.width - 40, 80)];
         promptLabel.textColor = [UIColor darkGrayColor];
         promptLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         promptLabel.numberOfLines = 0;
@@ -54,7 +54,7 @@
         promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO]];
         [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
-        _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
+        _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
         _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
         _textField.textColor = COLOR_DARK_GRAY;
         _textField.borderStyle = UITextBorderStyleRoundedRect;
