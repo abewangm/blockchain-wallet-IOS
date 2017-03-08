@@ -601,7 +601,6 @@ typedef enum {
 - (void)didFailCompleteRelation
 {
     DLog(@"Complete relation failure");
-    [self reload];
     
     if (self.onFailCompleteRelation) {
         self.onFailCompleteRelation();

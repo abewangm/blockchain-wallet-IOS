@@ -2052,14 +2052,12 @@
 
 - (void)readInvitation:(NSString *)invitation
 {
-    // Do not use escape string here - already escaped in ContactsViewController.
     NSString *string = [NSString stringWithFormat:@"MyWalletPhone.readInvitation(%@, \"%@\")", invitation, [invitation escapeStringForJS]];
     [self.context evaluateScript:string];
 }
 
 - (void)completeRelation:(NSString *)identifier
 {
-    // Do not use escape string here - already escaped in ContactsViewController.
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.completeRelation(\"%@\")", [identifier escapeStringForJS]]];
 }
 
@@ -2134,11 +2132,15 @@
         [allContactsDict setObject:contact forKey:contact.identifier];
         
         // Check for any pending invitations
-        if (!contact.mdid &&
-            contact.invitationReceived &&
-            ![contact.invitationReceived isEqualToString:@""]) {
-            actionCount++;
-            firstAction = ContactActionRequiredSingleRequest;
+        if (!contact.mdid) {
+            
+            [self completeRelation:contact.identifier];
+            
+            if (contact.invitationReceived &&
+                ![contact.invitationReceived isEqualToString:@""]) {
+                actionCount++;
+                firstAction = ContactActionRequiredSingleRequest;
+            }
         }
         
         int actionCountForContact = [self numberOfActionsRequiredForContact:contact];
