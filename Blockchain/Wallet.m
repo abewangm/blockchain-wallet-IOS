@@ -696,6 +696,10 @@
         [weakSelf on_complete_relation_success];
     };
     
+    self.context[@"objc_on_complete_relation_error"] = ^() {
+        [weakSelf on_complete_relation_error];
+    };
+    
     self.context[@"objc_on_accept_relation_success"] = ^(NSString *name, NSString *invitation) {
         [weakSelf on_accept_relation_success:invitation name:name];
     };
@@ -3317,6 +3321,16 @@
         [self.delegate didCompleteRelation];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitationSent!", [delegate class]);
+    }
+}
+
+- (void)on_complete_relation_error
+{
+    DLog(@"on_complete_relation_error");
+    if ([self.delegate respondsToSelector:@selector(didFailCompleteRelation)]) {
+        [self.delegate didFailCompleteRelation];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailCompleteRelation!", [delegate class]);
     }
 }
 

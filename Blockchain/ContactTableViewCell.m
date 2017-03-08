@@ -21,7 +21,7 @@
 - (void)configureWithContact:(Contact *)contact actionRequired:(BOOL)actionRequired
 {
     if (self.isSetup) {
-        self.mainLabel.text = contact.name ? contact.name : contact.identifier;
+        [self setTextWithContact:contact];
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return;
     }
@@ -34,7 +34,16 @@
     self.mainLabel.text = contact.name ? contact.name : contact.identifier;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     
+    [self setTextWithContact:contact];
+
     self.isSetup = YES;
+}
+
+- (void)setTextWithContact:(Contact *)contact
+{
+    NSString *name = contact.name ? : contact.identifier;
+    self.mainLabel.text = contact.mdid ? name : [NSString stringWithFormat:@"%@ (%@)", name, BC_STRING_CONTACT_REQUEST_SENT];
+    self.mainLabel.textColor = contact.mdid ? COLOR_TEXT_DARK_GRAY : COLOR_LIGHT_GRAY;
 }
 
 - (void)prepareForReuse

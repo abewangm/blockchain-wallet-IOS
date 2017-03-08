@@ -1952,7 +1952,13 @@ MyWalletPhone.completeRelation = function(invitation) {
         objc_on_complete_relation_success();
     };
     
-    MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(function(e){console.log('Error reading invitation');console.log(e);});
+    var error = function(e) {
+        objc_on_complete_relation_error();
+        console.log('Error completing relation');
+        console.log(e);
+    };
+    
+    MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(error);
 }
 
 MyWalletPhone.acceptRelation = function(invitation, name, identifier) {

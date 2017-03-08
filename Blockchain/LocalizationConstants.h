@@ -430,6 +430,8 @@
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
+#define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"contact request sent", nil)
+#define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite?", nil)
 #define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add New Contact", nil)
 #define BC_STRING_I_WANT_TO_INVITE_SOMEONE NSLocalizedString(@"I want to invite someone", nil)
 #define BC_STRING_SOMEONE_SENT_ME_A_LINK NSLocalizedString(@"Someone sent me a link", nil)
@@ -503,7 +505,7 @@
 #define BC_STRING_CHANGE_NAME NSLocalizedString(@"Change name", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
-#define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"Request Sent", nil)
+#define BC_STRING_REQUEST_SENT NSLocalizedString(@"Request Sent", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT NSLocalizedString(@"%@ has been notified that you would like to send them Bitcoin. When %@ accepts, we will notify you and you can complete the transaction.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS NSLocalizedString(@"%@ has been notified that you would like them to send you Bitcoin. We will notify you of any incoming payments.", nil)
 

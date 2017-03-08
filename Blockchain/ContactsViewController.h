@@ -12,15 +12,14 @@
 
 - (id)initWithInvitation:(NSString *)identifier name:(NSString *)name;
 - (id)initWithAcceptedInvitation:(NSString *)invitationSent;
-- (id)initWithMessageIdentifier:(NSString *)messageIdentifier;
 
 - (void)showAcceptedInvitation:(NSString *)invitationSent;
-- (void)showRequest:(NSString *)messageIdentifier;
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict;
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didCompleteRelation;
+- (void)didFailCompleteRelation;
 - (void)didDeleteContactAfterStoringInfo;
 
 // Messages Controller

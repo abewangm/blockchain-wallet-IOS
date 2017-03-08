@@ -1990,6 +1990,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didCompleteRelation];
 }
 
+- (void)didFailCompleteRelation
+{
+    [self.contactsViewController didFailCompleteRelation];
+}
+
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
     [self.contactsViewController didAcceptRelation:invitation name:name];
@@ -2249,7 +2254,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
     if (app.tabViewController.presentedViewController) {
@@ -2269,7 +2274,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
 
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTACT_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
     if (app.tabViewController.presentedViewController) {

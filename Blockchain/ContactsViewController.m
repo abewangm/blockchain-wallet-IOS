@@ -41,11 +41,13 @@ typedef enum {
 @property (nonatomic) NSString *nameFromURL;
 
 @property (nonatomic) NSString *invitationSentIdentifier;
-@property (nonatomic) NSString *messageIdentifier;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) CreateContactType contactType;
+
+@property (nonatomic, copy) void (^onCompleteRelation)();
+@property (nonatomic, copy) void (^onFailCompleteRelation)();
 
 @end
 
@@ -70,31 +72,12 @@ typedef enum {
     return self;
 }
 
-- (id)initWithMessageIdentifier:(NSString *)messageIdentifier
-{
-    if (self = [super init]) {
-        self.messageIdentifier = messageIdentifier;
-    }
-    return self;
-}
-
 - (void)showAcceptedInvitation:(NSString *)invitationSent
 {
     NSArray *allContacts = [app.wallet.contacts allValues];
     for (Contact *contact in allContacts) {
         if ([contact.invitationSent isEqualToString:invitationSent]) {
             [app.wallet completeRelation:contact.identifier];
-            break;
-        }
-    }
-}
-
-- (void)showRequest:(NSString *)messageIdentifier;
-{
-    NSArray *allContacts = [app.wallet.contacts allValues];
-    for (Contact *contact in allContacts) {
-        if ([contact.transactionList objectForKey:messageIdentifier]) {
-            [self loadMessage:messageIdentifier forContact:contact];
             break;
         }
     }
@@ -134,15 +117,12 @@ typedef enum {
         [app.wallet readInvitation:[self JSDictionaryForInvitation:self.invitationFromURL name:self.nameFromURL]];
     } else if (self.invitationSentIdentifier) {
         [self showAcceptedInvitation:self.invitationSentIdentifier];
-    } else if (self.messageIdentifier) {
-        [self showRequest:self.messageIdentifier];
     }
     
     self.invitationFromURL = nil;
     self.nameFromURL = nil;
     
     self.invitationSentIdentifier = nil;
-    self.messageIdentifier = nil;
     
     self.lastCreatedInvitation = nil;
 }
@@ -335,25 +315,20 @@ typedef enum {
 
 - (void)contactClicked:(Contact *)contact
 {
-    [app.wallet completeRelation:contact.identifier];
-    
-    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
-}
-
-- (void)loadMessage:(NSString *)messageIdentifier forContact:(Contact *)contact
-{
-    [app.wallet completeRelation:contact.identifier];
-    
-    if ([self.navigationController.visibleViewController isEqual:self.detailViewController]) {
-        
-        // Do not push another detail controller if user is viewing detail controller while receiving push notification
-        [self.detailViewController selectMessage:messageIdentifier];
-        return;
+    if (contact.mdid) {
+        self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+        [self.navigationController pushViewController:self.detailViewController animated:YES];
+    } else {
+        __weak ContactsViewController *weakSelf = self;
+        self.onCompleteRelation = ^() {
+            weakSelf.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
+            [weakSelf.navigationController pushViewController:weakSelf.detailViewController animated:YES];
+        };
+        self.onFailCompleteRelation = ^() {
+            [weakSelf promptToResendInvitationToContact:contact];
+        };
+        [app.wallet completeRelation:contact.identifier];
     }
-    
-    self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact selectMessage:messageIdentifier];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
 }
 
 - (void)newContactClicked:(id)sender
@@ -492,6 +467,14 @@ typedef enum {
     [self.detailViewController reloadSymbols];
 }
 
+- (void)promptToResendInvitationToContact:(Contact *)contact
+{
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
+}
+
 #pragma mark - Helpers
 
 - (NSString *)JSDictionaryForInvitation:(NSString *)identifier name:(NSString *)name;
@@ -541,7 +524,24 @@ typedef enum {
 - (void)didCompleteRelation
 {
     DLog(@"Complete relation success");
+    
     [self reload];
+    
+    if (self.onCompleteRelation) {
+        self.onCompleteRelation();
+        self.onCompleteRelation = nil;
+    }
+}
+
+- (void)didFailCompleteRelation
+{
+    DLog(@"Complete relation failure");
+    [self reload];
+    
+    if (self.onFailCompleteRelation) {
+        self.onFailCompleteRelation();
+        self.onFailCompleteRelation = nil;
+    }
 }
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
