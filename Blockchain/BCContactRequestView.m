@@ -51,7 +51,7 @@
         [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.nextButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO], contact.name];
+        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO]];
         [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
         _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 145, window.frame.size.width - 40, 30)];
@@ -79,7 +79,7 @@
 
 - (NSString *)getPromptTextForReason
 {
-    return self.willSend ? BC_STRING_PROMPT_REASON_SEND_NAME_ARGUMENT_AMOUNT_ARGUMENT_NAME_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_NAME_ARGUMENT_AMOUNT_ARGUMENT_NAME_ARGUMENT;
+    return self.willSend ? BC_STRING_PROMPT_REASON_SEND_NAME_ARGUMENT_AMOUNT_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_NAME_ARGUMENT_AMOUNT_ARGUMENT;
 }
 
 - (void)completeRequest
