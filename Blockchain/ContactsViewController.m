@@ -452,8 +452,6 @@ typedef enum {
     
     [self.videoPreviewLayer removeFromSuperlayer];
     
-    [app closeModalWithTransition:kCATransitionFade];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
