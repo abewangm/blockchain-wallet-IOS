@@ -69,7 +69,7 @@
             self.doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
             [self.doneButton addTarget:self action:@selector(doneButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.doneButton];
-            self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
+            self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 80);
             self.doneButton.hidden = YES;
             
         } else {
