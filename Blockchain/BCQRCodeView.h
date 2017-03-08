@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @protocol DoneButtonDelegate
-- (void)dismissContactController;
+- (void)doneButtonClicked;
 @end
 @interface BCQRCodeView : UIView
 @property (nonatomic) UIImageView *qrCodeImageView;

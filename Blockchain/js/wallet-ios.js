@@ -2041,6 +2041,28 @@ MyWalletPhone.deleteContact = function(identifier) {
     save().then(success);
 }
 
+MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
+    
+    var save = MyWalletPhone.getSaveContactsFunction();
+    var success = function(info) {
+        console.log('Deleted contact because user did not complete create contact sequence');
+    };
+    
+    var contactIdentifier;
+    
+    var filtered = Blockchain.R.filter(function(contact) {
+        if (contact.invitationSent == identifier) {
+             contactIdentifier = contact.id;
+             return true;
+           }
+           return false;
+        }, MyWallet.wallet.contacts.list);
+    
+    MyWallet.wallet.contacts.delete(contactIdentifier);
+    
+    save().then(success);
+}
+
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {

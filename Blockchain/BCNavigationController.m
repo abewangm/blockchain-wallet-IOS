@@ -127,6 +127,8 @@
     } else {
         [self dismiss];
     }
+    
+    if (self.onPopViewController) self.onPopViewController();
 }
 
 - (void)dismiss

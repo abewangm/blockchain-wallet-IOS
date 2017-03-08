@@ -67,7 +67,7 @@
             self.doneButton.layer.cornerRadius = 4;
             [self.doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
             self.doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-            [self.doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
+            [self.doneButton addTarget:self action:@selector(doneButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.doneButton];
             self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
             self.doneButton.hidden = YES;
@@ -156,9 +156,9 @@
     [self createContact];
 }
 
-- (void)dismissContactController
+- (void)doneButtonClicked
 {
-    [self.delegate dismissContactController];
+    [self.delegate doneButtonClicked];
 }
 
 - (void)createContact

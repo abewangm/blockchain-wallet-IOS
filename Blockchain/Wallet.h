@@ -386,4 +386,5 @@ typedef enum {
 - (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
 - (BOOL)actionRequiredForContact:(Contact *)contact;
+- (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier;
 @end

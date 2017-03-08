@@ -77,7 +77,7 @@ const float imageWidth = 190;
     self.doneButton.layer.cornerRadius = 4;
     [self.doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     self.doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
-    [self.doneButton addTarget:self action:@selector(dismissContactController) forControlEvents:UIControlEventTouchUpInside];
+    [self.doneButton addTarget:self action:@selector(doneButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.doneButton];
     self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
 }
@@ -104,9 +104,9 @@ const float imageWidth = 190;
     [self animateTextOfLabel:self.qrCodeFooterLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.qrCodeFooterLabel];
 }
 
-- (void)dismissContactController
+- (void)doneButtonClicked
 {
-    [self.doneButtonDelegate dismissContactController];
+    [self.doneButtonDelegate doneButtonClicked];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver

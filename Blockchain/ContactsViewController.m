@@ -143,6 +143,8 @@ typedef enum {
     
     self.invitationSentIdentifier = nil;
     self.messageIdentifier = nil;
+    
+    self.lastCreatedInvitation = nil;
 }
 
 - (void)refreshControlActivated
@@ -319,9 +321,9 @@ typedef enum {
     }
 }
 
-#pragma mark - Create Contact/Done Button Delegate
+#pragma mark - Create Contact Delegate/Done Button Delegate
 
-- (void)dismissContactController
+- (void)doneButtonClicked
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -359,6 +361,17 @@ typedef enum {
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
     
     self.createContactNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_ADD_NEW_CONTACT];
+    
+    __weak ContactsViewController *weakSelf = self;
+    
+    self.createContactNavigationController.onPopViewController = ^() {
+        if (weakSelf.lastCreatedInvitation) {
+            NSString *contactId = [weakSelf.lastCreatedInvitation objectForKey:DICTIONARY_KEY_ID];
+            [app.wallet deleteContactAfterStoringInfo:contactId];
+            weakSelf.lastCreatedInvitation = nil;
+        }
+    };
+
     
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
 }

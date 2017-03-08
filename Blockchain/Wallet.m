@@ -2090,6 +2090,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContact(\"%@\")", [contactIdentifier escapeStringForJS]]];
 }
 
+- (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContactAfterStoringInfo(\"%@\")", [contactIdentifier escapeStringForJS]]];
+}
+
 - (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
 {
     NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
