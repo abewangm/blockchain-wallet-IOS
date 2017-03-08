@@ -288,6 +288,11 @@ typedef enum {
 
 - (void)didSelectQRCode
 {
+    if (self.lastCreatedInvitation) {
+        // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked share via QR code after clicking shareLink. Delete old contact
+        [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
+    }
+    
     self.contactType = CreateContactTypeQR;
 }
 
