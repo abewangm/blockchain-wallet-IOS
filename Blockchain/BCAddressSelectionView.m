@@ -384,8 +384,19 @@ int legacyAddressesSectionNumber;
         }
         else if (section == contactsSectionNumber) {
             Contact *contact = [contacts objectAtIndex:row];
-            label = contact.name;
             cell.addressLabel.text = nil;
+            
+            if (contact.mdid) {
+                label = contact.name;
+                cell.userInteractionEnabled = YES;
+                cell.labelLabel.alpha = 1.0;
+                cell.addressLabel.alpha = 1.0;
+            } else {
+                label = [NSString stringWithFormat:@"%@ (%@)", contact.name, BC_STRING_CONTACT_REQUEST_SENT];
+                cell.userInteractionEnabled = NO;
+                cell.labelLabel.alpha = 0.5;
+                cell.addressLabel.alpha = 0.5;
+            }
         }
         
         if (label)
