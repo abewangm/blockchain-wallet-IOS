@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -45,16 +45,16 @@
 	<string>Blockchain needs access to your location to show you nearby businesses that accept Bitcoin</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-ExtraLight.ttf</string>
 		<string>Montserrat-Light.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
