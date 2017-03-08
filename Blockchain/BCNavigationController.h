@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL shouldHideBusyView;
 
 @property(nonatomic, copy) void (^onPopViewController)();
+@property(nonatomic, copy) void (^onViewWillDisappear)();
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController title:(NSString *)title;
 - (void)showBusyViewWithLoadingText:(NSString *)text;

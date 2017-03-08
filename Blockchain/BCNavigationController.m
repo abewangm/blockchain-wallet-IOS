@@ -131,6 +131,13 @@
     if (self.onPopViewController) self.onPopViewController();
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.onViewWillDisappear) self.onViewWillDisappear();
+}
+
 - (void)dismiss
 {
     [self dismissViewControllerAnimated:YES completion:nil];

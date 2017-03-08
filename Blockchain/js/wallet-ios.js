@@ -2046,19 +2046,20 @@ MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         console.log('Deleted contact because user did not complete create contact sequence');
+        objc_on_delete_contact_after_storing_info_success(info);
     };
     
-    var contactIdentifier;
+    var contactInfo;
     
     var filtered = Blockchain.R.filter(function(contact) {
         if (contact.invitationSent == identifier) {
-             contactIdentifier = contact.id;
+             contactInfo = contact;
              return true;
            }
            return false;
         }, MyWallet.wallet.contacts.list);
-    
-    MyWallet.wallet.contacts.delete(contactIdentifier);
+
+    MyWallet.wallet.contacts.delete(contactInfo.id);
     
     save().then(success);
 }

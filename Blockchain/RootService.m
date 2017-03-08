@@ -2295,6 +2295,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info
+{
+    [self.contactsViewController didDeleteContactAfterStoringInfo];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

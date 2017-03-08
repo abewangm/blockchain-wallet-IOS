@@ -325,6 +325,9 @@ typedef enum {
 
 - (void)doneButtonClicked
 {
+    self.createContactNavigationController.onPopViewController = nil;
+    self.createContactNavigationController.onViewWillDisappear = nil;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -364,14 +367,17 @@ typedef enum {
     
     __weak ContactsViewController *weakSelf = self;
     
-    self.createContactNavigationController.onPopViewController = ^() {
+    void (^checkAndDeleteContactInfo)() = ^() {
         if (weakSelf.lastCreatedInvitation) {
-            NSString *contactId = [weakSelf.lastCreatedInvitation objectForKey:DICTIONARY_KEY_ID];
+            NSString *contactId = [weakSelf.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
             [app.wallet deleteContactAfterStoringInfo:contactId];
             weakSelf.lastCreatedInvitation = nil;
         }
     };
 
+    
+    self.createContactNavigationController.onPopViewController = checkAndDeleteContactInfo;
+    self.createContactNavigationController.onViewWillDisappear = checkAndDeleteContactInfo;
     
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
 }
@@ -603,6 +609,11 @@ typedef enum {
 }
 
 - (void)didChangeContactName
+{
+    [self reload];
+}
+
+- (void)didDeleteContactAfterStoringInfo
 {
     [self reload];
 }

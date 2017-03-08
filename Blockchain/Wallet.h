@@ -112,6 +112,7 @@
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
+- (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
 - (void)didPushTransaction;
 @end
 

@@ -21,6 +21,7 @@
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didCompleteRelation;
+- (void)didDeleteContactAfterStoringInfo;
 
 // Messages Controller
 - (void)didGetMessages;

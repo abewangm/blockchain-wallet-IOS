@@ -744,6 +744,10 @@
         [weakSelf on_delete_contact_success:info];
     };
     
+    self.context[@"objc_on_delete_contact_after_storing_info_success"] = ^(JSValue *info) {
+        [weakSelf on_delete_contact_after_storing_info_success:info];
+    };
+    
     [self.context evaluateScript:jsSource];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -3436,6 +3440,17 @@
         [self.delegate didDeleteContact:[info toDictionary]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didDeleteContact!", [delegate class]);
+    }
+}
+
+- (void)on_delete_contact_after_storing_info_success:(JSValue *)info
+{
+    DLog(@"on_delete_contact_after_storing_info_success");
+    
+    if ([self.delegate respondsToSelector:@selector(didDeleteContactAfterStoringInfo:)]) {
+        [self.delegate didDeleteContactAfterStoringInfo:[info toDictionary]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didDeleteContactAfterStoringInfo!", [delegate class]);
     }
 }
 
