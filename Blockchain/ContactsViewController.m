@@ -48,7 +48,6 @@ typedef enum {
 
 @property (nonatomic, copy) void (^onCompleteRelation)();
 @property (nonatomic, copy) void (^onFailCompleteRelation)();
-@property (nonatomic, copy) void (^onGetMessages)();
 @property (nonatomic, copy) void (^onClickDoneButton)();
 
 @end
@@ -647,11 +646,6 @@ typedef enum {
     
     if (self.refreshControl && self.refreshControl.isRefreshing) {
         [self.refreshControl endRefreshing];
-    }
-    
-    if (self.onGetMessages) {
-        self.onGetMessages();
-        self.onGetMessages = nil;
     }
 }
 
