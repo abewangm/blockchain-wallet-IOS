@@ -41,8 +41,6 @@
     self.backButton.frame = FRAME_BACK_BUTTON;
     self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.backButton setTitle:@"" forState:UIControlStateNormal];
-    [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
-    [self.backButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:self.backButton];
     
     [self setupBusyView];
@@ -88,11 +86,14 @@
     [super viewDidLayoutSubviews];
     
     if (self.viewControllers.count > 1) {
-        self.
-        self.backButton.hidden = NO;
+        [self.backButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+        [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
+        [self.backButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
         self.closeButton.hidden = YES;
     } else {
-        self.backButton.hidden = YES;
+        [self.backButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+        [self.backButton setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
+        [self.backButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
         self.closeButton.hidden = NO;
     }
     
@@ -119,7 +120,7 @@
     }];
 }
 
-#pragma mark Busy View Delegate
+#pragma mark - Busy View Delegate
 
 - (void)showBusyViewWithLoadingText:(NSString *)text
 {
@@ -135,6 +136,23 @@
     if (self.busyView.alpha == 1.0) {
         [self.busyView fadeOut];
     }
+}
+
+#pragma mark - Actions
+
+- (void)share
+{
+    NSURL *url = [NSURL URLWithString:[URL_SERVER stringByAppendingFormat:@"/tx/%@", self.transactionHash]];
+        
+    NSArray *activityItems = @[self, url];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
+    
+    [activityViewController setValue:BC_STRING_TRANSACTION_DETAILS forKey:@"subject"];
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end

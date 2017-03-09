@@ -209,6 +209,8 @@
 #define BC_STRING_PAYMENT_REQUEST_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
 
+#define BC_STRING_TRANSACTION_DETAILS NSLocalizedString(@"Transaction details", nil)
+
 #define BC_STRING_CREATE NSLocalizedString(@"Create", nil)
 #define BC_STRING_NAME NSLocalizedString(@"Name", nil)
 #define BC_STRING_EDIT NSLocalizedString(@"Edit", nil)

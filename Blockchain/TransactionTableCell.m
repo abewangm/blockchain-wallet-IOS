@@ -135,6 +135,7 @@
     detailViewController.transactionIndex = indexPath.row;
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.transactionHash = transaction.myHash;
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {
