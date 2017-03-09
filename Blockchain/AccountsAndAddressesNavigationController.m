@@ -42,7 +42,7 @@
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
     [backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
@@ -52,7 +52,7 @@
 #ifdef ENABLE_TRANSFER_FUNDS
     UIButton *warningButton = [UIButton buttonWithType:UIButtonTypeCustom];
     warningButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    warningButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    warningButton.imageEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
     [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
     [warningButton addTarget:self action:@selector(transferAllFundsWarningClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -100,7 +100,7 @@
     
     if (self.viewControllers.count == 1 || [self.visibleViewController isMemberOfClass:[AccountsAndAddressesViewController class]]) {
         self.backButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
-        self.backButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+        self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
         [self.backButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
@@ -108,6 +108,7 @@
         self.backButton.frame = FRAME_BACK_BUTTON;
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.backButton setTitle:@"" forState:UIControlStateNormal];
+        self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
         [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     }
 }

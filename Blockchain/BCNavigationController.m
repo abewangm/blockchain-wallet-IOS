@@ -45,7 +45,7 @@
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
-    self.closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    self.closeButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
     self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
@@ -53,7 +53,7 @@
     [topBar addSubview:self.closeButton];
     
     self.backButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
     self.backButton.frame = FRAME_BACK_BUTTON;
     self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.backButton setTitle:@"" forState:UIControlStateNormal];

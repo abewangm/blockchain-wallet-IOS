@@ -104,6 +104,7 @@ import UIKit
         } else {
             closeButton!.frame = CGRect(x: 0, y: 12, width: 85, height: 51);
             closeButton!.setTitle("", for: UIControlState())
+            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(8, 12, 0, 0)
             closeButton!.contentHorizontalAlignment = .left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), for: UIControlState());
         }

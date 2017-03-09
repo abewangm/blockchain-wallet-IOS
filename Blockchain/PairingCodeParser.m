@@ -48,7 +48,7 @@ BOOL isReadingQRCode;
     [topBarView addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    closeButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     closeButton.center = CGPointMake(closeButton.center.x, headerLabel.center.y);
