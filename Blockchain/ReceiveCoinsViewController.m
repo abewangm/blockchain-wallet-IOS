@@ -893,32 +893,26 @@ NSString *detailLabel;
 
 - (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
 {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_RECEIVE_REQUEST message:[NSString stringWithFormat:BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], contact.name, reason] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
-        [textField resignFirstResponder];
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            app.wallet.onSendPaymentRequest = ^(NSString *name) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                
-                if (app.tabViewController.presentedViewController) {
-                    [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-                        app.topViewControllerDelegate = nil;
-                        [app closeAllModals];
-                        [app.tabViewController presentViewController:alert animated:YES completion:nil];
-                    }];
-                } else {
+    DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
+    [textField resignFirstResponder];
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        app.wallet.onSendPaymentRequest = ^(NSString *name) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS, name] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            
+            if (app.tabViewController.presentedViewController) {
+                [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+                    app.topViewControllerDelegate = nil;
+                    [app closeAllModals];
                     [app.tabViewController presentViewController:alert animated:YES completion:nil];
-                }
-            };
-            [app.wallet sendPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
-        });
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [self.contactRequestNavigationController presentViewController:alert animated:YES completion:nil];
+                }];
+            } else {
+                [app.tabViewController presentViewController:alert animated:YES completion:nil];
+            }
+        };
+        [app.wallet sendPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
+    });
 }
 
 - (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField

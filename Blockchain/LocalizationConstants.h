@@ -465,10 +465,6 @@
 #define BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT NSLocalizedString(@"Request Bitcoin from %@", nil)
 #define BC_STRING_PROMPT_REASON_RECEIVE_NAME_ARGUMENT_AMOUNT_ARGUMENT NSLocalizedString(@"Remind %@ why you're requesting %@ from them", nil)
 #define BC_STRING_PROMPT_REASON_SEND_NAME_ARGUMENT_AMOUNT_ARGUMENT NSLocalizedString(@"Remind %@ why you'd like to send them %@", nil)
-#define BC_STRING_CONFIRM_SEND_REQUEST NSLocalizedString(@"Confirm Send Request", nil)
-#define BC_STRING_CONFIRM_RECEIVE_REQUEST NSLocalizedString(@"Confirm Receive Request", nil)
-#define BC_STRING_ASK_TO_SEND_ARGUMENT_TO_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Ask to send %@ to %@ for %@?", nil)
-#define BC_STRING_REQUEST_ARGUMENT_FROM_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"Request %@ from %@ for %@?", nil)
 #define BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS NSLocalizedString(@"Too many payment requests are open. Please complete some of your payment requests first.", nil)
 #define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 

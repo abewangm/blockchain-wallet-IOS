@@ -16,7 +16,7 @@
 
 @property (nonatomic) Contact *contact;
 
-@property (nonatomic) UIButton *nextButton;
+@property (nonatomic) UIButton *requestButton;
 
 @property (nonatomic) uint64_t amount;
 @end
@@ -44,15 +44,15 @@
         
         // Input accessory view
         
-        self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.nextButton.frame = CGRectMake(0, 0, window.frame.size.width, 46);
-        self.nextButton.backgroundColor = COLOR_BUTTON_BLUE;
-        [self.nextButton setTitle:BC_STRING_NEXT forState:UIControlStateNormal];
-        [self.nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.nextButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        self.requestButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.requestButton.frame = CGRectMake(0, 0, window.frame.size.width, 46);
+        self.requestButton.backgroundColor = COLOR_BUTTON_BLUE;
+        [self.requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+        [self.requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO]];
-        [self.nextButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
+        [self.requestButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
         _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
         _textField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_textField.font.pointSize];
@@ -65,7 +65,7 @@
             
         [_textField setReturnKeyType:UIReturnKeyNext];
         _textField.delegate = self;
-        _textField.inputAccessoryView = self.nextButton;
+        _textField.inputAccessoryView = self.requestButton;
     }
     return self;
 }
