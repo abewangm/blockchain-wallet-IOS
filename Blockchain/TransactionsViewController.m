@@ -18,6 +18,8 @@
 #import "BCAddressSelectionView.h"
 
 @interface TransactionsViewController () <AddressSelectionDelegate>
+@property (nonatomic) int sectionMain;
+@property (nonatomic) int sectionContactsPending;
 @end
 
 @implementation TransactionsViewController
@@ -31,14 +33,6 @@ BOOL hasZeroTotalBalance = NO;
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
 
-#ifdef ENABLE_DEBUG_MENU
-const int sectionContactsPending = 0;
-const int sectionMain = 1;
-#else
-const int sectionContactsPending = -1;
-const int sectionMain = 0;
-#endif
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return app.wallet.pendingContactTransactions.count > 0 ? 2 : 1;
@@ -46,9 +40,9 @@ const int sectionMain = 0;
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == sectionContactsPending) {
+    if (section == self.sectionContactsPending) {
         return app.wallet.pendingContactTransactions.count;
-    } else if (section == sectionMain) {
+    } else if (section == self.sectionMain) {
         NSInteger transactionCount = [data.transactions count];
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
         if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
@@ -64,7 +58,7 @@ const int sectionMain = 0;
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == sectionContactsPending) {
+    if (indexPath.section == self.sectionContactsPending) {
         ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
         
         ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
@@ -73,7 +67,7 @@ const int sectionMain = 0;
         [cell configureWithTransaction:contactTransaction contactName:name];
         
         return cell;
-    } else if (indexPath.section == sectionMain) {
+    } else if (indexPath.section == self.sectionMain) {
         Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
         ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
@@ -103,7 +97,7 @@ const int sectionMain = 0;
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == sectionContactsPending) {
+    if (indexPath.section == self.sectionContactsPending) {
         
         ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
         Contact *contact = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier];
@@ -117,7 +111,7 @@ const int sectionMain = 0;
         }
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else if (indexPath.section == sectionMain) {
+    } else if (indexPath.section == self.sectionMain) {
         self.lastSelectedIndexPath = indexPath;
         
         TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
@@ -174,10 +168,10 @@ const int sectionMain = 0;
         
         NSString *labelString;
         
-        if (section == sectionContactsPending) {
+        if (section == self.sectionContactsPending) {
             labelString = BC_STRING_PENDING_TRANSACTIONS;
         }
-        else if (section == sectionMain) {
+        else if (section == self.sectionMain) {
             labelString = BC_STRING_TRANSACTION_HISTORY;
             
         } else
@@ -299,6 +293,14 @@ const int sectionMain = 0;
 
 - (void)reloadData
 {
+#ifdef ENABLE_DEBUG_MENU
+    self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
+    self.sectionMain = app.wallet.pendingContactTransactions.count > 0 ? 1 : 0;
+#else
+    self.sectionContactsPending = -1;
+    self.sectionMain = 0;
+#endif
+    
     [self setText];
     
     [tableView reloadData];
@@ -337,7 +339,7 @@ const int sectionMain = 0;
         
         NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:numNewTransactions];
         for (int i = 0; i < numNewTransactions; i++) {
-            [rows addObject:[NSIndexPath indexPathForRow:i inSection:sectionMain]];
+            [rows addObject:[NSIndexPath indexPathForRow:i inSection:self.sectionMain]];
         }
         
         [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationFade];
@@ -348,7 +350,7 @@ const int sectionMain = 0;
 {
     // Animate the first cell
     if (data.transactions.count > 0 && animateNextCell) {
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
         animateNextCell = NO;
         
         // Without a delay, the notification will not get the new transaction, but the one before it
@@ -376,7 +378,7 @@ const int sectionMain = 0;
         self.clickedFetchMore = YES;
         [app.wallet getHistory];
     } else {
-        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:sectionMain] == 0;
+        BOOL tableViewIsEmpty = [self.tableView numberOfRowsInSection:self.sectionMain] == 0;
         BOOL tableViewIsFilled = ![[self.tableView indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:[data.transactions count] - 1 inSection:0]];
         
         if (tableViewIsEmpty) {
@@ -493,7 +495,7 @@ const int sectionMain = 0;
     }
     
     if (rowToSelect >= 0) {
-        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionContactsPending]];
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:self.sectionContactsPending]];
     }
     self.messageIdentifier = nil;
 }
