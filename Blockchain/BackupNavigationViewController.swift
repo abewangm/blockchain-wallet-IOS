@@ -41,7 +41,7 @@ import UIKit
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        headerLabel = UILabel(frame:CGRect(x: 80, y: 17.5, width: self.view.frame.size.width - 160, height: 40));
+        headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
         headerLabel?.font = UIFont(name:"Montserrat-Regular", size: 20)
         headerLabel?.textColor = UIColor.white
         headerLabel?.textAlignment = .center;

@@ -27,7 +27,7 @@
             topBarView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
             [self addSubview:topBarView];
             
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 17.5, self.frame.size.width - 150, 40)];
+            UILabel *headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
             headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
             headerLabel.textColor = [UIColor whiteColor];
             headerLabel.textAlignment = NSTextAlignmentCenter;
