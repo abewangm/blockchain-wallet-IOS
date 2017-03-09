@@ -39,7 +39,7 @@ BOOL isReadingQRCode;
     topBarView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.view addSubview:topBarView];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
     headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
@@ -48,7 +48,7 @@ BOOL isReadingQRCode;
     [topBarView addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    closeButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     closeButton.center = CGPointMake(closeButton.center.x, headerLabel.center.y);

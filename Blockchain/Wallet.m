@@ -3749,7 +3749,7 @@
     [app showBusyViewWithLoadingText:BC_STRING_DECRYPTING_PRIVATE_KEY];
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData * data = [self _internal_crypto_scrypt:_password salt:salt n:[N unsignedLongLongValue] r:[r unsignedIntegerValue] p:[p unsignedIntegerValue] dkLen:[derivedKeyLen unsignedIntegerValue]];
+        NSData * data = [self _internal_crypto_scrypt:_password salt:salt n:[N unsignedLongLongValue] r:[r unsignedIntValue] p:[p unsignedIntValue] dkLen:[derivedKeyLen unsignedIntValue]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (data) {
@@ -3778,8 +3778,9 @@
             }
         }
     } else if ([_password isKindOfClass:[NSString class]]) {
-        _passwordBuff = (uint8_t*)[_password UTF8String];
-        _passwordBuffLen = [_password length];
+        const char *passwordUTF8String = [_password UTF8String];
+        _passwordBuff = (uint8_t*)passwordUTF8String;
+        _passwordBuffLen = strlen(passwordUTF8String);
     } else {
         DLog(@"Scrypt password unsupported type");
         return nil;
@@ -3800,8 +3801,9 @@
             }
         }
     } else if ([_salt isKindOfClass:[NSString class]]) {
-        _saltBuff = (uint8_t*)[_salt UTF8String];
-        _saltBuffLen = [_salt length];
+        const char *saltUTF8String = [_salt UTF8String];
+        _saltBuff = (uint8_t*)saltUTF8String;
+        _saltBuffLen = strlen(saltUTF8String);
     } else {
         DLog(@"Scrypt salt unsupported type");
         return nil;

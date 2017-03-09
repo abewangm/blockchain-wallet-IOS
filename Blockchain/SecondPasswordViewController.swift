@@ -32,7 +32,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        let headerLabel = UILabel(frame:CGRect(x: 80, y: 20.5, width: self.view.frame.size.width - 160, height: 40));
+        let headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
         headerLabel.font = UIFont(name:"Montserrat-Regular", size: 13.0)
         headerLabel.textColor = UIColor.white
         headerLabel.textAlignment = .center;

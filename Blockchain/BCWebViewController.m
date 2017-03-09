@@ -48,7 +48,7 @@ NSMutableArray *visitedPages;
     topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.view addSubview:topBar];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 17.5, self.view.frame.size.width - 160, 40)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
     headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
@@ -57,7 +57,7 @@ NSMutableArray *visitedPages;
     [topBar addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
-    closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    closeButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
     closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     closeButton.center = CGPointMake(closeButton.center.x, headerLabel.center.y);
@@ -65,9 +65,9 @@ NSMutableArray *visitedPages;
     [topBar addSubview:closeButton];
     
     backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(0, 12, 85, 51);
+    backButton.frame = FRAME_BACK_BUTTON;
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+    backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
     [backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];

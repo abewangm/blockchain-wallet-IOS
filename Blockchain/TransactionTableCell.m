@@ -31,7 +31,6 @@
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
         
         dateLabel.text = [NSDateFormatter timeAgoStringFromDate:date];
-
     } else {
         dateLabel.hidden = YES;
     }
@@ -125,6 +124,7 @@
     detailViewController.transactionIndex = indexPath.row;
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.transactionHash = transaction.myHash;
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {

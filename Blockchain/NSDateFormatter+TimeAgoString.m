@@ -30,14 +30,14 @@
         return NSLocalizedString(@"Yesterday", nil);
     } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d" options:0 locale:[NSLocale currentLocale]];
-        [dateFormatter setDateFormat:longFormatWithoutYear];
+        NSString *longFormatWithDateAndYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d y" options:0 locale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat:longFormatWithDateAndYear];
         
         return [dateFormatter stringFromDate:date];
     } else { // month + year (last year or earlier)
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        NSString *longFormatWithoutYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
-        [dateFormatter setDateFormat:longFormatWithoutYear];
+        NSString *longFormatWithYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat:longFormatWithYear];
         
         return [dateFormatter stringFromDate:date];
     }

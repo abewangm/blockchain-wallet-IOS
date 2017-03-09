@@ -102,6 +102,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define HEIGHT_IPHONE_4S 480
 
+#define FRAME_HEADER_LABEL CGRectMake(60, 27, 200, 30)
+#define FRAME_BACK_BUTTON CGRectMake(0, 12, 85, 51)
+
+#define IMAGE_EDGE_INSETS_BACK_BUTTON_SHARE UIEdgeInsetsMake(4, 12, 0, 0)
+#define IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON UIEdgeInsetsMake(8, 12, 0, 0)
+#define IMAGE_EDGE_INSETS_CLOSE_BUTTON_X UIEdgeInsetsMake(0, 0, 0, 20)
+
 #define DEFAULT_HEADER_HEIGHT 65
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
@@ -491,6 +498,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER @"appReviewPromptTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT @"hasSeenSurveyPrompt"
 #define USER_DEFAULTS_KEY_REMINDER_MODAL_DATE @"reminderModalDate"
+#define USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION @"hasEndedFirstSession"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
 
