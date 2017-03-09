@@ -11,6 +11,9 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "NSData+Hex.h"
+#import "Blockchain-Prefix.pch"
+#import "TestAccounts.h"
+#import "RootService.h"
 
 @interface CryptoTests : XCTestCase
 @property (nonatomic) Wallet *wallet;

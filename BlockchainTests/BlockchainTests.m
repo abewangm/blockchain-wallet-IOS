@@ -9,6 +9,9 @@
 #import <XCTest/XCTest.h>
 #import "KIFUITestActor+Login.h"
 #import "LocalizationConstants.h"
+#import "Blockchain-Prefix.pch"
+#import "TestAccounts.h"
+#import "RootService.h"
 
 @interface BlockchainTests : XCTestCase
 
@@ -18,17 +21,27 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    [tester waitForTimeInterval:1];
+    
+    if ([tester tryFindingViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET error:nil]) {
+        // Good to go
+    } else if ([tester tryFindingViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET error:nil]) {
+        [tester forgetWallet];
+        [tester createNewWallet];
+    } else {
+        [tester enterPIN];
+    }
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    
+    [tester logoutAndForgetWallet];
 }
 
 - (void)testReceiveAmounts {
-
-    [tester enterPIN];
 
     [tester goToReceive];
     

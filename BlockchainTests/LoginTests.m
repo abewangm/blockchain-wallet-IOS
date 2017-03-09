@@ -37,7 +37,13 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     
-    [tester logoutAndForgetWallet];
+    if ([tester tryFindingViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET error:nil]) {
+        // Good to go
+    } else if ([tester tryFindingViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET error:nil]) {
+        [tester forgetWallet];
+    } else {
+        [tester logoutAndForgetWallet];
+    }
 }
 
 - (void)testCreateWallet
