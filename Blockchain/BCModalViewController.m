@@ -40,7 +40,7 @@
             
             if (closeType == ModalCloseTypeBack) {
                 self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                self.backButton.frame = CGRectMake(0, 12, 85, 51);
+                self.backButton.frame = FRAME_BACK_BUTTON;
                 self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
                 self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
                 [self.backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];

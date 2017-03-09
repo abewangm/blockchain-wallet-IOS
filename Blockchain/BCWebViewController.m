@@ -65,7 +65,7 @@ NSMutableArray *visitedPages;
     [topBar addSubview:closeButton];
     
     backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(0, 12, 85, 51);
+    backButton.frame = FRAME_BACK_BUTTON;
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
     [backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];

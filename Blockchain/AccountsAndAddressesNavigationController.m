@@ -105,7 +105,7 @@
         self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
         [self.backButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     } else {
-        self.backButton.frame = CGRectMake(0, 12, 85, 51);
+        self.backButton.frame = FRAME_BACK_BUTTON;
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.backButton setTitle:@"" forState:UIControlStateNormal];
         [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
