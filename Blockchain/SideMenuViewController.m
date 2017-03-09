@@ -54,6 +54,8 @@ int accountEntries = 0;
     
     [self.view addSubview:self.tableView];
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     // Blue background for bounce area
     CGRect frame = self.view.bounds;
     frame.origin.y = -frame.size.height;
