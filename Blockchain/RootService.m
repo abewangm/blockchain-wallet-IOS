@@ -304,7 +304,12 @@ void (^secondPasswordSuccess)(NSString *);
         [self.pinEntryViewController reset];
     }
     
+    BOOL hasGuidAndSharedKey = [KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey];
+    
     if ([wallet isInitialized]) {
+        
+        if (hasGuidAndSharedKey) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
+        
         [self beginBackgroundUpdateTask];
         
         [self logout];
@@ -312,7 +317,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
-    if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+    if (hasGuidAndSharedKey) {
         [SessionManager resetSessionWithCompletionHandler:^{
             // completion handler must be non-null
         }];
@@ -2333,16 +2338,16 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
     
-    if (sender) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
-            
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"MM dd, yyyy"];
-            NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
-            
-            if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
-                [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
-            }
+    if (sender &&
+        [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION] &&
+        ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM dd, yyyy"];
+        NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
+        
+        if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
+            [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
         }
     }
 }
