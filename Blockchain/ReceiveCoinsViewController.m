@@ -629,6 +629,11 @@ NSString *detailLabel;
         return;
     }
     
+    if ([self getInputAmountInSatoshi] == 0) {
+        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        return;
+    }
+    
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
     addressSelectionView.delegate = self;
     

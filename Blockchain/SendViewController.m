@@ -1501,6 +1501,8 @@ BOOL displayingLocalSymbolSend;
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+    } else if ([self getInputAmountInSatoshi] == 0) {
+        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
     } else {
         [self createSendRequest:RequestTypeSendReason forContact:contact reason:nil];
     }
