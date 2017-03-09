@@ -44,6 +44,8 @@
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
 
+#define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
+
 @implementation RootService
 
 RootService * app;
@@ -960,6 +962,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showPasswordModal
 {
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
+    
+    forgotPasswordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    forgotPasswordButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    forgotPasswordButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [forgotPasswordButton setTitle:BC_STRING_FORGOT_PASSWORD forState:UIControlStateNormal];
     
     forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgetWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -2299,6 +2306,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self logout];
     [self closeSideMenu];
     [self showPasswordModal];
+}
+
+- (IBAction)forgotPasswordClicked:(id)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, URL_SUPPORT] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_SUPPORT_FORGOT_PASSWORD]];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)forgetWalletClicked:(id)sender
