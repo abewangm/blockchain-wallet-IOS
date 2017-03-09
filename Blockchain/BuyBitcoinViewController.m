@@ -50,6 +50,17 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
     return self;
 }
 
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSURL *reqUrl = navigationAction.request.URL;
+
+    if (reqUrl != nil && navigationAction.navigationType == WKNavigationTypeLinkActivated && [[UIApplication sharedApplication] canOpenURL:reqUrl]) {
+        [[UIApplication sharedApplication] openURL:reqUrl];
+        return decisionHandler(WKNavigationActionPolicyCancel);
+    }
+
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3, NSString* a4)
 {
     return [ NSString stringWithFormat:@"%@('%@','%@','%@','%@')", name, [a1 escapeStringForJS], [a2 escapeStringForJS], [a3 escapeStringForJS], [a4 escapeStringForJS] ];
