@@ -98,6 +98,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define HEIGHT_IPHONE_4S 480
 
+#define FRAME_HEADER_LABEL CGRectMake(60, 27, 200, 30)
+
 #define DEFAULT_HEADER_HEIGHT 65
 #define DEFAULT_FOOTER_HEIGHT 47
 #define DEFAULT_STATUS_BAR_HEIGHT 20
