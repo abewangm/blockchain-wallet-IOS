@@ -168,6 +168,8 @@
 @property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
 @property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
 
+@property (nonatomic, copy) void (^onSendPaymentRequest)(NSString *name);
+
 typedef enum {
     ContactActionRequiredNone,
     ContactActionRequiredSingleRequest,
