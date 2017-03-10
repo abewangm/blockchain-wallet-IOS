@@ -3480,20 +3480,12 @@
 
 - (void)useDebugSettingsIfSet
 {
-    NSString *serverURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-    if (serverURL) {
-        [self updateServerURL:serverURL];
-    }
+#ifdef ENABLE_DEBUG_MENU
+    [self updateServerURL:URL_SERVER];
     
-    NSString *webSocketURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-    if (webSocketURL) {
-        [self updateWebSocketURL:webSocketURL];
-    }
+    [self updateWebSocketURL:URL_WEBSOCKET];
     
-    NSString *apiURL = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
-    if (apiURL) {
-        [self updateAPIURL:apiURL];
-    }
+    [self updateAPIURL:URL_API];
     
     BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     NSString *network;
@@ -3504,6 +3496,7 @@
     }
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeNetwork(\"%@\")", [network escapeStringForJS]]];
+#endif
 }
 
 @end

@@ -1760,6 +1760,7 @@ MyWalletPhone.updateNotification = function(updates) {
 }
 
 MyWalletPhone.updateServerURL = function(url) {
+    console.log('Changing wallet server URL to ' + url);
     if (url.substring(url.length - 1) == '/') {
         BlockchainAPI.ROOT_URL = url;
         MyWallet.ws.headers = { 'Origin': url.substring(0, url.length - 1) };
@@ -1770,6 +1771,7 @@ MyWalletPhone.updateServerURL = function(url) {
 }
 
 MyWalletPhone.updateWebsocketURL = function(url) {
+    console.log('Changing websocket server URL to ' + url);
     if (url.substring(url.length - 1) == '/') {
         MyWallet.ws.wsUrl = url.substring(0, url.length - 1);
     } else {
@@ -1778,6 +1780,7 @@ MyWalletPhone.updateWebsocketURL = function(url) {
 }
 
 MyWalletPhone.updateAPIURL = function(url) {
+    console.log('Changing API URL to ' + url);
     if (url.substring(url.length - 1) != '/') {
         BlockchainAPI.API_ROOT_URL = url.concat('/')
     } else {
