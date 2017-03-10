@@ -83,6 +83,11 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
 {
     [self.webView evaluateJavaScript:script completionHandler:^(id result, NSError * _Nullable error) {
         DLog(@"Ran script with result %@, error %@", result, error);
+        if (error != nil) {
+            [self dismissViewControllerAnimated:YES completion:^() {
+                [app standardNotify:[error localizedDescription]];
+            }];
+        }
     }];
 }
 
