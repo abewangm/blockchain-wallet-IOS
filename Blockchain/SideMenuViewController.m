@@ -362,7 +362,7 @@ int accountEntries = 0;
         [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
         view.backgroundView = backgroundView;
         
-        UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 18)];
+        UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
         tickerLabel.adjustsFontSizeToFitWidth = YES;
         tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatMoney:SATOSHI localCurrency:NO], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
