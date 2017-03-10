@@ -119,6 +119,9 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]]) {
+        return;
+    }
     if (self.didInitiateTrade) {
         [self.delegate watchPendingTrades];
     } else {
