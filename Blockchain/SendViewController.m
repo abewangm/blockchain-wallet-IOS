@@ -797,7 +797,7 @@ BOOL displayingLocalSymbolSend;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
     [self enablePaymentButtons];
 }
 
