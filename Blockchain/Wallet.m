@@ -149,6 +149,22 @@
     
 #pragma mark Decryption
     
+    self.context[@"objc_message_sign"] = ^(KeyPair *keyPair, NSString *message, JSValue *network) {
+        return [[keyPair.key signatureForMessage:message] hexadecimalString];
+    };
+    
+    self.context[@"objc_get_shared_key"] = ^(KeyPair *publicKey, KeyPair *privateKey) {
+        return [BTCSHA256([[publicKey.key diffieHellmanWithPrivateKey:privateKey.key] publicKey]) hexadecimalString];
+    };
+    
+    self.context[@"objc_message_verify_base64"] = ^(NSString *address, NSString *signature, NSString *message) {
+        NSData *signatureData = [[NSData alloc] initWithBase64EncodedString:signature options:kNilOptions];
+        NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        BTCKey *key = [BTCKey verifySignature:signatureData forBinaryMessage:messageData];
+        KeyPair *keyPair = [[KeyPair alloc] initWithKey:key network:nil];
+        return [[keyPair getAddress] isEqualToString:address];
+    };
+    
     self.context[@"objc_message_verify"] = ^(NSString *address, NSString *signature, NSString *message) {
         NSData *signatureData = BTCDataFromHex(signature);
         NSData *messageData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -575,6 +591,12 @@
     
     self.context[@"objc_on_error_recover_with_passphrase"] = ^(NSString *error) {
         [weakSelf on_error_recover_with_passphrase:error];
+    };
+    
+#pragma mark Buy
+    
+    self.context[@"objc_show_completed_trade"] = ^(JSValue *trade) {
+        [weakSelf show_completed_trade:trade];
     };
     
 #pragma mark Settings
@@ -1907,6 +1929,21 @@
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
 }
 
+- (BOOL)isBuyEnabled
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.isBuyFeatureEnabled()"] toBool];
+}
+
+- (void)watchPendingTrades
+{
+    [self.context evaluateScript:@"MyWalletPhone.getPendingTrades()"];
+}
+
+- (void)fetchExchangeAccount
+{
+    [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
+}
+
 - (JSValue *)executeJSSynchronous:(NSString *)command
 {
     return [self.context evaluateScript:command];
@@ -2354,6 +2391,8 @@
             [self changeLocalCurrency:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode]];
         }
     }
+    
+    [self watchPendingTrades];
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         
@@ -3026,6 +3065,18 @@
     DLog(@"did_archive_or_unarchive");
     
     [self.webSocket closeWithCode:WEBSOCKET_CODE_ARCHIVE_UNARCHIVE reason:WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED];
+}
+
+- (void)show_completed_trade:(JSValue *)trade
+{
+    NSDictionary *tradeDict = [trade toDictionary];
+    DLog(@"show_completed_trade %@", tradeDict);
+    
+    if ([self.delegate respondsToSelector:@selector(didCompleteTrade:)]) {
+        [self.delegate didCompleteTrade:tradeDict];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCompleteTrade:!", [delegate class]);
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

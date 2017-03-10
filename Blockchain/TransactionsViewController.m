@@ -13,6 +13,7 @@
 #import "RootService.h"
 #import "TransactionDetailViewController.h"
 #import "BCAddressSelectionView.h"
+#import "TransactionDetailNavigationController.h"
 
 @interface TransactionsViewController () <AddressSelectionDelegate>
 @end
@@ -66,7 +67,7 @@ int lastNumberTransactions = INT_MAX;
     self.lastSelectedIndexPath = indexPath;
     
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil indexPath:indexPath];
+    [self showTransactionDetail:cell.transaction];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -314,6 +315,38 @@ int lastNumberTransactions = INT_MAX;
                              ![app.wallet isRecoveryPhraseVerified]);
     
     [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
+}
+
+- (void)showTransactionDetailForHash:(NSString *)hash
+{
+    for (Transaction *transaction in data.transactions) {
+        if ([transaction.myHash isEqualToString:hash]) {
+            [self showTransactionDetail:transaction];
+            break;
+        }
+    }
+}
+
+- (void)showTransactionDetail:(Transaction *)transaction
+{
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transaction = transaction;
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.transactionHash = transaction.myHash;
+    
+    detailViewController.busyViewDelegate = navigationController;
+    navigationController.onDismiss = ^() {
+        app.transactionsViewController.detailViewController = nil;
+    };
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    app.transactionsViewController.detailViewController = detailViewController;
+    
+    if (app.topViewControllerDelegate) {
+        [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
+    }
 }
 
 - (void)changeFilterLabel:(NSString *)newText

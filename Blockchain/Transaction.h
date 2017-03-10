@@ -31,4 +31,6 @@
 @property(nonatomic, strong) InOut *from;
 @property(nonatomic, strong) NSArray *to;
 
+- (NSString *)getDate;
+
 @end

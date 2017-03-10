@@ -15,7 +15,6 @@
 @interface TransactionDetailViewController : UIViewController
 
 @property (nonatomic) Transaction *transaction;
-@property (nonatomic) NSUInteger transactionIndex;
 @property (nonatomic) id<BusyViewDelegate> busyViewDelegate;
 @property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
 

@@ -10,19 +10,6 @@
 #import "Blockchain-Swift.h"
 #import "RootService.h"
 
-const int rowWalletJSON = 0;
-const int rowServerURL = 1;
-const int rowWebsocketURL = 2;
-const int rowMerchantURL = 3;
-const int rowAPIURL = 4;
-const int rowSurgeToggle = 5;
-const int rowDontShowAgain = 6;
-const int rowAppStoreReviewPromptTimer = 7;
-const int rowCertificatePinning = 8;
-const int rowTestnet = 9;
-const int rowSecurityReminderTimer = 10;
-const int rowZeroTickerValue = 11;
-
 @interface DebugTableViewController ()
 @property (nonatomic) NSDictionary *filteredWalletJSON;
 @end
@@ -141,34 +128,39 @@ const int rowZeroTickerValue = 11;
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 
     switch (indexPath.row) {
-        case rowWalletJSON: {
+        case RowWalletJSON: {
             cell.textLabel.text = DEBUG_STRING_WALLET_JSON;
             cell.detailTextLabel.text = self.filteredWalletJSON == nil ? DEBUG_STRING_PLEASE_LOGIN : nil;
             cell.detailTextLabel.textColor = COLOR_BUTTON_RED;
             cell.accessoryType = self.filteredWalletJSON == nil ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
             break;
         }
-        case rowServerURL: {
+        case RowServerURL: {
             cell.textLabel.text = DEBUG_STRING_SERVER_URL;
             cell.detailTextLabel.text =  URL_SERVER;
             break;
         }
-        case rowWebsocketURL: {
+        case RowWebsocketURL: {
             cell.textLabel.text = DEBUG_STRING_WEBSOCKET_URL;
             cell.detailTextLabel.text = URL_WEBSOCKET;
             break;
         }
-        case rowMerchantURL: {
+        case RowMerchantURL: {
             cell.textLabel.text = DEBUG_STRING_MERCHANT_URL;
             cell.detailTextLabel.text = URL_MERCHANT;
             break;
         }
-        case rowAPIURL: {
+        case RowAPIURL: {
             cell.textLabel.text = DEBUG_STRING_API_URL;
             cell.detailTextLabel.text = URL_API;
             break;
         }
-        case rowSurgeToggle: {
+        case RowBuyURL: {
+            cell.textLabel.text = DEBUG_STRING_BUY_WEBVIEW_URL;
+            cell.detailTextLabel.text = URL_BUY_WEBVIEW;
+            break;
+        }
+        case RowSurgeToggle: {
             cell.textLabel.text = DEBUG_STRING_SIMULATE_SURGE;
             UISwitch *surgeToggle = [[UISwitch alloc] init];
             BOOL surgeOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
@@ -177,16 +169,16 @@ const int rowZeroTickerValue = 11;
             cell.accessoryView = surgeToggle;
             break;
         }
-        case rowDontShowAgain: {
+        case RowDontShowAgain: {
             cell.textLabel.text = DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT;
             break;
         }
-        case rowAppStoreReviewPromptTimer: {
+        case RowAppStoreReviewPromptTimer: {
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER;
             break;
         }
-        case rowCertificatePinning: {
+        case RowCertificatePinning: {
             cell.textLabel.text = DEBUG_STRING_CERTIFICATE_PINNING;
             UISwitch *pinningToggle = [[UISwitch alloc] init];
             BOOL pinningOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
@@ -195,7 +187,7 @@ const int rowZeroTickerValue = 11;
             cell.accessoryView = pinningToggle;
             break;
         }
-        case rowTestnet: {
+        case RowTestnet: {
             cell.textLabel.text = DEBUG_STRING_TESTNET;
             UISwitch *testnetToggle = [[UISwitch alloc] init];
             BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
@@ -204,12 +196,12 @@ const int rowZeroTickerValue = 11;
             cell.accessoryView = testnetToggle;
             break;
         }
-        case rowSecurityReminderTimer: {
+        case RowSecurityReminderTimer: {
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER;
             break;
         }
-        case rowZeroTickerValue: {
+        case RowZeroTickerValue: {
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = DEBUG_STRING_ZERO_VALUE_TICKER;
             UISwitch *zeroTickerToggle = [[UISwitch alloc] init];
@@ -229,25 +221,28 @@ const int rowZeroTickerValue = 11;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
-        case rowWalletJSON: {
+        case RowWalletJSON: {
             if (self.filteredWalletJSON) {
                 [self showFilteredWalletJSON];
             }
             break;
         }
-        case rowServerURL:
+        case RowServerURL:
             [self alertToChangeURLName:DEBUG_STRING_SERVER_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL currentURL:URL_SERVER];
             break;
-        case rowWebsocketURL:
+        case RowWebsocketURL:
             [self alertToChangeURLName:DEBUG_STRING_WEBSOCKET_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL currentURL:URL_WEBSOCKET];
             break;
-        case rowMerchantURL:
+        case RowMerchantURL:
             [self alertToChangeURLName:DEBUG_STRING_MERCHANT_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL currentURL:URL_MERCHANT];
             break;
-        case rowAPIURL:
+        case RowAPIURL:
             [self alertToChangeURLName:DEBUG_STRING_API_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_API_URL currentURL:URL_API];
             break;
-        case rowDontShowAgain: {
+        case RowBuyURL:
+            [self alertToChangeURLName:DEBUG_STRING_BUY_WEBVIEW_URL userDefaultKey:USER_DEFAULTS_KEY_DEBUG_BUY_WEBVIEW_URL currentURL:URL_BUY_WEBVIEW];
+            break;
+        case RowDontShowAgain: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:DEBUG_STRING_DEBUG message:DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:DEBUG_STRING_RESET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT];
@@ -260,7 +255,7 @@ const int rowZeroTickerValue = 11;
             [self presentViewController:alert animated:YES completion:nil];
             break;
         }
-        case rowAppStoreReviewPromptTimer: {
+        case RowAppStoreReviewPromptTimer: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:DEBUG_STRING_DEBUG message:DEBUG_STRING_APP_STORE_REVIEW_PROMPT_TIMER preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[[alert textFields] firstObject].text intValue]] forKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
@@ -279,7 +274,7 @@ const int rowZeroTickerValue = 11;
             [self presentViewController:alert animated:YES completion:nil];
             break;
         }
-        case rowSecurityReminderTimer: {
+        case RowSecurityReminderTimer: {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:DEBUG_STRING_DEBUG message:DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[[[alert textFields] firstObject].text intValue]] forKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];

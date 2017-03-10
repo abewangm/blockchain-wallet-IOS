@@ -75,6 +75,7 @@ Images.xcassets/email_square.imageset/*.png
 Images.xcassets/close_large.imageset/*.png
 Images.xcassets/lock_large.imageset/*.png
 Images.xcassets/mobile_large.imageset/*.png
+Images.xcassets/icon_buy.imageset/*.png
 Images.xcassets/help.imageset/*.png
 Images.xcassets/wallet.imageset/*.png
 Images.xcassets/tx.imageset/*.png
@@ -96,4 +97,5 @@ Images.xcassets/tx_blue.imageset/*.png
 Images.xcassets/keypad.imageset/*.png
 Images.xcassets/success.imageset/*.png
 Images.xcassets/logo_large.imageset/*.png
+Images.xcassets/bitcoin.imageset/*.png
 Images.xcassets/blockchain_wallet_logo.imageset/*.png

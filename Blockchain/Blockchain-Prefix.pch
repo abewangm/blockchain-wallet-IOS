@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+#define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
@@ -148,6 +148,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_STRING_WEBSOCKET_URL NSLocalizedString(@"WebSocket URL", nil)
 #define DEBUG_STRING_MERCHANT_URL NSLocalizedString(@"Merchant URL", nil)
 #define DEBUG_STRING_API_URL NSLocalizedString(@"API URL", nil)
+#define DEBUG_STRING_BUY_WEBVIEW_URL NSLocalizedString(@"Buy Webview URL", nil)
 #define DEBUG_STRING_WALLET_JSON NSLocalizedString(@"Wallet JSON", nil)
 #define DEBUG_STRING_SIMULATE_SURGE NSLocalizedString(@"Simulate surge", nil)
 #define DEBUG_STRING_RESET_DONT_SHOW_AGAIN_PROMPT NSLocalizedString(@"Show all 'Dont Show Again' alerts", nil)
@@ -290,17 +291,24 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEFAULT_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define DEFAULT_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define DEFAULT_API_URL @"https://api.blockchain.info"
+#define DEFAULT_BUY_WEBVIEW_URL @"https://blockchain.info/wallet/#/intermediate"
 
 // The debug endpoints are cleared from userDefaults in didFinishLaunching when ENABLE_DEBUG_MENU is undefined..so no need to check ENABLE_DEBUG_MENU here
 #define URL_SERVER [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL] == nil ? DEFAULT_WALLET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL]
 #define URL_WEBSOCKET [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL] == nil ? DEFAULT_WEBSOCKET_SERVER : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL]
 #define URL_MERCHANT [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL] == nil ? DEFAULT_MERCHANT_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL]
 #define URL_API [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL] == nil ? DEFAULT_API_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL]
+#define URL_BUY_WEBVIEW [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_BUY_WEBVIEW_URL] == nil ? DEFAULT_BUY_WEBVIEW_URL : [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_DEBUG_BUY_WEBVIEW_URL]
 
 #define TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
 #define ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/address/%@?format=json"
 
 #define URL_SURVEY @"https://blockchain.co1.qualtrics.com/SE/?SID=SV_8c6uSMW5eBV9nal"
+
+#define WEBKIT_HANDLER_BUY_COMPLETED @"buyCompleted"
+#define WEBKIT_HANDLER_FRONTEND_INITIALIZED @"frontendInitialized"
+
+#define INFORMATION_RECEIVE_URL @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
 
 #define URL_SUFFIX_EVENT_NAME_ARGUMENT @"/event?name=%@"
 #define WALLET_EVENT_TX_FROM_QR @"wallet_ios_tx_from_qr"
@@ -354,6 +362,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_NZD @"NZD"
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
+
+#define DICTIONARY_KEY_TRADE_DATE_CREATED @"createdAt"
+#define DICTIONARY_KEY_TRADE_RECEIVE_ADDRESS @"receiveAddress"
+#define DICTIONARY_KEY_TRADE_HASH @"txHash"
 
 #define DICTIONARY_KEY_TRANSACTION_FROM @"from"
 #define DICTIONARY_KEY_TRANSACTION_TO @"to"
@@ -444,6 +456,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL @"webSocketURL"
 #define USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL @"merchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_API_URL @"apiURL"
+#define USER_DEFAULTS_KEY_DEBUG_BUY_WEBVIEW_URL @"buyWebviewURL"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING @"certificatePinning"
 #define USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE @"simulateSurge"
 #define USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET @"testnet"
@@ -548,13 +561,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define BALANCE_ENTRY_HEIGHT 58
 
 #define MENU_BITCOIN_TICKER_HEIGHT 145
-
-#define MENU_CELL_INDEX_UPGRADE 0
-#define MENU_CELL_INDEX_SETTINGS 1
-#define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 2
-#define MENU_CELL_INDEX_MERCHANT 3
-#define MENU_CELL_INDEX_SUPPORT 4
-#define MENU_CELL_INDEX_LOGOUT 5
 
 #define PIN_API_STATUS_CODE_DELETED 1
 #define PIN_API_STATUS_PIN_INCORRECT 2

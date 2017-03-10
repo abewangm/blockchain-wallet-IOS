@@ -55,5 +55,6 @@
 - (void)setText;
 - (UITableView*)tableView;
 - (void)changeFilterLabel:(NSString *)newText;
-
+- (void)showTransactionDetailForHash:(NSString *)hash;
+- (void)showTransactionDetail:(Transaction *)transaction;
 @end

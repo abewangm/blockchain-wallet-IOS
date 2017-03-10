@@ -11,7 +11,6 @@
 #import "RootService.h"
 #import "TransactionsViewController.h"
 #import "TransactionDetailViewController.h"
-#import "TransactionDetailNavigationController.h"
 
 @implementation TransactionTableCell
 
@@ -127,24 +126,6 @@
 }
 
 #pragma mark button interactions
-
-- (IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
-{
-    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    detailViewController.transaction = transaction;
-    detailViewController.transactionIndex = indexPath.row;
-    
-    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
-    navigationController.transactionHash = transaction.myHash;
-    
-    detailViewController.busyViewDelegate = navigationController;
-    navigationController.onDismiss = ^() {
-        app.transactionsViewController.detailViewController = nil;
-    };
-    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.transactionsViewController.detailViewController = detailViewController;
-    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
-}
 
 - (IBAction)btcbuttonclicked:(id)sender
 {

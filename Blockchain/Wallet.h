@@ -41,6 +41,11 @@
 
 @class Wallet, Transaction, JSValue, JSContext;
 
+@protocol ExchangeAccountDelegate
+- (void)watchPendingTrades;
+- (void)fetchExchangeAccount;
+@end
+
 @protocol WalletDelegate <NSObject>
 @optional
 - (void)didSetLatestBlock:(LatestBlock*)block;
@@ -101,10 +106,11 @@
 - (void)didSetDefaultAccount;
 - (void)didChangeLocalCurrency;
 - (void)setupBackupTransferAll:(id)transferAllController;
+- (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
 }
 
 // Core Wallet Init Properties
@@ -277,6 +283,8 @@
 - (NSDictionary *)filteredWalletJSON;
 
 - (int)getDefaultAccountLabelledAddressesCount;
+
+- (BOOL)isBuyEnabled;
 
 // Settings
 - (void)getAccountInfo;
