@@ -52,6 +52,8 @@ typedef enum {
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
+@property (nonatomic, copy) void (^onViewDidLoad)();
+
 @property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
@@ -122,6 +124,11 @@ BOOL displayingLocalSymbolSend;
     [toField setReturnKeyType:UIReturnKeyDone];
     
     [self reload];
+    
+    if (self.onViewDidLoad) {
+        self.onViewDidLoad();
+        self.onViewDidLoad = nil;
+    }
 }
 
 - (void)resetPayment
@@ -712,7 +719,7 @@ BOOL displayingLocalSymbolSend;
         [UIView animateWithDuration:0.3f animations:^{
             
             UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
-            self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
+            self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
         }];
         
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
@@ -911,15 +918,28 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSummaryForSendingPaymentRequestAmount:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
 {
+    self.fromAccount = [app.wallet getDefaultAccountIndex];
     self.addressFromURLHandler = addressString;
     self.amountFromURLHandler = amount;
     self.contactInfo = @{addressString: name};
     
     _addressSource = DestinationAddressSourceContact;
     
-    [self reload];
+    __weak SendViewController *weakSelf = self;
     
-    [self sendPaymentClicked:nil];
+    self.onViewDidLoad = ^(){
+        [weakSelf sendPaymentClicked:nil];
+    };
+    
+    // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
+    if (self.view) {
+        // If onViewDidLoad block still exists, viewDidLoad was not called, so reload was not called.
+        if (self.onViewDidLoad) {
+            self.onViewDidLoad = nil;
+            [self reload];
+            [self sendPaymentClicked:nil];
+        }
+    }
 }
 
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
@@ -1882,6 +1902,10 @@ BOOL displayingLocalSymbolSend;
 {
     [app closeModalWithTransition:kCATransitionFade];
     
+    if (!self.view.window) {
+        [app showSendCoins];
+    }
+    
     [self changeToCustomFeeMode];
     
     feeField.text = [NSNumberFormatter formatAmount:self.feeFromTransactionProposal localCurrency:NO];
@@ -1907,7 +1931,7 @@ BOOL displayingLocalSymbolSend;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)sendPaymentClicked:(id)sender

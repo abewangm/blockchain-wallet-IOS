@@ -3192,9 +3192,7 @@ void (^secondPasswordSuccess)(NSString *);
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
-    
-    [_tabViewController setActiveViewController:_sendViewController animated:YES index:0];
-    
+        
     [_sendViewController showSummaryForSendingPaymentRequestAmount:transaction.intendedAmount withToAddress:transaction.address contactName:name];
 }
 
