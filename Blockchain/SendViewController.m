@@ -53,6 +53,7 @@ typedef enum {
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
 @property (nonatomic, copy) void (^onViewDidLoad)();
+@property (nonatomic, copy) void (^onZeroSpendableAmount)();
 
 @property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
@@ -794,13 +795,18 @@ BOOL displayingLocalSymbolSend;
     });
 }
 
-- (void)alertUserForZeroSpendableAmount
+- (void)handleZeroSpendableAmount
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    [app.tabViewController presentViewController:alert animated:YES completion:nil];
-    [self enablePaymentButtons];
+    if (self.onZeroSpendableAmount) {
+        self.onZeroSpendableAmount();
+        self.onZeroSpendableAmount = nil;
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        [self enablePaymentButtons];
+    }
 }
 
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
@@ -930,6 +936,17 @@ BOOL displayingLocalSymbolSend;
     __weak SendViewController *weakSelf = self;
     
     self.onViewDidLoad = ^(){
+        [weakSelf sendPaymentClicked:nil];
+    };
+    
+    self.onZeroSpendableAmount = ^() {
+        // Make one attempt to find an account with enough funds and try to send from it
+        for (int accountIndex = 0; accountIndex < [app.wallet getActiveAccountsCount]; accountIndex++) {
+            if (accountIndex != weakSelf.fromAccount && [app.wallet getBalanceForAccount:accountIndex] >= amount) {
+                [weakSelf selectFromAccount:accountIndex];
+            }
+        }
+        
         [weakSelf sendPaymentClicked:nil];
     };
     
@@ -1590,7 +1607,7 @@ BOOL displayingLocalSymbolSend;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
 {
     if ([amount longLongValue] <= 0) {
-        [self alertUserForZeroSpendableAmount];
+        [self handleZeroSpendableAmount];
         return;
     }
     
@@ -1613,7 +1630,7 @@ BOOL displayingLocalSymbolSend;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm
 {
     if ([amount longLongValue] <= 0) {
-        [self alertUserForZeroSpendableAmount];
+        [self handleZeroSpendableAmount];
         return;
     }
     
