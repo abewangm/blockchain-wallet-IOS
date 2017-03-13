@@ -7,8 +7,6 @@
 //
 
 #import "BCContactRequestView.h"
-#import "RootService.h"
-#import "BCLine.h"
 #import "Blockchain-Swift.h"
 #import "Contact.h"
 
@@ -51,7 +49,7 @@
         [self.requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name, [NSNumberFormatter formatMoney:self.amount localCurrency:NO]];
+        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name];
         [self.requestButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
         _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
@@ -79,7 +77,7 @@
 
 - (NSString *)getPromptTextForReason
 {
-    return self.willSend ? BC_STRING_PROMPT_REASON_SEND_NAME_ARGUMENT_AMOUNT_ARGUMENT : BC_STRING_PROMPT_REASON_RECEIVE_NAME_ARGUMENT_AMOUNT_ARGUMENT;
+    return BC_STRING_PROMPT_REASON;
 }
 
 - (void)completeRequest
