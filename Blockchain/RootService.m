@@ -44,6 +44,7 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
+#import "BuyBitcoinNavigationController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
@@ -1498,7 +1499,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
     [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
     self.buyBitcoinViewController.delegate = app.wallet;
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_BITCOIN];
+    BuyBitcoinNavigationController *navigationController = [[BuyBitcoinNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_BITCOIN];
     [_tabViewController presentViewController:navigationController animated:YES completion:nil];
 }
 

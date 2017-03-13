@@ -185,6 +185,7 @@
 		A2599BAA1B0B762400C2EA81 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2599BAC1B0B762400C2EA81 /* Backup.storyboard */; };
 		A269E92E1B32D51F0052F953 /* SecondPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269E92D1B32D51F0052F953 /* SecondPasswordViewController.swift */; };
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
+		C70FF55E1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -971,6 +972,8 @@
 		A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupNavigationViewController.swift; sourceTree = "<group>"; };
 		A2AADC041B0B98720085144B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Backup.strings; sourceTree = "<group>"; };
 		A2AADC071B0B999F0085144B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
+		C70FF55C1E76D5C600AC7F8B /* BuyBitcoinNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinNavigationController.h; sourceTree = "<group>"; };
+		C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyBitcoinNavigationController.m; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1477,6 +1480,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C70FF55C1E76D5C600AC7F8B /* BuyBitcoinNavigationController.h */,
+				C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */,
 				C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */,
 				C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */,
 				C790E1221E5358540063D141 /* BCVerifyMobileNumberViewController.h */,
@@ -2117,6 +2122,7 @@
 				232E17F91C29F0EF0044942E /* UINavigationController+PopToRootWithCompletion.swift in Sources */,
 				23BD046A1D7761C000DB69E6 /* UITextView+AssertionFailureFix.m in Sources */,
 				23D423991D0878BE000054AA /* ModuleXMLHttpRequest.m in Sources */,
+				C70FF55E1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m in Sources */,
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23444F931DCD21B700573C8C /* BTCBase58.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
