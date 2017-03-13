@@ -39,7 +39,7 @@ typedef enum {
             return;
         } else {
             // User selected cancel - UIDocumentMenuViewController has been dismissed from a separate dismiss method, but dismissViewControllerAnimated:completion: will be called an extra time.
-            self.dismissState = DismissStateIsPreventingExtraDismiss;
+            self.dismissState = DismissStateDefault;
             return;
         }
     } else if (self.dismissState == DismissStateIsPreventingExtraDismiss) {
