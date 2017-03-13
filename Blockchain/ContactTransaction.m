@@ -68,4 +68,9 @@
     return contactTransaction;
 }
 
+- (NSComparisonResult)reverseCompareLastUpdated:(ContactTransaction *)contactTransaction
+{
+    return [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:contactTransaction.lastUpdated] decimalValue]] compare:[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:self.lastUpdated] decimalValue]]];
+}
+
 @end

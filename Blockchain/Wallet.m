@@ -2174,6 +2174,8 @@
         }
     }
     
+    [self.pendingContactTransactions sortUsingSelector:@selector(reverseCompareLastUpdated:)];
+    
     return numberOfActionsRequired;
 }
 
