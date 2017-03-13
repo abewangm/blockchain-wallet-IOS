@@ -49,7 +49,7 @@
         [self.requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        promptLabel.text = [NSString stringWithFormat:[self getPromptTextForReason], contact.name];
+        promptLabel.text = [NSString stringWithFormat:BC_STRING_PROMPT_REASON, contact.name];
         [self.requestButton addTarget:self action:@selector(completeRequest) forControlEvents:UIControlEventTouchUpInside];
             
         _textField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
@@ -73,11 +73,6 @@
     if (self.textField) {
         [self.textField becomeFirstResponder];
     }
-}
-
-- (NSString *)getPromptTextForReason
-{
-    return BC_STRING_PROMPT_REASON;
 }
 
 - (void)completeRequest
