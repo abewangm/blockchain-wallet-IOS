@@ -307,6 +307,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)reloadToField
 {
+    self.toContact = nil;
+    
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
         if ([app.wallet isBitcoinAddress:self.toAddress]) {
@@ -1448,7 +1450,8 @@ BOOL displayingLocalSymbolSend;
 - (void)selectToAddress:(NSString *)address
 {
     self.sendToAddress = true;
-    
+    self.toContact = nil;
+
     toField.text = [self labelForLegacyAddress:address];
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
@@ -1478,13 +1481,24 @@ BOOL displayingLocalSymbolSend;
 - (void)selectToAccount:(int)account
 {
     self.sendToAddress = false;
-    
+    self.toContact = nil;
+
     toField.text = [app.wallet getLabelForAccount:account];
     self.toAccount = account;
     self.toAddress = @"";
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
     [app.wallet changePaymentToAccount:account];
+    
+    [self doCurrencyConversion];
+}
+
+- (void)selectToContact:(Contact *)contact
+{
+    self.toContact = contact;
+    
+    toField.text = contact.name;
+    DLog(@"toContact: %@", contact.name);
     
     [self doCurrencyConversion];
 }
@@ -1521,10 +1535,8 @@ BOOL displayingLocalSymbolSend;
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
-    } else if ([self getInputAmountInSatoshi] == 0) {
-        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
     } else {
-        [self createSendRequest:RequestTypeSendReason forContact:contact reason:nil];
+        [self selectToContact:contact];
     }
 }
 
@@ -1936,6 +1948,15 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)sendPaymentClicked:(id)sender
 {
+    if (self.toContact) {
+        if ([self getInputAmountInSatoshi] == 0) {
+            [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        } else {
+            [self createSendRequest:RequestTypeSendReason forContact:self.toContact reason:nil];
+        }
+        return;
+    }
+    
     if ([self.toAddress length] == 0) {
         self.toAddress = toField.text;
         DLog(@"toAddress: %@", self.toAddress);

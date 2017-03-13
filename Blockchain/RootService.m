@@ -2285,10 +2285,14 @@ void (^secondPasswordSuccess)(NSString *);
         [app.tabViewController dismissViewControllerAnimated:YES completion:^{
             app.topViewControllerDelegate = nil;
             [app closeAllModals];
-            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+            [app.tabViewController presentViewController:alert animated:YES completion:^{
+                [_sendViewController reload];
+            }];
         }];
     } else {
-        [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        [app.tabViewController presentViewController:alert animated:YES completion:^{
+            [_sendViewController reload];
+        }];
     }
     
     [self showTransactions];

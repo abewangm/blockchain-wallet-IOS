@@ -86,6 +86,7 @@ typedef enum {
 
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;
+@property(nonatomic, strong) Contact *toContact;
 @property int fromAccount;
 @property int toAccount;
 @property BOOL sendFromAddress;
