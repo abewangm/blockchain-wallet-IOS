@@ -33,6 +33,7 @@
         _labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         _labelTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _labelTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        _labelTextField.accessibilityLabel = ACCESSIBILITY_LABEL_TEXT_FIELD_CREATE_ACCOUNT;
         [self addSubview:_labelTextField];
         
         [_labelTextField setReturnKeyType:UIReturnKeyDone];
@@ -46,6 +47,7 @@
         createAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [createAccountButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
+        createAccountButton.accessibilityLabel = ACCESSIBILITY_LABEL_BUTTON_CREATE_ACCOUNT;
         
         _labelTextField.inputAccessoryView = createAccountButton;
     }

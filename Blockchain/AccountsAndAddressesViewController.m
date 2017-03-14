@@ -271,6 +271,7 @@
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
+        addButton.accessibilityLabel = ACCESSIBILITY_LABEL_NEW_ACCOUNT;
         [addButton addTarget:self action:@selector(newAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
     }

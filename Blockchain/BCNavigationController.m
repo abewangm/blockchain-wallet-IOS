@@ -51,6 +51,7 @@
     self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:self.closeButton];
+    self.closeButton.accessibilityLabel = ACCESSIBILITY_LABEL_CLOSE_BUTTON;
     
     self.backButton = [[UIButton alloc] initWithFrame:CGRectZero];
     self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;

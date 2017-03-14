@@ -51,4 +51,7 @@
 - (void)goToReceive;
 - (uint64_t)confirmReceiveAmount:(NSString *)randomAmount;
 - (uint64_t)computeBitcoinValue:(NSString *)amount;
+
+- (void)goToAddresses;
+- (void)createAccount;
 @end

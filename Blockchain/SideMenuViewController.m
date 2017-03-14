@@ -411,10 +411,12 @@ int accountEntries = 0;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:entry[@"icon"]];
         
-        if ([entry[@"key"] isEqualToString:entryKeyLogout]) {
+        if ([entry[DICTIONARY_KEY_KEY] isEqualToString:entryKeyLogout]) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_LOGOUT;
-        } else if ([entry[@"key"] isEqualToString:entryKeyUpgradeBackup]) {
+        } else if ([entry[DICTIONARY_KEY_KEY] isEqualToString:entryKeyUpgradeBackup]) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_BACKUP;
+        } else if ([entry[DICTIONARY_KEY_KEY] isEqualToString:entryKeyAccountsAndAddresses]) {
+            cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_ADDRESSES;
         }
         
         return cell;

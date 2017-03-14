@@ -18,6 +18,33 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
 
 @implementation KIFUITestActor (Login)
 
+#pragma mar - Addresses
+
+- (void)goToAddresses
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_ADDRESSES];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_ADDRESSES];
+}
+
+- (void)createAccount
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NEW_ACCOUNT];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NEW_ACCOUNT];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_TEXT_FIELD_CREATE_ACCOUNT];
+    [self enterText:@"ϓ␀𐐀💩" intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_TEXT_FIELD_CREATE_ACCOUNT];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_BUTTON_CREATE_ACCOUNT];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+}
+
 #pragma mark - Backup
 
 - (void)backupFromSideMenu

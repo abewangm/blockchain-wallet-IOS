@@ -104,6 +104,7 @@
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         self.backButton.center = CGPointMake(self.backButton.center.x, self.headerLabel.center.y);
         [self.backButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        self.backButton.accessibilityLabel = ACCESSIBILITY_LABEL_CLOSE_BUTTON;
     } else {
         self.backButton.frame = FRAME_BACK_BUTTON;
         self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

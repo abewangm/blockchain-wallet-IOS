@@ -728,6 +728,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_FORGET_WALLET @"forgetWallet"
 #define ACCESSIBILITY_LABEL_CELL_LOGOUT @"cellLogout"
 #define ACCESSIBILITY_LABEL_CELL_BACKUP @"cellBackup"
+#define ACCESSIBILITY_LABEL_CELL_ADDRESSES @"addresses"
+#define ACCESSIBILITY_LABEL_NEW_ACCOUNT @"newAccount"
 #define ACCESSIBILITY_LABEL_SIDE_MENU @"sideMenu"
 #define ACCESSIBILITY_LABEL_SEND_TAB @"sendTab"
 #define ACCESSIBILITY_LABEL_CONTINUE_PAYMENT @"continuePayment"
@@ -735,6 +737,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_SELECT_ADDRESS @"selectAddress"
 #define ACCESSIBILITY_LABEL_CONFIRM_PAYMENT @"confirmPayment"
 #define ACCESSIBILITY_LABEL_MODAL_BACK_CHEVRON @"modalBackChevron"
+#define ACCESSIBILITY_LABEL_TEXT_FIELD_CREATE_ACCOUNT @"createAccountTextField"
+#define ACCESSIBILITY_LABEL_BUTTON_CREATE_ACCOUNT @"createAccountButton"
+
 
 #define ACCESSIBILITY_LABEL_RECEIVE_TAB @"receiveTab"
 #define ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD @"receiveFiatField"
