@@ -411,9 +411,9 @@ int accountEntries = 0;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.imageView.image = [UIImage imageNamed:entry[@"icon"]];
         
-        if (indexPath.row == MENU_CELL_INDEX_LOGOUT) {
+        if ([entry[@"key"] isEqualToString:entryKeyLogout]) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_LOGOUT;
-        } else if (indexPath.row == MENU_CELL_INDEX_UPGRADE) {
+        } else if ([entry[@"key"] isEqualToString:entryKeyUpgradeBackup]) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_BACKUP;
         }
         
