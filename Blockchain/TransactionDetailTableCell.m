@@ -19,6 +19,8 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    self.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
+    self.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
     return self;
 }
 

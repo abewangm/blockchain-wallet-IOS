@@ -12,7 +12,6 @@
 
 @implementation Transaction
 
-
 + (Transaction*)fromJSONDict:(NSDictionary *)transactionDict {
     
     Transaction * transaction = [[Transaction alloc] init];
@@ -40,5 +39,17 @@
     
     return transaction;
 }
+
+- (NSString *)getDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setAMSymbol:@"am"];
+    [dateFormatter setPMSymbol:@"pm"];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.time];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
+}
+
 
 @end

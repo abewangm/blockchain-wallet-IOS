@@ -19,4 +19,6 @@
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UILabel *busyLabel;
 
+@property (nonatomic) NSString *transactionHash;
+
 @end

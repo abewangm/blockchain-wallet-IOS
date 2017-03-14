@@ -41,7 +41,7 @@ import UIKit
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        headerLabel = UILabel(frame:CGRect(x: 80, y: 17.5, width: self.view.frame.size.width - 160, height: 40));
+        headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
         headerLabel?.font = UIFont(name:"Montserrat-Regular", size: 20)
         headerLabel?.textColor = UIColor.white
         headerLabel?.textAlignment = .center;
@@ -104,6 +104,7 @@ import UIKit
         } else {
             closeButton!.frame = CGRect(x: 0, y: 12, width: 85, height: 51);
             closeButton!.setTitle("", for: UIControlState())
+            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(8, 12, 0, 0)
             closeButton!.contentHorizontalAlignment = .left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), for: UIControlState());
         }

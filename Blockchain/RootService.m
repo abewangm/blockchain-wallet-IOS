@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
 #import "AppDelegate.h"
 #import "MultiAddressResponse.h"
@@ -43,6 +44,10 @@
 #import "KeychainItemWrapper+SwipeAddresses.h"
 #import "NSString+SHA256.h"
 #import "Blockchain-Swift.h"
+#import "BuyBitcoinNavigationController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+
+#define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
 
 @implementation RootService
 
@@ -138,11 +143,6 @@ void (^secondPasswordSuccess)(NSString *);
 #ifndef ENABLE_DEBUG_MENU
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
@@ -155,7 +155,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
     
-    if ([URL_SERVER isEqualToString:DEFAULT_WALLET_SERVER]) {
+    if ([URL_SERVER isEqualToString:PRODUCTION_WALLET_SERVER]) {
         [self.certificatePinner pinCertificate];
     }
     
@@ -198,6 +198,8 @@ void (^secondPasswordSuccess)(NSString *);
     symbolLocal = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SYMBOL_LOCAL];
     
     [self showWelcomeOrPinScreen];
+    
+    [self setupBuyWebView];
     
     return YES;
 }
@@ -304,7 +306,12 @@ void (^secondPasswordSuccess)(NSString *);
         [self.pinEntryViewController reset];
     }
     
+    BOOL hasGuidAndSharedKey = [KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey];
+    
     if ([wallet isInitialized]) {
+        
+        if (hasGuidAndSharedKey) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
+        
         [self beginBackgroundUpdateTask];
         
         [self logout];
@@ -312,7 +319,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
-    if ([KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey]) {
+    if (hasGuidAndSharedKey) {
         [SessionManager resetSessionWithCompletionHandler:^{
             // completion handler must be non-null
         }];
@@ -496,6 +503,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     curtainImageView.image = launchImage;
     curtainImageView.alpha = 0;
+}
+
+- (void)setupBuyWebView
+{
+    self.buyBitcoinViewController = [[BuyBitcoinViewController alloc] init];
 }
 
 #pragma mark - UI State
@@ -957,6 +969,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)showPasswordModal
 {
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
+    
+    forgotPasswordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    forgotPasswordButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
+    forgotPasswordButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [forgotPasswordButton setTitle:BC_STRING_FORGOT_PASSWORD forState:UIControlStateNormal];
     
     forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgetWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -1478,6 +1495,18 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_LOGGED_OUT reason:WEBSOCKET_CLOSE_REASON_LOGGED_OUT];
 }
 
+- (void)buyBitcoinClicked:(id)sender
+{
+    NSDictionary *loginData = [[app.wallet executeJSSynchronous:@"MyWalletPhone.getWebViewLoginData()"] toDictionary];
+    NSString *walletJson = loginData[@"walletJson"];
+    NSString *externalJson = loginData[@"externalJson"];
+    NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
+    [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
+    self.buyBitcoinViewController.delegate = app.wallet;
+    BuyBitcoinNavigationController *navigationController = [[BuyBitcoinNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_BITCOIN];
+    [_tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)forgetWallet
 {
     [self clearPin];
@@ -1514,6 +1543,8 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
+    
+    [self setupBuyWebView];
 }
 
 - (void)didImportKey:(NSString *)address
@@ -1837,6 +1868,26 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didChangeLocalCurrency
 {
     [self.receiveViewController doCurrencyConversion];
+}
+
+- (void)didCompleteTrade:(NSDictionary *)trade
+{
+    NSString *date = [trade objectForKey:DICTIONARY_KEY_TRADE_DATE_CREATED];
+    NSString *hash = [trade objectForKey:DICTIONARY_KEY_TRADE_HASH];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_TRADE_COMPLETED message:[NSString stringWithFormat:BC_STRING_THE_TRADE_YOU_CREATED_ON_DATE_ARGUMENT_HAS_BEEN_COMPLETED, date] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_VIEW_DETAILS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [_transactionsViewController showTransactionDetailForHash:hash];
+    }]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (app.topViewControllerDelegate) {
+            [app.topViewControllerDelegate presentViewController:alert animated:YES completion:nil];
+        } else {
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }
+    });
 }
 
 - (void)didPushTransaction
@@ -2303,6 +2354,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self showPasswordModal];
 }
 
+- (IBAction)forgotPasswordClicked:(id)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_OPEN_ARGUMENT, URL_SUPPORT] message:BC_STRING_LEAVE_APP preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_SUPPORT_FORGOT_PASSWORD]];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)forgetWalletClicked:(id)sender
 {
     UIAlertController *forgetWalletAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING message:BC_STRING_FORGET_WALLET_DETAILS preferredStyle:UIAlertControllerStyleAlert];
@@ -2340,16 +2401,16 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
     
-    if (sender) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
-            
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"MM dd, yyyy"];
-            NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
-            
-            if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
-                [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
-            }
+    if (sender &&
+        [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION] &&
+        ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT]) {
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM dd, yyyy"];
+        NSDate *endSurveyDate = [dateFormat dateFromString:DATE_SURVEY_END];
+        
+        if ([endSurveyDate timeIntervalSinceNow] > 0.0) {
+            [self performSelector:@selector(showSurveyAlert) withObject:nil afterDelay:ANIMATION_DURATION];
         }
     }
 }
@@ -2631,7 +2692,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSession *session = [SessionManager sharedSession];
-    NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+    NSURL *url = [NSURL URLWithString:URL_SERVER];
     session.sessionDescription = url.host;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         

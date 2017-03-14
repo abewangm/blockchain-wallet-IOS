@@ -14,7 +14,7 @@
 - (void)pinCertificate
 {
     NSURLSession *session = [SessionManager sharedSession];
-    NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+    NSURL *url = [NSURL URLWithString:URL_SERVER];
     session.sessionDescription = url.host;
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         // response management code

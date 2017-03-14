@@ -33,7 +33,6 @@
     IBOutlet UIImageView *warningImageView;
 }
 
--(IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
 -(IBAction)btcbuttonclicked:(id)sender;
 
 @property(nonatomic, strong)  Transaction * transaction;

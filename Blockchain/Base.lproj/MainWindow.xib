@@ -26,6 +26,7 @@
                 <outlet property="busyView" destination="260" id="cbQ-Yl-2J6"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
                 <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="cCs-KX-EOb"/>
+                <outlet property="forgotPasswordButton" destination="kgi-aY-D6k" id="QqO-AZ-GnS"/>
                 <outlet property="mainPasswordTextField" destination="626" id="onb-8w-8q1"/>
                 <outlet property="mainPasswordView" destination="623" id="7Xu-al-CwC"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
@@ -367,8 +368,8 @@ http://blockchain.info/wallet</string>
                         <action selector="mainPasswordClicked:" destination="3" eventType="touchUpInside" id="EwS-Lt-kgU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5gL-FG-Zcc">
-                    <rect key="frame" x="84" y="255" width="150" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5gL-FG-Zcc">
+                    <rect key="frame" x="84" y="279" width="150" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.33333333333333331" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
@@ -387,13 +388,32 @@ http://blockchain.info/wallet</string>
                         <action selector="forgetWalletClicked:" destination="3" eventType="touchUpInside" id="cxA-g7-nrO"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you would like to forget this wallet and start over, press 'Forget Wallet'." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="C0R-wB-wF1">
-                    <rect key="frame" x="15" y="205" width="290" height="42"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="If you would like to forget this wallet and start over, press 'Forget Wallet'." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="C0R-wB-wF1">
+                    <rect key="frame" x="15" y="229" width="290" height="42"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
                     <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kgi-aY-D6k">
+                    <rect key="frame" x="85" y="181" width="150" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <state key="normal" title="Forget Wallet">
+                        <color key="titleColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="forgotPasswordClicked:" destination="3" eventType="touchUpInside" id="L3L-jS-29Y"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>

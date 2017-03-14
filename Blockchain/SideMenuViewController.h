@@ -13,5 +13,7 @@
 
 - (void)reload;
 - (void)reloadTableView;
+- (void)clearMenuEntries;
+- (void)addMenuEntry:(NSString *)key text:(NSString *)text icon:(NSString *)icon;
 
 @end

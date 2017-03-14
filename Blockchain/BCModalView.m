@@ -27,7 +27,7 @@
             topBarView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
             [self addSubview:topBarView];
             
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 17.5, self.frame.size.width - 150, 40)];
+            UILabel *headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
             headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
             headerLabel.textColor = [UIColor whiteColor];
             headerLabel.textAlignment = NSTextAlignmentCenter;
@@ -37,9 +37,9 @@
             
             if (closeType == ModalCloseTypeBack) {
                 self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                self.backButton.frame = CGRectMake(0, 12, 85, 51);
+                self.backButton.frame = FRAME_BACK_BUTTON;
                 self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-                self.backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
+                self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
                 [self.backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
                 [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
                 [self.backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
@@ -50,7 +50,7 @@
             }
             else if (closeType == ModalCloseTypeClose) {
                 self.closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 15, 80, 51)];
-                self.closeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+                self.closeButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
                 self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
                 [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
                 self.closeButton.center = CGPointMake(self.closeButton.center.x, headerLabel.center.y);

@@ -53,6 +53,10 @@
 #define BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS NSLocalizedString(@"Tap to copy this address. Share it with the sender via email or text.", nil)
 #define BC_STRING_ERROR_COPYING_TO_CLIPBOARD NSLocalizedString(@"An error occurred while copying your address to the clipboard. Please re-select the destination address or restart the app and try again.", nil)
 
+#define BC_STRING_TRADE_COMPLETED NSLocalizedString(@"Trade Completed", nil)
+#define BC_STRING_THE_TRADE_YOU_CREATED_ON_DATE_ARGUMENT_HAS_BEEN_COMPLETED NSLocalizedString(@"The trade you created on %@ has been completed!", nil)
+#define BC_STRING_VIEW_DETAILS NSLocalizedString(@"View details", nil)
+
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
 #define BC_STRING_ASK_TO_ADD_TO_ADDRESS_BOOK NSLocalizedString(@"Would you like to add the bitcoin address %@ to your address book?", nil)
@@ -171,6 +175,7 @@
 #define BC_STRING_BACKUP_NEEDED NSLocalizedString(@"Backup Needed", nil)
 #define BC_STRING_ADD_EMAIL NSLocalizedString(@"Add Email", nil)
 #define BC_STRING_LOGOUT NSLocalizedString(@"Logout", nil)
+#define BC_STRING_BUY_BITCOIN NSLocalizedString(@"Buy Bitcoin", nil)
 #define BC_STRING_REALLY_LOGOUT NSLocalizedString(@"Do you really want to log out?", nil)
 
 #define BC_STRING_WARNING NSLocalizedString(@"Warning!!!", nil)
@@ -210,6 +215,8 @@
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
 #define BC_STRING_PAYMENT_REQUEST_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
+
+#define BC_STRING_TRANSACTION_DETAILS NSLocalizedString(@"Transaction details", nil)
 
 #define BC_STRING_CREATE NSLocalizedString(@"Create", nil)
 #define BC_STRING_NAME NSLocalizedString(@"Name", nil)
@@ -577,6 +584,8 @@
 #define BC_STRING_BALANCES NSLocalizedString(@"Balances", nil)
 #define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and receive bitcoin.", nil)
 #define BC_STRING_YOUR_TRANSACTIONS NSLocalizedString(@"Your Transactions", nil)
+
+#define BC_STRING_VIEW_ON_URL_ARGUMENT NSLocalizedString(@"View on", nil)
 
 #pragma mark - Swift files
 

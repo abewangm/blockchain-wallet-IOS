@@ -37,8 +37,8 @@ const int cellRowStatus = 6;
 
 const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightWarning = 44;
-const CGFloat rowHeightValue = 116;
-const CGFloat rowHeightValueReceived = 92;
+const CGFloat rowHeightValue = 100;
+const CGFloat rowHeightValueReceived = 80;
 
 @interface TransactionDetailViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, DescriptionDelegate, ValueDelegate, StatusDelegate, RecipientsDelegate>
 
@@ -167,37 +167,32 @@ const CGFloat rowHeightValueReceived = 92;
     
     NSArray *newTransactions = app.latestResponse.transactions;
     
-    if (self.transactionIndex < newTransactions.count) {
-        
-        Transaction *updatedTransaction = newTransactions[self.transactionIndex];
-        
-        if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
-            self.transaction = updatedTransaction;
-        } else {
-            BOOL didFindTransaction = NO;
-            for (Transaction *transaction in newTransactions) {
-                if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
-                    transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
-                    self.transaction = transaction;
-                    didFindTransaction = YES;
-                    break;
-                }
-            }
-            if (!didFindTransaction) {
-                [self dismissViewControllerAnimated:YES completion:^{
-                    [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
-                }];
-            }
-        }
-        
-        [self.tableView reloadData];
-        
-        if (self.refreshControl && self.refreshControl.isRefreshing) {
-            [self.refreshControl endRefreshing];
-        }
-    } else {
-        DLog(@"Error: transaction detail index out of bounds of new transactions array!");
+    [self findAndUpdateTransaction:newTransactions];
+    
+    [self.tableView reloadData];
+    
+    if (self.refreshControl && self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
     }
+}
+
+- (void)findAndUpdateTransaction:(NSArray *)newTransactions
+{
+    BOOL didFindTransaction = NO;
+    for (Transaction *transaction in newTransactions) {
+        if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
+            transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
+            self.transaction = transaction;
+            didFindTransaction = YES;
+            break;
+        }
+    }
+    if (!didFindTransaction) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
+        }];
+    }
+    
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
@@ -278,6 +273,8 @@ const CGFloat rowHeightValueReceived = 92;
         return rowHeightDefault;
     } else if (indexPath.row == [self getCellRowFrom]) {
         return rowHeightDefault/2 + 20.5/2;
+    } else if (indexPath.row == [self getCellRowStatus]) {
+        return rowHeightDefault + 80;
     }
     return rowHeightDefault;
 }

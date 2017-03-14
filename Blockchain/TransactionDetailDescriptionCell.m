@@ -31,7 +31,7 @@
     }
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.contentView.frame.size.height/2 - 20.5/2, 100, 20.5)];
-    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.mainLabel.font.pointSize];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
     self.mainLabel.text = BC_STRING_DESCRIPTION;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -42,7 +42,7 @@
     self.textView.scrollEnabled = NO;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
-    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15]];
+    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:16]];
     self.textView.textColor = COLOR_TEXT_DARK_GRAY;
     
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
@@ -93,22 +93,22 @@
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
                                                                  attribute:NSLayoutAttributeRight
                                                                  relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.editButton
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:0]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeNotAnAttribute
-                                                                multiplier:1.f constant:49]];
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeRight
+                                                                multiplier:1.f constant:-15]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
                                                                  attribute:NSLayoutAttributeRight
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeRight
+                                                                multiplier:1.f constant:0]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeLeft
                                                                 multiplier:1.f constant:0]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
@@ -147,16 +147,6 @@
     self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x + self.textView.frame.size.width, 0, self.contentView.frame.size.width - (self.textView.frame.origin.x + self.textView.frame.size.width), [self.descriptionDelegate getDefaultRowHeight])];
     [self.editButton addTarget:self action:@selector(editDescription) forControlEvents:UIControlEventTouchUpInside];
     
-    CGFloat pencilImageViewHeight = 24;
-    UIImageView *pencilImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, pencilImageViewHeight, pencilImageViewHeight)];
-    pencilImageView.image = [UIImage imageNamed:@"pencil"];
-    pencilImageView.image = [pencilImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [pencilImageView setTintColor:COLOR_PENCIL_LIGHT_GRAY];
-    pencilImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.editButton addSubview:pencilImageView];
-    
-    [self.editButton bringSubviewToFront:pencilImageView];
-    
     [self.contentView addSubview:self.editButton];
 }
 
@@ -164,8 +154,8 @@
 {
     self.textViewPlaceholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x - 8, self.textView.frame.origin.y, self.textView.frame.size.width, self.defaultTextViewHeight)];
     self.textViewPlaceholderLabel.textAlignment = NSTextAlignmentRight;
-    self.textViewPlaceholderLabel.font = [self.textView.font fontWithSize:self.textView.font.pointSize];
-    self.textViewPlaceholderLabel.textColor = [UIColor lightGrayColor];
+    self.textViewPlaceholderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
+    self.textViewPlaceholderLabel.textColor = COLOR_LIGHT_GRAY;
     NSString *label = [self.descriptionDelegate getNotePlaceholder];
     self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
     self.textViewPlaceholderLabel.adjustsFontSizeToFitWidth = YES;
