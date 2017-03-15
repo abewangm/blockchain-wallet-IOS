@@ -10,19 +10,6 @@
 #import "Blockchain-Swift.h"
 #import "RootService.h"
 
-const int rowWalletJSON = 0;
-const int rowServerURL = 1;
-const int rowWebsocketURL = 2;
-const int rowMerchantURL = 3;
-const int rowAPIURL = 4;
-const int rowSurgeToggle = 5;
-const int rowDontShowAgain = 6;
-const int rowAppStoreReviewPromptTimer = 7;
-const int rowCertificatePinning = 8;
-const int rowTestnet = 9;
-const int rowSecurityReminderTimer = 10;
-const int rowZeroTickerValue = 11;
-
 #define DICTIONARY_KEY_SERVER @"server"
 #define DICTIONARY_KEY_WEB_SOCKET @"webSocket"
 #define DICTIONARY_KEY_MERCHANT @"merchant"
