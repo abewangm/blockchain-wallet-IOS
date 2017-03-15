@@ -16,6 +16,22 @@
 #define DICTIONARY_KEY_API @"api"
 #define DICTIONARY_KEY_BUY_WEBVIEW @"buyWebView"
 
+typedef NS_ENUM(NSInteger, DebugTableViewRow) {
+    RowWalletJSON,
+    RowServerURL,
+    RowWebsocketURL,
+    RowMerchantURL,
+    RowAPIURL,
+    RowBuyURL,
+    RowSurgeToggle,
+    RowDontShowAgain,
+    RowAppStoreReviewPromptTimer,
+    RowCertificatePinning,
+    RowTestnet,
+    RowSecurityReminderTimer,
+    RowZeroTickerValue
+};
+
 typedef enum {
     env_dev = 0,
     env_staging = 1,
@@ -23,6 +39,7 @@ typedef enum {
 } environment;
 
 @interface DebugTableViewController ()
+@property (nonatomic) int presenter;
 @property (nonatomic) NSDictionary *filteredWalletJSON;
 
 @end

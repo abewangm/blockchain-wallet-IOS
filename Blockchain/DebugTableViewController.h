@@ -9,20 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DebugTableViewController : UITableViewController
-@property (nonatomic) int presenter;
-typedef NS_ENUM(NSInteger, DebugTableViewRow) {
-    RowWalletJSON,
-    RowServerURL,
-    RowWebsocketURL,
-    RowMerchantURL,
-    RowAPIURL,
-    RowBuyURL,
-    RowSurgeToggle,
-    RowDontShowAgain,
-    RowAppStoreReviewPromptTimer,
-    RowCertificatePinning,
-    RowTestnet,
-    RowSecurityReminderTimer,
-    RowZeroTickerValue
-};
+
 @end
