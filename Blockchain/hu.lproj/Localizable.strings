@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "Pénztárca";
+
+"START BACKUP" = "BIZTONSÁGI MENTÉS INDÍTÁSA";
+
+"Backup Needed" = "Hát szükséges";
+
+"Create a Wallet" = "Hozzon létre egy pénztárca";
+
+"Log In" = "bejelentkezés";
+
+"Please enter your password to log into your Blockchain wallet." = "Kérjük, írja be a jelszót, hogy jelentkezzen be a Blockchain pénztárca.";
+
+"Forgot Password?" = "Elfelejtett jelszó?";
+
+"Or start over and " = "Vagy kezdje újra és ";
+
+"Update Email" = "Frissítés e-mailben";
+
+"Enter Email Address" = "Adja meg E-mail címét";
+
+"Update Mobile" = "Mobil frissítés";
+
+"Enter Mobile Number" = "Adja meg a mobilszámát";
+
+"Balances" = "Egyenlegek";
+
+"Transactions occur when you send and receive bitcoin." = "Tranzakciók fordulhat elő, ha a küldött és fogadott bitcoin.";
+
+"Your Transactions" = "A tranzakciók";
+
+"Backup Complete" = "Teljes biztonsági másolat";
+
+"Backup Needed" = "Hát szükséges";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "A helyreállítási mondat segítségével állítsa vissza a pénzed, ha elveszett jelszó.  Bárki, aki hozzáfér a helyreállítási mondat hozzáférést a bitcoin, tehát eltartás ez offline valahol biztonságos.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A következő 12 szó helyreállítási mondat kapsz hozzáférést a források, abban az esetben, ha elveszíti a jelszavát.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Győződjön meg róla, írd le a mondatot, egy darab papírt, és eltartás ez valahol, és biztonságos.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Írja le a következő 12 szó helyreállítási kifejezés, pontosan úgy, ahogy azok megjelennek, és ebben a sorrendben:";
+
+"PREVIOUS" = "KORÁBBI";
+
+"NEXT" = "KÖVETKEZŐ";
+
+"BACKUP AGAIN" = "HÁT ISMÉT";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "A megerősített email-címmel van hozzászokott küld fizetési figyelmeztetés, emlékeztetők azonosító és belépés kód.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "A mobiltelefon használható kéttényezős hitelesítést, illetve értesítést kapnak.";

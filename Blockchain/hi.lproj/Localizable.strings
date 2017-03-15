@@ -1622,3 +1622,53 @@
 
 /* (No Commment) */
 "Wallets" = "जेब";
+
+"START BACKUP" = "बैकअप प्रारंभ करें";
+
+"Backup Needed" = "बैकअप की जरूरत";
+
+"Create a Wallet" = "बनाएँ एक बटुआ";
+
+"Log In" = "लॉग इन करो";
+
+"Please enter your password to log into your Blockchain wallet." = "कृपया अपने ब् लॉकचेन बटुए में प्रवेश करने के लिए अपना पासवर्ड दर्ज करें।";
+
+"Forgot Password?" = "पासवर्ड भूल गए?";
+
+"Or start over and " = "या अधिक शुरू और ";
+
+"Update Email" = "ईमेल अपडेट";
+
+"Enter Email Address" = "ई-मेल पता दर्ज करें";
+
+"Update Mobile" = "अद्यतन मोबाइल";
+
+"Enter Mobile Number" = "मोबाइल नंबर दर्ज करें";
+
+"Balances" = "शेष राशि";
+
+"Transactions occur when you send and receive bitcoin." = "जब आप भेजें और प्राप्त bitcoin लेनदेन हो।";
+
+"Your Transactions" = "आपके लेन-देन";
+
+"Backup Complete" = "पूर्ण बैकअप";
+
+"Backup Needed" = "बैकअप की जरूरत";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "अपने धन खो पासवर्ड मामले में पुनर्स्थापित करने के लिए आपके पुनर्प्राप्ति वाक्यांश का प्रयोग करें।  अपने पुनर्प्राप्ति वाक्यांश करने के लिए पहुँच के साथ किसी को भी अपने bitcoin का उपयोग कर सकते हैं, तो यह ऑफ़लाइन कहीं सुरक्षित रखने।";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "मामले में आप अपना पासवर्ड खो निम्न 12 शब्द वसूली वाक्यांश आपके धन करने के लिए आपको पहुँच प्रदान करेगा।";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "नीचे अपने वाक्यांश कागज के एक टुकड़े पर लिखने और यह कहीं सुरक्षित और सुरक्षित रखने के लिए सुनिश्चित हो।";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "निम्न 12 शब्द वसूली वाक्यांश नीचे बिल्कुल के रूप में वे दिखाई देते हैं और इस क्रम में लिखें:";
+
+"PREVIOUS" = "पिछले";
+
+"NEXT" = "अगले";
+
+"BACKUP AGAIN" = "बैकअप पुन:";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "अपने सत् यापित ईमेल पते भुगतान अलर्ट, ID अनुस्मारक और लॉगिन कोड भेजने के लिए उपयोग किया जाता है।";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "अपने मोबाइल फोन दो कारक प्रमाणीकरण सक्षम करने के लिए या चेतावनियाँ प्राप्त करने के लिए इस्तेमाल किया जा सकता।";

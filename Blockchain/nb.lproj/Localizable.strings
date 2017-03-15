@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "Lommebøker";
+
+"START BACKUP" = "START BACKUP";
+
+"Backup Needed" = "Backup nødvendig";
+
+"Create a Wallet" = "Opprette en lommebok";
+
+"Log In" = "logg på";
+
+"Please enter your password to log into your Blockchain wallet." = "Skriv inn passordet for å logge inn lommeboken Blockchain.";
+
+"Forgot Password?" = "Glemt passord?";
+
+"Or start over and " = "Eller starte på nytt og ";
+
+"Update Email" = "E-oppdateringen";
+
+"Enter Email Address" = "Angi e-postadresse";
+
+"Update Mobile" = "Oppdatere Mobile";
+
+"Enter Mobile Number" = "Angi mobilnummer";
+
+"Balances" = "Balanserer";
+
+"Transactions occur when you send and receive bitcoin." = "Transaksjoner oppstår når du sender og mottar bitcoin.";
+
+"Your Transactions" = "Transaksjonene";
+
+"Backup Complete" = "Sikkerhetskopiering fullført";
+
+"Backup Needed" = "Backup nødvendig";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Bruk gjenoppretting uttrykket for å gjenopprette midler ved bortkommet passord.  Alle med tilgang til Recovery uttrykket kan få tilgang til din bitcoin, så hold den frakoblet et sted trygt og sikkert.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Følgende 12 ord utvinning setning vil gi deg tilgang til midler i tilfelle du mister passordet.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Husk å skrive ned passordet på et stykke papir og holde den et sted trygt og sikkert.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Skrive ned følgende 12 ord utvinning uttrykket nøyaktig slik de vises, og i denne rekkefølgen:";
+
+"PREVIOUS" = "TIDLIGERE";
+
+"NEXT" = "NESTE";
+
+"BACKUP AGAIN" = "SIKKERHETSKOPIERING IGJEN";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Bekreftet e-postadressen brukes til å sende betalingsvarsler, ID påminnelser og logikk koder.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobiltelefonen kan brukes til å aktivere to-faktor autentifisering eller motta varsler.";

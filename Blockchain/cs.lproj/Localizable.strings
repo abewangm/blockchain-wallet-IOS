@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "Peněženkám";
+
+"START BACKUP" = "SPUŠTĚNÍ ZÁLOHOVÁNÍ";
+
+"Backup Needed" = "Zálohování potřeby";
+
+"Create a Wallet" = "Vytvořit peněženku";
+
+"Log In" = "Přihlásit se";
+
+"Please enter your password to log into your Blockchain wallet." = "Prosím, zadejte své heslo pro přihlášení do peněženky blockchainu.";
+
+"Forgot Password?" = "Zapomněli jste heslo?";
+
+"Or start over and " = "Nebo začít znovu a ";
+
+"Update Email" = "Aktualizovat e-mailové";
+
+"Enter Email Address" = "Zadejte e-mailovou adresu";
+
+"Update Mobile" = "Aktualizace mobilní";
+
+"Enter Mobile Number" = "Zadejte číslo mobilního telefonu";
+
+"Balances" = "Zůstatky";
+
+"Transactions occur when you send and receive bitcoin." = "Transakce dochází při odesílání a přijímání bitcoin.";
+
+"Your Transactions" = "Vaše transakce";
+
+"Backup Complete" = "Zálohování bylo dokončeno";
+
+"Backup Needed" = "Zálohování potřeby";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k bitcoin, tak ať je offline někde bezpečné a spolehlivé.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující 12 slovo fráze obnovení vám umožní přístup k financím, v případě, že ztratíte své heslo.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Nezapomeňte zapsat frázi na kousek papíru a udržet ji někde, bezpečné a spolehlivé.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Poznamenejte si následující 12 slovo oživení fráze, přesně tak, jak se objevují a v tomto pořadí:";
+
+"PREVIOUS" = "PŘEDCHOZÍ";
+
+"NEXT" = "DALŠÍ";
+
+"BACKUP AGAIN" = "ZÁLOHOVÁNÍ ZNOVU";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Ověřených e-mailová adresa slouží k odesílání oznámení platby, ID připomenutí a přihlašovací kódy.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilní telefon lze zapnout dvoufaktorové ověřování nebo přijímat oznámení.";

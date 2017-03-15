@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "Portofele";
+
+"START BACKUP" = "START BACKUP";
+
+"Backup Needed" = "Copie de rezervă necesare";
+
+"Create a Wallet" = "Creaţi un portofel";
+
+"Log In" = "conectează-te";
+
+"Please enter your password to log into your Blockchain wallet." = "Vă rugăm să introduceţi parola pentru a intra în portofel Blockchain.";
+
+"Forgot Password?" = "Ai uitat parola?";
+
+"Or start over and " = "Sau de a începe peste şi ";
+
+"Update Email" = "Actualizare Email";
+
+"Enter Email Address" = "Introdu adresa de Email";
+
+"Update Mobile" = "Actualizare Mobile";
+
+"Enter Mobile Number" = "Introduceţi numărul de mobil";
+
+"Balances" = "Soldurile";
+
+"Transactions occur when you send and receive bitcoin." = "Tranzacţiile să apară când trimiteţi şi primiţi bitcoin.";
+
+"Your Transactions" = "Tranzactiile tale";
+
+"Backup Complete" = "Spate complet";
+
+"Backup Needed" = "Copie de rezervă necesare";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Utilizaţi dumneavoastră fraza de recuperare pentru a restabili fondurile dumneavoastră în cazul în care o parolă pierdută.  Cineva cu acces la dumneavoastră fraza de recuperare poate accesa ţi bitcoin, aşa-l păstraţi offline undeva sigur.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Următoarele 12 cuvântul fraza de recuperare va oferi acces la fondurile tale în cazul în care ai pierdut parola.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Asiguraţi-vă că notaţi fraza ta pe o bucată de hârtie şi păstraţi-l undeva în siguranţă şi sigur.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Notaţi următoarele cuvântul 12 recuperare fraza exact aşa cum apar si în această ordine:";
+
+"PREVIOUS" = "ANTERIOARE";
+
+"NEXT" = "URMĂTOAREA";
+
+"BACKUP AGAIN" = "COPIE DE REZERVĂ DIN NOU";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Adresa ta de email verificate este folosit pentru a trimite alerte de plată, ID memento-uri si coduri de autentificare.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Telefonul mobil poate fi folosit pentru a activa autentificarea dublu-factor sau să primiţi alerte.";
