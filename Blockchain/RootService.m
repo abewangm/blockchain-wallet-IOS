@@ -2024,27 +2024,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetMessagesOnFirstLoad
 {
-    if (self.wallet.contactsActionRequired == ContactActionRequiredSingleRequest) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_CONTACTS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self showContacts];
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    } else if (self.wallet.contactsActionRequired == ContactActionRequiredSinglePayment) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_YOU_HAVE_RECEIVED_A_REQUEST_FROM_A_CONTACT message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            for (ContactTransaction *transaction in self.wallet.pendingContactTransactions) {
-                if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-                    [_transactionsViewController selectPayment:transaction.identifier];
-                    break;
-                }
-            }
-        }]];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-        
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    } else if (_transactionsViewController.messageIdentifier) {
+    if (_transactionsViewController.messageIdentifier) {
         [_transactionsViewController selectPayment:_transactionsViewController.messageIdentifier];
     }
     
