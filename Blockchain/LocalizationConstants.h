@@ -453,6 +453,7 @@
 #define BC_STRING_REQUEST_FROM_CONTACT NSLocalizedString(@"Request from contact", nil)
 #define BC_STRING_SHARE_REQUEST NSLocalizedString(@"Share Request", nil)
 #define BC_STRING_REQUEST_FROM NSLocalizedString(@"Request from...", nil)
+#define BC_STRING_NO_CONTACTS_YET NSLocalizedString(@"You have no contacts yet", nil)
 
 #define BC_STRING_SOMEONE_IS_INVITING_ME NSLocalizedString(@"Someone is inviting me", nil)
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)

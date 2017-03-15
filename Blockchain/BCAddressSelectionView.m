@@ -161,6 +161,15 @@ int legacyAddressesSectionNumber;
         
         tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
         
+        if (selectMode == SelectModeContact && contacts.count == 0) {
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, mainView.frame.size.width - 50, 40)];
+            label.textColor = COLOR_TEXT_DARK_GRAY;
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+            label.text = BC_STRING_NO_CONTACTS_YET;
+            [self addSubview:label];
+            label.center = CGPointMake(mainView.center.x, mainView.center.y - DEFAULT_HEADER_HEIGHT);
+        }
     }
     return self;
 }
