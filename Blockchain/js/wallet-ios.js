@@ -1937,9 +1937,15 @@ MyWalletPhone.createContact = function(name, id) {
         objc_on_create_invitation_success(invitation);
     };
     
+    var error = function(e) {
+        objc_on_create_invitation_error(e);
+        onsole.log('Error creating contact');
+        console.log(e);
+    };
+    
     var save = MyWalletPhone.getSaveContactsFunction();
     
-    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(function(e){console.log('Error creating contact');console.log(e)});
+    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(error);
 }
 
 MyWalletPhone.readInvitation = function(invitation, invitationString) {

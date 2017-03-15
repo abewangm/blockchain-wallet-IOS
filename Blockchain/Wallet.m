@@ -688,6 +688,10 @@
         [weakSelf on_create_invitation_success:invitation];
     };
     
+    self.context[@"objc_on_create_invitation_error"] = ^(JSValue *error) {
+        [weakSelf on_create_invitation_error:error];
+    };
+    
     self.context[@"objc_on_read_invitation_success"] = ^(JSValue *invitation, NSString *identifier) {
         [weakSelf on_read_invitation_success:invitation identifier:identifier];
     };
@@ -3306,6 +3310,15 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didCreateInvitation!", [delegate class]);
     }
+}
+
+- (void)on_create_invitation_error:(JSValue *)error
+{
+    DLog(@"on_create_invitation_error");
+    
+    [app hideBusyView];
+    
+    [app standardNotify:[error toString]];
 }
 
 - (void)on_read_invitation_success:(JSValue *)invitation identifier:(NSString *)identifier
