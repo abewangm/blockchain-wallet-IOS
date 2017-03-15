@@ -144,7 +144,7 @@
 {
     [self.delegate didSelectQRCode];
     
-    [self createContact];
+    [self performSelector:@selector(createContact) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (void)shareLink
@@ -153,7 +153,7 @@
     
     [self.delegate didSelectShareLink];
 
-    [self createContact];
+    [self performSelector:@selector(createContact) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (void)doneButtonClicked

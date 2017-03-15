@@ -288,6 +288,8 @@ typedef enum {
 
 - (void)didSelectQRCode
 {
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
+    
     if (self.lastCreatedInvitation) {
         // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked share via QR code after clicking shareLink. Delete old contact
         [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
@@ -298,6 +300,8 @@ typedef enum {
 
 - (void)didSelectShareLink
 {
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
+    
     if (self.lastCreatedInvitation) {
         // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked shareLink twice. Delete old contact
         [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
@@ -615,6 +619,8 @@ typedef enum {
 
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
+    [app hideBusyView];
+    
     self.lastCreatedInvitation = invitationDict;
     
     NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
