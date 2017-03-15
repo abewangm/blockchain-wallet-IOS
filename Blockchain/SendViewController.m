@@ -629,25 +629,6 @@ BOOL displayingLocalSymbolSend;
     [self showErrorBeforeSending:error];
 }
 
-- (uint64_t)getInputAmountInSatoshi
-{
-    if (displayingLocalSymbol) {
-        NSString *language = btcAmountField.textInputMode.primaryLanguage;
-        NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        
-        NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        if (![amountString containsString:@"."]) {
-            amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        }
-        if (![amountString containsString:@"."]) {
-            amountString = [amountString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
-        }
-        return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
-    } else {
-        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
-    }
-}
-
 - (void)showSweepConfirmationScreenWithMaxAmount:(uint64_t)maxAmount
 {
     [self hideKeyboard];
@@ -1561,7 +1542,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)createSendRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:YES];
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:amountInSatoshi willSend:YES];
     contactRequestView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
@@ -1966,7 +1947,7 @@ BOOL displayingLocalSymbolSend;
 - (IBAction)sendPaymentClicked:(id)sender
 {
     if (self.toContact) {
-        if ([self getInputAmountInSatoshi] == 0) {
+        if (amountInSatoshi == 0) {
             [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
         } else {
             [self createSendRequest:RequestTypeSendReason forContact:self.toContact reason:nil];
