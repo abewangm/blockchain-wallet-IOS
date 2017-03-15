@@ -2266,11 +2266,6 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
     
-    if (self.wallet.onSendPaymentRequest) {
-        self.wallet.onSendPaymentRequest(name);
-        self.wallet.onSendPaymentRequest = nil;
-    }
-    
     [self showTransactions];
 }
 
@@ -2278,22 +2273,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
 
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_REQUEST_SENT message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT, name, name] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    
-    if (app.tabViewController.presentedViewController) {
-        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-            app.topViewControllerDelegate = nil;
-            [app closeAllModals];
-            [app.tabViewController presentViewController:alert animated:YES completion:^{
-                [_sendViewController reload];
-            }];
-        }];
-    } else {
-        [app.tabViewController presentViewController:alert animated:YES completion:^{
-            [_sendViewController reload];
-        }];
-    }
+    [_sendViewController reload];
     
     [self showTransactions];
 }

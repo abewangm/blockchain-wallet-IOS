@@ -502,10 +502,6 @@
 #define BC_STRING_CHANGE_NAME NSLocalizedString(@"Change name", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
-#define BC_STRING_REQUEST_SENT NSLocalizedString(@"Request Sent", nil)
-#define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_USER_SENDS_CONTACT_ARGUMENT NSLocalizedString(@"%@ has been notified that you would like to send them Bitcoin. When %@ accepts, we will notify you and you can complete the transaction.", nil)
-#define BC_STRING_CONTACT_ARGUMENT_HAS_BEEN_NOTIFIED_CONTACT_SENDS NSLocalizedString(@"%@ has been notified that you would like them to send you Bitcoin. We will notify you of any incoming payments.", nil)
-
 
 #define BC_STRING_RECOVERY_PHRASE_ERROR_INSTRUCTIONS NSLocalizedString(@"Please enter your recovery phrase with words separated by spaces", nil)
 #define BC_STRING_LOADING_RECOVERING_WALLET NSLocalizedString(@"Recovering Funds", nil)
