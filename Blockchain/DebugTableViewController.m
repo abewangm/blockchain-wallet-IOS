@@ -39,7 +39,6 @@ typedef enum {
 } environment;
 
 @interface DebugTableViewController ()
-@property (nonatomic) int presenter;
 @property (nonatomic) NSDictionary *filteredWalletJSON;
 
 @end
