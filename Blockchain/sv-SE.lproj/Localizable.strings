@@ -1622,3 +1622,53 @@
 
 /* (No Commment) */
 "Wallets" = "Plånböcker";
+
+"START BACKUP" = "START BACKUP";
+
+"Backup Needed" = "Backup behövs";
+
+"Create a Wallet" = "Skapa en plånbok";
+
+"Log In" = "Logga in";
+
+"Please enter your password to log into your Blockchain wallet." = "Vänligen ange ditt lösenord för att logga in i plånboken Blockchain.";
+
+"Forgot Password?" = "Glömt lösenord?";
+
+"Or start over and " = "Eller börja om och ";
+
+"Update Email" = "Uppdatera e-";
+
+"Enter Email Address" = "Ange e-postadress";
+
+"Update Mobile" = "Uppdatera Mobile";
+
+"Enter Mobile Number" = "Ange mobilnummer";
+
+"Balances" = "Saldon";
+
+"Transactions occur when you send and receive bitcoin." = "Transaktioner som uppstår när du skickar och tar emot bitcoin.";
+
+"Your Transactions" = "Dina transaktioner";
+
+"Backup Complete" = "Fullständig säkerhetskopiering";
+
+"Backup Needed" = "Backup behövs";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din bitcoin, så håll det offline någonstans säkert.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Följande 12 ordet återhämtning fras ger dig tillgång till dina pengar om du förlorar ditt lösenord.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Var noga med att skriva ner din fras på ett papper och hålla den någonstans säkert.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Skriv ned följande 12 ordet återhämtning fras exakt som de visas och i den här ordningen:";
+
+"PREVIOUS" = "TIDIGARE";
+
+"NEXT" = "NÄSTA";
+
+"BACKUP AGAIN" = "SÄKERHETSKOPIERING IGEN";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Din verifierad e-postadress används för att skicka betalning varningar, ID påminnelser och inloggningskoder.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobiltelefonen kan användas för att aktivera tvåfaktorsautentisering eller ta emot aviseringar.";

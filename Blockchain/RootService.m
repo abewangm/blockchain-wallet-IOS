@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
 #import "AppDelegate.h"
 #import "MultiAddressResponse.h"
@@ -45,6 +46,8 @@
 #import "Blockchain-Swift.h"
 #import "ContactsViewController.h"
 #import "ContactTransaction.h"
+#import "BuyBitcoinNavigationController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
 
@@ -151,11 +154,6 @@ void (^secondPasswordSuccess)(NSString *);
 #ifndef ENABLE_DEBUG_MENU
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_WEB_SOCKET_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SERVER_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_MERCHANT_URL];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_API_URL];
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
@@ -168,7 +166,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
     
-    if ([URL_SERVER isEqualToString:DEFAULT_WALLET_SERVER]) {
+    if ([URL_SERVER isEqualToString:PRODUCTION_WALLET_SERVER]) {
         [self.certificatePinner pinCertificate];
     }
     
@@ -215,6 +213,7 @@ void (^secondPasswordSuccess)(NSString *);
 #ifdef ENABLE_DEBUG_MENU
     [self requestAuthorizationForPushNotifications];
 #endif
+    [self setupBuyWebView];
     
     return YES;
 }
@@ -618,6 +617,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     curtainImageView.image = launchImage;
     curtainImageView.alpha = 0;
+}
+
+- (void)setupBuyWebView
+{
+    self.buyBitcoinViewController = [[BuyBitcoinViewController alloc] init];
 }
 
 #pragma mark - UI State
@@ -1627,6 +1631,18 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_LOGGED_OUT reason:WEBSOCKET_CLOSE_REASON_LOGGED_OUT];
 }
 
+- (void)buyBitcoinClicked:(id)sender
+{
+    NSDictionary *loginData = [[app.wallet executeJSSynchronous:@"MyWalletPhone.getWebViewLoginData()"] toDictionary];
+    NSString *walletJson = loginData[@"walletJson"];
+    NSString *externalJson = loginData[@"externalJson"];
+    NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
+    [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
+    self.buyBitcoinViewController.delegate = app.wallet;
+    BuyBitcoinNavigationController *navigationController = [[BuyBitcoinNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_BITCOIN];
+    [_tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)forgetWallet
 {
     [self clearPin];
@@ -1663,6 +1679,8 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
+    
+    [self setupBuyWebView];
 }
 
 - (void)didImportKey:(NSString *)address
@@ -2199,6 +2217,26 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didGetMessages];
 }
 
+- (void)didCompleteTrade:(NSDictionary *)trade
+{
+    NSString *date = [trade objectForKey:DICTIONARY_KEY_TRADE_DATE_CREATED];
+    NSString *hash = [trade objectForKey:DICTIONARY_KEY_TRADE_HASH];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_TRADE_COMPLETED message:[NSString stringWithFormat:BC_STRING_THE_TRADE_YOU_CREATED_ON_DATE_ARGUMENT_HAS_BEEN_COMPLETED, date] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_VIEW_DETAILS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [_transactionsViewController showTransactionDetailForHash:hash];
+    }]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (app.topViewControllerDelegate) {
+            [app.topViewControllerDelegate presentViewController:alert animated:YES completion:nil];
+        } else {
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        }
+    });
+}
+
 - (void)didPushTransaction
 {
     DestinationAddressSource source = self.sendViewController.addressSource;
@@ -2241,6 +2279,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
     
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            app.topViewControllerDelegate = nil;
+            [app closeAllModals];
+        }];
+    };
+    
     [self showTransactions];
 }
 
@@ -2248,6 +2293,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
 
+    if (app.tabViewController.presentedViewController) {
+        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
+            app.topViewControllerDelegate = nil;
+            [app closeAllModals];
+        }];
+    };
+    
     [_sendViewController reload];
     
     [self showTransactions];
@@ -3061,7 +3113,7 @@ void (^secondPasswordSuccess)(NSString *);
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSession *session = [SessionManager sharedSession];
-    NSURL *url = [NSURL URLWithString:DEFAULT_WALLET_SERVER];
+    NSURL *url = [NSURL URLWithString:URL_SERVER];
     session.sessionDescription = url.host;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         

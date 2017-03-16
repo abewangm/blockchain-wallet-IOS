@@ -23,7 +23,7 @@
 {
     [super configureWithTransaction:transaction];
 
-    NSString *dateString = [self getDateFromTransaction:transaction];
+    NSString *dateString = [transaction getDate];
     
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_DATE;
@@ -48,17 +48,6 @@
     [self.contentView addSubview:self.accessoryLabel];
     
     self.isSetup = YES;
-}
-
-- (NSString *)getDateFromTransaction:(Transaction *)transaction
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setAMSymbol:@"am"];
-    [dateFormatter setPMSymbol:@"pm"];
-    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
 }
 
 @end

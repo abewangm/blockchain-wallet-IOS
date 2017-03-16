@@ -121,7 +121,6 @@
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = transaction;
-    detailViewController.transactionIndex = indexPath.row;
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     navigationController.transactionHash = transaction.myHash;

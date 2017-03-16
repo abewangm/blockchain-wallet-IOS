@@ -41,6 +41,11 @@
 
 @class Wallet, Transaction, JSValue, JSContext, Contact, ContactTransaction;
 
+@protocol ExchangeAccountDelegate
+- (void)watchPendingTrades;
+- (void)fetchExchangeAccount;
+@end
+
 @protocol WalletDelegate <NSObject>
 @optional
 - (void)didSetLatestBlock:(LatestBlock*)block;
@@ -114,10 +119,11 @@
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
+- (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 @end
 
-@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate> {
+@interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
 }
 
 // Core Wallet Init Properties

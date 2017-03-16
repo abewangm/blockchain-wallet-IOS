@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "錢包";
+
+"START BACKUP" = "啟動備份";
+
+"Backup Needed" = "所需的備份";
+
+"Create a Wallet" = "創建一個錢包";
+
+"Log In" = "登錄";
+
+"Please enter your password to log into your Blockchain wallet." = "請輸入您的密碼以登錄到你的 Blockchain 錢包。";
+
+"Forgot Password?" = "忘記了密碼？";
+
+"Or start over and " = "還是要重新開始，";
+
+"Update Email" = "更新電子郵件";
+
+"Enter Email Address" = "輸入電子郵件地址";
+
+"Update Mobile" = "更新移動";
+
+"Enter Mobile Number" = "輸入行動電話號碼";
+
+"Balances" = "餘額";
+
+"Transactions occur when you send and receive bitcoin." = "交易發生時您發送和接收比特幣。";
+
+"Your Transactions" = "您的交易";
+
+"Backup Complete" = "備份完成";
+
+"Backup Needed" = "所需的備份";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "你恢復短語用於恢復您丟失的密碼時的資金。 你恢復短語訪問任何人都可以訪問您的比特幣，所以離線地方安全和有保障。";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "萬一你丟失了您的密碼，以下 12 字恢復短語會您可以訪問您的資金。";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "一定要在一張紙上寫下您的短語，並把它放在安全和有保障。";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "寫下以下 12 詞恢復完全按照它們出現在此命令︰";
+
+"PREVIOUS" = "上一頁";
+
+"NEXT" = "下一個";
+
+"BACKUP AGAIN" = "再一次的備份";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "您已驗證電子郵件地址用於發送付款通知、 ID 提醒和登錄代碼。";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "若要啟用雙因素身份驗證或接收警報，可以使用您的行動電話。";

@@ -46,7 +46,6 @@
 @property(nonatomic) BOOL loadedAllTransactions;
 @property(nonatomic) UIButton *moreButton;
 @property(nonatomic) BOOL clickedFetchMore;
-@property(nonatomic) NSIndexPath *lastSelectedIndexPath;
 @property(nonatomic) TransactionDetailViewController *detailViewController;
 @property(nonatomic) NSString *messageIdentifier;
 
@@ -58,4 +57,6 @@
 - (void)changeFilterLabel:(NSString *)newText;
 - (void)selectPayment:(NSString *)payment;
 
+- (void)showTransactionDetailForHash:(NSString *)hash;
+- (void)showTransactionDetail:(Transaction *)transaction;
 @end

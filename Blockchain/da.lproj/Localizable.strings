@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "Tegnebøger";
+
+"START BACKUP" = "START BACKUP";
+
+"Backup Needed" = "Backup behov";
+
+"Create a Wallet" = "Oprette en tegnebog";
+
+"Log In" = "Log på";
+
+"Please enter your password to log into your Blockchain wallet." = "Angiv venligst din adgangskode for at logge ind på din Blockchain tegnebog.";
+
+"Forgot Password?" = "Glemt Password?";
+
+"Or start over and " = "Eller starte forfra og ";
+
+"Update Email" = "Opdatere E-mail";
+
+"Enter Email Address" = "Indtast E-mail-adresse";
+
+"Update Mobile" = "Opdatere mobiltelefon";
+
+"Enter Mobile Number" = "Indtast mobilnummer";
+
+"Balances" = "Saldi";
+
+"Transactions occur when you send and receive bitcoin." = "Transaktioner opstår, når du sender og modtager bitcoin.";
+
+"Your Transactions" = "Dine transaktioner";
+
+"Backup Complete" = "Backup komplet";
+
+"Backup Needed" = "Backup behov";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Bruge din opsving sætning til at gendanne dine midler i tilfælde af en mistet kodeord.  Enhver med adgang til din opsving sætning kan få adgang til din bitcoin, så holder det offline et eller andet sted sikkert.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Følgende 12 ordet opsving sætning vil give dig adgang til dine penge, hvis du mister din adgangskode.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Sørg for at skrive ned din sætning på et stykke papir og holde det et sted, trygt og sikkert.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Nedskrive den følgende 12 word Recovery sætning, nøjagtigt som de vises, og i denne rækkefølge:";
+
+"PREVIOUS" = "TIDLIGERE";
+
+"NEXT" = "NÆSTE";
+
+"BACKUP AGAIN" = "BACKUP IGEN";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Din verificeret e-mail-adresse bruges til at sende betaling indberetninger, ID påmindelser og login koder.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Din mobiltelefon kan bruges til at aktivere to-faktor autentificering eller modtage påmindelser.";

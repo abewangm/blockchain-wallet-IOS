@@ -16,11 +16,12 @@
 #import "BCLine.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+Autodismiss.h"
-
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface SideMenuViewController ()
 
 @property (strong, readwrite, nonatomic) UITableView *tableView;
+@property (nonatomic) NSMutableArray *menuEntries;
 
 @end
 
@@ -30,11 +31,15 @@ ECSlidingViewController *sideMenu;
 
 UITapGestureRecognizer *tapToCloseGestureRecognizer;
 
-#ifdef ENABLE_DEBUG_MENU
-const int menuEntries = 7;
-#else
-const int menuEntries = 6;
-#endif
+NSString *entryKeyUpgradeBackup = @"upgrade_backup";
+NSString *entryKeySettings = @"settings";
+NSString *entryKeyAccountsAndAddresses = @"accounts_and_addresses";
+NSString *entryKeyContacts = @"contacts";
+NSString *entryKeyMerchantMap = @"merchant_map";
+NSString *entryKeySupport = @"support";
+NSString *entryKeyLogout = @"logout";
+NSString *entryKeyBuyBitcoin = @"buy_bitcoin";
+
 int balanceEntries = 0;
 int accountEntries = 0;
 
@@ -44,7 +49,7 @@ int accountEntries = 0;
     sideMenu = app.slidingViewController;
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -74,10 +79,48 @@ int accountEntries = 0;
     tapToCloseGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
 }
 
+- (NSUInteger)menuEntriesCount {
+    return [self.menuEntries count];
+}
+
+- (NSDictionary *)getMenuEntry:(NSInteger)index {
+    return [self.menuEntries objectAtIndex:index];
+}
+
+- (void)clearMenuEntries {
+    self.menuEntries = [NSMutableArray new];
+}
+
+- (void)addMenuEntry:(NSString *)key text:(NSString *)text icon:(NSString *)icon {
+    NSDictionary *entry = @{ @"key": key, @"text": text, @"icon": icon };
+    [self.menuEntries addObject:entry];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self clearMenuEntries];
+
+    if (!app.wallet.didUpgradeToHd) {
+        [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
+    } else {
+        [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_BACKUP_FUNDS icon:@"lock"];
+    }
+
+    [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
+#ifdef ENABLE_DEBUG_MENU
+    [self addMenuEntry:entryKeyContacts text:BC_STRING_CONTACTS icon:@"contacts_icon"];
+#endif
+    [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
+    
+    [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    
+    [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
+    [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
+    [self addMenuEntry:entryKeyLogout text:BC_STRING_LOGOUT icon:@"logout"];
+
     [self setSideMenuGestures];
+    [self reload];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -166,9 +209,9 @@ int accountEntries = 0;
 
 - (void)reloadTableViewSize
 {
-    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT + MENU_BITCOIN_TICKER_HEIGHT);
+    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT + MENU_BITCOIN_TICKER_HEIGHT);
     if (![self showBalances]) {
-        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * menuEntries + MENU_BITCOIN_TICKER_HEIGHT);
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + MENU_BITCOIN_TICKER_HEIGHT);
     }
     
     // If the tableView is bigger than the screen, enable scrolling and resize table view to screen size
@@ -257,28 +300,29 @@ int accountEntries = 0;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSInteger row = indexPath.row;
-    BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
-    
-    if (row == MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES) {
-        [app accountsAndAddressesClicked:nil];
-    } else if (row == MENU_CELL_INDEX_CONTACTS) {
-        [app contactsClicked:nil];
-    } else if (row == MENU_CELL_INDEX_SETTINGS) {
-        [app accountSettingsClicked:nil];
-    } else if (row == MENU_CELL_INDEX_MERCHANT){
-        [app merchantClicked:nil];
-    } else if (row == MENU_CELL_INDEX_SUPPORT) {
-        [app supportClicked:nil];
-    } else if (row == MENU_CELL_INDEX_UPGRADE) {
+    NSString *rowKey = [self getMenuEntry:indexPath.row][@"key"];
+
+    if (rowKey == entryKeyUpgradeBackup) {
+        BOOL didUpgradeToHD = app.wallet.didUpgradeToHd;
         if (didUpgradeToHD) {
             [app backupFundsClicked:nil];
-        }
-        else {
+        } else {
             [app showHdUpgrade];
         }
-    } else if (row == MENU_CELL_INDEX_LOGOUT) {
+    } else if (rowKey == entryKeyAccountsAndAddresses) {
+        [app accountsAndAddressesClicked:nil];
+    } else if (rowKey == entryKeySettings) {
+        [app accountSettingsClicked:nil];
+    } else if (rowKey == entryKeyContacts) {
+        [app contactsClicked:nil];
+    } else if (rowKey == entryKeyMerchantMap) {
+        [app merchantClicked:nil];
+    } else if (rowKey == entryKeySupport) {
+        [app supportClicked:nil];
+    } else if (rowKey == entryKeyLogout) {
         [app logoutClicked:nil];
+    } else if (rowKey == entryKeyBuyBitcoin) {
+        [app buyBitcoinClicked:nil];
     }
 }
 
@@ -324,7 +368,7 @@ int accountEntries = 0;
         [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
         view.backgroundView = backgroundView;
         
-        UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 18)];
+        UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
         tickerLabel.adjustsFontSizeToFitWidth = YES;
         tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatMoney:SATOSHI localCurrency:NO], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
@@ -344,7 +388,7 @@ int accountEntries = 0;
         return 0;
     }
     if (sectionIndex == 1) {
-        return menuEntries;
+        return self.menuEntriesCount;
     }
     
     return balanceEntries;
@@ -367,41 +411,14 @@ int accountEntries = 0;
             [v setBackgroundColor:COLOR_TABLE_VIEW_CELL_SELECTED_LIGHT_GRAY];
             cell.selectedBackgroundView = v;
         }
-        NSString *upgradeOrBackupTitle;
-        if (!app.wallet.didUpgradeToHd) {
-            upgradeOrBackupTitle = BC_STRING_UPGRADE;
-        }
-        else {
-            upgradeOrBackupTitle = BC_STRING_BACKUP_FUNDS;
-        }
-        
-        NSMutableArray *titles;
-#ifdef ENABLE_DEBUG_MENU
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_CONTACTS, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
-#else
-        titles = [NSMutableArray arrayWithArray:@[upgradeOrBackupTitle, BC_STRING_SETTINGS, BC_STRING_ADDRESSES, BC_STRING_MERCHANT_MAP, BC_STRING_SUPPORT, BC_STRING_LOGOUT]];
-#endif
-        NSString *upgradeOrBackupImage;
-        
-        if (!app.wallet.didUpgradeToHd) {
-            // XXX upgrade icon
-            upgradeOrBackupImage = @"icon_upgrade";
-        }
-        else {
-            upgradeOrBackupImage = @"lock";
-        }
-        NSMutableArray *images;
-#ifdef ENABLE_DEBUG_MENU
-        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"contacts_icon", @"settings", @"wallet", @"merchant", @"help", @"logout"]];
-#else
-        images = [NSMutableArray arrayWithArray:@[upgradeOrBackupImage, @"settings", @"wallet", @"merchant", @"help", @"logout"]];
-#endif
 
-        cell.textLabel.text = titles[indexPath.row];
+        NSDictionary *entry = [self getMenuEntry:indexPath.row];
+        cell.textLabel.text = entry[@"text"];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
-        cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
+        NSString *imageName = entry[@"icon"];
+        cell.imageView.image = [UIImage imageNamed:imageName];
         
-        if ([images[indexPath.row] isEqualToString:@"contacts_icon"]) {
+        if ([imageName isEqualToString:@"contacts_icon"]) {
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [cell.imageView setTintColor:COLOR_DARK_GRAY];
         }

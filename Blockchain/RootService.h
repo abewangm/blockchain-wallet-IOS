@@ -28,10 +28,11 @@
 #import "CertificatePinner.h"
 #import <UserNotifications/UserNotifications.h>
 #import "ReminderModalViewController.h"
+#import <WebKit/WebKit.h>
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction;
+@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
 
 @interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate> {
     
@@ -96,6 +97,7 @@
 @property (strong, nonatomic) TransferAllFundsViewController *transferAllFundsModalController;
 
 @property(nonatomic) NSString *deviceToken;
+@property (nonatomic) BuyBitcoinViewController *buyBitcoinViewController;
 
 // PIN Entry
 @property (nonatomic, strong) PEPinEntryController *pinEntryViewController;
@@ -205,6 +207,7 @@
 - (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
+- (IBAction)buyBitcoinClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
 - (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name;

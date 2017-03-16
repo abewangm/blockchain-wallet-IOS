@@ -358,9 +358,7 @@ const int maxFindAttempts = 2;
         [self getHistoryToFindTransaction:transaction];
         return;
     }
-    
-    detailViewController.transactionIndex = row;
-    
+        
     TransactionDetailNavigationController *newNavigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     detailViewController.busyViewDelegate = newNavigationController;
     

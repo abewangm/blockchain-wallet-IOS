@@ -1625,3 +1625,53 @@
 
 /* (No Commment) */
 "Wallets" = "πορτοφόλια";
+
+"START BACKUP" = "ΈΝΑΡΞΗ ΔΗΜΙΟΥΡΓΊΑΣ ΑΝΤΙΓΡΆΦΩΝ ΑΣΦΑΛΕΊΑΣ";
+
+"Backup Needed" = "Δημιουργία αντιγράφων ασφαλείας απαιτείται";
+
+"Create a Wallet" = "Δημιουργήσετε ένα πορτοφόλι";
+
+"Log In" = "Συνδέσου";
+
+"Please enter your password to log into your Blockchain wallet." = "Παρακαλούμε εισάγετε τον κωδικό σας να συνδεθείτε στο Πορτοφόλι Blockchain.";
+
+"Forgot Password?" = "Ξεχάσατε τον κωδικό;";
+
+"Or start over and " = "Ή να ξεκινήσετε από την αρχή και ";
+
+"Update Email" = "Ενημέρωση ηλεκτρονικού ταχυδρομείου";
+
+"Enter Email Address" = "Εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου";
+
+"Update Mobile" = "Ενημέρωση κινητό";
+
+"Enter Mobile Number" = "Εισάγετε τον αριθμό του κινητού";
+
+"Balances" = "Υπόλοιπα";
+
+"Transactions occur when you send and receive bitcoin." = "Συναλλαγές εμφανίζονται όταν στέλνετε και λαμβάνετε bitcoin.";
+
+"Your Transactions" = "Οι συναλλαγές σας";
+
+"Backup Complete" = "Πλήρης δημιουργία αντιγράφων ασφαλείας";
+
+"Backup Needed" = "Δημιουργία αντιγράφων ασφαλείας απαιτείται";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας bitcoin, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Η παρακάτω λέξη 12 αποκατάστασης φράση θα σας δώσει πρόσβαση στα χρήματά σας σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Να είστε βέβαιος να γράψετε τη φράση σας σε ένα κομμάτι χαρτί και να κρατήσει κάπου ασφαλή και σίγουρη.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Γράψτε κάτω την ακόλουθη λέξη 12 αποκατάστασης φράση ακριβώς όπως εμφανίζονται και σε αυτή τη σειρά:";
+
+"PREVIOUS" = "ΠΡΟΗΓΟΎΜΕΝΗ";
+
+"NEXT" = "ΕΠΌΜΕΝΗ";
+
+"BACKUP AGAIN" = "ΔΗΜΙΟΥΡΓΊΑ ΑΝΤΙΓΡΆΦΩΝ ΑΣΦΑΛΕΊΑΣ ΚΑΙ ΠΆΛΙ";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Επιβεβαιωμένη σου διεύθυνση email χρησιμοποιείται για να στείλετε ειδοποιήσεις πληρωμής, υπενθυμίσεις ID και κωδικούς σύνδεσης.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Το κινητό σας τηλέφωνο μπορεί να χρησιμοποιηθεί για να ενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων ή να λαμβάνετε ειδοποιήσεις.";

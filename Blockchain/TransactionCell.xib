@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2" id="XyX-vd-a7o">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 second ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tgB-FW-xJl">
@@ -96,7 +96,7 @@
                 <outlet property="warningImageView" destination="34B-px-WE4" id="47h-Su-rSh"/>
                 <outlet property="watchOnlyLabel" destination="P1g-Nr-dFe" id="oPI-NK-NKL"/>
             </connections>
-            <point key="canvasLocation" x="561" y="369.5"/>
+            <point key="canvasLocation" x="790" y="430"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -114,7 +114,6 @@
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = self.transaction;
-    detailViewController.transactionIndex = indexPath.row;
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     

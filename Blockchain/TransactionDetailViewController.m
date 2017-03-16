@@ -167,18 +167,7 @@ const CGFloat rowHeightValueReceived = 80;
     
     NSArray *newTransactions = app.latestResponse.transactions;
     
-    if (self.transactionIndex < newTransactions.count) {
-        
-        Transaction *updatedTransaction = newTransactions[self.transactionIndex];
-        
-        if ([updatedTransaction.myHash isEqualToString:self.transaction.myHash]) {
-            self.transaction = updatedTransaction;
-        } else {
-            [self findAndUpdateTransaction:newTransactions];
-        }
-    } else {
-        [self findAndUpdateTransaction:newTransactions];
-    }
+    [self findAndUpdateTransaction:newTransactions];
     
     [self.tableView reloadData];
     
@@ -198,12 +187,12 @@ const CGFloat rowHeightValueReceived = 80;
             break;
         }
     }
+
     if (!didFindTransaction) {
         [self dismissViewControllerAnimated:YES completion:^{
             [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
         }];
     }
-
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size

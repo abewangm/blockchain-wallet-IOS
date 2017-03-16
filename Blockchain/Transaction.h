@@ -34,4 +34,6 @@
 // For displaying contact names
 @property (nonatomic, strong) NSString *contactName;
 
+- (NSString *)getDate;
+
 @end
