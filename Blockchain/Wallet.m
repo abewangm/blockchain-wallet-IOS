@@ -2070,16 +2070,6 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.acceptRelation(\"%@\", \"%@\", \"%@\")", [invitation escapeStringForJS], [name escapeStringForJS], [identifier escapeStringForJS]]];
 }
 
-- (void)addTrust:(NSString *)contactIdentifier
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
-}
-
-- (void)deleteTrust:(NSString *)contactIdentifier
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteTrust(\"%@\")",[contactIdentifier escapeStringForJS]]];
-}
-
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.fetchExtendedPublicKey(\"%@\")",[contactIdentifier escapeStringForJS]]];

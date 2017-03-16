@@ -27,7 +27,6 @@
 - (void)didChangeContactName;
 
 // Detail Controller
-- (void)didChangeTrust;
 - (void)didFetchExtendedPublicKey;
 - (NSString *)currentTransactionHash;
 - (void)reloadSymbols;

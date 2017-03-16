@@ -1976,28 +1976,6 @@ MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
     MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
 }
 
-MyWalletPhone.addTrust = function(contactIdentifier) {
-    
-    var success = function(invitation) {
-        objc_on_add_trust_success(invitation);
-    };
-    
-    var save = MyWalletPhone.getSaveContactsFunction();
-    
-    MyWallet.wallet.contacts.addTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error adding trust');console.log(e)});
-}
-
-MyWalletPhone.deleteTrust = function(contactIdentifier) {
-    
-    var success = function(invitation) {
-        objc_on_delete_trust_success(invitation);
-    };
-    
-    var save = MyWalletPhone.getSaveContactsFunction();
-    
-    MyWallet.wallet.contacts.deleteTrusted(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error deleting trust');console.log(e)});
-}
-
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
     
     var success = function(xpub) {

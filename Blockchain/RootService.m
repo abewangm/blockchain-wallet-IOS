@@ -2012,11 +2012,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didAcceptRelation:invitation name:name];
 }
 
-- (void)didChangeTrust
-{
-    [self.contactsViewController didChangeTrust];
-}
-
 - (void)didFetchExtendedPublicKey
 {
     [self.contactsViewController didFetchExtendedPublicKey];

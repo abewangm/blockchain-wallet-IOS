@@ -664,11 +664,6 @@ typedef enum {
     }
 }
 
-- (void)didChangeTrust
-{
-    [self updateContactDetail];
-}
-
 - (void)didFetchExtendedPublicKey
 {
     [self updateContactDetail];
