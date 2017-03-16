@@ -72,6 +72,8 @@ int lastNumberTransactions = INT_MAX;
         [cell configureWithTransaction:contactTransaction contactName:name];
         
         cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
+        
+        cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
 
         return cell;
     } else if (indexPath.section == self.sectionMain) {
