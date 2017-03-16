@@ -64,9 +64,15 @@ int lastNumberTransactions = INT_MAX;
         
         ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"contactTransaction"];
         
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"ContactTransactionTableCell" owner:nil options:nil] objectAtIndex:0];
+        }
+        
         NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
         [cell configureWithTransaction:contactTransaction contactName:name];
         
+        cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
+
         return cell;
     } else if (indexPath.section == self.sectionMain) {
         Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
@@ -84,10 +90,7 @@ int lastNumberTransactions = INT_MAX;
         
         [cell reload];
         
-        // Selected cell color
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
-        [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
-        [cell setSelectedBackgroundView:v];
+        cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
         
         return cell;
     } else {
@@ -510,6 +513,14 @@ int lastNumberTransactions = INT_MAX;
     return UIModalPresentationNone;
 }
 
+- (UIView *)selectedBackgroundViewForCell:(UITableViewCell *)cell
+{
+    // Selected cell color
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
+    [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+    return v;
+}
+
 #pragma mark - Contacts
 
 - (void)selectPayment:(NSString *)payment
@@ -598,8 +609,6 @@ int lastNumberTransactions = INT_MAX;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.scrollsToTop = YES;
-    
-    [self.tableView registerClass:[ContactTransactionTableViewCell class] forCellReuseIdentifier:@"contactTransaction"];
     
     [balanceBigButton.titleLabel setMinimumScaleFactor:.5f];
     [balanceBigButton.titleLabel setAdjustsFontSizeToFitWidth:YES];

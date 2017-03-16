@@ -11,10 +11,13 @@
 
 @interface ContactTransactionTableViewCell : UITableViewCell
 @property (nonatomic) ContactTransaction *transaction;
-@property (nonatomic) UIImageView *actionImageView;
-@property (nonatomic) UILabel *mainLabel;
-@property (nonatomic) UIView *separator;
+
+@property (strong, nonatomic) IBOutlet UIButton *amountButton;
+@property (strong, nonatomic) IBOutlet UILabel *lastUpdatedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *toFromLabel;
 
 - (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name;
 - (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
+- (IBAction)amountButtonClicked:(UIButton *)sender;
 @end
