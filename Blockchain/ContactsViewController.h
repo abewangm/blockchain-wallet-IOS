@@ -28,6 +28,5 @@
 
 // Detail Controller
 - (void)didFetchExtendedPublicKey;
-- (NSString *)currentTransactionHash;
 - (void)reloadSymbols;
 @end

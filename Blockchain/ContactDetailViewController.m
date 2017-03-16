@@ -12,9 +12,11 @@
 #import "BCQRCodeView.h"
 #import "Blockchain-Swift.h"
 #import "BCContactRequestView.h"
+#import "TransactionTableCell.h"
 #import "ContactTransactionTableViewCell.h"
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
+#import "RootService.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -29,11 +31,9 @@ const int maxFindAttempts = 2;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
 @property (nonatomic) UIRefreshControl *refreshControl;
-@property (nonatomic) ContactTransaction *transactionToFind;
 @property (nonatomic) int findAttempts;
-@property (nonatomic) NSString *messageToSelect;
 
-@property (nonatomic) NSDictionary *transactionList;
+@property (nonatomic) NSArray *transactionList;
 
 @end
 
@@ -50,29 +50,19 @@ const int maxFindAttempts = 2;
     return self;
 }
 
-- (id)initWithContact:(Contact *)contact selectMessage:(NSString *)messageIdentifier
-{
-    if (self = [super init]) {
-        _contact = contact;
-        _messageToSelect = messageIdentifier;
-        [self setupTransactionList];
-    }
-    return self;
-}
-
 - (void)setupTransactionList
 {
-    NSMutableDictionary *mutableTransactionList = [NSMutableDictionary new];
+    NSMutableArray *mutableTransactionList = [NSMutableArray new];
     
-    for (id key in self.contact.transactionList) {
-        ContactTransaction *transaction = [self.contact.transactionList objectForKey:key];
-        if (transaction.transactionState == ContactTransactionStateCompletedSend ||
-            transaction.transactionState == ContactTransactionStateCompletedReceive) {
-            [mutableTransactionList setObject:transaction forKey:key];
+    for (ContactTransaction *contactTransaction in [app.wallet.completedContactTransactions allValues]) {
+        if (contactTransaction.myHash) {
+            Transaction *transaction = [self getTransactionDetails:contactTransaction];
+            transaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            [mutableTransactionList addObject:transaction];
         }
     }
     
-    self.transactionList = [[NSDictionary alloc] initWithDictionary:mutableTransactionList];
+    self.transactionList = [[NSArray alloc] initWithArray:mutableTransactionList];
     
     [self.tableView reloadData];
 }
@@ -90,7 +80,6 @@ const int maxFindAttempts = 2;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[ContactTransactionTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION];
     
     [self.tableView reloadData];
     
@@ -110,23 +99,6 @@ const int maxFindAttempts = 2;
     [super viewWillAppear:animated];
     
     [self updateNavigationTitle];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    self.transactionToFind = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (self.messageToSelect) {
-        [self selectMessage:self.messageToSelect];
-        self.messageToSelect = nil;
-    }
 }
 
 - (void)updateNavigationTitle
@@ -154,28 +126,32 @@ const int maxFindAttempts = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContactTransactionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION forIndexPath:indexPath];
+    Transaction *transaction = [self.transactionList objectAtIndex:indexPath.row];
+
+    TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
     
-    ContactTransaction *transaction = [[self.transactionList allValues] objectAtIndex:indexPath.row];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+    }
     
-    [cell configureWithTransaction:transaction contactName:self.contact.name];
+    cell.transaction = transaction;
+    
+    [cell reload];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    ContactTransaction *transaction = [[self.transactionList allValues] objectAtIndex:indexPath.row];
-    
-    if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
-        if (!self.presentedViewController) {
-            [self showTransactionDetail:transaction forRow:indexPath.row];
-        }
-    } else {
-        DLog(@"Error: transaciton state not completed!");
-    }
+    TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell transactionClicked:nil indexPath:indexPath];
+    self.transactionDetailViewController = app.transactionsViewController.detailViewController;
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -247,24 +223,6 @@ const int maxFindAttempts = 2;
 
 #pragma mark - Actions
 
-- (void)selectMessage:(NSString *)messageIdentifier
-{
-    NSArray *allTransactions = [self.transactionList allValues];
-    NSInteger rowToSelect = -1;
-    
-    for (int index = 0; index < [allTransactions count]; index++) {
-        ContactTransaction *transaction = allTransactions[index];
-        if ([transaction.identifier isEqualToString:messageIdentifier]) {
-            rowToSelect = index;
-            break;
-        }
-    }
-    
-    if (rowToSelect >= 0) {
-        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:sectionMain]];
-    }
-}
-
 - (void)renameContact
 {
     UIAlertController *alertForChangingName = [UIAlertController alertControllerWithTitle:BC_STRING_CHANGE_NAME message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -327,62 +285,12 @@ const int maxFindAttempts = 2;
     return nil;
 }
 
-- (void)showTransactionDetail:(ContactTransaction *)transaction forRow:(NSInteger)row
-{
-    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    
-    Transaction *detailTransaction = [self getTransactionDetails:transaction];
-    if (detailTransaction) {
-        detailViewController.transaction = detailTransaction;
-    } else {
-
-        // If transaction cannot be found, it's possible that the websocket is not working and the user tapped on a received transaction that is present in the shared metadata service but not yet retrieved from multiaddress.
-        
-        BCNavigationController *currentNavigationController = (BCNavigationController *)self.navigationController;
-        [currentNavigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
-        
-        if (self.findAttempts >= maxFindAttempts) {
-
-            self.transactionToFind = nil;
-            
-            [currentNavigationController hideBusyView];
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, transaction.myHash] preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alert animated:YES completion:nil];
-            return;
-        }
-        
-        self.findAttempts++;
-        
-        [self getHistoryToFindTransaction:transaction];
-        return;
-    }
-        
-    TransactionDetailNavigationController *newNavigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
-    detailViewController.busyViewDelegate = newNavigationController;
-    
-    self.transactionDetailViewController = detailViewController;
-    
-    [self presentViewController:newNavigationController animated:YES completion:nil];
-}
-    
-- (void)getHistoryToFindTransaction:(ContactTransaction *)transaction
-{
-    self.transactionToFind = transaction;
-    [app.wallet getHistory];
-}
-
 - (void)didGetMessages:(Contact *)contact
 {
     self.contact = contact;
     
     [self.tableView reloadData];
     [self.transactionDetailViewController didGetHistory];
-    
-    if (self.transactionToFind) {
-        [self showTransactionDetail:self.transactionToFind forRow:0];
-    }
     
     if (self.refreshControl && self.refreshControl.isRefreshing) {
         [self.refreshControl endRefreshing];
@@ -410,12 +318,13 @@ const int maxFindAttempts = 2;
 
 - (void)reloadSymbols
 {
+    [self.tableView reloadData];
     [self.transactionDetailViewController reloadSymbols];
 }
 
 - (NSString *)getTransactionHash
 {
-    return self.transactionDetailViewController.transaction.myHash;
+    
 }
 
 @end

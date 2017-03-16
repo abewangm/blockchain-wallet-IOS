@@ -827,11 +827,6 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (NSString *)getCurrentDetailViewControllerHash
-{
-    return [self isViewingContacts] ? [self.contactsViewController currentTransactionHash] : self.transactionsViewController.detailViewController.transaction.myHash;
-}
-
 - (BOOL)isViewingContacts
 {
     return self.topViewControllerDelegate != nil;
@@ -1967,7 +1962,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     BOOL didFindTransaction = NO;
     for (Transaction *transaction in app.latestResponse.transactions) {
-        if ([transaction.myHash isEqualToString:[self getCurrentDetailViewControllerHash]]) {
+        if ([transaction.myHash isEqualToString:self.transactionsViewController.detailViewController.transaction.myHash]) {
             NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
             if (components.count > 1 && [[components lastObject] length] == 1) {
                 fiatAmount = [fiatAmount stringByAppendingString:@"0"];

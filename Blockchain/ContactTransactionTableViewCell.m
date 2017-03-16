@@ -77,7 +77,7 @@
         [self showLighterColors];
     } else {
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
-        [self showLighterColors];
+        [self showNormalColors];
     }
 
     self.accessoryType = UITableViewCellAccessoryNone;

@@ -671,11 +671,6 @@ typedef enum {
     [self.detailViewController showExtendedPublicKey];
 }
 
-- (NSString *)currentTransactionHash
-{
-    return [self.detailViewController getTransactionHash];
-}
-
 - (void)didChangeContactName
 {
     [self reload];

@@ -131,8 +131,12 @@
     };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     app.transactionsViewController.detailViewController = detailViewController;
-    [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
-}
+    
+    if (app.topViewControllerDelegate) {
+        [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [app.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    }}
 
 - (IBAction)btcbuttonclicked:(id)sender
 {
