@@ -674,7 +674,7 @@ BOOL displayingLocalSymbolSend;
         [alert addAction:cancelAction];
         [alert addAction:sendAction];
         
-        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        [app.tabViewController presentViewController:alert animated:YES completion:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     });
@@ -770,7 +770,7 @@ BOOL displayingLocalSymbolSend;
             if ([feeConvertedToUSD compare:[NSDecimalNumber decimalNumberWithDecimal:[FIFTY_CENTS_DECIMAL decimalValue]]] == NSOrderedDescending && self.txSize > TX_SIZE_ONE_KILOBYTE && [feeRatio compare:normalFeeRatio] == NSOrderedDescending) {
                 UIAlertController *highFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_HIGH_FEE_WARNING_TITLE message:BC_STRING_HIGH_FEE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
                 [highFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                [self.view.window.rootViewController presentViewController:highFeeAlert animated:YES completion:nil];
+                [app.tabViewController presentViewController:highFeeAlert animated:YES completion:nil];
             }
         }
     });
