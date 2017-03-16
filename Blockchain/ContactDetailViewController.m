@@ -54,10 +54,10 @@ const int maxFindAttempts = 2;
 {
     NSMutableArray *mutableTransactionList = [NSMutableArray new];
     
-    for (ContactTransaction *contactTransaction in [app.wallet.completedContactTransactions allValues]) {
+    for (ContactTransaction *contactTransaction in [self.contact.transactionList allValues]) {
         if (contactTransaction.myHash) {
             Transaction *transaction = [self getTransactionDetails:contactTransaction];
-            transaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            transaction.contactName = self.contact.name;
             [mutableTransactionList addObject:transaction];
         }
     }
@@ -320,11 +320,6 @@ const int maxFindAttempts = 2;
 {
     [self.tableView reloadData];
     [self.transactionDetailViewController reloadSymbols];
-}
-
-- (NSString *)getTransactionHash
-{
-    
 }
 
 @end
