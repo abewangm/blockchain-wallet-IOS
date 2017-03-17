@@ -31,7 +31,6 @@ const int maxFindAttempts = 2;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
 @property (nonatomic) UIRefreshControl *refreshControl;
-@property (nonatomic) int findAttempts;
 
 @property (nonatomic) NSArray *transactionList;
 
@@ -72,11 +71,11 @@ const int maxFindAttempts = 2;
 {
     [super viewDidLoad];
     
-    self.findAttempts = 0;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
