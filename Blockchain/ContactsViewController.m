@@ -700,6 +700,8 @@ typedef enum {
         [self setupNewContactButtons];
     }
     
+    [self.tableView reloadData];
+    
     if (self.detailViewController.contact.identifier) {
         Contact *updatedContact = [app.wallet.contacts objectForKey:self.detailViewController.contact.identifier];
         
