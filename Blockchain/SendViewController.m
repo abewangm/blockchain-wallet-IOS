@@ -20,6 +20,7 @@
 #import "TransferAllFundsBuilder.h"
 #import "BCContactRequestView.h"
 #import "Contact.h"
+#import "ContactTransaction.h"
 #import "BCNavigationController.h"
 
 typedef enum {
@@ -40,7 +41,7 @@ typedef enum {
 
 @property (nonatomic) uint64_t amountFromURLHandler;
 @property (nonatomic) NSString *addressFromURLHandler;
-@property (nonatomic) NSDictionary *contactInfo;
+@property (nonatomic) ContactTransaction *contactTransaction;
 
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
@@ -136,6 +137,8 @@ BOOL displayingLocalSymbolSend;
 {
     self.surgeIsOccurring = NO;
     self.dust = 0;
+    
+    self.contactTransaction = nil;
     
     [app.wallet createNewPayment];
     [self resetFromAddress];
@@ -729,7 +732,7 @@ BOOL displayingLocalSymbolSend;
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
         
         BOOL shouldRemoveToAddress = NO;
-        NSString *contactName = [self.contactInfo objectForKey:self.toAddress];
+        NSString *contactName = self.contactTransaction.address;
         shouldRemoveToAddress = contactName && ![contactName isEqualToString:@""];
         
         NSString *toAddressString = self.sendToAddress ? (shouldRemoveToAddress ? @"" : self.toAddress) : @"";
@@ -905,12 +908,12 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
-- (void)showSummaryForSendingPaymentRequestAmount:(uint64_t)amount withToAddress:(NSString*)addressString contactName:(NSString *)name
+- (void)showSummaryForSendingPaymentRequest:(ContactTransaction *)transaction
 {
     self.fromAccount = [app.wallet getDefaultAccountIndex];
-    self.addressFromURLHandler = addressString;
-    self.amountFromURLHandler = amount;
-    self.contactInfo = @{addressString: name};
+    self.addressFromURLHandler = transaction.address;
+    self.amountFromURLHandler = transaction.intendedAmount;
+    self.contactTransaction = transaction;
     
     _addressSource = DestinationAddressSourceContact;
     
@@ -923,7 +926,7 @@ BOOL displayingLocalSymbolSend;
     self.onZeroSpendableAmount = ^() {
         // Make one attempt to find an account with enough funds and try to send from it
         for (int accountIndex = 0; accountIndex < [app.wallet getActiveAccountsCount]; accountIndex++) {
-            if (accountIndex != weakSelf.fromAccount && [app.wallet getBalanceForAccount:accountIndex] >= amount) {
+            if (accountIndex != weakSelf.fromAccount && [app.wallet getBalanceForAccount:accountIndex] >= transaction.intendedAmount) {
                 [weakSelf selectFromAccount:accountIndex];
             }
         }
@@ -966,8 +969,8 @@ BOOL displayingLocalSymbolSend;
         NSString *label = [app.wallet labelForLegacyAddress:address];
         if (label && ![label isEqualToString:@""])
             return label;
-    } else if (self.contactInfo) {
-        NSString *name = [self.contactInfo objectForKey:address];
+    } else if (self.contactTransaction) {
+        NSString *name = self.contactTransaction.address;
         if (name && ![name isEqualToString:@""]) return name;
     }
     

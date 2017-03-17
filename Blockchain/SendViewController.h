@@ -24,7 +24,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BCLine.h"
 
-@class Wallet;
+@class Wallet, ContactTransaction;
 
 @interface SendViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
@@ -115,7 +115,7 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)showSummaryForSendingPaymentRequestAmount:(uint64_t)amount withToAddress:(NSString*)string contactName:(NSString *)name;
+- (void)showSummaryForSendingPaymentRequest:(ContactTransaction *)transaction contactName:(NSString *)name;
 
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
