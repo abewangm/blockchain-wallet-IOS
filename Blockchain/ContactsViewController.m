@@ -33,6 +33,8 @@ typedef enum {
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) UIButton *topButton;
+@property (nonatomic) UIButton *bottomButton;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
@@ -88,21 +90,31 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
-    
-    [self setupPullToRefresh];
+    [self setupTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (app.wallet.contacts.count > 0) {
+        [self.topButton removeFromSuperview];
+        self.topButton = nil;
+        [self.bottomButton removeFromSuperview];
+        self.bottomButton = nil;
+        
+        if (!self.tableView) [self setupTableView];
+    } else {
+        [self.tableView removeFromSuperview];
+        self.tableView = nil;
+        self.refreshControl = nil;
+        
+        [self setupNewContactButtons];
+    }
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
@@ -123,11 +135,40 @@ typedef enum {
     }
     
     self.invitationFromURL = nil;
-    self.nameFromURL = nil;
+    self.nameFromURL = nil;\
     
     self.invitationSentIdentifier = nil;
     
     self.lastCreatedInvitation = nil;
+    
+    self.createContactNavigationController = nil;
+}
+
+- (void)setupTableView
+{
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
+    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
+    
+    [self setupPullToRefresh];
+}
+
+- (void)setupNewContactButtons
+{
+    NSArray *buttons = [BCTwoButtonView getTopAndBottomButtonsWithSuperviewFrame:self.view.frame];
+    
+    self.topButton = [buttons firstObject];
+    [self.topButton setTitle:BC_STRING_I_WANT_TO_INVITE_SOMEONE forState:UIControlStateNormal];
+    [self.topButton addTarget:self action:@selector(createInvitation) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.topButton];
+    
+    self.bottomButton = [buttons lastObject];
+    [self.bottomButton setTitle:BC_STRING_SOMEONE_IS_INVITING_ME forState:UIControlStateNormal];
+    [self.bottomButton addTarget:self action:@selector(showInvitedView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.bottomButton];
 }
 
 - (void)refreshControlActivated
@@ -388,7 +429,12 @@ typedef enum {
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
     
-    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    if (self.createContactNavigationController) {
+        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    } else {
+        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
+        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    }
 }
 
 - (void)createInvitation
@@ -398,7 +444,12 @@ typedef enum {
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:createContactSharingView];
     
-    [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    if (self.createContactNavigationController) {
+        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    } else {
+        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
+        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    }
 }
 
 - (void)prepareToReadInvitation

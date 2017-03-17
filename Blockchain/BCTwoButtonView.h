@@ -15,4 +15,7 @@
 @interface BCTwoButtonView : UIView
 - (id)initWithName:(NSString *)name topButtonText:(NSString *)topText bottomButtonText:(NSString *)bottomText;
 @property (nonatomic) UIViewController <TwoButtonDelegate> *delegate;
+
++ (NSArray *)getTopAndBottomButtonsWithSuperviewFrame:(CGRect)superviewFrame;
+
 @end
