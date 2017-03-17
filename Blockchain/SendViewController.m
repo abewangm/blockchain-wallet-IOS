@@ -696,7 +696,7 @@ BOOL displayingLocalSymbolSend;
             [self enablePaymentButtons];
         } onResume:nil];
         
-        if ([self transferAllMode]) {
+        if ([self transferAllMode] || _addressSource == DestinationAddressSourceContact) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
         
