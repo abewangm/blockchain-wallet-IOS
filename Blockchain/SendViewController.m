@@ -732,7 +732,7 @@ BOOL displayingLocalSymbolSend;
         NSString *toAddressLabel = self.sendToAddress ? [self labelForLegacyAddress:self.toAddress] : [app.wallet getLabelForAccount:self.toAccount];
         
         BOOL shouldRemoveToAddress = NO;
-        NSString *contactName = self.contactTransaction.address;
+        NSString *contactName = self.contactTransaction.contactName;
         shouldRemoveToAddress = contactName && ![contactName isEqualToString:@""];
         
         NSString *toAddressString = self.sendToAddress ? (shouldRemoveToAddress ? @"" : self.toAddress) : @"";
@@ -913,13 +913,13 @@ BOOL displayingLocalSymbolSend;
     self.fromAccount = [app.wallet getDefaultAccountIndex];
     self.addressFromURLHandler = transaction.address;
     self.amountFromURLHandler = transaction.intendedAmount;
-    self.contactTransaction = transaction;
     
     _addressSource = DestinationAddressSourceContact;
     
     __weak SendViewController *weakSelf = self;
     
     self.onViewDidLoad = ^(){
+        weakSelf.contactTransaction = transaction;
         [weakSelf sendPaymentClicked:nil];
     };
     
@@ -940,6 +940,7 @@ BOOL displayingLocalSymbolSend;
         if (self.onViewDidLoad) {
             self.onViewDidLoad = nil;
             [self reload];
+            self.contactTransaction = transaction;
             [self sendPaymentClicked:nil];
         }
     }
@@ -970,7 +971,7 @@ BOOL displayingLocalSymbolSend;
         if (label && ![label isEqualToString:@""])
             return label;
     } else if (self.contactTransaction) {
-        NSString *name = self.contactTransaction.address;
+        NSString *name = self.contactTransaction.contactName;
         if (name && ![name isEqualToString:@""]) return name;
     }
     

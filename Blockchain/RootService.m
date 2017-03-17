@@ -3189,7 +3189,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self showSettings:showBackupBlock];
 }
 
-- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name
+- (void)setupPaymentRequest:(ContactTransaction *)transaction
 {
     [self closeSideMenu];
     
@@ -3199,7 +3199,7 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
         
-    [_sendViewController showSummaryForSendingPaymentRequest:transaction contactName:name];
+    [_sendViewController showSummaryForSendingPaymentRequest:transaction];
 }
 
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction

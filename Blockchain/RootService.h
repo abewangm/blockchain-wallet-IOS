@@ -210,7 +210,7 @@
 - (IBAction)buyBitcoinClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
-- (void)setupPaymentRequest:(ContactTransaction *)transaction forContactName:(NSString *)name;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;

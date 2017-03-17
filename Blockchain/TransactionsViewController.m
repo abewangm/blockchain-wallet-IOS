@@ -564,8 +564,10 @@ int lastNumberTransactions = INT_MAX;
 }
 
 - (void)sendPayment:(ContactTransaction *)transaction toContact:(Contact *)contact
-{    
-    [app setupPaymentRequest:transaction forContactName:contact.name];
+{
+    transaction.contactName = contact.name;
+    
+    [app setupPaymentRequest:transaction];
 }
 
 - (void)showFilterMenu
