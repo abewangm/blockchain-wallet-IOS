@@ -71,7 +71,7 @@
         self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_TO, toFromLabelTextSuffix];
         [self showNormalColors];
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.statusLabel.text = BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT;
+        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST : BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST;
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
         self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_FROM, toFromLabelTextSuffix];

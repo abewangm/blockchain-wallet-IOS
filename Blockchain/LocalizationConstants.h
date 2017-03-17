@@ -480,7 +480,8 @@
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR NSLocalizedString(@"Address requested", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND NSLocalizedString(@"Complete payment", nil)
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept payment", nil)
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT NSLocalizedString(@"Requested", nil)
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST NSLocalizedString(@"Requested", nil)
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST NSLocalizedString(@"Accepted. Waiting for Payment", nil)
 
 #define BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT NSLocalizedString(@"Waiting for %@ to accept", nil)
 #define BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Receiving %@ from %@", nil)
