@@ -1670,7 +1670,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];

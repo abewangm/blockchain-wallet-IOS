@@ -539,6 +539,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED @"lastNameUsed"
+
 #define USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT @"defaultAccountLabelledAddressesCount"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS @"nextReceivingAddress"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS_USED @"nextReceivingAddressUsed"
@@ -555,7 +557,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
-#define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
 #define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"

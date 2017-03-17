@@ -10,8 +10,6 @@
 #import "RootService.h"
 #import "Blockchain-Swift.h"
 
-#define USER_DEFAULTS_KEY_LAST_NAME_USED @"lastNameUsed"
-
 @interface BCCreateContactView ()
 @property (nonatomic) UIButton *nextButton;
 @property (nonatomic) UIButton *doneButton;
@@ -100,7 +98,7 @@
                 [self.nextButton addTarget:self action:@selector(submitContactName) forControlEvents:UIControlEventTouchUpInside];
             } else if (contactName && !senderName) {
                 promptLabel.text = [NSString stringWithFormat:BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY, contactName];
-                self.textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LAST_NAME_USED] ? : nil;
+                self.textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED] ? : nil;
                 [self.nextButton addTarget:self action:@selector(submitSenderName) forControlEvents:UIControlEventTouchUpInside];
             } else {
                 DLog(@"Unknown create contact step");
@@ -140,7 +138,7 @@
 
 - (void)submitSenderName
 {
-    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:USER_DEFAULTS_KEY_LAST_NAME_USED];
+    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED];
     
     [self.delegate didCreateSenderName:self.textField.text contactName:self.contactName];
 }
