@@ -474,6 +474,7 @@
 #define BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS NSLocalizedString(@"Too many payment requests are open. Please complete some of your payment requests first.", nil)
 #define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 
+#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ wants to send you %@ for %@", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
 
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR NSLocalizedString(@"Address requested", nil)
