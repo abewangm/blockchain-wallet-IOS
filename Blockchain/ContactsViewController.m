@@ -93,28 +93,11 @@ typedef enum {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    
-    [self setupTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (app.wallet.contacts.count > 0) {
-        [self.topButton removeFromSuperview];
-        self.topButton = nil;
-        [self.bottomButton removeFromSuperview];
-        self.bottomButton = nil;
-        
-        if (!self.tableView) [self setupTableView];
-    } else {
-        [self.tableView removeFromSuperview];
-        self.tableView = nil;
-        self.refreshControl = nil;
-        
-        [self setupNewContactButtons];
-    }
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
@@ -702,7 +685,20 @@ typedef enum {
 
 - (void)didGetMessages
 {
-    [self.tableView reloadData];
+    if (app.wallet.contacts.count > 0) {
+        [self.topButton removeFromSuperview];
+        self.topButton = nil;
+        [self.bottomButton removeFromSuperview];
+        self.bottomButton = nil;
+        
+        if (!self.tableView) [self setupTableView];
+    } else {
+        [self.tableView removeFromSuperview];
+        self.tableView = nil;
+        self.refreshControl = nil;
+        
+        [self setupNewContactButtons];
+    }
     
     if (self.detailViewController.contact.identifier) {
         Contact *updatedContact = [app.wallet.contacts objectForKey:self.detailViewController.contact.identifier];
