@@ -32,6 +32,7 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
         
         [userController addScriptMessageHandler:self name:WEBKIT_HANDLER_BUY_COMPLETED];
         [userController addScriptMessageHandler:self name:WEBKIT_HANDLER_FRONTEND_INITIALIZED];
+        [userController addScriptMessageHandler:self name:WEBKIT_HANDLER_SHOW_TX];
         
         configuration.userContentController = userController;
         
@@ -103,15 +104,21 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
 {
     DLog(@"Received script message: '%@'", message.name);
     
-    if ([message.name isEqual: WEBKIT_HANDLER_FRONTEND_INITIALIZED]) {
+    if ([message.name isEqual:WEBKIT_HANDLER_FRONTEND_INITIALIZED]) {
         self.isReady = YES;
         if (self.queuedScript != nil) {
             [self runScript:self.queuedScript];
         }
     }
-    
-    if ([message.name isEqual: WEBKIT_HANDLER_BUY_COMPLETED]) {
+
+    if ([message.name isEqual:WEBKIT_HANDLER_BUY_COMPLETED]) {
         self.didInitiateTrade = YES;
+    }
+
+    if ([message.name isEqual:WEBKIT_HANDLER_SHOW_TX]) {
+        [self dismissViewControllerAnimated:true completion:^(){
+            DLog(@"Go to tx feed");
+        }];
     }
 }
 
