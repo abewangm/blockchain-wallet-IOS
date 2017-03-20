@@ -63,7 +63,13 @@
         self.keychain = keychain;
         
         if (network == nil || [network isNull] || [network isUndefined]) {
-            network = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] : [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET]) {
+                network = [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"];
+                self.keychain.network = [BTCNetwork testnet];
+            } else {
+                network = [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+                self.keychain.network = [BTCNetwork mainnet];
+            }
         }
         
         _network = [JSManagedValue managedValueWithValue:network];
