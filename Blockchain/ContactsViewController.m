@@ -19,7 +19,6 @@
 #import "BCTwoButtonView.h"
 
 #define VIEW_NAME_NEW_CONTACT @"newContact"
-#define VIEW_NAME_USER_WAS_INVITED @"userWasInvited"
 
 const int sectionContacts = 0;
 
@@ -150,7 +149,7 @@ typedef enum {
     
     self.bottomButton = [buttons lastObject];
     [self.bottomButton setTitle:BC_STRING_SOMEONE_IS_INVITING_ME forState:UIControlStateNormal];
-    [self.bottomButton addTarget:self action:@selector(showInvitedView) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomButton addTarget:self action:@selector(startReadingQRCode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.bottomButton];
 }
 
@@ -340,19 +339,13 @@ typedef enum {
 {
     if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
         [self createInvitation];
-    } else if ([senderName isEqualToString:VIEW_NAME_USER_WAS_INVITED]) {
-        [self prepareToReadInvitation];
     }
 }
 
 - (void)bottomButtonClicked:(NSString *)senderName
 {
     if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
-        [self showInvitedView];
-    } else if ([senderName isEqualToString:VIEW_NAME_USER_WAS_INVITED]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ADD_NEW_CONTACT message:BC_STRING_LINK_INVITE_INSTRUCTIONS preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.createContactNavigationController presentViewController:alert animated:YES completion:nil];
+        [self startReadingQRCode];
     }
 }
 
@@ -405,21 +398,6 @@ typedef enum {
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
 }
 
-- (void)showInvitedView
-{
-    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithName:VIEW_NAME_USER_WAS_INVITED topButtonText:BC_STRING_SCAN_QR_CODE bottomButtonText:BC_STRING_SOMEONE_SENT_ME_A_LINK];
-    twoButtonView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
-    
-    if (self.createContactNavigationController) {
-        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-    } else {
-        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
-        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
-    }
-}
-
 - (void)createInvitation
 {
     BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:nil senderName:nil];
@@ -433,11 +411,6 @@ typedef enum {
         self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
         [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
     }
-}
-
-- (void)prepareToReadInvitation
-{
-    [self startReadingQRCode];
 }
 
 - (BOOL)startReadingQRCode
@@ -462,16 +435,31 @@ typedef enum {
     self.videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
     [self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT);
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
-    [self.videoPreviewLayer setFrame:frame];
+    [self.videoPreviewLayer setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*2/3)];
     
     UIView *view = [[UIView alloc] initWithFrame:frame];
     [view.layer addSublayer:self.videoPreviewLayer];
     
+    UILabel *linkInstructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.videoPreviewLayer.frame.origin.y + self.videoPreviewLayer.frame.size.height, view.frame.size.width - 40, 60)];
+    linkInstructionsLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:14];
+    linkInstructionsLabel.textAlignment = NSTextAlignmentCenter;
+    linkInstructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    linkInstructionsLabel.text = BC_STRING_LINK_INVITE_INSTRUCTIONS;
+    linkInstructionsLabel.numberOfLines = 0;
+    [linkInstructionsLabel sizeToFit];
+    linkInstructionsLabel.center = CGPointMake(view.center.x, self.videoPreviewLayer.frame.size.height + (view.frame.size.height - self.videoPreviewLayer.frame.size.height - DEFAULT_HEADER_HEIGHT)/2);
+    [view addSubview:linkInstructionsLabel];
+    
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SCAN_QR_CODE view:view];
 
-    [self.createContactNavigationController presentViewController:modalViewController animated:YES completion:nil];
+    if (self.createContactNavigationController) {
+        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
+    } else {
+        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
+        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    }
     
     [self.captureSession startRunning];
     
