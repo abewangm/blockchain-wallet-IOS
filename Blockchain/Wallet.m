@@ -3925,7 +3925,7 @@
     
     [self updateAPIURL:URL_API];
     
-    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    BOOL testnetOn = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET];
     NSString *network;
     if (testnetOn) {
         network = NETWORK_TESTNET;

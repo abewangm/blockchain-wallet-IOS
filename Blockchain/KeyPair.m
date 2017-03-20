@@ -26,7 +26,7 @@
         self.key = key;
         
         if (network == nil || [network isNull] || [network isUndefined]) {
-            network = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] : [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
+            network = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().testnet"] : [app.wallet executeJSSynchronous:@"MyWalletPhone.getNetworks().bitcoin"];
         }
         
         _network = [JSManagedValue managedValueWithValue:network];
@@ -70,7 +70,7 @@
 
 - (NSString *)getAddress;
 {
-    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    BOOL testnetOn = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET];
     
     if (testnetOn) {
         DLog(@"Testnet set in debug menu: using testnet");
