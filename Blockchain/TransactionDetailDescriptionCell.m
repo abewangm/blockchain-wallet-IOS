@@ -7,6 +7,7 @@
 //
 
 #import "TransactionDetailDescriptionCell.h"
+#import "ContactTransaction.h"
 
 @implementation TransactionDetailDescriptionCell
 
@@ -37,6 +38,13 @@
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
     
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.mainLabel.frame.origin.x, 0, 30, 30)];
+    self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    self.subtitleLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction reason] : nil;
+    self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
+    [self.contentView addSubview:self.subtitleLabel];
+    
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 160, 0)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textView.scrollEnabled = NO;
@@ -66,6 +74,7 @@
     }
     
     self.mainLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -82,6 +91,27 @@
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeTop
                                                                 multiplier:1.f constant:23]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                multiplier:1.f constant:15]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.f constant:4]];
+    
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.subtitleLabel
+                                                                  attribute:NSLayoutAttributeRight
+                                                                 multiplier:1.f constant:16]];
     
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
                                                                   attribute:NSLayoutAttributeLeft

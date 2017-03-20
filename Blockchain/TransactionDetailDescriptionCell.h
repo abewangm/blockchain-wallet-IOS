@@ -21,6 +21,7 @@
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;
 @property (nonatomic) UILabel *mainLabel;
+@property (nonatomic) UILabel *subtitleLabel;
 @property (nonatomic) UILabel *textViewPlaceholderLabel;
 @property (nonatomic) CGFloat defaultTextViewHeight;
 @property (nonatomic) UIButton *editButton;

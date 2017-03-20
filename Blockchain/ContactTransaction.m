@@ -17,7 +17,7 @@
         _intendedAmount = [[dictionary objectForKey:DICTIONARY_KEY_INTENDED_AMOUNT] longLongValue];
         _role = [dictionary objectForKey:DICTIONARY_KEY_ROLE];
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
-        _reason = [dictionary objectForKey:DICTIONARY_KEY_REASON];
+        _reason = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         _contactIdentifier = identifier;
         _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
         

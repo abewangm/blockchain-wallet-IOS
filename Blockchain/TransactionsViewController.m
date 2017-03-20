@@ -80,16 +80,21 @@ int lastNumberTransactions = INT_MAX;
         Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
         ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
-        transaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
         
         TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
-            
+        
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
         }
         
-        cell.transaction = transaction;
-        
+        if (contactTransaction) {
+            ContactTransaction *newTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
+            newTransaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            cell.transaction = newTransaction;
+        } else {
+            cell.transaction = transaction;
+        }
+                
         [cell reload];
         
         cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
