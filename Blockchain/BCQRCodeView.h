@@ -15,6 +15,7 @@
 @property (nonatomic) NSString *address;
 @property (nonatomic) UILabel *qrCodeFooterLabel;
 @property (nonatomic) UILabel *qrCodeHeaderLabel;
+@property (nonatomic) UIButton *doneButton;
 
 @property (nonatomic) id<DoneButtonDelegate> doneButtonDelegate;
 

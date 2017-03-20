@@ -262,6 +262,7 @@ typedef enum {
             
             BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE addAddressPrefix:YES];
             qrCodeView.address = [app.wallet getXpubForAccount:self.account];
+            qrCodeView.doneButton.hidden = YES;
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             
@@ -272,6 +273,7 @@ typedef enum {
             
             BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame];
             qrCodeView.address = self.address;
+            qrCodeView.doneButton.hidden = YES;
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             

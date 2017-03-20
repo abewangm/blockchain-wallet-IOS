@@ -14,7 +14,6 @@ const float imageWidth = 190;
 @interface BCQRCodeView ()
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) BOOL shouldAddAddressPrefix;
-@property (nonatomic) UIButton *doneButton;
 @end
 
 @implementation BCQRCodeView
