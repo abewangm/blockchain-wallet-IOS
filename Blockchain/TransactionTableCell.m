@@ -86,9 +86,9 @@
     if (transaction.contactName) {
         NSString *toFromString = [transaction.txType isEqualToString:TX_TYPE_SENT] ? BC_STRING_TO : BC_STRING_FROM;
         
-        NSString *convertedNote = [transaction.note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *reasonWithoutSpaces = [[(ContactTransaction *)transaction reason] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ? : nil;
         
-        toFromLabel.text = convertedNote.length > 0 ? [NSString stringWithFormat:@"%@ %@ (%@)", toFromString, transaction.contactName, transaction.note] : [NSString stringWithFormat:@"%@ %@", toFromString, transaction.contactName];
+        toFromLabel.text = reasonWithoutSpaces.length > 0 ? [NSString stringWithFormat:@"%@ %@ (%@)", toFromString, transaction.contactName, [(ContactTransaction *)transaction reason]] : [NSString stringWithFormat:@"%@ %@", toFromString, transaction.contactName];
         toFromLabel.adjustsFontSizeToFitWidth = YES;
         toFromLabel.hidden = NO;
         

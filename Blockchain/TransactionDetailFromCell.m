@@ -7,6 +7,7 @@
 //
 
 #import "TransactionDetailFromCell.h"
+#import "ContactTransaction.h"
 
 @implementation TransactionDetailFromCell
 
@@ -34,6 +35,14 @@
     self.mainLabel.text = BC_STRING_FROM;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
+    
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.mainLabel.frame.origin.y + self.mainLabel.frame.size.height, self.mainLabel.frame.size.width, 15)];
+    self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    self.subtitleLabel.text = [transaction.txType isEqualToString:TX_TYPE_RECEIVED] && [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction contactName] : nil;
+    self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
+    [self.contentView addSubview:self.subtitleLabel];
     
     CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];

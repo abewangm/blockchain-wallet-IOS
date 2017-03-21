@@ -48,9 +48,9 @@
     NSString *dateString = [NSDateFormatter timeAgoStringFromDate:date];
     self.lastUpdatedLabel.text = dateString;
     
-    NSString *convertedNote = [transaction.note stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *reasonWithoutSpaces = [transaction.reason stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    NSString *toFromLabelTextSuffix = convertedNote.length > 0 ? [NSString stringWithFormat:@"%@ (%@)", name, transaction.note] : name;
+    NSString *toFromLabelTextSuffix = reasonWithoutSpaces.length > 0 ? [NSString stringWithFormat:@"%@ (%@)", name, transaction.reason] : name;
 
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
         self.statusLabel.text = BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR;

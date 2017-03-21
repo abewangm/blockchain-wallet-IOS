@@ -45,7 +45,8 @@
     self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.mainLabel.frame.origin.y + self.mainLabel.frame.size.height, self.mainLabel.frame.size.width, 15)];
     self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
     self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
-    self.subtitleLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction contactName] : nil;
+    
+    self.subtitleLabel.text = [transaction.txType isEqualToString:TX_TYPE_SENT] && [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction contactName] : nil;
     self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:self.subtitleLabel];
     
