@@ -827,11 +827,6 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (BOOL)isViewingContacts
-{
-    return self.topViewControllerDelegate != nil;
-}
-
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -2069,20 +2064,14 @@ void (^secondPasswordSuccess)(NSString *);
                 
                 BCNavigationController *navigationController = (BCNavigationController *)self.topViewControllerDelegate;
                 if ([navigationController isMemberOfClass:[BCNavigationController class]]) {
-                    if ([navigationController.visibleViewController isEqual:_contactsViewController]) isViewingContacts = YES;
+                    if ([[navigationController.viewControllers firstObject] isEqual:_contactsViewController]) isViewingContacts = YES;
                 }
                 
                 if (isViewingContacts) {
                     
                     // User is viewing contacts
                     
-                    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST]) {
-                        alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
-                        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                            [_contactsViewController showAcceptedInvitation:identifier];
-                        }]];
-                    } else if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
+                    if ([type isEqualToString:PUSH_NOTIFICATION_TYPE_PAYMENT]) {
                         alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_TRANSACTIONS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -2093,6 +2082,11 @@ void (^secondPasswordSuccess)(NSString *);
                                 [_transactionsViewController selectPayment:identifier];
                             }];
                         }]];
+                    } else if (![navigationController.visibleViewController isEqual:_contactsViewController]) {
+                        
+                        // User is viewing a modal view controller presented by contacts view controller
+                        
+                        [_contactsViewController doneButtonClicked];
                     }
                     
                 } else {
@@ -2124,11 +2118,14 @@ void (^secondPasswordSuccess)(NSString *);
                     }
                 }
                 
-                if (self.topViewControllerDelegate && [self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
-                    [self.topViewControllerDelegate presentAlertController:alert];
-                } else {
-                    [_tabViewController presentViewController:alert animated:YES completion:nil];
+                if (alert) {
+                    if (self.topViewControllerDelegate && [self.topViewControllerDelegate respondsToSelector:@selector(presentAlertController:)]) {
+                        [self.topViewControllerDelegate presentAlertController:alert];
+                    } else {
+                        [_tabViewController presentViewController:alert animated:YES completion:nil];
+                    }
                 }
+
             } else if (self.pinEntryViewController) {
                 
                 // On PIN screen

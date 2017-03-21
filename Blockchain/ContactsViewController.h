@@ -29,4 +29,6 @@
 // Detail Controller
 - (void)didFetchExtendedPublicKey;
 - (void)reloadSymbols;
+
+- (void)doneButtonClicked;
 @end
