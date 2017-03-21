@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "ウォレット";
+
+/* (No Commment) */
+"START BACKUP" = "バックアップを開始";
+
+/* (No Commment) */
+"Backup Needed" = "バックアップが必要です";
+
+/* (No Commment) */
+"Create a Wallet" = "ウォレットを作成";
+
+/* (No Commment) */
+"Log In" = "ログイン";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Blockchainウォレットにログインするにはパスワードを入力してください。";
+
+/* (No Commment) */
+"Forgot Password?" = "パスワードをお忘れですか？";
+
+/* (No Commment) */
+"Or start over and " = "もしくは最初からやり直す";
+
+/* (No Commment) */
+"Update Email" = "メールアドレスを更新する";
+
+/* (No Commment) */
+"Enter Email Address" = "メールアドレスを入力する";
+
+/* (No Commment) */
+"Update Mobile" = "携帯電話番号を更新する";
+
+/* (No Commment) */
+"Enter Mobile Number" = "携帯電話番号を入力する";
+
+/* (No Commment) */
+"Balances" = "残高";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "ビットコインの送受信時にトランザクションは発生します 。";
+
+/* (No Commment) */
+"Your Transactions" = "あなたのトランザクション";
+
+/* (No Commment) */
+"Backup Complete" = "バックアップが完了しました";
+
+/* (No Commment) */
+"Backup Needed" = "バックアップが必要です";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "パスワードを紛失した場合リカバリーフレーズを使用して資金を復元できます。リカバリーフレーズを知っている人なら誰でもビットコインにアクセスできるため、オフラインの安全な場所に保管するようにしてください。";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "以下の12単語のリカバリーフレーズを使用すると、パスワードを紛失した場合でも資金にアクセスできるようになります。";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "紙に書き起こし安全な場所に保管するようにしてください。";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "次の12単語のリカバリーフレーズを表示される順番通りに書き起こしてください:";
+
+/* (No Commment) */
+"PREVIOUS" = "前へ";
+
+/* (No Commment) */
+"NEXT" = "次へ";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "再度バックアップ";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "お客様の認証メールアドレスは決済通知、IDのリマインダー、ログインコードの送信に使用されます。";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "携帯電話番号は2段階認証の有効化や通知の受信に使用できます。";
