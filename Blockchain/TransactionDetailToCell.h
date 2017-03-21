@@ -11,5 +11,6 @@
 
 @interface TransactionDetailToCell : TransactionDetailTableCell
 @property (nonatomic) UILabel *mainLabel;
+@property (nonatomic) UILabel *subtitleLabel;
 @property (nonatomic) UILabel *accessoryLabel;
 @end
