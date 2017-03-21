@@ -86,7 +86,7 @@
     if (transaction.contactName) {
         NSString *toFromString = [transaction.txType isEqualToString:TX_TYPE_SENT] ? BC_STRING_TO : BC_STRING_FROM;
         
-        NSString *reasonWithoutSpaces = [[(ContactTransaction *)transaction reason] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ? : nil;
+        NSString *reasonWithoutSpaces = [transaction isMemberOfClass:[ContactTransaction class]] ? [[(ContactTransaction *)transaction reason] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : nil;
         
         toFromLabel.text = reasonWithoutSpaces.length > 0 ? [NSString stringWithFormat:@"%@ %@ (%@)", toFromString, transaction.contactName, [(ContactTransaction *)transaction reason]] : [NSString stringWithFormat:@"%@ %@", toFromString, transaction.contactName];
         toFromLabel.adjustsFontSizeToFitWidth = YES;

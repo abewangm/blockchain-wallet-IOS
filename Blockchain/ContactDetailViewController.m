@@ -57,8 +57,9 @@ const int maxFindAttempts = 2;
         if (contactTransaction.transactionState == ContactTransactionStateCompletedSend ||
             contactTransaction.transactionState == ContactTransactionStateCompletedReceive) {
             Transaction *transaction = [self getTransactionDetails:contactTransaction];
-            transaction.contactName = self.contact.name;
-            if (transaction) [mutableTransactionList addObject:transaction];
+            ContactTransaction *newTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
+            newTransaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            if (newTransaction) [mutableTransactionList addObject:newTransaction];
         }
     }
     
@@ -126,7 +127,7 @@ const int maxFindAttempts = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Transaction *transaction = [self.transactionList objectAtIndex:indexPath.row];
+    ContactTransaction *transaction = [self.transactionList objectAtIndex:indexPath.row];
 
     TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
     
