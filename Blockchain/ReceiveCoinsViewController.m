@@ -629,8 +629,14 @@ NSString *detailLabel;
         return;
     }
     
-    if ([self getInputAmountInSatoshi] == 0) {
+    uint64_t amountInSatoshi = [self getInputAmountInSatoshi];
+    uint64_t dust = [app.wallet dust];
+    
+    if (amountInSatoshi == 0) {
         [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        return;
+    } else if (amountInSatoshi < dust) {
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, dust]];
         return;
     }
     

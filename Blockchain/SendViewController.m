@@ -1951,8 +1951,13 @@ BOOL displayingLocalSymbolSend;
 - (IBAction)sendPaymentClicked:(id)sender
 {
     if (self.toContact) {
+        
+        uint64_t dust = [app.wallet dust];
+        
         if (amountInSatoshi == 0) {
             [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        } else if (amountInSatoshi < dust) {
+            [app standardNotify:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, dust]];
         } else {
             [self createSendRequest:RequestTypeSendReason forContact:self.toContact reason:nil];
         }
