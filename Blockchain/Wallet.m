@@ -599,6 +599,10 @@
         [weakSelf show_completed_trade:trade];
     };
     
+    self.context[@"objc_on_get_pending_trades_error"] = ^(JSValue *error) {
+        [weakSelf on_get_pending_trades_error:error];
+    };
+    
 #pragma mark Settings
     
     self.context[@"objc_on_get_account_info_success"] = ^(NSString *accountInfo) {
@@ -3072,6 +3076,11 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didCompleteTrade:!", [delegate class]);
     }
+}
+
+- (void)on_get_pending_trades_error:(JSValue *)error
+{
+    [app standardNotify:[error toString]];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

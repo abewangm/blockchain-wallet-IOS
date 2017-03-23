@@ -1139,7 +1139,8 @@ MyWalletPhone.get_wallet_and_history = function() {
         objc_loading_stop();
     };
 
-    var error = function () {
+    var error = function (e) {
+        console.log(e);
         console.log('Error getting wallet and history');
         objc_loading_stop();
     };
@@ -1936,16 +1937,26 @@ var watchTrade = function (trade) {
 }
 
 MyWalletPhone.getPendingTrades = function() {
-  MyWalletPhone.getExchangeAccount().then(function (exchange) {
-    console.log('Getting pending trades');
-    exchange.getTrades().then(function () {
-      console.log(exchange.trades);
-      exchange.monitorPayments();
-      exchange.trades
-        .filter(function (trade) { return !trade.txHash; })
-        .forEach(watchTrade);
-    });
-  });
+  
+    var success = function() {
+      MyWalletPhone.getExchangeAccount().then(function (exchange) {
+        console.log('Getting pending trades');
+        exchange.getTrades().then(function () {
+          console.log(exchange.trades);
+          exchange.monitorPayments();
+          exchange.trades
+            .filter(function (trade) { return !trade.txHash; })
+            .forEach(watchTrade);
+        });
+      });
+    }
+
+    var error = function(e) {
+      console.log(e);
+      objc_on_get_pending_trades_error(e);
+    };
+
+    MyWallet.getWallet(success, error);
 }
 
 MyWalletPhone.getWebViewLoginData = function () {
