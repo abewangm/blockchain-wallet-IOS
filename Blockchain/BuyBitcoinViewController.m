@@ -12,7 +12,7 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
 
-@interface BuyBitcoinViewController () <WKNavigationDelegate, WKScriptMessageHandler>
+@interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
 @property (nonatomic) BOOL didInitiateTrade;
 @property (nonatomic) BOOL isReady;
@@ -39,6 +39,7 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
         self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) configuration:configuration];
         [self.view addSubview:self.webView];
         
+        self.webView.UIDelegate = self;
         self.webView.navigationDelegate = self;
         self.webView.scrollView.scrollEnabled = NO;
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -60,6 +61,13 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
     }
 
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+    
+    return nil;
 }
 
 NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3, NSString* a4)
