@@ -128,7 +128,7 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
         return;
     }
     if (self.didInitiateTrade) {
-        [self.delegate watchPendingTrades];
+        [self.delegate watchPendingTrades:YES];
     } else {
         [self.delegate fetchExchangeAccount];
     }

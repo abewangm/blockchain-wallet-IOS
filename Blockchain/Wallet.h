@@ -42,7 +42,7 @@
 @class Wallet, Transaction, JSValue, JSContext;
 
 @protocol ExchangeAccountDelegate
-- (void)watchPendingTrades;
+- (void)watchPendingTrades:(BOOL)shouldSync;
 - (void)fetchExchangeAccount;
 @end
 

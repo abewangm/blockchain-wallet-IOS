@@ -1933,9 +1933,9 @@
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
 }
 
-- (void)watchPendingTrades
+- (void)watchPendingTrades:(BOOL)shouldSync
 {
-    [self.context evaluateScript:@"MyWalletPhone.getPendingTrades()"];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPendingTrades(%d)", shouldSync]];
 }
 
 - (void)fetchExchangeAccount
@@ -2391,7 +2391,7 @@
         }
     }
     
-    [self watchPendingTrades];
+    [self watchPendingTrades:NO];
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         

@@ -1936,9 +1936,9 @@ var watchTrade = function (trade) {
   });
 }
 
-MyWalletPhone.getPendingTrades = function() {
+MyWalletPhone.getPendingTrades = function(shouldSync) {
   
-    var success = function() {
+    var watchTrades = function() {
       MyWalletPhone.getExchangeAccount().then(function (exchange) {
         console.log('Getting pending trades');
         exchange.getTrades().then(function () {
@@ -1955,8 +1955,14 @@ MyWalletPhone.getPendingTrades = function() {
       console.log(e);
       objc_on_get_pending_trades_error(e);
     };
-
-    MyWallet.getWallet(success, error);
+    
+    if (shouldSync) {
+        console.log('Getting wallet then watching trades');
+        MyWallet.getWallet(watchTrades, error);
+    } else {
+        console.log('Watching trades');
+        watchTrades().catch(error);
+    }
 }
 
 MyWalletPhone.getWebViewLoginData = function () {
