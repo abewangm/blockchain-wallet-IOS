@@ -218,7 +218,7 @@
 - (NSString *)checkForTouchIDAvailablility;
 - (void)disabledTouchID;
 
-- (AVCaptureDeviceInput *)getCaptureDeviceInput;
+- (AVCaptureDeviceInput *)getCaptureDeviceInput:(UIViewController *)viewController;
 
 - (void)scanPrivateKeyForWatchOnlyAddress:(NSString *)address;
 - (void)askUserToAddWatchOnlyAddress:(NSString *)address success:(void (^)(NSString *))success;

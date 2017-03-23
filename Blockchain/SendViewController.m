@@ -1003,7 +1003,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)scanPrivateKeyToSendFromWatchOnlyAddress
 {
-    if (![app getCaptureDeviceInput]) {
+    if (![app getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -1615,7 +1615,7 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)startReadingQRCode
 {
-    AVCaptureDeviceInput *input = [app getCaptureDeviceInput];
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:nil];
     
     if (!input) {
         return NO;

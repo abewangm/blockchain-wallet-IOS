@@ -22,7 +22,14 @@ typedef enum {
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion
 {
-    [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    if ([viewControllerToPresent isMemberOfClass:[UIImagePickerController class]] && [(UIImagePickerController *)viewControllerToPresent sourceType] == UIImagePickerControllerSourceTypeCamera) {
+        [super presentViewController:viewControllerToPresent animated:flag completion:^{
+            [app getCaptureDeviceInput:viewControllerToPresent];
+            if (completion) completion();
+        }];
+    } else {
+        [super presentViewController:viewControllerToPresent animated:flag completion:completion];
+    }
     
     // http://stackoverflow.com/questions/35999551/uiimagepickercontroller-view-is-not-in-the-window-hierarchy
     

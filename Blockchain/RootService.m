@@ -1404,7 +1404,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)scanAccountQRCodeclicked:(id)sender
 {
-    if (![self getCaptureDeviceInput]) {
+    if (![self getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -1434,7 +1434,7 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    if (![app getCaptureDeviceInput]) {
+    if (![app getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -3261,7 +3261,7 @@ void (^secondPasswordSuccess)(NSString *);
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }
 
-- (AVCaptureDeviceInput *)getCaptureDeviceInput
+- (AVCaptureDeviceInput *)getCaptureDeviceInput:(UIViewController *)viewController
 {
     NSError *error;
     
@@ -3283,7 +3283,9 @@ void (^secondPasswordSuccess)(NSString *);
             }]];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
             
-            if (self.topViewControllerDelegate) {
+            if (viewController) {
+                [viewController presentViewController:alert animated:YES completion:nil];
+            } else if (self.topViewControllerDelegate) {
                 [self.topViewControllerDelegate presentViewController:alert animated:YES completion:nil];
             } else {
                 [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
