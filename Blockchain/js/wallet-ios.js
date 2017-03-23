@@ -1938,7 +1938,7 @@ var watchTrade = function (trade) {
 
 MyWalletPhone.getPendingTrades = function(shouldSync) {
   
-    var watchTrades = function() {
+    var watchTrades = function(errorCallBack) {
       MyWalletPhone.getExchangeAccount().then(function (exchange) {
         console.log('Getting pending trades');
         exchange.getTrades().then(function () {
@@ -1948,7 +1948,7 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
             .filter(function (trade) { return !trade.txHash; })
             .forEach(watchTrade);
         });
-      });
+      }).catch(errorCallBack);
     }
 
     var error = function(e) {
@@ -1958,10 +1958,10 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
     
     if (shouldSync) {
         console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(watchTrades, error);
+        MyWallet.getWallet(watchTrades(error), error);
     } else {
         console.log('Watching trades');
-        watchTrades().catch(error);
+        watchTrades(error);
     }
 }
 
