@@ -1886,6 +1886,15 @@ void (^secondPasswordSuccess)(NSString *);
     });
 }
 
+- (void)showCompletedTrade:(NSString *)txHash
+{
+    [self closeSideMenu];
+    
+    [self showTransactions];
+    
+    [_transactionsViewController showTransactionDetailForHash:txHash];
+}
+
 - (void)didPushTransaction
 {
     DestinationAddressSource source = self.sendViewController.addressSource;
@@ -1979,6 +1988,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+}
+
+- (void)showTransactions
+{
+    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:0];
 }
 
 - (void)showDebugMenu:(int)presenter

@@ -124,8 +124,9 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
     }
 
     if ([message.name isEqual:WEBKIT_HANDLER_SHOW_TX]) {
-        [self dismissViewControllerAnimated:true completion:^(){
-            DLog(@"Go to tx feed");
+        [self dismissViewControllerAnimated:YES completion:^(){
+            app.topViewControllerDelegate = nil;
+            [self.delegate showCompletedTrade:nil];
         }];
     }
 }

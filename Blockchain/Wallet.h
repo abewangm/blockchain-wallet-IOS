@@ -44,6 +44,7 @@
 @protocol ExchangeAccountDelegate
 - (void)watchPendingTrades:(BOOL)shouldSync;
 - (void)fetchExchangeAccount;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @protocol WalletDelegate <NSObject>
@@ -108,6 +109,7 @@
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {

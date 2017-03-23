@@ -1943,6 +1943,15 @@
     [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
 }
 
+- (void)showCompletedTrade:(NSString *)txHash
+{
+    if ([self.delegate respondsToSelector:@selector(showCompletedTrade:)]) {
+        [self.delegate showCompletedTrade:txHash];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector showCompletedTrade!", [delegate class]);
+    }
+}
+
 - (JSValue *)executeJSSynchronous:(NSString *)command
 {
     return [self.context evaluateScript:command];
