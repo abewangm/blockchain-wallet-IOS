@@ -1524,9 +1524,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [KeychainItemWrapper removeGuidFromKeychain];
     [KeychainItemWrapper removeSharedKeyFromKeychain];
-    
-    [self.wallet clearLocalStorage];
-    
+        
     [self.wallet loadBlankWallet];
     
     self.latestResponse = nil;

@@ -1532,11 +1532,6 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]]];
 }
 
-- (void)clearLocalStorage
-{
-    [self.context evaluateScript:@"localStorage.clear();"];
-}
-
 - (NSString*)detectPrivateKeyFormat:(NSString*)privateKeyString
 {
     if (![self isInitialized]) {

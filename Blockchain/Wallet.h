@@ -216,8 +216,6 @@
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;
 
-- (void)clearLocalStorage;
-
 - (void)parsePairingCode:(NSString *)code;
 - (void)resendTwoFactorSMS;
 
