@@ -11,6 +11,7 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
+#import "BCWebViewController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
@@ -65,7 +66,12 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
-    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+    NSURL *url = navigationAction.request.URL;
+    
+    BCWebViewController *webViewController = [[BCWebViewController alloc] initWithTitle:@""];
+    [webViewController loadURL:url.absoluteString];
+    webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:webViewController animated:YES completion:nil];
     
     return nil;
 }
@@ -126,7 +132,7 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
     if ([message.name isEqual:WEBKIT_HANDLER_SHOW_TX]) {
         [self dismissViewControllerAnimated:YES completion:^(){
             app.topViewControllerDelegate = nil;
-            [self.delegate showCompletedTrade:nil];
+            [self.delegate showCompletedTrade:message.body];
         }];
     }
 }
