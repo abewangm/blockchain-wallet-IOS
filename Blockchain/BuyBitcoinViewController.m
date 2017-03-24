@@ -11,7 +11,6 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
-#import "BCWebViewController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
@@ -66,12 +65,7 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
-    NSURL *url = navigationAction.request.URL;
-    
-    BCWebViewController *webViewController = [[BCWebViewController alloc] initWithTitle:@""];
-    [webViewController loadURL:url.absoluteString];
-    webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:webViewController animated:YES completion:nil];
+    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
     
     return nil;
 }
