@@ -143,8 +143,6 @@ void (^secondPasswordSuccess)(NSString *);
 #ifndef ENABLE_DEBUG_MENU
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
