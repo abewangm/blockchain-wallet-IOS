@@ -1937,17 +1937,19 @@ var watchTrade = function (trade) {
 }
 
 MyWalletPhone.getPendingTrades = function(shouldSync) {
-  
+
     var watchTrades = function(errorCallBack) {
       MyWalletPhone.getExchangeAccount().then(function (exchange) {
-        console.log('Getting pending trades');
-        exchange.getTrades().then(function () {
-          console.log(exchange.trades);
-          exchange.monitorPayments();
-          exchange.trades
-            .filter(function (trade) { return !trade.txHash; })
-            .forEach(watchTrade);
-        });
+        if (exchange) {
+          console.log('Getting pending trades');
+          exchange.getTrades().then(function () {
+            console.log(exchange.trades);
+            exchange.monitorPayments();
+            exchange.trades
+              .filter(function (trade) { return !trade.txHash; })
+              .forEach(watchTrade);
+          });
+        }
       }).catch(errorCallBack);
     }
 
