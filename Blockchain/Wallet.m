@@ -758,6 +758,22 @@
         [weakSelf on_delete_contact_success:info];
     };
     
+    self.context[@"objc_on_send_cancellation_success"] = ^() {
+        [weakSelf on_send_cancellation_success];
+    };
+    
+    self.context[@"objc_on_send_cancellation_error"] = ^(JSValue *info) {
+        [weakSelf on_send_cancellation_error:info];
+    };
+    
+    self.context[@"objc_on_send_declination_success"] = ^() {
+        [weakSelf on_send_declination_success];
+    };
+
+    self.context[@"objc_on_send_declination_error"] = ^(JSValue *info) {
+        [weakSelf on_send_declination_error:info];
+    };
+
     self.context[@"objc_on_delete_contact_after_storing_info_success"] = ^(JSValue *info) {
         [weakSelf on_delete_contact_after_storing_info_success:info];
     };
@@ -3469,6 +3485,26 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didChangeContactName!", [delegate class]);
     }
+}
+
+- (void)on_send_cancellation_success
+{
+    DLog(@"on_send_cancellation_success");
+}
+
+- (void)on_send_cancellation_error:(JSValue *)info
+{
+    DLog(@"on_send_cancellation_error");
+}
+
+- (void)on_send_declination_success
+{
+    DLog(@"on_send_declination_success");
+}
+
+- (void)on_send_declination_error:(JSValue *)info
+{
+    DLog(@"on_send_declination_error");
 }
 
 - (void)on_delete_contact_success:(JSValue *)info

@@ -1953,6 +1953,36 @@ MyWalletPhone.createContact = function(name, id) {
     MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(error);
 }
 
+MyWalletPhone.sendDeclination = function(userId, txIdentifier) {
+    
+    var success = function() {
+        objc_on_send_declination_success();
+    };
+    
+    var error = function(e) {
+        objc_on_send_declination_error();
+        console.log('Error sending declination');
+        console.log(e);
+    };
+    
+    MyWallet.wallet.contacts.sendDeclination(userId, txIdentifier)).then(success).catch(error);
+}
+
+MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
+    
+    var success = function() {
+        objc_on_send_cancellation_success();
+    };
+    
+    var error = function(e) {
+        objc_on_send_cancellation_error();
+        console.log('Error sending cancellation');
+        console.log(e);
+    };
+    
+    MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier)).then(success).catch(error);
+}
+
 MyWalletPhone.readInvitation = function(invitation, invitationString) {
     objc_on_read_invitation_success(invitation, invitationString);
 }
