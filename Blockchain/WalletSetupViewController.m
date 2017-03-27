@@ -83,6 +83,7 @@
 
 - (void)dismiss
 {
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
