@@ -31,10 +31,6 @@
         [super loadView];
     }
     
-    UIView *bannerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT + 80)];
-    bannerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.view addSubview:bannerView];
-    
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -53,7 +49,8 @@
 - (UIView *)setupTouchIDView
 {
     UIView *touchIDView = [[UIView alloc] initWithFrame:self.view.frame];
-    touchIDView.backgroundColor = [UIColor clearColor];
+    
+    [touchIDView addSubview:[self setupBannerViewWithImageName:@"bitcoin"]];
     
     UIButton *enableTouchIDButton = [self setupActionButton];
     [enableTouchIDButton setTitle:BC_STRING_ENABLE_TOUCH_ID forState:UIControlStateNormal];
@@ -70,7 +67,8 @@
 - (UIView *)setupEmailView
 {
     UIView *emailView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    emailView.backgroundColor = [UIColor clearColor];
+    
+    [emailView addSubview:[self setupBannerViewWithImageName:@"bitcoin"]];
     
     UIButton *openMailButton = [self setupActionButton];
     [openMailButton setTitle:BC_STRING_OPEN_MAIL_APP forState:UIControlStateNormal];
@@ -102,6 +100,19 @@
     [doneButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
     [doneButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
     return doneButton;
+}
+
+- (UIView *)setupBannerViewWithImageName:(NSString *)imageName
+{
+    UIView *bannerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT + 80)];
+    bannerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    imageView.frame = CGRectMake(0, 0, 50, 50);
+    imageView.center = bannerView.center;
+    
+    [bannerView addSubview:imageView];
+    return bannerView;
 }
 
 - (void)goToSecondPage
