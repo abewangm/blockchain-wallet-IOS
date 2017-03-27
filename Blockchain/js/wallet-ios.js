@@ -1965,7 +1965,7 @@ MyWalletPhone.sendDeclination = function(userId, txIdentifier) {
         console.log(e);
     };
     
-    MyWallet.wallet.contacts.sendDeclination(userId, txIdentifier)).then(success).catch(error);
+    MyWallet.wallet.contacts.sendDeclination(userId, txIdentifier).then(success).catch(error);
 }
 
 MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
@@ -1980,7 +1980,7 @@ MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
         console.log(e);
     };
     
-    MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier)).then(success).catch(error);
+    MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier).then(success).catch(error);
 }
 
 MyWalletPhone.readInvitation = function(invitation, invitationString) {
