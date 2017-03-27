@@ -829,8 +829,12 @@ void (^secondPasswordSuccess)(NSString *);
     [app closeAllModals];
     
     if (![app isPinSet]) {
-        [app showPinModalAsView:NO];
-    } else {        
+        if (app.wallet.isNew) {
+            [self showNewWalletSetup];
+        } else {
+            [app showPinModalAsView:NO];
+        }
+    } else {
         NSDate *dateOfLastReminder = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
         
         NSTimeInterval timeIntervalBetweenPrompts = TIME_INTERVAL_SECURITY_REMINDER_PROMPT;
@@ -2043,17 +2047,21 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     else {
-        [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
-            if (walletIsNew) {
+        if (walletIsNew) {
+            [_tabViewController.presentedViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DID_CREATE_NEW_WALLET_TITLE message:BC_STRING_DID_CREATE_NEW_WALLET_DETAIL preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
                 [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
-            } else if (didAutoPair) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE message:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
-            }
-        }];
+            }];
+        } else {
+            [self.tabViewController presentViewController:self.pinEntryViewController animated:YES completion:^{
+                if (didAutoPair) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_TITLE message:BC_STRING_WALLET_PAIRED_SUCCESSFULLY_DETAIL preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                    [self.pinEntryViewController presentViewController:alert animated:YES completion:nil];
+                }
+            }];
+        }
     }
     
     self.wallet.didPairAutomatically = NO;
@@ -2216,6 +2224,14 @@ void (^secondPasswordSuccess)(NSString *);
     [manualPairView clearPasswordTextField];
 }
 
+- (void)showNewWalletSetup
+{
+    WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
+    [_tabViewController presentViewController:setupViewController animated:NO completion:^{
+        [app showPinModalAsView:NO];
+    }];
+}
+
 #pragma mark - Actions
 
 - (IBAction)menuClicked:(id)sender
@@ -2324,7 +2340,11 @@ void (^secondPasswordSuccess)(NSString *);
             [self.pinEntryViewController.view removeFromSuperview];
         }
     } else {
-        [_tabViewController dismissViewControllerAnimated:animated completion:^{ }];
+        if (app.wallet.isNew) {
+            [_tabViewController.presentedViewController dismissViewControllerAnimated:animated completion:nil];
+        } else {
+            [_tabViewController dismissViewControllerAnimated:animated completion:nil];
+        }
     }
     
     self.pinEntryViewController = nil;
@@ -3009,8 +3029,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didPutPinSuccess:(NSDictionary*)dictionary
 {
-    BOOL walletIsNew = self.wallet.isNew;
-    
     [self hideBusyView];
     
     if (!app.wallet.password) {
@@ -3053,12 +3071,7 @@ void (^secondPasswordSuccess)(NSString *);
         // Update your info to new pin code
         [self closePINModal:YES];
         
-        if (app.wallet.didUpgradeToHd) {
-            if (walletIsNew) {
-                app.wallet.isNew = NO;
-                [self checkIfSettingsLoadedAndShowEmailReminder];
-            }
-        } else {
+        if (!app.wallet.didUpgradeToHd) {
             [self forceHDUpgradeForLegacyWallets];
         }
     }
@@ -3152,6 +3165,23 @@ void (^secondPasswordSuccess)(NSString *);
     }]];
     
     [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - Setup Delegate
+
+- (CGRect)getFrame
+{
+    return self.window.frame;
+}
+
+- (void)enableTouchIDClicked
+{
+    
+}
+
+- (void)openMailClicked
+{
+    
 }
 
 #pragma mark - State Checks
