@@ -203,7 +203,6 @@
 #define BC_STRING_INVALID_STATUS_CODE_RETURNED NSLocalizedString(@"Invalid Status Code Returned %@", nil)
 #define BC_STRING_PIN_RESPONSE_OBJECT_KEY_OR_VALUE_LENGTH_0 NSLocalizedString(@"PIN Response Object key or value length 0", nil)
 #define BC_STRING_PIN_ENCRYPTED_STRING_IS_NIL NSLocalizedString(@"PIN Encrypted String is nil", nil)
-#define BC_STRING_PIN_SAVED_SUCCESSFULLY NSLocalizedString(@"PIN Saved Successfully", nil)
 #define BC_STRING_WARNING_TITLE NSLocalizedString(@"Warning", nil)
 #define BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE NSLocalizedString(@"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?", nil)
 #define BC_STRING_TRY_AGAIN NSLocalizedString(@"Try again", nil)

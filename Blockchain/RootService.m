@@ -3053,21 +3053,14 @@ void (^secondPasswordSuccess)(NSString *);
         // Update your info to new pin code
         [self closePINModal:YES];
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PIN_SAVED_SUCCESSFULLY preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-            if (app.wallet.didUpgradeToHd) {
-                if (walletIsNew) {
-                    app.wallet.isNew = NO;
-                    [self checkIfSettingsLoadedAndShowEmailReminder];
-                }
-            } else {
-                [self forceHDUpgradeForLegacyWallets];
+        if (app.wallet.didUpgradeToHd) {
+            if (walletIsNew) {
+                app.wallet.isNew = NO;
+                [self checkIfSettingsLoadedAndShowEmailReminder];
             }
-            
-        }]];
-        
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self forceHDUpgradeForLegacyWallets];
+        }
     }
     
     app.wallet.isNew = NO;
