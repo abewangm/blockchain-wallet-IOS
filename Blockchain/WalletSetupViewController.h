@@ -12,6 +12,8 @@
 - (CGRect)getFrame;
 - (void)enableTouchIDClicked;
 - (void)openMailClicked;
+- (NSString *)getEmail;
+- (void)getAccountInfo;
 @end
 
 @interface WalletSetupViewController : UIViewController

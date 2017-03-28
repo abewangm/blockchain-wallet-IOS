@@ -10,6 +10,7 @@
 
 @interface WalletSetupViewController ()
 @property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) UILabel *emailLabel;
 @end
 
 @implementation WalletSetupViewController
@@ -100,14 +101,14 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [emailView addSubview:titleLabel];
     
-    UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, emailView.frame.size.width - 50, 30)];
-    emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
-    emailLabel.text = @"email";
-    emailLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, emailLabel.center.y);
-    emailLabel.textAlignment = NSTextAlignmentCenter;
-    [emailView addSubview:emailLabel];
+    self.emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, emailView.frame.size.width - 50, 30)];
+    self.emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
+    self.emailLabel.text = [self.delegate getEmail];
+    self.emailLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, self.emailLabel.center.y);
+    self.emailLabel.textAlignment = NSTextAlignmentCenter;
+    [emailView addSubview:self.emailLabel];
     
-    UITextView *body = [[UITextView alloc] initWithFrame:CGRectMake(0, emailLabel.frame.origin.y + emailLabel.frame.size.height + 8, emailView.frame.size.width - 50, 100)];
+    UITextView *body = [[UITextView alloc] initWithFrame:CGRectMake(0, self.emailLabel.frame.origin.y + self.emailLabel.frame.size.height + 8, emailView.frame.size.width - 50, 100)];
     body.selectable = NO;
     body.editable = NO;
     body.scrollEnabled = NO;

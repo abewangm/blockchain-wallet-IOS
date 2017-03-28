@@ -3184,6 +3184,11 @@ void (^secondPasswordSuccess)(NSString *);
     
 }
 
+- (NSString *)getEmail
+{
+    return [self.wallet getEmail];
+}
+
 #pragma mark - State Checks
 
 - (void)checkForNewInstall
