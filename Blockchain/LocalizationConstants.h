@@ -605,6 +605,7 @@
 #define BC_STRING_WELCOME_MESSAGE_TWO NSLocalizedString (@"Securely store bitcoin", nil)
 #define BC_STRING_WELCOME_MESSAGE_THREE NSLocalizedString (@"Seamlessly transact with others around the world", nil)
 #define BC_STRING_WELCOME_TOUCH_ID_INSTRUCTIONS NSLocalizedString (@"Use Touch ID fingerprint instead of PIN to authenticate Blockchain and access your wallet.", nil)
+#define BC_STRING_TOUCH_ID NSLocalizedString(@"Touch ID", nil)
 #define BC_STRING_ENABLE_TOUCH_ID NSLocalizedString(@"Enable Touch ID", nil)
 #define BC_STRING_OVERVIEW_MARKET_PRICE_TITLE NSLocalizedString(@"Current Price", nil)
 #define BC_STRING_OVERVIEW_MARKET_PRICE_MESSAGE NSLocalizedString (@"We work with exchange partners all over the world, so you can buy bitcoin directly from your wallet.", nil)
