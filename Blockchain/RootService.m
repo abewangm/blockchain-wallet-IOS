@@ -3181,7 +3181,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)openMailClicked
 {
-    
+    [self openMail];
 }
 
 - (NSString *)getEmail

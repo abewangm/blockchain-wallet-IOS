@@ -120,7 +120,7 @@
     [emailView addSubview:body];
     
     UIButton *openMailButton = [self setupActionButton];
-    [openMailButton setTitle:BC_STRING_OPEN_MAIL_APP forState:UIControlStateNormal];
+    [openMailButton setTitle:BC_STRING_OPEN_MAIL forState:UIControlStateNormal];
     [openMailButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
     [emailView addSubview:openMailButton];
     
@@ -177,12 +177,12 @@
 
 - (void)openMail
 {
-    
+    [self.delegate openMailClicked];
 }
 
 - (void)enableTouchID
 {
-    
+    [self.delegate enableTouchIDClicked];
 }
 
 @end
