@@ -14,8 +14,9 @@
 #import "TransactionDetailViewController.h"
 #import "BCAddressSelectionView.h"
 #import "TransactionDetailNavigationController.h"
+#import "BCCardView.h"
 
-@interface TransactionsViewController () <AddressSelectionDelegate>
+@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate>
 @end
 
 @implementation TransactionsViewController
@@ -25,6 +26,7 @@
 
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
+BOOL showCards = YES;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -450,6 +452,17 @@ int lastNumberTransactions = INT_MAX;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
+    if (showCards) {
+        
+        CGFloat cardsViewHeight = 220;
+        
+        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, cardsViewHeight)];
+        self.tableView.tableHeaderView.frame = CGRectMake(self.tableView.tableHeaderView.frame.origin.x, self.tableView.tableHeaderView.frame.origin.y, self.tableView.tableHeaderView.frame.size.width, self.tableView.tableHeaderView.frame.size.height + cardsViewHeight);
+        cardsView = [self configureCardsView:cardsView];
+        
+        [self.tableView.tableHeaderView addSubview:cardsView];
+    }
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.scrollsToTop = YES;
@@ -515,6 +528,24 @@ int lastNumberTransactions = INT_MAX;
                        action:@selector(loadTransactions)
              forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = refreshControl;
+}
+
+- (UIView *)configureCardsView:(UIView *)cardsView
+{
+    cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    NSDecimalNumber *oneBTC = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:[CURRENCY_CONVERSION_BTC longLongValue]]];
+    NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+    
+    BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionName:BC_STRING_BUY_BITCOIN imageName:@"bitcoin" delegate:self];
+    
+    [cardsView addSubview:priceCard];
+    
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    pageControl.numberOfPages = 3;
+    [cardsView addSubview:pageControl];
+    
+    return cardsView;
 }
 
 - (void)viewWillAppear:(BOOL)animated

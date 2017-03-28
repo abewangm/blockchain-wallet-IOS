@@ -206,6 +206,7 @@
 		C790E11E1E52061B0063D141 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E10C1E5206020063D141 /* Montserrat-ThinItalic.ttf */; };
 		C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */; };
 		C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */; };
+		C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C79261B41E8ADF0300C87CED /* BCCardView.m */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
 		C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
@@ -997,6 +998,8 @@
 		C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyEmailViewController.m; sourceTree = "<group>"; };
 		C790E1221E5358540063D141 /* BCVerifyMobileNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCVerifyMobileNumberViewController.h; sourceTree = "<group>"; };
 		C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyMobileNumberViewController.m; sourceTree = "<group>"; };
+		C79261B31E8ADF0300C87CED /* BCCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCardView.h; sourceTree = "<group>"; };
+		C79261B41E8ADF0300C87CED /* BCCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCardView.m; sourceTree = "<group>"; };
 		C79EEFC01E898E380087DDCD /* WalletSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletSetupViewController.h; sourceTree = "<group>"; };
 		C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletSetupViewController.m; sourceTree = "<group>"; };
 		C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinViewController.h; sourceTree = "<group>"; };
@@ -1714,6 +1717,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C79261B31E8ADF0300C87CED /* BCCardView.h */,
+				C79261B41E8ADF0300C87CED /* BCCardView.m */,
 				238FC4D01DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.h */,
 				238FC4D11DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.m */,
 				23E579521DB45F3A00220542 /* TransferAmountTableCell.h */,
@@ -2092,6 +2097,7 @@
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
 				23F8DE531DAEB11C001899AE /* BCNavigationController.m in Sources */,
+				C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */,
 				ECD244F719A8B444004B1F40 /* UIImage+Utils.m in Sources */,
 				23444F961DCD21C600573C8C /* BTCKeychain.m in Sources */,
 				2322DCB61D771831000E5AC1 /* SRIOConsumerPool.m in Sources */,
