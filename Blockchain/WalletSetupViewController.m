@@ -34,6 +34,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.scrollEnabled = NO;
     
     NSInteger numberOfPages = 2;
     
@@ -53,13 +54,24 @@
     UIView *bannerView = [self setupBannerViewWithImageName:@"bitcoin"];
     [touchIDView addSubview:bannerView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 16, touchIDView.frame.size.width - 50, 50)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, touchIDView.frame.size.width - 50, 50)];
     titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:20];
     titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
     titleLabel.text = BC_STRING_TOUCH_ID;
     titleLabel.center = CGPointMake(touchIDView.center.x, titleLabel.center.y);
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [touchIDView addSubview:titleLabel];
+    
+    UITextView *body = [[UITextView alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, touchIDView.frame.size.width - 50, 100)];
+    body.selectable = NO;
+    body.editable = NO;
+    body.scrollEnabled = NO;
+    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    body.textColor = COLOR_TEXT_DARK_GRAY;
+    body.text = BC_STRING_WELCOME_TOUCH_ID_INSTRUCTIONS;
+    body.center = CGPointMake(touchIDView.center.x, body.center.y);
+    body.textAlignment = NSTextAlignmentCenter;
+    [touchIDView addSubview:body];
     
     UIButton *enableTouchIDButton = [self setupActionButton];
     [enableTouchIDButton setTitle:BC_STRING_ENABLE_TOUCH_ID forState:UIControlStateNormal];
@@ -80,13 +92,31 @@
     UIView *bannerView = [self setupBannerViewWithImageName:@"bitcoin"];
     [emailView addSubview:bannerView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 16, emailView.frame.size.width - 50, 50)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, emailView.frame.size.width - 50, 50)];
     titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:20];
     titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
     titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
     titleLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, titleLabel.center.y);
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [emailView addSubview:titleLabel];
+    
+    UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, emailView.frame.size.width - 50, 30)];
+    emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
+    emailLabel.text = @"email";
+    emailLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, emailLabel.center.y);
+    emailLabel.textAlignment = NSTextAlignmentCenter;
+    [emailView addSubview:emailLabel];
+    
+    UITextView *body = [[UITextView alloc] initWithFrame:CGRectMake(0, emailLabel.frame.origin.y + emailLabel.frame.size.height + 8, emailView.frame.size.width - 50, 100)];
+    body.selectable = NO;
+    body.editable = NO;
+    body.scrollEnabled = NO;
+    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    body.textColor = COLOR_TEXT_DARK_GRAY;
+    body.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
+    body.center = CGPointMake(emailView.center.x - self.view.frame.size.width, body.center.y);
+    body.textAlignment = NSTextAlignmentCenter;
+    [emailView addSubview:body];
     
     UIButton *openMailButton = [self setupActionButton];
     [openMailButton setTitle:BC_STRING_OPEN_MAIL_APP forState:UIControlStateNormal];
