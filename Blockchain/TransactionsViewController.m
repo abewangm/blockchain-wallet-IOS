@@ -537,13 +537,30 @@ int lastNumberTransactions = INT_MAX;
     NSDecimalNumber *oneBTC = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:[CURRENCY_CONVERSION_BTC longLongValue]]];
     NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
     
-    BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionName:BC_STRING_BUY_BITCOIN imageName:@"bitcoin" delegate:self];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.scrollEnabled = YES;
     
-    [cardsView addSubview:priceCard];
+    NSInteger numberOfPages = 3;
+    
+    BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionName:BC_STRING_BUY_BITCOIN imageName:@"bitcoin" delegate:self];
+    [scrollView addSubview:priceCard];
+
+    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionName:BC_STRING_BUY_BITCOIN imageName:@"bitcoin" delegate:self];
+    receiveCard.frame = CGRectOffset(receiveCard.frame, cardsView.frame.size.width, 0);
+    [scrollView addSubview:receiveCard];
+
+    BCCardView *QRCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_QR_CODES_TITLE description:BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION actionName:BC_STRING_BUY_BITCOIN imageName:@"bitcoin" delegate:self];
+    QRCard.frame = CGRectOffset(QRCard.frame, cardsView.frame.size.width*2, 0);
+    [scrollView addSubview:QRCard];
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    pageControl.numberOfPages = 3;
+    pageControl.numberOfPages = numberOfPages;
     [cardsView addSubview:pageControl];
+    
+    scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * numberOfPages, cardsView.frame.size.height);
+    [cardsView addSubview:scrollView];
     
     return cardsView;
 }

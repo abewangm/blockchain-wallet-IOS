@@ -169,15 +169,6 @@ int accountEntries = 0;
     // Enable swipe to open side menu gesture on small bar on the left of main view
     [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
     [app.tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
-    
-    // Enable swipe to switch between views on main view
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [app.tabViewController.activeViewController.view addGestureRecognizer:swipeLeft];
-    [app.tabViewController.activeViewController.view addGestureRecognizer:swipeRight];
 }
 
 - (void)reload

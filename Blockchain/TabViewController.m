@@ -22,15 +22,6 @@
     selectedIndex = TAB_TRANSACTIONS;
     
     [self setupTabButtons];
-    
-    // Swipe between tabs for fun
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [contentView addGestureRecognizer:swipeLeft];
-    [contentView addGestureRecognizer:swipeRight];
 }
 
 - (void)viewDidAppear:(BOOL)animated

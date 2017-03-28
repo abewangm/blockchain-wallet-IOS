@@ -47,7 +47,6 @@
         descriptionLabel.text = description;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:descriptionLabel];
-        
     }
     return self;
 }
