@@ -16,7 +16,8 @@
 #import "TransactionDetailNavigationController.h"
 #import "BCCardView.h"
 
-@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate>
+@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
+@property (nonatomic) UIPageControl *pageControl;
 @end
 
 @implementation TransactionsViewController
@@ -454,7 +455,7 @@ int lastNumberTransactions = INT_MAX;
     
     if (showCards) {
         
-        CGFloat cardsViewHeight = 220;
+        CGFloat cardsViewHeight = 240;
         
         UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, cardsViewHeight)];
         self.tableView.tableHeaderView.frame = CGRectMake(self.tableView.tableHeaderView.frame.origin.x, self.tableView.tableHeaderView.frame.origin.y, self.tableView.tableHeaderView.frame.size.width, self.tableView.tableHeaderView.frame.size.height + cardsViewHeight);
@@ -538,6 +539,7 @@ int lastNumberTransactions = INT_MAX;
     NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
+    scrollView.delegate = self;
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.scrollEnabled = YES;
@@ -555,14 +557,25 @@ int lastNumberTransactions = INT_MAX;
     QRCard.frame = CGRectOffset(QRCard.frame, cardsView.frame.size.width*2, 0);
     [scrollView addSubview:QRCard];
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    pageControl.numberOfPages = numberOfPages;
-    [cardsView addSubview:pageControl];
-    
     scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * numberOfPages, cardsView.frame.size.height);
     [cardsView addSubview:scrollView];
     
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, priceCard.frame.origin.y + priceCard.frame.size.height + 8, 100, 30)];
+    self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
+    self.pageControl.numberOfPages = numberOfPages;
+    self.pageControl.currentPageIndicatorTintColor = COLOR_BLOCKCHAIN_BLUE;
+    self.pageControl.pageIndicatorTintColor = COLOR_BLOCKCHAIN_LIGHTEST_BLUE;
+    [cardsView addSubview:self.pageControl];
+    
     return cardsView;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
 }
 
 - (void)viewWillAppear:(BOOL)animated

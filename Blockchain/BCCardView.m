@@ -17,6 +17,7 @@
     if (self == [super init]) {
         
         self.frame = CGRectInset(frame, 8, 16);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height - 32);
         
         self.layer.masksToBounds = NO;
         self.layer.shadowOffset = CGSizeMake(0, 2);
