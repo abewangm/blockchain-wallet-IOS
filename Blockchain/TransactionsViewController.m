@@ -474,7 +474,7 @@ int lastNumberTransactions = INT_MAX;
     noTransactionsTitle.text = BC_STRING_NO_TRANSACTIONS_TITLE;
     noTransactionsTitle.textColor = COLOR_BLOCKCHAIN_BLUE;
     [noTransactionsTitle sizeToFit];
-    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2);
+    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height);
     [self.noTransactionsView addSubview:noTransactionsTitle];
 
     UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
