@@ -18,6 +18,7 @@
 
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
 @property (nonatomic) UIPageControl *pageControl;
+@property (nonatomic) UIView *noTransactionsView;
 @end
 
 @implementation TransactionsViewController
@@ -120,7 +121,7 @@ int lastNumberTransactions = INT_MAX;
     
     // Data not loaded yet
     if (!self.data) {
-        [noTransactionsView removeFromSuperview];
+        self.noTransactionsView.hidden = YES;
         
 #ifdef ENABLE_TRANSACTION_FILTERING
         self.filterIndex = FILTER_INDEX_ALL;
@@ -131,7 +132,7 @@ int lastNumberTransactions = INT_MAX;
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
-        [tableView.tableHeaderView addSubview:noTransactionsView];
+        self.noTransactionsView.hidden = NO;
         
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
         if (!self.loadedAllTransactions) {
@@ -147,7 +148,7 @@ int lastNumberTransactions = INT_MAX;
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
-        [noTransactionsView removeFromSuperview];
+        self.noTransactionsView.hidden = YES;
         
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
@@ -453,16 +454,45 @@ int lastNumberTransactions = INT_MAX;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
+    CGFloat cardsViewHeight = 240;
+    CGFloat originalHeaderHeight = self.tableView.tableHeaderView.frame.size.height;
+    
     if (showCards) {
-        
-        CGFloat cardsViewHeight = 240;
-        
         UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, cardsViewHeight)];
         self.tableView.tableHeaderView.frame = CGRectMake(self.tableView.tableHeaderView.frame.origin.x, self.tableView.tableHeaderView.frame.origin.y, self.tableView.tableHeaderView.frame.size.width, self.tableView.tableHeaderView.frame.size.height + cardsViewHeight);
         cardsView = [self configureCardsView:cardsView];
         
         [self.tableView.tableHeaderView addSubview:cardsView];
     }
+    
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, originalHeaderHeight + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
+    
+    UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+    noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
+    noTransactionsTitle.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    noTransactionsTitle.text = BC_STRING_NO_TRANSACTIONS_TITLE;
+    noTransactionsTitle.textColor = COLOR_BLOCKCHAIN_BLUE;
+    [noTransactionsTitle sizeToFit];
+    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2);
+    [self.noTransactionsView addSubview:noTransactionsTitle];
+
+    UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
+    noTransactionsDescription.textAlignment = NSTextAlignmentCenter;
+    noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    noTransactionsDescription.numberOfLines = 0;
+    noTransactionsDescription.text = BC_STRING_NO_TRANSACTIONS_TEXT;
+    [noTransactionsDescription sizeToFit];
+    CGSize labelSize = [noTransactionsDescription sizeThatFits:CGSizeMake(self.noTransactionsView.frame.size.width - 100, CGFLOAT_MAX)];
+    CGRect labelFrame = noTransactionsDescription.frame;
+    labelFrame.size = labelSize;
+    noTransactionsDescription.frame = labelFrame;
+    [self.noTransactionsView addSubview:noTransactionsDescription];
+    noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
+    noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
+    
+    [tableView addSubview:self.noTransactionsView];
+    
+    self.noTransactionsView.hidden = YES;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];

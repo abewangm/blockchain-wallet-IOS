@@ -32,9 +32,7 @@
     IBOutlet UIButton *balanceBigButton;
     IBOutlet UIButton *filterAccountButton;
     IBOutlet UIButton *filterAccountChevronButton;
-    
-    IBOutlet UIView *noTransactionsView;
-        
+            
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
 }

@@ -579,7 +579,8 @@
 #define BC_STRING_RUSSIAN_RUBLE NSLocalizedString(@"Russian Ruble", @"")
 
 #define BC_STRING_BALANCES NSLocalizedString(@"Balances", nil)
-#define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and receive bitcoin.", nil)
+#define BC_STRING_NO_TRANSACTIONS_TITLE NSLocalizedString(@"No Transactions", nil)
+#define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and request bitcoin.", nil)
 #define BC_STRING_YOUR_TRANSACTIONS NSLocalizedString(@"Your Transactions", nil)
 
 #define BC_STRING_VIEW_ON_URL_ARGUMENT NSLocalizedString(@"View on", nil)
