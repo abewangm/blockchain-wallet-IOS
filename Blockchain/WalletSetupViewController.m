@@ -52,7 +52,7 @@
 {
     UIView *touchIDView = [[UIView alloc] initWithFrame:self.view.frame];
     
-    UIView *bannerView = [self setupBannerViewWithImageName:@"bitcoin"];
+    UIView *bannerView = [self setupBannerViewWithImageName:@"fingerprint"];
     [touchIDView addSubview:bannerView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, touchIDView.frame.size.width - 50, 50)];
@@ -92,7 +92,7 @@
 {
     UIView *emailView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
-    UIView *bannerView = [self setupBannerViewWithImageName:@"bitcoin"];
+    UIView *bannerView = [self setupBannerViewWithImageName:@"email"];
     [emailView addSubview:bannerView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, emailView.frame.size.width - 50, 50)];

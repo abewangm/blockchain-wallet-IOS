@@ -60,5 +60,10 @@ module.exports = (grunt) ->
     "shell:svg:send_blue:24"
     "shell:svg:tx_blue:24"
     "shell:svg:bitcoin:36"
+    "shell:svg:btc_partial:110"
+    "shell:svg:qr_partial:110"
+    "shell:svg:receive_partial:110"
+    "shell:svg:email:75:80"
+    "shell:svg:fingerprint:75:80"
     "shell:svg:text:32:281"
   ]
