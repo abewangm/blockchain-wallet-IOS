@@ -8,13 +8,17 @@
 
 #import "BCCardView.h"
 @interface BCCardView ()
+@property (nonatomic) ActionType actionType;
 @end
 
 @implementation BCCardView
 
-- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionName:(NSString *)actionName imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate
+- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionType:(ActionType)actionType imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate
 {
     if (self == [super init]) {
+        
+        self.delegate = delegate;
+        self.actionType = actionType;
         
         self.frame = CGRectInset(frame, 8, 16);
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height - 32);
@@ -48,8 +52,33 @@
         descriptionLabel.text = description;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:descriptionLabel];
+        
+        CGFloat buttonYOrigin = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height;
+        
+        NSString *actionName;
+        
+        if (actionType == ActionTypeScanQR) {
+            actionName = BC_STRING_SCAN_ADDRESS;
+        } else if (actionType == ActionTypeShowReceive) {
+            actionName = BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE;
+        } else if (actionType == ActionTypeBuyBitcoin) {
+            actionName = BC_STRING_BUY_BITCOIN;
+        }
+        
+        UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(descriptionLabel.frame.origin.x, buttonYOrigin, textWidth, self.frame.size.height - buttonYOrigin)];
+        actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+        actionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [actionButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+        [actionButton setTitle:actionName forState:UIControlStateNormal];
+        [actionButton addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:actionButton];
     }
     return self;
+}
+
+- (void)actionButtonClicked
+{
+    [self.delegate actionClicked:self.actionType];
 }
 
 @end

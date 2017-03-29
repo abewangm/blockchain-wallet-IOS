@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+
+enum {
+    ActionTypeBuyBitcoin,
+    ActionTypeShowReceive,
+    ActionTypeScanQR,
+};
+
+typedef NSInteger ActionType;
+
 @protocol CardViewDelegate
-- (void)actionClicked;
+- (void)actionClicked:(ActionType)actionType;
 @end
 @interface BCCardView : UIView
-
-- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionName:(NSString *)actionName imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate;
+@property (nonatomic) id<CardViewDelegate> delegate;
+- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionType:(ActionType)actionType imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate;
 
 @end

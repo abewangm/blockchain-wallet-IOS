@@ -617,3 +617,4 @@
 #define BC_STRING_OVERVIEW_COMPLETE_MESSAGE NSLocalizedString(@"We'll keep you up-to-date here with recommendations and new features.", nil)
 #define BC_STRING_START_OVER NSLocalizedString(@"Start Over", nil)
 #define BC_STRING_OPEN_MAIL NSLocalizedString(@"Open Mail", nil)
+#define BC_STRING_SCAN_ADDRESS NSLocalizedString(@"Scan Address", nil)
