@@ -75,11 +75,13 @@
     [touchIDView addSubview:body];
     
     UIButton *enableTouchIDButton = [self setupActionButton];
-    [enableTouchIDButton setTitle:BC_STRING_ENABLE_TOUCH_ID forState:UIControlStateNormal];
+    [enableTouchIDButton setTitle:[BC_STRING_ENABLE_TOUCH_ID uppercaseString] forState:UIControlStateNormal];
     [enableTouchIDButton addTarget:self action:@selector(enableTouchID) forControlEvents:UIControlEventTouchUpInside];
+    enableTouchIDButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [touchIDView addSubview:enableTouchIDButton];
     
     UIButton *doneButton = [self setupDoneButton];
+    doneButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [doneButton addTarget:self action:@selector(goToSecondPage) forControlEvents:UIControlEventTouchUpInside];
     [touchIDView addSubview:doneButton];
     
@@ -104,6 +106,7 @@
     self.emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, emailView.frame.size.width - 50, 30)];
     self.emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
     self.emailLabel.text = [self.delegate getEmail];
+    self.emailLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.emailLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, self.emailLabel.center.y);
     self.emailLabel.textAlignment = NSTextAlignmentCenter;
     [emailView addSubview:self.emailLabel];
@@ -120,11 +123,13 @@
     [emailView addSubview:body];
     
     UIButton *openMailButton = [self setupActionButton];
-    [openMailButton setTitle:BC_STRING_OPEN_MAIL forState:UIControlStateNormal];
+    openMailButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [openMailButton setTitle:[BC_STRING_OPEN_MAIL uppercaseString] forState:UIControlStateNormal];
     [openMailButton addTarget:self action:@selector(openMail) forControlEvents:UIControlEventTouchUpInside];
     [emailView addSubview:openMailButton];
     
     UIButton *doneButton = [self setupDoneButton];
+    doneButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [doneButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [emailView addSubview:doneButton];
     
@@ -133,7 +138,7 @@
 
 - (UIButton *)setupActionButton
 {
-    UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60 - 30 - 16, self.view.frame.size.width - 40, 40)];
+    UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60 - 30 - 16, self.view.frame.size.width - 100, 40)];
     actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
     actionButton.center = CGPointMake(self.view.frame.size.width/2, actionButton.center.y);
     actionButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
@@ -143,7 +148,7 @@
 
 - (UIButton *)setupDoneButton
 {
-    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width - 40, 40)];
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width - 100, 40)];
     doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
     doneButton.center = CGPointMake(self.view.frame.size.width/2, doneButton.center.y);
     [doneButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
