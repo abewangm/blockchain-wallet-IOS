@@ -22,5 +22,4 @@ typedef NSInteger ActionType;
 @interface BCCardView : UIView
 @property (nonatomic) id<CardViewDelegate> delegate;
 - (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionType:(ActionType)actionType imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate;
-
 @end

@@ -18,6 +18,7 @@
 
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
 @property (nonatomic) UIPageControl *pageControl;
+@property (nonatomic) UIScrollView *cardsScrollView;
 @property (nonatomic) UIView *noTransactionsView;
 @end
 
@@ -589,13 +590,22 @@ int lastNumberTransactions = INT_MAX;
     
     scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * numberOfPages, cardsView.frame.size.height);
     [cardsView addSubview:scrollView];
+    self.cardsScrollView = scrollView;
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, priceCard.frame.origin.y + priceCard.frame.size.height + 8, 100, 30)];
     self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
     self.pageControl.numberOfPages = numberOfPages;
     self.pageControl.currentPageIndicatorTintColor = COLOR_BLOCKCHAIN_BLUE;
     self.pageControl.pageIndicatorTintColor = COLOR_BLOCKCHAIN_LIGHTEST_BLUE;
+    [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     [cardsView addSubview:self.pageControl];
+    
+    UIButton *skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - 80, self.pageControl.frame.origin.y, 80, 30)];
+    skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    skipAllButton.backgroundColor = [UIColor clearColor];
+    [skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
+    [skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
+    [cardsView addSubview:skipAllButton];
     
     return cardsView;
 }
@@ -617,6 +627,14 @@ int lastNumberTransactions = INT_MAX;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
+}
+
+- (void)pageControlChanged:(UIPageControl *)pageControl
+{
+    NSInteger page = pageControl.currentPage;
+    CGRect frame = self.cardsScrollView.frame;
+    frame.origin.x = self.cardsScrollView.frame.size.width * page;
+    [self.cardsScrollView scrollRectToVisible:frame animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
