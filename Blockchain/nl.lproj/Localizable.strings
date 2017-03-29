@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "Portemonnees";
+
+/* (No Commment) */
+"START BACKUP" = "BACKUP STARTEN";
+
+/* (No Commment) */
+"Backup Needed" = "Backup nodig";
+
+/* (No Commment) */
+"Create a Wallet" = "Een portemonnee aanmaken";
+
+/* (No Commment) */
+"Log In" = "Inloggen";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Voer uw wachtwoord in om in te loggen bij uw Blockchain portemonnee.";
+
+/* (No Commment) */
+"Forgot Password?" = "Wachtwoord vergeten?";
+
+/* (No Commment) */
+"Or start over and " = "Of begin opnieuw en ";
+
+/* (No Commment) */
+"Update Email" = "E-mail bijwerken";
+
+/* (No Commment) */
+"Enter Email Address" = "Voer e-mailadres in";
+
+/* (No Commment) */
+"Update Mobile" = "Mobiel bijwerken";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Voer mobiele nummer in";
+
+/* (No Commment) */
+"Balances" = "Saldo’s";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transacties vinden plaats als u bitcoin verzendt of ontvangt.";
+
+/* (No Commment) */
+"Your Transactions" = "Uw transacties";
+
+/* (No Commment) */
+"Backup Complete" = "Backup Complete";
+
+/* (No Commment) */
+"Backup Needed" = "Backup gereed";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Gebruik uw herstelregel om uw middelen te herstellen in het geval dat uw wachtwoord verloren is gegaan. Iedereen met toegang tot uw herstelregel heeft toegang tot uw bitcoin, dus bewaar deze regel ergens offline, op een veilige plaats.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "De volgende herstelregel van 12 woorden zal u toegang tot uw middelen geven in het geval dat u uw wachtwoord kwijtraakt.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Zorg ervoor dat u de zin op een papiertje schrijft en ergens op een veilige plaats bewaart.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Schrijf de volgende herstelregel van 12 woorden precies en in dezelfde volgorde over:";
+
+/* (No Commment) */
+"PREVIOUS" = "VORIGE";
+
+/* (No Commment) */
+"NEXT" = "VOLGENDE";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "OPNIEUW BACKUP MAKEN";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Uw geverifieerde e-mailadres wordt gebruikt om betalingsmeldingen, ID-herinneringen en inlogcodes te versturen.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Uw mobiele telefoon kan worden gebruikt om de tweeledige verificatiemethode in te schakelen of om meldingen te ontvangen.";

@@ -42,8 +42,9 @@
 @class Wallet, Transaction, JSValue, JSContext, Contact, ContactTransaction;
 
 @protocol ExchangeAccountDelegate
-- (void)watchPendingTrades;
+- (void)watchPendingTrades:(BOOL)shouldSync;
 - (void)fetchExchangeAccount;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @protocol WalletDelegate <NSObject>
@@ -121,6 +122,7 @@
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -238,8 +240,6 @@ typedef enum {
 - (uint64_t)parseBitcoinValueFromString:(NSString *)inputString;
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;
-
-- (void)clearLocalStorage;
 
 - (void)parsePairingCode:(NSString *)code;
 - (void)resendTwoFactorSMS;

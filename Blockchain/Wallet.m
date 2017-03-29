@@ -602,6 +602,10 @@
         [weakSelf show_completed_trade:trade];
     };
     
+    self.context[@"objc_on_get_pending_trades_error"] = ^(JSValue *error) {
+        [weakSelf on_get_pending_trades_error:error];
+    };
+    
 #pragma mark Settings
     
     self.context[@"objc_on_get_account_info_success"] = ^(NSString *accountInfo) {
@@ -1622,11 +1626,6 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]]];
 }
 
-- (void)clearLocalStorage
-{
-    [self.context evaluateScript:@"localStorage.clear();"];
-}
-
 - (NSString*)detectPrivateKeyFormat:(NSString*)privateKeyString
 {
     if (![self isInitialized]) {
@@ -2023,14 +2022,23 @@
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
 }
 
-- (void)watchPendingTrades
+- (void)watchPendingTrades:(BOOL)shouldSync
 {
-    [self.context evaluateScript:@"MyWalletPhone.getPendingTrades()"];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPendingTrades(%d)", shouldSync]];
 }
 
 - (void)fetchExchangeAccount
 {
     [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
+}
+
+- (void)showCompletedTrade:(NSString *)txHash
+{
+    if ([self.delegate respondsToSelector:@selector(showCompletedTrade:)]) {
+        [self.delegate showCompletedTrade:txHash];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector showCompletedTrade!", [delegate class]);
+    }
 }
 
 - (JSValue *)executeJSSynchronous:(NSString *)command
@@ -2660,7 +2668,7 @@
         }
     }
     
-    [self watchPendingTrades];
+    [self watchPendingTrades:NO];
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         
@@ -3546,6 +3554,11 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didCompleteTrade:!", [delegate class]);
     }
+}
+
+- (void)on_get_pending_trades_error:(JSValue *)error
+{
+    [app standardNotify:[error toString]];
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

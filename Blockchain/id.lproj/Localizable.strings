@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "Dompet";
+
+/* (No Commment) */
+"START BACKUP" = "MULAI CADANGKAN";
+
+/* (No Commment) */
+"Backup Needed" = "Pencadangan Dibutuhkan";
+
+/* (No Commment) */
+"Create a Wallet" = "Buat Dompet";
+
+/* (No Commment) */
+"Log In" = "Masuk";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Silakan masukkan kata sandi Anda untuk masuk ke dompet Blockchain Anda.";
+
+/* (No Commment) */
+"Forgot Password?" = "Lupa Kata Sandi?";
+
+/* (No Commment) */
+"Or start over and " = "Atau memulai ulang dan ";
+
+/* (No Commment) */
+"Update Email" = "Perbarui Surel";
+
+/* (No Commment) */
+"Enter Email Address" = "Masukkan Alamat Surel";
+
+/* (No Commment) */
+"Update Mobile" = "Perbarui Ponsel";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Masukkan Nomor Ponsel";
+
+/* (No Commment) */
+"Balances" = "Saldo";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaksi terjadi ketika Anda mengirim dan menerima bitcoin.";
+
+/* (No Commment) */
+"Your Transactions" = "Transaksi Anda";
+
+/* (No Commment) */
+"Backup Complete" = "Pencadangan Selesai";
+
+/* (No Commment) */
+"Backup Needed" = "Pencadangan Dibutuhkan";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Gunakan Frasa Pemulihan Anda untuk mengembalikan dana Anda dalam kasus kata sandi yang hilang.  Siapa pun dengan akses ke Frasa Pemulihan Anda dapat mengakses bitcoin Anda, jadi tetap jaga secara offline di tempat yang aman.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut ini 12 kata Frasa Pemulihan yang akan memberikan Anda akses ke dana Anda jika Anda kehilangan kata sandi Anda.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Pastikan untuk menuliskan kalimat Anda pada selembar kertas dan menyimpannya di tempat yang aman dan aman.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Tuliskan 12 kata Frasa Pemulihan berikut persis seperti mereka muncul dan dalam urutan ini:";
+
+/* (No Commment) */
+"PREVIOUS" = "SEBELUMNYA";
+
+/* (No Commment) */
+"NEXT" = "BERIKUTNYA";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "CADANGKAN LAGI";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Alamat surel Anda yang diverifikasi digunakan untuk mengirim peringatan pembayaran, pengingat ID, dan kode login.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Ponsel Anda dapat digunakan untuk mengaktifkan otentikasi dua faktor atau untuk menerima pemberitahuan.";

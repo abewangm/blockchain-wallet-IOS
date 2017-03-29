@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "кошелкам";
+
+/* (No Commment) */
+"START BACKUP" = "НАЧАТЬ РЕЗЕРВНОЕ КОПИРОВАНИЕ";
+
+/* (No Commment) */
+"Backup Needed" = "Необходимо резервное копирование";
+
+/* (No Commment) */
+"Create a Wallet" = "Создать кошелек";
+
+/* (No Commment) */
+"Log In" = "Вход";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Введите пароль для входа в кошелек Blockchain.";
+
+/* (No Commment) */
+"Forgot Password?" = "Забыли пароль?";
+
+/* (No Commment) */
+"Or start over and " = "Или начните заново и ";
+
+/* (No Commment) */
+"Update Email" = "Сменить адрес эл. почты";
+
+/* (No Commment) */
+"Enter Email Address" = "Введите адрес эл. почты";
+
+/* (No Commment) */
+"Update Mobile" = "Сменить мобильный";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Введите номер мобильного телефона";
+
+/* (No Commment) */
+"Balances" = "Балансы";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Транзакции происходят, когда вы отправляете и получаете биткоины.";
+
+/* (No Commment) */
+"Your Transactions" = "Ваши транзакции";
+
+/* (No Commment) */
+"Backup Complete" = "Резервное копирование завершено";
+
+/* (No Commment) */
+"Backup Needed" = "Необходимо резервное копирование";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Используйте фразу для восстановления доступа, чтобы восстановить средства в случае потери пароля. Любой человек, знающий вашу фразу для восстановления, сможет получить доступ к вашим биткоинам, поэтому храните фразу для восстановления доступа в надежном месте не в Интернете.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Следующая фраза для восстановления доступа из 12 слов даст вам доступ к вашим деньгам, если вы потеряете пароль.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Обязательно запишите фразу на бумаге и храните ее в надежном и безопасном месте.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Запишите следующую фразу для восстановления доступа из 12 слов, не меняя написание и порядок слов:";
+
+/* (No Commment) */
+"PREVIOUS" = "ПРЕД.";
+
+/* (No Commment) */
+"NEXT" = "СЛЕД.";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "ПОВТОРНОЕ РЕЗЕРВНОЕ КОПИРОВАНИЕ";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Ваш проверенный адрес эл. почты используется для отправки уведомлений о платежах, напоминаний ID и кодов входа.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Ваш мобильный телефон может быть использован для подключения двухфакторной аутентификации или получения уведомлений.";

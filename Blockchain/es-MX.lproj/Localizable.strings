@@ -1622,3 +1622,78 @@
 
 /* (No Commment) */
 "Wallets" = "Monederos";
+
+/* (No Commment) */
+"START BACKUP" = "YEDEKLEMEYİ BAŞLAT";
+
+/* (No Commment) */
+"Backup Needed" = "Yedekleme Gerekli";
+
+/* (No Commment) */
+"Create a Wallet" = "Bir Cüzdan Oluştur";
+
+/* (No Commment) */
+"Log In" = "Oturum Aç";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Blockchain cüzdanınıza giriş yapmak için lütfen şifrenizi girin.";
+
+/* (No Commment) */
+"Forgot Password?" = "Şifrenizi mi unuttunuz?";
+
+/* (No Commment) */
+"Or start over and " = "Veya yeniden başlayın ve ";
+
+/* (No Commment) */
+"Update Email" = "E-postanızı Güncelleyin";
+
+/* (No Commment) */
+"Enter Email Address" = "E-posta Adresi Girin";
+
+/* (No Commment) */
+"Update Mobile" = "Cep Telefonu Numarasını Güncelleyin";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Cep Telefonu Numarasını Girin";
+
+/* (No Commment) */
+"Balances" = "Bakiyeler";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "İşlemler bitcoin gönderip aldığınız zaman gerçekleşir.";
+
+/* (No Commment) */
+"Your Transactions" = "İşlemleriniz";
+
+/* (No Commment) */
+"Backup Complete" = "Yedekleme Tamamlandı";
+
+/* (No Commment) */
+"Backup Needed" = "Yedekleme Gerekli";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Şifrenizi kaybetmeniz durumunda paranızı geri almak için Kurtarma İfadenizi kullanın. Kurtarma İfadenize erişebilen herkes bitcoinlerinize erişebilir, bu yüzden çevrimdışı güvenli ve emniyetli bir yerde tutun.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Aşağıdaki 12 sözcüklü Kurtarma İfadesi şifrenizi kaybetmeniz durumunda paranıza erişim sağlayacaktır.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "İfadenizi bir kağıt parçasına yazdığınızdan ve güvenli ve emniyetli bir yerde tuttuğunuzdan emin olun.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Aşağıdaki 12 sözcüklü Kurtarma İfadesini tıpkı göründüğü şekilde ve bu sıraya göre yazın:";
+
+/* (No Commment) */
+"PREVIOUS" = "ÖNCEKİ";
+
+/* (No Commment) */
+"NEXT" = "SONRAKİ";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "YENİDEN YEDEKLE";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Doğrulanmış e-posta adresiniz, ödeme uyarıları, Kimlik hatırlatmaları ve oturum açma kodlarını göndermek için kullanılır.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Cep telefonu numaranız iki-faktörlü doğrulamayı etkinleştirmek veya uyarı almak için kullanılabilir.";

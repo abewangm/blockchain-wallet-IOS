@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "Portafogli";
+
+/* (No Commment) */
+"START BACKUP" = "AVVIA BACKUP";
+
+/* (No Commment) */
+"Backup Needed" = "Backup necessario";
+
+/* (No Commment) */
+"Create a Wallet" = "Crea un portafoglio";
+
+/* (No Commment) */
+"Log In" = "Accedi";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Inserisci la tua password per accedere al tuo portafoglio Blockchain.";
+
+/* (No Commment) */
+"Forgot Password?" = "Password dimenticata?";
+
+/* (No Commment) */
+"Or start over and " = "Oppure ricomincia e ";
+
+/* (No Commment) */
+"Update Email" = "Aggiorna email";
+
+/* (No Commment) */
+"Enter Email Address" = "Inserisci indirizzo email";
+
+/* (No Commment) */
+"Update Mobile" = "Aggiorna cellulare";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Inserisci numero di cellulare";
+
+/* (No Commment) */
+"Balances" = "Saldi";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Le transazioni avvengono quando invii e ricevi bitcoin.";
+
+/* (No Commment) */
+"Your Transactions" = "Le tue transazioni";
+
+/* (No Commment) */
+"Backup Complete" = "Backup completato";
+
+/* (No Commment) */
+"Backup Needed" = "Backup necessario";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Usa la tua Frase di backup per ripristinare i tuoi fondi, nel caso perdessi la password. Chiunque conosca la tua Frase di backup può accedere ai tuoi bitcoin, quindi conservala offline, in un luogo sicuro e protetto.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "La seguente Frase di backup di 12 parole ti darà l'accesso ai tuoi fondi, nel caso perdessi la password.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Assicurati di scrivere la frase in un pezzo di carta e di conservarla in un luogo sicuro e protetto.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Scrivi la seguente Frase di backup di 12 parole esattamente come viene visualizzata e in questo ordine:";
+
+/* (No Commment) */
+"PREVIOUS" = "INDIETRO";
+
+/* (No Commment) */
+"NEXT" = "AVANTI";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "ESEGUI UN ALTRO BACKUP";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Il tuo indirizzo email verificato è utilizzato per inviarti avvisi di pagamento, promemoria ID e codici di accesso.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Il tuo telefono cellulare può essere usato per abilitare l'autenticazione a due fattori o per ricevere avvisi.";

@@ -1625,3 +1625,78 @@
 
 /* (No Commment) */
 "Wallets" = "钱包";
+
+/* (No Commment) */
+"START BACKUP" = "开始备份";
+
+/* (No Commment) */
+"Backup Needed" = "需要备份";
+
+/* (No Commment) */
+"Create a Wallet" = "创建一个钱包";
+
+/* (No Commment) */
+"Log In" = "登录";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "请输入您的密码以登录您的 Blockchain 钱包。";
+
+/* (No Commment) */
+"Forgot Password?" = "忘记密码？";
+
+/* (No Commment) */
+"Or start over and " = "或者重新开始并且";
+
+/* (No Commment) */
+"Update Email" = "更新邮箱";
+
+/* (No Commment) */
+"Enter Email Address" = "输入邮箱地址";
+
+/* (No Commment) */
+"Update Mobile" = "更新手机";
+
+/* (No Commment) */
+"Enter Mobile Number" = "输入手机号码";
+
+/* (No Commment) */
+"Balances" = "余额";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "当您接收和发送比特币时，便发生了交易。";
+
+/* (No Commment) */
+"Your Transactions" = "您的交易";
+
+/* (No Commment) */
+"Backup Complete" = "备份完成";
+
+/* (No Commment) */
+"Backup Needed" = "需要备份";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "在丢失密码时，使用您的恢复密语取回您的资金。任何可以访问您的恢复密语的人都能够访问您的比特币，因此，请将它离线保存在某个安全的地方。";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "以下12字恢复密语让您可以在丢失密码时访问您的资金。";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "务必将您的恢复密语写在一张纸上，并且保存在某个安全的地方。";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "准确地按该顺序写下下面出现的12字恢复密语";
+
+/* (No Commment) */
+"PREVIOUS" = "上一步";
+
+/* (No Commment) */
+"NEXT" = "下一步";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "再次备份";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "您的经验证邮箱地址用于发送付款提醒、ID 提醒，以及登录码。";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "您的手机可用于启用双重认证或者接收提醒。";
