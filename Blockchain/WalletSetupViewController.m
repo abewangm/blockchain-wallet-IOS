@@ -162,8 +162,8 @@
     bannerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
 
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
-    imageView.frame = CGRectMake(0, 0, 50, 50);
-    imageView.center = bannerView.center;
+    imageView.frame = CGRectMake(0, 0, 72, 72);
+    imageView.center = CGPointMake(bannerView.center.x, bannerView.center.y + DEFAULT_STATUS_BAR_HEIGHT/2);
     
     [bannerView addSubview:imageView];
     return bannerView;
