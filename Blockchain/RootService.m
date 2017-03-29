@@ -2399,11 +2399,6 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
 }
 
-- (void)showTransactions
-{
-    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:0];
-}
-
 - (void)showDebugMenu:(int)presenter
 {
     DebugTableViewController *debugViewController = [[DebugTableViewController alloc] init];
