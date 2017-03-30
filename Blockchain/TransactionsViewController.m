@@ -702,7 +702,7 @@ int lastNumberTransactions = INT_MAX;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
  
-    if (scrollView.contentOffset.x < scrollView.frame.size.width * 3) {
+    if (scrollView.contentOffset.x < scrollView.frame.size.width * 2.5) {
         if (self.skipAllButton.hidden && self.pageControl.hidden) {
             [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                 self.skipAllButton.alpha = 1;
