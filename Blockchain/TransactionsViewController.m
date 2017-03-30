@@ -702,6 +702,7 @@ int lastNumberTransactions = INT_MAX;
     self.skipAllButton.backgroundColor = [UIColor clearColor];
     [self.skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
     [self.skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
+    [self.skipAllButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
     [cardsView addSubview:self.skipAllButton];
     
     return cardsView;
