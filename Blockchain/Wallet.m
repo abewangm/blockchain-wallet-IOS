@@ -19,7 +19,7 @@
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "ModuleXMLHTTPRequest.h"
+#import "ModuleXMLHttpRequest.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import <openssl/evp.h>
 #import "SessionManager.h"
