@@ -482,14 +482,31 @@ int lastNumberTransactions = INT_MAX;
     noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
     noTransactionsDescription.numberOfLines = 0;
     noTransactionsDescription.text = BC_STRING_NO_TRANSACTIONS_TEXT;
+    noTransactionsDescription.textColor = COLOR_TEXT_DARK_GRAY;
     [noTransactionsDescription sizeToFit];
-    CGSize labelSize = [noTransactionsDescription sizeThatFits:CGSizeMake(self.noTransactionsView.frame.size.width - 100, CGFLOAT_MAX)];
+    CGSize labelSize = [noTransactionsDescription sizeThatFits:CGSizeMake(170, CGFLOAT_MAX)];
     CGRect labelFrame = noTransactionsDescription.frame;
     labelFrame.size = labelSize;
     noTransactionsDescription.frame = labelFrame;
     [self.noTransactionsView addSubview:noTransactionsDescription];
     noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
     noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
+    
+    if (!showCards) {
+        
+        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - originalHeaderHeight);
+        noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
+        
+        UIButton *getBitcoinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 20, 130, 30)];
+        getBitcoinButton.clipsToBounds = YES;
+        getBitcoinButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+        getBitcoinButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        getBitcoinButton.center = CGPointMake(self.noTransactionsView.center.x, getBitcoinButton.center.y);
+        getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+        [getBitcoinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [getBitcoinButton setTitle:[BC_STRING_GET_BITCOIN uppercaseString] forState:UIControlStateNormal];
+        [self.noTransactionsView addSubview:getBitcoinButton];
+    }
     
     [tableView addSubview:self.noTransactionsView];
     
