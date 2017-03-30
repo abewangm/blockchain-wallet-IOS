@@ -615,7 +615,7 @@
 #define BC_STRING_OVERVIEW_QR_CODES_TITLE NSLocalizedString(@"QR Codes", nil)
 #define BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION NSLocalizedString(@"An address can also be shown as a QR code. Scan a friend's QR code to quickly capture their wallet address.", nil)
 #define BC_STRING_OVERVIEW_COMPLETE_TITLE NSLocalizedString(@"That's it for now!", nil)
-#define BC_STRING_OVERVIEW_COMPLETE_MESSAGE NSLocalizedString(@"We'll keep you up-to-date here with recommendations and new features.", nil)
+#define BC_STRING_OVERVIEW_COMPLETE_DESCRIPTION NSLocalizedString(@"We'll keep you up-to-date here with recommendations and new features.", nil)
 #define BC_STRING_START_OVER NSLocalizedString(@"Start Over", nil)
 #define BC_STRING_OPEN_MAIL NSLocalizedString(@"Open Mail", nil)
 #define BC_STRING_SCAN_ADDRESS NSLocalizedString(@"Scan Address", nil)

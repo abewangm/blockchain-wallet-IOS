@@ -17,8 +17,13 @@
 #import "BCCardView.h"
 
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
+
+// Onboarding
 @property (nonatomic) UIPageControl *pageControl;
+@property (nonatomic) UIButton *startOverButton;
+@property (nonatomic) UIButton *skipAllButton;
 @property (nonatomic) UIScrollView *cardsScrollView;
+
 @property (nonatomic) UIView *noTransactionsView;
 @end
 
@@ -592,7 +597,8 @@ int lastNumberTransactions = INT_MAX;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.scrollEnabled = YES;
     
-    NSInteger numberOfPages = 3;
+    NSInteger numberOfPages = 4;
+    NSInteger numberOfCards = 3;
     
     BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
     [scrollView addSubview:priceCard];
@@ -605,13 +611,46 @@ int lastNumberTransactions = INT_MAX;
     QRCard.frame = CGRectOffset(QRCard.frame, cardsView.frame.size.width*2, 0);
     [scrollView addSubview:QRCard];
     
-    scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * numberOfPages, cardsView.frame.size.height);
+    CGFloat overviewCompleteCenterX = cardsView.frame.size.width/2 + 3 * cardsView.frame.size.width;
+    
+    UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 40, 40)];
+    checkImageView.image = [[UIImage imageNamed:@"success"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    checkImageView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    checkImageView.center = CGPointMake(overviewCompleteCenterX, checkImageView.center.y);
+    [scrollView addSubview:checkImageView];
+    
+    UILabel *doneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, checkImageView.frame.origin.y + checkImageView.frame.size.height + 14, 150, 30)];
+    doneTitleLabel.textAlignment = NSTextAlignmentCenter;
+    doneTitleLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    doneTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:16];
+    doneTitleLabel.adjustsFontSizeToFitWidth = YES;
+    doneTitleLabel.text = BC_STRING_OVERVIEW_COMPLETE_TITLE;
+    doneTitleLabel.center = CGPointMake(overviewCompleteCenterX, doneTitleLabel.center.y);
+    [scrollView addSubview:doneTitleLabel];
+    
+    UILabel *doneDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    doneDescriptionLabel.textAlignment = NSTextAlignmentCenter;
+    doneDescriptionLabel.numberOfLines = 0;
+    doneDescriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    doneDescriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    doneDescriptionLabel.adjustsFontSizeToFitWidth = YES;
+    doneDescriptionLabel.text = BC_STRING_OVERVIEW_COMPLETE_DESCRIPTION;
+    [doneDescriptionLabel sizeToFit];
+    CGSize labelSize = [doneDescriptionLabel sizeThatFits:CGSizeMake(170, 70)];
+    CGRect labelFrame = doneDescriptionLabel.frame;
+    labelFrame.size = labelSize;
+    doneDescriptionLabel.frame = labelFrame;
+    doneDescriptionLabel.frame = CGRectMake(0, doneTitleLabel.frame.origin.y + doneTitleLabel.frame.size.height, doneDescriptionLabel.frame.size.width, doneDescriptionLabel.frame.size.height);
+    doneDescriptionLabel.center = CGPointMake(overviewCompleteCenterX, doneDescriptionLabel.center.y);
+    [scrollView addSubview:doneDescriptionLabel];
+    
+    scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * (numberOfPages), cardsView.frame.size.height);
     [cardsView addSubview:scrollView];
     self.cardsScrollView = scrollView;
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, priceCard.frame.origin.y + priceCard.frame.size.height + 8, 100, 30)];
     self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
-    self.pageControl.numberOfPages = numberOfPages;
+    self.pageControl.numberOfPages = numberOfCards;
     self.pageControl.currentPageIndicatorTintColor = COLOR_BLOCKCHAIN_BLUE;
     self.pageControl.pageIndicatorTintColor = COLOR_BLOCKCHAIN_LIGHTEST_BLUE;
     [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
