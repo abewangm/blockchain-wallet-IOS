@@ -2771,7 +2771,12 @@ void (^secondPasswordSuccess)(NSString *);
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:BC_STRING_CANNOT_OPEN_MAIL_APP_URL_ARGUMENT, PREFIX_MAIL_URI] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.tabViewController presentViewController:alert animated:YES completion:nil];
+        
+        if (self.tabViewController.presentedViewController) {
+            [self.tabViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self.tabViewController presentViewController:alert animated:YES completion:nil];
+        }
     }
 }
 
