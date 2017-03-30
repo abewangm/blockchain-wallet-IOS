@@ -35,7 +35,7 @@
         imageView.image = [UIImage imageNamed:imageName];
         [self addSubview:imageView];
         
-        CGFloat textWidth = self.frame.size.width - imageView.frame.size.width - 8;
+        CGFloat textWidth = self.frame.size.width - imageView.frame.size.width - 16;
         
         NSString *actionName;
         UIColor *actionColor;
@@ -61,7 +61,7 @@
         [self addSubview:titleLabel];
         
         UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, imageView.frame.size.height - titleLabel.frame.size.height)];
-        descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:14];
+        descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
         descriptionLabel.numberOfLines = 0;
         descriptionLabel.adjustsFontSizeToFitWidth = YES;
         descriptionLabel.text = description;
