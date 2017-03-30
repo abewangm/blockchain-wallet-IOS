@@ -37,10 +37,25 @@
         
         CGFloat textWidth = self.frame.size.width - imageView.frame.size.width - 8;
         
+        NSString *actionName;
+        UIColor *actionColor;
+        
+        if (actionType == ActionTypeScanQR) {
+            actionName = BC_STRING_SCAN_ADDRESS;
+            actionColor = COLOR_BLOCKCHAIN_BLUE;
+        } else if (actionType == ActionTypeShowReceive) {
+            actionName = BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE;
+            actionColor = COLOR_BLOCKCHAIN_AQUA;
+        } else if (actionType == ActionTypeBuyBitcoin) {
+            actionName = BC_STRING_BUY_BITCOIN;
+            actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        }
+        
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.size.width + 8, imageView.frame.origin.y, textWidth, 54)];
         titleLabel.numberOfLines = 0;
         titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
         titleLabel.text = title;
+        titleLabel.textColor = actionColor;
         titleLabel.backgroundColor = [UIColor clearColor];
         [titleLabel sizeToFit];
         [self addSubview:titleLabel];
@@ -55,20 +70,10 @@
         
         CGFloat buttonYOrigin = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height;
         
-        NSString *actionName;
-        
-        if (actionType == ActionTypeScanQR) {
-            actionName = BC_STRING_SCAN_ADDRESS;
-        } else if (actionType == ActionTypeShowReceive) {
-            actionName = BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE;
-        } else if (actionType == ActionTypeBuyBitcoin) {
-            actionName = BC_STRING_BUY_BITCOIN;
-        }
-        
         UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(descriptionLabel.frame.origin.x, buttonYOrigin, textWidth, self.frame.size.height - buttonYOrigin)];
         actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
         actionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [actionButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
+        [actionButton setTitleColor:actionColor forState:UIControlStateNormal];
         [actionButton setTitle:actionName forState:UIControlStateNormal];
         [actionButton addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:actionButton];
