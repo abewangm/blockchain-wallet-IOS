@@ -21,6 +21,7 @@
 // Onboarding
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
+@property (nonatomic) UIButton *closeCardsViewButton;
 @property (nonatomic) UIButton *skipAllButton;
 @property (nonatomic) UIScrollView *cardsScrollView;
 
@@ -636,7 +637,9 @@ int lastNumberTransactions = INT_MAX;
     doneDescriptionLabel.adjustsFontSizeToFitWidth = YES;
     doneDescriptionLabel.text = BC_STRING_OVERVIEW_COMPLETE_DESCRIPTION;
     [doneDescriptionLabel sizeToFit];
-    CGSize labelSize = [doneDescriptionLabel sizeThatFits:CGSizeMake(170, 70)];
+    CGFloat maxDoneDescriptionLabelWidth = 170;
+    CGFloat maxDoneDescriptionLabelHeight = 70;
+    CGSize labelSize = [doneDescriptionLabel sizeThatFits:CGSizeMake(maxDoneDescriptionLabelWidth, maxDoneDescriptionLabelHeight)];
     CGRect labelFrame = doneDescriptionLabel.frame;
     labelFrame.size = labelSize;
     doneDescriptionLabel.frame = labelFrame;
@@ -656,7 +659,24 @@ int lastNumberTransactions = INT_MAX;
     [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     [cardsView addSubview:self.pageControl];
     
-    self.skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - 80, self.pageControl.frame.origin.y, 80, 30)];
+    self.startOverButton = [[UIButton alloc] initWithFrame:CGRectInset(self.pageControl.frame, -40, -10)];
+    [cardsView addSubview:self.startOverButton];
+    [self.startOverButton setTitle:BC_STRING_START_OVER forState:UIControlStateNormal];
+    [self.startOverButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    self.startOverButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.startOverButton.hidden = YES;
+    
+    CGFloat closeButtonHeight = 46;
+    self.closeCardsViewButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - closeButtonHeight, 0, closeButtonHeight, closeButtonHeight)];
+    self.closeCardsViewButton.imageEdgeInsets = UIEdgeInsetsMake(16, 20, 16, 12);
+    [self.closeCardsViewButton setImage:[[UIImage imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.closeCardsViewButton.imageView.tintColor = COLOR_LIGHT_GRAY;
+    [cardsView addSubview:self.closeCardsViewButton];
+    self.closeCardsViewButton.hidden = YES;
+    
+    CGFloat skipAllButtonWidth = 80;
+    CGFloat skipAllButtonHeight = 30;
+    self.skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - skipAllButtonWidth, self.pageControl.frame.origin.y, skipAllButtonWidth, skipAllButtonHeight)];
     self.skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
     self.skipAllButton.backgroundColor = [UIColor clearColor];
     [self.skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
@@ -687,9 +707,13 @@ int lastNumberTransactions = INT_MAX;
             [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                 self.skipAllButton.alpha = 1;
                 self.pageControl.alpha = 1;
+                self.startOverButton.alpha = 0;
+                self.closeCardsViewButton.alpha = 0;
             } completion:^(BOOL finished) {
                 self.skipAllButton.hidden = NO;
                 self.pageControl.hidden = NO;
+                self.startOverButton.hidden = YES;
+                self.closeCardsViewButton.hidden = YES;
             }];
         }
     } else {
@@ -697,9 +721,13 @@ int lastNumberTransactions = INT_MAX;
             [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                 self.skipAllButton.alpha = 0;
                 self.pageControl.alpha = 0;
+                self.startOverButton.alpha = 1;
+                self.closeCardsViewButton.alpha = 1;
             } completion:^(BOOL finished) {
                 self.skipAllButton.hidden = YES;
                 self.pageControl.hidden = YES;
+                self.startOverButton.hidden = NO;
+                self.closeCardsViewButton.hidden = NO;
             }];
         }
     }
