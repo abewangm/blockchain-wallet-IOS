@@ -19,6 +19,7 @@
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
 
 // Onboarding
+
 @property (nonatomic) BOOL isUsingPageControl;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
@@ -33,6 +34,8 @@
 
 @synthesize data;
 @synthesize latestBlock;
+
+CGFloat cardsViewHeight = 240;
 
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
@@ -462,15 +465,16 @@ int lastNumberTransactions = INT_MAX;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
-    CGFloat cardsViewHeight = 240;
-    CGFloat originalHeaderHeight = self.tableView.tableHeaderView.frame.size.height;
+    CGFloat originalHeaderHeight = headerView.frame.size.height;
+    
+    headerView.clipsToBounds = YES;
     
     if (showCards) {
-        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.tableView.tableHeaderView.frame.size.height, self.tableView.tableHeaderView.frame.size.width, cardsViewHeight)];
-        self.tableView.tableHeaderView.frame = CGRectMake(self.tableView.tableHeaderView.frame.origin.x, self.tableView.tableHeaderView.frame.origin.y, self.tableView.tableHeaderView.frame.size.width, self.tableView.tableHeaderView.frame.size.height + cardsViewHeight);
+        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
+        headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
         cardsView = [self configureCardsView:cardsView];
         
-        [self.tableView.tableHeaderView addSubview:cardsView];
+        [headerView addSubview:cardsView];
     }
     
     self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, originalHeaderHeight + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
@@ -481,7 +485,8 @@ int lastNumberTransactions = INT_MAX;
     noTransactionsTitle.text = BC_STRING_NO_TRANSACTIONS_TITLE;
     noTransactionsTitle.textColor = COLOR_BLOCKCHAIN_BLUE;
     [noTransactionsTitle sizeToFit];
-    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height);
+    CGFloat noTransactionsViewCenterY = (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height;
+    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsViewCenterY);
     [self.noTransactionsView addSubview:noTransactionsTitle];
 
     UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -673,6 +678,7 @@ int lastNumberTransactions = INT_MAX;
     self.closeCardsViewButton.imageEdgeInsets = UIEdgeInsetsMake(16, 20, 16, 12);
     [self.closeCardsViewButton setImage:[[UIImage imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.closeCardsViewButton.imageView.tintColor = COLOR_LIGHT_GRAY;
+    [self.closeCardsViewButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
     [cardsView addSubview:self.closeCardsViewButton];
     self.closeCardsViewButton.hidden = YES;
     
@@ -758,6 +764,21 @@ int lastNumberTransactions = INT_MAX;
     CGRect frame = self.cardsScrollView.frame;
     frame.origin.x = self.cardsScrollView.frame.size.width * page;
     [self.cardsScrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (void)closeCardsView
+{
+    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+        CGRect headerFrame = headerView.frame;
+        headerFrame.size.height = 80;
+        headerView.frame = headerFrame;
+        
+        self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
+        for (UIView *subview in self.noTransactionsView.subviews) {
+            subview.frame = CGRectOffset(subview.frame, 0, self.noTransactionsView.frame.size.height/2 - 162);
+        }
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
