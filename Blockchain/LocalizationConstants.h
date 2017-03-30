@@ -621,3 +621,4 @@
 #define BC_STRING_SCAN_ADDRESS NSLocalizedString(@"Scan Address", nil)
 #define BC_STRING_SKIP_ALL NSLocalizedString(@"Skip All", nil)
 #define BC_STRING_GET_BITCOIN NSLocalizedString(@"Get Bitcoin", nil)
+#define BC_STRING_OVERVIEW NSLocalizedString(@"Overview", nil)

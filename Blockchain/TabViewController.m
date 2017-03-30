@@ -41,7 +41,7 @@
 {
     CGFloat spacing = 2.0;
     
-    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {
                 
