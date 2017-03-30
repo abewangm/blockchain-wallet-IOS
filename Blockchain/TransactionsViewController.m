@@ -656,12 +656,12 @@ int lastNumberTransactions = INT_MAX;
     [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
     [cardsView addSubview:self.pageControl];
     
-    UIButton *skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - 80, self.pageControl.frame.origin.y, 80, 30)];
-    skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
-    skipAllButton.backgroundColor = [UIColor clearColor];
-    [skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
-    [skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
-    [cardsView addSubview:skipAllButton];
+    self.skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - 80, self.pageControl.frame.origin.y, 80, 30)];
+    self.skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.skipAllButton.backgroundColor = [UIColor clearColor];
+    [self.skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
+    [self.skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
+    [cardsView addSubview:self.skipAllButton];
     
     return cardsView;
 }
@@ -681,6 +681,29 @@ int lastNumberTransactions = INT_MAX;
 {
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
+ 
+    if (scrollView.contentOffset.x < scrollView.frame.size.width * 3) {
+        if (self.skipAllButton.hidden && self.pageControl.hidden) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                self.skipAllButton.alpha = 1;
+                self.pageControl.alpha = 1;
+            } completion:^(BOOL finished) {
+                self.skipAllButton.hidden = NO;
+                self.pageControl.hidden = NO;
+            }];
+        }
+    } else {
+        if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                self.skipAllButton.alpha = 0;
+                self.pageControl.alpha = 0;
+            } completion:^(BOOL finished) {
+                self.skipAllButton.hidden = YES;
+                self.pageControl.hidden = YES;
+            }];
+        }
+    }
+    
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
 }
