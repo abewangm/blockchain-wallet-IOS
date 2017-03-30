@@ -4,9 +4,9 @@
     <title>btc</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="0" y="0" width="77.5968992" height="110"></rect>
+        <rect id="path-1" x="0" y="0" width="88" height="110"></rect>
     </defs>
-    <g id="Feedback" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="iOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="btc">
             <g id="bitcoin">
                 <mask id="mask-2" fill="white">
@@ -14,7 +14,7 @@
                 </mask>
                 <g id="Mask"></g>
                 <g mask="url(#mask-2)">
-                    <g transform="translate(-36.666667, 0.000000)">
+                    <g transform="translate(-23.666667, 0.000000)">
                         <g>
                             <g id="Layer_2">
                                 <g id="Layer_1-2">
