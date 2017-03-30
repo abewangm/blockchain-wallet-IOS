@@ -15,7 +15,7 @@
 #import "SideMenuViewCell.h"
 #import "BCLine.h"
 #import "PrivateKeyReader.h"
-#import "UIViewController+Autodismiss.h"
+#import "UIViewController+AutoDismiss.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @interface SideMenuViewController ()
