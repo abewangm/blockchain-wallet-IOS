@@ -34,7 +34,9 @@
     IBOutlet UIButton *filterAccountChevronButton;
     
     IBOutlet UIView *noTransactionsView;
-        
+    IBOutlet UILabel *noTransactionsDescriptionLabel;
+    IBOutlet UILabel *noTransactionsTitleLabel;
+    
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
 }

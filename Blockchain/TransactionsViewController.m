@@ -445,6 +445,12 @@ int lastNumberTransactions = INT_MAX;
 {
     [super viewDidLoad];
     
+    noTransactionsTitleLabel.text = BC_STRING_YOUR_TRANSACTIONS;
+    noTransactionsDescriptionLabel.text = BC_STRING_NO_TRANSACTIONS_TEXT;
+    [noTransactionsDescriptionLabel sizeToFit];
+    noTransactionsDescriptionLabel.center = CGPointMake(self.view.center.x, 0);
+    noTransactionsDescriptionLabel.frame = CGRectMake(noTransactionsDescriptionLabel.frame.origin.x, noTransactionsTitleLabel.frame.origin.y + noTransactionsTitleLabel.frame.size.height, noTransactionsDescriptionLabel.frame.size.width, noTransactionsDescriptionLabel.frame.size.height);
+    
     self.loadedAllTransactions = NO;
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
