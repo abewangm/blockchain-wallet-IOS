@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Номер вашого мобільного телефону може використовуватись для увімкнення Двофакторної автентифікації або отримання сповіщень.";
+
+/* (No Commment) */
+"Trade Completed" = "Операцію завершено";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Створена вами операція на%@ завершена!";
+
+/* (No Commment) */
+"View details" = "Переглянути подробиці";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Купити Біткойн";
+
+/* (No Commment) */
+"Your Transactions" = "Ваші транзакції";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Транзакція - це коли ви отримуєте чи відправляєте Біткойн.";

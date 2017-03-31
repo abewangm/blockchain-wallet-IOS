@@ -1700,3 +1700,78 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Możesz wykorzystać swój telefon komórkowy w celu dwuelementowego uwierzytelniania lub otrzymywania powiadomień.";
+
+/* (No Commment) */
+"START BACKUP" = "UTWÓRZ KOPIĘ ZAPASOWĄ";
+
+/* (No Commment) */
+"Backup Needed" = "Kopia zapasowa wymagana";
+
+/* (No Commment) */
+"Create a Wallet" = "Utwórz Portfel";
+
+/* (No Commment) */
+"Log In" = "Zaloguj się";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Wprowadź hasło, aby zalogować się do swojego portfela Blockchain.";
+
+/* (No Commment) */
+"Forgot Password?" = "Zapomniałeś hasła?";
+
+/* (No Commment) */
+"Or start over and " = "Lub zacznij od początku i ";
+
+/* (No Commment) */
+"Update Email" = "Uaktualnij e-mail";
+
+/* (No Commment) */
+"Enter Email Address" = "Wprowadź adres e-mail";
+
+/* (No Commment) */
+"Update Mobile" = "Uaktualnij numer komórkowy";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Wprowadź numer komórkowy";
+
+/* (No Commment) */
+"Balances" = "Salda";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakcje mają miejsce, gdy wysyłasz i odbierasz bitcoiny.";
+
+/* (No Commment) */
+"Your Transactions" = "Twoje transakcje";
+
+/* (No Commment) */
+"Backup Complete" = "Utworzono kopię zapasową";
+
+/* (No Commment) */
+"Backup Needed" = "Kopia zapasowa wymagana";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Pamiętaj, aby zapisać swój zwrot na kartce papieru i przechowywać go w bezpiecznym miejscu.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Zapisz swój 12-literowy zwrot do odzyskania hasła w dokładnie takim brzmieniu i porządku jak widoczne poniżej:";
+
+/* (No Commment) */
+"PREVIOUS" = "WSTECZ";
+
+/* (No Commment) */
+"NEXT" = "DALEJ";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "POWTÓRZ KOPIĘ ZAPASOWĄ";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Twój zweryfikowany adres e-mail używany jest do wysyłania powiadomień dotyczących płatności, przypomnień związanych z dokumentami tożsamości oraz kodów logowania.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Możesz wykorzystać swój telefon komórkowy w celu dwuelementowego uwierzytelniania lub otrzymywania powiadomień.";

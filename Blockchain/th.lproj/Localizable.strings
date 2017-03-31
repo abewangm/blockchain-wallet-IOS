@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "สามารถใช้งานหมายเลขโทรศัพท์ของคุณเพื่อเปิดใช้งานการพิสูจน์ตัวตนแบบสองขั้นตอนหรือเพื่อรับการแจ้งเตือน";
+
+/* (No Commment) */
+"Trade Completed" = "การเทรดเสร็จสิ้นแล้ว";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "การเทรดที่คุณสร้างบน %@ เสร็จสิ้นแล้ว!";
+
+/* (No Commment) */
+"View details" = "ชมรายละเอียด";
+
+/* (No Commment) */
+"Buy Bitcoin" = "ซื้อบิตคอยน์";
+
+/* (No Commment) */
+"Your Transactions" = "ธุรกรรมของคุณ";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "ธุรกรรมเกิดขึ้นเมื่อคุณส่งและรับบิตคอยน์";

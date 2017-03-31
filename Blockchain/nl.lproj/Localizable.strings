@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Uw mobiele telefoon kan worden gebruikt om de tweeledige verificatiemethode in te schakelen of om meldingen te ontvangen.";
+
+/* (No Commment) */
+"Trade Completed" = "Transactie voltooid";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "De transactie die je hebt aangemaakt op %@ is voltooid!";
+
+/* (No Commment) */
+"View details" = "Details bekijken";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Bitcoins kopen";
+
+/* (No Commment) */
+"Your Transactions" = "Jouw transacties";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transacties vinden plaats wanneer je Bitcoins verzendt en ontvangt.";
