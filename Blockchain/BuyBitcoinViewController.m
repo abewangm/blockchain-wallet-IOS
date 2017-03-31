@@ -41,7 +41,7 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
         
         self.webView.UIDelegate = self;
         self.webView.navigationDelegate = self;
-        self.webView.scrollView.scrollEnabled = NO;
+        self.webView.scrollView.scrollEnabled = YES;
         self.automaticallyAdjustsScrollViewInsets = NO;
         
         NSURL *login = [NSURL URLWithString:URL_BUY_WEBVIEW];
