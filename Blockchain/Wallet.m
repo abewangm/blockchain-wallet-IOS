@@ -3258,10 +3258,18 @@
 {
     if ([self isInitialized] && [app checkInternetConnection]) {
         self.isSyncing = YES;
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         
         [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSetLabelForAccount) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     }
+}
+
+- (void)didSetLabelForAccount
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    
+    [self getHistory];
 }
 
 - (void)createAccountWithLabel:(NSString *)label
