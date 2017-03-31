@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "את כתובת הדוא ל מאומת משמש לשליחת התראות תשלום מזהה תזכורות, קודי כניסה.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "הטלפון הנייד יכול לשמש כדי לאפשר אימות דו-גורמי או לקבל התראות.";
+
+/* (No Commment) */
+"Trade Completed" = "סחר הושלמה";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "הסחר שיצרת ב- %@ הושלמה!";
+
+/* (No Commment) */
+"View details" = "הצגת פרטים";
+
+/* (No Commment) */
+"Buy Bitcoin" = "לקנות ביטקוין";
+
+/* (No Commment) */
+"Your Transactions" = "העסקאות שלך";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "תנועות להתרחש בעת שליחה וקבלה של ביטקוין.";

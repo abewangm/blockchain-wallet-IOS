@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Επιβεβαιωμένη σου διεύθυνση email χρησιμοποιείται για να στείλετε ειδοποιήσεις πληρωμής, υπενθυμίσεις ID και κωδικούς σύνδεσης.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Το κινητό σας τηλέφωνο μπορεί να χρησιμοποιηθεί για να ενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων ή να λαμβάνετε ειδοποιήσεις.";
+
+/* (No Commment) */
+"Trade Completed" = "Συναλλαγές που έχουν ολοκληρωθεί";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Το εμπόριο που δημιουργήσατε στο %@ έχει ολοκληρωθεί!";
+
+/* (No Commment) */
+"View details" = "Προβολή λεπτομερειών";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Αγοράστε Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Οι συναλλαγές σας";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Συναλλαγές εμφανίζονται όταν στέλνετε και λαμβάνετε bitcoin.";

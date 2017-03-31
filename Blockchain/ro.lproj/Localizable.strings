@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Adresa ta de email verificate este folosit pentru a trimite alerte de plată, ID memento-uri si coduri de autentificare.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Telefonul mobil poate fi folosit pentru a activa autentificarea dublu-factor sau să primiţi alerte.";
+
+/* (No Commment) */
+"Trade Completed" = "Comerciale finalizate";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Comerciale pe care le-aţi creat pe %@ a fost finalizat!";
+
+/* (No Commment) */
+"View details" = "Vezi detalii";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Cumpăra Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Tranzactiile tale";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Tranzacţiile să apară când trimiteţi şi primiţi bitcoin.";

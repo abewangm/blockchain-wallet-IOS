@@ -1672,3 +1672,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "अपने सत् यापित ईमेल पते भुगतान अलर्ट, ID अनुस्मारक और लॉगिन कोड भेजने के लिए उपयोग किया जाता है।";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "अपने मोबाइल फोन दो कारक प्रमाणीकरण सक्षम करने के लिए या चेतावनियाँ प्राप्त करने के लिए इस्तेमाल किया जा सकता।";
+
+/* (No Commment) */
+"Trade Completed" = "पूरा व्यापार";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "आप %@ पर बनाई गई व्यापार पूरा हो चुका है!";
+
+/* (No Commment) */
+"View details" = "विवरण देखें";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Bitcoin खरीदें";
+
+/* (No Commment) */
+"Your Transactions" = "आपके लेन-देन";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "जब आप भेजें और प्राप्त bitcoin लेनदेन हो।";
