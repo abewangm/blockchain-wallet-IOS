@@ -20,8 +20,7 @@
         self.delegate = delegate;
         self.actionType = actionType;
         
-        self.frame = CGRectInset(frame, 8, 16);
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height - 32);
+        self.frame = [BCCardView frameFromContainer:frame];
         
         self.layer.masksToBounds = NO;
         self.layer.shadowOffset = CGSizeMake(0, 2);
@@ -79,6 +78,12 @@
         [self addSubview:actionButton];
     }
     return self;
+}
+
++ (CGRect)frameFromContainer:(CGRect)containerFrame
+{
+    CGRect frame = CGRectInset(containerFrame, 8, 16);
+    return CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - 32);
 }
 
 - (void)actionButtonClicked

@@ -617,21 +617,29 @@ int lastNumberTransactions = INT_MAX;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.scrollEnabled = YES;
     
-    NSInteger numberOfPages = 4;
-    NSInteger numberOfCards = 3;
+    NSInteger numberOfPages = 1;
+    NSInteger numberOfCards = 0;
     
-    BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
-    [scrollView addSubview:priceCard];
+    if ([app.wallet isBuyEnabled]) {
+        BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
+        [scrollView addSubview:priceCard];
+        numberOfCards++;
+        numberOfPages++;
+    }
 
     BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" delegate:self];
-    receiveCard.frame = CGRectOffset(receiveCard.frame, cardsView.frame.size.width, 0);
+    receiveCard.frame = CGRectOffset(receiveCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
     [scrollView addSubview:receiveCard];
+    numberOfCards++;
+    numberOfPages++;
 
     BCCardView *QRCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_QR_CODES_TITLE description:BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION actionType:ActionTypeScanQR imageName:@"qr_partial" delegate:self];
-    QRCard.frame = CGRectOffset(QRCard.frame, cardsView.frame.size.width*2, 0);
+    QRCard.frame = CGRectOffset(QRCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
     [scrollView addSubview:QRCard];
+    numberOfCards++;
+    numberOfPages++;
     
-    CGFloat overviewCompleteCenterX = cardsView.frame.size.width/2 + 3 * cardsView.frame.size.width;
+    CGFloat overviewCompleteCenterX = cardsView.frame.size.width/2 + [self getPageXPosition:cardsView.frame.size.width page:numberOfCards];
     
     UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 40, 40)];
     checkImageView.image = [[UIImage imageNamed:@"success"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -670,7 +678,9 @@ int lastNumberTransactions = INT_MAX;
     [cardsView addSubview:scrollView];
     self.cardsScrollView = scrollView;
     
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, priceCard.frame.origin.y + priceCard.frame.size.height + 8, 100, 30)];
+    CGRect cardRect = [BCCardView frameFromContainer:cardsView.bounds];
+    
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, cardRect.origin.y + cardRect.size.height + 8, 100, 30)];
     self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
     self.pageControl.numberOfPages = numberOfCards;
     self.pageControl.currentPageIndicatorTintColor = COLOR_BLOCKCHAIN_BLUE;
@@ -706,6 +716,11 @@ int lastNumberTransactions = INT_MAX;
     [cardsView addSubview:self.skipAllButton];
     
     return cardsView;
+}
+
+- (CGFloat)getPageXPosition:(CGFloat)cardLength page:(NSInteger)page
+{
+    return cardLength * page;
 }
 
 - (void)showFirstCard
