@@ -109,7 +109,9 @@ int accountEntries = 0;
     [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
     
-    [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    if ([app.wallet isBuyEnabled]) {
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    }
     
     [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
     [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
@@ -355,8 +357,7 @@ int accountEntries = 0;
         
         UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
         tickerLabel.adjustsFontSizeToFitWidth = YES;
-        NSDecimalNumber *oneBTC = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:[CURRENCY_CONVERSION_BTC longLongValue]]];
-        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
         tickerLabel.center = CGPointMake(tickerLabel.center.x, view.center.y);
         tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:24];

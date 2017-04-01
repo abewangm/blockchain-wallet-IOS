@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Bekreftet e-postadressen brukes til å sende betalingsvarsler, ID påminnelser og logikk koder.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobiltelefonen kan brukes til å aktivere to-faktor autentifisering eller motta varsler.";
+
+/* (No Commment) */
+"Trade Completed" = "Handel fullført";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Handelen du opprettet på %@ er fullført!";
+
+/* (No Commment) */
+"View details" = "Visningsdetaljer";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Kjøpe Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Transaksjonene";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaksjoner oppstår når du sender og mottar bitcoin.";

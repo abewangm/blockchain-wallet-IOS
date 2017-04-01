@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "携帯電話番号は2段階認証の有効化や通知の受信に使用できます。";
+
+/* (No Commment) */
+"Trade Completed" = "取引完了";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "%@に作成した取引は完了しました！";
+
+/* (No Commment) */
+"View details" = "詳細を表示";
+
+/* (No Commment) */
+"Buy Bitcoin" = "ビットコインを購入";
+
+/* (No Commment) */
+"Your Transactions" = "あなたの取引";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "取引はビットコインの送受信時に発生します。";

@@ -1750,3 +1750,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Svůj mobil telefon můžete použít k tomu, abyste povolili dvojúrovňové ověřování a dostávali upozornění";
+
+/* (No Commment) */
+"Trade Completed" = "Obchod dokončen";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Obchod, který jste vytvořili %@ byl dokončen!";
+
+/* (No Commment) */
+"View details" = "Zobrazit detaily";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Koupit Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakce";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakce nastanou, když pošlete a obdržíte bitcoiny.";

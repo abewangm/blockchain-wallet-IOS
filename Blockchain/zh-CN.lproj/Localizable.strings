@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "您的手机可用于启用双重认证或者接收提醒。";
+
+/* (No Commment) */
+"Trade Completed" = "交易完成";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "您于 %@ 创建的交易已完成！";
+
+/* (No Commment) */
+"View details" = "查看详情";
+
+/* (No Commment) */
+"Buy Bitcoin" = "购买比特币";
+
+/* (No Commment) */
+"Your Transactions" = "您的交易";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "当您发送和接收比特币时便发生了交易。";

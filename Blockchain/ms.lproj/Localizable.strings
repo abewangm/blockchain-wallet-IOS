@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Alamat e-mel disahkan digunakan untuk menghantar isyarat pembayaran, peringatan ID dan kod-kod log masuk.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Telefon mudah alih anda boleh digunakan untuk membolehkan pengesahan dua faktor atau menerima amaran.";
+
+/* (No Commment) */
+"Trade Completed" = "Perdagangan yang siap";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Perdagangan yang anda cipta pada %@ telah siap!";
+
+/* (No Commment) */
+"View details" = "Lihat butiran";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Membeli Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Transaksi anda";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaksi berlaku apabila anda menghantar dan menerima bitcoin.";

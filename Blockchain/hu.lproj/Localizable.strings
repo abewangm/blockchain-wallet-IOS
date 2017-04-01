@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "A megerősített email-címmel van hozzászokott küld fizetési figyelmeztetés, emlékeztetők azonosító és belépés kód.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "A mobiltelefon használható kéttényezős hitelesítést, illetve értesítést kapnak.";
+
+/* (No Commment) */
+"Trade Completed" = "A kereskedelmi befejeződött";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "A %@ létrehozott kereskedelmi befejeződött!";
+
+/* (No Commment) */
+"View details" = "Részletek megtekintése";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Bitcoin vásárlás";
+
+/* (No Commment) */
+"Your Transactions" = "A tranzakciók";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Tranzakciók fordulhat elő, ha a küldött és fogadott bitcoin.";

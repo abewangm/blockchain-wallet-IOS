@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Il tuo telefono cellulare può essere usato per abilitare l'autenticazione a due fattori o per ricevere avvisi.";
+
+/* (No Commment) */
+"Trade Completed" = "Transazione completata";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "La transazione che hai creato su %@ è stata completata!";
+
+/* (No Commment) */
+"View details" = "Visualizza dettagli";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Acquista Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Le tue transazioni";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Le transazioni avvengono quando invii e ricevi bitcoin.";
