@@ -857,6 +857,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
+    [_transactionsViewController setupCardsViewIfNeeded];
+    
     [_sendViewController reload];
         
     // Enabling touch ID and immediately backgrounding the app hides the status bar

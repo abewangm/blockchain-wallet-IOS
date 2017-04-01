@@ -21,6 +21,7 @@
 // Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
+@property (nonatomic) BOOL cardsViewLoaded;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
@@ -470,10 +471,6 @@ int lastNumberTransactions = INT_MAX;
     self.originalHeaderHeight = headerView.frame.size.height;
     headerView.clipsToBounds = YES;
     
-    if (showCards) {
-        [self setupCardsView];
-    }
-    
     [self setupNoTransactionsView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -543,13 +540,24 @@ int lastNumberTransactions = INT_MAX;
     tableViewController.refreshControl = refreshControl;
 }
 
+- (void)setupCardsViewIfNeeded
+{
+    if (showCards) {
+        [self setupCardsView];
+    }
+}
+
 - (void)setupCardsView
 {
-    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
-    headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
-    cardsView = [self configureCardsView:cardsView];
-    
-    [headerView addSubview:cardsView];
+    if (!self.cardsViewLoaded) {
+        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
+        headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
+        cardsView = [self configureCardsView:cardsView];
+        
+        [headerView addSubview:cardsView];
+        
+        self.cardsViewLoaded = YES;
+    }
 }
 
 - (void)setupNoTransactionsView
