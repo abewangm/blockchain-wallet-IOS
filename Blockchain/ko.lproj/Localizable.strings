@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "귀하 휴대폰은 2-인수 인증 사용 설정을 하거나 알림을 받는 데 쓰일 수 있습니다.";
+
+/* (No Commment) */
+"Trade Completed" = "거래 완료됨";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "귀하가 %@에 만든 거래가 완료되었습니다!";
+
+/* (No Commment) */
+"View details" = "상세 내용 보기";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Bitcoin 사기";
+
+/* (No Commment) */
+"Your Transactions" = "귀하의 거래들";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "비트코인을 보내고 받을 때 거래가 발생합니다.";

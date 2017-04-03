@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Mailovú adresu možno odoslať upozornenia platieb, upomienky ID a prihlasovacie kódy.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilný telefón je možné zapnúť dvojfaktorové overovanie alebo prijímať upozornenia.";
+
+/* (No Commment) */
+"Trade Completed" = "Obchodnej ukončené";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Obchod vytvorený na %@ bola ukončená!";
+
+/* (No Commment) */
+"View details" = "Zobraziť Podrobnosti";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Predám Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakcie";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakcie sa vyskytujú, keď budete odosielať a prijímať bitcoin.";

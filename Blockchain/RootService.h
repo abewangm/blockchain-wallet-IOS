@@ -28,14 +28,15 @@
 #import "CertificatePinner.h"
 #import <UserNotifications/UserNotifications.h>
 #import "ReminderModalViewController.h"
+#import "WalletSetupViewController.h"
 #import <WebKit/WebKit.h>
 
 @protocol TopViewController;
 
 @class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate> {
-    
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate, SetupDelegate> {
+
     Wallet *wallet;
     
     SystemSoundID alertSoundID;

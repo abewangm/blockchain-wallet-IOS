@@ -15,7 +15,7 @@
 #import "SideMenuViewCell.h"
 #import "BCLine.h"
 #import "PrivateKeyReader.h"
-#import "UIViewController+Autodismiss.h"
+#import "UIViewController+AutoDismiss.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @interface SideMenuViewController ()
@@ -113,7 +113,9 @@ int accountEntries = 0;
 #endif
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
     
-    [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    if ([app.wallet isBuyEnabled]) {
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    }
     
     [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
     [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
@@ -173,15 +175,6 @@ int accountEntries = 0;
     // Enable swipe to open side menu gesture on small bar on the left of main view
     [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
     [app.tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
-    
-    // Enable swipe to switch between views on main view
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [app.tabViewController.activeViewController.view addGestureRecognizer:swipeLeft];
-    [app.tabViewController.activeViewController.view addGestureRecognizer:swipeRight];
 }
 
 - (void)reload
@@ -370,8 +363,7 @@ int accountEntries = 0;
         
         UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
         tickerLabel.adjustsFontSizeToFitWidth = YES;
-        NSDecimalNumber *oneBTC = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:[CURRENCY_CONVERSION_BTC longLongValue]]];
-        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
         tickerLabel.center = CGPointMake(tickerLabel.center.x, view.center.y);
         tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:24];

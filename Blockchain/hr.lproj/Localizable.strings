@@ -1660,3 +1660,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Potvrđenu e-adresu se koristi za slanje plaćanja upozorenja, ID podsjetnike i prijave šifre.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilnog telefona može se koristiti dva faktora autentičnosti ili primanje upozorenja.";
+
+/* (No Commment) */
+"Trade Completed" = "Trgovina dovršen";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Trgovina ste stvorili na %@ je završena!";
+
+/* (No Commment) */
+"View details" = "Prikaz pojedinosti";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Kupite Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakcije";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakcije se pojavljuju našto slanje i primanje bitcoin.";

@@ -41,7 +41,7 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
         
         self.webView.UIDelegate = self;
         self.webView.navigationDelegate = self;
-        self.webView.scrollView.scrollEnabled = NO;
+        self.webView.scrollView.scrollEnabled = YES;
         self.automaticallyAdjustsScrollViewInsets = NO;
         
         NSURL *login = [NSURL URLWithString:URL_BUY_WEBVIEW];
@@ -93,7 +93,24 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
     [self.webView evaluateJavaScript:script completionHandler:^(id result, NSError * _Nullable error) {
         DLog(@"Ran script with result %@, error %@", result, error);
         if (error != nil) {
-            [app standardNotify:[NSString stringWithFormat:@"%@: %@",[error localizedDescription], error.userInfo]];
+            
+            UIViewController *targetController;
+            
+            if (app.topViewControllerDelegate) {
+                targetController = app.topViewControllerDelegate;
+            } else {
+                targetController = app.window.rootViewController;
+            }
+            
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_BUY_WEBVIEW_ERROR_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_VIEW_DETAILS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *errorDetailAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:[NSString stringWithFormat:@"%@: %@",[error localizedDescription], error.userInfo] preferredStyle:UIAlertControllerStyleAlert];
+                [errorDetailAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+                [targetController presentViewController:errorDetailAlert animated:YES completion:nil];
+            }]];
+
+            [targetController presentViewController:errorAlert animated:YES completion:nil];
         }
     }];
 }

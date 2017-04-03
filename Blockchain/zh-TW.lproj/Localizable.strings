@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "您已驗證電子郵件地址用於發送付款通知、 ID 提醒和登錄代碼。";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "若要啟用雙因素身份驗證或接收警報，可以使用您的行動電話。";
+
+/* (No Commment) */
+"Trade Completed" = "完成的貿易";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "在 %@ 創建貿易已完成 ！";
+
+/* (No Commment) */
+"View details" = "查看詳細資訊";
+
+/* (No Commment) */
+"Buy Bitcoin" = "買比特幣";
+
+/* (No Commment) */
+"Your Transactions" = "您的交易";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "交易發生時您發送和接收比特幣。";

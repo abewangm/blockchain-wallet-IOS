@@ -1697,3 +1697,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Cep telefonu numaranız iki-faktörlü doğrulamayı etkinleştirmek veya uyarı almak için kullanılabilir.";
+
+/* (No Commment) */
+"Trade Completed" = "Transacción completada";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Se completó la transacción que creó en %@";
+
+/* (No Commment) */
+"View details" = "Ver detalles";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Compre Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Sus transacciones";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Las transacciones ocurren cuando envía y recibe bitcoin.";

@@ -6,7 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "TabViewcontroller.h"
+#import "TabViewController.h"
 #import "RootService.h"
 
 @implementation TabViewcontroller
@@ -22,15 +22,6 @@
     selectedIndex = TAB_TRANSACTIONS;
     
     [self setupTabButtons];
-    
-    // Swipe between tabs for fun
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [contentView addGestureRecognizer:swipeLeft];
-    [contentView addGestureRecognizer:swipeRight];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -50,7 +41,7 @@
 {
     CGFloat spacing = 2.0;
     
-    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {
                 

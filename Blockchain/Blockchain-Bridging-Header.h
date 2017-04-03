@@ -3,7 +3,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "wallet.h"
+#import "Wallet.h"
 #import "RootService.h"
 #import "BCFadeView.h"
 #import "UIViewController+AutoDismiss.h"

@@ -1700,3 +1700,21 @@
 
 /* (No Commment) */
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Ponsel Anda dapat digunakan untuk mengaktifkan otentikasi dua faktor atau untuk menerima pemberitahuan.";
+
+/* (No Commment) */
+"Trade Completed" = "Perdagangan Telah Selesai";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Perdagangan yang telah Anda buat di %@ telah diselesaikan!";
+
+/* (No Commment) */
+"View details" = "Lihat perincian";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Beli Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Transaksi Anda";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaksi terjadi saat Anda mengirim dan menerima bitcoin.";

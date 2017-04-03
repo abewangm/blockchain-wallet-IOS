@@ -1675,3 +1675,21 @@
 "Your verified email address is used to send payment alerts, ID reminders, and login codes." = "يستخدم عنوان تم التحقق من البريد الإلكتروني الخاص بك لإرسال دفع التنبيهات والتذكيرات معرف رموز تسجيل الدخول.";
 
 "Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "يمكن استخدام الهاتف الجوال الخاص بك لتمكين مصادقة ثنائية العامل أو لتلقي التنبيهات.";
+
+/* (No Commment) */
+"Trade Completed" = "التجارة أنجزت";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "وقد اكتمل بالتجارة التي قمت بإنشائها على %@!";
+
+/* (No Commment) */
+"View details" = "عرض التفاصيل";
+
+/* (No Commment) */
+"Buy Bitcoin" = "شراء بيتكوين";
+
+/* (No Commment) */
+"Your Transactions" = "المعاملات الخاصة بك";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "المعاملات تحدث عند إرسال وتلقى بيتكوين.";
