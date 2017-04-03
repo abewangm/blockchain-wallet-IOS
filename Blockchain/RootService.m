@@ -49,6 +49,8 @@
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
 
+#define USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER @"hasSeenEmailReminder"
+
 @implementation RootService
 
 RootService * app;
@@ -849,16 +851,18 @@ void (^secondPasswordSuccess)(NSString *);
         if (dateOfLastReminder) {
             if ([dateOfLastReminder timeIntervalSinceNow] < -timeIntervalBetweenPrompts) {
                 [self showSecurityReminder];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
             }
         } else {
-            [self showSecurityReminder];
-            [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER]) {
+                [self showSecurityReminder];
+            } else {
+                [self checkIfSettingsLoadedAndShowEmailReminder];
+            }
         }
     }
-        
+    
     [_sendViewController reload];
-        
+    
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
@@ -2112,6 +2116,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showSecurityReminder
 {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
+
     if ([app.wallet getTotalActiveBalance] > 0) {
         if (![app.wallet isRecoveryPhraseVerified]) {
             [self showBackupReminder:NO];
@@ -2139,6 +2145,8 @@ void (^secondPasswordSuccess)(NSString *);
     if (self.wallet.hasLoadedAccountInfo) {
         if (![app.wallet hasVerifiedEmail]) {
             [self showEmailVerificationReminder];
+        } else {
+            [self showSecurityReminder];
         }
     } else {
         showReminderType = ShowReminderTypeEmail;
@@ -2147,12 +2155,11 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showEmailVerificationReminder
 {
-    ReminderModalViewController *emailController = [[ReminderModalViewController alloc] initWithReminderType:ReminderTypeEmail];
-    emailController.displayString = [app.wallet getEmail];
-    emailController.delegate = self;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:emailController];
-    navigationController.navigationBarHidden = YES;
-    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER];
+    
+    WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
+    setupViewController.emailOnly = YES;
+    [self.window.rootViewController presentViewController:setupViewController animated:YES completion:nil];
 }
 
 - (void)showBackupReminder:(BOOL)firstReceive

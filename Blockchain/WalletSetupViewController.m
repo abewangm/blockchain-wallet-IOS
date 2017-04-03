@@ -46,6 +46,8 @@
     [self.view addSubview:scrollView];
     
     self.scrollView = scrollView;
+    
+    if (self.emailOnly) [self goToSecondPage];
 }
 
 - (UIView *)setupTouchIDView

@@ -18,5 +18,6 @@
 
 @interface WalletSetupViewController : UIViewController
 @property (nonatomic) id<SetupDelegate> delegate;
+@property (nonatomic) BOOL emailOnly;
 - (id)initWithSetupDelegate:(id<SetupDelegate>)delegate;
 @end
