@@ -818,6 +818,8 @@ int lastNumberTransactions = INT_MAX;
         self.getBitcoinButton.alpha = 1;
         
     }];
+    
+    [self.tableView reloadData];
 }
 
 - (void)getBitcoinButtonClicked
