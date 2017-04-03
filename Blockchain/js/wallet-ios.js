@@ -1995,7 +1995,7 @@ MyWalletPhone.getECDSA = function() {
 }
 
 function WalletOptions (api) {
-  let optionsCache = {};
+  var optionsCache = {};
 
   this.getValue = function () {
     return optionsCache[this.getFileName()];
