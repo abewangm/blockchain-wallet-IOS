@@ -3186,9 +3186,18 @@ void (^secondPasswordSuccess)(NSString *);
     return self.window.frame;
 }
 
-- (void)enableTouchIDClicked
+- (BOOL)enableTouchIDClicked
 {
-    
+    NSString *errorString = [app checkForTouchIDAvailablility];
+    if (!errorString) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        return YES;
+    } else {
+        UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
+        [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [_tabViewController.presentedViewController presentViewController:alertTouchIDError animated:YES completion:nil];
+        return NO;
+    }
 }
 
 - (void)openMailClicked

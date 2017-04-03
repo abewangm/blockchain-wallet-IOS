@@ -190,12 +190,12 @@
 
 - (void)enableTouchID:(UIButton *)sender
 {
-    [self.delegate enableTouchIDClicked];
-    
-    [sender setTitle:[BC_STRING_ENABLED_EXCLAMATION uppercaseString] forState:UIControlStateNormal];
-    sender.backgroundColor = COLOR_BLOCKCHAIN_GREEN;
-
-    [self performSelector:@selector(goToSecondPage) withObject:nil afterDelay:0.3f];
+    if ([self.delegate enableTouchIDClicked]) {
+        [sender setTitle:[BC_STRING_ENABLED_EXCLAMATION uppercaseString] forState:UIControlStateNormal];
+        sender.backgroundColor = COLOR_BLOCKCHAIN_GREEN;
+        
+        [self performSelector:@selector(goToSecondPage) withObject:nil afterDelay:0.3f];
+    }
 }
 
 @end

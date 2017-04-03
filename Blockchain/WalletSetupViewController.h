@@ -10,7 +10,7 @@
 
 @protocol SetupDelegate
 - (CGRect)getFrame;
-- (void)enableTouchIDClicked;
+- (BOOL)enableTouchIDClicked;
 - (void)openMailClicked;
 - (NSString *)getEmail;
 - (void)getAccountInfo;
