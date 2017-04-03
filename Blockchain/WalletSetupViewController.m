@@ -78,7 +78,7 @@
     
     UIButton *enableTouchIDButton = [self setupActionButton];
     [enableTouchIDButton setTitle:[BC_STRING_ENABLE_TOUCH_ID uppercaseString] forState:UIControlStateNormal];
-    [enableTouchIDButton addTarget:self action:@selector(enableTouchID) forControlEvents:UIControlEventTouchUpInside];
+    [enableTouchIDButton addTarget:self action:@selector(enableTouchID:) forControlEvents:UIControlEventTouchUpInside];
     enableTouchIDButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [touchIDView addSubview:enableTouchIDButton];
     
@@ -140,7 +140,8 @@
 
 - (UIButton *)setupActionButton
 {
-    UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60 - 30 - 16, self.view.frame.size.width - 100, 40)];
+    UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    actionButton.frame = CGRectMake(0, self.view.frame.size.height - 60 - 30 - 16, self.view.frame.size.width - 100, 40);
     actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
     actionButton.center = CGPointMake(self.view.frame.size.width/2, actionButton.center.y);
     actionButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
@@ -187,9 +188,14 @@
     [self.delegate openMailClicked];
 }
 
-- (void)enableTouchID
+- (void)enableTouchID:(UIButton *)sender
 {
     [self.delegate enableTouchIDClicked];
+    
+    [sender setTitle:[BC_STRING_ENABLED_EXCLAMATION uppercaseString] forState:UIControlStateNormal];
+    sender.backgroundColor = COLOR_BLOCKCHAIN_GREEN;
+
+    [self performSelector:@selector(goToSecondPage) withObject:nil afterDelay:0.3f];
 }
 
 @end
