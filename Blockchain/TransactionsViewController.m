@@ -597,6 +597,7 @@ int lastNumberTransactions = INT_MAX;
     self.getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
     [self.getBitcoinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.getBitcoinButton setTitle:[BC_STRING_GET_BITCOIN uppercaseString] forState:UIControlStateNormal];
+    [self.getBitcoinButton addTarget:self action:@selector(getBitcoinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
@@ -821,6 +822,15 @@ int lastNumberTransactions = INT_MAX;
         self.getBitcoinButton.alpha = 1;
         
     }];
+}
+
+- (void)getBitcoinButtonClicked
+{
+    if ([app.wallet isBuyEnabled]) {
+        [app buyBitcoinClicked:nil];
+    } else {
+        [app receiveCoinClicked:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
