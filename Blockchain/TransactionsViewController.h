@@ -49,7 +49,6 @@
 
 - (void)reload;
 - (void)reloadSymbols;
-- (void)setupCardsViewIfNeeded;
 - (void)animateNextCellAfterReload;
 - (void)setText;
 - (UITableView*)tableView;

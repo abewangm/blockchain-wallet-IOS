@@ -168,6 +168,10 @@ int lastNumberTransactions = INT_MAX;
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [self changeFilterLabel:[self getFilterLabel]];
     }
+    
+    if (showCards) {
+        [self setupCardsView];
+    }
 }
 
 - (void)showMoreButton
@@ -540,16 +544,9 @@ int lastNumberTransactions = INT_MAX;
     tableViewController.refreshControl = refreshControl;
 }
 
-- (void)setupCardsViewIfNeeded
-{
-    if (showCards) {
-        [self setupCardsView];
-    }
-}
-
 - (void)setupCardsView
 {
-    if (!self.cardsViewLoaded) {
+    if (!self.cardsViewLoaded && app.latestResponse.symbol_local) {
         UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
         headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
         cardsView = [self configureCardsView:cardsView];
@@ -617,8 +614,7 @@ int lastNumberTransactions = INT_MAX;
 {
     cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    NSDecimalNumber *oneBTC = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:SATOSHI] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:[CURRENCY_CONVERSION_BTC longLongValue]]];
-    NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSString stringWithFormat:@"%@ %@", [app.btcFormatter stringFromNumber:oneBTC], CURRENCY_SYMBOL_BTC], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+    NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
     scrollView.delegate = self;

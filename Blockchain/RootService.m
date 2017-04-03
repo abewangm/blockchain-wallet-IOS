@@ -856,9 +856,7 @@ void (^secondPasswordSuccess)(NSString *);
             [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
         }
     }
-    
-    [_transactionsViewController setupCardsViewIfNeeded];
-    
+        
     [_sendViewController reload];
         
     // Enabling touch ID and immediately backgrounding the app hides the status bar
