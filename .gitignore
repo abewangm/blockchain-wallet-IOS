@@ -103,4 +103,5 @@ Images.xcassets/email.imageset/*.png
 Images.xcassets/receive_partial.imageset/*.png
 Images.xcassets/qr_partial.imageset/*.png
 Images.xcassets/fingerprint.imageset/*.png
+Images.xcassets/chevron_right.imageset/*.png
 Images.xcassets/blockchain_wallet_logo.imageset/*.png

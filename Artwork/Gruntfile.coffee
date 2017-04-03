@@ -21,6 +21,7 @@ module.exports = (grunt) ->
 
 
   grunt.registerTask "default", [
+    "shell:svg:chevron_right:20:12"
     "shell:psd:transaction_pending:11"
     "shell:psd:qrscanner:18"
     "shell:psd:icon_upgrade:26"

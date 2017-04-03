@@ -74,6 +74,19 @@
         actionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [actionButton setTitleColor:actionColor forState:UIControlStateNormal];
         [actionButton setTitle:actionName forState:UIControlStateNormal];
+        UIImage *chevronImage = [UIImage imageNamed:@"chevron_right"];
+        [actionButton setImage:[chevronImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        actionButton.tintColor = actionColor;
+        
+        [actionButton sizeToFit];
+        actionButton.frame = CGRectInset(actionButton.frame, -8, -10);
+        actionButton.frame = CGRectMake(descriptionLabel.frame.origin.x, descriptionLabel.frame.origin.y, actionButton.frame.size.width, actionButton.frame.size.height);
+        actionButton.center = CGPointMake(actionButton.center.x, buttonYOrigin + (self.frame.size.height - buttonYOrigin)/2);
+        
+        actionButton.titleEdgeInsets = UIEdgeInsetsMake(0, -actionButton.imageView.frame.size.width, 0, actionButton.imageView.frame.size.width);
+        actionButton.imageEdgeInsets = UIEdgeInsetsMake(16, actionButton.titleLabel.frame.size.width + 4, 14, -actionButton.titleLabel.frame.size.width);
+        actionButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
         [actionButton addTarget:self action:@selector(actionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:actionButton];
     }
