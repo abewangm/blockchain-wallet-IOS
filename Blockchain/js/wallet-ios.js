@@ -1910,7 +1910,6 @@ MyWalletPhone.getExchangeAccount = function () {
     if (sfox.user) {
       console.log('Found sfox user');
       sfox.api.production = true;
-      sfox.api.apiKey = 'f31614a7-5074-49f2-8c2a-bfb8e55de2bd';
       sfox.api.apiKey = partners.sfox.apiKey;
       return sfox;
     } else if (coinify.user) {
