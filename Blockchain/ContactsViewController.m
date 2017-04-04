@@ -415,7 +415,7 @@ typedef enum {
 
 - (BOOL)startReadingQRCode
 {
-    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:nil];
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:self];
     
     if (!input) {
         return NO;
