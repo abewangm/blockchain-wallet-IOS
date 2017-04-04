@@ -1983,7 +1983,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var wallet = MyWallet.wallet
   var options = walletOptions.getValue()
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
-  var userHasAccess = (guidHash[0] / 255) <= (options.iosBuyPercent || 0)
+  var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0)
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
