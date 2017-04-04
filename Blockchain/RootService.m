@@ -2159,7 +2159,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
     setupViewController.emailOnly = YES;
-    [self.window.rootViewController presentViewController:setupViewController animated:YES completion:nil];
+    [self.window.rootViewController presentViewController:setupViewController animated:NO completion:nil];
 }
 
 - (void)showBackupReminder:(BOOL)firstReceive
