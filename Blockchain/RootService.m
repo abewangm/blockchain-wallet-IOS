@@ -2159,6 +2159,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
     setupViewController.emailOnly = YES;
+    setupViewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self.window.rootViewController presentViewController:setupViewController animated:NO completion:nil];
 }
 
