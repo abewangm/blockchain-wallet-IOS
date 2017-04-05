@@ -2341,16 +2341,9 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // There are two different ways the pinModal is displayed: as a subview of tabViewController (on start) and as a viewController. This checks which one it is and dismisses accordingly
     if ([self.pinEntryViewController.view isDescendantOfView:app.window.rootViewController.view]) {
-        if (animated) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                self.pinEntryViewController.view.alpha = 0;
-            } completion:^(BOOL finished) {
-                [self.pinEntryViewController.view removeFromSuperview];
-            }];
-        }
-        else {
-            [self.pinEntryViewController.view removeFromSuperview];
-        }
+
+        [self.pinEntryViewController.view removeFromSuperview];
+        
     } else {
         if (app.wallet.isNew) {
             [_tabViewController.presentedViewController dismissViewControllerAnimated:animated completion:nil];
