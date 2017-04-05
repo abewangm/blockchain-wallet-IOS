@@ -21,15 +21,14 @@
 // Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
-@property (nonatomic) BOOL cardsViewLoaded;
-@property (nonatomic) BOOL cardsViewRemoved;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
 @property (nonatomic) UIButton *skipAllButton;
 @property (nonatomic) UIButton *getBitcoinButton;
-@property (nonatomic) CGFloat originalHeaderHeight;
+@property (nonatomic) CGRect originalHeaderFrame;
 @property (nonatomic) UIScrollView *cardsScrollView;
+@property (nonatomic) UIView *cardsView;
 
 @property (nonatomic) UIView *noTransactionsView;
 @end
@@ -130,6 +129,17 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
+    [self setupNoTransactionsView];
+    
+    if (showCards && app.latestResponse.symbol_local) {
+        [self setupCardsView];
+    } else {
+        [self.cardsView removeFromSuperview];
+        self.cardsView = nil;
+    }
+    
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
     filterAccountButton.hidden = !shouldShowFilterButton;
@@ -168,15 +178,6 @@ int lastNumberTransactions = INT_MAX;
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [self changeFilterLabel:[self getFilterLabel]];
-    }
-    
-    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
-    
-    if (showCards) {
-        [self setupCardsView];
-    } else if (self.cardsViewLoaded && !self.cardsViewRemoved) {
-        [self closeCardsView];
-        self.cardsViewRemoved = YES;
     }
 }
 
@@ -478,12 +479,10 @@ int lastNumberTransactions = INT_MAX;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
-    self.originalHeaderHeight = headerView.frame.size.height;
+    self.originalHeaderFrame = headerView.frame;
     headerView.clipsToBounds = YES;
     
     showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
-    
-    [self setupNoTransactionsView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -554,20 +553,19 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setupCardsView
 {
-    if (!self.cardsViewLoaded && app.latestResponse.symbol_local) {
-        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
-        headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
-        cardsView = [self configureCardsView:cardsView];
-        
-        [headerView addSubview:cardsView];
-        
-        self.cardsViewLoaded = YES;
-    }
+    [self.cardsView removeFromSuperview];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
+    self.cardsView = [self configureCardsView:cardsView];
+    
+    [headerView addSubview:self.cardsView];
 }
 
 - (void)setupNoTransactionsView
 {
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderHeight + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
+    [self.noTransactionsView removeFromSuperview];
+    
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
     
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
@@ -606,7 +604,7 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
-        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderHeight);
+        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
         noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
         self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16 + noTransactionsDescription.frame.size.height/2);
         self.getBitcoinButton.hidden = NO;
