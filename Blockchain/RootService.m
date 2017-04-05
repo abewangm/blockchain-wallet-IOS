@@ -1371,9 +1371,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailBackupWallet
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SYNC_ERROR object:nil];
     // Refresh the wallet and history
     [self.wallet getWalletAndHistory];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SYNC_ERROR object:nil];
 }
 
 - (void)didBackupWallet

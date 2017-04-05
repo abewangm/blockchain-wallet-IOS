@@ -24,19 +24,22 @@ import UIKit
     }
     var busyView : BCFadeView?
     var headerLabel: UILabel?
-    var failedSync = false
+    
+    var isVerifying = false
     
     func finishTransitioning() {
        isTransitioning = false
     }
     
     internal func reload() {
-        if (!failedSync) {
+        if (!isVerifying) {
             self.popToRootViewController(animated: true)
             busyView?.fadeOut()
         }
-        
-        failedSync = false
+    }
+    
+    func markIsVerifying() {
+        isVerifying = true
     }
     
     override func viewDidLoad() {
@@ -94,8 +97,8 @@ import UIKit
         view.addSubview(busyView!);
         view.bringSubview(toFront: busyView!);
         
+        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.didSucceedSync), name: NSNotification.Name(rawValue: "backupSuccess"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.didFailSync), name: NSNotification.Name(rawValue: "syncError"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -116,9 +119,15 @@ import UIKit
         }
     }
     
+    func didSucceedSync() {
+        self.popToRootViewController(animated: true)
+        busyView?.fadeOut()
+        isVerifying = false
+    }
+    
     func didFailSync() {
         busyView?.fadeOut()
-        failedSync = true
+        isVerifying = false
     }
     
     func backButtonClicked() {
