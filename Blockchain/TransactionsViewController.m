@@ -136,6 +136,7 @@ int lastNumberTransactions = INT_MAX;
     if (showCards && app.latestResponse.symbol_local) {
         [self setupCardsView];
     } else {
+        if (self.cardsView) [self resetHeaderFrame];
         [self.cardsView removeFromSuperview];
         self.cardsView = nil;
     }
@@ -839,7 +840,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)resetHeaderFrame
 {
-    CGRect headerFrame = headerView.frame;
+    CGRect headerFrame = self.originalHeaderFrame;
     headerFrame.size.height = 80;
     headerView.frame = headerFrame;
     
