@@ -753,53 +753,58 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
-    if (didSeeAllCards) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
-    }
-    
-    if (!self.isUsingPageControl) {
-        CGFloat pageWidth = scrollView.frame.size.width;
-        float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    if (scrollView != tableView) {
         
-        if (!didSeeAllCards) {
-            if (self.skipAllButton.hidden && self.pageControl.hidden) {
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    self.skipAllButton.alpha = 1;
-                    self.pageControl.alpha = 1;
-                    self.startOverButton.alpha = 0;
-                    self.closeCardsViewButton.alpha = 0;
-                } completion:^(BOOL finished) {
-                    self.skipAllButton.hidden = NO;
-                    self.pageControl.hidden = NO;
-                    self.startOverButton.hidden = YES;
-                    self.closeCardsViewButton.hidden = YES;
-                }];
-            }
-        } else {
-            if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    self.skipAllButton.alpha = 0;
-                    self.pageControl.alpha = 0;
-                    self.startOverButton.alpha = 1;
-                    self.closeCardsViewButton.alpha = 1;
-                } completion:^(BOOL finished) {
-                    self.skipAllButton.hidden = YES;
-                    self.pageControl.hidden = YES;
-                    self.startOverButton.hidden = NO;
-                    self.closeCardsViewButton.hidden = NO;
-                }];
-            }
+        BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
+        if (didSeeAllCards) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
         }
         
-        NSInteger page = lround(fractionalPage);
-        self.pageControl.currentPage = page;
+        if (!self.isUsingPageControl) {
+            CGFloat pageWidth = scrollView.frame.size.width;
+            float fractionalPage = scrollView.contentOffset.x / pageWidth;
+            
+            if (!didSeeAllCards) {
+                if (self.skipAllButton.hidden && self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 1;
+                        self.pageControl.alpha = 1;
+                        self.startOverButton.alpha = 0;
+                        self.closeCardsViewButton.alpha = 0;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = NO;
+                        self.pageControl.hidden = NO;
+                        self.startOverButton.hidden = YES;
+                        self.closeCardsViewButton.hidden = YES;
+                    }];
+                }
+            } else {
+                if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 0;
+                        self.pageControl.alpha = 0;
+                        self.startOverButton.alpha = 1;
+                        self.closeCardsViewButton.alpha = 1;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = YES;
+                        self.pageControl.hidden = YES;
+                        self.startOverButton.hidden = NO;
+                        self.closeCardsViewButton.hidden = NO;
+                    }];
+                }
+            }
+            
+            NSInteger page = lround(fractionalPage);
+            self.pageControl.currentPage = page;
+        }
     }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    self.isUsingPageControl = NO;
+    if (scrollView != tableView) {
+        self.isUsingPageControl = NO;
+    }
 }
 
 - (void)pageControlChanged:(UIPageControl *)pageControl
@@ -817,11 +822,9 @@ int lastNumberTransactions = INT_MAX;
     self.getBitcoinButton.alpha = 0;
 
     [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-        CGRect headerFrame = headerView.frame;
-        headerFrame.size.height = 80;
-        headerView.frame = headerFrame;
+
+        [self resetHeaderFrame];
         
-        self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
         for (UIView *subview in self.noTransactionsView.subviews) {
             subview.frame = CGRectOffset(subview.frame, 0, self.noTransactionsView.frame.size.height/2 - 162);
         }
@@ -832,6 +835,15 @@ int lastNumberTransactions = INT_MAX;
     }];
     
     [self.tableView reloadData];
+}
+
+- (void)resetHeaderFrame
+{
+    CGRect headerFrame = headerView.frame;
+    headerFrame.size.height = 80;
+    headerView.frame = headerFrame;
+    
+    self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
 }
 
 - (void)getBitcoinButtonClicked
