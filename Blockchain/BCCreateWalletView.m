@@ -337,7 +337,7 @@
     
     if ([emailTextField.text hasPrefix:@"@"] ||
         [emailTextField.text hasSuffix:@"@"] ||
-        ![emailTextField.text containsString:@"@"]) {
+        [[emailTextField.text componentsSeparatedByString:@"@"] count] != 2) {
         [app standardNotify:BC_STRING_INVALID_EMAIL_ADDRESS];
         [emailTextField becomeFirstResponder];
         return NO;
