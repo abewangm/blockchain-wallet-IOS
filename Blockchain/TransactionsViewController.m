@@ -27,14 +27,14 @@
 // Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
-@property (nonatomic) BOOL cardsViewLoaded;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
 @property (nonatomic) UIButton *skipAllButton;
 @property (nonatomic) UIButton *getBitcoinButton;
-@property (nonatomic) CGFloat originalHeaderHeight;
+@property (nonatomic) CGRect originalHeaderFrame;
 @property (nonatomic) UIScrollView *cardsScrollView;
+@property (nonatomic) UIView *cardsView;
 
 @property (nonatomic) UIView *noTransactionsView;
 @end
@@ -48,7 +48,7 @@ CGFloat cardsViewHeight = 240;
 
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
-BOOL showCards = YES;
+BOOL showCards;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -230,6 +230,17 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
+    [self setupNoTransactionsView];
+    
+    if (showCards && app.latestResponse.symbol_local) {
+        [self setupCardsView];
+    } else {
+        [self.cardsView removeFromSuperview];
+        self.cardsView = nil;
+    }
+    
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
     filterAccountButton.hidden = !shouldShowFilterButton;
@@ -268,10 +279,6 @@ int lastNumberTransactions = INT_MAX;
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
         [self changeFilterLabel:[self getFilterLabel]];
-    }
-    
-    if (showCards) {
-        [self setupCardsView];
     }
 }
 
@@ -647,10 +654,10 @@ int lastNumberTransactions = INT_MAX;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
-    self.originalHeaderHeight = headerView.frame.size.height;
+    self.originalHeaderFrame = headerView.frame;
     headerView.clipsToBounds = YES;
     
-    [self setupNoTransactionsView];
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -721,20 +728,19 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setupCardsView
 {
-    if (!self.cardsViewLoaded && app.latestResponse.symbol_local) {
-        UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + headerView.frame.size.height, headerView.frame.size.width, cardsViewHeight)];
-        headerView.frame = CGRectMake(headerView.frame.origin.x, headerView.frame.origin.y, headerView.frame.size.width, headerView.frame.size.height + cardsViewHeight);
-        cardsView = [self configureCardsView:cardsView];
-        
-        [headerView addSubview:cardsView];
-        
-        self.cardsViewLoaded = YES;
-    }
+    [self.cardsView removeFromSuperview];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
+    self.cardsView = [self configureCardsView:cardsView];
+    
+    [headerView addSubview:self.cardsView];
 }
 
 - (void)setupNoTransactionsView
 {
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderHeight + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
+    [self.noTransactionsView removeFromSuperview];
+    
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
     
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
@@ -773,7 +779,7 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
-        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderHeight);
+        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
         noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
         self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16 + noTransactionsDescription.frame.size.height/2);
         self.getBitcoinButton.hidden = NO;
@@ -922,48 +928,58 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (!self.isUsingPageControl) {
-        CGFloat pageWidth = scrollView.frame.size.width;
-        float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    if (scrollView != tableView) {
         
-        if (scrollView.contentOffset.x < scrollView.frame.size.width * 2.5) {
-            if (self.skipAllButton.hidden && self.pageControl.hidden) {
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    self.skipAllButton.alpha = 1;
-                    self.pageControl.alpha = 1;
-                    self.startOverButton.alpha = 0;
-                    self.closeCardsViewButton.alpha = 0;
-                } completion:^(BOOL finished) {
-                    self.skipAllButton.hidden = NO;
-                    self.pageControl.hidden = NO;
-                    self.startOverButton.hidden = YES;
-                    self.closeCardsViewButton.hidden = YES;
-                }];
-            }
-        } else {
-            if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    self.skipAllButton.alpha = 0;
-                    self.pageControl.alpha = 0;
-                    self.startOverButton.alpha = 1;
-                    self.closeCardsViewButton.alpha = 1;
-                } completion:^(BOOL finished) {
-                    self.skipAllButton.hidden = YES;
-                    self.pageControl.hidden = YES;
-                    self.startOverButton.hidden = NO;
-                    self.closeCardsViewButton.hidden = NO;
-                }];
-            }
+        BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
+        if (didSeeAllCards) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
         }
         
-        NSInteger page = lround(fractionalPage);
-        self.pageControl.currentPage = page;
+        if (!self.isUsingPageControl) {
+            CGFloat pageWidth = scrollView.frame.size.width;
+            float fractionalPage = scrollView.contentOffset.x / pageWidth;
+            
+            if (!didSeeAllCards) {
+                if (self.skipAllButton.hidden && self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 1;
+                        self.pageControl.alpha = 1;
+                        self.startOverButton.alpha = 0;
+                        self.closeCardsViewButton.alpha = 0;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = NO;
+                        self.pageControl.hidden = NO;
+                        self.startOverButton.hidden = YES;
+                        self.closeCardsViewButton.hidden = YES;
+                    }];
+                }
+            } else {
+                if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 0;
+                        self.pageControl.alpha = 0;
+                        self.startOverButton.alpha = 1;
+                        self.closeCardsViewButton.alpha = 1;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = YES;
+                        self.pageControl.hidden = YES;
+                        self.startOverButton.hidden = NO;
+                        self.closeCardsViewButton.hidden = NO;
+                    }];
+                }
+            }
+            
+            NSInteger page = lround(fractionalPage);
+            self.pageControl.currentPage = page;
+        }
     }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    self.isUsingPageControl = NO;
+    if (scrollView != tableView) {
+        self.isUsingPageControl = NO;
+    }
 }
 
 - (void)pageControlChanged:(UIPageControl *)pageControl
@@ -981,11 +997,9 @@ int lastNumberTransactions = INT_MAX;
     self.getBitcoinButton.alpha = 0;
 
     [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-        CGRect headerFrame = headerView.frame;
-        headerFrame.size.height = 80;
-        headerView.frame = headerFrame;
+
+        [self resetHeaderFrame];
         
-        self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
         for (UIView *subview in self.noTransactionsView.subviews) {
             subview.frame = CGRectOffset(subview.frame, 0, self.noTransactionsView.frame.size.height/2 - 162);
         }
@@ -996,6 +1010,15 @@ int lastNumberTransactions = INT_MAX;
     }];
     
     [self.tableView reloadData];
+}
+
+- (void)resetHeaderFrame
+{
+    CGRect headerFrame = headerView.frame;
+    headerFrame.size.height = 80;
+    headerView.frame = headerFrame;
+    
+    self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
 }
 
 - (void)getBitcoinButtonClicked

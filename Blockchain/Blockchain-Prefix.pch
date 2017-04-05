@@ -21,7 +21,7 @@
 // #define ENABLE_TRANSACTION_FETCHING 1
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
-//#define ENABLE_CERTIFICATE_PINNING 1
+#define ENABLE_CERTIFICATE_PINNING 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -615,6 +615,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_SURVEY_PROMPT @"hasSeenSurveyPrompt"
 #define USER_DEFAULTS_KEY_REMINDER_MODAL_DATE @"reminderModalDate"
 #define USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION @"hasEndedFirstSession"
+#define USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS @"hasSeenAllCards"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
 

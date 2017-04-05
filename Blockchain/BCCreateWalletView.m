@@ -193,6 +193,8 @@
     
     app.wallet.isNew = YES;
     
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     [app.wallet getAllCurrencySymbols];
 }
 
