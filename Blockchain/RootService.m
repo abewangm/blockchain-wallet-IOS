@@ -840,7 +840,7 @@ void (^secondPasswordSuccess)(NSString *);
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
     if (!self.pinEntryViewController) {
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     
     if (self.topViewControllerDelegate) {
@@ -851,6 +851,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
     } else if (self.pinEntryViewController) {
         [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    } else if (self.tabViewController.presentedViewController) {
+        [self.tabViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
     } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
@@ -1509,6 +1511,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // Refresh the wallet and history
     [self.wallet getWalletAndHistory];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SYNC_ERROR object:nil];
 }
 
 - (void)didBackupWallet
@@ -2567,7 +2571,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
     setupViewController.emailOnly = YES;
-    [self.window.rootViewController presentViewController:setupViewController animated:YES completion:nil];
+    setupViewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self.window.rootViewController presentViewController:setupViewController animated:NO completion:nil];
 }
 
 - (void)showBackupReminder:(BOOL)firstReceive
