@@ -22,6 +22,7 @@
 
 @property (nonatomic) BOOL isUsingPageControl;
 @property (nonatomic) BOOL cardsViewLoaded;
+@property (nonatomic) BOOL cardsViewRemoved;
 @property (nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
@@ -42,7 +43,7 @@ CGFloat cardsViewHeight = 240;
 
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
-BOOL showCards = YES;
+BOOL showCards;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -169,8 +170,13 @@ int lastNumberTransactions = INT_MAX;
         [self changeFilterLabel:[self getFilterLabel]];
     }
     
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     if (showCards) {
         [self setupCardsView];
+    } else if (self.cardsViewLoaded && !self.cardsViewRemoved) {
+        [self closeCardsView];
+        self.cardsViewRemoved = YES;
     }
 }
 
@@ -475,6 +481,8 @@ int lastNumberTransactions = INT_MAX;
     self.originalHeaderHeight = headerView.frame.size.height;
     headerView.clipsToBounds = YES;
     
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     [self setupNoTransactionsView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -747,11 +755,16 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
+    if (didSeeAllCards) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    }
+    
     if (!self.isUsingPageControl) {
         CGFloat pageWidth = scrollView.frame.size.width;
         float fractionalPage = scrollView.contentOffset.x / pageWidth;
         
-        if (scrollView.contentOffset.x < scrollView.frame.size.width * 2.5) {
+        if (!didSeeAllCards) {
             if (self.skipAllButton.hidden && self.pageControl.hidden) {
                 [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                     self.skipAllButton.alpha = 1;
