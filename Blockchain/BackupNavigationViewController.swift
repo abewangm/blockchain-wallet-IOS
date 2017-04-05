@@ -24,14 +24,19 @@ import UIKit
     }
     var busyView : BCFadeView?
     var headerLabel: UILabel?
+    var failedSync = false
     
     func finishTransitioning() {
        isTransitioning = false
     }
     
     internal func reload() {
-        self.popToRootViewController(animated: true)
-        busyView?.fadeOut()
+        if (!failedSync) {
+            self.popToRootViewController(animated: true)
+            busyView?.fadeOut()
+        }
+        
+        failedSync = false
     }
     
     override func viewDidLoad() {
@@ -89,6 +94,7 @@ import UIKit
         view.addSubview(busyView!);
         view.bringSubview(toFront: busyView!);
         
+        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.didFailSync), name: NSNotification.Name(rawValue: "syncError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
     }
     
@@ -108,6 +114,11 @@ import UIKit
             closeButton!.contentHorizontalAlignment = .left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), for: UIControlState());
         }
+    }
+    
+    func didFailSync() {
+        busyView?.fadeOut()
+        failedSync = true
     }
     
     func backButtonClicked() {
