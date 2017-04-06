@@ -738,7 +738,7 @@ int lastNumberTransactions = INT_MAX;
         self.pageControl.hidden = YES;
         self.skipAllButton.hidden = YES;
     };
-    self.cardsScrollView.contentOffset = CGPointMake(oldContentOffsetX, self.cardsScrollView.contentOffset.y);
+    self.cardsScrollView.contentOffset = CGPointMake(oldContentOffsetX > self.cardsScrollView.contentSize.width ? self.cardsScrollView.contentSize.width - self.cardsScrollView.frame.size.width : oldContentOffsetX, self.cardsScrollView.contentOffset.y);
     
     return cardsView;
 }
