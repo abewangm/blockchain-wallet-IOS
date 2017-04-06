@@ -136,7 +136,10 @@ int lastNumberTransactions = INT_MAX;
     if (showCards && app.latestResponse.symbol_local) {
         [self setupCardsView];
     } else {
-        if (self.cardsView) [self resetHeaderFrame];
+        if (self.cardsView) {
+            [self resetHeaderFrame];
+            [self setupNoTransactionsView];
+        }
         [self.cardsView removeFromSuperview];
         self.cardsView = nil;
     }
