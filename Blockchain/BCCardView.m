@@ -101,7 +101,7 @@
 
 - (void)actionButtonClicked
 {
-    [self.delegate actionClicked:self.actionType];
+    [self.delegate cardActionClicked:self.actionType];
 }
 
 @end

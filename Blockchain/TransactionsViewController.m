@@ -530,6 +530,24 @@ int lastNumberTransactions = INT_MAX;
     [self reload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    app.mainTitleLabel.hidden = YES;
+    app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+#ifdef ENABLE_TRANSACTION_FILTERING
+    app.wallet.isFetchingTransactions = NO;
+#endif
+    app.mainTitleLabel.hidden = NO;
+}
+
+#pragma mark - Setup
+
 - (void)setupBlueBackgroundForBounceArea
 {
     // Blue background for bounce area
@@ -620,6 +638,8 @@ int lastNumberTransactions = INT_MAX;
     
     self.noTransactionsView.hidden = YES;
 }
+
+#pragma mark - New Wallet Cards
 
 - (UIView *)configureCardsView:(UIView *)cardsView
 {
@@ -754,7 +774,7 @@ int lastNumberTransactions = INT_MAX;
     [self.cardsScrollView setContentOffset:CGPointZero animated:YES];
 }
 
-- (void)actionClicked:(ActionType)actionType
+- (void)cardActionClicked:(ActionType)actionType
 {
     if (actionType == ActionTypeBuyBitcoin) {
         [app buyBitcoinClicked:nil];
@@ -880,22 +900,6 @@ int lastNumberTransactions = INT_MAX;
     } else {
         [app receiveCoinClicked:nil];
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    app.mainTitleLabel.hidden = YES;
-    app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-#ifdef ENABLE_TRANSACTION_FILTERING
-    app.wallet.isFetchingTransactions = NO;
-#endif
-    app.mainTitleLabel.hidden = NO;
 }
 
 @end
