@@ -129,7 +129,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
-    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self setupNoTransactionsView];
     
@@ -486,7 +486,7 @@ int lastNumberTransactions = INT_MAX;
     self.originalHeaderFrame = headerView.frame;
     headerView.clipsToBounds = YES;
     
-    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
