@@ -1348,6 +1348,9 @@
 - (void)parsePairingCode:(NSString*)code
 {
     [self useDebugSettingsIfSet];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]]];
 }
 

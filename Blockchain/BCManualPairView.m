@@ -115,7 +115,9 @@
     
     [walletIdentifierTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
-        
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     [app.wallet loadWalletWithGuid:guid sharedKey:nil password:password];
     
     app.wallet.delegate = app;
