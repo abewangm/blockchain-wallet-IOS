@@ -835,6 +835,8 @@ int lastNumberTransactions = INT_MAX;
         
     }];
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    
     [self.tableView reloadData];
 }
 
