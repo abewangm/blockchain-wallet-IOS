@@ -731,6 +731,15 @@ int lastNumberTransactions = INT_MAX;
     [self.skipAllButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
     [cardsView addSubview:self.skipAllButton];
     
+    CGFloat oldContentOffsetX = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET] floatValue];
+    if (oldContentOffsetX > scrollView.contentSize.width - scrollView.frame.size.width * 1.5) {
+        self.startOverButton.hidden = NO;
+        self.closeCardsViewButton.hidden = NO;
+        self.pageControl.hidden = YES;
+        self.skipAllButton.hidden = YES;
+    };
+    self.cardsScrollView.contentOffset = CGPointMake(oldContentOffsetX, self.cardsScrollView.contentOffset.y);
+    
     return cardsView;
 }
 
@@ -807,8 +816,12 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (scrollView == self.cardsScrollView && scrollView.contentSize.width - scrollView.frame.size.width <= scrollView.contentOffset.x) {
-        scrollView.scrollEnabled = NO;
+    if (scrollView == self.cardsScrollView) {
+        if (scrollView.contentSize.width - scrollView.frame.size.width <= scrollView.contentOffset.x) {
+            scrollView.scrollEnabled = NO;
+        }
+    
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:scrollView.contentOffset.x] forKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
     }
 }
 
