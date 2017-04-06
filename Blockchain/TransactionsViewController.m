@@ -741,6 +741,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)showFirstCard
 {
+    self.cardsScrollView.scrollEnabled = YES;
     [self.cardsScrollView setContentOffset:CGPointZero animated:YES];
 }
 
@@ -757,7 +758,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView != tableView) {
+    if (scrollView == self.cardsScrollView) {
         
         BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
         if (didSeeAllCards) {
@@ -804,9 +805,16 @@ int lastNumberTransactions = INT_MAX;
     }
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == self.cardsScrollView && scrollView.contentSize.width - scrollView.frame.size.width <= scrollView.contentOffset.x) {
+        scrollView.scrollEnabled = NO;
+    }
+}
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    if (scrollView != tableView) {
+    if (scrollView == self.cardsScrollView) {
         self.isUsingPageControl = NO;
     }
 }
