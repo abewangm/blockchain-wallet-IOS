@@ -587,7 +587,14 @@ int lastNumberTransactions = INT_MAX;
 {
     [self.noTransactionsView removeFromSuperview];
     
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0), self.view.frame.size.width, self.view.frame.size.height)];
+    CGFloat noTransactionsViewOffsetY = 0;
+    
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && showCards) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
+        noTransactionsViewOffsetY += 60;
+    }
+    
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
