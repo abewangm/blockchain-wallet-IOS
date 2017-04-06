@@ -589,6 +589,7 @@ int lastNumberTransactions = INT_MAX;
     
     CGFloat noTransactionsViewOffsetY = 0;
     
+    // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
     if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && showCards) {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
         noTransactionsViewOffsetY += 60;
@@ -596,6 +597,7 @@ int lastNumberTransactions = INT_MAX;
     
     self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
+    // Title label Y origin will be above midpoint between end of cards view and table view height
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
     noTransactionsTitle.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
@@ -606,6 +608,7 @@ int lastNumberTransactions = INT_MAX;
     noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsViewCenterY);
     [self.noTransactionsView addSubview:noTransactionsTitle];
     
+    // Description label Y origin will be 8 points under title label
     UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsDescription.textAlignment = NSTextAlignmentCenter;
     noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
@@ -621,6 +624,7 @@ int lastNumberTransactions = INT_MAX;
     noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
     noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
     
+    // Get bitcoin button Y origin will be 16 points under description label
     self.getBitcoinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16, 130, 30)];
     self.getBitcoinButton.clipsToBounds = YES;
     self.getBitcoinButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
@@ -633,6 +637,8 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
+        
+        // Reposition description label Y to center of screen, and reposition title and button Y origins around it
         noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
         noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
         self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16 + noTransactionsDescription.frame.size.height/2);
@@ -652,8 +658,6 @@ int lastNumberTransactions = INT_MAX;
 {
     cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
-    
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
     scrollView.delegate = self;
     scrollView.pagingEnabled = YES;
@@ -663,7 +667,11 @@ int lastNumberTransactions = INT_MAX;
     NSInteger numberOfPages = 1;
     NSInteger numberOfCards = 0;
     
+    // Cards setup
     if ([app.wallet isBuyEnabled]) {
+        
+        NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+        
         BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
         [scrollView addSubview:priceCard];
         numberOfCards++;
@@ -682,6 +690,7 @@ int lastNumberTransactions = INT_MAX;
     numberOfCards++;
     numberOfPages++;
     
+    // Overview complete/last page setup
     CGFloat overviewCompleteCenterX = cardsView.frame.size.width/2 + [self getPageXPosition:cardsView.frame.size.width page:numberOfCards];
     
     UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 40, 40)];
@@ -721,6 +730,7 @@ int lastNumberTransactions = INT_MAX;
     [cardsView addSubview:scrollView];
     self.cardsScrollView = scrollView;
     
+    // Subviews that disappear/reappear setup
     CGRect cardRect = [BCCardView frameFromContainer:cardsView.bounds];
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, cardRect.origin.y + cardRect.size.height + 8, 100, 30)];
@@ -758,6 +768,8 @@ int lastNumberTransactions = INT_MAX;
     [self.skipAllButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
     [cardsView addSubview:self.skipAllButton];
     
+    
+    // Maintain last viewed page when a refresh is triggered
     CGFloat oldContentOffsetX = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET] floatValue];
     if (oldContentOffsetX > scrollView.contentSize.width - scrollView.frame.size.width * 1.5) {
         self.startOverButton.hidden = NO;
@@ -848,6 +860,7 @@ int lastNumberTransactions = INT_MAX;
             scrollView.scrollEnabled = NO;
         }
     
+        // Save last viewed page since cards view can be reinstantiated when app is still open
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:scrollView.contentOffset.x] forKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
     }
 }
