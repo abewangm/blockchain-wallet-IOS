@@ -85,7 +85,7 @@ NSString* loginWithGuidScript(NSString* guid, NSString* sharedKey, NSString* pas
 
 NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* magicHash, NSString* password, BOOL isNew)
 {
-    return [NSString stringWithFormat:@"activateMobileBuyFromJson('%@','%@','%@','%@',%s)", [json escapeStringForJS], [externalJson escapeStringForJS], [magicHash escapeStringForJS], [password escapeStringForJS], (isNew) ? "true" : "false"];
+    return [NSString stringWithFormat:@"activateMobileBuyFromJson('%@','%@','%@','%@',%d)", [json escapeStringForJS], [externalJson escapeStringForJS], [magicHash escapeStringForJS], [password escapeStringForJS], isNew];
 }
 
 - (void)loginWithJson:(NSString *)json externalJson:(NSString *)externalJson magicHash:(NSString *)magicHash password:(NSString *)password
