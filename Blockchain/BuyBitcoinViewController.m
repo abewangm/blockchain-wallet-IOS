@@ -11,6 +11,7 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
+#import "TransactionDetailNavigationController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
@@ -149,16 +150,22 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    
     [super viewWillDisappear:animated];
-    if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]]) {
+    
+    if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]] ||
+        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]]) {
         return;
     }
+    
     if (self.didInitiateTrade) {
         [self.delegate watchPendingTrades:YES];
     } else {
         [self.delegate fetchExchangeAccount];
     }
+    
     [self runScript:@"teardown()"];
+    
     self.didInitiateTrade = NO;
     self.isReady = NO;
 }
