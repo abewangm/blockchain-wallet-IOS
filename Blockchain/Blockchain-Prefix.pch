@@ -14,14 +14,14 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+ #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
 // #define ENABLE_TRANSACTION_FETCHING 1
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
-#define ENABLE_CERTIFICATE_PINNING 1
+// #define ENABLE_CERTIFICATE_PINNING 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -97,6 +97,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Measurements
 
 #define HEIGHT_IPHONE_4S 480
+#define HEIGHT_IPHONE_6 667
+#define HEIGHT_IPHONE_6_PLUS 736
+
+#define WIDTH_IPHONE_5S 320
+
+#define IS_USING_6_OR_7_SCREEN_SIZE [[UIScreen mainScreen] bounds].size.height >= HEIGHT_IPHONE_6 && [[UIScreen mainScreen] bounds].size.height < HEIGHT_IPHONE_6_PLUS
+#define IS_USING_6_OR_7_PLUS_SCREEN_SIZE [[UIScreen mainScreen] bounds].size.height >= HEIGHT_IPHONE_6_PLUS
+#define IPHONE_6_OR_7_WIDTH 375
+#define IPHONE_6_OR_7_PLUS_WIDTH 414
+#define IS_USING_SCREEN_SIZE_LARGER_THAN_5S [[UIScreen mainScreen] bounds].size.height > HEIGHT_IPHONE_5S
+
+#define WINDOW_WIDTH IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? IPHONE_6_OR_7_PLUS_WIDTH : (IS_USING_6_OR_7_SCREEN_SIZE ? IPHONE_6_OR_7_WIDTH : WIDTH_IPHONE_5S)
 
 #define FRAME_HEADER_LABEL CGRectMake(60, 27, 200, 30)
 #define FRAME_BACK_BUTTON CGRectMake(0, 12, 85, 51)

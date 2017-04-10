@@ -75,6 +75,24 @@ BOOL displayingLocalSymbolSend;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
+    [self changeWidth:WINDOW_WIDTH ofView:containerView];
+    [self changeWidth:WINDOW_WIDTH ofView:self.confirmPaymentView];
+
+    [self adjustWidthOfView:selectAddressTextField];
+    [self adjustXPositionOfView:selectFromButton];
+    [self adjustWidthOfView:toField];
+    [self adjustXPositionOfView:addressBookButton];
+    [self adjustWidthOfView:fiatAmountField];
+    [self adjustWidthOfView:fundsAvailableButton];
+    
+    CGFloat confirmPaymentViewFiatLabelOffset = 16;
+    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatAmountLabel];
+    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatFeeLabel];
+    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatTotalLabel];
+    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:feeInformationButton];
+
+    [self recenterXPositionOfView:self.confirmPaymentView.arrowImageView];
+
     sendProgressModalText.text = nil;
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
@@ -1100,9 +1118,38 @@ BOOL displayingLocalSymbolSend;
     }];
 }
 
+// TODO: move some of these to a UIView category
+
+- (void)increaseXPosition:(CGFloat)newX ofView:(UIView *)view
+{
+    view.frame = CGRectOffset(view.frame, newX, 0);
+}
+
 - (void)changeYPosition:(CGFloat)newY ofView:(UIView *)view
 {
     view.frame = CGRectMake(view.frame.origin.x, newY, view.frame.size.width, view.frame.size.height);
+}
+
+- (void)changeWidth:(CGFloat)newWidth ofView:(UIView *)view
+{
+    view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, newWidth, view.frame.size.height);
+}
+
+- (void)adjustWidthOfView:(UIView *)view
+{
+    CGFloat newWidth = view.frame.size.width + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
+    [self changeWidth:newWidth ofView:view];
+}
+
+- (void)adjustXPositionOfView:(UIView *)view
+{
+    CGFloat newX = view.frame.origin.x + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
+    view.frame = CGRectMake(newX, view.frame.origin.y,  view.frame.size.width, view.frame.size.height);
+}
+
+- (void)recenterXPositionOfView:(UIView *)view
+{
+    view.center = CGPointMake(view.superview.center.x, view.center.y);
 }
 
 - (void)updateSendBalance:(NSNumber *)balance

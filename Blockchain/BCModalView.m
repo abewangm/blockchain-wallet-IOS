@@ -33,6 +33,7 @@
             headerLabel.textAlignment = NSTextAlignmentCenter;
             headerLabel.adjustsFontSizeToFitWidth = YES;
             headerLabel.text = headerText;
+            headerLabel.center = CGPointMake(topBarView.center.x, headerLabel.center.y);
             [topBarView addSubview:headerLabel];
             
             if (closeType == ModalCloseTypeBack) {
