@@ -30,5 +30,5 @@
 - (void)didFetchExtendedPublicKey;
 - (void)reloadSymbols;
 
-- (void)doneButtonClicked;
+- (void)contactAcceptedInvitation:(NSString *)invitationSent;
 @end

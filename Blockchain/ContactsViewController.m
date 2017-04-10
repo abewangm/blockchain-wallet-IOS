@@ -124,6 +124,8 @@ typedef enum {
     self.lastCreatedInvitation = nil;
     
     self.createContactNavigationController = nil;
+    
+    app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
 
 - (void)setupTableView
@@ -549,6 +551,15 @@ typedef enum {
     
     self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
     [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+}
+
+- (void)contactAcceptedInvitation:(NSString *)invitationSent
+{
+    NSString *currentInvitationSent = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
+    
+    if ([invitationSent isEqualToString:currentInvitationSent]) {
+        [self doneButtonClicked];
+    }
 }
 
 #pragma mark - Helpers

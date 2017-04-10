@@ -2070,14 +2070,7 @@ void (^secondPasswordSuccess)(NSString *);
             
             if (self.topViewControllerDelegate) {
                 
-                BOOL isViewingContacts = NO;
-                
-                BCNavigationController *navigationController = (BCNavigationController *)self.topViewControllerDelegate;
-                if ([navigationController isMemberOfClass:[BCNavigationController class]]) {
-                    if ([[navigationController.viewControllers firstObject] isEqual:_contactsViewController]) isViewingContacts = YES;
-                }
-                
-                if (isViewingContacts) {
+                if (self.contactsViewController.view.window) {
                     
                     // User is viewing contacts
                     
@@ -2092,12 +2085,13 @@ void (^secondPasswordSuccess)(NSString *);
                                 [_transactionsViewController selectPayment:identifier];
                             }];
                         }]];
-                    } else if (![navigationController.visibleViewController isEqual:_contactsViewController]) {
-                        
-                        // User is viewing a modal view controller presented by contacts view controller
-                        
-                        [_contactsViewController doneButtonClicked];
                     }
+                    
+                } else if (self.contactsViewController.presentedViewController) {
+                    // User is viewing a modal view controller presented by contacts view controller
+                    NSString *invitationSent = [pushNotificationPendingAction.request.content.userInfo objectForKey:DICTIONARY_KEY_ID];
+                    
+                    [_contactsViewController contactAcceptedInvitation:invitationSent];
                     
                 } else {
                     
