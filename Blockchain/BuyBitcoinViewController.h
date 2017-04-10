@@ -10,6 +10,7 @@
 #import "Wallet.h"
 
 @interface BuyBitcoinViewController : UIViewController
+@property (nonatomic) BOOL isNew;
 @property (nonatomic) id<ExchangeAccountDelegate>delegate;
 - (id)init;
 - (void)loginWithGuid:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password;

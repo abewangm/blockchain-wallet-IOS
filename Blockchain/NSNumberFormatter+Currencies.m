@@ -42,7 +42,14 @@
         return [string stringByAppendingFormat:@" %@", app.latestResponse.symbol_btc.symbol];
     }
     
+    return [NSNumberFormatter formatBTC:value];
+}
+
++ (NSString*)formatBTC:(uint64_t)value
+{
     NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:SATOSHI]];
+    
+    [app.btcFormatter setMinimumFractionDigits:0];
     
     NSString * string = [app.btcFormatter stringFromNumber:number];
     

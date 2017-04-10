@@ -10,29 +10,32 @@
 #import "Blockchain-Swift.h"
 #import "RootService.h"
 
-const int rowWalletJSON = 0;
-const int rowServerURL = 1;
-const int rowWebsocketURL = 2;
-const int rowMerchantURL = 3;
-const int rowAPIURL = 4;
-const int rowSurgeToggle = 5;
-const int rowDontShowAgain = 6;
-const int rowAppStoreReviewPromptTimer = 7;
-const int rowCertificatePinning = 8;
-const int rowTestnet = 9;
-const int rowSecurityReminderTimer = 10;
-const int rowZeroTickerValue = 11;
-
 #define DICTIONARY_KEY_SERVER @"server"
 #define DICTIONARY_KEY_WEB_SOCKET @"webSocket"
 #define DICTIONARY_KEY_MERCHANT @"merchant"
 #define DICTIONARY_KEY_API @"api"
 #define DICTIONARY_KEY_BUY_WEBVIEW @"buyWebView"
 
+typedef NS_ENUM(NSInteger, DebugTableViewRow) {
+    RowWalletJSON,
+    RowServerURL,
+    RowWebsocketURL,
+    RowMerchantURL,
+    RowAPIURL,
+    RowBuyURL,
+    RowSurgeToggle,
+    RowDontShowAgain,
+    RowAppStoreReviewPromptTimer,
+    RowCertificatePinning,
+    RowSecurityReminderTimer,
+    RowZeroTickerValue
+};
+
 typedef enum {
     env_dev = 0,
     env_staging = 1,
-    env_production = 2
+    env_production = 2,
+    env_testnet = 3
 } environment;
 
 @interface DebugTableViewController ()
@@ -46,7 +49,7 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:@[@"Dev", @"Staging", @"Production"]];
+    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:@[@"Dev", @"Staging", @"Production", @"Testnet"]];
     
     NSInteger environment = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] integerValue];
     
@@ -126,26 +129,6 @@ typedef enum {
     [[NSUserDefaults standardUserDefaults] setBool:!pinningOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
 }
 
-- (void)toggleTestnet
-{
-    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
-    [[NSUserDefaults standardUserDefaults] setBool:!testnetOn forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
-    
-    NSDictionary *keys = [self getURLUserDefaultsKeys];
-    
-    if (!testnetOn) {
-        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_WALLET_SERVER forKey:keys[DICTIONARY_KEY_SERVER]];
-        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_WEBSOCKET_SERVER forKey:keys[DICTIONARY_KEY_WEB_SOCKET]];
-        [[NSUserDefaults standardUserDefaults] setObject:TESTNET_API_URL forKey:keys[DICTIONARY_KEY_API]];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setObject:URL_SERVER forKey:keys[DICTIONARY_KEY_SERVER]];
-        [[NSUserDefaults standardUserDefaults] setObject:URL_WEBSOCKET forKey:keys[DICTIONARY_KEY_WEB_SOCKET]];
-        [[NSUserDefaults standardUserDefaults] setObject:URL_API forKey:keys[DICTIONARY_KEY_API]];
-    }
-    
-    [self.tableView reloadData];
-}
-
 - (void)toggleZeroTicker
 {
     BOOL zeroTickerOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
@@ -190,6 +173,12 @@ typedef enum {
         apiKey = USER_DEFAULTS_KEY_DEBUG_PRODUCTION_API_URL;
         merchantKey = USER_DEFAULTS_KEY_DEBUG_PRODUCTION_MERCHANT_URL;
         buyKey = USER_DEFAULTS_KEY_DEBUG_PRODUCTION_BUY_WEBVIEW_URL;
+    } else if (env == env_testnet) {
+        serverKey = USER_DEFAULTS_KEY_DEBUG_TESTNET_SERVER_URL;
+        webSocketKey = USER_DEFAULTS_KEY_DEBUG_TESTNET_WEB_SOCKET_URL;
+        apiKey = USER_DEFAULTS_KEY_DEBUG_TESTNET_API_URL;
+        merchantKey = USER_DEFAULTS_KEY_DEBUG_TESTNET_MERCHANT_URL;
+        buyKey = USER_DEFAULTS_KEY_DEBUG_TESTNET_BUY_WEBVIEW_URL;
     }
     
     return @{DICTIONARY_KEY_SERVER : serverKey,
@@ -274,15 +263,6 @@ typedef enum {
             pinningToggle.on = pinningOn;
             [pinningToggle addTarget:self action:@selector(togglePinning) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = pinningToggle;
-            break;
-        }
-        case RowTestnet: {
-            cell.textLabel.text = DEBUG_STRING_TESTNET;
-            UISwitch *testnetToggle = [[UISwitch alloc] init];
-            BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
-            testnetToggle.on = testnetOn;
-            [testnetToggle addTarget:self action:@selector(toggleTestnet) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = testnetToggle;
             break;
         }
         case RowSecurityReminderTimer: {

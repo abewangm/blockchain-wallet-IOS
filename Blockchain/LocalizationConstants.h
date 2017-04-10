@@ -56,6 +56,7 @@
 #define BC_STRING_TRADE_COMPLETED NSLocalizedString(@"Trade Completed", nil)
 #define BC_STRING_THE_TRADE_YOU_CREATED_ON_DATE_ARGUMENT_HAS_BEEN_COMPLETED NSLocalizedString(@"The trade you created on %@ has been completed!", nil)
 #define BC_STRING_VIEW_DETAILS NSLocalizedString(@"View details", nil)
+#define BC_STRING_BUY_WEBVIEW_ERROR_MESSAGE NSLocalizedString(@"Something went wrong, please try reopening Buy Bitcoin again.", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)

@@ -1625,3 +1625,96 @@
 
 /* (No Commment) */
 "Wallets" = "กระเป๋าสตางค์";
+
+/* (No Commment) */
+"START BACKUP" = "เริ่มการสำรองข้อมูล";
+
+/* (No Commment) */
+"Backup Needed" = "จำเป็นต้องมีการสำรองข้อมูล";
+
+/* (No Commment) */
+"Create a Wallet" = "สร้างกระเป๋าเงิน";
+
+/* (No Commment) */
+"Log In" = "เข้าสู่ระบบ";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "โปรดกรอกรหัสผ่านของคุณเพื่อเข้าสู่ระบบกระเป๋าเงิน Blockchain ของคุณ";
+
+/* (No Commment) */
+"Forgot Password?" = "ลืมรหัสผ่าน?";
+
+/* (No Commment) */
+"Or start over and " = "หรือเริ่มใหม่และ ";
+
+/* (No Commment) */
+"Update Email" = "อัปเดตอีเมล";
+
+/* (No Commment) */
+"Enter Email Address" = "กรอกที่อยู่อีเมล";
+
+/* (No Commment) */
+"Update Mobile" = "อัปเดตหมายเลขโทรศัพท์มือถือ";
+
+/* (No Commment) */
+"Enter Mobile Number" = "กรอกหมายเลขโทรศัพท์มือถือ";
+
+/* (No Commment) */
+"Balances" = "ยอดคงเหลือ";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "ธุรกรรมเกิดขึ้นเมื่อคุณส่งและรับบิตคอยน์";
+
+/* (No Commment) */
+"Your Transactions" = "ธุรกรรมของคุณ";
+
+/* (No Commment) */
+"Backup Complete" = "การสำรองข้อมูลเสร็จสิ้น";
+
+/* (No Commment) */
+"Backup Needed" = "จำเป็นต้องมีการสำรองข้อมูล";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงบิตคอยน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "วลีเพื่อการกู้คืน 12 คำต่อไปนี้จะมอบการเข้าถึงเงินของคุณในกรณีที่คุณทำรหัสผ่านของคุณสูญหาย";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "โปรดตรวจสอบว่าคุณจดวลีของคุณไว้บนกระดาษและเก็บรักษามันไว้ในสถานที่ที่ปลอดภัยและมั่นคง";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "จดวลีเพื่อการกู้คืน 12 คำต่อไปนี้อย่างแม่นยำให้เหมือนกับที่ปรากฏและในลำดับนี้:";
+
+/* (No Commment) */
+"PREVIOUS" = "ก่อนหน้า";
+
+/* (No Commment) */
+"NEXT" = "ถัดไป";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "ทำการสำรองข้อมูลอีกครั้ง";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "จะมีการใช้ที่อยู่อีเมลที่ได้รับการยืนยันของคุณเพื่อส่งการแจ้งเตือนการชำระเงิน การเตือน ID และรหัสเข้าสู่ระบบ";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "สามารถใช้งานหมายเลขโทรศัพท์ของคุณเพื่อเปิดใช้งานการพิสูจน์ตัวตนแบบสองขั้นตอนหรือเพื่อรับการแจ้งเตือน";
+
+/* (No Commment) */
+"Trade Completed" = "การเทรดเสร็จสิ้นแล้ว";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "การเทรดที่คุณสร้างบน %@ เสร็จสิ้นแล้ว!";
+
+/* (No Commment) */
+"View details" = "ชมรายละเอียด";
+
+/* (No Commment) */
+"Buy Bitcoin" = "ซื้อบิตคอยน์";
+
+/* (No Commment) */
+"Your Transactions" = "ธุรกรรมของคุณ";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "ธุรกรรมเกิดขึ้นเมื่อคุณส่งและรับบิตคอยน์";

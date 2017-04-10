@@ -13,6 +13,7 @@
 + (NSString*)formatMoney:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;
 + (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency;
++ (NSString*)formatBTC:(uint64_t)value;
 + (BOOL)stringHasBitcoinValue:(NSString *)string;
 + (NSString *)appendStringToFiatSymbol:(NSString *)number;
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value;

@@ -31,6 +31,7 @@
         _labelTextField.borderStyle = UITextBorderStyleRoundedRect;
         _labelTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         _labelTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:_labelTextField.font.pointSize];
+        _labelTextField.textColor = COLOR_TEXT_DARK_GRAY;
         _labelTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _labelTextField.spellCheckingType = UITextSpellCheckingTypeNo;
         [self addSubview:_labelTextField];
@@ -77,9 +78,16 @@
     
     [self.labelTextField resignFirstResponder];
     
-    [app.wallet setLabelForAccount:self.accountIdx label:label];
-        
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    
     [app closeModalWithTransition:kCATransitionFade];
+    
+    [self performSelector:@selector(changeAccountName:) withObject:label afterDelay:ANIMATION_DURATION];
+}
+
+- (void)changeAccountName:(NSString *)name
+{
+    [app.wallet setLabelForAccount:self.accountIdx label:name];
 }
 
 

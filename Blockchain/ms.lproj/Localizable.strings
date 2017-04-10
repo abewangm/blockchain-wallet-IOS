@@ -1625,3 +1625,71 @@
 
 /* (No Commment) */
 "Wallets" = "Dompet";
+
+"START BACKUP" = "MULAKAN SANDARAN";
+
+"Backup Needed" = "Sandaran yang diperlukan";
+
+"Create a Wallet" = "Mencipta sebuah dompet";
+
+"Log In" = "log masuk";
+
+"Please enter your password to log into your Blockchain wallet." = "Sila masukkan kata laluan anda untuk log masuk ke dalam dompet Blockchain.";
+
+"Forgot Password?" = "Terlupa kata laluan?";
+
+"Or start over and " = "Atau mula semula dan ";
+
+"Update Email" = "Kemas kini e-mel";
+
+"Enter Email Address" = "Masukkan alamat e-mel";
+
+"Update Mobile" = "Kemaskini Terakhir mudah alih";
+
+"Enter Mobile Number" = "Masukkan nombor telefon bimbit";
+
+"Balances" = "Baki";
+
+"Transactions occur when you send and receive bitcoin." = "Transaksi berlaku apabila anda menghantar dan menerima bitcoin.";
+
+"Your Transactions" = "Transaksi anda";
+
+"Backup Complete" = "Sandaran lengkap";
+
+"Backup Needed" = "Sandaran yang diperlukan";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Menggunakan frasa pemulihan anda untuk mengambil semula wang anda jika laluan hilang.  Sesiapa dengan capaian ke frasa pemulihan anda boleh mengakses bitcoin anda, jadi pastikan ia di luar talian di suatu tempat selamat dan terjamin.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut 12 perkataan frasa pemulihan akan memberi anda akses kepada wang anda sekiranya anda hilang kata laluan anda.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Pastikan menulis frasa anda pada sehelai kertas dan simpan di tempat selamat dan terjamin.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Tuliskan perkataan 12 berikut pemulihan frasa tepat seperti yang terpapar dan dalam perintah ini:";
+
+"PREVIOUS" = "SEBELUMNYA";
+
+"NEXT" = "SETERUSNYA";
+
+"BACKUP AGAIN" = "SANDARAN SEKALI LAGI";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Alamat e-mel disahkan digunakan untuk menghantar isyarat pembayaran, peringatan ID dan kod-kod log masuk.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Telefon mudah alih anda boleh digunakan untuk membolehkan pengesahan dua faktor atau menerima amaran.";
+
+/* (No Commment) */
+"Trade Completed" = "Perdagangan yang siap";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Perdagangan yang anda cipta pada %@ telah siap!";
+
+/* (No Commment) */
+"View details" = "Lihat butiran";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Membeli Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Transaksi anda";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaksi berlaku apabila anda menghantar dan menerima bitcoin.";

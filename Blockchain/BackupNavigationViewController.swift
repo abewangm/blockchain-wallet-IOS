@@ -25,13 +25,21 @@ import UIKit
     var busyView : BCFadeView?
     var headerLabel: UILabel?
     
+    var isVerifying = false
+    
     func finishTransitioning() {
        isTransitioning = false
     }
     
     internal func reload() {
-        self.popToRootViewController(animated: true)
-        busyView?.fadeOut()
+        if (!isVerifying) {
+            self.popToRootViewController(animated: true)
+            busyView?.fadeOut()
+        }
+    }
+    
+    func markIsVerifying() {
+        isVerifying = true
     }
     
     override func viewDidLoad() {
@@ -89,7 +97,8 @@ import UIKit
         view.addSubview(busyView!);
         view.bringSubview(toFront: busyView!);
         
-        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.reload), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.didSucceedSync), name: NSNotification.Name(rawValue: "backupSuccess"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackupNavigationViewController.didFailSync), name: NSNotification.Name(rawValue: "syncError"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,6 +119,17 @@ import UIKit
         }
         
         closeButton!.accessibilityLabel = "closeButton";
+    }
+    
+    func didSucceedSync() {
+        self.popToRootViewController(animated: true)
+        busyView?.fadeOut()
+        isVerifying = false
+    }
+    
+    func didFailSync() {
+        busyView?.fadeOut()
+        isVerifying = false
     }
     
     func backButtonClicked() {

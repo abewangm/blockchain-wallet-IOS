@@ -1625,3 +1625,96 @@
 
 /* (No Commment) */
 "Wallets" = "Portefeuilles";
+
+/* (No Commment) */
+"START BACKUP" = "DÉMARRER LA SAUVEGARDE";
+
+/* (No Commment) */
+"Backup Needed" = "Sauvegarde nécessaire";
+
+/* (No Commment) */
+"Create a Wallet" = "Créer un portefeuille";
+
+/* (No Commment) */
+"Log In" = "Se connecter";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Veuillez saisir votre mot de passe pour vous connecter à votre portefeuille Blockchain.";
+
+/* (No Commment) */
+"Forgot Password?" = "Mot de passe oublié ?";
+
+/* (No Commment) */
+"Or start over and " = "Ou recommencer et ";
+
+/* (No Commment) */
+"Update Email" = "Mettre à jour l'adresse e-mail";
+
+/* (No Commment) */
+"Enter Email Address" = "Entrer l'adresse e-mail";
+
+/* (No Commment) */
+"Update Mobile" = "Mettre à jour le numéro de téléphone mobile";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Entrer le numéro de téléphone mobile";
+
+/* (No Commment) */
+"Balances" = "Soldes";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Les transactions ont lieu lorsque vous envoyez, ou recevez des Bitcoins.";
+
+/* (No Commment) */
+"Your Transactions" = "Vos transactions";
+
+/* (No Commment) */
+"Backup Complete" = "Sauvegarde terminée";
+
+/* (No Commment) */
+"Backup Needed" = "Sauvegarde nécessaire";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Utilisez votre Phrase de récupération pour restaurer vos fonds en cas de perte de mot de passe. N'importe qui ayant accès à votre Phrase de récupération peut accéder à vos Bitcoins, donc gardez-la hors-ligne dans un endroit sûr et sécurisé.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "La phrase de récupération suivante, composée de 12 mots, vous donnera accès à vos fonds au cas où vous perdriez votre mot de passe.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Assurez-vous d'écrire votre phrase sur un morceau de papier et de la garder dans un endroit sûr et sécurisé.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Notez les 12 mots suivants, correspondant à votre phrase de récupération, exactement comme ils apparaissent et dans cet ordre :";
+
+/* (No Commment) */
+"PREVIOUS" = "PRÉCÉDENT";
+
+/* (No Commment) */
+"NEXT" = "SUIVANT";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "SAUVEGARDER À NOUVEAU";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Votre adresse e-mail vérifiée est utilisée pour envoyer des alertes de paiement, des rappels de vos identifiants et des codes de connexion.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Votre numéro de téléphone mobile peut être utilisé pour activer l'authentification à deux facteurs ou pour recevoir des alertes.";
+
+/* (No Commment) */
+"Trade Completed" = "Transaction terminée";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "La transaction que vous avez créée sur %@ a été terminé !";
+
+/* (No Commment) */
+"View details" = "Voir les détails";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Achetez des Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vos transactions";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Les transactions sont effectives dès que vous envoyez et recevez un bitcoin.";

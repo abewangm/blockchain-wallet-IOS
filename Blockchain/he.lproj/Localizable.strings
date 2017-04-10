@@ -1625,3 +1625,71 @@
 
 /* (No Commment) */
 "Wallets" = "ארנקים";
+
+"START BACKUP" = "התחל גיבוי";
+
+"Backup Needed" = "הגיבוי הדרוש";
+
+"Create a Wallet" = "ליצור ארנק";
+
+"Log In" = "כנס";
+
+"Please enter your password to log into your Blockchain wallet." = "צריך להזין סיסמה כדי להיכנס לתוך הארנק שלך Blockchain.";
+
+"Forgot Password?" = "שכחת סיסמה?";
+
+"Or start over and " = "או להתחיל מחדש, ";
+
+"Update Email" = "עדכון דוא";
+
+"Enter Email Address" = "הזן את כתובת הדוא";
+
+"Update Mobile" = "עדכון נייד";
+
+"Enter Mobile Number" = "הזן מספר טלפון נייד";
+
+"Balances" = "יתרות";
+
+"Transactions occur when you send and receive bitcoin." = "תנועות להתרחש בעת שליחה וקבלה של ביטקוין.";
+
+"Your Transactions" = "העסקאות שלך";
+
+"Backup Complete" = "גיבוי מלא";
+
+"Backup Needed" = "הגיבוי הדרוש";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "להשתמש את הביטוי השחזור כדי לשחזר את הכספים שלך במקרה של סיסמה אבודה.  כל אחד עם גישה הביטוי השחזור שלך יכולים לגשת ביטקוין שלך, חבל במצב לא מקוון במקום בטוח ומאובטח.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "המילה 12 הבאים הביטוי שחזור ייתן לך גישה לקרנות שלך במקרה אתה מאבד את הסיסמה שלך.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "הקפד לכתוב את הביטוי שלך על פיסת נייר ולשמור אותו במקום בטוח ומאובטח.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "תרשום את הבאים 12 שחזור ביטוי בדיוק כפי שהם מופיעים ובסדר זה:";
+
+"PREVIOUS" = "הקודם";
+
+"NEXT" = "הבא";
+
+"BACKUP AGAIN" = "גיבוי שוב";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "את כתובת הדוא ל מאומת משמש לשליחת התראות תשלום מזהה תזכורות, קודי כניסה.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "הטלפון הנייד יכול לשמש כדי לאפשר אימות דו-גורמי או לקבל התראות.";
+
+/* (No Commment) */
+"Trade Completed" = "סחר הושלמה";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "הסחר שיצרת ב- %@ הושלמה!";
+
+/* (No Commment) */
+"View details" = "הצגת פרטים";
+
+/* (No Commment) */
+"Buy Bitcoin" = "לקנות ביטקוין";
+
+/* (No Commment) */
+"Your Transactions" = "העסקאות שלך";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "תנועות להתרחש בעת שליחה וקבלה של ביטקוין.";

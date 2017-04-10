@@ -1625,3 +1625,71 @@
 
 /* (No Commment) */
 "Wallets" = "Lompakot";
+
+"START BACKUP" = "ALOITA VARMUUSKOPIOINTI";
+
+"Backup Needed" = "Backup tarvitaan";
+
+"Create a Wallet" = "Luo lompakko";
+
+"Log In" = "Kirjaudu sisään";
+
+"Please enter your password to log into your Blockchain wallet." = "Kirjoita salasanan Blockchain-lompakkoosi.";
+
+"Forgot Password?" = "Unohditko salasanasi?";
+
+"Or start over and " = "Tai aloittaa alusta ja ";
+
+"Update Email" = "Päivittää sähköpostiosoitteesi";
+
+"Enter Email Address" = "Astua Email kohdistaa";
+
+"Update Mobile" = "Päivitä Mobile";
+
+"Enter Mobile Number" = "Kirjoita matkapuhelinnumero";
+
+"Balances" = "Saldot";
+
+"Transactions occur when you send and receive bitcoin." = "Tapahtumat silloin, kun lähetät ja vastaanotat bitcoin.";
+
+"Your Transactions" = "Liiketoimet";
+
+"Backup Complete" = "Varmuuskopiointi on valmis";
+
+"Backup Needed" = "Backup tarvitaan";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän bitcoin, niin pitää se offline jonnekin turvallisia.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "12 sanan hyödyntämistä lause antaa sinulle pääsyn rahat, jos menetät sinun tunnussana.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Muista kirjoittaa sinun lause paperille ja pitää se jonnekin, turvallinen ja varma.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Kirjoita 12 sanan hyödyntämistä lause täsmälleen sellaisina kuin ne ja tässä järjestyksessä:";
+
+"PREVIOUS" = "EDELLINEN";
+
+"NEXT" = "SEURAAVA";
+
+"BACKUP AGAIN" = "VARMUUSKOPIOINTI UUDELLEEN";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Tarkistaa sähköpostiosoitteesi käytetään lähettää maksuilmoitukset, ID muistutuksia ja sisäänkirjautumiskoodit.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Matkapuhelimen avulla voidaan ottaa käyttöön kaksivaiheinen todennus tai vastaanottaa ilmoituksia.";
+
+/* (No Commment) */
+"Trade Completed" = "Kaupan valmis";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Luodun %@ kauppa on valmis!";
+
+/* (No Commment) */
+"View details" = "Näytä tiedot";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Ostaa Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Liiketoimet";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Tapahtumat silloin, kun lähetät ja vastaanotat bitcoin.";

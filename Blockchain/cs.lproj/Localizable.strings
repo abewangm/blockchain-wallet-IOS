@@ -1625,3 +1625,146 @@
 
 /* (No Commment) */
 "Wallets" = "Peněženkám";
+
+"START BACKUP" = "SPUŠTĚNÍ ZÁLOHOVÁNÍ";
+
+"Backup Needed" = "Zálohování potřeby";
+
+"Create a Wallet" = "Vytvořit peněženku";
+
+"Log In" = "Přihlásit se";
+
+"Please enter your password to log into your Blockchain wallet." = "Prosím, zadejte své heslo pro přihlášení do peněženky blockchainu.";
+
+"Forgot Password?" = "Zapomněli jste heslo?";
+
+"Or start over and " = "Nebo začít znovu a ";
+
+"Update Email" = "Aktualizovat e-mailové";
+
+"Enter Email Address" = "Zadejte e-mailovou adresu";
+
+"Update Mobile" = "Aktualizace mobilní";
+
+"Enter Mobile Number" = "Zadejte číslo mobilního telefonu";
+
+"Balances" = "Zůstatky";
+
+"Transactions occur when you send and receive bitcoin." = "Transakce dochází při odesílání a přijímání bitcoin.";
+
+"Your Transactions" = "Vaše transakce";
+
+"Backup Complete" = "Zálohování bylo dokončeno";
+
+"Backup Needed" = "Zálohování potřeby";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k bitcoin, tak ať je offline někde bezpečné a spolehlivé.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující 12 slovo fráze obnovení vám umožní přístup k financím, v případě, že ztratíte své heslo.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Nezapomeňte zapsat frázi na kousek papíru a udržet ji někde, bezpečné a spolehlivé.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Poznamenejte si následující 12 slovo oživení fráze, přesně tak, jak se objevují a v tomto pořadí:";
+
+"PREVIOUS" = "PŘEDCHOZÍ";
+
+"NEXT" = "DALŠÍ";
+
+"BACKUP AGAIN" = "ZÁLOHOVÁNÍ ZNOVU";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Ověřených e-mailová adresa slouží k odesílání oznámení platby, ID připomenutí a přihlašovací kódy.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilní telefon lze zapnout dvoufaktorové ověřování nebo přijímat oznámení.";
+
+/* (No Commment) */
+"START BACKUP" = "ZAHÁJIT ZÁLOHOVÁNÍ";
+
+/* (No Commment) */
+"Backup Needed" = "Nutné zálohování";
+
+/* (No Commment) */
+"Create a Wallet" = "Vytvořit peněženku";
+
+/* (No Commment) */
+"Log In" = "Přihlásit se";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Zadejte prosím své heslo, abyste se přihlásili do své peněženky Blockchain.";
+
+/* (No Commment) */
+"Forgot Password?" = "Zapomněli jste heslo?";
+
+/* (No Commment) */
+"Or start over and " = "Nebo začněte znovu a ";
+
+/* (No Commment) */
+"Update Email" = "Aktualizovat e-mail";
+
+/* (No Commment) */
+"Enter Email Address" = "Zadat e-mailovou adresu";
+
+/* (No Commment) */
+"Update Mobile" = "Aktualizovat mobil";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Zadat mobilní číslo";
+
+/* (No Commment) */
+"Balances" = "Zůstatky";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakce nastane, když odešlete a obdržíte bitcoin.";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakce";
+
+/* (No Commment) */
+"Backup Complete" = "Zálohování dokončeno";
+
+/* (No Commment) */
+"Backup Needed" = "Nutné zálohování";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "V případě, že ztratíte heslo, použijte svou frázi pro obnovení.  Kdokoliv, kdo má přístup k vaší frázi pro obnovení, má přístup k vašemu bitcoinu. Proti ji uschovejte offline někde na bezpečném a zabezpečeném místě.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující fráze pro obnovení v délce 12 slov vám poskytne přístup k vašim financím v případě, že ztratíte své heslo.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Ujistěte se, že jste svou frázi napsali na papír a schovali ji někde na bezpečném a zabezpečeném místě.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Napište následující frázi pro obnovení v délce 12 slov přesně, jak se zobrazuje, a v tomto pořadí.";
+
+/* (No Commment) */
+"PREVIOUS" = "PŘEDCHOZÍ";
+
+/* (No Commment) */
+"NEXT" = "DALŠÍ";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "ZÁLOHOVAT ZNOVU";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Vaše ověřená e-mailová adresa se používá pro upozornění na odeslání plateb, připomenutí ID a kódy pro přihlášení.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Svůj mobil telefon můžete použít k tomu, abyste povolili dvojúrovňové ověřování a dostávali upozornění";
+
+/* (No Commment) */
+"Trade Completed" = "Obchod dokončen";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Obchod, který jste vytvořili %@ byl dokončen!";
+
+/* (No Commment) */
+"View details" = "Zobrazit detaily";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Koupit Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakce";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakce nastanou, když pošlete a obdržíte bitcoiny.";

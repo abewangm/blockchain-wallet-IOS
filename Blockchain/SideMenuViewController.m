@@ -15,7 +15,7 @@
 #import "SideMenuViewCell.h"
 #import "BCLine.h"
 #import "PrivateKeyReader.h"
-#import "UIViewController+Autodismiss.h"
+#import "UIViewController+AutoDismiss.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @interface SideMenuViewController ()
@@ -99,7 +99,10 @@ int accountEntries = 0;
 {
     [super viewWillAppear:animated];
     [self clearMenuEntries];
-
+    
+    if ([app.wallet isBuyEnabled]) {
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+    }
     if (!app.wallet.didUpgradeToHd) {
         [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
     } else {
@@ -108,8 +111,6 @@ int accountEntries = 0;
 
     [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
-    
-    [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
     
     [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
     [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
@@ -364,7 +365,7 @@ int accountEntries = 0;
         
         UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
         tickerLabel.adjustsFontSizeToFitWidth = YES;
-        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatMoney:SATOSHI localCurrency:NO], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
         tickerLabel.center = CGPointMake(tickerLabel.center.x, view.center.y);
         tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:24];

@@ -19,7 +19,7 @@
 #import "TransactionsViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "ModuleXMLHTTPRequest.h"
+#import "ModuleXMLHttpRequest.h"
 #import "KeychainItemWrapper+Credentials.h"
 #import <openssl/evp.h>
 #import "SessionManager.h"
@@ -33,6 +33,7 @@
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
+@property (nonatomic) JSContext *backgroundContext;
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @end
@@ -76,7 +77,7 @@
     return self;
 }
 
-- (void)loadJS
+- (NSString *)getJSSource
 {
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
     NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
@@ -84,29 +85,36 @@
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
     NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
-    self.context = [[JSContext alloc] init];
     
-    [self.context evaluateScript:@"var console = {};"];
-    
-    NSSet *names = [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
-    
-    for (NSString *name in names) {
-        self.context[@"console"][name] = ^(NSString *message) {
-            DLog(@"Javascript %@: %@", name, message);
-        };
-    }
-    
-    self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+    return jsSource;
+}
+
+- (NSString *)getConsoleScript
+{
+    return @"var console = {};";
+}
+
+- (id)getExceptionHandler
+{
+    return ^(JSContext *context, JSValue *exception) {
         NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
         // type of Number
         NSString *lineNumber = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_LINE] toString];
         
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
+}
 
+- (NSSet *)getConsoleFunctionNames
+{
+    return [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
+}
+
+- (id)getSetTimeout
+{
     __weak Wallet *weakSelf = self;
-    
-    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, double timeout) {
+
+    return ^(JSValue* callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
@@ -123,8 +131,24 @@
         weakSelf.timers[uuid] = timer;
         [timer fire];
     };
+}
+
+- (id)getClearTimeout
+{
+    __weak Wallet *weakSelf = self;
+
+    return ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+}
+
+- (id)getSetInterval
+{
+    __weak Wallet *weakSelf = self;
     
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
+    return ^(JSValue *callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
@@ -140,12 +164,70 @@
         weakSelf.timers[uuid] = timer;
         [timer fire];
     };
+}
+
+- (void)loadBackgroundJS
+{
+    self.backgroundContext = [[JSContext alloc] init];
     
-    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = ^(NSString *identifier) {
-        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
-        [timer invalidate];
-        [weakSelf.timers removeObjectForKey:identifier];
+    [self.backgroundContext evaluateScript:[self getConsoleScript]];
+    
+    NSSet *names = [self getConsoleFunctionNames];
+    
+    for (NSString *name in names) {
+        self.backgroundContext[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
+    
+    __weak Wallet *weakSelf = self;
+
+    self.backgroundContext.exceptionHandler = [self getExceptionHandler];
+    
+    self.backgroundContext[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
+    self.backgroundContext[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.backgroundContext[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
+    
+    self.backgroundContext[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
+        });
     };
+    
+    self.backgroundContext[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf on_get_fiat_at_time_error:error];
+        });
+    };
+    
+    [self.backgroundContext evaluateScript:[self getJSSource]];
+    
+    self.backgroundContext[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.backgroundContext[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.backgroundContext[@"HDNode"] = [HDNode class];
+}
+
+- (void)loadJS
+{
+    self.context = [[JSContext alloc] init];
+    
+    [self.context evaluateScript:[self getConsoleScript]];
+    
+    NSSet *names = [self getConsoleFunctionNames];
+    
+    for (NSString *name in names) {
+        self.context[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
+    
+    __weak Wallet *weakSelf = self;
+    
+    self.context.exceptionHandler = [self getExceptionHandler];
+    
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
     
 #pragma mark Decryption
     
@@ -599,6 +681,10 @@
         [weakSelf show_completed_trade:trade];
     };
     
+    self.context[@"objc_on_get_pending_trades_error"] = ^(JSValue *error) {
+        [weakSelf on_get_pending_trades_error:error];
+    };
+    
 #pragma mark Settings
     
     self.context[@"objc_on_get_account_info_success"] = ^(NSString *accountInfo) {
@@ -685,11 +771,14 @@
         [weakSelf wrong_two_factor_code:error];
     };
     
-    [self.context evaluateScript:jsSource];
+    [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
     self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
     self.context[@"HDNode"] = [HDNode class];
+    
+    [self loadBackgroundJS];
+    
     [self login];
 }
 
@@ -1528,11 +1617,6 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addAddressBookEntry(\"%@\", \"%@\")", [address escapeStringForJS], [label escapeStringForJS]]];
 }
 
-- (void)clearLocalStorage
-{
-    [self.context evaluateScript:@"localStorage.clear();"];
-}
-
 - (NSString*)detectPrivateKeyFormat:(NSString*)privateKeyString
 {
     if (![self isInitialized]) {
@@ -1910,7 +1994,9 @@
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+    });
 }
 
 
@@ -1929,14 +2015,28 @@
     return [[[self.context evaluateScript:@"MyWalletPhone.getDefaultAccountLabelledAddressesCount()"] toNumber] intValue];
 }
 
-- (void)watchPendingTrades
+- (BOOL)isBuyEnabled
 {
-    [self.context evaluateScript:@"MyWalletPhone.getPendingTrades()"];
+    return [[self.context evaluateScript:@"MyWalletPhone.isBuyFeatureEnabled()"] toBool];
+}
+
+- (void)watchPendingTrades:(BOOL)shouldSync
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPendingTrades(%d)", shouldSync]];
 }
 
 - (void)fetchExchangeAccount
 {
     [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
+}
+
+- (void)showCompletedTrade:(NSString *)txHash
+{
+    if ([self.delegate respondsToSelector:@selector(showCompletedTrade:)]) {
+        [self.delegate showCompletedTrade:txHash];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector showCompletedTrade!", [delegate class]);
+    }
 }
 
 - (JSValue *)executeJSSynchronous:(NSString *)command
@@ -2387,7 +2487,7 @@
         }
     }
     
-    [self watchPendingTrades];
+    [self watchPendingTrades:NO];
         
     if ([delegate respondsToSelector:@selector(walletDidFinishLoad)]) {
         
@@ -3074,6 +3174,11 @@
     }
 }
 
+- (void)on_get_pending_trades_error:(JSValue *)error
+{
+    [app standardNotify:[error toString]];
+}
+
 # pragma mark - Calls from Obj-C to JS for HD wallet
 
 - (void)upgradeToV3Wallet
@@ -3245,10 +3350,18 @@
 {
     if ([self isInitialized] && [app checkInternetConnection]) {
         self.isSyncing = YES;
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
         
         [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setLabelForAccount(%d, \"%@\")", account, [label escapeStringForJS]]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSetLabelForAccount) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     }
+}
+
+- (void)didSetLabelForAccount
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    
+    [self getHistory];
 }
 
 - (void)createAccountWithLabel:(NSString *)label
@@ -3487,7 +3600,7 @@
     
     [self updateAPIURL:URL_API];
     
-    BOOL testnetOn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
+    BOOL testnetOn = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET];
     NSString *network;
     if (testnetOn) {
         network = NETWORK_TESTNET;

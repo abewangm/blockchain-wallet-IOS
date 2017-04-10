@@ -1625,3 +1625,71 @@
 
 /* (No Commment) */
 "Wallets" = "Peňaženky";
+
+"START BACKUP" = "SPUSTIŤ ZÁLOHOVANIE";
+
+"Backup Needed" = "Zálohovanie potreby";
+
+"Create a Wallet" = "Vytvárať peňaženky";
+
+"Log In" = "prihlásiť sa";
+
+"Please enter your password to log into your Blockchain wallet." = "Prosím, zadajte svoje heslo pre prihlásenie do peňaženky databáze Blockchain.";
+
+"Forgot Password?" = "Zabudli ste heslo?";
+
+"Or start over and " = "Alebo začnite znova a ";
+
+"Update Email" = "Aktualizovať e-mailovú";
+
+"Enter Email Address" = "Zadajte e-mailovú adresu";
+
+"Update Mobile" = "Aktualizácia Mobile";
+
+"Enter Mobile Number" = "Zadajte mobilné číslo";
+
+"Balances" = "Zostatky";
+
+"Transactions occur when you send and receive bitcoin." = "Transakcie sa vyskytujú, keď budete odosielať a prijímať bitcoin.";
+
+"Your Transactions" = "Vaše transakcie";
+
+"Backup Complete" = "Zálohovanie je dokončené";
+
+"Backup Needed" = "Zálohovanie potreby";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Použiť výraz obnovenie obnoviť svoje prostriedky v prípade stratené heslo.  Ktokoľvek s prístupom k obnovenie frázy môžete prístup vaše bitcoin, tak ju offline niekam bezpečné.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Nasledujúce 12 slovo oživenie frázu v prípade, že stratíte heslo vám umožní prístup k svojim financiám.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Uistite sa, zapíšte si vaše frázy na kus papiera a udržať je niekde bezpečné.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Zapíšte nasledujúce 12 slovo oživenie frázy, presne tak, ako sa objavujú a v tomto poradí:";
+
+"PREVIOUS" = "PREDCHÁDZAJÚCE";
+
+"NEXT" = "ĎALŠÍ";
+
+"BACKUP AGAIN" = "ZÁLOHOVANIE ZNOVA";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Mailovú adresu možno odoslať upozornenia platieb, upomienky ID a prihlasovacie kódy.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilný telefón je možné zapnúť dvojfaktorové overovanie alebo prijímať upozornenia.";
+
+/* (No Commment) */
+"Trade Completed" = "Obchodnej ukončené";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Obchod vytvorený na %@ bola ukončená!";
+
+/* (No Commment) */
+"View details" = "Zobraziť Podrobnosti";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Predám Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakcie";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakcie sa vyskytujú, keď budete odosielať a prijímať bitcoin.";

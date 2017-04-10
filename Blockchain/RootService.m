@@ -143,8 +143,6 @@ void (^secondPasswordSuccess)(NSString *);
 #ifndef ENABLE_DEBUG_MENU
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_TESTNET];
-    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_APP_REVIEW_PROMPT_CUSTOM_TIMER];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_ZERO_TICKER];
@@ -725,7 +723,7 @@ void (^secondPasswordSuccess)(NSString *);
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     
     if (!self.pinEntryViewController) {
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     
     if (self.topViewControllerDelegate) {
@@ -736,6 +734,8 @@ void (^secondPasswordSuccess)(NSString *);
         }
     } else if (self.pinEntryViewController) {
         [self.pinEntryViewController.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    } else if (self.tabViewController.presentedViewController) {
+        [self.tabViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
     } else {
         [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
@@ -1377,6 +1377,8 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // Refresh the wallet and history
     [self.wallet getWalletAndHistory];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SYNC_ERROR object:nil];
 }
 
 - (void)didBackupWallet
@@ -1408,7 +1410,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (IBAction)scanAccountQRCodeclicked:(id)sender
 {
-    if (![self getCaptureDeviceInput]) {
+    if (![self getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -1438,7 +1440,7 @@ void (^secondPasswordSuccess)(NSString *);
         return;
     }
     
-    if (![app getCaptureDeviceInput]) {
+    if (![app getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -1528,9 +1530,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [KeychainItemWrapper removeGuidFromKeychain];
     [KeychainItemWrapper removeSharedKeyFromKeychain];
-    
-    [self.wallet clearLocalStorage];
-    
+        
     [self.wallet loadBlankWallet];
     
     self.latestResponse = nil;
@@ -1890,6 +1890,15 @@ void (^secondPasswordSuccess)(NSString *);
     });
 }
 
+- (void)showCompletedTrade:(NSString *)txHash
+{
+    [self closeSideMenu];
+    
+    [self showTransactions];
+    
+    [_transactionsViewController showTransactionDetailForHash:txHash];
+}
+
 - (void)didPushTransaction
 {
     DestinationAddressSource source = self.sendViewController.addressSource;
@@ -1983,6 +1992,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+}
+
+- (void)showTransactions
+{
+    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:0];
 }
 
 - (void)showDebugMenu:(int)presenter
@@ -3254,7 +3268,7 @@ void (^secondPasswordSuccess)(NSString *);
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_PIN_KEY] != nil && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENCRYPTED_PIN_PASSWORD] != nil;
 }
 
-- (AVCaptureDeviceInput *)getCaptureDeviceInput
+- (AVCaptureDeviceInput *)getCaptureDeviceInput:(UIViewController *)viewController
 {
     NSError *error;
     
@@ -3276,7 +3290,9 @@ void (^secondPasswordSuccess)(NSString *);
             }]];
             [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
             
-            if (self.topViewControllerDelegate) {
+            if (viewController) {
+                [viewController presentViewController:alert animated:YES completion:nil];
+            } else if (self.topViewControllerDelegate) {
                 [self.topViewControllerDelegate presentViewController:alert animated:YES completion:nil];
             } else {
                 [app.window.rootViewController presentViewController:alert animated:YES completion:nil];

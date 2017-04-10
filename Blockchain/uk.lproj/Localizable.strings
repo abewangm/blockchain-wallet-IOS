@@ -1625,3 +1625,96 @@
 
 /* (No Commment) */
 "Wallets" = "гаманців";
+
+/* (No Commment) */
+"START BACKUP" = "ПОЧАТИ РЕЗЕРВНЕ КОПІЮВАННЯ";
+
+/* (No Commment) */
+"Backup Needed" = "Потребує резервного копіювання";
+
+/* (No Commment) */
+"Create a Wallet" = "Створити гаманець";
+
+/* (No Commment) */
+"Log In" = "Вхід";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "Щоб увійти у свій гаманець Blockchain, будь ласка, введіть свій пароль.";
+
+/* (No Commment) */
+"Forgot Password?" = "Забули пароль?";
+
+/* (No Commment) */
+"Or start over and " = "Чи почати все спочатку і";
+
+/* (No Commment) */
+"Update Email" = "Оновити електронну адресу";
+
+/* (No Commment) */
+"Enter Email Address" = "Введіть електронну адресу"  ;
+
+/* (No Commment) */
+"Update Mobile" = "Оновити інформацію про номер мобільного телефону";
+
+/* (No Commment) */
+"Enter Mobile Number" = "Введіть номер мобільного телефону";
+
+/* (No Commment) */
+"Balances" = "Баланси";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Транзакція - це коли ви отримуєте чи відправляєте bitcoin.";
+
+/* (No Commment) */
+"Your Transactions" = "Ваші транзакції";
+
+/* (No Commment) */
+"Backup Complete" = "Резервне копіювання завершено";
+
+/* (No Commment) */
+"Backup Needed" = "Потребує резервного копіювання";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Використайте свою Фразу для відновлення доступу, якщо ви втратили свій пароль. Будь-хто, хто знає вашу Фразу для вдновлення доступу, матиме доступ до ваших коштів, тому не зберігайте її на своєму пристрої, а десь в іншому надійному та безпечному місці.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Ось ці 12 слів - це фраза для відновлення доступу, яка дасть вам доступ до своїх коштів, якщо ви забудете чи втратите свій пароль.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Запишіть обов'язково свою фразу на аркуші паперу і зберігайте її десь у надійному та безпечному місці.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Запишіть ось ці 12 слів Фрази для відновлення паролю так, як це показано, і в тому ж порядку:";
+
+/* (No Commment) */
+"PREVIOUS" = "ПОПЕРЕДНЄ";
+
+/* (No Commment) */
+"NEXT" = "НАСТУПНЕ";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "СТВОРИТИ РЕЗЕРВНУ КОПІЮ ЗНОВУ";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Ваша підтверджена електронна адреса буде використовуватись для відправки вам сповіщень про надходження платежів, ID нагадувань та кодів для входу у систему.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Номер вашого мобільного телефону може використовуватись для увімкнення Двофакторної автентифікації або отримання сповіщень.";
+
+/* (No Commment) */
+"Trade Completed" = "Операцію завершено";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Створена вами операція на%@ завершена!";
+
+/* (No Commment) */
+"View details" = "Переглянути подробиці";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Купити Біткойн";
+
+/* (No Commment) */
+"Your Transactions" = "Ваші транзакції";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Транзакція - це коли ви отримуєте чи відправляєте Біткойн.";

@@ -6,7 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "TabViewcontroller.h"
+#import "TabViewController.h"
 #import "RootService.h"
 
 @implementation TabViewcontroller

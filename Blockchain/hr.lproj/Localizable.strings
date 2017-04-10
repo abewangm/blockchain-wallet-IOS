@@ -1610,3 +1610,71 @@
 
 /* (No Commment) */
 "Wallets" = "Novčanike";
+
+"START BACKUP" = "POKRENITE SIGURNOSNO KOPIRANJE";
+
+"Backup Needed" = "Sigurnosna kopija potrebno";
+
+"Create a Wallet" = "Stvaranje novčanik";
+
+"Log In" = "prijavi se";
+
+"Please enter your password to log into your Blockchain wallet." = "Unesite svoju lozinku da se prijavite u vaš Blockchain novčanik.";
+
+"Forgot Password?" = "Zaboravili ste lozinku?";
+
+"Or start over and " = "Ili početka i ";
+
+"Update Email" = "Ažuriranja e-pošte";
+
+"Enter Email Address" = "Unesite adresu e-pošte";
+
+"Update Mobile" = "Ažurirati koji se kreće";
+
+"Enter Mobile Number" = "Unesite broj mobilnog telefona";
+
+"Balances" = "Salda";
+
+"Transactions occur when you send and receive bitcoin." = "Transakcije se pojavljuju našto slanje i primanje bitcoin.";
+
+"Your Transactions" = "Vaše transakcije";
+
+"Backup Complete" = "Sigurnosna kopija kompletan";
+
+"Backup Needed" = "Sigurnosna kopija potrebno";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Sredstva u slučaju izgubljene lozinke pomoću oporavka izraz.  Svatko tko ima pristup tvoj oporavak fraza možete pristupiti tvoj bitcoin, neka to radi negdje sigurno.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Sljedećih 12 riječ oporavak izraz dobit ćete pristup k svojim novčanim sredstvima u slučaju da izgubite lozinku.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Biti siguran to pisati dolje tvoj izraz na komad papira i pohranite na sigurno mjesto sigurnog.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Napiši sljedeće 12 riječ oporavak izraz točno onako kako se pojavljuju i u ovom redoslijedu:";
+
+"PREVIOUS" = "PRETHODNI";
+
+"NEXT" = "SLJEDEĆI";
+
+"BACKUP AGAIN" = "SIGURNOSNA KOPIJA OPET";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Potvrđenu e-adresu se koristi za slanje plaćanja upozorenja, ID podsjetnike i prijave šifre.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobilnog telefona može se koristiti dva faktora autentičnosti ili primanje upozorenja.";
+
+/* (No Commment) */
+"Trade Completed" = "Trgovina dovršen";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Trgovina ste stvorili na %@ je završena!";
+
+/* (No Commment) */
+"View details" = "Prikaz pojedinosti";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Kupite Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Vaše transakcije";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transakcije se pojavljuju našto slanje i primanje bitcoin.";

@@ -42,8 +42,9 @@
 @class Wallet, Transaction, JSValue, JSContext;
 
 @protocol ExchangeAccountDelegate
-- (void)watchPendingTrades;
+- (void)watchPendingTrades:(BOOL)shouldSync;
 - (void)fetchExchangeAccount;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @protocol WalletDelegate <NSObject>
@@ -108,6 +109,7 @@
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
+- (void)showCompletedTrade:(NSString *)txHash;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -214,8 +216,6 @@
 - (void)changeLocalCurrency:(NSString *)currencyCode;
 - (void)changeBtcCurrency:(NSString *)btcCode;
 
-- (void)clearLocalStorage;
-
 - (void)parsePairingCode:(NSString *)code;
 - (void)resendTwoFactorSMS;
 
@@ -283,6 +283,8 @@
 - (NSDictionary *)filteredWalletJSON;
 
 - (int)getDefaultAccountLabelledAddressesCount;
+
+- (BOOL)isBuyEnabled;
 
 // Settings
 - (void)getAccountInfo;

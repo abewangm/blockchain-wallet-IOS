@@ -1625,3 +1625,96 @@
 
 /* (No Commment) */
 "Wallets" = "지갑";
+
+/* (No Commment) */
+"START BACKUP" = "백업 시작";
+
+/* (No Commment) */
+"Backup Needed" = "백업 필요";
+
+/* (No Commment) */
+"Create a Wallet" = "지갑 만들기";
+
+/* (No Commment) */
+"Log In" = "로그인";
+
+/* (No Commment) */
+"Please enter your password to log into your Blockchain wallet." = "암호를 입력해서 귀하 Blockchain 지갑에 로그인 하세요.";
+
+/* (No Commment) */
+"Forgot Password?" = "암호를 잊었나요?";
+
+/* (No Commment) */
+"Or start over and " = "또는 다시 시작 그리고 ";
+
+/* (No Commment) */
+"Update Email" = "이메일 업데이트";
+
+/* (No Commment) */
+"Enter Email Address" = "이메일 주소 입력";
+
+/* (No Commment) */
+"Update Mobile" = "휴대폰 업데이트";
+
+/* (No Commment) */
+"Enter Mobile Number" = "휴대폰 번호 입력";
+
+/* (No Commment) */
+"Balances" = "잔액";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "비트코인을 보내고 받으면 거래가 생깁니다.";
+
+/* (No Commment) */
+"Your Transactions" = "귀하 거래";
+
+/* (No Commment) */
+"Backup Complete" = "백업 완료";
+
+/* (No Commment) */
+"Backup Needed" = "백업 필요";
+
+/* (No Commment) */
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 비트코인에 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
+
+/* (No Commment) */
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "다음 12 단어 복구 구절이 암호를 잊었을 때 자금에 접근하게 해 줄 겁니다.";
+
+/* (No Commment) */
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "반드시 구절을 종이에 써서 안전한 곳에 보관하세요.";
+
+/* (No Commment) */
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "다음 12 단어 복구 구절을 보이는 대로 그리고 같은 순서로 그대로 쓰세요:";
+
+/* (No Commment) */
+"PREVIOUS" = "이전";
+
+/* (No Commment) */
+"NEXT" = "다음";
+
+/* (No Commment) */
+"BACKUP AGAIN" = "다시 백업";
+
+/* (No Commment) */
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "귀하 확인된 이메일은 지불 알림, 아이디 알림, 로그인 코드를 보내는 데 쓰입니다.";
+
+/* (No Commment) */
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "귀하 휴대폰은 2-인수 인증 사용 설정을 하거나 알림을 받는 데 쓰일 수 있습니다.";
+
+/* (No Commment) */
+"Trade Completed" = "거래 완료됨";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "귀하가 %@에 만든 거래가 완료되었습니다!";
+
+/* (No Commment) */
+"View details" = "상세 내용 보기";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Bitcoin 사기";
+
+/* (No Commment) */
+"Your Transactions" = "귀하의 거래들";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "비트코인을 보내고 받을 때 거래가 발생합니다.";

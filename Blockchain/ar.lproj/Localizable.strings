@@ -1625,3 +1625,71 @@
 
 /* (No Commment) */
 "Wallets" = "محافظ";
+
+"START BACKUP" = "بدء تشغيل النسخ الاحتياطي";
+
+"Backup Needed" = "النسخة الاحتياطية اللازمة";
+
+"Create a Wallet" = "إنشاء محفظة";
+
+"Log In" = "تسجيل الدخول";
+
+"Please enter your password to log into your Blockchain wallet." = "الرجاء إدخال كلمة المرور الخاصة بك لتسجيل الدخول إلى محفظتك بلوكتشين.";
+
+"Forgot Password?" = "هل نسيت كلمة المرور؟";
+
+"Or start over and " = "أو البدء من جديد و ";
+
+"Update Email" = "تحديث البريد الإلكتروني";
+
+"Enter Email Address" = "أدخل عنوان البريد الإلكتروني";
+
+"Update Mobile" = "تحديث الجوال";
+
+"Enter Mobile Number" = "أدخل رقم الهاتف المحمول";
+
+"Balances" = "الأرصدة";
+
+"Transactions occur when you send and receive bitcoin." = "المعاملات تحدث عند إرسال وتلقى بيتكوين.";
+
+"Your Transactions" = "المعاملات الخاصة بك";
+
+"Backup Complete" = "نسخة احتياطية كاملة";
+
+"Backup Needed" = "النسخة الاحتياطية اللازمة";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "استخدم \"عبارتك الاسترداد\" لاستعادة الأموال الخاصة بك في حالة كلمة مرور المفقودة.  أي شخص لديه إمكانية الوصول إلى \"العبارة الاسترداد\" الخاصة بك يمكن الوصول الخاص بك بيتكوين، حتى تبقى أنه دون اتصال في مكان آمنة ومأمونة.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "كلمة 12 التالية \"عبارة الانتعاش\" سوف تعطيك الوصول إلى الأموال الخاصة بك في حالة فقدان كلمة المرور الخاصة بك.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "تأكد من كتابة العبارة الخاصة بك على قطعة من الورق والاحتفاظ به في مكان آمنة ومأمونة.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "كتابة الكلمة التالية 12 \"عبارة الاسترداد\" كما تظهر بالضبط، وفي هذا النظام:";
+
+"PREVIOUS" = "السابقة";
+
+"NEXT" = "القادم";
+
+"BACKUP AGAIN" = "النسخ الاحتياطي مرة أخرى";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "يستخدم عنوان تم التحقق من البريد الإلكتروني الخاص بك لإرسال دفع التنبيهات والتذكيرات معرف رموز تسجيل الدخول.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "يمكن استخدام الهاتف الجوال الخاص بك لتمكين مصادقة ثنائية العامل أو لتلقي التنبيهات.";
+
+/* (No Commment) */
+"Trade Completed" = "التجارة أنجزت";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "وقد اكتمل بالتجارة التي قمت بإنشائها على %@!";
+
+/* (No Commment) */
+"View details" = "عرض التفاصيل";
+
+/* (No Commment) */
+"Buy Bitcoin" = "شراء بيتكوين";
+
+/* (No Commment) */
+"Your Transactions" = "المعاملات الخاصة بك";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "المعاملات تحدث عند إرسال وتلقى بيتكوين.";

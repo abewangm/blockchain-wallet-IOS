@@ -610,25 +610,6 @@ BOOL displayingLocalSymbolSend;
     [self showErrorBeforeSending:error];
 }
 
-- (uint64_t)getInputAmountInSatoshi
-{
-    if (displayingLocalSymbol) {
-        NSString *language = btcAmountField.textInputMode.primaryLanguage;
-        NSLocale *locale = language ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        
-        NSString *amountString = [btcAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        if (![amountString containsString:@"."]) {
-            amountString = [amountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        }
-        if (![amountString containsString:@"."]) {
-            amountString = [amountString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
-        }
-        return app.latestResponse.symbol_local.conversion * [amountString doubleValue];
-    } else {
-        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
-    }
-}
-
 - (void)showSweepConfirmationScreenWithMaxAmount:(uint64_t)maxAmount
 {
     [self hideKeyboard];
@@ -1028,7 +1009,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)scanPrivateKeyToSendFromWatchOnlyAddress
 {
-    if (![app getCaptureDeviceInput]) {
+    if (![app getCaptureDeviceInput:nil]) {
         return;
     }
     
@@ -1640,7 +1621,7 @@ BOOL displayingLocalSymbolSend;
 
 - (BOOL)startReadingQRCode
 {
-    AVCaptureDeviceInput *input = [app getCaptureDeviceInput];
+    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:nil];
     
     if (!input) {
         return NO;

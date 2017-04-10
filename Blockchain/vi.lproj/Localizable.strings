@@ -1625,3 +1625,21 @@
 
 /* (No Commment) */
 "Wallets" = "Ví";
+
+/* (No Commment) */
+"Trade Completed" = "Giao dịch Hoàn tất";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Giao dịch bạn tạo trên %@ đã hoàn tất!";
+
+/* (No Commment) */
+"View details" = "Xem chi tiết";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Mua Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Giao dịch của bạn";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Giao dịch xuất hiện khi bạn gửi hoặc nhận bitcoin.";

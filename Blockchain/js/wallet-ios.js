@@ -32,6 +32,8 @@ var currentPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
+var walletOptions = new WalletOptions(BlockchainAPI);
+
 // Register for JS event handlers and forward to Obj-C handlers
 
 WalletStore.addEventListener(function (event, obj) {
@@ -721,6 +723,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     }
 
     MyWallet.login(user_guid, inputedPassword, credentials, callbacks)
+      .then(function () { return walletOptions.fetch(); })
       .then(function () { return MyWallet.wallet.fetchAccountInfo() })
       .then(success).catch(other_error);
 };
@@ -857,9 +860,9 @@ MyWalletPhone.createTxProgressId = function() {
 }
 
 MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
-    
+
     console.log('quickSend');
-    
+
     var success = function(payment) {
         objc_tx_on_success_secondPassword(id, secondPassword);
     };
@@ -1138,7 +1141,8 @@ MyWalletPhone.get_wallet_and_history = function() {
         objc_loading_stop();
     };
 
-    var error = function () {
+    var error = function (e) {
+        console.log(e);
         console.log('Error getting wallet and history');
         objc_loading_stop();
     };
@@ -1900,12 +1904,11 @@ MyWalletPhone.getExchangeAccount = function () {
   return MyWallet.wallet.loadExternal().then(function () {
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
-    var partners = getOptions().partners;
+    var partners = walletOptions.getValue().partners;
 
     if (sfox.user) {
       console.log('Found sfox user');
       sfox.api.production = true;
-      sfox.api.apiKey = 'f31614a7-5074-49f2-8c2a-bfb8e55de2bd';
       sfox.api.apiKey = partners.sfox.apiKey;
       return sfox;
     } else if (coinify.user) {
@@ -1934,17 +1937,35 @@ var watchTrade = function (trade) {
   });
 }
 
-MyWalletPhone.getPendingTrades = function() {
-  MyWalletPhone.getExchangeAccount().then(function (exchange) {
-    console.log('Getting pending trades');
-    exchange.getTrades().then(function () {
-      console.log(exchange.trades);
-      exchange.monitorPayments();
-      exchange.trades
-        .filter(function (trade) { return !trade.txHash; })
-        .forEach(watchTrade);
-    });
-  });
+MyWalletPhone.getPendingTrades = function(shouldSync) {
+
+    var watchTrades = function(errorCallBack) {
+      MyWalletPhone.getExchangeAccount().then(function (exchange) {
+        if (exchange) {
+          console.log('Getting pending trades');
+          exchange.getTrades().then(function () {
+            console.log(exchange.trades);
+            exchange.monitorPayments();
+            exchange.trades
+              .filter(function (trade) { return !trade.txHash; })
+              .forEach(watchTrade);
+          });
+        }
+      }).catch(errorCallBack);
+    }
+
+    var error = function(e) {
+      console.log(e);
+      objc_on_get_pending_trades_error(e);
+    };
+
+    if (shouldSync) {
+        console.log('Getting wallet then watching trades');
+        MyWallet.getWallet(function() { watchTrades(error); }, error);
+    } else {
+        console.log('Watching trades');
+        watchTrades(error);
+    }
 }
 
 MyWalletPhone.getWebViewLoginData = function () {
@@ -1957,33 +1978,12 @@ MyWalletPhone.getWebViewLoginData = function () {
   }
 }
 
-// TODO: move to separate module once a proper bundler is in place
-function getOptions () {
-  return ({
-    "showBuySellTab": ["GB", "NL", "DE", "US"],
-    "partners": {
-      "coinify": {
-        "countries": ["GB", "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI",
-                      "FR", "GF", "DE", "GI", "GR", "GP", "GG", "HU", "IS", "IE",
-                      "IM", "IT", "JE", "LV", "LI", "LT", "LU", "MT", "MQ", "YT",
-                      "MC", "NL", "NO", "PL", "PT", "RE", "BL", "MF", "PM", "SM",
-                      "SK", "SI", "ES", "SE", "CH"
-                    ],
-        "partnerId": 18,
-        "iSignThisDomain": "https://stage-verify.isignthis.com"
-      },
-      "sfox": {
-        "countries": ["US"],
-        "states": ["AL", "AZ", "CA", "CO", "GA", "IN", "KS", "MD", "MA", "MO", "MT", "SC", "TX"],
-        "inviteFormFraction": 0.1,
-        "showCheckoutFraction": 0.5,
-        "apiKey": "6CD61A0E965D48A7B1883A860490DC9E",
-        "plaid": "0b041cd9e9fbf1e7d93a0d5a39f5b9",
-        "plaidEnv": "tartan",
-        "siftScience": "3884e5fae5"
-      }
-    }
-  })
+MyWalletPhone.isBuyFeatureEnabled = function () {
+  var wallet = MyWallet.wallet
+  var options = walletOptions.getValue()
+  var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
+  var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0)
+  return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
 MyWalletPhone.getNetworks = function() {
@@ -1992,4 +1992,25 @@ MyWalletPhone.getNetworks = function() {
 
 MyWalletPhone.getECDSA = function() {
     return ECDSA;
+}
+
+function WalletOptions (api) {
+  var optionsCache = {};
+
+  this.getValue = function () {
+    return optionsCache[this.getFileName()];
+  };
+
+  this.fetch = function () {
+    var name = this.getFileName();
+    var readJson = function (res) { return res.json(); }
+    var cacheOptions = function (opts) { optionsCache[name] = opts; return opts; };
+    return fetch(api.ROOT_URL + 'Resources/' + name).then(readJson).then(cacheOptions);
+  };
+
+  this.getFileName = function () {
+    var base = 'wallet-options';
+    var isProduction = api.ROOT_URL === 'https://blockchain.info/';
+    return base + (isProduction ? '' : '-debug') + '.json';
+  };
 }

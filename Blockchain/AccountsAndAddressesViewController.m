@@ -180,7 +180,7 @@
         return;
     }
     
-    if (![app getCaptureDeviceInput]) {
+    if (![app getCaptureDeviceInput:nil]) {
         return;
     }
     
