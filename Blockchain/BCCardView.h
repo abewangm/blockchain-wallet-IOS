@@ -17,7 +17,7 @@ enum {
 typedef NSInteger ActionType;
 
 @protocol CardViewDelegate
-- (void)actionClicked:(ActionType)actionType;
+- (void)cardActionClicked:(ActionType)actionType;
 @end
 @interface BCCardView : UIView
 @property (nonatomic) id<CardViewDelegate> delegate;

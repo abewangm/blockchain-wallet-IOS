@@ -36,6 +36,7 @@
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
+@property (nonatomic) JSContext *backgroundContext;
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @end
@@ -79,7 +80,7 @@
     return self;
 }
 
-- (void)loadJS
+- (NSString *)getJSSource
 {
     NSString *walletJSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_MY_WALLET ofType:JAVASCRIPTCORE_TYPE_JS];
     NSString *walletiOSPath = [[NSBundle mainBundle] pathForResource:JAVASCRIPTCORE_RESOURCE_WALLET_IOS ofType:JAVASCRIPTCORE_TYPE_JS];
@@ -87,29 +88,36 @@
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
     NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
-    self.context = [[JSContext alloc] init];
     
-    [self.context evaluateScript:@"var console = {};"];
-    
-    NSSet *names = [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
-    
-    for (NSString *name in names) {
-        self.context[@"console"][name] = ^(NSString *message) {
-            DLog(@"Javascript %@: %@", name, message);
-        };
-    }
-    
-    self.context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
+    return jsSource;
+}
+
+- (NSString *)getConsoleScript
+{
+    return @"var console = {};";
+}
+
+- (id)getExceptionHandler
+{
+    return ^(JSContext *context, JSValue *exception) {
         NSString *stacktrace = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_STACK] toString];
         // type of Number
         NSString *lineNumber = [[exception objectForKeyedSubscript:JAVASCRIPTCORE_LINE] toString];
         
         DLog(@"%@ \nstack: %@\nline number: %@", [exception toString], stacktrace, lineNumber);
     };
+}
 
+- (NSSet *)getConsoleFunctionNames
+{
+    return [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
+}
+
+- (id)getSetTimeout
+{
     __weak Wallet *weakSelf = self;
-    
-    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = ^(JSValue* callback, double timeout) {
+
+    return ^(JSValue* callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
@@ -126,8 +134,24 @@
         weakSelf.timers[uuid] = timer;
         [timer fire];
     };
+}
+
+- (id)getClearTimeout
+{
+    __weak Wallet *weakSelf = self;
+
+    return ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+}
+
+- (id)getSetInterval
+{
+    __weak Wallet *weakSelf = self;
     
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = ^(JSValue *callback, double timeout) {
+    return ^(JSValue *callback, double timeout) {
         
         NSString *uuid = [[NSUUID alloc] init].UUIDString;
         
@@ -143,12 +167,70 @@
         weakSelf.timers[uuid] = timer;
         [timer fire];
     };
+}
+
+- (void)loadBackgroundJS
+{
+    self.backgroundContext = [[JSContext alloc] init];
     
-    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = ^(NSString *identifier) {
-        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
-        [timer invalidate];
-        [weakSelf.timers removeObjectForKey:identifier];
+    [self.backgroundContext evaluateScript:[self getConsoleScript]];
+    
+    NSSet *names = [self getConsoleFunctionNames];
+    
+    for (NSString *name in names) {
+        self.backgroundContext[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
+    
+    __weak Wallet *weakSelf = self;
+
+    self.backgroundContext.exceptionHandler = [self getExceptionHandler];
+    
+    self.backgroundContext[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
+    self.backgroundContext[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.backgroundContext[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
+    
+    self.backgroundContext[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
+        });
     };
+    
+    self.backgroundContext[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf on_get_fiat_at_time_error:error];
+        });
+    };
+    
+    [self.backgroundContext evaluateScript:[self getJSSource]];
+    
+    self.backgroundContext[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
+    self.backgroundContext[@"Bitcoin"][@"HDNode"] = [HDNode class];
+    self.backgroundContext[@"HDNode"] = [HDNode class];
+}
+
+- (void)loadJS
+{
+    self.context = [[JSContext alloc] init];
+    
+    [self.context evaluateScript:[self getConsoleScript]];
+    
+    NSSet *names = [self getConsoleFunctionNames];
+    
+    for (NSString *name in names) {
+        self.context[@"console"][name] = ^(NSString *message) {
+            DLog(@"Javascript %@: %@", name, message);
+        };
+    }
+    
+    __weak Wallet *weakSelf = self;
+    
+    self.context.exceptionHandler = [self getExceptionHandler];
+    
+    self.context[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
     
 #pragma mark Decryption
     
@@ -782,11 +864,14 @@
         [weakSelf on_delete_contact_after_storing_info_success:info];
     };
     
-    [self.context evaluateScript:jsSource];
+    [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
     self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
     self.context[@"HDNode"] = [HDNode class];
+    
+    [self loadBackgroundJS];
+    
     [self login];
 }
 
@@ -1349,7 +1434,7 @@
 {
     [self useDebugSettingsIfSet];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]]];
 }
@@ -2006,7 +2091,9 @@
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
+    });
 }
 
 

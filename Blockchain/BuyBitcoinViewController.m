@@ -11,6 +11,7 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
+#import "TransactionDetailNavigationController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
@@ -19,7 +20,8 @@
 @property (nonatomic) NSString* queuedScript;
 @end
 
-NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
+NSString* loginWithGuidScript(NSString*, NSString*, NSString*);
+NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 
 @implementation BuyBitcoinViewController
 
@@ -70,21 +72,26 @@ NSString* funcWithArgs(NSString*, NSString*, NSString*, NSString*, NSString*);
     return nil;
 }
 
-NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3, NSString* a4)
+NSString* loginWithGuidScript(NSString* guid, NSString* sharedKey, NSString* password)
 {
-    return [ NSString stringWithFormat:@"%@('%@','%@','%@','%@')", name, [a1 escapeStringForJS], [a2 escapeStringForJS], [a3 escapeStringForJS], [a4 escapeStringForJS] ];
+    return [NSString stringWithFormat:@"activateMobileBuy('%@','%@','%@')", [guid escapeStringForJS], [sharedKey escapeStringForJS], [password escapeStringForJS]];
 }
 
 
 - (void)loginWithGuid:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password
 {
-    NSString *script = funcWithArgs(@"activateMobileBuy", guid, sharedKey, password, nil);
+    NSString *script = loginWithGuidScript(guid, sharedKey, password);
     [self runScriptWhenReady:script];
+}
+
+NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* magicHash, NSString* password, BOOL isNew)
+{
+    return [NSString stringWithFormat:@"activateMobileBuyFromJson('%@','%@','%@','%@',%d)", [json escapeStringForJS], [externalJson escapeStringForJS], [magicHash escapeStringForJS], [password escapeStringForJS], isNew];
 }
 
 - (void)loginWithJson:(NSString *)json externalJson:(NSString *)externalJson magicHash:(NSString *)magicHash password:(NSString *)password
 {
-    NSString *script = funcWithArgs(@"activateMobileBuyFromJson", json, externalJson, magicHash, password);
+    NSString *script = loginWithJsonScript(json, externalJson, magicHash, password, self.isNew);
     [self runScriptWhenReady:script];
 }
 
@@ -149,16 +156,22 @@ NSString* funcWithArgs(NSString* name, NSString* a1, NSString* a2, NSString* a3,
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    
     [super viewWillDisappear:animated];
-    if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]]) {
+    
+    if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]] ||
+        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]]) {
         return;
     }
+    
     if (self.didInitiateTrade) {
         [self.delegate watchPendingTrades:YES];
     } else {
         [self.delegate fetchExchangeAccount];
     }
+    
     [self runScript:@"teardown()"];
+    
     self.didInitiateTrade = NO;
     self.isReady = NO;
 }

@@ -2222,7 +2222,7 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
 
     if (shouldSync) {
         console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(watchTrades(error), error);
+        MyWallet.getWallet(function() { watchTrades(error); }, error);
     } else {
         console.log('Watching trades');
         watchTrades(error);
