@@ -791,6 +791,8 @@ int lastNumberTransactions = INT_MAX;
 {
     self.cardsScrollView.scrollEnabled = YES;
     [self.cardsScrollView setContentOffset:CGPointZero animated:YES];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
 }
 
 - (void)cardActionClicked:(ActionType)actionType
@@ -899,7 +901,7 @@ int lastNumberTransactions = INT_MAX;
         
     }];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self.tableView reloadData];
 }
