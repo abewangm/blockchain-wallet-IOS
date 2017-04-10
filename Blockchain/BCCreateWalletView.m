@@ -9,6 +9,7 @@
 #import "BCCreateWalletView.h"
 
 #import "RootService.h"
+#import "BuyBitcoinViewController.h"
 
 @implementation BCCreateWalletView
 
@@ -192,6 +193,7 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
     
     app.wallet.isNew = YES;
+    app.buyBitcoinViewController.isNew = YES;
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
