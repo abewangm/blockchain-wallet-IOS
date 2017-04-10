@@ -9,6 +9,7 @@
 #import "BCCreateWalletView.h"
 
 #import "RootService.h"
+#import "BuyBitcoinViewController.h"
 
 @implementation BCCreateWalletView
 
@@ -192,6 +193,7 @@
     [app.wallet loadWalletWithGuid:guid sharedKey:sharedKey password:password];
     
     app.wallet.isNew = YES;
+    app.buyBitcoinViewController.isNew = YES;
     
     [app.wallet getAllCurrencySymbols];
 }
