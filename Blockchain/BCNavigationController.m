@@ -41,6 +41,7 @@
     self.headerLabel.textAlignment = NSTextAlignmentCenter;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
     self.headerLabel.text = self.headerTitle;
+    self.headerLabel.center = CGPointMake(topBar.center.x, self.headerLabel.center.y);
     [topBar addSubview:self.headerLabel];
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];

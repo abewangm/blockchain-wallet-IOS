@@ -55,6 +55,7 @@ import UIKit
         headerLabel?.textAlignment = .center;
         headerLabel?.adjustsFontSizeToFitWidth = true;
         headerLabel?.text = NSLocalizedString("Backup Funds", comment: "");
+        headerLabel?.center = CGPoint(x:topBar!.center.x, y:headerLabel!.center.y);
         topBar!.addSubview(headerLabel!);
         
         closeButton = UIButton(type: UIButtonType.custom)

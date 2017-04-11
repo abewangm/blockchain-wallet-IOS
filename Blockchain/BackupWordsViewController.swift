@@ -41,6 +41,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         
         updateCurrentPageLabel(0)
         
+        wordsScrollView!.center = CGPoint(x: view.center.x, y: wordsScrollView!.center.y)
         wordsScrollView!.clipsToBounds = true
         wordsScrollView!.contentSize = CGSize(width: CGFloat(Constants.Defaults.NumberOfRecoveryPhraseWords) * wordLabel!.frame.width, height: wordLabel!.frame.height)
         wordsScrollView!.isUserInteractionEnabled = false
@@ -72,13 +73,16 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         super.viewDidAppear(animated)
         
         UIView .animate(withDuration: 0.3, animations: { () -> Void in
-            self.previousWordButton!.frame.origin = CGPoint(x: 0,y: self.view.frame.size.height-self.previousWordButton!.frame.size.height);
-            self.nextWordButton!.frame.origin = CGPoint(x: self.view.frame.size.width-self.previousWordButton!.frame.size.width, y: self.view.frame.size.height-self.previousWordButton!.frame.size.height);
+            self.previousWordButton!.frame = CGRect(x: 0,y: self.view.frame.size.height-self.previousWordButton!.frame.size.height, width:self.view.frame.size.width/2 - 2, height: self.previousWordButton!.frame.size.height);
+            self.nextWordButton!.frame = CGRect(x: self.view.frame.size.width-self.previousWordButton!.frame.size.width + 2, y: self.view.frame.size.height-self.previousWordButton!.frame.size.height, width:self.view.frame.size.width/2 - 2, height: self.previousWordButton!.frame.size.height);
         })
     }
     
     func setupInstructionLabel() {
         summaryLabel?.text = NSLocalizedString("Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", comment:"")
+        summaryLabel!.center = CGPoint(x: view.center.x, y: summaryLabel!.center.y)
+        wordsProgressLabel!.center = CGPoint(x: view.center.x, y: wordsProgressLabel!.center.y)
+
     }
     
     func updatePreviousWordButton() {
