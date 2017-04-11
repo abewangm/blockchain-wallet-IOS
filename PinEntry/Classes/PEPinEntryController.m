@@ -147,7 +147,7 @@ static PEViewController *VerifyController()
         [pinController.scrollView setUserInteractionEnabled:YES];
         
         if (!self.addressLabel) {
-            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(320, 300, 320, 30)];
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(WINDOW_WIDTH, 60 + [self getQRCodeImageViewWidth] + 16, WINDOW_WIDTH, 30)];
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
             [self.addressLabel setTextColor:COLOR_BLOCKCHAIN_BLUE];
             [self.addressLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12]];
@@ -169,7 +169,12 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        
+                        CGFloat width = [self getQRCodeImageViewWidth];
+                        CGFloat height = width;
+                        
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
+                        self.qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     
@@ -188,7 +193,12 @@ static PEViewController *VerifyController()
                     [app.wallet subscribeToSwipeAddress:nextAddress];
                     
                     if (!self.qrCodeImageView) {
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width + 40, 60, self.view.frame.size.width - 80, self.view.frame.size.width - 80)];
+                        
+                        CGFloat width = [self getQRCodeImageViewWidth];
+                        CGFloat height = width;
+                        
+                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
+                        self.qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
                         [pinController.scrollView addSubview:self.qrCodeImageView];
                     }
                     
@@ -219,6 +229,20 @@ static PEViewController *VerifyController()
     pinController.swipeLabel.hidden = YES;
     pinController.swipeLabelImageView.hidden = YES;
 #endif
+}
+
+- (CGFloat)getQRCodeImageViewWidth
+{
+    CGFloat sizeReduction = 80;
+    CGFloat scaleFactor = 1;
+    
+    if (IS_USING_6_OR_7_SCREEN_SIZE) {
+        scaleFactor *= WIDTH_IPHONE_5S/IPHONE_6_OR_7_WIDTH;
+    } else if (IS_USING_6_OR_7_PLUS_SCREEN_SIZE) {
+        scaleFactor *= WIDTH_IPHONE_5S/IPHONE_6_OR_7_PLUS_WIDTH;
+    }
+    
+    return (self.view.frame.size.width - sizeReduction) * scaleFactor;
 }
 
 - (void)paymentReceived

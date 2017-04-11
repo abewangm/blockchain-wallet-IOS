@@ -96,16 +96,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Measurements
 
-#define HEIGHT_IPHONE_4S 480
-#define HEIGHT_IPHONE_6 667
-#define HEIGHT_IPHONE_6_PLUS 736
-#define HEIGHT_IPHONE_5S 568
-#define WIDTH_IPHONE_5S 320
+#define HEIGHT_IPHONE_4S 480.0
+#define HEIGHT_IPHONE_6 667.0
+#define HEIGHT_IPHONE_6_PLUS 736.0
+#define HEIGHT_IPHONE_5S 568.0
+#define WIDTH_IPHONE_5S 320.0
 
 #define IS_USING_6_OR_7_SCREEN_SIZE [[UIScreen mainScreen] bounds].size.height >= HEIGHT_IPHONE_6 && [[UIScreen mainScreen] bounds].size.height < HEIGHT_IPHONE_6_PLUS
 #define IS_USING_6_OR_7_PLUS_SCREEN_SIZE [[UIScreen mainScreen] bounds].size.height >= HEIGHT_IPHONE_6_PLUS
-#define IPHONE_6_OR_7_WIDTH 375
-#define IPHONE_6_OR_7_PLUS_WIDTH 414
+#define IPHONE_6_OR_7_WIDTH 375.0
+#define IPHONE_6_OR_7_PLUS_WIDTH 414.0
 #define IS_USING_SCREEN_SIZE_LARGER_THAN_5S [[UIScreen mainScreen] bounds].size.height > HEIGHT_IPHONE_5S
 
 #define WINDOW_WIDTH IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? IPHONE_6_OR_7_PLUS_WIDTH : (IS_USING_6_OR_7_SCREEN_SIZE ? IPHONE_6_OR_7_WIDTH : WIDTH_IPHONE_5S)

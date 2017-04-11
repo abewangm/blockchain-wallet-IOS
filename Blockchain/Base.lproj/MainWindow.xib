@@ -49,7 +49,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="5i0-zZ-Y4H">
                     <rect key="frame" x="35" y="185" width="250" height="110"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="gray" id="262">
                             <rect key="frame" x="115" y="27" width="20" height="20"/>

@@ -81,7 +81,7 @@
         promptLabel.frame = CGRectOffset(promptLabel.frame, 0, 60);
     }
     
-    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, self.scrollView.frame.size.width, 380);
+    self.scrollView.frame = CGRectMake(0, 480 - self.scrollView.frame.size.height, WINDOW_WIDTH, 380);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
