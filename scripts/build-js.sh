@@ -1,3 +1,4 @@
+set -ue
 cd Submodules/My-Wallet-V3
 
 echo "Cleaning..."

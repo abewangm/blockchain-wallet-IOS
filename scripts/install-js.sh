@@ -1,10 +1,11 @@
+set -ue
 cd Submodules/My-Wallet-V3
 
 echo "Cleaning node_modules..."
 rm -rf node_modules
 
 echo "Installing node_modules..."
-npm install || exit 1
+npm install
 
 # Required for JavaScriptCore
 echo "Patching fetch..."
