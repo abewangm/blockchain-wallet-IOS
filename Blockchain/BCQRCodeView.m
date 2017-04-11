@@ -47,6 +47,7 @@ const float imageWidth = 190;
         qrCodeHeaderLabel.numberOfLines = 5;
         qrCodeHeaderLabel.textAlignment = NSTextAlignmentCenter;
         qrCodeHeaderLabel.text = qrHeaderText;
+        qrCodeHeaderLabel.center = CGPointMake(self.center.x, qrCodeHeaderLabel.center.y);
         [self addSubview:qrCodeHeaderLabel];
     }
     
@@ -60,6 +61,7 @@ const float imageWidth = 190;
     self.qrCodeFooterLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     self.qrCodeFooterLabel.textAlignment = NSTextAlignmentCenter;
     self.qrCodeFooterLabel.adjustsFontSizeToFitWidth = YES;
+    self.qrCodeFooterLabel.center = CGPointMake(self.center.x, self.qrCodeFooterLabel.center.y);
     
     UITapGestureRecognizer *tapFooterLabelGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(QRCodeClicked)];
     [self.qrCodeFooterLabel addGestureRecognizer:tapFooterLabelGestureRecognizer];
