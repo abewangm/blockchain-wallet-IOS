@@ -17,7 +17,11 @@ protocol SecondPasswordDelegate {
 class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar?
-    @IBOutlet weak var password: UITextField?
+    @IBOutlet weak var password: BCSecureTextField?
+    @IBOutlet var continueButton: UIButton!
+
+    @IBOutlet var descriptionLabel: UILabel!
+    
     var topBar: UIView?
     var closeButton: UIButton?
     
@@ -38,7 +42,15 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         headerLabel.textAlignment = .center;
         headerLabel.adjustsFontSizeToFitWidth = true;
         headerLabel.text = NSLocalizedString("Second Password Required", comment: "");
+        headerLabel.center = CGPoint(x: topBar!.center.x, y: headerLabel.center.y);
         topBar!.addSubview(headerLabel);
+        
+        descriptionLabel.center = CGPoint(x: view.center.x, y: descriptionLabel.center.y);
+        
+        password!.center = CGPoint(x: view.center.x, y: password!.frame.origin.y)
+        password!.setupOnePixelLine()
+        
+        continueButton!.center = CGPoint(x: view.center.x, y: continueButton!.frame.origin.y)
         
         closeButton = UIButton(type: UIButtonType.custom)
         closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
