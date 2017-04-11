@@ -171,7 +171,9 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         [self.delegate fetchExchangeAccount];
     }
     
-    [self runScript:@"teardown()"];
+    if (self.isReady) {
+        [self runScript:@"teardown()"];
+    }
     
     self.queuedScript = nil;
     self.didInitiateTrade = NO;
