@@ -140,6 +140,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         self.isReady = YES;
         if (self.queuedScript != nil) {
             [self runScript:self.queuedScript];
+            self.queuedScript = nil;
         }
     }
 
@@ -172,6 +173,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
     
     [self runScript:@"teardown()"];
     
+    self.queuedScript = nil;
     self.didInitiateTrade = NO;
     self.isReady = NO;
 }
