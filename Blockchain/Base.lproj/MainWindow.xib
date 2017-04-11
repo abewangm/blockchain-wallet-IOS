@@ -94,7 +94,7 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="361">
                     <rect key="frame" x="40" y="34" width="255" height="54"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <string key="text">Login to your Blockchain Wallet via your PC or Mac at
 http://blockchain.info/wallet</string>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
