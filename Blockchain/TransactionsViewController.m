@@ -535,6 +535,8 @@ int lastNumberTransactions = INT_MAX;
     [super viewWillAppear:animated];
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    balanceBigButton.center = CGPointMake(headerView.center.x, balanceBigButton.center.y);
 }
 
 - (void)viewDidDisappear:(BOOL)animated

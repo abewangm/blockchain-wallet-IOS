@@ -86,12 +86,15 @@ BOOL displayingLocalSymbolSend;
     [self adjustWidthOfView:fundsAvailableButton];
     
     CGFloat confirmPaymentViewFiatLabelOffset = 16;
-    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatAmountLabel];
-    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatFeeLabel];
-    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatTotalLabel];
-    [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:feeInformationButton];
-
-    [self recenterXPositionOfView:self.confirmPaymentView.arrowImageView];
+    
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatAmountLabel];
+        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatFeeLabel];
+        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatTotalLabel];
+        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:feeInformationButton];
+        
+        [self recenterXPositionOfView:self.confirmPaymentView.arrowImageView];
+    }
 
     sendProgressModalText.text = nil;
     
