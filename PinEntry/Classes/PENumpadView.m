@@ -38,21 +38,34 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 + (void)initialize
 {
 	if(Buttons[0].size.height == 0) {
-		Buttons[0]  = CGRectMake(0, 1, 105, 53);
-		Buttons[1]  = CGRectMake(106, 1, 108, 53);
-		Buttons[2]  = CGRectMake(215, 1, 105, 53);
+        
+        CGFloat buttonHeight = 53;
+        CGFloat edgeButtonWidth = 105;
+        CGFloat centerButtonWidth = 108;
+        
+        if (IS_USING_6_OR_7_SCREEN_SIZE) {
+            edgeButtonWidth = 124;
+            centerButtonWidth = 125;
+        } else if (IS_USING_6_OR_7_PLUS_SCREEN_SIZE) {
+            edgeButtonWidth = 137;
+            centerButtonWidth = 138;
+        }
+        
+		Buttons[0]  = CGRectMake(0, 1, edgeButtonWidth, buttonHeight);
+		Buttons[1]  = CGRectMake(edgeButtonWidth + 1, 1, centerButtonWidth, buttonHeight);
+		Buttons[2]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 1, edgeButtonWidth, buttonHeight);
 		
-		Buttons[3]  = CGRectMake(0, 55, 105, 53);
-		Buttons[4]  = CGRectMake(106, 55, 108, 53);
-		Buttons[5]  = CGRectMake(215, 55, 105, 53);
+		Buttons[3]  = CGRectMake(0, 55, edgeButtonWidth, buttonHeight);
+		Buttons[4]  = CGRectMake(edgeButtonWidth + 1, 55, centerButtonWidth, buttonHeight);
+		Buttons[5]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 55, edgeButtonWidth, buttonHeight);
 		
-		Buttons[6]  = CGRectMake(0, 109, 105, 53);
-		Buttons[7]  = CGRectMake(106, 109, 108, 53);
-		Buttons[8]  = CGRectMake(215, 109, 105, 53);
+		Buttons[6]  = CGRectMake(0, 109, edgeButtonWidth, 53);
+		Buttons[7]  = CGRectMake(edgeButtonWidth + 1, 109, centerButtonWidth, 53);
+		Buttons[8]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 109, edgeButtonWidth, buttonHeight);
 		
-		Buttons[9]  = CGRectMake(0, 163, 105, 53);
-		Buttons[10] = CGRectMake(106, 163, 108, 53);
-		Buttons[11] = CGRectMake(215, 163, 105, 53);
+		Buttons[9]  = CGRectMake(0, 163, edgeButtonWidth, 53);
+		Buttons[10] = CGRectMake(edgeButtonWidth + 1, 163, centerButtonWidth, 53);
+		Buttons[11] = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 163, edgeButtonWidth, buttonHeight);
 	};
 }
 
