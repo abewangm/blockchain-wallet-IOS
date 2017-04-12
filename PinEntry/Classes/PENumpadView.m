@@ -44,28 +44,34 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
         CGFloat centerButtonWidth = 108;
         
         if (IS_USING_6_OR_7_SCREEN_SIZE) {
+            buttonHeight = 62;
             edgeButtonWidth = 124;
             centerButtonWidth = 125;
         } else if (IS_USING_6_OR_7_PLUS_SCREEN_SIZE) {
+            buttonHeight = 69;
             edgeButtonWidth = 137;
             centerButtonWidth = 138;
         }
         
-		Buttons[0]  = CGRectMake(0, 1, edgeButtonWidth, buttonHeight);
-		Buttons[1]  = CGRectMake(edgeButtonWidth + 1, 1, centerButtonWidth, buttonHeight);
-		Buttons[2]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 1, edgeButtonWidth, buttonHeight);
+        CGFloat rowOneYOrigin = 1;
+		Buttons[0]  = CGRectMake(0, rowOneYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[1]  = CGRectMake(edgeButtonWidth + 1, rowOneYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[2]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowOneYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[3]  = CGRectMake(0, 55, edgeButtonWidth, buttonHeight);
-		Buttons[4]  = CGRectMake(edgeButtonWidth + 1, 55, centerButtonWidth, buttonHeight);
-		Buttons[5]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 55, edgeButtonWidth, buttonHeight);
+        CGFloat rowTwoYOrigin = buttonHeight + 2;
+		Buttons[3]  = CGRectMake(0, rowTwoYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[4]  = CGRectMake(edgeButtonWidth + 1, rowTwoYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[5]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowTwoYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[6]  = CGRectMake(0, 109, edgeButtonWidth, 53);
-		Buttons[7]  = CGRectMake(edgeButtonWidth + 1, 109, centerButtonWidth, 53);
-		Buttons[8]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 109, edgeButtonWidth, buttonHeight);
+        CGFloat rowThreeYOrigin = buttonHeight*2 + 3;
+		Buttons[6]  = CGRectMake(0, rowThreeYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[7]  = CGRectMake(edgeButtonWidth + 1, rowThreeYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[8]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowThreeYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[9]  = CGRectMake(0, 163, edgeButtonWidth, 53);
-		Buttons[10] = CGRectMake(edgeButtonWidth + 1, 163, centerButtonWidth, 53);
-		Buttons[11] = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, 163, edgeButtonWidth, buttonHeight);
+        CGFloat rowFourYOrigin = buttonHeight*3 + 4;
+		Buttons[9]  = CGRectMake(0, rowFourYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[10] = CGRectMake(edgeButtonWidth + 1, rowFourYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[11] = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowFourYOrigin, edgeButtonWidth, buttonHeight);
 	};
 }
 
@@ -73,7 +79,7 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 {
     self.isEnabled = TRUE;
     
-	return [self initWithFrame:CGRectMake(0, 460-216, 320, 216)];
+	return [self initWithFrame:self.bounds];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -89,6 +95,7 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	if( (self = [super initWithCoder:aDecoder]) ) {
+        
         self.isEnabled = TRUE;
 
 		activeClip = -1;
@@ -99,11 +106,11 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(WINDOW_WIDTH, 216)] drawAtPoint:CGPointMake(0, 0)] ;
+    [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:self.bounds.size] drawAtPoint:CGPointMake(0, 0)] ;
     
     if(activeClip >= 0) {
         [[UIBezierPath bezierPathWithRect:Buttons[activeClip]] addClip];
-        [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(WINDOW_WIDTH, 216)] drawAtPoint:CGPointMake(0, 0)] ;
+        [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:self.bounds.size] drawAtPoint:CGPointMake(0, 0)] ;
     }
 }
 
