@@ -25,6 +25,8 @@
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
 @property (nonatomic) UIButton *skipAllButton;
+@property (nonatomic) UILabel *noTransactionsTitle;
+@property (nonatomic) UILabel *noTransactionsDescription;
 @property (nonatomic) UIButton *getBitcoinButton;
 @property (nonatomic) CGRect originalHeaderFrame;
 @property (nonatomic) UIScrollView *cardsScrollView;
@@ -609,6 +611,7 @@ int lastNumberTransactions = INT_MAX;
     CGFloat noTransactionsViewCenterY = (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height;
     noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsViewCenterY);
     [self.noTransactionsView addSubview:noTransactionsTitle];
+    self.noTransactionsTitle = noTransactionsTitle;
     
     // Description label Y origin will be 8 points under title label
     UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -625,6 +628,7 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:noTransactionsDescription];
     noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
     noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
+    self.noTransactionsDescription = noTransactionsDescription;
     
     // Get bitcoin button Y origin will be 16 points under description label
     self.getBitcoinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16, 130, 30)];
@@ -639,12 +643,7 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
-        
-        // Reposition description label Y to center of screen, and reposition title and button Y origins around it
-        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
-        noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
-        self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16 + noTransactionsDescription.frame.size.height/2);
-        self.getBitcoinButton.hidden = NO;
+        [self centerNoTransactionSubviews];
     } else {
         self.getBitcoinButton.hidden = YES;
     }
@@ -894,9 +893,7 @@ int lastNumberTransactions = INT_MAX;
 
         [self resetHeaderFrame];
         
-        for (UIView *subview in self.noTransactionsView.subviews) {
-            subview.frame = CGRectOffset(subview.frame, 0, self.noTransactionsView.frame.size.height/2 - 162);
-        }
+        [self centerNoTransactionSubviews];
         
         self.getBitcoinButton.hidden = NO;
         self.getBitcoinButton.alpha = 1;
@@ -906,6 +903,15 @@ int lastNumberTransactions = INT_MAX;
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self.tableView reloadData];
+}
+
+- (void)centerNoTransactionSubviews
+{
+    // Reposition description label Y to center of screen, and reposition title and button Y origins around it
+    self.noTransactionsDescription.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
+    self.noTransactionsTitle.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsDescription.frame.origin.y - self.noTransactionsTitle.frame.size.height - 8 + self.noTransactionsTitle.frame.size.height/2);
+    self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, self.noTransactionsDescription.frame.origin.y + self.noTransactionsDescription.frame.size.height + 16 + self.noTransactionsDescription.frame.size.height/2);
+    self.getBitcoinButton.hidden = NO;
 }
 
 - (void)resetHeaderFrame
