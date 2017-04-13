@@ -1976,15 +1976,8 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
 MyWalletPhone.getWebViewLoginData = function () {
   var wallet = MyWallet.wallet
   var magicHash = wallet.external._metadata._magicHash
-  var walletJson = wallet.toJSON()
-
-  if (!wallet.isDoubleEncrypted) {
-    var masterHDNode = wallet.hdwallet.getMasterHDNode()
-    walletJson.metadataHDNode = Metadata.deriveMetadataNode(masterHDNode).toBase58()
-  }
-
   return {
-    walletJson: JSON.stringify(walletJson),
+    walletJson: JSON.stringify(wallet.toJSON()),
     externalJson: JSON.stringify(wallet.external.toJSON()),
     magicHash: magicHash ? magicHash.toString('hex') : null
   }
