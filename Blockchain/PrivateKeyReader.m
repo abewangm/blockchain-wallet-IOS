@@ -47,6 +47,7 @@ BOOL isReadingQRCode;
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
     headerLabel.text = BC_STRING_SCAN_QR_CODE;
+    headerLabel.center = CGPointMake(topBarView.center.x, headerLabel.center.y);
     [topBarView addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];
