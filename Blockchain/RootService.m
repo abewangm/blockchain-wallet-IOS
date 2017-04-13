@@ -48,6 +48,8 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
+#define USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP @"didFailTouchIDSetup"
+#define USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP @"shouldShowTouchIDSetup"
 
 @implementation RootService
 
@@ -317,6 +319,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
     }
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
@@ -2164,7 +2170,12 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER];
     
     WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
-    setupViewController.emailOnly = YES;
+    
+    BOOL shouldShowTouchID = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    setupViewController.emailOnly = !shouldShowTouchID;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP];
+
     setupViewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self.window.rootViewController presentViewController:setupViewController animated:NO completion:nil];
 }
@@ -3122,6 +3133,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)pinEntryController:(PEPinEntryController *)c changedPin:(NSUInteger)_pin
 {
+    self.lastEnteredPIN = _pin;
+    
     if (![app.wallet isInitialized] || !app.wallet.password) {
         [self didFailPutPin:BC_STRING_CANNOT_SAVE_PIN_CODE_WHILE];
         return;
@@ -3191,11 +3204,16 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *errorString = [app checkForTouchIDAvailablility];
     if (!errorString) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)self.lastEnteredPIN];
+        [KeychainItemWrapper setPINInKeychain:pin];
         return YES;
     } else {
         UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
         [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [_tabViewController.presentedViewController presentViewController:alertTouchIDError animated:YES completion:nil];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP];
+        
         return NO;
     }
 }
