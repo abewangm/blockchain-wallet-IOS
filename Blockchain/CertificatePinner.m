@@ -23,7 +23,13 @@
 }
 
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
-    [self respondToChallenge:challenge completionHandler:completionHandler];
+    
+    if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
+        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX]) {
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    } else {
+        [self respondToChallenge:challenge completionHandler:completionHandler];
+    }
 }
 
 - (void)respondToChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
