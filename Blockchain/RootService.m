@@ -407,6 +407,12 @@ void (^secondPasswordSuccess)(NSString *);
     return YES;
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+}
+
 #pragma mark - Setup
 
 - (void)setupBtcFormatter
