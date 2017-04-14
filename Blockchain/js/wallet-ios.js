@@ -1909,7 +1909,9 @@ MyWalletPhone.getExchangeAccount = function () {
     console.log('Second password enabled, cannot fetch exchange account');
     return Promise.resolve();
   }
-  return MyWallet.wallet.loadExternal().then(function () {
+  var wallet = MyWallet.wallet;
+  var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
+  return p.then(function () {
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
@@ -1926,7 +1928,8 @@ MyWalletPhone.getExchangeAccount = function () {
     } else {
       console.log('Found no sfox or coinify user');
     }
-  });
+                
+  }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
 var tradeToObject = function (trade) {
@@ -1992,7 +1995,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuid = objc_get_whitelisted_guid();
-    if (wallet.guid == whiteListedGuid) userHasAccess = true;console.log(userHasAccess);console.log(wallet.external);console.log(wallet.external.canBuy(wallet.accountInfo, options));
+    if (wallet.guid == whiteListedGuid) userHasAccess = true;console.log(userHasAccess);console.log(JSON.stringify(wallet.external));console.log(wallet.external.canBuy(wallet.accountInfo, options));console.log(JSON.stringify(wallet.accountInfo));
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
