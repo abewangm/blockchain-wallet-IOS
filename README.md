@@ -11,15 +11,11 @@ Prepare SocketRocket:
 
 Prepare the MyWallet Javascript:
 
-    cd Submodules/My-Wallet-V3
-    npm install
-    // Required for JavaScriptCore
-    sed -i '' '1s/^/global.self = global;/' node_modules/whatwg-fetch/fetch.js
-    grunt build
-    // Required for JavaScriptCore
-    grunt build && globalCrypto='var crypto = global.crypto || global.msCrypto' && sed -i '' 's/'"$globalCrypto"'\;/'"$globalCrypto"' || objcCrypto(Buffer)/' dist/my-wallet.js
-    // Required for overriding methods in Objective-C
-    sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js
+    # install and build js files
+    sh scripts/install-js.sh && sh scripts/build-js.sh
+
+    # build js files, watch My-Wallet-V3 for changes
+    sh scripts/watch-js.sh
 
 Prepare OpenSSL:
 
@@ -40,12 +36,12 @@ Once:
     cd Artwork
     npm install
     npm -g install svgexport
- 
-Whenever you change a PSD or SVG file, run: 
-  
+
+Whenever you change a PSD or SVG file, run:
+
     grunt
 
-The reason that the PNG files are not in the repository - even though it would make life easier for other developers - is that the resulting PNG files are not deterministic. This causes git to mark all images as changed every time you run Grunt. 
+The reason that the PNG files are not in the repository - even though it would make life easier for other developers - is that the resulting PNG files are not deterministic. This causes git to mark all images as changed every time you run Grunt.
 
 ## Open the project in Xcode
 
@@ -67,4 +63,3 @@ Artwork & images remain Copyright Blockchain Luxembourg S.A.R.L
 Security issues can be reported to us in the following venues:
 * Email: security@blockchain.info
 * Bug Bounty: https://www.crowdcurity.com/blockchain-info
-

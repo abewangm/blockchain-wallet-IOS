@@ -145,6 +145,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_FROM;
         cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
+        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
         cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : addressesString;
         cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -154,6 +155,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_TO;
         cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
+        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
         cell.detailTextLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
         cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

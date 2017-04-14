@@ -31,6 +31,10 @@
         self.btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:fontSize];
         self.fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:fontSize];
         
+        self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        self.btcLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        self.fiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        
         self.mainLabel.adjustsFontSizeToFitWidth = YES;
         self.btcLabel.adjustsFontSizeToFitWidth = YES;
         self.fiatLabel.adjustsFontSizeToFitWidth = YES;
