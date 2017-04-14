@@ -74,7 +74,7 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
     if (app.certificatePinner) {
-        [app.certificatePinner respondToChallenge:challenge completionHandler:completionHandler];
+        [app.certificatePinner didReceiveChallenge:challenge completionHandler:completionHandler];
     } else {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }

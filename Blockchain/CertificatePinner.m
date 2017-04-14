@@ -22,8 +22,14 @@
     [task resume];
 }
 
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
-    
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
+{
+    DLog(@"Certificate Pinner received challenge with host: %@", challenge.protectionSpace.host);
+    [self didReceiveChallenge:challenge completionHandler:completionHandler];
+}
+
+- (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
+{
     if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
         [challenge.protectionSpace.host isEqualToString:URL_API_SFOX]) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
