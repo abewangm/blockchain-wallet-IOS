@@ -1995,7 +1995,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuid = objc_get_whitelisted_guid();
-    if (wallet.guid == whiteListedGuid) userHasAccess = true;
+    if (wallet.guid == whiteListedGuid) userHasAccess = true;console.log(userHasAccess);console.log(JSON.stringify(wallet.external));console.log(wallet.external.canBuy(wallet.accountInfo, options));console.log(JSON.stringify(wallet.accountInfo));
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
