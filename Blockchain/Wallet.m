@@ -2031,11 +2031,17 @@
 
 - (void)watchPendingTrades:(BOOL)shouldSync
 {
+    if (shouldSync) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
+    
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPendingTrades(%d)", shouldSync]];
 }
 
 - (void)fetchExchangeAccount
 {
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+
     [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
 }
 
