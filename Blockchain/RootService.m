@@ -1729,7 +1729,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)alertUserOfInvalidPrivateKey
 {
-    [self standardNotifyAutoDismissingController:BC_STRING_INCORRECT_PRIVATE_KEY];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self standardNotifyAutoDismissingController:BC_STRING_INCORRECT_PRIVATE_KEY];
+    });
 }
 
 - (void)sendFromWatchOnlyAddress
