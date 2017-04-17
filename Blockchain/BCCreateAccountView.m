@@ -41,9 +41,9 @@
         
         UIButton *createAccountButton = [UIButton buttonWithType:UIButtonTypeCustom];
         createAccountButton.frame = CGRectMake(0, 0, window.frame.size.width, 46);
-        createAccountButton.backgroundColor = COLOR_BUTTON_GRAY;
+        createAccountButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [createAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-        [createAccountButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [createAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         createAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [createAccountButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
