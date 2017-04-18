@@ -315,6 +315,8 @@ void (^secondPasswordSuccess)(NSString *);
         [self logout];
     }
     
+    [self setupBuyWebView];
+    
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
     if (hasGuidAndSharedKey) {
