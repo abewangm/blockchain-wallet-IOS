@@ -100,6 +100,7 @@
 
     self.scrollView.frame = CGRectMake(0, 480 - scrollViewHeight, WINDOW_WIDTH, scrollViewHeight);
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
     
     self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
     self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];

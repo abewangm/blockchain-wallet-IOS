@@ -11,6 +11,7 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
+#import <SafariServices/SafariServices.h>
 #import "TransactionDetailNavigationController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
@@ -58,7 +59,8 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
     NSURL *reqUrl = navigationAction.request.URL;
 
     if (reqUrl != nil && navigationAction.navigationType == WKNavigationTypeLinkActivated && [[UIApplication sharedApplication] canOpenURL:reqUrl]) {
-        [[UIApplication sharedApplication] openURL:reqUrl];
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:reqUrl];
+        [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
         return decisionHandler(WKNavigationActionPolicyCancel);
     }
 
@@ -67,9 +69,18 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
-    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:navigationAction.request.URL];
+    [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
     
     return nil;
+}
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+    if (app.certificatePinner) {
+        [app.certificatePinner didReceiveChallenge:challenge completionHandler:completionHandler];
+    } else {
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
 }
 
 NSString* loginWithGuidScript(NSString* guid, NSString* sharedKey, NSString* password)
@@ -140,6 +151,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         self.isReady = YES;
         if (self.queuedScript != nil) {
             [self runScript:self.queuedScript];
+            self.queuedScript = nil;
         }
     }
 
@@ -160,7 +172,8 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
     [super viewWillDisappear:animated];
     
     if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]] ||
-        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]]) {
+        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]] ||
+        [self.navigationController.presentedViewController isMemberOfClass:[SFSafariViewController class]]) {
         return;
     }
     
@@ -170,8 +183,11 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         [self.delegate fetchExchangeAccount];
     }
     
-    [self runScript:@"teardown()"];
+    if (self.isReady) {
+        [self runScript:@"teardown()"];
+    }
     
+    self.queuedScript = nil;
     self.didInitiateTrade = NO;
     self.isReady = NO;
 }
