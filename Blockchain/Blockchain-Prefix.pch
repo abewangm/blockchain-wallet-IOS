@@ -265,6 +265,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
 #define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
 
+#define URL_API_COINIFY @"app-api.coinify.com"
+#define URL_API_SFOX @"api.sfox.com"
+
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
 #define SEGUE_IDENTIFIER_ABOUT @"about"
@@ -283,7 +286,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
 #define PRODUCTION_WALLET_SERVER @"https://blockchain.info"
-#define PRODUCTION_WEBSOCKET_SERVER @"wss://blockchain.info/inv"
+#define PRODUCTION_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define PRODUCTION_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define PRODUCTION_API_URL @"https://api.blockchain.info"
 #define PRODUCTION_BUY_WEBVIEW_URL @"https://blockchain.info/wallet/#/intermediate"

@@ -26,6 +26,11 @@
 #import "NSURLRequest+SRWebSocket.h"
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
+#import "PrivateHeaders.h"
+
+#ifndef WHITELISTED_GUID
+#define WHITELISTED_GUID @""
+#endif
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -676,6 +681,10 @@
     };
     
 #pragma mark Buy
+    
+    self.context[@"objc_get_whitelisted_guid"] = ^(JSValue *trade) {
+        return WHITELISTED_GUID;
+    };
     
     self.context[@"objc_show_completed_trade"] = ^(JSValue *trade) {
         [weakSelf show_completed_trade:trade];

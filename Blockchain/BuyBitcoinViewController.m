@@ -72,6 +72,14 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
     return nil;
 }
 
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+    if (app.certificatePinner) {
+        [app.certificatePinner didReceiveChallenge:challenge completionHandler:completionHandler];
+    } else {
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+}
+
 NSString* loginWithGuidScript(NSString* guid, NSString* sharedKey, NSString* password)
 {
     return [NSString stringWithFormat:@"activateMobileBuy('%@','%@','%@')", [guid escapeStringForJS], [sharedKey escapeStringForJS], [password escapeStringForJS]];
@@ -140,6 +148,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         self.isReady = YES;
         if (self.queuedScript != nil) {
             [self runScript:self.queuedScript];
+            self.queuedScript = nil;
         }
     }
 
@@ -170,8 +179,11 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
         [self.delegate fetchExchangeAccount];
     }
     
-    [self runScript:@"teardown()"];
+    if (self.isReady) {
+        [self runScript:@"teardown()"];
+    }
     
+    self.queuedScript = nil;
     self.didInitiateTrade = NO;
     self.isReady = NO;
 }

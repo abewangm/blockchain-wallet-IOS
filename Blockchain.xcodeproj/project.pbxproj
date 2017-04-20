@@ -976,6 +976,7 @@
 		A2AADC071B0B999F0085144B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
 		C70FF55C1E76D5C600AC7F8B /* BuyBitcoinNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinNavigationController.h; sourceTree = "<group>"; };
 		C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyBitcoinNavigationController.m; sourceTree = "<group>"; };
+		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1478,6 +1479,7 @@
 				9FB3637D14B60128004BEA02 /* Blockchain-Info.plist */,
 				9FB3638114B60128004BEA02 /* main.m */,
 				9FB3638314B60128004BEA02 /* Blockchain-Prefix.pch */,
+				C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */,
 				A2599B9D1B0B5FC700C2EA81 /* Blockchain-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
