@@ -324,6 +324,8 @@ void (^secondPasswordSuccess)(NSString *);
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
     }
+
+    [self setupBuyWebView];
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     

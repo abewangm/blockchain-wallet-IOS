@@ -358,4 +358,16 @@ static PEViewController *VerifyController()
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x > self.view.frame.size.width - 1) {
+        if (!self.didScrollToQRCode) {
+            self.didScrollToQRCode = YES;
+            [self reset];
+        }
+    } else {
+        self.didScrollToQRCode = NO;
+    }
+}
+
 @end

@@ -56,6 +56,7 @@
 @property (nonatomic, readwrite) BOOL inSettings;
 @property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic) UIButton *debugButton;
+@property (nonatomic) BOOL didScrollToQRCode;
 
 // Swipe-to-receive
 @property (nonatomic) UIImageView *qrCodeImageView;
