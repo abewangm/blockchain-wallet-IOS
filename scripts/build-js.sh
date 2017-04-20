@@ -5,7 +5,7 @@ echo "Cleaning..."
 rm -rf build dist
 
 echo "Building..."
-grunt build
+npm run build
 
 # Required for JavaScriptCore
 echo "Patching global.crypto..."

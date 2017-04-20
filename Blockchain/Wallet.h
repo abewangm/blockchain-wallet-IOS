@@ -352,7 +352,7 @@
 // Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter;
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction;
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
