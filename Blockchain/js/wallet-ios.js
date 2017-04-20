@@ -1923,6 +1923,9 @@ MyWalletPhone.getExchangeAccount = function () {
   var wallet = MyWallet.wallet;
   var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
   return p.then(function () {
+                
+    objc_loading_stop();
+
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
@@ -1983,7 +1986,9 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
 
     if (shouldSync) {
         console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(function() { watchTrades(error); }, error);
+        MyWallet.getWallet(function() {
+            watchTrades(error);
+        }, error);
     } else {
         console.log('Watching trades');
         watchTrades(error);
