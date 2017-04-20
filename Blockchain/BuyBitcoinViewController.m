@@ -11,7 +11,6 @@
 #import <WebKit/WebKit.h>
 #import "NSString+NSString_EscapeQuotes.h"
 #import "RootService.h"
-#import <SafariServices/SafariServices.h>
 #import "TransactionDetailNavigationController.h"
 
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
@@ -59,8 +58,7 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
     NSURL *reqUrl = navigationAction.request.URL;
 
     if (reqUrl != nil && navigationAction.navigationType == WKNavigationTypeLinkActivated && [[UIApplication sharedApplication] canOpenURL:reqUrl]) {
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:reqUrl];
-        [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+        [[UIApplication sharedApplication] openURL:reqUrl];
         return decisionHandler(WKNavigationActionPolicyCancel);
     }
 
@@ -69,8 +67,7 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
-    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:navigationAction.request.URL];
-    [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+    [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
     
     return nil;
 }
@@ -172,8 +169,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
     [super viewWillDisappear:animated];
     
     if ([self.navigationController.presentedViewController isMemberOfClass:[UIImagePickerController class]] ||
-        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]] ||
-        [self.navigationController.presentedViewController isMemberOfClass:[SFSafariViewController class]]) {
+        [self.navigationController.presentedViewController isMemberOfClass:[TransactionDetailNavigationController class]]) {
         return;
     }
     
