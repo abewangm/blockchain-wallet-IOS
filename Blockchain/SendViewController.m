@@ -82,8 +82,12 @@ BOOL displayingLocalSymbolSend;
     [self adjustXPositionOfView:selectFromButton];
     [self adjustWidthOfView:toField];
     [self adjustXPositionOfView:addressBookButton];
-    [self adjustWidthOfView:fiatAmountField];
     [self adjustWidthOfView:fundsAvailableButton];
+    
+    CGFloat amountFieldWidth = (self.view.frame.size.width - btcLabel.frame.origin.x - btcLabel.frame.size.width - fiatLabel.frame.size.width - 15 - 13 - 8 - 13)/2;
+    btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, amountFieldWidth, btcAmountField.frame.size.height);
+    fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + btcAmountField.frame.size.width + 8, fiatLabel.frame.origin.y, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
+    fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 13, fiatAmountField.frame.origin.y, amountFieldWidth, fiatAmountField.frame.size.height);
     
     CGFloat confirmPaymentViewFiatLabelOffset = 16;
     
