@@ -341,7 +341,7 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
     currentPayment.on('error', function(errorObject) {
                       var errorDictionary = {'message': {'error': errorObject['error']}};
                         objc_on_error_update_fee(errorDictionary);
@@ -1850,10 +1850,19 @@ MyWalletPhone.labelForLegacyAddress = function(key) {
     return label == null ? '' : label;
 }
 
-MyWalletPhone.getNotePlaceholder = function(filter, transactionHash) {
-    if (filter < 0) filter = 'importedOrAll';
+MyWalletPhone.getNotePlaceholder = function(transactionHash) {
+    
     var transaction = MyWallet.wallet.txList.transaction(transactionHash);
-    var label = MyWallet.wallet.getNotePlaceholder(filter, transaction);
+    
+    var getLabel = function(tx) {
+        if (tx.txType === 'received') {
+            if (tx.to.length) {
+                return MyWallet.wallet.labels.getLabel(tx.to[0].accountIndex, tx.to[0].receiveIndex);
+            }
+        }
+    }
+    
+    var label = getLabel(transaction);
     if (label == undefined) return '';
     return label;
 }
@@ -1863,8 +1872,10 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
         console.log('Warning: Getting accounts when wallet has not upgraded!');
         return 0;
     }
+    
+    var receivingAddressesLabels = MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels;
 
-    return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
+    return receivingAddressesLabels ? receivingAddressesLabels.length : 0;
 }
 
 MyWalletPhone.getNetworks = function() {
