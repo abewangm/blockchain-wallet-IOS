@@ -17,6 +17,7 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
+#import "UIView+ChangeFrameAttribute.h"
 #import "TransferAllFundsBuilder.h"
 
 typedef enum {
@@ -75,8 +76,8 @@ BOOL displayingLocalSymbolSend;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
-    [self changeWidth:WINDOW_WIDTH ofView:containerView];
-    [self changeWidth:WINDOW_WIDTH ofView:self.confirmPaymentView];
+    [containerView changeWidth:WINDOW_WIDTH];
+    [self.confirmPaymentView changeWidth:WINDOW_WIDTH];
 
     [self adjustWidthOfView:selectAddressTextField];
     [self adjustXPositionOfView:selectFromButton];
@@ -92,12 +93,12 @@ BOOL displayingLocalSymbolSend;
     CGFloat confirmPaymentViewFiatLabelOffset = 16;
     
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatAmountLabel];
-        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatFeeLabel];
-        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:self.confirmPaymentView.fiatTotalLabel];
-        [self increaseXPosition:confirmPaymentViewFiatLabelOffset ofView:feeInformationButton];
+        [self.confirmPaymentView.fiatAmountLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [self.confirmPaymentView.fiatFeeLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [self.confirmPaymentView.fiatTotalLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [feeInformationButton increaseXPosition:confirmPaymentViewFiatLabelOffset];
         
-        [self recenterXPositionOfView:self.confirmPaymentView.arrowImageView];
+        [self.confirmPaymentView.arrowImageView centerXToSuperView];
     }
 
     sendProgressModalText.text = nil;
@@ -1064,25 +1065,25 @@ BOOL displayingLocalSymbolSend;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
         if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
-            [self changeYPosition:43 ofView:lineBelowFromField];
+            [lineBelowFromField changeYPosition:43];
             
-            [self changeYPosition:52 ofView:toLabel];
-            [self changeYPosition:48 ofView:toField];
-            [self changeYPosition:48 ofView:addressBookButton];
-            [self changeYPosition:81 ofView:lineBelowToField];
+            [toLabel changeYPosition:52];
+            [toField changeYPosition:48];
+            [addressBookButton changeYPosition:48];
+            [lineBelowToField changeYPosition:81];
             
-            [self changeYPosition:88 ofView:bottomContainerView];
-            [self changeYPosition:-1 ofView:btcLabel];
-            [self changeYPosition:-5 ofView:btcAmountField];
-            [self changeYPosition:-1 ofView:fiatLabel];
-            [self changeYPosition:-5 ofView:fiatAmountField];
-            [self changeYPosition:43 ofView:lineBelowAmountFields];
+            [bottomContainerView changeYPosition:88];
+            [btcLabel changeYPosition:-1];
+            [btcAmountField changeYPosition:-5];
+            [fiatLabel changeYPosition:-1];
+            [fiatAmountField changeYPosition:-5];
+            [lineBelowAmountFields changeYPosition:43];
             
-            [self changeYPosition:44 ofView:feeField];
-            [self changeYPosition:47 ofView:feeLabel];
-            [self changeYPosition:71 ofView:lineBelowFeeField];
+            [feeField changeYPosition:44];
+            [feeLabel changeYPosition:47];
+            [lineBelowFeeField changeYPosition:71];
             
-            [self changeYPosition:21 ofView:fundsAvailableButton];
+            [fundsAvailableButton changeYPosition:21];
         }
         
         feeField.hidden = NO;
@@ -1098,25 +1099,25 @@ BOOL displayingLocalSymbolSend;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
         if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
-            [self changeYPosition:47 ofView:lineBelowFromField];
+            [lineBelowFromField changeYPosition:47];
             
-            [self changeYPosition:61 ofView:toLabel];
-            [self changeYPosition:57 ofView:toField];
-            [self changeYPosition:57 ofView:addressBookButton];
-            [self changeYPosition:96 ofView:lineBelowToField];
+            [toLabel changeYPosition:61];
+            [toField changeYPosition:57];
+            [addressBookButton changeYPosition:57];
+            [lineBelowToField changeYPosition:96];
             
-            [self changeYPosition:98 ofView:bottomContainerView];
-            [self changeYPosition:12 ofView:btcLabel];
-            [self changeYPosition:8 ofView:btcAmountField];
-            [self changeYPosition:12 ofView:fiatLabel];
-            [self changeYPosition:8 ofView:fiatAmountField];
-            [self changeYPosition:61 ofView:lineBelowAmountFields];
+            [bottomContainerView changeYPosition:98];
+            [btcLabel changeYPosition:12];
+            [btcAmountField changeYPosition:8];
+            [fiatLabel changeYPosition:12];
+            [fiatAmountField changeYPosition:8];
+            [lineBelowAmountFields changeYPosition:61];
             
-            [self changeYPosition:72 ofView:feeField];
-            [self changeYPosition:75 ofView:feeLabel];
-            [self changeYPosition:109 ofView:lineBelowFeeField];
+            [feeField changeYPosition:72];
+            [feeLabel changeYPosition:75];
+            [lineBelowFeeField changeYPosition:109];
             
-            [self changeYPosition:36 ofView:fundsAvailableButton];
+            [fundsAvailableButton changeYPosition:36];
         }
         
         feeField.hidden = YES;
@@ -1127,36 +1128,16 @@ BOOL displayingLocalSymbolSend;
 
 // TODO: move some of these to a UIView category
 
-- (void)increaseXPosition:(CGFloat)newX ofView:(UIView *)view
-{
-    view.frame = CGRectOffset(view.frame, newX, 0);
-}
-
-- (void)changeYPosition:(CGFloat)newY ofView:(UIView *)view
-{
-    view.frame = CGRectMake(view.frame.origin.x, newY, view.frame.size.width, view.frame.size.height);
-}
-
-- (void)changeWidth:(CGFloat)newWidth ofView:(UIView *)view
-{
-    view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, newWidth, view.frame.size.height);
-}
-
 - (void)adjustWidthOfView:(UIView *)view
 {
     CGFloat newWidth = view.frame.size.width + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
-    [self changeWidth:newWidth ofView:view];
+    [view changeWidth:newWidth];
 }
 
 - (void)adjustXPositionOfView:(UIView *)view
 {
     CGFloat newX = view.frame.origin.x + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
     view.frame = CGRectMake(newX, view.frame.origin.y,  view.frame.size.width, view.frame.size.height);
-}
-
-- (void)recenterXPositionOfView:(UIView *)view
-{
-    view.center = CGPointMake(view.superview.center.x, view.center.y);
 }
 
 - (void)updateSendBalance:(NSNumber *)balance

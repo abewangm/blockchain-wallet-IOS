@@ -208,6 +208,7 @@
 		C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */; };
 		C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C79261B41E8ADF0300C87CED /* BCCardView.m */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
+		C7EEB8451EA95505002F28B9 /* UIView+ChangeFrameAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */; };
 		C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
 		C9BE917C1945D8F600FD516D /* PEPinEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE916A1945D8F600FD516D /* PEPinEntryController.m */; };
@@ -1003,6 +1004,8 @@
 		C79261B41E8ADF0300C87CED /* BCCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCardView.m; sourceTree = "<group>"; };
 		C79EEFC01E898E380087DDCD /* WalletSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletSetupViewController.h; sourceTree = "<group>"; };
 		C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletSetupViewController.m; sourceTree = "<group>"; };
+		C7EEB8431EA95505002F28B9 /* UIView+ChangeFrameAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChangeFrameAttribute.h"; sourceTree = "<group>"; };
+		C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrameAttribute.m"; sourceTree = "<group>"; };
 		C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinViewController.h; sourceTree = "<group>"; };
 		C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyBitcoinViewController.m; sourceTree = "<group>"; };
 		C9BE91671945D8F600FD516D /* PENumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PENumpadView.h; sourceTree = "<group>"; };
@@ -1326,6 +1329,8 @@
 		9F1831F315176F2200FB3D52 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C7EEB8431EA95505002F28B9 /* UIView+ChangeFrameAttribute.h */,
+				C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */,
 				23DF4EFA1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.h */,
 				23DF4EFB1DBA586C0059CF92 /* KeychainItemWrapper+SwipeAddresses.m */,
 				23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */,
@@ -2031,6 +2036,7 @@
 				676250821A2DDF360052B63F /* AccountTableCell.m in Sources */,
 				67EE1DCF19E3325900DBBFC9 /* UIViewController+ECSlidingViewController.m in Sources */,
 				C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */,
+				C7EEB8451EA95505002F28B9 /* UIView+ChangeFrameAttribute.m in Sources */,
 				84FC02FD19815F1B00B97D5B /* crypto_scrypt-nosse.c in Sources */,
 				2322DCB71D771831000E5AC1 /* SRProxyConnect.m in Sources */,
 				FACF69521A57164B00590E04 /* MerchantMapDetailViewController.m in Sources */,
