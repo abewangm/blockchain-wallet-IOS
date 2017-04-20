@@ -9,6 +9,9 @@
 #import "PrivateKeyReader.h"
 #import "RootService.h"
 
+@interface PrivateKeyReader()
+@property (nonatomic, copy) void (^onClose)();
+@end
 @implementation PrivateKeyReader
 
 AVCaptureSession *captureSession;
@@ -109,7 +112,12 @@ BOOL isReadingQRCode;
     
     [videoPreviewLayer removeFromSuperlayer];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.onClose) {
+            self.onClose();
+            self.onClose = nil;
+        }
+    }];
     
     if (self.error) {
         self.error(nil);
@@ -148,10 +156,14 @@ BOOL isReadingQRCode;
                         if ([app.wallet isBitcoinAddress:scannedString]) {
                             [app askUserToAddWatchOnlyAddress:scannedString success:self.success];
                         } else {
-                            [app standardNotifyAutoDismissingController:BC_STRING_UNKNOWN_KEY_FORMAT];
+                            self.onClose = ^(){
+                                [app standardNotifyAutoDismissingController:BC_STRING_UNKNOWN_KEY_FORMAT];
+                            };
                         }
                     } else {
-                        [app standardNotifyAutoDismissingController:BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT];
+                        self.onClose = ^(){
+                            [app standardNotifyAutoDismissingController:BC_STRING_UNSUPPORTED_PRIVATE_KEY_FORMAT];
+                        };
                     }
                 }
             });

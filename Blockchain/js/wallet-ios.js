@@ -1923,6 +1923,9 @@ MyWalletPhone.getExchangeAccount = function () {
   var wallet = MyWallet.wallet;
   var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
   return p.then(function () {
+                
+    objc_loading_stop();
+
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
@@ -1983,7 +1986,9 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
 
     if (shouldSync) {
         console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(function() { watchTrades(error); }, error);
+        MyWallet.getWallet(function() {
+            watchTrades(error);
+        }, error);
     } else {
         console.log('Watching trades');
         watchTrades(error);
@@ -2006,7 +2011,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuid = objc_get_whitelisted_guid();
-    if (wallet.guid == whiteListedGuid) userHasAccess = true;console.log(userHasAccess);console.log(JSON.stringify(wallet.external));console.log(wallet.external.canBuy(wallet.accountInfo, options));console.log(JSON.stringify(wallet.accountInfo));
+    if (wallet.guid == whiteListedGuid) userHasAccess = true;
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
