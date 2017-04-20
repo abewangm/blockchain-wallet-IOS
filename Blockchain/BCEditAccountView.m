@@ -41,9 +41,9 @@
         
         UIButton *editAccountButton = [UIButton buttonWithType:UIButtonTypeCustom];
         editAccountButton.frame = CGRectMake(0, 0, window.frame.size.width, 46);
-        editAccountButton.backgroundColor = COLOR_BUTTON_GRAY;
+        editAccountButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [editAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-        [editAccountButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [editAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         editAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [editAccountButton addTarget:self action:@selector(editAccountClicked:) forControlEvents:UIControlEventTouchUpInside];

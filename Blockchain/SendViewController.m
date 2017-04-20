@@ -1642,7 +1642,11 @@ BOOL displayingLocalSymbolSend;
     UIView *view = [[UIView alloc] initWithFrame:frame];
     [view.layer addSublayer:videoPreviewLayer];
     
-    [app showModalWithContent:view closeType:ModalCloseTypeClose headerText:BC_STRING_SCAN_QR_CODE onDismiss:nil onResume:nil];
+    [app showModalWithContent:view closeType:ModalCloseTypeClose headerText:BC_STRING_SCAN_QR_CODE onDismiss:^{
+        [captureSession stopRunning];
+        captureSession = nil;
+        [videoPreviewLayer removeFromSuperlayer];
+    } onResume:nil];
     
     [captureSession startRunning];
     
@@ -1651,11 +1655,6 @@ BOOL displayingLocalSymbolSend;
 
 - (void)stopReadingQRCode
 {
-    [captureSession stopRunning];
-    captureSession = nil;
-    
-    [videoPreviewLayer removeFromSuperlayer];
-    
     [app closeModalWithTransition:kCATransitionFade];
     
     // Go to the send scren if we are not already on it
@@ -1718,7 +1717,9 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)QRCodebuttonClicked:(id)sender
 {
-    [self startReadingQRCode];
+    if (!captureSession) {
+        [self startReadingQRCode];
+    }
 }
 
 - (IBAction)closeKeyboardClicked:(id)sender

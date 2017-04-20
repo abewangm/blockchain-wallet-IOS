@@ -40,9 +40,9 @@
         
         UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
         saveButton.frame = CGRectMake(0, 0, self.frame.size.width, 46);
-        saveButton.backgroundColor = COLOR_BUTTON_GRAY;
+        saveButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-        [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
         [saveButton addTarget:self action:@selector(labelSaveClicked) forControlEvents:UIControlEventTouchUpInside];
