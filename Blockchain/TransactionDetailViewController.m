@@ -112,7 +112,7 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (NSString *)getNotePlaceholder
 {
-    NSString *label = [app.wallet getNotePlaceholderForTransaction:self.transaction];
+    NSString *label = [app.wallet getNotePlaceholderForTransaction:self.transaction filter:app.filterIndex];
     return label.length > 0 ? label : nil;
 }
 
