@@ -79,11 +79,11 @@ BOOL displayingLocalSymbolSend;
     [containerView changeWidth:WINDOW_WIDTH];
     [self.confirmPaymentView changeWidth:WINDOW_WIDTH];
 
-    [selectAddressTextField changeWidth:self.view.frame.size.width - fromLabel.frame.size.width - 15 - 13 - selectFromButton.frame.size.width - 8];
-    [selectFromButton changeXPosition:self.view.frame.size.width - selectFromButton.frame.size.width - 8];
+    [selectAddressTextField changeWidth:self.view.frame.size.width - fromLabel.frame.size.width - 15 - 13 - selectFromButton.frame.size.width];
+    [selectFromButton changeXPosition:self.view.frame.size.width - selectFromButton.frame.size.width];
     
-    [toField changeWidth:self.view.frame.size.width - toLabel.frame.size.width - 15 - 13 - addressBookButton.frame.size.width - 8];
-    [addressBookButton changeXPosition:self.view.frame.size.width - addressBookButton.frame.size.width - 8];
+    [toField changeWidth:self.view.frame.size.width - toLabel.frame.size.width - 15 - 13 - addressBookButton.frame.size.width];
+    [addressBookButton changeXPosition:self.view.frame.size.width - addressBookButton.frame.size.width];
     
     CGFloat amountFieldWidth = (self.view.frame.size.width - btcLabel.frame.origin.x - btcLabel.frame.size.width - fiatLabel.frame.size.width - 15 - 13 - 8 - 13)/2;
     btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, amountFieldWidth, btcAmountField.frame.size.height);
