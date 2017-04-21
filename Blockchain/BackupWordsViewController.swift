@@ -33,6 +33,8 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
 
         setupInstructionLabel()
         
+        setupWordsProgressLabel()
+        
         wallet!.addObserver(self, forKeyPath: "recoveryPhrase", options: .new, context: nil)
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -79,10 +81,15 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
     
     func setupInstructionLabel() {
+        summaryLabel?.font = UIFont(name: "GillSans", size: Constants.FontSizes.MediumLarge)
         summaryLabel?.text = NSLocalizedString("Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", comment:"")
         summaryLabel!.center = CGPoint(x: view.center.x, y: summaryLabel!.center.y)
-        wordsProgressLabel!.center = CGPoint(x: view.center.x, y: wordsProgressLabel!.center.y)
-
+    }
+    
+    func setupWordsProgressLabel() {
+        wordsProgressLabel?.font = UIFont(name: "Montserrat-Regular", size: Constants.FontSizes.SmallMedium)
+        wordsProgressLabel?.center = CGPoint(x: view.center.x, y: wordsProgressLabel!.center.y)
+        wordsProgressLabel?.adjustsFontSizeToFitWidth = true
     }
     
     func updatePreviousWordButton() {

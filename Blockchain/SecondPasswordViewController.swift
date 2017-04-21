@@ -37,7 +37,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(topBar!);
         
         let headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
-        headerLabel.font = UIFont(name:"Montserrat-Regular", size: 13.0)
+        headerLabel.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Small)
         headerLabel.textColor = UIColor.white
         headerLabel.textAlignment = .center;
         headerLabel.adjustsFontSizeToFitWidth = true;

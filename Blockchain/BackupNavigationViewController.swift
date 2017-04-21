@@ -50,7 +50,7 @@ import UIKit
         self.view.addSubview(topBar!);
         
         headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
-        headerLabel?.font = UIFont(name:"Montserrat-Regular", size: 20)
+        headerLabel?.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.ExtraExtraLarge)
         headerLabel?.textColor = UIColor.white
         headerLabel?.textAlignment = .center;
         headerLabel?.adjustsFontSizeToFitWidth = true;
@@ -61,7 +61,7 @@ import UIKit
         closeButton = UIButton(type: UIButtonType.custom)
         closeButton!.contentHorizontalAlignment = .left;
         closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-        closeButton!.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        closeButton!.titleLabel?.font = UIFont.systemFont(ofSize: Constants.FontSizes.Medium)
         closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), for: .highlighted);
         closeButton!.addTarget(self, action:#selector(BackupNavigationViewController.backButtonClicked), for: UIControlEvents.touchUpInside);
         topBar!.addSubview(closeButton!);
@@ -78,7 +78,7 @@ import UIKit
         textWithSpinnerView.center = busyView!.center;
         
         let busyLabel = UILabel(frame:CGRect(x: 0, y: 0, width: Constants.Measurements.BusyViewLabelWidth, height: Constants.Measurements.BusyViewLabelHeight))
-        busyLabel.font = UIFont(name:"Montserrat-Regular", size: Constants.Measurements.BusyViewLabelFontSystemSize);
+        busyLabel.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.SmallMedium);
         busyLabel.alpha = Constants.Measurements.BusyViewLabelAlpha;
         busyLabel.adjustsFontSizeToFitWidth = true;
         busyLabel.textAlignment = .center

@@ -19,6 +19,12 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     var app : RootService?
     var transferredAll = false;
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        summaryLabel.font = UIFont(name: "Montserrat-SemiBold", size: Constants.FontSizes.ExtraExtraLarge)
+        explanation.font = UIFont(name: "GillSans", size: Constants.FontSizes.MediumLarge)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
