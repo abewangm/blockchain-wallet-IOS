@@ -359,7 +359,7 @@ int accountEntries = 0;
         tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         tickerLabel.textColor = [UIColor whiteColor];
         tickerLabel.center = CGPointMake(tickerLabel.center.x, view.center.y);
-        tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:24];
+        tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TICKER];
         [view addSubview:tickerLabel];
         
         return view;

@@ -58,7 +58,7 @@
     [touchIDView addSubview:bannerView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, touchIDView.frame.size.width - 50, 50)];
-    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:20];
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
     titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
     titleLabel.text = BC_STRING_TOUCH_ID;
     titleLabel.center = CGPointMake(touchIDView.center.x, titleLabel.center.y);
@@ -69,7 +69,7 @@
     body.selectable = NO;
     body.editable = NO;
     body.scrollEnabled = NO;
-    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     body.textColor = COLOR_TEXT_DARK_GRAY;
     body.text = BC_STRING_WELCOME_TOUCH_ID_INSTRUCTIONS;
     body.center = CGPointMake(touchIDView.center.x, body.center.y);
@@ -98,7 +98,7 @@
     [emailView addSubview:bannerView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, bannerView.frame.size.height + 32, emailView.frame.size.width - 50, 50)];
-    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:20];
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
     titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
     titleLabel.text = BC_STRING_REMINDER_CHECK_EMAIL_TITLE;
     titleLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, titleLabel.center.y);
@@ -106,7 +106,7 @@
     [emailView addSubview:titleLabel];
     
     self.emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, emailView.frame.size.width - 50, 30)];
-    self.emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:14];
+    self.emailLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL_MEDIUM];
     self.emailLabel.text = [self.delegate getEmail];
     self.emailLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.emailLabel.center = CGPointMake(emailView.center.x - self.view.frame.size.width, self.emailLabel.center.y);
@@ -117,7 +117,7 @@
     body.selectable = NO;
     body.editable = NO;
     body.scrollEnabled = NO;
-    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    body.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     body.textColor = COLOR_TEXT_DARK_GRAY;
     body.text = BC_STRING_REMINDER_CHECK_EMAIL_MESSAGE;
     body.center = CGPointMake(emailView.center.x - self.view.frame.size.width, body.center.y);
@@ -142,7 +142,7 @@
 {
     UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     actionButton.frame = CGRectMake(0, self.view.frame.size.height - 60 - 30 - 16, self.view.frame.size.width - 100, 40);
-    actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     actionButton.center = CGPointMake(self.view.frame.size.width/2, actionButton.center.y);
     actionButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -152,7 +152,7 @@
 - (UIButton *)setupDoneButton
 {
     UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width - 100, 40)];
-    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     doneButton.center = CGPointMake(self.view.frame.size.width/2, doneButton.center.y);
     [doneButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
     [doneButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];

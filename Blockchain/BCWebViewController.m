@@ -68,7 +68,7 @@ NSMutableArray *visitedPages;
     backButton.frame = FRAME_BACK_BUTTON;
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
-    [backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [backButton.titleLabel setFont:[UIFont systemFontOfSize:FONT_SIZE_MEDIUM]];
     [backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

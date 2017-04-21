@@ -24,7 +24,7 @@
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
         labelLabel.text = BC_STRING_NAME;
         labelLabel.textColor = [UIColor darkGrayColor];
-        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         [self addSubview:labelLabel];
         
         _labelTextField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
@@ -44,7 +44,7 @@
         createAccountButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [createAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
         [createAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        createAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        createAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         
         [createAccountButton addTarget:self action:@selector(createAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         

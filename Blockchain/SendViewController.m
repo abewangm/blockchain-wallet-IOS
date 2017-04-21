@@ -17,6 +17,7 @@
 #import "LocalizationConstants.h"
 #import "TransactionsViewController.h"
 #import "PrivateKeyReader.h"
+#import "UIView+ChangeFrameAttribute.h"
 #import "TransferAllFundsBuilder.h"
 
 typedef enum {
@@ -75,6 +76,31 @@ BOOL displayingLocalSymbolSend;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
+    [containerView changeWidth:WINDOW_WIDTH];
+    [self.confirmPaymentView changeWidth:WINDOW_WIDTH];
+
+    [selectAddressTextField changeWidth:self.view.frame.size.width - fromLabel.frame.size.width - 15 - 13 - selectFromButton.frame.size.width];
+    [selectFromButton changeXPosition:self.view.frame.size.width - selectFromButton.frame.size.width];
+    
+    [toField changeWidth:self.view.frame.size.width - toLabel.frame.size.width - 15 - 13 - addressBookButton.frame.size.width];
+    [addressBookButton changeXPosition:self.view.frame.size.width - addressBookButton.frame.size.width];
+    
+    CGFloat amountFieldWidth = (self.view.frame.size.width - btcLabel.frame.origin.x - btcLabel.frame.size.width - fiatLabel.frame.size.width - 15 - 13 - 8 - 13)/2;
+    btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, amountFieldWidth, btcAmountField.frame.size.height);
+    fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + btcAmountField.frame.size.width + 8, fiatLabel.frame.origin.y, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
+    fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 13, fiatAmountField.frame.origin.y, amountFieldWidth, fiatAmountField.frame.size.height);
+    
+    CGFloat confirmPaymentViewFiatLabelOffset = 16;
+    
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+        [self.confirmPaymentView.fiatAmountLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [self.confirmPaymentView.fiatFeeLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [self.confirmPaymentView.fiatTotalLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        [feeInformationButton increaseXPosition:confirmPaymentViewFiatLabelOffset];
+        
+        [self.confirmPaymentView.arrowImageView centerXToSuperView];
+    }
+
     sendProgressModalText.text = nil;
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_KEY_LOADING_TEXT object:nil queue:nil usingBlock:^(NSNotification * notification) {
@@ -100,7 +126,19 @@ BOOL displayingLocalSymbolSend;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
+    fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    selectAddressTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    feeLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    feeField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+
     self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
@@ -1039,25 +1077,25 @@ BOOL displayingLocalSymbolSend;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
         if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
-            [self changeYPosition:43 ofView:lineBelowFromField];
+            [lineBelowFromField changeYPosition:43];
             
-            [self changeYPosition:52 ofView:toLabel];
-            [self changeYPosition:48 ofView:toField];
-            [self changeYPosition:48 ofView:addressBookButton];
-            [self changeYPosition:81 ofView:lineBelowToField];
+            [toLabel changeYPosition:52];
+            [toField changeYPosition:48];
+            [addressBookButton changeYPosition:48];
+            [lineBelowToField changeYPosition:81];
             
-            [self changeYPosition:88 ofView:bottomContainerView];
-            [self changeYPosition:-1 ofView:btcLabel];
-            [self changeYPosition:-5 ofView:btcAmountField];
-            [self changeYPosition:-1 ofView:fiatLabel];
-            [self changeYPosition:-5 ofView:fiatAmountField];
-            [self changeYPosition:43 ofView:lineBelowAmountFields];
+            [bottomContainerView changeYPosition:88];
+            [btcLabel changeYPosition:-1];
+            [btcAmountField changeYPosition:-5];
+            [fiatLabel changeYPosition:-1];
+            [fiatAmountField changeYPosition:-5];
+            [lineBelowAmountFields changeYPosition:43];
             
-            [self changeYPosition:44 ofView:feeField];
-            [self changeYPosition:47 ofView:feeLabel];
-            [self changeYPosition:71 ofView:lineBelowFeeField];
+            [feeField changeYPosition:44];
+            [feeLabel changeYPosition:47];
+            [lineBelowFeeField changeYPosition:71];
             
-            [self changeYPosition:21 ofView:fundsAvailableButton];
+            [fundsAvailableButton changeYPosition:21];
         }
         
         feeField.hidden = NO;
@@ -1073,36 +1111,31 @@ BOOL displayingLocalSymbolSend;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
         if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
-            [self changeYPosition:47 ofView:lineBelowFromField];
+            [lineBelowFromField changeYPosition:47];
             
-            [self changeYPosition:61 ofView:toLabel];
-            [self changeYPosition:57 ofView:toField];
-            [self changeYPosition:57 ofView:addressBookButton];
-            [self changeYPosition:96 ofView:lineBelowToField];
+            [toLabel changeYPosition:61];
+            [toField changeYPosition:57];
+            [addressBookButton changeYPosition:57];
+            [lineBelowToField changeYPosition:96];
             
-            [self changeYPosition:98 ofView:bottomContainerView];
-            [self changeYPosition:12 ofView:btcLabel];
-            [self changeYPosition:8 ofView:btcAmountField];
-            [self changeYPosition:12 ofView:fiatLabel];
-            [self changeYPosition:8 ofView:fiatAmountField];
-            [self changeYPosition:61 ofView:lineBelowAmountFields];
+            [bottomContainerView changeYPosition:98];
+            [btcLabel changeYPosition:12];
+            [btcAmountField changeYPosition:8];
+            [fiatLabel changeYPosition:12];
+            [fiatAmountField changeYPosition:8];
+            [lineBelowAmountFields changeYPosition:61];
             
-            [self changeYPosition:72 ofView:feeField];
-            [self changeYPosition:75 ofView:feeLabel];
-            [self changeYPosition:109 ofView:lineBelowFeeField];
+            [feeField changeYPosition:72];
+            [feeLabel changeYPosition:75];
+            [lineBelowFeeField changeYPosition:109];
             
-            [self changeYPosition:36 ofView:fundsAvailableButton];
+            [fundsAvailableButton changeYPosition:36];
         }
         
         feeField.hidden = YES;
         feeLabel.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
-}
-
-- (void)changeYPosition:(CGFloat)newY ofView:(UIView *)view
-{
-    view.frame = CGRectMake(view.frame.origin.x, newY, view.frame.size.width, view.frame.size.height);
 }
 
 - (void)updateSendBalance:(NSNumber *)balance
