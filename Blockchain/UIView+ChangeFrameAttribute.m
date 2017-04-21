@@ -10,9 +10,14 @@
 
 @implementation UIView (ChangeFrameAttribute)
 
-- (void)increaseXPosition:(CGFloat)newX
+- (void)increaseXPosition:(CGFloat)XOffset
 {
-    self.frame = CGRectOffset(self.frame, newX, 0);
+    self.frame = CGRectOffset(self.frame, XOffset, 0);
+}
+
+- (void)changeXPosition:(CGFloat)newX
+{
+    self.frame = CGRectMake(newX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
 
 - (void)changeYPosition:(CGFloat)newY

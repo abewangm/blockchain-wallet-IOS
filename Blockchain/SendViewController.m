@@ -79,11 +79,11 @@ BOOL displayingLocalSymbolSend;
     [containerView changeWidth:WINDOW_WIDTH];
     [self.confirmPaymentView changeWidth:WINDOW_WIDTH];
 
-    [self adjustWidthOfView:selectAddressTextField];
-    [self adjustXPositionOfView:selectFromButton];
-    [self adjustWidthOfView:toField];
-    [self adjustXPositionOfView:addressBookButton];
-    [self adjustWidthOfView:fundsAvailableButton];
+    [selectAddressTextField changeWidth:self.view.frame.size.width - fromLabel.frame.size.width - 15 - 13 - selectFromButton.frame.size.width - 8];
+    [selectFromButton changeXPosition:self.view.frame.size.width - selectFromButton.frame.size.width - 8];
+    
+    [toField changeWidth:self.view.frame.size.width - toLabel.frame.size.width - 15 - 13 - addressBookButton.frame.size.width - 8];
+    [addressBookButton changeXPosition:self.view.frame.size.width - addressBookButton.frame.size.width - 8];
     
     CGFloat amountFieldWidth = (self.view.frame.size.width - btcLabel.frame.origin.x - btcLabel.frame.size.width - fiatLabel.frame.size.width - 15 - 13 - 8 - 13)/2;
     btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, amountFieldWidth, btcAmountField.frame.size.height);
@@ -126,7 +126,19 @@ BOOL displayingLocalSymbolSend;
     toField.inputAccessoryView = amountKeyboardAccessoryView;
     feeField.inputAccessoryView = amountKeyboardAccessoryView;
     
+    fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    selectAddressTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    feeLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    feeField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+
     self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
@@ -1124,20 +1136,6 @@ BOOL displayingLocalSymbolSend;
         feeLabel.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
-}
-
-// TODO: move some of these to a UIView category
-
-- (void)adjustWidthOfView:(UIView *)view
-{
-    CGFloat newWidth = view.frame.size.width + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
-    [view changeWidth:newWidth];
-}
-
-- (void)adjustXPositionOfView:(UIView *)view
-{
-    CGFloat newX = view.frame.origin.x + (WINDOW_WIDTH - WIDTH_IPHONE_5S);
-    view.frame = CGRectMake(newX, view.frame.origin.y,  view.frame.size.width, view.frame.size.height);
 }
 
 - (void)updateSendBalance:(NSNumber *)balance

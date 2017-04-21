@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (ChangeFrameAttribute)
-- (void)increaseXPosition:(CGFloat)newX;
+- (void)increaseXPosition:(CGFloat)XOffset;
+- (void)changeXPosition:(CGFloat)newX;
 - (void)changeYPosition:(CGFloat)newY;
 - (void)changeWidth:(CGFloat)newWidth;
 - (void)centerXToSuperView;
