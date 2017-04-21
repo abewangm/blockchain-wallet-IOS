@@ -52,7 +52,7 @@
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.size.width + 8, imageView.frame.origin.y, textWidth, 54)];
         titleLabel.numberOfLines = 0;
-        titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+        titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
         titleLabel.text = title;
         titleLabel.textColor = actionColor;
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -60,7 +60,7 @@
         [self addSubview:titleLabel];
         
         UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, imageView.frame.size.height - titleLabel.frame.size.height)];
-        descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+        descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
         descriptionLabel.numberOfLines = 0;
         descriptionLabel.adjustsFontSizeToFitWidth = YES;
         descriptionLabel.text = description;
@@ -70,7 +70,7 @@
         CGFloat buttonYOrigin = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height;
         
         UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(descriptionLabel.frame.origin.x, buttonYOrigin, textWidth, self.frame.size.height - buttonYOrigin)];
-        actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+        actionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
         actionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [actionButton setTitleColor:actionColor forState:UIControlStateNormal];
         [actionButton setTitle:actionName forState:UIControlStateNormal];

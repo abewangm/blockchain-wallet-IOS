@@ -116,6 +116,10 @@
         btcButton.alpha = 0.5;
         actionLabel.alpha = 0.5;
     }
+    
+    dateLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    actionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
+    btcButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

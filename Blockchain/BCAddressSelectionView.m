@@ -234,7 +234,7 @@ int legacyAddressesSectionNumber;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, mainView.frame.size.width, 14)];
     label.textColor = COLOR_BLOCKCHAIN_BLUE;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
     [view addSubview:label];
     
