@@ -120,6 +120,8 @@
     dateLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     actionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
     btcButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    btcButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
