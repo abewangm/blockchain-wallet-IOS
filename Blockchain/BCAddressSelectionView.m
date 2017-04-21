@@ -232,7 +232,7 @@ int legacyAddressesSectionNumber;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mainView.frame.size.width, 45)];
     view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, mainView.frame.size.width, 14)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, mainView.frame.size.width, 30)];
     label.textColor = COLOR_BLOCKCHAIN_BLUE;
     label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
