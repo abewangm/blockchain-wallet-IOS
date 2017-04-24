@@ -1,6 +1,8 @@
 set -ue
 cd Submodules/My-Wallet-V3
 
+git show | cat
+
 echo "Cleaning..."
 rm -rf build dist
 

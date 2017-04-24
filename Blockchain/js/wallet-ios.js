@@ -655,8 +655,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         objc_loading_start_multiaddr();
     };
 
-    var history_success = function() {
-        logTime('get history');
+    var login_success = function() {
+        logTime('fetch history, options, account info');
 
         objc_loading_stop();
 
@@ -666,17 +666,22 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var history_error = function(error) {console.log(error);
         console.log('login: error getting history');
         objc_on_error_get_history(error);
+        return Promise.reject('history_error');
     }
 
     var success = function() {
-        var getHistory = MyWallet.wallet.getHistory();
-        getHistory.then(history_success).catch(history_error);
+        logTime('wallet login');
+        var getHistory = MyWallet.wallet.getHistory().catch(history_error);
+        var fetchOptions = walletOptions.fetch().catch(other_error);
+        var fetchAccount = MyWallet.wallet.fetchAccountInfo().catch(other_error);
+        Promise.all([getHistory, fetchOptions, fetchAccount]).then(login_success);
     };
 
     var other_error = function(e) {
         console.log('login: other error: ' + e);
         objc_loading_stop();
         objc_error_other_decrypting_wallet(e);
+        return Promise.reject(e);
     };
 
     var needs_two_factor_code = function(type) {
@@ -723,8 +728,6 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     }
 
     MyWallet.login(user_guid, inputedPassword, credentials, callbacks)
-      .then(function () { return walletOptions.fetch(); })
-      .then(function () { return MyWallet.wallet.fetchAccountInfo() })
       .then(success).catch(other_error);
 };
 
@@ -1901,7 +1904,16 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 
 MyWalletPhone.getExchangeAccount = function () {
   console.log('Getting exchange account');
-  return MyWallet.wallet.loadExternal().then(function () {
+  if (MyWallet.wallet.isDoubleEncrypted) {
+    console.log('Second password enabled, cannot fetch exchange account');
+    return Promise.resolve();
+  }
+  var wallet = MyWallet.wallet;
+  var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
+  return p.then(function () {
+                
+    objc_loading_stop();
+
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
@@ -1918,7 +1930,8 @@ MyWalletPhone.getExchangeAccount = function () {
     } else {
       console.log('Found no sfox or coinify user');
     }
-  });
+                
+  }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
 var tradeToObject = function (trade) {
@@ -1961,7 +1974,9 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
 
     if (shouldSync) {
         console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(function() { watchTrades(error); }, error);
+        MyWallet.getWallet(function() {
+            watchTrades(error);
+        }, error);
     } else {
         console.log('Watching trades');
         watchTrades(error);
@@ -1989,7 +2004,9 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var wallet = MyWallet.wallet
   var options = walletOptions.getValue()
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
-  var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0)
+  var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
+  var whiteListedGuid = objc_get_whitelisted_guid();
+    if (wallet.guid == whiteListedGuid) userHasAccess = true;
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 

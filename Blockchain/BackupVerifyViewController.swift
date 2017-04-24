@@ -45,10 +45,12 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
             word2?.frame = CGRect(x: word2!.frame.origin.x, y: word1!.frame.origin.y + word1!.frame.size.height + 8, width: word2!.frame.size.width, height: word2!.frame.size.height + 16)
             word3?.frame = CGRect(x: word3!.frame.origin.x, y: word2!.frame.origin.y + word2!.frame.size.height + 8, width: word3!.frame.size.width, height: word3!.frame.size.height + 16)
             
-            word1?.font = UIFont(name: "Montserrat-Regular", size: 18)
-            word2?.font = UIFont(name: "Montserrat-Regular", size: 18)
-            word3?.font = UIFont(name: "Montserrat-Regular", size: 18)
+            word1?.font = UIFont(name: "Montserrat-Regular", size: Constants.FontSizes.ExtraLarge)
+            word2?.font = UIFont(name: "Montserrat-Regular", size: Constants.FontSizes.ExtraLarge)
+            word3?.font = UIFont(name: "Montserrat-Regular", size: Constants.FontSizes.ExtraLarge)
         }
+        
+        instructions.font = UIFont(name: "GillSans", size: Constants.FontSizes.MediumLarge)
         
         word1?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
         word2?.addTarget(self, action: #selector(BackupVerifyViewController.textFieldDidChange), for: .editingChanged)
@@ -81,8 +83,8 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         verifyButton?.setTitle(NSLocalizedString("Verify", comment:""), for: .disabled)
         verifyButton?.backgroundColor = Constants.Colors.SecondaryGray
         verifyButton?.setTitleColor(UIColor.lightGray, for: .disabled)
-        verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: 15.0)
         verifyButton?.accessibilityLabel = Constants.AccessibilityLabels.VerifyWords
+        verifyButton?.titleLabel!.font = UIFont(name: "Montserrat-Regular", size: Constants.FontSizes.Medium)
 
         verifyButton?.isEnabled = true
         verifyButton?.addTarget(self, action: #selector(BackupVerifyViewController.done), for: .touchUpInside)

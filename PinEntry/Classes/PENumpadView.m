@@ -38,28 +38,48 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 + (void)initialize
 {
 	if(Buttons[0].size.height == 0) {
-		Buttons[0]  = CGRectMake(0, 1, 105, 53);
-		Buttons[1]  = CGRectMake(106, 1, 108, 53);
-		Buttons[2]  = CGRectMake(215, 1, 105, 53);
+        
+        CGFloat buttonHeight = 53;
+        CGFloat edgeButtonWidth = 105;
+        CGFloat centerButtonWidth = 108;
+        
+        if (IS_USING_6_OR_7_SCREEN_SIZE) {
+            buttonHeight = 62;
+            edgeButtonWidth = 124;
+            centerButtonWidth = 125;
+        } else if (IS_USING_6_OR_7_PLUS_SCREEN_SIZE) {
+            buttonHeight = 69;
+            edgeButtonWidth = 137;
+            centerButtonWidth = 138;
+        }
+        
+        CGFloat rowOneYOrigin = 1;
+		Buttons[0]  = CGRectMake(0, rowOneYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[1]  = CGRectMake(edgeButtonWidth + 1, rowOneYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[2]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowOneYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[3]  = CGRectMake(0, 55, 105, 53);
-		Buttons[4]  = CGRectMake(106, 55, 108, 53);
-		Buttons[5]  = CGRectMake(215, 55, 105, 53);
+        CGFloat rowTwoYOrigin = buttonHeight + 2;
+		Buttons[3]  = CGRectMake(0, rowTwoYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[4]  = CGRectMake(edgeButtonWidth + 1, rowTwoYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[5]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowTwoYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[6]  = CGRectMake(0, 109, 105, 53);
-		Buttons[7]  = CGRectMake(106, 109, 108, 53);
-		Buttons[8]  = CGRectMake(215, 109, 105, 53);
+        CGFloat rowThreeYOrigin = buttonHeight*2 + 3;
+		Buttons[6]  = CGRectMake(0, rowThreeYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[7]  = CGRectMake(edgeButtonWidth + 1, rowThreeYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[8]  = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowThreeYOrigin, edgeButtonWidth, buttonHeight);
 		
-		Buttons[9]  = CGRectMake(0, 163, 105, 53);
-		Buttons[10] = CGRectMake(106, 163, 108, 53);
-		Buttons[11] = CGRectMake(215, 163, 105, 53);
+        CGFloat rowFourYOrigin = buttonHeight*3 + 4;
+		Buttons[9]  = CGRectMake(0, rowFourYOrigin, edgeButtonWidth, buttonHeight);
+		Buttons[10] = CGRectMake(edgeButtonWidth + 1, rowFourYOrigin, centerButtonWidth, buttonHeight);
+		Buttons[11] = CGRectMake(edgeButtonWidth + centerButtonWidth + 1, rowFourYOrigin, edgeButtonWidth, buttonHeight);
 	};
 }
 
 - (id)init
 {
     self.isEnabled = TRUE;
-	return [self initWithFrame:CGRectMake(0, 460-216, 320, 216)];
+
+	return [self initWithFrame:self.bounds];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -75,6 +95,7 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	if( (self = [super initWithCoder:aDecoder]) ) {
+        
         self.isEnabled = TRUE;
 
 		activeClip = -1;
@@ -85,11 +106,11 @@ NSString *kPinEntryKeyboardCode = @"kPinEntryKeyboardCode";
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
+    [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:self.bounds.size] drawAtPoint:CGPointMake(0, 0)] ;
     
     if(activeClip >= 0) {
         [[UIBezierPath bezierPathWithRect:Buttons[activeClip]] addClip];
-        [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:CGSizeMake(320,216)] drawAtPoint:CGPointMake(0, 0)] ;
+        [[UIImage imageWithImage:[UIImage imageNamed:@"keypad"] scaledToSize:self.bounds.size] drawAtPoint:CGPointMake(0, 0)] ;
     }
 }
 

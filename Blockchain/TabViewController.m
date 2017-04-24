@@ -22,15 +22,6 @@
     selectedIndex = TAB_TRANSACTIONS;
     
     [self setupTabButtons];
-    
-    // Swipe between tabs for fun
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:app action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [contentView addGestureRecognizer:swipeLeft];
-    [contentView addGestureRecognizer:swipeRight];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -53,13 +44,13 @@
     sendButton.accessibilityLabel = ACCESSIBILITY_LABEL_SEND_TAB;
     receiveButton.accessibilityLabel = ACCESSIBILITY_LABEL_RECEIVE_TAB;
     
-    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_RECEIVE:receiveButton};
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_RECEIVE:receiveButton};
     
     for (UIButton *button in [tabButtons allValues]) {
                 
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
         [button setTitle:label forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:10]];
+        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL]];
         CGSize titleSize = [label sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
         
         CGSize imageSize = button.imageView.image.size;

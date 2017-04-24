@@ -37,13 +37,14 @@
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
     headerLabel.text = BC_STRING_ADDRESSES;
+    headerLabel.center = CGPointMake(topBar.center.x, headerLabel.center.y);
     [topBar addSubview:headerLabel];
     self.headerLabel = headerLabel;
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
-    [backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [backButton.titleLabel setFont:[UIFont systemFontOfSize:FONT_SIZE_MEDIUM]];
     [backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -53,7 +54,7 @@
     UIButton *warningButton = [UIButton buttonWithType:UIButtonTypeCustom];
     warningButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     warningButton.imageEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
-    [warningButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [warningButton.titleLabel setFont:[UIFont systemFontOfSize:FONT_SIZE_MEDIUM]];
     [warningButton setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
     [warningButton addTarget:self action:@selector(transferAllFundsWarningClicked) forControlEvents:UIControlEventTouchUpInside];
     [topBar addSubview:warningButton];
@@ -68,7 +69,7 @@
     textWithSpinnerView.center = busyView.center;
     
     self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 230, 30)];
-    self.busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    self.busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     self.busyLabel.alpha = 0.75;
     self.busyLabel.textAlignment = NSTextAlignmentCenter;
     self.busyLabel.adjustsFontSizeToFitWidth = YES;

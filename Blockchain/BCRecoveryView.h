@@ -10,6 +10,8 @@
 
 @interface BCRecoveryView : BCModalContentView
 
+
+@property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
 @property (nonatomic, strong) IBOutlet UITextField *recoveryPassphraseTextField;
 
 @end

@@ -19,6 +19,12 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
     var app : RootService?
     var transferredAll = false;
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        summaryLabel.font = UIFont(name: "Montserrat-SemiBold", size: Constants.FontSizes.ExtraExtraLarge)
+        explanation.font = UIFont(name: "GillSans", size: Constants.FontSizes.MediumLarge)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -30,13 +36,17 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         backupWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
         backupWalletButton.clipsToBounds = true
         backupWalletButton.layer.cornerRadius = Constants.Measurements.BackupButtonCornerRadius
-        
+        backupWalletButton.center = CGPoint(x: view.center.x, y: backupWalletButton.center.y)
+
+        backupIconImageView.center = CGPoint(x: view.center.x, y: backupIconImageView.center.y)
+
         if let image = backupIconImageView.image {
             backupIconImageView.image? = image.withRenderingMode(.alwaysTemplate)
             backupIconImageView.tintColor = Constants.Colors.WarningRed
         }
         
         summaryLabel.text = NSLocalizedString("Backup Needed", comment: "");
+        summaryLabel.center = CGPoint(x: view.center.x, y: summaryLabel.center.y)
         explanation.text = String(format: "%@\n\n%@", NSLocalizedString("The following 12 word Recovery Phrase will give you access to your funds in case you lose your password.", comment: ""), NSLocalizedString("Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure.", comment: ""))
         backupWalletButton?.setTitle(NSLocalizedString("START BACKUP", comment: ""), for: UIControlState())
         

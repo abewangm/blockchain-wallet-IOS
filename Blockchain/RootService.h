@@ -27,13 +27,14 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
 #import "ReminderModalViewController.h"
+#import "WalletSetupViewController.h"
 #import <WebKit/WebKit.h>
 
 @protocol TopViewController;
 
 @class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, BuyBitcoinViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, ReminderModalDelegate> {
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, ReminderModalDelegate, SetupDelegate> {
     
     Wallet *wallet;
     
@@ -58,6 +59,9 @@
     IBOutlet UIButton *secondPasswordButton;
     
     IBOutlet UIView *mainPasswordView;
+    IBOutlet UILabel *mainPasswordLabel;
+    IBOutlet UIButton *mainPasswordButton;
+    IBOutlet UILabel *forgetWalletLabel;
     IBOutlet UIButton *forgotPasswordButton;
     IBOutlet UITextField *mainPasswordTextField;
     IBOutlet UIButton *forgetWalletButton;

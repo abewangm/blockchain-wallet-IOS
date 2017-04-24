@@ -33,6 +33,7 @@
             headerLabel.textAlignment = NSTextAlignmentCenter;
             headerLabel.adjustsFontSizeToFitWidth = YES;
             headerLabel.text = headerText;
+            headerLabel.center = CGPointMake(topBarView.center.x, headerLabel.center.y);
             [topBarView addSubview:headerLabel];
             
             if (closeType == ModalCloseTypeBack) {
@@ -40,7 +41,7 @@
                 self.backButton.frame = FRAME_BACK_BUTTON;
                 self.backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
                 self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
-                [self.backButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [self.backButton.titleLabel setFont:[UIFont systemFontOfSize:FONT_SIZE_MEDIUM]];
                 [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
                 [self.backButton setTitleColor:[UIColor colorWithWhite:0.56 alpha:1.0] forState:UIControlStateHighlighted];
                 [self.backButton addTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventTouchUpInside];

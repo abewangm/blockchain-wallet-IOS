@@ -19,6 +19,11 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    self.balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    self.addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    
     self.balanceLabel.adjustsFontSizeToFitWidth = YES;
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
     self.watchLabel.textAlignment = NSTextAlignmentCenter;

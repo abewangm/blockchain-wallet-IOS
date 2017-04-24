@@ -23,8 +23,12 @@
     createButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     createButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     self.createButton = createButton;
+    
+    emailTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    passwordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    password2TextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     
     emailTextField.inputAccessoryView = createButton;
     passwordTextField.inputAccessoryView = createButton;
@@ -34,6 +38,9 @@
     password2TextField.textColor = [UIColor grayColor];
     
     passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
+    
+    termsOfServiceLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    termsOfServiceButton.titleLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
     
     // If loadBlankWallet is called without a delay, app.wallet will still be nil
     [self performSelector:@selector(createBlankWallet) withObject:nil afterDelay:0.1f];
@@ -196,6 +203,14 @@
     
     app.wallet.isNew = YES;
     app.buyBitcoinViewController.isNew = YES;
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
     
     [app.wallet getAllCurrencySymbols];
 }

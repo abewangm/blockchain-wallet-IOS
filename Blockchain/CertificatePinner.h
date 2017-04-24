@@ -14,5 +14,5 @@
 @interface CertificatePinner : NSObject <NSURLSessionDelegate>
 @property (nonatomic) id <CertificatePinnerDelegate> delegate;
 - (void)pinCertificate;
-- (void)respondToChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(nullable void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+- (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
 @end

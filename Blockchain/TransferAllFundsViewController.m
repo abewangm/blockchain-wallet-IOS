@@ -64,7 +64,7 @@
     self.sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.sendButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.sendButton setTitle:BC_STRING_TRANSFER_FUNDS forState:UIControlStateNormal];
-    self.sendButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
+    self.sendButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
     self.sendButton.enabled = NO;

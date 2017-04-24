@@ -14,8 +14,25 @@
 #import "TransactionDetailViewController.h"
 #import "BCAddressSelectionView.h"
 #import "TransactionDetailNavigationController.h"
+#import "BCCardView.h"
 
-@interface TransactionsViewController () <AddressSelectionDelegate>
+@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
+
+// Onboarding
+
+@property (nonatomic) BOOL isUsingPageControl;
+@property (nonatomic) UIPageControl *pageControl;
+@property (nonatomic) UIButton *startOverButton;
+@property (nonatomic) UIButton *closeCardsViewButton;
+@property (nonatomic) UIButton *skipAllButton;
+@property (nonatomic) UILabel *noTransactionsTitle;
+@property (nonatomic) UILabel *noTransactionsDescription;
+@property (nonatomic) UIButton *getBitcoinButton;
+@property (nonatomic) CGRect originalHeaderFrame;
+@property (nonatomic) UIScrollView *cardsScrollView;
+@property (nonatomic) UIView *cardsView;
+
+@property (nonatomic) UIView *noTransactionsView;
 @end
 
 @implementation TransactionsViewController
@@ -23,8 +40,11 @@
 @synthesize data;
 @synthesize latestBlock;
 
+CGFloat cardsViewHeight = 240;
+
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
+BOOL showCards;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -111,13 +131,28 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)setText
 {
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    
+    [self setupNoTransactionsView];
+    
+    if (showCards && app.latestResponse.symbol_local) {
+        [self setupCardsView];
+    } else {
+        if (self.cardsView) {
+            [self resetHeaderFrame];
+            [self setupNoTransactionsView];
+        }
+        [self.cardsView removeFromSuperview];
+        self.cardsView = nil;
+    }
+    
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
     filterAccountButton.hidden = !shouldShowFilterButton;
     
     // Data not loaded yet
     if (!self.data) {
-        [noTransactionsView removeFromSuperview];
+        self.noTransactionsView.hidden = YES;
         
 #ifdef ENABLE_TRANSACTION_FILTERING
         self.filterIndex = FILTER_INDEX_ALL;
@@ -128,7 +163,7 @@ int lastNumberTransactions = INT_MAX;
     }
     // Data loaded, but no transactions yet
     else if (self.data.transactions.count == 0) {
-        [tableView.tableHeaderView addSubview:noTransactionsView];
+        self.noTransactionsView.hidden = NO;
         
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
         if (!self.loadedAllTransactions) {
@@ -144,7 +179,7 @@ int lastNumberTransactions = INT_MAX;
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
-        [noTransactionsView removeFromSuperview];
+        self.noTransactionsView.hidden = YES;
         
         // Balance
         [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
@@ -445,16 +480,15 @@ int lastNumberTransactions = INT_MAX;
 {
     [super viewDidLoad];
     
-    noTransactionsTitleLabel.text = BC_STRING_YOUR_TRANSACTIONS;
-    noTransactionsDescriptionLabel.text = BC_STRING_NO_TRANSACTIONS_TEXT;
-    [noTransactionsDescriptionLabel sizeToFit];
-    noTransactionsDescriptionLabel.center = CGPointMake(self.view.center.x, 0);
-    noTransactionsDescriptionLabel.frame = CGRectMake(noTransactionsDescriptionLabel.frame.origin.x, noTransactionsTitleLabel.frame.origin.y + noTransactionsTitleLabel.frame.size.height, noTransactionsDescriptionLabel.frame.size.width, noTransactionsDescriptionLabel.frame.size.height);
-    
     self.loadedAllTransactions = NO;
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
+    
+    self.originalHeaderFrame = headerView.frame;
+    headerView.clipsToBounds = YES;
+    
+    showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -498,6 +532,26 @@ int lastNumberTransactions = INT_MAX;
     [self reload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    app.mainTitleLabel.hidden = YES;
+    app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    balanceBigButton.center = CGPointMake(headerView.center.x, balanceBigButton.center.y);
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+#ifdef ENABLE_TRANSACTION_FILTERING
+    app.wallet.isFetchingTransactions = NO;
+#endif
+    app.mainTitleLabel.hidden = NO;
+}
+
+#pragma mark - Setup
+
 - (void)setupBlueBackgroundForBounceArea
 {
     // Blue background for bounce area
@@ -523,20 +577,359 @@ int lastNumberTransactions = INT_MAX;
     tableViewController.refreshControl = refreshControl;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)setupCardsView
 {
-    [super viewWillAppear:animated];
-    app.mainTitleLabel.hidden = YES;
-    app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.cardsView removeFromSuperview];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
+    self.cardsView = [self configureCardsView:cardsView];
+    
+    [headerView addSubview:self.cardsView];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)setupNoTransactionsView
 {
-    [super viewDidDisappear:animated];
-#ifdef ENABLE_TRANSACTION_FILTERING
-    app.wallet.isFetchingTransactions = NO;
-#endif
-    app.mainTitleLabel.hidden = NO;
+    [self.noTransactionsView removeFromSuperview];
+    
+    CGFloat noTransactionsViewOffsetY = 0;
+    
+    // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
+    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && showCards) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
+        noTransactionsViewOffsetY += 60;
+    }
+    
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
+    
+    // Title label Y origin will be above midpoint between end of cards view and table view height
+    UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+    noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
+    noTransactionsTitle.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    noTransactionsTitle.text = BC_STRING_NO_TRANSACTIONS_TITLE;
+    noTransactionsTitle.textColor = COLOR_BLOCKCHAIN_BLUE;
+    [noTransactionsTitle sizeToFit];
+    CGFloat noTransactionsViewCenterY = (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height;
+    noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsViewCenterY);
+    [self.noTransactionsView addSubview:noTransactionsTitle];
+    self.noTransactionsTitle = noTransactionsTitle;
+    
+    // Description label Y origin will be 8 points under title label
+    UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
+    noTransactionsDescription.textAlignment = NSTextAlignmentCenter;
+    noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+    noTransactionsDescription.numberOfLines = 0;
+    noTransactionsDescription.text = BC_STRING_NO_TRANSACTIONS_TEXT;
+    noTransactionsDescription.textColor = COLOR_TEXT_DARK_GRAY;
+    [noTransactionsDescription sizeToFit];
+    CGSize labelSize = [noTransactionsDescription sizeThatFits:CGSizeMake(170, CGFLOAT_MAX)];
+    CGRect labelFrame = noTransactionsDescription.frame;
+    labelFrame.size = labelSize;
+    noTransactionsDescription.frame = labelFrame;
+    [self.noTransactionsView addSubview:noTransactionsDescription];
+    noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
+    noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
+    self.noTransactionsDescription = noTransactionsDescription;
+    
+    // Get bitcoin button Y origin will be 16 points under description label
+    self.getBitcoinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16, 130, 30)];
+    self.getBitcoinButton.clipsToBounds = YES;
+    self.getBitcoinButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    self.getBitcoinButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    self.getBitcoinButton.center = CGPointMake(self.noTransactionsView.center.x, self.getBitcoinButton.center.y);
+    self.getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    [self.getBitcoinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.getBitcoinButton setTitle:[BC_STRING_GET_BITCOIN uppercaseString] forState:UIControlStateNormal];
+    [self.getBitcoinButton addTarget:self action:@selector(getBitcoinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.noTransactionsView addSubview:self.getBitcoinButton];
+    
+    if (!showCards) {
+        [self centerNoTransactionSubviews];
+    } else {
+        self.getBitcoinButton.hidden = YES;
+    }
+    
+    [tableView addSubview:self.noTransactionsView];
+    
+    self.noTransactionsView.hidden = YES;
+}
+
+#pragma mark - New Wallet Cards
+
+- (UIView *)configureCardsView:(UIView *)cardsView
+{
+    cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
+    scrollView.delegate = self;
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.scrollEnabled = YES;
+    
+    NSInteger numberOfPages = 1;
+    NSInteger numberOfCards = 0;
+    
+    // Cards setup
+    if ([app.wallet isBuyEnabled]) {
+        
+        NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
+        
+        BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
+        [scrollView addSubview:priceCard];
+        numberOfCards++;
+        numberOfPages++;
+    }
+
+    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" delegate:self];
+    receiveCard.frame = CGRectOffset(receiveCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
+    [scrollView addSubview:receiveCard];
+    numberOfCards++;
+    numberOfPages++;
+
+    BCCardView *QRCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_QR_CODES_TITLE description:BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION actionType:ActionTypeScanQR imageName:@"qr_partial" delegate:self];
+    QRCard.frame = CGRectOffset(QRCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
+    [scrollView addSubview:QRCard];
+    numberOfCards++;
+    numberOfPages++;
+    
+    // Overview complete/last page setup
+    CGFloat overviewCompleteCenterX = cardsView.frame.size.width/2 + [self getPageXPosition:cardsView.frame.size.width page:numberOfCards];
+    
+    UIImageView *checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 40, 40)];
+    checkImageView.image = [[UIImage imageNamed:@"success"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    checkImageView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    checkImageView.center = CGPointMake(overviewCompleteCenterX, checkImageView.center.y);
+    [scrollView addSubview:checkImageView];
+    
+    UILabel *doneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, checkImageView.frame.origin.y + checkImageView.frame.size.height + 14, 150, 30)];
+    doneTitleLabel.textAlignment = NSTextAlignmentCenter;
+    doneTitleLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    doneTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
+    doneTitleLabel.adjustsFontSizeToFitWidth = YES;
+    doneTitleLabel.text = BC_STRING_OVERVIEW_COMPLETE_TITLE;
+    doneTitleLabel.center = CGPointMake(overviewCompleteCenterX, doneTitleLabel.center.y);
+    [scrollView addSubview:doneTitleLabel];
+    
+    UILabel *doneDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    doneDescriptionLabel.textAlignment = NSTextAlignmentCenter;
+    doneDescriptionLabel.numberOfLines = 0;
+    doneDescriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    doneDescriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+    doneDescriptionLabel.adjustsFontSizeToFitWidth = YES;
+    doneDescriptionLabel.text = BC_STRING_OVERVIEW_COMPLETE_DESCRIPTION;
+    [doneDescriptionLabel sizeToFit];
+    CGFloat maxDoneDescriptionLabelWidth = 170;
+    CGFloat maxDoneDescriptionLabelHeight = 70;
+    CGSize labelSize = [doneDescriptionLabel sizeThatFits:CGSizeMake(maxDoneDescriptionLabelWidth, maxDoneDescriptionLabelHeight)];
+    CGRect labelFrame = doneDescriptionLabel.frame;
+    labelFrame.size = labelSize;
+    doneDescriptionLabel.frame = labelFrame;
+    doneDescriptionLabel.frame = CGRectMake(0, doneTitleLabel.frame.origin.y + doneTitleLabel.frame.size.height, doneDescriptionLabel.frame.size.width, doneDescriptionLabel.frame.size.height);
+    doneDescriptionLabel.center = CGPointMake(overviewCompleteCenterX, doneDescriptionLabel.center.y);
+    [scrollView addSubview:doneDescriptionLabel];
+    
+    scrollView.contentSize = CGSizeMake(cardsView.frame.size.width * (numberOfPages), cardsView.frame.size.height);
+    [cardsView addSubview:scrollView];
+    self.cardsScrollView = scrollView;
+    
+    // Subviews that disappear/reappear setup
+    CGRect cardRect = [BCCardView frameFromContainer:cardsView.bounds];
+    
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, cardRect.origin.y + cardRect.size.height + 8, 100, 30)];
+    self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
+    self.pageControl.numberOfPages = numberOfCards;
+    self.pageControl.currentPageIndicatorTintColor = COLOR_BLOCKCHAIN_BLUE;
+    self.pageControl.pageIndicatorTintColor = COLOR_BLOCKCHAIN_LIGHTEST_BLUE;
+    [self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
+    [cardsView addSubview:self.pageControl];
+    
+    self.startOverButton = [[UIButton alloc] initWithFrame:CGRectInset(self.pageControl.frame, -40, -10)];
+    [cardsView addSubview:self.startOverButton];
+    [self.startOverButton setTitle:BC_STRING_START_OVER forState:UIControlStateNormal];
+    [self.startOverButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    self.startOverButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    self.startOverButton.hidden = YES;
+    [self.startOverButton addTarget:self action:@selector(showFirstCard) forControlEvents:UIControlEventTouchUpInside];
+    
+    CGFloat closeButtonHeight = 46;
+    self.closeCardsViewButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - closeButtonHeight, 0, closeButtonHeight, closeButtonHeight)];
+    self.closeCardsViewButton.imageEdgeInsets = UIEdgeInsetsMake(16, 20, 16, 12);
+    [self.closeCardsViewButton setImage:[[UIImage imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.closeCardsViewButton.imageView.tintColor = COLOR_LIGHT_GRAY;
+    [self.closeCardsViewButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
+    [cardsView addSubview:self.closeCardsViewButton];
+    self.closeCardsViewButton.hidden = YES;
+    
+    CGFloat skipAllButtonWidth = 80;
+    CGFloat skipAllButtonHeight = 30;
+    self.skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - skipAllButtonWidth, self.pageControl.frame.origin.y, skipAllButtonWidth, skipAllButtonHeight)];
+    self.skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    self.skipAllButton.backgroundColor = [UIColor clearColor];
+    [self.skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
+    [self.skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
+    [self.skipAllButton addTarget:self action:@selector(closeCardsView) forControlEvents:UIControlEventTouchUpInside];
+    [cardsView addSubview:self.skipAllButton];
+    
+    
+    // Maintain last viewed page when a refresh is triggered
+    CGFloat oldContentOffsetX = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET] floatValue];
+    if (oldContentOffsetX > scrollView.contentSize.width - scrollView.frame.size.width * 1.5) {
+        self.startOverButton.hidden = NO;
+        self.closeCardsViewButton.hidden = NO;
+        self.pageControl.hidden = YES;
+        self.skipAllButton.hidden = YES;
+    };
+    self.cardsScrollView.contentOffset = CGPointMake(oldContentOffsetX > self.cardsScrollView.contentSize.width ? self.cardsScrollView.contentSize.width - self.cardsScrollView.frame.size.width : oldContentOffsetX, self.cardsScrollView.contentOffset.y);
+    
+    return cardsView;
+}
+
+- (CGFloat)getPageXPosition:(CGFloat)cardLength page:(NSInteger)page
+{
+    return cardLength * page;
+}
+
+- (void)showFirstCard
+{
+    self.cardsScrollView.scrollEnabled = YES;
+    [self.cardsScrollView setContentOffset:CGPointZero animated:YES];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:0] forKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
+}
+
+- (void)cardActionClicked:(ActionType)actionType
+{
+    if (actionType == ActionTypeBuyBitcoin) {
+        [app buyBitcoinClicked:nil];
+    } else if (actionType == ActionTypeShowReceive) {
+        [app receiveCoinClicked:nil];
+    } else if (actionType == ActionTypeScanQR) {
+        [app QRCodebuttonClicked:nil];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.cardsScrollView) {
+        
+        BOOL didSeeAllCards = scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.frame.size.width * 1.5;
+        if (didSeeAllCards) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+        }
+        
+        if (!self.isUsingPageControl) {
+            CGFloat pageWidth = scrollView.frame.size.width;
+            float fractionalPage = scrollView.contentOffset.x / pageWidth;
+            
+            if (!didSeeAllCards) {
+                if (self.skipAllButton.hidden && self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 1;
+                        self.pageControl.alpha = 1;
+                        self.startOverButton.alpha = 0;
+                        self.closeCardsViewButton.alpha = 0;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = NO;
+                        self.pageControl.hidden = NO;
+                        self.startOverButton.hidden = YES;
+                        self.closeCardsViewButton.hidden = YES;
+                    }];
+                }
+            } else {
+                if (!self.skipAllButton.hidden && !self.pageControl.hidden) {
+                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                        self.skipAllButton.alpha = 0;
+                        self.pageControl.alpha = 0;
+                        self.startOverButton.alpha = 1;
+                        self.closeCardsViewButton.alpha = 1;
+                    } completion:^(BOOL finished) {
+                        self.skipAllButton.hidden = YES;
+                        self.pageControl.hidden = YES;
+                        self.startOverButton.hidden = NO;
+                        self.closeCardsViewButton.hidden = NO;
+                    }];
+                }
+            }
+            
+            NSInteger page = lround(fractionalPage);
+            self.pageControl.currentPage = page;
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == self.cardsScrollView) {
+        if (scrollView.contentSize.width - scrollView.frame.size.width <= scrollView.contentOffset.x) {
+            scrollView.scrollEnabled = NO;
+        }
+    
+        // Save last viewed page since cards view can be reinstantiated when app is still open
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:scrollView.contentOffset.x] forKey:USER_DEFAULTS_KEY_LAST_CARD_OFFSET];
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if (scrollView == self.cardsScrollView) {
+        self.isUsingPageControl = NO;
+    }
+}
+
+- (void)pageControlChanged:(UIPageControl *)pageControl
+{
+    self.isUsingPageControl = YES;
+    
+    NSInteger page = pageControl.currentPage;
+    CGRect frame = self.cardsScrollView.frame;
+    frame.origin.x = self.cardsScrollView.frame.size.width * page;
+    [self.cardsScrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (void)closeCardsView
+{
+    self.getBitcoinButton.alpha = 0;
+
+    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+
+        [self resetHeaderFrame];
+        
+        [self centerNoTransactionSubviews];
+        
+        self.getBitcoinButton.hidden = NO;
+        self.getBitcoinButton.alpha = 1;
+        
+    }];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    
+    [self.tableView reloadData];
+}
+
+- (void)centerNoTransactionSubviews
+{
+    // Reposition description label Y to center of screen, and reposition title and button Y origins around it
+    self.noTransactionsDescription.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
+    self.noTransactionsTitle.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsDescription.frame.origin.y - self.noTransactionsTitle.frame.size.height - 8 + self.noTransactionsTitle.frame.size.height/2);
+    self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, self.noTransactionsDescription.frame.origin.y + self.noTransactionsDescription.frame.size.height + 16 + self.noTransactionsDescription.frame.size.height/2);
+    self.getBitcoinButton.hidden = NO;
+}
+
+- (void)resetHeaderFrame
+{
+    CGRect headerFrame = self.originalHeaderFrame;
+    headerFrame.size.height = 80;
+    headerView.frame = headerFrame;
+    
+    self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
+}
+
+- (void)getBitcoinButtonClicked
+{
+    if ([app.wallet isBuyEnabled]) {
+        [app buyBitcoinClicked:nil];
+    } else {
+        [app receiveCoinClicked:nil];
+    }
 }
 
 @end

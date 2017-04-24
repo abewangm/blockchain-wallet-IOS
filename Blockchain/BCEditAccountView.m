@@ -24,7 +24,7 @@
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 55, window.frame.size.width - 40, 25)];
         labelLabel.text = BC_STRING_NAME;
         labelLabel.textColor = [UIColor darkGrayColor];
-        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        labelLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         [self addSubview:labelLabel];
         
         _labelTextField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(20, 95, window.frame.size.width - 40, 30)];
@@ -41,10 +41,10 @@
         
         UIButton *editAccountButton = [UIButton buttonWithType:UIButtonTypeCustom];
         editAccountButton.frame = CGRectMake(0, 0, window.frame.size.width, 46);
-        editAccountButton.backgroundColor = COLOR_BUTTON_GRAY;
+        editAccountButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [editAccountButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-        [editAccountButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        editAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        [editAccountButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        editAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         
         [editAccountButton addTarget:self action:@selector(editAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
         
