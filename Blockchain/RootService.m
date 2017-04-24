@@ -165,6 +165,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self disableUIWebViewCaching];
     
+    busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    
     // Allocate the global wallet
     self.wallet = [[Wallet alloc] init];
     self.wallet.delegate = self;
