@@ -231,8 +231,8 @@ const int aboutPrivacyPolicy = 2;
     }
     
     if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 4/5) {
-        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_SMALL];
-        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     }
     
     return cell;

@@ -47,7 +47,7 @@
                 
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
         [button setTitle:label forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL]];
+        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL]];
         CGSize titleSize = [label sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
         
         CGSize imageSize = button.imageView.image.size;

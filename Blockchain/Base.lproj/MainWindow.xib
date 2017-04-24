@@ -249,6 +249,8 @@ http://blockchain.info/wallet</string>
                 <outlet property="passwordStrengthMeter" destination="acf-bJ-kgP" id="ytC-Jd-waT"/>
                 <outlet property="passwordTextField" destination="395" id="451"/>
                 <outlet property="recoveryPhraseView" destination="0Sz-Ta-Xdw" id="xpu-3L-4fd"/>
+                <outlet property="termsOfServiceButton" destination="wfI-8F-dfm" id="t25-7g-ono"/>
+                <outlet property="termsOfServiceLabel" destination="Qvx-f4-C2O" id="nGX-Sx-BCA"/>
             </connections>
             <point key="canvasLocation" x="133" y="-869"/>
         </view>

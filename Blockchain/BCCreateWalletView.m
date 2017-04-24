@@ -26,6 +26,10 @@
     createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     self.createButton = createButton;
     
+    emailTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    passwordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    password2TextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    
     emailTextField.inputAccessoryView = createButton;
     passwordTextField.inputAccessoryView = createButton;
     password2TextField.inputAccessoryView = createButton;
@@ -34,6 +38,9 @@
     password2TextField.textColor = [UIColor grayColor];
     
     passwordFeedbackLabel.adjustsFontSizeToFitWidth = YES;
+    
+    termsOfServiceLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    termsOfServiceButton.titleLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
     
     // If loadBlankWallet is called without a delay, app.wallet will still be nil
     [self performSelector:@selector(createBlankWallet) withObject:nil afterDelay:0.1f];
