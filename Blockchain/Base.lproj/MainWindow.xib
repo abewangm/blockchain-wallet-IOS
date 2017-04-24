@@ -643,6 +643,7 @@ http://blockchain.info/wallet</string>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="instructionsLabel" destination="pEh-08-oZW" id="RiN-Ga-ecW"/>
                 <outlet property="recoveryPassphraseTextField" destination="L1x-Mw-4H5" id="2wQ-GI-647"/>
             </connections>
             <point key="canvasLocation" x="500" y="-869"/>
