@@ -32,7 +32,8 @@
 {
     if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
         [challenge.protectionSpace.host isEqualToString:URL_API_SFOX] ||
-        [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS]) {
+        [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS] ||
+        [challenge.protectionSpace.host isEqualToString:URL_GOOGLE_ANALYTICS]) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     } else {
         [self respondToChallenge:challenge completionHandler:completionHandler];
