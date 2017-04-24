@@ -26,7 +26,10 @@
                 <outlet property="busyView" destination="260" id="cbQ-Yl-2J6"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
                 <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="cCs-KX-EOb"/>
+                <outlet property="forgetWalletLabel" destination="C0R-wB-wF1" id="Uqm-gA-xWb"/>
                 <outlet property="forgotPasswordButton" destination="kgi-aY-D6k" id="QqO-AZ-GnS"/>
+                <outlet property="mainPasswordButton" destination="625" id="IZP-fT-40G"/>
+                <outlet property="mainPasswordLabel" destination="624" id="DVU-8m-zoE"/>
                 <outlet property="mainPasswordTextField" destination="626" id="onb-8w-8q1"/>
                 <outlet property="mainPasswordView" destination="623" id="7Xu-al-CwC"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>

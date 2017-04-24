@@ -59,6 +59,9 @@
     IBOutlet UIButton *secondPasswordButton;
     
     IBOutlet UIView *mainPasswordView;
+    IBOutlet UILabel *mainPasswordLabel;
+    IBOutlet UIButton *mainPasswordButton;
+    IBOutlet UILabel *forgetWalletLabel;
     IBOutlet UIButton *forgotPasswordButton;
     IBOutlet UITextField *mainPasswordTextField;
     IBOutlet UIButton *forgetWalletButton;

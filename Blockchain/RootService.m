@@ -993,19 +993,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPasswordModal
 {
-    [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
+    mainPasswordLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
+    mainPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    mainPasswordTextField.text = @"";
+    
+    mainPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    
+    forgotPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     forgotPasswordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgotPasswordButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     forgotPasswordButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [forgotPasswordButton setTitle:BC_STRING_FORGOT_PASSWORD forState:UIControlStateNormal];
     
+    forgetWalletLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    
+    forgetWalletButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgetWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     forgetWalletButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
-    mainPasswordTextField.text = @"";
+    
     [mainPasswordView addGestureRecognizer:tapGesture];
+    
+    [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
 }
 
 - (void)beginBackgroundUpdateTask
