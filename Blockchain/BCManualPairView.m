@@ -15,7 +15,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
+    
+    walletIdentifierTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    passwordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     saveButton.frame = CGRectMake(0, 0, self.window.frame.size.width, 46);
     saveButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
