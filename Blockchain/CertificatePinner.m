@@ -31,7 +31,8 @@
 - (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
     if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
-        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX]) {
+        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS]) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     } else {
         [self respondToChallenge:challenge completionHandler:completionHandler];
