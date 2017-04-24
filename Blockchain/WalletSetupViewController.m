@@ -85,6 +85,7 @@
     UIButton *doneButton = [self setupDoneButton];
     doneButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [doneButton addTarget:self action:@selector(goToSecondPage) forControlEvents:UIControlEventTouchUpInside];
+    doneButton.accessibilityLabel = ACCESSIBILITY_LABEL_CLOSE_TOUCH_ID_REMINDER_BUTTON;
     [touchIDView addSubview:doneButton];
     
     return touchIDView;
@@ -133,6 +134,7 @@
     UIButton *doneButton = [self setupDoneButton];
     doneButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [doneButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    doneButton.accessibilityLabel = ACCESSIBILITY_LABEL_CLOSE_EMAIL_REMINDER_BUTTON;
     [emailView addSubview:doneButton];
     
     return emailView;
@@ -156,6 +158,7 @@
     doneButton.center = CGPointMake(self.view.frame.size.width/2, doneButton.center.y);
     [doneButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
     [doneButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
+    
     return doneButton;
 }
 

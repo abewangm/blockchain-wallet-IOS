@@ -152,11 +152,11 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     
     [self setupPIN];
     
-    [self waitForTimeInterval:2];
-    [self tapScreenAtPoint:alertOkButtonCenterShortText];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_TOUCH_ID_REMINDER_BUTTON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_TOUCH_ID_REMINDER_BUTTON];
     
-    [self waitForTimeInterval:.5];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_BUTTON];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_EMAIL_REMINDER_BUTTON];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CLOSE_EMAIL_REMINDER_BUTTON];
 
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }

@@ -773,6 +773,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_INVALID_PASSPHRASE @"invalid passphrase"
 #define ERROR_STATUS_ZERO @"status:0"
 
+#define ACCESSIBILITY_LABEL_CLOSE_TOUCH_ID_REMINDER_BUTTON @"closeTouchIDReminderButton"
+#define ACCESSIBILITY_LABEL_CLOSE_EMAIL_REMINDER_BUTTON @"closeEmailReminderButton"
 #define ACCESSIBILITY_LABEL_CLOSE_BUTTON @"closeButton"
 #define ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_GUID @"manualPairGuid"
 #define ACCESSIBILITY_LABEL_MANUAL_PAIR_FIELD_PASSWORD @"manualPairPassword"
