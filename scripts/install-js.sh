@@ -1,7 +1,7 @@
 set -ue
 cd Submodules/My-Wallet-V3
 
-git show | cat
+git log -1 | cat
 
 command -v yarn >/dev/null 2>&1 || {
   echo >&2 "yarn required to run install script";
