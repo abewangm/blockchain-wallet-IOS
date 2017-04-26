@@ -11,9 +11,6 @@ Prepare SocketRocket:
 
 Prepare the MyWallet Javascript:
 
-    # install-js.sh expects yarn to be installed
-    npm install -g yarn
-
     # install and build js files
     sh scripts/install-js.sh && sh scripts/build-js.sh
 

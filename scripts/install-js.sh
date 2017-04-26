@@ -1,17 +1,13 @@
 set -ue
 cd Submodules/My-Wallet-V3
 
-command -v yarn >/dev/null 2>&1 || {
-  echo >&2 "yarn required to run install script";
-  echo >&2 "install: npm i -g yarn";
-  exit 1;
-}
+git show | cat
 
 echo "Cleaning node_modules..."
 rm -rf node_modules
 
 echo "Installing node_modules..."
-yarn install --ignore-engines
+npm install
 
 # Required for JavaScriptCore
 echo "Patching fetch..."
