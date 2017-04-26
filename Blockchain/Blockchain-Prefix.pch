@@ -291,6 +291,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_API_COINIFY @"app-api.coinify.com"
 #define URL_API_SFOX @"api.sfox.com"
+#define URL_QUOTES_SFOX @"quotes.sfox.com"
+#define URL_KYC_SFOX @"sfox-kyc.s3.amazonaws.com"
+#define URL_API_ISIGNTHIS @"verify.isignthis.com"
+#define URL_GOOGLE_ANALYTICS @"www.google-analytics.com"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
