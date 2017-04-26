@@ -24,7 +24,7 @@
         
         UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, 290, 21)];
         addressLabel.textColor = [UIColor darkGrayColor];
-        addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         addressLabel.text = address;
         addressLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:addressLabel];
@@ -40,10 +40,10 @@
         
         UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
         saveButton.frame = CGRectMake(0, 0, self.frame.size.width, 46);
-        saveButton.backgroundColor = COLOR_BUTTON_GRAY;
+        saveButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         [saveButton setTitle:BC_STRING_SAVE forState:UIControlStateNormal];
-        [saveButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        saveButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
         
         [saveButton addTarget:self action:@selector(labelSaveClicked) forControlEvents:UIControlEventTouchUpInside];
         

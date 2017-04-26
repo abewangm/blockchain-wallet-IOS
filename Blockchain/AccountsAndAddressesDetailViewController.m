@@ -308,7 +308,7 @@ typedef enum {
 - (UIView *)getFooterViewForSection:(NSInteger)section
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, self.tableView.frame.size.width - 30, 50)];
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:13];
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     label.numberOfLines = 0;
     label.textColor = [UIColor grayColor];
     label.text = [self getStringForFooterInSection:section];
@@ -494,8 +494,8 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
-    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM];
     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     
     BOOL canTransferFromAddress = [self canTransferFromAddress];

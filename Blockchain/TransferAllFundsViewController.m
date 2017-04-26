@@ -64,7 +64,7 @@
     self.sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.sendButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.sendButton setTitle:BC_STRING_TRANSFER_FUNDS forState:UIControlStateNormal];
-    self.sendButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
+    self.sendButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
     self.sendButton.enabled = NO;
@@ -145,6 +145,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_FROM;
         cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
+        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
         cell.detailTextLabel.text = self.addressesUsed == nil ? @"" : addressesString;
         cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -154,6 +155,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = BC_STRING_TO;
         cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:cell.textLabel.font.pointSize];
+        cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
         cell.detailTextLabel.text = [self.transferPaymentBuilder getLabelForDestinationAccount];
         cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:cell.detailTextLabel.font.pointSize];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

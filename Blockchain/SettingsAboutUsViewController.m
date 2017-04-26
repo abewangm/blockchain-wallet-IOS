@@ -45,7 +45,7 @@
     CGFloat labelWidth = self.view.frame.size.width - 30;
 
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, bannerImageView.frame.origin.y + bannerImageView.frame.size.height + 16, labelWidth, 90)];
-    infoLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
+    infoLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
     infoLabel.numberOfLines = 3;
@@ -61,7 +61,7 @@
     UIButton *rateUsButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - buttonWidth)/2, aboveView.frame.origin.y + aboveView.frame.size.height + 16, buttonWidth, 40)];
     rateUsButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [rateUsButton setTitleColor:COLOR_BLOCKCHAIN_BLUE forState:UIControlStateNormal];
-    rateUsButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:15];
+    rateUsButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     [rateUsButton setTitle:BC_STRING_RATE_US forState:UIControlStateNormal];
     [self.view addSubview:rateUsButton];
     [rateUsButton addTarget:self action:@selector(rateApp) forControlEvents:UIControlEventTouchUpInside];

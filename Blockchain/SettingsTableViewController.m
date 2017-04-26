@@ -220,12 +220,12 @@ const int aboutPrivacyPolicy = 2;
 
 + (UIFont *)fontForCell
 {
-    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
+    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM];
 }
 
 + (UIFont *)fontForCellSubtitle
 {
-    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    return [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
 }
 
 - (UITableViewCell *)adjustFontForCell:(UITableViewCell *)cell
@@ -234,13 +234,13 @@ const int aboutPrivacyPolicy = 2;
     cellTextLabel.text = cell.textLabel.text;
     [cellTextLabel sizeToFit];
     if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 2/3) {
-        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
-        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:12];
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_SMALL];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_SMALL];
     }
     
     if (cellTextLabel.frame.size.width > cell.contentView.frame.size.width * 4/5) {
-        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
-        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:10];
+        cell.textLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
+        cell.detailTextLabel.font = [UIFont fontWithName:FONT_HELVETICA_NUEUE size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     }
     
     return cell;
@@ -1202,7 +1202,7 @@ const int aboutPrivacyPolicy = 2;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
     label.textColor = COLOR_BLOCKCHAIN_BLUE;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
     [view addSubview:label];
     

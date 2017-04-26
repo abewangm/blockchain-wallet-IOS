@@ -31,6 +31,8 @@
 @property (nonatomic) UIButton *startOverButton;
 @property (nonatomic) UIButton *closeCardsViewButton;
 @property (nonatomic) UIButton *skipAllButton;
+@property (nonatomic) UILabel *noTransactionsTitle;
+@property (nonatomic) UILabel *noTransactionsDescription;
 @property (nonatomic) UIButton *getBitcoinButton;
 @property (nonatomic) CGRect originalHeaderFrame;
 @property (nonatomic) UIScrollView *cardsScrollView;
@@ -710,6 +712,8 @@ int lastNumberTransactions = INT_MAX;
     [super viewWillAppear:animated];
     app.mainTitleLabel.hidden = YES;
     app.mainTitleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    balanceBigButton.center = CGPointMake(headerView.center.x, balanceBigButton.center.y);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -775,18 +779,19 @@ int lastNumberTransactions = INT_MAX;
     // Title label Y origin will be above midpoint between end of cards view and table view height
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsTitle.textAlignment = NSTextAlignmentCenter;
-    noTransactionsTitle.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
+    noTransactionsTitle.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     noTransactionsTitle.text = BC_STRING_NO_TRANSACTIONS_TITLE;
     noTransactionsTitle.textColor = COLOR_BLOCKCHAIN_BLUE;
     [noTransactionsTitle sizeToFit];
     CGFloat noTransactionsViewCenterY = (tableView.frame.size.height - self.noTransactionsView.frame.origin.y)/2 - noTransactionsTitle.frame.size.height;
     noTransactionsTitle.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsViewCenterY);
     [self.noTransactionsView addSubview:noTransactionsTitle];
+    self.noTransactionsTitle = noTransactionsTitle;
     
     // Description label Y origin will be 8 points under title label
     UILabel *noTransactionsDescription = [[UILabel alloc] initWithFrame:CGRectZero];
     noTransactionsDescription.textAlignment = NSTextAlignmentCenter;
-    noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    noTransactionsDescription.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
     noTransactionsDescription.numberOfLines = 0;
     noTransactionsDescription.text = BC_STRING_NO_TRANSACTIONS_TEXT;
     noTransactionsDescription.textColor = COLOR_TEXT_DARK_GRAY;
@@ -798,6 +803,7 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView addSubview:noTransactionsDescription];
     noTransactionsDescription.center = CGPointMake(self.noTransactionsView.center.x, noTransactionsDescription.center.y);
     noTransactionsDescription.frame = CGRectMake(noTransactionsDescription.frame.origin.x, noTransactionsTitle.frame.origin.y + noTransactionsTitle.frame.size.height + 8, noTransactionsDescription.frame.size.width, noTransactionsDescription.frame.size.height);
+    self.noTransactionsDescription = noTransactionsDescription;
     
     // Get bitcoin button Y origin will be 16 points under description label
     self.getBitcoinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16, 130, 30)];
@@ -805,19 +811,14 @@ int lastNumberTransactions = INT_MAX;
     self.getBitcoinButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     self.getBitcoinButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     self.getBitcoinButton.center = CGPointMake(self.noTransactionsView.center.x, self.getBitcoinButton.center.y);
-    self.getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     [self.getBitcoinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.getBitcoinButton setTitle:[BC_STRING_GET_BITCOIN uppercaseString] forState:UIControlStateNormal];
     [self.getBitcoinButton addTarget:self action:@selector(getBitcoinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     if (!showCards) {
-        
-        // Reposition description label Y to center of screen, and reposition title and button Y origins around it
-        noTransactionsDescription.center = CGPointMake(noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
-        noTransactionsTitle.center = CGPointMake(noTransactionsTitle.center.x, noTransactionsDescription.frame.origin.y - noTransactionsTitle.frame.size.height - 8 + noTransactionsTitle.frame.size.height/2);
-        self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, noTransactionsDescription.frame.origin.y + noTransactionsDescription.frame.size.height + 16 + noTransactionsDescription.frame.size.height/2);
-        self.getBitcoinButton.hidden = NO;
+        [self centerNoTransactionSubviews];
     } else {
         self.getBitcoinButton.hidden = YES;
     }
@@ -877,7 +878,7 @@ int lastNumberTransactions = INT_MAX;
     UILabel *doneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, checkImageView.frame.origin.y + checkImageView.frame.size.height + 14, 150, 30)];
     doneTitleLabel.textAlignment = NSTextAlignmentCenter;
     doneTitleLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
-    doneTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:16];
+    doneTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
     doneTitleLabel.adjustsFontSizeToFitWidth = YES;
     doneTitleLabel.text = BC_STRING_OVERVIEW_COMPLETE_TITLE;
     doneTitleLabel.center = CGPointMake(overviewCompleteCenterX, doneTitleLabel.center.y);
@@ -887,7 +888,7 @@ int lastNumberTransactions = INT_MAX;
     doneDescriptionLabel.textAlignment = NSTextAlignmentCenter;
     doneDescriptionLabel.numberOfLines = 0;
     doneDescriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    doneDescriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    doneDescriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
     doneDescriptionLabel.adjustsFontSizeToFitWidth = YES;
     doneDescriptionLabel.text = BC_STRING_OVERVIEW_COMPLETE_DESCRIPTION;
     [doneDescriptionLabel sizeToFit];
@@ -920,7 +921,7 @@ int lastNumberTransactions = INT_MAX;
     [cardsView addSubview:self.startOverButton];
     [self.startOverButton setTitle:BC_STRING_START_OVER forState:UIControlStateNormal];
     [self.startOverButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
-    self.startOverButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.startOverButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.startOverButton.hidden = YES;
     [self.startOverButton addTarget:self action:@selector(showFirstCard) forControlEvents:UIControlEventTouchUpInside];
     
@@ -936,7 +937,7 @@ int lastNumberTransactions = INT_MAX;
     CGFloat skipAllButtonWidth = 80;
     CGFloat skipAllButtonHeight = 30;
     self.skipAllButton = [[UIButton alloc] initWithFrame:CGRectMake(cardsView.frame.size.width - skipAllButtonWidth, self.pageControl.frame.origin.y, skipAllButtonWidth, skipAllButtonHeight)];
-    self.skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.skipAllButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.skipAllButton.backgroundColor = [UIColor clearColor];
     [self.skipAllButton setTitleColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE forState:UIControlStateNormal];
     [self.skipAllButton setTitle:BC_STRING_SKIP_ALL forState:UIControlStateNormal];
@@ -1067,9 +1068,7 @@ int lastNumberTransactions = INT_MAX;
 
         [self resetHeaderFrame];
         
-        for (UIView *subview in self.noTransactionsView.subviews) {
-            subview.frame = CGRectOffset(subview.frame, 0, self.noTransactionsView.frame.size.height/2 - 162);
-        }
+        [self centerNoTransactionSubviews];
         
         self.getBitcoinButton.hidden = NO;
         self.getBitcoinButton.alpha = 1;
@@ -1079,6 +1078,15 @@ int lastNumberTransactions = INT_MAX;
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self.tableView reloadData];
+}
+
+- (void)centerNoTransactionSubviews
+{
+    // Reposition description label Y to center of screen, and reposition title and button Y origins around it
+    self.noTransactionsDescription.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsView.frame.size.height/2 - self.originalHeaderFrame.size.height);
+    self.noTransactionsTitle.center = CGPointMake(self.noTransactionsTitle.center.x, self.noTransactionsDescription.frame.origin.y - self.noTransactionsTitle.frame.size.height - 8 + self.noTransactionsTitle.frame.size.height/2);
+    self.getBitcoinButton.center = CGPointMake(self.getBitcoinButton.center.x, self.noTransactionsDescription.frame.origin.y + self.noTransactionsDescription.frame.size.height + 16 + self.noTransactionsDescription.frame.size.height/2);
+    self.getBitcoinButton.hidden = NO;
 }
 
 - (void)resetHeaderFrame

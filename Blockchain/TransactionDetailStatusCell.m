@@ -35,7 +35,7 @@
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_STATUS;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
     [self.contentView addSubview:self.mainLabel];
     
     CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
@@ -45,7 +45,7 @@
     self.accessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.accessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
     [self.accessoryButton setTitle:buttonTitle forState:UIControlStateNormal];
-    [self.accessoryButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16]];
+    [self.accessoryButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE]];
     self.accessoryButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.accessoryButton setTitleColor:COLOR_TABLE_VIEW_CELL_TEXT_BLUE forState:UIControlStateNormal];
     [self.contentView addSubview:self.accessoryButton];
@@ -54,7 +54,7 @@
     self.bannerButton.titleEdgeInsets = UIEdgeInsetsMake(0, 24, 0, 24);
     self.bannerButton.titleLabel.textColor = [UIColor whiteColor];
     self.bannerButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17];
+    self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     self.bannerButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.bannerButton setTitle:[[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, URL_BLOCKCHAIN_INFO] uppercaseString] forState:UIControlStateNormal];
     self.bannerButton.layer.cornerRadius = 4;

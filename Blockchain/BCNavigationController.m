@@ -31,9 +31,9 @@
     
     app.topViewControllerDelegate = self;
     
-    self.topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
-    self.topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.view addSubview:self.topBar];
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
+    topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [self.view addSubview:topBar];
     
     self.headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
     self.headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
@@ -41,7 +41,8 @@
     self.headerLabel.textAlignment = NSTextAlignmentCenter;
     self.headerLabel.adjustsFontSizeToFitWidth = YES;
     self.headerLabel.text = self.headerTitle;
-    [self.topBar addSubview:self.headerLabel];
+    self.headerLabel.center = CGPointMake(topBar.center.x, self.headerLabel.center.y);
+    [topBar addSubview:self.headerLabel];
     
     self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.closeButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
@@ -180,19 +181,6 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
     });
-}
-
-- (UIButton *)createTopRightButton
-{
-    self.topRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.topRightButton.frame = self.closeButton.frame;
-    self.topRightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    self.topRightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.topRightButton setTitleEdgeInsets:self.closeButton.titleEdgeInsets];
-    [self.topRightButton setTitleColor:self.closeButton.currentTitleColor forState:UIControlStateHighlighted];
-    [self.topBar addSubview:self.topRightButton];
-    
-    return self.topRightButton;
 }
 
 @end

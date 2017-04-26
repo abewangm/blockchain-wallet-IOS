@@ -28,6 +28,11 @@
 #import "NSURLRequest+SRWebSocket.h"
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
+#import "PrivateHeaders.h"
+
+#ifndef WHITELISTED_GUID
+#define WHITELISTED_GUID @""
+#endif
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -679,6 +684,10 @@
     };
     
 #pragma mark Buy
+    
+    self.context[@"objc_get_whitelisted_guid"] = ^(JSValue *trade) {
+        return WHITELISTED_GUID;
+    };
     
     self.context[@"objc_show_completed_trade"] = ^(JSValue *trade) {
         [weakSelf show_completed_trade:trade];
@@ -1434,6 +1443,7 @@
 {
     [self useDebugSettingsIfSet];
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.parsePairingCode(\"%@\");", [code escapeStringForJS]]];
@@ -2119,11 +2129,17 @@
 
 - (void)watchPendingTrades:(BOOL)shouldSync
 {
+    if (shouldSync) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+    }
+    
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPendingTrades(%d)", shouldSync]];
 }
 
 - (void)fetchExchangeAccount
 {
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+
     [self.context evaluateScript:@"MyWalletPhone.getExchangeAccount()"];
 }
 

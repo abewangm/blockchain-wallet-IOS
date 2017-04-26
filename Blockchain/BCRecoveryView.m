@@ -10,6 +10,14 @@
 
 @implementation BCRecoveryView
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.instructionsLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    self.recoveryPassphraseTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+}
+
 - (void)modalWasDismissed{
     
     self.recoveryPassphraseTextField.text = @"";

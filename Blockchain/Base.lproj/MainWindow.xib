@@ -26,7 +26,10 @@
                 <outlet property="busyView" destination="260" id="cbQ-Yl-2J6"/>
                 <outlet property="createWalletView" destination="355" id="dlW-nX-G8c"/>
                 <outlet property="forgetWalletButton" destination="5gL-FG-Zcc" id="cCs-KX-EOb"/>
+                <outlet property="forgetWalletLabel" destination="C0R-wB-wF1" id="Uqm-gA-xWb"/>
                 <outlet property="forgotPasswordButton" destination="kgi-aY-D6k" id="QqO-AZ-GnS"/>
+                <outlet property="mainPasswordButton" destination="625" id="IZP-fT-40G"/>
+                <outlet property="mainPasswordLabel" destination="624" id="DVU-8m-zoE"/>
                 <outlet property="mainPasswordTextField" destination="626" id="onb-8w-8q1"/>
                 <outlet property="mainPasswordView" destination="623" id="7Xu-al-CwC"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
@@ -49,7 +52,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="5i0-zZ-Y4H">
                     <rect key="frame" x="35" y="185" width="250" height="110"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="gray" id="262">
                             <rect key="frame" x="115" y="27" width="20" height="20"/>
@@ -94,7 +97,7 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="361">
                     <rect key="frame" x="40" y="34" width="255" height="54"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <string key="text">Login to your Blockchain Wallet via your PC or Mac at
 http://blockchain.info/wallet</string>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
@@ -246,6 +249,8 @@ http://blockchain.info/wallet</string>
                 <outlet property="passwordStrengthMeter" destination="acf-bJ-kgP" id="ytC-Jd-waT"/>
                 <outlet property="passwordTextField" destination="395" id="451"/>
                 <outlet property="recoveryPhraseView" destination="0Sz-Ta-Xdw" id="xpu-3L-4fd"/>
+                <outlet property="termsOfServiceButton" destination="wfI-8F-dfm" id="t25-7g-ono"/>
+                <outlet property="termsOfServiceLabel" destination="Qvx-f4-C2O" id="nGX-Sx-BCA"/>
             </connections>
             <point key="canvasLocation" x="133" y="-869"/>
         </view>
@@ -435,7 +440,7 @@ http://blockchain.info/wallet</string>
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="255" userLabel="Header View">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="ccf-kU-dko">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -638,6 +643,7 @@ http://blockchain.info/wallet</string>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="instructionsLabel" destination="pEh-08-oZW" id="RiN-Ga-ecW"/>
                 <outlet property="recoveryPassphraseTextField" destination="L1x-Mw-4H5" id="2wQ-GI-647"/>
             </connections>
             <point key="canvasLocation" x="500" y="-869"/>

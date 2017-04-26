@@ -32,7 +32,7 @@
     }
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.contentView.frame.size.height/2 - 20.5/2, 100, 20.5)];
-    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
+    self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
     self.mainLabel.text = BC_STRING_DESCRIPTION;
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -50,7 +50,7 @@
     self.textView.scrollEnabled = NO;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
-    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:16]];
+    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE]];
     self.textView.textColor = COLOR_TEXT_DARK_GRAY;
     
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
@@ -184,7 +184,7 @@
 {
     self.textViewPlaceholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x - 8, self.textView.frame.origin.y, self.textView.frame.size.width, self.defaultTextViewHeight)];
     self.textViewPlaceholderLabel.textAlignment = NSTextAlignmentRight;
-    self.textViewPlaceholderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:16];
+    self.textViewPlaceholderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
     self.textViewPlaceholderLabel.textColor = COLOR_LIGHT_GRAY;
     NSString *label = [self.descriptionDelegate getNotePlaceholder];
     self.textViewPlaceholderLabel.text = label && label.length > 0 ? label : BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;

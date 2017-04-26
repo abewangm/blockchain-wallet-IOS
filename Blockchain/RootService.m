@@ -50,6 +50,8 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
+#define USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP @"didFailTouchIDSetup"
+#define USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP @"shouldShowTouchIDSetup"
 
 @implementation RootService
 
@@ -173,6 +175,8 @@ void (^secondPasswordSuccess)(NSString *);
     [self persistServerSessionIDForNewUIWebViews];
     
     [self disableUIWebViewCaching];
+    
+    busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
     // Allocate the global wallet
     self.wallet = [[Wallet alloc] init];
@@ -334,6 +338,13 @@ void (^secondPasswordSuccess)(NSString *);
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     }
     
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP] &&
+        ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    }
+
+    [self setupBuyWebView];
+    
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
     if (hasGuidAndSharedKey) {
@@ -471,6 +482,12 @@ void (^secondPasswordSuccess)(NSString *);
     DLog(@"didReceiveRemoteNotification");
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+}
+
 #pragma mark - Setup
 
 - (void)requestAuthorizationForPushNotifications
@@ -563,6 +580,9 @@ void (^secondPasswordSuccess)(NSString *);
     // Paired
     else {
         
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+        
         // If the PIN is set show the pin modal
         if ([self isPinSet]) {
             [self showPinModalAsView:YES];
@@ -613,7 +633,7 @@ void (^secondPasswordSuccess)(NSString *);
     // TODO need to add new screen sizes with new iPhones ... ugly
     // TODO we're currently using the scaled version of the app on iPhone 6 and 6 Plus
     //        NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
-    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-700-568h", @"414x736" : @"LaunchImage-700-568h"};
+    NSDictionary *dict = @{@"320x480" : @"LaunchImage-700", @"320x568" : @"LaunchImage-700-568h", @"375x667" : @"LaunchImage-800-667h", @"414x736" : @"LaunchImage-800-Portrait-736h"};
     NSString *key = [NSString stringWithFormat:@"%dx%d", (int)[UIScreen mainScreen].bounds.size.width, (int)[UIScreen mainScreen].bounds.size.height];
     UIImage *launchImage = [UIImage imageNamed:dict[key]];
     
@@ -1106,19 +1126,30 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPasswordModal
 {
-    [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
+    mainPasswordLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     
+    mainPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    mainPasswordTextField.text = @"";
+    
+    mainPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    
+    forgotPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     forgotPasswordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgotPasswordButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     forgotPasswordButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [forgotPasswordButton setTitle:BC_STRING_FORGOT_PASSWORD forState:UIControlStateNormal];
     
+    forgetWalletLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    
+    forgetWalletButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     forgetWalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     forgetWalletButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     forgetWalletButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:mainPasswordTextField action:@selector(resignFirstResponder)];
-    mainPasswordTextField.text = @"";
+    
     [mainPasswordView addGestureRecognizer:tapGesture];
+    
+    [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
 }
 
 - (void)beginBackgroundUpdateTask
@@ -1676,6 +1707,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self reload];
     
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
@@ -1869,7 +1901,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)alertUserOfInvalidPrivateKey
 {
-    [self standardNotifyAutoDismissingController:BC_STRING_INCORRECT_PRIVATE_KEY];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self standardNotifyAutoDismissingController:BC_STRING_INCORRECT_PRIVATE_KEY];
+    });
 }
 
 - (void)sendFromWatchOnlyAddress
@@ -2566,7 +2600,12 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER];
     
     WalletSetupViewController *setupViewController = [[WalletSetupViewController alloc] initWithSetupDelegate:self];
-    setupViewController.emailOnly = YES;
+    
+    BOOL shouldShowTouchID = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    setupViewController.emailOnly = !shouldShowTouchID;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP];
+
     setupViewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self.window.rootViewController presentViewController:setupViewController animated:NO completion:nil];
 }
@@ -3573,6 +3612,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)pinEntryController:(PEPinEntryController *)c changedPin:(NSUInteger)_pin
 {
+    self.lastEnteredPIN = _pin;
+    
     if (![app.wallet isInitialized] || !app.wallet.password) {
         [self didFailPutPin:BC_STRING_CANNOT_SAVE_PIN_CODE_WHILE];
         return;
@@ -3642,11 +3683,16 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *errorString = [app checkForTouchIDAvailablility];
     if (!errorString) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+        NSString * pin = [NSString stringWithFormat:@"%lu", (unsigned long)self.lastEnteredPIN];
+        [KeychainItemWrapper setPINInKeychain:pin];
         return YES;
     } else {
         UIAlertController *alertTouchIDError = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorString preferredStyle:UIAlertControllerStyleAlert];
         [alertTouchIDError addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [_tabViewController.presentedViewController presentViewController:alertTouchIDError animated:YES completion:nil];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP];
+        
         return NO;
     }
 }

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BCConfirmPaymentView : UIView
+@property (strong, nonatomic) IBOutlet UILabel *amountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *feeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *fromLabel;
 @property (strong, nonatomic) IBOutlet UILabel *toLabel;

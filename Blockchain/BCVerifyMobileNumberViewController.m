@@ -45,7 +45,7 @@
     UILabel *promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16 + promptFrameAdjustY, self.view.frame.size.width - 80, 140)];
     promptLabel.numberOfLines = 7;
     promptLabel.textAlignment = NSTextAlignmentCenter;
-    promptLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:15];
+    promptLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
     promptLabel.text = BC_STRING_SETTINGS_SMS_PROMPT;
     promptLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.view addSubview:promptLabel];
@@ -55,7 +55,7 @@
     promptLabel.center = CGPointMake(self.view.center.x, promptLabel.center.y);
     
     self.mobileNumberField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(0, promptLabel.frame.origin.y + promptLabel.frame.size.height + 16 + textFieldFrameAdjustY, promptLabel.frame.size.width, 26)];
-    self.mobileNumberField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:18];
+    self.mobileNumberField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_LARGE];
     self.mobileNumberField.textColor = COLOR_TEXT_DARK_GRAY;
     self.mobileNumberField.placeholder = BC_STRING_SETTINGS_MOBILE_NUMBER;
     self.mobileNumberField.keyboardType = UIKeyboardTypePhonePad;
@@ -68,7 +68,7 @@
     updateButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 46);
     updateButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    updateButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    updateButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
     [updateButton addTarget:self action:@selector(updateButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.updateButton = updateButton;
@@ -77,7 +77,7 @@
     
     self.verifiedStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.mobileNumberField.frame.origin.y + self.mobileNumberField.frame.size.height + 8, 150, 26)];
     self.verifiedStatusLabel.textAlignment = NSTextAlignmentCenter;
-    self.verifiedStatusLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:15];
+    self.verifiedStatusLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM];
     [self.view addSubview:self.verifiedStatusLabel];
     self.verifiedStatusLabel.center = CGPointMake(self.view.center.x, self.verifiedStatusLabel.center.y);
 }
