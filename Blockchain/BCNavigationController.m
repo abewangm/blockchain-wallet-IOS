@@ -51,7 +51,7 @@
     [self.closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     self.closeButton.center = CGPointMake(self.closeButton.center.x, self.headerLabel.center.y);
     [self.closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    [self.topBar addSubview:self.closeButton];
+    [topBar addSubview:self.closeButton];
     
     self.backButton = [[UIButton alloc] initWithFrame:CGRectZero];
     self.backButton.imageEdgeInsets = IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON;
@@ -60,7 +60,7 @@
     [self.backButton setTitle:@"" forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"back_chevron_icon"] forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.topBar addSubview:self.backButton];
+    [topBar addSubview:self.backButton];
     
     [self setupBusyView];
 }
