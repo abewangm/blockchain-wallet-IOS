@@ -90,14 +90,7 @@ BOOL displayingLocalSymbolSend;
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + btcAmountField.frame.size.width + 8, fiatLabel.frame.origin.y, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 13, fiatAmountField.frame.origin.y, amountFieldWidth, fiatAmountField.frame.size.height);
     
-    CGFloat confirmPaymentViewFiatLabelOffset = 16;
-    
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        [self.confirmPaymentView.fiatAmountLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [self.confirmPaymentView.fiatFeeLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [self.confirmPaymentView.fiatTotalLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [feeInformationButton increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        
         [self.confirmPaymentView.arrowImageView centerXToSuperView];
     }
 
