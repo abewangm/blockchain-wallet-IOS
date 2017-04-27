@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SettingsTableViewController.h"
 @interface SettingsTwoStepViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UIButton *twoStepButton;
 @property (nonatomic) SettingsTableViewController *settingsController;
 
