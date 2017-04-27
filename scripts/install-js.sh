@@ -1,7 +1,7 @@
 set -ue
 cd Submodules/My-Wallet-V3
 
-git show | cat
+git log -1 | cat
 
 echo "Cleaning node_modules..."
 rm -rf node_modules
