@@ -2259,8 +2259,11 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
     scanPairingCodeButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    scanPairingCodeButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+
     manualPairButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     manualPairButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    manualPairButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
 }
 
 - (void)showRecoverWallet:(id)sender
