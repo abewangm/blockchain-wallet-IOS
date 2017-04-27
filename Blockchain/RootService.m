@@ -2252,6 +2252,10 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPairWallet:(id)sender
 {
+    manualPairStepOneTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepTwoTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepThreeTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
     scanPairingCodeButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
