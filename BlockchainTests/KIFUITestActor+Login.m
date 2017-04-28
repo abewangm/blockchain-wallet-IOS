@@ -122,9 +122,6 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     
     [self setupPIN];
     
-    [self waitForTimeInterval:2];
-    [self tapViewWithAccessibilityLabel:BC_STRING_OK traits:UIAccessibilityTraitButton];
-    
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }
 
