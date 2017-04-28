@@ -11,9 +11,6 @@
 #import "RootService.h"
 
 // 5s simulator
-const CGPoint alertOkButtonCenterShortText = (CGPoint){154, 340};
-const CGPoint alertOkButtonCenterMediumText = (CGPoint){154, 362};
-const CGPoint alertOkButtonRight = (CGPoint){175, 340};
 const CGPoint pinKeyTwo = (CGPoint){154, 362};
 
 @implementation KIFUITestActor (Login)
@@ -126,7 +123,7 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self setupPIN];
     
     [self waitForTimeInterval:2];
-    [self tapScreenAtPoint:alertOkButtonCenterShortText];
+    [self tapViewWithAccessibilityLabel:BC_STRING_OK traits:UIAccessibilityTraitButton];
     
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }
@@ -148,7 +145,7 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_WALLET];
     
     [self waitForTimeInterval:8];
-    [self tapScreenAtPoint:alertOkButtonCenterMediumText];
+    [self tapViewWithAccessibilityLabel:BC_STRING_OK traits:UIAccessibilityTraitButton];
     
     [self setupPIN];
     
@@ -187,7 +184,7 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_LOGOUT];
     
     [self waitForTimeInterval:.2];
-    [self tapScreenAtPoint:alertOkButtonRight];
+    [self tapViewWithAccessibilityLabel:BC_STRING_OK traits:UIAccessibilityTraitButton];
 }
 
 - (void)forgetWallet
@@ -196,7 +193,7 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FORGET_WALLET];
     
     [self waitForTimeInterval:.2];
-    [self tapScreenAtPoint:alertOkButtonRight];
+    [self tapViewWithAccessibilityLabel:BC_STRING_FORGET_WALLET traits:UIAccessibilityTraitButton];
     
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
 }
