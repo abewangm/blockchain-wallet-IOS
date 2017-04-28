@@ -57,7 +57,9 @@
     NSString *script = [NSString stringWithFormat:@"WalletCrypto.scrypt('%@', '%@', %@, %@, %@, %@, %@)", @"ϓ␀𐐀💩", @"ϓ␀𐐀💩", @64, @2, @2, @64, callback];
     [self.wallet.context evaluateScript:script];
     
-    [self waitForExpectationsWithTimeout:5 handler:nil];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        [app hideBusyView];
+    }];
 }
 
 - (void)testPerformanceExample {
