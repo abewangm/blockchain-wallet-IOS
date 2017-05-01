@@ -16,6 +16,7 @@
     
     self.instructionsLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     self.recoveryPassphraseTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    self.recoveryPassphraseTextField.accessibilityLabel = ACCESSIBILITY_LABEL_RECOVER_WALLET_FIELD;
 }
 
 - (void)modalWasDismissed{

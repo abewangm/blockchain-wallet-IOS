@@ -15,11 +15,15 @@
 - (void)backupFromSideMenu;
 
 - (void)manualPairWithGUID:(NSString *)guid password:(NSString *)password;
+- (void)createNewWallet;
+- (void)recoverWalletWithPhrase:(NSString *)phrase;
+
+- (void)enterPIN;
+
 - (void)logout;
 - (void)forgetWallet;
 - (void)logoutAndForgetWallet;
-- (void)createNewWallet;
-- (void)enterPIN;
+
 - (void)goToSend;
 - (void)typeInAddress;
 - (void)send;

@@ -155,6 +155,27 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
 }
 
+- (void)recoverWalletWithPhrase:(NSString *)phrase
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECOVER_WALLET];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECOVER_WALLET];
+    
+    [self waitForTappableViewWithAccessibilityLabel:BC_STRING_CONTINUE];
+    [self tapViewWithAccessibilityLabel:BC_STRING_CONTINUE];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECOVER_WALLET_FIELD];
+    [self enterText:phrase intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_RECOVER_WALLET_FIELD];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NUMPAD_VIEW];
+    [self setupPIN];
+}
+
 - (void)enterPIN
 {
     [self waitForViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_NUMPAD_VIEW];

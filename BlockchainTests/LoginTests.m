@@ -56,4 +56,9 @@
     [tester manualPairWithGUID:GUID_EMPTY_WALLET password:PASSWORD_EMPTY_WALLET];
 }
 
+- (void)testRecoverWallet
+{
+    [tester recoverWalletWithPhrase:RECOVER_WALLET_PHRASE];
+}
+
 @end

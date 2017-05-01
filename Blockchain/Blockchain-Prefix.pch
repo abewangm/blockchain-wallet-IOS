@@ -786,6 +786,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_MANUAL_PAIR @"manualPair"
 #define ACCESSIBILITY_LABEL_LOG_IN @"logIn"
 #define ACCESSIBILITY_LABEL_CONTINUE @"continue"
+#define ACCESSIBILITY_LABEL_RECOVER_WALLET @"recoverWallet"
+#define ACCESSIBILITY_LABEL_RECOVER_WALLET_FIELD @"recoverWalletField"
 #define ACCESSIBILITY_LABEL_CREATE_NEW_WALLET @"createNewWallet"
 #define ACCESSIBILITY_LABEL_CREATE_WALLET @"createWallet"
 #define ACCESSIBILITY_LABEL_FORGET_WALLET @"forgetWallet"

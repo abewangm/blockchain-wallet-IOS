@@ -15,4 +15,6 @@
 #define GUID_SEND_WALLET @""
 #define PASSWORD_SEND_WALLET @""
 
+#define RECOVER_WALLET_PHRASE @""
+
 #endif /* TestAccounts_h */

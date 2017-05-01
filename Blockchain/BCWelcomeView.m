@@ -74,6 +74,7 @@ Boolean shouldShowAnimation;
         self.recoverWalletButton.frame = CGRectMake(0, self.frame.size.height - 90, 240, BUTTON_HEIGHT);
         self.recoverWalletButton.center = CGPointMake(self.center.x, self.recoverWalletButton.center.y);
         [self.recoverWalletButton setBackgroundColor:[UIColor clearColor]];
+        self.recoverWalletButton.accessibilityLabel = ACCESSIBILITY_LABEL_RECOVER_WALLET;
         [self addSubview:self.recoverWalletButton];
         self.recoverWalletButton.enabled = NO;
         self.recoverWalletButton.alpha = 0.0;
