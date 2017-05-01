@@ -1002,8 +1002,10 @@ void (^secondPasswordSuccess)(NSString *);
     
     mainPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     mainPasswordTextField.text = @"";
-    
+    mainPasswordTextField.accessibilityLabel = ACCESSIBILITY_LABEL_ENTER_PASSWORD_FIELD;
+
     mainPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    mainPasswordButton.accessibilityLabel = ACCESSIBILITY_LABEL_ENTER_PASSWORD_BUTTON;
     
     forgotPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     forgotPasswordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -1022,6 +1024,7 @@ void (^secondPasswordSuccess)(NSString *);
     [mainPasswordView addGestureRecognizer:tapGesture];
     
     forgetWalletButton.accessibilityLabel = ACCESSIBILITY_LABEL_FORGET_WALLET;
+
     [self showModalWithContent:mainPasswordView closeType:ModalCloseTypeNone headerText:BC_STRING_PASSWORD_REQUIRED];
 }
 

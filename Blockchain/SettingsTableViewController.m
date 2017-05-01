@@ -1430,4 +1430,11 @@ const int aboutPrivacyPolicy = 2;
     [self alertUserToChangeTwoStepVerification];
 }
 
+#pragma mark - Test Helpers
+
+- (NSIndexPath *)indexPathForChangePassword
+{
+    return [NSIndexPath indexPathForRow:securityPasswordChange inSection:sectionSecurity];
+}
+
 @end

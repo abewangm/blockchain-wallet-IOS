@@ -17,4 +17,6 @@
 
 #define RECOVER_WALLET_PHRASE @""
 
+#define NEW_PASSWORD @"newPassword!"
+
 #endif /* TestAccounts_h */

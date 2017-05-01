@@ -28,6 +28,9 @@
 - (void)typeInAddress;
 - (void)send;
 
+- (void)goToSettings;
+- (void)changePassword:(NSString *)newPassword;
+
 - (void)confirmSendAmountNoDecimal;
 - (void)confirmSendAmountArabicNumeralsNoDecimal;
 

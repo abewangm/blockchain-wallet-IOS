@@ -35,6 +35,7 @@
     [createButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     createButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     [createButton addTarget:self action:@selector(confirmChangePassword) forControlEvents:UIControlEventTouchUpInside];
+    createButton.accessibilityLabel = ACCESSIBILITY_LABEL_CONTINUE;
     
     self.mainPasswordTextField.inputAccessoryView = createButton;
     self.newerPasswordTextField.inputAccessoryView = createButton;
@@ -51,6 +52,10 @@
     self.mainPasswordTextField.returnKeyType = UIReturnKeyNext;
     self.newerPasswordTextField.returnKeyType = UIReturnKeyNext;
     self.confirmNewPasswordTextField.returnKeyType = UIReturnKeyDone;
+    
+    self.mainPasswordTextField.accessibilityLabel = ACCESSIBILITY_LABEL_FIELD_OLD_PASSWORD;
+    self.newerPasswordTextField.accessibilityLabel = ACCESSIBILITY_LABEL_FIELD_NEW_PASSWORD;
+    self.confirmNewPasswordTextField.accessibilityLabel = ACCESSIBILITY_LABEL_FIELD_CONFIRM_NEW_PASSWORD;
 }
 
 - (void)viewWillAppear:(BOOL)animated

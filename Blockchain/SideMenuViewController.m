@@ -409,6 +409,8 @@ int accountEntries = 0;
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_BACKUP;
         } else if ([entry[DICTIONARY_KEY_KEY] isEqualToString:entryKeyAccountsAndAddresses]) {
             cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_ADDRESSES;
+        } else if ([entry[DICTIONARY_KEY_KEY] isEqualToString:entryKeySettings]) {
+            cell.accessibilityLabel = ACCESSIBILITY_LABEL_CELL_SETTINGS;
         }
         
         return cell;

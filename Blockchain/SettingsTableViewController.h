@@ -17,6 +17,8 @@
 - (void)changeTwoStepTapped;
 - (void)updateEmailAndMobileStrings;
 
+- (NSIndexPath *)indexPathForChangePassword;
+
 // Called from reminder modal
 - (void)showBackup;
 - (void)showTwoStep;

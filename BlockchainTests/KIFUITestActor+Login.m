@@ -9,6 +9,7 @@
 #import "KIFUITestActor+Login.h"
 #import "Blockchain-Prefix.pch"
 #import "RootService.h"
+#import "SettingsTableViewController.h"
 
 // 5s simulator
 const CGPoint pinKeyTwo = (CGPoint){154, 362};
@@ -138,8 +139,8 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
     [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
     [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET];
     
-    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_WALLET];
-    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CREATE_WALLET];
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
     
     [self waitForTimeInterval:8];
     [self tapViewWithAccessibilityLabel:BC_STRING_OK traits:UIAccessibilityTraitButton];
@@ -390,6 +391,46 @@ const CGPoint pinKeyTwo = (CGPoint){154, 362};
 - (uint64_t)computeBitcoinValue:(NSString *)amount
 {
     return [app.wallet parseBitcoinValueFromString:amount];
+}
+
+#pragma mark - Settings
+
+- (void)goToSettings
+{
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    
+    [self waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_SETTINGS];
+    [self tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CELL_SETTINGS];
+}
+
+- (void)changePassword:(NSString *)newPassword
+{
+    if ([app.settingsNavigationController.visibleViewController isMemberOfClass:[SettingsTableViewController class]]) {
+        SettingsTableViewController *tableViewController = (SettingsTableViewController *)app.settingsNavigationController.visibleViewController;
+        
+        NSIndexPath *indexPath = [tableViewController indexPathForChangePassword];
+        
+        [tableViewController.tableView scrollToRowAtIndexPath:[tableViewController indexPathForChangePassword] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [tester tapRowAtIndexPath:indexPath inTableView:tableViewController.tableView];
+        
+        [tester waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FIELD_OLD_PASSWORD];
+        [tester enterText:@"testpassword!" intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FIELD_OLD_PASSWORD];
+        [tester enterText:newPassword intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FIELD_NEW_PASSWORD];
+        [tester enterText:newPassword intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_FIELD_CONFIRM_NEW_PASSWORD];
+        [tester tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_CONTINUE];
+        
+        [tester waitForTappableViewWithAccessibilityLabel:BC_STRING_OK];
+        [tester tapViewWithAccessibilityLabel:BC_STRING_OK];
+        
+        [tester waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_ENTER_PASSWORD_FIELD];
+        [tester enterText:newPassword intoViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_ENTER_PASSWORD_FIELD];
+        [tester tapViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_ENTER_PASSWORD_BUTTON];
+        
+        [tester setupPIN];
+        
+        [tester waitForTappableViewWithAccessibilityLabel:ACCESSIBILITY_LABEL_SIDE_MENU];
+    }
 }
 
 @end

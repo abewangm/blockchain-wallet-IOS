@@ -790,6 +790,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_RECOVER_WALLET_FIELD @"recoverWalletField"
 #define ACCESSIBILITY_LABEL_CREATE_NEW_WALLET @"createNewWallet"
 #define ACCESSIBILITY_LABEL_CREATE_WALLET @"createWallet"
+#define ACCESSIBILITY_LABEL_ENTER_PASSWORD_FIELD @"enterPasswordField"
+#define ACCESSIBILITY_LABEL_ENTER_PASSWORD_BUTTON @"enterPasswordButton"
 #define ACCESSIBILITY_LABEL_FORGET_WALLET @"forgetWallet"
 #define ACCESSIBILITY_LABEL_CELL_LOGOUT @"cellLogout"
 #define ACCESSIBILITY_LABEL_CELL_BACKUP @"cellBackup"
@@ -805,6 +807,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ACCESSIBILITY_LABEL_TEXT_FIELD_CREATE_ACCOUNT @"createAccountTextField"
 #define ACCESSIBILITY_LABEL_BUTTON_CREATE_ACCOUNT @"createAccountButton"
 
+#define ACCESSIBILITY_LABEL_CELL_SETTINGS @"settings"
+#define ACCESSIBILITY_LABEL_FIELD_OLD_PASSWORD @"oldPasswordField"
+#define ACCESSIBILITY_LABEL_FIELD_NEW_PASSWORD @"newPasswordField"
+#define ACCESSIBILITY_LABEL_FIELD_CONFIRM_NEW_PASSWORD @"confirmNewPasswordField"
 
 #define ACCESSIBILITY_LABEL_RECEIVE_TAB @"receiveTab"
 #define ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD @"receiveFiatField"
