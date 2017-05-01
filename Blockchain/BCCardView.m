@@ -43,7 +43,7 @@
             actionName = BC_STRING_SCAN_ADDRESS;
             actionColor = COLOR_BLOCKCHAIN_BLUE;
         } else if (actionType == ActionTypeShowReceive) {
-            actionName = BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE;
+            actionName = BC_STRING_RECEIVE;
             actionColor = COLOR_BLOCKCHAIN_AQUA;
         } else if (actionType == ActionTypeBuyBitcoin) {
             actionName = BC_STRING_BUY_BITCOIN;
