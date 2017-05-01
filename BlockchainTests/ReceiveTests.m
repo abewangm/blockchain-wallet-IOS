@@ -56,13 +56,6 @@
     XCTAssertEqual(arabicCommaResult, computedArabicCommaResult, @"Arabic comma result must be equal");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
-
 #pragma mark - Helpers
 
 - (NSString *)getRandomReceiveAmount
