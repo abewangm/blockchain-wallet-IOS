@@ -61,7 +61,7 @@ NSString *detailLabel;
     [self setupTapGestureForMainQR];
     
     // iPhone4/4S
-    if ([[UIScreen mainScreen] bounds].size.height < 568) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         int reduceImageSizeBy = 40;
         
         // Smaller QR Code Image

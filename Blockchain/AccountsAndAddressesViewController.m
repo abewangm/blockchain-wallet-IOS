@@ -45,7 +45,7 @@
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_ADDRESSES;
     
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
@@ -247,7 +247,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && section == [tableView numberOfSections] - 1) {
+    if (IS_USING_SCREEN_SIZE_4S && section == [tableView numberOfSections] - 1) {
         return DEFAULT_HEADER_HEIGHT;
     }
     return 0;

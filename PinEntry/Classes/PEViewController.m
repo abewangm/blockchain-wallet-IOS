@@ -76,7 +76,7 @@
     CGFloat scrollViewHeight;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
 
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         CGFloat offsetY = 60;
         pin0.frame = CGRectOffset(pin0.frame, 0, offsetY);
         pin1.frame = CGRectOffset(pin1.frame, 0, offsetY);

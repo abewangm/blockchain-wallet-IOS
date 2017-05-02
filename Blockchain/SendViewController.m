@@ -1069,7 +1069,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        if (IS_USING_SCREEN_SIZE_4S) {
             [lineBelowFromField changeYPosition:43];
             
             [toLabel changeYPosition:52];
@@ -1103,7 +1103,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        if (IS_USING_SCREEN_SIZE_4S) {
             [lineBelowFromField changeYPosition:47];
             
             [toLabel changeYPosition:61];

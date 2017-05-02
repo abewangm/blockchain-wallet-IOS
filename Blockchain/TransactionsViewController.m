@@ -595,7 +595,7 @@ int lastNumberTransactions = INT_MAX;
     CGFloat noTransactionsViewOffsetY = 0;
     
     // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && showCards) {
+    if (IS_USING_SCREEN_SIZE_4S && showCards) {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
         noTransactionsViewOffsetY += 60;
     }
