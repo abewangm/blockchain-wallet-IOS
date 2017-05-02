@@ -97,11 +97,14 @@
         
         scrollViewHeight = screenHeight/HEIGHT_IPHONE_5S * 380;
     }
+    
+    promptLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
 
     self.scrollView.frame = CGRectMake(0, 480 - scrollViewHeight, WINDOW_WIDTH, scrollViewHeight);
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     
+    self.swipeLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.swipeLabel.text = BC_STRING_SETTINGS_PIN_SWIPE_TO_RECEIVE;
     self.swipeLabelImageView.image = [UIImage imageNamed:@"arrow_downward"];
     self.swipeLabelImageView.transform = CGAffineTransformMakeRotation(-M_PI_2);
