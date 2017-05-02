@@ -517,7 +517,8 @@ int lastNumberTransactions = INT_MAX;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
     
-    [filterAccountButton.titleLabel setMinimumScaleFactor:.5f];
+    filterAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    [filterAccountButton.titleLabel setMinimumScaleFactor:1];
     [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
     [filterAccountChevronButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
