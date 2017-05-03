@@ -157,7 +157,7 @@ NSString *detailLabel;
     self.receiveFiatField.delegate = self;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
-    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
+    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 50, 21)];
     whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
     whereLabel.text = BC_STRING_WHERE;
