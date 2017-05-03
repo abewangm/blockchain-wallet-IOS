@@ -109,7 +109,7 @@ NSString *detailLabel;
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
-    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE]];
+    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_LARGE] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_LARGE]];
     [self.view addSubview:requestButton];
     [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
