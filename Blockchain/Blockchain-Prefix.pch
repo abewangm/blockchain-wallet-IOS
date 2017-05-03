@@ -138,7 +138,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define IMAGE_EDGE_INSETS_CLOSE_BUTTON_X UIEdgeInsetsMake(0, 0, 0, 20)
 
 #define DEFAULT_HEADER_HEIGHT 65
-#define DEFAULT_FOOTER_HEIGHT 47
+#define DEFAULT_FOOTER_HEIGHT 49
 #define DEFAULT_STATUS_BAR_HEIGHT 20
 
 #define WELCOME_VIEW_BUTTON_EDGE_INSETS UIEdgeInsetsMake(0, 12.5, 0, 12.5)
