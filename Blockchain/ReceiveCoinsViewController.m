@@ -179,6 +179,11 @@ NSString *detailLabel;
     self.receiveToLabel.userInteractionEnabled = YES;
     
     CGFloat keyboardFieldWidth = fieldWidth - doneButton.frame.size.width/2;
+    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+
     btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + keyboardFieldWidth + 8, fiatLabel.frame.origin.y, receiveFiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 8, fiatAmountField.frame.origin.y, keyboardFieldWidth, fiatAmountField.frame.size.height);
