@@ -19,6 +19,7 @@
 #import "PrivateKeyReader.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "TransferAllFundsBuilder.h"
+#import "BCFeeSelectionView.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -1763,7 +1764,8 @@ BOOL displayingLocalSymbolSend;
 
 - (IBAction)feeOptionsClicked:(UIButton *)sender
 {
-    
+    BCFeeSelectionView *feeSelectionView = [[BCFeeSelectionView alloc] initWithFrame:app.window.frame];
+    [app showModalWithContent:feeSelectionView closeType:ModalCloseTypeBack headerText:BC_STRING_FEE];
 }
 
 - (IBAction)labelAddressClicked:(id)sender
