@@ -193,6 +193,12 @@
 
 - (void)verifyMobileNumberError
 {
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    
+    navigationController.onDismissViewController = ^() {
+        [self.delegate alertUserToVerifyMobileNumber];
+    };
+    
     [self reload];
 }
 

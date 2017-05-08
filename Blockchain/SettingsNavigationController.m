@@ -174,4 +174,14 @@
     }
 }
 
+- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    [super dismissViewControllerAnimated:flag completion:completion];
+    
+    if (self.onDismissViewController) {
+        self.onDismissViewController();
+        self.onDismissViewController = nil;
+    }
+}
+
 @end
