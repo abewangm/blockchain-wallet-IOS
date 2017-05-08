@@ -90,6 +90,8 @@ BOOL displayingLocalSymbolSend;
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + btcAmountField.frame.size.width + 8, fiatLabel.frame.origin.y, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 13, fiatAmountField.frame.origin.y, amountFieldWidth, fiatAmountField.frame.size.height);
     
+    [feeOptionsButton changeXPosition:self.view.frame.size.width - feeOptionsButton.frame.size.width];
+    
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
         [self.confirmPaymentView.arrowImageView centerXToSuperView];
     }
@@ -1086,6 +1088,7 @@ BOOL displayingLocalSymbolSend;
             
             [feeField changeYPosition:44];
             [feeLabel changeYPosition:47];
+            [feeOptionsButton changeYPosition:43];
             [lineBelowFeeField changeYPosition:71];
             
             [fundsAvailableButton changeYPosition:21];
@@ -1093,6 +1096,7 @@ BOOL displayingLocalSymbolSend;
         
         feeField.hidden = NO;
         feeLabel.hidden = NO;
+        feeOptionsButton.hidden = NO;
         lineBelowFeeField.hidden = NO;
     }];
     
@@ -1127,6 +1131,7 @@ BOOL displayingLocalSymbolSend;
         
         feeField.hidden = YES;
         feeLabel.hidden = YES;
+        feeOptionsButton.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
 }
@@ -1754,6 +1759,11 @@ BOOL displayingLocalSymbolSend;
     [fiatAmountField resignFirstResponder];
     [toField resignFirstResponder];
     [feeField resignFirstResponder];
+}
+
+- (IBAction)feeOptionsClicked:(UIButton *)sender
+{
+    
 }
 
 - (IBAction)labelAddressClicked:(id)sender
