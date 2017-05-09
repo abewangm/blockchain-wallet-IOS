@@ -13,5 +13,6 @@
 - (void)changeXPosition:(CGFloat)newX;
 - (void)changeYPosition:(CGFloat)newY;
 - (void)changeWidth:(CGFloat)newWidth;
+- (void)changeHeight:(CGFloat)newHeight;
 - (void)centerXToSuperView;
 @end

@@ -44,6 +44,15 @@
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.text = transaction.from.label;
+    
+    CGFloat mainLabelHeight = self.mainLabel.frame.size.height;
+    CGFloat accessoryLabelHeight = self.accessoryLabel.frame.size.height;
+    
+    CGFloat targetHeight = mainLabelHeight > accessoryLabelHeight ? mainLabelHeight : accessoryLabelHeight;
+    
+    [self.mainLabel changeHeight:targetHeight];
+    [self.accessoryLabel changeHeight:targetHeight];
+    
     [self.contentView addSubview:self.accessoryLabel];
     
     self.isSetup = YES;
