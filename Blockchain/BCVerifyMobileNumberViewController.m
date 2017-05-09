@@ -196,7 +196,9 @@
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     
     navigationController.onDismissViewController = ^() {
-        [self.delegate alertUserToVerifyMobileNumber];
+        if (self.view.window) {
+            [self.delegate alertUserToVerifyMobileNumber];
+        }
     };
     
     [self reload];
