@@ -54,7 +54,7 @@
     self.bannerButton.titleEdgeInsets = UIEdgeInsetsMake(0, 24, 0, 24);
     self.bannerButton.titleLabel.textColor = [UIColor whiteColor];
     self.bannerButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
     self.bannerButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.bannerButton setTitle:[[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, URL_BLOCKCHAIN_INFO] uppercaseString] forState:UIControlStateNormal];
     self.bannerButton.layer.cornerRadius = 4;
