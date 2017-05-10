@@ -348,18 +348,18 @@
                 cell.watchLabel.center = CGPointMake(cell.watchLabel.center.x, watchLabelCenterY);
                 cell.watchLabel.textColor = [UIColor grayColor];
                 
-                CGFloat minimumBalanceButtonOriginX = 235;
-                CGFloat balanceLabelOriginX = cell.watchLabel.frame.origin.x + cell.watchLabel.frame.size.width + 8;
+                CGFloat minimumBalanceButtonOriginX = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 235 : 180;
+                CGFloat watchLabelEndX = cell.watchLabel.frame.origin.x + cell.watchLabel.frame.size.width + 8;
                 
-                if (balanceLabelOriginX > minimumBalanceButtonOriginX) {
+                if (watchLabelEndX > minimumBalanceButtonOriginX) {
                     CGFloat smallestDefaultLabelWidth = 18;
-                    CGFloat newWidth = cell.watchLabel.frame.size.width - (balanceLabelOriginX - minimumBalanceButtonOriginX) > smallestDefaultLabelWidth ? : smallestDefaultLabelWidth;
+                    CGFloat difference = cell.watchLabel.frame.size.width - (watchLabelEndX - minimumBalanceButtonOriginX);
+                    CGFloat newWidth = difference > smallestDefaultLabelWidth ? difference : smallestDefaultLabelWidth;
                     [cell.watchLabel changeWidth:newWidth];
-                    balanceLabelOriginX = minimumBalanceButtonOriginX;
                 }
                 
-                cell.balanceLabel.frame = CGRectMake(balanceLabelOriginX, 11, cell.contentView.frame.size.width - balanceLabelOriginX, 21);
-                cell.balanceButton.frame = CGRectMake(balanceLabelOriginX, 0, cell.contentView.frame.size.width - balanceLabelOriginX, cell.contentView.frame.size.height);
+                cell.balanceLabel.frame = CGRectMake(minimumBalanceButtonOriginX, 11, WINDOW_WIDTH - minimumBalanceButtonOriginX - 20, 21);
+                cell.balanceButton.frame = CGRectMake(minimumBalanceButtonOriginX, 0, WINDOW_WIDTH - minimumBalanceButtonOriginX, cell.contentView.frame.size.height);
             } else {
                 
                 // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
