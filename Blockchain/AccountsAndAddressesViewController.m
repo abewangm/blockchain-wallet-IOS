@@ -15,6 +15,7 @@
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 #import "Blockchain-Swift.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;
@@ -324,17 +325,41 @@
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
             cell.backgroundColor = [UIColor whiteColor];
-            
+            cell.balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 
-                cell.labelLabel.frame = CGRectMake(20, 11, 155, 21);
-                cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);
-                UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-                cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+                cell.labelLabel.autoresizingMask = UIViewAutoresizingNone;
+                cell.balanceLabel.autoresizingMask = UIViewAutoresizingNone;
+                cell.balanceButton.autoresizingMask = UIViewAutoresizingNone;
+                cell.watchLabel.autoresizingMask = UIViewAutoresizingNone;
+                
+                CGFloat labelLabelCenterY = cell.labelLabel.center.y;
+                cell.labelLabel.text = accountLabelString;
+                [cell.labelLabel sizeToFit];
+                [cell.labelLabel changeXPosition:20];
+                cell.labelLabel.center = CGPointMake(cell.labelLabel.center.x, labelLabelCenterY);
                 
                 cell.watchLabel.hidden = NO;
                 cell.watchLabel.text = BC_STRING_DEFAULT;
+                CGFloat watchLabelCenterY = cell.watchLabel.center.y;
+                [cell.watchLabel sizeToFit];
+                [cell.watchLabel changeXPosition:cell.labelLabel.frame.origin.x + cell.labelLabel.frame.size.width + 8];
+                cell.watchLabel.center = CGPointMake(cell.watchLabel.center.x, watchLabelCenterY);
                 cell.watchLabel.textColor = [UIColor grayColor];
+                
+                CGFloat minimumBalanceButtonOriginX = 235;
+                CGFloat balanceLabelOriginX = cell.watchLabel.frame.origin.x + cell.watchLabel.frame.size.width + 8;
+                
+                if (balanceLabelOriginX > minimumBalanceButtonOriginX) {
+                    CGFloat smallestDefaultLabelWidth = 18;
+                    CGFloat newWidth = cell.watchLabel.frame.size.width - (balanceLabelOriginX - minimumBalanceButtonOriginX) > smallestDefaultLabelWidth ? : smallestDefaultLabelWidth;
+                    [cell.watchLabel changeWidth:newWidth];
+                    balanceLabelOriginX = minimumBalanceButtonOriginX;
+                }
+                
+                cell.balanceLabel.frame = CGRectMake(balanceLabelOriginX, 11, cell.contentView.frame.size.width - balanceLabelOriginX, 21);
+                cell.balanceButton.frame = CGRectMake(balanceLabelOriginX, 0, cell.contentView.frame.size.width - balanceLabelOriginX, cell.contentView.frame.size.height);
             } else {
                 
                 // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
@@ -389,7 +414,8 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
         cell.backgroundColor = [UIColor whiteColor];
-        
+        cell.balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+
         if (isWatchOnlyLegacyAddress) {
             // Show the watch only tag and resize the label and balance labels so there is enough space
             cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);
