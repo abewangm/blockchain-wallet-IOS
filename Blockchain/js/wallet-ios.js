@@ -341,7 +341,7 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
     currentPayment.on('error', function(errorObject) {
                       var errorDictionary = {'message': {'error': errorObject['error']}};
                         objc_on_error_update_fee(errorDictionary);
@@ -1850,10 +1850,19 @@ MyWalletPhone.labelForLegacyAddress = function(key) {
     return label == null ? '' : label;
 }
 
-MyWalletPhone.getNotePlaceholder = function(filter, transactionHash) {
-    if (filter < 0) filter = 'importedOrAll';
+MyWalletPhone.getNotePlaceholder = function(transactionHash) {
+
     var transaction = MyWallet.wallet.txList.transaction(transactionHash);
-    var label = MyWallet.wallet.getNotePlaceholder(filter, transaction);
+
+    var getLabel = function(tx) {
+        if (tx.txType === 'received') {
+            if (tx.to.length) {
+                return MyWallet.wallet.labels.getLabel(tx.to[0].accountIndex, tx.to[0].receiveIndex);
+            }
+        }
+    }
+
+    var label = getLabel(transaction);
     if (label == undefined) return '';
     return label;
 }
@@ -1864,7 +1873,7 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
         return 0;
     }
 
-    return MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels.length;
+    return MyWallet.wallet.hdwallet.defaultAccount.getLabels().length;
 }
 
 MyWalletPhone.getNetworks = function() {
@@ -1910,9 +1919,9 @@ MyWalletPhone.getExchangeAccount = function () {
     return Promise.resolve();
   }
   var wallet = MyWallet.wallet;
-  var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
+  var p = wallet.loadMetadata();
   return p.then(function () {
-                
+
     objc_loading_stop();
 
     var sfox = MyWallet.wallet.external.sfox;
@@ -1931,7 +1940,7 @@ MyWalletPhone.getExchangeAccount = function () {
     } else {
       console.log('Found no sfox or coinify user');
     }
-                
+
   }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
@@ -1989,7 +1998,7 @@ MyWalletPhone.getWebViewLoginData = function () {
   var magicHash = wallet.external._metadata._magicHash
   return {
     walletJson: JSON.stringify(wallet.toJSON()),
-    externalJson: JSON.stringify(wallet.external.toJSON()),
+    externalJson: wallet.external.toJSON() ? JSON.stringify(wallet.external.toJSON()) : null,
     magicHash: magicHash ? magicHash.toString('hex') : null
   }
 }
