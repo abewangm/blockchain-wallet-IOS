@@ -30,10 +30,14 @@
 
 - (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
-    if ([challenge.protectionSpace.host hasSuffix:HOST_NAME_WALLET_SERVER]) {
-        [self respondToChallenge:challenge completionHandler:completionHandler];
-    } else {
+    if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
+        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS] ||
+        [challenge.protectionSpace.host isEqualToString:URL_QUOTES_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_KYC_SFOX]) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    } else {
+        [self respondToChallenge:challenge completionHandler:completionHandler];
     }
 }
 
