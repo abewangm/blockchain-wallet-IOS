@@ -7,6 +7,7 @@
 //
 
 #import "TransactionDetailToCell.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @implementation TransactionDetailToCell
 
@@ -31,11 +32,14 @@
         return;
     }
     
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, self.frame.size.height)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, self.frame.size.height)];
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
     self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_TO;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [self.mainLabel sizeToFit];
+    [self.mainLabel changeXPosition:self.contentView.layoutMargins.left];
+    self.mainLabel.center = CGPointMake(self.mainLabel.center.x, self.contentView.center.y);
     [self.contentView addSubview:self.mainLabel];
     
     if (transaction.to.count > 1) {
@@ -46,7 +50,7 @@
     } else {
         CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
-        self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:self.accessoryLabel.font.pointSize];
+        self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;

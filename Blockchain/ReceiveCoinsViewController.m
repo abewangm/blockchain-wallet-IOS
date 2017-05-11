@@ -16,6 +16,7 @@
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
 #import "Blockchain-Swift.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
@@ -123,7 +124,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineAboveAmounts];
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
-    CGFloat labelWidth = 40;
+    CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, labelWidth, 21)];
     receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -132,7 +133,7 @@ NSString *detailLabel;
     
     // Field width will be space remaining after subtracting widths of all other subviews and spacing in the row
     CGFloat fieldWidth = (self.view.frame.size.width - labelWidth*2 - 8*6)/2;
-    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + 53, 10, fieldWidth, 30)];
+    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + receiveBtcLabel.frame.size.width + 8, 10, fieldWidth, 30)];
     self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -147,7 +148,7 @@ NSString *detailLabel;
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
     
-    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + 47;
+    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + receiveFiatLabel.frame.size.width + 8;
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatFieldOriginX, 10, fieldWidth, 30)];
     self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
@@ -184,7 +185,8 @@ NSString *detailLabel;
     fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
 
-    btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
+    [btcLabel changeWidth:receiveBtcLabel.frame.size.width];
+    btcAmountField.frame = CGRectMake(btcLabel.frame.origin.x + btcLabel.frame.size.width + 8, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + keyboardFieldWidth + 8, fiatLabel.frame.origin.y, receiveFiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 8, fiatAmountField.frame.origin.y, keyboardFieldWidth, fiatAmountField.frame.size.height);
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
