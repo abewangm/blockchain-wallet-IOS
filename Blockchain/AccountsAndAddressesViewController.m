@@ -348,7 +348,7 @@
                 cell.watchLabel.center = CGPointMake(cell.watchLabel.center.x, watchLabelCenterY);
                 cell.watchLabel.textColor = [UIColor grayColor];
                 
-                CGFloat minimumBalanceButtonOriginX = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 235 : 180;
+                CGFloat minimumBalanceButtonOriginX = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 235 : 194;
                 CGFloat watchLabelEndX = cell.watchLabel.frame.origin.x + cell.watchLabel.frame.size.width + 8;
                 
                 if (watchLabelEndX > minimumBalanceButtonOriginX) {
