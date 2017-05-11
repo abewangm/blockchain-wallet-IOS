@@ -1919,7 +1919,7 @@ MyWalletPhone.getExchangeAccount = function () {
     return Promise.resolve();
   }
   var wallet = MyWallet.wallet;
-  var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
+  var p = wallet.loadMetadata();
   return p.then(function () {
 
     objc_loading_stop();
