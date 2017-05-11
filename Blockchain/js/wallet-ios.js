@@ -1851,9 +1851,9 @@ MyWalletPhone.labelForLegacyAddress = function(key) {
 }
 
 MyWalletPhone.getNotePlaceholder = function(transactionHash) {
-    
+
     var transaction = MyWallet.wallet.txList.transaction(transactionHash);
-    
+
     var getLabel = function(tx) {
         if (tx.txType === 'received') {
             if (tx.to.length) {
@@ -1861,7 +1861,7 @@ MyWalletPhone.getNotePlaceholder = function(transactionHash) {
             }
         }
     }
-    
+
     var label = getLabel(transaction);
     if (label == undefined) return '';
     return label;
@@ -1872,10 +1872,8 @@ MyWalletPhone.getDefaultAccountLabelledAddressesCount = function() {
         console.log('Warning: Getting accounts when wallet has not upgraded!');
         return 0;
     }
-    
-    var receivingAddressesLabels = MyWallet.wallet.hdwallet.defaultAccount.receivingAddressesLabels;
 
-    return receivingAddressesLabels ? receivingAddressesLabels.length : 0;
+    return MyWallet.wallet.hdwallet.defaultAccount.getLabels().length;
 }
 
 MyWalletPhone.getNetworks = function() {
@@ -1923,7 +1921,7 @@ MyWalletPhone.getExchangeAccount = function () {
   var wallet = MyWallet.wallet;
   var p = wallet.external ? wallet.external.fetch() : wallet.loadExternal()
   return p.then(function () {
-                
+
     objc_loading_stop();
 
     var sfox = MyWallet.wallet.external.sfox;
@@ -1942,7 +1940,7 @@ MyWalletPhone.getExchangeAccount = function () {
     } else {
       console.log('Found no sfox or coinify user');
     }
-                
+
   }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
