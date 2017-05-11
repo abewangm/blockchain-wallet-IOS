@@ -72,7 +72,7 @@
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
-        [self.delegate failedToValidateCertificate];
+        [self.delegate failedToValidateCertificate:challenge.protectionSpace.host];
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
 }
