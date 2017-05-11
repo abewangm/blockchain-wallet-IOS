@@ -1544,7 +1544,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     NSDictionary *loginData = [[app.wallet executeJSSynchronous:@"MyWalletPhone.getWebViewLoginData()"] toDictionary];
     NSString *walletJson = loginData[@"walletJson"];
-    NSString *externalJson = loginData[@"externalJson"];
+    NSString *externalJson = [loginData[@"externalJson"] isEqual:[NSNull null]] ? @"" : loginData[@"externalJson"];
     NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
     [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
     self.buyBitcoinViewController.delegate = app.wallet;

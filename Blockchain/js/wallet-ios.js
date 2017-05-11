@@ -1998,7 +1998,7 @@ MyWalletPhone.getWebViewLoginData = function () {
   var magicHash = wallet.external._metadata._magicHash
   return {
     walletJson: JSON.stringify(wallet.toJSON()),
-    externalJson: JSON.stringify(wallet.external.toJSON()),
+    externalJson: wallet.external.toJSON() ? JSON.stringify(wallet.external.toJSON()) : null,
     magicHash: magicHash ? magicHash.toString('hex') : null
   }
 }
