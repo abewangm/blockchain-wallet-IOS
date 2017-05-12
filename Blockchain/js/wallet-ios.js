@@ -1887,7 +1887,7 @@ MyWalletPhone.getECDSA = function() {
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
     console.log(newNetwork);
-    Blockchain.constants.network = newNetwork;
+    Blockchain.constants.NETWORK = newNetwork;
 }
 
 MyWalletPhone.parseValueBitcoin = function(valueString) {
@@ -2008,8 +2008,12 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var options = walletOptions.getValue()
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
-  var whiteListedGuid = objc_get_whitelisted_guid();
-    if (wallet.guid == whiteListedGuid) userHasAccess = true;
+  var whiteListedGuids = objc_get_whitelisted_guids();
+    
+  if (whiteListedGuids.indexOf(wallet.guid) > -1) {
+      userHasAccess = true;
+  }
+
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
