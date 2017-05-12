@@ -1878,7 +1878,7 @@ MyWalletPhone.getECDSA = function() {
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
     console.log(newNetwork);
-    Blockchain.constants.network = newNetwork;
+    Blockchain.constants.NETWORK = newNetwork;
 }
 
 MyWalletPhone.parseValueBitcoin = function(valueString) {
