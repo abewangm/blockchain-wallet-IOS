@@ -60,7 +60,11 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 
     if (reqUrl != nil && navigationAction.navigationType == WKNavigationTypeLinkActivated && [[UIApplication sharedApplication] canOpenURL:reqUrl]) {
         SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:reqUrl];
-        [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+        if (safariViewController) {
+            [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:reqUrl];
+        }
         return decisionHandler(WKNavigationActionPolicyCancel);
     }
 
@@ -70,7 +74,11 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
     SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:navigationAction.request.URL];
-    [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+    if (safariViewController) {
+        [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+    }
     
     return nil;
 }

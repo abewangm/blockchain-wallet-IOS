@@ -14,9 +14,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.twoStepButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 20);
     self.twoStepButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.twoStepButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.twoStepButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    
+    self.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_LARGE];
+    self.descriptionLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
 }
 
 - (void)viewWillAppear:(BOOL)animated

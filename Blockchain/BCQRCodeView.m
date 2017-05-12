@@ -41,7 +41,7 @@ const float imageWidth = 190;
 {
     UILabel *qrCodeHeaderLabel;
     if (qrHeaderText) {
-        qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 280, 60)];
+        qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 64)];
         qrCodeHeaderLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
         qrCodeHeaderLabel.textColor = COLOR_TEXT_DARK_GRAY;
         qrCodeHeaderLabel.numberOfLines = 5;
@@ -56,7 +56,7 @@ const float imageWidth = 190;
     self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width - imageWidth) / 2, qrCodeImageViewYPosition, imageWidth, imageWidth)];
     [self addSubview:self.qrCodeImageView];
     
-    self.qrCodeFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 15, 280, 20.5)];
+    self.qrCodeFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.qrCodeImageView.frame.origin.y + self.qrCodeImageView.frame.size.height + 15, 280, 24)];
     self.qrCodeFooterLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.qrCodeFooterLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     self.qrCodeFooterLabel.textAlignment = NSTextAlignmentCenter;

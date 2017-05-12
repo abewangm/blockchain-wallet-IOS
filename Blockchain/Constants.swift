@@ -33,12 +33,13 @@ struct Constants {
         static let ScreenHeightIphone5S : CGFloat = 568
     }
     struct FontSizes {
-        static let Small : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 15.0 : 13.0
-        static let SmallMedium : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 16.0 : 14.0
-        static let Medium : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 17.0 : 15.0
-        static let MediumLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 18.0 : 16.0
-        static let ExtraLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 20.0 : 18.0
-        static let ExtraExtraLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 22.0 : 20.0
+        static let Small : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 16.0 : 13.0
+        static let SmallMedium : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 17.0 : 14.0
+        static let Medium : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 18.0 : 15.0
+        static let MediumLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 19.0 : 16.0
+        static let Large : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 20.0 : 17.0
+        static let ExtraLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 21.0 : 18.0
+        static let ExtraExtraLarge : CGFloat = Booleans.IsUsingScreenSizeLargerThan5s ? 23.0 : 20.0
     }
     struct Defaults {
         static let NumberOfRecoveryPhraseWords = 12

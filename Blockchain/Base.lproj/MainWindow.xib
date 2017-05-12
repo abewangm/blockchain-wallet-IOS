@@ -34,6 +34,9 @@
                 <outlet property="mainPasswordView" destination="623" id="7Xu-al-CwC"/>
                 <outlet property="mainTitleLabel" destination="DIx-fJ-eKX" id="Cqj-bt-tZE"/>
                 <outlet property="manualPairButton" destination="fI2-PD-Xwa" id="oka-mR-bc6"/>
+                <outlet property="manualPairStepOneTextView" destination="361" id="Sfo-Sl-PLA"/>
+                <outlet property="manualPairStepThreeTextView" destination="369" id="wz0-jn-Kq3"/>
+                <outlet property="manualPairStepTwoTextView" destination="1RS-t6-JqX" id="CAV-8B-KxA"/>
                 <outlet property="manualPairView" destination="585" id="Z19-6K-4FY"/>
                 <outlet property="menuButton" destination="581" id="hhy-Nm-8ph"/>
                 <outlet property="pairingInstructionsView" destination="351" id="1eI-SB-ZdA"/>
@@ -96,15 +99,6 @@
                     <color key="textColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="361">
-                    <rect key="frame" x="40" y="34" width="255" height="54"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">Login to your Blockchain Wallet via your PC or Mac at
-http://blockchain.info/wallet</string>
-                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
-                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="363">
                     <rect key="frame" x="24" y="110" width="20" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,7 +107,7 @@ http://blockchain.info/wallet</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="368">
-                    <rect key="frame" x="24" y="166" width="20" height="23"/>
+                    <rect key="frame" x="24" y="167" width="20" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="textColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,9 +144,17 @@ http://blockchain.info/wallet</string>
                         <action selector="manualPairClicked:" destination="3" eventType="touchUpInside" id="Eeg-po-QYo"/>
                     </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Log in" selectable="NO" id="361">
+                    <rect key="frame" x="40" y="27" width="255" height="74"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Go to s" selectable="NO" id="1RS-t6-JqX">
                     <rect key="frame" x="36" y="104" width="259" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
@@ -160,7 +162,7 @@ http://blockchain.info/wallet</string>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Click on" selectable="NO" id="369">
                     <rect key="frame" x="36" y="161" width="259" height="103"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
@@ -510,10 +512,11 @@ http://blockchain.info/wallet</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wjv-R8-p0e" userLabel="Merchant Directory Button">
-                                <rect key="frame" x="280" y="24" width="40" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wjv-R8-p0e" userLabel="Merchant Directory Button">
+                                <rect key="frame" x="271" y="24" width="49" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="6" maxY="0.0"/>
                                 <state key="normal" image="qrscanner">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -525,10 +528,18 @@ http://blockchain.info/wallet</string>
                                     <action selector="QRCodebuttonClicked:" destination="3" eventType="touchUpInside" id="hZo-uY-jXJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="left" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="581" userLabel="Menu Button">
-                                <rect key="frame" x="0.0" y="24" width="35" height="35"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DIx-fJ-eKX">
+                                <rect key="frame" x="60" y="27" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="left" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="581" userLabel="Menu Button">
+                                <rect key="frame" x="0.0" y="24" width="49" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="11" minY="2" maxX="6" maxY="0.0"/>
                                 <state key="normal" image="menu">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -540,22 +551,15 @@ http://blockchain.info/wallet</string>
                                     <action selector="menuClicked:" destination="3" eventType="touchUpInside" id="Jw6-EJ-48e"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DIx-fJ-eKX">
-                                <rect key="frame" x="60" y="27" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <view opaque="NO" contentMode="scaleToFill" id="284" userLabel="Tab Bar">
-                        <rect key="frame" x="0.0" y="433" width="320" height="47"/>
+                    <view opaque="NO" contentMode="scaleToFill" misplaced="YES" id="284" userLabel="Tab Bar">
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="172" userLabel="Button Send">
-                                <rect key="frame" x="0.0" y="1" width="106" height="46"/>
+                                <rect key="frame" x="0.0" y="3" width="106" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
                                 <state key="normal" image="send">
@@ -570,7 +574,7 @@ http://blockchain.info/wallet</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="173" userLabel="Button Transactions">
-                                <rect key="frame" x="106" y="1" width="106" height="46"/>
+                                <rect key="frame" x="106" y="3" width="106" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
                                 <state key="normal" image="tx">
@@ -585,7 +589,7 @@ http://blockchain.info/wallet</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="174" userLabel="Button Receive">
-                                <rect key="frame" x="212" y="1" width="106" height="46"/>
+                                <rect key="frame" x="212" y="3" width="106" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
                                 <state key="normal" image="receive">

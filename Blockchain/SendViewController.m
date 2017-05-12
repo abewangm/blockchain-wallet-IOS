@@ -19,6 +19,7 @@
 #import "PrivateKeyReader.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "TransferAllFundsBuilder.h"
+#import "BCFeeSelectionView.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -90,14 +91,9 @@ BOOL displayingLocalSymbolSend;
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + btcAmountField.frame.size.width + 8, fiatLabel.frame.origin.y, fiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 13, fiatAmountField.frame.origin.y, amountFieldWidth, fiatAmountField.frame.size.height);
     
-    CGFloat confirmPaymentViewFiatLabelOffset = 16;
+    [feeOptionsButton changeXPosition:self.view.frame.size.width - feeOptionsButton.frame.size.width];
     
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        [self.confirmPaymentView.fiatAmountLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [self.confirmPaymentView.fiatFeeLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [self.confirmPaymentView.fiatTotalLabel increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        [feeInformationButton increaseXPosition:confirmPaymentViewFiatLabelOffset];
-        
         [self.confirmPaymentView.arrowImageView centerXToSuperView];
     }
 
@@ -133,7 +129,7 @@ BOOL displayingLocalSymbolSend;
     fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     selectAddressTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    toField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
@@ -1082,7 +1078,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        if (IS_USING_SCREEN_SIZE_4S) {
             [lineBelowFromField changeYPosition:43];
             
             [toLabel changeYPosition:52];
@@ -1099,6 +1095,7 @@ BOOL displayingLocalSymbolSend;
             
             [feeField changeYPosition:44];
             [feeLabel changeYPosition:47];
+            [feeOptionsButton changeYPosition:43];
             [lineBelowFeeField changeYPosition:71];
             
             [fundsAvailableButton changeYPosition:21];
@@ -1106,6 +1103,7 @@ BOOL displayingLocalSymbolSend;
         
         feeField.hidden = NO;
         feeLabel.hidden = NO;
+        feeOptionsButton.hidden = NO;
         lineBelowFeeField.hidden = NO;
     }];
     
@@ -1116,7 +1114,7 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+        if (IS_USING_SCREEN_SIZE_4S) {
             [lineBelowFromField changeYPosition:47];
             
             [toLabel changeYPosition:61];
@@ -1140,6 +1138,7 @@ BOOL displayingLocalSymbolSend;
         
         feeField.hidden = YES;
         feeLabel.hidden = YES;
+        feeOptionsButton.hidden = YES;
         lineBelowFeeField.hidden = YES;
     }];
 }
@@ -1674,7 +1673,7 @@ BOOL displayingLocalSymbolSend;
     videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
     [videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + DEFAULT_FOOTER_HEIGHT);
+    CGRect frame = CGRectMake(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     
     [videoPreviewLayer setFrame:frame];
     
@@ -1767,6 +1766,12 @@ BOOL displayingLocalSymbolSend;
     [fiatAmountField resignFirstResponder];
     [toField resignFirstResponder];
     [feeField resignFirstResponder];
+}
+
+- (IBAction)feeOptionsClicked:(UIButton *)sender
+{
+    BCFeeSelectionView *feeSelectionView = [[BCFeeSelectionView alloc] initWithFrame:app.window.frame];
+    [app showModalWithContent:feeSelectionView closeType:ModalCloseTypeBack headerText:BC_STRING_FEE];
 }
 
 - (IBAction)labelAddressClicked:(id)sender

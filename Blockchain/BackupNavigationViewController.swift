@@ -49,7 +49,7 @@ import UIKit
         topBar!.backgroundColor = Constants.Colors.BlockchainBlue
         self.view.addSubview(topBar!);
         
-        headerLabel = UILabel(frame:CGRect(x: 60, y: 27, width: 200, height: 30));
+        headerLabel = UILabel(frame:CGRect(x: 60, y: 26, width: 200, height: 30));
         headerLabel?.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.ExtraExtraLarge)
         headerLabel?.textColor = UIColor.white
         headerLabel?.textAlignment = .center;
@@ -60,7 +60,6 @@ import UIKit
         
         closeButton = UIButton(type: UIButtonType.custom)
         closeButton!.contentHorizontalAlignment = .left;
-        closeButton!.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         closeButton!.titleLabel?.font = UIFont.systemFont(ofSize: Constants.FontSizes.Medium)
         closeButton!.setTitleColor(UIColor(white:0.56, alpha:1.0), for: .highlighted);
         closeButton!.addTarget(self, action:#selector(BackupNavigationViewController.backButtonClicked), for: UIControlEvents.touchUpInside);
@@ -107,14 +106,14 @@ import UIKit
         
         if (viewControllers.count == 1) {
             closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
-            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 18);
             closeButton!.contentHorizontalAlignment = .right
             closeButton!.center = CGPoint(x: closeButton!.center.x, y: headerLabel!.center.y);
             closeButton!.setImage(UIImage(named:"close"), for: UIControlState())
         } else {
             closeButton!.frame = CGRect(x: 0, y: 12, width: 85, height: 51);
             closeButton!.setTitle("", for: UIControlState())
-            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(8, 12, 0, 0)
+            closeButton!.imageEdgeInsets = UIEdgeInsetsMake(10, 8, 0, 0)
             closeButton!.contentHorizontalAlignment = .left
             closeButton!.setImage(UIImage(named:"back_chevron_icon"), for: UIControlState());
         }

@@ -58,6 +58,7 @@
     IBOutlet UIButton *sendProgressCancelButton;
 
     IBOutlet UILabel *feeLabel;
+    IBOutlet UIButton *feeOptionsButton;
     IBOutlet UITextField *feeField;
     
     IBOutlet BCLine *lineBelowFromField;
@@ -103,6 +104,7 @@ typedef enum {
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)addressBookClicked:(id)sender;
 - (IBAction)closeKeyboardClicked:(id)sender;
+- (IBAction)feeOptionsClicked:(UIButton *)sender;
 
 - (void)didSelectFromAddress:(NSString *)address;
 - (void)didSelectToAddress:(NSString *)address;

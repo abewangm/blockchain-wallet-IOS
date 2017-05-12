@@ -117,9 +117,9 @@
         actionLabel.alpha = 0.5;
     }
     
-    dateLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
-    actionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
-    btcButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    dateLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_EXTRA_SMALL] longLongValue] - [[NSNumber numberWithFloat:2.0] longLongValue] : FONT_SIZE_EXTRA_SMALL];
+    actionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_MEDIUM_LARGE] longLongValue] - [[NSNumber numberWithFloat:2.0] longLongValue] : FONT_SIZE_MEDIUM_LARGE];
+    btcButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size: IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_SMALL_MEDIUM] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_SMALL_MEDIUM];
     btcButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
     
 }

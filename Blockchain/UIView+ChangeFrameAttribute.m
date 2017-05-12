@@ -30,6 +30,11 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, newWidth, self.frame.size.height);
 }
 
+- (void)changeHeight:(CGFloat)newHeight
+{
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, newHeight);
+}
+
 - (void)centerXToSuperView
 {
     self.center = CGPointMake(self.superview.center.x, self.center.y);

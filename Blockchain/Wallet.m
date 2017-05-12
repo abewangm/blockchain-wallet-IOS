@@ -2013,9 +2013,9 @@
 }
 
 
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction filter:(NSInteger)filter
+- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(%li, \"%@\")", (long)filter, transaction.myHash]] toString];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", transaction.myHash]] toString];
 }
 
 - (void)incrementReceiveIndexOfDefaultAccount

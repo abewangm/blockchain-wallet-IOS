@@ -16,6 +16,7 @@
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
 #import "Blockchain-Swift.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
@@ -61,7 +62,7 @@ NSString *detailLabel;
     [self setupTapGestureForMainQR];
     
     // iPhone4/4S
-    if ([[UIScreen mainScreen] bounds].size.height < 568) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         int reduceImageSizeBy = 40;
         
         // Smaller QR Code Image
@@ -109,7 +110,7 @@ NSString *detailLabel;
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
-    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE]];
+    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_LARGE] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_LARGE]];
     [self.view addSubview:requestButton];
     [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
@@ -123,7 +124,7 @@ NSString *detailLabel;
     [self.bottomContainerView addSubview:lineAboveAmounts];
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
-    CGFloat labelWidth = 40;
+    CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, labelWidth, 21)];
     receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -132,7 +133,7 @@ NSString *detailLabel;
     
     // Field width will be space remaining after subtracting widths of all other subviews and spacing in the row
     CGFloat fieldWidth = (self.view.frame.size.width - labelWidth*2 - 8*6)/2;
-    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + 53, 10, fieldWidth, 30)];
+    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + receiveBtcLabel.frame.size.width + 8, 10, fieldWidth, 30)];
     self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -147,7 +148,7 @@ NSString *detailLabel;
     receiveFiatLabel.text = app.latestResponse.symbol_local.code;
     [self.bottomContainerView addSubview:receiveFiatLabel];
     
-    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + 47;
+    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + receiveFiatLabel.frame.size.width + 8;
     self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatFieldOriginX, 10, fieldWidth, 30)];
     self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
@@ -159,8 +160,7 @@ NSString *detailLabel;
     
     self.receiveFiatField.accessibilityLabel = ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD;
     fiatAmountField.accessibilityLabel = ACCESSIBILITY_LABEL_RECEIVE_FIAT_FIELD_INPUT_ACCESSORY;
-    
-    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 40, 21)];
+    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 50, 21)];
     whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
     whereLabel.text = BC_STRING_WHERE;
@@ -182,7 +182,13 @@ NSString *detailLabel;
     self.receiveToLabel.userInteractionEnabled = YES;
     
     CGFloat keyboardFieldWidth = fieldWidth - doneButton.frame.size.width/2;
-    btcAmountField.frame = CGRectMake(btcAmountField.frame.origin.x, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
+    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+
+    [btcLabel changeWidth:receiveBtcLabel.frame.size.width];
+    btcAmountField.frame = CGRectMake(btcLabel.frame.origin.x + btcLabel.frame.size.width + 8, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
     fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + keyboardFieldWidth + 8, fiatLabel.frame.origin.y, receiveFiatLabel.frame.size.width, fiatLabel.frame.size.height);
     fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 8, fiatAmountField.frame.origin.y, keyboardFieldWidth, fiatAmountField.frame.size.height);
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
@@ -285,7 +291,7 @@ NSString *detailLabel;
         
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 18)];
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;

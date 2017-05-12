@@ -15,6 +15,7 @@
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
 #import "Blockchain-Swift.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;
@@ -45,7 +46,7 @@
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_ADDRESSES;
     
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
@@ -247,7 +248,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && section == [tableView numberOfSections] - 1) {
+    if (IS_USING_SCREEN_SIZE_4S && section == [tableView numberOfSections] - 1) {
         return DEFAULT_HEADER_HEIGHT;
     }
     return 0;
@@ -325,17 +326,41 @@
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
             cell.backgroundColor = [UIColor whiteColor];
-            
+            cell.balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+
             if ([app.wallet getDefaultAccountIndex] == accountIndex) {
                 
-                cell.labelLabel.frame = CGRectMake(20, 11, 155, 21);
-                cell.balanceLabel.frame = CGRectMake(247, 11, 90, 21);
-                UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 217, cell.frame.size.height-(cell.frame.size.height-cell.balanceLabel.frame.origin.y-cell.balanceLabel.frame.size.height), 0);
-                cell.balanceButton.frame = UIEdgeInsetsInsetRect(cell.contentView.frame, contentInsets);
+                cell.labelLabel.autoresizingMask = UIViewAutoresizingNone;
+                cell.balanceLabel.autoresizingMask = UIViewAutoresizingNone;
+                cell.balanceButton.autoresizingMask = UIViewAutoresizingNone;
+                cell.watchLabel.autoresizingMask = UIViewAutoresizingNone;
+                
+                CGFloat labelLabelCenterY = cell.labelLabel.center.y;
+                cell.labelLabel.text = accountLabelString;
+                [cell.labelLabel sizeToFit];
+                [cell.labelLabel changeXPosition:20];
+                cell.labelLabel.center = CGPointMake(cell.labelLabel.center.x, labelLabelCenterY);
                 
                 cell.watchLabel.hidden = NO;
                 cell.watchLabel.text = BC_STRING_DEFAULT;
+                CGFloat watchLabelCenterY = cell.watchLabel.center.y;
+                [cell.watchLabel sizeToFit];
+                [cell.watchLabel changeXPosition:cell.labelLabel.frame.origin.x + cell.labelLabel.frame.size.width + 8];
+                cell.watchLabel.center = CGPointMake(cell.watchLabel.center.x, watchLabelCenterY);
                 cell.watchLabel.textColor = [UIColor grayColor];
+                
+                CGFloat minimumBalanceButtonOriginX = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 235 : 194;
+                CGFloat watchLabelEndX = cell.watchLabel.frame.origin.x + cell.watchLabel.frame.size.width + 8;
+                
+                if (watchLabelEndX > minimumBalanceButtonOriginX) {
+                    CGFloat smallestDefaultLabelWidth = 18;
+                    CGFloat difference = cell.watchLabel.frame.size.width - (watchLabelEndX - minimumBalanceButtonOriginX);
+                    CGFloat newWidth = difference > smallestDefaultLabelWidth ? difference : smallestDefaultLabelWidth;
+                    [cell.watchLabel changeWidth:newWidth];
+                }
+                
+                cell.balanceLabel.frame = CGRectMake(minimumBalanceButtonOriginX, 11, WINDOW_WIDTH - minimumBalanceButtonOriginX - 20, 21);
+                cell.balanceButton.frame = CGRectMake(minimumBalanceButtonOriginX, 0, WINDOW_WIDTH - minimumBalanceButtonOriginX, cell.contentView.frame.size.height);
             } else {
                 
                 // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
@@ -390,7 +415,8 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ReceiveCell" owner:nil options:nil] objectAtIndex:0];
         cell.backgroundColor = [UIColor whiteColor];
-        
+        cell.balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
+
         if (isWatchOnlyLegacyAddress) {
             // Show the watch only tag and resize the label and balance labels so there is enough space
             cell.labelLabel.frame = CGRectMake(20, 11, 148, 21);

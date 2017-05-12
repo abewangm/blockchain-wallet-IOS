@@ -201,6 +201,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showWelcomeOrPinScreen];
     
+    app.mainTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
+    
+    secondPasswordDescriptionLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    secondPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    secondPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    
     [self setupBuyWebView];
     
     return YES;
@@ -1544,7 +1550,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     NSDictionary *loginData = [[app.wallet executeJSSynchronous:@"MyWalletPhone.getWebViewLoginData()"] toDictionary];
     NSString *walletJson = loginData[@"walletJson"];
-    NSString *externalJson = loginData[@"externalJson"];
+    NSString *externalJson = [loginData[@"externalJson"] isEqual:[NSNull null]] ? @"" : loginData[@"externalJson"];
     NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
     [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
     self.buyBitcoinViewController.delegate = app.wallet;
@@ -2260,12 +2266,19 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPairWallet:(id)sender
 {
+    manualPairStepOneTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepTwoTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepThreeTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
     scanPairingCodeButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    scanPairingCodeButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+
     manualPairButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     manualPairButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     manualPairButton.accessibilityLabel = ACCESSIBILITY_LABEL_MANUAL_PAIR;
+    manualPairButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
 }
 
 - (void)showRecoverWallet:(id)sender
