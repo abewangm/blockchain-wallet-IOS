@@ -24,6 +24,7 @@
         [tester createNewWallet];
     } else if ([[[UIApplication sharedApplication] keyWindow] accessibilityElementWithLabel:ACCESSIBILITY_LABEL_FORGET_WALLET] != nil) {
         [tester forgetWallet];
+        [tester createNewWallet];
     } else {
         [tester enterPIN];
     }
