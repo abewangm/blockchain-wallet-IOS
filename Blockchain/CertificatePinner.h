@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @protocol CertificatePinnerDelegate
-- (void)failedToValidateCertificate;
+- (void)failedToValidateCertificate:(NSString *)hostName;
 @end
 
 @interface CertificatePinner : NSObject <NSURLSessionDelegate>

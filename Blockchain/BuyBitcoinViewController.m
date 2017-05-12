@@ -84,7 +84,7 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
 }
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
-    if (app.certificatePinner) {
+    if (app.certificatePinner && [challenge.protectionSpace.host hasSuffix:HOST_NAME_WALLET_SERVER]) {
         [app.certificatePinner didReceiveChallenge:challenge completionHandler:completionHandler];
     } else {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
