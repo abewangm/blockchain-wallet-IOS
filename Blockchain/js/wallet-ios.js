@@ -2000,12 +2000,11 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuids = objc_get_whitelisted_guids();
-    for (guid in whiteListedGuids) {
-     if (wallet.guid == whiteListedGuids[guid]) {
-        userHasAccess = true;
-        break;
-     }
+    
+  if (whiteListedGuids.indexOf(wallet.guid) > -1) {
+      userHasAccess = true;
   }
+
   return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
 }
 
