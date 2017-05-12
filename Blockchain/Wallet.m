@@ -794,7 +794,7 @@
 
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
-        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:[app.certificatePinner getCertificateName] ofType:@"der"];
         NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
         CFDataRef certDataRef = (__bridge CFDataRef)certData;
         SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);

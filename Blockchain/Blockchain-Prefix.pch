@@ -193,7 +193,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER NSLocalizedString(@"Security reminder prompt timer (seconds)", nil)
 #define DEBUG_STRING_ZERO_VALUE_TICKER NSLocalizedString(@"Simulate zero ticker values", nil)
 
-#define CERTIFICATE_SERVER_NAME @"blockchain"
+#define CERTIFICATE_SERVER_NAME_PRODUCTION @"blockchain"
+#define CERTIFICATE_SERVER_NAME_STAGING @"staging"
+#define CERTIFICATE_SERVER_NAME_DEV @"dev"
+#define CERTIFICATE_SERVER_NAME_TESTNET @"testnet"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 
 #define WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE @"Invalid server certificate."

@@ -188,6 +188,9 @@
 		C70FF55E1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */; };
 		C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */; };
 		C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */; };
+		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
+		C72D6CC71EC647200000F922 /* dev.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC51EC647090000F922 /* dev.der */; };
+		C72D6CC81EC6472D0000F922 /* testnet.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC61EC647090000F922 /* testnet.der */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -983,6 +986,9 @@
 		C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFeeSelectionView.m; sourceTree = "<group>"; };
 		C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeeTableCell.h; sourceTree = "<group>"; };
 		C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeeTableCell.m; sourceTree = "<group>"; };
+		C72D6CC31EC646F30000F922 /* staging.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = staging.der; path = ../staging.der; sourceTree = "<group>"; };
+		C72D6CC51EC647090000F922 /* dev.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = dev.der; sourceTree = SOURCE_ROOT; };
+		C72D6CC61EC647090000F922 /* testnet.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = testnet.der; sourceTree = SOURCE_ROOT; };
 		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1692,6 +1698,9 @@
 		C9D4B2AF193E023C00EDA9EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C72D6CC51EC647090000F922 /* dev.der */,
+				C72D6CC61EC647090000F922 /* testnet.der */,
+				C72D6CC31EC646F30000F922 /* staging.der */,
 				23FDEFA11D6E21A800FC80D6 /* blockchain.der */,
 				C9BE918B1945F5FC00FD516D /* Images.xcassets */,
 				C9D4B2B0193E024700EDA9EA /* Sounds */,
@@ -1888,6 +1897,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72D6CC81EC6472D0000F922 /* testnet.der in Resources */,
+				C72D6CC71EC647200000F922 /* dev.der in Resources */,
+				C72D6CC41EC646F30000F922 /* staging.der in Resources */,
 				C790E11A1E52061B0063D141 /* Montserrat-Regular.ttf in Resources */,
 				C790E1161E52061B0063D141 /* Montserrat-Light.ttf in Resources */,
 				23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */,
