@@ -278,7 +278,7 @@
 "Connection timed out. Please check your internet connection." = "Conexão expirou. Por favor, verifique sua conexão de internet.";
 
 /* (No Commment) */
-"Continue" = "Continue";
+"Continue" = "Continuar";
 
 /* (No Commment) */
 "Copied to clipboard" = "Copiado para a área de transferência";
@@ -937,7 +937,7 @@
 "Regular" = "Regular";
 
 /* (No Commment) */
-"Request" = "Solicitação de";
+"Request" = "Enviar pedido";
 
 /* (No Commment) */
 "Request Amount" = "Quantidade de pedido";
