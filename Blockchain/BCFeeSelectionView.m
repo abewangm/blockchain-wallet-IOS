@@ -9,7 +9,9 @@
 #import "BCFeeSelectionView.h"
 #import "FeeTableCell.h"
 
-int numberOfRows = 3;
+int rowRegular = 0;
+int rowPriority = 1;
+int rowCustom = 2;
 
 @interface BCFeeSelectionView()
 @property (nonatomic) UITableView *tableView;
@@ -42,7 +44,7 @@ int numberOfRows = 3;
 {
     FeeTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"feeOption"];
     if (cell == nil) {
-        FeeType feeType = indexPath.row == numberOfRows - 1 ? FeeTypeCustom : FeeTypeRegular;
+        FeeType feeType = indexPath.row;
         cell = [[FeeTableCell alloc] initWithFeeType:feeType];
         cell.backgroundColor = [UIColor whiteColor];
     }
@@ -51,7 +53,7 @@ int numberOfRows = 3;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return numberOfRows;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

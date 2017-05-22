@@ -625,3 +625,10 @@
 #define BC_STRING_OVERVIEW NSLocalizedString(@"Overview", nil)
 
 #define BC_STRING_ENABLED_EXCLAMATION NSLocalizedString(@"Enabled!", nil)
+
+#define BC_STRING_CUSTOM NSLocalizedString(@"Custom", nil)
+#define BC_STRING_ADVANCED_USERS_ONLY NSLocalizedString(@"Advanced users only", nil)
+#define BC_STRING_REGULAR BC_STRING_PASSWORD_STRENGTH_REGULAR
+#define BC_STRING_GREATER_THAN_ONE_HOUR NSLocalizedString(@"1+ hour", nil)
+#define BC_STRING_PRIORITY NSLocalizedString(@"Priority", nil)
+#define BC_STRING_LESS_THAN_ONE_HOUR NSLocalizedString(@"approx. 0-60 min", nil)

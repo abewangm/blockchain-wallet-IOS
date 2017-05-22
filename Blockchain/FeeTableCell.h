@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, FeeType){
     FeeTypeRegular,
+    FeeTypePriority,
     FeeTypeCustom
-} FeeType;
+};
 
 @interface FeeTableCell : UITableViewCell
 @property (nonatomic) UILabel *amountLabel;
