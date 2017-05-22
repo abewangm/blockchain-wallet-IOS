@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    FeeTypeRegular,
+    FeeTypeCustom
+} FeeType;
+
 @interface FeeTableCell : UITableViewCell
 @property (nonatomic) UILabel *amountLabel;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *descriptionLabel;
+@property (nonatomic, readonly) FeeType feeType;
+
+- (id)initWithFeeType:(FeeType)feeType;
+
 @end

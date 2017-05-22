@@ -10,9 +10,10 @@
 
 @implementation FeeTableCell
 
-- (id)init
+- (id)initWithFeeType:(FeeType)feeType
 {
     if (self = [super init]) {
+        _feeType = feeType;
         [self setup];
     }
     return self;
@@ -34,12 +35,14 @@
     self.descriptionLabel.textColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:self.descriptionLabel];
 
-    self.amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width - 100, 0, 100, 30)];
-    self.amountLabel.text = BC_STRING_AMOUNT;
-    self.amountLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
-    self.amountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-    self.amountLabel.center = CGPointMake(self.amountLabel.center.x, self.contentView.center.y);
-    [self.contentView addSubview:self.amountLabel];
+    if (self.feeType == FeeTypeRegular) {
+        self.amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width - 100, 0, 100, 30)];
+        self.amountLabel.text = BC_STRING_AMOUNT;
+        self.amountLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
+        self.amountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+        self.amountLabel.center = CGPointMake(self.amountLabel.center.x, self.contentView.center.y);
+        [self.contentView addSubview:self.amountLabel];
+    }
 }
 
 @end
