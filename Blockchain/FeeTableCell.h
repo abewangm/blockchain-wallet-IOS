@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSInteger, FeeType){
-    FeeTypeRegular,
-    FeeTypePriority,
-    FeeTypeCustom
-};
+#import "FeeTypes.h"
 
 @interface FeeTableCell : UITableViewCell
 @property (nonatomic) UILabel *amountLabel;

@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
- #define ENABLE_DEBUG_MENU 1
+// #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
@@ -486,6 +486,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_NZD @"NZD"
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
+
+#define DICTIONARY_KEY_FEE_REGULAR @"regular"
+#define DICTIONARY_KEY_FEE_PRIORITY @"priority"
+#define DICTIONARY_KEY_FEE_LIMITS @"limits"
+#define DICTIONARY_KEY_FEE_LIMITS_MIN @"min"
+#define DICTIONARY_KEY_FEE_LIMITS_MAX @"max"
 
 #define DICTIONARY_KEY_TRADE_DATE_CREATED @"createdAt"
 #define DICTIONARY_KEY_TRADE_RECEIVE_ADDRESS @"receiveAddress"

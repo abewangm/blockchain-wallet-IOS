@@ -419,8 +419,8 @@
         [weakSelf did_change_forced_fee:fee dust:dust];
     };
     
-    self.context[@"objc_update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, id expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
-        [weakSelf update_fee_bounds:absoluteFeeBounds confirmationEstimation:expectedBlock maxAmounts:maxSpendableAmounts maxFees:sweepFees];
+    self.context[@"objc_update_fees_maxFees_maxAmounts_txSize"] = ^(NSDictionary *fees, NSDictionary *maxFees, NSDictionary *maxAmounts, NSNumber *txSize) {
+        [weakSelf update_fees:fees maxFees:maxFees maxAmounts:maxAmounts txSize:txSize];
     };
     
     self.context[@"objc_update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
@@ -1779,13 +1779,13 @@
     [self.context evaluateScript:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)changeForcedFee:(uint64_t)fee
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeForcedFee(%lld)", fee]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld)", satoshiPerByte]];
 }
 
 - (void)getFeeBounds:(uint64_t)fee
@@ -2849,12 +2849,12 @@
     }
 }
 
-- (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
+- (void)update_fees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize
 {
     DLog(@"update_fee_bounds:confirmationEstimation:maxAmounts:maxFees");
     
-    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:maxAmounts:maxFees:)]) {
-        [self.delegate didGetFeeBounds:bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
+    if ([self.delegate respondsToSelector:@selector(didGetFees:maxFees:maxAmounts:txSize:)]) {
+        [self.delegate didGetFees:fees maxFees:maxFees maxAmounts:maxAmounts txSize:txSize];
     }
 }
 

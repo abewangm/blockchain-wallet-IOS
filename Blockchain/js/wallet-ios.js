@@ -419,10 +419,11 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     }
 }
 
-MyWalletPhone.changeForcedFee = function(fee) {
-    console.log('changing forced fee to ' + fee);
+MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte) {
+    console.log('changing satoshi per byte to' + satoshiPerByte);
     var buildFailure = function (error) {
-        console.log('buildfailure forced fee');
+        console.log('Error changing satoshi per byte');
+        console.log(JSON.stringify(error));
 
         var errorArgument;
         if (error.error) {
@@ -438,8 +439,8 @@ MyWalletPhone.changeForcedFee = function(fee) {
     }
 
     if (currentPayment) {
-        currentPayment.prebuild(fee).build().then(function (x) {
-                                                  objc_did_change_forced_fee_dust(fee, x.extraFeeConsumption);
+        currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
+                                                  objc_did_change_forced_fee_dust(x.finalFee, x.extraFeeConsumption);
                                                   return x;
                                                   }).catch(buildFailure);
     } else {
@@ -451,10 +452,7 @@ MyWalletPhone.getFeeBounds = function(fee) {
 
     if (currentPayment) {
         currentPayment.prebuild(fee).then(function (x) {
-                                          console.log('absolute fee bounds:');
-                                          console.log(x.absoluteFeeBounds);
-                                          var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
-                                          objc_update_fee_bounds_confirmationEstimation_maxAmounts_maxFees(x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees);
+                                          objc_update_fees_maxFees_maxAmounts_txSize(x.fees, x.maxFees, x.maxSpendableAmounts, x.txSize);
                                           return x;
                                           });
     } else {
