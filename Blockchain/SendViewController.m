@@ -49,6 +49,7 @@ typedef enum {
 @property (nonatomic) UILabel *feeTypeLabel;
 @property (nonatomic) UILabel *feeDescriptionLabel;
 @property (nonatomic) UILabel *feeAmountLabel;
+@property (nonatomic) UILabel *feeWarningLabel;
 @property (nonatomic) NSDictionary *fees;
 
 @property (nonatomic) BOOL isReloading;
@@ -105,6 +106,7 @@ BOOL displayingLocalSymbolSend;
     self.feeTypeLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y - 20, btcAmountField.frame.size.width, 20);
     CGFloat amountLabelOriginX = self.feeTypeLabel.frame.origin.x + self.feeTypeLabel.frame.size.width;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
+    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - 12, feeField.frame.size.width, 8);
     
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
         [self.confirmPaymentView.arrowImageView centerXToSuperView];
@@ -183,6 +185,11 @@ BOOL displayingLocalSymbolSend;
     self.feeAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [bottomContainerView addSubview:self.feeAmountLabel];
+    
+    self.feeWarningLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    self.feeWarningLabel.textColor = COLOR_WARNING_RED;
+    [bottomContainerView addSubview:self.feeWarningLabel];
 }
 
 - (void)resetPayment
@@ -1181,6 +1188,7 @@ BOOL displayingLocalSymbolSend;
         self.feeAmountLabel.hidden = YES;
         self.feeDescriptionLabel.hidden = YES;
         self.feeTypeLabel.hidden = YES;
+        self.feeWarningLabel.hidden = YES;
     }];
 }
 
@@ -1613,7 +1621,7 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust
 {
     self.feeFromTransactionProposal = [fee longLongValue];
     self.dust = dust == nil ? 0 : [dust longLongValue];
@@ -1627,37 +1635,32 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didGetFees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize
 {
-//    if (self.feeType == FeeTypeCustom) {
-//        uint64_t typedSatoshiPerByte = [feeField.text longLongValue];
-//        
-//        if (typedSatoshiPerByte < [[maxFees objectForKey:DICTIONARY_KEY_FEE_LOWER_LIMIT] longLongValue]) {
-//            
-//        } else if (typedSatoshiPerByte > [[maxFees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue]) {
-//            
-//        }
-//        
-//        [app.wallet changeSatoshiPerByte:typedSatoshiPerByte];
-//    } else if (self.feeType == FeeTypeRegular) {
-//        uint64_t regularRate = [[fees objectForKey:DICTIONARY_KEY_FEE_LEGACY_CAPPED] longLongValue];
-//        [app.wallet changeSatoshiPerByte:regularRate];
-//    } else if (self.feeType == FeeTypePriority) {
-//        uint64_t priorityRate = [[fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue];
-//        [app.wallet changeSatoshiPerByte:priorityRate];
-//    }
-}
-
-- (void)changeForcedFeeAndUpdateValues
-{
-    uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
-    uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
-    
-    self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
-    
-    self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
-    self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
-    
-    // [app.wallet changeForcedFee:[app.wallet parseBitcoinValueFromTextField:feeField]];
+    if (self.feeType == FeeTypeCustom) {
+        uint64_t typedSatoshiPerByte = [feeField.text longLongValue];
+        
+        NSDictionary *limits = [fees objectForKey:DICTIONARY_KEY_FEE_LIMITS];
+        
+        if (typedSatoshiPerByte < [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MIN] longLongValue]) {
+            DLog(@"Fee rate lower than recommended");
+            self.feeWarningLabel.hidden = NO;
+            self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
+        } else if (typedSatoshiPerByte > [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MAX] longLongValue]) {
+            DLog(@"Fee rate higher than recommended");
+            self.feeWarningLabel.hidden = NO;
+            self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
+        } else {
+            self.feeWarningLabel.hidden = YES;
+        }
+        
+        [app.wallet changeSatoshiPerByte:typedSatoshiPerByte];
+        
+    } else if (self.feeType == FeeTypeRegular) {
+        uint64_t regularRate = [[fees objectForKey:DICTIONARY_KEY_FEE_REGULAR] longLongValue];
+        [app.wallet changeSatoshiPerByte:regularRate];
+    } else if (self.feeType == FeeTypePriority) {
+        uint64_t priorityRate = [[fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue];
+        [app.wallet changeSatoshiPerByte:priorityRate];
+    }
 }
 
 #pragma mark - Fee Selection Delegate

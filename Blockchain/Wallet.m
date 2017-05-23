@@ -415,8 +415,8 @@
         [weakSelf update_surge_status:surgeStatus];
     };
     
-    self.context[@"objc_did_change_forced_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
-        [weakSelf did_change_forced_fee:fee dust:dust];
+    self.context[@"objc_did_change_satoshi_per_byte_dust"] = ^(NSNumber *fee, NSNumber *dust) {
+        [weakSelf did_change_satoshi_per_byte:fee dust:dust];
     };
     
     self.context[@"objc_update_fees_maxFees_maxAmounts_txSize"] = ^(NSDictionary *fees, NSDictionary *maxFees, NSDictionary *maxAmounts, NSNumber *txSize) {
@@ -2841,11 +2841,11 @@
     }
 }
 
-- (void)did_change_forced_fee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_change_satoshi_per_byte:(NSNumber *)fee dust:(NSNumber *)dust
 {
     DLog(@"did_change_forced_fee");
-    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:dust:)]) {
-        [self.delegate didChangeForcedFee:fee dust:dust];
+    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:dust:)]) {
+        [self.delegate didChangeSatoshiPerByte:fee dust:dust];
     }
 }
 
