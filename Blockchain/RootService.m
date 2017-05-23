@@ -1801,14 +1801,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetFee:fee dust:dust txSize:txSize];
 }
 
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary
 {
-    [_sendViewController didChangeSatoshiPerByte:fee dust:dust];
-}
-
-- (void)didGetFees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize
-{
-    [_sendViewController didGetFees:fees maxFees:maxFees maxAmounts:maxAmounts txSize:txSize];
+    [_sendViewController didChangeSatoshiPerByte:fee dust:dust showSummary:showSummary];
 }
 
 - (void)didGetSurgeStatus:(BOOL)surgeStatus
@@ -1819,6 +1814,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)enableSendPaymentButtons
 {
     [_sendViewController enablePaymentButtons];
+}
+
+- (void)disableSendPaymentButtons
+{
+    [_sendViewController disablePaymentButtons];
 }
 
 - (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees

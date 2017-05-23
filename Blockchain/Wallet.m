@@ -415,12 +415,8 @@
         [weakSelf update_surge_status:surgeStatus];
     };
     
-    self.context[@"objc_did_change_satoshi_per_byte_dust"] = ^(NSNumber *fee, NSNumber *dust) {
-        [weakSelf did_change_satoshi_per_byte:fee dust:dust];
-    };
-    
-    self.context[@"objc_update_fees_maxFees_maxAmounts_txSize"] = ^(NSDictionary *fees, NSDictionary *maxFees, NSDictionary *maxAmounts, NSNumber *txSize) {
-        [weakSelf update_fees:fees maxFees:maxFees maxAmounts:maxAmounts txSize:txSize];
+    self.context[@"objc_did_change_satoshi_per_byte_dust_show_summary"] = ^(NSNumber *fee, NSNumber *dust, BOOL showSummary) {
+        [weakSelf did_change_satoshi_per_byte:fee dust:dust showSummary:showSummary];
     };
     
     self.context[@"objc_update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
@@ -455,8 +451,8 @@
         [weakSelf tx_on_finish_signing:transactionId];
     };
     
-    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error) {
-        [weakSelf on_error_update_fee:error];
+    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error, BOOL showSummary) {
+        [weakSelf on_error_update_fee:error showSummary:showSummary];
     };
     
     self.context[@"objc_on_success_import_key_for_sending_from_watch_only"] = ^() {
@@ -1779,22 +1775,13 @@
     [self.context evaluateScript:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte showSummary:(BOOL)showSummary
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld)", satoshiPerByte]];
-}
-
-- (void)getFeeBounds:(uint64_t)fee
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFeeBounds(%lld)", fee]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld, %d)", satoshiPerByte, showSummary]];
 }
 
 - (void)getTransactionFee
@@ -2841,20 +2828,11 @@
     }
 }
 
-- (void)did_change_satoshi_per_byte:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_change_satoshi_per_byte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary
 {
     DLog(@"did_change_forced_fee");
-    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:dust:)]) {
-        [self.delegate didChangeSatoshiPerByte:fee dust:dust];
-    }
-}
-
-- (void)update_fees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize
-{
-    DLog(@"update_fee_bounds:confirmationEstimation:maxAmounts:maxFees");
-    
-    if ([self.delegate respondsToSelector:@selector(didGetFees:maxFees:maxAmounts:txSize:)]) {
-        [self.delegate didGetFees:fees maxFees:maxFees maxAmounts:maxAmounts txSize:txSize];
+    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:dust:showSummary:)]) {
+        [self.delegate didChangeSatoshiPerByte:fee dust:dust showSummary:showSummary];
     }
 }
 
@@ -2884,24 +2862,31 @@
     }
 }
 
-- (void)on_error_update_fee:(NSDictionary *)error
+- (void)on_error_update_fee:(NSDictionary *)error showSummary:(BOOL)showSummary
 {
     DLog(@"on_error_update_fee");
-    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
-    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
-    } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
-        uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
-        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
-    } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
-    } else {
-        [app standardNotifyAutoDismissingController:message];
-    }
     
-    if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
-        [self.delegate enableSendPaymentButtons];
+    if (showSummary) {
+        id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+        NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
+        if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
+            [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
+        } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
+            uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
+            [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
+        } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
+            [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
+        } else {
+            [app standardNotifyAutoDismissingController:message];
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
+            [self.delegate enableSendPaymentButtons];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(disableSendPaymentButtons)]) {
+            [self.delegate disableSendPaymentButtons];
+        }
     }
 }
 

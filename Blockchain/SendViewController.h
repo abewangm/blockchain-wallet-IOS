@@ -124,9 +124,8 @@ typedef enum {
 - (void)sendFromWatchOnlyAddress;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
-- (void)didGetFees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary;
 
 - (void)setupTransferAll;
 - (void)getInfoForTransferAllFundsToDefaultAccount;
@@ -145,6 +144,7 @@ typedef enum {
 - (void)hideKeyboardForced;
 
 - (void)enablePaymentButtons;
+- (void)disablePaymentButtons;
 
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;

@@ -395,8 +395,8 @@ MyWalletPhone.getSurgeStatus = function() {
 MyWalletPhone.checkIfUserIsOverSpending = function() {
 
     var checkForOverSpending = function(x) {
-    objc_check_max_amount_fee(x.sweepAmount, x.sweepFee);
-        console.log('checking for overspending: maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
+        objc_check_max_amount_fee(x.sweepAmount, x.sweepFee);
+        console.log('checking for overspending: maxAmount and fee are ' + x.sweepAmount + ',' + x.sweepFee);
         return x;
     }
 
@@ -419,7 +419,7 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     }
 }
 
-MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte) {
+MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, showSummary) {
     console.log('changing satoshi per byte to' + satoshiPerByte);
     var buildFailure = function (error) {
         console.log('Error changing satoshi per byte');
@@ -433,28 +433,17 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte) {
         }
 
         console.log('error updating fee: ' + errorArgument);
-        objc_on_error_update_fee(errorArgument);
+        
+        objc_on_error_update_fee(errorArgument, showSummary);
 
         return error.payment;
     }
 
     if (currentPayment) {
         currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
-                                                  objc_did_change_satoshi_per_byte_dust(x.finalFee, x.extraFeeConsumption);
+                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.finalFee, x.extraFeeConsumption, showSummary);
                                                   return x;
                                                   }).catch(buildFailure);
-    } else {
-        console.log('Payment error: null payment object!');
-    }
-}
-
-MyWalletPhone.getFeeBounds = function(fee) {
-
-    if (currentPayment) {
-        currentPayment.prebuild(fee).then(function (x) {
-                                          objc_update_fees_maxFees_maxAmounts_txSize(x.fees, x.maxFees, x.maxSpendableAmounts, x.txSize);
-                                          return x;
-                                          });
     } else {
         console.log('Payment error: null payment object!');
     }

@@ -89,9 +89,9 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didGetFees:(NSDictionary *)fees maxFees:(NSDictionary *)maxFees maxAmounts:(NSDictionary *)maxAmounts txSize:(NSNumber *)txSize;
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary;
 - (void)enableSendPaymentButtons;
+- (void)disableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 - (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
@@ -337,8 +337,7 @@
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
-- (void)getFeeBounds:(uint64_t)fee;
-- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte;
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte showSummary:(BOOL)showSummary;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
