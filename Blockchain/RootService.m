@@ -156,9 +156,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
     
-    if ([URL_SERVER isEqualToString:PRODUCTION_WALLET_SERVER]) {
-        [self.certificatePinner pinCertificate];
-    }
+    [self.certificatePinner pinCertificate];
     
     [self checkForNewInstall];
     
