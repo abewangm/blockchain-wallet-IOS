@@ -356,7 +356,7 @@ MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
                                        if (x) {
-                                       if (x.from != null) objc_update_send_balance(isAdvanced ? x.balance : x.sweepAmount);
+                                       if (x.from != null) objc_update_send_balance_fees(isAdvanced ? x.balance : x.sweepAmount, x.fees);
                                        }
                                        return x;
                                        });

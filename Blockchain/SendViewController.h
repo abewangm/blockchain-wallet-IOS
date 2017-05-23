@@ -111,7 +111,7 @@ typedef enum {
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectToAccount:(int)account;
 
-- (void)updateSendBalance:(NSNumber *)balance;
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 
 - (IBAction)sendPaymentClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;

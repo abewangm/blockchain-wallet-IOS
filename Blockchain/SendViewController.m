@@ -49,6 +49,7 @@ typedef enum {
 @property (nonatomic) UILabel *feeTypeLabel;
 @property (nonatomic) UILabel *feeDescriptionLabel;
 @property (nonatomic) UILabel *feeAmountLabel;
+@property (nonatomic) NSDictionary *fees;
 
 @property (nonatomic) BOOL isReloading;
 
@@ -1183,8 +1184,10 @@ BOOL displayingLocalSymbolSend;
     }];
 }
 
-- (void)updateSendBalance:(NSNumber *)balance
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
+    self.fees = fees;
+    
     uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
     
     if (self.customFeeMode) {
@@ -1664,8 +1667,28 @@ BOOL displayingLocalSymbolSend;
     self.feeType = feeType;
     
     [self updateFeeLabels];
-    
+
     [app closeModalWithTransition:kCATransitionFromLeft];
+}
+
+- (uint64_t)feeForType:(FeeType)feeType
+{
+    if (feeType == FeeTypeRegular) {
+        return [[self.fees objectForKey:DICTIONARY_KEY_FEE_REGULAR] longLongValue];
+    } else if (feeType == FeeTypePriority) {
+        return [[self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue];
+    } else if (feeType == FeeTypeCustom) {
+        DLog(@"Requested custom fee; returning 0");
+        return 0;
+    } else {
+        DLog(@"Error getting fee for type: fee type not recognized");
+        return 0;
+    }
+}
+
+- (FeeType)selectedFeeType
+{
+    return self.feeType;
 }
 
 #pragma mark - Actions

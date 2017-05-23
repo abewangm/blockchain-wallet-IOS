@@ -407,8 +407,8 @@
     
 #pragma mark Send Screen
     
-    self.context[@"objc_update_send_balance"] = ^(NSNumber *balance) {
-        [weakSelf update_send_balance:balance];
+    self.context[@"objc_update_send_balance_fees"] = ^(NSNumber *balance, NSDictionary *fees) {
+        [weakSelf update_send_balance:balance fees:fees];
     };
     
     self.context[@"objc_update_surge_status"] = ^(NSNumber *surgeStatus) {
@@ -3088,11 +3088,11 @@
     }
 }
 
-- (void)update_send_balance:(NSNumber *)balance
+- (void)update_send_balance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
     DLog(@"update_send_balance");
-    if ([self.delegate respondsToSelector:@selector(updateSendBalance:)]) {
-        [self.delegate updateSendBalance:balance];
+    if ([self.delegate respondsToSelector:@selector(updateSendBalance:fees:)]) {
+        [self.delegate updateSendBalance:balance fees:fees];
     }
 }
 

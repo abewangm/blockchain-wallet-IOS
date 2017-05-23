@@ -1821,9 +1821,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController enablePaymentButtons];
 }
 
-- (void)updateSendBalance:(NSNumber *)balance
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
-    [_sendViewController updateSendBalance:balance];
+    [_sendViewController updateSendBalance:balance fees:fees];
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed

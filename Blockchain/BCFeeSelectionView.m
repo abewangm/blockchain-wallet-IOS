@@ -45,7 +45,10 @@ int rowCustom = 2;
     FeeTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"feeOption"];
     if (cell == nil) {
         FeeType feeType = indexPath.row;
-        cell = [[FeeTableCell alloc] initWithFeeType:feeType];
+        uint64_t amount = [self.delegate feeForType:feeType];
+        cell = [[FeeTableCell alloc] initWithFeeType:feeType amount:amount];
+        cell.accessoryType = feeType == [self.delegate selectedFeeType] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+        cell.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         cell.backgroundColor = [UIColor whiteColor];
     }
     return cell;

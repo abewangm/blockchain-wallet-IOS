@@ -93,7 +93,7 @@
 - (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
-- (void)updateSendBalance:(NSNumber *)balance;
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
