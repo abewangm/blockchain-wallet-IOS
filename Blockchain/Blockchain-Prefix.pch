@@ -423,8 +423,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #endif
 
-#define TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
-#define ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/address/%@?format=json"
+#define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
+#define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 
 #define URL_SURVEY @"https://blockchain.co1.qualtrics.com/SE/?SID=SV_8c6uSMW5eBV9nal"
 
