@@ -68,7 +68,7 @@ float containerOffset;
 
 uint64_t amountInSatoshi = 0.0;
 uint64_t availableAmount = 0.0;
-uint64_t customFeeOriginalAvailableAmount = 0.0;
+uint64_t originalBalance = 0.0;
 
 BOOL displayingLocalSymbolSend;
 
@@ -1068,7 +1068,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self arrangeViewsToFeeMode];
     self.feeType = FeeTypeRegular;
-    customFeeOriginalAvailableAmount = 0.0;
+    originalBalance = 0.0;
     
     [self reloadAfterMultiAddressResponse];
 }
@@ -1121,7 +1121,7 @@ BOOL displayingLocalSymbolSend;
     
     uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
     
-    customFeeOriginalAvailableAmount = self.sendFromAddress ?  [app.wallet getLegacyAddressBalance:self.fromAddress] : [app.wallet getBalanceForAccount:self.fromAccount];
+    originalBalance = self.sendFromAddress ? self.fromAddress.length == 0 ? [app.wallet getTotalBalanceForSpendableActiveLegacyAddresses] : [app.wallet getLegacyAddressBalance:self.fromAddress] : [app.wallet getBalanceForAccount:self.fromAccount];
     
     availableAmount = newBalance;
     
@@ -1528,12 +1528,12 @@ BOOL displayingLocalSymbolSend;
 {
     uint64_t feeValue = [fee longLongValue];
     uint64_t spendableAmount = 0;
-    if (feeValue < customFeeOriginalAvailableAmount) {
-        spendableAmount = customFeeOriginalAvailableAmount - feeValue;
+    if (feeValue < originalBalance) {
+        spendableAmount = originalBalance - feeValue;
     }
     availableAmount = spendableAmount;
     
-    if (feeValue + amountInSatoshi > customFeeOriginalAvailableAmount) {
+    if (feeValue + amountInSatoshi > originalBalance) {
         feeField.textColor = [UIColor redColor];
         [self disablePaymentButtons];
     } else {
