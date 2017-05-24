@@ -1129,6 +1129,8 @@ BOOL displayingLocalSymbolSend;
     
     availableAmount = newBalance;
     
+    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeRegular]; 
+    
     if (!self.transferAllPaymentBuilder || self.transferAllPaymentBuilder.userCancelledNext) {
         [self doCurrencyConversionAfterMultiAddress];
     }
@@ -1204,22 +1206,20 @@ BOOL displayingLocalSymbolSend;
         
         NSString *typeText;
         NSString *descriptionText;
-        NSString *amountText;
         
         if (self.feeType == FeeTypeRegular) {
             typeText = BC_STRING_REGULAR;
             descriptionText = BC_STRING_GREATER_THAN_ONE_HOUR;
-            amountText = BC_STRING_AMOUNT;
         } else if (self.feeType == FeeTypePriority) {
             typeText = BC_STRING_PRIORITY;
             descriptionText = BC_STRING_LESS_THAN_ONE_HOUR;
-            amountText = BC_STRING_AMOUNT;
         }
         
         self.feeTypeLabel.text = typeText;
         self.feeDescriptionLabel.text = descriptionText;
-        self.feeAmountLabel.text = amountText;
     }
+    
+    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeRegular];
 }
 
 #pragma mark - Textfield Delegates
@@ -1803,7 +1803,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    if (self.customFeeMode) {
+    if (self.feeType == FeeTypeCustom) {
         [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeSweep];
     } else {
         [app.wallet sweepPaymentRegular];
