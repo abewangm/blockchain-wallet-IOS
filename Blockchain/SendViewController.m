@@ -268,7 +268,7 @@ BOOL displayingLocalSymbolSend;
     
     [self enablePaymentButtons];
     
-    [self changeToDefaultFeeMode];
+    [self changeToCustomFeeMode];
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
@@ -1075,16 +1075,6 @@ BOOL displayingLocalSymbolSend;
     [self reloadAfterMultiAddressResponse];
 }
 
-- (void)changeToDefaultFeeMode
-{    
-    [self arrangeViewsToDefaultMode];
-    self.customFeeMode = NO;
-    self.feeType = FeeTypeRegular;
-    customFeeOriginalAvailableAmount = 0.0;
-    
-    [self reloadAfterMultiAddressResponse];
-}
-
 - (void)arrangeViewsToFeeMode
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
@@ -1125,46 +1115,6 @@ BOOL displayingLocalSymbolSend;
     }];
     
     [self updateFeeLabels];
-    
-    [feeField becomeFirstResponder];
-}
-
-- (void)arrangeViewsToDefaultMode
-{
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        
-        if (IS_USING_SCREEN_SIZE_4S) {
-            [lineBelowFromField changeYPosition:47];
-            
-            [toLabel changeYPosition:61];
-            [toField changeYPosition:57];
-            [addressBookButton changeYPosition:57];
-            [lineBelowToField changeYPosition:96];
-            
-            [bottomContainerView changeYPosition:98];
-            [btcLabel changeYPosition:12];
-            [btcAmountField changeYPosition:8];
-            [fiatLabel changeYPosition:12];
-            [fiatAmountField changeYPosition:8];
-            [lineBelowAmountFields changeYPosition:61];
-            
-            [feeField changeYPosition:72];
-            [feeLabel changeYPosition:75];
-            [lineBelowFeeField changeYPosition:109];
-            
-            [fundsAvailableButton changeYPosition:36];
-        }
-        
-        feeField.hidden = YES;
-        feeLabel.hidden = YES;
-        feeOptionsButton.hidden = YES;
-        lineBelowFeeField.hidden = YES;
-        
-        self.feeAmountLabel.hidden = YES;
-        self.feeDescriptionLabel.hidden = YES;
-        self.feeTypeLabel.hidden = YES;
-        self.feeWarningLabel.hidden = YES;
-    }];
 }
 
 - (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees
@@ -1657,21 +1607,6 @@ BOOL displayingLocalSymbolSend;
     [self updateFeeLabels];
 
     [app closeModalWithTransition:kCATransitionFromLeft];
-}
-
-- (uint64_t)feeForType:(FeeType)feeType
-{
-    if (feeType == FeeTypeRegular) {
-        return [[self.fees objectForKey:DICTIONARY_KEY_FEE_REGULAR] longLongValue];
-    } else if (feeType == FeeTypePriority) {
-        return [[self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue];
-    } else if (feeType == FeeTypeCustom) {
-        DLog(@"Requested custom fee; returning 0");
-        return 0;
-    } else {
-        DLog(@"Error getting fee for type: fee type not recognized");
-        return 0;
-    }
 }
 
 - (FeeType)selectedFeeType
