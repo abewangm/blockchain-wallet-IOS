@@ -10,11 +10,10 @@
 
 @implementation FeeTableCell
 
-- (id)initWithFeeType:(FeeType)feeType amount:(uint64_t)amount
+- (id)initWithFeeType:(FeeType)feeType
 {
     if (self = [super init]) {
         _feeType = feeType;
-        _amount = amount;
         [self setup];
     }
     return self;
@@ -49,13 +48,6 @@
         
         self.nameLabel.text = nameLabelText;
         self.descriptionLabel.text = descriptionLabelText;
-        
-        self.amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width - 100, 0, 100, 30)];
-        self.amountLabel.text = [NSString stringWithFormat:@"%lld %@", self.amount, BC_STRING_SATOSHI_PER_BYTE_ABBREVIATED];
-        self.amountLabel.textColor = COLOR_LABEL_BALANCE_GREEN;
-        self.amountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-        self.amountLabel.center = CGPointMake(self.amountLabel.center.x, self.contentView.center.y);
-        [self.contentView addSubview:self.amountLabel];
     } else {
         self.nameLabel.text = BC_STRING_CUSTOM;
         self.descriptionLabel.text = BC_STRING_ADVANCED_USERS_ONLY;

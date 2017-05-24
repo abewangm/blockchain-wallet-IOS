@@ -11,7 +11,6 @@
 
 @protocol FeeSelectionDelegate
 - (void)didSelectFeeType:(FeeType)feeType;
-- (uint64_t)feeForType:(FeeType)feeType;
 - (FeeType)selectedFeeType;
 @end
 @interface BCFeeSelectionView : UIView <UITableViewDelegate, UITableViewDataSource>

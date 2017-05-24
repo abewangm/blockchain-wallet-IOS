@@ -10,12 +10,10 @@
 #import "FeeTypes.h"
 
 @interface FeeTableCell : UITableViewCell
-@property (nonatomic) UILabel *amountLabel;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *descriptionLabel;
 @property (nonatomic, readonly) FeeType feeType;
-@property (nonatomic, readonly) uint64_t amount;
 
-- (id)initWithFeeType:(FeeType)feeType amount:(uint64_t)amount;
+- (id)initWithFeeType:(FeeType)feeType;
 
 @end
