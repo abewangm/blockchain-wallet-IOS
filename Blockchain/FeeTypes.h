@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, FeeType){
 };
 
 typedef NS_ENUM(NSInteger, FeeUpdateType){
-    FeeUpdateTypeRegular,
+    FeeUpdateTypeNoAction,
     FeeUpdateTypeConfirm,
     FeeUpdateTypeSweep,
 };

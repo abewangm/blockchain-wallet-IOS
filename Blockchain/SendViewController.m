@@ -42,7 +42,6 @@ typedef enum {
 @property (nonatomic) uint64_t upperRecommendedLimit;
 @property (nonatomic) uint64_t lowerRecommendedLimit;
 @property (nonatomic) uint64_t estimatedTransactionSize;
-@property (nonatomic) BOOL customFeeMode;
 
 @property (nonatomic) FeeType feeType;
 @property (nonatomic) UILabel *feeTypeLabel;
@@ -268,7 +267,7 @@ BOOL displayingLocalSymbolSend;
     
     [self enablePaymentButtons];
     
-    [self changeToCustomFeeMode];
+    [self setupFees];
     
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
@@ -287,9 +286,9 @@ BOOL displayingLocalSymbolSend;
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
-        [app.wallet changePaymentFromAddress:self.fromAddress isAdvanced:self.customFeeMode];
+        [app.wallet changePaymentFromAddress:self.fromAddress isAdvanced:self.feeType == FeeTypeCustom];
     } else {
-        [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.customFeeMode];
+        [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.feeType == FeeTypeCustom];
     }
 }
 
@@ -713,11 +712,7 @@ BOOL displayingLocalSymbolSend;
             // Actually do the sweep and confirm
             self.transactionType = TransactionTypeSweepAndConfirm;
             
-            if (self.customFeeMode) {
-                [app.wallet sweepPaymentAdvancedThenConfirm:[app.wallet parseBitcoinValueFromTextField:feeField]];
-            } else {
-                [app.wallet sweepPaymentRegularThenConfirm];
-            }
+            [app.wallet sweepPaymentRegularThenConfirm];
         
         }];
         
@@ -804,19 +799,17 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
         self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
         
-        if (!self.customFeeMode) {
-            NSDecimalNumber *last = [NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:[[app.wallet.currencySymbols objectForKey:DICTIONARY_KEY_USD][DICTIONARY_KEY_LAST] doubleValue]] decimalValue]];
-            NSDecimalNumber *conversionToUSD = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:SATOSHI] decimalValue]] decimalNumberByDividingBy:last];
-            NSDecimalNumber *feeConvertedToUSD = [(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:feeTotal] decimalNumberByDividingBy:conversionToUSD];
-            
-            NSDecimalNumber *feeRatio = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:feeTotal] decimalValue] ] decimalNumberByDividingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:amountTotal]];
-            NSDecimalNumber *normalFeeRatio = [NSDecimalNumber decimalNumberWithDecimal:[ONE_PERCENT_DECIMAL decimalValue]];
-
-            if ([feeConvertedToUSD compare:[NSDecimalNumber decimalNumberWithDecimal:[FIFTY_CENTS_DECIMAL decimalValue]]] == NSOrderedDescending && self.txSize > TX_SIZE_ONE_KILOBYTE && [feeRatio compare:normalFeeRatio] == NSOrderedDescending) {
-                UIAlertController *highFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_HIGH_FEE_WARNING_TITLE message:BC_STRING_HIGH_FEE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
-                [highFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-                [self.view.window.rootViewController presentViewController:highFeeAlert animated:YES completion:nil];
-            }
+        NSDecimalNumber *last = [NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:[[app.wallet.currencySymbols objectForKey:DICTIONARY_KEY_USD][DICTIONARY_KEY_LAST] doubleValue]] decimalValue]];
+        NSDecimalNumber *conversionToUSD = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:SATOSHI] decimalValue]] decimalNumberByDividingBy:last];
+        NSDecimalNumber *feeConvertedToUSD = [(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:feeTotal] decimalNumberByDividingBy:conversionToUSD];
+        
+        NSDecimalNumber *feeRatio = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:feeTotal] decimalValue] ] decimalNumberByDividingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithLongLong:amountTotal]];
+        NSDecimalNumber *normalFeeRatio = [NSDecimalNumber decimalNumberWithDecimal:[ONE_PERCENT_DECIMAL decimalValue]];
+        
+        if ([feeConvertedToUSD compare:[NSDecimalNumber decimalNumberWithDecimal:[FIFTY_CENTS_DECIMAL decimalValue]]] == NSOrderedDescending && self.txSize > TX_SIZE_ONE_KILOBYTE && [feeRatio compare:normalFeeRatio] == NSOrderedDescending) {
+            UIAlertController *highFeeAlert = [UIAlertController alertControllerWithTitle:BC_STRING_HIGH_FEE_WARNING_TITLE message:BC_STRING_HIGH_FEE_WARNING_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [highFeeAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [self.view.window.rootViewController presentViewController:highFeeAlert animated:YES completion:nil];
         }
     });
 }
@@ -1066,10 +1059,10 @@ BOOL displayingLocalSymbolSend;
     [app.tabViewController presentViewController:privateKeyScanner animated:YES completion:nil];
 }
 
-- (void)changeToCustomFeeMode
+- (void)setupFees
 {
     [self arrangeViewsToFeeMode];
-    self.customFeeMode = YES;
+    self.feeType = FeeTypeRegular;
     customFeeOriginalAvailableAmount = 0.0;
     
     [self reloadAfterMultiAddressResponse];
@@ -1123,13 +1116,13 @@ BOOL displayingLocalSymbolSend;
     
     uint64_t newBalance = [balance longLongValue] <= 0 ? 0 : [balance longLongValue];
     
-    if (self.customFeeMode) {
-        customFeeOriginalAvailableAmount = newBalance;
-    }
+    customFeeOriginalAvailableAmount = self.sendFromAddress ?  [app.wallet getLegacyAddressBalance:self.fromAddress] : [app.wallet getBalanceForAccount:self.fromAccount];
     
     availableAmount = newBalance;
     
-    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeRegular]; 
+    if (self.feeType != FeeTypeRegular) {
+        [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
+    }
     
     if (!self.transferAllPaymentBuilder || self.transferAllPaymentBuilder.userCancelledNext) {
         [self doCurrencyConversionAfterMultiAddress];
@@ -1218,8 +1211,6 @@ BOOL displayingLocalSymbolSend;
         self.feeTypeLabel.text = typeText;
         self.feeDescriptionLabel.text = descriptionText;
     }
-    
-    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeRegular];
 }
 
 #pragma mark - Textfield Delegates
@@ -1427,7 +1418,7 @@ BOOL displayingLocalSymbolSend;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
-    [app.wallet changePaymentFromAddress:address isAdvanced:self.customFeeMode];
+    [app.wallet changePaymentFromAddress:address isAdvanced:self.feeType == FeeTypeCustom];
     
     [self doCurrencyConversion];
 }
@@ -1449,7 +1440,7 @@ BOOL displayingLocalSymbolSend;
     self.fromAccount = account;
     DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
     
-    [app.wallet changePaymentFromAccount:account isAdvanced:self.customFeeMode];
+    [app.wallet changePaymentFromAccount:account isAdvanced:self.feeType == FeeTypeCustom];
     
     [self updateFundsAvailable];
     
@@ -1533,7 +1524,7 @@ BOOL displayingLocalSymbolSend;
     uint64_t feeValue = [fee longLongValue];
     uint64_t spendableAmount = 0;
     if (feeValue < customFeeOriginalAvailableAmount) {
-        spendableAmount = customFeeOriginalAvailableAmount - [fee longLongValue];
+        spendableAmount = customFeeOriginalAvailableAmount - feeValue;
     }
     availableAmount = spendableAmount;
     
@@ -1565,7 +1556,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateSatoshiPerByteAfterTextChange
 {
-    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeRegular];
+    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
 }
 
 - (void)updateSatoshiPerByteWithUpdateType:(FeeUpdateType)feeUpdateType
@@ -1605,6 +1596,8 @@ BOOL displayingLocalSymbolSend;
     self.feeType = feeType;
     
     [self updateFeeLabels];
+    
+    [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
 
     [app closeModalWithTransition:kCATransitionFromLeft];
 }
@@ -1803,11 +1796,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    if (self.feeType == FeeTypeCustom) {
-        [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeSweep];
-    } else {
-        [app.wallet sweepPaymentRegular];
-    }
+    [app.wallet sweepPaymentRegular];
     
     self.transactionType = TransactionTypeSweep;
 }
@@ -1816,7 +1805,7 @@ BOOL displayingLocalSymbolSend;
 {
     [app closeModalWithTransition:kCATransitionFade];
     
-    [self changeToCustomFeeMode];
+    [self setupFees];
 }
 
 - (IBAction)feeInformationClicked:(UIButton *)sender
@@ -1824,7 +1813,7 @@ BOOL displayingLocalSymbolSend;
     NSString *title = BC_STRING_FEE_INFORMATION_TITLE;
     NSString *message = BC_STRING_FEE_INFORMATION_MESSAGE;
     
-    if (!self.customFeeMode) {
+    if (self.feeType != FeeTypeCustom) {
         message = [message stringByAppendingString:BC_STRING_FEE_INFORMATION_MESSAGE_APPEND_REGULAR_SEND];
     }
     
@@ -1894,10 +1883,10 @@ BOOL displayingLocalSymbolSend;
     
     self.transactionType = TransactionTypeRegular;
     
-    if (!self.customFeeMode) {
-        [self checkMaxFee];
-    } else {
+    if (self.feeType == FeeTypeCustom) {
         [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeConfirm];
+    } else {
+        [self checkMaxFee];
     }
     
     [app.wallet getSurgeStatus];
