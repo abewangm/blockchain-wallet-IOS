@@ -93,6 +93,7 @@
 - (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 - (void)enableSendPaymentButtons;
 - (void)disableSendPaymentButtons;
+- (void)showInsufficientFunds;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
 - (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;

@@ -913,6 +913,11 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
+- (void)showInsufficientFunds
+{
+    [self highlightInvalidAmounts];
+}
+
 - (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)addressString
 {
     self.addressFromURLHandler = addressString;

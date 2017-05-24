@@ -2866,9 +2866,10 @@
 {
     DLog(@"on_error_update_fee");
     
+    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
+    
     if (updateType == FeeUpdateTypeConfirm) {
-        id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-        NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
         if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
             [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
         } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
@@ -2886,6 +2887,9 @@
     } else {
         if ([self.delegate respondsToSelector:@selector(disableSendPaymentButtons)]) {
             [self.delegate disableSendPaymentButtons];
+            if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] && [self.delegate respondsToSelector:@selector(showInsufficientFunds)]) {
+                [self.delegate showInsufficientFunds];
+            }
         }
     }
 }
