@@ -415,8 +415,8 @@
         [weakSelf update_surge_status:surgeStatus];
     };
     
-    self.context[@"objc_did_change_satoshi_per_byte_dust_show_summary"] = ^(NSNumber *fee, NSNumber *dust, BOOL showSummary) {
-        [weakSelf did_change_satoshi_per_byte:fee dust:dust showSummary:showSummary];
+    self.context[@"objc_did_change_satoshi_per_byte_dust_show_summary"] = ^(NSNumber *fee, NSNumber *dust, FeeUpdateType updateType) {
+        [weakSelf did_change_satoshi_per_byte:fee dust:dust updateType:updateType];
     };
     
     self.context[@"objc_update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
@@ -451,8 +451,8 @@
         [weakSelf tx_on_finish_signing:transactionId];
     };
     
-    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error, BOOL showSummary) {
-        [weakSelf on_error_update_fee:error showSummary:showSummary];
+    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error, FeeUpdateType updateType) {
+        [weakSelf on_error_update_fee:error updateType:updateType];
     };
     
     self.context[@"objc_on_success_import_key_for_sending_from_watch_only"] = ^() {
@@ -1739,13 +1739,13 @@
     [self.context evaluateScript:@"MyWalletPhone.sweepPaymentRegularThenConfirm()"];
 }
 
-- (void)sweepPaymentAdvanced:(uint64_t)fee
+- (void)sweepPaymentAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sweepPaymentAdvanced(%lld)", fee]];
+    [self.context evaluateScript:@"MyWalletPhone.sweepPaymentAdvanced()"];
 }
 
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee
@@ -1775,13 +1775,13 @@
     [self.context evaluateScript:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte showSummary:(BOOL)showSummary
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld, %d)", satoshiPerByte, showSummary]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld, %ld)", satoshiPerByte, (long)updateType]];
 }
 
 - (void)getTransactionFee
@@ -2828,11 +2828,11 @@
     }
 }
 
-- (void)did_change_satoshi_per_byte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary
+- (void)did_change_satoshi_per_byte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType
 {
-    DLog(@"did_change_forced_fee");
-    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:dust:showSummary:)]) {
-        [self.delegate didChangeSatoshiPerByte:fee dust:dust showSummary:showSummary];
+    DLog(@"did_change_satoshi_per_byte");
+    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:dust:updateType:)]) {
+        [self.delegate didChangeSatoshiPerByte:fee dust:dust updateType:updateType];
     }
 }
 
@@ -2862,11 +2862,11 @@
     }
 }
 
-- (void)on_error_update_fee:(NSDictionary *)error showSummary:(BOOL)showSummary
+- (void)on_error_update_fee:(NSDictionary *)error updateType:(FeeUpdateType)updateType
 {
     DLog(@"on_error_update_fee");
     
-    if (showSummary) {
+    if (updateType == FeeUpdateTypeConfirm) {
         id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
         NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
         if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {

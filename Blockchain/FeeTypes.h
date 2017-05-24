@@ -15,4 +15,10 @@ typedef NS_ENUM(NSInteger, FeeType){
     FeeTypeCustom
 };
 
+typedef NS_ENUM(NSInteger, FeeUpdateType){
+    FeeUpdateTypeRegular,
+    FeeUpdateTypeConfirm,
+    FeeUpdateTypeSweep,
+};
+
 #endif /* FeeTypes_h */

@@ -419,8 +419,8 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     }
 }
 
-MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, showSummary) {
-    console.log('changing satoshi per byte to' + satoshiPerByte);
+MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
+    console.log('changing satoshi per byte to ' + satoshiPerByte);
     var buildFailure = function (error) {
         console.log('Error changing satoshi per byte');
         console.log(JSON.stringify(error));
@@ -434,14 +434,14 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, showSummary) {
 
         console.log('error updating fee: ' + errorArgument);
         
-        objc_on_error_update_fee(errorArgument, showSummary);
+        objc_on_error_update_fee(errorArgument, updateType);
 
         return error.payment;
     }
 
     if (currentPayment) {
         currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
-                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.finalFee, x.extraFeeConsumption, showSummary);
+                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.finalFee, x.extraFeeConsumption, updateType);
                                                   return x;
                                                   }).catch(buildFailure);
     } else {
@@ -490,7 +490,7 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
     if (currentPayment) {
-        currentPayment.useAll(fee).then(function (x) {
+        currentPayment.useAll().then(function (x) {
                                         MyWalletPhone.updateSweep(true, false);
                                         return x;
                                         });

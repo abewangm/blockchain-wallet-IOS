@@ -23,6 +23,7 @@
 #import "BCConfirmPaymentView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "BCLine.h"
+#import "FeeTypes.h"
 
 @class Wallet;
 
@@ -125,7 +126,7 @@ typedef enum {
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary;
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 
 - (void)setupTransferAll;
 - (void)getInfoForTransferAllFundsToDefaultAccount;

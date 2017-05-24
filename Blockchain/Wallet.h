@@ -20,6 +20,7 @@
 
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
+#import "FeeTypes.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
@@ -89,7 +90,7 @@
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust showSummary:(BOOL)showSummary;
+- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 - (void)enableSendPaymentButtons;
 - (void)disableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
@@ -328,7 +329,7 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPaymentRegular;
 - (void)sweepPaymentRegularThenConfirm;
-- (void)sweepPaymentAdvanced:(uint64_t)fee;
+- (void)sweepPaymentAdvanced;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)getInfoForTransferAllFundsToAccount;
@@ -337,7 +338,7 @@
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
-- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte showSummary:(BOOL)showSummary;
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType;
 - (void)getTransactionFee;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
