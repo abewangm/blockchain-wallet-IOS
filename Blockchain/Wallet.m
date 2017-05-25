@@ -1784,13 +1784,13 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld, %ld)", satoshiPerByte, (long)updateType]];
 }
 
-- (void)getTransactionFee
+- (void)getTransactionFeeWithUpdateType:(FeeUpdateType)updateType
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.getTransactionFee()"];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getTransactionFeeWithUpdateType(%ld)", (long)updateType]];
 }
 
 - (void)getSurgeStatus
@@ -2865,14 +2865,19 @@
 - (void)on_error_update_fee:(NSDictionary *)error updateType:(FeeUpdateType)updateType
 {
     DLog(@"on_error_update_fee");
-    
-    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
+    NSString *message;
+    if ([error[DICTIONARY_KEY_MESSAGE] isKindOfClass:[NSString class]]) {
+        message = error[DICTIONARY_KEY_MESSAGE];
+    } else {
+        id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+        message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
+    }
     
     if (updateType == FeeUpdateTypeConfirm) {
         if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
             [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
         } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
+            id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
             uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
             [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
         } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {

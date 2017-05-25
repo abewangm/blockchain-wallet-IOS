@@ -1465,7 +1465,7 @@ BOOL displayingLocalSymbolSend;
 {
     self.getTransactionFeeSuccess = success;
     
-    [app.wallet getTransactionFee];
+    [app.wallet getTransactionFeeWithUpdateType:FeeUpdateTypeConfirm];
 }
 
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee

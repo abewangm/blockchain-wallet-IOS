@@ -549,7 +549,7 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
     }
 }
 
-MyWalletPhone.getTransactionFee = function() {
+MyWalletPhone.getTransactionFeeWithUpdateType = function(updateType) {
     if (currentPayment) {
 
         var buildFailure = function(error) {
@@ -562,7 +562,7 @@ MyWalletPhone.getTransactionFee = function() {
             }
 
             console.log('error updating fee: ' + errorArgument);
-            objc_on_error_update_fee(errorArgument);
+            objc_on_error_update_fee(errorArgument, updateType);
 
             return error.payment;
         }
