@@ -1547,12 +1547,15 @@ BOOL displayingLocalSymbolSend;
 {
     availableAmount = [sweepAmount longLongValue];
     
-    if (amountInSatoshi > availableAmount) {
-        feeField.textColor = [UIColor redColor];
-        [self disablePaymentButtons];
-    } else {
-        feeField.textColor = COLOR_TEXT_DARK_GRAY;
-        [self enablePaymentButtons];
+    if (updateType != FeeUpdateTypeConfirm) {
+        if (amountInSatoshi > availableAmount) {
+            feeField.textColor = [UIColor redColor];
+            [self disablePaymentButtons];
+        } else {
+            [self removeHighlightFromAmounts];
+            feeField.textColor = COLOR_TEXT_DARK_GRAY;
+            [self enablePaymentButtons];
+        }
     }
     
     [self updateFundsAvailable];
