@@ -35,9 +35,19 @@ const float qrSize = 180;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:qrCodeMainImageView];
 
-    Wallet *w = app.wallet;
-    NSString *data = [NSString stringWithFormat:@"%@|%@|%@", w.guid, w.password, w.sharedKey];
-    [self setQR:data];
+    app.wallet.delegate = self;
+    [app.wallet makePairingCode];
+}
+
+- (void)didMakePairingCode:(NSString *)code
+{
+    DLog(@"Made pairing code: %@", code);
+    [self setQR:code];
+}
+
+- (void)errorMakingPairingCode:(NSString *)message
+{
+    DLog(@"Error making pairing code: %@", message);
 }
 
 - (void)setQR:(NSString *)data

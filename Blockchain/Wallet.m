@@ -488,7 +488,15 @@
     self.context[@"objc_errorParsingPairingCode"] = ^(NSString *error) {
         [weakSelf errorParsingPairingCode:error];
     };
-    
+
+    self.context[@"objc_didMakePairingCode"] = ^(NSString *pairingCode) {
+        [weakSelf didMakePairingCode:pairingCode];
+    };
+
+    self.context[@"objc_errorMakingPairingCode"] = ^(NSString *error) {
+        [weakSelf errorMakingPairingCode:error];
+    };
+
     self.context[@"objc_error_restoring_wallet"] = ^(){
         [weakSelf error_restoring_wallet];
     };
@@ -1372,6 +1380,33 @@
         [delegate errorParsingPairingCode:message];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector errorParsingPairingCode:!", [delegate class]);
+    }
+}
+
+- (void)makePairingCode
+{
+    [self.context evaluateScript:@"MyWalletPhone.makePairingCode();"];
+}
+
+- (void)didMakePairingCode:(NSString *)pairingCode
+{
+    DLog(@"didMakePairingCode");
+
+    if ([delegate respondsToSelector:@selector(didMakePairingCode:)]) {
+        [delegate didMakePairingCode:pairingCode];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didMakePairingCode:!", [delegate class]);
+    }
+}
+
+- (void)errorMakingPairingCode:(NSString *)message
+{
+    DLog(@"errorMakingPairingCode:");
+
+    if ([delegate respondsToSelector:@selector(errorMakingPairingCode:)]) {
+        [delegate errorMakingPairingCode:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorMakingPairingCode:!", [delegate class]);
     }
 }
 

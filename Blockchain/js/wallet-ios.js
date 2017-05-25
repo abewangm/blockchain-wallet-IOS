@@ -1041,6 +1041,18 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
     MyWallet.parsePairingCode(raw_code).then(success, error);
 };
 
+MyWalletPhone.makePairingCode = function () {
+    var success = function (code) {
+        objc_didMakePairingCode(code);
+    };
+
+    var error = function (e) {
+        objc_errorMakingPairingCode(e);
+    };
+
+    MyWallet.makePairingCode(success, error);
+}
+
 MyWalletPhone.addAddressBookEntry = function(bitcoinAddress, label) {
     MyWallet.addAddressBookEntry(bitcoinAddress, label);
 
