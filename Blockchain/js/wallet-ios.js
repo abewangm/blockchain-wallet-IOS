@@ -745,7 +745,7 @@ MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
 
     var createPayment = function(address) {
         return new Promise(function (resolve) {
-                           var payment = new Payment().from(address).useAll();
+                           var payment = MyWallet.wallet.createPayment().from(address).useAll();
                            transferAllPayments[address] = payment;
                            payment.sideEffect(function (p) { resolve(p); });
                            })
@@ -830,7 +830,7 @@ MyWalletPhone.transferAllFundsToAccount = function(accountIndex, isFirstTransfer
 }
 
 MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
 
     var buildFailure = function (error) {
         console.log('buildfailure');
