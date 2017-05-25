@@ -1543,10 +1543,9 @@ BOOL displayingLocalSymbolSend;
 
 - (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType
 {
-    uint64_t feeValue = [fee longLongValue];
     availableAmount = [sweepAmount longLongValue];
     
-    if (feeValue + amountInSatoshi > availableAmount) {
+    if (amountInSatoshi > availableAmount) {
         feeField.textColor = [UIColor redColor];
         [self disablePaymentButtons];
     } else {
@@ -1556,6 +1555,8 @@ BOOL displayingLocalSymbolSend;
     
     [self updateFundsAvailable];
     
+    uint64_t feeValue = [fee longLongValue];
+
     self.feeFromTransactionProposal = feeValue;
     self.dust = dust == nil ? 0 : [dust longLongValue];
     [self updateFeeAmountLabelText:feeValue];
