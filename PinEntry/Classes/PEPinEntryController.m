@@ -38,6 +38,7 @@ static PEViewController *EnterController()
 	c.title = @"";
 
     c.versionLabel.text = [app getVersionLabelString];
+    c.versionLabel.hidden = NO;
     
 	return c;
 }
