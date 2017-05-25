@@ -57,4 +57,9 @@ const float qrSize = 180;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    app.wallet.delegate = app;
+    [super viewWillDisappear:animated];
+}
+
 @end
