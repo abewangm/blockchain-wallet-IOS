@@ -99,8 +99,10 @@ BOOL displayingLocalSymbolSend;
     [feeOptionsButton changeXPosition:self.view.frame.size.width - feeOptionsButton.frame.size.width];
     
     self.feeDescriptionLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y, btcAmountField.frame.size.width*2/3, 20);
+    self.feeDescriptionLabel.adjustsFontSizeToFitWidth = YES;
     self.feeTypeLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y - 20, btcAmountField.frame.size.width*2/3, 20);
     CGFloat amountLabelOriginX = self.feeTypeLabel.frame.origin.x + self.feeTypeLabel.frame.size.width;
+    self.feeTypeLabel.adjustsFontSizeToFitWidth = YES;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
     self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - 15, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, 12);
