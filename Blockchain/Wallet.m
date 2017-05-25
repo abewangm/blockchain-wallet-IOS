@@ -2912,15 +2912,7 @@
             [self.delegate enableSendPaymentButtons];
         }
     } else {
-        
         [self updateTotalAvailableMinusFee];
-        
-        if ([self.delegate respondsToSelector:@selector(disableSendPaymentButtons)]) {
-            [self.delegate disableSendPaymentButtons];
-            if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] && [self.delegate respondsToSelector:@selector(showInsufficientFunds)]) {
-                [self.delegate showInsufficientFunds];
-            }
-        }
     }
 }
 

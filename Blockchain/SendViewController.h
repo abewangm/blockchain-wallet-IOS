@@ -146,8 +146,6 @@ typedef enum {
 - (void)hideKeyboardForced;
 
 - (void)enablePaymentButtons;
-- (void)disablePaymentButtons;
-- (void)showInsufficientFunds;
 
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;
