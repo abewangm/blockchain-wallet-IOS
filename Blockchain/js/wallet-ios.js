@@ -441,7 +441,7 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
 
     if (currentPayment) {
         currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
-                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.finalFee, x.extraFeeConsumption, updateType);
+                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.sweepAmount, x.finalFee, x.extraFeeConsumption, updateType);
                                                   return x;
                                                   }).catch(buildFailure);
     } else {

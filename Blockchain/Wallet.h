@@ -91,7 +91,7 @@
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
 - (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount minusFee:(NSNumber *)sweepFee;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
+- (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 - (void)enableSendPaymentButtons;
 - (void)disableSendPaymentButtons;
 - (void)showInsufficientFunds;
