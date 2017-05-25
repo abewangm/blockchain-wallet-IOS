@@ -631,7 +631,7 @@
 #define BC_STRING_REGULAR BC_STRING_PASSWORD_STRENGTH_REGULAR
 #define BC_STRING_GREATER_THAN_ONE_HOUR NSLocalizedString(@"1+ hour", nil)
 #define BC_STRING_PRIORITY NSLocalizedString(@"Priority", nil)
-#define BC_STRING_LESS_THAN_ONE_HOUR NSLocalizedString(@"approx. 0-60 min", nil)
+#define BC_STRING_LESS_THAN_ONE_HOUR NSLocalizedString(@"~0-60 min", nil)
 #define BC_STRING_SATOSHI_PER_BYTE NSLocalizedString(@"Satoshi per byte", nil)
 #define BC_STRING_SATOSHI_PER_BYTE_ABBREVIATED NSLocalizedString(@"sat/b", nil)
 #define BC_STRING_HIGH_FEE_NOT_NECESSARY NSLocalizedString(@"High fee not necessary", nil)
