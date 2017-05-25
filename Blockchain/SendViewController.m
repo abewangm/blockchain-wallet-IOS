@@ -102,6 +102,7 @@ BOOL displayingLocalSymbolSend;
     self.feeTypeLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y - 20, btcAmountField.frame.size.width*2/3, 20);
     CGFloat amountLabelOriginX = self.feeTypeLabel.frame.origin.x + self.feeTypeLabel.frame.size.width;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
+    self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
     self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - 15, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, 12);
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
@@ -1215,6 +1216,17 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)updateFeeAmountLabelText:(uint64_t)fee
+{
+    if (self.feeType == FeeTypeCustom) {
+        NSNumber *regularFee = [self.fees objectForKey:DICTIONARY_KEY_FEE_REGULAR];
+        NSNumber *priorityFee = [self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY];
+        self.feeAmountLabel.text = [NSString stringWithFormat:@"%@: %@, %@: %@", BC_STRING_REGULAR, regularFee, BC_STRING_PRIORITY, priorityFee];
+    } else {
+        self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:fee localCurrency:YES]];
+    }
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1513,7 +1525,7 @@ BOOL displayingLocalSymbolSend;
 {
     availableAmount = [sweepAmount longLongValue];
     
-    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:[sweepFee longLongValue] localCurrency:NO], [NSNumberFormatter formatMoney:[sweepFee longLongValue] localCurrency:YES]];
+    [self updateFeeAmountLabelText:[sweepFee longLongValue]];
     [self doCurrencyConversionAfterMultiAddress];
 }
 
@@ -1546,7 +1558,7 @@ BOOL displayingLocalSymbolSend;
     
     self.feeFromTransactionProposal = feeValue;
     self.dust = dust == nil ? 0 : [dust longLongValue];
-    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:[fee longLongValue] localCurrency:NO], [NSNumberFormatter formatMoney:[fee longLongValue] localCurrency:YES]];
+    [self updateFeeAmountLabelText:feeValue];
     
     if (updateType == FeeUpdateTypeConfirm) {
         [self showSummary];
