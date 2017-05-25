@@ -423,6 +423,10 @@
         [weakSelf update_max_amount:maxAmount fee:fee dust:dust willConfirm:willConfirm];
     };
     
+    self.context[@"objc_update_total_available_minus_fee"] = ^(NSNumber *sweepAmount, NSNumber *sweepFee) {
+        [weakSelf update_total_available:sweepAmount minus_fee:sweepFee];
+    };
+    
     self.context[@"objc_check_max_amount_fee"] = ^(NSNumber *amount, NSNumber *fee) {
         [weakSelf check_max_amount:amount fee:fee];
     };
@@ -1793,6 +1797,15 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getTransactionFeeWithUpdateType(%ld)", (long)updateType]];
 }
 
+- (void)updateTotalAvailableMinusFee
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.updateTotalAvailableMinusFee()"];
+}
+
 - (void)getSurgeStatus
 {
     if (![self isInitialized]) {
@@ -2854,6 +2867,15 @@
     }
 }
 
+- (void)update_total_available:(NSNumber *)sweepAmount minus_fee:(NSNumber *)sweepFee
+{
+    DLog(@"update_total_available:minus_fee:");
+
+    if ([self.delegate respondsToSelector:@selector(didUpdateTotalAvailable:minusFee:)]) {
+        [self.delegate didUpdateTotalAvailable:sweepAmount minusFee:sweepFee];
+    }
+}
+
 - (void)check_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
 {
     DLog(@"check_max_amount");
@@ -2890,6 +2912,9 @@
             [self.delegate enableSendPaymentButtons];
         }
     } else {
+        
+        [self updateTotalAvailableMinusFee];
+        
         if ([self.delegate respondsToSelector:@selector(disableSendPaymentButtons)]) {
             [self.delegate disableSendPaymentButtons];
             if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] && [self.delegate respondsToSelector:@selector(showInsufficientFunds)]) {

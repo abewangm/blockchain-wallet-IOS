@@ -433,7 +433,7 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
         }
 
         console.log('error updating fee: ' + errorArgument);
-        
+
         objc_on_error_update_fee(errorArgument, updateType);
 
         return error.payment;
@@ -574,6 +574,16 @@ MyWalletPhone.getTransactionFeeWithUpdateType = function(updateType) {
 
     } else {
         console.log('Payment error: null payment object!');
+    }
+}
+
+MyWalletPhone.updateTotalAvailableMinusFee = function() {
+    if (currentPayment) {
+        currentPayment.payment.then(function(x) {
+          objc_update_total_available_minus_fee(x.sweepAmount, x.sweepFee)
+        }).catch(function(error) {
+          console.log(error);
+        });
     }
 }
 
@@ -1996,7 +2006,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuids = objc_get_whitelisted_guids();
-    
+
   if (whiteListedGuids.indexOf(wallet.guid) > -1) {
       userHasAccess = true;
   }

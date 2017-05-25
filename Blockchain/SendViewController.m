@@ -862,6 +862,7 @@ BOOL displayingLocalSymbolSend;
         [self enablePaymentButtons];
         if (!afterMultiAddress) {
             [app.wallet changePaymentAmount:amountInSatoshi];
+            [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
         }
     }
     
@@ -1510,6 +1511,14 @@ BOOL displayingLocalSymbolSend;
     if (willConfirm) {
         [self showSummary];
     }
+}
+
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount minusFee:(NSNumber *)sweepFee
+{
+    availableAmount = [sweepAmount longLongValue];
+    
+    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:[sweepFee longLongValue] localCurrency:NO], [NSNumberFormatter formatMoney:[sweepFee longLongValue] localCurrency:YES]];
+    [self doCurrencyConversionAfterMultiAddress];
 }
 
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize

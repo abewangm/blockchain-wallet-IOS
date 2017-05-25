@@ -125,6 +125,7 @@ typedef enum {
 - (void)sendFromWatchOnlyAddress;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount minusFee:(NSNumber *)sweepFee;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
 - (void)didChangeSatoshiPerByte:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 
