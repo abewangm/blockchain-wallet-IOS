@@ -678,53 +678,6 @@ BOOL displayingLocalSymbolSend;
     [self showErrorBeforeSending:error];
 }
 
-- (void)showSweepConfirmationScreenWithMaxAmount:(uint64_t)maxAmount
-{
-    [self hideKeyboard];
-    
-    // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        self.maxSendableAmount = maxAmount;
-        
-        uint64_t spendableAmount = maxAmount + self.feeFromTransactionProposal;
-        
-        NSString *wantToSendAmountString = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:NO];
-        NSString *spendableAmountString = [NSNumberFormatter formatMoney:spendableAmount localCurrency:NO];
-        NSString *feeAmountString = [NSNumberFormatter formatMoney:self.feeFromTransactionProposal localCurrency:NO];
-        
-        NSString *canSendAmountString = [NSNumberFormatter formatMoney:maxAmount localCurrency:NO];
-        
-        NSString *sweepMessageString = [[NSString alloc] initWithFormat:BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT, wantToSendAmountString, spendableAmountString, feeAmountString, canSendAmountString];
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONFIRM_SWEEP_TITLE message:sweepMessageString preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self enablePaymentButtons];
-        }];
-        
-        UIAlertAction *sendAction = [UIAlertAction actionWithTitle:BC_STRING_SEND style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            amountInSatoshi = maxAmount;
-            // Display to the user the max amount
-            [self doCurrencyConversion];
-            
-            // Actually do the sweep and confirm
-            self.transactionType = TransactionTypeSweepAndConfirm;
-            
-            [app.wallet sweepPaymentRegularThenConfirm];
-        
-        }];
-        
-        [alert addAction:cancelAction];
-        [alert addAction:sendAction];
-        
-        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    });
-}
-
 - (void)showSummary
 {
     [self showSummaryWithCustomFromLabel:nil];
@@ -1490,16 +1443,11 @@ BOOL displayingLocalSymbolSend;
     uint64_t maxAmount = [amount longLongValue];
     self.maxSendableAmount = maxAmount;
     
-    if (amountInSatoshi > maxAmount) {
-        [self showSweepConfirmationScreenWithMaxAmount:maxAmount];
-    } else {
-        // Underspending - regular transaction
-        __weak SendViewController *weakSelf = self;
-        
-        [self getTransactionFeeWithSuccess:^{
-            [weakSelf showSummary];
-        } error:nil];
-    }
+    __weak SendViewController *weakSelf = self;
+    
+    [self getTransactionFeeWithSuccess:^{
+        [weakSelf showSummary];
+    } error:nil];
 }
 
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm
