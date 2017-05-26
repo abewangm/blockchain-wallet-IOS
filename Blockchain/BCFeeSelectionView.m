@@ -65,6 +65,7 @@ int rowCustom = 2;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.delegate didSelectFeeType:indexPath.row];
 }
 

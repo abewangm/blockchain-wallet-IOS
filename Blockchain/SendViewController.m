@@ -1567,9 +1567,7 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-#pragma mark - Fee Selection Delegate
-
-- (void)didSelectFeeType:(FeeType)feeType
+- (void)selectFeeType:(FeeType)feeType
 {
     self.feeType = feeType;
     
@@ -1578,6 +1576,28 @@ BOOL displayingLocalSymbolSend;
     [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
 
     [app closeModalWithTransition:kCATransitionFromLeft];
+}
+
+#pragma mark - Fee Selection Delegate
+
+- (void)didSelectFeeType:(FeeType)feeType
+{
+    if (feeType == FeeTypeCustom) {
+        BOOL hasSeenWarning = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HAS_SEEN_CUSTOM_FEE_WARNING];
+        if (!hasSeenWarning) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:BC_STRING_CUSTOM_FEE_WARNING preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self selectFeeType:feeType];
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_CUSTOM_FEE_WARNING];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+            [app.tabViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self selectFeeType:feeType];
+        }
+    } else {
+        [self selectFeeType:feeType];
+    }
 }
 
 - (FeeType)selectedFeeType

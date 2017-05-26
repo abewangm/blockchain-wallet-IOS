@@ -582,6 +582,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
+#define USER_DEFAULTS_KEY_HAS_SEEN_CUSTOM_FEE_WARNING @"hasSeenCustomFeeWarning"
 
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_SERVER_URL @"productionServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_URL @"productionWebSocketURL"
