@@ -577,10 +577,10 @@ MyWalletPhone.getTransactionFeeWithUpdateType = function(updateType) {
     }
 }
 
-MyWalletPhone.updateTotalAvailableMinusFee = function() {
+MyWalletPhone.updateTotalAvailableAndFinalFee = function() {
     if (currentPayment) {
         currentPayment.payment.then(function(x) {
-          objc_update_total_available_minus_fee(x.sweepAmount, x.sweepFee)
+          objc_update_total_available_final_fee(x.sweepAmount, x.finalFee)
         }).catch(function(error) {
           console.log(error);
         });

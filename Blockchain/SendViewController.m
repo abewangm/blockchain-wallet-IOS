@@ -1526,11 +1526,11 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount minusFee:(NSNumber *)sweepFee
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
 {
     availableAmount = [sweepAmount longLongValue];
     
-    [self updateFeeAmountLabelText:[sweepFee longLongValue]];
+    [self updateFeeAmountLabelText:[finalFee longLongValue]];
     [self doCurrencyConversionAfterMultiAddress];
 }
 

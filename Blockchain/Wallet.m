@@ -423,8 +423,8 @@
         [weakSelf update_max_amount:maxAmount fee:fee dust:dust willConfirm:willConfirm];
     };
     
-    self.context[@"objc_update_total_available_minus_fee"] = ^(NSNumber *sweepAmount, NSNumber *sweepFee) {
-        [weakSelf update_total_available:sweepAmount minus_fee:sweepFee];
+    self.context[@"objc_update_total_available_final_fee"] = ^(NSNumber *sweepAmount, NSNumber *finalFee) {
+        [weakSelf update_total_available:sweepAmount final_fee:finalFee];
     };
     
     self.context[@"objc_check_max_amount_fee"] = ^(NSNumber *amount, NSNumber *fee) {
@@ -1797,13 +1797,13 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getTransactionFeeWithUpdateType(%ld)", (long)updateType]];
 }
 
-- (void)updateTotalAvailableMinusFee
+- (void)updateTotalAvailableAndFinalFee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.updateTotalAvailableMinusFee()"];
+    [self.context evaluateScript:@"MyWalletPhone.updateTotalAvailableAndFinalFee()"];
 }
 
 - (void)getSurgeStatus
@@ -2867,12 +2867,12 @@
     }
 }
 
-- (void)update_total_available:(NSNumber *)sweepAmount minus_fee:(NSNumber *)sweepFee
+- (void)update_total_available:(NSNumber *)sweepAmount final_fee:(NSNumber *)finalFee
 {
     DLog(@"update_total_available:minus_fee:");
 
-    if ([self.delegate respondsToSelector:@selector(didUpdateTotalAvailable:minusFee:)]) {
-        [self.delegate didUpdateTotalAvailable:sweepAmount minusFee:sweepFee];
+    if ([self.delegate respondsToSelector:@selector(didUpdateTotalAvailable:finalFee:)]) {
+        [self.delegate didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
     }
 }
 
@@ -2912,7 +2912,7 @@
             [self.delegate enableSendPaymentButtons];
         }
     } else {
-        [self updateTotalAvailableMinusFee];
+        [self updateTotalAvailableAndFinalFee];
     }
 }
 
