@@ -1080,29 +1080,29 @@ BOOL displayingLocalSymbolSend;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
         if (IS_USING_SCREEN_SIZE_4S) {
-            [lineBelowFromField changeYPosition:43];
+            [lineBelowFromField changeYPosition:38];
             
-            [toLabel changeYPosition:52];
-            [toField changeYPosition:48];
-            [addressBookButton changeYPosition:48];
-            [lineBelowToField changeYPosition:81];
+            [toLabel changeYPosition:42];
+            [toField changeYPosition:38];
+            [addressBookButton changeYPosition:38];
+            [lineBelowToField changeYPosition:66];
             
-            [bottomContainerView changeYPosition:88];
-            [btcLabel changeYPosition:-1];
-            [btcAmountField changeYPosition:-5];
-            [fiatLabel changeYPosition:-1];
-            [fiatAmountField changeYPosition:-5];
-            [lineBelowAmountFields changeYPosition:43];
+            [bottomContainerView changeYPosition:83];
+            [btcLabel changeYPosition:-11];
+            [btcAmountField changeYPosition:-15];
+            [fiatLabel changeYPosition:-11];
+            [fiatAmountField changeYPosition:-15];
+            [lineBelowAmountFields changeYPosition:28];
             
-            [feeField changeYPosition:44];
-            [feeLabel changeYPosition:47];
-            [self.feeTypeLabel changeYPosition:43];
-            [self.feeDescriptionLabel changeYPosition:57];
-            [self.feeAmountLabel changeYPosition:57 - self.feeAmountLabel.frame.size.height/2];
-            [feeOptionsButton changeYPosition:43];
-            [lineBelowFeeField changeYPosition:71];
+            [feeField changeYPosition:34];
+            [feeLabel changeYPosition:37];
+            [self.feeTypeLabel changeYPosition:33];
+            [self.feeDescriptionLabel changeYPosition:47];
+            [self.feeAmountLabel changeYPosition:47 - self.feeAmountLabel.frame.size.height/2];
+            [feeOptionsButton changeYPosition:33];
+            [lineBelowFeeField changeYPosition:76];
             
-            [fundsAvailableButton changeYPosition:21];
+            [fundsAvailableButton changeYPosition:6];
         }
         
         feeLabel.hidden = NO;
