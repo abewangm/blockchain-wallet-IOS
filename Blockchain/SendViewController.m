@@ -1194,11 +1194,14 @@ BOOL displayingLocalSymbolSend;
         self.feeAmountLabel.hidden = NO;
         self.feeDescriptionLabel.hidden = YES;
         self.feeTypeLabel.hidden = YES;
+        self.feeAmountLabel.textColor = COLOR_LIGHT_GRAY;
     } else {
         feeField.hidden = YES;
         self.feeWarningLabel.hidden = YES;
 
         self.feeAmountLabel.hidden = NO;
+        self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
+
         self.feeDescriptionLabel.hidden = NO;
         self.feeTypeLabel.hidden = NO;
         
@@ -1592,12 +1595,18 @@ BOOL displayingLocalSymbolSend;
         
         if (typedSatoshiPerByte < [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MIN] longLongValue]) {
             DLog(@"Fee rate lower than recommended");
-            self.feeWarningLabel.hidden = NO;
-            self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
+            
+            if (feeField.text.length > 0) {
+                self.feeWarningLabel.hidden = NO;
+                self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
+            }
         } else if (typedSatoshiPerByte > [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MAX] longLongValue]) {
             DLog(@"Fee rate higher than recommended");
-            self.feeWarningLabel.hidden = NO;
-            self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
+            
+            if (feeField.text.length > 0) {
+                self.feeWarningLabel.hidden = NO;
+                self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
+            }
         } else {
             self.feeWarningLabel.hidden = YES;
         }
