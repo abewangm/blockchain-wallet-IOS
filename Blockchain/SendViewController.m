@@ -151,7 +151,6 @@ BOOL displayingLocalSymbolSend;
     
     [self setupFeeLabels];
     
-    self.confirmPaymentView.customizeFeeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
@@ -274,7 +273,6 @@ BOOL displayingLocalSymbolSend;
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
     [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.confirmPaymentView.customizeFeeButton.hidden = NO;
     sendProgressCancelButton.hidden = YES;
     
     self.isSending = NO;
@@ -1175,7 +1173,6 @@ BOOL displayingLocalSymbolSend;
     
     [self enablePaymentButtons];
     
-    self.confirmPaymentView.customizeFeeButton.hidden = YES;
     sendProgressCancelButton.hidden = [self.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= 1;
 
     [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];

@@ -21,7 +21,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *fiatFeeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *btcFeeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *customizeFeeButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *fiatTotalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *btcTotalLabel;
