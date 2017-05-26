@@ -1304,6 +1304,10 @@ BOOL displayingLocalSymbolSend;
         if ([newString containsString:@"."] ||
             [newString containsString:@","] ||
             [newString containsString:@"٫"]) return NO;
+        
+        if (newString.length == 0) {
+            self.feeWarningLabel.hidden = YES;
+        }
 
         [self performSelector:@selector(updateSatoshiPerByteAfterTextChange) withObject:nil afterDelay:0.1f];
         
