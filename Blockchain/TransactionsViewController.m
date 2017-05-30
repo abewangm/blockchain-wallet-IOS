@@ -677,7 +677,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (UIView *)configureCardsViewBuyAvailableNow:(UIView *)cardsView
 {
-    BCCardView *buyAvailableNowCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@ %@", [BC_STRING_BUY_AVAILABLE_NOW_TITLE uppercaseString], @"🎉"] description:BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION actionType:ActionTypeBuyBitcoinAvailableNow imageName:nil reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *buyAvailableNowCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@ %@", [BC_STRING_BUY_AVAILABLE_NOW_TITLE uppercaseString], @"🎉"] description:BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION actionType:ActionTypeBuyBitcoinAvailableNow imageName:@"buy_available" reducedHeightForPageIndicator:NO delegate:self];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(buyAvailableNowCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
