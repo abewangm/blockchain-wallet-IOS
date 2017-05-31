@@ -1628,13 +1628,13 @@
 
 "START BACKUP" = "INICIAR CÓPIA DE SEGURANÇA";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
 "Create a Wallet" = "Criar uma carteira";
 
 "Log In" = "Iniciar sessão";
 
-"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar em sua carteira de Blockchain.";
+"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar na sua carteira de Blockchain.";
 
 "Forgot Password?" = "Esqueceu a senha?";
 
@@ -1644,27 +1644,27 @@
 
 "Enter Email Address" = "Digite o endereço de E-mail";
 
-"Update Mobile" = "Mobile de atualização";
+"Update Mobile" = "Atualização Mobile";
 
-"Enter Mobile Number" = "Digite o número do celular";
+"Enter Mobile Number" = "Digite o número do telemóvel";
 
 "Balances" = "Saldos";
 
 "Transactions occur when you send and receive bitcoin." = "As transações ocorrem quando você envia e recebe bitcoin.";
 
-"Your Transactions" = "Suas transações";
+"Your Transactions" = "As suas transações";
 
 "Backup Complete" = "Backup completo";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso a sua frase de recuperação pode acessar seu bitcoin, então mantê-lo off-line em algum lugar seguro.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu bitcoin, então mantenha-a off-line e em algum lugar seguro.";
 
-"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A palavra 12 seguinte frase de recuperação dará acesso aos seus fundos no caso de você perder sua senha.";
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A seguinte frase de recuperação de 12 palavras dará acesso aos seus fundos no caso de você perder a sua senha.";
 
 "Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Não se esqueça de escrever sua frase em um pedaço de papel e mantê-lo em algum lugar seguro.";
 
-"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a seguinte palavra 12 recuperação frase exatamente como eles aparecem e nesta ordem:";
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a frase de recuperação de 12 palavras exatamente pela mesma ordem que aparecem:";
 
 "PREVIOUS" = "ANTERIOR";
 
