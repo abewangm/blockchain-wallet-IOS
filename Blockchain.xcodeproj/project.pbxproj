@@ -2014,7 +2014,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT} && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der";
+			shellScript = "cd ${SRCROOT} && sh ./scripts/update-certs.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
