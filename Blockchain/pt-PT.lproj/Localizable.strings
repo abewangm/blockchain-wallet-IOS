@@ -173,13 +173,13 @@
 "Automatically" = "Automaticamente";
 
 /* No comment provided by engineer. */
-"BACKUP FUNDS" = "FUNDOS DE RESERVA";
+"BACKUP FUNDS" = "BACKUP DE FUNDOS";
 
 /* (No Commment) */
 "Backup" = "Backup de";
 
 /* No comment provided by engineer. */
-"Backup Funds" = "Fundos de reserva";
+"Backup Funds" = "Backup de Fundos";
 
 /* (No Commment) */
 "Backup Phrase" = "Frase de backup";
@@ -377,7 +377,7 @@
 "Done" = "Feito";
 
 /* (No Commment) */
-"Downloading Wallet" = "Transferindo a carteira";
+"Downloading Wallet" = "A transferir carteira";
 
 /* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Backup de carteira de fácil um tempo mantém você no controle de seus fundos";
@@ -1075,13 +1075,13 @@
 "Surge Occurring" = "Pico ocorrendo";
 
 /* (No Commment) */
-"Swipe to Receive" = "Furto a Receber";
+"Swipe to Receive" = "Deslize para Receber";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronização de carteira";
 
 /* (No Commment) */
-"Tap to copy this address. Share it with the sender via email or text." = "Torneira para copiar este endereço. Compartilhá-lo com o remetente via email ou texto.";
+"Tap to copy this address. Share it with the sender via email or text." = "Toque para copiar este endereço. Compartilhe com o remetente via email ou texto.";
 
 /* (No Commment) */
 "Terms of Service" = "Termos de serviço";
