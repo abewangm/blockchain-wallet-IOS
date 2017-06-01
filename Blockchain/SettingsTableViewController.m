@@ -23,15 +23,15 @@ const int textFieldTagVerifyMobileNumber = 7;
 const int textFieldTagChangeMobileNumber = 6;
 
 const int sectionProfile = 0;
-const int walletInformationIdentifier = 0;
-const int preferencesEmail = 1;
-const int preferencesMobileNumber = 2;
+const int profileWalletIdentifier = 0;
+const int profileEmail = 1;
+const int profileMobileNumber = 2;
 
 const int sectionPreferences = 1;
 const int preferencesEmailNotifications = 0;
 const int preferencesSMSNotifications = 1;
-const int displayLocalCurrency = 2;
-const int displayBtcUnit = 3;
+const int preferencesLocalCurrency = 2;
+const int preferencesBtcUnit = 3;
 
 const int sectionSecurity = 2;
 const int securityTwoStep = 0;
@@ -844,7 +844,7 @@ const int aboutPrivacyPolicy = 2;
     UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:alertViewTitle message:BC_STRING_PLEASE_PROVIDE_AN_EMAIL_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
     [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // If the user cancels right after adding a legitimate email address, update accountInfo
-        UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmail inSection:sectionProfile]];
+        UITableViewCell *emailCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:profileEmail inSection:sectionProfile]];
         if (([emailCell.detailTextLabel.text isEqualToString:BC_STRING_SETTINGS_UNVERIFIED] && [alertForChangingEmail.title isEqualToString:BC_STRING_SETTINGS_CHANGE_EMAIL]) || ![[self getUserEmail] isEqualToString:self.emailString]) {
             [self getAccountInfo];
         }
@@ -1081,15 +1081,15 @@ const int aboutPrivacyPolicy = 2;
     switch (indexPath.section) {
         case sectionProfile: {
             switch (indexPath.row) {
-                case walletInformationIdentifier: {
+                case profileWalletIdentifier: {
                     [self walletIdentifierClicked];
                     return;
                 }
-                case preferencesEmail: {
+                case profileEmail: {
                     [self emailClicked];
                     return;
                 }
-                case preferencesMobileNumber: {
+                case profileMobileNumber: {
                     [self mobileNumberClicked];
                     return;
                 }
@@ -1098,11 +1098,11 @@ const int aboutPrivacyPolicy = 2;
         }
         case sectionPreferences: {
             switch (indexPath.row) {
-                case displayLocalCurrency: {
+                case preferencesLocalCurrency: {
                     [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_CURRENCY sender:nil];
                     return;
                 }
-                case displayBtcUnit: {
+                case preferencesBtcUnit: {
                     [self performSingleSegueWithIdentifier:SEGUE_IDENTIFIER_BTC_UNIT sender:nil];
                     return;
                 }
@@ -1202,7 +1202,7 @@ const int aboutPrivacyPolicy = 2;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
-        if (indexPath.section == sectionProfile && indexPath.row == walletInformationIdentifier) {
+        if (indexPath.section == sectionProfile && indexPath.row == profileWalletIdentifier) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
@@ -1217,7 +1217,7 @@ const int aboutPrivacyPolicy = 2;
     switch (indexPath.section) {
         case sectionProfile: {
             switch (indexPath.row) {
-                case walletInformationIdentifier: {
+                case profileWalletIdentifier: {
                     cell.textLabel.font = [SettingsTableViewController fontForCell];
                     cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
                     cell.textLabel.text = BC_STRING_SETTINGS_WALLET_ID;
@@ -1227,7 +1227,7 @@ const int aboutPrivacyPolicy = 2;
                     cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
                     return cell;
                 }
-                case preferencesEmail: {
+                case profileEmail: {
                     cell.textLabel.text = BC_STRING_SETTINGS_EMAIL;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
@@ -1240,7 +1240,7 @@ const int aboutPrivacyPolicy = 2;
                     }
                     return [self adjustFontForCell:cell];
                 }
-                case preferencesMobileNumber: {
+                case profileMobileNumber: {
                     cell.textLabel.text = BC_STRING_SETTINGS_MOBILE_NUMBER;
                     if ([app.wallet hasVerifiedMobileNumber]) {
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_VERIFIED;
@@ -1276,7 +1276,7 @@ const int aboutPrivacyPolicy = 2;
                     cell.accessoryView = switchForSMSNotifications;
                     return cell;
                 }
-                case displayLocalCurrency: {
+                case preferencesLocalCurrency: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     NSString *selectedCurrencyCode = [self getLocalSymbolFromLatestResponse].code;
                     NSString *currencyName = self.availableCurrenciesDictionary[selectedCurrencyCode];
@@ -1287,7 +1287,7 @@ const int aboutPrivacyPolicy = 2;
                     }
                     return cell;
                 }
-                case displayBtcUnit: {
+                case preferencesBtcUnit: {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     NSString *selectedCurrencyCode = [self getBtcSymbolFromLatestResponse].name;
                     cell.textLabel.text = BC_STRING_SETTINGS_BTC;
@@ -1391,7 +1391,7 @@ const int aboutPrivacyPolicy = 2;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == sectionProfile && indexPath.row == walletInformationIdentifier) {
+    if (indexPath.section == sectionProfile && indexPath.row == profileWalletIdentifier) {
         return indexPath;
     }
     
