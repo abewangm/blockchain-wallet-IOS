@@ -195,7 +195,6 @@
 - (IBAction)transactionsClicked:(UIButton *)sender;
 - (IBAction)sendCoinsClicked:(UIButton *)sender;
 - (IBAction)merchantClicked:(UIButton *)sender;
-- (IBAction)webLoginClicked:(UIButton *)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)forgetWalletClicked:(id)sender;
 - (IBAction)menuClicked:(id)sender;

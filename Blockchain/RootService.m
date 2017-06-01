@@ -29,7 +29,6 @@
 #import "PairingCodeParser.h"
 #import "PrivateKeyReader.h"
 #import "MerchantMapViewController.h"
-#import "WebLoginViewController.h"
 #import "NSData+Hex.h"
 #import "Reachability.h"
 #import "SideMenuViewController.h"
@@ -2524,13 +2523,6 @@ void (^secondPasswordSuccess)(NSString *);
         _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [_tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
     }
-}
-
-- (IBAction)webLoginClicked:(UIButton *)sender
-{
-    WebLoginViewController *webLoginViewController = [[WebLoginViewController alloc] init];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:webLoginViewController title:@"Web Login"];
-    [_tabViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 -(IBAction)QRCodebuttonClicked:(id)sender

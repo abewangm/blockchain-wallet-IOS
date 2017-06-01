@@ -638,3 +638,13 @@
 
 #define BC_STRING_BUY_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
 #define BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION NSLocalizedString(@"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure.", nil)
+
+#define BC_STRING_LOG_IN_TO_WEB_WALLET NSLocalizedString(@"Log in to Web Wallet", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_ONE NSLocalizedString(@"Go to blockchain.info/wallet/login on your computer.", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_TWO NSLocalizedString(@"Select Log in via mobile.", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_THREE NSLocalizedString(@"Using your computer's camera, scan the QR code below.", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_HIDDEN NSLocalizedString(@"Keep this QR code hidden until you're ready.", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_ONE NSLocalizedString(@"Keep this QR code safe!", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_TWO NSLocalizedString(@"Do not share it with others.", nil)
+#define BC_STRING_SHOW_QR_CODE NSLocalizedString(@"Show QR Code", nil)
+#define BC_STRING_HIDE_QR_CODE NSLocalizedString(@"Hide QR Code", nil)

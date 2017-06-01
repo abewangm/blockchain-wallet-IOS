@@ -17,6 +17,7 @@
 #import "SettingsAboutUsViewController.h"
 #import "BCVerifyEmailViewController.h"
 #import "BCVerifyMobileNumberViewController.h"
+#import "WebLoginViewController.h"
 
 const int textFieldTagChangePasswordHint = 8;
 const int textFieldTagVerifyMobileNumber = 7;
@@ -26,6 +27,7 @@ const int sectionProfile = 0;
 const int profileWalletIdentifier = 0;
 const int profileEmail = 1;
 const int profileMobileNumber = 2;
+const int profileWebLogin = 3;
 
 const int sectionPreferences = 1;
 const int preferencesEmailNotifications = 0;
@@ -558,6 +560,14 @@ const int aboutPrivacyPolicy = 2;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_VERIFY_MOBILE_NUMBER_ERROR object:nil];
+}
+
+#pragma mark - Web login
+
+- (void)webLoginClicked
+{
+    WebLoginViewController *webLoginViewController = [[WebLoginViewController alloc] init];
+    [self.navigationController pushViewController:webLoginViewController animated:YES];
 }
 
 #pragma mark - Change Swipe to Receive
@@ -1093,6 +1103,10 @@ const int aboutPrivacyPolicy = 2;
                     [self mobileNumberClicked];
                     return;
                 }
+                case profileWebLogin: {
+                    [self webLoginClicked];
+                    return;
+                }
             }
             return;
         }
@@ -1153,7 +1167,7 @@ const int aboutPrivacyPolicy = 2;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case sectionProfile: return 3;
+        case sectionProfile: return 4;
         case sectionPreferences: return 4;
         case sectionSecurity: {
             NSInteger numberOfRows = 0;
@@ -1249,6 +1263,11 @@ const int aboutPrivacyPolicy = 2;
                         cell.detailTextLabel.text = BC_STRING_SETTINGS_UNVERIFIED;
                         cell.detailTextLabel.textColor = COLOR_BLOCKCHAIN_RED_WARNING;
                     }
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    return [self adjustFontForCell:cell];
+                }
+                case profileWebLogin: {
+                    cell.textLabel.text = BC_STRING_LOG_IN_TO_WEB_WALLET;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     return [self adjustFontForCell:cell];
                 }
