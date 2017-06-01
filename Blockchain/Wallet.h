@@ -64,6 +64,8 @@
 - (void)didGenerateNewAddress;
 - (void)didParsePairingCode:(NSDictionary *)dict;
 - (void)errorParsingPairingCode:(NSString *)message;
+- (void)didMakePairingCode:(NSString *)code;
+- (void)errorMakingPairingCode:(NSString *)message;
 - (void)didCreateNewAccount:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password;
 - (void)errorCreatingNewAccount:(NSString *)message;
 - (void)didFailPutPin:(NSString *)value;
@@ -218,6 +220,7 @@
 - (void)changeBtcCurrency:(NSString *)btcCode;
 
 - (void)parsePairingCode:(NSString *)code;
+- (void)makePairingCode;
 - (void)resendTwoFactorSMS;
 
 - (NSString *)detectPrivateKeyFormat:(NSString *)privateKeyString;

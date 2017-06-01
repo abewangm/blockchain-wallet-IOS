@@ -1038,65 +1038,20 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
         objc_errorParsingPairingCode(e);
     };
 
-    try {
-        if (raw_code == null || raw_code.length == 0) {
-            throw "Invalid Pairing QR Code";
-        }
-
-        if (raw_code[0] != '1') {
-            throw "Invalid Pairing Version Code " + raw_code[0];
-        }
-
-        var components = raw_code.split("|");
-
-        if (components.length < 3) {
-            throw "Invalid Pairing QR Code. Not enough components.";
-        }
-
-        var guid = components[1];
-        if (guid.length != 36) {
-            throw "Invalid Pairing QR Code. GUID wrong length.";
-        }
-
-        var encrypted_data = components[2];
-
-        var data = {
-        format: 'plain',
-        method: 'pairing-encryption-password',
-        guid: guid
-        };
-        var requestSuccess = function (encryption_phrase) {
-            try {
-
-                // Pairing code PBKDF2 iterations is set to 10 in My Wallet
-                var pairing_code_pbkdf2_iterations = 10;
-                var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations);
-
-                if (decrypted != null) {
-                    var components2 = decrypted.split("|");
-
-                    success({
-                            version: raw_code[0],
-                            guid: guid,
-                            sharedKey: components2[0],
-                            password: new Buffer(components2[1], 'hex').toString('utf8')
-                            });
-                } else {
-                    error('Decryption Error');
-                }
-            } catch(e) {
-                error(''+e);
-            }
-        };
-        var requestError = function (res) {
-            error('Pairing Code Server Error');
-        };
-
-        BlockchainAPI.request("POST", 'wallet', data, true, false).then(requestSuccess).catch(requestError);
-    } catch (e) {
-        error(''+e);
-    }
+    MyWallet.parsePairingCode(raw_code).then(success, error);
 };
+
+MyWalletPhone.makePairingCode = function () {
+    var success = function (code) {
+        objc_didMakePairingCode(code);
+    };
+
+    var error = function (e) {
+        objc_errorMakingPairingCode(e);
+    };
+
+    MyWallet.makePairingCode(success, error);
+}
 
 MyWalletPhone.addAddressBookEntry = function(bitcoinAddress, label) {
     MyWallet.addAddressBookEntry(bitcoinAddress, label);
