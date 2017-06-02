@@ -187,7 +187,8 @@ BOOL displayingLocalSymbolSend;
     [bottomContainerView addSubview:self.feeAmountLabel];
     
     self.feeWarningLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    // Use same font size for all screen sizes
+    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:11.0];
     self.feeWarningLabel.textColor = COLOR_WARNING_RED;
     [bottomContainerView addSubview:self.feeWarningLabel];
 }
