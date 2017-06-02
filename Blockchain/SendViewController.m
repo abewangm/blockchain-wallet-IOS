@@ -1020,8 +1020,9 @@ BOOL displayingLocalSymbolSend;
 
 - (void)setupFees
 {
-    [self arrangeViewsToFeeMode];
     self.feeType = FeeTypeRegular;
+
+    [self arrangeViewsToFeeMode];
     
     [self reloadAfterMultiAddressResponse];
 }
@@ -1141,18 +1142,24 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.feeType == FeeTypeCustom) {
         feeField.hidden = NO;
+        
         self.feeAmountLabel.hidden = NO;
-        self.feeDescriptionLabel.hidden = YES;
-        self.feeTypeLabel.hidden = YES;
         self.feeAmountLabel.textColor = COLOR_LIGHT_GRAY;
+
+        self.feeDescriptionLabel.hidden = YES;
+        
+        self.feeTypeLabel.hidden = YES;
     } else {
         feeField.hidden = YES;
+        
         self.feeWarningLabel.hidden = YES;
 
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
-
+        self.feeAmountLabel.text = nil;
+        
         self.feeDescriptionLabel.hidden = NO;
+        
         self.feeTypeLabel.hidden = NO;
         
         NSString *typeText;
@@ -1801,13 +1808,6 @@ BOOL displayingLocalSymbolSend;
     [app.wallet sweepPaymentRegular];
     
     self.transactionType = TransactionTypeSweep;
-}
-
-- (IBAction)customizeFeeClicked:(UIButton *)sender
-{
-    [app closeModalWithTransition:kCATransitionFade];
-    
-    [self setupFees];
 }
 
 - (IBAction)feeInformationClicked:(UIButton *)sender
