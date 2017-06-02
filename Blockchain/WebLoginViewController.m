@@ -130,9 +130,12 @@ const float qrSize = 180;
     if (isShowingQRCode) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [self fadeInInstructions];
+            
             qrCodeMainImageView.alpha = 0.0;
+            
             self.QRInstructionLabel.text = BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_HIDDEN;
             self.QRInstructionLabel.center = CGPointMake(self.view.center.x, self.originalCenter.y - 50);
+            
             self.QRCodeButton.center = self.originalCenter;
             [self.QRCodeButton setTitle:BC_STRING_SHOW_QR_CODE forState:UIControlStateNormal];
         } completion:^(BOOL finished) {
@@ -140,15 +143,24 @@ const float qrSize = 180;
             [self showInstructions];
         }];
     } else {
+        qrCodeMainImageView.alpha = 0.0;
+        qrCodeMainImageView.hidden = NO;
+        
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [self fadeOutInstructions];
+            
             qrCodeMainImageView.alpha = 1.0;
-            self.QRInstructionLabel.text = [BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_ONE stringByAppendingFormat:@"\n%@", BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_TWO];
+            
+            self.QRInstructionLabel.alpha = 0.0;
             self.QRInstructionLabel.center = CGPointMake(self.view.center.x, qrCodeMainImageView.frame.origin.y - 30);
+            
             self.QRCodeButton.center = CGPointMake(self.view.center.x, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + 16 + self.QRCodeButton.frame.size.height/2);
             [self.QRCodeButton setTitle:BC_STRING_HIDE_QR_CODE forState:UIControlStateNormal];
         } completion:^(BOOL finished) {
-            qrCodeMainImageView.hidden = NO;
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                self.QRInstructionLabel.text = [BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_ONE stringByAppendingFormat:@"\n%@", BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_TWO];
+                self.QRInstructionLabel.alpha = 1.0;
+            }];
             [self hideInstructions];
         }];
     }
