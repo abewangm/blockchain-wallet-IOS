@@ -232,8 +232,8 @@
 		C9BE91891945D8F600FD516D /* PEPin-off.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE91791945D8F600FD516D /* PEPin-off.png */; };
 		C9BE918A1945D8F600FD516D /* PEPin-on.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE917A1945D8F600FD516D /* PEPin-on.png */; };
 		C9BE918C1945F5FC00FD516D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE918B1945F5FC00FD516D /* Images.xcassets */; };
-		CFD602B11E64AC2D006F6208 /* wallet-ios.js in Resources */ = {isa = PBXBuildFile; fileRef = CFD602B01E64AC2D006F6208 /* wallet-ios.js */; };
 		CFA0671F1E65D426008456C1 /* WebLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA0671E1E65D426008456C1 /* WebLoginViewController.m */; };
+		CFD602B11E64AC2D006F6208 /* wallet-ios.js in Resources */ = {isa = PBXBuildFile; fileRef = CFD602B01E64AC2D006F6208 /* wallet-ios.js */; };
 		ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */; };
 		ECD244EC19A8AC45004B1F40 /* PEKeyboard-3-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */; };
 		ECD244ED19A8AC45004B1F40 /* PEKeyboard-3-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E319A8AC45004B1F40 /* PEKeyboard-3-edit.png */; };
@@ -1042,9 +1042,9 @@
 		C9BE91791945D8F600FD516D /* PEPin-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-off.png"; sourceTree = "<group>"; };
 		C9BE917A1945D8F600FD516D /* PEPin-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on.png"; sourceTree = "<group>"; };
 		C9BE918B1945F5FC00FD516D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
-		CFD602B01E64AC2D006F6208 /* wallet-ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "wallet-ios.js"; sourceTree = "<group>"; };
 		CFA0671E1E65D426008456C1 /* WebLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLoginViewController.m; sourceTree = "<group>"; };
 		CFA067201E65D49C008456C1 /* WebLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLoginViewController.h; sourceTree = "<group>"; };
+		CFD602B01E64AC2D006F6208 /* wallet-ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "wallet-ios.js"; sourceTree = "<group>"; };
 		ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-done.png"; sourceTree = "<group>"; };
 		ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-dot.png"; sourceTree = "<group>"; };
 		ECD244E319A8AC45004B1F40 /* PEKeyboard-3-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-edit.png"; sourceTree = "<group>"; };
@@ -2009,7 +2009,7 @@
 		};
 		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2017,7 +2017,7 @@
 			name = "Get SSL Certificate";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cd ${SRCROOT} && sh ./scripts/update-certs.sh";
 		};
