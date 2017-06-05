@@ -108,8 +108,8 @@ const float qrSize = 180;
     
     self.QRInstructionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.QRInstructionLabel.text = BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_HIDDEN;
-    self.QRInstructionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    self.QRInstructionLabel.textColor = COLOR_LIGHT_GRAY;
+    self.QRInstructionLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    self.QRInstructionLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.QRInstructionLabel.frame = CGRectMake(0, 0, self.view.frame.size.width - 20, 40);
     self.QRInstructionLabel.textAlignment = NSTextAlignmentCenter;
     self.QRInstructionLabel.numberOfLines = 2;
@@ -240,7 +240,7 @@ const float qrSize = 180;
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
     textView.textContainerInset = UIEdgeInsetsZero;
     textView.textColor = COLOR_TEXT_DARK_GRAY;
-    textView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
+    textView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
     textView.text = instruction;
     return textView;
 }
@@ -249,7 +249,7 @@ const float qrSize = 180;
 {
     UILabel *label = [[UILabel alloc] init];
     label.textColor = COLOR_TEXT_DARK_GRAY;
-    label.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
+    label.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
     label.text = stepNumber;
     [label sizeToFit];
     return label;
