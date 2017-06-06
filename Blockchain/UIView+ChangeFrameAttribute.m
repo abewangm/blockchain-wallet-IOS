@@ -30,6 +30,13 @@
     self.frame = CGRectMake(self.frame.origin.x, newY, self.frame.size.width, self.frame.size.height);
 }
 
+- (void)changeYPositionAnimated:(CGFloat)newY completion:(void (^ __nullable)(BOOL finished))completion
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [self changeYPosition:newY];
+    } completion:completion];
+}
+
 - (void)changeWidth:(CGFloat)newWidth
 {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, newWidth, self.frame.size.height);

@@ -98,15 +98,6 @@ BOOL displayingLocalSymbolSend;
     
     [feeOptionsButton changeXPosition:self.view.frame.size.width - feeOptionsButton.frame.size.width];
     
-    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        CGFloat offset = 10;
-        [lineBelowFeeField increaseYPosition:offset];
-        CGFloat newCellHeight = lineBelowFeeField.frame.origin.y - lineBelowAmountFields.frame.origin.y;
-        [feeOptionsButton changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeOptionsButton.frame.size.height)/2];
-        [feeField changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeField.frame.size.height)/2];
-        [feeLabel changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeLabel.frame.size.height)/2];
-    }
-    
     self.feeDescriptionLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y, btcAmountField.frame.size.width*2/3, 20);
     self.feeDescriptionLabel.adjustsFontSizeToFitWidth = YES;
     self.feeTypeLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y - 20, btcAmountField.frame.size.width*2/3, 20);
@@ -114,8 +105,8 @@ BOOL displayingLocalSymbolSend;
     self.feeTypeLabel.adjustsFontSizeToFitWidth = YES;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
-    CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
-    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
+
+    [self setupFeeWarningLabelFrame];
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
     
@@ -1164,6 +1155,9 @@ BOOL displayingLocalSymbolSend;
         feeField.hidden = YES;
         
         self.feeWarningLabel.hidden = YES;
+        if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
+        }
 
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -1198,6 +1192,17 @@ BOOL displayingLocalSymbolSend;
     } else {
         self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:fee localCurrency:YES]];
     }
+}
+
+- (void)setupFeeWarningLabelFrame
+{
+    CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
+    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
+}
+
+- (CGFloat)defaultYPositionForWarningLabel
+{
+    return IS_USING_SCREEN_SIZE_4S ? 76 : 112;
 }
 
 #pragma mark - Textfield Delegates
@@ -1325,6 +1330,9 @@ BOOL displayingLocalSymbolSend;
         
         if (newString.length == 0) {
             self.feeWarningLabel.hidden = YES;
+            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
+            }
         }
 
         [self performSelector:@selector(updateSatoshiPerByteAfterTextChange) withObject:nil afterDelay:0.1f];
@@ -1564,17 +1572,34 @@ BOOL displayingLocalSymbolSend;
             DLog(@"Fee rate lower than recommended");
             
             if (feeField.text.length > 0) {
-                self.feeWarningLabel.hidden = NO;
+                if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] + 12 completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrame];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
+                } else {
+                    self.feeWarningLabel.hidden = NO;
+                }
                 self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
             }
         } else if (typedSatoshiPerByte > [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MAX] longLongValue]) {
             DLog(@"Fee rate higher than recommended");
             
             if (feeField.text.length > 0) {
-                self.feeWarningLabel.hidden = NO;
+                if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] + 12 completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrame];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
+                } else {
+                    self.feeWarningLabel.hidden = NO;
+                }
                 self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
             }
         } else {
+            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
+            }
             self.feeWarningLabel.hidden = YES;
         }
         
