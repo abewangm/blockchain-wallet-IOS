@@ -22,13 +22,14 @@
 - (void)setup
 {
     CGFloat leftLabelHeight = 22;
+    CGFloat offset = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 8 : 3;
     
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.contentView.center.y - leftLabelHeight, 100, leftLabelHeight)];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.contentView.center.y - leftLabelHeight + offset, 100, leftLabelHeight)];
     self.nameLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.nameLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     [self.contentView addSubview:self.nameLabel];
 
-    self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.contentView.center.y, 200, leftLabelHeight)];
+    self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.contentView.center.y + offset, 200, leftLabelHeight)];
     self.descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     self.descriptionLabel.textColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:self.descriptionLabel];

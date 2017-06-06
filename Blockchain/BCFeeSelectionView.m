@@ -60,7 +60,7 @@ int rowCustom = 2;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 60.0f : 50.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
