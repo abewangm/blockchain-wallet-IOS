@@ -98,6 +98,15 @@ BOOL displayingLocalSymbolSend;
     
     [feeOptionsButton changeXPosition:self.view.frame.size.width - feeOptionsButton.frame.size.width];
     
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+        CGFloat offset = 10;
+        [lineBelowFeeField increaseYPosition:offset];
+        CGFloat newCellHeight = lineBelowFeeField.frame.origin.y - lineBelowAmountFields.frame.origin.y;
+        [feeOptionsButton changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeOptionsButton.frame.size.height)/2];
+        [feeField changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeField.frame.size.height)/2];
+        [feeLabel changeYPosition:lineBelowAmountFields.frame.origin.y + (newCellHeight - feeLabel.frame.size.height)/2];
+    }
+    
     self.feeDescriptionLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y, btcAmountField.frame.size.width*2/3, 20);
     self.feeDescriptionLabel.adjustsFontSizeToFitWidth = YES;
     self.feeTypeLabel.frame = CGRectMake(feeField.frame.origin.x, feeField.center.y - 20, btcAmountField.frame.size.width*2/3, 20);
@@ -105,7 +114,8 @@ BOOL displayingLocalSymbolSend;
     self.feeTypeLabel.adjustsFontSizeToFitWidth = YES;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
-    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - 15, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, 12);
+    CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
+    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
     
@@ -188,7 +198,7 @@ BOOL displayingLocalSymbolSend;
     
     self.feeWarningLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     // Use same font size for all screen sizes
-    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:11.0];
+    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.feeWarningLabel.textColor = COLOR_WARNING_RED;
     [bottomContainerView addSubview:self.feeWarningLabel];
 }
@@ -1047,12 +1057,12 @@ BOOL displayingLocalSymbolSend;
             [fiatAmountField changeYPosition:-15];
             [lineBelowAmountFields changeYPosition:28];
             
-            [feeField changeYPosition:34];
-            [feeLabel changeYPosition:37];
-            [self.feeTypeLabel changeYPosition:33];
-            [self.feeDescriptionLabel changeYPosition:47];
-            [self.feeAmountLabel changeYPosition:47 - self.feeAmountLabel.frame.size.height/2];
-            [feeOptionsButton changeYPosition:33];
+            [feeField changeYPosition:38];
+            [feeLabel changeYPosition:41];
+            [self.feeTypeLabel changeYPosition:37];
+            [self.feeDescriptionLabel changeYPosition:51];
+            [self.feeAmountLabel changeYPosition:51 - self.feeAmountLabel.frame.size.height/2];
+            [feeOptionsButton changeYPosition:37];
             [lineBelowFeeField changeYPosition:76];
             
             [fundsAvailableButton changeYPosition:6];

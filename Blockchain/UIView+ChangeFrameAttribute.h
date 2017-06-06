@@ -10,6 +10,7 @@
 
 @interface UIView (ChangeFrameAttribute)
 - (void)increaseXPosition:(CGFloat)XOffset;
+- (void)increaseYPosition:(CGFloat)YOffset;
 - (void)changeXPosition:(CGFloat)newX;
 - (void)changeYPosition:(CGFloat)newY;
 - (void)changeWidth:(CGFloat)newWidth;

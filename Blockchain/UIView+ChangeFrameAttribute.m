@@ -15,6 +15,11 @@
     self.frame = CGRectOffset(self.frame, XOffset, 0);
 }
 
+- (void)increaseYPosition:(CGFloat)YOffset
+{
+    self.frame = CGRectOffset(self.frame, 0, YOffset);
+}
+
 - (void)changeXPosition:(CGFloat)newX
 {
     self.frame = CGRectMake(newX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
