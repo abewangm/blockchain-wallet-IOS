@@ -475,6 +475,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_DKK @"DKK"
 #define CURRENCY_CODE_CLP @"CLP"
 #define CURRENCY_CODE_CAD @"CAD"
+#define CURRENCY_CODE_INR @"INR"
 #define CURRENCY_CODE_CNY @"CNY"
 #define CURRENCY_CODE_THB @"THB"
 #define CURRENCY_CODE_AUD @"AUD"

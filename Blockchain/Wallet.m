@@ -1162,7 +1162,7 @@
         return nil;
     }
     
-    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
+    return [CurrencySymbol currencyNames];
 }
 
 - (NSDictionary *)getBtcCurrencies
@@ -2792,7 +2792,22 @@
 {
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
-    self.currencySymbols = allCurrencySymbolsDictionary;
+    NSMutableDictionary *currencySymbolsWithNames = [[NSMutableDictionary alloc] initWithDictionary:allCurrencySymbolsDictionary];
+    NSDictionary *currencyNames = [CurrencySymbol currencyNames];
+    
+    for (NSString *abbreviatedFiatString in [allCurrencySymbolsDictionary allKeys]) {
+        NSDictionary *values = [allCurrencySymbolsDictionary objectForKey:abbreviatedFiatString]; // should never be nil
+        NSMutableDictionary *valuesWithName = [[NSMutableDictionary alloc] initWithDictionary:values]; // create a mutable dictionary of the current dictionary values
+        NSString *currencyName = [currencyNames objectForKey:abbreviatedFiatString];
+        if (currencyName) {
+            [valuesWithName setObject:currencyName forKey:DICTIONARY_KEY_NAME];
+            [currencySymbolsWithNames setObject:valuesWithName forKey:abbreviatedFiatString];
+        } else {
+            DLog(@"Warning: no name found for currency %@", abbreviatedFiatString);
+        }
+    }
+    
+    self.currencySymbols = currencySymbolsWithNames;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
 }
 

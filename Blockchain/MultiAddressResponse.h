@@ -31,6 +31,7 @@
 
 +(CurrencySymbol*)symbolFromDict:(NSDictionary*)dict;
 +(CurrencySymbol*)btcSymbolFromCode:(NSString *)code;
++ (NSDictionary *)currencyNames;
 
 @end
 
