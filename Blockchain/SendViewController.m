@@ -1571,11 +1571,13 @@ BOOL displayingLocalSymbolSend;
         if (typedSatoshiPerByte < [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MIN] longLongValue]) {
             DLog(@"Fee rate lower than recommended");
             
+            CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
+            
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] + 12 completion:^(BOOL finished) {
+                    [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
                         [self setupFeeWarningLabelFrame];
-                        self.feeWarningLabel.hidden = NO;
+                        self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
                     self.feeWarningLabel.hidden = NO;
@@ -1585,11 +1587,13 @@ BOOL displayingLocalSymbolSend;
         } else if (typedSatoshiPerByte > [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MAX] longLongValue]) {
             DLog(@"Fee rate higher than recommended");
             
+            CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
+
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] + 12 completion:^(BOOL finished) {
+                    [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
                         [self setupFeeWarningLabelFrame];
-                        self.feeWarningLabel.hidden = NO;
+                        self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
                     self.feeWarningLabel.hidden = NO;
