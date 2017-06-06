@@ -744,8 +744,8 @@ BOOL displayingLocalSymbolSend;
         self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
         
         if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE]) {
-            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor redColor];
-            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor redColor];
+            self.confirmPaymentView.fiatFeeLabel.textColor = COLOR_WARNING_RED;
+            self.confirmPaymentView.btcFeeLabel.textColor = COLOR_WARNING_RED;
         } else {
             self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor darkGrayColor];
             self.confirmPaymentView.btcFeeLabel.textColor = [UIColor darkGrayColor];
@@ -837,8 +837,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)highlightInvalidAmounts
 {
-    btcAmountField.textColor = [UIColor redColor];
-    fiatAmountField.textColor = [UIColor redColor];
+    btcAmountField.textColor = COLOR_WARNING_RED;
+    fiatAmountField.textColor = COLOR_WARNING_RED;
 }
 
 - (void)removeHighlightFromAmounts
@@ -1362,7 +1362,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFundsAvailable
 {
-    if (fiatAmountField.textColor == [UIColor redColor] && btcAmountField.textColor == [UIColor redColor] && [fiatAmountField.text isEqualToString:[NSNumberFormatter formatAmount:availableAmount localCurrency:YES]]) {
+    if (fiatAmountField.textColor == COLOR_WARNING_RED && btcAmountField.textColor == COLOR_WARNING_RED && [fiatAmountField.text isEqualToString:[NSNumberFormatter formatAmount:availableAmount localCurrency:YES]]) {
         [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSNumberFormatter formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
     } else {
         [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
@@ -1527,7 +1527,7 @@ BOOL displayingLocalSymbolSend;
     
     if (updateType != FeeUpdateTypeConfirm) {
         if (amountInSatoshi > availableAmount) {
-            feeField.textColor = [UIColor redColor];
+            feeField.textColor = COLOR_WARNING_RED;
             [self disablePaymentButtons];
         } else {
             [self removeHighlightFromAmounts];
