@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         }
       },
       build: {
-        src: ['index.js'],
+        src: ['src/index.js'],
         dest: 'dist/my-wallet.js'
       }
     }
