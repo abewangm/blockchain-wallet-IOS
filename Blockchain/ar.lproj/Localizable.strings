@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "المعاملات تحدث عند إرسال وتلقى بيتكوين.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "حدث خطأ، الرجاء محاولة إعادة فتح \"بيتكوين شراء\" مرة أخرى.";
+
+/* (No Commment) */
+"Custom" = "مخصص";
+
+/* (No Commment) */
+"Advanced users only" = "للمستخدمين المتقدمين فقط";
+
+/* (No Commment) */
+"1+ hour" = "1+ ساعة";
+
+/* (No Commment) */
+"Priority" = "الأولوية";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 مين";
+
+/* (No Commment) */
+"Satoshi per byte" = "ساتوشي كل بايت";
+
+/* (No Commment) */
+"High fee not necessary" = "رسوم عالية ليس من الضروري";
+
+/* (No Commment) */
+"Low fee not recommended" = "رسوم منخفضة لا ينصح";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "هذه الميزة المستحسن للمستخدمين المتقدمين فقط. عن طريق اختيار مخصص رسوم, هل خطر زيادة دفع أو المعاملات الخاصة بك قد تتعثر.";
+
+/* (No Commment) */
+"Available now" = "متوفر الآن";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "شراء بيتكوين الخاص بك مباشرة من الهاتف المحمول محفظة. انها بسيطة سلسة وآمنة.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "تسجيل الدخول إلى شبكة الإنترنت المحفظة";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "انتقل إلى blockchain.info/wallet/login على جهاز الكمبيوتر الخاص بك.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "حدد تسجيل الدخول عبر المحمول.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "باستخدام كاميرا الكمبيوتر, مسح رمز الاستجابة السريعة أدناه.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "الحفاظ على هذا رمز الاستجابة السريعة الخفية حتى كنت على استعداد.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "الحفاظ على هذا رمز الاستجابة السريعة آمنة!";
+
+/* (No Commment) */
+"Do not share it with others." = "لا تقاسمها مع الآخرين.";
+
+/* (No Commment) */
+"Show QR Code" = "عرض رمز الاستجابة السريعة";
+
+/* (No Commment) */
+"Hide QR Code" = "إخفاء رمز الاستجابة السريعة";
+
+/* (No Commment) */
+"U.S. Dollar" = "الدولار الأمريكي";
+
+/* (No Commment) */
+"Euro" = "اليورو";
+
+/* (No Commment) */
+"lcelandic Króna" = "lcelandic Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "دولار هونج كونج";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "الجديد في تايوان الدولار";
+
+/* (No Commment) */
+"Swiss Franc" = "الفرنك السويسري";
+
+/* (No Commment) */
+"Danish Krone" = "بالكرونا الدنماركي";
+
+/* (No Commment) */
+"Chilean Peso" = "البيزو الشيلى";
+
+/* (No Commment) */
+"Canadian Dollar" = "الدولار الكندي";
+
+/* (No Commment) */
+"Indian Rupee" = "الروبية الهندية";
+
+/* (No Commment) */
+"Chinese Yuan" = "الصينية يوان";
+
+/* (No Commment) */
+"Thai Baht" = "البات التايلندي";
+
+/* (No Commment) */
+"Australian Dollar" = "الدولار الاسترالي";
+
+/* (No Commment) */
+"Singapore Dollar" = "الدولار السنغافوري";
+
+/* (No Commment) */
+"South Korean Won" = "وون كوريا الجنوبية";
+
+/* (No Commment) */
+"Japanese Yen" = "الين الياباني";
+
+/* (No Commment) */
+"Polish Zloty" = "الزلوتي البولندي";
+
+/* (No Commment) */
+"Great British Pound" = "الجنيه البريطاني";
+
+/* (No Commment) */
+"Swedish Krona" = "الكرونا السويدية";
+
+/* (No Commment) */
+"New Zealand Dollar" = "الدولار النيوزيلندي";
+
+/* (No Commment) */
+"Brazil Real" = "البرازيل الحقيقي";
+
+/* (No Commment) */
+"Russian Ruble" = "الروبل الروسي";

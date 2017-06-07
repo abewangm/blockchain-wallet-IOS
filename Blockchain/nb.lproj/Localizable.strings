@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Transaksjoner oppstår når du sender og mottar bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Noe gikk galt, prøv gjenåpning kjøpe Bitcoin igjen.";
+
+/* (No Commment) */
+"Custom" = "Tilpasset";
+
+/* (No Commment) */
+"Advanced users only" = "Avanserte brukere";
+
+/* (No Commment) */
+"1+ hour" = "1+ time";
+
+/* (No Commment) */
+"Priority" = "Prioritert";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi per byte";
+
+/* (No Commment) */
+"High fee not necessary" = "Høy avgift ikke nødvendig";
+
+/* (No Commment) */
+"Low fee not recommended" = "Lav avgift anbefales ikke";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Denne funksjonen er bare anbefalt for avanserte brukere. Ved å velge en tilpasset avgift, risikerer du overpaying eller transaksjonen kan bli sittende fast.";
+
+/* (No Commment) */
+"Available now" = "Tilgjengelig nå";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Kjøpe bitcoin direkte fra din mobil lommebok. Det er enkelt, problemfritt og sikkert.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Logg deg på Web-Pengebok";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Gå til blockchain.info/wallet/login på datamaskinen.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Velg Logg inn via mobil.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Ved hjelp av datamaskinens kameraet, kan du skanne QR-koden under.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Holde denne QR-koden skjult til du er klar.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Holde denne QR-koden som er trygg!";
+
+/* (No Commment) */
+"Do not share it with others." = "Du må ikke dele det med andre.";
+
+/* (No Commment) */
+"Show QR Code" = "Vis QR-Kode";
+
+/* (No Commment) */
+"Hide QR Code" = "Skjul QR-Kode";
+
+/* (No Commment) */
+"U.S. Dollar" = "US Dollar";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "lcelandic Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hong Kong Dollar";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Ny Taiwan Dollar";
+
+/* (No Commment) */
+"Swiss Franc" = "Sveitsiske Franc";
+
+/* (No Commment) */
+"Danish Krone" = "Dansk Krone";
+
+/* (No Commment) */
+"Chilean Peso" = "Chilenske Peso";
+
+/* (No Commment) */
+"Canadian Dollar" = "Kanadiske Dollar";
+
+/* (No Commment) */
+"Indian Rupee" = "Indiske Rupi";
+
+/* (No Commment) */
+"Chinese Yuan" = "Kinesiske Yuan";
+
+/* (No Commment) */
+"Thai Baht" = "Thai Baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Australske Dollar";
+
+/* (No Commment) */
+"Singapore Dollar" = "Singapore Dollar";
+
+/* (No Commment) */
+"South Korean Won" = "Sør-Koreanske Won";
+
+/* (No Commment) */
+"Japanese Yen" = "Japanske Yen";
+
+/* (No Commment) */
+"Polish Zloty" = "Polsk Zloty";
+
+/* (No Commment) */
+"Great British Pound" = "Britiske Pund";
+
+/* (No Commment) */
+"Swedish Krona" = "Svenske Kroner";
+
+/* (No Commment) */
+"New Zealand Dollar" = "New Zealand Dollar";
+
+/* (No Commment) */
+"Brazil Real" = "Brasil Real";
+
+/* (No Commment) */
+"Russian Ruble" = "Russisk Rubel";

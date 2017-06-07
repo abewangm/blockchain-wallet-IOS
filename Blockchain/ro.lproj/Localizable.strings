@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Tranzacţiile să apară când trimiteţi şi primiţi bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Ceva a mers prost, vă rugăm să încercaţi redeschiderea cumpăra Bitcoin din nou.";
+
+/* (No Commment) */
+"Custom" = "Personalizate";
+
+/* (No Commment) */
+"Advanced users only" = "Numai utilizatorilor avansați";
+
+/* (No Commment) */
+"1+ hour" = "1+ ore";
+
+/* (No Commment) */
+"Priority" = "Prioritate";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi pe octet";
+
+/* (No Commment) */
+"High fee not necessary" = "Mare taxa nu este necesar";
+
+/* (No Commment) */
+"Low fee not recommended" = "Low cost nu este recomandat";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Această funcție este recomandată numai pentru utilizatorii avansați. Prin alegerea o taxa de personalizat, riscul de exces sau de tranzacție pot obține blocat.";
+
+/* (No Commment) */
+"Available now" = "Disponibil acum";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Cumpara bitcoin direct de pe telefonul mobil portofel. E simplu, fără sudură, și sigur.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Conectați-vă la Web Portofel";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Du-te la blockchain.info/wallet/login de pe computer.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Selectați Conectați-vă prin intermediul telefoanelor mobile.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Folosind camera computerului dvs., scana codul QR de mai jos.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Păstrați acest cod QR ascunse până când sunteți gata.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Păstrați acest cod QR în condiții de siguranță!";
+
+/* (No Commment) */
+"Do not share it with others." = "Nu-l împărtășească cu alții.";
+
+/* (No Commment) */
+"Show QR Code" = "Show Cod QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Ascunde Codul QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Dolarul AMERICAN";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "islandez Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hong Kong Dolar";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Acest New Taiwan Dolar";
+
+/* (No Commment) */
+"Swiss Franc" = "Francul Elvețian";
+
+/* (No Commment) */
+"Danish Krone" = "Daneză Krone";
+
+/* (No Commment) */
+"Chilean Peso" = "Peso Chilian";
+
+/* (No Commment) */
+"Canadian Dollar" = "Dolarul Canadian";
+
+/* (No Commment) */
+"Indian Rupee" = "Rupie Indiană";
+
+/* (No Commment) */
+"Chinese Yuan" = "Yuani Chinezești";
+
+/* (No Commment) */
+"Thai Baht" = "Thai Baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Dolarul Australian";
+
+/* (No Commment) */
+"Singapore Dollar" = "Singapore Dolar";
+
+/* (No Commment) */
+"South Korean Won" = "Coreea De Sud A Câștigat";
+
+/* (No Commment) */
+"Japanese Yen" = "Yeni Japonezi";
+
+/* (No Commment) */
+"Polish Zloty" = "Zlotul Polonez";
+
+/* (No Commment) */
+"Great British Pound" = "Lira Sterlină Mare";
+
+/* (No Commment) */
+"Swedish Krona" = "Coroana Suedeză";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Noua Zeelandă Dolar";
+
+/* (No Commment) */
+"Brazil Real" = "Brazilia Real";
+
+/* (No Commment) */
+"Russian Ruble" = "Rubla Rusească";
