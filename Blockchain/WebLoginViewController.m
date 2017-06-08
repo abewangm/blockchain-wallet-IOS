@@ -78,7 +78,6 @@ const float qrSize = 180;
     
     self.stepTwoTextView = [WebLoginViewController textViewForInstruction:BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_TWO];
     self.stepTwoTextView.frame = CGRectOffset(self.stepOneTextView.frame, 0, self.stepOneTextView.contentSize.height + 20);
-    self.stepTwoTextView.center = CGPointMake(self.stepTwoTextView.center.x, self.stepTwoTextView.center.y);
     [self.view addSubview:self.stepTwoTextView];
     
     self.stepTwoLabel = [WebLoginViewController labelForInstructionStep:@"2."];
@@ -87,7 +86,7 @@ const float qrSize = 180;
     
     self.stepThreeTextView = [WebLoginViewController textViewForInstruction:BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_THREE];
     self.stepThreeTextView.frame = CGRectOffset(self.stepTwoTextView.frame, 0, self.stepTwoTextView.contentSize.height + 20);
-    self.stepThreeTextView.center = CGPointMake(self.stepThreeTextView.center.x, self.stepThreeTextView.center.y);
+    self.stepThreeTextView.frame = CGRectMake(self.stepThreeTextView.frame.origin.x, self.stepThreeTextView.frame.origin.y, self.stepThreeTextView.frame.size.width, self.stepThreeTextView.contentSize.height);
     [self.view addSubview:self.stepThreeTextView];
     
     self.stepThreeLabel = [WebLoginViewController labelForInstructionStep:@"3."];
