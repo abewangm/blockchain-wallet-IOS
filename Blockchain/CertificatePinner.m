@@ -30,9 +30,7 @@
 
 - (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
-    if ([challenge.protectionSpace.host isEqualToString:URL_GOOGLE_ANALYTICS]) {
-        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-    } else if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
+    if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
         [challenge.protectionSpace.host isEqualToString:URL_API_SFOX] ||
         [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS] ||
         [challenge.protectionSpace.host isEqualToString:URL_QUOTES_SFOX] ||
@@ -74,7 +72,7 @@
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
-        [self.delegate failedToValidateCertificate];
+        [self.delegate failedToValidateCertificate:challenge.protectionSpace.host];
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
 }

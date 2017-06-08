@@ -9,6 +9,6 @@
 #ifndef PrivateHeaders_h
 #define PrivateHeaders_h
 
-#define WHITELISTED_GUID @""
+#define WHITELISTED_GUIDS @[@""]
 
 #endif /* PrivateHeaders_h */
