@@ -1718,3 +1718,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "비트코인을 보내고 받을 때 거래가 발생합니다.";
+
+/* (No Commment) */
+"Custom" = "사용자 맞춤";
+
+/* (No Commment) */
+"Advanced users only" = "고급 사용자만";
+
+/* (No Commment) */
+"1+ hour" = "1+ 시간";
+
+/* (No Commment) */
+"Priority" = "우선권";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 분";
+
+/* (No Commment) */
+"Satoshi per byte" = "바이트 당 사토시";
+
+/* (No Commment) */
+"sat/b" = "sat/b";
+
+/* (No Commment) */
+"High fee not necessary" = "높은 수수료 필요 없음";
+
+/* (No Commment) */
+"Low fee not recommended" = "낮은 수수료 권하지 않음";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "이 기능은 고급 사용자만 쓰십시오. 사용자 맞춤 수수료를 쓰는 것은 귀하가 과다 지불 또는 거래 중단 위험을 감수하는 것입니다.";
+
+/* (No Commment) */
+"Available now" = "지금 있습니다";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "귀하 모바일 지갑에서 비트코인을 직접 사세요. 간단하고 깔끔하고 안전합니다.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "웹 지갑에 로그인";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "컴퓨터에서 blockchain.info/wallet/login으로 가세요.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "휴대폰 로그인을 선택하세요.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "컴퓨터 카메라로 아래 QR 코드를 스캔 하세요.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "준비가 될 때까지 QR 코드는 감춘 상태로 두세요.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "이 QR 코드를 안전하게 보관하세요!";
+
+/* (No Commment) */
+"Do not share it with others." = "남과 공유하면 안됩니다.";
+
+/* (No Commment) */
+"Show QR Code" = "QR 코드 보이기";
+
+/* (No Commment) */
+"Hide QR Code" = "QR 코드 감추기";
+
+/* (No Commment) */
+"U.S. Dollar" = "미국 달러";
+
+/* (No Commment) */
+"Euro" = "유로";
+
+/* (No Commment) */
+"lcelandic Króna" = "아이슬란드 크로나";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "홍콩 달러";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "뉴 타이완 달러";
+
+/* (No Commment) */
+"Swiss Franc" = "스위스 프랑";
+
+/* (No Commment) */
+"Danish Krone" = "덴마크 크로네";
+
+/* (No Commment) */
+"Chilean Peso" = "칠레 페소";
+
+/* (No Commment) */
+"Canadian Dollar" = "캐나다 달러";
+
+/* (No Commment) */
+"Indian Rupee" = "인도 루피";
+
+/* (No Commment) */
+"Chinese Yuan" = "중국 위안";
+
+/* (No Commment) */
+"Thai Baht" = "태국 바트";
+
+/* (No Commment) */
+"Australian Dollar" = "호주 달러";
+
+/* (No Commment) */
+"Singapore Dollar" = "싱가포르 달러";
+
+/* (No Commment) */
+"South Korean Won" = "대한민국 원";
+
+/* (No Commment) */
+"Japanese Yen" = "일본 옌";
+
+/* (No Commment) */
+"Polish Zloty" = "폴란드 즐로티";
+
+/* (No Commment) */
+"Great British Pound" = "영국 파운드";
+
+/* (No Commment) */
+"Swedish Krona" = "스웨덴 크로나";
+
+/* (No Commment) */
+"New Zealand Dollar" = "뉴질랜드 달러";
+
+/* (No Commment) */
+"Brazil Real" = "브라질 레알";
+
+/* (No Commment) */
+"Russian Ruble" = "러시아 루블";
