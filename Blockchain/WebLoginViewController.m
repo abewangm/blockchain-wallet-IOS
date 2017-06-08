@@ -245,6 +245,8 @@ const float qrSize = 180;
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
     textView.textContainerInset = UIEdgeInsetsZero;
     textView.textColor = COLOR_TEXT_DARK_GRAY;
+    textView.editable = NO;
+    textView.selectable = NO;
     textView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
     textView.text = instruction;
     return textView;
