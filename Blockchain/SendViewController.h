@@ -140,6 +140,7 @@ typedef enum {
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)reloadSymbols;
+- (void)reloadFeeAmountLabel;
 - (void)resetFromAddress;
 
 - (void)hideKeyboard;

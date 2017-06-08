@@ -1924,6 +1924,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didChangeLocalCurrency
 {
+    [self.sendViewController reloadFeeAmountLabel];
     [self.receiveViewController doCurrencyConversion];
 }
 

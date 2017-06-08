@@ -34,6 +34,7 @@ typedef enum {
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
+@property (nonatomic) uint64_t lastDisplayedFee;
 @property (nonatomic) uint64_t dust;
 @property (nonatomic) uint64_t txSize;
 
@@ -51,6 +52,7 @@ typedef enum {
 @property (nonatomic) NSDictionary *fees;
 
 @property (nonatomic) BOOL isReloading;
+@property (nonatomic) BOOL shouldReloadFeeAmountLabel;
 
 @property (nonatomic, copy) void (^getTransactionFeeSuccess)();
 @property (nonatomic, copy) void (^getDynamicFeeError)();
@@ -292,6 +294,18 @@ BOOL displayingLocalSymbolSend;
     } else {
         [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.feeType == FeeTypeCustom];
     }
+    
+    if (self.shouldReloadFeeAmountLabel) {
+        self.shouldReloadFeeAmountLabel = NO;
+        if (self.feeAmountLabel.text) {
+            [self updateFeeAmountLabelText:self.lastDisplayedFee];
+        }
+    }
+}
+
+- (void)reloadFeeAmountLabel
+{
+    self.shouldReloadFeeAmountLabel = YES;
 }
 
 - (void)reloadSymbols
@@ -1185,6 +1199,8 @@ BOOL displayingLocalSymbolSend;
 
 - (void)updateFeeAmountLabelText:(uint64_t)fee
 {
+    self.lastDisplayedFee = fee;
+    
     if (self.feeType == FeeTypeCustom) {
         NSNumber *regularFee = [self.fees objectForKey:DICTIONARY_KEY_FEE_REGULAR];
         NSNumber *priorityFee = [self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY];
