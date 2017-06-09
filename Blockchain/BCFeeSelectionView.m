@@ -9,6 +9,10 @@
 #import "BCFeeSelectionView.h"
 #import "FeeTableCell.h"
 
+int rowRegular = 0;
+int rowPriority = 1;
+int rowCustom = 2;
+
 @interface BCFeeSelectionView()
 @property (nonatomic) UITableView *tableView;
 @end
@@ -40,7 +44,10 @@
 {
     FeeTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"feeOption"];
     if (cell == nil) {
-        cell = [[FeeTableCell alloc] init];
+        FeeType feeType = indexPath.row;
+        cell = [[FeeTableCell alloc] initWithFeeType:feeType];
+        cell.accessoryType = feeType == [self.delegate selectedFeeType] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+        cell.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         cell.backgroundColor = [UIColor whiteColor];
     }
     return cell;
@@ -48,12 +55,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 60.0f : 50.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate didSelectFeeType:indexPath.row];
 }
 
 @end

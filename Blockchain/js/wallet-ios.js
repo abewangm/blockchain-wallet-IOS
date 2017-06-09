@@ -356,7 +356,7 @@ MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
                                        if (x) {
-                                       if (x.from != null) objc_update_send_balance(isAdvanced ? x.balance : x.sweepAmount);
+                                       if (x.from != null) objc_update_send_balance_fees(isAdvanced ? x.balance : x.sweepAmount, x.fees);
                                        }
                                        return x;
                                        });
@@ -395,8 +395,8 @@ MyWalletPhone.getSurgeStatus = function() {
 MyWalletPhone.checkIfUserIsOverSpending = function() {
 
     var checkForOverSpending = function(x) {
-    objc_check_max_amount_fee(x.sweepAmount, x.sweepFee);
-        console.log('checking for overspending: maxAmount and fee are' + x.sweepAmount + ',' + x.sweepFee);
+        objc_check_max_amount_fee(x.sweepAmount, x.sweepFee);
+        console.log('checking for overspending: maxAmount and fee are ' + x.sweepAmount + ',' + x.sweepFee);
         return x;
     }
 
@@ -419,10 +419,11 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
     }
 }
 
-MyWalletPhone.changeForcedFee = function(fee) {
-    console.log('changing forced fee to ' + fee);
+MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
+    console.log('changing satoshi per byte to ' + satoshiPerByte);
     var buildFailure = function (error) {
-        console.log('buildfailure forced fee');
+        console.log('Error changing satoshi per byte');
+        console.log(JSON.stringify(error));
 
         var errorArgument;
         if (error.error) {
@@ -432,31 +433,17 @@ MyWalletPhone.changeForcedFee = function(fee) {
         }
 
         console.log('error updating fee: ' + errorArgument);
-        objc_on_error_update_fee(errorArgument);
+
+        objc_on_error_update_fee(errorArgument, updateType);
 
         return error.payment;
     }
 
     if (currentPayment) {
-        currentPayment.prebuild(fee).build().then(function (x) {
-                                                  objc_did_change_forced_fee_dust(fee, x.extraFeeConsumption);
+        currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
+                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.sweepAmount, x.finalFee, x.extraFeeConsumption, updateType);
                                                   return x;
                                                   }).catch(buildFailure);
-    } else {
-        console.log('Payment error: null payment object!');
-    }
-}
-
-MyWalletPhone.getFeeBounds = function(fee) {
-
-    if (currentPayment) {
-        currentPayment.prebuild(fee).then(function (x) {
-                                          console.log('absolute fee bounds:');
-                                          console.log(x.absoluteFeeBounds);
-                                          var expectedBlock = x.confEstimation == Infinity ? -1 : x.confEstimation;
-                                          objc_update_fee_bounds_confirmationEstimation_maxAmounts_maxFees(x.absoluteFeeBounds, expectedBlock, x.maxSpendableAmounts, x.sweepFees);
-                                          return x;
-                                          });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -503,7 +490,7 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
 
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
     if (currentPayment) {
-        currentPayment.useAll(fee).then(function (x) {
+        currentPayment.useAll().then(function (x) {
                                         MyWalletPhone.updateSweep(true, false);
                                         return x;
                                         });
@@ -562,7 +549,7 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
     }
 }
 
-MyWalletPhone.getTransactionFee = function() {
+MyWalletPhone.getTransactionFeeWithUpdateType = function(updateType) {
     if (currentPayment) {
 
         var buildFailure = function(error) {
@@ -575,7 +562,7 @@ MyWalletPhone.getTransactionFee = function() {
             }
 
             console.log('error updating fee: ' + errorArgument);
-            objc_on_error_update_fee(errorArgument);
+            objc_on_error_update_fee(errorArgument, updateType);
 
             return error.payment;
         }
@@ -587,6 +574,16 @@ MyWalletPhone.getTransactionFee = function() {
 
     } else {
         console.log('Payment error: null payment object!');
+    }
+}
+
+MyWalletPhone.updateTotalAvailableAndFinalFee = function() {
+    if (currentPayment) {
+        currentPayment.payment.then(function(x) {
+          objc_update_total_available_final_fee(x.sweepAmount, x.finalFee)
+        }).catch(function(error) {
+          console.log(error);
+        });
     }
 }
 
@@ -747,7 +744,7 @@ MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
 
     var createPayment = function(address) {
         return new Promise(function (resolve) {
-                           var payment = new Payment().from(address).useAll();
+                           var payment = MyWallet.wallet.createPayment().from(address).useAll();
                            transferAllPayments[address] = payment;
                            payment.sideEffect(function (p) { resolve(p); });
                            })
@@ -832,7 +829,7 @@ MyWalletPhone.transferAllFundsToAccount = function(accountIndex, isFirstTransfer
 }
 
 MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
-    currentPayment = new Payment();
+    currentPayment = MyWallet.wallet.createPayment();
 
     var buildFailure = function (error) {
         console.log('buildfailure');
@@ -1040,65 +1037,20 @@ MyWalletPhone.parsePairingCode = function (raw_code) {
         objc_errorParsingPairingCode(e);
     };
 
-    try {
-        if (raw_code == null || raw_code.length == 0) {
-            throw "Invalid Pairing QR Code";
-        }
-
-        if (raw_code[0] != '1') {
-            throw "Invalid Pairing Version Code " + raw_code[0];
-        }
-
-        var components = raw_code.split("|");
-
-        if (components.length < 3) {
-            throw "Invalid Pairing QR Code. Not enough components.";
-        }
-
-        var guid = components[1];
-        if (guid.length != 36) {
-            throw "Invalid Pairing QR Code. GUID wrong length.";
-        }
-
-        var encrypted_data = components[2];
-
-        var data = {
-        format: 'plain',
-        method: 'pairing-encryption-password',
-        guid: guid
-        };
-        var requestSuccess = function (encryption_phrase) {
-            try {
-
-                // Pairing code PBKDF2 iterations is set to 10 in My Wallet
-                var pairing_code_pbkdf2_iterations = 10;
-                var decrypted = WalletCrypto.decrypt(encrypted_data, encryption_phrase, pairing_code_pbkdf2_iterations);
-
-                if (decrypted != null) {
-                    var components2 = decrypted.split("|");
-
-                    success({
-                            version: raw_code[0],
-                            guid: guid,
-                            sharedKey: components2[0],
-                            password: new Buffer(components2[1], 'hex').toString('utf8')
-                            });
-                } else {
-                    error('Decryption Error');
-                }
-            } catch(e) {
-                error(''+e);
-            }
-        };
-        var requestError = function (res) {
-            error('Pairing Code Server Error');
-        };
-
-        BlockchainAPI.request("POST", 'wallet', data, true, false).then(requestSuccess).catch(requestError);
-    } catch (e) {
-        error(''+e);
-    }
+    MyWallet.parsePairingCode(raw_code).then(success, error);
 };
+
+MyWalletPhone.makePairingCode = function () {
+    var success = function (code) {
+        objc_didMakePairingCode(code);
+    };
+
+    var error = function (e) {
+        objc_errorMakingPairingCode(e);
+    };
+
+    MyWallet.makePairingCode(success, error);
+}
 
 MyWalletPhone.addAddressBookEntry = function(bitcoinAddress, label) {
     MyWallet.addAddressBookEntry(bitcoinAddress, label);
@@ -2015,7 +1967,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   var guidHash = WalletCrypto.sha256(new Buffer(wallet.guid.replace(/-/g, ''), 'hex'));
   var userHasAccess = ((guidHash[0] + 1) / 256) <= (options.iosBuyPercent || 0);
   var whiteListedGuids = objc_get_whitelisted_guids();
-    
+
   if (whiteListedGuids.indexOf(wallet.guid) > -1) {
       userHasAccess = true;
   }

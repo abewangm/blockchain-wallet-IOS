@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeeTypes.h"
 
 @interface FeeTableCell : UITableViewCell
-@property (nonatomic) UILabel *amountLabel;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *descriptionLabel;
+@property (nonatomic, readonly) FeeType feeType;
+
+- (id)initWithFeeType:(FeeType)feeType;
+
 @end

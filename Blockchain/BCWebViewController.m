@@ -54,6 +54,7 @@ NSMutableArray *visitedPages;
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
     headerLabel.text = titleString;
+    headerLabel.center = CGPointMake(topBar.center.x, headerLabel.center.y);
     [topBar addSubview:headerLabel];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, 15, 80, 51)];

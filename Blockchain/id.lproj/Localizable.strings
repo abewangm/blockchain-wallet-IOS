@@ -1718,3 +1718,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Transaksi terjadi saat Anda mengirim dan menerima bitcoin.";
+
+/* (No Commment) */
+"Custom" = "Penyesuaian";
+
+/* (No Commment) */
+"Advanced users only" = "Pengguna tingkat lanjut saja";
+
+/* (No Commment) */
+"1+ hour" = "1+ jam";
+
+/* (No Commment) */
+"Priority" = "Prioritas";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 menit";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi per byte";
+
+/* (No Commment) */
+"sat/b" = "sat/b";
+
+/* (No Commment) */
+"High fee not necessary" = "Biaya tinggi tidak perlu";
+
+/* (No Commment) */
+"Low fee not recommended" = "Biaya rendah tidak direkomendasikan";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Fitur ini direkomendasikan untuk pengguna tingkat lanjut saja. Dengan memilih biaya penyesuaian, Anda berisiko membayar lebih atau transaksi Anda bisa macet.";
+
+/* (No Commment) */
+"Available now" = "Tersedia sekarang";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Beli bitcoin langsung dari dompet mobil Anda. Mudah, lancar dan aman.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Masuk ke Dompet Web";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Kunjungi blockchain.info/wallet/login dari komputer Anda.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Pilih Masuk melalui ponsel.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Dengan kamera komputer Anda, pindai kode QR berikut.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Sembunyikan kode QR ini sampai Anda siap.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Jagalah agar kode QR ini tetap aman!";
+
+/* (No Commment) */
+"Do not share it with others." = "Jangan membagikannya kepada orang lain.";
+
+/* (No Commment) */
+"Show QR Code" = "Tampilkan Kode QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Sembunyikan Kode QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Dolar AS";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "Króna Islandia";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Dolar Hong Kong";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Dolar Baru Taiwan";
+
+/* (No Commment) */
+"Swiss Franc" = "Franc Swiss";
+
+/* (No Commment) */
+"Danish Krone" = "Krona Denmark";
+
+/* (No Commment) */
+"Chilean Peso" = "Peso Chili";
+
+/* (No Commment) */
+"Canadian Dollar" = "Dolar Kanada";
+
+/* (No Commment) */
+"Indian Rupee" = "Rupee India";
+
+/* (No Commment) */
+"Chinese Yuan" = "Yuan Tiongkok";
+
+/* (No Commment) */
+"Thai Baht" = "Baht Thailand";
+
+/* (No Commment) */
+"Australian Dollar" = "Dolar Australia";
+
+/* (No Commment) */
+"Singapore Dollar" = "Dolar Singapura";
+
+/* (No Commment) */
+"South Korean Won" = "Won Korea Selatan";
+
+/* (No Commment) */
+"Japanese Yen" = "Yen Jepang";
+
+/* (No Commment) */
+"Polish Zloty" = "Zloty Polandia";
+
+/* (No Commment) */
+"Great British Pound" = "Pound Britania Raya";
+
+/* (No Commment) */
+"Swedish Krona" = "Krona Swedia";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Dolar Selandia Baru";
+
+/* (No Commment) */
+"Brazil Real" = "Real Brasil";
+
+/* (No Commment) */
+"Russian Ruble" = "Rubel Rusia";

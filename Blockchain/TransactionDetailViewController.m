@@ -84,7 +84,7 @@ const CGFloat rowHeightValueReceived = 80;
 - (void)setupTextViewInputAccessoryView
 {
     UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
-    inputAccessoryView.backgroundColor = [UIColor redColor];
+    inputAccessoryView.backgroundColor = COLOR_WARNING_RED;
     
     UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
     updateButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;

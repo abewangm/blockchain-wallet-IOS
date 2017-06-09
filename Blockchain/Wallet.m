@@ -407,24 +407,24 @@
     
 #pragma mark Send Screen
     
-    self.context[@"objc_update_send_balance"] = ^(NSNumber *balance) {
-        [weakSelf update_send_balance:balance];
+    self.context[@"objc_update_send_balance_fees"] = ^(NSNumber *balance, NSDictionary *fees) {
+        [weakSelf update_send_balance:balance fees:fees];
     };
     
     self.context[@"objc_update_surge_status"] = ^(NSNumber *surgeStatus) {
         [weakSelf update_surge_status:surgeStatus];
     };
     
-    self.context[@"objc_did_change_forced_fee_dust"] = ^(NSNumber *fee, NSNumber *dust) {
-        [weakSelf did_change_forced_fee:fee dust:dust];
-    };
-    
-    self.context[@"objc_update_fee_bounds_confirmationEstimation_maxAmounts_maxFees"] = ^(NSArray *absoluteFeeBounds, id expectedBlock, NSArray *maxSpendableAmounts, NSArray *sweepFees) {
-        [weakSelf update_fee_bounds:absoluteFeeBounds confirmationEstimation:expectedBlock maxAmounts:maxSpendableAmounts maxFees:sweepFees];
+    self.context[@"objc_did_change_satoshi_per_byte_dust_show_summary"] = ^(NSNumber *sweepAmount, NSNumber *fee, NSNumber *dust, FeeUpdateType updateType) {
+        [weakSelf did_change_satoshi_per_byte:sweepAmount fee:fee dust:dust updateType:updateType];
     };
     
     self.context[@"objc_update_max_amount_fee_dust_willConfirm"] = ^(NSNumber *maxAmount, NSNumber *fee, NSNumber *dust, NSNumber *willConfirm) {
         [weakSelf update_max_amount:maxAmount fee:fee dust:dust willConfirm:willConfirm];
+    };
+    
+    self.context[@"objc_update_total_available_final_fee"] = ^(NSNumber *sweepAmount, NSNumber *finalFee) {
+        [weakSelf update_total_available:sweepAmount final_fee:finalFee];
     };
     
     self.context[@"objc_check_max_amount_fee"] = ^(NSNumber *amount, NSNumber *fee) {
@@ -455,8 +455,8 @@
         [weakSelf tx_on_finish_signing:transactionId];
     };
     
-    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error) {
-        [weakSelf on_error_update_fee:error];
+    self.context[@"objc_on_error_update_fee"] = ^(NSDictionary *error, FeeUpdateType updateType) {
+        [weakSelf on_error_update_fee:error updateType:updateType];
     };
     
     self.context[@"objc_on_success_import_key_for_sending_from_watch_only"] = ^() {
@@ -488,7 +488,15 @@
     self.context[@"objc_errorParsingPairingCode"] = ^(NSString *error) {
         [weakSelf errorParsingPairingCode:error];
     };
-    
+
+    self.context[@"objc_didMakePairingCode"] = ^(NSString *pairingCode) {
+        [weakSelf didMakePairingCode:pairingCode];
+    };
+
+    self.context[@"objc_errorMakingPairingCode"] = ^(NSString *error) {
+        [weakSelf errorMakingPairingCode:error];
+    };
+
     self.context[@"objc_error_restoring_wallet"] = ^(){
         [weakSelf error_restoring_wallet];
     };
@@ -794,7 +802,7 @@
 
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
-        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"blockchain" ofType:@"der"];
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:[app.certificatePinner getCertificateName] ofType:@"der"];
         NSData *certData = [[NSData alloc] initWithContentsOfFile:cerPath];
         CFDataRef certDataRef = (__bridge CFDataRef)certData;
         SecCertificateRef certRef = SecCertificateCreateWithData(NULL, certDataRef);
@@ -972,7 +980,7 @@
     if (self.swipeAddressToSubscribe) {
         NSDictionary *message = [string getJSONObject];
         NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
-        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]];
+        NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]]];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         
         NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -1154,7 +1162,7 @@
         return nil;
     }
     
-    return self.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCIES];
+    return [CurrencySymbol currencyNames];
 }
 
 - (NSDictionary *)getBtcCurrencies
@@ -1372,6 +1380,33 @@
         [delegate errorParsingPairingCode:message];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector errorParsingPairingCode:!", [delegate class]);
+    }
+}
+
+- (void)makePairingCode
+{
+    [self.context evaluateScript:@"MyWalletPhone.makePairingCode();"];
+}
+
+- (void)didMakePairingCode:(NSString *)pairingCode
+{
+    DLog(@"didMakePairingCode");
+
+    if ([delegate respondsToSelector:@selector(didMakePairingCode:)]) {
+        [delegate didMakePairingCode:pairingCode];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didMakePairingCode:!", [delegate class]);
+    }
+}
+
+- (void)errorMakingPairingCode:(NSString *)message
+{
+    DLog(@"errorMakingPairingCode:");
+
+    if ([delegate respondsToSelector:@selector(errorMakingPairingCode:)]) {
+        [delegate errorMakingPairingCode:message];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector errorMakingPairingCode:!", [delegate class]);
     }
 }
 
@@ -1743,13 +1778,13 @@
     [self.context evaluateScript:@"MyWalletPhone.sweepPaymentRegularThenConfirm()"];
 }
 
-- (void)sweepPaymentAdvanced:(uint64_t)fee
+- (void)sweepPaymentAdvanced
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sweepPaymentAdvanced(%lld)", fee]];
+    [self.context evaluateScript:@"MyWalletPhone.sweepPaymentAdvanced()"];
 }
 
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee
@@ -1779,31 +1814,31 @@
     [self.context evaluateScript:@"MyWalletPhone.checkIfUserIsOverSpending()"];
 }
 
-- (void)changeForcedFee:(uint64_t)fee
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeForcedFee(%lld)", fee]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeSatoshiPerByte(%lld, %ld)", satoshiPerByte, (long)updateType]];
 }
 
-- (void)getFeeBounds:(uint64_t)fee
+- (void)getTransactionFeeWithUpdateType:(FeeUpdateType)updateType
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFeeBounds(%lld)", fee]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getTransactionFeeWithUpdateType(%ld)", (long)updateType]];
 }
 
-- (void)getTransactionFee
+- (void)updateTotalAvailableAndFinalFee
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.getTransactionFee()"];
+    [self.context evaluateScript:@"MyWalletPhone.updateTotalAvailableAndFinalFee()"];
 }
 
 - (void)getSurgeStatus
@@ -2757,7 +2792,22 @@
 {
     DLog(@"on_get_all_currency_symbols_success");
     NSDictionary *allCurrencySymbolsDictionary = [currencies getJSONObject];
-    self.currencySymbols = allCurrencySymbolsDictionary;
+    NSMutableDictionary *currencySymbolsWithNames = [[NSMutableDictionary alloc] initWithDictionary:allCurrencySymbolsDictionary];
+    NSDictionary *currencyNames = [CurrencySymbol currencyNames];
+    
+    for (NSString *abbreviatedFiatString in [allCurrencySymbolsDictionary allKeys]) {
+        NSDictionary *values = [allCurrencySymbolsDictionary objectForKey:abbreviatedFiatString]; // should never be nil
+        NSMutableDictionary *valuesWithName = [[NSMutableDictionary alloc] initWithDictionary:values]; // create a mutable dictionary of the current dictionary values
+        NSString *currencyName = [currencyNames objectForKey:abbreviatedFiatString];
+        if (currencyName) {
+            [valuesWithName setObject:currencyName forKey:DICTIONARY_KEY_NAME];
+            [currencySymbolsWithNames setObject:valuesWithName forKey:abbreviatedFiatString];
+        } else {
+            DLog(@"Warning: no name found for currency %@", abbreviatedFiatString);
+        }
+    }
+    
+    self.currencySymbols = currencySymbolsWithNames;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
 }
 
@@ -2841,20 +2891,11 @@
     }
 }
 
-- (void)did_change_forced_fee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)did_change_satoshi_per_byte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType
 {
-    DLog(@"did_change_forced_fee");
-    if ([self.delegate respondsToSelector:@selector(didChangeForcedFee:dust:)]) {
-        [self.delegate didChangeForcedFee:fee dust:dust];
-    }
-}
-
-- (void)update_fee_bounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
-{
-    DLog(@"update_fee_bounds:confirmationEstimation:maxAmounts:maxFees");
-    
-    if ([self.delegate respondsToSelector:@selector(didGetFeeBounds:confirmationEstimation:maxAmounts:maxFees:)]) {
-        [self.delegate didGetFeeBounds:bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
+    DLog(@"did_change_satoshi_per_byte");
+    if ([self.delegate respondsToSelector:@selector(didChangeSatoshiPerByte:fee:dust:updateType:)]) {
+        [self.delegate didChangeSatoshiPerByte:sweepAmount fee:fee dust:dust updateType:updateType];
     }
 }
 
@@ -2876,6 +2917,15 @@
     }
 }
 
+- (void)update_total_available:(NSNumber *)sweepAmount final_fee:(NSNumber *)finalFee
+{
+    DLog(@"update_total_available:minus_fee:");
+
+    if ([self.delegate respondsToSelector:@selector(didUpdateTotalAvailable:finalFee:)]) {
+        [self.delegate didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+    }
+}
+
 - (void)check_max_amount:(NSNumber *)amount fee:(NSNumber *)fee
 {
     DLog(@"check_max_amount");
@@ -2884,24 +2934,35 @@
     }
 }
 
-- (void)on_error_update_fee:(NSDictionary *)error
+- (void)on_error_update_fee:(NSDictionary *)error updateType:(FeeUpdateType)updateType
 {
     DLog(@"on_error_update_fee");
-    id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
-    NSString *message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
-    if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
-    } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
-        uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
-        [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
-    } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
-        [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
+    NSString *message;
+    if ([error[DICTIONARY_KEY_MESSAGE] isKindOfClass:[NSString class]]) {
+        message = error[DICTIONARY_KEY_MESSAGE];
     } else {
-        [app standardNotifyAutoDismissingController:message];
+        id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+        message = [errorObject isKindOfClass:[NSString class]] ? errorObject : errorObject[DICTIONARY_KEY_ERROR];
     }
     
-    if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
-        [self.delegate enableSendPaymentButtons];
+    if (updateType == FeeUpdateTypeConfirm) {
+        if ([message isEqualToString:ERROR_NO_UNSPENT_OUTPUTS] || [message isEqualToString:ERROR_AMOUNTS_ADDRESSES_MUST_EQUAL]) {
+            [app standardNotifyAutoDismissingController:BC_STRING_NO_AVAILABLE_FUNDS];
+        } else if ([message isEqualToString:ERROR_BELOW_DUST_THRESHOLD]) {
+            id errorObject = error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR];
+            uint64_t threshold = [errorObject isKindOfClass:[NSString class]] ? [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_THRESHOLD] longLongValue] : [error[DICTIONARY_KEY_MESSAGE][DICTIONARY_KEY_ERROR][DICTIONARY_KEY_THRESHOLD] longLongValue];
+            [app standardNotifyAutoDismissingController:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, threshold]];
+        } else if ([message isEqualToString:ERROR_FETCH_UNSPENT]) {
+            [app standardNotifyAutoDismissingController:BC_STRING_SOMETHING_WENT_WRONG_CHECK_INTERNET_CONNECTION];
+        } else {
+            [app standardNotifyAutoDismissingController:message];
+        }
+        
+        if ([self.delegate respondsToSelector:@selector(enableSendPaymentButtons)]) {
+            [self.delegate enableSendPaymentButtons];
+        }
+    } else {
+        [self updateTotalAvailableAndFinalFee];
     }
 }
 
@@ -3088,11 +3149,11 @@
     }
 }
 
-- (void)update_send_balance:(NSNumber *)balance
+- (void)update_send_balance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
     DLog(@"update_send_balance");
-    if ([self.delegate respondsToSelector:@selector(updateSendBalance:)]) {
-        [self.delegate updateSendBalance:balance];
+    if ([self.delegate respondsToSelector:@selector(updateSendBalance:fees:)]) {
+        [self.delegate updateSendBalance:balance fees:fees];
     }
 }
 

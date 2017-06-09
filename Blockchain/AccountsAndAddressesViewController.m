@@ -371,7 +371,7 @@
                 
                 cell.watchLabel.hidden = YES;
                 cell.watchLabel.text = BC_STRING_WATCH_ONLY;
-                cell.watchLabel.textColor = [UIColor redColor];
+                cell.watchLabel.textColor = COLOR_WARNING_RED;
             }
         }
         

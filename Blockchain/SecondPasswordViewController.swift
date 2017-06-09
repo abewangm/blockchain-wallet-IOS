@@ -103,7 +103,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
     
     func alertUserWithErrorMessage(_ message : String) {
         let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .default, handler: { (UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .cancel, handler: { (UIAlertAction) -> Void in
              self.password?.text = ""
         }))
         NotificationCenter.default.addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)

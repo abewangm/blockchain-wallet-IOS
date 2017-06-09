@@ -143,6 +143,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
+    [[NSUserDefaults standardUserDefaults] setObject:ENV_INDEX_PRODUCTION forKey:USER_DEFAULTS_KEY_ENV];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
@@ -155,9 +156,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
     
-    if ([URL_SERVER isEqualToString:PRODUCTION_WALLET_SERVER]) {
-        [self.certificatePinner pinCertificate];
-    }
+    [self.certificatePinner pinCertificate];
     
     [self checkForNewInstall];
     
@@ -316,7 +315,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     BOOL hasGuidAndSharedKey = [KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey];
     
+    BOOL hasTransactions;
+    BOOL hideBuyNotificationCardUntilTransactionsExist = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
+    
     if ([wallet isInitialized]) {
+        
+        if (hideBuyNotificationCardUntilTransactionsExist) hasTransactions = [app.wallet getTotalActiveBalance] > 0 || app.latestResponse.transactions.count > 0;
         
         if (hasGuidAndSharedKey) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
         
@@ -332,6 +336,11 @@ void (^secondPasswordSuccess)(NSString *);
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP] &&
         ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    }
+    
+    if (hideBuyNotificationCardUntilTransactionsExist && hasTransactions) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
     }
 
     [self setupBuyWebView];
@@ -422,6 +431,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
 }
 
 #pragma mark - Setup
@@ -1590,6 +1600,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
@@ -1803,19 +1814,19 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetMaxFee:fee amount:amount dust:dust willConfirm:willConfirm];
 }
 
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
+{
+    [_sendViewController didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+}
+
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     [_sendViewController didGetFee:fee dust:dust txSize:txSize];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType
 {
-    [_sendViewController didChangeForcedFee:fee dust:dust];
-}
-
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
-{
-    [_sendViewController didGetFeeBounds:(NSArray *)bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
+    [_sendViewController didChangeSatoshiPerByte:sweepAmount fee:fee dust:dust updateType:updateType];
 }
 
 - (void)didGetSurgeStatus:(BOOL)surgeStatus
@@ -1828,9 +1839,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController enablePaymentButtons];
 }
 
-- (void)updateSendBalance:(NSNumber *)balance
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
-    [_sendViewController updateSendBalance:balance];
+    [_sendViewController updateSendBalance:balance fees:fees];
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
@@ -1919,6 +1930,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didChangeLocalCurrency
 {
+    [self.sendViewController reloadFeeAmountLabel];
     [self.receiveViewController doCurrencyConversion];
 }
 
@@ -2779,7 +2791,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock
 {
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSession *session = [SessionManager sharedSession];

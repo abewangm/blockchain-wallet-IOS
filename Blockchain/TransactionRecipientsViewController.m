@@ -67,7 +67,7 @@
         [cell.balanceButton addTarget:self action:@selector(toggleSymbol) forControlEvents:UIControlEventTouchUpInside];
         
         cell.watchLabel.text = BC_STRING_WATCH_ONLY;
-        cell.watchLabel.textColor = [UIColor redColor];
+        cell.watchLabel.textColor = COLOR_WARNING_RED;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

@@ -1718,3 +1718,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "当您发送和接收比特币时便发生了交易。";
+
+/* (No Commment) */
+"Custom" = "自定义";
+
+/* (No Commment) */
+"Advanced users only" = "仅限高级用户";
+
+/* (No Commment) */
+"1+ hour" = "1+小时";
+
+/* (No Commment) */
+"Priority" = "优先等级";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 分钟";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi 每字节";
+
+/* (No Commment) */
+"sat/b" = "sat/字节";
+
+/* (No Commment) */
+"High fee not necessary" = "不需要高额费用";
+
+/* (No Commment) */
+"Low fee not recommended" = "不建议低额费用";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "仅建议高级用户使用该功能。选择一个自定义费用，则表示您可能会面临过度支付或者交易遇到困难的风险。";
+
+/* (No Commment) */
+"Available now" = "现在可用";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "直接从您的手机钱包购买比特币。它简单、无缝、安全。";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "登录网络钱包";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "在您的电脑上前往 blockchain.info/wallet/login 。";
+
+/* (No Commment) */
+"Select Log in via mobile." = "通过手机选择日志。";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "使用您的电脑的摄相头扫描下面的二维码。";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "在您准备就绪之前，始终隐藏这个二维码。";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "保护这个二维码的安全！";
+
+/* (No Commment) */
+"Do not share it with others." = "切勿与他人分享。";
+
+/* (No Commment) */
+"Show QR Code" = "显示二维码";
+
+/* (No Commment) */
+"Hide QR Code" = "隐藏二维码";
+
+/* (No Commment) */
+"U.S. Dollar" = "美元";
+
+/* (No Commment) */
+"Euro" = "欧元";
+
+/* (No Commment) */
+"lcelandic Króna" = "冰岛克朗";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "港元";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "新台币";
+
+/* (No Commment) */
+"Swiss Franc" = "瑞士法郎";
+
+/* (No Commment) */
+"Danish Krone" = "丹麦克朗";
+
+/* (No Commment) */
+"Chilean Peso" = "智利比索";
+
+/* (No Commment) */
+"Canadian Dollar" = "加元";
+
+/* (No Commment) */
+"Indian Rupee" = "印度卢比";
+
+/* (No Commment) */
+"Chinese Yuan" = "人民币";
+
+/* (No Commment) */
+"Thai Baht" = "泰国铢";
+
+/* (No Commment) */
+"Australian Dollar" = "澳元";
+
+/* (No Commment) */
+"Singapore Dollar" = "新元";
+
+/* (No Commment) */
+"South Korean Won" = "韩元";
+
+/* (No Commment) */
+"Japanese Yen" = "日元";
+
+/* (No Commment) */
+"Polish Zloty" = "波兰兹罗提";
+
+/* (No Commment) */
+"Great British Pound" = "英镑";
+
+/* (No Commment) */
+"Swedish Krona" = "瑞典克朗";
+
+/* (No Commment) */
+"New Zealand Dollar" = "新西兰元";
+
+/* (No Commment) */
+"Brazil Real" = "巴西雷亚尔";
+
+/* (No Commment) */
+"Russian Ruble" = "俄罗斯卢布";

@@ -60,7 +60,7 @@
     // Get local and remote cert data
     NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
     
-    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:CERTIFICATE_SERVER_NAME ofType:CERTIFICATE_FILE_TYPE_DER];
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:[self getCertificateName] ofType:CERTIFICATE_FILE_TYPE_DER];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check
@@ -94,6 +94,17 @@
     X509_free(certificateX509);
     
     return publicKeyString;
+}
+
+- (NSString *)getCertificateName
+{
+    NSDictionary *certNames = @{ENV_INDEX_DEV : CERTIFICATE_SERVER_NAME_DEV,
+                                ENV_INDEX_STAGING : CERTIFICATE_SERVER_NAME_STAGING,
+                                ENV_INDEX_PRODUCTION : CERTIFICATE_SERVER_NAME_PRODUCTION,
+                                ENV_INDEX_TESTNET : CERTIFICATE_SERVER_NAME_TESTNET};
+    
+    NSString *certName = [certNames objectForKey:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV]];
+    return certName;
 }
 
 @end

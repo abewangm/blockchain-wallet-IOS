@@ -193,7 +193,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DEBUG_STRING_SECURITY_REMINDER_PROMPT_TIMER NSLocalizedString(@"Security reminder prompt timer (seconds)", nil)
 #define DEBUG_STRING_ZERO_VALUE_TICKER NSLocalizedString(@"Simulate zero ticker values", nil)
 
-#define CERTIFICATE_SERVER_NAME @"blockchain"
+#define CERTIFICATE_SERVER_NAME_PRODUCTION @"blockchain"
+#define CERTIFICATE_SERVER_NAME_STAGING @"staging"
+#define CERTIFICATE_SERVER_NAME_DEV @"dev"
+#define CERTIFICATE_SERVER_NAME_TESTNET @"testnet"
 #define CERTIFICATE_FILE_TYPE_DER @"der"
 
 #define WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE @"Invalid server certificate."
@@ -242,6 +245,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_FEE @"fee"
 
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
+#define ERROR_MISSING_DESTINATION_ADDRESS @"Missing destination address"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
 #define ERROR_FETCH_UNSPENT @"ERR_FETCH_UNSPENT"
 #define ERROR_BELOW_DUST_THRESHOLD @"BELOW_DUST_THRESHOLD"
@@ -420,8 +424,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #endif
 
-#define TRANSACTION_RESULT_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/q/txresult/%@/%@"
-#define ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT @"https://blockchain.info/address/%@?format=json"
+#define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
+#define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 
 #define URL_SURVEY @"https://blockchain.co1.qualtrics.com/SE/?SID=SV_8c6uSMW5eBV9nal"
 
@@ -471,6 +475,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_DKK @"DKK"
 #define CURRENCY_CODE_CLP @"CLP"
 #define CURRENCY_CODE_CAD @"CAD"
+#define CURRENCY_CODE_INR @"INR"
 #define CURRENCY_CODE_CNY @"CNY"
 #define CURRENCY_CODE_THB @"THB"
 #define CURRENCY_CODE_AUD @"AUD"
@@ -483,6 +488,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_NZD @"NZD"
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
+
+#define DICTIONARY_KEY_FEE_REGULAR @"regular"
+#define DICTIONARY_KEY_FEE_PRIORITY @"priority"
+#define DICTIONARY_KEY_FEE_LIMITS @"limits"
+#define DICTIONARY_KEY_FEE_LIMITS_MIN @"min"
+#define DICTIONARY_KEY_FEE_LIMITS_MAX @"max"
 
 #define DICTIONARY_KEY_TRADE_DATE_CREATED @"createdAt"
 #define DICTIONARY_KEY_TRADE_RECEIVE_ADDRESS @"receiveAddress"
@@ -572,6 +583,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
 #define USER_DEFAULTS_KEY_HIDE_TRANSFER_ALL_FUNDS_ALERT @"hideTransferAllFundsAlert"
+#define USER_DEFAULTS_KEY_HAS_SEEN_CUSTOM_FEE_WARNING @"hasSeenCustomFeeWarning"
 
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_SERVER_URL @"productionServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_URL @"productionWebSocketURL"
@@ -608,6 +620,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS @"hasSeenAllCards"
 #define USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS @"shouldHideAllCards"
 #define USER_DEFAULTS_KEY_LAST_CARD_OFFSET @"lastCardOffset"
+#define USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD @"shouldHideBuyNotificationCard"
+#define USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST @"shouldHideBuyNotificationCardUntilTransactionsExist"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER @"hasSeenEmailReminder"

@@ -20,6 +20,7 @@
 
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
+#import "FeeTypes.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
@@ -63,6 +64,8 @@
 - (void)didGenerateNewAddress;
 - (void)didParsePairingCode:(NSDictionary *)dict;
 - (void)errorParsingPairingCode:(NSString *)message;
+- (void)didMakePairingCode:(NSString *)code;
+- (void)errorMakingPairingCode:(NSString *)message;
 - (void)didCreateNewAccount:(NSString *)guid sharedKey:(NSString *)sharedKey password:(NSString *)password;
 - (void)errorCreatingNewAccount:(NSString *)message;
 - (void)didFailPutPin:(NSString *)value;
@@ -88,12 +91,12 @@
 - (void)estimateTransactionSize:(uint64_t)size;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
-- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 - (void)enableSendPaymentButtons;
 - (void)didGetSurgeStatus:(BOOL)surgeStatus;
-- (void)updateSendBalance:(NSNumber *)balance;
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed;
 - (void)showSummaryForTransferAll;
 - (void)sendDuringTransferAll:(NSString *)secondPassword;
@@ -217,6 +220,7 @@
 - (void)changeBtcCurrency:(NSString *)btcCode;
 
 - (void)parsePairingCode:(NSString *)code;
+- (void)makePairingCode;
 - (void)resendTwoFactorSMS;
 
 - (NSString *)detectPrivateKeyFormat:(NSString *)privateKeyString;
@@ -328,7 +332,7 @@
 - (void)changePaymentAmount:(uint64_t)amount;
 - (void)sweepPaymentRegular;
 - (void)sweepPaymentRegularThenConfirm;
-- (void)sweepPaymentAdvanced:(uint64_t)fee;
+- (void)sweepPaymentAdvanced;
 - (void)sweepPaymentAdvancedThenConfirm:(uint64_t)fee;
 - (void)setupBackupTransferAll:(id)transferAllController;
 - (void)getInfoForTransferAllFundsToAccount;
@@ -337,9 +341,8 @@
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
 - (void)checkIfOverspending;
-- (void)getFeeBounds:(uint64_t)fee;
-- (void)changeForcedFee:(uint64_t)fee;
-- (void)getTransactionFee;
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType;
+- (void)getTransactionFeeWithUpdateType:(FeeUpdateType)updateType;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
 - (void)incrementReceiveIndexOfDefaultAccount;
