@@ -18,11 +18,13 @@
 {
     self = [super init];
     if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
         self.modalView = view;
         [self.view addSubview:self.modalView];
         CGRect frame = self.modalView.frame;
         frame.origin.y = self.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
         [self.modalView setFrame:frame];
+        self.modalView.center = CGPointMake(self.view.center.x, self.modalView.center.y);
         self.closeType = closeType;
         
         if (showHeader) {
@@ -36,6 +38,7 @@
             headerLabel.textAlignment = NSTextAlignmentCenter;
             headerLabel.adjustsFontSizeToFitWidth = YES;
             headerLabel.text = headerText;
+            headerLabel.center = CGPointMake(topBarView.center.x, headerLabel.center.y);
             [topBarView addSubview:headerLabel];
             
             if (closeType == ModalCloseTypeBack) {

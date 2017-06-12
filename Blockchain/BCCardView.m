@@ -9,18 +9,20 @@
 #import "BCCardView.h"
 @interface BCCardView ()
 @property (nonatomic) ActionType actionType;
+@property (nonatomic) BOOL reducedHeightForPageIndicator;
 @end
 
 @implementation BCCardView
 
-- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionType:(ActionType)actionType imageName:(NSString *)imageName delegate:(id<CardViewDelegate>)delegate
+- (id)initWithContainerFrame:(CGRect)frame title:(NSString *)title description:(NSString *)description actionType:(ActionType)actionType imageName:(NSString *)imageName reducedHeightForPageIndicator:(BOOL)reducedHeightForPageIndicator delegate:(id<CardViewDelegate>)delegate
 {
     if (self == [super init]) {
         
         self.delegate = delegate;
         self.actionType = actionType;
+        self.reducedHeightForPageIndicator = reducedHeightForPageIndicator;
         
-        self.frame = [BCCardView frameFromContainer:frame];
+        self.frame = [self frameFromContainer:frame];
         
         self.layer.masksToBounds = NO;
         self.layer.shadowOffset = CGSizeMake(0, 2);
@@ -38,23 +40,31 @@
         
         NSString *actionName;
         UIColor *actionColor;
-        
+        UIColor *titleColor;
+
         if (actionType == ActionTypeScanQR) {
             actionName = BC_STRING_SCAN_ADDRESS;
             actionColor = COLOR_BLOCKCHAIN_BLUE;
+            titleColor = actionColor;
         } else if (actionType == ActionTypeShowReceive) {
-            actionName = BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE;
+            actionName = BC_STRING_RECEIVE;
             actionColor = COLOR_BLOCKCHAIN_AQUA;
+            titleColor = actionColor;
         } else if (actionType == ActionTypeBuyBitcoin) {
             actionName = BC_STRING_BUY_BITCOIN;
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+            titleColor = actionColor;
+        } else if (actionType == ActionTypeBuyBitcoinAvailableNow) {
+            actionName = BC_STRING_BUY_BITCOIN;
+            actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+            titleColor = COLOR_BLOCKCHAIN_BLUE;
         }
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.frame.size.width + 8, imageView.frame.origin.y, textWidth, 54)];
         titleLabel.numberOfLines = 0;
         titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
         titleLabel.text = title;
-        titleLabel.textColor = actionColor;
+        titleLabel.textColor = titleColor;
         titleLabel.backgroundColor = [UIColor clearColor];
         [titleLabel sizeToFit];
         [self addSubview:titleLabel];
@@ -64,6 +74,7 @@
         descriptionLabel.numberOfLines = 0;
         descriptionLabel.adjustsFontSizeToFitWidth = YES;
         descriptionLabel.text = description;
+        descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
         descriptionLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:descriptionLabel];
         
@@ -93,10 +104,10 @@
     return self;
 }
 
-+ (CGRect)frameFromContainer:(CGRect)containerFrame
+- (CGRect)frameFromContainer:(CGRect)containerFrame
 {
     CGRect frame = CGRectInset(containerFrame, 8, 16);
-    return CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - 32);
+    return CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, self.reducedHeightForPageIndicator ? frame.size.height - 32 : frame.size.height);
 }
 
 - (void)actionButtonClicked

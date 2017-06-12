@@ -154,6 +154,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
+    [[NSUserDefaults standardUserDefaults] setObject:ENV_INDEX_PRODUCTION forKey:USER_DEFAULTS_KEY_ENV];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER];
@@ -166,9 +167,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
     
-    if ([URL_SERVER isEqualToString:PRODUCTION_WALLET_SERVER]) {
-        [self.certificatePinner pinCertificate];
-    }
+    [self.certificatePinner pinCertificate];
     
     [self checkForNewInstall];
     
@@ -215,6 +214,13 @@ void (^secondPasswordSuccess)(NSString *);
 #ifdef ENABLE_DEBUG_MENU
     [self requestAuthorizationForPushNotifications];
 #endif
+
+    app.mainTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
+    
+    secondPasswordDescriptionLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    secondPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    secondPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    
     [self setupBuyWebView];
     
     return YES;
@@ -325,7 +331,12 @@ void (^secondPasswordSuccess)(NSString *);
     
     BOOL hasGuidAndSharedKey = [KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey];
     
+    BOOL hasTransactions;
+    BOOL hideBuyNotificationCardUntilTransactionsExist = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
+    
     if ([wallet isInitialized]) {
+        
+        if (hideBuyNotificationCardUntilTransactionsExist) hasTransactions = [app.wallet getTotalActiveBalance] > 0 || app.latestResponse.transactions.count > 0;
         
         if (hasGuidAndSharedKey) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
         
@@ -341,6 +352,11 @@ void (^secondPasswordSuccess)(NSString *);
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP] &&
         ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
+    }
+    
+    if (hideBuyNotificationCardUntilTransactionsExist && hasTransactions) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
     }
 
     [self setupBuyWebView];
@@ -486,6 +502,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
 }
 
 #pragma mark - Setup
@@ -1668,7 +1685,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     NSDictionary *loginData = [[app.wallet executeJSSynchronous:@"MyWalletPhone.getWebViewLoginData()"] toDictionary];
     NSString *walletJson = loginData[@"walletJson"];
-    NSString *externalJson = loginData[@"externalJson"];
+    NSString *externalJson = [loginData[@"externalJson"] isEqual:[NSNull null]] ? @"" : loginData[@"externalJson"];
     NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
     [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
     self.buyBitcoinViewController.delegate = app.wallet;
@@ -1708,6 +1725,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];
@@ -1921,19 +1939,19 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController didGetMaxFee:fee amount:amount dust:dust willConfirm:willConfirm];
 }
 
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
+{
+    [_sendViewController didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+}
+
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
 {
     [_sendViewController didGetFee:fee dust:dust txSize:txSize];
 }
 
-- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust
+- (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType
 {
-    [_sendViewController didChangeForcedFee:fee dust:dust];
-}
-
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees
-{
-    [_sendViewController didGetFeeBounds:(NSArray *)bounds confirmationEstimation:confirmationEstimation maxAmounts:maxAmounts maxFees:maxFees];
+    [_sendViewController didChangeSatoshiPerByte:sweepAmount fee:fee dust:dust updateType:updateType];
 }
 
 - (void)didGetSurgeStatus:(BOOL)surgeStatus
@@ -1946,9 +1964,9 @@ void (^secondPasswordSuccess)(NSString *);
     [_sendViewController enablePaymentButtons];
 }
 
-- (void)updateSendBalance:(NSNumber *)balance
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees
 {
-    [_sendViewController updateSendBalance:balance];
+    [_sendViewController updateSendBalance:balance fees:fees];
 }
 
 - (void)updateTransferAllAmount:(NSNumber *)amount fee:(NSNumber *)fee addressesUsed:(NSArray *)addressesUsed
@@ -2036,6 +2054,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didChangeLocalCurrency
 {
+    [self.sendViewController reloadFeeAmountLabel];
     [self.receiveViewController doCurrencyConversion];
 }
 
@@ -2654,11 +2673,18 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showPairWallet:(id)sender
 {
+    manualPairStepOneTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepTwoTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    manualPairStepThreeTextView.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_MEDIUM];
+    
     [app showModalWithContent:pairingInstructionsView closeType:ModalCloseTypeBack headerText:BC_STRING_AUTOMATIC_PAIRING];
     scanPairingCodeButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     scanPairingCodeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    scanPairingCodeButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+
     manualPairButton.titleEdgeInsets = WELCOME_VIEW_BUTTON_EDGE_INSETS;
     manualPairButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    manualPairButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
 }
 
 - (void)showRecoverWallet:(id)sender
@@ -3166,7 +3192,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock
 {
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:ADDRESS_URL_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]];
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, address]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSession *session = [SessionManager sharedSession];
@@ -3839,9 +3865,9 @@ void (^secondPasswordSuccess)(NSString *);
 
 #pragma mark - Certificate Pinner Delegate
 
-- (void)failedToValidateCertificate
+- (void)failedToValidateCertificate:(NSString *)hostName
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@", BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, URL_SUPPORT]] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FAILED_VALIDATION_CERTIFICATE_TITLE message:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", hostName, BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE, [NSString stringWithFormat:BC_STRING_FAILED_VALIDATION_CERTIFICATE_MESSAGE_CONTACT_SUPPORT_ARGUMENT, URL_SUPPORT]] preferredStyle:UIAlertControllerStyleAlert];
     alert.view.tag = TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         // Close App

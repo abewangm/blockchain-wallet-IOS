@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -31,6 +31,7 @@
                 <outlet property="feeField" destination="p7q-Ud-nYh" id="A0V-si-4g2"/>
                 <outlet property="feeInformationButton" destination="llH-jD-d80" id="olX-js-b6w"/>
                 <outlet property="feeLabel" destination="Zhm-Jw-P4C" id="Piy-45-yLj"/>
+                <outlet property="feeOptionsButton" destination="8CA-Iw-4Gl" id="2WT-Lj-bjR"/>
                 <outlet property="fiatAmountField" destination="qx4-XV-uhn" id="Ns6-YO-Z1m"/>
                 <outlet property="fiatLabel" destination="vGH-md-Ck3" id="LhR-Tz-aN6"/>
                 <outlet property="fromLabel" destination="7" id="oF6-bR-xhe"/>
@@ -132,7 +133,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d7n-Ue-QXL">
                                     <rect key="frame" x="15" y="36" width="297" height="23"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                     <state key="normal" title="Funds available">
                                         <color key="titleColor" red="0.10588235294117647" green="0.54117647058823526" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -171,25 +172,15 @@
                                     <color key="textColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Zhm-Jw-P4C">
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Fee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Zhm-Jw-P4C">
                                     <rect key="frame" x="15" y="75" width="40" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                     <color key="textColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.000" minimumFontSize="17" id="p7q-Ud-nYh" userLabel="Amount No Border Style Text Field - 0.00" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
-                                    <rect key="frame" x="68" y="72" width="244" height="28"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="MPG-3J-rVc"/>
-                                    </connections>
-                                </textField>
-                                <view hidden="YES" contentMode="scaleToFill" id="hE6-gR-aYg" customClass="BCLine">
-                                    <rect key="frame" x="15" y="109" width="305" height="1"/>
+                                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" id="hE6-gR-aYg" customClass="BCLine">
+                                    <rect key="frame" x="15" y="112" width="305" height="1"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
@@ -201,6 +192,26 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="lWM-Kv-1GL"/>
+                                    </connections>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="8CA-Iw-4Gl" userLabel="ToDisclose">
+                                    <rect key="frame" x="285" y="71" width="35" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="disclosure">
+                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="feeOptionsClicked:" destination="-1" eventType="touchUpInside" id="39o-JP-E3b"/>
+                                    </connections>
+                                </button>
+                                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.000" minimumFontSize="17" id="p7q-Ud-nYh" userLabel="Amount No Border Style Text Field - 0.00" customClass="BCSecureTextField" customModule="Blockchain" customModuleProvider="target">
+                                    <rect key="frame" x="68" y="72" width="244" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="MPG-3J-rVc"/>
                                     </connections>
                                 </textField>
                             </subviews>
@@ -372,29 +383,29 @@
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="aeG-gf-oXV">
-                    <rect key="frame" x="15" y="144" width="100" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amount: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="aeG-gf-oXV">
+                    <rect key="frame" x="15" y="169" width="100" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FB0-NP-5do">
-                    <rect key="frame" x="15" y="173" width="100" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fee: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FB0-NP-5do">
+                    <rect key="frame" x="15" y="198" width="73" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2Ig-LA-4kK">
-                    <rect key="frame" x="235" y="144" width="70" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="2Ig-LA-4kK">
+                    <rect key="frame" x="235" y="169" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IUn-6N-qeo">
-                    <rect key="frame" x="123" y="144" width="104" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IUn-6N-qeo">
+                    <rect key="frame" x="123" y="169" width="104" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -415,15 +426,15 @@
                         <action selector="reallyDoPayment:" destination="-1" eventType="touchUpInside" id="jux-7i-9hi"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9B2-23-8j5">
-                    <rect key="frame" x="235" y="173" width="70" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CurrAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9B2-23-8j5">
+                    <rect key="frame" x="235" y="198" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6ll-Xx-4fm">
-                    <rect key="frame" x="123" y="173" width="104" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BtcAmt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6ll-Xx-4fm">
+                    <rect key="frame" x="123" y="198" width="104" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -455,20 +466,9 @@
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cbp-Qe-FKP">
-                    <rect key="frame" x="123" y="196" width="90" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                    <state key="normal" title="Customize Fee">
-                        <color key="titleColor" red="0.1058823529" green="0.54117647059999996" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="customizeFeeClicked:" destination="-1" eventType="touchUpInside" id="Dbt-ek-ZBN"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="left" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="llH-jD-d80">
-                    <rect key="frame" x="235" y="202" width="70" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="left" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="llH-jD-d80">
+                    <rect key="frame" x="96" y="200" width="19" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="help"/>
                     <connections>
                         <action selector="feeInformationClicked:" destination="-1" eventType="touchUpInside" id="ar4-F4-S7S"/>
@@ -484,7 +484,6 @@
                 <outlet property="btcAmountLabel" destination="IUn-6N-qeo" id="2cb-i6-6XZ"/>
                 <outlet property="btcFeeLabel" destination="6ll-Xx-4fm" id="qti-sQ-cI9"/>
                 <outlet property="btcTotalLabel" destination="vzP-xG-GPO" id="f2m-Cb-nwT"/>
-                <outlet property="customizeFeeButton" destination="Cbp-Qe-FKP" id="DVk-aP-z2F"/>
                 <outlet property="feeLabel" destination="FB0-NP-5do" id="TDC-m5-kZv"/>
                 <outlet property="fiatAmountLabel" destination="2Ig-LA-4kK" id="d1d-zZ-ISe"/>
                 <outlet property="fiatFeeLabel" destination="9B2-23-8j5" id="zEu-EG-IyE"/>

@@ -46,11 +46,14 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         topBar!.addSubview(headerLabel);
         
         descriptionLabel.center = CGPoint(x: view.center.x, y: descriptionLabel.center.y);
+        descriptionLabel.font = UIFont(name:"GillSans", size: Constants.FontSizes.SmallMedium)
         
         password!.center = CGPoint(x: view.center.x, y: password!.frame.origin.y)
         password!.setupOnePixelLine()
+        password!.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Small)
         
         continueButton!.center = CGPoint(x: view.center.x, y: continueButton!.frame.origin.y)
+        continueButton!.titleLabel!.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Large)
         
         closeButton = UIButton(type: UIButtonType.custom)
         closeButton!.frame = CGRect(x: self.view.frame.size.width - 80, y: 15, width: 80, height: 51);
@@ -100,7 +103,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
     
     func alertUserWithErrorMessage(_ message : String) {
         let alert = UIAlertController(title:  NSLocalizedString("Error", comment:""), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .default, handler: { (UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:""), style: .cancel, handler: { (UIAlertAction) -> Void in
              self.password?.text = ""
         }))
         NotificationCenter.default.addObserver(alert, selector: #selector(UIViewController.autoDismiss), name: NSNotification.Name(rawValue: "reloadToDismissViews"), object: nil)

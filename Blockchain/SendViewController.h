@@ -23,6 +23,7 @@
 #import "BCConfirmPaymentView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "BCLine.h"
+#import "FeeTypes.h"
 
 @class Wallet, ContactTransaction;
 
@@ -58,6 +59,7 @@
     IBOutlet UIButton *sendProgressCancelButton;
 
     IBOutlet UILabel *feeLabel;
+    IBOutlet UIButton *feeOptionsButton;
     IBOutlet UITextField *feeField;
     
     IBOutlet BCLine *lineBelowFromField;
@@ -103,13 +105,14 @@ typedef enum {
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)addressBookClicked:(id)sender;
 - (IBAction)closeKeyboardClicked:(id)sender;
+- (IBAction)feeOptionsClicked:(UIButton *)sender;
 
 - (void)selectFromAddress:(NSString *)address;
 - (void)selectToAddress:(NSString *)address;
 - (void)selectFromAccount:(int)account;
 - (void)selectToAccount:(int)account;
 
-- (void)updateSendBalance:(NSNumber *)balance;
+- (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 
 - (IBAction)sendPaymentClicked:(id)sender;
 - (IBAction)labelAddressClicked:(id)sender;
@@ -124,9 +127,9 @@ typedef enum {
 - (void)sendFromWatchOnlyAddress;
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee;
 - (void)didGetMaxFee:(NSNumber *)fee amount:(NSNumber *)amount dust:(NSNumber *)dust willConfirm:(BOOL)willConfirm;
-- (void)didGetFeeBounds:(NSArray *)bounds confirmationEstimation:(NSNumber *)confirmationEstimation maxAmounts:(NSArray *)maxAmounts maxFees:(NSArray *)maxFees;
+- (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee;
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize;
-- (void)didChangeForcedFee:(NSNumber *)fee dust:(NSNumber *)dust;
+- (void)didChangeSatoshiPerByte:(NSNumber *)sweepAmount fee:(NSNumber *)fee dust:(NSNumber *)dust updateType:(FeeUpdateType)updateType;
 
 - (void)setupTransferAll;
 - (void)getInfoForTransferAllFundsToDefaultAccount;
@@ -139,6 +142,7 @@ typedef enum {
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)reloadSymbols;
+- (void)reloadFeeAmountLabel;
 - (void)resetFromAddress;
 
 - (void)hideKeyboard;

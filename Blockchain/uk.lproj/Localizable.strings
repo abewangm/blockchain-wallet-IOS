@@ -1718,3 +1718,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Транзакція - це коли ви отримуєте чи відправляєте Біткойн.";
+
+/* (No Commment) */
+"Custom" = "Користувацький";
+
+/* (No Commment) */
+"Advanced users only" = "Лише для досвідчених користувачів";
+
+/* (No Commment) */
+"1+ hour" = "1+ година";
+
+/* (No Commment) */
+"Priority" = "Пріоритет";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 хв";
+
+/* (No Commment) */
+"Satoshi per byte" = "Сатоші за байт";
+
+/* (No Commment) */
+"sat/b" = "sat/б";
+
+/* (No Commment) */
+"High fee not necessary" = "Висока комісія не потрібна";
+
+/* (No Commment) */
+"Low fee not recommended" = "Низька комісія не рекомендується";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Ця функція рекомендується лише для досвідчених користувачів. Вибираючи власну комісію, ви ризикуєте переплатити або транзакція може застрягти.";
+
+/* (No Commment) */
+"Available now" = "Доступно зараз";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Купуйте біткойн прямо зі свого мобільного гаманця. Це - легко, просто і безпечно.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Вхід у веб-гаманець";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Перейдіть на blockchain.info/wallet/login на своєму комп'ютері.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Виберіть увійти через мобільний пристрій.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Скануйте QR-код знизу, використавши камеру свого мобільного пристрою.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Приховайте цей QR-код, поки ви не будете готові.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Зберігайте цей QR-код в таємниці!";
+
+/* (No Commment) */
+"Do not share it with others." = "Не показуйте його іншим.";
+
+/* (No Commment) */
+"Show QR Code" = "Показати QR-код";
+
+/* (No Commment) */
+"Hide QR Code" = "Приховати QR-код";
+
+/* (No Commment) */
+"U.S. Dollar" = "Долар США";
+
+/* (No Commment) */
+"Euro" = "Євро";
+
+/* (No Commment) */
+"lcelandic Króna" = "Ісландська крона";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Гонконгський долар";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Новий тайванський долар";
+
+/* (No Commment) */
+"Swiss Franc" = "Швейцарський франк";
+
+/* (No Commment) */
+"Danish Krone" = "Датська Крона";
+
+/* (No Commment) */
+"Chilean Peso" = "Чилійський песо";
+
+/* (No Commment) */
+"Canadian Dollar" = "Канадський долар";
+
+/* (No Commment) */
+"Indian Rupee" = "Індійська рупія";
+
+/* (No Commment) */
+"Chinese Yuan" = "Китайський юань";
+
+/* (No Commment) */
+"Thai Baht" = "Тайський бат";
+
+/* (No Commment) */
+"Australian Dollar" = "Австралійський долар";
+
+/* (No Commment) */
+"Singapore Dollar" = "Сінгапурський долар";
+
+/* (No Commment) */
+"South Korean Won" = "Південнокорейська вона";
+
+/* (No Commment) */
+"Japanese Yen" = "Японська ієна";
+
+/* (No Commment) */
+"Polish Zloty" = "Польський злотий";
+
+/* (No Commment) */
+"Great British Pound" = "Британський фунт стерлінгів";
+
+/* (No Commment) */
+"Swedish Krona" = "Шведська крона";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Новозеландський долар";
+
+/* (No Commment) */
+"Brazil Real" = "Бразильський реал";
+
+/* (No Commment) */
+"Russian Ruble" = "Російський рубль";

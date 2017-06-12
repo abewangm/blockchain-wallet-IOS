@@ -66,8 +66,6 @@
 #define BC_STRING_SEND_TO NSLocalizedString(@"Send to...", nil)
 #define BC_STRING_RECEIVE_TO NSLocalizedString(@"Receive to...", nil)
 #define BC_STRING_WHERE NSLocalizedString(@"Where", nil)
-#define BC_STRING_CONFIRM_SWEEP_TITLE NSLocalizedString(@"Use all funds", nil)
-#define BC_STRING_CONFIRM_SWEEP_MESSAGE_WANT_TO_SEND_ARGUMENT_BALANCE_MINUS_FEE_ARGUMENT_ARGUMENT_SEND_ARGUMENT NSLocalizedString(@"The amount you want to send (%@) is greater than the maximum amount you can spend minus the fee (%@ - %@). Would you like to send %@?", nil)
 
 #define BC_STRING_YOU_MUST_ENTER_A_LABEL NSLocalizedString(@"You must enter a label", nil)
 #define BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR NSLocalizedString(@"Label must have less than 18 characters", nil)
@@ -647,8 +645,9 @@
 #define BC_STRING_NEW_TAIWAN_DOLLAR NSLocalizedString(@"New Taiwan Dollar", @"")
 #define BC_STRING_SWISS_FRANC NSLocalizedString(@"Swiss Franc", @"")
 #define BC_STRING_DANISH_KRONE NSLocalizedString(@"Danish Krone", @"")
-#define BC_STRING_CHILEAN_PESO NSLocalizedString(@"Chilean, Peso", @"")
+#define BC_STRING_CHILEAN_PESO NSLocalizedString(@"Chilean Peso", @"")
 #define BC_STRING_CANADIAN_DOLLAR NSLocalizedString(@"Canadian Dollar", @"")
+#define BC_STRING_INDIAN_RUPEE NSLocalizedString(@"Indian Rupee", @"")
 #define BC_STRING_CHINESE_YUAN NSLocalizedString(@"Chinese Yuan", @"")
 #define BC_STRING_THAI_BAHT NSLocalizedString(@"Thai Baht", @"")
 #define BC_STRING_AUSTRALIAN_DOLLAR NSLocalizedString(@"Australian Dollar", @"")
@@ -708,3 +707,28 @@
 #define BC_STRING_OVERVIEW NSLocalizedString(@"Overview", nil)
 
 #define BC_STRING_ENABLED_EXCLAMATION NSLocalizedString(@"Enabled!", nil)
+
+#define BC_STRING_CUSTOM NSLocalizedString(@"Custom", nil)
+#define BC_STRING_ADVANCED_USERS_ONLY NSLocalizedString(@"Advanced users only", nil)
+#define BC_STRING_REGULAR BC_STRING_PASSWORD_STRENGTH_REGULAR
+#define BC_STRING_GREATER_THAN_ONE_HOUR NSLocalizedString(@"1+ hour", nil)
+#define BC_STRING_PRIORITY NSLocalizedString(@"Priority", nil)
+#define BC_STRING_LESS_THAN_ONE_HOUR NSLocalizedString(@"~0-60 min", nil)
+#define BC_STRING_SATOSHI_PER_BYTE NSLocalizedString(@"Satoshi per byte", nil)
+#define BC_STRING_SATOSHI_PER_BYTE_ABBREVIATED NSLocalizedString(@"sat/b", nil)
+#define BC_STRING_HIGH_FEE_NOT_NECESSARY NSLocalizedString(@"High fee not necessary", nil)
+#define BC_STRING_LOW_FEE_NOT_RECOMMENDED NSLocalizedString(@"Low fee not recommended", nil)
+#define BC_STRING_CUSTOM_FEE_WARNING NSLocalizedString(@"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck.", nil)
+
+#define BC_STRING_BUY_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
+#define BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION NSLocalizedString(@"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure.", nil)
+
+#define BC_STRING_LOG_IN_TO_WEB_WALLET NSLocalizedString(@"Log in to Web Wallet", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_ONE NSLocalizedString(@"Go to blockchain.info/wallet/login on your computer.", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_TWO NSLocalizedString(@"Select Log in via mobile.", nil)
+#define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_THREE NSLocalizedString(@"Using your computer's camera, scan the QR code below.", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_HIDDEN NSLocalizedString(@"Keep this QR code hidden until you're ready.", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_ONE NSLocalizedString(@"Keep this QR code safe!", nil)
+#define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_TWO NSLocalizedString(@"Do not share it with others.", nil)
+#define BC_STRING_SHOW_QR_CODE NSLocalizedString(@"Show QR Code", nil)
+#define BC_STRING_HIDE_QR_CODE NSLocalizedString(@"Hide QR Code", nil)

@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "תנועות להתרחש בעת שליחה וקבלה של ביטקוין.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "משהו השתבש, אנא נסה לפתוח מחדש ביטקוין לקנות שוב.";
+
+/* (No Commment) */
+"Custom" = "מותאם אישית";
+
+/* (No Commment) */
+"Advanced users only" = "למשתמשים מתקדמים בלבד";
+
+/* (No Commment) */
+"1+ hour" = "1+ שעה";
+
+/* (No Commment) */
+"Priority" = "עדיפות";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "סטושי לכל בייט";
+
+/* (No Commment) */
+"High fee not necessary" = "תשלום הגבוה לא הכרחי";
+
+/* (No Commment) */
+"Low fee not recommended" = "נמוך דמי לא מומלץ";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "תכונה זו מומלצת למשתמשים מתקדמים בלבד. על ידי בחירה אישית של דמי, את הסיכון משלם יותר מדי או העסקה שלך עלולה להיתקע.";
+
+/* (No Commment) */
+"Available now" = "זמין עכשיו";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "לקנות ביטקוין ישירות מהטלפון הנייד שלך הארנק. זה פשוט, חלקה ומאובטחת.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "היכנס לאתר האינטרנט הארנק";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "ללכת blockchain.info/wallet/login במחשב שלך.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "בחר באפשרות התחבר באמצעות הנייד.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "באמצעות המחשב של המצלמה, לסרוק את קוד QR שלהלן.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "לשמור את זה QR קוד מוסתר עד שאתה מוכן.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "לשמור על קוד QR זה בטוח!";
+
+/* (No Commment) */
+"Do not share it with others." = "לא לחלוק את זה עם אחרים.";
+
+/* (No Commment) */
+"Show QR Code" = "הצג קוד QR";
+
+/* (No Commment) */
+"Hide QR Code" = "להסתיר את קוד QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "ארה \" ב דולר";
+
+/* (No Commment) */
+"Euro" = "יורו";
+
+/* (No Commment) */
+"lcelandic Króna" = "איסלנדית, Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "דולר הונג קונג";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "דולר טאיוואני חדש";
+
+/* (No Commment) */
+"Swiss Franc" = "פרנק שוויצרי";
+
+/* (No Commment) */
+"Danish Krone" = "קרונה דנית";
+
+/* (No Commment) */
+"Chilean Peso" = "פזו צ ' יליאני";
+
+/* (No Commment) */
+"Canadian Dollar" = "דולר קנדי";
+
+/* (No Commment) */
+"Indian Rupee" = "רופיה הודית";
+
+/* (No Commment) */
+"Chinese Yuan" = "יואן סיני";
+
+/* (No Commment) */
+"Thai Baht" = "באט תאילנדי";
+
+/* (No Commment) */
+"Australian Dollar" = "דולר אוסטרלי";
+
+/* (No Commment) */
+"Singapore Dollar" = "דולר סינגפורי";
+
+/* (No Commment) */
+"South Korean Won" = "דרום קוריאה זכתה";
+
+/* (No Commment) */
+"Japanese Yen" = "ין יפני";
+
+/* (No Commment) */
+"Polish Zloty" = "זלוטי פולני";
+
+/* (No Commment) */
+"Great British Pound" = "לירה שטרלינג";
+
+/* (No Commment) */
+"Swedish Krona" = "קרונה שבדית";
+
+/* (No Commment) */
+"New Zealand Dollar" = "דולר ניו זילנד";
+
+/* (No Commment) */
+"Brazil Real" = "ברזיל האמיתית";
+
+/* (No Commment) */
+"Russian Ruble" = "הרובל הרוסי";

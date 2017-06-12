@@ -65,7 +65,7 @@ typedef enum {
 {
     [super viewWillAppear:animated];
     
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S) {
+    if (IS_USING_SCREEN_SIZE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     

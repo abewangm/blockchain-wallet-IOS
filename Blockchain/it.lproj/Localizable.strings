@@ -1718,3 +1718,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Le transazioni avvengono quando invii e ricevi bitcoin.";
+
+/* (No Commment) */
+"Custom" = "Personalizzata";
+
+/* (No Commment) */
+"Advanced users only" = "Solo utenti avanzati";
+
+/* (No Commment) */
+"1+ hour" = "1+ ora";
+
+/* (No Commment) */
+"Priority" = "Priorità";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi per byte";
+
+/* (No Commment) */
+"sat/b" = "sat/b";
+
+/* (No Commment) */
+"High fee not necessary" = "Commissione alta non necessaria";
+
+/* (No Commment) */
+"Low fee not recommended" = "Commissione bassa non consigliata";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Questa funzione è consigliata solo per gli utenti avanzati. Scegliendo una commissione personalizzata, rischi di pagare troppo, oppure la tua transazione potrebbe bloccarsi.";
+
+/* (No Commment) */
+"Available now" = "Disponibile ora";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Acquista bitcoin direttamente dal tuo mobile wallet. È semplice, rapido e sicuro.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Accedi al Web Wallet";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Visita blockchain.info/wallet/login dal tuo computer.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Seleziona Accedi via mobile.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Utilizzando la fotocamera del tuo computer, scansiona il codice QR qui sotto.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Tieni nascosto questo codice QR fino a quando non sei pronto.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Tieni questo codice QR al sicuro!";
+
+/* (No Commment) */
+"Do not share it with others." = "Non condividerlo con altri.";
+
+/* (No Commment) */
+"Show QR Code" = "Mostra codice QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Nascondi codice QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Dollaro USA";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "Corona islandese";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Dollaro di Hong Kong";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Nuovo Dollaro di Taiwan";
+
+/* (No Commment) */
+"Swiss Franc" = "Franco svizzero";
+
+/* (No Commment) */
+"Danish Krone" = "Corona danese";
+
+/* (No Commment) */
+"Chilean Peso" = "Peso cileno";
+
+/* (No Commment) */
+"Canadian Dollar" = "Dollaro canadese";
+
+/* (No Commment) */
+"Indian Rupee" = "Rupia indiana";
+
+/* (No Commment) */
+"Chinese Yuan" = "Renminbi cinese";
+
+/* (No Commment) */
+"Thai Baht" = "Baht tailandese";
+
+/* (No Commment) */
+"Australian Dollar" = "Dollaro australiano";
+
+/* (No Commment) */
+"Singapore Dollar" = "Dollaro di Singapore";
+
+/* (No Commment) */
+"South Korean Won" = "Won sudcoreano";
+
+/* (No Commment) */
+"Japanese Yen" = "Yen giapponese";
+
+/* (No Commment) */
+"Polish Zloty" = "Zloty polacco";
+
+/* (No Commment) */
+"Great British Pound" = "Sterlina britannica";
+
+/* (No Commment) */
+"Swedish Krona" = "Corona svedese";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Dollaro neozelandese";
+
+/* (No Commment) */
+"Brazil Real" = "Real brasiliano";
+
+/* (No Commment) */
+"Russian Ruble" = "Rublo russo";

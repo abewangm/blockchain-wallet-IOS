@@ -31,7 +31,10 @@
 - (void)didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
     if ([challenge.protectionSpace.host isEqualToString:URL_API_COINIFY] ||
-        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX]) {
+        [challenge.protectionSpace.host isEqualToString:URL_API_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS] ||
+        [challenge.protectionSpace.host isEqualToString:URL_QUOTES_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_KYC_SFOX]) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     } else {
         [self respondToChallenge:challenge completionHandler:completionHandler];
@@ -57,7 +60,7 @@
     // Get local and remote cert data
     NSData *remoteCertificateData = CFBridgingRelease(SecCertificateCopyData(certificate));
     
-    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:CERTIFICATE_SERVER_NAME ofType:CERTIFICATE_FILE_TYPE_DER];
+    NSString *pathToCert = [[NSBundle mainBundle] pathForResource:[self getCertificateName] ofType:CERTIFICATE_FILE_TYPE_DER];
     NSData *localCertificate = [NSData dataWithContentsOfFile:pathToCert];
     
     // The pinnning check
@@ -69,7 +72,7 @@
         NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
-        [self.delegate failedToValidateCertificate];
+        [self.delegate failedToValidateCertificate:challenge.protectionSpace.host];
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, NULL);
     }
 }
@@ -91,6 +94,17 @@
     X509_free(certificateX509);
     
     return publicKeyString;
+}
+
+- (NSString *)getCertificateName
+{
+    NSDictionary *certNames = @{ENV_INDEX_DEV : CERTIFICATE_SERVER_NAME_DEV,
+                                ENV_INDEX_STAGING : CERTIFICATE_SERVER_NAME_STAGING,
+                                ENV_INDEX_PRODUCTION : CERTIFICATE_SERVER_NAME_PRODUCTION,
+                                ENV_INDEX_TESTNET : CERTIFICATE_SERVER_NAME_TESTNET};
+    
+    NSString *certName = [certNames objectForKey:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ENV]];
+    return certName;
 }
 
 @end

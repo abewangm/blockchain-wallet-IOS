@@ -52,6 +52,9 @@
     
     IBOutlet UIButton *scanPairingCodeButton;
     IBOutlet UIButton *manualPairButton;
+    IBOutlet UITextView *manualPairStepOneTextView;
+    IBOutlet UITextView *manualPairStepTwoTextView;
+    IBOutlet UITextView *manualPairStepThreeTextView;
     
     BOOL validateSecondPassword;
     IBOutlet UILabel *secondPasswordDescriptionLabel;

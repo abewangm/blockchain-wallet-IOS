@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Συναλλαγές εμφανίζονται όταν στέλνετε και λαμβάνετε bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Κάτι πήγε στραβά, Παρακαλώ δοκιμάστε επαναλειτουργία αγοράστε Bitcoin και πάλι.";
+
+/* (No Commment) */
+"Custom" = "Συνήθειας";
+
+/* (No Commment) */
+"Advanced users only" = "Μόνο για προχωρημένους χρήστες";
+
+/* (No Commment) */
+"1+ hour" = "1+ ώρα";
+
+/* (No Commment) */
+"Priority" = "Προτεραιότητα";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi ανά byte";
+
+/* (No Commment) */
+"High fee not necessary" = "Υψηλή αμοιβή δεν είναι απαραίτητο";
+
+/* (No Commment) */
+"Low fee not recommended" = "Χαμηλή αμοιβή δεν συνιστάται";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Αυτή η λειτουργία συνιστάται μόνο για προχωρημένους χρήστες. Επιλέγοντας μια προσαρμοσμένη τέλος, υπάρχει κίνδυνος υπερβολικές ή της συναλλαγής σας μπορεί να κολλήσει.";
+
+/* (No Commment) */
+"Available now" = "Διαθέσιμο τώρα";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Αγοράστε bitcoin απευθείας από το κινητό σας πορτοφόλι. Είναι απλή, απρόσκοπτη και ασφαλή.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Συνδεθείτε στο Web Πορτοφόλι";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Πάμε να blockchain.info/wallet/login στον υπολογιστή σας.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Επιλέξτε σύνδεση μέσω κινητής τηλεφωνίας.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Χρήση του υπολογιστή σας κάμερα, σάρωση του QR κώδικα παρακάτω.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Κρατήστε αυτόν τον κωδικό QR για κρυμμένα μέχρι να είστε έτοιμοι.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Κρατήστε αυτόν τον κωδικό QR για ασφαλή!";
+
+/* (No Commment) */
+"Do not share it with others." = "Μην το μοιραστώ με άλλους.";
+
+/* (No Commment) */
+"Show QR Code" = "Εμφάνιση Κώδικα QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Απόκρυψη Κώδικα QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Δολάριο ΗΠΑ";
+
+/* (No Commment) */
+"Euro" = "Ευρώ";
+
+/* (No Commment) */
+"lcelandic Króna" = "ισλανδός Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Δολάριο Χονγκ-Κονγκ";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Νέο Δολάριο Ταϊβάν";
+
+/* (No Commment) */
+"Swiss Franc" = "Ελβετικό Φράγκο";
+
+/* (No Commment) */
+"Danish Krone" = "Δανική Κορώνα";
+
+/* (No Commment) */
+"Chilean Peso" = "Πέσο Χιλής";
+
+/* (No Commment) */
+"Canadian Dollar" = "Καναδικό Δολάριο";
+
+/* (No Commment) */
+"Indian Rupee" = "Ινδική Ρουπία";
+
+/* (No Commment) */
+"Chinese Yuan" = "Κινεζικού Yuan";
+
+/* (No Commment) */
+"Thai Baht" = "Το Μπατ Ταϊλάνδης";
+
+/* (No Commment) */
+"Australian Dollar" = "Δολάριο Αυστραλίας";
+
+/* (No Commment) */
+"Singapore Dollar" = "Δολάριο Σιγκαπούρης";
+
+/* (No Commment) */
+"South Korean Won" = "Νότιας Κορέας Won";
+
+/* (No Commment) */
+"Japanese Yen" = "Ιαπωνικά Γιεν";
+
+/* (No Commment) */
+"Polish Zloty" = "Ζλότι Πολωνίας";
+
+/* (No Commment) */
+"Great British Pound" = "Μεγάλη Βρετανική Λίρα";
+
+/* (No Commment) */
+"Swedish Krona" = "Σουηδική Κορώνα";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Δολάριο Της Νέας Ζηλανδίας";
+
+/* (No Commment) */
+"Brazil Real" = "Βραζιλία Πραγματικό";
+
+/* (No Commment) */
+"Russian Ruble" = "Το Ρούβλι Ρωσίας";

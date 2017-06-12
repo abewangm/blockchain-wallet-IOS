@@ -1768,3 +1768,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Transakce nastanou, když pošlete a obdržíte bitcoiny.";
+
+/* (No Commment) */
+"Custom" = "Vlastní";
+
+/* (No Commment) */
+"Advanced users only" = "Pouze pokročilí uživatelé";
+
+/* (No Commment) */
+"1+ hour" = "Více než 1 hodina";
+
+/* (No Commment) */
+"Priority" = "Priorita";
+
+/* (No Commment) */
+"~0-60 min" = "~0−60 minut";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi na bajt";
+
+/* (No Commment) */
+"sat/b" = "sat/b";
+
+/* (No Commment) */
+"High fee not necessary" = "Vysoký poplatek není nutný";
+
+/* (No Commment) */
+"Low fee not recommended" = "Malý poplatek nedoporučen";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Tato funkce je dostupná pouze pro pokročilé uživatele. Volbou vlastního poplatku riskujete přeplacení nebo může vaše transakce uvíznout.";
+
+/* (No Commment) */
+"Available now" = "Dostupné nyní";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Kupujte bitcoin přímo ze své mobilní peněženky. Je to jednoduché, konzistentní a zabezpečené.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Přihlásit se na webovou peněženku";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Přejděte na svém počítači na blockchain.info/wallet/login.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Vyberte přes mobilní zařízení protokol.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Pomocí kamery ve svém počítači naskenujte níže uvedený kód QR.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Nechte tento kód QR skrytý, dokud nebudete připraveni.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Nechte tento kód QR v bezpečí!";
+
+/* (No Commment) */
+"Do not share it with others." = "Nesdílejte ho s ostatními.";
+
+/* (No Commment) */
+"Show QR Code" = "Zobrazit kód QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Skrýt kód QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Americký dolar";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "Islandská koruna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hongkongský dolar";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Nový tchajwanský dolar";
+
+/* (No Commment) */
+"Swiss Franc" = "Švýcarský frank";
+
+/* (No Commment) */
+"Danish Krone" = "Dánská koruna";
+
+/* (No Commment) */
+"Chilean Peso" = "Chilské peso";
+
+/* (No Commment) */
+"Canadian Dollar" = "Kanadský dolar";
+
+/* (No Commment) */
+"Indian Rupee" = "Indická rupie";
+
+/* (No Commment) */
+"Chinese Yuan" = "Čínský jüan";
+
+/* (No Commment) */
+"Thai Baht" = "Thajský baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Australský dolar";
+
+/* (No Commment) */
+"Singapore Dollar" = "Singapurský dolar";
+
+/* (No Commment) */
+"South Korean Won" = "Jihokorejský won";
+
+/* (No Commment) */
+"Japanese Yen" = "Japonský jen";
+
+/* (No Commment) */
+"Polish Zloty" = "Polský złoty";
+
+/* (No Commment) */
+"Great British Pound" = "Libra šterlinků";
+
+/* (No Commment) */
+"Swedish Krona" = "Švédská koruna";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Novozélandský dolar";
+
+/* (No Commment) */
+"Brazil Real" = "Brazilský real";
+
+/* (No Commment) */
+"Russian Ruble" = "Ruský rubl";

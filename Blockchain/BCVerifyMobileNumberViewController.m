@@ -37,7 +37,7 @@
     CGFloat promptFrameAdjustY = 0;
     CGFloat textFieldFrameAdjustY = 0;
     
-    if ([[UIScreen mainScreen] bounds].size.height > HEIGHT_IPHONE_4S) {
+    if (!(IS_USING_SCREEN_SIZE_4S)) {
         promptFrameAdjustY = 8;
         textFieldFrameAdjustY = 20;
     }
@@ -193,6 +193,14 @@
 
 - (void)verifyMobileNumberError
 {
+    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
+    
+    navigationController.onDismissViewController = ^() {
+        if (self.view.window) {
+            [self.delegate alertUserToVerifyMobileNumber];
+        }
+    };
+    
     [self reload];
 }
 

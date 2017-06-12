@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Transakcije izvedene pri pošiljanju in prejemanju bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Nekaj je šlo narobe, poskusite ponovno kupiti Bitcoin znova.";
+
+/* (No Commment) */
+"Custom" = "Po meri";
+
+/* (No Commment) */
+"Advanced users only" = "Naprednim uporabnikom,";
+
+/* (No Commment) */
+"1+ hour" = "1+ ure";
+
+/* (No Commment) */
+"Priority" = "Prednost";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi na bajt";
+
+/* (No Commment) */
+"High fee not necessary" = "Visoke takse ni potrebno";
+
+/* (No Commment) */
+"Low fee not recommended" = "Majhna pristojbina ni priporočljivo";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Ta funkcija je priporočljivo samo za napredne uporabnike. Z izbiro meri pristojbina, tvegate preplačilu ali vaš posel lahko zatakne.";
+
+/* (No Commment) */
+"Available now" = "Zdaj je na voljo";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Nakup bitcoin neposredno iz mobilne denarnice. To je preprost, brezhibno in varno.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Prijavite se v Spletne Denarnice";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Pojdi na blockchain.info/wallet/login na vaš računalnik.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Izberite Prijavite prek mobilnih.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Uporaba računalnika v digitalni fotoaparat, skeniranje QR kodo spodaj.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Da to QR kodo skrite, dokler ne boste pripravljeni.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Da to QR kodo na varnem!";
+
+/* (No Commment) */
+"Do not share it with others." = "Ne delite z drugimi.";
+
+/* (No Commment) */
+"Show QR Code" = "Prikaži QR Kodo";
+
+/* (No Commment) */
+"Hide QR Code" = "Skrij QR Kodo";
+
+/* (No Commment) */
+"U.S. Dollar" = "AMERIŠKI Dolar";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "lcelandic Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hong Kong Dollar";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Nova Tajvanski Dolar";
+
+/* (No Commment) */
+"Swiss Franc" = "Švicarski Frank";
+
+/* (No Commment) */
+"Danish Krone" = "Danske Krone";
+
+/* (No Commment) */
+"Chilean Peso" = "Čilski Peso";
+
+/* (No Commment) */
+"Canadian Dollar" = "Kanadski Dolar";
+
+/* (No Commment) */
+"Indian Rupee" = "Indijska Rupija";
+
+/* (No Commment) */
+"Chinese Yuan" = "Kitajski Yuan";
+
+/* (No Commment) */
+"Thai Baht" = "Tajski Baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Avstralski Dolar";
+
+/* (No Commment) */
+"Singapore Dollar" = "Dolar Singapur";
+
+/* (No Commment) */
+"South Korean Won" = "Južnokorejski Won";
+
+/* (No Commment) */
+"Japanese Yen" = "Japonski Jen";
+
+/* (No Commment) */
+"Polish Zloty" = "Poljski Zlot";
+
+/* (No Commment) */
+"Great British Pound" = "Veliko Britanski Funt";
+
+/* (No Commment) */
+"Swedish Krona" = "Švedska Krona";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Novozelandski Dolar";
+
+/* (No Commment) */
+"Brazil Real" = "Brazilski Real";
+
+/* (No Commment) */
+"Russian Ruble" = "Ruski Rubelj";

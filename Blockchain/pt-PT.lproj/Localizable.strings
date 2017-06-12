@@ -173,13 +173,13 @@
 "Automatically" = "Automaticamente";
 
 /* No comment provided by engineer. */
-"BACKUP FUNDS" = "FUNDOS DE RESERVA";
+"BACKUP FUNDS" = "BACKUP DE FUNDOS";
 
 /* (No Commment) */
 "Backup" = "Backup de";
 
 /* No comment provided by engineer. */
-"Backup Funds" = "Fundos de reserva";
+"Backup Funds" = "Backup de Fundos";
 
 /* (No Commment) */
 "Backup Phrase" = "Frase de backup";
@@ -278,7 +278,7 @@
 "Connection timed out. Please check your internet connection." = "Conexão expirou. Por favor, verifique sua conexão de internet.";
 
 /* (No Commment) */
-"Continue" = "Continue";
+"Continue" = "Continuar";
 
 /* (No Commment) */
 "Copied to clipboard" = "Copiado para a área de transferência";
@@ -377,7 +377,7 @@
 "Done" = "Feito";
 
 /* (No Commment) */
-"Downloading Wallet" = "Transferindo a carteira";
+"Downloading Wallet" = "A transferir carteira";
 
 /* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Backup de carteira de fácil um tempo mantém você no controle de seus fundos";
@@ -937,7 +937,7 @@
 "Regular" = "Regular";
 
 /* (No Commment) */
-"Request" = "Solicitação de";
+"Request" = "Enviar pedido";
 
 /* (No Commment) */
 "Request Amount" = "Quantidade de pedido";
@@ -1075,13 +1075,13 @@
 "Surge Occurring" = "Pico ocorrendo";
 
 /* (No Commment) */
-"Swipe to Receive" = "Furto a Receber";
+"Swipe to Receive" = "Deslize para Receber";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronização de carteira";
 
 /* (No Commment) */
-"Tap to copy this address. Share it with the sender via email or text." = "Torneira para copiar este endereço. Compartilhá-lo com o remetente via email ou texto.";
+"Tap to copy this address. Share it with the sender via email or text." = "Toque para copiar este endereço. Compartilhe com o remetente via email ou texto.";
 
 /* (No Commment) */
 "Terms of Service" = "Termos de serviço";
@@ -1628,13 +1628,13 @@
 
 "START BACKUP" = "INICIAR CÓPIA DE SEGURANÇA";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
 "Create a Wallet" = "Criar uma carteira";
 
 "Log In" = "Iniciar sessão";
 
-"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar em sua carteira de Blockchain.";
+"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar na sua carteira de Blockchain.";
 
 "Forgot Password?" = "Esqueceu a senha?";
 
@@ -1644,27 +1644,27 @@
 
 "Enter Email Address" = "Digite o endereço de E-mail";
 
-"Update Mobile" = "Mobile de atualização";
+"Update Mobile" = "Atualização Mobile";
 
-"Enter Mobile Number" = "Digite o número do celular";
+"Enter Mobile Number" = "Digite o número do telemóvel";
 
 "Balances" = "Saldos";
 
 "Transactions occur when you send and receive bitcoin." = "As transações ocorrem quando você envia e recebe bitcoin.";
 
-"Your Transactions" = "Suas transações";
+"Your Transactions" = "As suas transações";
 
 "Backup Complete" = "Backup completo";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso a sua frase de recuperação pode acessar seu bitcoin, então mantê-lo off-line em algum lugar seguro.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu bitcoin, então mantenha-a off-line e em algum lugar seguro.";
 
-"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A palavra 12 seguinte frase de recuperação dará acesso aos seus fundos no caso de você perder sua senha.";
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A seguinte frase de recuperação de 12 palavras dará acesso aos seus fundos no caso de você perder a sua senha.";
 
 "Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Não se esqueça de escrever sua frase em um pedaço de papel e mantê-lo em algum lugar seguro.";
 
-"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a seguinte palavra 12 recuperação frase exatamente como eles aparecem e nesta ordem:";
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a frase de recuperação de 12 palavras exatamente pela mesma ordem que aparecem:";
 
 "PREVIOUS" = "ANTERIOR";
 
@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "As transações ocorrem quando você envia e recebe bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Algo deu errado, por favor, tente reabrir o Bitcoin comprar novamente.";
+
+/* (No Commment) */
+"Custom" = "Personalizado";
+
+/* (No Commment) */
+"Advanced users only" = "Somente para usuários avançados";
+
+/* (No Commment) */
+"1+ hour" = "1+ hora";
+
+/* (No Commment) */
+"Priority" = "Prioridade";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi por byte";
+
+/* (No Commment) */
+"High fee not necessary" = "Alta taxa de não necessário";
+
+/* (No Commment) */
+"Low fee not recommended" = "Baixa taxa não recomendado";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Este recurso é recomendado apenas para usuários avançados. Escolhendo um costume taxa, você corre o risco de pagar a mais ou a sua transação pode ficar preso.";
+
+/* (No Commment) */
+"Available now" = "Disponível agora";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Comprar bitcoin diretamente do seu celular, carteira. É simples, transparente e segura.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Iniciar sessão no Web Carteira";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Ir para blockchain.info/wallet/login em seu computador.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Seleccione Registo na via celular.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Usando sua câmera do computador, digitalizar o código QR abaixo.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Manter este código QR escondidas até que você esteja pronto.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Manter este código QR seguro!";
+
+/* (No Commment) */
+"Do not share it with others." = "Não o partilhe com outros.";
+
+/* (No Commment) */
+"Show QR Code" = "Mostrar Código QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Ocultar Código QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Dólar EUA";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "lcelandic Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "O Dólar De Hong Kong";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Dólar De Formosa Novo";
+
+/* (No Commment) */
+"Swiss Franc" = "Franco Suíço";
+
+/* (No Commment) */
+"Danish Krone" = "Krone Dinamarquês";
+
+/* (No Commment) */
+"Chilean Peso" = "Peso Chileno";
+
+/* (No Commment) */
+"Canadian Dollar" = "Dólar Canadense";
+
+/* (No Commment) */
+"Indian Rupee" = "Rúpia Indiana";
+
+/* (No Commment) */
+"Chinese Yuan" = "Yuan Chinês";
+
+/* (No Commment) */
+"Thai Baht" = "Baht Thai";
+
+/* (No Commment) */
+"Australian Dollar" = "Dólar Australiano";
+
+/* (No Commment) */
+"Singapore Dollar" = "Dólar De Singapore";
+
+/* (No Commment) */
+"South Korean Won" = "Sul-Coreano Ganhou";
+
+/* (No Commment) */
+"Japanese Yen" = "O Iene Japonês";
+
+/* (No Commment) */
+"Polish Zloty" = "Zloty Polonês";
+
+/* (No Commment) */
+"Great British Pound" = "Grande Libra Britânica";
+
+/* (No Commment) */
+"Swedish Krona" = "Krona De Sueco";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Dólar Da Nova Zelândia";
+
+/* (No Commment) */
+"Brazil Real" = "Brasil Reais";
+
+/* (No Commment) */
+"Russian Ruble" = "O Rublo Russo";

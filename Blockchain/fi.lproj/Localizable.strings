@@ -1693,3 +1693,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Tapahtumat silloin, kun lähetät ja vastaanotat bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Jotain meni pieleen, kokeile uudelleen ostaa Bitcoin uudelleen.";
+
+/* (No Commment) */
+"Custom" = "Custom";
+
+/* (No Commment) */
+"Advanced users only" = "Vain kokeneet käyttäjät";
+
+/* (No Commment) */
+"1+ hour" = "1+ h";
+
+/* (No Commment) */
+"Priority" = "Etusijalla";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi per tavu";
+
+/* (No Commment) */
+"High fee not necessary" = "Korkea maksu ole tarpeen";
+
+/* (No Commment) */
+"Low fee not recommended" = "Pieni maksu ei suositella";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Tätä toimintoa suositellaan vain kokeneille käyttäjille. Valitsemalla custom maksu, olet vaarassa overpaying tai tapahtuma voi saada kiinni.";
+
+/* (No Commment) */
+"Available now" = "Nyt saatavilla";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Ostaa bitcoineja suoraan mobiili lompakko. Se on yksinkertainen, saumaton ja turvallinen.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Kirjaudu sisään Web-Lompakko";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Mene blockchain.info/wallet/login teidän tietokone.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Valitse Kirjaudu sisään kautta mobiili.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Käyttää tietokoneen kameraa, skannata QR-koodin alla.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Pidä tämä QR-koodi piilossa, kunnes olet valmis.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Pidä tämä QR-koodi turvallinen!";
+
+/* (No Commment) */
+"Do not share it with others." = "Älä jaa se muiden kanssa.";
+
+/* (No Commment) */
+"Show QR Code" = "Näytä QR-Koodi";
+
+/* (No Commment) */
+"Hide QR Code" = "Piilota QR-Koodi";
+
+/* (No Commment) */
+"U.S. Dollar" = "YHDYSVALTAIN Dollari";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "islanniksi Kruunu";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hong Kongin Dollari";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Uusi Taiwanin Dollari";
+
+/* (No Commment) */
+"Swiss Franc" = "Sveitsin Frangi";
+
+/* (No Commment) */
+"Danish Krone" = "Tanskan Kruunu";
+
+/* (No Commment) */
+"Chilean Peso" = "Chilen Peso";
+
+/* (No Commment) */
+"Canadian Dollar" = "Kanadan Dollari";
+
+/* (No Commment) */
+"Indian Rupee" = "Intian Rupia";
+
+/* (No Commment) */
+"Chinese Yuan" = "Kiinan Yuan";
+
+/* (No Commment) */
+"Thai Baht" = "Thaimaan Baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Australian Dollari";
+
+/* (No Commment) */
+"Singapore Dollar" = "Singaporen Dollari";
+
+/* (No Commment) */
+"South Korean Won" = "Etelä-Korean Wonia";
+
+/* (No Commment) */
+"Japanese Yen" = "Japanin Jeni";
+
+/* (No Commment) */
+"Polish Zloty" = "Puolan Zloty";
+
+/* (No Commment) */
+"Great British Pound" = "Great British Punta";
+
+/* (No Commment) */
+"Swedish Krona" = "Ruotsin Kruunu";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Uuden-Seelannin Dollari";
+
+/* (No Commment) */
+"Brazil Real" = "Brasilian Real";
+
+/* (No Commment) */
+"Russian Ruble" = "Venäjän Rupla";

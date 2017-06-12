@@ -199,6 +199,11 @@
 		C75F70E71E2684FF005B4EAF /* ContactTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */; };
 		C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E91E2685CA005B4EAF /* ContactTransaction.m */; };
 		C790E0F81E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */; };
+		C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */; };
+		C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */; };
+		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
+		C72D6CC71EC647200000F922 /* dev.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC51EC647090000F922 /* dev.der */; };
+		C72D6CC81EC6472D0000F922 /* testnet.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC61EC647090000F922 /* testnet.der */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -240,6 +245,7 @@
 		C9BE91891945D8F600FD516D /* PEPin-off.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE91791945D8F600FD516D /* PEPin-off.png */; };
 		C9BE918A1945D8F600FD516D /* PEPin-on.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BE917A1945D8F600FD516D /* PEPin-on.png */; };
 		C9BE918C1945F5FC00FD516D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE918B1945F5FC00FD516D /* Images.xcassets */; };
+		CFA0671F1E65D426008456C1 /* WebLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA0671E1E65D426008456C1 /* WebLoginViewController.m */; };
 		CFD602B11E64AC2D006F6208 /* wallet-ios.js in Resources */ = {isa = PBXBuildFile; fileRef = CFD602B01E64AC2D006F6208 /* wallet-ios.js */; };
 		ECD244EB19A8AC45004B1F40 /* PEKeyboard-3-done.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */; };
 		ECD244EC19A8AC45004B1F40 /* PEKeyboard-3-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */; };
@@ -1016,6 +1022,14 @@
 		C790E0F21E4913F00063D141 /* Blockchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blockchain.entitlements; sourceTree = "<group>"; };
 		C790E0F61E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+TimeAgoString.h"; sourceTree = "<group>"; };
 		C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+TimeAgoString.m"; sourceTree = "<group>"; };
+		C72D6CBD1EC0B4AB0000F922 /* BCFeeSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFeeSelectionView.h; sourceTree = "<group>"; };
+		C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFeeSelectionView.m; sourceTree = "<group>"; };
+		C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeeTableCell.h; sourceTree = "<group>"; };
+		C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeeTableCell.m; sourceTree = "<group>"; };
+		C72D6CC31EC646F30000F922 /* staging.der */ = {isa = PBXFileReference; lastKnownFileType = file; name = staging.der; path = ../staging.der; sourceTree = "<group>"; };
+		C72D6CC51EC647090000F922 /* dev.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = dev.der; sourceTree = SOURCE_ROOT; };
+		C72D6CC61EC647090000F922 /* testnet.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = testnet.der; sourceTree = SOURCE_ROOT; };
+		C72D6CC91ED3472D0000F922 /* FeeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeeTypes.h; sourceTree = "<group>"; };
 		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1067,6 +1081,8 @@
 		C9BE91791945D8F600FD516D /* PEPin-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-off.png"; sourceTree = "<group>"; };
 		C9BE917A1945D8F600FD516D /* PEPin-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEPin-on.png"; sourceTree = "<group>"; };
 		C9BE918B1945F5FC00FD516D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		CFA0671E1E65D426008456C1 /* WebLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLoginViewController.m; sourceTree = "<group>"; };
+		CFA067201E65D49C008456C1 /* WebLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLoginViewController.h; sourceTree = "<group>"; };
 		CFD602B01E64AC2D006F6208 /* wallet-ios.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "wallet-ios.js"; sourceTree = "<group>"; };
 		ECD244E119A8AC45004B1F40 /* PEKeyboard-3-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-done.png"; sourceTree = "<group>"; };
 		ECD244E219A8AC45004B1F40 /* PEKeyboard-3-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PEKeyboard-3-dot.png"; sourceTree = "<group>"; };
@@ -1422,6 +1438,7 @@
 				237356B51DF894CF003940A7 /* Contact.m */,
 				23256A571DF1CFF7002B7A04 /* Invitation.h */,
 				23256A581DF1CFF7002B7A04 /* Invitation.m */,
+				C72D6CC91ED3472D0000F922 /* FeeTypes.h */,
 				23964C011DCA3F19001323BE /* KeyPair.h */,
 				23964C021DCA3F19001323BE /* KeyPair.m */,
 				231A66EC1DB9434B0043F862 /* HDNode.h */,
@@ -1585,6 +1602,8 @@
 				FACF69511A57164B00590E04 /* MerchantMapDetailViewController.m */,
 				FA63233A1A433BEA00EB3974 /* MerchantMapViewController.h */,
 				FA63233B1A433BEA00EB3974 /* MerchantMapViewController.m */,
+				CFA0671E1E65D426008456C1 /* WebLoginViewController.m */,
+				CFA067201E65D49C008456C1 /* WebLoginViewController.h */,
 				9FCA4D141514949500ECDFBE /* ReceiveCoinsViewController.h */,
 				9FCA4D151514949500ECDFBE /* ReceiveCoinsViewController.m */,
 				9FCA4D19151494BF00ECDFBE /* SendViewController.h */,
@@ -1743,6 +1762,9 @@
 		C9D4B2AF193E023C00EDA9EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C72D6CC51EC647090000F922 /* dev.der */,
+				C72D6CC61EC647090000F922 /* testnet.der */,
+				C72D6CC31EC646F30000F922 /* staging.der */,
 				23FDEFA11D6E21A800FC80D6 /* blockchain.der */,
 				C9BE918B1945F5FC00FD516D /* Images.xcassets */,
 				C9D4B2B0193E024700EDA9EA /* Sounds */,
@@ -1789,6 +1811,10 @@
 				C75F70E31E241D69005B4EAF /* BCContactRequestView.m */,
 				2330AA9B1E085F5700281E6F /* ContactTableViewCell.h */,
 				2330AA9C1E085F5700281E6F /* ContactTableViewCell.m */,
+				C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */,
+				C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */,
+				C72D6CBD1EC0B4AB0000F922 /* BCFeeSelectionView.h */,
+				C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */,
 				C79261B31E8ADF0300C87CED /* BCCardView.h */,
 				C79261B41E8ADF0300C87CED /* BCCardView.m */,
 				238FC4D01DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.h */,
@@ -1951,6 +1977,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72D6CC81EC6472D0000F922 /* testnet.der in Resources */,
+				C72D6CC71EC647200000F922 /* dev.der in Resources */,
+				C72D6CC41EC646F30000F922 /* staging.der in Resources */,
 				C790E11A1E52061B0063D141 /* Montserrat-Regular.ttf in Resources */,
 				C790E1161E52061B0063D141 /* Montserrat-Light.ttf in Resources */,
 				23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */,
@@ -2054,7 +2083,7 @@
 		};
 		23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2062,9 +2091,9 @@
 			name = "Get SSL Certificate";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "cd ${SRCROOT} && openssl s_client -connect blockchain.info:443 -showcerts < /dev/null | openssl x509 -outform DER > blockchain.der";
+			shellScript = "cd ${SRCROOT} && sh ./scripts/update-certs.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2163,6 +2192,7 @@
 				A2599BA71B0B726900C2EA81 /* BackupVerifyViewController.swift in Sources */,
 				23107F831BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m in Sources */,
 				23FB5C131D9ABB8B0008C6AB /* TransactionDetailStatusCell.m in Sources */,
+				CFA0671F1E65D426008456C1 /* WebLoginViewController.m in Sources */,
 				A2599BA51B0B725400C2EA81 /* BackupWordsViewController.swift in Sources */,
 				23444F7E1DCD213D00573C8C /* BTCKey.m in Sources */,
 				C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */,
@@ -2181,6 +2211,7 @@
 				23FB5C0A1D9ABB590008C6AB /* TransactionDetailToCell.m in Sources */,
 				9F91B607151666EC00ACB32D /* BCCreateWalletView.m in Sources */,
 				23444F9E1DCD221A00573C8C /* BTCErrors.m in Sources */,
+				C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */,
 				2322DCBE1D771831000E5AC1 /* SRLog.m in Sources */,
 				238FC4D21DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.m in Sources */,
 				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
@@ -2207,6 +2238,7 @@
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,
 				6750389B1B4D832F00F7B488 /* SideMenuViewCell.m in Sources */,
 				9F1831EE151744EB00FB3D52 /* ReceiveTableCell.m in Sources */,
+				C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */,
 				67EE1DCB19E3325900DBBFC9 /* ECSlidingAnimationController.m in Sources */,
 				67470A0819D43AFE00757D46 /* BCManualPairView.m in Sources */,
 				6E2D90A21BBEC34800B719EC /* BCRecoveryView.m in Sources */,

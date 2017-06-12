@@ -1643,3 +1643,132 @@
 
 /* (No Commment) */
 "Transactions occur when you send and receive bitcoin." = "Giao dịch xuất hiện khi bạn gửi hoặc nhận bitcoin.";
+
+/* (No Commment) */
+"Custom" = "Tùy chỉnh";
+
+/* (No Commment) */
+"Advanced users only" = "Chỉ dành cho người dùng nâng cao";
+
+/* (No Commment) */
+"1+ hour" = "Hơn 1 giờ";
+
+/* (No Commment) */
+"Priority" = "Ưu tiên";
+
+/* (No Commment) */
+"~0-60 min" = "Khoảng 0-60 phút";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi mỗi byte";
+
+/* (No Commment) */
+"sat/b" = "sat/b";
+
+/* (No Commment) */
+"High fee not necessary" = "Phí cao không cần thiết";
+
+/* (No Commment) */
+"Low fee not recommended" = "Không đề xuất phí thấp";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Tính năng này chỉ được đề xuất dành cho người dùng nâng cao. Nếu chọn phí tùy chỉnh, bạn có nguy cơ thanh toán quá mức hoặc giao dịch của bạn có thể bị kẹt.";
+
+/* (No Commment) */
+"Available now" = "Hiện đang khả dụng";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Mua bitcoin trực tiếp từ ví trên điện thoại di động của bạn. Đơn giản, liền mạch và an toàn.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Đăng nhập Ví trên Web";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Truy cập blockchain.info/wallet/login trên máy tính của bạn.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Chọn Đăng nhập bằng di động.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Sử dụng camera trên máy tính, quét mã QR dưới đây.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Ẩn mã QR này cho đến khi bạn sẵn sàng.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Giữ mã QR này được an toàn!";
+
+/* (No Commment) */
+"Do not share it with others." = "Không chia sẻ với người khác.";
+
+/* (No Commment) */
+"Show QR Code" = "Hiện Mã QR";
+
+/* (No Commment) */
+"Hide QR Code" = "Ẩn Mã QR";
+
+/* (No Commment) */
+"U.S. Dollar" = "Đô-la Mỹ";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "Krona Iceland";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Đô-la Hồng Kông";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Tân Đài Tệ";
+
+/* (No Commment) */
+"Swiss Franc" = "Franc Thụy Sĩ";
+
+/* (No Commment) */
+"Danish Krone" = "Krone Đan Mạch";
+
+/* (No Commment) */
+"Chilean Peso" = "Peso Chi Lê";
+
+/* (No Commment) */
+"Canadian Dollar" = "Đô-la Canada";
+
+/* (No Commment) */
+"Indian Rupee" = "Rupee Ấn Độ";
+
+/* (No Commment) */
+"Chinese Yuan" = "Nhân dân tệ Trung Quốc";
+
+/* (No Commment) */
+"Thai Baht" = "Bạt Thái Lan";
+
+/* (No Commment) */
+"Australian Dollar" = "Đô-la Úc";
+
+/* (No Commment) */
+"Singapore Dollar" = "Đô-la Singapore";
+
+/* (No Commment) */
+"South Korean Won" = "Won Hàn Quốc";
+
+/* (No Commment) */
+"Japanese Yen" = "Yên Nhật";
+
+/* (No Commment) */
+"Polish Zloty" = "Zloty Ba Lan";
+
+/* (No Commment) */
+"Great British Pound" = "Bảng Anh";
+
+/* (No Commment) */
+"Swedish Krona" = "Krona Thụy Điển";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Đô-la New Zealand";
+
+/* (No Commment) */
+"Brazil Real" = "Real Brazil";
+
+/* (No Commment) */
+"Russian Ruble" = "Rúp Nga";

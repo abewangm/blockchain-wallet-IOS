@@ -38,6 +38,7 @@ static PEViewController *EnterController()
 	c.title = @"";
 
     c.versionLabel.text = [app getVersionLabelString];
+    c.versionLabel.hidden = NO;
     
 	return c;
 }
@@ -85,7 +86,7 @@ static PEViewController *VerifyController()
     PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
     c.delegate = n;
     c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 0, 6);
     [c.cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;
@@ -101,7 +102,7 @@ static PEViewController *VerifyController()
 	PEPinEntryController *n = [[self alloc] initWithRootViewController:c];
 	c.delegate = n;
     c.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    c.cancelButton.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 0, 6);
     [c.cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     c.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BC_STRING_CANCEL style:UIBarButtonItemStylePlain target:n action:@selector(cancelController)];
     n->pinController = c;

@@ -24,6 +24,11 @@
 @property (nonatomic) int sectionMain;
 @property (nonatomic) int sectionContactsPending;
 
+typedef NS_ENUM(NSInteger, CardConfiguration){
+    CardConfigurationWelcome,
+    CardConfigurationBuyAvailableNow,
+};
+
 // Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
@@ -46,11 +51,12 @@
 @synthesize data;
 @synthesize latestBlock;
 
-CGFloat cardsViewHeight = 240;
+CGFloat cardsViewHeight;
 
 BOOL animateNextCell;
 BOOL hasZeroTotalBalance = NO;
 BOOL showCards;
+BOOL showBuyAvailableNow;
 
 UIRefreshControl *refreshControl;
 int lastNumberTransactions = INT_MAX;
@@ -233,11 +239,16 @@ int lastNumberTransactions = INT_MAX;
 - (void)setText
 {
     showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    showBuyAvailableNow = !showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+    
+    cardsViewHeight = showBuyAvailableNow ? 208 : 240;
     
     [self setupNoTransactionsView];
     
     if (showCards && app.latestResponse.symbol_local) {
-        [self setupCardsView];
+        [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
+    } else if (showBuyAvailableNow) {
+        [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
     } else {
         if (self.cardsView) {
             [self resetHeaderFrame];
@@ -692,7 +703,8 @@ int lastNumberTransactions = INT_MAX;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
     
-    [filterAccountButton.titleLabel setMinimumScaleFactor:.5f];
+    filterAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    [filterAccountButton.titleLabel setMinimumScaleFactor:1];
     [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
     [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
     [filterAccountChevronButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
@@ -752,12 +764,20 @@ int lastNumberTransactions = INT_MAX;
     tableViewController.refreshControl = refreshControl;
 }
 
-- (void)setupCardsView
+- (void)setupCardsViewWithConfiguration:(CardConfiguration)configuration
 {
     [self.cardsView removeFromSuperview];
+    
     UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
     headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
-    self.cardsView = [self configureCardsView:cardsView];
+    
+    if (configuration == CardConfigurationWelcome) {
+        self.cardsView = [self configureCardsViewWelcome:cardsView];
+    } else if (configuration == CardConfigurationBuyAvailableNow) {
+        self.cardsView = [self configureCardsViewBuyAvailableNow:cardsView];
+    }
     
     [headerView addSubview:self.cardsView];
 }
@@ -769,12 +789,12 @@ int lastNumberTransactions = INT_MAX;
     CGFloat noTransactionsViewOffsetY = 0;
     
     // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
-    if ([[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S && showCards) {
+    if (IS_USING_SCREEN_SIZE_4S && showCards) {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
         noTransactionsViewOffsetY += 60;
     }
     
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards || showBuyAvailableNow ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
     // Title label Y origin will be above midpoint between end of cards view and table view height
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -817,7 +837,7 @@ int lastNumberTransactions = INT_MAX;
     [self.getBitcoinButton addTarget:self action:@selector(getBitcoinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
-    if (!showCards) {
+    if (!showCards && !showBuyAvailableNow) {
         [self centerNoTransactionSubviews];
     } else {
         self.getBitcoinButton.hidden = YES;
@@ -830,10 +850,22 @@ int lastNumberTransactions = INT_MAX;
 
 #pragma mark - New Wallet Cards
 
-- (UIView *)configureCardsView:(UIView *)cardsView
+- (UIView *)configureCardsViewBuyAvailableNow:(UIView *)cardsView
 {
-    cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    BCCardView *buyAvailableNowCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@ %@", [BC_STRING_BUY_AVAILABLE_NOW_TITLE uppercaseString], @"🎉"] description:BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION actionType:ActionTypeBuyBitcoinAvailableNow imageName:@"buy_available" reducedHeightForPageIndicator:NO delegate:self];
     
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(buyAvailableNowCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
+    [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    closeButton.tintColor = COLOR_TEXT_DARK_GRAY;
+    [closeButton addTarget:self action:@selector(closeBuyAvailableNowCard) forControlEvents:UIControlEventTouchUpInside];
+    [buyAvailableNowCard addSubview:closeButton];
+    
+    [cardsView addSubview:buyAvailableNowCard];
+    return cardsView;
+}
+
+- (UIView *)configureCardsViewWelcome:(UIView *)cardsView
+{
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cardsView.bounds];
     scrollView.delegate = self;
     scrollView.pagingEnabled = YES;
@@ -848,19 +880,19 @@ int lastNumberTransactions = INT_MAX;
         
         NSString *tickerText = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
         
-        BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" delegate:self];
+        BCCardView *priceCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@\n%@", BC_STRING_OVERVIEW_MARKET_PRICE_TITLE, tickerText] description:BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION actionType:ActionTypeBuyBitcoin imageName:@"btc_partial" reducedHeightForPageIndicator:YES delegate:self];
         [scrollView addSubview:priceCard];
         numberOfCards++;
         numberOfPages++;
     }
 
-    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" delegate:self];
+    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" reducedHeightForPageIndicator:YES delegate:self];
     receiveCard.frame = CGRectOffset(receiveCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
     [scrollView addSubview:receiveCard];
     numberOfCards++;
     numberOfPages++;
 
-    BCCardView *QRCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_QR_CODES_TITLE description:BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION actionType:ActionTypeScanQR imageName:@"qr_partial" delegate:self];
+    BCCardView *QRCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_QR_CODES_TITLE description:BC_STRING_OVERVIEW_QR_CODES_DESCRIPTION actionType:ActionTypeScanQR imageName:@"qr_partial" reducedHeightForPageIndicator:YES delegate:self];
     QRCard.frame = CGRectOffset(QRCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
     [scrollView addSubview:QRCard];
     numberOfCards++;
@@ -907,7 +939,7 @@ int lastNumberTransactions = INT_MAX;
     self.cardsScrollView = scrollView;
     
     // Subviews that disappear/reappear setup
-    CGRect cardRect = [BCCardView frameFromContainer:cardsView.bounds];
+    CGRect cardRect = [receiveCard frameFromContainer:cardsView.bounds];
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, cardRect.origin.y + cardRect.size.height + 8, 100, 30)];
     self.pageControl.center = CGPointMake(cardsView.center.x, self.pageControl.center.y);
@@ -973,7 +1005,8 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)cardActionClicked:(ActionType)actionType
 {
-    if (actionType == ActionTypeBuyBitcoin) {
+    if (actionType == ActionTypeBuyBitcoin ||
+        actionType == ActionTypeBuyBitcoinAvailableNow) {
         [app buyBitcoinClicked:nil];
     } else if (actionType == ActionTypeShowReceive) {
         [app receiveCoinClicked:nil];
@@ -1058,6 +1091,13 @@ int lastNumberTransactions = INT_MAX;
     CGRect frame = self.cardsScrollView.frame;
     frame.origin.x = self.cardsScrollView.frame.size.width * page;
     [self.cardsScrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (void)closeBuyAvailableNowCard
+{
+    [self closeCardsView];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
 }
 
 - (void)closeCardsView

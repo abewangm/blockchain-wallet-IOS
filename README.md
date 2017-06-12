@@ -19,8 +19,20 @@ Prepare the MyWallet Javascript:
 
 Prepare OpenSSL:
 
-    cd ../OpenSSL-for-iPhone  
+    cd ../OpenSSL-for-iPhone
     ./build-libssl.sh
+
+## Public Key Pinning
+
+Create a file named `.env` and define environment variables in it as follows:
+
+    $DEV=""
+    $STAGING=""
+    $TESTNET=""
+
+Get certificates:
+
+    sh scripts/update-certs.sh
 
 ## PSD and Asset Catalog
 

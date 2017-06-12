@@ -169,7 +169,7 @@
     
     if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
     {
-        if ([[UIScreen mainScreen] bounds].size.height >= 568)
+        if (!(IS_USING_SCREEN_SIZE_4S))
         {
             // Not iphone 4s
             self.upgradeButtonToPageControlConstraint.constant = 35;

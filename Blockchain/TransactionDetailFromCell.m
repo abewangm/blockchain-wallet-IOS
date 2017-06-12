@@ -8,6 +8,7 @@
 
 #import "TransactionDetailFromCell.h"
 #import "ContactTransaction.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @implementation TransactionDetailFromCell
 
@@ -29,11 +30,12 @@
         return;
     }
     
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, 0, 70, 20.5)];
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 20.5)];
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
-    self.mainLabel.adjustsFontSizeToFitWidth = YES;
     self.mainLabel.text = BC_STRING_FROM;
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [self.mainLabel sizeToFit];
+    [self.mainLabel changeXPosition:self.contentView.layoutMargins.left];
     [self.contentView addSubview:self.mainLabel];
     
     self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.mainLabel.frame.origin.y + self.mainLabel.frame.size.height, self.mainLabel.frame.size.width, 15)];
@@ -46,11 +48,20 @@
     
     CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
-    self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
+    self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
     self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
     self.accessoryLabel.text = transaction.from.label;
+    
+    CGFloat mainLabelHeight = self.mainLabel.frame.size.height;
+    CGFloat accessoryLabelHeight = self.accessoryLabel.frame.size.height;
+    
+    CGFloat targetHeight = mainLabelHeight > accessoryLabelHeight ? mainLabelHeight : accessoryLabelHeight;
+    
+    [self.mainLabel changeHeight:targetHeight];
+    [self.accessoryLabel changeHeight:targetHeight];
+    
     [self.contentView addSubview:self.accessoryLabel];
     
     self.isSetup = YES;
