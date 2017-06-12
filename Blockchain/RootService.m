@@ -12,6 +12,7 @@
 
 #import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
+#import "SharedSessionDelegate.h"
 #import "AppDelegate.h"
 #import "MultiAddressResponse.h"
 #import "Wallet.h"
@@ -154,7 +155,9 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
-    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
+    SharedSessionDelegate *sharedSessionDelegate = [[SharedSessionDelegate alloc] initWithCertificatePinner:self.certificatePinner];
+    
+    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:sharedSessionDelegate queue:nil];
     
     [self.certificatePinner pinCertificate];
     
