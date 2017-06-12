@@ -10,6 +10,7 @@
 #import "KIFUITestActor+Login.h"
 #import "LocalizationConstants.h"
 #import "Blockchain-Prefix.pch"
+#import "TestAccounts.h"
 
 @interface SendTests : XCTestCase
 
@@ -22,12 +23,14 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     if ([[[UIApplication sharedApplication] keyWindow] accessibilityElementWithLabel:ACCESSIBILITY_LABEL_CREATE_NEW_WALLET] != nil) {
-        [tester createNewWallet];
     } else if ([[[UIApplication sharedApplication] keyWindow] accessibilityElementWithLabel:ACCESSIBILITY_LABEL_FORGET_WALLET] != nil) {
         [tester forgetWallet];
     } else {
         [tester enterPIN];
+        [tester logoutAndForgetWallet];
     }
+         
+    [tester manualPairWithGUID:GUID_SEND_WALLET password:PASSWORD_SEND_WALLET];
 }
 
 - (void)tearDown {
