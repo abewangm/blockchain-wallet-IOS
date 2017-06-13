@@ -11,8 +11,8 @@ grunt build --base .
 
 # Required for JavaScriptCore
 echo "Patching global.crypto..."
-globalCrypto='var crypto = global.crypto || global.msCrypto'
-sed -i '' 's/'"$globalCrypto"'\;/'"$globalCrypto"' || objcCrypto(Buffer)/' dist/my-wallet.js
+globalCrypto='global.crypto || global.msCrypto'
+sed -i '' 's/'"$globalCrypto"'\;/global.crypto = '"$globalCrypto"' || objcCrypto(Buffer)/' dist/my-wallet.js
 
 # Required for overriding methods in Objective-C
 echo "Patching BitcoinJS..."
