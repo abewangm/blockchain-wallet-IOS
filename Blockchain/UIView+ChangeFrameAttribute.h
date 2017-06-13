@@ -16,5 +16,4 @@
 - (void)changeYPositionAnimated:(CGFloat)newY completion:(void (^ __nullable)(BOOL finished))completion;
 - (void)changeWidth:(CGFloat)newWidth;
 - (void)changeHeight:(CGFloat)newHeight;
-- (void)centerXToSuperView;
 @end

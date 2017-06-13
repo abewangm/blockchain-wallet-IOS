@@ -123,10 +123,6 @@ BOOL displayingLocalSymbolSend;
     [self setupFeeWarningLabelFrame];
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
-    
-    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        [self.confirmPaymentView.arrowImageView centerXToSuperView];
-    }
 
     sendProgressModalText.text = nil;
     
@@ -736,6 +732,10 @@ BOOL displayingLocalSymbolSend;
 {
     [self hideKeyboard];
     
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
+        self.confirmPaymentView.arrowImageView.center = CGPointMake(app.tabViewController.view.window.center.x, self.confirmPaymentView.arrowImageView.center.y);
+    }
+    
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
@@ -938,6 +938,7 @@ BOOL displayingLocalSymbolSend;
     
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
+        
         [weakSelf sendPaymentClicked:nil];
     };
     
