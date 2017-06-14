@@ -1866,10 +1866,7 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 
 MyWalletPhone.getExchangeAccount = function () {
   console.log('Getting exchange account');
-  if (MyWallet.wallet.isDoubleEncrypted) {
-    console.log('Second password enabled, cannot fetch exchange account');
-    return Promise.resolve();
-  }
+
   var wallet = MyWallet.wallet;
   var p = wallet.loadMetadata();
   return p.then(function () {
