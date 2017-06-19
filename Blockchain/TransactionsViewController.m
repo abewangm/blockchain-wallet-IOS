@@ -593,7 +593,7 @@ int lastNumberTransactions = INT_MAX;
 {
     [self.cardsView removeFromSuperview];
     
-    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
     cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
@@ -605,6 +605,8 @@ int lastNumberTransactions = INT_MAX;
     }
     
     [headerView addSubview:self.cardsView];
+    
+    tableView.frame = CGRectMake(tableView.frame.origin.x, headerView.frame.origin.y + headerView.frame.size.height, tableView.frame.size.width, self.view.frame.size.height - headerView.frame.size.height);
 }
 
 - (void)setupNoTransactionsView
@@ -619,7 +621,7 @@ int lastNumberTransactions = INT_MAX;
         noTransactionsViewOffsetY += 60;
     }
     
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards || showBuyAvailableNow ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
     // Title label Y origin will be above midpoint between end of cards view and table view height
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -960,7 +962,7 @@ int lastNumberTransactions = INT_MAX;
     headerFrame.size.height = 80;
     headerView.frame = headerFrame;
     
-    self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
+    tableView.frame = CGRectMake(tableView.frame.origin.x, headerView.frame.origin.y + headerView.frame.size.height, tableView.frame.size.width, self.view.frame.size.height - headerView.frame.size.height);
 }
 
 - (void)getBitcoinButtonClicked
