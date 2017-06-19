@@ -18,12 +18,14 @@
 
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
 
+@property (nonatomic) UIView *bounceView;
+
+// Onboarding
+
 typedef NS_ENUM(NSInteger, CardConfiguration){
     CardConfigurationWelcome,
     CardConfigurationBuyAvailableNow,
 };
-
-// Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
 @property (nonatomic) UIPageControl *pageControl;
@@ -144,6 +146,9 @@ int lastNumberTransactions = INT_MAX;
     
     [self setupNoTransactionsView];
     
+    UIColor *bounceViewBackgroundColor = [UIColor whiteColor];
+    UIColor *refreshControlTintColor = [UIColor lightGrayColor];
+    
     if (showCards && app.latestResponse.symbol_local) {
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
     } else if (showBuyAvailableNow) {
@@ -155,7 +160,13 @@ int lastNumberTransactions = INT_MAX;
         }
         [self.cardsView removeFromSuperview];
         self.cardsView = nil;
+        
+        bounceViewBackgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        refreshControlTintColor = [UIColor whiteColor];
     }
+    
+    self.bounceView.backgroundColor = bounceViewBackgroundColor;
+    refreshControl.tintColor = refreshControlTintColor;
     
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
@@ -569,11 +580,10 @@ int lastNumberTransactions = INT_MAX;
     // Blue background for bounce area
     CGRect frame = self.view.bounds;
     frame.origin.y = -frame.size.height;
-    UIView* blueView = [[UIView alloc] initWithFrame:frame];
-    blueView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.tableView addSubview:blueView];
+    self.bounceView = [[UIView alloc] initWithFrame:frame];
+    [self.tableView addSubview:self.bounceView];
     // Make sure the refresh control is in front of the blue area
-    blueView.layer.zPosition -= 1;
+    self.bounceView.layer.zPosition -= 1;
 }
 
 - (void)setupPullToRefresh
@@ -582,7 +592,6 @@ int lastNumberTransactions = INT_MAX;
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
     refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl setTintColor:[UIColor whiteColor]];
     [refreshControl addTarget:self
                        action:@selector(loadTransactions)
              forControlEvents:UIControlEventValueChanged];
@@ -943,6 +952,9 @@ int lastNumberTransactions = INT_MAX;
     }];
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+    
+    self.bounceView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    refreshControl.tintColor = [UIColor whiteColor];
     
     [self.tableView reloadData];
 }
