@@ -153,7 +153,7 @@ int lastNumberTransactions = INT_MAX;
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
     } else if (showBuyAvailableNow) {
         [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
-    } else {
+    } else if (app.latestResponse.symbol_local) {
         if (self.cardsView) {
             [self resetHeaderFrame];
             [self setupNoTransactionsView];
@@ -615,7 +615,7 @@ int lastNumberTransactions = INT_MAX;
     
     [headerView addSubview:self.cardsView];
     
-    tableView.frame = CGRectMake(tableView.frame.origin.x, headerView.frame.origin.y + headerView.frame.size.height, tableView.frame.size.width, self.view.frame.size.height - headerView.frame.size.height);
+    [self resetTableViewFrame];
 }
 
 - (void)setupNoTransactionsView
@@ -974,6 +974,11 @@ int lastNumberTransactions = INT_MAX;
     headerFrame.size.height = 80;
     headerView.frame = headerFrame;
     
+    [self resetTableViewFrame];
+}
+
+- (void)resetTableViewFrame
+{
     tableView.frame = CGRectMake(tableView.frame.origin.x, headerView.frame.origin.y + headerView.frame.size.height, tableView.frame.size.width, self.view.frame.size.height - headerView.frame.size.height);
 }
 
