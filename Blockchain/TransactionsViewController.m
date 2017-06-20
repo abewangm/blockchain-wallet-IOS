@@ -142,7 +142,7 @@ int lastNumberTransactions = INT_MAX;
     showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     showBuyAvailableNow = !showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
     
-    cardsViewHeight = showBuyAvailableNow ? 208 : 240;
+    cardsViewHeight = showBuyAvailableNow ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
     [self setupNoTransactionsView];
     
@@ -623,12 +623,6 @@ int lastNumberTransactions = INT_MAX;
     [self.noTransactionsView removeFromSuperview];
     
     CGFloat noTransactionsViewOffsetY = 0;
-    
-    // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
-    if (IS_USING_SCREEN_SIZE_4S && showCards) {
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
-        noTransactionsViewOffsetY += 60;
-    }
     
     self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
