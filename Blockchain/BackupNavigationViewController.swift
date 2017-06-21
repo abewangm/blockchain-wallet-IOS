@@ -32,7 +32,7 @@ import UIKit
     }
     
     internal func reload() {
-        if (!isVerifying) {
+        if !isVerifying {
             self.popToRootViewController(animated: true)
             busyView.fadeOut()
         }
@@ -132,7 +132,7 @@ import UIKit
     
     func backButtonClicked() {
         if !isTransitioning {
-            if (viewControllers.count == 1) {
+            if viewControllers.count == 1 {
 				dismiss(animated: true, completion: nil)
 			} else {
 				popViewController(animated: true)
