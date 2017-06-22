@@ -30,28 +30,25 @@
     closeButton.center = CGPointMake(closeButton.center.x, closeButton.center.y);
     [closeButton addTarget:self action:@selector(closeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
-    CGFloat imageWidth = self.view.frame.size.width - 120;
-    
-    UIImageView *logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, 100, imageWidth, 80)];
-    logoImageView.image = [UIImage imageNamed:@"logo_large"];
-    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:logoImageView];
-    
-    UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, logoImageView.frame.origin.y + logoImageView.frame.size.height + 16, imageWidth, 50)];
-    bannerImageView.image = [UIImage imageNamed:@"text"];
-    bannerImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:bannerImageView];
     
     CGFloat labelWidth = self.view.frame.size.width - 30;
 
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, bannerImageView.frame.origin.y + bannerImageView.frame.size.height + 16, labelWidth, 90)];
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width - labelWidth)/2, 0, labelWidth, 90)];
     infoLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
     infoLabel.numberOfLines = 3;
     infoLabel.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@", ABOUT_STRING_BLOCKCHAIN_WALLET, [app getVersionLabelString], [NSString stringWithFormat:@"%@ %@ %@", ABOUT_STRING_COPYRIGHT_LOGO, COPYRIGHT_YEAR, ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA], BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED];
-    
+    infoLabel.center = self.view.center;
     [self.view addSubview:infoLabel];
+
+    CGFloat imageWidth = labelWidth;
+    CGFloat imageHeight = 60;
+    
+    UIImageView *logoAndBannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth)/2, infoLabel.frame.origin.y - imageHeight, imageWidth, imageHeight)];
+    logoAndBannerImageView.image = [UIImage imageNamed:@"logo_and_banner"];
+    logoAndBannerImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:logoAndBannerImageView];
     
     [self addButtonsWithWidth:labelWidth - 30 belowView:infoLabel];
 }
