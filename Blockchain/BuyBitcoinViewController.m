@@ -200,4 +200,19 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
     self.isReady = NO;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSOperatingSystemVersion ios9_0_0 = (NSOperatingSystemVersion){.majorVersion = 9, .minorVersion = 0, .patchVersion = 0};
+    if (![[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios9_0_0]) {
+        // Device is using iOS 8.x - iSignThis will not work, so inform user and close
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_BUY_BITCOIN message:BC_STRING_BUY_NOT_SUPPORTED_IOS_8_WEB_LOGIN preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 @end
