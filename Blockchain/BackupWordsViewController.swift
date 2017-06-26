@@ -11,7 +11,7 @@ import UIKit
 class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var wordsScrollView: UIScrollView?
-    @IBOutlet weak var wordsPageControl: UIPageControl?
+    @IBOutlet weak var wordsPageControl: UIPageControl!
     @IBOutlet weak var wordsProgressLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var previousWordButton: UIButton!
@@ -93,7 +93,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
     
     func updatePreviousWordButton() {
-        if wordsPageControl!.currentPage == 0 {
+        if wordsPageControl.currentPage == 0 {
             previousWordButton.isEnabled = false
             previousWordButton.setTitleColor(UIColor.darkGray, for: UIControlState())
             previousWordButton.backgroundColor = Constants.Colors.DisabledGray
@@ -105,18 +105,18 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     }
 
     @IBAction func previousWordButtonTapped(_ sender: UIButton) {
-        if wordsPageControl!.currentPage > 0 {
-            let pagePosition = wordLabel.frame.width * CGFloat(wordsPageControl!.currentPage-1)
+        if wordsPageControl.currentPage > 0 {
+            let pagePosition = wordLabel.frame.width * CGFloat(wordsPageControl.currentPage-1)
             wordsScrollView?.setContentOffset(CGPoint(x: pagePosition, y: wordsScrollView!.contentOffset.y), animated: true)
         }
     }
     
     @IBAction func nextWordButtonTapped(_ sender: UIButton) {
         if let count = wordLabels?.count {
-            if wordsPageControl!.currentPage == count-1 {
+            if wordsPageControl.currentPage == count-1 {
                 performSegue(withIdentifier: "backupVerify", sender: nil)
-            } else if wordsPageControl!.currentPage < count-1 {
-                let pagePosition = wordLabel.frame.width * CGFloat(wordsPageControl!.currentPage+1)
+            } else if wordsPageControl.currentPage < count-1 {
+                let pagePosition = wordLabel.frame.width * CGFloat(wordsPageControl.currentPage+1)
                 wordsScrollView?.setContentOffset(CGPoint(x: pagePosition, y: wordsScrollView!.contentOffset.y), animated: true)
             }
         }
@@ -125,11 +125,11 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
     func updateCurrentPageLabel(_ page: Int) {
         wordsProgressLabel.text = NSLocalizedString(NSString(format: "Word %@ of %@", String(page + 1), String((Constants.Defaults.NumberOfRecoveryPhraseWords))) as String, comment: "")
         if let count = wordLabels?.count {
-            if wordsPageControl!.currentPage == count-1 {
+            if wordsPageControl.currentPage == count-1 {
                 nextWordButton.backgroundColor = Constants.Colors.BlockchainBlue
                 nextWordButton.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton.setTitle(NSLocalizedString("Done", comment: ""), for: UIControlState())
-            } else if wordsPageControl!.currentPage == count-2 {
+            } else if wordsPageControl.currentPage == count-2 {
                 nextWordButton.backgroundColor = Constants.Colors.BlockchainLightBlue
                 nextWordButton.setTitleColor(UIColor.white, for: UIControlState())
                 nextWordButton.setTitle(NSLocalizedString("NEXT", comment: ""), for: UIControlState())
@@ -146,7 +146,7 @@ class BackupWordsViewController: UIViewController, SecondPasswordDelegate, UIScr
         let fractionalPage = Float(scrollView.contentOffset.x / pageWidth)
         let page: Int = lroundf(fractionalPage)
         
-        wordsPageControl!.currentPage = page
+        wordsPageControl.currentPage = page
         
         updateCurrentPageLabel(page)
     }

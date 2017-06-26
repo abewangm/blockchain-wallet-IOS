@@ -16,7 +16,7 @@ protocol SecondPasswordDelegate {
 
 class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var password: BCSecureTextField?
+    @IBOutlet weak var password: BCSecureTextField!
     @IBOutlet var continueButton: UIButton!
     @IBOutlet var descriptionLabel: UILabel!
     
@@ -44,9 +44,9 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         descriptionLabel.center = CGPoint(x: view.center.x, y: descriptionLabel.center.y)
         descriptionLabel.font = UIFont(name:"GillSans", size: Constants.FontSizes.SmallMedium)
         
-        password!.center = CGPoint(x: view.center.x, y: password!.frame.origin.y)
-        password!.setupOnePixelLine()
-        password!.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Small)
+        password.center = CGPoint(x: view.center.x, y: password.frame.origin.y)
+        password.setupOnePixelLine()
+        password.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Small)
         
         continueButton.center = CGPoint(x: view.center.x, y: continueButton.frame.origin.y)
         continueButton.titleLabel!.font = UIFont(name:"Montserrat-Regular", size: Constants.FontSizes.Large)
@@ -80,7 +80,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
     }
 
     func checkSecondPassword() {
-        let secondPassword = password!.text
+        let secondPassword = password.text
         if secondPassword!.isEmpty {
             alertUserWithErrorMessage((NSLocalizedString("No Password Entered", comment: "")))
         }
