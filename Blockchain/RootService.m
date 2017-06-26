@@ -268,13 +268,7 @@ void (^secondPasswordSuccess)(NSString *);
             numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT - (int)swipeAddresses.count;
         }
         
-        for (int receiveIndex = 0; receiveIndex < numberOfAddressesToDerive; receiveIndex++) {
-            [self.wallet incrementReceiveIndexOfDefaultAccount];
-            NSString *swipeAddress = [app.wallet getReceiveAddressOfDefaultAccount];
-            [KeychainItemWrapper addSwipeAddress:swipeAddress];
-        }
-            
-        [self.pinEntryViewController setupQRCode];
+        [app.wallet getSwipeAddresses:numberOfAddressesToDerive label:@"Swipe Address"];
     }
     
     [self.loginTimer invalidate];
@@ -1994,6 +1988,20 @@ void (^secondPasswordSuccess)(NSString *);
     }];
     
     [dataTask resume];
+}
+
+- (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses
+{
+    if (!newSwipeAddresses) {
+        DLog(@"Error: no new swipe addresses found!");
+        return;
+    }
+    
+    for (NSString *swipeAddress in newSwipeAddresses) {
+        [KeychainItemWrapper addSwipeAddress:swipeAddress];
+    }
+    
+    [self.pinEntryViewController setupQRCode];
 }
 
 #pragma mark - Show Screens

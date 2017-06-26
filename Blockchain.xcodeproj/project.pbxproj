@@ -2783,7 +2783,7 @@
 					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;
@@ -2820,7 +2820,7 @@
 					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;
