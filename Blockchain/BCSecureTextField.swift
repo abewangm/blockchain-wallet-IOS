@@ -31,7 +31,7 @@ class BCSecureTextField : UITextField {
     }
     
     func setupOnePixelLine() {
-        if (self.superview == nil) {
+        if self.superview == nil {
             return
         }
         

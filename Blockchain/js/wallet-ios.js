@@ -846,9 +846,24 @@ MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
                                                                                                                                                      }).catch(buildFailure);
 }
 
-MyWalletPhone.incrementReceiveIndexOfDefaultAccount = function() {
-    console.log('incrementing receive index');
-    MyWallet.wallet.hdwallet.defaultAccount.incrementReceiveIndex();
+MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount = function() {
+    MyWallet.wallet.hdwallet.defaultAccount.lastUsedReceiveIndex = MyWallet.wallet.hdwallet.defaultAccount.receiveIndex;
+}
+
+MyWalletPhone.getSwipeAddresses = function(numberOfAddresses, label) {
+
+    var addresses = [];
+    var account = MyWallet.wallet.hdwallet.defaultAccount;
+    var accountIndex = MyWallet.wallet.hdwallet.defaultAccountIndex;
+
+    MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount();
+    
+    for (var i = 0; i < numberOfAddresses; i++) {
+        addresses.push(MyWallet.wallet.hdwallet.defaultAccount.receiveAddress);
+        MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount();
+    }
+
+    objc_did_get_swipe_addresses(addresses);
 }
 
 MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
@@ -1865,10 +1880,7 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 
 MyWalletPhone.getExchangeAccount = function () {
   console.log('Getting exchange account');
-  if (MyWallet.wallet.isDoubleEncrypted) {
-    console.log('Second password enabled, cannot fetch exchange account');
-    return Promise.resolve();
-  }
+
   var wallet = MyWallet.wallet;
   var p = wallet.loadMetadata();
   return p.then(function () {

@@ -18,12 +18,14 @@
 
 @interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
 
+@property (nonatomic) UIView *bounceView;
+
+// Onboarding
+
 typedef NS_ENUM(NSInteger, CardConfiguration){
     CardConfigurationWelcome,
     CardConfigurationBuyAvailableNow,
 };
-
-// Onboarding
 
 @property (nonatomic) BOOL isUsingPageControl;
 @property (nonatomic) UIPageControl *pageControl;
@@ -140,22 +142,31 @@ int lastNumberTransactions = INT_MAX;
     showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     showBuyAvailableNow = !showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
     
-    cardsViewHeight = showBuyAvailableNow ? 208 : 240;
+    cardsViewHeight = showBuyAvailableNow ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
     [self setupNoTransactionsView];
+    
+    UIColor *bounceViewBackgroundColor = [UIColor whiteColor];
+    UIColor *refreshControlTintColor = [UIColor lightGrayColor];
     
     if (showCards && app.latestResponse.symbol_local) {
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
     } else if (showBuyAvailableNow) {
         [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
-    } else {
+    } else if (app.latestResponse.symbol_local) {
         if (self.cardsView) {
             [self resetHeaderFrame];
             [self setupNoTransactionsView];
         }
         [self.cardsView removeFromSuperview];
         self.cardsView = nil;
+        
+        bounceViewBackgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        refreshControlTintColor = [UIColor whiteColor];
     }
+    
+    self.bounceView.backgroundColor = bounceViewBackgroundColor;
+    refreshControl.tintColor = refreshControlTintColor;
     
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
@@ -569,11 +580,10 @@ int lastNumberTransactions = INT_MAX;
     // Blue background for bounce area
     CGRect frame = self.view.bounds;
     frame.origin.y = -frame.size.height;
-    UIView* blueView = [[UIView alloc] initWithFrame:frame];
-    blueView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.tableView addSubview:blueView];
+    self.bounceView = [[UIView alloc] initWithFrame:frame];
+    [self.tableView addSubview:self.bounceView];
     // Make sure the refresh control is in front of the blue area
-    blueView.layer.zPosition -= 1;
+    self.bounceView.layer.zPosition -= 1;
 }
 
 - (void)setupPullToRefresh
@@ -582,7 +592,6 @@ int lastNumberTransactions = INT_MAX;
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
     refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl setTintColor:[UIColor whiteColor]];
     [refreshControl addTarget:self
                        action:@selector(loadTransactions)
              forControlEvents:UIControlEventValueChanged];
@@ -593,7 +602,7 @@ int lastNumberTransactions = INT_MAX;
 {
     [self.cardsView removeFromSuperview];
     
-    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y + self.originalHeaderFrame.size.height, self.originalHeaderFrame.size.width, cardsViewHeight)];
     cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     headerView.frame = CGRectMake(self.originalHeaderFrame.origin.x, self.originalHeaderFrame.origin.y, self.originalHeaderFrame.size.width, self.originalHeaderFrame.size.height + cardsViewHeight);
@@ -605,6 +614,8 @@ int lastNumberTransactions = INT_MAX;
     }
     
     [headerView addSubview:self.cardsView];
+    
+    [self resetTableViewFrame];
 }
 
 - (void)setupNoTransactionsView
@@ -613,13 +624,7 @@ int lastNumberTransactions = INT_MAX;
     
     CGFloat noTransactionsViewOffsetY = 0;
     
-    // Special case for iPad/iPhone 4S screens - increase content size to give more space for noTransactionsView under cards view
-    if (IS_USING_SCREEN_SIZE_4S && showCards) {
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 120, 0);
-        noTransactionsViewOffsetY += 60;
-    }
-    
-    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.originalHeaderFrame.size.height + (showCards || showBuyAvailableNow ? cardsViewHeight : 0) + noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
+    self.noTransactionsView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, noTransactionsViewOffsetY, self.view.frame.size.width, self.view.frame.size.height)];
     
     // Title label Y origin will be above midpoint between end of cards view and table view height
     UILabel *noTransactionsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -942,6 +947,9 @@ int lastNumberTransactions = INT_MAX;
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     
+    self.bounceView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    refreshControl.tintColor = [UIColor whiteColor];
+    
     [self.tableView reloadData];
 }
 
@@ -960,7 +968,12 @@ int lastNumberTransactions = INT_MAX;
     headerFrame.size.height = 80;
     headerView.frame = headerFrame;
     
-    self.noTransactionsView.frame = CGRectOffset(self.noTransactionsView.frame, 0, -cardsViewHeight);
+    [self resetTableViewFrame];
+}
+
+- (void)resetTableViewFrame
+{
+    tableView.frame = CGRectMake(tableView.frame.origin.x, headerView.frame.origin.y + headerView.frame.size.height, tableView.frame.size.width, self.view.frame.size.height - headerView.frame.size.height);
 }
 
 - (void)getBitcoinButtonClicked
