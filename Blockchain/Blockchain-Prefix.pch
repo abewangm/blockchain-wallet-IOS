@@ -524,6 +524,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
 #define DICTIONARY_KEY_HASH @"hash"
+#define DICTIONARY_KEY_ACCOUNT_INDEX @"accountIndex"
 
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"

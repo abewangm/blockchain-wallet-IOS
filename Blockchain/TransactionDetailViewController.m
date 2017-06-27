@@ -232,10 +232,22 @@ const CGFloat rowHeightValueReceived = 80;
     } else if (indexPath.row == [self getCellRowTo]) {
         TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
         [cell configureWithTransaction:self.transaction];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToAddressOptions)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.accessoryLabel addGestureRecognizer:tapGestureRecognizer];
+        cell.accessoryLabel.userInteractionEnabled = YES;
+        
         return cell;
     } else if (indexPath.row == [self getCellRowFrom]) {
         TransactionDetailFromCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_FROM forIndexPath:indexPath];
         [cell configureWithTransaction:self.transaction];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFromAddressOptions)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.accessoryLabel addGestureRecognizer:tapGestureRecognizer];
+        cell.accessoryLabel.userInteractionEnabled = YES;
+        
         return cell;
     } else if (indexPath.row == [self getCellRowDate]) {
         TransactionDetailDateCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE forIndexPath:indexPath];
@@ -326,6 +338,35 @@ const CGFloat rowHeightValueReceived = 80;
 {
     [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
     [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
+}
+
+- (void)showToAddressOptions
+{
+    [self showAddressOptions:[self.transaction.to firstObject]];
+}
+
+- (void)showFromAddressOptions
+{
+    [self showAddressOptions:self.transaction.from];
+}
+
+- (void)showAddressOptions:(NSDictionary *)transactionDict
+{
+    NSString *address = [transactionDict objectForKey:DICTIONARY_KEY_ADDRESS];
+    
+    if ([transactionDict objectForKey:DICTIONARY_KEY_ACCOUNT_INDEX] || ![[transactionDict objectForKey:DICTIONARY_KEY_LABEL] isEqualToString:address]) return;
+    
+    UIAlertController *copyAddressController = [UIAlertController alertControllerWithTitle:[transactionDict objectForKey:DICTIONARY_KEY_LABEL] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [UIPasteboard generalPasteboard].string = address;
+    }]];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_SEND_TO_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [app setupSendToAddress:address];
+        }];
+    }]];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:copyAddressController animated:YES completion:nil];
 }
 
 #pragma mark - Cell Row Getters

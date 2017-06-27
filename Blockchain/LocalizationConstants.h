@@ -66,6 +66,8 @@
 #define BC_STRING_RECEIVE_TO NSLocalizedString(@"Receive to...", nil)
 #define BC_STRING_WHERE NSLocalizedString(@"Where", nil)
 
+#define BC_STRING_SEND_TO_ADDRESS NSLocalizedString(@"Send to address", nil)
+
 #define BC_STRING_YOU_MUST_ENTER_A_LABEL NSLocalizedString(@"You must enter a label", nil)
 #define BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR NSLocalizedString(@"Label must have less than 18 characters", nil)
 #define BC_STRING_LABEL_MUST_BE_ALPHANUMERIC NSLocalizedString(@"Label must contain letters and numbers only", nil)

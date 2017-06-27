@@ -2883,6 +2883,14 @@ void (^secondPasswordSuccess)(NSString *);
     [self showSettings:showBackupBlock];
 }
 
+- (void)setupSendToAddress:(NSString *)address
+{
+    [self showSendCoins];
+    
+    self.sendViewController.addressFromURLHandler = address;
+    [self.sendViewController reload];
+}
+
 #pragma mark - Pin Entry Delegates
 
 - (void)pinEntryController:(PEPinEntryController *)c shouldAcceptPin:(NSUInteger)_pin callback:(void(^)(BOOL))callback

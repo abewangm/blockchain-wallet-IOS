@@ -211,6 +211,7 @@
 - (IBAction)buyBitcoinClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
+- (void)setupSendToAddress:(NSString *)address;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 

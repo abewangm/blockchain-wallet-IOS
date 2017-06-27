@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "InOut.h"
-
 @interface Transaction : NSObject
 
 + (Transaction *)fromJSONDict:(NSDictionary *)dict;
@@ -28,7 +26,7 @@
 @property(nonatomic, assign) BOOL replaceByFee;
 @property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
 
-@property(nonatomic, strong) InOut *from;
+@property(nonatomic, strong) NSDictionary *from;
 @property(nonatomic, strong) NSArray *to;
 
 - (NSString *)getDate;

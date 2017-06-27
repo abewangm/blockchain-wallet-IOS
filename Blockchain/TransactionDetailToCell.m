@@ -49,11 +49,12 @@
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         CGFloat accessoryLabelXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
-        self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, self.frame.size.height)];
+        self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
         self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
         self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
+        self.accessoryLabel.center = CGPointMake(self.accessoryLabel.center.x, self.contentView.center.y);
         self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
         [self.contentView addSubview:self.accessoryLabel];
         self.accessoryType = UITableViewCellAccessoryNone;
