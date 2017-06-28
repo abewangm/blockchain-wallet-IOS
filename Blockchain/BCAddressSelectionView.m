@@ -166,7 +166,7 @@ int legacyAddressesSectionNumber;
             label.textColor = COLOR_TEXT_DARK_GRAY;
             label.textAlignment = NSTextAlignmentCenter;
             label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14];
-            label.text = BC_STRING_NO_CONTACTS_YET;
+            label.text = BC_STRING_NO_CONTACTS_YET_TITLE;
             [self addSubview:label];
             label.center = CGPointMake(mainView.center.x, mainView.center.y - DEFAULT_HEADER_HEIGHT);
         }

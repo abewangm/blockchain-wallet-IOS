@@ -32,8 +32,7 @@ typedef enum {
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
-@property (nonatomic) UIButton *topButton;
-@property (nonatomic) UIButton *bottomButton;
+@property (nonatomic) UIView *noContactsView;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
@@ -140,19 +139,50 @@ typedef enum {
     [self setupPullToRefresh];
 }
 
-- (void)setupNewContactButtons
+- (void)setupNoContactsView
 {
-    NSArray *buttons = [BCTwoButtonView getTopAndBottomButtonsWithSuperviewFrame:self.view.frame];
+    self.noContactsView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.noContactsView];
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.text = BC_STRING_NO_CONTACTS_YET_TITLE;
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [titleLabel sizeToFit];
+    titleLabel.center = self.noContactsView.center;
+    [self.noContactsView addSubview:titleLabel];
     
-    self.topButton = [buttons firstObject];
-    [self.topButton setTitle:BC_STRING_I_WANT_TO_INVITE_SOMEONE forState:UIControlStateNormal];
-    [self.topButton addTarget:self action:@selector(createInvitation) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.topButton];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    imageView.image = [UIImage imageNamed:@"contacts_icon"];
+    imageView.frame = CGRectMake(0, titleLabel.frame.origin.y - 16 - 60, 100, 60);
+    imageView.center = CGPointMake(self.noContactsView.center.x, imageView.center.y);
+    [self.noContactsView addSubview:imageView];
     
-    self.bottomButton = [buttons lastObject];
-    [self.bottomButton setTitle:BC_STRING_SOMEONE_IS_INVITING_ME forState:UIControlStateNormal];
-    [self.bottomButton addTarget:self action:@selector(startReadingQRCode) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.bottomButton];
+    UITextView *subtitleTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.noContactsView.frame.size.width - 80, 0)];
+    subtitleTextView.text = BC_STRING_NO_CONTACTS_YET_SUBTITLE;
+    subtitleTextView.textAlignment = NSTextAlignmentCenter;
+    subtitleTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    subtitleTextView.editable = NO;
+    subtitleTextView.selectable = NO;
+    subtitleTextView.scrollEnabled = NO;
+    subtitleTextView.textColor = COLOR_TEXT_DARK_GRAY;
+    subtitleTextView.textContainerInset = UIEdgeInsetsZero;
+    subtitleTextView.frame = CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, subtitleTextView.frame.size.width, subtitleTextView.contentSize.height);
+    subtitleTextView.center = CGPointMake(self.noContactsView.center.x, subtitleTextView.center.y);
+    subtitleTextView.backgroundColor = [UIColor clearColor];
+    [subtitleTextView sizeToFit];
+    [self.noContactsView addSubview:subtitleTextView];
+    
+    UIButton *inviteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, BUTTON_HEIGHT)];
+    inviteButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [inviteButton setTitle:BC_STRING_INVITE_CONTACT forState:UIControlStateNormal];
+    inviteButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    inviteButton.titleLabel.textColor = [UIColor whiteColor];
+    inviteButton.frame = CGRectMake(0, subtitleTextView.frame.origin.y + subtitleTextView.frame.size.height + 16, inviteButton.frame.size.width, inviteButton.frame.size.height);
+    inviteButton.center = CGPointMake(self.noContactsView.center.x, inviteButton.center.y);
+    inviteButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+
+    [self.noContactsView addSubview:inviteButton];
 }
 
 - (void)refreshControlActivated
@@ -685,10 +715,8 @@ typedef enum {
 - (void)didGetMessages
 {
     if (app.wallet.contacts.count > 0) {
-        [self.topButton removeFromSuperview];
-        self.topButton = nil;
-        [self.bottomButton removeFromSuperview];
-        self.bottomButton = nil;
+        [self.noContactsView removeFromSuperview];
+        self.noContactsView = nil;
         
         if (!self.tableView) [self setupTableView];
     } else {
@@ -696,7 +724,7 @@ typedef enum {
         self.tableView = nil;
         self.refreshControl = nil;
         
-        [self setupNewContactButtons];
+        [self setupNoContactsView];
     }
     
     [self.tableView reloadData];
