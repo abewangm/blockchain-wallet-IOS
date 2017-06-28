@@ -112,6 +112,8 @@
     self.swipeLabelImageView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     self.swipeLabelImageView.image = [self.swipeLabelImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.swipeLabelImageView setTintColor:COLOR_BLOCKCHAIN_BLUE];
+    
+    [self setupTapActionForSwipeQR];
 }
 
 - (IBAction)cancelChangePin:(id)sender
@@ -175,6 +177,23 @@
 	self.pin = @"";
 	keyboard.detailButon = PEKeyboardDetailNone;
 	[self redrawPins];
+}
+
+- (void)setupTapActionForSwipeQR
+{
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSwipeQR)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    
+    CGFloat actionViewOriginX = self.swipeLabelImageView.frame.origin.x - self.swipeLabel.intrinsicContentSize.width - 8;
+    UIView *actionView = [[UIView alloc] initWithFrame:CGRectMake(actionViewOriginX, self.swipeLabel.frame.origin.y, self.view.frame.size.width - actionViewOriginX, self.swipeLabel.frame.size.height)];
+    [self.scrollView addSubview:actionView];
+    [actionView addGestureRecognizer:tapGestureRecognizer];
+    actionView.userInteractionEnabled = YES;
+}
+
+- (void)showSwipeQR
+{
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
 }
 
 @end

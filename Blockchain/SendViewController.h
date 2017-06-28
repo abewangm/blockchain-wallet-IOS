@@ -86,6 +86,8 @@ typedef enum {
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
 
+@property(nonatomic, strong) NSString *addressFromURLHandler;
+
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;
 @property(nonatomic, strong) Contact *toContact;

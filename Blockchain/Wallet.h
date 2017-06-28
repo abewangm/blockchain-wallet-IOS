@@ -126,6 +126,7 @@
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 - (void)showCompletedTrade:(NSString *)txHash;
+- (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -365,12 +366,13 @@ typedef enum {
 - (void)setupFollowingTransferForAllFundsToAccount:(int)account address:(NSString *)address secondPassword:(NSString *)secondPassword useSendPayment:(BOOL)useSendPayment;
 - (void)transferFundsBackupWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword;
 - (void)transferFundsToDefaultAccountFromAddress:(NSString *)address;
+- (void)changeLastUsedReceiveIndexOfDefaultAccount;
 - (void)checkIfOverspending;
 - (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType;
 - (void)getTransactionFeeWithUpdateType:(FeeUpdateType)updateType;
 - (void)getSurgeStatus;
 - (uint64_t)dust;
-- (void)incrementReceiveIndexOfDefaultAccount;
+- (NSArray *)getSwipeAddresses:(int)numberOfAddresses label:(NSString *)label;
 
 // Recover with passphrase
 - (void)recoverWithEmail:(NSString *)email password:(NSString *)recoveryPassword passphrase:(NSString *)passphrase;

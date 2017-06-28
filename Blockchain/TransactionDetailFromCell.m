@@ -26,7 +26,7 @@
 
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_FROM;
-        self.accessoryLabel.text = transaction.from.label;
+        self.accessoryLabel.text = [transaction.from objectForKey:DICTIONARY_KEY_LABEL];
         return;
     }
     
@@ -52,7 +52,7 @@
     self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.accessoryLabel.text = transaction.from.label;
+    self.accessoryLabel.text = [transaction.from objectForKey:DICTIONARY_KEY_LABEL];
     
     CGFloat mainLabelHeight = self.mainLabel.frame.size.height;
     CGFloat accessoryLabelHeight = self.accessoryLabel.frame.size.height;

@@ -44,7 +44,6 @@ typedef enum {
 @property (nonatomic) uint64_t txSize;
 
 @property (nonatomic) uint64_t amountFromURLHandler;
-@property (nonatomic) NSString *addressFromURLHandler;
 @property (nonatomic) ContactTransaction *contactTransaction;
 
 @property (nonatomic) uint64_t upperRecommendedLimit;
@@ -528,6 +527,7 @@ BOOL displayingLocalSymbolSend;
                      
                      if (NSClassFromString(@"SKStoreReviewController") && [SKStoreReviewController respondsToSelector:@selector(requestReview)]) {
                          [SKStoreReviewController requestReview];
+                         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:USER_DEFAULTS_KEY_APP_REVIEW_PROMPT_DATE];
                      } else {
                          UIAlertController *appReviewAlert = [UIAlertController alertControllerWithTitle:BC_STRING_APP_REVIEW_PROMPT_TITLE message:BC_STRING_APP_REVIEW_PROMPT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
                          [appReviewAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_YES_RATE_BLOCKCHAIN_WALLET style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -67,6 +67,8 @@
 #define BC_STRING_RECEIVE_TO NSLocalizedString(@"Receive to...", nil)
 #define BC_STRING_WHERE NSLocalizedString(@"Where", nil)
 
+#define BC_STRING_SEND_TO_ADDRESS NSLocalizedString(@"Send to address", nil)
+
 #define BC_STRING_YOU_MUST_ENTER_A_LABEL NSLocalizedString(@"You must enter a label", nil)
 #define BC_STRING_LABEL_MUST_HAVE_LESS_THAN_18_CHAR NSLocalizedString(@"Label must have less than 18 characters", nil)
 #define BC_STRING_LABEL_MUST_BE_ALPHANUMERIC NSLocalizedString(@"Label must contain letters and numbers only", nil)
@@ -722,6 +724,7 @@
 
 #define BC_STRING_BUY_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
 #define BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION NSLocalizedString(@"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure.", nil)
+#define BC_STRING_BUY_NOT_SUPPORTED_IOS_8_WEB_LOGIN NSLocalizedString(@"Mobile Buy is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer.", nil)
 
 #define BC_STRING_LOG_IN_TO_WEB_WALLET NSLocalizedString(@"Log in to Web Wallet", nil)
 #define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_ONE NSLocalizedString(@"Go to blockchain.info/wallet/login on your computer.", nil)

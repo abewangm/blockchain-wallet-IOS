@@ -84,14 +84,13 @@
 
 - (void)setupValueWhenSentLabelText:(Transaction *)transaction
 {
-    //    TODO: use currencyCode instead of CURRENCY_CODE_USD when endpoint supports other currencies
-    //    NSString *currencyCode = [self.detailViewDelegate getCurrencyCode];
+    NSString *currencyCode = [self.valueDelegate getCurrencyCode];
     NSString *sentOrReceived = [transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? BC_STRING_VALUE_WHEN_RECEIVED_ARGUMENT: BC_STRING_VALUE_WHEN_SENT_ARGUMENT;
     
-    if ([transaction.fiatAmountsAtTime objectForKey:[CURRENCY_CODE_USD lowercaseString]]) {
+    if ([transaction.fiatAmountsAtTime objectForKey:[currencyCode lowercaseString]]) {
         self.fiatValueWhenSentLabel.attributedText = nil;
         self.fiatValueWhenSentLabel.textColor = COLOR_LIGHT_GRAY;
-        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:sentOrReceived, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:[CURRENCY_CODE_USD lowercaseString]]]];
+        self.fiatValueWhenSentLabel.text = [NSString stringWithFormat:sentOrReceived, [NSNumberFormatter appendStringToFiatSymbol:[transaction.fiatAmountsAtTime objectForKey:[currencyCode lowercaseString]]]];
         self.fiatValueWhenSentLabel.hidden = NO;
     } else {
         self.fiatValueWhenSentLabel.hidden = YES;

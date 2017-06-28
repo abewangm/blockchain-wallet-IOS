@@ -7,8 +7,6 @@
 //
 
 #import "Transaction.h"
-#import "AccountInOut.h"
-#import "AddressInOut.h"
 
 @implementation Transaction
 
@@ -16,10 +14,7 @@
     
     Transaction * transaction = [[Transaction alloc] init];
     
-    transaction.from = [[InOut alloc] init];
-    
-    NSDictionary *fromDict = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
-    transaction.from.label = [fromDict objectForKey:DICTIONARY_KEY_LABEL];
+    transaction.from = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
     transaction.to = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO];
 
     transaction.block_height = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT] intValue];

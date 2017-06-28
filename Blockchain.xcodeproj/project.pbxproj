@@ -204,6 +204,7 @@
 		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
 		C72D6CC71EC647200000F922 /* dev.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC51EC647090000F922 /* dev.der */; };
 		C72D6CC81EC6472D0000F922 /* testnet.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC61EC647090000F922 /* testnet.der */; };
+		C780DF6C1EEF082300D48698 /* SharedSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
 		C790E10E1E52061B0063D141 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */; };
 		C790E10F1E52061B0063D141 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */; };
@@ -1031,6 +1032,8 @@
 		C72D6CC61EC647090000F922 /* testnet.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = testnet.der; sourceTree = SOURCE_ROOT; };
 		C72D6CC91ED3472D0000F922 /* FeeTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeeTypes.h; sourceTree = "<group>"; };
 		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
+		C780DF6A1EEF082300D48698 /* SharedSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedSessionDelegate.h; sourceTree = "<group>"; };
+		C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedSessionDelegate.m; sourceTree = "<group>"; };
 		C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FC1E5206020063D141 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-BlackItalic.ttf"; path = "Fonts/Montserrat/Montserrat-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		C790E0FD1E5206020063D141 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -1438,6 +1441,8 @@
 				237356B51DF894CF003940A7 /* Contact.m */,
 				23256A571DF1CFF7002B7A04 /* Invitation.h */,
 				23256A581DF1CFF7002B7A04 /* Invitation.m */,
+				C780DF6A1EEF082300D48698 /* SharedSessionDelegate.h */,
+				C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */,
 				C72D6CC91ED3472D0000F922 /* FeeTypes.h */,
 				23964C011DCA3F19001323BE /* KeyPair.h */,
 				23964C021DCA3F19001323BE /* KeyPair.m */,
@@ -2103,6 +2108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2343E4031CB434BC008DC7D1 /* NSArray+EncodedJSONString.m in Sources */,
+				C780DF6C1EEF082300D48698 /* SharedSessionDelegate.m in Sources */,
 				237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */,
 				23444F8D1DCD219E00573C8C /* BTCData.m in Sources */,
 				C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */,
@@ -2864,7 +2870,7 @@
 					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;
@@ -2902,7 +2908,7 @@
 					"$(SRCROOT)/Submodules/SocketRocket",
 				);
 				INFOPLIST_FILE = "Blockchain/Blockchain-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/OpenSSL-for-iPhone/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rainydayapps.Blockchain;

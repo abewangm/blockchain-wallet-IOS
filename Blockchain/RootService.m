@@ -12,6 +12,7 @@
 
 #import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
+#import "SharedSessionDelegate.h"
 #import "AppDelegate.h"
 #import "MultiAddressResponse.h"
 #import "Wallet.h"
@@ -165,7 +166,9 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] synchronize];
 #endif
     
-    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self.certificatePinner queue:nil];
+    SharedSessionDelegate *sharedSessionDelegate = [[SharedSessionDelegate alloc] initWithCertificatePinner:self.certificatePinner];
+    
+    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:sharedSessionDelegate queue:nil];
     
     [self.certificatePinner pinCertificate];
     
@@ -280,13 +283,7 @@ void (^secondPasswordSuccess)(NSString *);
             numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT - (int)swipeAddresses.count;
         }
         
-        for (int receiveIndex = 0; receiveIndex < numberOfAddressesToDerive; receiveIndex++) {
-            [self.wallet incrementReceiveIndexOfDefaultAccount];
-            NSString *swipeAddress = [app.wallet getReceiveAddressOfDefaultAccount];
-            [KeychainItemWrapper addSwipeAddress:swipeAddress];
-        }
-            
-        [self.pinEntryViewController setupQRCode];
+        [app.wallet getSwipeAddresses:numberOfAddressesToDerive label:@"Swipe Address"];
     }
     
     [self.loginTimer invalidate];
@@ -2382,6 +2379,20 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didDeleteContactAfterStoringInfo];
 }
 
+- (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses
+{
+    if (!newSwipeAddresses) {
+        DLog(@"Error: no new swipe addresses found!");
+        return;
+    }
+    
+    for (NSString *swipeAddress in newSwipeAddresses) {
+        [KeychainItemWrapper addSwipeAddress:swipeAddress];
+    }
+    
+    [self.pinEntryViewController setupQRCode];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts
@@ -3322,6 +3333,14 @@ void (^secondPasswordSuccess)(NSString *);
         }
         self.pendingPaymentRequestTransaction = nil;
     }
+}
+    
+- (void)setupSendToAddress:(NSString *)address
+{
+    [self showSendCoins];
+    
+    self.sendViewController.addressFromURLHandler = address;
+    [self.sendViewController reload];
 }
 
 #pragma mark - Pin Entry Delegates

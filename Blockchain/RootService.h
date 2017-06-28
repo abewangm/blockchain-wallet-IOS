@@ -218,6 +218,7 @@
 
 - (void)setupTransferAllFunds;
 - (void)setupPaymentRequest:(ContactTransaction *)transaction;
+- (void)setupSendToAddress:(NSString *)address;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;

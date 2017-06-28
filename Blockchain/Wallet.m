@@ -114,6 +114,15 @@
     return [[NSSet alloc] initWithObjects:@"log", @"debug", @"info", @"warn", @"error", @"assert", @"dir", @"dirxml", @"group", @"groupEnd", @"time", @"timeEnd", @"count", @"trace", @"profile", @"profileEnd", nil];
 }
 
+- (NSMutableDictionary *)timers
+{
+    if (!_timers) {
+        _timers = [NSMutableDictionary new];
+    }
+    
+    return _timers;
+}
+
 - (id)getSetTimeout
 {
     __weak Wallet *weakSelf = self;
@@ -125,15 +134,19 @@
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [callback callWithArguments:nil];
+                if ([weakSelf.timers objectForKey:uuid]) {
+                    [callback callWithArguments:nil];
+                }
             });
         }]
                                                         selector:@selector(main)
                                                         userInfo:nil
                                                          repeats:NO];
-        
+
         weakSelf.timers[uuid] = timer;
         [timer fire];
+        
+        return uuid;
     };
 }
 
@@ -159,7 +172,9 @@
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:timeout/1000
                                                           target:[NSBlockOperation blockOperationWithBlock:^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [callback callWithArguments:nil];
+                if ([weakSelf.timers objectForKey:uuid]) {
+                    [callback callWithArguments:nil];
+                }
             });
         }]
                                                         selector:@selector(main)
@@ -167,6 +182,8 @@
                                                          repeats:YES];
         weakSelf.timers[uuid] = timer;
         [timer fire];
+        
+        return uuid;
     };
 }
 
@@ -629,6 +646,10 @@
     
     self.context[@"objc_did_archive_or_unarchive"] = ^() {
         [weakSelf did_archive_or_unarchive];
+    };
+    
+    self.context[@"objc_did_get_swipe_addresses"] = ^(NSArray *swipeAddresses) {
+        [weakSelf did_get_swipe_addresses:swipeAddresses];
     };
     
 #pragma mark State
@@ -1854,6 +1875,15 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.transferFundsToDefaultAccountFromAddress(\"%@\")", [address escapeStringForJS]]];
 }
 
+- (void)changeLastUsedReceiveIndexOfDefaultAccount
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount()"]];
+}
+
 - (void)sweepPaymentRegular
 {
     if (![self isInitialized]) {
@@ -2133,6 +2163,9 @@
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [URL_SERVER escapeStringForJS]]];
+
         [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
     });
 }
@@ -2143,9 +2176,9 @@
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", transaction.myHash]] toString];
 }
 
-- (void)incrementReceiveIndexOfDefaultAccount
+- (NSArray *)getSwipeAddresses:(int)numberOfAddresses label:(NSString *)label
 {
-    [self.context evaluateScript:@"MyWalletPhone.incrementReceiveIndexOfDefaultAccount()"];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getSwipeAddresses(%d, \"%@\")", numberOfAddresses, label]] toArray];
 }
 
 - (int)getDefaultAccountLabelledAddressesCount
@@ -3710,6 +3743,17 @@
     DLog(@"did_archive_or_unarchive");
     
     [self.webSocket closeWithCode:WEBSOCKET_CODE_ARCHIVE_UNARCHIVE reason:WEBSOCKET_CLOSE_REASON_ARCHIVED_UNARCHIVED];
+}
+
+- (void)did_get_swipe_addresses:(NSArray *)swipeAddresses
+{
+    DLog(@"did_get_swipe_addresses");
+    
+    if ([self.delegate respondsToSelector:@selector(didGetSwipeAddresses:)]) {
+        [self.delegate didGetSwipeAddresses:swipeAddresses];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetSwipeAddresses!", [delegate class]);
+    }
 }
 
 - (void)show_completed_trade:(JSValue *)trade

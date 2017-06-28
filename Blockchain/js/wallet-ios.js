@@ -98,8 +98,8 @@ MyWalletPhone.upgradeToV3 = function(firstAccountName) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-                                        MyWallet.wallet.upgradeToV3(firstAccountName, pw, success, error);
-                                        });
+          MyWallet.wallet.upgradeToV3(firstAccountName, pw, success, error);
+        });
     }
     else {
         MyWallet.wallet.upgradeToV3(firstAccountName, null, success, error);
@@ -123,8 +123,8 @@ MyWalletPhone.createAccount = function(label) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-                                        MyWallet.wallet.newAccount(label, pw, null, success);
-                                        });
+          MyWallet.wallet.newAccount(label, pw, null, success);
+        });
     }
     else {
         MyWallet.wallet.newAccount(label, null, null, success);
@@ -344,24 +344,27 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
 MyWalletPhone.createNewPayment = function() {
     console.log('Creating new payment')
     currentPayment = MyWallet.wallet.createPayment();
+
     currentPayment.on('error', function(errorObject) {
-                      var errorDictionary = {'message': {'error': errorObject['error']}};
-                        objc_on_error_update_fee(errorDictionary);
-                      });
+      var errorDictionary = {
+        'message':{'error': errorObject['error']}
+      };
+      objc_on_error_update_fee(errorDictionary);
+    });
 
     currentPayment.on('message', function(object) {
-                        objc_on_payment_notice(object['text']);
-                      });
+      objc_on_payment_notice(object['text']);
+    });
 }
 
 MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
-                                       if (x) {
-                                       if (x.from != null) objc_update_send_balance_fees(isAdvanced ? x.balance : x.sweepAmount, x.fees);
-                                       }
-                                       return x;
-                                       });
+          if (x) {
+            if (x.from != null) objc_update_send_balance_fees(isAdvanced ? x.balance : x.sweepAmount, x.fees);
+          }
+          return x;
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -386,9 +389,9 @@ MyWalletPhone.changePaymentAmount = function(amount) {
 MyWalletPhone.getSurgeStatus = function() {
     if (currentPayment) {
         currentPayment.payment.then(function (x) {
-                                    objc_update_surge_status(x.fees.default.surge);
-                                    return x;
-                                    });
+          objc_update_surge_status(x.fees.default.surge);
+          return x;
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -404,18 +407,16 @@ MyWalletPhone.checkIfUserIsOverSpending = function() {
 
     if (currentPayment) {
         currentPayment.payment.then(checkForOverSpending).catch(function(error) {
-                                                                var errorArgument;
-                                                                if (error.error) {
-                                                                errorArgument = error.error;
-                                                                } else {
-                                                                errorArgument = error.message;
-                                                                }
-
-                                                                console.log('error checking for overspending: ' + errorArgument);
-                                                                objc_on_error_update_fee(errorArgument);
-
-                                                                return error.payment;
-                                                                });
+          var errorArgument;
+          if (error.error) {
+            errorArgument = error.error;
+          } else {
+            errorArgument = error.message;
+          }
+          console.log('error checking for overspending: ' + errorArgument);
+          objc_on_error_update_fee(errorArgument);
+          return error.payment;
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -443,9 +444,9 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
 
     if (currentPayment) {
         currentPayment.updateFeePerKb(satoshiPerByte).build().then(function (x) {
-                                                  objc_did_change_satoshi_per_byte_dust_show_summary(x.sweepAmount, x.finalFee, x.extraFeeConsumption, updateType);
-                                                  return x;
-                                                  }).catch(buildFailure);
+          objc_did_change_satoshi_per_byte_dust_show_summary(x.sweepAmount, x.finalFee, x.extraFeeConsumption, updateType);
+          return x;
+        }).catch(buildFailure);
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -454,9 +455,9 @@ MyWalletPhone.changeSatoshiPerByte = function(satoshiPerByte, updateType) {
 MyWalletPhone.sweepPaymentRegular = function() {
     if (currentPayment) {
         currentPayment.useAll().then(function (x) {
-                                     MyWalletPhone.updateSweep(false, false);
-                                     return x;
-                                     });
+          MyWalletPhone.updateSweep(false, false);
+          return x;
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -482,9 +483,9 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
 
     if (currentPayment) {
         currentPayment.useAll().build().then(function(x) {
-                                             MyWalletPhone.updateSweep(false, true);
-                                             return x;
-                                             }).catch(buildFailure);
+          MyWalletPhone.updateSweep(false, true);
+          return x;
+        }).catch(buildFailure);
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -493,9 +494,9 @@ MyWalletPhone.sweepPaymentRegularThenConfirm = function() {
 MyWalletPhone.sweepPaymentAdvanced = function(fee) {
     if (currentPayment) {
         currentPayment.useAll().then(function (x) {
-                                        MyWalletPhone.updateSweep(true, false);
-                                        return x;
-                                        });
+          MyWalletPhone.updateSweep(true, false);
+          return x;
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -520,9 +521,9 @@ MyWalletPhone.sweepPaymentAdvancedThenConfirm = function(fee) {
 
     if (currentPayment) {
         currentPayment.useAll(fee).build().then(function(x) {
-                                                MyWalletPhone.updateSweep(true, true);
-                                                return x;
-                                                }).catch(buildFailure);
+          MyWalletPhone.updateSweep(true, true);
+          return x;
+        }).catch(buildFailure);
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -532,20 +533,20 @@ MyWalletPhone.updateSweep = function(isAdvanced, willConfirm) {
 
     if (currentPayment) {
         currentPayment.payment.then(function(x) {
-                                    console.log('updated fee: ' + x.finalFee);
-                                    console.log('SweepAmount: ' + x.amounts);
-                                    objc_update_max_amount_fee_dust_willConfirm(x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm);
-                                    return x;
-                                    }).catch(function(error) {
-                                             var errorArgument;
-                                             if (error.error) {
-                                             errorArgument = error.error;
-                                             } else {
-                                             errorArgument = error.message;
-                                             }
-                                             console.log('error sweeping payment: ' + errorArgument);
-                                             objc_on_error_update_fee(errorArgument);
-                                             });
+          console.log('updated fee: ' + x.finalFee);
+          console.log('SweepAmount: ' + x.amounts);
+          objc_update_max_amount_fee_dust_willConfirm(x.amounts[0], x.finalFee, x.extraFeeConsumption, willConfirm);
+          return x;
+        }).catch(function(error) {
+          var errorArgument;
+          if (error.error) {
+            errorArgument = error.error;
+          } else {
+            errorArgument = error.message;
+          }
+          console.log('error sweeping payment: ' + errorArgument);
+          objc_on_error_update_fee(errorArgument);
+        });
     } else {
         console.log('Payment error: null payment object!');
     }
@@ -570,9 +571,9 @@ MyWalletPhone.getTransactionFeeWithUpdateType = function(updateType) {
         }
 
         currentPayment.prebuild().build().then(function (x) {
-                                               objc_did_get_fee_dust_txSize(x.finalFee, x.extraFeeConsumption, x.txSize);
-                                               return x;
-                                               }).catch(buildFailure);
+          objc_did_get_fee_dust_txSize(x.finalFee, x.extraFeeConsumption, x.txSize);
+          return x;
+        }).catch(buildFailure);
 
     } else {
         console.log('Payment error: null payment object!');
@@ -600,8 +601,8 @@ MyWalletPhone.setPbkdf2Iterations = function(iterations) {
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
-                                        MyWallet.setPbkdf2Iterations(iterations, success, error, pw);
-                                        });
+          MyWallet.setPbkdf2Iterations(iterations, success, error, pw);
+        });
     }
     else {
         MyWallet.setPbkdf2Iterations(iterations, success, error, null);
@@ -610,13 +611,13 @@ MyWalletPhone.setPbkdf2Iterations = function(iterations) {
 
 MyWalletPhone.getLegacyArchivedAddresses = function() {
     return MyWallet.wallet.addresses.filter(function (addr) {
-                                            return MyWallet.wallet.key(addr).archived === true;
-                                            });
+      return MyWallet.wallet.key(addr).archived === true;
+    });
 };
 
 MyWalletPhone.getSessionToken = function() {
     WalletNetwork.obtainSessionToken().then(function (sessionToken) {
-        objc_on_get_session_token(sessionToken);
+      objc_on_get_session_token(sessionToken);
     });
 }
 
@@ -739,40 +740,51 @@ MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
     transferAllPayments = {};
 
     var updateInfo = function(payments) {
-        var totalAmount = payments.filter(function(p) {return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { totalAddressesUsed.push(p.from[0]); return p.amounts[0]; }).reduce(Helpers.add, 0);
-        var totalFee = payments.filter(function(p) {return p.finalFee > 0 && p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;}).map(function (p) { return p.finalFee; }).reduce(Helpers.add, 0);
+        var totalAmount = payments.filter(function(p) {
+          return p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;
+        }).map(function (p) {
+          totalAddressesUsed.push(p.from[0]);
+          return p.amounts[0];
+        }).reduce(Helpers.add, 0);
+
+        var totalFee = payments.filter(function(p) {
+          return p.finalFee > 0 && p.amounts[0] >= Bitcoin.networks.bitcoin.dustThreshold;
+        }).map(function (p) {
+          return p.finalFee;
+        }).reduce(Helpers.add, 0);
 
         objc_update_transfer_all_amount_fee_addressesUsed(totalAmount, totalFee, totalAddressesUsed);
     }
 
     var createPayment = function(address) {
-        return new Promise(function (resolve) {
-                           var payment = MyWallet.wallet.createPayment().from(address).useAll();
-                           transferAllPayments[address] = payment;
-                           payment.sideEffect(function (p) { resolve(p); });
-                           })
+      return new Promise(function (resolve) {
+        var payment = MyWallet.wallet.createPayment().from(address).useAll();
+        transferAllPayments[address] = payment;
+        payment.sideEffect(function (p) {
+          resolve(p);
+        });
+      })
     }
 
     MyWalletPhone.preparePaymentsForTransferAll(addresses, createPayment, updateInfo, payments, addresses.length);
 }
 
 MyWalletPhone.preparePaymentsForTransferAll = function(addresses, paymentSetup, updateInfo, payments, totalCount) {
-
     if (addresses.length > 0) {
-
-        objc_loading_start_transfer_all(totalCount - addresses.length + 1, totalCount);
-
-        var newPayment = paymentSetup(addresses[0]);
-        newPayment.then(function (p) {
-            setTimeout(function() {
-                if (p) {
-                    payments.push(p);
-                    addresses.shift();
-                    MyWalletPhone.preparePaymentsForTransferAll(addresses, paymentSetup, updateInfo, payments, totalCount);
-                }
-                return p;
-            }, 0)
-        }).catch(function(e){console.log(e);});
+      objc_loading_start_transfer_all(totalCount - addresses.length + 1, totalCount);
+      var newPayment = paymentSetup(addresses[0]);
+      newPayment.then(function (p) {
+        setTimeout(function() {
+          if (p) {
+            payments.push(p);
+            addresses.shift();
+            MyWalletPhone.preparePaymentsForTransferAll(addresses, paymentSetup, updateInfo, payments, totalCount);
+          }
+          return p;
+        }, 0)
+      }).catch(function(e){
+        console.log(e);
+      });
     } else {
         updateInfo(payments);
     }
@@ -795,7 +807,7 @@ MyWalletPhone.transferAllFundsToAccount = function(accountIndex, isFirstTransfer
         console.log('error transfering all funds: ' + errorArgument);
 
         // pass second password to frontend in case we want to continue sending from other addresses
-    objc_on_error_transfer_all_secondPassword(errorArgument, secondPassword);
+        objc_on_error_transfer_all_secondPassword(errorArgument, secondPassword);
 
         return error.payment;
     }
@@ -844,14 +856,29 @@ MyWalletPhone.transferFundsToDefaultAccountFromAddress = function(address) {
     }
 
     currentPayment.from(address).to(MyWalletPhone.getReceivingAddressForAccount(MyWallet.wallet.hdwallet.defaultAccountIndex)).useAll().build().then(function(x) {
-                                                                                                                                                     MyWalletPhone.updateSweep(false, true);
-                                                                                                                                                     return x;
-                                                                                                                                                     }).catch(buildFailure);
+      MyWalletPhone.updateSweep(false, true);
+      return x;
+    }).catch(buildFailure);
 }
 
-MyWalletPhone.incrementReceiveIndexOfDefaultAccount = function() {
-    console.log('incrementing receive index');
-    MyWallet.wallet.hdwallet.defaultAccount.incrementReceiveIndex();
+MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount = function() {
+    MyWallet.wallet.hdwallet.defaultAccount.lastUsedReceiveIndex = MyWallet.wallet.hdwallet.defaultAccount.receiveIndex;
+}
+
+MyWalletPhone.getSwipeAddresses = function(numberOfAddresses, label) {
+
+    var addresses = [];
+    var account = MyWallet.wallet.hdwallet.defaultAccount;
+    var accountIndex = MyWallet.wallet.hdwallet.defaultAccountIndex;
+
+    MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount();
+
+    for (var i = 0; i < numberOfAddresses; i++) {
+        addresses.push(MyWallet.wallet.hdwallet.defaultAccount.receiveAddress);
+        MyWalletPhone.changeLastUsedReceiveIndexOfDefaultAccount();
+    }
+
+    objc_did_get_swipe_addresses(addresses);
 }
 
 MyWalletPhone.getReceiveAddressOfDefaultAccount = function() {
@@ -911,14 +938,12 @@ MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
             .then(success).catch(error);
         } else {
             MyWalletPhone.getSecondPassword(function (pw) {
-
-                                            secondPassword = pw;
-
-                                            payment
-                                            .sign(pw)
-                                            .publish()
-                                            .then(success).catch(error);
-                                            });
+              secondPassword = pw;
+              payment
+              .sign(pw)
+              .publish()
+              .then(success).catch(error);
+            });
         }
     } else {
         payment
@@ -960,7 +985,7 @@ MyWalletPhone.apiGetPINValue = function(key, pin) {
                     throw 'Response Object nil';
                 }
 
-            objc_on_pin_code_get_response(parsedRes);
+                objc_on_pin_code_get_response(parsedRes);
             } catch (error) {
                 // Invalid server response
                 objc_on_error_pin_code_get_invalid_response();
@@ -989,17 +1014,17 @@ MyWalletPhone.pinServerPutKeyOnPinServerServer = function(key, value, pin) {
     var error = function (res) {
 
         if (!res || !res.responseText || res.responseText.length == 0) {
-        objc_on_error_pin_code_put_error('Unknown Error');
+          objc_on_error_pin_code_put_error('Unknown Error');
         } else {
-            try {
-                var responseObject = JSON.parse(res.responseText);
+          try {
+              var responseObject = JSON.parse(res.responseText);
 
-                responseObject.key = key;
-                responseObject.value = value;
+              responseObject.key = key;
+              responseObject.value = value;
 
-            objc_on_pin_code_put_response(responseObject);
+              objc_on_pin_code_put_response(responseObject);
             } catch (e) {
-            objc_on_error_pin_code_put_error(res.responseText);
+              objc_on_error_pin_code_put_error(res.responseText);
             }
         }
     };
@@ -1023,8 +1048,7 @@ MyWalletPhone.newAccount = function(password, email, firstAccountName) {
             if (e.initial_error) {
                 message = e.initial_error;
             }
-
-        objc_on_error_creating_new_account(''+message);
+            objc_on_error_creating_new_account(''+message);
         }
     };
 
@@ -1108,9 +1132,9 @@ MyWalletPhone.get_wallet_and_history = function() {
     objc_loading_start_get_wallet_and_history();
 
     MyWallet.getWallet(function() {
-                       var getHistory = MyWallet.wallet.getHistory();
-                       getHistory.then(success).catch(error);
-                       });
+      var getHistory = MyWallet.wallet.getHistory();
+      getHistory.then(success).catch(error);
+    });
 };
 
 MyWalletPhone.getMultiAddrResponse = function(txFilter) {
@@ -1129,9 +1153,9 @@ MyWalletPhone.getMultiAddrResponse = function(txFilter) {
 MyWalletPhone.fetchMoreTransactions = function() {
     objc_loading_start_get_history();
     MyWallet.wallet.fetchTransactions().then(function(numFetched) {
-                                             var loadedAll = numFetched < MyWallet.wallet.txList.loadNumber;
-                                             objc_update_loaded_all_transactions(loadedAll);
-                                             });
+      var loadedAll = numFetched < MyWallet.wallet.txList.loadNumber;
+      objc_update_loaded_all_transactions(loadedAll);
+    });
 }
 
 MyWalletPhone.addKey = function(keyString) {
@@ -1151,29 +1175,27 @@ MyWalletPhone.addKey = function(keyString) {
 
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
-                                            if (MyWallet.wallet.isDoubleEncrypted) {
-                                            objc_on_add_private_key_start();
-                                            MyWalletPhone.getSecondPassword(function (pw) {
-                                                                            var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, bip38Pass);
-                                                                            promise.then(success, error);
-                                                                            });
-                                            }
-                                            else {
-                                            objc_on_add_private_key_start();
-                                            var promise = MyWallet.wallet.importLegacyAddress(keyString, null, null, bip38Pass);
-                                            promise.then(success, error);
-                                            }
-                                            });
+          if (MyWallet.wallet.isDoubleEncrypted) {
+            objc_on_add_private_key_start();
+            MyWalletPhone.getSecondPassword(function (pw) {
+              var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, bip38Pass);
+              promise.then(success, error);
+            });
+          } else {
+            objc_on_add_private_key_start();
+            var promise = MyWallet.wallet.importLegacyAddress(keyString, null, null, bip38Pass);
+            promise.then(success, error);
+          }
+        });
     }
     else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             objc_on_add_private_key_start();
             MyWalletPhone.getSecondPassword(function (pw) {
-                                            var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, null);
-                                            promise.then(success, error);
-                                            });
-        }
-        else {
+              var promise = MyWallet.wallet.importLegacyAddress(keyString, null, pw, null);
+              promise.then(success, error);
+            });
+        } else {
             objc_on_add_private_key_start();
             var promise = MyWallet.wallet.importLegacyAddress(keyString, null, null, null);
             promise.then(success, error);
@@ -1202,32 +1224,32 @@ MyWalletPhone.sendFromWatchOnlyAddressWithPrivateKey = function(privateKeyString
 
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
-                                            Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, bip38Pass).then(function (decryptedPrivateKey) {
-                                                                                                                                       if (decryptedPrivateKey) {
-                                                                                                                                       if (currentPayment) {
-                                                                                                                                       currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
-                                                                                                                                       } else {
-                                                                                                                                       console.log('Payment error: null payment object!');
-                                                                                                                                       }
-                                                                                                                                       } else {
-                                                                                                                                       console.log('Add private key error: ');
-                                                                                                                                       objc_on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
-                                                                                                                                       }
-                                                                                                                                       }).catch(error);
-                                            });
+          Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, bip38Pass).then(function (decryptedPrivateKey) {
+            if (decryptedPrivateKey) {
+              if (currentPayment) {
+                currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+              } else {
+                console.log('Payment error: null payment object!');
+              }
+            } else {
+              console.log('Add private key error: ');
+              objc_on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
+            }
+          }).catch(error);
+        });
     } else {
         Helpers.privateKeyCorrespondsToAddress(watchOnlyAddress, privateKeyString, null).then(function (decryptedPrivateKey) {
-                                                                                              if (decryptedPrivateKey) {
-                                                                                              if (currentPayment) {
-                                                                                              currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
-                                                                                              } else {
-                                                                                              console.log('Payment error: null payment object!');
-                                                                                              }
-                                                                                              } else {
-                                                                                              console.log('Add private key error: ');
-                                                                                              objc_on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
-                                                                                              }
-                                                                                              }).catch(error);
+          if (decryptedPrivateKey) {
+            if (currentPayment) {
+              currentPayment.from(decryptedPrivateKey).sideEffect(success).catch(error);
+            } else {
+              console.log('Payment error: null payment object!');
+            }
+          } else {
+            console.log('Add private key error: ');
+            objc_on_error_import_key_for_sending_from_watch_only('wrongPrivateKey');
+          }
+        }).catch(error);
     }
 }
 
@@ -1253,25 +1275,24 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
 
     if (needsBip38Passsword) {
         MyWalletPhone.getPrivateKeyPassword(function (bip38Pass) {
-                                            if (MyWallet.wallet.isDoubleEncrypted) {
-                                            objc_on_add_private_key_start();
-                                            MyWalletPhone.getSecondPassword(function (pw) {
-                                                                            MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, bip38Pass).then(success).catch(error);
-                                                                            });
-                                            } else {
-                                            objc_on_add_private_key_start();
-                                            MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, null, bip38Pass).then(success).catch(error);
-                                            }
-                                            });
+          if (MyWallet.wallet.isDoubleEncrypted) {
+            objc_on_add_private_key_start();
+            MyWalletPhone.getSecondPassword(function (pw) {
+              MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, bip38Pass).then(success).catch(error);
+            });
+          } else {
+            objc_on_add_private_key_start();
+            MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, null, bip38Pass).then(success).catch(error);
+          }
+        });
     }
     else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             objc_on_add_private_key_start();
             MyWalletPhone.getSecondPassword(function (pw) {
-                                            MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, null).then(success).catch(error);
-                                            });
-        }
-        else {
+              MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, pw, null).then(success).catch(error);
+            });
+        } else {
             objc_on_add_private_key_start();
             MyWallet.wallet.addKeyToLegacyAddress(privateKeyString, legacyAddress, null, null).then(success).catch(error);
         }
@@ -1280,7 +1301,6 @@ MyWalletPhone.addKeyToLegacyAddress = function(privateKeyString, legacyAddress) 
 
 MyWalletPhone.getRecoveryPhrase = function(secondPassword) {
     var recoveryPhrase = MyWallet.wallet.getMnemonic(secondPassword);
-
     objc_on_success_get_recovery_phrase(recoveryPhrase);
 };
 
@@ -1318,12 +1338,11 @@ WalletCrypto.scrypt = function(passwd, salt, N, r, p, dkLen, callback) {
     }
 
     objc_crypto_scrypt_salt_n_r_p_dkLen(passwd, salt, N, r, p, dkLen, function(buffer) {
-                   var bytes = new Buffer(buffer, 'hex');
-
-                   callback(bytes);
-                   }, function(e) {
-                   error(''+e);
-                   });
+      var bytes = new Buffer(buffer, 'hex');
+      callback(bytes);
+    }, function(e) {
+      error(''+e);
+    });
 };
 
 WalletCrypto.stretchPassword = function (password, salt, iterations, keylen) {
@@ -1576,32 +1595,30 @@ MyWalletPhone.getPasswordStrength = function(password) {
 
 MyWalletPhone.generateNewAddress = function() {
     MyWallet.getWallet(function() {
+      objc_loading_start_create_new_address();
+      var label = null;
 
-                       objc_loading_start_create_new_address();
+      var success = function () {
+        console.log('Success creating new address');
+        MyWalletPhone.get_history();
+        objc_on_generate_key();
+        objc_loading_stop();
+      };
 
-                       var label = null;
+      var error = function (e) {
+        console.log('Error creating new address: ' + e);
+        objc_loading_stop();
+        objc_on_error_creating_new_address(e);
+      };
 
-                       var success = function () {
-                       console.log('Success creating new address');
-                       MyWalletPhone.get_history();
-                       objc_on_generate_key();
-                       objc_loading_stop();
-                       };
-
-                       var error = function (e) {
-                       console.log('Error creating new address: ' + e);
-                       objc_loading_stop();
-                       objc_on_error_creating_new_address(e);
-                       };
-
-                       if (MyWallet.wallet.isDoubleEncrypted) {
-                       MyWalletPhone.getSecondPassword(function (pw) {
-                                                       MyWallet.wallet.newLegacyAddress(label, pw, success, error);
-                                                       });
-                       } else {
-                       MyWallet.wallet.newLegacyAddress(label, '', success, error);
-                       }
-                       });
+      if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+          MyWallet.wallet.newLegacyAddress(label, pw, success, error);
+        });
+      } else {
+        MyWallet.wallet.newLegacyAddress(label, '', success, error);
+      }
+    });
 };
 
 MyWalletPhone.checkIfWalletHasAddress = function(address) {
@@ -1711,9 +1728,9 @@ MyWalletPhone.updateNotification = function(updates) {
         if (!MyWallet.wallet.accountInfo.notifications.http) {
             console.log('Enable notifications success; enabling for receiving');
             BlockchainSettingsAPI.updateNotificationsOn({ receive: true }).then(function(x) {
-                                                                                objc_on_change_notifications_success();
-                                                                                return x;
-                                                                                }).catch(updateReceiveError);
+              objc_on_change_notifications_success();
+              return x;
+            }).catch(updateReceiveError);
         } else {
             console.log('Enable notifications success');
             objc_on_change_notifications_success();
@@ -2126,10 +2143,7 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 
 MyWalletPhone.getExchangeAccount = function () {
   console.log('Getting exchange account');
-  if (MyWallet.wallet.isDoubleEncrypted) {
-    console.log('Second password enabled, cannot fetch exchange account');
-    return Promise.resolve();
-  }
+
   var wallet = MyWallet.wallet;
   var p = wallet.loadMetadata();
   return p.then(function () {
