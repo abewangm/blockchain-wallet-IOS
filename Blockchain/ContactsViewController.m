@@ -16,7 +16,6 @@
 #import "Contact.h"
 #import "ContactDetailViewController.h"
 #import "ContactTableViewCell.h"
-#import "BCTwoButtonView.h"
 
 #define VIEW_NAME_NEW_CONTACT @"newContact"
 
@@ -27,7 +26,7 @@ typedef enum {
     CreateContactTypeLink
 } CreateContactType;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate, TwoButtonDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
@@ -181,6 +180,7 @@ typedef enum {
     inviteButton.frame = CGRectMake(0, subtitleTextView.frame.origin.y + subtitleTextView.frame.size.height + 16, inviteButton.frame.size.width, inviteButton.frame.size.height);
     inviteButton.center = CGPointMake(self.noContactsView.center.x, inviteButton.center.y);
     inviteButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [inviteButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
 
     [self.noContactsView addSubview:inviteButton];
 }
@@ -420,14 +420,43 @@ typedef enum {
 
 - (void)newContactClicked:(id)sender
 {
-    BCTwoButtonView *twoButtonView = [[BCTwoButtonView alloc] initWithName:VIEW_NAME_NEW_CONTACT topButtonText:BC_STRING_I_WANT_TO_INVITE_SOMEONE bottomButtonText:BC_STRING_SOMEONE_IS_INVITING_ME];
-    twoButtonView.delegate = self;
+    UIAlertController *newContactAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:BC_STRING_ENTER_NAME_CONTACT preferredStyle:UIAlertControllerStyleAlert];
+    [newContactAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [newContactAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_NEXT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *name = [[newContactAlert textFields] firstObject].text;
+        [self promptForUserNameWithContactName:name];
+    }]];
+    [newContactAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.returnKeyType = UIReturnKeyNext;
+    }];
     
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:twoButtonView];
+    [self presentViewController:newContactAlert animated:YES completion:nil];
+}
+
+- (void)promptForUserNameWithContactName:(NSString *)contactName
+{
+    UIAlertController *userNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:[NSString stringWithFormat:BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY, contactName] preferredStyle:UIAlertControllerStyleAlert];
+    [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_NEXT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *senderName = [[userNameAlert textFields] firstObject].text;
+        if ([app checkInternetConnection]) {
+            [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
+            [app.wallet createContactWithName:senderName ID:contactName];
+        }
+    }]];
+    [userNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+        secureTextField.returnKeyType = UIReturnKeyNext;
+    }];
     
-    self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
-    
-    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    [self presentViewController:userNameAlert animated:YES completion:nil];
 }
 
 - (void)createInvitation
