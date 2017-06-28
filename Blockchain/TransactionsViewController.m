@@ -140,7 +140,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)setText
 {
     showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    showBuyAvailableNow = !showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+    showBuyAvailableNow = !showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD] && [app.wallet isBuyEnabled];
     
     cardsViewHeight = showBuyAvailableNow ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
