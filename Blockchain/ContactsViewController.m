@@ -564,7 +564,7 @@ typedef enum {
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     
-    [self.createContactNavigationController presentViewController:activityController animated:YES completion:^{
+    [self presentViewController:activityController animated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SHARE_CONTACT_LINK object:nil];
     }];
 }
@@ -715,28 +715,7 @@ typedef enum {
     
     self.lastCreatedInvitation = invitationDict;
     
-    NSString *identifier = [invitationDict objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
-    NSString *sharedInfo = [invitationDict objectForKey:DICTIONARY_KEY_NAME];
-    
-    if (self.contactType == CreateContactTypeQR) {
-        BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_CONTACT_SCAN_INSTRUCTIONS addAddressPrefix:NO];
-        qrCodeView.address = [self JSDictionaryForInvitation:identifier name:sharedInfo];
-        qrCodeView.qrCodeFooterLabel.hidden = YES;
-        qrCodeView.doneButtonDelegate = self;
-        
-        UIViewController *viewController = [UIViewController new];
-        [viewController.view addSubview:qrCodeView];
-        
-        CGRect frame = qrCodeView.frame;
-        frame.origin.y = viewController.view.frame.origin.y + DEFAULT_HEADER_HEIGHT;
-        qrCodeView.frame = frame;
-        
-        [self.createContactNavigationController pushViewController:viewController animated:YES];
-    } else if (self.contactType == CreateContactTypeLink) {
-        [self shareInvitationClicked];
-    } else {
-        DLog(@"Unknown create contact type");
-    }
+    [self shareInvitationClicked];
     
     [self reload];
 }
