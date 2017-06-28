@@ -193,7 +193,9 @@
 
 - (void)showSwipeQR
 {
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
+    if (!self.swipeLabel.hidden) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
+    }
 }
 
 @end
