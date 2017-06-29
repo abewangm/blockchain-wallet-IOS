@@ -139,8 +139,6 @@ typedef enum {
     self.tableContainerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.view addSubview:self.tableContainerView];
     
-    UIColor *searchFieldTextColor = COLOR_LIGHT_GRAY;
-    
     UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(8, DEFAULT_HEADER_HEIGHT + 8, self.tableContainerView.frame.size.width - 16, 31)];
     searchField.leftViewMode = UITextFieldViewModeAlways;
     searchField.backgroundColor = [UIColor whiteColor];
@@ -150,7 +148,7 @@ typedef enum {
     searchField.delegate = self;
     searchField.textAlignment = NSTextAlignmentLeft;
     searchField.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    searchField.textColor = searchFieldTextColor;
+    searchField.textColor = COLOR_TEXT_DARK_GRAY;
     [self.tableContainerView addSubview:searchField];
     
     self.cancelSearchButton = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -166,7 +164,7 @@ typedef enum {
     
     self.searchFieldFakePlaceHolder = [[UILabel alloc] initWithFrame:CGRectZero];
     self.searchFieldFakePlaceHolder.text = BC_STRING_SEARCH;
-    self.searchFieldFakePlaceHolder.textColor = searchFieldTextColor;
+    self.searchFieldFakePlaceHolder.textColor = [UIColor darkGrayColor];
     [self.searchFieldFakePlaceHolder sizeToFit];
     self.searchFieldFakePlaceHolder.font = [UIFont systemFontOfSize:searchField.font.pointSize];
     self.searchFieldFakePlaceHolder.center = searchField.center;
@@ -280,7 +278,7 @@ typedef enum {
     CGFloat newOriginX = textField.frame.origin.x + [textField caretRectForPosition:textField.selectedTextRange.start].origin.x + textField.leftView.frame.size.width + 1;
 
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [textField changeWidth:textField.frame.size.width - (self.cancelSearchButton.frame.size.width + 16)];
+        [textField changeWidth:textField.frame.size.width - (self.cancelSearchButton.frame.size.width + 8)];
         self.searchFieldFakePlaceHolder.frame = CGRectMake(newOriginX,
                                                            self.searchFieldFakePlaceHolder.frame.origin.y,
                                                            self.searchFieldFakePlaceHolder.frame.size.width,
@@ -292,8 +290,11 @@ typedef enum {
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    textField.text = nil;
+    self.searchFieldFakePlaceHolder.hidden = NO;
+
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [textField changeWidth:textField.frame.size.width + (self.cancelSearchButton.frame.size.width + 16)];
+        [textField changeWidth:textField.frame.size.width + (self.cancelSearchButton.frame.size.width + 8)];
         self.searchFieldFakePlaceHolder.center = textField.center;
         [self moveImageViewNextToFakePlaceHolder];
         [self moveCancelButtonToSearchField:textField];
