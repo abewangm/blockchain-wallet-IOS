@@ -143,11 +143,9 @@ typedef enum {
     searchBar.backgroundImage = [UIImage new];
     searchBar.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
     searchBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
-    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                                                  [UIColor whiteColor],
-                                                                                                  NSForegroundColorAttributeName,
-                                                                                                  nil] 
-                                                                                        forState:UIControlStateNormal];
+    [[UIButton appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]]
+     setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     searchBar.delegate = self;
     self.tableView.tableHeaderView = searchBar;
     
