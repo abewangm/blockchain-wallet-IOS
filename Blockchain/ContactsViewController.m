@@ -288,30 +288,18 @@ typedef enum {
         return 0;
     }
     
-    NSArray *contacts = [app.wallet.contacts allValues];
-
-    if (section == self.sections.count - 1) {
-        return self.nonAlphabeticalContacts.count;
-    } else {
-        NSArray *sectionArray = [contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", [self.sections objectAtIndex:section]]];
-        return sectionArray.count;
-    }
+    NSArray *contacts = [self contactsForSection:section];
+    
+    return contacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
-    NSArray *contacts = [app.wallet.contacts allValues];
-    NSArray *sectionArray;
+    NSArray *contacts = [self contactsForSection:indexPath.section];
     
-    if (indexPath.section == self.sections.count - 1) {
-        sectionArray = self.nonAlphabeticalContacts;
-    } else {
-        sectionArray = [contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", [self.sections objectAtIndex:indexPath.section]]];
-    }
-    
-    Contact *contact = sectionArray[indexPath.row];
+    Contact *contact = contacts[indexPath.row];
     
     BOOL actionRequired = [app.wallet actionRequiredForContact:contact];
     
@@ -324,7 +312,8 @@ typedef enum {
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    Contact *contact = [app.wallet.contacts allValues][indexPath.row];
+    NSArray *contacts = [self contactsForSection:indexPath.section];
+    Contact *contact = contacts[indexPath.row];
     
     if (self.navigationController.topViewController == self) {
         [self contactClicked:contact];
@@ -361,6 +350,23 @@ typedef enum {
     
     return view;
 }
+
+#pragma mark - Table View Helpers
+
+- (NSArray *)contactsForSection:(NSInteger)section
+{
+    NSArray *contacts = [app.wallet.contacts allValues];
+    NSArray *sectionArray;
+    
+    if (section == self.sections.count - 1) {
+        sectionArray = self.nonAlphabeticalContacts;
+    } else {
+        sectionArray = [contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", [self.sections objectAtIndex:section]]];
+    }
+    
+    return sectionArray;
+}
+
 
 #pragma mark - Create Contact Delegate
 
