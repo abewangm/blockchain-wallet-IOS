@@ -440,7 +440,6 @@
 
 #define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"contact request sent", nil)
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite?", nil)
-#define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add New Contact", nil)
 #define BC_STRING_I_WANT_TO_INVITE_SOMEONE NSLocalizedString(@"I want to invite someone", nil)
 #define BC_STRING_SOMEONE_SENT_ME_A_LINK NSLocalizedString(@"Someone sent me a link", nil)
 #define BC_STRING_LINK_INVITE_INSTRUCTIONS NSLocalizedString(@"If someone sent you a link, simply tap on the link in the email or SMS to accept.", nil)
