@@ -27,17 +27,11 @@ typedef enum {
     CreateContactTypeLink
 } CreateContactType;
 
-@interface ContactsViewController () <UITableViewDelegate, UITextFieldDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
-
-@property (nonatomic) UIView *tableContainerView;
-@property (nonatomic) UILabel *searchFieldFakePlaceHolder;
-@property (nonatomic) UIImageView *searchFieldPlaceHolderImageView;
-@property (nonatomic) UIButton *cancelSearchButton;
-
 @property (nonatomic) UIView *noContactsView;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
@@ -133,59 +127,31 @@ typedef enum {
     app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
 
-- (void)setupTableContainerView
+- (void)setupTableView
 {
-    self.tableContainerView = [[UIView alloc] initWithFrame:self.view.frame];
-    self.tableContainerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
-    [self.view addSubview:self.tableContainerView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
     
-    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(8, DEFAULT_HEADER_HEIGHT + 8, self.tableContainerView.frame.size.width - 16, 31)];
-    searchField.leftViewMode = UITextFieldViewModeAlways;
-    searchField.backgroundColor = [UIColor whiteColor];
-    searchField.autocorrectionType = UITextAutocorrectionTypeNo;
-    searchField.placeholder = nil;
-    searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    searchField.delegate = self;
-    searchField.textAlignment = NSTextAlignmentLeft;
-    searchField.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    searchField.textColor = COLOR_TEXT_DARK_GRAY;
-    [self.tableContainerView addSubview:searchField];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+    searchBar.placeholder = BC_STRING_SEARCH;
+    searchBar.layer.borderColor = [COLOR_BLOCKCHAIN_BLUE CGColor];
+    searchBar.layer.borderWidth = 1;
+    searchBar.searchBarStyle = UISearchBarStyleProminent;
+    searchBar.translucent = NO;
+    searchBar.backgroundImage = [UIImage new];
+    searchBar.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+    searchBar.barTintColor = COLOR_BLOCKCHAIN_BLUE;
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                                  [UIColor whiteColor],
+                                                                                                  NSForegroundColorAttributeName,
+                                                                                                  nil] 
+                                                                                        forState:UIControlStateNormal];
+    searchBar.delegate = self;
+    self.tableView.tableHeaderView = searchBar;
     
-    self.cancelSearchButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.cancelSearchButton setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
-    self.cancelSearchButton.titleLabel.textColor = [UIColor whiteColor];
-    self.cancelSearchButton.backgroundColor = [UIColor clearColor];
-    [self.cancelSearchButton sizeToFit];
-    [self.cancelSearchButton addTarget:searchField action:@selector(resignFirstResponder) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self moveCancelButtonToSearchField:searchField];
-
-    [self.tableContainerView addSubview:self.cancelSearchButton];
-    
-    self.searchFieldFakePlaceHolder = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.searchFieldFakePlaceHolder.text = BC_STRING_SEARCH;
-    self.searchFieldFakePlaceHolder.textColor = [UIColor darkGrayColor];
-    [self.searchFieldFakePlaceHolder sizeToFit];
-    self.searchFieldFakePlaceHolder.font = [UIFont systemFontOfSize:searchField.font.pointSize];
-    self.searchFieldFakePlaceHolder.center = searchField.center;
-    [self.tableContainerView addSubview:self.searchFieldFakePlaceHolder];
-    
-    self.searchFieldPlaceHolderImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contacts_icon"]];
-    [self.searchFieldPlaceHolderImageView changeYPosition:searchField.center.y - self.searchFieldPlaceHolderImageView.frame.size.height/2];
-    
-    [self moveImageViewNextToFakePlaceHolder];
-
-    [self.tableContainerView addSubview:self.searchFieldPlaceHolderImageView];
-}
-
-- (void)moveCancelButtonToSearchField:(UITextField *)textField
-{
-    self.cancelSearchButton.frame = CGRectMake(textField.frame.origin.x + textField.frame.size.width + 8, textField.frame.origin.y, self.cancelSearchButton.frame.size.width, textField.frame.size.height);
-}
-
-- (void)moveImageViewNextToFakePlaceHolder
-{
-    [self.searchFieldPlaceHolderImageView changeXPosition:self.searchFieldFakePlaceHolder.frame.origin.x - self.searchFieldPlaceHolderImageView.frame.size.width - 1];
+    [self.view addSubview:self.tableView];
 }
 
 - (void)setupNoContactsView
@@ -270,48 +236,17 @@ typedef enum {
     self.detailViewController.contact = reloadedContact;
 }
 
-#pragma mark - Text Field Delegate
+#pragma mark - Search Bar Delegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    textField.leftView = [[UIView alloc] initWithFrame:self.searchFieldPlaceHolderImageView.frame];
-    CGFloat newOriginX = textField.frame.origin.x + [textField caretRectForPosition:textField.selectedTextRange.start].origin.x + textField.leftView.frame.size.width + 1;
-
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [textField changeWidth:textField.frame.size.width - (self.cancelSearchButton.frame.size.width + 8)];
-        self.searchFieldFakePlaceHolder.frame = CGRectMake(newOriginX,
-                                                           self.searchFieldFakePlaceHolder.frame.origin.y,
-                                                           self.searchFieldFakePlaceHolder.frame.size.width,
-                                                           self.searchFieldFakePlaceHolder.frame.size.height);
-        [self moveImageViewNextToFakePlaceHolder];
-        [self moveCancelButtonToSearchField:textField];
-    }];
+    searchBar.showsCancelButton = YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    textField.text = nil;
-    self.searchFieldFakePlaceHolder.hidden = NO;
-
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [textField changeWidth:textField.frame.size.width + (self.cancelSearchButton.frame.size.width + 8)];
-        self.searchFieldFakePlaceHolder.center = textField.center;
-        [self moveImageViewNextToFakePlaceHolder];
-        [self moveCancelButtonToSearchField:textField];
-    }];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    self.searchFieldFakePlaceHolder.hidden = (newString.length > 0);
-    return YES;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField
-{
-    self.searchFieldFakePlaceHolder.hidden = NO;
-    return YES;
+    [searchBar resignFirstResponder];
+    searchBar.showsCancelButton = NO;
 }
 
 #pragma mark - Table View Delegate
@@ -358,18 +293,15 @@ typedef enum {
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    label.textColor = COLOR_BLOCKCHAIN_BLUE;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
     
     [view addSubview:label];
     
     NSString *labelString;
     
     if (section == 0) {
-        labelString = BC_STRING_CONTACTS;
+        labelString = BC_STRING_ADD_NEW_CONTACT;
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
@@ -820,7 +752,7 @@ typedef enum {
         [self.noContactsView removeFromSuperview];
         self.noContactsView = nil;
         
-        if (!self.tableContainerView) [self setupTableContainerView];
+        if (!self.tableView) [self setupTableView];
     } else {
         [self.tableView removeFromSuperview];
         self.tableView = nil;
