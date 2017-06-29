@@ -16,6 +16,7 @@
 #import "Contact.h"
 #import "ContactDetailViewController.h"
 #import "ContactTableViewCell.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 #define VIEW_NAME_NEW_CONTACT @"newContact"
 
@@ -26,11 +27,17 @@ typedef enum {
     CreateContactTypeLink
 } CreateContactType;
 
-@interface ContactsViewController () <UITableViewDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
+@interface ContactsViewController () <UITableViewDelegate, UITextFieldDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
 
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
+
+@property (nonatomic) UIView *tableContainerView;
+@property (nonatomic) UILabel *searchFieldFakePlaceHolder;
+@property (nonatomic) UIImageView *searchFieldPlaceHolderImageView;
+@property (nonatomic) UIButton *cancelSearchButton;
+
 @property (nonatomic) UIView *noContactsView;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
@@ -126,16 +133,61 @@ typedef enum {
     app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
 
-- (void)setupTableView
+- (void)setupTableContainerView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
+    self.tableContainerView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.tableContainerView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    [self.view addSubview:self.tableContainerView];
     
-    [self setupPullToRefresh];
+    UIColor *searchFieldTextColor = COLOR_LIGHT_GRAY;
+    
+    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(8, DEFAULT_HEADER_HEIGHT + 8, self.tableContainerView.frame.size.width - 16, 31)];
+    searchField.leftViewMode = UITextFieldViewModeAlways;
+    searchField.backgroundColor = [UIColor whiteColor];
+    searchField.autocorrectionType = UITextAutocorrectionTypeNo;
+    searchField.placeholder = nil;
+    searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    searchField.delegate = self;
+    searchField.textAlignment = NSTextAlignmentLeft;
+    searchField.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    searchField.textColor = searchFieldTextColor;
+    [self.tableContainerView addSubview:searchField];
+    
+    self.cancelSearchButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.cancelSearchButton setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
+    self.cancelSearchButton.titleLabel.textColor = [UIColor whiteColor];
+    self.cancelSearchButton.backgroundColor = [UIColor clearColor];
+    [self.cancelSearchButton sizeToFit];
+    [self.cancelSearchButton addTarget:searchField action:@selector(resignFirstResponder) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self moveCancelButtonToSearchField:searchField];
+
+    [self.tableContainerView addSubview:self.cancelSearchButton];
+    
+    self.searchFieldFakePlaceHolder = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.searchFieldFakePlaceHolder.text = BC_STRING_SEARCH;
+    self.searchFieldFakePlaceHolder.textColor = searchFieldTextColor;
+    [self.searchFieldFakePlaceHolder sizeToFit];
+    self.searchFieldFakePlaceHolder.font = [UIFont systemFontOfSize:searchField.font.pointSize];
+    self.searchFieldFakePlaceHolder.center = searchField.center;
+    [self.tableContainerView addSubview:self.searchFieldFakePlaceHolder];
+    
+    self.searchFieldPlaceHolderImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contacts_icon"]];
+    [self.searchFieldPlaceHolderImageView changeYPosition:searchField.center.y - self.searchFieldPlaceHolderImageView.frame.size.height/2];
+    
+    [self moveImageViewNextToFakePlaceHolder];
+
+    [self.tableContainerView addSubview:self.searchFieldPlaceHolderImageView];
+}
+
+- (void)moveCancelButtonToSearchField:(UITextField *)textField
+{
+    self.cancelSearchButton.frame = CGRectMake(textField.frame.origin.x + textField.frame.size.width + 8, textField.frame.origin.y, self.cancelSearchButton.frame.size.width, textField.frame.size.height);
+}
+
+- (void)moveImageViewNextToFakePlaceHolder
+{
+    [self.searchFieldPlaceHolderImageView changeXPosition:self.searchFieldFakePlaceHolder.frame.origin.x - self.searchFieldPlaceHolderImageView.frame.size.width - 1];
 }
 
 - (void)setupNoContactsView
@@ -218,6 +270,47 @@ typedef enum {
     Contact *reloadedContact = [app.wallet.contacts objectForKey:contactIdentifier];
     
     self.detailViewController.contact = reloadedContact;
+}
+
+#pragma mark - Text Field Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    textField.leftView = [[UIView alloc] initWithFrame:self.searchFieldPlaceHolderImageView.frame];
+    CGFloat newOriginX = textField.frame.origin.x + [textField caretRectForPosition:textField.selectedTextRange.start].origin.x + textField.leftView.frame.size.width + 1;
+
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [textField changeWidth:textField.frame.size.width - (self.cancelSearchButton.frame.size.width + 16)];
+        self.searchFieldFakePlaceHolder.frame = CGRectMake(newOriginX,
+                                                           self.searchFieldFakePlaceHolder.frame.origin.y,
+                                                           self.searchFieldFakePlaceHolder.frame.size.width,
+                                                           self.searchFieldFakePlaceHolder.frame.size.height);
+        [self moveImageViewNextToFakePlaceHolder];
+        [self moveCancelButtonToSearchField:textField];
+    }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [textField changeWidth:textField.frame.size.width + (self.cancelSearchButton.frame.size.width + 16)];
+        self.searchFieldFakePlaceHolder.center = textField.center;
+        [self moveImageViewNextToFakePlaceHolder];
+        [self moveCancelButtonToSearchField:textField];
+    }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    self.searchFieldFakePlaceHolder.hidden = (newString.length > 0);
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.searchFieldFakePlaceHolder.hidden = NO;
+    return YES;
 }
 
 #pragma mark - Table View Delegate
@@ -726,7 +819,7 @@ typedef enum {
         [self.noContactsView removeFromSuperview];
         self.noContactsView = nil;
         
-        if (!self.tableView) [self setupTableView];
+        if (!self.tableContainerView) [self setupTableContainerView];
     } else {
         [self.tableView removeFromSuperview];
         self.tableView = nil;

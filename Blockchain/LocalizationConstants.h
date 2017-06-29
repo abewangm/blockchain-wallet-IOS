@@ -463,6 +463,7 @@
 #define BC_STRING_NO_CONTACTS_YET_SUBTITLE NSLocalizedString(@"Contacts make it easy to send and receive money from others", nil)
 #define BC_STRING_INVITE_CONTACT NSLocalizedString(@"Invite Contact", nil)
 #define BC_STRING_ENTER_NAME_CONTACT NSLocalizedString(@"Enter a name for your contact.", nil)
+#define BC_STRING_SEARCH NSLocalizedString(@"Search", nil)
 
 #define BC_STRING_SOMEONE_IS_INVITING_ME NSLocalizedString(@"Someone is inviting me", nil)
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)
