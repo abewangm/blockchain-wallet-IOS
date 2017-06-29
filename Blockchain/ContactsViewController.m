@@ -32,6 +32,8 @@ typedef enum {
 @property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) NSArray *sections;
+@property (nonatomic) NSArray *nonAlphabeticalContacts;
 @property (nonatomic) UIView *noContactsView;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
 @property (nonatomic) AVCaptureSession *captureSession;
@@ -88,6 +90,9 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    self.sections = [NSArray arrayWithObjects:@"",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",
+                     @"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",@"#",nil];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
@@ -127,14 +132,21 @@ typedef enum {
     app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
 
+- (void)sortContacts
+{
+    NSMutableArray *contacts = [[app.wallet.contacts allValues] mutableCopy];
+    
+    NSString *beginsWithLetterRegex = @"^[A-Za-z]*";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (name MATCHES %@)", beginsWithLetterRegex];
+    
+    [contacts filterUsingPredicate:predicate];
+    
+    self.nonAlphabeticalContacts = contacts;
+}
+
 - (void)setupTableView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
-    
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, 44)];
     searchBar.placeholder = BC_STRING_SEARCH;
     searchBar.layer.borderColor = [COLOR_BLOCKCHAIN_BLUE CGColor];
     searchBar.layer.borderWidth = 1;
@@ -147,8 +159,14 @@ typedef enum {
      setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     searchBar.delegate = self;
-    self.tableView.tableHeaderView = searchBar;
+    [self.view addSubview:searchBar];
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, searchBar.frame.origin.y + searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStylePlain];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.sectionIndexColor = COLOR_BLOCKCHAIN_BLUE;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_CONTACT];
     [self.view addSubview:self.tableView];
 }
 
@@ -251,19 +269,49 @@ typedef enum {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.sections.count;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.sections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
+{
+    return index;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [app.wallet.contacts allValues].count;
+    if (section == 0) {
+        return 0;
+    }
+    
+    NSArray *contacts = [app.wallet.contacts allValues];
+
+    if (section == self.sections.count - 1) {
+        return self.nonAlphabeticalContacts.count;
+    } else {
+        NSArray *sectionArray = [contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        return sectionArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT forIndexPath:indexPath];
     
-    Contact *contact = [app.wallet.contacts allValues][indexPath.row];
+    NSArray *contacts = [app.wallet.contacts allValues];
+    NSArray *sectionArray;
+    
+    if (indexPath.section == self.sections.count - 1) {
+        sectionArray = self.nonAlphabeticalContacts;
+    } else {
+        sectionArray = [contacts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", [self.sections objectAtIndex:indexPath.section]]];
+    }
+    
+    Contact *contact = sectionArray[indexPath.row];
     
     BOOL actionRequired = [app.wallet actionRequiredForContact:contact];
     
@@ -285,7 +333,7 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 45.0f;
+    return section != 0 && [self tableView:tableView numberOfRowsInSection:section] == 0 ? 0 : 45.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -305,8 +353,9 @@ typedef enum {
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
-    } else
-        @throw @"Unknown Section";
+    } else {
+        labelString = [self.sections objectAtIndex:section];
+    }
     
     label.text = labelString;
     
@@ -750,7 +799,10 @@ typedef enum {
         [self.noContactsView removeFromSuperview];
         self.noContactsView = nil;
         
-        if (!self.tableView) [self setupTableView];
+        if (!self.tableView) {
+            [self sortContacts];
+            [self setupTableView];
+        }
     } else {
         [self.tableView removeFromSuperview];
         self.tableView = nil;
