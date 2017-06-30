@@ -1899,6 +1899,7 @@ MyWalletPhone.getContacts = function() {
         invitationSent: contact.invitationSent,
         mdid: contact.mdid,
         name: contact.name,
+        senderName: contact.senderName,
         note: contact.note,
         pubKey: contact.pubKey,
         surname: contact.surname,
@@ -1935,7 +1936,7 @@ MyWalletPhone.createContact = function(name, id) {
     
     var save = MyWalletPhone.getSaveContactsFunction();
     
-    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id}).then(save).then(success).catch(error);
+    MyWallet.wallet.contacts.createInvitation({name: name}, {name: id, senderName: name}).then(save).then(success).catch(error);
 }
 
 MyWalletPhone.sendDeclination = function(userId, txIdentifier) {

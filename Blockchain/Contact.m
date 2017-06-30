@@ -21,6 +21,7 @@
         _invitationSent = [self getStringForKey:DICTIONARY_KEY_INVITATION_SENT fromDictionary:dictionary];
         _mdid = [self getStringForKey:DICTIONARY_KEY_MDID fromDictionary:dictionary];
         _name = [self getStringForKey:DICTIONARY_KEY_NAME fromDictionary:dictionary];
+        _senderName = [self getStringForKey:DICTIONARY_KEY_SENDER_NAME fromDictionary:dictionary];
         _note = [self getStringForKey:DICTIONARY_KEY_NOTE fromDictionary:dictionary];
         _pubKey = [self getStringForKey:DICTIONARY_KEY_PUBKEY fromDictionary:dictionary];
         _surname = [self getStringForKey:DICTIONARY_KEY_SURNAME fromDictionary:dictionary];

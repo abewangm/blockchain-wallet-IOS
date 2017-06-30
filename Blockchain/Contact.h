@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString *invitationSent;
 @property (nonatomic, readonly) NSString *mdid;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *senderName;
 @property (nonatomic, readonly) NSString *note;
 @property (nonatomic, readonly) NSString *pubKey;
 @property (nonatomic, readonly) NSString *surname;

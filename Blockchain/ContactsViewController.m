@@ -51,7 +51,7 @@ typedef enum {
 
 @property (nonatomic, copy) void (^onCompleteRelation)();
 @property (nonatomic, copy) void (^onFailCompleteRelation)();
-@property (nonatomic, copy) void (^onClickDoneButton)();
+@property (nonatomic, copy) void (^onCreateInvitation)();
 
 @end
 
@@ -105,8 +105,6 @@ typedef enum {
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
-    
-    self.onClickDoneButton = nil;
     
     [self reload];
 }
@@ -486,11 +484,6 @@ typedef enum {
 
 - (void)doneButtonClicked
 {
-    if (self.onClickDoneButton) {
-        self.onClickDoneButton();
-        self.onClickDoneButton = nil;
-    }
-    
     self.createContactNavigationController.onPopViewController = nil;
     self.createContactNavigationController.onViewWillDisappear = nil;
     
@@ -679,15 +672,12 @@ typedef enum {
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT, contact.name] message:BC_STRING_RESEND_INVITE preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_YES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        self.onClickDoneButton = ^() {
-            [app.wallet deleteContact:contact.identifier];
-        };
-        [self resendInvitationForContactName:contact.name];
+        [self resendInvitationForContact:contact];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DELETE_CONTACT style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DELETE_CONTACT style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self confirmDeleteContact:contact];
     }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -702,24 +692,22 @@ typedef enum {
     [self presentViewController:alertForDeletingContact animated:YES completion:nil];
 }
 
-- (void)resendInvitationForContactName:(NSString *)name
+- (void)resendInvitationForContact:(Contact *)contact
 {
-    BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
-    createContactSenderNameView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
-    
-    self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
-    [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
+    if ([app checkInternetConnection]) {
+        
+        self.onCreateInvitation = ^() {
+            [app.wallet deleteContact:contact.identifier];
+        };
+        
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
+        [app.wallet createContactWithName:contact.senderName ID:contact.name];
+    }
 }
 
 - (void)contactAcceptedInvitation:(NSString *)invitationSent
 {
-    NSString *currentInvitationSent = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED];
-    
-    if ([invitationSent isEqualToString:currentInvitationSent]) {
-        [self doneButtonClicked];
-    }
+    [self reload];
 }
 
 #pragma mark - Helpers
@@ -813,6 +801,11 @@ typedef enum {
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
     [app hideBusyView];
+    
+    if (self.onCreateInvitation) {
+        self.onCreateInvitation();
+        self.onCreateInvitation = nil;
+    }
     
     self.lastCreatedInvitation = invitationDict;
     
