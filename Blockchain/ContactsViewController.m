@@ -33,6 +33,7 @@ typedef enum {
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *sections;
+@property (nonatomic) NSArray *contactsToDisplay;
 @property (nonatomic) NSArray *nonAlphabeticalContacts;
 @property (nonatomic) UIView *noContactsView;
 @property (nonatomic) NSDictionary *lastCreatedInvitation;
@@ -132,16 +133,27 @@ typedef enum {
     app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
 
-- (void)sortContacts
+- (void)setContactsToDisplay:(NSArray *)contactsToDisplay
 {
-    NSMutableArray *contacts = [[app.wallet.contacts allValues] mutableCopy];
+    _contactsToDisplay = contactsToDisplay;
     
-    NSString *beginsWithLetterRegex = @"^[A-Za-z]*";
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (name MATCHES %@)", beginsWithLetterRegex];
-    
-    [contacts filterUsingPredicate:predicate];
-    
-    self.nonAlphabeticalContacts = contacts;
+    [self updateNonAlphabeticalContacts];
+}
+
+- (void)updateNonAlphabeticalContacts
+{
+    if (self.contactsToDisplay && self.contactsToDisplay.count > 0) {
+        NSMutableArray *contacts = [self.contactsToDisplay mutableCopy];
+        
+        NSString *beginsWithLetterRegex = @"^[A-Za-z]*";
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (name MATCHES %@)", beginsWithLetterRegex];
+        
+        [contacts filterUsingPredicate:predicate];
+        
+        self.nonAlphabeticalContacts = contacts;
+    } else {
+        self.nonAlphabeticalContacts = nil;
+    }
 }
 
 - (void)setupTableView
@@ -259,6 +271,17 @@ typedef enum {
     searchBar.showsCancelButton = YES;
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText && searchText.length > 0) {
+        self.contactsToDisplay = [[app.wallet.contacts allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name beginswith[c] %@", searchText]];
+    } else {
+        self.contactsToDisplay = [app.wallet.contacts allValues];
+    }
+    
+    [self.tableView reloadData];
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
@@ -355,7 +378,7 @@ typedef enum {
 
 - (NSArray *)contactsForSection:(NSInteger)section
 {
-    NSArray *contacts = [app.wallet.contacts allValues];
+    NSArray *contacts = self.contactsToDisplay;
     NSArray *sectionArray;
     
     if (section == self.sections.count - 1) {
@@ -366,7 +389,6 @@ typedef enum {
     
     return sectionArray;
 }
-
 
 #pragma mark - Create Contact Delegate
 
@@ -801,12 +823,13 @@ typedef enum {
 
 - (void)didGetMessages
 {
-    if (app.wallet.contacts.count > 0) {
+    self.contactsToDisplay = [app.wallet.contacts allValues];
+    
+    if (self.contactsToDisplay.count > 0) {
         [self.noContactsView removeFromSuperview];
         self.noContactsView = nil;
         
         if (!self.tableView) {
-            [self sortContacts];
             [self setupTableView];
         }
     } else {
