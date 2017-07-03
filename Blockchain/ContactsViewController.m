@@ -343,33 +343,45 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section != 0 && [self tableView:tableView numberOfRowsInSection:section] == 0 ? 0 : 45.0f;
+    if (section == 0) {
+        return 45.0;
+    } else if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
+    } else {
+        return 22.0;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
-    
-    [view addSubview:label];
-    
-    NSString *labelString;
-    
     if (section == 0) {
-        labelString = BC_STRING_ADD_NEW_CONTACT;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
+        view.backgroundColor = [UIColor whiteColor];
+
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
+        label.text = BC_STRING_ADD_NEW_CONTACT;
+        [view addSubview:label];
+
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
+        
+        return view;
     } else {
-        labelString = [self.sections objectAtIndex:section];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22.0)];
+        view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.text = [self.sections objectAtIndex:section];
+        [label sizeToFit];
+        [label changeXPosition:20];
+        label.center = CGPointMake(label.center.x, view.center.y);
+        [view addSubview:label];
+        
+        return view;
     }
-    
-    label.text = labelString;
-    
-    return view;
 }
 
 #pragma mark - Table View Helpers
