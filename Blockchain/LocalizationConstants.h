@@ -460,6 +460,8 @@
 #define BC_STRING_REQUEST_FROM NSLocalizedString(@"Request from...", nil)
 #define BC_STRING_NO_CONTACTS_YET_TITLE NSLocalizedString(@"No Contacts yet", nil)
 #define BC_STRING_NO_CONTACTS_YET_SUBTITLE NSLocalizedString(@"Contacts make it easy to send and receive money from others", nil)
+#define BC_STRING_NO_TRANSACTIONS_YET_TITLE NSLocalizedString(@"No Transactions yet", nil)
+#define BC_STRING_NO_TRANSACTIONS_YET_SUBTITLE_CONTACT_NAME_ARGUMENT NSLocalizedString(@"Your transactions with %@ will appear here.", nil)
 #define BC_STRING_INVITE_CONTACT NSLocalizedString(@"Invite Contact", nil)
 #define BC_STRING_ENTER_NAME_CONTACT NSLocalizedString(@"Enter a name for your contact.", nil)
 #define BC_STRING_SEARCH NSLocalizedString(@"Search", nil)

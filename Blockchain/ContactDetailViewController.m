@@ -17,6 +17,7 @@
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
 #import "RootService.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -30,6 +31,7 @@ const int maxFindAttempts = 2;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
+@property (nonatomic) UIView *noTransactionsView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) NSArray *transactionList;
@@ -64,8 +66,42 @@ const int maxFindAttempts = 2;
     }
     
     self.transactionList = [[NSArray alloc] initWithArray:mutableTransactionList];
+}
+
+- (void)setupNoTransactionsView
+{
+    self.noTransactionsView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.noTransactionsView];
     
-    [self.tableView reloadData];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.text = BC_STRING_NO_TRANSACTIONS_YET_TITLE;
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [titleLabel sizeToFit];
+    [titleLabel changeYPosition:self.noTransactionsView.center.y];
+    titleLabel.center = CGPointMake(self.noTransactionsView.center.x, titleLabel.center.y);
+    [self.noTransactionsView addSubview:titleLabel];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    imageView.image = [UIImage imageNamed:@"tx"];
+    imageView.frame = CGRectMake(0, titleLabel.frame.origin.y - 16 - 100, 100, 100);
+    imageView.center = CGPointMake(self.noTransactionsView.center.x, imageView.center.y);
+    [self.noTransactionsView addSubview:imageView];
+    
+    UITextView *subtitleTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.noTransactionsView.frame.size.width - 80, 0)];
+    subtitleTextView.text = [NSString stringWithFormat:BC_STRING_NO_TRANSACTIONS_YET_SUBTITLE_CONTACT_NAME_ARGUMENT, self.contact.name];
+    subtitleTextView.textAlignment = NSTextAlignmentCenter;
+    subtitleTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    subtitleTextView.editable = NO;
+    subtitleTextView.selectable = NO;
+    subtitleTextView.scrollEnabled = NO;
+    subtitleTextView.textColor = COLOR_TEXT_DARK_GRAY;
+    subtitleTextView.textContainerInset = UIEdgeInsetsZero;
+    subtitleTextView.frame = CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, subtitleTextView.frame.size.width, subtitleTextView.contentSize.height);
+    [subtitleTextView sizeToFit];
+    subtitleTextView.center = CGPointMake(self.noTransactionsView.center.x, subtitleTextView.center.y);
+    subtitleTextView.backgroundColor = [UIColor clearColor];
+    [self.noTransactionsView addSubview:subtitleTextView];
 }
 
 - (void)viewDidLoad
@@ -75,16 +111,35 @@ const int maxFindAttempts = 2;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    
-    [self.tableView reloadData];
-    
-    [self setupPullToRefresh];
+    if (self.transactionList.count > 0) {
+        
+        [self.noTransactionsView removeFromSuperview];
+        self.noTransactionsView = nil;
+        
+        if (!self.tableView) {
+            self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
+            self.tableView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+            self.tableView.delegate = self;
+            self.tableView.dataSource = self;
+            [self.view addSubview:self.tableView];
+            [self setupPullToRefresh];
+        }
+        
+        [self.tableView reloadData];
+        
+    } else {
+        [self.tableView removeFromSuperview];
+        self.tableView = nil;
+        self.refreshControl = nil;
+        
+        [self setupNoTransactionsView];
+    }
 }
 
 - (void)setContact:(Contact *)contact
