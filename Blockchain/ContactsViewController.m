@@ -360,10 +360,12 @@ typedef enum {
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width, 14)];
         label.text = BC_STRING_ADD_NEW_CONTACT;
+        label.center = CGPointMake(label.center.x, view.center.y);
         [view addSubview:label];
 
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 20 - 30, 4, 50, 40)];
         [addButton setImage:[[UIImage imageNamed:@"new"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        addButton.center = CGPointMake(addButton.center.x, view.center.y);
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:addButton];
