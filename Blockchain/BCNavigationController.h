@@ -11,6 +11,7 @@
 #import "RootService.h"
 
 @interface BCNavigationController : UINavigationController <TopViewController>
+@property (nonatomic) UIView *topBar;
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UIButton *backButton;
 @property (nonatomic) UIButton *closeButton;

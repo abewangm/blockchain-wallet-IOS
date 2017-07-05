@@ -111,6 +111,18 @@ const int maxFindAttempts = 2;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    if (!navigationController.topRightButton) {
+        UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        menuButton.frame = CGRectMake(self.view.frame.size.width - 80, 15, 80, 51);
+        menuButton.imageEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
+        menuButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [menuButton setImage:[UIImage imageNamed:@"icon_menu"] forState:UIControlStateNormal];
+        [menuButton addTarget:self action:@selector(menuButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        [navigationController.topBar addSubview:menuButton];
+        navigationController.topRightButton = menuButton;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -227,7 +239,7 @@ const int maxFindAttempts = 2;
         CGFloat smallButtonWidth = self.view.frame.size.width/2 - 20 - 5;
         
         UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 8, smallButtonWidth, 40)];
-        [renameButton setTitle:BC_STRING_RENAME_CONTACT forState:UIControlStateNormal];
+        [renameButton setTitle:BC_STRING_RENAME_CONTACT_ALERT_TITLE forState:UIControlStateNormal];
         renameButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
         renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
@@ -279,9 +291,23 @@ const int maxFindAttempts = 2;
 
 #pragma mark - Actions
 
+- (void)menuButtonClicked
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:BC_STRING_DELETE_CONTACT style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self confirmDeleteContact];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:BC_STRING_RENAME_CONTACT_ALERT_TITLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self renameContact];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+
 - (void)renameContact
 {
-    UIAlertController *alertForChangingName = [UIAlertController alertControllerWithTitle:BC_STRING_CHANGE_NAME message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertForChangingName = [UIAlertController alertControllerWithTitle:BC_STRING_RENAME_CONTACT_ALERT_TITLE message:[NSString stringWithFormat:BC_STRING_RENAME_CONTACT_ALERT_MESSAGE_NAME_ARGUMENT, self.contact.name] preferredStyle:UIAlertControllerStyleAlert];
     
     [alertForChangingName addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;

@@ -503,7 +503,7 @@
 #define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
 
-#define BC_STRING_RENAME_CONTACT NSLocalizedString(@"Rename contact", nil)
+#define BC_STRING_RENAME_CONTACT_ALERT_TITLE NSLocalizedString(@"Rename contact", nil)
 #define BC_STRING_PENDING_TRANSACTIONS NSLocalizedString(@"Pending Transactions", nil)
 #define BC_STRING_COMPLETED_TRANSACTIONS NSLocalizedString(@"Completed Transactions", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
@@ -515,7 +515,7 @@
 #define BC_STRING_DELETE_CONTACT NSLocalizedString(@"Delete contact", nil)
 #define BC_STRING_DELETE_CONTACT_ALERT_TITLE NSLocalizedString(@"Delete contact?", nil)
 #define BC_STRING_DELETE_CONTACT_ALERT_MESSAGE NSLocalizedString(@"You will not lose any bitcoins by deleting this contact.", nil)
-#define BC_STRING_CHANGE_NAME NSLocalizedString(@"Change name", nil)
+#define BC_STRING_RENAME_CONTACT_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"Enter a new name for %@.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
 

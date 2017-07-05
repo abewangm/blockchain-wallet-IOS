@@ -105,6 +105,8 @@ typedef enum {
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_CONTACTS;
+    [navigationController.topRightButton removeFromSuperview];
+    navigationController.topRightButton = nil;
     
     [self reload];
 }
@@ -194,7 +196,7 @@ typedef enum {
     [self.noContactsView addSubview:titleLabel];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    imageView.image = [UIImage imageNamed:@"contacts_icon"];
+    imageView.image = [UIImage imageNamed:@"icon_contact"];
     imageView.frame = CGRectMake(0, titleLabel.frame.origin.y - 16 - 60, 100, 60);
     imageView.center = CGPointMake(self.noContactsView.center.x, imageView.center.y);
     [self.noContactsView addSubview:imageView];
