@@ -84,6 +84,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
 
 #define COLOR_TEXT_GRAY UIColorFromRGB(0x9B9B9B)
+#define COLOR_TEXT_HEADER_GRAY UIColorFromRGB(0x979797)
+#define COLOR_TEXT_SUBHEADER_GRAY UIColorFromRGB(0xBCBCBC)
+#define COLOR_IMAGE_HEADER_GRAY UIColorFromRGB(0xE5E5E5)
 #define COLOR_TEXT_FIELD_GRAY UIColorFromRGB(0xd1d1d1)
 #define COLOR_TEXT_FIELD_BORDER_GRAY UIColorFromRGB(0xcdcdcd)
 
