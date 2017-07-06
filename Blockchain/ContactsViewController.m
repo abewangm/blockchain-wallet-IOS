@@ -190,7 +190,7 @@ typedef enum {
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.text = BC_STRING_NO_CONTACTS_YET_TITLE;
     titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
-    titleLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    titleLabel.textColor = COLOR_TEXT_HEADER_GRAY;
     [titleLabel sizeToFit];
     titleLabel.center = self.noContactsView.center;
     [self.noContactsView addSubview:titleLabel];
@@ -208,7 +208,7 @@ typedef enum {
     subtitleTextView.editable = NO;
     subtitleTextView.selectable = NO;
     subtitleTextView.scrollEnabled = NO;
-    subtitleTextView.textColor = COLOR_TEXT_DARK_GRAY;
+    subtitleTextView.textColor = COLOR_TEXT_SUBHEADER_GRAY;
     subtitleTextView.textContainerInset = UIEdgeInsetsZero;
     subtitleTextView.frame = CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, subtitleTextView.frame.size.width, subtitleTextView.contentSize.height);
     subtitleTextView.center = CGPointMake(self.noContactsView.center.x, subtitleTextView.center.y);

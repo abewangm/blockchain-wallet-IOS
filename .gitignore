@@ -83,6 +83,7 @@ Images.xcassets/icon_buy.imageset/*.png
 Images.xcassets/help.imageset/*.png
 Images.xcassets/wallet.imageset/*.png
 Images.xcassets/tx.imageset/*.png
+Images.xcassets/tx_large.imageset/*.png
 Images.xcassets/settings.imageset/*.png
 Images.xcassets/send.imageset/*.png
 Images.xcassets/receive.imageset/*.png
