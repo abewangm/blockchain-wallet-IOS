@@ -112,7 +112,7 @@ int accountEntries = 0;
 
     [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
 #ifdef ENABLE_DEBUG_MENU
-    [self addMenuEntry:entryKeyContacts text:BC_STRING_CONTACTS icon:@"contacts_icon"];
+    [self addMenuEntry:entryKeyContacts text:BC_STRING_CONTACTS icon:@"icon_contact_small"];
 #endif
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
     
@@ -410,7 +410,7 @@ int accountEntries = 0;
         NSString *imageName = entry[@"icon"];
         cell.imageView.image = [UIImage imageNamed:imageName];
         
-        if ([imageName isEqualToString:@"contacts_icon"]) {
+        if ([imageName isEqualToString:@"icon_contact_small"]) {
             cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [cell.imageView setTintColor:COLOR_DARK_GRAY];
         }
