@@ -365,8 +365,9 @@ typedef enum {
         label.center = CGPointMake(label.center.x, view.center.y);
         [view addSubview:label];
 
-        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 58, 4, 50, 40)];
-        [addButton setImage:[[UIImage imageNamed:@"icon_add"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        addButton.frame = CGRectMake(self.view.frame.size.width - 58, 4, 50, 40);
+        addButton.tintColor = COLOR_BLOCKCHAIN_BLUE;
         addButton.center = CGPointMake(addButton.center.x, view.center.y);
         addButton.imageView.tintColor = COLOR_BLOCKCHAIN_BLUE;
         [addButton addTarget:self action:@selector(newContactClicked:) forControlEvents:UIControlEventTouchUpInside];
