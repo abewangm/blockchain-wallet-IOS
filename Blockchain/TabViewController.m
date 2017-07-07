@@ -142,4 +142,21 @@
     });
 }
 
+- (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    if (!self.tabBarGestureView) {
+        self.tabBarGestureView = [[UIView alloc] initWithFrame:tabBar.bounds];
+        self.tabBarGestureView.userInteractionEnabled = YES;
+        [self.tabBarGestureView addGestureRecognizer:tapGestureRecognizer];
+        [tabBar addSubview:self.tabBarGestureView];
+    }
+}
+
+- (void)removeTapGestureRecognizerFromTabBar:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self.tabBarGestureView removeGestureRecognizer:tapGestureRecognizer];
+    [self.tabBarGestureView removeFromSuperview];
+    self.tabBarGestureView = nil;
+}
+
 @end

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -620,6 +619,7 @@
                 <outlet property="homeButton" destination="173" id="SKk-KS-6WH"/>
                 <outlet property="receiveButton" destination="174" id="ykJ-CJ-2W1"/>
                 <outlet property="sendButton" destination="172" id="1WE-Bw-2cJ"/>
+                <outlet property="tabBar" destination="284" id="frm-US-5wu"/>
             </connections>
             <point key="canvasLocation" x="-244" y="-310"/>
         </viewController>

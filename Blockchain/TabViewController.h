@@ -10,6 +10,7 @@
     IBOutlet UIButton *sendButton;
     IBOutlet UIButton *homeButton;
     IBOutlet UIButton *receiveButton;
+    IBOutlet UIView *tabBar;
 	
 	UIViewController *activeViewController;
 	UIViewController *oldViewController;
@@ -21,8 +22,11 @@
 @property(nonatomic, retain) UIViewController *oldViewController;
 @property(nonatomic, retain) IBOutlet UIView *contentView;
 @property(nonatomic, retain) UIView *menuSwipeRecognizerView;
+@property(nonatomic) UIView *tabBarGestureView;
 
 - (void)setActiveViewController:(UIViewController *)nviewcontroller animated:(BOOL)animated index:(int)index;
+- (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer;
+- (void)removeTapGestureRecognizerFromTabBar:(UITapGestureRecognizer *)tapGestureRecognizer;
 - (int)selectedIndex;
 
 @end
