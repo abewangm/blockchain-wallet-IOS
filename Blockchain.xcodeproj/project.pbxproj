@@ -61,7 +61,6 @@
 		23444F961DCD21C600573C8C /* BTCKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F951DCD21C600573C8C /* BTCKeychain.m */; };
 		23444F9E1DCD221A00573C8C /* BTCErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F9B1DCD221A00573C8C /* BTCErrors.m */; };
 		23444F9F1DCD221A00573C8C /* BTCProtocolSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444F9D1DCD221A00573C8C /* BTCProtocolSerialization.m */; };
-		23444FA51DD0E1C100573C8C /* BCCreateContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444FA41DD0E1C100573C8C /* BCCreateContactView.m */; };
 		23444FA81DD1177E00573C8C /* SettingsAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */; };
 		2357BA411D53979600BE0BFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2357BA431D53979600BE0BFD /* InfoPlist.strings */; };
 		235BD5661C58216000969B31 /* BCModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235BD5651C58216000969B31 /* BCModalViewController.m */; };
@@ -533,8 +532,6 @@
 		23444F9B1DCD221A00573C8C /* BTCErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCErrors.m; path = Submodules/CoreBitcoin/CoreBitcoin/BTCErrors.m; sourceTree = SOURCE_ROOT; };
 		23444F9C1DCD221A00573C8C /* BTCProtocolSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTCProtocolSerialization.h; path = Submodules/CoreBitcoin/CoreBitcoin/BTCProtocolSerialization.h; sourceTree = SOURCE_ROOT; };
 		23444F9D1DCD221A00573C8C /* BTCProtocolSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTCProtocolSerialization.m; path = Submodules/CoreBitcoin/CoreBitcoin/BTCProtocolSerialization.m; sourceTree = SOURCE_ROOT; };
-		23444FA31DD0E1C100573C8C /* BCCreateContactView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCreateContactView.h; sourceTree = "<group>"; };
-		23444FA41DD0E1C100573C8C /* BCCreateContactView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCreateContactView.m; sourceTree = "<group>"; };
 		23444FA61DD1177E00573C8C /* SettingsAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAboutUsViewController.h; sourceTree = "<group>"; };
 		23444FA71DD1177E00573C8C /* SettingsAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAboutUsViewController.m; sourceTree = "<group>"; };
 		2357BA421D53979600BE0BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1306,8 +1303,6 @@
 		678AD5EC19D4731C00E9A778 /* Modal Content Views */ = {
 			isa = PBXGroup;
 			children = (
-				23444FA31DD0E1C100573C8C /* BCCreateContactView.h */,
-				23444FA41DD0E1C100573C8C /* BCCreateContactView.m */,
 				23107F811BBEF0AC00A6A9D4 /* BCConfirmPaymentView.h */,
 				23107F821BBEF0AC00A6A9D4 /* BCConfirmPaymentView.m */,
 				6E2D90A01BBEC34800B719EC /* BCRecoveryView.h */,
@@ -2124,7 +2119,6 @@
 				2322DCC71D771831000E5AC1 /* SRWebSocket.m in Sources */,
 				23FB5C101D9ABB730008C6AB /* TransactionDetailDateCell.m in Sources */,
 				670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */,
-				23444FA51DD0E1C100573C8C /* BCCreateContactView.m in Sources */,
 				C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */,
 				9FB3638214B60128004BEA02 /* main.m in Sources */,
 				9FB3638614B60128004BEA02 /* AppDelegate.m in Sources */,

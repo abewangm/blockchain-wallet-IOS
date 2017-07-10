@@ -183,6 +183,7 @@
 #define BC_STRING_NEXT NSLocalizedString(@"Next", nil)
 #define BC_STRING_CANCEL NSLocalizedString(@"Cancel", nil)
 #define BC_STRING_DELETE NSLocalizedString(@"Delete", nil)
+#define BC_STRING_CONFIRM NSLocalizedString(@"Confirm", nil)
 #define BC_STRING_CANCELLING NSLocalizedString(@"Cancelling", nil)
 #define BC_STRING_HOW_WOULD_YOU_LIKE_TO_PAIR NSLocalizedString(@"How would you like to pair?", nil)
 #define BC_STRING_MANUALLY NSLocalizedString(@"Manually", nil)
@@ -440,7 +441,7 @@
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
 #define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"contact request sent", nil)
-#define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite?", nil)
+#define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_I_WANT_TO_INVITE_SOMEONE NSLocalizedString(@"I want to invite someone", nil)
 #define BC_STRING_SOMEONE_SENT_ME_A_LINK NSLocalizedString(@"Someone sent me a link", nil)
 #define BC_STRING_LINK_INVITE_INSTRUCTIONS NSLocalizedString(@"If someone sent you a link, simply tap on the link in the email or SMS to accept.", nil)

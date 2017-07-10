@@ -7,7 +7,6 @@
 //
 
 #import "ContactsViewController.h"
-#import "BCCreateContactView.h"
 #import "BCModalViewController.h"
 #import "Blockchain-Swift.h"
 #import "Invitation.h"
@@ -22,14 +21,8 @@
 
 const int sectionContacts = 0;
 
-typedef enum {
-    CreateContactTypeQR,
-    CreateContactTypeLink
-} CreateContactType;
+@interface ContactsViewController () <UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource>
 
-@interface ContactsViewController () <UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource, AVCaptureMetadataOutputObjectsDelegate, CreateContactDelegate, DoneButtonDelegate>
-
-@property (nonatomic) BCNavigationController *createContactNavigationController;
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *sections;
@@ -46,8 +39,6 @@ typedef enum {
 @property (nonatomic) NSString *invitationSentIdentifier;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
-
-@property (nonatomic) CreateContactType contactType;
 
 @property (nonatomic, copy) void (^onCompleteRelation)();
 @property (nonatomic, copy) void (^onFailCompleteRelation)();
@@ -127,8 +118,6 @@ typedef enum {
     self.invitationSentIdentifier = nil;
     
     self.lastCreatedInvitation = nil;
-    
-    self.createContactNavigationController = nil;
     
     app.topViewControllerDelegate = (BCNavigationController *)self.navigationController;
 }
@@ -405,108 +394,19 @@ typedef enum {
     return sectionArray;
 }
 
-#pragma mark - Create Contact Delegate
-
-- (void)didCreateSenderName:(NSString *)senderName contactName:(NSString *)contactName
+- (BOOL)isValidContactName:(NSString *)name
 {
-    if ([self nameIsEmpty:senderName]) {
-        UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_ENTER_A_NAME preferredStyle:UIAlertControllerStyleAlert];
-        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
-    } else {
-        BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:contactName senderName:senderName];
-        createContactSharingView.delegate = self;
-        
-        BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSharingView];
-        
-        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-    }
-}
-
-- (void)didCreateContactName:(NSString *)name
-{
-    if ([self nameIsEmpty:name]) {
-        UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_PLEASE_ENTER_A_NAME preferredStyle:UIAlertControllerStyleAlert];
-        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        
-        if (self.createContactNavigationController) {
-            [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
-        } else {
-            [self presentViewController:invalidNameAlert animated:YES completion:nil];
-        }
-    } else if ([self nameAlreadyExists:name]) {
+    void (^handler)() = ^(UIAlertAction * _Nonnull action) {
+        [self newContactClicked:nil];
+    };
+    
+    if ([self nameAlreadyExists:name]) {
         UIAlertController *invalidNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:BC_STRING_CONTACT_ALREADY_EXISTS preferredStyle:UIAlertControllerStyleAlert];
-        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        
-        if (self.createContactNavigationController) {
-            [self.createContactNavigationController presentViewController:invalidNameAlert animated:YES completion:nil];
-        } else {
-            [self presentViewController:invalidNameAlert animated:YES completion:nil];
-        }
-    } else {
-        BCCreateContactView *createContactSenderNameView = [[BCCreateContactView alloc] initWithContactName:name senderName:nil];
-        createContactSenderNameView.delegate = self;
-        
-        BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_CREATE view:createContactSenderNameView];
-        
-        if (self.createContactNavigationController) {
-            [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-        } else {
-            DLog(@"Error: no create contact navigation controller");
-        }
+        [invalidNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:handler]];
+        [self presentViewController:invalidNameAlert animated:YES completion:nil];
+        return NO;
     }
-}
-
-- (void)didSelectQRCode
-{
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
-    
-    if (self.lastCreatedInvitation) {
-        // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked share via QR code after clicking shareLink. Delete old contact
-        [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
-    }
-    
-    self.contactType = CreateContactTypeQR;
-}
-
-- (void)didSelectShareLink
-{
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
-    
-    if (self.lastCreatedInvitation) {
-        // lastCreatedInvitation is set to nil on viewWillAppear. If at this point there is an existing invitation, that means the user clicked shareLink twice. Delete old contact
-        [app.wallet deleteContactAfterStoringInfo:[self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_INVITATION_RECEIVED]];
-    }
-    
-    self.contactType = CreateContactTypeLink;
-}
-
-#pragma mark - Two Button View Delegate
-
-- (void)topButtonClicked:(NSString *)senderName
-{
-    if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
-        [self createInvitation];
-    }
-}
-
-- (void)bottomButtonClicked:(NSString *)senderName
-{
-    if ([senderName isEqualToString:VIEW_NAME_NEW_CONTACT]) {
-        [self startReadingQRCode];
-    }
-}
-
-#pragma mark - Create Contact Delegate/Done Button Delegate
-
-- (void)doneButtonClicked
-{
-    self.createContactNavigationController.onPopViewController = nil;
-    self.createContactNavigationController.onViewWillDisappear = nil;
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.createContactNavigationController = nil;
-    }];
+    return YES;
 }
 
 #pragma mark - Actions
@@ -533,16 +433,21 @@ typedef enum {
 {
     UIAlertController *newContactAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:BC_STRING_ENTER_NAME_CONTACT preferredStyle:UIAlertControllerStyleAlert];
     [newContactAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [newContactAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_NEXT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:BC_STRING_NEXT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *name = [[newContactAlert textFields] firstObject].text;
-        [self promptForUserNameWithContactName:name];
-    }]];
+        if ([self isValidContactName:name]) {
+            [self promptForUserNameWithContactName:name];
+        }
+    }];
+    submitAction.enabled = NO;
+    [newContactAlert addAction:submitAction];
     [newContactAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
         secureTextField.returnKeyType = UIReturnKeyNext;
+        [secureTextField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }];
     
     [self presentViewController:newContactAlert animated:YES completion:nil];
@@ -552,117 +457,25 @@ typedef enum {
 {
     UIAlertController *userNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:[NSString stringWithFormat:BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY, contactName] preferredStyle:UIAlertControllerStyleAlert];
     [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_NEXT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:BC_STRING_CONFIRM style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *senderName = [[userNameAlert textFields] firstObject].text;
         if ([app checkInternetConnection]) {
             [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
             [app.wallet createContactWithName:senderName ID:contactName];
         }
-    }]];
+    }];
+    submitAction.enabled = NO;
+    [userNameAlert addAction:submitAction];
     [userNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
         secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
         secureTextField.returnKeyType = UIReturnKeyNext;
+        [secureTextField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }];
     
     [self presentViewController:userNameAlert animated:YES completion:nil];
-}
-
-- (void)createInvitation
-{
-    BCCreateContactView *createContactSharingView = [[BCCreateContactView alloc] initWithContactName:nil senderName:nil];
-    createContactSharingView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:createContactSharingView];
-    
-    if (self.createContactNavigationController) {
-        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-    } else {
-        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
-        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
-    }
-}
-
-- (BOOL)startReadingQRCode
-{
-    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:self];
-    
-    if (!input) {
-        return NO;
-    }
-    
-    self.captureSession = [[AVCaptureSession alloc] init];
-    [self.captureSession addInput:input];
-    
-    AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [self.captureSession addOutput:captureMetadataOutput];
-    
-    dispatch_queue_t dispatchQueue;
-    dispatchQueue = dispatch_queue_create("myQueue", NULL);
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
-    [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
-    
-    self.videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    [self.videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    [self.videoPreviewLayer setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*2/3)];
-    
-    UIView *view = [[UIView alloc] initWithFrame:frame];
-    [view.layer addSublayer:self.videoPreviewLayer];
-    
-    UILabel *linkInstructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.videoPreviewLayer.frame.origin.y + self.videoPreviewLayer.frame.size.height, view.frame.size.width - 40, 60)];
-    linkInstructionsLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:14];
-    linkInstructionsLabel.textAlignment = NSTextAlignmentCenter;
-    linkInstructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    linkInstructionsLabel.text = BC_STRING_LINK_INVITE_INSTRUCTIONS;
-    linkInstructionsLabel.numberOfLines = 0;
-    [linkInstructionsLabel sizeToFit];
-    linkInstructionsLabel.center = CGPointMake(view.center.x, self.videoPreviewLayer.frame.size.height + (view.frame.size.height - self.videoPreviewLayer.frame.size.height - DEFAULT_HEADER_HEIGHT)/2);
-    [view addSubview:linkInstructionsLabel];
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:BC_STRING_SCAN_QR_CODE view:view];
-
-    if (self.createContactNavigationController) {
-        [self.createContactNavigationController pushViewController:modalViewController animated:YES];
-    } else {
-        self.createContactNavigationController = [self navigationControllerForNewContact:modalViewController];
-        [self presentViewController:self.createContactNavigationController animated:YES completion:nil];
-    }
-    
-    [self.captureSession startRunning];
-    
-    return YES;
-}
-
-- (void)stopReadingQRCode
-{
-    [self.captureSession stopRunning];
-    self.captureSession = nil;
-    
-    [self.videoPreviewLayer removeFromSuperlayer];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
-{
-    if (metadataObjects != nil && [metadataObjects count] > 0) {
-        AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects firstObject];
-        
-        if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
-            [self performSelectorOnMainThread:@selector(stopReadingQRCode) withObject:nil waitUntilDone:NO];
-            
-            // do something useful with results
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                NSString *invitation = [metadataObj stringValue];
-                [app.wallet readInvitation:invitation];
-            });
-        }
-    }
 }
 
 - (void)shareInvitationClicked
@@ -725,6 +538,18 @@ typedef enum {
 - (void)contactAcceptedInvitation:(NSString *)invitationSent
 {
     [self reload];
+}
+
+#pragma mar - Alert Text Field Helper
+
+- (void)alertTextFieldDidChange:(UITextField *)sender
+{
+    UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController) {
+        UITextField *textField = alertController.textFields.firstObject;
+        UIAlertAction *confirmAction = alertController.actions.lastObject;
+        confirmAction.enabled = textField.text.length > 0;
+    }
 }
 
 #pragma mark - Helpers
