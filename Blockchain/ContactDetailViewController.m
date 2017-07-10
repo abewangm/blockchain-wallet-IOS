@@ -124,16 +124,31 @@ const int maxFindAttempts = 2;
         [navigationController.topBar addSubview:menuButton];
         navigationController.topRightButton = menuButton;
     }
+    
+    navigationController.headerTitle = BC_STRING_TRANSACTIONS;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+    [self showContent];
+}
+
+- (void)setContact:(Contact *)contact
+{
+    _contact = contact;
+    
+    [self setupTransactionList];
+    [self showContent];
+}
+
+- (void)showContent
+{
+    [self.noTransactionsView removeFromSuperview];
+    self.noTransactionsView = nil;
+    
     if (self.transactionList.count > 0) {
-        
-        [self.noTransactionsView removeFromSuperview];
-        self.noTransactionsView = nil;
         
         if (!self.tableView) {
             self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStyleGrouped];
@@ -153,27 +168,6 @@ const int maxFindAttempts = 2;
         
         [self setupNoTransactionsView];
     }
-}
-
-- (void)setContact:(Contact *)contact
-{
-    _contact = contact;
-    
-    [self setupTransactionList];
-    [self updateNavigationTitle];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateNavigationTitle];
-}
-
-- (void)updateNavigationTitle
-{
-    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
-    navigationController.headerTitle = self.contact.name ? self.contact.name : self.contact.identifier;
 }
 
 #pragma mark - Table View Delegate
@@ -351,7 +345,7 @@ const int maxFindAttempts = 2;
 - (void)confirmDeleteContact
 {
     UIAlertController *alertForDeletingContact = [UIAlertController alertControllerWithTitle:BC_STRING_DELETE_CONTACT_ALERT_TITLE message:BC_STRING_DELETE_CONTACT_ALERT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
-    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_DELETE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet deleteContact:self.contact.identifier];
     }]];
     [alertForDeletingContact addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
