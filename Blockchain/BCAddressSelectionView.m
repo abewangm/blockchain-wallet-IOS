@@ -401,7 +401,7 @@ int legacyAddressesSectionNumber;
                 cell.labelLabel.alpha = 1.0;
                 cell.addressLabel.alpha = 1.0;
             } else {
-                label = [NSString stringWithFormat:@"%@ (%@)", contact.name, BC_STRING_CONTACT_REQUEST_SENT];
+                label = [NSString stringWithFormat:@"%@ (%@)", contact.name, BC_STRING_PENDING];
                 cell.userInteractionEnabled = NO;
                 cell.labelLabel.alpha = 0.5;
                 cell.addressLabel.alpha = 0.5;

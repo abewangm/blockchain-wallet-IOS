@@ -42,7 +42,7 @@
 - (void)setTextWithContact:(Contact *)contact
 {
     NSString *name = contact.name ? : contact.identifier;
-    self.mainLabel.text = contact.mdid ? name : [NSString stringWithFormat:@"%@ (%@)", name, BC_STRING_CONTACT_REQUEST_SENT];
+    self.mainLabel.text = contact.mdid ? name : [NSString stringWithFormat:@"%@ (%@)", name, BC_STRING_PENDING];
     self.mainLabel.textColor = contact.mdid ? COLOR_TEXT_DARK_GRAY : COLOR_LIGHT_GRAY;
 }
 

@@ -440,7 +440,6 @@
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
-#define BC_STRING_CONTACT_REQUEST_SENT NSLocalizedString(@"contact request sent", nil)
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_I_WANT_TO_INVITE_SOMEONE NSLocalizedString(@"I want to invite someone", nil)
 #define BC_STRING_SOMEONE_SENT_ME_A_LINK NSLocalizedString(@"Someone sent me a link", nil)
