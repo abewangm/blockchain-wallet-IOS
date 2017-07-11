@@ -109,7 +109,7 @@ BOOL displayingLocalSymbolSend;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
 
-    [self setupFeeWarningLabelFrame];
+    [self setupFeeWarningLabelFrameSmall];
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
     
@@ -194,6 +194,7 @@ BOOL displayingLocalSymbolSend;
     // Use same font size for all screen sizes
     self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.feeWarningLabel.textColor = COLOR_WARNING_RED;
+    self.feeWarningLabel.numberOfLines = 2;
     [bottomContainerView addSubview:self.feeWarningLabel];
 }
 
@@ -1161,9 +1162,15 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)setupFeeWarningLabelFrame
+- (void)setupFeeWarningLabelFrameSmall
 {
     CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
+    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
+}
+
+- (void)setupFeeWarningLabelFrameLarge
+{
+    CGFloat warningLabelOriginY = self.feeDescriptionLabel.frame.origin.y + self.feeDescriptionLabel.frame.size.height - 4;
     self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
 }
 
@@ -1471,8 +1478,28 @@ BOOL displayingLocalSymbolSend;
 - (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
 {
     availableAmount = [sweepAmount longLongValue];
+    uint64_t fee = [finalFee longLongValue];
     
-    [self updateFeeAmountLabelText:[finalFee longLongValue]];
+    CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
+    
+    if (availableAmount <= 0 || availableAmount < fee) {
+        [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 30 completion:^(BOOL finished) {
+            if (self.feeType == FeeTypeCustom) {
+                [self setupFeeWarningLabelFrameSmall];
+            } else {
+                [self setupFeeWarningLabelFrameLarge];
+            }
+            self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
+        }];
+        self.feeWarningLabel.text = BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE;
+    } else {
+        if ([self.feeWarningLabel.text isEqualToString:BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE]) {
+            [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition completion:nil];
+            self.feeWarningLabel.hidden = YES;
+        }
+    }
+    
+    [self updateFeeAmountLabelText:fee];
     [self doCurrencyConversionAfterMultiAddress];
 }
 
@@ -1543,11 +1570,14 @@ BOOL displayingLocalSymbolSend;
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
                     [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrame];
+                        [self setupFeeWarningLabelFrameSmall];
                         self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
-                    self.feeWarningLabel.hidden = NO;
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrameSmall];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
                 }
                 self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
             }
@@ -1559,18 +1589,19 @@ BOOL displayingLocalSymbolSend;
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
                     [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrame];
+                        [self setupFeeWarningLabelFrameSmall];
                         self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
-                    self.feeWarningLabel.hidden = NO;
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrameSmall];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
                 }
                 self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
             }
         } else {
-            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            }
+            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
             self.feeWarningLabel.hidden = YES;
         }
         

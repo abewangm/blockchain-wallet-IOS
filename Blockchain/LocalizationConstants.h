@@ -637,6 +637,7 @@
 #define BC_STRING_SATOSHI_PER_BYTE_ABBREVIATED NSLocalizedString(@"sat/b", nil)
 #define BC_STRING_HIGH_FEE_NOT_NECESSARY NSLocalizedString(@"High fee not necessary", nil)
 #define BC_STRING_LOW_FEE_NOT_RECOMMENDED NSLocalizedString(@"Low fee not recommended", nil)
+#define BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE NSLocalizedString(@"You do not have enough funds to use this fee.", nil)
 #define BC_STRING_CUSTOM_FEE_WARNING NSLocalizedString(@"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck.", nil)
 
 #define BC_STRING_BUY_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
