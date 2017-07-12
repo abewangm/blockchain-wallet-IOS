@@ -1594,14 +1594,7 @@ BOOL displayingLocalSymbolSend;
     BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:amountInSatoshi willSend:YES];
     contactRequestView.delegate = self;
     
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
-    
-    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
-        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_SEND];
-        [app.tabViewController presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
-    } else {
-        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
-    }
+    [app showModalWithContent:contactRequestView closeType:ModalCloseTypeBack headerText:BC_STRING_SEND_TO_CONTACT];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [contactRequestView showKeyboard];

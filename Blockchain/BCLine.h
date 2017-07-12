@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BCLine : UIView
-
+-(id)initWithYPosition:(CGFloat)yPosition;
 @end

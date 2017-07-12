@@ -472,6 +472,8 @@
 #define BC_STRING_YOUR_NAME NSLocalizedString(@"Your Name", nil)
 #define BC_STRING_CONTACT_NAME NSLocalizedString(@"Contact Name", nil)
 #define BC_STRING_CONTACT_SCAN_INSTRUCTIONS NSLocalizedString(@"Have your contact scan the QR Code below.", nil)
+#define BC_STRING_SEND_TO_CONTACT NSLocalizedString(@"Send to Contact", nil)
+#define BC_STRING_TOTAL NSLocalizedString(@"Total", nil)
 #define BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER NSLocalizedString(@"%@ sent you an invitation (%@). Accept?", nil)
 #define BC_STRING_ACCEPT NSLocalizedString(@"Accept", nil)
 #define BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER NSLocalizedString(@"Accepted invitation by %@ (%@).", nil)
