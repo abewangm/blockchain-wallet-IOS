@@ -46,6 +46,7 @@ module.exports = (grunt) ->
     "shell:svg:keypad:255:375"
     "shell:svg:lock:36"
     "shell:svg:success:36"
+    "shell:svg:success_large:72"
     "shell:svg:logout:36"
     "shell:svg:merchant:36"
     "shell:svg:receive:24"

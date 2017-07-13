@@ -100,6 +100,7 @@ Images.xcassets/send_blue.imageset/*.png
 Images.xcassets/receive_blue.imageset/*.png
 Images.xcassets/tx_blue.imageset/*.png
 Images.xcassets/keypad.imageset/*.png
+Images.xcassets/success_large.imageset/*.png
 Images.xcassets/success.imageset/*.png
 Images.xcassets/logo_large.imageset/*.png
 Images.xcassets/bitcoin.imageset/*.png

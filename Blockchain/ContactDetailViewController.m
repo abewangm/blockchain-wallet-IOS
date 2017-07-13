@@ -18,6 +18,7 @@
 #import "TransactionDetailNavigationController.h"
 #import "RootService.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "BCEmptyPageView.h"
 
 const int sectionMain = 0;
 const int rowName = 0;
@@ -31,7 +32,7 @@ const int maxFindAttempts = 2;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) TransactionDetailViewController *transactionDetailViewController;
-@property (nonatomic) UIView *noTransactionsView;
+@property (nonatomic) BCEmptyPageView *noTransactionsView;
 @property (nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) NSArray *transactionList;
@@ -70,39 +71,15 @@ const int maxFindAttempts = 2;
 
 - (void)setupNoTransactionsView
 {
-    self.noTransactionsView = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:self.noTransactionsView];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    titleLabel.text = BC_STRING_NO_TRANSACTIONS_YET_TITLE;
-    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
-    titleLabel.textColor = COLOR_TEXT_HEADER_GRAY;
-    [titleLabel sizeToFit];
-    [titleLabel changeYPosition:self.noTransactionsView.center.y];
-    titleLabel.center = CGPointMake(self.noTransactionsView.center.x, titleLabel.center.y);
-    [self.noTransactionsView addSubview:titleLabel];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    imageView.image = [[UIImage imageNamed:@"tx_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"tx_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     imageView.tintColor = COLOR_IMAGE_HEADER_GRAY;
-    imageView.frame = CGRectMake(0, titleLabel.frame.origin.y - 16 - 100, 100, 100);
-    imageView.center = CGPointMake(self.noTransactionsView.center.x, imageView.center.y);
-    [self.noTransactionsView addSubview:imageView];
     
-    UITextView *subtitleTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.noTransactionsView.frame.size.width - 80, 0)];
-    subtitleTextView.text = [NSString stringWithFormat:BC_STRING_NO_TRANSACTIONS_YET_SUBTITLE_CONTACT_NAME_ARGUMENT, self.contact.name];
-    subtitleTextView.textAlignment = NSTextAlignmentCenter;
-    subtitleTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
-    subtitleTextView.editable = NO;
-    subtitleTextView.selectable = NO;
-    subtitleTextView.scrollEnabled = NO;
-    subtitleTextView.textColor = COLOR_TEXT_SUBHEADER_GRAY;
-    subtitleTextView.textContainerInset = UIEdgeInsetsZero;
-    subtitleTextView.frame = CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 8, subtitleTextView.frame.size.width, subtitleTextView.contentSize.height);
-    [subtitleTextView sizeToFit];
-    subtitleTextView.center = CGPointMake(self.noTransactionsView.center.x, subtitleTextView.center.y);
-    subtitleTextView.backgroundColor = [UIColor clearColor];
-    [self.noTransactionsView addSubview:subtitleTextView];
+    self.noTransactionsView = [[BCEmptyPageView alloc] initWithFrame:self.view.frame
+                                                               title:BC_STRING_NO_TRANSACTIONS_YET_TITLE
+                                                          titleColor:COLOR_TEXT_HEADER_GRAY
+                                                            subtitle:[NSString stringWithFormat:BC_STRING_NO_TRANSACTIONS_YET_SUBTITLE_CONTACT_NAME_ARGUMENT, self.contact.name]
+                                                           imageView:imageView];
+    [self.view addSubview:self.noTransactionsView];
 }
 
 - (void)viewDidLoad

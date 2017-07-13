@@ -225,6 +225,7 @@
 		C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */; };
 		C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C79261B41E8ADF0300C87CED /* BCCardView.m */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
+		C7B6855B1F17AE2A00A18A5C /* BCEmptyPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */; };
 		C7EEB8451EA95505002F28B9 /* UIView+ChangeFrameAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */; };
 		C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
@@ -1054,6 +1055,8 @@
 		C79261B41E8ADF0300C87CED /* BCCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCardView.m; sourceTree = "<group>"; };
 		C79EEFC01E898E380087DDCD /* WalletSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletSetupViewController.h; sourceTree = "<group>"; };
 		C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletSetupViewController.m; sourceTree = "<group>"; };
+		C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEmptyPageView.h; sourceTree = "<group>"; };
+		C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEmptyPageView.m; sourceTree = "<group>"; };
 		C7EEB8431EA95505002F28B9 /* UIView+ChangeFrameAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChangeFrameAttribute.h"; sourceTree = "<group>"; };
 		C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrameAttribute.m"; sourceTree = "<group>"; };
 		C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinViewController.h; sourceTree = "<group>"; };
@@ -1800,6 +1803,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */,
+				C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */,
 				C75F70E51E2684FF005B4EAF /* ContactTransactionTableViewCell.h */,
 				C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */,
 				C75F70E21E241D69005B4EAF /* BCContactRequestView.h */,
@@ -2261,6 +2266,7 @@
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				2330AA9D1E085F5700281E6F /* ContactTableViewCell.m in Sources */,
 				C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */,
+				C7B6855B1F17AE2A00A18A5C /* BCEmptyPageView.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				232D7DE11E018E7800A7A2ED /* ContactNewMessageViewController.m in Sources */,
 				2390C10B1D87376E00342C38 /* TransactionRecipientsViewController.m in Sources */,

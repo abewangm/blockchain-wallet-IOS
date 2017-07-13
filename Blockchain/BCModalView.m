@@ -56,6 +56,16 @@
                 [self.closeButton addTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [topBarView addSubview:self.closeButton];
             }
+            else if (closeType == ModalCloseTypeDone) {
+                self.closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, 15, 80, 51)];
+                self.closeButton.titleEdgeInsets = IMAGE_EDGE_INSETS_CLOSE_BUTTON_X;
+                self.closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+                self.closeButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+                [self.closeButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+                self.closeButton.center = CGPointMake(self.closeButton.center.x, headerLabel.center.y);
+                [self.closeButton addTarget:self action:@selector(closeModalClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [topBarView addSubview:self.closeButton];
+            }
             
             self.myHolderView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
             

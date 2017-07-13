@@ -48,6 +48,7 @@
 #import "ContactsViewController.h"
 #import "ContactTransaction.h"
 #import "BuyBitcoinNavigationController.h"
+#import "BCEmptyPageView.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
@@ -2334,30 +2335,38 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [app hideBusyView];
     
-    if (app.tabViewController.presentedViewController) {
-        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-            app.topViewControllerDelegate = nil;
-            [app closeAllModals];
-        }];
-    };
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
+    imageView.frame = CGRectMake(0, 0, 70, 70);
     
-    [self showTransactions];
+    BCEmptyPageView *confirmationView = [[BCEmptyPageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y - DEFAULT_HEADER_HEIGHT, self.window.frame.size.width, self.window.frame.size.height)
+                                                                         title:TRANSACTION_STARTED_TITLE
+                                                                    titleColor:COLOR_BLOCKCHAIN_GREEN
+                                                                      subtitle:[NSString stringWithFormat:TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
+                                                                     imageView:imageView];
+    
+    [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION];
 }
 
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
 {
     [app hideBusyView];
 
-    if (app.tabViewController.presentedViewController) {
-        [app.tabViewController dismissViewControllerAnimated:YES completion:^{
-            app.topViewControllerDelegate = nil;
-            [app closeAllModals];
-        }];
-    };
-    
     [_sendViewController reload];
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
+    imageView.frame = CGRectMake(0, 0, 70, 70);
+
+    BCEmptyPageView *confirmationView = [[BCEmptyPageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y - DEFAULT_HEADER_HEIGHT, self.window.frame.size.width, self.window.frame.size.height)
+                                                                         title:TRANSACTION_STARTED_TITLE
+                                                                    titleColor:COLOR_BLOCKCHAIN_GREEN
+                                                                      subtitle:[NSString stringWithFormat:TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
+                                                                     imageView:imageView];
     
-    [self showTransactions];
+    [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION onDismiss:^{
+        [self showTransactions];
+    } onResume:nil];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
