@@ -13,6 +13,7 @@
 #import "TransactionDetailNavigationController.h"
 #import "Transaction.h"
 #import "RootService.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface ContactTransactionTableViewCell()
 @property (nonatomic) BOOL isSetup;
@@ -24,22 +25,25 @@
     self.transaction = transaction;
     
     if (self.isSetup) {
-        [self reloadTextAndImage:transaction contactName:name];
+        [self reloadWithTransaction:transaction contactName:name];
         return;
     }
     
     self.accessoryType = UITableViewCellAccessoryNone;
     
-    self.statusLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:12];
+    self.statusLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     self.statusLabel.textColor = [UIColor grayColor];
     self.statusLabel.adjustsFontSizeToFitWidth = YES;
     
-    [self reloadTextAndImage:transaction contactName:name];
+    self.iconImageView.image = nil;
+    self.actionImageView.image = nil;
+    
+    [self reloadWithTransaction:transaction contactName:name];
     
     self.isSetup = YES;
 }
 
-- (void)reloadTextAndImage:(ContactTransaction *)transaction contactName:(NSString *)name
+- (void)reloadWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name
 {
     NSString *amount = [NSNumberFormatter formatMoney:transaction.intendedAmount];
     [self.amountButton setTitle:amount forState:UIControlStateNormal];
@@ -48,52 +52,43 @@
     NSString *dateString = [NSDateFormatter timeAgoStringFromDate:date];
     self.lastUpdatedLabel.text = dateString;
     
-    NSString *reasonWithoutSpaces = [transaction.reason stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    NSString *toFromLabelTextSuffix = reasonWithoutSpaces.length > 0 ? [NSString stringWithFormat:@"%@ (%@)", name, transaction.reason] : name;
+    self.toFromLabel.text = name;
+    self.iconImageView.image = [UIImage imageNamed:@"icon_contact_small"];
 
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-        self.statusLabel.text = BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR;
+        self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
-        self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_TO, toFromLabelTextSuffix];
-        [self showLighterColors];
+        self.bottomRightLabel.text = BC_STRING_AWAITING_RESPONSE;
+        self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-        self.statusLabel.text = BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT;
+        self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
-        self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_FROM, toFromLabelTextSuffix];
-        [self showNormalColors];
+        self.bottomRightLabel.text = BC_STRING_ACCEPT_OR_DECLINE;
+        self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.statusLabel.text = BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND;
+        self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
-        self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_TO, toFromLabelTextSuffix];
-        [self showNormalColors];
+        self.bottomRightLabel.text = BC_STRING_READY_TO_SEND;
+        self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST : BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST;
+        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST uppercaseString] : [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
-        self.toFromLabel.text = [NSString stringWithFormat:@"%@ %@", BC_STRING_FROM, toFromLabelTextSuffix];
-        [self showLighterColors];
+        self.bottomRightLabel.text = BC_STRING_WAITING_FOR_PAYMENT;
+        self.actionImageView.image = nil;
     } else {
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
-        [self showNormalColors];
     }
+    
+    [self.bottomRightLabel sizeToFit];
+    self.bottomRightLabel.center = CGPointMake(self.bottomRightLabel.center.x, self.toFromLabel.center.y);
+    [self.bottomRightLabel changeXPosition:self.contentView.frame.size.width - self.bottomRightLabel.frame.size.width - 8];
+    [self.actionImageView changeXPosition:self.bottomRightLabel.frame.origin.x - self.actionImageView.frame.size.width - 8];
 
     self.accessoryType = UITableViewCellAccessoryNone;
-}
-
-- (void)showLighterColors
-{
-    self.amountButton.alpha = 0.5;
-    self.statusLabel.alpha = 0.5;
-}
-
-- (void)showNormalColors
-{
-    self.amountButton.alpha = 1;
-    self.statusLabel.alpha = 1;
 }
 
 - (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath

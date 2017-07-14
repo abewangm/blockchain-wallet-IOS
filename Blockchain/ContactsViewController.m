@@ -134,7 +134,7 @@ const int sectionContacts = 0;
     if (self.contactsToDisplay && self.contactsToDisplay.count > 0) {
         NSMutableArray *contacts = [self.contactsToDisplay mutableCopy];
         
-        NSString *beginsWithLetterRegex = @"^[A-Za-z]*";
+        NSString *beginsWithLetterRegex = @"^[A-Za-z].*";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (name MATCHES %@)", beginsWithLetterRegex];
         
         [contacts filterUsingPredicate:predicate];

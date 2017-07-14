@@ -180,7 +180,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    return indexPath.section == self.sectionContactsPending ? 85 : 65;
 }
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
@@ -198,16 +198,16 @@ int lastNumberTransactions = INT_MAX;
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
         view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 8, self.view.frame.size.width, 14)];
-        label.textColor = COLOR_BLOCKCHAIN_BLUE;
-        label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width, 14)];
+        label.textColor = COLOR_TEXT_DARK_GRAY;
+        label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
         
         [view addSubview:label];
         
         NSString *labelString;
         
         if (section == self.sectionContactsPending) {
-            labelString = BC_STRING_PENDING_TRANSACTIONS;
+            labelString = BC_STRING_IN_PROGRESS;
         }
         else if (section == self.sectionMain) {
             labelString = BC_STRING_TRANSACTION_HISTORY;
@@ -618,10 +618,11 @@ int lastNumberTransactions = INT_MAX;
         message = [NSString stringWithFormat:BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT, contact.name, [NSNumberFormatter formatMoney:transaction.intendedAmount localCurrency:NO]];
     }
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_RECEIVING_PAYMENT message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_ACCEPT style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet sendPaymentRequest:contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note];
     }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DECLINE style:UIAlertActionStyleDestructive handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alert animated:YES completion:nil];
 }

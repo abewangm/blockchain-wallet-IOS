@@ -489,32 +489,36 @@
 #define BC_STRING_CONTACTS_TOO_MANY_OPEN_REQUESTS NSLocalizedString(@"Too many payment requests are open. Please complete some of your payment requests first.", nil)
 #define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 
-#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ wants to send you %@ for %@", nil)
+#define BC_STRING_RECEIVING_PAYMENT NSLocalizedString(@"Receiving Payment", nil)
+#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ for %@", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
-
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR NSLocalizedString(@"Address requested", nil)
-#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND NSLocalizedString(@"Complete payment", nil)
-#define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DENY_PAYMENT NSLocalizedString(@"Accept payment", nil)
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST NSLocalizedString(@"Requested", nil)
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST NSLocalizedString(@"Accepted. Waiting for Payment", nil)
-
-#define BC_STRING_PENDING_CONTACT NSLocalizedString(@"Pending Contact", nil)
-#define BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT_CONTACT_REQUEST NSLocalizedString(@"Waiting for %@ to accept your contact request.", nil)
-#define BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Receiving %@ from %@", nil)
-#define BC_STRING_ACCEPT_OR_DENY NSLocalizedString(@"Accept/Deny", nil)
-#define BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT NSLocalizedString(@"Sending %@ to %@", nil)
-#define BC_STRING_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
-#define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
-#define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
-#define BC_STRING_SENT_ARGUMENT_TO_ARGUMENT NSLocalizedString(@"Sent %@ to %@", nil)
-#define BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT NSLocalizedString(@"Received %@ from %@", nil)
+#define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
+#define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
 
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
 #define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
 
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR BC_STRING_SENDING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND BC_STRING_SENDING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT BC_STRING_RECEIVING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST BC_STRING_SENDING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST BC_STRING_RECEIVING
+
+#define BC_STRING_PENDING_CONTACT NSLocalizedString(@"Pending Contact", nil)
+#define BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT_CONTACT_REQUEST NSLocalizedString(@"Waiting for %@ to accept your contact request.", nil)
+#define BC_STRING_ACCEPT_OR_DECLINE NSLocalizedString(@"Accept or Decline", nil)
+#define BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Receiving %@ from %@", nil)
+#define BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT NSLocalizedString(@"Sending %@ to %@", nil)
+#define BC_STRING_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
+#define BC_STRING_AWAITING_RESPONSE NSLocalizedString(@"Awaiting Response", nil)
+#define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
+#define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
+#define BC_STRING_SENT_ARGUMENT_TO_ARGUMENT NSLocalizedString(@"Sent %@ to %@", nil)
+#define BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT NSLocalizedString(@"Received %@ from %@", nil)
+
 #define BC_STRING_RENAME_CONTACT_ALERT_TITLE NSLocalizedString(@"Rename contact", nil)
-#define BC_STRING_PENDING_TRANSACTIONS NSLocalizedString(@"Pending Transactions", nil)
+#define BC_STRING_IN_PROGRESS NSLocalizedString(@"In Progress", nil)
 #define BC_STRING_COMPLETED_TRANSACTIONS NSLocalizedString(@"Completed Transactions", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)
