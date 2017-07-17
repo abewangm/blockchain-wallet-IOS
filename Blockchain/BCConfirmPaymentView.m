@@ -48,7 +48,7 @@ const int cellRowFee = 4;
         [self.reallyDoPaymentButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
         self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
         
-        [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClickd) forControlEvents:UIControlEventTouchUpInside];
+        [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.reallyDoPaymentButton];
         
@@ -114,7 +114,7 @@ const int cellRowFee = 4;
     return self;
 }
 
-- (void)reallyDoPaymentButtonClickd
+- (void)reallyDoPaymentButtonClicked
 {
     [self.delegate setupNoteForTransaction:self.descriptionField.text];
 }
@@ -190,6 +190,9 @@ const int cellRowFee = 4;
             self.delegate = nil;
         } else {
             self.descriptionField.delegate = self;
+            
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.descriptionField action:@selector(resignFirstResponder)];
+            [self addGestureRecognizer:tapGesture];
         }
 
         [cell.contentView addSubview:self.descriptionField];
