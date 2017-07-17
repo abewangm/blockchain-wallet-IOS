@@ -25,6 +25,7 @@ const int cellRowFee = 4;
 @property (nonatomic) NSString *to;
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) uint64_t fee;
+@property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) NSString *contactTransactionDescription;
 @end
@@ -57,6 +58,7 @@ const int cellRowFee = 4;
         self.amount = amount;
         self.fee = fee;
         self.contactTransactionDescription = description;
+        self.surgeIsOccurring = surgePresent;
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -172,6 +174,7 @@ const int cellRowFee = 4;
     } else if (indexPath.row == cellRowFee) {
         cell.textLabel.text = BC_STRING_FEE;
         cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.fee];
+        if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
     } else if (indexPath.row == cellRowDescription) {
         cell.textLabel.text = BC_STRING_DESCRIPTION;
         
