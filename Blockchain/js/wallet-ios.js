@@ -893,8 +893,8 @@ MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
 
     console.log('quickSend');
 
-    var success = function(payment) {
-        objc_tx_on_success_secondPassword(id, secondPassword);
+    var success = function(tx) {
+        objc_tx_on_success_secondPassword_hash(id, secondPassword, tx.txid);
     };
 
     var error = function(response) {

@@ -455,8 +455,8 @@
         [weakSelf did_get_fee:fee dust:dust txSize:txSize];
     };
     
-    self.context[@"objc_tx_on_success_secondPassword"] = ^(NSString *success, NSString *secondPassword) {
-        [weakSelf tx_on_success:success secondPassword:secondPassword];
+    self.context[@"objc_tx_on_success_secondPassword_hash"] = ^(NSString *success, NSString *secondPassword, NSString *txHash) {
+        [weakSelf tx_on_success:success secondPassword:secondPassword transactionHash:txHash];
     };
     
     self.context[@"objc_tx_on_start"] = ^(NSString *transactionId) {
@@ -2446,13 +2446,13 @@
     }
 }
 
-- (void)tx_on_success:(NSString*)txProgressID secondPassword:(NSString *)secondPassword
+- (void)tx_on_success:(NSString*)txProgressID secondPassword:(NSString *)secondPassword transactionHash:(NSString *)hash
 {
     transactionProgressListeners *listener = [self.transactionProgressListeners objectForKey:txProgressID];
     
     if (listener) {
         if (listener.on_success) {
-            listener.on_success(secondPassword);
+            listener.on_success(secondPassword, hash);
         }
     }
     

@@ -32,7 +32,7 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
-@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate>
+@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, TransactionDescriptionDelegate>
 
 @property (nonatomic) TransactionType transactionType;
 
@@ -56,6 +56,8 @@ typedef enum {
 @property (nonatomic) UILabel *feeAmountLabel;
 @property (nonatomic) UILabel *feeWarningLabel;
 @property (nonatomic) NSDictionary *fees;
+
+@property (nonatomic) NSString *noteToSet;
 
 @property (nonatomic) BOOL isReloading;
 @property (nonatomic) BOOL shouldReloadFeeAmountLabel;
@@ -291,6 +293,8 @@ BOOL displayingLocalSymbolSend;
     
     self.isSending = NO;
     self.isReloading = NO;
+    
+    self.noteToSet = nil;
 }
 
 - (void)reloadAfterMultiAddressResponse
@@ -493,7 +497,7 @@ BOOL displayingLocalSymbolSend;
              sendProgressModalText.text = BC_STRING_FINISHED_SIGNING_INPUTS;
          };
          
-         listener.on_success = ^(NSString*secondPassword) {
+         listener.on_success = ^(NSString*secondPassword, NSString *transactionHash) {
              
              DLog(@"SendViewController: on_success");
              
@@ -560,6 +564,10 @@ BOOL displayingLocalSymbolSend;
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  [app.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
              });
+             
+             if (self.noteToSet) {
+                 [app.wallet saveNote:self.noteToSet forTransaction:transactionHash];
+             }
              
              [self reload];
          };
@@ -770,10 +778,19 @@ BOOL displayingLocalSymbolSend;
         
         NSString *from = fromAddressLabel.length == 0 ? fromAddressString : fromAddressLabel;
         NSString *to = toAddressLabel.length == 0 ? toAddressString : toAddressLabel;
+        NSString *description = self.contactTransaction.reason;
         
         BOOL surgePresent = self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
         
-        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window from:from To:to amount:amountInSatoshi fee:feeTotal total:amountTotal surge:surgePresent];
+        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window
+                                                                          from:from
+                                                                            To:to
+                                                                        amount:amountInSatoshi
+                                                                           fee:feeTotal
+                                                                         total:amountTotal
+                                                                   description:description
+                                                                         surge:surgePresent];
+        self.confirmPaymentView.delegate = self;
         
         UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
         self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
@@ -1591,6 +1608,13 @@ BOOL displayingLocalSymbolSend;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
     });
+}
+
+#pragma mark - Transaction Description Delegate
+
+- (void)setupNoteForTransaction:(NSString *)note
+{
+    self.noteToSet = note;
 }
 
 #pragma mark - Fee Calculation
