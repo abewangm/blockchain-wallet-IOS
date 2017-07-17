@@ -73,7 +73,7 @@
     BOOL displayingLocalSymbol;
 }
 
-@property (strong, nonatomic) IBOutlet BCConfirmPaymentView *confirmPaymentView;
+@property (strong, nonatomic) BCConfirmPaymentView *confirmPaymentView;
 
 typedef enum {
     DestinationAddressSourceNone,

@@ -96,7 +96,6 @@ BOOL displayingLocalSymbolSend;
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
     [containerView changeWidth:WINDOW_WIDTH];
-    [self.confirmPaymentView changeWidth:WINDOW_WIDTH];
 
     [selectAddressTextField changeWidth:self.view.frame.size.width - fromLabel.frame.size.width - 15 - 13 - selectFromButton.frame.size.width];
     [selectFromButton changeXPosition:self.view.frame.size.width - selectFromButton.frame.size.width];
@@ -287,9 +286,6 @@ BOOL displayingLocalSymbolSend;
     [self enablePaymentButtons];
     
     [self setupFees];
-    
-    [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
-    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
     
     sendProgressCancelButton.hidden = YES;
     
@@ -725,33 +721,19 @@ BOOL displayingLocalSymbolSend;
 
 - (void)showSummary
 {
-    [self showSummaryWithCustomFromLabel:nil];
+    [self showSummaryForTransferAllWithCustomFromLabel:nil];
 }
 
-- (void)showSummaryWithCustomFromLabel:(NSString *)customFromLabel
+- (void)showSummaryForTransferAllWithCustomFromLabel:(NSString *)customFromLabel
 {
     [self hideKeyboard];
-    
-    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-        self.confirmPaymentView.arrowImageView.center = CGPointMake(app.tabViewController.view.window.center.x, self.confirmPaymentView.arrowImageView.center.y);
-    }
     
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT onDismiss:^{
-            [self enablePaymentButtons];
-        } onResume:nil];
-        
         if ([self transferAllMode] || _addressSource == DestinationAddressSourceContact) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
-        
-        [UIView animateWithDuration:0.3f animations:^{
-            
-            UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
-            self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
-        }];
         
         uint64_t amountTotal = amountInSatoshi + self.feeFromTransactionProposal + self.dust;
         uint64_t feeTotal = self.dust + self.feeFromTransactionProposal;
@@ -786,25 +768,25 @@ BOOL displayingLocalSymbolSend;
             toAddressLabel = @"";
         }
         
-        self.confirmPaymentView.fromLabel.text = [NSString stringWithFormat:@"%@\n%@", fromAddressLabel, fromAddressString];
-        self.confirmPaymentView.toLabel.text = [NSString stringWithFormat:@"%@\n%@", toAddressLabel, toAddressString];
+        NSString *from = fromAddressLabel.length == 0 ? fromAddressString : fromAddressLabel;
+        NSString *to = toAddressLabel.length == 0 ? toAddressString : toAddressLabel;
         
-        self.confirmPaymentView.fiatAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:TRUE];
-        self.confirmPaymentView.btcAmountLabel.text = [NSNumberFormatter formatMoney:amountInSatoshi localCurrency:FALSE];
+        BOOL surgePresent = self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
         
-        self.confirmPaymentView.fiatFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcFeeLabel.text = [NSNumberFormatter formatMoney:feeTotal localCurrency:FALSE];
+        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window from:from To:to amount:amountInSatoshi fee:feeTotal total:amountTotal surge:surgePresent];
         
-        if (self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE]) {
-            self.confirmPaymentView.fiatFeeLabel.textColor = COLOR_WARNING_RED;
-            self.confirmPaymentView.btcFeeLabel.textColor = COLOR_WARNING_RED;
+        UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
+        self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
+        
+        if (customFromLabel) {
+            [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
         } else {
-            self.confirmPaymentView.fiatFeeLabel.textColor = [UIColor darkGrayColor];
-            self.confirmPaymentView.btcFeeLabel.textColor = [UIColor darkGrayColor];
+            [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment:) forControlEvents:UIControlEventTouchUpInside];
         }
         
-        self.confirmPaymentView.fiatTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:TRUE];
-        self.confirmPaymentView.btcTotalLabel.text = [NSNumberFormatter formatMoney:amountTotal localCurrency:FALSE];
+        [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT onDismiss:^{
+            [self enablePaymentButtons];
+        } onResume:nil];
         
         NSDecimalNumber *last = [NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:[[app.wallet.currencySymbols objectForKey:DICTIONARY_KEY_USD][DICTIONARY_KEY_LAST] doubleValue]] decimalValue]];
         NSDecimalNumber *conversionToUSD = [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithDouble:SATOSHI] decimalValue]] decimalNumberByDividingBy:last];
@@ -1224,14 +1206,11 @@ BOOL displayingLocalSymbolSend;
 {
     [app hideBusyView];
     
-    [self showSummaryWithCustomFromLabel:selectAddressTextField.text];
+    [self showSummaryForTransferAllWithCustomFromLabel:selectAddressTextField.text];
     
     [self enablePaymentButtons];
     
     sendProgressCancelButton.hidden = [self.transferAllPaymentBuilder.transferAllAddressesToTransfer count] <= 1;
-
-    [self.confirmPaymentView.reallyDoPaymentButton removeTarget:self action:nil forControlEvents:UIControlEventAllTouchEvents];
-    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (BOOL)transferAllMode

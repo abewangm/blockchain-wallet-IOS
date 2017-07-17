@@ -98,8 +98,6 @@
         [tableViewFooterLabel changeXPosition:15];
         [self addSubview:tableViewFooterLabel];
         
-        // Input accessory view
-        
         self.requestButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.requestButton.frame = CGRectMake(0, self.frame.size.height - BUTTON_HEIGHT - 8, 240, BUTTON_HEIGHT);
         self.requestButton.center = CGPointMake(self.center.x, self.requestButton.center.y);

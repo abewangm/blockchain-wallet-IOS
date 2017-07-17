@@ -9,22 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface BCConfirmPaymentView : UIView
-@property (strong, nonatomic) IBOutlet UILabel *amountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *feeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *totalLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *fromLabel;
-@property (strong, nonatomic) IBOutlet UILabel *toLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *fiatAmountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcAmountLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *fiatFeeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcFeeLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *fiatTotalLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcTotalLabel;
-
-@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
-@property (strong, nonatomic) IBOutlet UIButton *reallyDoPaymentButton;
+- (id)initWithWindow:(UIView *)window
+                from:(NSString *)from
+                  To:(NSString *)to
+              amount:(uint64_t)amount
+                 fee:(uint64_t)fee
+               total:(uint64_t)total
+               surge:(BOOL)surgePresent;
+@property (nonatomic) UIButton *reallyDoPaymentButton;
 @end
