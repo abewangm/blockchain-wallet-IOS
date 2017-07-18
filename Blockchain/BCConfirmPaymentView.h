@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol TransactionDescriptionDelegate
+
+@class ContactTransaction;
+
+@protocol ConfirmPaymentViewDelegate
 - (void)setupNoteForTransaction:(NSString *)note;
+- (void)feeInformationButtonClicked;
 @end
 @interface BCConfirmPaymentView : UIView
 
@@ -18,9 +22,11 @@
               amount:(uint64_t)amount
                  fee:(uint64_t)fee
                total:(uint64_t)total
-         description:(NSString *)description
+         contactTransaction:(ContactTransaction *)contactTransaction
                surge:(BOOL)surgePresent;
 
 @property (nonatomic) UIButton *reallyDoPaymentButton;
-@property (weak, nonatomic) id <TransactionDescriptionDelegate> delegate;
+@property (nonatomic) UIButton *feeInformationButton;
+
+@property (weak, nonatomic) id <ConfirmPaymentViewDelegate> delegate;
 @end

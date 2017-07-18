@@ -32,7 +32,7 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
-@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, TransactionDescriptionDelegate>
+@interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
 @property (nonatomic) TransactionType transactionType;
 
@@ -166,9 +166,7 @@ BOOL displayingLocalSymbolSend;
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     feeField.delegate = self;
-    
-    feeInformationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    
+        
     toField.placeholder = BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT;
     feeField.placeholder = BC_STRING_SATOSHI_PER_BYTE_ABBREVIATED;
     btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
@@ -778,7 +776,6 @@ BOOL displayingLocalSymbolSend;
         
         NSString *from = fromAddressLabel.length == 0 ? fromAddressString : fromAddressLabel;
         NSString *to = toAddressLabel.length == 0 ? toAddressString : toAddressLabel;
-        NSString *description = self.contactTransaction.reason;
         
         BOOL surgePresent = self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
         
@@ -788,7 +785,7 @@ BOOL displayingLocalSymbolSend;
                                                                         amount:amountInSatoshi
                                                                            fee:feeTotal
                                                                          total:amountTotal
-                                                                   description:description
+                                                            contactTransaction:self.contactTransaction
                                                                          surge:surgePresent];
         self.confirmPaymentView.delegate = self;
         
@@ -2014,7 +2011,7 @@ BOOL displayingLocalSymbolSend;
     self.transactionType = TransactionTypeSweep;
 }
 
-- (IBAction)feeInformationClicked:(UIButton *)sender
+- (void)feeInformationButtonClicked
 {
     NSString *title = BC_STRING_FEE_INFORMATION_TITLE;
     NSString *message = BC_STRING_FEE_INFORMATION_MESSAGE;

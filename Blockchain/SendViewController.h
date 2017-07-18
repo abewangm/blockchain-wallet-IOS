@@ -69,7 +69,6 @@
     
     IBOutlet UIView *bottomContainerView;
     
-    IBOutlet UIButton *feeInformationButton;
     BOOL displayingLocalSymbol;
 }
 

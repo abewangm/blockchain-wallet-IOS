@@ -10,6 +10,7 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "Blockchain-Swift.h"
+#import "ContactTransaction.h"
 
 #define CELL_HEIGHT 44
 #define NUMBER_OF_ROWS 5
@@ -27,7 +28,7 @@ const int cellRowFee = 4;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) BCSecureTextField *descriptionField;
-@property (nonatomic) NSString *contactTransactionDescription;
+@property (nonatomic) ContactTransaction *contactTransaction;
 @end
 @implementation BCConfirmPaymentView
 
@@ -37,7 +38,7 @@ const int cellRowFee = 4;
               amount:(uint64_t)amount
                  fee:(uint64_t)fee
                total:(uint64_t)total
-         description:(NSString *)description
+         contactTransaction:(ContactTransaction *)contactTransaction
                surge:(BOOL)surgePresent
 {
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
@@ -57,7 +58,7 @@ const int cellRowFee = 4;
         self.to = to;
         self.amount = amount;
         self.fee = fee;
-        self.contactTransactionDescription = description;
+        self.contactTransaction = contactTransaction;
         self.surgeIsOccurring = surgePresent;
         
         self.backgroundColor = [UIColor whiteColor];
@@ -121,6 +122,11 @@ const int cellRowFee = 4;
     [self.delegate setupNoteForTransaction:self.descriptionField.text];
 }
 
+- (void)feeInformationButtonClicked
+{
+    [self.delegate feeInformationButtonClicked];
+}
+
 #pragma mark - Text Helpers
 
 - (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
@@ -174,6 +180,20 @@ const int cellRowFee = 4;
     } else if (indexPath.row == cellRowFee) {
         cell.textLabel.text = BC_STRING_FEE;
         cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.fee];
+        
+        UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        testLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
+        testLabel.text = BC_STRING_FEE;
+        [testLabel sizeToFit];
+        
+        self.feeInformationButton = [[UIButton alloc] initWithFrame:CGRectMake(15 + testLabel.frame.size.width + 8, 0, 19, 19)];
+        [self.feeInformationButton setImage:[[UIImage imageNamed:@"help"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        self.feeInformationButton.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        self.feeInformationButton.center = CGPointMake(self.feeInformationButton.center.x, cell.contentView.center.y);
+        [self.feeInformationButton addTarget:self action:@selector(feeInformationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:self.feeInformationButton];
+        
         if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
     } else if (indexPath.row == cellRowDescription) {
         cell.textLabel.text = BC_STRING_DESCRIPTION;
@@ -186,12 +206,15 @@ const int cellRowFee = 4;
         self.descriptionField.textAlignment = NSTextAlignmentRight;
         self.descriptionField.returnKeyType = UIReturnKeyDone;
         
-        // Text will be nil for non-contacts-related transactions
-        if (self.contactTransactionDescription) {
-            self.descriptionField.text = self.contactTransactionDescription;
+        if (self.contactTransaction) {
+            self.descriptionField.text = self.contactTransaction.reason;
             self.descriptionField.userInteractionEnabled = NO;
+            
+            // Do not set a note, since description is saved in the metadata service
             self.delegate = nil;
         } else {
+            // Text will be empty for regular (non-contacts-related) transactions - allow setting a note
+
             self.descriptionField.delegate = self;
             
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.descriptionField action:@selector(resignFirstResponder)];
