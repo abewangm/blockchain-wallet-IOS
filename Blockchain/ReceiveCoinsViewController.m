@@ -923,7 +923,7 @@ NSString *detailLabel;
 
 - (void)createReceiveRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:NO];
+    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:NO accountOrAddress:didClickAccount ? [NSNumber numberWithInt:clickedAccount] : self.clickedAddress];
     contactRequestView.delegate = self;
     
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];

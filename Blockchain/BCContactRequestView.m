@@ -21,11 +21,13 @@
 @property (nonatomic) UIButton *requestButton;
 
 @property (nonatomic) uint64_t amount;
+@property (nonatomic) id accountOrAddress;
+
 @end
 
 @implementation BCContactRequestView
 
-- (id)initWithContact:(Contact *)contact amount:(uint64_t)amount willSend:(BOOL)willSend
+- (id)initWithContact:(Contact *)contact amount:(uint64_t)amount willSend:(BOOL)willSend accountOrAddress:(id)accountOrAddress
 {
     UIWindow *window = app.window;
     
@@ -33,9 +35,10 @@
     
     if (self) {
         self.contact = contact;
-        _willSend = willSend;
         self.amount = amount;
+        self.accountOrAddress = accountOrAddress;
         
+        _willSend = willSend;
         self.backgroundColor = [UIColor whiteColor];
 
         UILabel *totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, 0, 0)];
@@ -49,7 +52,7 @@
         
         UILabel *btcAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, totalLabel.frame.origin.y + totalLabel.frame.size.height + 8, 0, 0)];
         btcAmountLabel.text = [NSNumberFormatter formatBTC:self.amount];
-        btcAmountLabel.textColor = COLOR_BLOCKCHAIN_RED;
+        btcAmountLabel.textColor = self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA;
         btcAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_EXTRA_EXTRA_LARGE];
         btcAmountLabel.textAlignment = NSTextAlignmentCenter;
         [btcAmountLabel sizeToFit];
@@ -58,14 +61,14 @@
         
         UILabel *fiatAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, btcAmountLabel.frame.origin.y + btcAmountLabel.frame.size.height + 8, 0, 0)];
         fiatAmountLabel.text = [NSNumberFormatter formatMoney:self.amount localCurrency:YES];
-        fiatAmountLabel.textColor = COLOR_BLOCKCHAIN_RED;
+        fiatAmountLabel.textColor = self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA;
         fiatAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         fiatAmountLabel.textAlignment = NSTextAlignmentCenter;
         [fiatAmountLabel sizeToFit];
         fiatAmountLabel.center = CGPointMake(window.center.x, fiatAmountLabel.center.y);
         [self addSubview:fiatAmountLabel];
         
-        CGFloat tableViewHeight = CELL_HEIGHT * 3;
+        CGFloat tableViewHeight = CELL_HEIGHT * (self.willSend ? 3 : 4);
         
         UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, fiatAmountLabel.frame.origin.y + fiatAmountLabel.frame.size.height + 20, window.frame.size.width, tableViewHeight)];
         summaryTableView.scrollEnabled = NO;
@@ -115,7 +118,7 @@
 - (void)completeRequest
 {
     if (self.willSend) {
-        [self.delegate createSendRequestForContact:self.contact withReason:self.descriptionField.text amount:self.amount lastSelectedField:self.descriptionField];
+        [self.delegate createSendRequestForContact:self.contact withReason:self.descriptionField.text amount:self.amount lastSelectedField:self.descriptionField accountOrAddress:self.accountOrAddress];
     } else {
         [self.delegate createReceiveRequestForContact:self.contact withReason:self.descriptionField.text amount:self.amount lastSelectedField:self.descriptionField];
     }
@@ -139,7 +142,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.willSend ? 3 : 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,28 +152,58 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     cell.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
 
-    if (indexPath.row == 0) {
+    int rowAmount = 0;
+    int rowTo = 1;
+    int rowFrom = 2;
+    int rowDescription = 3;
+    
+    if (self.willSend) {
+        rowAmount = -1;
+        rowTo = 1;
+        rowFrom = 0;
+        rowDescription = 2;
+    }
+    
+    NSString *accountOrAddressString = [self.accountOrAddress isKindOfClass:[NSString class]] ? self.accountOrAddress : [app.wallet getLabelForAccount:[self.accountOrAddress intValue]];
+    
+    if (indexPath.row == rowTo) {
         cell.textLabel.text = BC_STRING_TO;
-        cell.detailTextLabel.text = self.contact.name;
-    } else if (indexPath.row == 1) {
+        cell.detailTextLabel.text = self.willSend ? self.contact.name : accountOrAddressString;
+    } else if (indexPath.row == rowFrom) {
         cell.textLabel.text = BC_STRING_FROM;
-        cell.detailTextLabel.text = nil;
-    } else if (indexPath.row == 2) {
+        cell.detailTextLabel.text = self.willSend ? accountOrAddressString : self.contact.name;
+    } else if (indexPath.row == rowDescription) {
         cell.textLabel.text = BC_STRING_DESCRIPTION;
         
         self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(cell.frame.size.width/2 + 16, 0, cell.frame.size.width/2 - 16 - 15, 20)];
         self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
         self.descriptionField.placeholder = [NSString stringWithFormat:BC_STRING_SHARED_WITH_CONTACT_NAME_ARGUMENT, self.contact.name];
-        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
         self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
         self.descriptionField.textAlignment = NSTextAlignmentRight;
         self.descriptionField.returnKeyType = UIReturnKeyDone;
         self.descriptionField.delegate = self;
         [cell.contentView addSubview:self.descriptionField];
+    } else if (indexPath.row == rowAmount) {
+        CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
+
+        UILabel *btcLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, labelWidth, 21)];
+        btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+        btcLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        btcLabel.text = app.latestResponse.symbol_btc.symbol;
+        btcLabel.center = CGPointMake(btcLabel.center.x, cell.contentView.center.y);
+        [cell.contentView addSubview:btcLabel];
+        
+        UILabel *fiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width/2 + 15, 0, labelWidth, 21)];
+        fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+        fiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        fiatLabel.text = app.latestResponse.symbol_local.code;
+        fiatLabel.center = CGPointMake(fiatLabel.center.x, cell.contentView.center.y);
+        [cell.contentView addSubview:fiatLabel];
     }
     return cell;
 }

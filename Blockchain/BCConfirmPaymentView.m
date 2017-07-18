@@ -66,7 +66,7 @@ const int cellRowFee = 4;
         UILabel *totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, 0, 0)];
         totalLabel.text = BC_STRING_TOTAL;
         totalLabel.textColor = [UIColor darkGrayColor];
-        totalLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
+        totalLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         totalLabel.textAlignment = NSTextAlignmentCenter;
         [totalLabel sizeToFit];
         totalLabel.center = CGPointMake(window.center.x, totalLabel.center.y);
@@ -75,7 +75,7 @@ const int cellRowFee = 4;
         UILabel *btcAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, totalLabel.frame.origin.y + totalLabel.frame.size.height + 8, 0, 0)];
         btcAmountLabel.text = [NSNumberFormatter formatBTC:total];
         btcAmountLabel.textColor = COLOR_BLOCKCHAIN_RED;
-        btcAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_EXTRA_EXTRA_LARGE];
+        btcAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
         btcAmountLabel.textAlignment = NSTextAlignmentCenter;
         [btcAmountLabel sizeToFit];
         btcAmountLabel.center = CGPointMake(window.center.x, btcAmountLabel.center.y);
@@ -84,7 +84,7 @@ const int cellRowFee = 4;
         UILabel *fiatAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, btcAmountLabel.frame.origin.y + btcAmountLabel.frame.size.height + 8, 0, 0)];
         fiatAmountLabel.text = [NSNumberFormatter formatMoney:total localCurrency:YES];
         fiatAmountLabel.textColor = COLOR_BLOCKCHAIN_RED;
-        fiatAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+        fiatAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM];
         fiatAmountLabel.textAlignment = NSTextAlignmentCenter;
         [fiatAmountLabel sizeToFit];
         fiatAmountLabel.center = CGPointMake(window.center.x, fiatAmountLabel.center.y);
@@ -162,9 +162,9 @@ const int cellRowFee = 4;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     cell.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     
     if (indexPath.row == cellRowTo) {
         cell.textLabel.text = BC_STRING_TO;
@@ -183,7 +183,7 @@ const int cellRowFee = 4;
         
         UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         testLabel.textColor = COLOR_TEXT_DARK_GRAY;
-        testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
+        testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         testLabel.text = BC_STRING_FEE;
         [testLabel sizeToFit];
         
@@ -201,7 +201,7 @@ const int cellRowFee = 4;
         self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(cell.frame.size.width/2 + 16, 0, cell.frame.size.width/2 - 16 - 15, 20)];
         self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
         self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
-        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
         self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
         self.descriptionField.textAlignment = NSTextAlignmentRight;
         self.descriptionField.returnKeyType = UIReturnKeyDone;
