@@ -120,7 +120,7 @@ BOOL displayingLocalSymbolSend;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
 
-    [self setupFeeWarningLabelFrame];
+    [self setupFeeWarningLabelFrameSmall];
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
 
@@ -204,6 +204,7 @@ BOOL displayingLocalSymbolSend;
     // Use same font size for all screen sizes
     self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     self.feeWarningLabel.textColor = COLOR_WARNING_RED;
+    self.feeWarningLabel.numberOfLines = 2;
     [bottomContainerView addSubview:self.feeWarningLabel];
 }
 
@@ -1035,61 +1036,6 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)showWarningForFee:(uint64_t)fee isHigherThanRecommendedRange:(BOOL)feeIsTooHigh
-{
-    NSString *message;
-    uint64_t suggestedFee = 0;
-    NSString *useSuggestedFee;
-    NSString *keepUserInputFee;
-    
-    if (feeIsTooHigh) {
-        message = [NSString stringWithFormat:BC_STRING_FEE_HIGHER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.upperRecommendedLimit localCurrency:NO]];
-        suggestedFee = self.upperRecommendedLimit;
-        useSuggestedFee = BC_STRING_LOWER_FEE;
-        keepUserInputFee = BC_STRING_KEEP_HIGHER_FEE;
-    } else {
-        message = [NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_SUGGESTED_ARGUMENT, [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:self.lowerRecommendedLimit localCurrency:NO]];
-        suggestedFee = self.lowerRecommendedLimit;
-        useSuggestedFee = BC_STRING_INCREASE_FEE;
-        keepUserInputFee = BC_STRING_KEEP_LOWER_FEE;
-    }
-    UIAlertController *alertForFeeOutsideRecommendedRange = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:useSuggestedFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
-        // [self changeForcedFee:suggestedFee afterEvaluation:YES];
-    }]];
-    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:keepUserInputFee style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // [self changeForcedFee:fee afterEvaluation:YES];
-    }]];
-    [alertForFeeOutsideRecommendedRange addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self enablePaymentButtons];
-    }]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:alertForFeeOutsideRecommendedRange selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-    
-    [app.tabViewController presentViewController:alertForFeeOutsideRecommendedRange animated:YES completion:nil];
-}
-
-- (void)showWarningForInsufficientFundsAndLowFee:(uint64_t)fee suggestedFee:(uint64_t)suggestedFee suggestedAmount:(uint64_t)suggestedAmount
-{
-    NSString *feeString = [NSNumberFormatter formatMoney:fee localCurrency:NO];
-    NSString *suggestedFeeString = [NSNumberFormatter formatMoney:suggestedFee localCurrency:NO];
-    NSString *suggestedAmountString = [NSNumberFormatter formatMoney:suggestedAmount localCurrency:NO];
-    
-    UIAlertController *alertForInsufficientFundsAndLowFee = [UIAlertController alertControllerWithTitle:BC_STRING_WARNING_TITLE message:[NSString stringWithFormat:BC_STRING_FEE_LOWER_THAN_RECOMMENDED_ARGUMENT_MUST_LOWER_AMOUNT_SUGGESTED_FEE_ARGUMENT_SUGGESTED_AMOUNT_ARGUMENT, feeString, suggestedFeeString, suggestedAmountString] preferredStyle:UIAlertControllerStyleAlert];
-    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_KEEP_LOWER_FEE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // [self changeForcedFee:fee afterEvaluation:YES];
-    }]];
-    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_USE_RECOMMENDED_VALUES style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        feeField.text = [NSNumberFormatter formatAmount:suggestedFee localCurrency:NO];
-        amountInSatoshi = suggestedAmount;
-        [self doCurrencyConversion];
-        // [self changeForcedFee:suggestedFee afterEvaluation:YES];
-    }]];
-    [alertForInsufficientFundsAndLowFee addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [app.tabViewController presentViewController:alertForInsufficientFundsAndLowFee animated:YES completion:nil];
-}
-
 - (void)alertUserForSpendingFromWatchOnlyAddress
 {
     UIAlertController *alertForSpendingFromWatchOnly = [UIAlertController alertControllerWithTitle:BC_STRING_PRIVATE_KEY_NEEDED message:[NSString stringWithFormat:BC_STRING_PRIVATE_KEY_NEEDED_MESSAGE_ARGUMENT, self.fromAddress] preferredStyle:UIAlertControllerStyleAlert];
@@ -1288,9 +1234,15 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)setupFeeWarningLabelFrame
+- (void)setupFeeWarningLabelFrameSmall
 {
     CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
+    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
+}
+
+- (void)setupFeeWarningLabelFrameLarge
+{
+    CGFloat warningLabelOriginY = self.feeDescriptionLabel.frame.origin.y + self.feeDescriptionLabel.frame.size.height - 4;
     self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
 }
 
@@ -1665,8 +1617,28 @@ BOOL displayingLocalSymbolSend;
 - (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
 {
     availableAmount = [sweepAmount longLongValue];
+    uint64_t fee = [finalFee longLongValue];
     
-    [self updateFeeAmountLabelText:[finalFee longLongValue]];
+    CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
+    
+    if (availableAmount <= 0 || availableAmount < fee) {
+        [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 30 completion:^(BOOL finished) {
+            if (self.feeType == FeeTypeCustom) {
+                [self setupFeeWarningLabelFrameSmall];
+            } else {
+                [self setupFeeWarningLabelFrameLarge];
+            }
+            self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
+        }];
+        self.feeWarningLabel.text = BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE;
+    } else {
+        if ([self.feeWarningLabel.text isEqualToString:BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE]) {
+            [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition completion:nil];
+            self.feeWarningLabel.hidden = YES;
+        }
+    }
+    
+    [self updateFeeAmountLabelText:fee];
     [self doCurrencyConversionAfterMultiAddress];
 }
 
@@ -1737,11 +1709,14 @@ BOOL displayingLocalSymbolSend;
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
                     [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrame];
+                        [self setupFeeWarningLabelFrameSmall];
                         self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
-                    self.feeWarningLabel.hidden = NO;
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrameSmall];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
                 }
                 self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
             }
@@ -1753,18 +1728,19 @@ BOOL displayingLocalSymbolSend;
             if (feeField.text.length > 0) {
                 if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
                     [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrame];
+                        [self setupFeeWarningLabelFrameSmall];
                         self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
                     }];
                 } else {
-                    self.feeWarningLabel.hidden = NO;
+                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
+                        [self setupFeeWarningLabelFrameSmall];
+                        self.feeWarningLabel.hidden = NO;
+                    }];
                 }
                 self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
             }
         } else {
-            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            }
+            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
             self.feeWarningLabel.hidden = YES;
         }
         

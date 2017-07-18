@@ -29,7 +29,8 @@
 
 ECSlidingViewController *sideMenu;
 
-UITapGestureRecognizer *tapToCloseGestureRecognizer;
+UITapGestureRecognizer *tapToCloseGestureRecognizerViewController;
+UITapGestureRecognizer *tapToCloseGestureRecognizerTabBar;
 
 NSString *entryKeyUpgradeBackup = @"upgrade_backup";
 NSString *entryKeySettings = @"settings";
@@ -76,7 +77,8 @@ int accountEntries = 0;
     
     sideMenu.delegate = self;
     
-    tapToCloseGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
+    tapToCloseGestureRecognizerViewController = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
+    tapToCloseGestureRecognizerTabBar = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
 }
 
 - (NSUInteger)menuEntriesCount {
@@ -148,7 +150,9 @@ int accountEntries = 0;
     ECSlidingViewController *sideMenu = app.slidingViewController;
     [app.tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
     
-    [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizer];
+    [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    
+    [app.tabViewController addTapGestureRecognizerToTabBar:tapToCloseGestureRecognizerTabBar];
     
     // Show shadow on current viewController in tabBarView
     UIView *castsShadowView = app.slidingViewController.topViewController.view;
@@ -164,8 +168,9 @@ int accountEntries = 0;
     
     // Disable Pan and Tap gesture on main view
     [app.tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
-    [app.tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizer];
-    
+    [app.tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    [app.tabViewController removeTapGestureRecognizerFromTabBar:tapToCloseGestureRecognizerTabBar];
+
     // Enable interaction on main view
     for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:YES];

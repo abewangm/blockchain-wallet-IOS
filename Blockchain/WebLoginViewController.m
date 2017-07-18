@@ -25,7 +25,7 @@
 
 @end
 
-const float qrSize = 180;
+const float qrSize = 230;
 
 @implementation WebLoginViewController
 
