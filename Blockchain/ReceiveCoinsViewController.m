@@ -57,9 +57,9 @@ NSString *detailLabel;
     [self setupBottomViews];
     [self selectDefaultDestination];
     
-    float imageWidth = 160;
+    float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 52, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 32, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -90,7 +90,9 @@ NSString *detailLabel;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    app.mainTitleLabel.text = BC_STRING_RECEIVE;
+    app.mainTitleLabel.text = BC_STRING_REQUEST;
+    
+    self.receiveToLabel.textColor = app.wallet.contacts.count > 0 ? COLOR_TEXT_DARK_GRAY : COLOR_LIGHT_GRAY;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -109,44 +111,37 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
-    UIEdgeInsets buttonTitleInsets = UIEdgeInsetsMake(0, 8, 0, 8);
-    
-#ifdef ENABLE_DEBUG_MENU
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_AQUA;
-    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton setTitle:BC_STRING_REQUEST_FROM_CONTACT forState:UIControlStateNormal];
-    requestButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    requestButton.titleEdgeInsets = buttonTitleInsets;
-    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_LARGE] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_LARGE]];
-    [self.view addSubview:requestButton];
-    [requestButton addTarget:self action:@selector(request) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(requestButton.frame.size.width, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width/2, BUTTON_HEIGHT)];
-    [shareButton setTitle:BC_STRING_SHARE_REQUEST forState:UIControlStateNormal];
-#else
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
-    [shareButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
-#endif
-    shareButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [shareButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_LARGE] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_LARGE]];
-    [self.view addSubview:shareButton];
-    [shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
-    shareButton.titleEdgeInsets = buttonTitleInsets;
-
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - shareButton.frame.size.height, self.view.frame.size.width, 100)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 260, self.view.frame.size.width, 260)];
     [self.view addSubview:self.bottomContainerView];
     
-    BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];
-    BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.view.frame.size.width - 15, 1)];
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.bottomContainerView.frame.size.height - BUTTON_HEIGHT - 16, self.bottomContainerView.frame.size.width - 30, BUTTON_HEIGHT)];
+    requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
+    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomContainerView addSubview:requestButton];
+    
+    BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];
     lineAboveAmounts.backgroundColor = COLOR_LINE_GRAY;
-    lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineAboveAmounts];
+
+    BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.view.frame.size.width - 15, 1)];
+    lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
+    BCLine *lineBelowToField = [[BCLine alloc] initWithFrame:CGRectMake(15, lineBelowAmounts.frame.origin.y + 50, self.view.frame.size.width - 15, 1)];
+    lineBelowToField.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineBelowToField];
+    
+    BCLine *lineBelowFromField = [[BCLine alloc] initWithFrame:CGRectMake(0, lineBelowToField.frame.origin.y + 50, self.view.frame.size.width, 1)];
+    lineBelowFromField.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineBelowFromField];
+    
     CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
-    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, labelWidth, 21)];
+    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 15, labelWidth, 21)];
     receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
     receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
@@ -179,12 +174,12 @@ NSString *detailLabel;
     self.receiveFiatField.delegate = self;
     [self.bottomContainerView addSubview:self.receiveFiatField];
     
-    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 50, 21)];
-    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    whereLabel.text = BC_STRING_WHERE;
-    whereLabel.adjustsFontSizeToFitWidth = YES;
-    [self.bottomContainerView addSubview:whereLabel];
+    UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 65, 50, 21)];
+    toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    toLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    toLabel.text = BC_STRING_TO;
+    toLabel.adjustsFontSizeToFitWidth = YES;
+    [self.bottomContainerView addSubview:toLabel];
     
     UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
     selectDestinationButton.adjustsImageWhenHighlighted = NO;
@@ -192,14 +187,44 @@ NSString *detailLabel;
     [selectDestinationButton addTarget:self action:@selector(selectDestination) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomContainerView addSubview:selectDestinationButton];
     
-    self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
+    self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(toLabel.frame.origin.x + toLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (toLabel.frame.origin.x + toLabel.frame.size.width + 16), 21)];
     self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    self.receiveToLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    self.receiveToLabel.textColor = COLOR_LIGHT_GRAY;
     [self.bottomContainerView addSubview:self.receiveToLabel];
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
-    [self.receiveToLabel addGestureRecognizer:tapGesture];
+    UITapGestureRecognizer *tapGestureReceiveTo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
+    [self.receiveToLabel addGestureRecognizer:tapGestureReceiveTo];
     self.receiveToLabel.userInteractionEnabled = YES;
     
+    UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowToField.frame.origin.x, lineBelowToField.frame.origin.y + 15, 50, 21)];
+    fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    fromLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    fromLabel.text = BC_STRING_FROM;
+    fromLabel.adjustsFontSizeToFitWidth = YES;
+    [self.bottomContainerView addSubview:fromLabel];
+    
+    self.receiveFromLabel = [[UILabel alloc] initWithFrame:CGRectMake(fromLabel.frame.origin.x + fromLabel.frame.size.width + 16, lineBelowToField.frame.origin.y + 15, selectDestinationButton.frame.origin.x - (fromLabel.frame.origin.x + fromLabel.frame.size.width + 16), 21)];
+    self.receiveFromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
+    self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT;
+    [self.bottomContainerView addSubview:self.receiveFromLabel];
+    UITapGestureRecognizer *tapGestureReceiveFrom = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectFromClicked)];
+    [self.receiveFromLabel addGestureRecognizer:tapGestureReceiveFrom];
+    self.receiveFromLabel.userInteractionEnabled = YES;
+    
+    self.selectFromButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35,  lineBelowToField.frame.origin.y + 10, 35, 30)];
+    self.selectFromButton.adjustsImageWhenHighlighted = NO;
+    [self.selectFromButton setImage:[UIImage imageNamed:@"disclosure"] forState:UIControlStateNormal];
+    [self.selectFromButton addTarget:self action:@selector(selectFromClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.selectFromButton.hidden = YES;
+    [self.bottomContainerView addSubview:self.selectFromButton];
+    
+    self.whatsThisButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 100, lineBelowToField.frame.origin.y + 15, 100, 21)];
+    self.whatsThisButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    [self.whatsThisButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [self.whatsThisButton setTitle:BC_STRING_WHATS_THIS forState:UIControlStateNormal];
+    [self.whatsThisButton addTarget:self action:@selector(whatsThisButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomContainerView addSubview:self.whatsThisButton];
+
     CGFloat keyboardFieldWidth = fieldWidth - doneButton.frame.size.width/2;
     btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
@@ -294,23 +319,13 @@ NSString *detailLabel;
     
     [self.view addSubview:self.headerView];
     
-    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
-    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_SMALL] : [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    instructionsLabel.textAlignment = NSTextAlignmentCenter;
-    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
-    instructionsLabel.numberOfLines = 0;
-    instructionsLabel.adjustsFontSizeToFitWidth = YES;
-    instructionsLabel.center = CGPointMake(self.view.center.x, 25);
-    [self.headerView addSubview:instructionsLabel];
-    
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
         qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
         
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 20)];
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + 8, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
@@ -608,6 +623,16 @@ NSString *detailLabel;
 {
     if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
     
+    if (app.wallet.contacts.count > 0) {
+        self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        self.selectFromButton.hidden = NO;
+        self.whatsThisButton.hidden = YES;
+    } else {
+        self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
+        self.selectFromButton.hidden = YES;
+        self.whatsThisButton.hidden = NO;
+    }
+    
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainAddress;
     
@@ -637,7 +662,12 @@ NSString *detailLabel;
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
 }
 
-- (void)request
+- (void)whatsThisButtonClicked
+{
+    
+}
+
+- (void)selectFromClicked
 {
     if (![app.wallet isInitialized]) {
         DLog(@"Tried to access request button when not initialized!");

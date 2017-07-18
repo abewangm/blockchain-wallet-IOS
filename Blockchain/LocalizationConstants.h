@@ -466,6 +466,7 @@
 #define BC_STRING_INVITE_CONTACT NSLocalizedString(@"Invite Contact", nil)
 #define BC_STRING_ENTER_NAME_CONTACT NSLocalizedString(@"Enter a name for your contact.", nil)
 #define BC_STRING_SEARCH NSLocalizedString(@"Search", nil)
+#define BC_STRING_SELECT_CONTACT NSLocalizedString(@"Select Contact", nil)
 
 #define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add New Contact...", nil)
 #define BC_STRING_SOMEONE_IS_INVITING_ME NSLocalizedString(@"Someone is inviting me", nil)
@@ -625,6 +626,8 @@
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
+
+#define BC_STRING_WHATS_THIS NSLocalizedString(@"What's this?", nil)
 
 #define BC_STRING_BLOCKCHAIN_ALL_RIGHTS_RESERVED NSLocalizedString(@"All rights reserved.", nil)
 

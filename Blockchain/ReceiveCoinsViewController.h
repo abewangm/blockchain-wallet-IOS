@@ -51,6 +51,9 @@
 @property(nonatomic) UITextField *receiveBtcField;
 @property(nonatomic) UITextField *receiveFiatField;
 @property(nonatomic) UILabel *receiveToLabel;
+@property(nonatomic) UILabel *receiveFromLabel;
+@property(nonatomic) UIButton *selectFromButton;
+@property(nonatomic) UIButton *whatsThisButton;
 @property(nonatomic) UIView *headerView;
 
 - (IBAction)archiveAddressClicked:(id)sender;
