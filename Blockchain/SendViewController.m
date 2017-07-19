@@ -1556,13 +1556,13 @@ BOOL displayingLocalSymbolSend;
     DLog(@"Send error: created receive request");
 }
 
-- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField from:(id)from
+- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField accountOrAddress:(id)accountOrAddress
 {
     DLog(@"Creating send request with reason: %@, amount: %lld", reason, amount);
     [textField resignFirstResponder];
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason from:from];
+        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason from:accountOrAddress];
     });
 }
 
