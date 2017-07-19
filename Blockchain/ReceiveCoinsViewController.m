@@ -112,9 +112,7 @@ NSString *detailLabel;
 
 - (void)setupTotalAmountView
 {
-    CGFloat viewHeight = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100;
-    
-    self.totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, viewHeight) color:COLOR_BLOCKCHAIN_AQUA amount:0];
+    self.totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_AQUA amount:0];
     self.totalAmountView.hidden = YES;
     [self.view addSubview:self.totalAmountView];
 }

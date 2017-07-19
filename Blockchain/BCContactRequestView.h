@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic, strong) BCSecureTextField *descriptionField;
 @property (nonatomic) id<ContactRequestDelegate> delegate;
 @property (nonatomic, readonly) BOOL willSend;
+
 - (id)initWithContact:(Contact *)contact amount:(uint64_t)amount willSend:(BOOL)willSend accountOrAddress:(id)accountOrAddress;
 
 @end

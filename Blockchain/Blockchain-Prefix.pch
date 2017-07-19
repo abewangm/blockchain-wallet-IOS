@@ -762,6 +762,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define CORNER_RADIUS_BUTTON 4
 
+#define TOTAL_AMOUNT_VIEW_HEIGHT IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100
+
 // TransactionsViewController
 #define FILTER_INDEX_ALL -1
 #define FILTER_INDEX_IMPORTED_ADDRESSES -2
