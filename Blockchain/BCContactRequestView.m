@@ -204,6 +204,22 @@
         fiatLabel.text = app.latestResponse.symbol_local.code;
         fiatLabel.center = CGPointMake(fiatLabel.center.x, cell.contentView.center.y);
         [cell.contentView addSubview:fiatLabel];
+        
+        CGFloat btcAmountLabelOriginX = btcLabel.frame.origin.x + btcLabel.frame.size.height + 24;
+        UILabel *btcAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(btcAmountLabelOriginX, 0, fiatLabel.frame.origin.x - btcAmountLabelOriginX - 15, 21)];
+        btcAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+        btcAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        btcAmountLabel.text = [NSNumberFormatter formatAmount:self.amount localCurrency:NO];
+        btcAmountLabel.center = CGPointMake(btcAmountLabel.center.x, cell.contentView.center.y);
+        [cell.contentView addSubview:btcAmountLabel];
+
+        CGFloat fiatAmountLabelOriginX = fiatLabel.frame.origin.x + fiatLabel.frame.size.height + 24;
+        UILabel *fiatAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(fiatAmountLabelOriginX, 0, cell.contentView.frame.size.width - fiatAmountLabelOriginX - 15, 21)];
+        fiatAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+        fiatAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        fiatAmountLabel.text = [NSNumberFormatter formatMoney:self.amount localCurrency:YES];
+        fiatAmountLabel.center = CGPointMake(fiatAmountLabel.center.x, cell.contentView.center.y);
+        [cell.contentView addSubview:fiatAmountLabel];
     }
     return cell;
 }
