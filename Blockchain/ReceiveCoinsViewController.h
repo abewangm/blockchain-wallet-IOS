@@ -30,12 +30,9 @@
     
     // Amount buttons and field
     IBOutlet UITextField *entryField;
-    IBOutlet UILabel *btcLabel;
+
     UILabel *receiveBtcLabel;
-    IBOutlet UITextField *btcAmountField;
-    IBOutlet UILabel *fiatLabel;
     UILabel *receiveFiatLabel;
-    IBOutlet UITextField *fiatAmountField;
     
     IBOutlet UIButton *doneButton;
     // Keyboard accessory view
@@ -68,7 +65,6 @@
 
 - (void)hideKeyboard;
 - (void)hideKeyboardForced;
-- (void)showKeyboard;
 
 - (void)doCurrencyConversion;
 @end

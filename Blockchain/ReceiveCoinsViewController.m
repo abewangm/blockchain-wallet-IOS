@@ -75,9 +75,6 @@ NSString *detailLabel;
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
     }
     
-    btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    
     [self reload];
     
     [self setupHeaderView];
@@ -227,16 +224,6 @@ NSString *detailLabel;
     [self.whatsThisButton addTarget:self action:@selector(whatsThisButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomContainerView addSubview:self.whatsThisButton];
 
-    CGFloat keyboardFieldWidth = fieldWidth - doneButton.frame.size.width/2;
-    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-
-    [btcLabel changeWidth:receiveBtcLabel.frame.size.width];
-    btcAmountField.frame = CGRectMake(btcLabel.frame.origin.x + btcLabel.frame.size.width + 8, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
-    fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + keyboardFieldWidth + 8, fiatLabel.frame.origin.y, receiveFiatLabel.frame.size.width, fiatLabel.frame.size.height);
-    fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 8, fiatAmountField.frame.origin.y, keyboardFieldWidth, fiatAmountField.frame.size.height);
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
@@ -287,10 +274,7 @@ NSString *detailLabel;
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
-        fiatLabel.text = app.latestResponse.symbol_local.code;
         receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-
-        btcLabel.text = app.latestResponse.symbol_btc.symbol;
         receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
 }
@@ -369,11 +353,11 @@ NSString *detailLabel;
 - (uint64_t)getInputAmountInSatoshi
 {
     if ([self shouldUseBtcField]) {
-        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
+        return [app.wallet parseBitcoinValueFromTextField:self.receiveBtcField];
     } else {
-        NSString *language = fiatAmountField.textInputMode.primaryLanguage;
+        NSString *language = self.receiveFiatField.textInputMode.primaryLanguage;
         NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        NSString *requestedAmountString = [self.receiveFiatField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         if (![requestedAmountString containsString:@"."]) {
             requestedAmountString = [requestedAmountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
         }
@@ -390,14 +374,14 @@ NSString *detailLabel;
 {
     BOOL shouldUseBtcField = YES;
     
-    if ([btcAmountField isFirstResponder]) {
+    if ([self.receiveBtcField isFirstResponder]) {
         shouldUseBtcField = YES;
-    } else if ([fiatAmountField isFirstResponder]) {
+    } else if ([self.receiveFiatField isFirstResponder]) {
         shouldUseBtcField = NO;
         
-    } else if (self.lastSelectedField == btcAmountField) {
+    } else if (self.lastSelectedField == self.receiveBtcField) {
         shouldUseBtcField = YES;
-    } else if (self.lastSelectedField == fiatAmountField) {
+    } else if (self.lastSelectedField == self.receiveFiatField) {
         shouldUseBtcField = NO;
     }
     
@@ -412,13 +396,10 @@ NSString *detailLabel;
 - (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
     if ([self shouldUseBtcField]) {
-        fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
+        self.receiveFiatField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     } else {
-        btcAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
+        self.receiveBtcField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
-    
-    self.receiveFiatField.text = fiatAmountField.text;
-    self.receiveBtcField.text = btcAmountField.text;
 }
 
 - (NSString *)getKey:(NSIndexPath*)indexPath
@@ -550,32 +531,15 @@ NSString *detailLabel;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
-- (void)showKeyboard
-{
-    // Select the entry field
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        if ([self.receiveBtcField isFirstResponder]) {
-            [btcAmountField becomeFirstResponder];
-        } else if ([self.receiveFiatField isFirstResponder]){
-            [fiatAmountField becomeFirstResponder];
-        } else {
-            [labelTextField becomeFirstResponder];
-        }
-    });
-}
-
 - (void)hideKeyboardForced
 {
     // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
-    [fiatAmountField becomeFirstResponder];
+    [self.receiveFiatField becomeFirstResponder];
     [self hideKeyboard];
 }
 
 - (void)hideKeyboard
 {
-    [fiatAmountField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
     [labelTextField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
@@ -588,8 +552,8 @@ NSString *detailLabel;
         
         if (showBackupReminder) {
             [app showBackupReminder:YES];
-        } else if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) {
-            [self showKeyboard];
+        } else if ([self.receiveBtcField isFirstResponder] || [self.receiveFiatField isFirstResponder]) {
+            [self.lastSelectedField becomeFirstResponder];
         }
         
     }]];
@@ -618,7 +582,7 @@ NSString *detailLabel;
 
 - (void)storeRequestedAmount
 {
-    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:btcAmountField];
+    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:self.receiveBtcField];
 }
 
 - (void)updateUI
@@ -714,18 +678,14 @@ NSString *detailLabel;
     
     [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
     
-    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
-    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
-    [btcAmountField resignFirstResponder];
-    [fiatAmountField resignFirstResponder];
+    [self.receiveBtcField resignFirstResponder];
+    [self.receiveFiatField resignFirstResponder];
     
     [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)clearAmounts
 {
-    btcAmountField.text = nil;
-    fiatAmountField.text = nil;
     self.receiveBtcField.text = nil;
     self.receiveFiatField.text = nil;
 }
@@ -743,15 +703,7 @@ NSString *detailLabel;
         return NO;
     }
     
-    if (textField == self.receiveFiatField) {
-        [self showKeyboard];
-        return YES;
-    } else if (textField == self.receiveBtcField) {
-        [self showKeyboard];
-        return YES;
-    }
-    
-    if (textField == fiatAmountField || textField == btcAmountField) {
+    if (textField == self.receiveFiatField || textField == self.receiveBtcField) {
         self.lastSelectedField = textField; 
     }
     return YES;
@@ -770,7 +722,7 @@ NSString *detailLabel;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == btcAmountField || textField == fiatAmountField) {
+    if (textField == self.receiveBtcField || textField == self.receiveFiatField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
         NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
@@ -788,7 +740,7 @@ NSString *detailLabel;
         }
         
         // When entering amount in BTC, max 8 decimal places
-        if ([btcAmountField isFirstResponder]) {
+        if ([self.receiveBtcField isFirstResponder]) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
             
@@ -807,7 +759,7 @@ NSString *detailLabel;
         }
         
         // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else if ([fiatAmountField isFirstResponder]) {
+        else if ([self.receiveFiatField isFirstResponder]) {
             if (points.count == 2) {
                 NSString *decimalString = points[1];
                 if (decimalString.length > 2) {
@@ -824,7 +776,7 @@ NSString *detailLabel;
         
         uint64_t amountInSatoshi = 0;
 
-        if (textField == fiatAmountField) {
+        if (textField == self.receiveFiatField) {
             // Convert input amount to internal value
             NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
             if (![amountString containsString:@"."]) {
