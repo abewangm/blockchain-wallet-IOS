@@ -11,6 +11,7 @@
 #import "BCLine.h"
 #import "Contact.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "BCTotalAmountView.h"
 
 #define CELL_HEIGHT 44
 
@@ -41,36 +42,12 @@
         _willSend = willSend;
         self.backgroundColor = [UIColor whiteColor];
 
-        UILabel *totalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, 0, 0)];
-        totalLabel.text = BC_STRING_TOTAL;
-        totalLabel.textColor = [UIColor darkGrayColor];
-        totalLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_SMALL];
-        totalLabel.textAlignment = NSTextAlignmentCenter;
-        [totalLabel sizeToFit];
-        totalLabel.center = CGPointMake(window.center.x, totalLabel.center.y);
-        [self addSubview:totalLabel];
-        
-        UILabel *btcAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, totalLabel.frame.origin.y + totalLabel.frame.size.height + 8, 0, 0)];
-        btcAmountLabel.text = [NSNumberFormatter formatBTC:self.amount];
-        btcAmountLabel.textColor = self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA;
-        btcAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_SEMIBOLD size:FONT_SIZE_EXTRA_EXTRA_LARGE];
-        btcAmountLabel.textAlignment = NSTextAlignmentCenter;
-        [btcAmountLabel sizeToFit];
-        btcAmountLabel.center = CGPointMake(window.center.x, btcAmountLabel.center.y);
-        [self addSubview:btcAmountLabel];
-        
-        UILabel *fiatAmountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, btcAmountLabel.frame.origin.y + btcAmountLabel.frame.size.height + 8, 0, 0)];
-        fiatAmountLabel.text = [NSNumberFormatter formatMoney:self.amount localCurrency:YES];
-        fiatAmountLabel.textColor = self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA;
-        fiatAmountLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
-        fiatAmountLabel.textAlignment = NSTextAlignmentCenter;
-        [fiatAmountLabel sizeToFit];
-        fiatAmountLabel.center = CGPointMake(window.center.x, fiatAmountLabel.center.y);
-        [self addSubview:fiatAmountLabel];
+        BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100) color:self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA amount:self.amount];
+        [self addSubview:totalAmountView];
         
         CGFloat tableViewHeight = CELL_HEIGHT * (self.willSend ? 3 : 4);
         
-        UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, fiatAmountLabel.frame.origin.y + fiatAmountLabel.frame.size.height + 20, window.frame.size.width, tableViewHeight)];
+        UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, totalAmountView.frame.origin.y + totalAmountView.frame.size.height, window.frame.size.width, tableViewHeight)];
         summaryTableView.scrollEnabled = NO;
         summaryTableView.delegate = self;
         summaryTableView.dataSource = self;

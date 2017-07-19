@@ -19,7 +19,7 @@
  */
 
 #import "Wallet.h"
-
+@class BCTotalAmountView;
 @interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
     
@@ -45,6 +45,7 @@
 @property(nonatomic, strong) NSString *clickedAddress;
 
 @property(nonatomic) UIView *bottomContainerView;
+@property(nonatomic) BCTotalAmountView *totalAmountView;
 @property(nonatomic) UITextField *receiveBtcField;
 @property(nonatomic) UITextField *receiveFiatField;
 @property(nonatomic) UILabel *receiveToLabel;

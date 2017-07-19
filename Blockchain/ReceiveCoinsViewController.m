@@ -19,13 +19,18 @@
 #import "BCContactRequestView.h"
 #import "Contact.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "BCTotalAmountView.h"
 
-@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate, ContactRequestDelegate>
+#define BOTTOM_CONTAINER_HEIGHT_4S 220
+#define BOTTOM_CONTAINER_HEIGHT_DEFAULT 260
+
+@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
 @property (nonatomic) BOOL firstLoading;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
+@property (nonatomic) Contact *fromContact;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -54,6 +59,7 @@ NSString *detailLabel;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
+    [self setupTotalAmountView];
     [self setupBottomViews];
     [self selectDefaultDestination];
     
@@ -88,8 +94,6 @@ NSString *detailLabel;
 {
     [super viewDidAppear:animated];
     app.mainTitleLabel.text = BC_STRING_REQUEST;
-    
-    self.receiveToLabel.textColor = app.wallet.contacts.count > 0 ? COLOR_TEXT_DARK_GRAY : COLOR_LIGHT_GRAY;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -106,9 +110,18 @@ NSString *detailLabel;
     return _qrCodeGenerator;
 }
 
+- (void)setupTotalAmountView
+{
+    CGFloat viewHeight = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100;
+    
+    self.totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, viewHeight) color:COLOR_BLOCKCHAIN_AQUA amount:0];
+    self.totalAmountView.hidden = YES;
+    [self.view addSubview:self.totalAmountView];
+}
+
 - (void)setupBottomViews
 {
-    CGFloat containerHeight = IS_USING_SCREEN_SIZE_4S ? 220 : 260;
+    CGFloat containerHeight = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_4S : BOTTOM_CONTAINER_HEIGHT_DEFAULT;
     
     self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeight, self.view.frame.size.width, containerHeight)];
     [self.view addSubview:self.bottomContainerView];
@@ -188,7 +201,7 @@ NSString *detailLabel;
     
     self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(toLabel.frame.origin.x + toLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (toLabel.frame.origin.x + toLabel.frame.size.width + 16), 21)];
     self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    self.receiveToLabel.textColor = COLOR_LIGHT_GRAY;
+    self.receiveToLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveToLabel];
     UITapGestureRecognizer *tapGestureReceiveTo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
     [self.receiveToLabel addGestureRecognizer:tapGestureReceiveTo];
@@ -412,6 +425,12 @@ NSString *detailLabel;
     return key;
 }
 
+- (void)updateAmounts
+{
+    [self setQRPayment];
+    [self setTotalAmountViewAmount];
+}
+
 - (void)setQRPayment
 {
     uint64_t amount = [self getInputAmountInSatoshi];
@@ -423,6 +442,11 @@ NSString *detailLabel;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self doCurrencyConversionWithAmount:amount];
+}
+
+- (void)setTotalAmountViewAmount
+{
+    [self.totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
@@ -451,11 +475,65 @@ NSString *detailLabel;
     }];
 }
 
+- (void)changeTopView:(BOOL)shouldShowQR
+{
+    UIView *viewToHide = shouldShowQR ? self.totalAmountView : self.headerView;
+    UIView *viewToShow = shouldShowQR ? self.headerView : self.totalAmountView;
+    CGFloat newYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_4S : BOTTOM_CONTAINER_HEIGHT_DEFAULT) : self.totalAmountView.frame.size.height;
+    
+    viewToShow.alpha = 0;
+    viewToShow.hidden = NO;
+    
+    viewToHide.alpha = 1;
+    viewToHide.hidden = NO;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        viewToHide.alpha = 0;
+        [self.bottomContainerView changeYPosition:newYPosition];
+    } completion:^(BOOL finished) {
+        
+        viewToHide.hidden = YES;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            viewToShow.alpha = 1;
+        }];
+    }];
+}
+
 #pragma mark - Actions
 
 - (IBAction)doneButtonClicked:(UIButton *)sender
 {
     [self hideKeyboard];
+    
+    if (IS_USING_SCREEN_SIZE_4S) {
+
+        BOOL receivingFromContact = self.fromContact != nil;
+        
+        if (receivingFromContact) {
+            self.totalAmountView.alpha = 0;
+            self.totalAmountView.hidden = NO;
+        } else {
+            self.headerView.alpha = 0;
+            self.headerView.hidden = NO;
+        }
+        
+        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+            if (receivingFromContact) {
+                [self.bottomContainerView changeYPosition:self.totalAmountView.frame.size.height];
+            } else {
+                [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_4S];
+            }
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                if (receivingFromContact) {
+                    self.totalAmountView.alpha = 1;
+                } else {
+                    self.headerView.alpha = 1;
+                }
+            }];
+        }];
+    }
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -589,12 +667,14 @@ NSString *detailLabel;
 {
     if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
     
+    if (self.bottomContainerView.frame.origin.y == 0) {
+        [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_4S];
+    }
+    
     if (app.wallet.contacts.count > 0) {
-        self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
         self.selectFromButton.hidden = NO;
         self.whatsThisButton.hidden = YES;
     } else {
-        self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
         self.selectFromButton.hidden = YES;
         self.whatsThisButton.hidden = NO;
     }
@@ -602,7 +682,7 @@ NSString *detailLabel;
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainAddress;
     
-    [self setQRPayment];
+    [self updateAmounts];
 }
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
@@ -637,17 +717,6 @@ NSString *detailLabel;
 {
     if (![app.wallet isInitialized]) {
         DLog(@"Tried to access request button when not initialized!");
-        return;
-    }
-    
-    uint64_t amountInSatoshi = [self getInputAmountInSatoshi];
-    uint64_t dust = [app.wallet dust];
-    
-    if (amountInSatoshi == 0) {
-        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
-        return;
-    } else if (amountInSatoshi < dust) {
-        [app standardNotify:[NSString stringWithFormat:BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD, dust]];
         return;
     }
     
@@ -706,6 +775,17 @@ NSString *detailLabel;
     if (textField == self.receiveFiatField || textField == self.receiveBtcField) {
         self.lastSelectedField = textField; 
     }
+    
+    if (IS_USING_SCREEN_SIZE_4S) {
+        
+        self.headerView.hidden = YES;
+        self.totalAmountView.hidden = YES;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+            [self.bottomContainerView changeYPosition:0];
+        }];
+    }
+    
     return YES;
 }
 
@@ -791,7 +871,7 @@ NSString *detailLabel;
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
             return NO;
         } else {
-            [self performSelector:@selector(setQRPayment) withObject:nil afterDelay:0.1f];
+            [self performSelector:@selector(updateAmounts) withObject:nil afterDelay:0.1f];
             return YES;
         }
     } else {
@@ -868,8 +948,23 @@ NSString *detailLabel;
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+    } else if (contact == self.fromContact) {
+        self.fromContact = nil;
+        self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT;
+        self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
+
+        [self changeTopView:YES];
+        
     } else {
-        [self createReceiveRequest:RequestTypeReceiveReason forContact:contact reason:nil];
+        [app closeAllModals];
+        
+        self.fromContact = contact;
+        self.receiveFromLabel.text = contact.name;
+        self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        
+        if (self.totalAmountView.hidden) {
+            [self changeTopView:NO];
+        }
     }
 }
 
@@ -878,33 +973,6 @@ NSString *detailLabel;
 - (void)createReceiveRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
 {
     BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:NO accountOrAddress:didClickAccount ? [NSNumber numberWithInt:clickedAccount] : self.clickedAddress];
-    contactRequestView.delegate = self;
-    
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeClose showHeader:YES headerText:nil view:contactRequestView];
-    
-    if (requestType == RequestTypeSendReason || requestType == RequestTypeReceiveReason) {
-        self.contactRequestNavigationController = [[BCNavigationController alloc] initWithRootViewController:modalViewController title:BC_STRING_RECEIVE];
-        [app.tabViewController presentViewController:self.contactRequestNavigationController animated:YES completion:nil];
-    } else {
-        [self.contactRequestNavigationController pushViewController:modalViewController animated:YES];
-    }
-}
-
-#pragma mark - Contact Request Delegate
-
-- (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField
-{
-    DLog(@"Creating receive request with reason: %@, amount: %lld", reason, amount);
-    [textField resignFirstResponder];
-    [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [app.wallet sendPaymentRequest:contact.identifier amount:amount requestId:nil note:reason];
-    });
-}
-
-- (void)createSendRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField accountOrAddress:(id)accountOrAddress
-{
-    DLog(@"Receive error: created send request");
 }
 
 @end
