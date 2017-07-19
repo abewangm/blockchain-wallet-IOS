@@ -111,7 +111,9 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 260, self.view.frame.size.width, 260)];
+    CGFloat containerHeight = IS_USING_SCREEN_SIZE_4S ? 220 : 260;
+    
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeight, self.view.frame.size.width, containerHeight)];
     [self.view addSubview:self.bottomContainerView];
     
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.bottomContainerView.frame.size.height - BUTTON_HEIGHT - 16, self.bottomContainerView.frame.size.width - 30, BUTTON_HEIGHT)];
