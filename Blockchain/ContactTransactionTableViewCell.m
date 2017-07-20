@@ -60,12 +60,14 @@
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
         self.bottomRightLabel.text = BC_STRING_AWAITING_RESPONSE;
+        self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
         self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
         self.bottomRightLabel.text = BC_STRING_ACCEPT_OR_DECLINE;
+        self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
@@ -84,6 +86,21 @@
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
         self.bottomRightLabel.text = BC_STRING_WAITING_FOR_PAYMENT;
+        self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
+        self.actionImageView.image = nil;
+    } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
+        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ? [BC_STRING_SENT uppercaseString] : [BC_STRING_PAID uppercaseString];
+        self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
+        self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
+        self.bottomRightLabel.text = transaction.reason;
+        self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
+        self.actionImageView.image = nil;
+    } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
+        self.statusLabel.text = [BC_STRING_RECEIVED uppercaseString];
+        self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+        self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
+        self.bottomRightLabel.text = transaction.reason;
+        self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else {
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];

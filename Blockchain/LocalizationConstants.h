@@ -503,6 +503,7 @@
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
 #define BC_STRING_PAYMENT_REQUEST NSLocalizedString(@"Payment Request", nil)
 #define BC_STRING_PAY NSLocalizedString(@"Pay", nil)
+#define BC_STRING_PAID NSLocalizedString(@"Paid", nil)
 
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR BC_STRING_SENDING
 #define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_RECEIVER BC_STRING_PAYMENT_REQUEST
@@ -526,6 +527,7 @@
 
 #define BC_STRING_RENAME_CONTACT_ALERT_TITLE NSLocalizedString(@"Rename contact", nil)
 #define BC_STRING_IN_PROGRESS NSLocalizedString(@"In Progress", nil)
+#define BC_STRING_FINISHED NSLocalizedString(@"Finished", nil)
 #define BC_STRING_COMPLETED_TRANSACTIONS NSLocalizedString(@"Completed Transactions", nil)
 #define BC_STRING_NO_MESSAGES NSLocalizedString(@"No messages", nil)
 #define BC_STRING_MESSAGE NSLocalizedString(@"Message", nil)

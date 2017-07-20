@@ -31,7 +31,6 @@
     
     IBOutlet UILabel *actionLabel;    
     IBOutlet UIImageView *warningImageView;
-    IBOutlet UILabel *toFromLabel;
 }
 
 -(IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;

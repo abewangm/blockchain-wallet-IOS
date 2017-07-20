@@ -13,7 +13,6 @@
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
 #import "NSDateFormatter+TimeAgoString.h"
-#import "ContactTransaction.h"
 
 @implementation TransactionTableCell
 
@@ -81,26 +80,6 @@
         warningImageView.hidden = YES;
         actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, actionLabel.frame.origin.y, 172, actionLabel.frame.size.height);
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
-    }
-    
-    if (transaction.contactName) {
-        NSString *toFromString = [transaction.txType isEqualToString:TX_TYPE_SENT] ? BC_STRING_TO : BC_STRING_FROM;
-        
-        NSString *reasonWithoutSpaces = [transaction isMemberOfClass:[ContactTransaction class]] ? [[(ContactTransaction *)transaction reason] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : nil;
-        
-        toFromLabel.text = reasonWithoutSpaces.length > 0 ? [NSString stringWithFormat:@"%@ %@ (%@)", toFromString, transaction.contactName, [(ContactTransaction *)transaction reason]] : [NSString stringWithFormat:@"%@ %@", toFromString, transaction.contactName];
-        toFromLabel.adjustsFontSizeToFitWidth = YES;
-        toFromLabel.hidden = NO;
-        
-        toFromLabel.frame = CGRectMake(91, 44, 89, 17);
-        if (watchOnlyLabel.hidden) {
-            toFromLabel.frame = CGRectMake(actionLabel.frame.origin.x, 46, btcButton.frame.origin.x - 8 - actionLabel.frame.origin.x, toFromLabel.frame.size.height);
-            actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 23, actionLabel.frame.size.width, actionLabel.frame.size.height);
-            dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
-        }
-        
-    } else {
-        toFromLabel.hidden = YES;
     }
     
     if (transaction.confirmations >= kConfirmationThreshold) {
