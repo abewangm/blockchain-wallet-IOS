@@ -30,6 +30,8 @@ const int cellRowFee = 4;
 @property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) ContactTransaction *contactTransaction;
+@property (nonatomic) UITableView *tableView;
+@property (nonatomic) BCTotalAmountView *totalAmountView;
 @end
 @implementation BCConfirmPaymentView
 
@@ -66,6 +68,7 @@ const int cellRowFee = 4;
         
         BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
         [self addSubview:totalAmountView];
+        self.totalAmountView = totalAmountView;
         
         CGFloat tableViewHeight = CELL_HEIGHT * NUMBER_OF_ROWS;
         
@@ -90,6 +93,8 @@ const int cellRowFee = 4;
         bottomBorder.borderWidth = 1;
         bottomBorder.frame = CGRectMake(0, CGRectGetHeight(summaryTableView.frame) - lineWidth, CGRectGetWidth(summaryTableView.frame), lineWidth);
         [summaryTableView.layer addSublayer:bottomBorder];
+        
+        self.tableView = summaryTableView;
     }
     return self;
 }
@@ -104,6 +109,44 @@ const int cellRowFee = 4;
     [self.delegate feeInformationButtonClicked];
 }
 
+#pragma mark - View Helpers
+
+- (void)moveViewsUpForSmallScreens
+{
+    if (IS_USING_SCREEN_SIZE_4S) {
+        
+        self.totalAmountView.hidden = YES;
+
+        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+            [self.tableView changeYPosition:0];
+        }];
+    }
+}
+
+- (void)moveViewsDownForSmallScreens
+{
+    if (IS_USING_SCREEN_SIZE_4S) {
+        
+        self.totalAmountView.alpha = 0;
+        self.totalAmountView.hidden = NO;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+            [self.tableView changeYPosition:self.totalAmountView.frame.origin.y + self.totalAmountView.frame.size.height];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+                self.totalAmountView.alpha = 1;
+            }];
+        }];
+    }
+}
+
+- (void)closeKeyboard
+{
+    [self.descriptionField resignFirstResponder];
+    
+    [self moveViewsDownForSmallScreens];
+}
+
 #pragma mark - Text Helpers
 
 - (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
@@ -113,9 +156,16 @@ const int cellRowFee = 4;
 
 #pragma mark - Text Field Delegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self moveViewsUpForSmallScreens];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    [self moveViewsDownForSmallScreens];
     
     return YES;
 }
@@ -194,7 +244,7 @@ const int cellRowFee = 4;
 
             self.descriptionField.delegate = self;
             
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.descriptionField action:@selector(resignFirstResponder)];
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard)];
             [self addGestureRecognizer:tapGesture];
         }
 

@@ -242,6 +242,7 @@ NSString *detailLabel;
     self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     self.descriptionField.textAlignment = NSTextAlignmentRight;
     self.descriptionField.returnKeyType = UIReturnKeyDone;
+    self.descriptionField.delegate = self;
     [self.bottomContainerView addSubview:self.descriptionField];
     
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - 16;
@@ -523,14 +524,10 @@ NSString *detailLabel;
     }];
 }
 
-#pragma mark - Actions
-
-- (IBAction)doneButtonClicked:(UIButton *)sender
+- (void)moveViewsUpForSmallScreens
 {
-    [self hideKeyboard];
-    
     if (IS_USING_SCREEN_SIZE_4S) {
-
+        
         BOOL receivingFromContact = self.fromContact != nil;
         
         if (receivingFromContact) {
@@ -557,6 +554,15 @@ NSString *detailLabel;
             }];
         }];
     }
+}
+
+#pragma mark - Actions
+
+- (IBAction)doneButtonClicked:(UIButton *)sender
+{
+    [self hideKeyboard];
+    
+    [self moveViewsUpForSmallScreens];
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -818,6 +824,8 @@ NSString *detailLabel;
         [self labelSaveClicked:nil];
         return YES;
     }
+
+    [self moveViewsUpForSmallScreens];
     
     [textField resignFirstResponder];
     return YES;
