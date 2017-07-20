@@ -2005,7 +2005,6 @@ function WalletOptions (api) {
 
   this.getFileName = function () {
     var base = 'wallet-options';
-    var isProduction = api.ROOT_URL === 'https://blockchain.info/';
-    return base + (isProduction ? '' : '-debug') + '.json';
+    return base + '.json';
   };
 }
