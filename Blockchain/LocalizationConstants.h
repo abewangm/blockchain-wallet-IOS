@@ -501,18 +501,22 @@
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
 #define BC_STRING_REQUESTED NSLocalizedString(@"Requested", nil)
 #define BC_STRING_SENDING NSLocalizedString(@"Sending", nil)
+#define BC_STRING_PAYMENT_REQUEST NSLocalizedString(@"Payment Request", nil)
+#define BC_STRING_PAY NSLocalizedString(@"Pay", nil)
 
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR BC_STRING_SENDING
-#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND BC_STRING_SENDING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_RECEIVER BC_STRING_PAYMENT_REQUEST
+#define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_INITIATOR BC_STRING_SENDING
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT BC_STRING_RECEIVING
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST BC_STRING_SENDING
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST BC_STRING_RECEIVING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST BC_STRING_RECEIVING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST BC_STRING_SENDING
 
 #define BC_STRING_PENDING_CONTACT NSLocalizedString(@"Pending Contact", nil)
 #define BC_STRING_WAITING_FOR_ARGUMENT_TO_ACCEPT_CONTACT_REQUEST NSLocalizedString(@"Waiting for %@ to accept your contact request.", nil)
 #define BC_STRING_ACCEPT_OR_DECLINE NSLocalizedString(@"Accept or Decline", nil)
 #define BC_STRING_RECEIVING_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Receiving %@ from %@", nil)
 #define BC_STRING_SENDING_ARGUMENT_TO_NAME_ARGUMENT NSLocalizedString(@"Sending %@ to %@", nil)
+#define BC_STRING_PAY_OR_DECLINE NSLocalizedString(@"Pay or Decline", nil)
 #define BC_STRING_READY_TO_SEND NSLocalizedString(@"Ready to send", nil)
 #define BC_STRING_AWAITING_RESPONSE NSLocalizedString(@"Awaiting Response", nil)
 #define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
@@ -628,6 +632,7 @@
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
+#define BC_STRING_NO_DESCRIPTION NSLocalizedString(@"No description", nil)
 
 #define BC_STRING_WHATS_THIS NSLocalizedString(@"What's this?", nil)
 

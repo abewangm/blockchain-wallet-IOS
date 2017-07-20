@@ -68,10 +68,16 @@
         self.bottomRightLabel.text = BC_STRING_ACCEPT_OR_DECLINE;
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
-        self.bottomRightLabel.text = BC_STRING_READY_TO_SEND;
+        if ([transaction.role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER]) {
+            self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_RECEIVER uppercaseString];
+            self.bottomRightLabel.text = BC_STRING_PAY_OR_DECLINE;
+        } else {
+            self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_INITIATOR uppercaseString];
+            self.bottomRightLabel.text = BC_STRING_READY_TO_SEND;
+        }
+        self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
         self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST uppercaseString] : [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST uppercaseString];

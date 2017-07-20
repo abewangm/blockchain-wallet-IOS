@@ -48,14 +48,11 @@ const int cellRowFee = 4;
     
     if (self) {
         
-        self.reallyDoPaymentButton = [[UIButton alloc] initWithFrame:CGRectMake(0, window.frame.size.height - 40, window.frame.size.width, 40)];
-        self.reallyDoPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-        [self.reallyDoPaymentButton setTitle:BC_STRING_SEND forState:UIControlStateNormal];
-        self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
+        [self addSubview:totalAmountView];
+        self.totalAmountView = totalAmountView;
         
-        [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:self.reallyDoPaymentButton];
+        CGFloat tableViewHeight = CELL_HEIGHT * NUMBER_OF_ROWS;
         
         self.from = from;
         self.to = to;
@@ -65,12 +62,6 @@ const int cellRowFee = 4;
         self.surgeIsOccurring = surgePresent;
         
         self.backgroundColor = [UIColor whiteColor];
-        
-        BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
-        [self addSubview:totalAmountView];
-        self.totalAmountView = totalAmountView;
-        
-        CGFloat tableViewHeight = CELL_HEIGHT * NUMBER_OF_ROWS;
         
         UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, totalAmountView.frame.origin.y + totalAmountView.frame.size.height, window.frame.size.width, tableViewHeight)];
         summaryTableView.scrollEnabled = NO;
@@ -95,13 +86,58 @@ const int cellRowFee = 4;
         [summaryTableView.layer addSublayer:bottomBorder];
         
         self.tableView = summaryTableView;
+        
+        CGRect buttonFrame;
+        CGFloat buttonHeight;
+        NSString *buttonTitle;
+        CGFloat cornerRadius;
+        
+        if (self.contactTransaction) {
+            buttonHeight = 60;
+            buttonFrame = CGRectMake(window.frame.size.width/2 + 4, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + (self.frame.size.height - (summaryTableView.frame.origin.y + summaryTableView.frame.size.height))/2 - buttonHeight/2, window.frame.size.width/2 - 12, buttonHeight);
+            buttonTitle = BC_STRING_PAY;
+            cornerRadius = CORNER_RADIUS_BUTTON;
+            
+            UIButton *declineButton = [[UIButton alloc] initWithFrame:buttonFrame];
+            [declineButton changeXPosition:8];
+            declineButton.layer.cornerRadius = cornerRadius;
+            [declineButton setTitle:BC_STRING_DECLINE forState:UIControlStateNormal];
+            declineButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
+            declineButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+            [self addSubview:declineButton];
+            [declineButton addTarget:self action:@selector(declineButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            
+        } else {
+            buttonHeight = 40;
+            buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);
+            buttonTitle = BC_STRING_SEND;
+            cornerRadius = 0;
+        }
+        
+        self.reallyDoPaymentButton = [[UIButton alloc] initWithFrame:CGRectZero];
+        self.reallyDoPaymentButton.frame = buttonFrame;
+        self.reallyDoPaymentButton.layer.cornerRadius = cornerRadius;
+        [self.reallyDoPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
+        self.reallyDoPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+        
+        [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:self.reallyDoPaymentButton];
     }
     return self;
 }
 
 - (void)reallyDoPaymentButtonClicked
 {
-    [self.delegate setupNoteForTransaction:self.descriptionField.text];
+    if (!self.contactTransaction) {
+        [self.delegate setupNoteForTransaction:self.descriptionField.text];
+    }
+}
+
+- (void)declineButtonClicked
+{
+    
 }
 
 - (void)feeInformationButtonClicked
@@ -227,7 +263,6 @@ const int cellRowFee = 4;
         
         self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
         self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
-        self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
         self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
         self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
         self.descriptionField.textAlignment = NSTextAlignmentRight;
@@ -236,14 +271,13 @@ const int cellRowFee = 4;
         if (self.contactTransaction) {
             self.descriptionField.text = self.contactTransaction.reason;
             self.descriptionField.userInteractionEnabled = NO;
-            
-            // Do not set a note, since description is saved in the metadata service
-            self.delegate = nil;
+            self.descriptionField.placeholder = BC_STRING_NO_DESCRIPTION;
         } else {
             // Text will be empty for regular (non-contacts-related) transactions - allow setting a note
 
             self.descriptionField.delegate = self;
-            
+            self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
+
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
             [self addGestureRecognizer:tapGesture];
         }

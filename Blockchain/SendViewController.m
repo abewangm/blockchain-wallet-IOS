@@ -790,9 +790,6 @@ BOOL displayingLocalSymbolSend;
                                                                          surge:surgePresent];
         self.confirmPaymentView.delegate = self;
         
-        UIButton *paymentButton = self.confirmPaymentView.reallyDoPaymentButton;
-        self.confirmPaymentView.reallyDoPaymentButton.frame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - paymentButton.frame.size.height, paymentButton.frame.size.width, paymentButton.frame.size.height);
-        
         if (customFromLabel) {
             [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];
         } else {
@@ -1450,6 +1447,8 @@ BOOL displayingLocalSymbolSend;
     
     [app.wallet changePaymentToAddress:address];
     
+    self.contactTransaction = nil;
+    
     [self doCurrencyConversion];
 }
 
@@ -1481,6 +1480,8 @@ BOOL displayingLocalSymbolSend;
     DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
     
     [app.wallet changePaymentToAccount:account];
+    
+    self.contactTransaction = nil;
     
     [self doCurrencyConversion];
 }
