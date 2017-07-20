@@ -225,7 +225,7 @@ const int cellRowFee = 4;
     } else if (indexPath.row == cellRowDescription) {
         cell.textLabel.text = BC_STRING_DESCRIPTION;
         
-        self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(cell.frame.size.width/2 + 16, 0, cell.frame.size.width/2 - 16 - 15, 20)];
+        self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
         self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
         self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
         self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];

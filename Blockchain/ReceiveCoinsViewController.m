@@ -654,6 +654,7 @@ NSString *detailLabel;
     [labelTextField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     [self.receiveBtcField resignFirstResponder];
+    [self.descriptionField resignFirstResponder];
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
