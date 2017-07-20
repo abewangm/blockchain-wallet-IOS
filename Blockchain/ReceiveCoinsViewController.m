@@ -240,6 +240,7 @@ NSString *detailLabel;
     
     self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 16, self.lineBelowFromField.frame.origin.y + 15, self.view.frame.size.width/2 - 16 - 15, 20)];
     self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
     self.descriptionField.textAlignment = NSTextAlignmentRight;
     self.descriptionField.returnKeyType = UIReturnKeyDone;
     self.descriptionField.delegate = self;
@@ -258,6 +259,9 @@ NSString *detailLabel;
     
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)selectDefaultDestination

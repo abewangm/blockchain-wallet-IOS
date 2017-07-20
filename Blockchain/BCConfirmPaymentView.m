@@ -140,7 +140,7 @@ const int cellRowFee = 4;
     }
 }
 
-- (void)closeKeyboard
+- (void)hideKeyboard
 {
     [self.descriptionField resignFirstResponder];
     
@@ -244,7 +244,7 @@ const int cellRowFee = 4;
 
             self.descriptionField.delegate = self;
             
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard)];
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
             [self addGestureRecognizer:tapGesture];
         }
 
