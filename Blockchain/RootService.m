@@ -2331,21 +2331,25 @@ void (^secondPasswordSuccess)(NSString *);
     [dataTask resume];
 }
 
-- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name
+- (void)didSendPaymentRequest:(NSDictionary *)info amount:(uint64_t)amount name:(NSString *)name requestId:(NSString *)requestId
 {
-    [app hideBusyView];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-    imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
-    imageView.frame = CGRectMake(0, 0, 70, 70);
-    
-    BCEmptyPageView *confirmationView = [[BCEmptyPageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y - DEFAULT_HEADER_HEIGHT, self.window.frame.size.width, self.window.frame.size.height)
-                                                                         title:TRANSACTION_STARTED_TITLE
-                                                                    titleColor:COLOR_BLOCKCHAIN_GREEN
-                                                                      subtitle:[NSString stringWithFormat:TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
-                                                                     imageView:imageView];
-    
-    [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION];
+    if (!requestId) {
+        [app hideBusyView];
+
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+        imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
+        imageView.frame = CGRectMake(0, 0, 70, 70);
+        
+        BCEmptyPageView *confirmationView = [[BCEmptyPageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y - DEFAULT_HEADER_HEIGHT, self.window.frame.size.width, self.window.frame.size.height)
+                                                                             title:BC_STRING_REQUEST_SENT_TITLE
+                                                                        titleColor:COLOR_BLOCKCHAIN_GREEN
+                                                                          subtitle:[NSString stringWithFormat:BC_STRING_REQUEST_SENT_SUBTITLE_AMOUNT_ARGUMENT_CONTACT_NAME_ARGUMENT, [NSNumberFormatter formatMoney:amount localCurrency:NO], name]
+                                                                         imageView:imageView];
+        
+        [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION onDismiss:^{
+            [self showTransactions];
+        } onResume:nil];
+    }
 }
 
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name
@@ -2359,9 +2363,9 @@ void (^secondPasswordSuccess)(NSString *);
     imageView.frame = CGRectMake(0, 0, 70, 70);
 
     BCEmptyPageView *confirmationView = [[BCEmptyPageView alloc] initWithFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y - DEFAULT_HEADER_HEIGHT, self.window.frame.size.width, self.window.frame.size.height)
-                                                                         title:TRANSACTION_STARTED_TITLE
+                                                                         title:BC_STRING_TRANSACTION_STARTED_TITLE
                                                                     titleColor:COLOR_BLOCKCHAIN_GREEN
-                                                                      subtitle:[NSString stringWithFormat:TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
+                                                                      subtitle:[NSString stringWithFormat:BC_STRING_TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
                                                                      imageView:imageView];
     
     [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION onDismiss:^{

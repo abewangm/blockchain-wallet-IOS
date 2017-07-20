@@ -118,7 +118,7 @@
 - (void)didFetchExtendedPublicKey;
 - (void)didGetNewMessages:(NSArray *)newMessages;
 - (void)didGetMessagesOnFirstLoad;
-- (void)didSendPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didSendPaymentRequest:(NSDictionary *)info amount:(uint64_t)amount name:(NSString *)name requestId:(NSString *)requestId;
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;

@@ -254,7 +254,7 @@ NSString *detailLabel;
     requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [requestButton addTarget:self action:@selector(requestButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:requestButton];
     
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
@@ -760,6 +760,16 @@ NSString *detailLabel;
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
 }
 
+- (void)requestButtonClicked
+{
+    if (self.fromContact) {
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+        [app.wallet sendPaymentRequest:self.fromContact.identifier amount:[self getInputAmountInSatoshi] requestId:nil note:self.descriptionField.text];
+    } else {
+        [self share];
+    }
+}
+
 - (void)share
 {
     if (![app.wallet isInitialized]) {
@@ -1003,13 +1013,6 @@ NSString *detailLabel;
             [self changeTopView:NO];
         }
     }
-}
-
-#pragma mark - Contacts
-
-- (void)createReceiveRequest:(RequestType)requestType forContact:(Contact *)contact reason:(NSString *)reason
-{
-    BCContactRequestView *contactRequestView = [[BCContactRequestView alloc] initWithContact:contact amount:[self getInputAmountInSatoshi] willSend:NO accountOrAddress:didClickAccount ? [NSNumber numberWithInt:clickedAccount] : self.clickedAddress];
 }
 
 @end

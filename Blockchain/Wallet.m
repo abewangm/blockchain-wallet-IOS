@@ -846,8 +846,8 @@
         [weakSelf on_get_messages_error:[error toString]];
     };
     
-    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info, JSValue *userId) {
-        [weakSelf on_send_payment_request_success:info identifier:userId];
+    self.context[@"objc_on_send_payment_request_success"] = ^(JSValue *info, JSValue *intendedAmount, JSValue *userId, JSValue *requestId) {
+        [weakSelf on_send_payment_request_success:info amount:intendedAmount identifier:userId requestId:requestId];
     };
     
     self.context[@"objc_on_send_payment_request_error"] = ^(JSValue *error) {
@@ -3623,14 +3623,17 @@
     [self getUpdatedContacts:NO newMessages:nil];
 }
 
-- (void)on_send_payment_request_success:(JSValue *)info identifier:(JSValue *)userId
+- (void)on_send_payment_request_success:(JSValue *)info amount:(JSValue *)intendedAmount identifier:(JSValue *)userId requestId:(JSValue *)requestId
 {
     DLog(@"on_send_payment_request_success");
     
     [self getMessages];
 
-    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:name:)]) {
-        [self.delegate didSendPaymentRequest:[info toDictionary] name:[app.wallet.contacts objectForKey:[userId toString]].name];
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequest:amount:name:requestId:)]) {
+        [self.delegate didSendPaymentRequest:[info toDictionary]
+                                      amount:[[intendedAmount toNumber] longLongValue]
+                                        name:[app.wallet.contacts objectForKey:[userId toString]].name
+                                   requestId:[requestId isUndefined] ? nil : [requestId toString]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequest:name:!", [delegate class]);
     }

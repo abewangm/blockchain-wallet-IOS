@@ -2078,7 +2078,7 @@ MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
-        objc_on_send_payment_request_success(info, userId);
+        objc_on_send_payment_request_success(info, intendedAmount, userId, requestIdentifier);
     };
     
     var error = function(error) {
