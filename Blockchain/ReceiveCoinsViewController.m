@@ -21,8 +21,8 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "BCTotalAmountView.h"
 
-#define BOTTOM_CONTAINER_HEIGHT_4S 220
-#define BOTTOM_CONTAINER_HEIGHT_DEFAULT 260
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
@@ -31,6 +31,8 @@
 @property (nonatomic) BOOL firstLoading;
 @property (nonatomic) BCNavigationController *contactRequestNavigationController;
 @property (nonatomic) Contact *fromContact;
+@property (nonatomic) BCLine *lineBelowFromField;
+@property (nonatomic) BCSecureTextField *descriptionField;
 @end
 
 @implementation ReceiveCoinsViewController
@@ -119,20 +121,11 @@ NSString *detailLabel;
 
 - (void)setupBottomViews
 {
-    CGFloat containerHeight = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_4S : BOTTOM_CONTAINER_HEIGHT_DEFAULT;
+    CGFloat containerHeightPlusButtonSpace = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT;
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeight, self.view.frame.size.width, containerHeight)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, 151)];
+    self.bottomContainerView.clipsToBounds = YES;
     [self.view addSubview:self.bottomContainerView];
-    
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.bottomContainerView.frame.size.height - BUTTON_HEIGHT - 16, self.bottomContainerView.frame.size.width - 30, BUTTON_HEIGHT)];
-    requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
-    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
-    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
-    requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomContainerView addSubview:requestButton];
     
     BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];
     lineAboveAmounts.backgroundColor = COLOR_LINE_GRAY;
@@ -146,9 +139,13 @@ NSString *detailLabel;
     lineBelowToField.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineBelowToField];
     
-    BCLine *lineBelowFromField = [[BCLine alloc] initWithFrame:CGRectMake(0, lineBelowToField.frame.origin.y + 50, self.view.frame.size.width, 1)];
-    lineBelowFromField.backgroundColor = COLOR_LINE_GRAY;
-    [self.bottomContainerView addSubview:lineBelowFromField];
+    self.lineBelowFromField = [[BCLine alloc] initWithFrame:CGRectMake(0, lineBelowToField.frame.origin.y + 50, self.view.frame.size.width, 1)];
+    self.lineBelowFromField.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:self.lineBelowFromField];
+    
+    BCLine *lineBelowDescripton = [[BCLine alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + 50, self.view.frame.size.width, 1)];
+    lineBelowDescripton.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineBelowDescripton];
     
     CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
     receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 15, labelWidth, 21)];
@@ -234,7 +231,30 @@ NSString *detailLabel;
     [self.whatsThisButton setTitle:BC_STRING_WHATS_THIS forState:UIControlStateNormal];
     [self.whatsThisButton addTarget:self action:@selector(whatsThisButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomContainerView addSubview:self.whatsThisButton];
-
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.lineBelowFromField.frame.origin.y + 15, self.view.frame.size.width/2 - 15, 21)];
+    descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    descriptionLabel.text = BC_STRING_DESCRIPTION;
+    [self.bottomContainerView addSubview:descriptionLabel];
+    
+    self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 16, self.lineBelowFromField.frame.origin.y + 15, self.view.frame.size.width/2 - 16 - 15, 20)];
+    self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    self.descriptionField.textAlignment = NSTextAlignmentRight;
+    self.descriptionField.returnKeyType = UIReturnKeyDone;
+    [self.bottomContainerView addSubview:self.descriptionField];
+    
+    CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - 16;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 30, BUTTON_HEIGHT)];
+    requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
+    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:requestButton];
+    
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
@@ -477,7 +497,7 @@ NSString *detailLabel;
 {
     UIView *viewToHide = shouldShowQR ? self.totalAmountView : self.headerView;
     UIView *viewToShow = shouldShowQR ? self.headerView : self.totalAmountView;
-    CGFloat newYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_4S : BOTTOM_CONTAINER_HEIGHT_DEFAULT) : self.totalAmountView.frame.size.height;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.totalAmountView.frame.size.height;
     
     viewToShow.alpha = 0;
     viewToShow.hidden = NO;
@@ -485,9 +505,14 @@ NSString *detailLabel;
     viewToHide.alpha = 1;
     viewToHide.hidden = NO;
     
+    CGFloat newContainerHeight = shouldShowQR ? 151 : 201;
+    CGFloat newLineXPosition = shouldShowQR ? 0 : 15;
+    
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         viewToHide.alpha = 0;
-        [self.bottomContainerView changeYPosition:newYPosition];
+        [self.bottomContainerView changeYPosition:newContainerYPosition];
+        [self.bottomContainerView changeHeight:newContainerHeight];
+        [self.lineBelowFromField changeXPosition:newLineXPosition];
     } completion:^(BOOL finished) {
         
         viewToHide.hidden = YES;
@@ -520,7 +545,7 @@ NSString *detailLabel;
             if (receivingFromContact) {
                 [self.bottomContainerView changeYPosition:self.totalAmountView.frame.size.height];
             } else {
-                [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_4S];
+                [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
             }
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:ANIMATION_DURATION animations:^{
@@ -666,7 +691,7 @@ NSString *detailLabel;
     if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
     
     if (self.bottomContainerView.frame.origin.y == 0) {
-        [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_4S];
+        [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
     }
     
     if (app.wallet.contacts.count > 0) {
@@ -956,6 +981,7 @@ NSString *detailLabel;
     } else {
         [app closeAllModals];
         
+        self.descriptionField.placeholder = [NSString stringWithFormat:BC_STRING_SHARED_WITH_CONTACT_NAME_ARGUMENT, contact.name];
         self.fromContact = contact;
         self.receiveFromLabel.text = contact.name;
         self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
