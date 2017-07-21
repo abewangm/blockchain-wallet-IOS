@@ -2336,6 +2336,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
 }
 
+- (void)sendDeclination:(NSString *)userId invitation:(NSString *)invitation
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendDeclination(\"%@\", \"%@\")", [userId escapeStringForJS], [invitation escapeStringForJS]]];
+}
+
 - (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;
@@ -3719,6 +3724,8 @@
 - (void)on_send_declination_success
 {
     DLog(@"on_send_declination_success");
+    [app closeAllModals];
+    [self getMessages];
 }
 
 - (void)on_send_declination_error:(JSValue *)info

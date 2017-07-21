@@ -694,6 +694,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define TRANSACTION_STATE_WAITING_PAYMENT @"waiting_payment"
 #define TRANSACTION_STATE_WAITING_ADDRESS @"waiting_address"
 #define TRANSACTION_STATE_PAYMENT_BROADCASTED @"payment_broadcasted"
+#define TRANSACTION_STATE_DECLINED @"declined"
 
 #define TRANSACTION_ROLE_PR_INITIATOR @"pr_initiator"
 #define TRANSACTION_ROLE_PR_RECEIVER @"pr_receiver"

@@ -137,7 +137,7 @@ const int cellRowFee = 4;
 
 - (void)declineButtonClicked
 {
-    
+    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
 }
 
 - (void)feeInformationButtonClicked
