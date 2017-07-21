@@ -380,7 +380,8 @@ int lastNumberTransactions = INT_MAX;
 #ifdef ENABLE_DEBUG_MENU
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
     self.sectionContactsComplete = app.wallet.completedContactTransactions.count > 0 ? self.sectionContactsPending + 1 : -1;
-    self.sectionMain = [self sectionCountForIndex:self.sectionContactsPending] + [self sectionCountForIndex:self.sectionContactsComplete] + 1;
+    int numberOfContactsSections = [self sectionCountForIndex:self.sectionContactsPending] + [self sectionCountForIndex:self.sectionContactsComplete];
+    self.sectionMain = numberOfContactsSections > 0 ? numberOfContactsSections : 0;
 #else
     self.sectionContactsPending = -1;
     self.sectionMain = 0;
@@ -608,7 +609,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (int)sectionCountForIndex:(int)sectionNumber
 {
-    return sectionNumber < 0 ? 0 : sectionNumber;
+    return sectionNumber < 0 ? 0 : 1;
 }
 
 #pragma mark - Contacts
