@@ -379,8 +379,8 @@ int lastNumberTransactions = INT_MAX;
 {
 #ifdef ENABLE_DEBUG_MENU
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
-    self.sectionContactsComplete = app.wallet.completedContactTransactions.count > 0 ? 1 : -1;
-    self.sectionMain = self.sectionContactsPending + self.sectionContactsComplete + 1;
+    self.sectionContactsComplete = app.wallet.completedContactTransactions.count > 0 ? self.sectionContactsPending + 1 : -1;
+    self.sectionMain = [self sectionCountForIndex:self.sectionContactsPending] + [self sectionCountForIndex:self.sectionContactsComplete] + 1;
 #else
     self.sectionContactsPending = -1;
     self.sectionMain = 0;
@@ -602,6 +602,13 @@ int lastNumberTransactions = INT_MAX;
     UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width,cell.frame.size.height)];
     [v setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
     return v;
+}
+
+#pragma mark - Table View Helpers
+
+- (int)sectionCountForIndex:(int)sectionNumber
+{
+    return sectionNumber < 0 ? 0 : sectionNumber;
 }
 
 #pragma mark - Contacts
