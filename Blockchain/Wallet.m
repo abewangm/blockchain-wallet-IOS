@@ -2310,25 +2310,32 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.deleteContactAfterStoringInfo(\"%@\")", [contactIdentifier escapeStringForJS]]];
 }
 
-- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource
 {
     NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, \"%@\")", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS]]];
-}
-
-- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note from:(id)from
-{
-    NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
-    
-    NSString *escapedFromString;
-    if ([from isKindOfClass:[NSString class]]) {
-        escapedFromString = [NSString stringWithFormat:@"\"%@\"", [from escapeStringForJS]];
+    NSString *escapedInitiatorSourceString;
+    if ([initiatorSource isKindOfClass:[NSString class]]) {
+        escapedInitiatorSourceString = [NSString stringWithFormat:@"\"%@\"", [initiatorSource escapeStringForJS]];
     } else {
-        escapedFromString = from;
+        escapedInitiatorSourceString = initiatorSource;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedFromString]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
+}
+
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource
+{
+    NSString *requestIdArgument = requestId ? [NSString stringWithFormat:@"\"%@\"", [requestId escapeStringForJS]] : @"undefined";
+    
+    NSString *escapedInitiatorSourceString;
+    if ([initiatorSource isKindOfClass:[NSString class]]) {
+        escapedInitiatorSourceString = [NSString stringWithFormat:@"\"%@\"", [initiatorSource escapeStringForJS]];
+    } else {
+        escapedInitiatorSourceString = initiatorSource;
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
 }
 
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier

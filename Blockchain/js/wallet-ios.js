@@ -2075,7 +2075,7 @@ MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
     save().then(success);
 }
 
-MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
+MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
     
     var success = function(info) {
         objc_on_send_payment_request_success(info, intendedAmount, userId, requestIdentifier);
@@ -2087,10 +2087,10 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
         objc_on_send_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
+    MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
                                                           
-MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, from) {
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
     
     var success = function(info) {
         objc_on_request_payment_request_success(info, userId);
@@ -2102,7 +2102,7 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
         objc_on_request_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, from).then(success).catch(error);
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {

@@ -399,8 +399,8 @@ typedef enum {
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
 - (void)deleteContact:(NSString *)contactIdentifier;
-- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note;
-- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note from:(id)from; // from account (NSNumber) or address (NSString)
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource;
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource; // from account (NSNumber) or address (NSString)
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
 - (BOOL)actionRequiredForContact:(Contact *)contact;
 - (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier;

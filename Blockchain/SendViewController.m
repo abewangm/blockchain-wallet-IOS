@@ -1563,7 +1563,7 @@ BOOL displayingLocalSymbolSend;
     [textField resignFirstResponder];
     [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.45 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason from:accountOrAddress];
+        [app.wallet requestPaymentRequest:contact.identifier amount:amount requestId:nil note:reason initiatorSource:accountOrAddress];
     });
 }
 

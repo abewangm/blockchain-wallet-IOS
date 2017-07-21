@@ -763,8 +763,17 @@ NSString *detailLabel;
 - (void)requestButtonClicked
 {
     if (self.fromContact) {
+        
+        id accountOrAddress;
+        if (didClickAccount) {
+            accountOrAddress = [NSNumber numberWithInt:clickedAccount];
+        } else {
+            accountOrAddress = self.clickedAddress;
+
+        }
+        
         [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
-        [app.wallet sendPaymentRequest:self.fromContact.identifier amount:[self getInputAmountInSatoshi] requestId:nil note:self.descriptionField.text];
+        [app.wallet sendPaymentRequest:self.fromContact.identifier amount:[self getInputAmountInSatoshi] requestId:nil note:self.descriptionField.text initiatorSource:accountOrAddress];
     } else {
         [self share];
     }
