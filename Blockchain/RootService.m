@@ -215,9 +215,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showWelcomeOrPinScreen];
     
-#ifdef ENABLE_DEBUG_MENU
     [self requestAuthorizationForPushNotifications];
-#endif
 
     app.mainTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     
@@ -1015,9 +1013,7 @@ void (^secondPasswordSuccess)(NSString *);
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
-#ifdef ENABLE_DEBUG_MENU
     [self registerDeviceForPushNotifications];
-#endif
     
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
@@ -1031,9 +1027,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     showType = ShowTypeNone;
 
-#ifdef ENABLE_DEBUG_MENU
     [self.wallet loadContactsThenGetMessages];
-#endif
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response

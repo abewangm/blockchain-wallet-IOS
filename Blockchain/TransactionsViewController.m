@@ -377,15 +377,10 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)reloadData
 {
-#ifdef ENABLE_DEBUG_MENU
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
     self.sectionContactsComplete = app.wallet.completedContactTransactions.count > 0 ? self.sectionContactsPending + 1 : -1;
     int numberOfContactsSections = [self sectionCountForIndex:self.sectionContactsPending] + [self sectionCountForIndex:self.sectionContactsComplete];
     self.sectionMain = numberOfContactsSections > 0 ? numberOfContactsSections : 0;
-#else
-    self.sectionContactsPending = -1;
-    self.sectionMain = 0;
-#endif
     
     [self setText];
     
@@ -495,9 +490,7 @@ int lastNumberTransactions = INT_MAX;
     Transaction *transaction = [data.transactions firstObject];
     
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
-#ifdef ENABLE_DEBUG_MENU
         [app checkIfPaymentRequestFulfilled:transaction];
-#endif
         return;
     };
     
