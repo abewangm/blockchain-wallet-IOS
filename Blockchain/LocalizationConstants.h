@@ -37,7 +37,6 @@
 #define BC_STRING_MUST_BE_ABOVE_OR_EQUAL_TO_DUST_THRESHOLD NSLocalizedString(@"Amount must be greater than or equal to the dust threshold (%lld Satoshi)", nil)
 #define BC_STRING_RECEIVE NSLocalizedString(@"Receive", nil)
 #define BC_STRING_TRANSACTIONS NSLocalizedString(@"Transactions", nil)
-#define BC_STRING_TRANSACTION_HISTORY NSLocalizedString(@"Transaction History", nil)
 #define BC_STRING_LOAD_MORE_TRANSACTIONS NSLocalizedString(@"Load More Transactions", nil)
 #define BC_STRING_SENDING_TRANSACTION NSLocalizedString(@"Sending Transaction", nil)
 #define BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT NSLocalizedString(@"Use total available minus fee: %@", nil)

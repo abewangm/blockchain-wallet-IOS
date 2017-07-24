@@ -23,7 +23,6 @@
 
 @property (nonatomic) int sectionMain;
 @property (nonatomic) int sectionContactsPending;
-@property (nonatomic) int sectionContactsComplete;
 
 @property (nonatomic) UIView *bounceView;
 
@@ -66,25 +65,13 @@ int lastNumberTransactions = INT_MAX;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int numberOfSections = 1;
-    
-    if (app.wallet.pendingContactTransactions.count > 0) {
-        numberOfSections++;
-    }
-    
-    if (app.wallet.completedContactTransactions.count > 0) {
-        numberOfSections++;
-    }
-    
-    return numberOfSections;
+    return app.wallet.pendingContactTransactions.count > 0 ? 2 : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)_tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == self.sectionContactsPending) {
         return app.wallet.pendingContactTransactions.count;
-    } else if (section == self.sectionContactsComplete) {
-        return app.wallet.completedContactTransactions.count;
     } else if (section == self.sectionMain) {
         NSInteger transactionCount = [data.transactions count];
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
@@ -101,11 +88,8 @@ int lastNumberTransactions = INT_MAX;
 
 - (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == self.sectionContactsPending || indexPath.section == self.sectionContactsComplete) {
-        
-        NSArray *contactTransactions = indexPath.section == self.sectionContactsPending ? app.wallet.pendingContactTransactions : [app.wallet.completedContactTransactions allValues];
-        
-        ContactTransaction *contactTransaction = [contactTransactions objectAtIndex:indexPath.row];
+    if (indexPath.section == self.sectionContactsPending) {
+        ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
         
         ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION];
         
@@ -126,25 +110,39 @@ int lastNumberTransactions = INT_MAX;
         
         ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
         
-        TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
-        
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
-        }
-        
         if (contactTransaction) {
             ContactTransaction *newTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
             newTransaction.contactName = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
-            cell.transaction = newTransaction;
+            
+            ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_CONTACT_TRANSACTION];
+            
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"ContactTransactionTableCell" owner:nil options:nil] objectAtIndex:0];
+            }
+            
+            NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+            [cell configureWithTransaction:contactTransaction contactName:name];
+            
+            cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
+            
+            cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+            
+            return cell;
         } else {
+            TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+            
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+            }
+            
             cell.transaction = transaction;
+            
+            [cell reload];
+            
+            cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
+            
+            return cell;
         }
-                
-        [cell reload];
-        
-        cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
-        
-        return cell;
     } else {
         DLog(@"Invalid section %lu", indexPath.section);
         return nil;
@@ -196,7 +194,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == self.sectionMain ? 65 : 85;
+    return 85;
 }
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
@@ -224,10 +222,8 @@ int lastNumberTransactions = INT_MAX;
         
         if (section == self.sectionContactsPending) {
             labelString = BC_STRING_IN_PROGRESS;
-        } else if (section == self.sectionContactsComplete) {
-            labelString = BC_STRING_FINISHED;
         } else if (section == self.sectionMain) {
-            labelString = BC_STRING_TRANSACTION_HISTORY;
+            labelString = BC_STRING_FINISHED;
             
         } else
             @throw @"Unknown Section";
@@ -378,9 +374,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)reloadData
 {
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
-    self.sectionContactsComplete = app.wallet.completedContactTransactions.count > 0 ? self.sectionContactsPending + 1 : -1;
-    int numberOfContactsSections = [self sectionCountForIndex:self.sectionContactsPending] + [self sectionCountForIndex:self.sectionContactsComplete];
-    self.sectionMain = numberOfContactsSections > 0 ? numberOfContactsSections : 0;
+    self.sectionMain = app.wallet.pendingContactTransactions.count > 0 ? 1 : 0;
     
     [self setText];
     
