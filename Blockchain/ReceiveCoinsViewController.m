@@ -225,7 +225,8 @@ NSString *detailLabel;
     self.selectFromButton.hidden = YES;
     [self.bottomContainerView addSubview:self.selectFromButton];
     
-    self.whatsThisButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 100, lineBelowToField.frame.origin.y + 15, 100, 21)];
+    CGFloat whatsThisButtonWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100;
+    self.whatsThisButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - whatsThisButtonWidth, lineBelowToField.frame.origin.y + 15, whatsThisButtonWidth, 21)];
     self.whatsThisButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     [self.whatsThisButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [self.whatsThisButton setTitle:BC_STRING_WHATS_THIS forState:UIControlStateNormal];
