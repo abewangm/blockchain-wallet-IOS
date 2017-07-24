@@ -137,7 +137,11 @@ const int cellRowFee = 4;
 
 - (void)cancelButtonClicked
 {
-    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    if ([self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
+        [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    } else {
+        [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    }
 }
 
 - (void)feeInformationButtonClicked
