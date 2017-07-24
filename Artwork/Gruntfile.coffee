@@ -74,5 +74,6 @@ module.exports = (grunt) ->
     "shell:svg:icon_contact:110:166"
     "shell:svg:icon_contact_small:36"
     "shell:svg:icon_menu:25"
+    "shell:svg:contacts_splash:150:606"
     "shell:svg:buy_available:110:110"
   ]

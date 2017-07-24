@@ -249,7 +249,7 @@ NSString *detailLabel;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - 16;
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 30, BUTTON_HEIGHT)];
     requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
-    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
+    [requestButton setTitle:BC_STRING_REQUEST_PAYMENT forState:UIControlStateNormal];
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
@@ -744,7 +744,61 @@ NSString *detailLabel;
 
 - (void)whatsThisButtonClicked
 {
+    UIView *introducingContactsView = [[UIView alloc] initWithFrame:self.view.frame];
+    introducingContactsView.backgroundColor = [UIColor whiteColor];
     
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
+    titleLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    titleLabel.text = BC_STRING_INTRODUCING_CONTACTS_TITLE;
+    [titleLabel sizeToFit];
+    titleLabel.center = introducingContactsView.center;
+    [introducingContactsView addSubview:titleLabel];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, titleLabel.frame.origin.y - 100, introducingContactsView.frame.size.width - 50, 100)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = [UIImage imageNamed:@"contacts_splash"];
+    [introducingContactsView addSubview:imageView];
+    
+    float onePixelHeight = 1.0/[UIScreen mainScreen].scale;
+    UIView *onePixelLine = [[UIView alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 16, introducingContactsView.frame.size.width - 50, onePixelHeight)];
+    onePixelLine.center = CGPointMake(introducingContactsView.center.x, onePixelLine.center.y);
+    onePixelLine.backgroundColor = COLOR_LINE_GRAY;
+    [introducingContactsView addSubview:onePixelLine];
+    
+    UILabel *descriptionLabelTop = [[UILabel alloc] initWithFrame:CGRectMake(0, onePixelLine.frame.origin.y + 8, self.view.frame.size.width - 30, 0)];
+    descriptionLabelTop.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    descriptionLabelTop.textColor = COLOR_TEXT_GRAY;
+    descriptionLabelTop.textAlignment = NSTextAlignmentCenter;
+    descriptionLabelTop.numberOfLines = 0;
+    descriptionLabelTop.textColor = COLOR_LIGHT_GRAY;
+    descriptionLabelTop.text = BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP;
+    [descriptionLabelTop sizeToFit];
+    descriptionLabelTop.center = CGPointMake(introducingContactsView.center.x, descriptionLabelTop.center.y);
+    [introducingContactsView addSubview:descriptionLabelTop];
+    
+    UILabel *descriptionLabelBottom = [[UILabel alloc] initWithFrame:CGRectMake(0, descriptionLabelTop.frame.origin.y + descriptionLabelTop.frame.size.height + 16, 0, 0)];
+    descriptionLabelBottom.font = descriptionLabelTop.font;
+    descriptionLabelBottom.textColor = COLOR_TEXT_DARK_GRAY;
+    descriptionLabelBottom.text = BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM;
+    [descriptionLabelBottom sizeToFit];
+    descriptionLabelBottom.center = CGPointMake(introducingContactsView.center.x, descriptionLabelBottom.center.y);
+    [introducingContactsView addSubview:descriptionLabelBottom];
+
+    UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(15, app.window.frame.size.height - BUTTON_HEIGHT - 16, introducingContactsView.frame.size.width - 30, BUTTON_HEIGHT)];
+    dismissButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [dismissButton setTitle:BC_STRING_DISMISS forState:UIControlStateNormal];
+    dismissButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    dismissButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [introducingContactsView addSubview:dismissButton];
+    
+    BCModalViewController *modalViewController = [BCModalViewController new];
+    modalViewController.view = introducingContactsView;
+    [dismissButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIBarStyleDefault;
+    
+    [app.window.rootViewController presentViewController:modalViewController animated:YES completion:nil];
 }
 
 - (void)selectFromClicked
@@ -810,6 +864,13 @@ NSString *detailLabel;
 {
     self.receiveBtcField.text = nil;
     self.receiveFiatField.text = nil;
+}
+
+- (void)dismiss
+{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - UITextField delegates

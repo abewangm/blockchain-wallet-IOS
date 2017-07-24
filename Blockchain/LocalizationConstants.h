@@ -182,6 +182,7 @@
 #define BC_STRING_FORGET_WALLET_DETAILS NSLocalizedString(@"This will erase all wallet data on this device. Please confirm you have your wallet information saved elsewhere otherwise any bitcoin in this wallet will be inaccessible!!", nil)
 #define BC_STRING_NEXT NSLocalizedString(@"Next", nil)
 #define BC_STRING_CANCEL NSLocalizedString(@"Cancel", nil)
+#define BC_STRING_DISMISS NSLocalizedString(@"Dismiss", nil)
 #define BC_STRING_DELETE NSLocalizedString(@"Delete", nil)
 #define BC_STRING_CONFIRM NSLocalizedString(@"Confirm", nil)
 #define BC_STRING_CANCELLING NSLocalizedString(@"Cancelling", nil)
@@ -280,6 +281,7 @@
 #define BC_STRING_CREATE_A_WALLET NSLocalizedString(@"Create a Wallet", nil)
 #define BC_STRING_REQUEST_AMOUNT NSLocalizedString(@"Request Amount", nil)
 #define BC_STRING_REQUEST NSLocalizedString(@"Request", nil)
+#define BC_STRING_REQUEST_PAYMENT NSLocalizedString(@"Request Payment", nil)
 #define BC_STRING_LABEL_ADDRESS NSLocalizedString(@"Label Address", nil)
 #define BC_STRING_SCAN_QR_CODE NSLocalizedString(@"Scan QR Code", nil)
 #define BC_STRING_SCAN_PRIVATE_KEY NSLocalizedString(@"Scan Private Key", nil)
@@ -438,6 +440,10 @@
 #define BC_STRING_NEW_ADDRESS NSLocalizedString(@"New Address", nil)
 #define BC_STRING_NEW_ADDRESS_SCAN_QR_CODE NSLocalizedString(@"Scan QR code", nil)
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
+
+#define BC_STRING_INTRODUCING_CONTACTS_TITLE NSLocalizedString(@"Introducing Contacts", nil)
+#define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP NSLocalizedString(@"You can now transact without the hassle of Bitcoin addresses. Add your first contact via the sidebar.", nil)
+#define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM NSLocalizedString(@"It's simple and secure.", nil)
 
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
