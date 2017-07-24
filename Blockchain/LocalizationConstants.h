@@ -222,7 +222,6 @@
 
 #define BC_STRING_CREATE NSLocalizedString(@"Create", nil)
 #define BC_STRING_NAME NSLocalizedString(@"Name", nil)
-#define BC_STRING_ID NSLocalizedString(@"ID", nil)
 #define BC_STRING_EDIT NSLocalizedString(@"Edit", nil)
 #define BC_STRING_LABEL NSLocalizedString(@"Label", nil)
 
@@ -441,10 +440,6 @@
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
-#define BC_STRING_I_WANT_TO_INVITE_SOMEONE NSLocalizedString(@"I want to invite someone", nil)
-#define BC_STRING_SOMEONE_SENT_ME_A_LINK NSLocalizedString(@"Someone sent me a link", nil)
-#define BC_STRING_LINK_INVITE_INSTRUCTIONS NSLocalizedString(@"If someone sent you a link, simply tap on the link in the email or SMS to accept.", nil)
-#define BC_STRING_WHO_ARE_YOU_CONNECTING_WITH NSLocalizedString(@"Who are you connecting with?", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
 #define BC_STRING_PLEASE_ENTER_A_NAME NSLocalizedString(@"Please enter a name.", nil)
 #define BC_STRING_CONTACT_ALREADY_EXISTS NSLocalizedString(@"A contact with this name already exists.", nil)

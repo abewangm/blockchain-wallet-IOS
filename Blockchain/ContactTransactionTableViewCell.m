@@ -103,7 +103,9 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateDeclined) {
-        self.bottomRightLabel.textColor = COLOR_WARNING_RED;
+        self.statusLabel.text = [BC_STRING_RECEIVING uppercaseString];
+        self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+        self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
         self.bottomRightLabel.text = BC_STRING_DECLINED;
     } else {
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];

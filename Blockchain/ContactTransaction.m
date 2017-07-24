@@ -20,6 +20,7 @@
         _reason = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         _contactIdentifier = identifier;
         _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
+        _initiatorSource = [dictionary objectForKey:DICTIONARY_KEY_INITIATOR_SOURCE];
         
         self.note = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
