@@ -98,14 +98,14 @@ const int cellRowFee = 4;
             buttonTitle = BC_STRING_PAY;
             cornerRadius = CORNER_RADIUS_BUTTON;
             
-            UIButton *declineButton = [[UIButton alloc] initWithFrame:buttonFrame];
-            [declineButton changeXPosition:8];
-            declineButton.layer.cornerRadius = cornerRadius;
-            [declineButton setTitle:BC_STRING_DECLINE forState:UIControlStateNormal];
-            declineButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
-            declineButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-            [self addSubview:declineButton];
-            [declineButton addTarget:self action:@selector(declineButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            UIButton *cancelButton = [[UIButton alloc] initWithFrame:buttonFrame];
+            [cancelButton changeXPosition:8];
+            cancelButton.layer.cornerRadius = cornerRadius;
+            [cancelButton setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
+            cancelButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
+            cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+            [self addSubview:cancelButton];
+            [cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             
         } else {
             buttonHeight = 40;
@@ -135,9 +135,9 @@ const int cellRowFee = 4;
     }
 }
 
-- (void)declineButtonClicked
+- (void)cancelButtonClicked
 {
-    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
 }
 
 - (void)feeInformationButtonClicked

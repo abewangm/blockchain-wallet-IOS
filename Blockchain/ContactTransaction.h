@@ -16,7 +16,8 @@ typedef enum {
     ContactTransactionStateReceiveWaitingForPayment, // User tapped 'Request Bitcoin from Contact' OR Contact tapped 'Ask to Send Bitcoin' -> QR Sent
     ContactTransactionStateCompletedSend,
     ContactTransactionStateCompletedReceive,
-    ContactTransactionStateDeclined
+    ContactTransactionStateDeclined,
+    ContactTransactionStateCancelled
 } ContactTransactionState;
 
 @interface ContactTransaction : Transaction

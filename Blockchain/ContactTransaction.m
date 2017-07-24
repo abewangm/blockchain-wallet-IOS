@@ -45,6 +45,8 @@
             }
         } else if ([_state isEqualToString:TRANSACTION_STATE_DECLINED]) {
             _transactionState = ContactTransactionStateDeclined;
+        } else if ([_state isEqualToString:TRANSACTION_STATE_CANCELLED]) {
+            _transactionState = ContactTransactionStateCancelled;
         }
     }
     return self;

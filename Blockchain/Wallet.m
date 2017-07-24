@@ -2348,6 +2348,11 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendDeclination(\"%@\", \"%@\")", [userId escapeStringForJS], [invitation escapeStringForJS]]];
 }
 
+- (void)sendCancellation:(NSString *)userId invitation:(NSString *)invitation
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendCancellation(\"%@\", \"%@\")", [userId escapeStringForJS], [invitation escapeStringForJS]]];
+}
+
 - (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;
@@ -3721,6 +3726,7 @@
 - (void)on_send_cancellation_success
 {
     DLog(@"on_send_cancellation_success");
+    [self getMessages];
 }
 
 - (void)on_send_cancellation_error:(JSValue *)info

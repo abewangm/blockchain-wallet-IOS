@@ -393,6 +393,7 @@ typedef enum {
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)completeRelation:(NSString *)identifier;
+- (void)sendCancellation:(NSString *)userId invitation:(NSString *)invitation;
 - (void)sendDeclination:(NSString *)userId invitation:(NSString *)invitation;
 - (void)sendCancellation:(NSString *)userId transactionIdentifier:(NSString *)transactionIdentifier;
 - (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
