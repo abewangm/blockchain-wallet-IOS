@@ -103,16 +103,28 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateDeclined) {
-        self.statusLabel.text = [BC_STRING_RECEIVING uppercaseString];
-        self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
-        self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
+        if ([transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
+            self.statusLabel.text = [BC_STRING_RECEIVING uppercaseString];
+            self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+            self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
+        } else {
+            self.statusLabel.text = [BC_STRING_SENDING uppercaseString];
+            self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
+            self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
+        }
         self.bottomRightLabel.text = BC_STRING_DECLINED;
         self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_RED;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateCancelled) {
-        self.statusLabel.text = [BC_STRING_SENDING uppercaseString];
-        self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
-        self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
+        if ([transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] || [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
+            self.statusLabel.text = [BC_STRING_RECEIVING uppercaseString];
+            self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
+            self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
+        } else {
+            self.statusLabel.text = [BC_STRING_SENDING uppercaseString];
+            self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
+            self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
+        }
         self.bottomRightLabel.text = BC_STRING_CANCELLED;
         self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_RED;
         self.actionImageView.image = nil;

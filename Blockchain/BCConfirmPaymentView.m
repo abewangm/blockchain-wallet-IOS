@@ -95,13 +95,13 @@ const int cellRowFee = 4;
         if (self.contactTransaction) {
             buttonHeight = 60;
             buttonFrame = CGRectMake(window.frame.size.width/2 + 4, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + (self.frame.size.height - (summaryTableView.frame.origin.y + summaryTableView.frame.size.height))/2 - buttonHeight/2, window.frame.size.width/2 - 12, buttonHeight);
-            buttonTitle = BC_STRING_PAY;
+            buttonTitle = [self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_SEND : BC_STRING_PAY;
             cornerRadius = CORNER_RADIUS_BUTTON;
             
             UIButton *cancelButton = [[UIButton alloc] initWithFrame:buttonFrame];
             [cancelButton changeXPosition:8];
             cancelButton.layer.cornerRadius = cornerRadius;
-            [cancelButton setTitle:BC_STRING_CANCEL forState:UIControlStateNormal];
+            [cancelButton setTitle:[self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_CANCEL : BC_STRING_DECLINE forState:UIControlStateNormal];
             cancelButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
             cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
             [self addSubview:cancelButton];
