@@ -915,15 +915,14 @@ BOOL displayingLocalSymbolSend;
 - (void)showSummaryForSendingPaymentRequest:(ContactTransaction *)transaction
 {
     NSString *fromAddress;
+    int fromAccount = [app.wallet getDefaultAccountIndex];
     
     if (transaction.initiatorSource) {
         if ([transaction.initiatorSource isKindOfClass:[NSString class]]) {
             fromAddress = transaction.initiatorSource;
         } else {
-            self.fromAccount = [transaction.initiatorSource intValue];
+            fromAccount = [transaction.initiatorSource intValue];
         }
-    } else {
-        self.fromAccount = [app.wallet getDefaultAccountIndex];
     }
     
     self.addressFromURLHandler = transaction.address;
@@ -936,8 +935,9 @@ BOOL displayingLocalSymbolSend;
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         if (fromAddress) {
-            weakSelf.sendFromAddress = YES;
-            weakSelf.fromAddress = fromAddress;
+            [weakSelf selectFromAddress:fromAddress];
+        } else {
+            [weakSelf selectFromAccount:fromAccount];
         }
         [weakSelf sendPaymentClicked:nil];
     };
@@ -960,8 +960,9 @@ BOOL displayingLocalSymbolSend;
             self.onViewDidLoad = nil;
             [self reload];
             if (fromAddress) {
-                weakSelf.sendFromAddress = YES;
-                weakSelf.fromAddress = fromAddress;
+                [weakSelf selectFromAddress:fromAddress];
+            } else {
+                [weakSelf selectFromAccount:fromAccount];
             }
             self.contactTransaction = transaction;
             [self sendPaymentClicked:nil];
