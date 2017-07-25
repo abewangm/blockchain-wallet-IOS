@@ -444,6 +444,8 @@
 #define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP NSLocalizedString(@"You can now transact without the hassle of Bitcoin addresses. Add your first contact via the sidebar.", nil)
 #define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM NSLocalizedString(@"It's simple and secure.", nil)
 
+#define BC_STRING_ACCEPTED_RELATION_ALERT_TITLE_NAME_ARGUMENT NSLocalizedString(@"Accepted Invite by %@", nil)
+#define BC_STRING_ACCEPTED_RELATION_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"When %@ logs into their wallet, you will be able to exchange payment requests.", nil)
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
 #define BC_STRING_PLEASE_ENTER_A_NAME NSLocalizedString(@"Please enter a name.", nil)
@@ -485,7 +487,6 @@
 #define BC_STRING_START_TRANSACTION NSLocalizedString(@"Start Transaction", nil)
 #define BC_STRING_CONTACTS_SHOW_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER NSLocalizedString(@"%@ sent you an invitation (%@). Accept?", nil)
 #define BC_STRING_ACCEPT NSLocalizedString(@"Accept", nil)
-#define BC_STRING_CONTACTS_ACCEPTED_INVITATION_ALERT_MESSAGE_ARGUMENT_NAME_ARGUMENT_IDENTIFIER NSLocalizedString(@"Accepted invitation by %@ (%@).", nil)
 #define BC_STRING_ASK_TO_SEND_ARGUMENT_BITCOIN NSLocalizedString(@"Ask to Send %@ Bitcoin", nil)
 #define BC_STRING_REQUEST_BITCOIN_FROM_ARGUMENT NSLocalizedString(@"Request Bitcoin from %@", nil)
 #define BC_STRING_PROMPT_REASON NSLocalizedString(@"Remind %@ what this transaction is for?", nil)

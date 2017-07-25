@@ -618,6 +618,11 @@ const int sectionContacts = 0;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
     DLog(@"Accept relation/invitation success");
+    
+    UIAlertController *successAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat: BC_STRING_ACCEPTED_RELATION_ALERT_TITLE_NAME_ARGUMENT, name] message:[NSString stringWithFormat:BC_STRING_ACCEPTED_RELATION_ALERT_MESSAGE_NAME_ARGUMENT, name] preferredStyle:UIAlertControllerStyleAlert];
+    [successAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:successAlert animated:YES completion:nil];
     [self reload];
 }
 
