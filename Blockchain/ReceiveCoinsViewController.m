@@ -247,8 +247,8 @@ NSString *detailLabel;
     self.descriptionField.delegate = self;
     [self.bottomContainerView addSubview:self.descriptionField];
     
-    CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - 16;
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 30, BUTTON_HEIGHT)];
+    CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - 28;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
     requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
     [requestButton setTitle:BC_STRING_REQUEST_PAYMENT forState:UIControlStateNormal];
     requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
