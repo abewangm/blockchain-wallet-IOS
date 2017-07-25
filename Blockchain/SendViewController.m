@@ -54,7 +54,7 @@ typedef enum {
 @property (nonatomic) UILabel *feeTypeLabel;
 @property (nonatomic) UILabel *feeDescriptionLabel;
 @property (nonatomic) UILabel *feeAmountLabel;
-@property (nonatomic) UILabel *feeWarningLabel;
+@property (nonatomic) UITextView *feeWarningTextView;
 @property (nonatomic) NSDictionary *fees;
 
 @property (nonatomic) NSString *noteToSet;
@@ -119,8 +119,6 @@ BOOL displayingLocalSymbolSend;
     self.feeTypeLabel.adjustsFontSizeToFitWidth = YES;
     self.feeAmountLabel.frame = CGRectMake(amountLabelOriginX, feeField.center.y - 10, feeOptionsButton.frame.origin.x - amountLabelOriginX, 20);
     self.feeAmountLabel.adjustsFontSizeToFitWidth = YES;
-
-    [self setupFeeWarningLabelFrameSmall];
     
     [feeField changeWidth:self.feeAmountLabel.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width) - (feeField.frame.origin.x - (feeLabel.frame.origin.x + feeLabel.frame.size.width))];
 
@@ -200,12 +198,15 @@ BOOL displayingLocalSymbolSend;
     self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [bottomContainerView addSubview:self.feeAmountLabel];
     
-    self.feeWarningLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    // Use same font size for all screen sizes
-    self.feeWarningLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
-    self.feeWarningLabel.textColor = COLOR_WARNING_RED;
-    self.feeWarningLabel.numberOfLines = 2;
-    [bottomContainerView addSubview:self.feeWarningLabel];
+    self.feeWarningTextView = [[UITextView alloc] initWithFrame:CGRectMake(fundsAvailableButton.frame.origin.x, fundsAvailableButton.frame.origin.y, fundsAvailableButton.frame.size.width, fundsAvailableButton.frame.size.height * 2)];
+    self.feeWarningTextView.textContainerInset = UIEdgeInsetsMake(4, 0, 4, 0);
+    self.feeWarningTextView.textContainer.lineFragmentPadding = 0;
+    self.feeWarningTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    self.feeWarningTextView.textColor = COLOR_WARNING_RED;
+    self.feeWarningTextView.editable = NO;
+    self.feeWarningTextView.selectable = NO;
+    self.feeWarningTextView.scrollEnabled = NO;
+    [bottomContainerView addSubview:self.feeWarningTextView];
 }
 
 - (void)resetPayment
@@ -1082,32 +1083,6 @@ BOOL displayingLocalSymbolSend;
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         
-        if (IS_USING_SCREEN_SIZE_4S) {
-            [lineBelowFromField changeYPosition:38];
-            
-            [toLabel changeYPosition:42];
-            [toField changeYPosition:38];
-            [addressBookButton changeYPosition:38];
-            [lineBelowToField changeYPosition:66];
-            
-            [bottomContainerView changeYPosition:83];
-            [btcLabel changeYPosition:-11];
-            [btcAmountField changeYPosition:-15];
-            [fiatLabel changeYPosition:-11];
-            [fiatAmountField changeYPosition:-15];
-            [lineBelowAmountFields changeYPosition:28];
-            
-            [feeField changeYPosition:38];
-            [feeLabel changeYPosition:41];
-            [self.feeTypeLabel changeYPosition:37];
-            [self.feeDescriptionLabel changeYPosition:51];
-            [self.feeAmountLabel changeYPosition:51 - self.feeAmountLabel.frame.size.height/2];
-            [feeOptionsButton changeYPosition:37];
-            [lineBelowFeeField changeYPosition:76];
-            
-            [fundsAvailableButton changeYPosition:6];
-        }
-        
         feeLabel.hidden = NO;
         feeOptionsButton.hidden = NO;
         lineBelowFeeField.hidden = NO;
@@ -1200,10 +1175,7 @@ BOOL displayingLocalSymbolSend;
     } else {
         feeField.hidden = YES;
         
-        self.feeWarningLabel.hidden = YES;
-        if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-        }
+        self.feeWarningTextView.hidden = YES;
 
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -1240,18 +1212,6 @@ BOOL displayingLocalSymbolSend;
     } else {
         self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:fee localCurrency:YES]];
     }
-}
-
-- (void)setupFeeWarningLabelFrameSmall
-{
-    CGFloat warningLabelOriginY = self.feeAmountLabel.frame.origin.y + self.feeAmountLabel.frame.size.height - 4;
-    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
-}
-
-- (void)setupFeeWarningLabelFrameLarge
-{
-    CGFloat warningLabelOriginY = self.feeDescriptionLabel.frame.origin.y + self.feeDescriptionLabel.frame.size.height - 4;
-    self.feeWarningLabel.frame = CGRectMake(feeField.frame.origin.x, warningLabelOriginY, feeOptionsButton.frame.origin.x - feeField.frame.origin.x, lineBelowFeeField.frame.origin.y - warningLabelOriginY);
 }
 
 - (CGFloat)defaultYPositionForWarningLabel
@@ -1381,14 +1341,11 @@ BOOL displayingLocalSymbolSend;
         if ([newString containsString:@"."] ||
             [newString containsString:@","] ||
             [newString containsString:@"٫"]) return NO;
-        
-        if (newString.length == 0) {
-            self.feeWarningLabel.hidden = YES;
-            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            }
-        }
 
+        if (newString.length == 0) {
+            self.feeWarningTextView.hidden = YES;
+        }
+        
         [self performSelector:@selector(updateSatoshiPerByteAfterTextChange) withObject:nil afterDelay:0.1f];
         
         return YES;
@@ -1638,22 +1595,12 @@ BOOL displayingLocalSymbolSend;
     availableAmount = [sweepAmount longLongValue];
     uint64_t fee = [finalFee longLongValue];
     
-    CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
-    
     if (availableAmount <= 0 || availableAmount < fee) {
-        [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 30 completion:^(BOOL finished) {
-            if (self.feeType == FeeTypeCustom) {
-                [self setupFeeWarningLabelFrameSmall];
-            } else {
-                [self setupFeeWarningLabelFrameLarge];
-            }
-            self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
-        }];
-        self.feeWarningLabel.text = BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE;
+        self.feeWarningTextView.hidden = NO;
+        self.feeWarningTextView.text = BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE;
     } else {
-        if ([self.feeWarningLabel.text isEqualToString:BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE]) {
-            [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition completion:nil];
-            self.feeWarningLabel.hidden = YES;
+        if ([self.feeWarningTextView.text isEqualToString:BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE]) {
+            self.feeWarningTextView.hidden = YES;
         }
     }
     
@@ -1723,44 +1670,19 @@ BOOL displayingLocalSymbolSend;
         if (typedSatoshiPerByte < [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MIN] longLongValue]) {
             DLog(@"Fee rate lower than recommended");
             
-            CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
-            
             if (feeField.text.length > 0) {
-                if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                    [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrameSmall];
-                        self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
-                    }];
-                } else {
-                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrameSmall];
-                        self.feeWarningLabel.hidden = NO;
-                    }];
-                }
-                self.feeWarningLabel.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
+                self.feeWarningTextView.hidden = NO;
+                self.feeWarningTextView.text = BC_STRING_LOW_FEE_NOT_RECOMMENDED;
             }
         } else if (typedSatoshiPerByte > [[limits objectForKey:DICTIONARY_KEY_FEE_LIMITS_MAX] longLongValue]) {
             DLog(@"Fee rate higher than recommended");
             
-            CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
-
             if (feeField.text.length > 0) {
-                if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                    [lineBelowFeeField changeYPositionAnimated:warningLabelYPosition + 12 completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrameSmall];
-                        self.feeWarningLabel.hidden = lineBelowFeeField.frame.origin.y == warningLabelYPosition;
-                    }];
-                } else {
-                    [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:^(BOOL finished) {
-                        [self setupFeeWarningLabelFrameSmall];
-                        self.feeWarningLabel.hidden = NO;
-                    }];
-                }
-                self.feeWarningLabel.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
+                self.feeWarningTextView.hidden = NO;
+                self.feeWarningTextView.text = BC_STRING_HIGH_FEE_NOT_NECESSARY;
             }
         } else {
-            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            self.feeWarningLabel.hidden = YES;
+            self.feeWarningTextView.hidden = YES;
         }
         
         [app.wallet changeSatoshiPerByte:typedSatoshiPerByte updateType:feeUpdateType];
