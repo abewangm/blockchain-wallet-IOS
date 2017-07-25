@@ -66,7 +66,6 @@ typedef enum {
 @property (nonatomic, copy) void (^getDynamicFeeError)();
 
 @property (nonatomic, copy) void (^onViewDidLoad)();
-@property (nonatomic, copy) void (^onZeroSpendableAmount)();
 
 @property (nonatomic) TransferAllFundsBuilder *transferAllPaymentBuilder;
 
@@ -809,16 +808,11 @@ BOOL displayingLocalSymbolSend;
 
 - (void)handleZeroSpendableAmount
 {
-    if (self.onZeroSpendableAmount) {
-        self.onZeroSpendableAmount();
-        self.onZeroSpendableAmount = nil;
-    } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
-        [app.tabViewController presentViewController:alert animated:YES completion:nil];
-        [self enablePaymentButtons];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_AVAILABLE_FUNDS message:BC_STRING_PLEASE_SELECT_DIFFERENT_ADDRESS preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:alert selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    [self enablePaymentButtons];
 }
 
 - (IBAction)sendProgressCancelButtonClicked:(UIButton *)sender
@@ -912,18 +906,9 @@ BOOL displayingLocalSymbolSend;
     [continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
-- (void)showSummaryForSendingPaymentRequest:(ContactTransaction *)transaction
+- (void)setupPaymentRequest:(ContactTransaction *)transaction
 {
-    NSString *fromAddress;
     int fromAccount = [app.wallet getDefaultAccountIndex];
-    
-    if (transaction.initiatorSource) {
-        if ([transaction.initiatorSource isKindOfClass:[NSString class]]) {
-            fromAddress = transaction.initiatorSource;
-        } else {
-            fromAccount = [transaction.initiatorSource intValue];
-        }
-    }
     
     self.addressFromURLHandler = transaction.address;
     self.amountFromURLHandler = transaction.intendedAmount;
@@ -934,23 +919,7 @@ BOOL displayingLocalSymbolSend;
     
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
-        if (fromAddress) {
-            [weakSelf selectFromAddress:fromAddress];
-        } else {
-            [weakSelf selectFromAccount:fromAccount];
-        }
-        [weakSelf sendPaymentClicked:nil];
-    };
-    
-    self.onZeroSpendableAmount = ^() {
-        // Make one attempt to find an account with enough funds and try to send from it
-        for (int accountIndex = 0; accountIndex < [app.wallet getActiveAccountsCount]; accountIndex++) {
-            if (accountIndex != weakSelf.fromAccount && [app.wallet getBalanceForAccount:accountIndex] >= transaction.intendedAmount) {
-                [weakSelf selectFromAccount:accountIndex];
-            }
-        }
-        
-        [weakSelf sendPaymentClicked:nil];
+        [weakSelf selectFromAccount:fromAccount];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -959,13 +928,8 @@ BOOL displayingLocalSymbolSend;
         if (self.onViewDidLoad) {
             self.onViewDidLoad = nil;
             [self reload];
-            if (fromAddress) {
-                [weakSelf selectFromAddress:fromAddress];
-            } else {
-                [weakSelf selectFromAccount:fromAccount];
-            }
+            [weakSelf selectFromAccount:fromAccount];
             self.contactTransaction = transaction;
-            [self sendPaymentClicked:nil];
         }
     }
 }

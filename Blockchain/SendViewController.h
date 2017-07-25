@@ -119,7 +119,7 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)showSummaryForSendingPaymentRequest:(ContactTransaction *)transaction;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction;
 
 - (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 

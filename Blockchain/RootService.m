@@ -3309,8 +3309,9 @@ void (^secondPasswordSuccess)(NSString *);
     if (!_sendViewController) {
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
-        
-    [_sendViewController showSummaryForSendingPaymentRequest:transaction];
+    
+    [self showSendCoins];
+    [_sendViewController setupPaymentRequest:transaction];
 }
 
 - (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction
