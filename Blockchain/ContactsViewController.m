@@ -413,6 +413,9 @@ const int sectionContacts = 0;
 
 - (void)contactClicked:(Contact *)contact
 {
+    self.onCompleteRelation = nil;
+    self.onFailCompleteRelation = nil;
+    
     if (contact.mdid) {
         self.detailViewController = [[ContactDetailViewController alloc] initWithContact:contact];
         [self.navigationController pushViewController:self.detailViewController animated:YES];
