@@ -197,7 +197,7 @@ const int maxFindAttempts = 2;
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == sectionMain) {
-        return 96;
+        return 30;
     }
     return 0;
 }
@@ -206,37 +206,15 @@ const int maxFindAttempts = 2;
 {
     if (section == sectionMain) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160)];
-        
-        CGFloat smallButtonWidth = self.view.frame.size.width/2 - 20 - 5;
-        
-        UIButton *renameButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 8, smallButtonWidth, 40)];
-        [renameButton setTitle:BC_STRING_RENAME_CONTACT_ALERT_TITLE forState:UIControlStateNormal];
-        renameButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
-        renameButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        renameButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        renameButton.backgroundColor = COLOR_BUTTON_BLUE;
-        [renameButton addTarget:self action:@selector(renameContact) forControlEvents:UIControlEventTouchUpInside];
-        renameButton.layer.cornerRadius = 4;
-        [view addSubview:renameButton];
-        
-        UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 5, 8, smallButtonWidth, 40)];
-        [deleteButton setTitle:BC_STRING_DELETE_CONTACT forState:UIControlStateNormal];
-        deleteButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
-        deleteButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-        deleteButton.titleEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-        deleteButton.backgroundColor = COLOR_BUTTON_RED;
-        deleteButton.layer.cornerRadius = 4;
-        [deleteButton addTarget:self action:@selector(confirmDeleteContact) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:deleteButton];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
         
         UILabel *label = [[UILabel alloc] init];
         label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:14.0];
         label.textColor = COLOR_BLOCKCHAIN_BLUE;
-        label.frame = CGRectMake(20, renameButton.frame.origin.y + renameButton.frame.size.height + 26, self.view.frame.size.width - 40, 14);
+        label.frame = CGRectMake(20, 8, self.view.frame.size.width - 40, 14);
 
         if (self.transactionList.count > 0) {
-            label.text = [BC_STRING_COMPLETED_TRANSACTIONS uppercaseString];
+            label.text = [BC_STRING_FINISHED uppercaseString];
         } else {
             label.textAlignment = NSTextAlignmentCenter;
             label.text = [NSString stringWithFormat:BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET, self.contact.name];
