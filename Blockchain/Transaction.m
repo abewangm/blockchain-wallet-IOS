@@ -24,6 +24,7 @@
     transaction.txType = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TX_TYPE];
     transaction.amount = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_AMOUNT] longLongValue];
     transaction.time = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TIME] longLongValue];
+    transaction.lastUpdated = transaction.time;
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
     transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
@@ -46,5 +47,9 @@
     return dateString;
 }
 
+- (NSComparisonResult)reverseCompareLastUpdated:(Transaction *)transaction
+{
+    return [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:transaction.lastUpdated] decimalValue]] compare:[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:self.lastUpdated] decimalValue]]];
+}
 
 @end

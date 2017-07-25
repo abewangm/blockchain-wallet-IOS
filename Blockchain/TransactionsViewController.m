@@ -46,6 +46,8 @@ typedef NS_ENUM(NSInteger, CardConfiguration){
 @property (nonatomic) UIView *cardsView;
 
 @property (nonatomic) UIView *noTransactionsView;
+
+@property (nonatomic) NSArray *finishedTransactions;
 @end
 
 @implementation TransactionsViewController
@@ -73,7 +75,7 @@ int lastNumberTransactions = INT_MAX;
     if (section == self.sectionContactsPending) {
         return app.wallet.pendingContactTransactions.count;
     } else if (section == self.sectionMain) {
-        NSInteger transactionCount = [data.transactions count];
+        NSInteger transactionCount = [data.transactions count] + app.wallet.rejectedContactTransactions.count;
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
         if (data != nil && transactionCount == 0 && !self.loadedAllTransactions && self.clickedFetchMore) {
             [app.wallet fetchMoreTransactions];
@@ -106,9 +108,14 @@ int lastNumberTransactions = INT_MAX;
 
         return cell;
     } else if (indexPath.section == self.sectionMain) {
-        Transaction * transaction = [data.transactions objectAtIndex:[indexPath row]];
         
-        ContactTransaction *contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
+        Transaction * transaction = [self.finishedTransactions objectAtIndex:[indexPath row]];
+        
+        ContactTransaction *contactTransaction;
+        
+        if ([transaction isMemberOfClass:[ContactTransaction class]]) {
+            contactTransaction = transaction.myHash ? [app.wallet.completedContactTransactions objectForKey:transaction.myHash] : (ContactTransaction *)transaction;
+        }
         
         if (contactTransaction) {
             ContactTransaction *newTransaction = [ContactTransaction transactionWithTransaction:contactTransaction existingTransaction:transaction];
@@ -298,7 +305,7 @@ int lastNumberTransactions = INT_MAX;
         [self changeFilterLabel:@""];
     }
     // Data loaded, but no transactions yet
-    else if (self.data.transactions.count == 0 && app.wallet.pendingContactTransactions.count == 0) {
+    else if (self.data.transactions.count == 0 && app.wallet.pendingContactTransactions.count == 0 && app.wallet.rejectedContactTransactions == 0) {
         self.noTransactionsView.hidden = NO;
         
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
@@ -375,6 +382,8 @@ int lastNumberTransactions = INT_MAX;
 {
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
     self.sectionMain = app.wallet.pendingContactTransactions.count > 0 ? 1 : 0;
+    
+    self.finishedTransactions = [[app.wallet.rejectedContactTransactions arrayByAddingObjectsFromArray:data.transactions] sortedArrayUsingSelector:@selector(reverseCompareLastUpdated:)];
     
     [self setText];
     

@@ -19,6 +19,7 @@
 @property(nonatomic, assign) int64_t amount;
 @property(nonatomic, assign) uint32_t size;
 @property(nonatomic, assign) uint64_t time;
+@property(nonatomic, assign) uint64_t lastUpdated;
 @property(nonatomic, assign) uint32_t tx_index;
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
@@ -33,5 +34,6 @@
 @property (nonatomic, strong) NSString *contactName;
 
 - (NSString *)getDate;
+- (NSComparisonResult)reverseCompareLastUpdated:(Transaction *)transaction;
 
 @end

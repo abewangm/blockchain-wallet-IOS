@@ -179,6 +179,7 @@
 @property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
 @property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
 @property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
+@property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
 
 typedef enum {
     ContactActionRequiredNone,

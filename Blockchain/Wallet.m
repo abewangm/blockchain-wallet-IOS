@@ -2239,6 +2239,7 @@
     
     self.pendingContactTransactions = [NSMutableArray new];
     self.completedContactTransactions = [NSMutableDictionary new];
+    self.rejectedContactTransactions = [NSMutableArray new];
 
     [self iterateAndUpdateContacts:contacts];
     
@@ -2400,7 +2401,10 @@
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
         }
-        if (transaction.transactionState != ContactTransactionStateCompletedSend && transaction.transactionState != ContactTransactionStateCompletedReceive) {
+        
+        if (transaction.transactionState == ContactTransactionStateDeclined || transaction.transactionState == ContactTransactionStateCancelled) {
+            [self.rejectedContactTransactions addObject:transaction];
+        } else if (transaction.transactionState != ContactTransactionStateCompletedSend && transaction.transactionState != ContactTransactionStateCompletedReceive) {
             [self.pendingContactTransactions addObject:transaction];
         } else if (transaction.transactionState == ContactTransactionStateCompletedSend || transaction.transactionState == ContactTransactionStateCompletedReceive) {
             [self.completedContactTransactions setObject:transaction forKey:transaction.myHash];

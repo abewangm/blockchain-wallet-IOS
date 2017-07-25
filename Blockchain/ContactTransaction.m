@@ -19,7 +19,7 @@
         _address = [dictionary objectForKey:DICTIONARY_KEY_ADDRESS];
         _reason = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         _contactIdentifier = identifier;
-        _lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
+        self.lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
         _initiatorSource = [dictionary objectForKey:DICTIONARY_KEY_INITIATOR_SOURCE];
         
         self.note = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
@@ -72,11 +72,6 @@
     contactTransaction.fiatAmountsAtTime = existingTransaction.fiatAmountsAtTime;
     
     return contactTransaction;
-}
-
-- (NSComparisonResult)reverseCompareLastUpdated:(ContactTransaction *)contactTransaction
-{
-    return [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:contactTransaction.lastUpdated] decimalValue]] compare:[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:self.lastUpdated] decimalValue]]];
 }
 
 @end

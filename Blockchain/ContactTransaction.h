@@ -29,7 +29,6 @@ typedef enum {
 @property (nonatomic, readonly) NSString *role;
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *reason;
-@property (nonatomic, readonly) uint64_t lastUpdated;
 @property (nonatomic, readonly) id initiatorSource;
 
 // Pending requests
@@ -38,5 +37,4 @@ typedef enum {
 - (id)initWithDictionary:(NSDictionary *)dictionary contactIdentifier:(NSString *)identifier;
 + (ContactTransaction *)transactionWithTransaction:(ContactTransaction *)contactTransaction existingTransaction:(Transaction *)existingTransaction;
 
-- (NSComparisonResult)reverseCompareLastUpdated:(ContactTransaction *)contactTransaction;
 @end
