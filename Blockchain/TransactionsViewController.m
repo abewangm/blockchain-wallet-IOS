@@ -114,7 +114,11 @@ int lastNumberTransactions = INT_MAX;
         ContactTransaction *contactTransaction;
         
         if ([transaction isMemberOfClass:[ContactTransaction class]]) {
-            contactTransaction = transaction.myHash ? [app.wallet.completedContactTransactions objectForKey:transaction.myHash] : (ContactTransaction *)transaction;
+            // Declined or cancelled
+            contactTransaction = (ContactTransaction *)transaction;
+        } else if (transaction.myHash) {
+            // Completed
+            contactTransaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
         }
         
         if (contactTransaction) {
