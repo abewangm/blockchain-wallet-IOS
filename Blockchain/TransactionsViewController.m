@@ -212,7 +212,14 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 85;
+    CGFloat largerCellHeight = 85;
+    
+    if (indexPath.section == self.sectionContactsPending) {
+        return largerCellHeight;
+    } else {
+        Transaction *transaction = [self.finishedTransactions objectAtIndex:indexPath.row];
+        return ([transaction isMemberOfClass:[ContactTransaction class]] || [app.wallet.completedContactTransactions objectForKey:transaction.myHash]) ? largerCellHeight : 65;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
