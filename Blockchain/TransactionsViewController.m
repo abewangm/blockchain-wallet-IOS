@@ -136,7 +136,7 @@ int lastNumberTransactions = INT_MAX;
             
             cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
             
-            cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateCancelled || contactTransaction.transactionState == ContactTransactionStateDeclined ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
             
             return cell;
         } else {
@@ -150,6 +150,8 @@ int lastNumberTransactions = INT_MAX;
             
             [cell reload];
             
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+
             cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
             
             return cell;
@@ -178,6 +180,11 @@ int lastNumberTransactions = INT_MAX;
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.section == self.sectionMain) {
         TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        if ([cell.transaction isMemberOfClass:[ContactTransaction class]]) {
+            ContactTransaction *contactTransaction = (ContactTransaction *)cell.transaction;
+            if (contactTransaction.transactionState == ContactTransactionStateCancelled ||
+                contactTransaction.transactionState == ContactTransactionStateDeclined) return;
+        }
         [cell transactionClicked:nil indexPath:indexPath];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else {
