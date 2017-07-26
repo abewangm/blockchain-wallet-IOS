@@ -12,7 +12,6 @@
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                            session:(NSURLSession *)session
-                          delegate:(id <NSURLSessionDelegate>)delegate
                  returningResponse:(__autoreleasing NSURLResponse **)responsePtr
                              error:(__autoreleasing NSError **)errorPtr
                 sessionDescription:(NSString *)sessionDescription;

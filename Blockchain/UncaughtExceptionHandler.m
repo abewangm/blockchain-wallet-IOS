@@ -118,7 +118,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
     NSHTTPURLResponse * repsonse = NULL;
     NSError * error = NULL;
     
-    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] delegate:app.certificatePinner returningResponse:&repsonse error:&error sessionDescription:nil];
+    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] returningResponse:&repsonse error:&error sessionDescription:nil];
 }
 
 - (void)handleException:(NSException *)exception
