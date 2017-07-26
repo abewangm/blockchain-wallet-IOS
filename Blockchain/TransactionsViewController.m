@@ -305,7 +305,7 @@ int lastNumberTransactions = INT_MAX;
         [self changeFilterLabel:@""];
     }
     // Data loaded, but no transactions yet
-    else if (self.data.transactions.count == 0 && app.wallet.pendingContactTransactions.count == 0 && app.wallet.rejectedContactTransactions == 0) {
+    else if (self.data.transactions.count == 0 && app.wallet.pendingContactTransactions.count == 0 && app.wallet.rejectedContactTransactions.count == 0) {
         self.noTransactionsView.hidden = NO;
         
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
