@@ -123,6 +123,7 @@
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
+- (void)didCancelContactTransaction;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 - (void)showCompletedTrade:(NSString *)txHash;

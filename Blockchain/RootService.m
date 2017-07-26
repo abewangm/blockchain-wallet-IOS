@@ -2386,6 +2386,13 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didDeleteContactAfterStoringInfo];
 }
 
+- (void)didCancelContactTransaction
+{
+    [self.sendViewController reload];
+    [self showTransactions];
+    [self.wallet getMessages];
+}
+
 - (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses
 {
     if (!newSwipeAddresses) {

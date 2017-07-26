@@ -3730,7 +3730,12 @@
 - (void)on_send_cancellation_success
 {
     DLog(@"on_send_cancellation_success");
-    [self getMessages];
+    
+    if ([self.delegate respondsToSelector:@selector(didCancelContactTransaction)]) {
+        [self.delegate didCancelContactTransaction];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCancelContactTransaction!", [delegate class]);
+    }
 }
 
 - (void)on_send_cancellation_error:(JSValue *)info

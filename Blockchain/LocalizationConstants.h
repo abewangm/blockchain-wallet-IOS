@@ -498,6 +498,7 @@
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
 #define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
 #define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
+#define BC_STRING_CANCEL_PAYMENT NSLocalizedString(@"Cancel Payment", nil)
 #define BC_STRING_CANCELLED NSLocalizedString(@"Cancelled", nil)
 
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)

@@ -93,20 +93,34 @@ const int cellRowFee = 4;
         CGFloat cornerRadius;
         
         if (self.contactTransaction) {
-            buttonHeight = 60;
-            buttonFrame = CGRectMake(window.frame.size.width/2 + 4, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + (self.frame.size.height - (summaryTableView.frame.origin.y + summaryTableView.frame.size.height))/2 - buttonHeight/2, window.frame.size.width/2 - 12, buttonHeight);
-            buttonTitle = [self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_SEND : BC_STRING_PAY;
             cornerRadius = CORNER_RADIUS_BUTTON;
-            
-            UIButton *cancelButton = [[UIButton alloc] initWithFrame:buttonFrame];
-            [cancelButton changeXPosition:8];
-            cancelButton.layer.cornerRadius = cornerRadius;
-            [cancelButton setTitle:[self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_CANCEL : BC_STRING_DECLINE forState:UIControlStateNormal];
-            cancelButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
-            cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-            [self addSubview:cancelButton];
-            [cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            
+
+            if ([self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
+                CGFloat sendButtonOriginY = self.frame.size.height - BUTTON_HEIGHT - 28 - BUTTON_HEIGHT + 8;
+                buttonFrame = CGRectMake(20, sendButtonOriginY, self.frame.size.width - 40, BUTTON_HEIGHT);
+                buttonTitle = BC_STRING_SEND;
+                
+                UIButton *cancelButton = [[UIButton alloc] initWithFrame:buttonFrame];
+                [cancelButton changeYPosition:buttonFrame.origin.y + buttonFrame.size.height + 8];
+                [cancelButton setTitle:BC_STRING_CANCEL_PAYMENT forState:UIControlStateNormal];
+                cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+                [cancelButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
+                [self addSubview:cancelButton];
+                [cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                buttonHeight = 60;
+                buttonFrame = CGRectMake(window.frame.size.width/2 + 4, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + (self.frame.size.height - (summaryTableView.frame.origin.y + summaryTableView.frame.size.height))/2 - buttonHeight/2, window.frame.size.width/2 - 12, buttonHeight);
+                buttonTitle = BC_STRING_PAY;
+                
+                UIButton *declineButton = [[UIButton alloc] initWithFrame:buttonFrame];
+                [declineButton changeXPosition:8];
+                declineButton.layer.cornerRadius = cornerRadius;
+                [declineButton setTitle:BC_STRING_DECLINE forState:UIControlStateNormal];
+                declineButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
+                declineButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+                [self addSubview:declineButton];
+                [declineButton addTarget:self action:@selector(declineButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            }
         } else {
             buttonHeight = 40;
             buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);
@@ -137,11 +151,12 @@ const int cellRowFee = 4;
 
 - (void)cancelButtonClicked
 {
-    if ([self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
-        [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
-    } else {
-        [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
-    }
+    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+}
+
+- (void)declineButtonClicked
+{
+    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
 }
 
 - (void)feeInformationButtonClicked
