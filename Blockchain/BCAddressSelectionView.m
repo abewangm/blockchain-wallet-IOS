@@ -103,8 +103,10 @@ int legacyAddressesSectionNumber;
         else {
             
             // Show contacts
-            for (Contact *contact in [_wallet.contacts allValues]) {
-                [contacts addObject:contact];
+            if (selectMode != SelectModeReceiveFromContact) {
+                for (Contact *contact in [_wallet.contacts allValues]) {
+                    [contacts addObject:contact];
+                }
             }
             
             if (selectMode != SelectModeContact) {
@@ -181,12 +183,12 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)accountsOnly
 {
-    return selectMode == SelectModeTransferTo;
+    return selectMode == SelectModeTransferTo || selectMode == SelectModeReceiveFromContact;
 }
 
 - (BOOL)allSelectable
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
+    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter || selectMode == SelectModeReceiveFromContact;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

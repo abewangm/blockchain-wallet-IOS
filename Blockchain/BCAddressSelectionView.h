@@ -42,6 +42,7 @@ typedef enum {
     SelectModeSendFrom = 100,
     SelectModeSendTo = 200,
     SelectModeReceiveTo = 300,
+    SelectModeReceiveFromContact = 350,
     SelectModeTransferTo = 400,
     SelectModeContact = 500
 }SelectMode;
