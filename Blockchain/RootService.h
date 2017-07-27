@@ -196,9 +196,9 @@
 - (void)showHdUpgrade;
 - (void)showBackupReminder:(BOOL)firstReceive;
 
-- (IBAction)receiveCoinClicked:(UIButton *)sender;
-- (IBAction)transactionsClicked:(UIButton *)sender;
-- (IBAction)sendCoinsClicked:(UIButton *)sender;
+- (void)receiveCoinClicked:(UITabBarItem *)sender;
+- (void)transactionsClicked:(UITabBarItem *)sender;
+- (void)sendCoinsClicked:(UITabBarItem *)sender;
 - (IBAction)merchantClicked:(UIButton *)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)forgetWalletClicked:(id)sender;

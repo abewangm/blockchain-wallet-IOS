@@ -6,11 +6,11 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-@interface TabViewcontroller : UIViewController  {
-    IBOutlet UIButton *sendButton;
-    IBOutlet UIButton *homeButton;
-    IBOutlet UIButton *receiveButton;
-    IBOutlet UIView *tabBar;
+@interface TabViewcontroller : UIViewController <UITabBarDelegate> {
+    IBOutlet UITabBarItem *sendButton;
+    IBOutlet UITabBarItem *homeButton;
+    IBOutlet UITabBarItem *receiveButton;
+    IBOutlet UITabBar *tabBar;
 	
 	UIViewController *activeViewController;
 	UIViewController *oldViewController;

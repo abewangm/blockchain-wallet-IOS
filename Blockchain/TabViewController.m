@@ -18,6 +18,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    tabBar.delegate = self;
+    
     // Default selected: transactions
     selectedIndex = TAB_TRANSACTIONS;
     
@@ -39,25 +42,15 @@
 
 - (void)setupTabButtons
 {
-    CGFloat spacing = 2.0;
-    
     NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_REQUEST:receiveButton};
     
-    for (UIButton *button in [tabButtons allValues]) {
-                
+    for (UITabBarItem *button in [tabButtons allValues]) {
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
-        [button setTitle:label forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL]];
-        CGSize titleSize = [label sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
-        
-        CGSize imageSize = button.imageView.image.size;
-        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width);
-        
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0);
-        [button setTitleColor:COLOR_TEXT_DARK_GRAY forState:UIControlStateNormal];
-        [button setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateHighlighted];
-        
-        button.titleLabel.adjustsFontSizeToFitWidth = YES;
+        button.title = label;
+        button.image = [button.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        button.selectedImage = [button.selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [button setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL], NSForegroundColorAttributeName : COLOR_TEXT_DARK_GRAY} forState:UIControlStateNormal];
+        [button setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL], NSForegroundColorAttributeName : COLOR_BLOCKCHAIN_LIGHT_BLUE} forState:UIControlStateHighlighted];
     }
 }
 
@@ -119,26 +112,10 @@
 {
     selectedIndex = nindex;
     
-    sendButton.highlighted = NO;
-    homeButton.highlighted = NO;
-    receiveButton.highlighted = NO;
-    sendButton.userInteractionEnabled = YES;
-    homeButton.userInteractionEnabled = YES;
-    receiveButton.userInteractionEnabled = YES;
-    
+    tabBar.selectedItem = nil;
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    if (selectedIndex == TAB_SEND) {
-        sendButton.highlighted = YES;
-        sendButton.userInteractionEnabled = NO;
-    }
-    else if (selectedIndex == TAB_TRANSACTIONS) {
-        homeButton.highlighted = YES;
-        homeButton.userInteractionEnabled = NO;
-    }
-    else if (selectedIndex == TAB_RECEIVE) {
-        receiveButton.highlighted = YES;
-        receiveButton.userInteractionEnabled = NO;
-    }
+        tabBar.selectedItem = [[tabBar items] objectAtIndex:selectedIndex];
     });
 }
 
@@ -157,6 +134,17 @@
     [self.tabBarGestureView removeGestureRecognizer:tapGestureRecognizer];
     [self.tabBarGestureView removeFromSuperview];
     self.tabBarGestureView = nil;
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if (item == sendButton) {
+        [app sendCoinsClicked:item];
+    } else if (item == homeButton) {
+        [app transactionsClicked:item];
+    } else if (item == receiveButton) {
+        [app receiveCoinClicked:item];
+    }
 }
 
 @end

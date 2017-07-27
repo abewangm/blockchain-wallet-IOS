@@ -2917,7 +2917,7 @@ void (^secondPasswordSuccess)(NSString *);
     [app.window.rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
-- (IBAction)receiveCoinClicked:(UIButton *)sender
+- (void)receiveCoinClicked:(UITabBarItem *)sender
 {
     if (!_receiveViewController) {
         _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
@@ -2926,7 +2926,7 @@ void (^secondPasswordSuccess)(NSString *);
     [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:2];
 }
 
-- (IBAction)transactionsClicked:(UIButton *)sender
+- (void)transactionsClicked:(UITabBarItem *)sender
 {
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
     
@@ -2944,7 +2944,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (IBAction)sendCoinsClicked:(UIButton *)sender
+- (void)sendCoinsClicked:(UITabBarItem *)sender
 {
     [self showSendCoins];
 }
