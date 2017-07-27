@@ -25,6 +25,7 @@ const int sectionContacts = 0;
 
 @property (nonatomic) ContactDetailViewController *detailViewController;
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) UISearchBar *searchBar;
 @property (nonatomic) NSArray *sections;
 @property (nonatomic) NSArray *contactsToDisplay;
 @property (nonatomic) NSArray *nonAlphabeticalContacts;
@@ -161,6 +162,7 @@ const int sectionContacts = 0;
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     searchBar.delegate = self;
     [self.view addSubview:searchBar];
+    self.searchBar = searchBar;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, searchBar.frame.origin.y + searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - DEFAULT_HEADER_HEIGHT) style:UITableViewStylePlain];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -678,6 +680,10 @@ const int sectionContacts = 0;
     } else {
         [self.tableView removeFromSuperview];
         self.tableView = nil;
+        
+        [self.searchBar removeFromSuperview];
+        self.searchBar = nil;
+        
         self.refreshControl = nil;
         
         [self setupNoContactsView];
