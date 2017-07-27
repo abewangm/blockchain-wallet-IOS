@@ -147,4 +147,9 @@
     }
 }
 
+- (void)updateBadgeCount:(NSNumber *)count forSelectedIndex:(int)nselectedIndex
+{
+    [[[tabBar items] objectAtIndex:nselectedIndex] setBadgeValue:[NSString stringWithFormat:@"%@", count]];
+}
+
 @end

@@ -2256,6 +2256,8 @@ void (^secondPasswordSuccess)(NSString *);
     [_transactionsViewController reload];
     [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
+    
+    [self.tabViewController updateBadgeCount:self.wallet.contactsActionCount forSelectedIndex:TAB_TRANSACTIONS];
 }
 
 - (void)didCompleteTrade:(NSDictionary *)trade

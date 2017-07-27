@@ -2390,6 +2390,8 @@
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }
     
+    self.contactsActionCount = [NSNumber numberWithInt:actionCount];
+    
     self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
 }
 
