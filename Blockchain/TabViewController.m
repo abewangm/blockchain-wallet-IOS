@@ -147,9 +147,10 @@
     }
 }
 
-- (void)updateBadgeCount:(NSNumber *)count forSelectedIndex:(int)nselectedIndex
+- (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index
 {
-    [[[tabBar items] objectAtIndex:nselectedIndex] setBadgeValue:[NSString stringWithFormat:@"%@", count]];
+    NSString *badgeString = number > 0 ? [NSString stringWithFormat:@"%lu", number] : nil;
+    [[[tabBar items] objectAtIndex:index] setBadgeValue:badgeString];
 }
 
 @end
