@@ -174,6 +174,11 @@ BOOL displayingLocalSymbolSend;
     toField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [toField setReturnKeyType:UIReturnKeyDone];
     
+    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    CGFloat continueButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+    continuePaymentButton.frame = CGRectMake(0, continueButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT);
+    continuePaymentButton.center = CGPointMake(self.view.center.x, continuePaymentButton.center.y);
+    
     [self reload];
     
     if (self.onViewDidLoad) {
