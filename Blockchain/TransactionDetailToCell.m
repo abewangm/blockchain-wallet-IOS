@@ -43,14 +43,6 @@
     self.mainLabel.center = CGPointMake(self.mainLabel.center.x, self.contentView.center.y);
     [self.contentView addSubview:self.mainLabel];
     
-    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.mainLabel.frame.origin.y + self.mainLabel.frame.size.height, self.mainLabel.frame.size.width, 15)];
-    self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
-    self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    self.subtitleLabel.text = [transaction.txType isEqualToString:TX_TYPE_SENT] && [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction contactName] : nil;
-    self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
-    [self.contentView addSubview:self.subtitleLabel];
-    
     if (transaction.to.count > 1) {
         self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
         self.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -61,7 +53,7 @@
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
         self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
-        self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
+        self.accessoryLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] && [transaction.txType isEqualToString:TX_TYPE_SENT] ? transaction.contactName : [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryLabel.center = CGPointMake(self.accessoryLabel.center.x, self.contentView.center.y);
         self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;

@@ -17,8 +17,9 @@
     
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_DESCRIPTION;
-        if (transaction.note.length > 0) {
-            self.textView.text = transaction.note;
+        NSString *note = [self getNoteForTransaction:transaction];
+        if (note.length > 0) {
+            self.textView.text = note;
             self.textViewPlaceholderLabel.hidden = YES;
         } else {
             self.textView.text = nil;
@@ -40,7 +41,6 @@
     
     self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.mainLabel.frame.origin.x, 0, 30, 30)];
     self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
-    self.subtitleLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] ? [(ContactTransaction *)transaction reason] : nil;
     self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
     self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:self.subtitleLabel];
@@ -50,7 +50,7 @@
     self.textView.scrollEnabled = NO;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
-    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE]];
+    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE]];
     self.textView.textColor = COLOR_TEXT_DARK_GRAY;
     
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
@@ -60,11 +60,15 @@
     self.textView.editable = NO;
     
     [self addEditButton];
+
+    self.editButton.enabled = ![transaction isMemberOfClass:[ContactTransaction class]];
     
     [self addPlaceholderLabel];
 
-    if (transaction.note.length > 0) {
-        self.textView.text = transaction.note;
+    NSString *note = [self getNoteForTransaction:transaction];
+
+    if (note.length > 0) {
+        self.textView.text = note;
         if (!self.descriptionDelegate.didSetTextViewCursorPosition) {
             [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
         }
@@ -227,6 +231,16 @@
     self.textView.selectedRange = cursorPosition;
     
     [self.descriptionDelegate textViewDidChange:self.textView];
+}
+
+- (NSString *)getNoteForTransaction:(Transaction *)transaction
+{
+    if ([transaction isMemberOfClass:[ContactTransaction class]]) {
+        ContactTransaction *contactTransaction = (ContactTransaction *)transaction;
+        return contactTransaction.reason;
+    } else {
+        return transaction.note;
+    }
 }
 
 #pragma mark - TextView delegate
