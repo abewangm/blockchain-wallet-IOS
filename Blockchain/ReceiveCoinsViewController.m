@@ -753,7 +753,7 @@ NSString *detailLabel;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
-    titleLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    titleLabel.textColor = COLOR_BLOCKCHAIN_MEDIUM_BLUE;
     titleLabel.text = BC_STRING_INTRODUCING_CONTACTS_TITLE;
     [titleLabel sizeToFit];
     titleLabel.center = introducingContactsView.center;
@@ -770,7 +770,7 @@ NSString *detailLabel;
     onePixelLine.backgroundColor = COLOR_LINE_GRAY;
     [introducingContactsView addSubview:onePixelLine];
     
-    UILabel *descriptionLabelTop = [[UILabel alloc] initWithFrame:CGRectMake(0, onePixelLine.frame.origin.y + 8, self.view.frame.size.width - 30, 0)];
+    UILabel *descriptionLabelTop = [[UILabel alloc] initWithFrame:CGRectMake(0, onePixelLine.frame.origin.y + 16, self.view.frame.size.width - 30, 0)];
     descriptionLabelTop.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     descriptionLabelTop.textColor = COLOR_TEXT_GRAY;
     descriptionLabelTop.textAlignment = NSTextAlignmentCenter;
@@ -781,24 +781,32 @@ NSString *detailLabel;
     descriptionLabelTop.center = CGPointMake(introducingContactsView.center.x, descriptionLabelTop.center.y);
     [introducingContactsView addSubview:descriptionLabelTop];
     
-    UILabel *descriptionLabelBottom = [[UILabel alloc] initWithFrame:CGRectMake(0, descriptionLabelTop.frame.origin.y + descriptionLabelTop.frame.size.height + 16, 0, 0)];
+    UILabel *descriptionLabelBottom = [[UILabel alloc] initWithFrame:CGRectMake(0, descriptionLabelTop.frame.origin.y + descriptionLabelTop.frame.size.height + 8, 0, 0)];
     descriptionLabelBottom.font = descriptionLabelTop.font;
-    descriptionLabelBottom.textColor = COLOR_TEXT_DARK_GRAY;
+    descriptionLabelBottom.textColor = COLOR_DARK_GRAY;
     descriptionLabelBottom.text = BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM;
     [descriptionLabelBottom sizeToFit];
     descriptionLabelBottom.center = CGPointMake(introducingContactsView.center.x, descriptionLabelBottom.center.y);
     [introducingContactsView addSubview:descriptionLabelBottom];
 
     UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(15, app.window.frame.size.height - BUTTON_HEIGHT - 16, introducingContactsView.frame.size.width - 30, BUTTON_HEIGHT)];
-    dismissButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    [dismissButton setTitle:BC_STRING_DISMISS forState:UIControlStateNormal];
+    [dismissButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
+    [dismissButton setTitleColor:COLOR_MEDIUM_GRAY forState:UIControlStateNormal];
     dismissButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     dismissButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [dismissButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [introducingContactsView addSubview:dismissButton];
+    
+    UIButton *getStartedButton = [[UIButton alloc] initWithFrame:CGRectMake(15, dismissButton.frame.origin.y - dismissButton.frame.size.height - 8, introducingContactsView.frame.size.width - 30, BUTTON_HEIGHT)];
+    getStartedButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [getStartedButton setTitle:BC_STRING_GET_STARTED forState:UIControlStateNormal];
+    getStartedButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    getStartedButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [getStartedButton addTarget:self action:@selector(showContacts) forControlEvents:UIControlEventTouchUpInside];
+    [introducingContactsView addSubview:getStartedButton];
     
     BCModalViewController *modalViewController = [BCModalViewController new];
     modalViewController.view = introducingContactsView;
-    [dismissButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     
     [UIApplication sharedApplication].statusBarStyle = UIBarStyleDefault;
     
@@ -875,6 +883,15 @@ NSString *detailLabel;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showContacts
+{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [app.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [app contactsClicked:nil];
+    }];
 }
 
 # pragma mark - UITextField delegates

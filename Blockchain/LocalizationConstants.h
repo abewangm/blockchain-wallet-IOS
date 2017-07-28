@@ -441,8 +441,9 @@
 #define BC_STRING_NEW_ADDRESS_CREATE_NEW NSLocalizedString(@"Create new address", nil)
 
 #define BC_STRING_INTRODUCING_CONTACTS_TITLE NSLocalizedString(@"Introducing Contacts", nil)
-#define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP NSLocalizedString(@"You can now transact without the hassle of Bitcoin addresses. Add your first contact via the sidebar.", nil)
+#define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP NSLocalizedString(@"Make sending and receiving even easier by adding contacts!", nil)
 #define BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM NSLocalizedString(@"It's simple and secure.", nil)
+#define BC_STRING_GET_STARTED NSLocalizedString(@"Get started", nil)
 
 #define BC_STRING_ACCEPTED_RELATION_ALERT_TITLE_NAME_ARGUMENT NSLocalizedString(@"Accepted Invite by %@", nil)
 #define BC_STRING_ACCEPTED_RELATION_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"When %@ logs into their wallet, you will be able to exchange payment requests.", nil)
