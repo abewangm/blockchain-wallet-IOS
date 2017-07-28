@@ -36,6 +36,8 @@ typedef enum {
 
 @property (nonatomic) TransactionType transactionType;
 
+@property (nonatomic, readwrite) DestinationAddressSource addressSource;
+
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
@@ -174,6 +176,12 @@ BOOL displayingLocalSymbolSend;
     toField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [toField setReturnKeyType:UIReturnKeyDone];
     
+    CGFloat continueButtonOriginY = [self continuePaymentButtonOriginY];
+    continuePaymentButton.frame = CGRectMake(0, continueButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT);
+    continuePaymentButton.center = CGPointMake(self.view.center.x, continuePaymentButton.center.y);
+    
+    rejectPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    
     [self reload];
     
     if (self.onViewDidLoad) {
@@ -288,6 +296,10 @@ BOOL displayingLocalSymbolSend;
     [self setupFees];
     
     sendProgressCancelButton.hidden = YES;
+    
+    [self enableAmountViews];
+
+    [self hideRejectPaymentButton];
     
     self.isSending = NO;
     self.isReloading = NO;
@@ -417,6 +429,16 @@ BOOL displayingLocalSymbolSend;
     } else if (app.latestResponse.symbol_btc) {
         displayingLocalSymbol = FALSE;
         displayingLocalSymbolSend = FALSE;
+    }
+}
+
+- (void)setAddressSource:(DestinationAddressSource)addressSource
+{
+    _addressSource = addressSource;
+    
+    if (_addressSource != DestinationAddressSourceContact) {
+        [self enableAmountViews];
+        [self hideRejectPaymentButton];
     }
 }
 
@@ -729,7 +751,7 @@ BOOL displayingLocalSymbolSend;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if ([self transferAllMode] || _addressSource == DestinationAddressSourceContact) {
+        if ([self transferAllMode] || self.addressSource == DestinationAddressSourceContact) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -913,13 +935,17 @@ BOOL displayingLocalSymbolSend;
     self.addressFromURLHandler = transaction.address;
     self.amountFromURLHandler = transaction.intendedAmount;
     
-    _addressSource = DestinationAddressSourceContact;
+    RejectionType rejectionType = [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? RejectionTypeCancel : RejectionTypeDecline;
+    
+    self.addressSource = DestinationAddressSourceContact;
     
     __weak SendViewController *weakSelf = self;
     
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         [weakSelf selectFromAccount:fromAccount];
+        [weakSelf disableAmountViews];
+        [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -928,8 +954,10 @@ BOOL displayingLocalSymbolSend;
         if (self.onViewDidLoad) {
             self.onViewDidLoad = nil;
             [self reload];
-            [weakSelf selectFromAccount:fromAccount];
             self.contactTransaction = transaction;
+            [weakSelf selectFromAccount:fromAccount];
+            [weakSelf disableAmountViews];
+            [self showRejectPaymentButtonWithRejectionType:rejectionType];
         }
     }
 }
@@ -950,7 +978,7 @@ BOOL displayingLocalSymbolSend;
         self.amountFromURLHandler = 0;
     }
     
-    _addressSource = DestinationAddressSourceURI;
+    self.addressSource = DestinationAddressSourceURI;
 }
 
 - (NSString *)labelForLegacyAddress:(NSString *)address
@@ -1223,6 +1251,99 @@ BOOL displayingLocalSymbolSend;
     return IS_USING_SCREEN_SIZE_4S ? 76 : 112;
 }
 
+- (void)showRejectPaymentButtonWithRejectionType:(RejectionType)rejectionType
+{
+    [rejectPaymentButton removeTarget:nil action:nil forControlEvents:UIControlEventAllTouchEvents];
+    
+    NSString *buttonTitle;
+    UIColor *titleColor;
+    
+    if (rejectionType == RejectionTypeDecline) {
+        buttonTitle = BC_STRING_DECLINE;
+        titleColor = [UIColor whiteColor];
+        rejectPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
+        [rejectPaymentButton addTarget:self action:@selector(declinePaymentClicked) forControlEvents:UIControlEventTouchUpInside];
+    } else if (rejectionType == RejectionTypeCancel) {
+        buttonTitle = BC_STRING_CANCEL_PAYMENT;
+        titleColor = COLOR_LIGHT_GRAY;
+        rejectPaymentButton.backgroundColor = [UIColor clearColor];
+        [rejectPaymentButton addTarget:self action:@selector(cancelPaymentClicked) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [rejectPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [rejectPaymentButton setTitleColor:titleColor forState:UIControlStateNormal];
+
+    rejectPaymentButton.alpha = 0.0;
+    rejectPaymentButton.hidden = NO;
+
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY] - 8 - continuePaymentButton.frame.size.height];
+       rejectPaymentButton.alpha = 1.0;
+    }];
+}
+
+- (void)hideRejectPaymentButton
+{
+    rejectPaymentButton.alpha = 1.0;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        rejectPaymentButton.alpha = 0.0;
+        rejectPaymentButton
+        .hidden = YES;
+        [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY]];
+    }];
+}
+
+- (void)disableAmountViews
+{
+    CGFloat alpha = 0.25;
+    
+    btcAmountField.enabled = NO;
+    btcAmountField.alpha = alpha;
+    
+    fiatAmountField.enabled = NO;
+    fiatAmountField.alpha = alpha;
+    
+    fundsAvailableButton.enabled = NO;
+    fundsAvailableButton.alpha = alpha;
+}
+
+- (void)enableAmountViews
+{
+    CGFloat alpha = 1.0;
+
+    btcAmountField.enabled = YES;
+    btcAmountField.alpha = alpha;
+    
+    fiatAmountField.enabled = YES;
+    fiatAmountField.alpha = alpha;
+    
+    fundsAvailableButton.enabled = YES;
+    fundsAvailableButton.alpha = alpha;
+}
+
+- (CGFloat)continuePaymentButtonOriginY
+{
+    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    return self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+}
+
+- (void)confirmRejectPayment:(RejectionType)rejectionType
+{
+    NSString *title = rejectionType == RejectionTypeDecline ? BC_STRING_DECLINE : BC_STRING_CANCEL_PAYMENT;
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:BC_STRING_REJECT_PAYMENT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (rejectionType == RejectionTypeDecline) {
+            [app.wallet sendDeclination:self.contactTransaction];
+        } else {
+            [app.wallet sendCancellation:self.contactTransaction];
+        }
+    }]];
+    [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1361,7 +1482,7 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
-            _addressSource = DestinationAddressSourcePaste;
+            self.addressSource = DestinationAddressSourcePaste;
             return NO;
         }
         
@@ -1482,7 +1603,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAddress:address];
     
-    _addressSource = DestinationAddressSourceDropDown;
+    self.addressSource = DestinationAddressSourceDropDown;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1494,7 +1615,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAccount:account];
     
-    _addressSource = DestinationAddressSourceDropDown;
+    self.addressSource = DestinationAddressSourceDropDown;
 }
 
 - (void)didSelectContact:(Contact *)contact
@@ -1778,6 +1899,16 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Actions
 
+- (void)declinePaymentClicked
+{
+    [self confirmRejectPayment:RejectionTypeDecline];
+}
+
+- (void)cancelPaymentClicked
+{
+    [self confirmRejectPayment:RejectionTypeCancel];
+}
+
 - (void)setupTransferAll
 {
     self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:YES];
@@ -1898,7 +2029,7 @@ BOOL displayingLocalSymbolSend;
                 DLog(@"toAddress: %@", self.toAddress);
                 [self selectToAddress:self.toAddress];
                 
-                _addressSource = DestinationAddressSourceQR;
+                self.addressSource = DestinationAddressSourceQR;
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {

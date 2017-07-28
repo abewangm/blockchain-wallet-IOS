@@ -151,12 +151,12 @@ const int cellRowFee = 4;
 
 - (void)cancelButtonClicked
 {
-    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    [self.delegate confirmRejectPayment:RejectionTypeCancel];
 }
 
 - (void)declineButtonClicked
 {
-    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    [self.delegate confirmRejectPayment:RejectionTypeDecline];
 }
 
 - (void)feeInformationButtonClicked

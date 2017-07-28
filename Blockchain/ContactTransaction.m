@@ -21,6 +21,7 @@
         _contactIdentifier = identifier;
         self.lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
         _initiatorSource = [dictionary objectForKey:DICTIONARY_KEY_INITIATOR_SOURCE];
+        _read = [[dictionary objectForKey:DICTIONARY_KEY_READ] boolValue];
         
         self.note = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];
@@ -35,7 +36,7 @@
             if ([_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
                 _transactionState = ContactTransactionStateSendWaitingForQR;
             } else if ([_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
-                _transactionState = ContactTransactionStateReceiveAcceptOrDenyPayment;
+                _transactionState = ContactTransactionStateReceiveAcceptOrDeclinePayment;
             }
         } else if ([_state isEqualToString:TRANSACTION_STATE_PAYMENT_BROADCASTED]) {
             if ([_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER]) {

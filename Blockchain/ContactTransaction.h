@@ -12,7 +12,7 @@ typedef enum {
     ContactTransactionStateNone,
     ContactTransactionStateSendWaitingForQR, // User tapped 'Ask to Send Bitcoin'
     ContactTransactionStateSendReadyToSend, // User tapped 'Ask to Send Bitcoin' -> QR Received OR Contact tapped 'Request Bitcoin from Contact'
-    ContactTransactionStateReceiveAcceptOrDenyPayment, // Contact tapped 'Ask to Send Bitcoin'
+    ContactTransactionStateReceiveAcceptOrDeclinePayment, // Contact tapped 'Ask to Send Bitcoin'
     ContactTransactionStateReceiveWaitingForPayment, // User tapped 'Request Bitcoin from Contact' OR Contact tapped 'Ask to Send Bitcoin' -> QR Sent
     ContactTransactionStateCompletedSend,
     ContactTransactionStateCompletedReceive,
@@ -30,6 +30,7 @@ typedef enum {
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *reason;
 @property (nonatomic, readonly) id initiatorSource;
+@property (nonatomic, readonly) BOOL read;
 
 // Pending requests
 @property (nonatomic, readonly) NSString *contactIdentifier;

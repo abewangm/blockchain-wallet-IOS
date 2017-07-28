@@ -46,7 +46,8 @@
     
     IBOutlet UIButton *continuePaymentButton;
     IBOutlet UIButton *continuePaymentAccessoryButton;
-    
+    IBOutlet UIButton *rejectPaymentButton;
+
     IBOutlet UIView *amountKeyboardAccessoryView;
     
     IBOutlet UIView *labelAddressView;

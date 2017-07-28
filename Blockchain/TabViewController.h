@@ -28,6 +28,6 @@
 - (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer;
 - (void)removeTapGestureRecognizerFromTabBar:(UITapGestureRecognizer *)tapGestureRecognizer;
 - (int)selectedIndex;
-- (void)updateBadgeCount:(NSNumber *)count forSelectedIndex:(int)selectedIndex;
+- (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 
 @end

@@ -54,6 +54,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_DARK_GRAY UIColorFromRGB(0x4c4c4c)
 #define COLOR_TEXT_DARK_GRAY COLOR_DARK_GRAY
 #define COLOR_LIGHT_GRAY UIColorFromRGB(0xB0B0B0)
+#define COLOR_MEDIUM_GRAY UIColorFromRGB(0x979797)
 
 #define COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
 #define COLOR_TABLE_VIEW_CELL_SELECTED_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
@@ -63,6 +64,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_TRANSACTION_RECEIVED COLOR_BLOCKCHAIN_AQUA
 #define COLOR_TRANSACTION_SENT COLOR_BLOCKCHAIN_RED
 #define COLOR_TRANSACTION_TRANSFERRED COLOR_BLOCKCHAIN_GRAY_BLUE
+
+#define COLOR_NOTE_LIGHT_BLUE UIColorFromRGB(0xe8f7fc)
 
 #define COLOR_BUTTON_LIGHT_BLUE UIColorFromRGB(0x5cb2d6)
 #define COLOR_BUTTON_BLUE COLOR_BLOCKCHAIN_LIGHT_BLUE
@@ -517,6 +520,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_REASON @"reason"
 #define DICTIONARY_KEY_LAST_UPDATED @"last_updated"
 #define DICTIONARY_KEY_INITIATOR_SOURCE @"initiator_source"
+#define DICTIONARY_KEY_READ @"read"
 
 #define DICTIONARY_KEY_APS @"aps"
 #define DICTIONARY_KEY_TYPE @"type"
