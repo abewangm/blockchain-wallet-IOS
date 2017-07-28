@@ -36,7 +36,7 @@
             if ([_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
                 _transactionState = ContactTransactionStateSendWaitingForQR;
             } else if ([_role isEqualToString:TRANSACTION_ROLE_RPR_RECEIVER]) {
-                _transactionState = ContactTransactionStateReceiveAcceptOrDenyPayment;
+                _transactionState = ContactTransactionStateReceiveAcceptOrDeclinePayment;
             }
         } else if ([_state isEqualToString:TRANSACTION_STATE_PAYMENT_BROADCASTED]) {
             if ([_role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] || [_role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER]) {

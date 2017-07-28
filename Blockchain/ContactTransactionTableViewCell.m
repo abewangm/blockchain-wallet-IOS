@@ -63,7 +63,7 @@
         self.bottomRightLabel.text = BC_STRING_AWAITING_RESPONSE;
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
-    } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
+    } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
         self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;

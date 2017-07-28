@@ -104,7 +104,7 @@ int lastNumberTransactions = INT_MAX;
         
         cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
         
-        cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
 
         return cell;
     } else if (indexPath.section == self.sectionMain) {
@@ -169,8 +169,8 @@ int lastNumberTransactions = INT_MAX;
         ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
         Contact *contact = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier];
         
-        if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
-            [self acceptOrDenyPayment:contactTransaction forContact:contact];
+        if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
+            [self acceptOrDeclinePayment:contactTransaction forContact:contact];
             [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
         } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
             [self sendPayment:contactTransaction toContact:contact];
@@ -649,7 +649,7 @@ int lastNumberTransactions = INT_MAX;
     self.messageIdentifier = nil;
 }
 
-- (void)acceptOrDenyPayment:(ContactTransaction *)transaction forContact:(Contact *)contact
+- (void)acceptOrDeclinePayment:(ContactTransaction *)transaction forContact:(Contact *)contact
 {
     NSString *message;
     NSString *reasonWithoutSpaces = [transaction.reason stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -665,7 +665,7 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendPaymentRequest:contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note initiatorSource:nil];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DECLINE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet sendCancellation:transaction.contactIdentifier invitation:transaction.identifier];
+        [app.wallet sendDeclination:transaction.contactIdentifier invitation:transaction.identifier];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alert animated:YES completion:nil];

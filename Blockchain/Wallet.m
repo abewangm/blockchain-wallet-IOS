@@ -2415,7 +2415,7 @@
     int numberOfActionsRead = 0;
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
-        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
             
             if (transaction.read) {
@@ -2444,7 +2444,7 @@
 {
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
-        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+        if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             return YES;
         }
     }
