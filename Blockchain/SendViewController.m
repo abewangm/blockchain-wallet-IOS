@@ -297,6 +297,8 @@ BOOL displayingLocalSymbolSend;
     
     sendProgressCancelButton.hidden = YES;
     
+    [self enableAmountViews];
+
     [self hideRejectPaymentButton];
     
     self.isSending = NO;
@@ -435,6 +437,7 @@ BOOL displayingLocalSymbolSend;
     _addressSource = addressSource;
     
     if (_addressSource != DestinationAddressSourceContact) {
+        [self enableAmountViews];
         [self hideRejectPaymentButton];
     }
 }
@@ -941,6 +944,7 @@ BOOL displayingLocalSymbolSend;
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         [weakSelf selectFromAccount:fromAccount];
+        [weakSelf disableAmountViews];
         [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
     };
     
@@ -950,8 +954,9 @@ BOOL displayingLocalSymbolSend;
         if (self.onViewDidLoad) {
             self.onViewDidLoad = nil;
             [self reload];
-            [weakSelf selectFromAccount:fromAccount];
             self.contactTransaction = transaction;
+            [weakSelf selectFromAccount:fromAccount];
+            [weakSelf disableAmountViews];
             [self showRejectPaymentButtonWithRejectionType:rejectionType];
         }
     }
@@ -1287,6 +1292,34 @@ BOOL displayingLocalSymbolSend;
         .hidden = YES;
         [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY]];
     }];
+}
+
+- (void)disableAmountViews
+{
+    CGFloat alpha = 0.25;
+    
+    btcAmountField.enabled = NO;
+    btcAmountField.alpha = alpha;
+    
+    fiatAmountField.enabled = NO;
+    fiatAmountField.alpha = alpha;
+    
+    fundsAvailableButton.enabled = NO;
+    fundsAvailableButton.alpha = alpha;
+}
+
+- (void)enableAmountViews
+{
+    CGFloat alpha = 1.0;
+
+    btcAmountField.enabled = YES;
+    btcAmountField.alpha = alpha;
+    
+    fiatAmountField.enabled = YES;
+    fiatAmountField.alpha = alpha;
+    
+    fundsAvailableButton.enabled = YES;
+    fundsAvailableButton.alpha = alpha;
 }
 
 - (CGFloat)continuePaymentButtonOriginY
