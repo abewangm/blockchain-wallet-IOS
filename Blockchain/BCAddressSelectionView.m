@@ -396,7 +396,8 @@ int legacyAddressesSectionNumber;
         else if (section == contactsSectionNumber) {
             Contact *contact = [contacts objectAtIndex:row];
             cell.addressLabel.text = nil;
-            
+            cell.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+            cell.accessoryType = contact == self.previouslySelectedContact ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
             if (contact.mdid) {
                 label = contact.name;
                 cell.userInteractionEnabled = YES;
@@ -485,6 +486,11 @@ int legacyAddressesSectionNumber;
     }
     
     return cell;
+}
+
+- (void)reloadTableView
+{
+    [tableView reloadData];
 }
 
 @end

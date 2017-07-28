@@ -48,6 +48,7 @@ typedef enum {
 }SelectMode;
 
 - (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;
+- (void)reloadTableView;
 
 @property(nonatomic, strong) NSMutableArray *contacts;
 
@@ -61,6 +62,7 @@ typedef enum {
 @property(nonatomic, strong) NSMutableArray *accountLabels;
 
 @property(nonatomic, strong) Wallet *wallet;
+@property(nonatomic, strong) Contact *previouslySelectedContact;
 @property(nonatomic, strong) id<AddressSelectionDelegate> delegate;
 
 @end

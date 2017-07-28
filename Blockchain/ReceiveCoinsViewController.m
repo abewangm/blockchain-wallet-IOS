@@ -821,7 +821,9 @@ NSString *detailLabel;
     }
     
     BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
+    addressSelectionView.previouslySelectedContact = self.fromContact;
     addressSelectionView.delegate = self;
+    [addressSelectionView reloadTableView];
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
 }
