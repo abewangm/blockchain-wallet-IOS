@@ -482,6 +482,8 @@
 #define BC_STRING_TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT NSLocalizedString(@"We have notified %@ about your request to start a transaction.", nil)
 #define BC_STRING_REQUEST_SENT_TITLE NSLocalizedString(@"Request Sent", nil)
 #define BC_STRING_REQUEST_SENT_SUBTITLE_AMOUNT_ARGUMENT_CONTACT_NAME_ARGUMENT NSLocalizedString(@"Your payment request of %@ has been sent to %@.", nil)
+#define BC_STRING_IMPORTANT_NOTE NSLocalizedString(@"Important Note:", nil)
+#define BC_STRING_RPR_INFO NSLocalizedString(@"You will be prompted to complete this transaction once your contact has accepted your request.", nil)
 #define BC_STRING_TOTAL NSLocalizedString(@"Total", nil)
 #define BC_STRING_SHARED_WITH_CONTACT_NAME_ARGUMENT NSLocalizedString(@"Shared with %@", nil)
 #define BC_STRING_TRANSACTIONS_MUST_BE_ACCEPTED_BY_YOUR_CONTACT_PRIOR_TO_SENDING NSLocalizedString(@"Transactions must be accepted by your contact prior to sending.", nil)

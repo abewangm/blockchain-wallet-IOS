@@ -2368,6 +2368,24 @@ void (^secondPasswordSuccess)(NSString *);
                                                                       subtitle:[NSString stringWithFormat:BC_STRING_TRANSACTION_STARTED_SUBTITLE_CONTACT_NAME_ARGUMENT, name]
                                                                      imageView:imageView];
     
+    UITextView *noteTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, confirmationView.frame.size.width - 24, 0)];
+    noteTextView.layer.cornerRadius = 2.0;
+    noteTextView.text = [NSString stringWithFormat:@"%@\n%@", [BC_STRING_IMPORTANT_NOTE uppercaseString], BC_STRING_RPR_INFO];
+    noteTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    noteTextView.backgroundColor = COLOR_NOTE_LIGHT_BLUE;
+    noteTextView.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    CGFloat margin = 12;
+    noteTextView.textContainerInset = UIEdgeInsetsMake(margin, margin, margin, margin);
+    noteTextView.editable = NO;
+    noteTextView.scrollEnabled = NO;
+    noteTextView.selectable = NO;
+    [noteTextView sizeToFit];
+    noteTextView.frame = CGRectMake(0, confirmationView.frame.size.height - noteTextView.frame.size.height - 8 - DEFAULT_HEADER_HEIGHT, noteTextView.frame.size.width, noteTextView.frame.size.height);
+    noteTextView.center = CGPointMake(confirmationView.center.x, noteTextView.center.y);
+    noteTextView.layer.borderColor = [COLOR_BLOCKCHAIN_LIGHT_BLUE CGColor];
+    noteTextView.layer.borderWidth = 1.0;
+    [confirmationView addSubview:noteTextView];
+    
     [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION onDismiss:^{
         [self showTransactions];
     } onResume:nil];
