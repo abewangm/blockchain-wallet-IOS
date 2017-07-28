@@ -40,6 +40,7 @@
                 <outlet property="lineBelowFeeField" destination="hE6-gR-aYg" id="uG3-4u-SEQ"/>
                 <outlet property="lineBelowFromField" destination="Ln6-qa-kth" id="fc8-7K-FFo"/>
                 <outlet property="lineBelowToField" destination="X3L-rz-Q8u" id="NLJ-KC-GmX"/>
+                <outlet property="rejectPaymentButton" destination="A2t-gT-fpX" id="34P-C2-GhR"/>
                 <outlet property="selectAddressTextField" destination="zyc-E3-FOM" id="TU8-Uu-bf4"/>
                 <outlet property="selectFromButton" destination="BRT-me-wxI" id="qT9-fg-Tm7"/>
                 <outlet property="sendProgressActivityIndicator" destination="tKj-lu-8bc" id="yLg-rV-y7v"/>
@@ -234,6 +235,23 @@
                                 <action selector="sendPaymentClicked:" destination="-1" eventType="touchUpInside" id="aHu-Zy-1yz"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A2t-gT-fpX" userLabel="Reject">
+                            <rect key="frame" x="20" y="412" width="280" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" red="0.094117647060000004" green="0.61176470589999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                            <state key="normal" title="Continue">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -363,6 +381,31 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="706" y="917"/>
         </view>
+        <tabBarController id="GBh-NE-04D">
+            <tabBar key="tabBar" contentMode="scaleToFill" id="2Wh-76-C5b">
+                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </tabBar>
+            <viewControllers>
+                <viewController id="VBP-zm-B7S">
+                    <view key="view" contentMode="scaleToFill" id="30L-9f-Rgm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Stz-G2-YBO"/>
+                </viewController>
+                <viewController id="Ls1-wO-9hL">
+                    <view key="view" contentMode="scaleToFill" id="BTi-cu-d5J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="ySA-tv-IsA"/>
+                </viewController>
+            </viewControllers>
+        </tabBarController>
     </objects>
     <resources>
         <image name="close" width="18" height="18"/>

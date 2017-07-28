@@ -32,9 +32,16 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
+typedef enum {
+    RejectionTypeDecline,
+    RejectionTypeCancel
+} RejectionType;
+
 @interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
 @property (nonatomic) TransactionType transactionType;
+
+@property (nonatomic, readwrite) DestinationAddressSource addressSource;
 
 @property (nonatomic) uint64_t recommendedForcedFee;
 @property (nonatomic) uint64_t maxSendableAmount;
@@ -174,10 +181,11 @@ BOOL displayingLocalSymbolSend;
     toField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [toField setReturnKeyType:UIReturnKeyDone];
     
-    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
-    CGFloat continueButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+    CGFloat continueButtonOriginY = [self continuePaymentButtonOriginY];
     continuePaymentButton.frame = CGRectMake(0, continueButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT);
     continuePaymentButton.center = CGPointMake(self.view.center.x, continuePaymentButton.center.y);
+    
+    rejectPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     
     [self reload];
     
@@ -293,6 +301,8 @@ BOOL displayingLocalSymbolSend;
     [self setupFees];
     
     sendProgressCancelButton.hidden = YES;
+    
+    [self hideRejectPaymentButton];
     
     self.isSending = NO;
     self.isReloading = NO;
@@ -422,6 +432,15 @@ BOOL displayingLocalSymbolSend;
     } else if (app.latestResponse.symbol_btc) {
         displayingLocalSymbol = FALSE;
         displayingLocalSymbolSend = FALSE;
+    }
+}
+
+- (void)setAddressSource:(DestinationAddressSource)addressSource
+{
+    _addressSource = addressSource;
+    
+    if (_addressSource != DestinationAddressSourceContact) {
+        [self hideRejectPaymentButton];
     }
 }
 
@@ -734,7 +753,7 @@ BOOL displayingLocalSymbolSend;
     // Timeout so the keyboard is fully dismised - otherwise the second password modal keyboard shows the send screen kebyoard accessory
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if ([self transferAllMode] || _addressSource == DestinationAddressSourceContact) {
+        if ([self transferAllMode] || self.addressSource == DestinationAddressSourceContact) {
             [app.modalView.backButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
         }
         
@@ -918,13 +937,16 @@ BOOL displayingLocalSymbolSend;
     self.addressFromURLHandler = transaction.address;
     self.amountFromURLHandler = transaction.intendedAmount;
     
-    _addressSource = DestinationAddressSourceContact;
+    RejectionType rejectionType = [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? RejectionTypeCancel : RejectionTypeDecline;
+    
+    self.addressSource = DestinationAddressSourceContact;
     
     __weak SendViewController *weakSelf = self;
     
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         [weakSelf selectFromAccount:fromAccount];
+        [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -935,6 +957,7 @@ BOOL displayingLocalSymbolSend;
             [self reload];
             [weakSelf selectFromAccount:fromAccount];
             self.contactTransaction = transaction;
+            [self showRejectPaymentButtonWithRejectionType:rejectionType];
         }
     }
 }
@@ -955,7 +978,7 @@ BOOL displayingLocalSymbolSend;
         self.amountFromURLHandler = 0;
     }
     
-    _addressSource = DestinationAddressSourceURI;
+    self.addressSource = DestinationAddressSourceURI;
 }
 
 - (NSString *)labelForLegacyAddress:(NSString *)address
@@ -1228,6 +1251,55 @@ BOOL displayingLocalSymbolSend;
     return IS_USING_SCREEN_SIZE_4S ? 76 : 112;
 }
 
+- (void)showRejectPaymentButtonWithRejectionType:(RejectionType)rejectionType
+{
+    [rejectPaymentButton removeTarget:nil action:nil forControlEvents:UIControlEventAllTouchEvents];
+    
+    NSString *buttonTitle;
+    UIColor *titleColor;
+    
+    if (rejectionType == RejectionTypeDecline) {
+        buttonTitle = BC_STRING_DECLINE;
+        titleColor = [UIColor whiteColor];
+        rejectPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
+        [rejectPaymentButton addTarget:self action:@selector(declinePayment) forControlEvents:UIControlEventTouchUpInside];
+    } else if (rejectionType == RejectionTypeCancel) {
+        buttonTitle = BC_STRING_CANCEL_PAYMENT;
+        titleColor = COLOR_LIGHT_GRAY;
+        rejectPaymentButton.backgroundColor = [UIColor clearColor];
+        [rejectPaymentButton addTarget:self action:@selector(cancelPayment) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [rejectPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [rejectPaymentButton setTitleColor:titleColor forState:UIControlStateNormal];
+
+    rejectPaymentButton.alpha = 0.0;
+    rejectPaymentButton.hidden = NO;
+
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY] - 8 - continuePaymentButton.frame.size.height];
+       rejectPaymentButton.alpha = 1.0;
+    }];
+}
+
+- (void)hideRejectPaymentButton
+{
+    rejectPaymentButton.alpha = 1.0;
+    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        rejectPaymentButton.alpha = 0.0;
+        rejectPaymentButton
+        .hidden = YES;
+        [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY]];
+    }];
+}
+
+- (CGFloat)continuePaymentButtonOriginY
+{
+    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    return self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1366,7 +1438,7 @@ BOOL displayingLocalSymbolSend;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
         if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
-            _addressSource = DestinationAddressSourcePaste;
+            self.addressSource = DestinationAddressSourcePaste;
             return NO;
         }
         
@@ -1487,7 +1559,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAddress:address];
     
-    _addressSource = DestinationAddressSourceDropDown;
+    self.addressSource = DestinationAddressSourceDropDown;
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -1499,7 +1571,7 @@ BOOL displayingLocalSymbolSend;
 {
     [self selectToAccount:account];
     
-    _addressSource = DestinationAddressSourceDropDown;
+    self.addressSource = DestinationAddressSourceDropDown;
 }
 
 - (void)didSelectContact:(Contact *)contact
@@ -1783,6 +1855,16 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Actions
 
+- (void)declinePayment
+{
+    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+}
+
+- (void)cancelPayment
+{
+    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+}
+
 - (void)setupTransferAll
 {
     self.transferAllPaymentBuilder = [[TransferAllFundsBuilder alloc] initUsingSendScreen:YES];
@@ -1903,7 +1985,7 @@ BOOL displayingLocalSymbolSend;
                 DLog(@"toAddress: %@", self.toAddress);
                 [self selectToAddress:self.toAddress];
                 
-                _addressSource = DestinationAddressSourceQR;
+                self.addressSource = DestinationAddressSourceQR;
                 
                 NSString *amountStringFromDictionary = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
                 if ([NSNumberFormatter stringHasBitcoinValue:amountStringFromDictionary]) {
