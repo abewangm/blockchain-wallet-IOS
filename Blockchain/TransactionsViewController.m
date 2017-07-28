@@ -171,8 +171,10 @@ int lastNumberTransactions = INT_MAX;
         
         if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment) {
             [self acceptOrDenyPayment:contactTransaction forContact:contact];
+            [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
         } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
             [self sendPayment:contactTransaction toContact:contact];
+            [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
         } else {
             DLog(@"No action needed on transaction");
         }

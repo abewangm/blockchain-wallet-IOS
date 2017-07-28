@@ -2257,7 +2257,7 @@ void (^secondPasswordSuccess)(NSString *);
     [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
     
-    NSInteger badgeNumber = self.wallet.contactsActionCount && self.wallet.contactsActionCount > 0 ? [self.wallet.contactsActionCount integerValue] : 0;
+    NSInteger badgeNumber = self.wallet.contactsUnreadCount && self.wallet.contactsUnreadCount > 0 ? [self.wallet.contactsUnreadCount integerValue] : 0;
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
     

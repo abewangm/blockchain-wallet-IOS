@@ -21,6 +21,7 @@
         _contactIdentifier = identifier;
         self.lastUpdated = [[dictionary objectForKey:DICTIONARY_KEY_LAST_UPDATED] longLongValue] / 1000;
         _initiatorSource = [dictionary objectForKey:DICTIONARY_KEY_INITIATOR_SOURCE];
+        _showNotificationBadge = [[dictionary objectForKey:DICTIONARY_KEY_SHOW_NOTIFICATION_BADGE] boolValue];
         
         self.note = [dictionary objectForKey:DICTIONARY_KEY_NOTE];
         self.myHash = [dictionary objectForKey:DICTIONARY_KEY_TX_HASH];

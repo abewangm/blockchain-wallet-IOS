@@ -30,6 +30,7 @@ typedef enum {
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *reason;
 @property (nonatomic, readonly) id initiatorSource;
+@property (nonatomic, readonly) BOOL showNotificationBadge;
 
 // Pending requests
 @property (nonatomic, readonly) NSString *contactIdentifier;
