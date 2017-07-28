@@ -10,9 +10,15 @@
 
 @class ContactTransaction;
 
+typedef enum {
+    RejectionTypeDecline,
+    RejectionTypeCancel
+} RejectionType;
+
 @protocol ConfirmPaymentViewDelegate
 - (void)setupNoteForTransaction:(NSString *)note;
 - (void)feeInformationButtonClicked;
+- (void)confirmRejectPayment:(RejectionType)rejectionType;
 @end
 @interface BCConfirmPaymentView : UIView
 

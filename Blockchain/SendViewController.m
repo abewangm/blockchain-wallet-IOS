@@ -32,11 +32,6 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
-typedef enum {
-    RejectionTypeDecline,
-    RejectionTypeCancel
-} RejectionType;
-
 @interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
 @property (nonatomic) TransactionType transactionType;
@@ -1262,12 +1257,12 @@ BOOL displayingLocalSymbolSend;
         buttonTitle = BC_STRING_DECLINE;
         titleColor = [UIColor whiteColor];
         rejectPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
-        [rejectPaymentButton addTarget:self action:@selector(declinePayment) forControlEvents:UIControlEventTouchUpInside];
+        [rejectPaymentButton addTarget:self action:@selector(declinePaymentClicked) forControlEvents:UIControlEventTouchUpInside];
     } else if (rejectionType == RejectionTypeCancel) {
         buttonTitle = BC_STRING_CANCEL_PAYMENT;
         titleColor = COLOR_LIGHT_GRAY;
         rejectPaymentButton.backgroundColor = [UIColor clearColor];
-        [rejectPaymentButton addTarget:self action:@selector(cancelPayment) forControlEvents:UIControlEventTouchUpInside];
+        [rejectPaymentButton addTarget:self action:@selector(cancelPaymentClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     
     [rejectPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
@@ -1298,6 +1293,22 @@ BOOL displayingLocalSymbolSend;
 {
     CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
     return self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+}
+
+- (void)confirmRejectPayment:(RejectionType)rejectionType
+{
+    NSString *title = rejectionType == RejectionTypeDecline ? BC_STRING_DECLINE : BC_STRING_CANCEL_PAYMENT;
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:BC_STRING_REJECT_PAYMENT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (rejectionType == RejectionTypeDecline) {
+            [app.wallet sendDeclination:self.contactTransaction];
+        } else {
+            [app.wallet sendCancellation:self.contactTransaction];
+        }
+    }]];
+    [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Textfield Delegates
@@ -1855,14 +1866,14 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Actions
 
-- (void)declinePayment
+- (void)declinePaymentClicked
 {
-    [app.wallet sendDeclination:self.contactTransaction];
+    [self confirmRejectPayment:RejectionTypeDecline];
 }
 
-- (void)cancelPayment
+- (void)cancelPaymentClicked
 {
-    [app.wallet sendCancellation:self.contactTransaction];
+    [self confirmRejectPayment:RejectionTypeCancel];
 }
 
 - (void)setupTransferAll

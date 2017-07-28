@@ -496,6 +496,9 @@
 #define BC_STRING_RECEIVING_PAYMENT NSLocalizedString(@"Receiving Payment", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ for %@", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
+
+#define BC_STRING_GO_BACK NSLocalizedString(@"Go back", nil)
+#define BC_STRING_REJECT_PAYMENT_MESSAGE NSLocalizedString(@"Once you cancel or decline a payment, no further action can be taken on it.", nil)
 #define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
 #define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
 #define BC_STRING_CANCEL_PAYMENT NSLocalizedString(@"Cancel Payment", nil)
