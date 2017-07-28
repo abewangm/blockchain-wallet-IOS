@@ -2347,14 +2347,14 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequestResponse(\"%@\", \"%@\", \"%@\")", [userId escapeStringForJS], [hash escapeStringForJS], [transactionIdentifier escapeStringForJS]]];
 }
 
-- (void)sendDeclination:(NSString *)userId invitation:(NSString *)invitation
+- (void)sendDeclination:(ContactTransaction *)transaction
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendDeclination(\"%@\", \"%@\")", [userId escapeStringForJS], [invitation escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendDeclination(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
 }
 
-- (void)sendCancellation:(NSString *)userId invitation:(NSString *)invitation
+- (void)sendCancellation:(ContactTransaction *)transaction
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendCancellation(\"%@\", \"%@\")", [userId escapeStringForJS], [invitation escapeStringForJS]]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendCancellation(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
 }
 
 - (void)hideNotificationBadgeForContactTransaction:(ContactTransaction *)transaction
@@ -3755,10 +3755,10 @@
 {
     DLog(@"on_send_cancellation_success");
     
-    if ([self.delegate respondsToSelector:@selector(didCancelContactTransaction)]) {
-        [self.delegate didCancelContactTransaction];
+    if ([self.delegate respondsToSelector:@selector(didRejectContactTransaction)]) {
+        [self.delegate didRejectContactTransaction];
     } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didCancelContactTransaction!", [delegate class]);
+        DLog(@"Error: delegate of class %@ does not respond to selector didRejectContactTransaction!", [delegate class]);
     }
 }
 
@@ -3770,8 +3770,12 @@
 - (void)on_send_declination_success
 {
     DLog(@"on_send_declination_success");
-    [app closeAllModals];
-    [self getMessages];
+
+    if ([self.delegate respondsToSelector:@selector(didRejectContactTransaction)]) {
+        [self.delegate didRejectContactTransaction];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didRejectContactTransaction!", [delegate class]);
+    }
 }
 
 - (void)on_send_declination_error:(JSValue *)info

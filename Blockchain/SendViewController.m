@@ -1857,12 +1857,12 @@ BOOL displayingLocalSymbolSend;
 
 - (void)declinePayment
 {
-    [app.wallet sendDeclination:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    [app.wallet sendDeclination:self.contactTransaction];
 }
 
 - (void)cancelPayment
 {
-    [app.wallet sendCancellation:self.contactTransaction.contactIdentifier invitation:self.contactTransaction.identifier];
+    [app.wallet sendCancellation:self.contactTransaction];
 }
 
 - (void)setupTransferAll

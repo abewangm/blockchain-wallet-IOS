@@ -665,7 +665,7 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendPaymentRequest:contact.identifier amount:transaction.intendedAmount requestId:transaction.identifier note:transaction.note initiatorSource:nil];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DECLINE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        [app.wallet sendDeclination:transaction.contactIdentifier invitation:transaction.identifier];
+        [app.wallet sendDeclination:transaction];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alert animated:YES completion:nil];

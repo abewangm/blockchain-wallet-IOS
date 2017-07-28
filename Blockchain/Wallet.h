@@ -123,7 +123,7 @@
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
-- (void)didCancelContactTransaction;
+- (void)didRejectContactTransaction;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 - (void)showCompletedTrade:(NSString *)txHash;
@@ -396,8 +396,8 @@ typedef enum {
 - (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
 - (void)readInvitation:(NSString *)invitation;
 - (void)completeRelation:(NSString *)identifier;
-- (void)sendCancellation:(NSString *)userId invitation:(NSString *)invitation;
-- (void)sendDeclination:(NSString *)userId invitation:(NSString *)invitation;
+- (void)sendCancellation:(ContactTransaction *)transaction;
+- (void)sendDeclination:(ContactTransaction *)transaction;
 - (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
 - (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;

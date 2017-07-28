@@ -2392,7 +2392,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didDeleteContactAfterStoringInfo];
 }
 
-- (void)didCancelContactTransaction
+- (void)didRejectContactTransaction
 {
     [self.sendViewController reload];
     [self showTransactions];
