@@ -2418,7 +2418,7 @@
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDenyPayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
             
-            if (!transaction.showNotificationBadge) {
+            if (transaction.read) {
                 numberOfActionsRead++;
             }
         }

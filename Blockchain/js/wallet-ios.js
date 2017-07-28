@@ -1970,7 +1970,7 @@ MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
 }
 
 MyWalletPhone.hideNotificationBadgeForContactTransaction = function(userId, txIdentifier) {
-    MyWallet.wallet.contacts.hideNotificationBadge(userId, txIdentifier);
+    MyWallet.wallet.contacts.read(userId, txIdentifier);
     MyWalletPhone.getMessages();
 }
 
