@@ -166,17 +166,16 @@ const int maxFindAttempts = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ContactTransaction *transaction = [self.transactionList objectAtIndex:indexPath.row];
+    ContactTransaction *contactTransaction = [self.transactionList objectAtIndex:indexPath.row];
 
-    TransactionTableCell * cell = (TransactionTableCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
+    ContactTransactionTableViewCell * cell = (ContactTransactionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"transaction"];
     
     if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionCell" owner:nil options:nil] objectAtIndex:0];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ContactTransactionTableCell" owner:nil options:nil] objectAtIndex:0];
     }
     
-    cell.transaction = transaction;
-    
-    [cell reload];
+    NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
+    [cell configureWithTransaction:contactTransaction contactName:name];
     
     return cell;
 }
@@ -191,7 +190,7 @@ const int maxFindAttempts = 2;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    return 85;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
