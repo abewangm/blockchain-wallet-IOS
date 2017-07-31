@@ -447,6 +447,7 @@
 
 #define BC_STRING_ACCEPTED_RELATION_ALERT_TITLE_NAME_ARGUMENT NSLocalizedString(@"Accepted Invite by %@", nil)
 #define BC_STRING_ACCEPTED_RELATION_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"When %@ logs into their wallet, you will be able to exchange payment requests.", nil)
+#define BC_STRING_ACCEPT_RELATION_ERROR_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"Something went wrong when accepting the invitation from %@. Please try again.", nil)
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
 #define BC_STRING_PLEASE_ENTER_A_NAME NSLocalizedString(@"Please enter a name.", nil)

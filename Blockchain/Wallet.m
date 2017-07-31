@@ -837,6 +837,10 @@
         [weakSelf on_accept_relation_success:invitation name:name];
     };
     
+    self.context[@"objc_on_accept_relation_error"] = ^(NSString *name) {
+        [weakSelf on_accept_relation_error:name];
+    };
+    
     self.context[@"objc_on_fetch_xpub_success"] = ^(NSString *xpub) {
         [weakSelf on_fetch_xpub_success:xpub];
     };
@@ -3623,6 +3627,16 @@
         [self.delegate didCompleteRelation];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didReadInvitationSent!", [delegate class]);
+    }
+}
+
+- (void)on_accept_relation_error:(NSString *)name
+{
+    DLog(@"on_accept_relation_error");
+    if ([self.delegate respondsToSelector:@selector(didFailAcceptRelation:)]) {
+        [self.delegate didFailAcceptRelation:name];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailAcceptRelation!", [delegate class]);
     }
 }
 

@@ -1998,8 +1998,14 @@ MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
     var success = function() {
         objc_on_accept_relation_success(name, identifier);
     };
+    
+    var error = function(e) {
+        objc_on_accept_relation_error(name);
+        console.log('Error accepting relation');
+        console.log(e);
+    };
 
-    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
+    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(error);
 }
 
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {

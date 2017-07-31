@@ -114,6 +114,7 @@
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didCompleteRelation;
 - (void)didFailCompleteRelation;
+- (void)didFailAcceptRelation:(NSString *)name;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didFetchExtendedPublicKey;
 - (void)didGetNewMessages:(NSArray *)newMessages;

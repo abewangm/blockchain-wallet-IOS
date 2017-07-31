@@ -2070,6 +2070,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didFailCompleteRelation];
 }
 
+- (void)didFailAcceptRelation:(NSString *)name
+{
+    [self.contactsViewController didFailAcceptRelation:name];
+}
+
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
     [self.contactsViewController didAcceptRelation:invitation name:name];
