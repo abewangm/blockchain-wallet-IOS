@@ -2093,7 +2093,7 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
     };
     
     var error = function(error) {
-        console.log('Error sending message')
+        console.log('Error sending payment request')
         console.log(error);
         objc_on_send_payment_request_error(error);
     };
@@ -2108,7 +2108,7 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
     };
     
     var error = function(error) {
-        console.log('Error sending message')
+        console.log('Error requesting payment request')
         console.log(error);
         objc_on_request_payment_request_error(error);
     };
@@ -2122,7 +2122,13 @@ MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier
         objc_on_send_payment_request_response_success(info);
     };
     
-    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    var error = function(error) {
+        console.log('Error sending payment request response')
+        console.log(error);
+        objc_on_send_payment_request_response_error(error);
+    };
+    
+    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){error});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

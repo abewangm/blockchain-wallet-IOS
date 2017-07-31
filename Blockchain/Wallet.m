@@ -3751,7 +3751,11 @@
 {
     DLog(@"on_send_payment_request_response_success");
     
-    [self getMessages];
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequestResponse)]) {
+        [self.delegate didSendPaymentRequestResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequestResponse!", [delegate class]);
+    }
 }
 
 - (void)on_change_contact_name_success:(JSValue *)info

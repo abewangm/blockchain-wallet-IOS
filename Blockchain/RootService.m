@@ -2396,6 +2396,13 @@ void (^secondPasswordSuccess)(NSString *);
     } onResume:nil];
 }
 
+- (void)didSendPaymentRequestResponse
+{
+    [self.wallet getMessages];
+    
+    [self.wallet getHistory];
+}
+
 - (void)didChangeContactName:(NSDictionary *)info
 {
     [self.contactsViewController didChangeContactName];

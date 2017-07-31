@@ -121,6 +121,7 @@
 - (void)didGetMessagesOnFirstLoad;
 - (void)didSendPaymentRequest:(NSDictionary *)info amount:(uint64_t)amount name:(NSString *)name requestId:(NSString *)requestId;
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didSendPaymentRequestResponse;
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
