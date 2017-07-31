@@ -90,7 +90,7 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
-        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ? [BC_STRING_SENT uppercaseString] : [BC_STRING_PAID uppercaseString];
+        self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? [BC_STRING_SENT uppercaseString] : [BC_STRING_PAID uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
         self.bottomRightLabel.text = transaction.reason;
