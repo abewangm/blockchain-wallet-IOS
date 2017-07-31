@@ -226,41 +226,33 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
 {
-    if ([self numberOfSectionsInTableView:_tableView] > 1) {
-        return 30;
-    }
-    
-    return 0;
+    return 30;
 }
 
 - (UIView *)tableView:(UITableView *)_tableView viewForHeaderInSection:(NSInteger)section
 {
-    if ([self numberOfSectionsInTableView:_tableView] > 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-        view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width, 14)];
-        label.textColor = COLOR_TEXT_DARK_GRAY;
-        label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
-        
-        [view addSubview:label];
-        
-        NSString *labelString;
-        
-        if (section == self.sectionContactsPending) {
-            labelString = BC_STRING_IN_PROGRESS;
-        } else if (section == self.sectionMain) {
-            labelString = BC_STRING_FINISHED;
-            
-        } else
-            @throw @"Unknown Section";
-        
-        label.text = [labelString uppercaseString];
-        
-        return view;
-    }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    return nil;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width, 14)];
+    label.textColor = COLOR_TEXT_DARK_GRAY;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    
+    [view addSubview:label];
+    
+    NSString *labelString;
+    
+    if (section == self.sectionContactsPending) {
+        labelString = BC_STRING_IN_PROGRESS;
+    } else if (section == self.sectionMain) {
+        labelString = BC_STRING_FINISHED;
+        
+    } else
+        @throw @"Unknown Section";
+    
+    label.text = [labelString uppercaseString];
+    
+    return view;
 }
 
 - (void)drawRect:(CGRect)rect
