@@ -293,6 +293,8 @@ NSString *detailLabel;
 {
     [self reloadAddresses];
     
+    [self resetContactInfo];
+    
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (!mainAddress) {
@@ -307,6 +309,11 @@ NSString *detailLabel;
 - (void)reloadAddresses
 {
     self.activeKeys = [app.wallet activeLegacyAddresses];
+}
+
+- (void)resetContactInfo
+{
+    [self didSelectContact:nil];
 }
 
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
@@ -1090,11 +1097,11 @@ NSString *detailLabel;
 
 - (void)didSelectContact:(Contact *)contact
 {
-    if (!contact.mdid) {
+    if (contact && !contact.mdid) {
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
-    } else if (contact == self.fromContact) {
+    } else if (contact == self.fromContact || contact == nil) {
         self.fromContact = nil;
         self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT;
         self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
