@@ -226,7 +226,7 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return self.noTransactionsView.hidden ? 30 : 0;
 }
 
 - (UIView *)tableView:(UITableView *)_tableView viewForHeaderInSection:(NSInteger)section
