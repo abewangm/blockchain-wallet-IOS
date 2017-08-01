@@ -2366,7 +2366,6 @@
 - (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;
-    int badgeCount = 0;
     ContactActionRequired firstAction;
     
     NSMutableDictionary *allContactsDict = [NSMutableDictionary new];
@@ -2401,7 +2400,7 @@
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }
     
-    self.contactsActionCount = [NSNumber numberWithInt:badgeCount];
+    self.contactsActionCount = [NSNumber numberWithInt:actionCount];
     
     self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
 }
