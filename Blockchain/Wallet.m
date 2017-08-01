@@ -35,9 +35,6 @@
 #import "KeyPair.h"
 #import "NSData+BTCData.h"
 
-#define DICTIONARY_KEY_NUMBER_ACTION @"numberAction"
-#define DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION @"numberBadgeNotification"
-
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
 @property (nonatomic) JSContext *backgroundContext;
@@ -2343,7 +2340,7 @@
         escapedInitiatorSourceString = initiatorSource;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\")", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS]]];
 }
 
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier
@@ -2390,14 +2387,10 @@
             }
         }
         
-        NSDictionary *info = [self iterateThroughTransactionsForContact:contact];
+        int actionCountForContact = [self iterateThroughTransactionsForContact:contact];
         
-        int actionCountForContact = [[info objectForKey:DICTIONARY_KEY_NUMBER_ACTION] intValue];
         if (actionCountForContact > 0) firstAction = ContactActionRequiredSinglePayment;
         actionCount = actionCount + actionCountForContact;
-        
-        int badgeCountForContact = [[info objectForKey:DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION] intValue];
-        badgeCount = badgeCount + badgeCountForContact;
     }
     
     if (actionCount == 0) {
@@ -2408,23 +2401,18 @@
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }
     
-    self.contactsUnreadCount = [NSNumber numberWithInt:badgeCount];
+    self.contactsActionCount = [NSNumber numberWithInt:badgeCount];
     
     self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
 }
 
-- (NSDictionary *)iterateThroughTransactionsForContact:(Contact *)contact
+- (int)iterateThroughTransactionsForContact:(Contact *)contact
 {
     int numberOfActionsRequired = 0;
-    int numberOfActionsRead = 0;
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
-            
-            if (transaction.read) {
-                numberOfActionsRead++;
-            }
         }
         
         if (transaction.transactionState == ContactTransactionStateDeclined || transaction.transactionState == ContactTransactionStateCancelled) {
@@ -2438,10 +2426,7 @@
     
     [self.pendingContactTransactions sortUsingSelector:@selector(reverseCompareLastUpdated:)];
     
-    int notificationBadgeNumber = numberOfActionsRequired - numberOfActionsRead;
-    
-    return @{ DICTIONARY_KEY_NUMBER_ACTION : [NSNumber numberWithInt:numberOfActionsRequired],
-              DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION : [NSNumber numberWithInt:notificationBadgeNumber]};
+    return numberOfActionsRequired;
 }
 
 - (BOOL)actionRequiredForContact:(Contact *)contact

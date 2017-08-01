@@ -519,8 +519,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TX_HASH @"tx_hash"
 #define DICTIONARY_KEY_REASON @"reason"
 #define DICTIONARY_KEY_LAST_UPDATED @"last_updated"
-#define DICTIONARY_KEY_INITIATOR_SOURCE @"initiator_source"
-#define DICTIONARY_KEY_READ @"read"
 
 #define DICTIONARY_KEY_APS @"aps"
 #define DICTIONARY_KEY_TYPE @"type"

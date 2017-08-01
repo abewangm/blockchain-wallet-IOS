@@ -2101,7 +2101,7 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
     MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
                                                           
-MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
         objc_on_request_payment_request_success(info, userId);
@@ -2113,7 +2113,7 @@ MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestId
         objc_on_request_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
