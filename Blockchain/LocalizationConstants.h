@@ -549,6 +549,7 @@
 #define BC_STRING_DELETE_CONTACT_ALERT_TITLE NSLocalizedString(@"Delete contact?", nil)
 #define BC_STRING_DELETE_CONTACT_ALERT_MESSAGE NSLocalizedString(@"Once removed, you will have to invite this contact again.", nil)
 #define BC_STRING_RENAME_CONTACT_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"Enter a new name for %@.", nil)
+#define BC_STRING_INVITE_HELPER_TEXT NSLocalizedString(@"%@ wants to add you as a contact. Tap on the link below to accept the invite.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
 
