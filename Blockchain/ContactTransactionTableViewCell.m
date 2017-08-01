@@ -86,7 +86,7 @@
         self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST uppercaseString] : [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
-        self.bottomRightLabel.text = BC_STRING_WAITING_FOR_PAYMENT;
+        self.bottomRightLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ? BC_STRING_PAYMENT_REQUESTED : BC_STRING_WAITING_FOR_PAYMENT;
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {

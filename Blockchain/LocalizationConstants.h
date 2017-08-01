@@ -532,6 +532,7 @@
 #define BC_STRING_AWAITING_RESPONSE NSLocalizedString(@"Awaiting Response", nil)
 #define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
 #define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
+#define BC_STRING_PAYMENT_REQUESTED NSLocalizedString(@"Payment Requested", nil)
 #define BC_STRING_SENT_ARGUMENT_TO_ARGUMENT NSLocalizedString(@"Sent %@ to %@", nil)
 #define BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT NSLocalizedString(@"Received %@ from %@", nil)
 
