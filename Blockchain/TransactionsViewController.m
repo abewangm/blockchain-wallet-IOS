@@ -624,20 +624,44 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)selectPayment:(NSString *)payment
 {
-    NSArray *allTransactions = app.wallet.pendingContactTransactions;
+    NSArray *transactions = app.wallet.pendingContactTransactions;
     NSInteger rowToSelect = -1;
+    NSInteger section;
     
-    for (int index = 0; index < [allTransactions count]; index++) {
-        ContactTransaction *transaction = allTransactions[index];
+    for (int index = 0; index < [transactions count]; index++) {
+        ContactTransaction *transaction = transactions[index];
         if ([transaction.identifier isEqualToString:payment]) {
             rowToSelect = index;
+            section = self.sectionContactsPending;
             break;
         }
     }
     
-    if (rowToSelect >= 0) {
-        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:self.sectionContactsPending]];
+    if (rowToSelect < 0) {
+        transactions = self.finishedTransactions;
+        
+        for (int index = 0; index < [transactions count]; index++) {
+            ContactTransaction *transaction = transactions[index];
+            if ([transaction isMemberOfClass:[ContactTransaction class]]) {
+                // Declined or cancelled
+                transaction = (ContactTransaction *)transaction;
+            } else if (transaction.myHash) {
+                // Completed
+                transaction = [app.wallet.completedContactTransactions objectForKey:transaction.myHash];
+            }
+            
+            if ([transaction isMemberOfClass:[ContactTransaction class]] && [transaction.identifier isEqualToString:payment]) {
+                rowToSelect = index;
+                section = self.sectionMain;
+                break;
+            }
+        }
     }
+    
+    if (rowToSelect >= 0) {
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:rowToSelect inSection:section]];
+    }
+
     self.messageIdentifier = nil;
 }
 
