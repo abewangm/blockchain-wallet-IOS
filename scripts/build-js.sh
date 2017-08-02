@@ -10,6 +10,14 @@ echo "Building..."
 grunt build --base .
 
 # Required for JavaScriptCore
+
+echo "Disabling rng for uuid..."
+functionWhatwgRNG='function whatwgRNG() {'
+sed -i '' 's/rng = '"$functionWhatwgRNG"'/var discard = '"$functionWhatwgRNG"'/' dist/my-wallet.js
+
+echo "Overriding uuid..."
+sed -i '' 's/uuid()/MyWalletPhone.nsuuid()/g' dist/my-wallet.js
+
 echo "Patching global.crypto..."
 globalCrypto='global.crypto || global.msCrypto'
 sed -i '' 's/'"$globalCrypto"'\;/global.crypto = '"$globalCrypto"' || objcCrypto(Buffer)/' dist/my-wallet.js

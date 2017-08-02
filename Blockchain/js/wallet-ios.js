@@ -1324,6 +1324,10 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
+MyWalletPhone.nsuuid = function() {
+    return objc_uuid();
+}
+
 MyWallet.socketConnect = function() {
     // override socketConnect to prevent memory leaks
 }
