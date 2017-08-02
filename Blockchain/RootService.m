@@ -2403,7 +2403,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.wallet getMessages];
     
-    [self.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:1.5f];
+    [_transactionsViewController performSelector:@selector(reload) withObject:nil afterDelay:1.5f];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
