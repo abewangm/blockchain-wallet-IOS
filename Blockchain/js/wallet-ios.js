@@ -1324,7 +1324,7 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
-MyWalletPhone.nsuuid = function() {
+Contacts.prototype.uuid = function() {
     return objc_uuid();
 }
 
