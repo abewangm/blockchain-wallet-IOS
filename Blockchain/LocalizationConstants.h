@@ -505,6 +505,7 @@
 #define BC_STRING_REJECT_PAYMENT_MESSAGE NSLocalizedString(@"Once you cancel or decline a payment, no further action can be taken on it.", nil)
 #define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
 #define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
+#define BC_STRING_DECLINE_PAYMENT NSLocalizedString(@"Decline Payment", nil)
 #define BC_STRING_CANCEL_PAYMENT NSLocalizedString(@"Cancel Payment", nil)
 #define BC_STRING_CANCELLED NSLocalizedString(@"Cancelled", nil)
 

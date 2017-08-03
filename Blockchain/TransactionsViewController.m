@@ -104,7 +104,7 @@ int lastNumberTransactions = INT_MAX;
         
         cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
         
-        cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || contactTransaction.transactionState == ContactTransactionStateSendReadyToSend ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
 
         return cell;
     } else if (indexPath.section == self.sectionMain) {
@@ -175,6 +175,14 @@ int lastNumberTransactions = INT_MAX;
         } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
             [self sendPayment:contactTransaction toContact:contact];
             [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
+        } else if (contactTransaction.transactionState == ContactTransactionStateSendWaitingForQR) {
+            [self promptCancelPayment:contactTransaction forContact:contact];
+        } else if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
+            if ([contactTransaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR]) {
+                [self promptCancelPayment:contactTransaction forContact:contact];
+            } else {
+                [self promptDeclinePayment:contactTransaction forContact:contact];
+            }
         } else {
             DLog(@"No action needed on transaction");
         }
@@ -683,7 +691,27 @@ int lastNumberTransactions = INT_MAX;
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DECLINE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [app.wallet sendDeclination:transaction];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)promptDeclinePayment:(ContactTransaction *)transaction forContact:(Contact *)contact
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_DECLINE_PAYMENT message:BC_STRING_REJECT_PAYMENT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_DECLINE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet sendDeclination:transaction];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)promptCancelPayment:(ContactTransaction *)transaction forContact:(Contact *)contact
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CANCEL_PAYMENT message:BC_STRING_REJECT_PAYMENT_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL_PAYMENT style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [app.wallet sendCancellation:transaction];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
     [app.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
