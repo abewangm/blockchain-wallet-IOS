@@ -21,6 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *actionImageView;
 
 - (void)configureWithTransaction:(ContactTransaction *)transaction contactName:(NSString *)name;
-- (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath;
+- (void)transactionClicked:(UIButton *)button;
 - (IBAction)amountButtonClicked:(UIButton *)sender;
 @end

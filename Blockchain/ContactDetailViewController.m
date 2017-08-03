@@ -183,7 +183,7 @@ const int maxFindAttempts = 2;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell transactionClicked:nil indexPath:indexPath];
+    [cell transactionClicked:nil];
     self.transactionDetailViewController = app.transactionsViewController.detailViewController;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

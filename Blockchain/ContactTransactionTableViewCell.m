@@ -141,7 +141,7 @@
     self.accessoryType = UITableViewCellAccessoryNone;
 }
 
-- (void)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
+- (void)transactionClicked:(UIButton *)button
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = self.transaction;
@@ -164,7 +164,7 @@
 
 - (IBAction)amountButtonClicked:(UIButton *)sender
 {
-    [app toggleSymbol];
+    [self transactionClicked:nil];
 }
 
 @end

@@ -187,7 +187,7 @@ int lastNumberTransactions = INT_MAX;
             if (contactTransaction.transactionState == ContactTransactionStateCancelled ||
                 contactTransaction.transactionState == ContactTransactionStateDeclined) return;
         }
-        [cell transactionClicked:nil indexPath:indexPath];
+        [cell transactionClicked:nil];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else {
         DLog(@"Invalid section %lu", indexPath.section);
