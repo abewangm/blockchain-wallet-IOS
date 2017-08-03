@@ -87,50 +87,18 @@ const int cellRowFee = 4;
         
         self.tableView = summaryTableView;
         
-        CGRect buttonFrame;
-        CGFloat buttonHeight;
+        CGFloat buttonHeight = 40;
+        CGRect buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);;
         NSString *buttonTitle;
-        CGFloat cornerRadius;
         
         if (self.contactTransaction) {
-            cornerRadius = CORNER_RADIUS_BUTTON;
-
-            if ([self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR]) {
-                CGFloat sendButtonOriginY = self.frame.size.height - BUTTON_HEIGHT - 28 - BUTTON_HEIGHT + 8;
-                buttonFrame = CGRectMake(20, sendButtonOriginY, self.frame.size.width - 40, BUTTON_HEIGHT);
-                buttonTitle = BC_STRING_SEND;
-                
-                UIButton *cancelButton = [[UIButton alloc] initWithFrame:buttonFrame];
-                [cancelButton changeYPosition:buttonFrame.origin.y + buttonFrame.size.height + 8];
-                [cancelButton setTitle:BC_STRING_CANCEL_PAYMENT forState:UIControlStateNormal];
-                cancelButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-                [cancelButton setTitleColor:COLOR_LIGHT_GRAY forState:UIControlStateNormal];
-                [self addSubview:cancelButton];
-                [cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            } else {
-                buttonHeight = 60;
-                buttonFrame = CGRectMake(window.frame.size.width/2 + 4, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + (self.frame.size.height - (summaryTableView.frame.origin.y + summaryTableView.frame.size.height))/2 - buttonHeight/2, window.frame.size.width/2 - 12, buttonHeight);
-                buttonTitle = BC_STRING_PAY;
-                
-                UIButton *declineButton = [[UIButton alloc] initWithFrame:buttonFrame];
-                [declineButton changeXPosition:8];
-                declineButton.layer.cornerRadius = cornerRadius;
-                [declineButton setTitle:BC_STRING_DECLINE forState:UIControlStateNormal];
-                declineButton.backgroundColor = COLOR_BLOCKCHAIN_RED;
-                declineButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-                [self addSubview:declineButton];
-                [declineButton addTarget:self action:@selector(declineButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            }
+            buttonTitle = [self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_SEND : BC_STRING_PAY;
         } else {
-            buttonHeight = 40;
-            buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);
             buttonTitle = BC_STRING_SEND;
-            cornerRadius = 0;
         }
         
         self.reallyDoPaymentButton = [[UIButton alloc] initWithFrame:CGRectZero];
         self.reallyDoPaymentButton.frame = buttonFrame;
-        self.reallyDoPaymentButton.layer.cornerRadius = cornerRadius;
         [self.reallyDoPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
         self.reallyDoPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
@@ -147,16 +115,6 @@ const int cellRowFee = 4;
     if (!self.contactTransaction) {
         [self.delegate setupNoteForTransaction:self.descriptionField.text];
     }
-}
-
-- (void)cancelButtonClicked
-{
-    [self.delegate confirmRejectPayment:RejectionTypeCancel];
-}
-
-- (void)declineButtonClicked
-{
-    [self.delegate confirmRejectPayment:RejectionTypeDecline];
 }
 
 - (void)feeInformationButtonClicked

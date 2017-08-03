@@ -32,6 +32,11 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
+typedef enum {
+    RejectionTypeDecline,
+    RejectionTypeCancel
+} RejectionType;
+
 @interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
 @property (nonatomic) TransactionType transactionType;
