@@ -29,6 +29,7 @@
                 <outlet property="feeField" destination="p7q-Ud-nYh" id="A0V-si-4g2"/>
                 <outlet property="feeLabel" destination="Zhm-Jw-P4C" id="Piy-45-yLj"/>
                 <outlet property="feeOptionsButton" destination="8CA-Iw-4Gl" id="2WT-Lj-bjR"/>
+                <outlet property="feeTappableView" destination="FK0-bF-ZTY" id="fS4-ED-Z12"/>
                 <outlet property="fiatAmountField" destination="qx4-XV-uhn" id="Ns6-YO-Z1m"/>
                 <outlet property="fiatLabel" destination="vGH-md-Ck3" id="LhR-Tz-aN6"/>
                 <outlet property="fromLabel" destination="7" id="oF6-bR-xhe"/>
@@ -212,6 +213,10 @@
                                         <outlet property="delegate" destination="-1" id="MPG-3J-rVc"/>
                                     </connections>
                                 </textField>
+                                <view contentMode="scaleToFill" misplaced="YES" id="FK0-bF-ZTY">
+                                    <rect key="frame" x="0.0" y="61" width="320" height="52"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>

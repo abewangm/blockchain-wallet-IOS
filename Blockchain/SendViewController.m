@@ -182,6 +182,9 @@ BOOL displayingLocalSymbolSend;
     
     rejectPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(feeOptionsClicked:)];
+    [feeTappableView addGestureRecognizer:tapGestureRecognizer];
+    
     [self reload];
     
     if (self.onViewDidLoad) {
@@ -1089,6 +1092,7 @@ BOOL displayingLocalSymbolSend;
             [fiatAmountField changeYPosition:-15];
             [lineBelowAmountFields changeYPosition:28];
             
+            [feeTappableView changeYPosition:28];
             [feeField changeYPosition:38];
             [feeLabel changeYPosition:41];
             [self.feeTypeLabel changeYPosition:37];
@@ -1182,6 +1186,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.feeType == FeeTypeCustom) {
         feeField.hidden = NO;
+        [feeTappableView changeXPosition:self.feeAmountLabel.frame.origin.x];
         
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_LIGHT_GRAY;
@@ -1191,7 +1196,8 @@ BOOL displayingLocalSymbolSend;
         self.feeTypeLabel.hidden = YES;
     } else {
         feeField.hidden = YES;
-        
+        [feeTappableView changeXPosition:0];
+
         self.feeWarningLabel.hidden = YES;
         if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
             [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];

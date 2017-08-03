@@ -62,6 +62,7 @@
     IBOutlet UILabel *feeLabel;
     IBOutlet UIButton *feeOptionsButton;
     IBOutlet UITextField *feeField;
+    IBOutlet UIView *feeTappableView;
     
     IBOutlet BCLine *lineBelowFromField;
     IBOutlet BCLine *lineBelowToField;
