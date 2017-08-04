@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger, CardConfiguration){
 @property (nonatomic) UIView *noTransactionsView;
 
 @property (nonatomic) NSArray *finishedTransactions;
+
+@property (nonatomic, copy) void (^onUpdateData)();
+
 @end
 
 @implementation TransactionsViewController
@@ -57,7 +60,7 @@ typedef NS_ENUM(NSInteger, CardConfiguration){
 
 CGFloat cardsViewHeight;
 
-BOOL animateNextCell;
+BOOL didReceiveTransactionMessage;
 BOOL hasZeroTotalBalance = NO;
 BOOL showCards;
 BOOL showBuyAvailableNow;
@@ -384,9 +387,9 @@ int lastNumberTransactions = INT_MAX;
     }
 }
 
-- (void)animateNextCellAfterReload
+- (void)didReceiveTransactionMessage
 {
-    animateNextCell = YES;
+    didReceiveTransactionMessage = YES;
 }
 
 - (void)reload
@@ -416,6 +419,16 @@ int lastNumberTransactions = INT_MAX;
     // This should be done when request has finished but there is no callback
     if (refreshControl && refreshControl.isRefreshing) {
         [refreshControl endRefreshing];
+    }
+}
+
+- (void)updateData:(MultiAddressResponse *)newData
+{
+    data = newData;
+    
+    if (self.onUpdateData) {
+        self.onUpdateData();
+        self.onUpdateData = nil;
     }
 }
 
@@ -450,13 +463,17 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)animateFirstCell
 {
-    // Animate the first cell
-    if (data.transactions.count > 0 && animateNextCell) {
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
-        animateNextCell = NO;
+    if (data.transactions.count > 0 && didReceiveTransactionMessage) {
         
-        // Without a delay, the notification will not get the new transaction, but the one before it
-        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
+        [app.wallet getHistoryWithoutBusyView];
+        
+        didReceiveTransactionMessage = NO;
+        
+        __weak TransactionsViewController *weakSelf = self;
+        
+        self.onUpdateData = ^() {
+            [weakSelf paymentReceived];
+        };
     } else {
         hasZeroTotalBalance = [app.wallet getTotalActiveBalance] == 0;
     }
@@ -513,6 +530,8 @@ int lastNumberTransactions = INT_MAX;
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
         [app checkIfPaymentRequestFulfilled:transaction];
         return;
+    } else {
+        [app.wallet getMessages];
     };
     
     BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&

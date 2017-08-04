@@ -1040,7 +1040,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.latestResponse = response;
     
-    _transactionsViewController.data = response;
+    [_transactionsViewController updateData:response];
     
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     if (app.wallet.isFetchingTransactions) {
@@ -1667,7 +1667,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.latestResponse = nil;
     
-    _transactionsViewController.data = nil;
+    [_transactionsViewController updateData:nil];
     _settingsNavigationController = nil;
     [_receiveViewController clearAmounts];
     
@@ -2401,9 +2401,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didSendPaymentRequestResponse
 {
-    [self.wallet getMessages];
-    
-    [_transactionsViewController performSelector:@selector(reload) withObject:nil afterDelay:1.5f];
+    [self.wallet getHistoryWithoutBusyView];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
@@ -3239,7 +3237,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self playBeepSound];
     
-    [_transactionsViewController animateNextCellAfterReload];
+    [_transactionsViewController didReceiveTransactionMessage];
     
     [_receiveViewController storeRequestedAmount];
 }

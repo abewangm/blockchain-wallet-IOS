@@ -1100,7 +1100,7 @@ MyWalletPhone.hasEncryptedWalletData = function() {
     return data && data.length > 0;
 };
 
-MyWalletPhone.get_history = function() {
+MyWalletPhone.get_history = function(hideBusyView) {
     var success = function () {
         console.log('Got wallet history');
         objc_on_get_history_success();
@@ -1111,7 +1111,7 @@ MyWalletPhone.get_history = function() {
         objc_loading_stop();
     };
 
-    objc_loading_start_get_history();
+    if (!hideBusyView) objc_loading_start_get_history();
 
     var getHistory = MyWallet.wallet.getHistory();
     getHistory.then(success).catch(error);

@@ -49,11 +49,12 @@
 
 - (void)reload;
 - (void)reloadSymbols;
-- (void)animateNextCellAfterReload;
+- (void)didReceiveTransactionMessage;
 - (void)setText;
 - (UITableView*)tableView;
 - (void)changeFilterLabel:(NSString *)newText;
 - (void)selectPayment:(NSString *)payment;
+- (void)updateData:(MultiAddressResponse *)newData;
 
 - (void)showTransactionDetailForHash:(NSString *)hash;
 - (void)showTransactionDetail:(Transaction *)transaction;

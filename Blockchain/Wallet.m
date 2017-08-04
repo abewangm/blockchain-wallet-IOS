@@ -1202,6 +1202,12 @@
     [self.context evaluateScript:@"MyWalletPhone.get_history()"];
 }
 
+- (void)getHistoryWithoutBusyView
+{
+    if ([self isInitialized])
+        [self.context evaluateScript:@"MyWalletPhone.get_history(true)"];
+}
+
 - (void)getWalletAndHistory
 {
     if ([self isInitialized])
@@ -1212,7 +1218,7 @@
 {
     if (!self.didReceiveMessageForLastTransaction) {
         DLog(@"Did not receive tx message for %f seconds - getting history", DELAY_GET_HISTORY_BACKUP);
-        [self getHistory];
+        [self getHistoryWithoutBusyView];
     }
 }
 

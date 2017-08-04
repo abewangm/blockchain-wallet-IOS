@@ -241,6 +241,7 @@ typedef enum {
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
 - (void)getHistory;
+- (void)getHistoryWithoutBusyView;
 - (void)getHistoryIfNoTransactionMessage;
 - (void)getWalletAndHistory;
 
