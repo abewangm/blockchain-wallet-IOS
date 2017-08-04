@@ -6,6 +6,15 @@ git log -1 | cat
 echo "Cleaning..."
 rm -rf build dist
 
+echo "Resetting index.js..."
+git co -- src/index.js
+
+echo "Injecting navigator and global.crypto into index.js..."
+buffer='var Buffer = require('"'"'buffer'"'"').Buffer;'
+navigator='var navigator = {userAgent : {match : function() {return 0;}}};'
+globalCrypto='global.crypto = {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray);intArray.set(new Buffer(result, '"'"'hex'"'"'));}};'
+sed -i '' 's/'"$buffer"'/'"$buffer"'\'$'\n'"$navigator"'\'$'\n'"$globalCrypto"'/' src/index.js
+
 echo "Building..."
 grunt build --base .
 
