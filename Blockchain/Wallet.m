@@ -88,7 +88,7 @@
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:@"%@\n%@\n%@", JAVASCRIPTCORE_PREFIX_JS_SOURCE, walletJSSource, walletiOSSource];
     
     return jsSource;
 }
@@ -219,6 +219,27 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf on_get_fiat_at_time_error:error];
         });
+    };
+    
+    self.backgroundContext[@"objc_getRandomValues"] = ^(JSValue *intArray) {
+        DLog(@"objc_getRandomValues_background");
+        
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
+        
+        if (!fileHandle) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
+        }
+        
+        NSUInteger length = [[intArray toArray] count];
+        NSData *data = [fileHandle readDataOfLength:length];
+        
+        if ([data length] != length) {
+            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
+                                           reason:@"Data length is not equal to intArray length" userInfo:nil];
+        }
+        
+        return [data hexadecimalString];
     };
     
     [self.backgroundContext evaluateScript:[self getJSSource]];
