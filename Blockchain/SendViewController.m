@@ -384,6 +384,11 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)changeToFieldText:(NSString *)newText
+{
+    toField.text = newText;
+}
+
 - (void)reloadFromAndToFields
 {
     [self reloadFromField];
@@ -948,6 +953,7 @@ BOOL displayingLocalSymbolSend;
         [weakSelf disableToField];
         [weakSelf disableAmountViews];
         [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
+        [weakSelf changeToFieldText:transaction.contactName];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -957,10 +963,11 @@ BOOL displayingLocalSymbolSend;
             self.onViewDidLoad = nil;
             [self reload];
             self.contactTransaction = transaction;
-            [weakSelf selectFromAccount:fromAccount];
-            [weakSelf disableToField];
-            [weakSelf disableAmountViews];
+            [self selectFromAccount:fromAccount];
+            [self disableToField];
+            [self disableAmountViews];
             [self showRejectPaymentButtonWithRejectionType:rejectionType];
+            [self changeToFieldText:transaction.contactName];
         }
     }
 }
