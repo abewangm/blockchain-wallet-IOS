@@ -144,6 +144,8 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    
+    if (self.addressSource == DestinationAddressSourceContact && app.tabViewController.selectedIndex != TAB_SEND) [self reload];
 }
 
 - (void)viewDidLoad
@@ -306,6 +308,7 @@ BOOL displayingLocalSymbolSend;
     sendProgressCancelButton.hidden = YES;
     
     [self enableAmountViews];
+    [self enableToField];
 
     [self hideRejectPaymentButton];
     
@@ -437,16 +440,6 @@ BOOL displayingLocalSymbolSend;
     } else if (app.latestResponse.symbol_btc) {
         displayingLocalSymbol = FALSE;
         displayingLocalSymbolSend = FALSE;
-    }
-}
-
-- (void)setAddressSource:(DestinationAddressSource)addressSource
-{
-    _addressSource = addressSource;
-    
-    if (_addressSource != DestinationAddressSourceContact) {
-        [self enableAmountViews];
-        [self hideRejectPaymentButton];
     }
 }
 
@@ -952,6 +945,7 @@ BOOL displayingLocalSymbolSend;
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         [weakSelf selectFromAccount:fromAccount];
+        [weakSelf disableToField];
         [weakSelf disableAmountViews];
         [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
     };
@@ -964,6 +958,7 @@ BOOL displayingLocalSymbolSend;
             [self reload];
             self.contactTransaction = transaction;
             [weakSelf selectFromAccount:fromAccount];
+            [weakSelf disableToField];
             [weakSelf disableAmountViews];
             [self showRejectPaymentButtonWithRejectionType:rejectionType];
         }
@@ -1303,6 +1298,28 @@ BOOL displayingLocalSymbolSend;
         .hidden = YES;
         [continuePaymentButton changeYPosition:[self continuePaymentButtonOriginY]];
     }];
+}
+
+- (void)disableToField
+{
+    CGFloat alpha = 0.25;
+
+    toField.enabled = NO;
+    toField.alpha = alpha;
+    
+    addressBookButton.enabled = NO;
+    addressBookButton.alpha = alpha;
+}
+
+- (void)enableToField
+{
+    CGFloat alpha = 1.0;
+    
+    toField.enabled = YES;
+    toField.alpha = alpha;
+    
+    addressBookButton.enabled = YES;
+    addressBookButton.alpha = alpha;
 }
 
 - (void)disableAmountViews
