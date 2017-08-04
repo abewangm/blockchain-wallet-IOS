@@ -831,10 +831,6 @@
     
 #pragma mark Contacts
     
-    self.context[@"objc_uuid"] = ^() {
-        return [[[NSUUID alloc] init].UUIDString lowercaseString];
-    };
-    
     self.context[@"objc_on_create_invitation_success"] = ^(JSValue *invitation) {
         [weakSelf on_create_invitation_success:invitation];
     };
