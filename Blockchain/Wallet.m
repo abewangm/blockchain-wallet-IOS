@@ -2379,11 +2379,6 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendCancellation(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
 }
 
-- (void)hideNotificationBadgeForContactTransaction:(ContactTransaction *)transaction
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.hideNotificationBadgeForContactTransaction(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
-}
-
 - (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;

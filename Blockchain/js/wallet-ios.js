@@ -1973,11 +1973,6 @@ MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
     MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier).then(success).catch(error);
 }
 
-MyWalletPhone.hideNotificationBadgeForContactTransaction = function(userId, txIdentifier) {
-    MyWallet.wallet.contacts.read(userId, txIdentifier);
-    MyWalletPhone.getMessages();
-}
-
 MyWalletPhone.readInvitation = function(invitation, invitationString) {
     objc_on_read_invitation_success(invitation, invitationString);
 }

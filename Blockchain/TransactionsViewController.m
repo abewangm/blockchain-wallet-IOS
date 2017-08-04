@@ -171,10 +171,8 @@ int lastNumberTransactions = INT_MAX;
         
         if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
             [self acceptOrDeclinePayment:contactTransaction forContact:contact];
-            [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
         } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
             [self sendPayment:contactTransaction toContact:contact];
-            [app.wallet hideNotificationBadgeForContactTransaction:contactTransaction];
         } else if (contactTransaction.transactionState == ContactTransactionStateSendWaitingForQR) {
             [self promptCancelPayment:contactTransaction forContact:contact];
         } else if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
