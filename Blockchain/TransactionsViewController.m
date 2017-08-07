@@ -19,7 +19,7 @@
 #import "TransactionDetailNavigationController.h"
 #import "BCCardView.h"
 
-@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate>
+@interface TransactionsViewController () <AddressSelectionDelegate, CardViewDelegate, UIScrollViewDelegate, ContactTransactionCellDelegate>
 
 @property (nonatomic) int sectionMain;
 @property (nonatomic) int sectionContactsPending;
@@ -102,7 +102,7 @@ int lastNumberTransactions = INT_MAX;
         
         NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
         [cell configureWithTransaction:contactTransaction contactName:name];
-        
+        cell.delegate = self;
         cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
         
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
@@ -134,7 +134,8 @@ int lastNumberTransactions = INT_MAX;
             
             NSString *name = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier].name;
             [cell configureWithTransaction:contactTransaction contactName:name];
-            
+            cell.delegate = self;
+
             cell.selectedBackgroundView = [self selectedBackgroundViewForCell:cell];
             
             cell.selectionStyle = contactTransaction.transactionState == ContactTransactionStateCancelled || contactTransaction.transactionState == ContactTransactionStateDeclined ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
@@ -167,24 +168,9 @@ int lastNumberTransactions = INT_MAX;
 {
     if (indexPath.section == self.sectionContactsPending) {
         
-        ContactTransaction *contactTransaction = [app.wallet.pendingContactTransactions objectAtIndex:indexPath.row];
-        Contact *contact = [app.wallet.contacts objectForKey:contactTransaction.contactIdentifier];
+        TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
         
-        if (contactTransaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
-            [self acceptOrDeclinePayment:contactTransaction forContact:contact];
-        } else if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend) {
-            [self sendPayment:contactTransaction toContact:contact];
-        } else if (contactTransaction.transactionState == ContactTransactionStateSendWaitingForQR) {
-            [self promptCancelPayment:contactTransaction forContact:contact];
-        } else if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
-            if ([contactTransaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR]) {
-                [self promptCancelPayment:contactTransaction forContact:contact];
-            } else {
-                [self promptDeclinePayment:contactTransaction forContact:contact];
-            }
-        } else {
-            DLog(@"No action needed on transaction");
-        }
+        [cell transactionClicked:nil];
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.section == self.sectionMain) {

@@ -143,22 +143,39 @@
 
 - (void)transactionClicked:(UIButton *)button
 {
-    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    detailViewController.transaction = self.transaction;
+    Contact *contact = [app.wallet.contacts objectForKey:self.transaction.contactIdentifier];
     
-    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
-    
-    detailViewController.busyViewDelegate = navigationController;
-    navigationController.onDismiss = ^() {
-        app.transactionsViewController.detailViewController = nil;
-    };
-    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.transactionsViewController.detailViewController = detailViewController;
-
-    if (app.topViewControllerDelegate) {
-        [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
-    } else {
-        [app.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    if (self.transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
+        [self.delegate acceptOrDeclinePayment:self.transaction forContact:contact];
+    } else if (self.transaction.transactionState == ContactTransactionStateSendReadyToSend) {
+        [self.delegate sendPayment:self.transaction toContact:contact];
+    } else if (self.transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
+        [self.delegate promptCancelPayment:self.transaction forContact:contact];
+    } else if (self.transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
+        if ([self.transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR]) {
+            [self.delegate promptCancelPayment:self.transaction forContact:contact];
+        } else {
+            [self.delegate promptDeclinePayment:self.transaction forContact:contact];
+        }
+    } else if (self.transaction.transactionState == ContactTransactionStateCompletedSend || self.transaction.transactionState == ContactTransactionStateCompletedReceive) {
+        
+        TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+        detailViewController.transaction = self.transaction;
+        
+        TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+        
+        detailViewController.busyViewDelegate = navigationController;
+        navigationController.onDismiss = ^() {
+            app.transactionsViewController.detailViewController = nil;
+        };
+        navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        app.transactionsViewController.detailViewController = detailViewController;
+        
+        if (app.topViewControllerDelegate) {
+            [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
+        } else {
+            [app.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+        }
     }
 }
 
