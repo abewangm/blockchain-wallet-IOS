@@ -531,7 +531,7 @@ int lastNumberTransactions = INT_MAX;
         [app checkIfPaymentRequestFulfilled:transaction];
         return;
     } else {
-        [app.wallet getMessages];
+        [app.wallet getHistoryWithoutBusyView];
     };
     
     BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
