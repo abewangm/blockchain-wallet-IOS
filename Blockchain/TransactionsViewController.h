@@ -55,6 +55,7 @@
 - (void)changeFilterLabel:(NSString *)newText;
 - (void)selectPayment:(NSString *)payment;
 - (void)updateData:(MultiAddressResponse *)newData;
+- (void)didGetMessages;
 
 - (void)showTransactionDetailForHash:(NSString *)hash;
 - (void)showTransactionDetail:(Transaction *)transaction;

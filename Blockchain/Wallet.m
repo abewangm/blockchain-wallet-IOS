@@ -3244,8 +3244,6 @@
     DLog(@"on_get_history_success");
     
     [self getMessages];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize

@@ -49,8 +49,6 @@ typedef NS_ENUM(NSInteger, CardConfiguration){
 
 @property (nonatomic) NSArray *finishedTransactions;
 
-@property (nonatomic, copy) void (^onUpdateData)();
-
 @end
 
 @implementation TransactionsViewController
@@ -392,6 +390,11 @@ int lastNumberTransactions = INT_MAX;
     didReceiveTransactionMessage = YES;
 }
 
+- (void)didGetMessages
+{
+    [self reload];
+}
+
 - (void)reload
 {
     [self reloadData];
@@ -425,11 +428,6 @@ int lastNumberTransactions = INT_MAX;
 - (void)updateData:(MultiAddressResponse *)newData
 {
     data = newData;
-    
-    if (self.onUpdateData) {
-        self.onUpdateData();
-        self.onUpdateData = nil;
-    }
 }
 
 - (void)reloadSymbols
@@ -465,15 +463,11 @@ int lastNumberTransactions = INT_MAX;
 {
     if (data.transactions.count > 0 && didReceiveTransactionMessage) {
         
-        [app.wallet getHistoryWithoutBusyView];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
         
         didReceiveTransactionMessage = NO;
-        
-        __weak TransactionsViewController *weakSelf = self;
-        
-        self.onUpdateData = ^() {
-            [weakSelf paymentReceived];
-        };
+
+        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
     } else {
         hasZeroTotalBalance = [app.wallet getTotalActiveBalance] == 0;
     }
@@ -530,9 +524,9 @@ int lastNumberTransactions = INT_MAX;
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
         [app checkIfPaymentRequestFulfilled:transaction];
         return;
-    } else {
-        [app.wallet getHistoryWithoutBusyView];
-    };
+    } else if ([transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
+        [app.wallet performSelector:@selector(getHistoryWithoutBusyView) withObject:nil afterDelay:3.0f];
+    }
     
     BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
                              [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&
