@@ -494,6 +494,8 @@ const int sectionContacts = 0;
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     
+    [activityController setValue:BC_STRING_CONTACT_REQUEST_SUBJECT forKey:@"subject"];
+    
     [self presentViewController:activityController animated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_SHARE_CONTACT_LINK object:nil];
     }];
