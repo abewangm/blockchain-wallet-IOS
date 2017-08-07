@@ -449,11 +449,9 @@ int lastNumberTransactions = INT_MAX;
 {
     if (data.transactions.count > 0 && didReceiveTransactionMessage) {
         
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
-        
         didReceiveTransactionMessage = NO;
 
-        [self performSelector:@selector(paymentReceived) withObject:nil afterDelay:0.1f];
+        [self performSelector:@selector(didGetNewTransaction) withObject:nil afterDelay:0.1f];
     } else {
         hasZeroTotalBalance = [app.wallet getTotalActiveBalance] == 0;
     }
@@ -503,22 +501,29 @@ int lastNumberTransactions = INT_MAX;
     return number;
 }
 
-- (void)paymentReceived
+- (void)didGetNewTransaction
 {
     Transaction *transaction = [data.transactions firstObject];
     
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
-        [app checkIfPaymentRequestFulfilled:transaction];
-        return;
+        if (app.pendingPaymentRequestTransaction) {
+            [app checkIfPaymentRequestFulfilled:transaction];
+        } else {
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
+        };
     } else if ([transaction.txType isEqualToString:TX_TYPE_RECEIVED]) {
-        [app.wallet performSelector:@selector(getHistoryWithoutBusyView) withObject:nil afterDelay:3.0f];
+        
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
+
+        if (app.wallet.pendingContactTransactions.count > 0) [app.wallet performSelector:@selector(getMessages) withObject:nil afterDelay:3.5f];
+        
+        BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
+                                         ![app.wallet isRecoveryPhraseVerified]);
+        
+        [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
+    } else {
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
     }
-    
-    BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
-                             [transaction.txType isEqualToString:TX_TYPE_RECEIVED] &&
-                             ![app.wallet isRecoveryPhraseVerified]);
-    
-    [app paymentReceived:[self getAmountForReceivedTransaction:transaction] showBackupReminder:shouldShowBackupReminder];
 }
 
 - (void)showTransactionDetailForHash:(NSString *)hash
