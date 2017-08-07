@@ -1309,7 +1309,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)disableToField
 {
-    CGFloat alpha = 0.25;
+    CGFloat alpha = 0.5;
 
     toField.enabled = NO;
     toField.alpha = alpha;
@@ -1331,7 +1331,7 @@ BOOL displayingLocalSymbolSend;
 
 - (void)disableAmountViews
 {
-    CGFloat alpha = 0.25;
+    CGFloat alpha = 0.5;
     
     btcAmountField.enabled = NO;
     btcAmountField.alpha = alpha;
