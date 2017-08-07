@@ -2343,6 +2343,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (!requestId) {
         [app hideBusyView];
+        [self.receiveViewController clearAmounts];
 
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
