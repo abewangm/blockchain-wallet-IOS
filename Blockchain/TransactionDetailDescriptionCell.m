@@ -96,6 +96,13 @@
                                                                  attribute:NSLayoutAttributeTop
                                                                 multiplier:1.f constant:23]];
     
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                    toItem:nil
+                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                multiplier:1.f constant:90]];
+    
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
