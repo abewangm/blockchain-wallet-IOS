@@ -224,7 +224,8 @@ const CGFloat rowHeightValueReceived = 80;
     } else if (indexPath.row == [self getCellRowDescription]) {
         TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         cell.descriptionDelegate = self;
-        [cell configureWithTransaction:self.transaction];
+        CGFloat spacing = 16.0; // use constant to get ideal cell height
+        [cell configureWithTransaction:self.transaction spacing:spacing];
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
         return cell;

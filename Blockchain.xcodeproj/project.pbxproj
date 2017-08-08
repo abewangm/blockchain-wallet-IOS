@@ -193,6 +193,7 @@
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
 		C70FF55E1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */; };
 		C70FF5661E7B051C00AC7F8B /* ContactTransactionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70FF5651E7B051C00AC7F8B /* ContactTransactionTableCell.xib */; };
+		C71859411F3A11A000745A87 /* BCSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71859401F3A11A000745A87 /* BCSummaryView.m */; };
 		C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */; };
 		C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */; };
 		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
@@ -1010,6 +1011,8 @@
 		C70FF55C1E76D5C600AC7F8B /* BuyBitcoinNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinNavigationController.h; sourceTree = "<group>"; };
 		C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyBitcoinNavigationController.m; sourceTree = "<group>"; };
 		C70FF5651E7B051C00AC7F8B /* ContactTransactionTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTransactionTableCell.xib; sourceTree = "<group>"; };
+		C718593F1F3A11A000745A87 /* BCSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCSummaryView.h; sourceTree = "<group>"; };
+		C71859401F3A11A000745A87 /* BCSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCSummaryView.m; sourceTree = "<group>"; };
 		C72D6CBD1EC0B4AB0000F922 /* BCFeeSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFeeSelectionView.h; sourceTree = "<group>"; };
 		C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFeeSelectionView.m; sourceTree = "<group>"; };
 		C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeeTableCell.h; sourceTree = "<group>"; };
@@ -1806,6 +1809,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C718593F1F3A11A000745A87 /* BCSummaryView.h */,
+				C71859401F3A11A000745A87 /* BCSummaryView.m */,
 				C75CBD021F1FB12F00CACE0D /* BCTotalAmountView.h */,
 				C75CBD031F1FB12F00CACE0D /* BCTotalAmountView.m */,
 				C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */,
@@ -2155,6 +2160,7 @@
 				FA63233C1A433BEA00EB3974 /* MerchantMapViewController.m in Sources */,
 				23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */,
 				231A66EE1DB9434B0043F862 /* HDNode.m in Sources */,
+				C71859411F3A11A000745A87 /* BCSummaryView.m in Sources */,
 				23256A591DF1CFF7002B7A04 /* Invitation.m in Sources */,
 				9F765F3914BC7BAC00048EFB /* TransactionTableCell.m in Sources */,
 				23B731D31E01AC1100129770 /* ReminderModalViewController.m in Sources */,

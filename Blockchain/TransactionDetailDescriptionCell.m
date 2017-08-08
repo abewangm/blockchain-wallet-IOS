@@ -11,7 +11,7 @@
 
 @implementation TransactionDetailDescriptionCell
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransaction:(Transaction *)transaction spacing:(CGFloat)textViewSpacing
 {
     [super configureWithTransaction:transaction];
     
@@ -31,6 +31,8 @@
         
         return;
     }
+    
+    self.textViewSpacing = textViewSpacing;
     
     self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.layoutMargins.left, self.contentView.frame.size.height/2 - 20.5/2, 100, 20.5)];
     self.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE];
@@ -82,6 +84,8 @@
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
+    CGFloat defaultRowHeight = [self.descriptionDelegate getDefaultRowHeight];
+    
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
@@ -94,7 +98,7 @@
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeTop
-                                                                multiplier:1.f constant:23]];
+                                                                multiplier:1.f constant:(defaultRowHeight - self.mainLabel.frame.size.height)/2 + defaultRowHeight/20]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeWidth
@@ -157,14 +161,14 @@
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeTop
-                                                                multiplier:1.f constant:16]];
+                                                                multiplier:1.f constant:self.textViewSpacing]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.textView
                                                                  attribute:NSLayoutAttributeBottom
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeBottom
-                                                                multiplier:1.f constant:-16]];
+                                                                multiplier:1.f constant:-self.textViewSpacing]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.editButton
                                                                  attribute:NSLayoutAttributeTop
