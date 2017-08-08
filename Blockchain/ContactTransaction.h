@@ -22,7 +22,7 @@ typedef enum {
 
 @interface ContactTransaction : Transaction
 
-@property (nonatomic, readonly) ContactTransactionState transactionState;
+@property (nonatomic) ContactTransactionState transactionState;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *state;
 @property (nonatomic, readonly) uint64_t intendedAmount;

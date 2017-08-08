@@ -515,7 +515,18 @@ int lastNumberTransactions = INT_MAX;
         
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
 
-        if (app.wallet.pendingContactTransactions.count > 0) [app.wallet performSelector:@selector(getMessages) withObject:nil afterDelay:3.5f];
+        if (app.wallet.pendingContactTransactions.count > 0) {
+            for (ContactTransaction *contactTransaction in [app.wallet.pendingContactTransactions reverseObjectEnumerator]) {
+                if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment &&
+                    contactTransaction.intendedAmount == transaction.amount &&
+                    [[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString: contactTransaction.address]) {
+                    [app.wallet.pendingContactTransactions removeObject:contactTransaction];
+                    contactTransaction.transactionState = ContactTransactionStateCompletedReceive;
+                    [app.wallet.completedContactTransactions setObject:contactTransaction forKey:transaction.myHash];
+                    [tableView reloadData];
+                }
+            }
+        };
         
         BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
                                          ![app.wallet isRecoveryPhraseVerified]);
