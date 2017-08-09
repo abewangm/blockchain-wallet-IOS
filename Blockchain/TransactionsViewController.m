@@ -507,6 +507,7 @@ int lastNumberTransactions = INT_MAX;
     
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
         if (app.pendingPaymentRequestTransaction) {
+            [self completeSendRequestOptimisticallyForTransaction:transaction];
             [app checkIfPaymentRequestFulfilled:transaction];
         } else {
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
@@ -515,18 +516,7 @@ int lastNumberTransactions = INT_MAX;
         
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
 
-        if (app.wallet.pendingContactTransactions.count > 0) {
-            for (ContactTransaction *contactTransaction in [app.wallet.pendingContactTransactions reverseObjectEnumerator]) {
-                if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment &&
-                    contactTransaction.intendedAmount == transaction.amount &&
-                    [[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString: contactTransaction.address]) {
-                    [app.wallet.pendingContactTransactions removeObject:contactTransaction];
-                    contactTransaction.transactionState = ContactTransactionStateCompletedReceive;
-                    [app.wallet.completedContactTransactions setObject:contactTransaction forKey:transaction.myHash];
-                    [tableView reloadData];
-                }
-            }
-        };
+        [self completeReceiveRequestOptimisticallyForTransaction:transaction];
         
         BOOL shouldShowBackupReminder = (hasZeroTotalBalance && [app.wallet getTotalActiveBalance] > 0 &&
                                          ![app.wallet isRecoveryPhraseVerified]);
@@ -740,6 +730,38 @@ int lastNumberTransactions = INT_MAX;
     BCAddressSelectionView *filterView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeFilter];
     filterView.delegate = self;
     [app showModalWithContent:filterView closeType:ModalCloseTypeBack headerText:BC_STRING_BALANCES];
+}
+
+- (void)completeReceiveRequestOptimisticallyForTransaction:(Transaction *)transaction
+{
+    if (app.wallet.pendingContactTransactions.count > 0) {
+        for (ContactTransaction *contactTransaction in [app.wallet.pendingContactTransactions reverseObjectEnumerator]) {
+            if (contactTransaction.transactionState == ContactTransactionStateReceiveWaitingForPayment &&
+                contactTransaction.intendedAmount == transaction.amount &&
+                [[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString: contactTransaction.address]) {
+                [app.wallet.pendingContactTransactions removeObject:contactTransaction];
+                contactTransaction.transactionState = ContactTransactionStateCompletedReceive;
+                [app.wallet.completedContactTransactions setObject:contactTransaction forKey:transaction.myHash];
+                [self reloadData];
+            }
+        }
+    };
+}
+
+- (void)completeSendRequestOptimisticallyForTransaction:(Transaction *)transaction
+{
+    if (app.wallet.pendingContactTransactions.count > 0) {
+        for (ContactTransaction *contactTransaction in [app.wallet.pendingContactTransactions reverseObjectEnumerator]) {
+            if (contactTransaction.transactionState == ContactTransactionStateSendReadyToSend &&
+                contactTransaction.intendedAmount == llabs(transaction.amount) - llabs(transaction.fee) &&
+                [[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ADDRESS] isEqualToString: contactTransaction.address]) {
+                [app.wallet.pendingContactTransactions removeObject:contactTransaction];
+                contactTransaction.transactionState = ContactTransactionStateCompletedSend;
+                [app.wallet.completedContactTransactions setObject:contactTransaction forKey:transaction.myHash];
+                [self reloadData];
+            }
+        }
+    };
 }
 
 #pragma mark - Address Selection Delegate
