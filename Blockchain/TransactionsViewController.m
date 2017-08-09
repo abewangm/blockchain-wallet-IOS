@@ -414,6 +414,11 @@ int lastNumberTransactions = INT_MAX;
 - (void)updateData:(MultiAddressResponse *)newData
 {
     data = newData;
+    
+    if (app.pendingPaymentRequestTransaction) {
+        Transaction *latestTransaction = [data.transactions firstObject];
+        [self completeSendRequestOptimisticallyForTransaction:latestTransaction];
+    }
 }
 
 - (void)reloadSymbols
@@ -507,7 +512,6 @@ int lastNumberTransactions = INT_MAX;
     
     if ([transaction.txType isEqualToString:TX_TYPE_SENT]) {
         if (app.pendingPaymentRequestTransaction) {
-            [self completeSendRequestOptimisticallyForTransaction:transaction];
             [app checkIfPaymentRequestFulfilled:transaction];
         } else {
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:self.sectionMain]] withRowAnimation:UITableViewRowAnimationFade];
