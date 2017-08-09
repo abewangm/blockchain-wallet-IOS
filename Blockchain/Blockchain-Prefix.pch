@@ -731,7 +731,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
-#define JAVASCRIPTCORE_PREFIX_JS_SOURCE @"var window = this; Promise = undefined;"
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE @"var window = this; var navigator = {userAgent : {match : function() {return 0;}}}; Promise = undefined;"
 #define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
 #define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
 #define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
