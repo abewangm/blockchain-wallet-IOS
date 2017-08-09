@@ -15,13 +15,14 @@
 #import "TransactionDetailDescriptionCell.h"
 
 #define NUMBER_OF_ROWS 5
+#define SPACING_TEXTVIEW 5.6f
 
 const int cellRowFrom = 0;
 const int cellRowTo = 1;
 const int cellRowAmount = 3;
 const int cellRowFee = 4;
 
-@interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, DescriptionDelegate>
+@interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, DescriptionDelegate>
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;
 @property (nonatomic) uint64_t amount;
@@ -45,12 +46,16 @@ const int cellRowFee = 4;
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
     
     if (self) {
+
+        self.numberOfRows = NUMBER_OF_ROWS;
+        
+        [self setupPaymentButton];
         
         BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
         [self addSubview:totalAmountView];
         self.totalAmountView = totalAmountView;
         
-        CGFloat tableViewHeight = CELL_HEIGHT * NUMBER_OF_ROWS;
+        CGFloat tableViewHeight = CELL_HEIGHT * self.numberOfRows;
         
         self.from = from;
         self.to = to;
@@ -62,54 +67,53 @@ const int cellRowFee = 4;
         self.backgroundColor = [UIColor whiteColor];
         
         UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, totalAmountView.frame.origin.y + totalAmountView.frame.size.height, window.frame.size.width, tableViewHeight)];
-        summaryTableView.scrollEnabled = NO;
         summaryTableView.delegate = self;
         summaryTableView.dataSource = self;
+        summaryTableView.tableFooterView = [UIView new];
         [summaryTableView registerClass:[TransactionDetailDescriptionCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION];
         [self addSubview:summaryTableView];
         
-        CGFloat lineWidth = 1.0/[UIScreen mainScreen].scale;
-        
-        summaryTableView.clipsToBounds = YES;
-        
-        CALayer *topBorder = [CALayer layer];
-        topBorder.borderColor = [COLOR_LINE_GRAY CGColor];
-        topBorder.borderWidth = 1;
-        topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(summaryTableView.frame), lineWidth);
-        [summaryTableView.layer addSublayer:topBorder];
-        
-        CALayer *bottomBorder = [CALayer layer];
-        bottomBorder.borderColor = [COLOR_LINE_GRAY CGColor];
-        bottomBorder.borderWidth = 1;
-        bottomBorder.frame = CGRectMake(0, CGRectGetHeight(summaryTableView.frame) - lineWidth, CGRectGetWidth(summaryTableView.frame), lineWidth);
-        [summaryTableView.layer addSublayer:bottomBorder];
-        
         self.tableView = summaryTableView;
-        
-        CGFloat buttonHeight = 40;
-        CGRect buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);;
-        NSString *buttonTitle;
-        
-        if (self.contactTransaction) {
-            buttonTitle = [self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_SEND : BC_STRING_PAY;
-        } else {
-            buttonTitle = BC_STRING_SEND;
-        }
-        
-        self.reallyDoPaymentButton = [[UIButton alloc] initWithFrame:CGRectZero];
-        self.reallyDoPaymentButton.frame = buttonFrame;
-        [self.reallyDoPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
-        self.reallyDoPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-        self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
-        
-        [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:self.reallyDoPaymentButton];
     }
     return self;
 }
 
+- (void)setupPaymentButton
+{
+    CGFloat buttonHeight = 40;
+    CGRect buttonFrame = CGRectMake(0, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - buttonHeight, app.window.frame.size.width, buttonHeight);;
+    NSString *buttonTitle;
+    
+    if (self.contactTransaction) {
+        buttonTitle = [self.contactTransaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? BC_STRING_SEND : BC_STRING_PAY;
+    } else {
+        buttonTitle = BC_STRING_SEND;
+    }
+    
+    self.reallyDoPaymentButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    self.reallyDoPaymentButton.frame = buttonFrame;
+    [self.reallyDoPaymentButton setTitle:buttonTitle forState:UIControlStateNormal];
+    self.reallyDoPaymentButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    self.reallyDoPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    
+    [self.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPaymentButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self addSubview:self.reallyDoPaymentButton];
+}
+
 #pragma mark - Actions
+
+- (void)cancelEditing
+{
+    self.note = self.textView.text;
+
+    CGFloat descriptionCellHeight = self.textView.frame.size.height + SPACING_TEXTVIEW * 2;
+    
+    [self.tableView changeHeight:(self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight];
+    [self.tableView scrollRectToVisible:CGRectZero animated:YES];
+    
+    [super cancelEditing];
+}
 
 - (void)reallyDoPaymentButtonClicked
 {
@@ -166,22 +170,6 @@ const int cellRowFee = 4;
 - (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
 {
     return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:amount localCurrency:NO], [NSNumberFormatter formatMoney:amount localCurrency:YES]];
-}
-
-#pragma mark - Text Field Delegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self moveViewsUpForSmallScreens];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    
-    [self moveViewsDownForSmallScreens];
-    
-    return YES;
 }
 
 #pragma mark - Table View Delegate
@@ -246,11 +234,11 @@ const int cellRowFee = 4;
         TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         descriptionCell.userInteractionEnabled = !self.contactTransaction;
         descriptionCell.descriptionDelegate = self;
-        CGFloat spacing = 5.6f; // use constant to get ideal cell height
+        ; // use constant to get ideal cell height
         
         Transaction *transactionWithNote = [Transaction new];
         transactionWithNote.note = self.note;
-        
+        CGFloat spacing = SPACING_TEXTVIEW;
         [descriptionCell configureWithTransaction:transactionWithNote spacing:spacing];
         descriptionCell.mainLabel.font = mainFont;
         descriptionCell.textViewPlaceholderLabel.font = detailFont;

@@ -11,6 +11,7 @@
 
 @protocol DescriptionDelegate
 @property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
+- (void)textViewDidBeginEditing:(UITextView *)textView;
 - (void)textViewDidChange:(UITextView *)textView;
 - (NSString *)getNotePlaceholder;
 - (CGFloat)getDefaultRowHeight;

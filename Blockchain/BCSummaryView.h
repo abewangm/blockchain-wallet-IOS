@@ -20,4 +20,8 @@ const int cellRowDescription = 2;
 @property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
 @property (nonatomic) NSString *note;
+@property (nonatomic) NSUInteger numberOfRows;
+
+- (void)cancelEditing;
+
 @end

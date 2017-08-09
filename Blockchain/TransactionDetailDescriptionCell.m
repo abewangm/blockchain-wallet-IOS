@@ -256,6 +256,11 @@
 
 #pragma mark - TextView delegate
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.descriptionDelegate textViewDidBeginEditing:textView];
+}
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {

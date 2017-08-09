@@ -8,6 +8,7 @@
 
 #import "BCSummaryView.h"
 #import "BCLine.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @interface BCSummaryView ()
 @end
@@ -21,6 +22,11 @@
         [self setupTextViewInputAccessoryView];
     }
     return self;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.tableView changeHeight:self.numberOfRows * CELL_HEIGHT];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -78,8 +84,6 @@
 
 - (void)cancelEditing
 {
-    self.note = self.textView.text;
-
     self.textViewCursorPosition = self.textView.selectedRange;
     
     [self.textView resignFirstResponder];
