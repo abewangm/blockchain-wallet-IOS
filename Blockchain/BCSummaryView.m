@@ -7,6 +7,8 @@
 //
 
 #import "BCSummaryView.h"
+#import "BCLine.h"
+
 @interface BCSummaryView ()
 @end
 @implementation BCSummaryView
@@ -56,27 +58,28 @@
 - (void)setupTextViewInputAccessoryView
 {
     UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, BUTTON_HEIGHT)];
-    inputAccessoryView.backgroundColor = COLOR_WARNING_RED;
+    inputAccessoryView.backgroundColor = [UIColor whiteColor];;
     
-    UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, BUTTON_HEIGHT)];
-    updateButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    [updateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [updateButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:updateButton.titleLabel.font.pointSize]];
-    [updateButton setTitle:BC_STRING_UPDATE forState:UIControlStateNormal];
-    [updateButton addTarget:self action:@selector(saveNote) forControlEvents:UIControlEventTouchUpInside];
-    [inputAccessoryView addSubview:updateButton];
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:topLine];
     
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(updateButton.frame.size.width - 50, 0, 50, BUTTON_HEIGHT)];
-    cancelButton.backgroundColor = COLOR_BUTTON_GRAY_CANCEL;
-    [cancelButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
-    [inputAccessoryView addSubview:cancelButton];
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:bottomLine];
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(cancelEditing) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:doneButton];
     
     self.descriptionInputAccessoryView = inputAccessoryView;
 }
 
 - (void)cancelEditing
 {
+    self.note = self.textView.text;
+
     self.textViewCursorPosition = self.textView.selectedRange;
     
     [self.textView resignFirstResponder];
@@ -106,11 +109,6 @@
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return CELL_HEIGHT;
-}
-
-- (void)saveNote
-{
-    
 }
 
 @end

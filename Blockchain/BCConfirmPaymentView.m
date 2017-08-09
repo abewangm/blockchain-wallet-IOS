@@ -111,14 +111,6 @@ const int cellRowFee = 4;
 
 #pragma mark - Actions
 
-- (void)saveNote
-{
-    self.textViewCursorPosition = self.textView.selectedRange;
-    
-    [self.textView resignFirstResponder];
-    self.textView.editable = NO;
-}
-
 - (void)reallyDoPaymentButtonClicked
 {
     if (!self.contactTransaction) {
@@ -255,7 +247,11 @@ const int cellRowFee = 4;
         descriptionCell.userInteractionEnabled = !self.contactTransaction;
         descriptionCell.descriptionDelegate = self;
         CGFloat spacing = 5.6f; // use constant to get ideal cell height
-        [descriptionCell configureWithTransaction:nil spacing:spacing];
+        
+        Transaction *transactionWithNote = [Transaction new];
+        transactionWithNote.note = self.note;
+        
+        [descriptionCell configureWithTransaction:transactionWithNote spacing:spacing];
         descriptionCell.mainLabel.font = mainFont;
         descriptionCell.textViewPlaceholderLabel.font = detailFont;
         descriptionCell.textView.font = detailFont;
