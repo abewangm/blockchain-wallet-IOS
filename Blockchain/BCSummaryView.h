@@ -21,6 +21,7 @@ const int cellRowDescription = 2;
 @property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
 @property (nonatomic) NSString *note;
 @property (nonatomic) NSUInteger numberOfRows;
+@property (nonatomic) UIView *topView;
 
 - (void)cancelEditing;
 

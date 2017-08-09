@@ -29,7 +29,6 @@ const int cellRowFee = 4;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) ContactTransaction *contactTransaction;
-@property (nonatomic) BCTotalAmountView *totalAmountView;
 
 @end
 @implementation BCConfirmPaymentView
@@ -53,7 +52,7 @@ const int cellRowFee = 4;
         
         BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
         [self addSubview:totalAmountView];
-        self.totalAmountView = totalAmountView;
+        self.topView = totalAmountView;
         
         CGFloat tableViewHeight = CELL_HEIGHT * self.numberOfRows;
         
@@ -127,42 +126,9 @@ const int cellRowFee = 4;
     [self.delegate feeInformationButtonClicked];
 }
 
-#pragma mark - View Helpers
-
-- (void)moveViewsUpForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        self.totalAmountView.hidden = YES;
-
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.tableView changeYPosition:0];
-        }];
-    }
-}
-
-- (void)moveViewsDownForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        self.totalAmountView.alpha = 0;
-        self.totalAmountView.hidden = NO;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.tableView changeYPosition:self.totalAmountView.frame.origin.y + self.totalAmountView.frame.size.height];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                self.totalAmountView.alpha = 1;
-            }];
-        }];
-    }
-}
-
 - (void)hideKeyboard
 {
     [self.textView resignFirstResponder];
-    
-    [self moveViewsDownForSmallScreens];
 }
 
 #pragma mark - Text Helpers
