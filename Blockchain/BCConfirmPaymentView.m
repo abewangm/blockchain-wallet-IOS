@@ -71,6 +71,10 @@ const int cellRowFee = 4;
         summaryTableView.dataSource = self;
         summaryTableView.tableFooterView = [UIView new];
         [summaryTableView registerClass:[TransactionDetailDescriptionCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION];
+        
+        summaryTableView.layer.borderWidth = 1.0/[UIScreen mainScreen].scale;
+        summaryTableView.layer.borderColor = [COLOR_LINE_GRAY CGColor];
+        
         [self addSubview:summaryTableView];
         
         self.tableView = summaryTableView;
