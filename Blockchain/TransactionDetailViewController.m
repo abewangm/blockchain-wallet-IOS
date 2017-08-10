@@ -417,6 +417,11 @@ const CGFloat rowHeightValueReceived = 80;
     [app toggleSymbol];
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    // Required for Description cell protocol
+}
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGPoint currentOffset = self.tableView.contentOffset;
