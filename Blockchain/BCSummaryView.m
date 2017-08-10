@@ -11,6 +11,7 @@
 #import "UIView+ChangeFrameAttribute.h"
 
 @interface BCSummaryView ()
+@property (nonatomic) BOOL startedEditing;
 @end
 @implementation BCSummaryView
 
@@ -26,6 +27,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    self.startedEditing = YES;
     [self moveViewsUpForSmallScreens];
 }
 
@@ -46,10 +48,15 @@
         CGRect selectionEndRect = [textView convertRect:[textView caretRectForPosition:selectionRange.end] toView:self.tableView];
         
         if (CGRectIntersectsRect(keyboardPlusAccessoryRect, selectionEndRect)) {
-            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
+            [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:self.startedEditing];
         }
     });
 
+    if (self.startedEditing) {
+        self.startedEditing = NO;
+    } else {
+        [self adjustHeightOfTableViewAnimated:NO];
+    }
 }
 
 - (void)adjustHeightOfTableViewAnimated:(BOOL)animated
@@ -70,9 +77,11 @@
     if (animated) {
         [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
             self.tableView.frame = frame;
+            [self.footerView changeYPosition:frame.origin.y + frame.size.height + 8];
         }];
     } else {
         self.tableView.frame = frame;
+        [self.footerView changeYPosition:frame.origin.y + frame.size.height + 8];
     }
     
 }
