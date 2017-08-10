@@ -46,6 +46,7 @@ const int cellRowFee = 4;
     if (self) {
 
         self.numberOfRows = NUMBER_OF_ROWS;
+        self.cellRowDescription = 2;
         
         [self setupPaymentButton];
         
@@ -53,7 +54,7 @@ const int cellRowFee = 4;
         [self addSubview:totalAmountView];
         self.topView = totalAmountView;
         
-        CGFloat tableViewHeight = CELL_HEIGHT * self.numberOfRows;
+        CGFloat tableViewHeight = CELL_HEIGHT_DESCRIPTION_CELL * self.numberOfRows;
         
         self.from = from;
         self.to = to;
@@ -142,10 +143,10 @@ const int cellRowFee = 4;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == cellRowDescription && self.textView.text) {
+    if (indexPath.row == self.cellRowDescription && self.textView.text) {
         return UITableViewAutomaticDimension;
     }
-    return CELL_HEIGHT;
+    return CELL_HEIGHT_DESCRIPTION_CELL;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -196,7 +197,7 @@ const int cellRowFee = 4;
         [cell.contentView addSubview:self.feeInformationButton];
         
         if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
-    } else if (indexPath.row == cellRowDescription) {
+    } else if (indexPath.row == self.cellRowDescription) {
         TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         descriptionCell.userInteractionEnabled = !self.contactTransaction;
         descriptionCell.descriptionDelegate = self;

@@ -93,7 +93,7 @@
 
 - (CGFloat)getDefaultRowHeight
 {
-    return CELL_HEIGHT;
+    return CELL_HEIGHT_DESCRIPTION_CELL;
 }
 
 - (void)setupTextViewInputAccessoryView
@@ -126,7 +126,7 @@
     
     // Re-enable editing
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     });
     
     [self moveViewsDownForSmallScreens];
@@ -152,7 +152,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CELL_HEIGHT;
+    return CELL_HEIGHT_DESCRIPTION_CELL;
 }
 
 #pragma mark - View Helpers
