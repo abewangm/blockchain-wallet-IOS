@@ -15,7 +15,6 @@
 #import "TransactionDetailDescriptionCell.h"
 
 #define NUMBER_OF_ROWS 5
-#define SPACING_TEXTVIEW 5.6f
 
 const int cellRowFrom = 0;
 const int cellRowTo = 1;
