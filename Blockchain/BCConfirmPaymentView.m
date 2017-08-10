@@ -110,21 +110,6 @@ const int cellRowFee = 4;
 - (void)cancelEditing
 {
     self.note = self.textView.text;
-
-    CGFloat descriptionCellHeight = self.textView.frame.size.height + SPACING_TEXTVIEW * 2;
-    
-    CGFloat increasedTableViewHeight = (self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight;
-    CGFloat maxTableViewHeight = self.frame.size.height - self.reallyDoPaymentButton.frame.size.height - self.topView.frame.size.height - 8;
-    
-    if (increasedTableViewHeight > maxTableViewHeight) {
-        self.tableView.scrollEnabled = YES;
-        [self.tableView changeHeight:maxTableViewHeight];
-    } else {
-        self.tableView.scrollEnabled = NO;
-        [self.tableView changeHeight:increasedTableViewHeight];
-    }
-    
-    [self.tableView scrollRectToVisible:CGRectZero animated:YES];
     
     [super cancelEditing];
 }

@@ -23,6 +23,7 @@ const int cellRowDescription = 2;
 @property (nonatomic) NSString *note;
 @property (nonatomic) NSUInteger numberOfRows;
 @property (nonatomic) UIView *topView;
+@property (nonatomic) UIView *footerView;
 
 - (void)cancelEditing;
 

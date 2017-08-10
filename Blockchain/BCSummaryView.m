@@ -27,11 +27,6 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [self moveViewsUpForSmallScreens];
-    
-    BOOL isUsingLargeScreen = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
-    if (!isUsingLargeScreen) {
-        [self.tableView changeHeight:self.numberOfRows * CELL_HEIGHT];
-    }
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -54,6 +49,32 @@
             [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + selectionEndRect.origin.y + selectionEndRect.size.height - keyboardAccessoryRect.origin.y + 15) animated:NO];
         }
     });
+
+}
+
+- (void)adjustHeightOfTableViewAnimated:(BOOL)animated
+{
+    CGFloat height = self.tableView.contentSize.height;
+    CGFloat maxHeight = self.tableView.superview.frame.size.height - self.topView.frame.size.height - 8 - self.footerView.frame.size.height - 8 - BUTTON_HEIGHT - 8;
+    
+    if (height > maxHeight) {
+        height = maxHeight;
+        self.tableView.scrollEnabled = YES;
+    } else {
+        self.tableView.scrollEnabled = NO;
+    }
+    
+    CGRect frame = self.tableView.frame;
+    frame.size.height = height;
+    
+    if (animated) {
+        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+            self.tableView.frame = frame;
+        }];
+    } else {
+        self.tableView.frame = frame;
+    }
+    
 }
 
 - (UIView *)getDescriptionInputAccessoryView
@@ -94,11 +115,14 @@
     [self.textView resignFirstResponder];
     self.textView.editable = NO;
     
+    // Re-enable editing
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     });
     
     [self moveViewsDownForSmallScreens];
+    
+    [self adjustHeightOfTableViewAnimated:YES];
 }
 
 - (NSString *)getNotePlaceholder
