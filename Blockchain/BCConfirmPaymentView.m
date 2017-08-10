@@ -200,7 +200,6 @@ const int cellRowFee = 4;
         TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         descriptionCell.userInteractionEnabled = !self.contactTransaction;
         descriptionCell.descriptionDelegate = self;
-        ; // use constant to get ideal cell height
         
         Transaction *transactionWithNote = [Transaction new];
         transactionWithNote.note = self.note;
