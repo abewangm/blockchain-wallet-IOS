@@ -66,6 +66,7 @@ const int cellRowFee = 4;
         self.backgroundColor = [UIColor whiteColor];
         
         UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, totalAmountView.frame.origin.y + totalAmountView.frame.size.height, window.frame.size.width, tableViewHeight)];
+        summaryTableView.showsVerticalScrollIndicator = NO;
         summaryTableView.delegate = self;
         summaryTableView.dataSource = self;
         summaryTableView.tableFooterView = [UIView new];
@@ -108,7 +109,9 @@ const int cellRowFee = 4;
 
     CGFloat descriptionCellHeight = self.textView.frame.size.height + SPACING_TEXTVIEW * 2;
     
-    [self.tableView changeHeight:(self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight];
+    CGFloat increasedTableViewHeight = (self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight;
+    CGFloat maxTableViewHeight = self.frame.size.height - self.reallyDoPaymentButton.frame.size.height - self.topView.frame.size.height - 8;;
+    [self.tableView changeHeight:increasedTableViewHeight > maxTableViewHeight ? maxTableViewHeight : increasedTableViewHeight];
     [self.tableView scrollRectToVisible:CGRectZero animated:YES];
     
     [super cancelEditing];
