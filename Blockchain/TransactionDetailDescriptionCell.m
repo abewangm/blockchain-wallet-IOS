@@ -84,6 +84,7 @@
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
+    CGFloat leftInset = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
     CGFloat defaultRowHeight = [self.descriptionDelegate getDefaultRowHeight];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
@@ -91,7 +92,7 @@
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:15]];
+                                                                multiplier:1.f constant:leftInset]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeTop
@@ -112,7 +113,7 @@
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:15]];
+                                                                multiplier:1.f constant:leftInset]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
                                                                  attribute:NSLayoutAttributeTop
