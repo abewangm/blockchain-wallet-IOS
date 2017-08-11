@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL isEditingDescription;
 @property (nonatomic) CGFloat descriptionCellHeight;
 @property (nonatomic) UIView *topView;
+@property (nonatomic) CGFloat originalTableViewHeight;
 
 - (void)beginEditingDescription;
 - (void)endEditingDescription;

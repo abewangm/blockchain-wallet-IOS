@@ -15,7 +15,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.descriptionCellHeight = 140;
+        self.descriptionCellHeight = 132;
     }
     return self;
 }
@@ -29,6 +29,7 @@
     [self.descriptionTextView resignFirstResponder];
     
     if (self.tableView) {
+        [self.tableView changeHeight:self.originalTableViewHeight];
         [self moveViewsDownForSmallScreens];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -39,6 +40,8 @@
     self.isEditingDescription = YES;
     
     if (self.tableView) {
+        self.originalTableViewHeight = self.tableView.frame.size.height;
+        [self.tableView changeHeight:self.descriptionCellHeight];
         [self moveViewsUpForSmallScreens];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     } else {
