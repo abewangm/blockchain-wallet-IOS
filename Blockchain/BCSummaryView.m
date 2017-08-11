@@ -26,8 +26,6 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [self moveViewsUpForSmallScreens];
-    
     [self.tableView changeHeight:self.numberOfRows * CELL_HEIGHT];
 }
 
@@ -94,8 +92,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cellRowDescription inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     });
-    
-    [self moveViewsDownForSmallScreens];
 }
 
 - (NSString *)getNotePlaceholder
@@ -117,37 +113,6 @@
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return CELL_HEIGHT;
-}
-
-#pragma mark - View Helpers
-
-- (void)moveViewsUpForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        self.topView.hidden = YES;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.tableView changeYPosition:0];
-        }];
-    }
-}
-
-- (void)moveViewsDownForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        self.topView.alpha = 0;
-        self.topView.hidden = NO;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.tableView changeYPosition:self.topView.frame.origin.y + self.topView.frame.size.height];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                self.topView.alpha = 1;
-            }];
-        }];
-    }
 }
 
 @end
