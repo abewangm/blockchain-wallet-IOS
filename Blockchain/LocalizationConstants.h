@@ -499,7 +499,7 @@
 #define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 
 #define BC_STRING_RECEIVING_PAYMENT NSLocalizedString(@"Receiving Payment", nil)
-#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ for %@", nil)
+#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ - \"%@\"", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
 
 #define BC_STRING_GO_BACK NSLocalizedString(@"Go back", nil)
