@@ -115,8 +115,10 @@
 - (UITableViewCell *)configureDescriptionTextViewForCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = BC_STRING_DESCRIPTION;
+    
+    CGFloat width = [[UIScreen mainScreen] bounds].size.width;
 
-    self.descriptionTextView = [self configureTextViewWithFrame:CGRectMake(cell.contentView.frame.size.width/2 + 8, 8, cell.contentView.frame.size.width/2 - 16, self.descriptionCellHeight - 16)];
+    self.descriptionTextView = [self configureTextViewWithFrame:CGRectMake(width/2 + 8, 8, width/2 - 16, self.descriptionCellHeight - 16)];
 
     [cell.contentView addSubview:self.descriptionTextView];
     
