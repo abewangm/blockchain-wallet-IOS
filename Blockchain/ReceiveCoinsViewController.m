@@ -22,6 +22,8 @@
 #import "BCTotalAmountView.h"
 #import "BCDescriptionView.h"
 
+#define BOTTOM_CONTAINER_HEIGHT_PARTIAL 151
+#define BOTTOM_CONTAINER_HEIGHT_FULL 201
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
 
@@ -59,6 +61,7 @@ NSString *detailLabel;
 - (void)loadView
 {
     self.view = [[BCDescriptionView alloc] init];
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) self.view.descriptionCellHeight = BOTTOM_CONTAINER_HEIGHT_FULL - 2;
 }
 
 - (void)viewDidLoad
@@ -173,7 +176,7 @@ NSString *detailLabel;
 {
     CGFloat containerHeightPlusButtonSpace = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT;
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, 151)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
     self.bottomContainerView.clipsToBounds = YES;
     [self.view addSubview:self.bottomContainerView];
     
@@ -286,7 +289,7 @@ NSString *detailLabel;
     self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height, self.view.frame.size.width, 49)];
     self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
     self.descriptionContainerView.clipsToBounds = YES;
-    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 15, self.view.frame.size.width/2 - 30, self.view.descriptionCellHeight - 16)];
+    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 15, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 30)];
     self.view.descriptionTextView.hidden = YES;
     [self.descriptionContainerView addSubview:self.view.descriptionTextView];
     [self.bottomContainerView addSubview:self.descriptionContainerView];
@@ -580,7 +583,7 @@ NSString *detailLabel;
     viewToHide.alpha = 1;
     viewToHide.hidden = NO;
     
-    CGFloat newContainerHeight = shouldShowQR ? 151 : 201;
+    CGFloat newContainerHeight = shouldShowQR ? BOTTOM_CONTAINER_HEIGHT_PARTIAL : BOTTOM_CONTAINER_HEIGHT_FULL;
     CGFloat newLineXPosition = shouldShowQR ? 0 : 15;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
@@ -983,7 +986,7 @@ NSString *detailLabel;
         [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
         [self.descriptionContainerView changeHeight:49];
     }];
-        
+
     [self moveViewsUpForSmallScreens];
 }
 
