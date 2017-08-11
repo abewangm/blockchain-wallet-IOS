@@ -983,6 +983,8 @@ NSString *detailLabel;
         [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
         [self.descriptionContainerView changeHeight:49];
     }];
+        
+    [self moveViewsUpForSmallScreens];
 }
 
 # pragma mark - UITextField delegates
