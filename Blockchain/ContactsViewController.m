@@ -489,7 +489,7 @@ const int sectionContacts = 0;
     NSString *sharedInfo = [self.lastCreatedInvitation objectForKey:DICTIONARY_KEY_NAME];
     
     NSString *helperText = [NSString stringWithFormat:BC_STRING_INVITE_HELPER_TEXT, sharedInfo];
-    NSString *shareLink = [PREFIX_BLOCKCHAIN_URI stringByAppendingFormat:@"invite?id=%@&name=%@", [identifier stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]], [sharedInfo stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSString *shareLink = [URL_SERVER stringByAppendingFormat:@"/invite#id=%@&name=%@", [identifier stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]], [sharedInfo stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
     NSArray *items = @[[NSString stringWithFormat:@"%@\n%@", helperText, shareLink]];
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
