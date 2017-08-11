@@ -55,7 +55,22 @@
     if (self.startedEditing) {
         self.startedEditing = NO;
     } else {
-        [self adjustHeightOfTableViewAnimated:NO];
+        
+        if (textView.text.length == 0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self adjustHeightOfTableViewAnimated:YES];
+            });
+            return;
+        }
+        
+        CGRect keyboardAccessoryRect = [self.descriptionInputAccessoryView.superview convertRect:self.descriptionInputAccessoryView.frame toView:self];
+        
+        CGRect frame = self.tableView.frame;
+        BOOL isUsing4SOrIpad = IS_USING_SCREEN_SIZE_4S;
+        if (CGRectIntersectsRect(keyboardAccessoryRect, frame) && !isUsing4SOrIpad) {
+            frame.size.height = keyboardAccessoryRect.origin.y - self.topView.frame.size.height;
+            self.tableView.frame = frame;
+        }
     }
 }
 
