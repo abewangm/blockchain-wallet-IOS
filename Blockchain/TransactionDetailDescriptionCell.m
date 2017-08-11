@@ -82,7 +82,7 @@
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    CGFloat leftMargin = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 20 : 15;
+    CGFloat leftMargin = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeLeft
