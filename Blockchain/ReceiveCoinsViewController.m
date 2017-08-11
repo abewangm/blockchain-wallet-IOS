@@ -286,7 +286,7 @@ NSString *detailLabel;
     self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height, self.view.frame.size.width, 49)];
     self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
     self.descriptionContainerView.clipsToBounds = YES;
-    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 8, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 16)];
+    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 15, self.view.frame.size.width/2 - 30, self.view.descriptionCellHeight - 16)];
     self.view.descriptionTextView.hidden = YES;
     [self.descriptionContainerView addSubview:self.view.descriptionTextView];
     [self.bottomContainerView addSubview:self.descriptionContainerView];
