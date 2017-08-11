@@ -117,7 +117,15 @@
 
 - (UITableViewCell *)configureDescriptionTextViewForCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = BC_STRING_DESCRIPTION;
+    CGFloat leftMargin = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
+    CGFloat labelHeight = 16;
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftMargin, 14, self.frame.size.width/2 - 8 - leftMargin, labelHeight)];
+    descriptionLabel.text = BC_STRING_DESCRIPTION;
+    descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    
+    [cell.contentView addSubview:descriptionLabel];
     
     CGFloat width = [[UIScreen mainScreen] bounds].size.width;
 
