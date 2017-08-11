@@ -20,6 +20,7 @@
 #import "Contact.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "BCTotalAmountView.h"
+#import "BCDescriptionView.h"
 
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
@@ -33,11 +34,14 @@
 @property (nonatomic) Contact *fromContact;
 @property (nonatomic) BCLine *lineBelowFromField;
 @property (nonatomic) BCSecureTextField *descriptionField;
+@property (nonatomic) UIView *descriptionContainerView;
+@property (nonatomic) BCDescriptionView *view;
 @end
 
 @implementation ReceiveCoinsViewController
 
 @synthesize activeKeys;
+@dynamic view;
 
 Boolean didClickAccount = NO;
 int clickedAccount;
@@ -52,6 +56,11 @@ NSString *detailLabel;
 
 #pragma mark - Lifecycle
 
+- (void)loadView
+{
+    self.view = [[BCDescriptionView alloc] init];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,6 +70,7 @@ NSString *detailLabel;
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
                                  app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
     
+    [self setupAmountInputAccessoryView];
     [self setupTotalAmountView];
     [self setupBottomViews];
     [self selectDefaultDestination];
@@ -114,9 +124,49 @@ NSString *detailLabel;
 
 - (void)setupTotalAmountView
 {
-    self.totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_AQUA amount:0];
-    self.totalAmountView.hidden = YES;
-    [self.view addSubview:self.totalAmountView];
+    self.view.topView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_AQUA amount:0];
+    self.view.topView.hidden = YES;
+    [self.view addSubview:self.view.topView];
+}
+
+- (void)setupAmountInputAccessoryView
+{
+    amountKeyboardAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
+    amountKeyboardAccessoryView.backgroundColor = [UIColor whiteColor];;
+    
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [amountKeyboardAccessoryView addSubview:topLine];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:BUTTON_HEIGHT - 1];
+    [amountKeyboardAccessoryView addSubview:bottomLine];
+    
+    doneButton = [[UIButton alloc] initWithFrame:CGRectMake(amountKeyboardAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(doneButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [amountKeyboardAccessoryView addSubview:doneButton];
+}
+
+- (UIView *)getTextViewInputAccessoryView
+{
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, BUTTON_HEIGHT)];
+    inputAccessoryView.backgroundColor = [UIColor whiteColor];;
+    
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:topLine];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:BUTTON_HEIGHT];
+    [inputAccessoryView addSubview:bottomLine];
+    
+    UIButton *doneDescriptionButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneDescriptionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneDescriptionButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneDescriptionButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneDescriptionButton addTarget:self action:@selector(endEditingDescription) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:doneDescriptionButton];
+    
+    return inputAccessoryView;
 }
 
 - (void)setupBottomViews
@@ -246,6 +296,15 @@ NSString *detailLabel;
     self.descriptionField.returnKeyType = UIReturnKeyDone;
     self.descriptionField.delegate = self;
     [self.bottomContainerView addSubview:self.descriptionField];
+    
+    self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, IS_USING_SCREEN_SIZE_4S ? 0 : self.view.topView.frame.origin.y + self.view.topView.frame.size.height + 1, self.view.frame.size.width, 0)];
+    self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
+    self.descriptionContainerView.clipsToBounds = YES;
+    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 8, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 16)];
+    [self.descriptionContainerView addSubview:self.view.descriptionTextView];
+    [self.view addSubview:self.descriptionContainerView];
+    
+    self.view.descriptionTextView.inputAccessoryView = [self getTextViewInputAccessoryView];
     
     CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
@@ -478,7 +537,8 @@ NSString *detailLabel;
 
 - (void)setTotalAmountViewAmount
 {
-    [self.totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
+    BCTotalAmountView *totalAmountView = (BCTotalAmountView *)self.view.topView;
+    [totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
@@ -509,9 +569,9 @@ NSString *detailLabel;
 
 - (void)changeTopView:(BOOL)shouldShowQR
 {
-    UIView *viewToHide = shouldShowQR ? self.totalAmountView : self.headerView;
-    UIView *viewToShow = shouldShowQR ? self.headerView : self.totalAmountView;
-    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.totalAmountView.frame.size.height;
+    UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
+    UIView *viewToShow = shouldShowQR ? self.headerView : self.view.topView;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.view.topView.frame.size.height;
     
     viewToShow.alpha = 0;
     viewToShow.hidden = NO;
@@ -544,8 +604,8 @@ NSString *detailLabel;
         BOOL receivingFromContact = self.fromContact != nil;
         
         if (receivingFromContact) {
-            self.totalAmountView.alpha = 0;
-            self.totalAmountView.hidden = NO;
+            self.view.topView.alpha = 0;
+            self.view.topView.hidden = NO;
         } else {
             self.headerView.alpha = 0;
             self.headerView.hidden = NO;
@@ -553,14 +613,14 @@ NSString *detailLabel;
         
         [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
             if (receivingFromContact) {
-                [self.bottomContainerView changeYPosition:self.totalAmountView.frame.size.height];
+                [self.bottomContainerView changeYPosition:self.view.topView.frame.size.height];
             } else {
                 [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
             }
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:ANIMATION_DURATION animations:^{
                 if (receivingFromContact) {
-                    self.totalAmountView.alpha = 1;
+                    self.view.topView.alpha = 1;
                 } else {
                     self.headerView.alpha = 1;
                 }
@@ -910,6 +970,15 @@ NSString *detailLabel;
     }];
 }
 
+- (void)endEditingDescription
+{
+    [self.view endEditingDescription];
+    self.descriptionField.text = self.view.note;
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [self.descriptionContainerView changeHeight:0];
+    }];
+}
+
 # pragma mark - UITextField delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -930,11 +999,23 @@ NSString *detailLabel;
     if (IS_USING_SCREEN_SIZE_4S) {
         
         self.headerView.hidden = YES;
-        self.totalAmountView.hidden = YES;
+        self.view.topView.hidden = YES;
         
         [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
             [self.bottomContainerView changeYPosition:0];
         }];
+    }
+    
+    if (textField == self.descriptionField) {
+        
+        [self.view beginEditingDescription];
+        [self.view.descriptionTextView becomeFirstResponder];
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.descriptionContainerView changeHeight:self.view.descriptionCellHeight];
+        }];
+
+        return NO;
     }
     
     return YES;
@@ -1116,7 +1197,7 @@ NSString *detailLabel;
         self.receiveFromLabel.text = contact.name;
         self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
         
-        if (self.totalAmountView.hidden) {
+        if (self.view.topView.hidden) {
             [self changeTopView:NO];
         }
     }

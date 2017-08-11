@@ -14,12 +14,11 @@
 @property (nonatomic) UITextView *descriptionTextView;
 @property (nonatomic) NSString *note;
 @property (nonatomic) BOOL isEditingDescription;
-@property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic) CGFloat descriptionCellHeight;
 @property (nonatomic) UIView *topView;
 
 - (void)beginEditingDescription;
 - (void)endEditingDescription;
-- (void)setupTextViewInputAccessoryView;
 - (UITableViewCell *)configureDescriptionTextViewForCell:(UITableViewCell *)cell;
+- (UITextView *)configureTextViewWithFrame:(CGRect)frame;
 @end

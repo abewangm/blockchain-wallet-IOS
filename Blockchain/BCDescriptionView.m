@@ -16,7 +16,6 @@
 {
     if (self = [super initWithFrame:frame]) {
         self.descriptionCellHeight = 140;
-        [self setupTextViewInputAccessoryView];
     }
     return self;
 }
@@ -29,18 +28,22 @@
     
     [self.descriptionTextView resignFirstResponder];
     
-    [self moveViewsDownForSmallScreens];
-    
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    if (self.tableView) {
+        [self moveViewsDownForSmallScreens];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 - (void)beginEditingDescription
 {
-    [self moveViewsUpForSmallScreens];
-    
     self.isEditingDescription = YES;
     
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    if (self.tableView) {
+        [self moveViewsUpForSmallScreens];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.descriptionTextView becomeFirstResponder];
+    }
 }
 
 - (void)moveViewsUpForSmallScreens
@@ -74,39 +77,47 @@
 
 #pragma mark - View Helpers
 
-- (void)setupTextViewInputAccessoryView
+- (UIView *)getTextViewInputAccessoryView
 {
-    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, BUTTON_HEIGHT)];
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, BUTTON_HEIGHT)];
     inputAccessoryView.backgroundColor = [UIColor whiteColor];;
     
     BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
     [inputAccessoryView addSubview:topLine];
     
-    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:0];
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:BUTTON_HEIGHT];
     [inputAccessoryView addSubview:bottomLine];
     
-    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
-    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
-    [doneButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
-    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
-    [doneButton addTarget:self action:@selector(endEditingDescription) forControlEvents:UIControlEventTouchUpInside];
-    [inputAccessoryView addSubview:doneButton];
+    UIButton *doneDescriptionButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneDescriptionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneDescriptionButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneDescriptionButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneDescriptionButton addTarget:self action:@selector(endEditingDescription) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:doneDescriptionButton];
     
-    self.descriptionInputAccessoryView = inputAccessoryView;
+    return inputAccessoryView;
+}
+
+- (UITextView *)configureTextViewWithFrame:(CGRect)frame
+{
+    UITextView *descriptionTextView = [[UITextView alloc] initWithFrame:frame];
+    descriptionTextView.textColor = COLOR_TEXT_DARK_GRAY;
+    descriptionTextView.textContainerInset = UIEdgeInsetsZero;
+    descriptionTextView.textAlignment = NSTextAlignmentRight;
+    descriptionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+    descriptionTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    descriptionTextView.inputAccessoryView = [self getTextViewInputAccessoryView];
+    descriptionTextView.text = self.note;
+    
+    return descriptionTextView;
 }
 
 - (UITableViewCell *)configureDescriptionTextViewForCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = BC_STRING_DESCRIPTION;
 
-    self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width/2 + 8, 8, cell.contentView.frame.size.width/2 - 8 - 8, self.descriptionCellHeight - 16)];
-    self.descriptionTextView.textColor = COLOR_TEXT_DARK_GRAY;
-    self.descriptionTextView.textContainerInset = UIEdgeInsetsZero;
-    self.descriptionTextView.textAlignment = NSTextAlignmentRight;
-    self.descriptionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.descriptionTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    self.descriptionTextView.inputAccessoryView = self.descriptionInputAccessoryView;
-    self.descriptionTextView.text = self.note;
+    self.descriptionTextView = [self configureTextViewWithFrame:CGRectMake(cell.contentView.frame.size.width/2 + 8, 8, cell.contentView.frame.size.width/2 - 16, self.descriptionCellHeight - 16)];
+
     [cell.contentView addSubview:self.descriptionTextView];
     
     [self.descriptionTextView becomeFirstResponder];
