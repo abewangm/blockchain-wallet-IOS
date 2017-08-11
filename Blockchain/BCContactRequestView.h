@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BCSummaryView.h"
-
 @class BCSecureTextField, Contact;
 
 typedef enum {
@@ -23,7 +21,7 @@ typedef enum {
 - (void)createReceiveRequestForContact:(Contact *)contact withReason:(NSString *)reason amount:(uint64_t)amount lastSelectedField:(UITextField *)textField;
 @end
 
-@interface BCContactRequestView : BCSummaryView <UITextFieldDelegate>
+@interface BCContactRequestView : UIView <UITextFieldDelegate>
 @property (nonatomic, strong) BCSecureTextField *descriptionField;
 @property (nonatomic) id<ContactRequestDelegate> delegate;
 @property (nonatomic, readonly) BOOL willSend;

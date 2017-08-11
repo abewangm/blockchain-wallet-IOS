@@ -28,10 +28,7 @@
 {
     [self moveViewsUpForSmallScreens];
     
-    BOOL isUsingLargeScreen = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
-    if (!isUsingLargeScreen) {
-        [self.tableView changeHeight:self.numberOfRows * CELL_HEIGHT];
-    }
+    [self.tableView changeHeight:self.numberOfRows * CELL_HEIGHT];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

@@ -10,7 +10,6 @@
 #import "TransactionDetailDescriptionCell.h"
 
 #define CELL_HEIGHT 44
-#define SPACING_TEXTVIEW 5.6f
 
 const int cellRowDescription = 2;
 

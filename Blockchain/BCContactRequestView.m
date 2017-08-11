@@ -23,7 +23,6 @@
 
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) id accountOrAddress;
-@property (nonatomic) UILabel *footerLabel;
 
 @end
 
@@ -36,9 +35,6 @@
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
     
     if (self) {
-        
-        self.numberOfRows = willSend ? 3 : 4;
-
         self.contact = contact;
         self.amount = amount;
         self.accountOrAddress = accountOrAddress;
@@ -48,22 +44,31 @@
 
         BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100) color:self.willSend ? COLOR_BLOCKCHAIN_RED : COLOR_BLOCKCHAIN_AQUA amount:self.amount];
         [self addSubview:totalAmountView];
-        self.topView = totalAmountView;
         
         CGFloat tableViewHeight = CELL_HEIGHT * (self.willSend ? 3 : 4);
         
         UITableView *summaryTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, totalAmountView.frame.origin.y + totalAmountView.frame.size.height, window.frame.size.width, tableViewHeight)];
-        summaryTableView.showsVerticalScrollIndicator = NO;
         summaryTableView.scrollEnabled = NO;
         summaryTableView.delegate = self;
         summaryTableView.dataSource = self;
-        [summaryTableView registerClass:[TransactionDetailDescriptionCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION];
-        
-        summaryTableView.layer.borderWidth = 1.0/[UIScreen mainScreen].scale;
-        summaryTableView.layer.borderColor = [COLOR_LINE_GRAY CGColor];
         [self addSubview:summaryTableView];
-        self.tableView = summaryTableView;
+        
+        CGFloat lineWidth = 1.0/[UIScreen mainScreen].scale;
+        
+        summaryTableView.clipsToBounds = YES;
+        
+        CALayer *topBorder = [CALayer layer];
+        topBorder.borderColor = [COLOR_LINE_GRAY CGColor];
+        topBorder.borderWidth = 1;
+        topBorder.frame = CGRectMake(0, 0, CGRectGetWidth(summaryTableView.frame), lineWidth);
+        [summaryTableView.layer addSublayer:topBorder];
 
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.borderColor = [COLOR_LINE_GRAY CGColor];
+        bottomBorder.borderWidth = 1;
+        bottomBorder.frame = CGRectMake(0, CGRectGetHeight(summaryTableView.frame) - lineWidth, CGRectGetWidth(summaryTableView.frame), lineWidth);
+        [summaryTableView.layer addSublayer:bottomBorder];
+        
         UILabel *tableViewFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, summaryTableView.frame.origin.y + summaryTableView.frame.size.height + 8, window.frame.size.width - 30, 0)];
         tableViewFooterLabel.numberOfLines = 0;
         tableViewFooterLabel.text = BC_STRING_TRANSACTIONS_MUST_BE_ACCEPTED_BY_YOUR_CONTACT_PRIOR_TO_SENDING;
@@ -72,7 +77,6 @@
         [tableViewFooterLabel sizeToFit];
         [tableViewFooterLabel changeXPosition:15];
         [self addSubview:tableViewFooterLabel];
-        self.footerLabel = tableViewFooterLabel;
         
         self.requestButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.requestButton.frame = CGRectMake(0, self.frame.size.height - BUTTON_HEIGHT - 8, 240, BUTTON_HEIGHT);
@@ -88,8 +92,6 @@
     return self;
 }
 
-#pragma mark - Actions
-
 - (void)completeRequest
 {
     if (self.willSend) {
@@ -97,30 +99,6 @@
     } else {
         [self.delegate createReceiveRequestForContact:self.contact withReason:self.descriptionField.text amount:self.amount lastSelectedField:self.descriptionField];
     }
-}
-
-- (void)cancelEditing
-{
-    self.note = self.textView.text;
-    
-    CGFloat descriptionCellHeight = self.textView.frame.size.height + SPACING_TEXTVIEW * 2;
-    
-    CGFloat increasedTableViewHeight = (self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight;
-    CGFloat maxTableViewHeight = self.frame.size.height - self.requestButton.frame.size.height - self.topView.frame.size.height - 8 - self.footerLabel.frame.size.height - 8;
-    
-    if (increasedTableViewHeight > maxTableViewHeight) {
-        self.tableView.scrollEnabled = YES;
-        [self.tableView changeHeight:maxTableViewHeight];
-    } else {
-        self.tableView.scrollEnabled = NO;
-        [self.tableView changeHeight:increasedTableViewHeight];
-    }
-    
-    [self.footerLabel changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
-    
-    [self.tableView scrollRectToVisible:CGRectZero animated:YES];
-    
-    [super cancelEditing];
 }
 
 #pragma mark - Text Field Delegate
@@ -136,9 +114,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == cellRowDescription && self.textView.text) {
-        return UITableViewAutomaticDimension;
-    }
     return CELL_HEIGHT;
 }
 
@@ -179,19 +154,20 @@
         cell.textLabel.text = BC_STRING_FROM;
         cell.detailTextLabel.text = self.willSend ? accountOrAddressString : self.contact.name;
     } else if (indexPath.row == rowDescription) {
-        TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
-        descriptionCell.descriptionDelegate = self;
+        cell.textLabel.text = BC_STRING_DESCRIPTION;
         
-        Transaction *transactionWithNote = [Transaction new];
-        transactionWithNote.note = self.note;
-        CGFloat spacing = SPACING_TEXTVIEW;
-        [descriptionCell configureWithTransaction:transactionWithNote spacing:spacing];
-        descriptionCell.mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-        descriptionCell.textViewPlaceholderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-        descriptionCell.textView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-        self.textView = descriptionCell.textView;
-        descriptionCell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
-        return descriptionCell;
+        self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
+        self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
+        self.descriptionField.placeholder = [NSString stringWithFormat:BC_STRING_SHARED_WITH_CONTACT_NAME_ARGUMENT, self.contact.name];
+        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+        self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
+        self.descriptionField.textAlignment = NSTextAlignmentRight;
+        self.descriptionField.returnKeyType = UIReturnKeyDone;
+        self.descriptionField.delegate = self;
+        [cell.contentView addSubview:self.descriptionField];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.descriptionField action:@selector(resignFirstResponder)];
+        [self addGestureRecognizer:tapGesture];
     } else if (indexPath.row == rowAmount) {
         CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
 
