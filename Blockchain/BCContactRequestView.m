@@ -15,7 +15,7 @@
 
 #define CELL_HEIGHT 44
 
-@interface BCContactRequestView () <UITableViewDelegate, UITableViewDataSource>
+@interface BCContactRequestView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic) Contact *contact;
 
@@ -23,6 +23,7 @@
 
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) id accountOrAddress;
+@property (nonatomic) UILabel *footerLabel;
 
 @end
 
@@ -71,7 +72,7 @@
         [tableViewFooterLabel sizeToFit];
         [tableViewFooterLabel changeXPosition:15];
         [self addSubview:tableViewFooterLabel];
-        self.footerView = tableViewFooterLabel;
+        self.footerLabel = tableViewFooterLabel;
         
         self.requestButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.requestButton.frame = CGRectMake(0, self.frame.size.height - BUTTON_HEIGHT - 8, 240, BUTTON_HEIGHT);
@@ -102,23 +103,33 @@
 {
     self.note = self.textView.text;
     
-    [super cancelEditing];
+    CGFloat descriptionCellHeight = self.textView.frame.size.height + SPACING_TEXTVIEW * 2;
     
-    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-        [self.footerView changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
-    }];
+    CGFloat increasedTableViewHeight = (self.numberOfRows - 1) * CELL_HEIGHT + descriptionCellHeight;
+    CGFloat maxTableViewHeight = self.frame.size.height - self.requestButton.frame.size.height - self.topView.frame.size.height - 8 - self.footerLabel.frame.size.height - 8;
+    
+    if (increasedTableViewHeight > maxTableViewHeight) {
+        self.tableView.scrollEnabled = YES;
+        [self.tableView changeHeight:maxTableViewHeight];
+    } else {
+        self.tableView.scrollEnabled = NO;
+        [self.tableView changeHeight:increasedTableViewHeight];
+    }
+    
+    [self.footerLabel changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
+    
+    [self.tableView scrollRectToVisible:CGRectZero animated:YES];
+    
+    [super cancelEditing];
 }
 
-#pragma mark - Text View Delegate
+#pragma mark - Text Field Delegate
 
-
-- (void)textViewDidChange:(UITextView *)textView
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super textViewDidChange:textView];
+    [textField resignFirstResponder];
     
-    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-        [self.footerView changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
-    }];
+    return YES;
 }
 
 #pragma mark - Table View Delegate
