@@ -391,10 +391,11 @@ BOOL displayingLocalSymbolSend;
     CGFloat originY = lineBelowFromField.frame.origin.y + 4;
     contactLabel.frame = CGRectMake(originX, originY, addressBookButton.frame.origin.x - originX, lineBelowToField.frame.origin.y - originY - 4);
     contactLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    contactLabel.textColor = COLOR_TEXT_DARK_GRAY;
     
     contactLabel.hidden = NO;
     contactLabel.text = IS_USING_SCREEN_SIZE_4S ? [NSString stringWithFormat:@"%@ - %@", name, reason] : [NSString stringWithFormat:@"%@\n%@", name, reason];
-    contactLabel.alpha = 0.25;
+    contactLabel.alpha = 0.5;
 }
 
 - (void)reloadFromAndToFields
