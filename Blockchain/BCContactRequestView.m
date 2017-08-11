@@ -103,6 +103,22 @@
     self.note = self.textView.text;
     
     [super cancelEditing];
+    
+    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+        [self.footerView changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
+    }];
+}
+
+#pragma mark - Text View Delegate
+
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [super textViewDidChange:textView];
+    
+    [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
+        [self.footerView changeYPosition:self.tableView.frame.origin.y + self.tableView.frame.size.height + 8];
+    }];
 }
 
 #pragma mark - Table View Delegate
