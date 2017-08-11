@@ -283,28 +283,29 @@ NSString *detailLabel;
     [self.whatsThisButton addTarget:self action:@selector(whatsThisButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomContainerView addSubview:self.whatsThisButton];
     
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.lineBelowFromField.frame.origin.y + 15, self.view.frame.size.width/2 - 15, 21)];
+    self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height, self.view.frame.size.width, 49)];
+    self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
+    self.descriptionContainerView.clipsToBounds = YES;
+    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 8, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 16)];
+    self.view.descriptionTextView.hidden = YES;
+    [self.descriptionContainerView addSubview:self.view.descriptionTextView];
+    [self.bottomContainerView addSubview:self.descriptionContainerView];
+    
+    self.view.descriptionTextView.inputAccessoryView = [self getTextViewInputAccessoryView];
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, self.view.frame.size.width/2 - 15, 21)];
     descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
     descriptionLabel.text = BC_STRING_DESCRIPTION;
-    [self.bottomContainerView addSubview:descriptionLabel];
+    [self.descriptionContainerView addSubview:descriptionLabel];
     
-    self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 16, self.lineBelowFromField.frame.origin.y + 15, self.view.frame.size.width/2 - 16 - 15, 20)];
+    self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 16, 15, self.view.frame.size.width/2 - 16 - 15, 20)];
     self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
     self.descriptionField.textAlignment = NSTextAlignmentRight;
     self.descriptionField.returnKeyType = UIReturnKeyDone;
     self.descriptionField.delegate = self;
-    [self.bottomContainerView addSubview:self.descriptionField];
-    
-    self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, IS_USING_SCREEN_SIZE_4S ? 0 : self.view.topView.frame.origin.y + self.view.topView.frame.size.height + 1, self.view.frame.size.width, 0)];
-    self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
-    self.descriptionContainerView.clipsToBounds = YES;
-    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 8, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 16)];
-    [self.descriptionContainerView addSubview:self.view.descriptionTextView];
-    [self.view addSubview:self.descriptionContainerView];
-    
-    self.view.descriptionTextView.inputAccessoryView = [self getTextViewInputAccessoryView];
+    [self.descriptionContainerView addSubview:self.descriptionField];
     
     CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
@@ -973,9 +974,14 @@ NSString *detailLabel;
 - (void)endEditingDescription
 {
     [self.view endEditingDescription];
+    
+    self.descriptionField.hidden = NO;
+    self.view.descriptionTextView.hidden = YES;
+
     self.descriptionField.text = self.view.note;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [self.descriptionContainerView changeHeight:0];
+        [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
+        [self.descriptionContainerView changeHeight:49];
     }];
 }
 
@@ -1010,8 +1016,11 @@ NSString *detailLabel;
         
         [self.view beginEditingDescription];
         [self.view.descriptionTextView becomeFirstResponder];
+        self.view.descriptionTextView.hidden = NO;
+        self.descriptionField.hidden = YES;
         
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.descriptionContainerView changeYPosition:1];
             [self.descriptionContainerView changeHeight:self.view.descriptionCellHeight];
         }];
 
