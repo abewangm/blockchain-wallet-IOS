@@ -193,6 +193,7 @@
 		A2913FA21B31830000DC6C15 /* BackupNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2913FA11B31830000DC6C15 /* BackupNavigationViewController.swift */; };
 		C70FF55E1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */; };
 		C70FF5661E7B051C00AC7F8B /* ContactTransactionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70FF5651E7B051C00AC7F8B /* ContactTransactionTableCell.xib */; };
+		C71859471F3E227D00745A87 /* BCDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C71859461F3E227C00745A87 /* BCDescriptionView.m */; };
 		C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */; };
 		C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */; };
 		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
@@ -1010,6 +1011,8 @@
 		C70FF55C1E76D5C600AC7F8B /* BuyBitcoinNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinNavigationController.h; sourceTree = "<group>"; };
 		C70FF55D1E76D5C600AC7F8B /* BuyBitcoinNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyBitcoinNavigationController.m; sourceTree = "<group>"; };
 		C70FF5651E7B051C00AC7F8B /* ContactTransactionTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTransactionTableCell.xib; sourceTree = "<group>"; };
+		C71859451F3E227C00745A87 /* BCDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCDescriptionView.h; sourceTree = "<group>"; };
+		C71859461F3E227C00745A87 /* BCDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCDescriptionView.m; sourceTree = "<group>"; };
 		C72D6CBD1EC0B4AB0000F922 /* BCFeeSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFeeSelectionView.h; sourceTree = "<group>"; };
 		C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFeeSelectionView.m; sourceTree = "<group>"; };
 		C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeeTableCell.h; sourceTree = "<group>"; };
@@ -1806,6 +1809,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C71859451F3E227C00745A87 /* BCDescriptionView.h */,
+				C71859461F3E227C00745A87 /* BCDescriptionView.m */,
 				C75CBD021F1FB12F00CACE0D /* BCTotalAmountView.h */,
 				C75CBD031F1FB12F00CACE0D /* BCTotalAmountView.m */,
 				C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */,
@@ -2221,6 +2226,7 @@
 				238FC4D21DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.m in Sources */,
 				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
+				C71859471F3E227D00745A87 /* BCDescriptionView.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
 				23F8DE531DAEB11C001899AE /* BCNavigationController.m in Sources */,
