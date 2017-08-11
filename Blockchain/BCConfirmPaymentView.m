@@ -254,7 +254,7 @@ const int cellRowFee = 4;
         TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         descriptionCell.userInteractionEnabled = !self.contactTransaction;
         descriptionCell.descriptionDelegate = self;
-        CGFloat spacing = 5.6f; // use constant to get ideal cell height
+        CGFloat spacing = 5.5f; // use constant to get ideal cell height
         [descriptionCell configureWithTransaction:nil spacing:spacing];
         descriptionCell.mainLabel.font = mainFont;
         descriptionCell.textViewPlaceholderLabel.font = detailFont;
