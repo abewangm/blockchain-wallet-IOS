@@ -19,5 +19,5 @@ const int cellRowDescription = 2;
 @property (nonatomic) NSRange textViewCursorPosition;
 @property (nonatomic) UIView *descriptionInputAccessoryView;
 @property (nonatomic, readonly) BOOL didSetTextViewCursorPosition;
-@property (nonatomic) NSString *note;
+
 @end
