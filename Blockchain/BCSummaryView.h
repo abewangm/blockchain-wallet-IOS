@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TransactionDetailDescriptionCell.h"
 
-#define CELL_HEIGHT_DESCRIPTION_CELL 44.0f
+#define CELL_HEIGHT 44
 #define SPACING_TEXTVIEW 5.6f
+
+const int cellRowDescription = 2;
 
 @interface BCSummaryView : UIView <DescriptionDelegate>
 @property (nonatomic) UITableView *tableView;
@@ -22,7 +24,6 @@
 @property (nonatomic) NSUInteger numberOfRows;
 @property (nonatomic) UIView *topView;
 @property (nonatomic) UIView *footerView;
-@property (nonatomic) NSInteger cellRowDescription;
 
 - (void)cancelEditing;
 

@@ -109,7 +109,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.cellRowDescription && self.textView.text) {
+    if (indexPath.row == cellRowDescription && self.textView.text) {
         return UITableViewAutomaticDimension;
     }
     return CELL_HEIGHT;
@@ -134,13 +134,13 @@
     int rowAmount = 0;
     int rowTo = 1;
     int rowFrom = 2;
-    self.cellRowDescription = 3;
+    int rowDescription = 3;
     
     if (self.willSend) {
         rowAmount = -1;
         rowTo = 1;
         rowFrom = 0;
-        self.cellRowDescription = 2;
+        rowDescription = 2;
     }
     
     NSString *accountOrAddressString = [self.accountOrAddress isKindOfClass:[NSString class]] ? self.accountOrAddress : [app.wallet getLabelForAccount:[self.accountOrAddress intValue]];
@@ -151,7 +151,7 @@
     } else if (indexPath.row == rowFrom) {
         cell.textLabel.text = BC_STRING_FROM;
         cell.detailTextLabel.text = self.willSend ? accountOrAddressString : self.contact.name;
-    } else if (indexPath.row == self.cellRowDescription) {
+    } else if (indexPath.row == rowDescription) {
         TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         descriptionCell.descriptionDelegate = self;
         
