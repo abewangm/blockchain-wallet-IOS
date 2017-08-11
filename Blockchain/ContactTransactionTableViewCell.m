@@ -133,7 +133,6 @@
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
     }
     
-    [self.bottomRightLabel sizeToFit];
     self.bottomRightLabel.center = CGPointMake(self.bottomRightLabel.center.x, self.toFromLabel.center.y);
     [self.bottomRightLabel changeXPosition:self.contentView.frame.size.width - self.bottomRightLabel.frame.size.width - 8];
     [self.actionImageView changeXPosition:self.bottomRightLabel.frame.origin.x - self.actionImageView.frame.size.width - 8];
