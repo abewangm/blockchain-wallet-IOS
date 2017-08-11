@@ -309,6 +309,7 @@ BOOL displayingLocalSymbolSend;
     
     [self enableAmountViews];
     [self enableToField];
+    [self hideContactLabel];
 
     [self hideRejectPaymentButton];
     
@@ -384,9 +385,16 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
-- (void)changeToFieldText:(NSString *)newText
+- (void)showContactLabelWithName:(NSString *)name reason:(NSString *)reason
 {
-    toField.text = newText;
+    CGFloat originX = toField.frame.origin.x;
+    CGFloat originY = lineBelowFromField.frame.origin.y + 4;
+    contactLabel.frame = CGRectMake(originX, originY, addressBookButton.frame.origin.x - originX, lineBelowToField.frame.origin.y - originY - 4);
+    contactLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    
+    contactLabel.hidden = NO;
+    contactLabel.text = IS_USING_SCREEN_SIZE_4S ? [NSString stringWithFormat:@"%@ - %@", name, reason] : [NSString stringWithFormat:@"%@\n%@", name, reason];
+    contactLabel.alpha = 0.25;
 }
 
 - (void)reloadFromAndToFields
@@ -953,7 +961,7 @@ BOOL displayingLocalSymbolSend;
         [weakSelf disableToField];
         [weakSelf disableAmountViews];
         [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
-        [weakSelf changeToFieldText:transaction.contactName];
+        [weakSelf showContactLabelWithName:transaction.contactName reason:transaction.reason];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -967,7 +975,7 @@ BOOL displayingLocalSymbolSend;
             [self disableToField];
             [self disableAmountViews];
             [self showRejectPaymentButtonWithRejectionType:rejectionType];
-            [self changeToFieldText:transaction.contactName];
+            [self showContactLabelWithName:transaction.contactName reason:transaction.reason];
         }
     }
 }
@@ -1307,9 +1315,14 @@ BOOL displayingLocalSymbolSend;
     }];
 }
 
+- (void)hideContactLabel
+{
+    contactLabel.hidden = YES;
+}
+
 - (void)disableToField
 {
-    CGFloat alpha = 0.5;
+    CGFloat alpha = 0.0;
 
     toField.enabled = NO;
     toField.alpha = alpha;

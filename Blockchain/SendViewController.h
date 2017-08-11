@@ -35,6 +35,7 @@
     IBOutlet UIButton *selectFromButton;
     IBOutlet UIButton *fundsAvailableButton;
     
+    IBOutlet UILabel *contactLabel;
     IBOutlet UILabel *toLabel;
     IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
