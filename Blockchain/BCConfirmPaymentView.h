@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BCSummaryView.h"
 
 @class ContactTransaction;
 
@@ -15,7 +14,7 @@
 - (void)setupNoteForTransaction:(NSString *)note;
 - (void)feeInformationButtonClicked;
 @end
-@interface BCConfirmPaymentView : BCSummaryView
+@interface BCConfirmPaymentView : UIView
 
 - (id)initWithWindow:(UIView *)window
                 from:(NSString *)from

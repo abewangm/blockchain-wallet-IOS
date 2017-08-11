@@ -20,14 +20,12 @@
 @end
 @interface TransactionDetailDescriptionCell : TransactionDetailTableCell
 @property (nonatomic) UITextView *textView;
-@property (nonatomic) CGFloat textViewSpacing;
 @property (nonatomic) UILabel *mainLabel;
 @property (nonatomic) UILabel *subtitleLabel;
 @property (nonatomic) UILabel *textViewPlaceholderLabel;
 @property (nonatomic) CGFloat defaultTextViewHeight;
 @property (nonatomic) UIButton *editButton;
 @property (nonatomic) id<DescriptionDelegate> descriptionDelegate;
-- (void)configureWithTransaction:(Transaction *)transaction spacing:(CGFloat)textViewSpacing;
 - (void)addEditButton;
 
 @end

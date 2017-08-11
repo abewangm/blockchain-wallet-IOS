@@ -12,24 +12,26 @@
 #import "Blockchain-Swift.h"
 #import "ContactTransaction.h"
 #import "BCTotalAmountView.h"
-#import "TransactionDetailDescriptionCell.h"
 
+#define CELL_HEIGHT 44
 #define NUMBER_OF_ROWS 5
 
 const int cellRowFrom = 0;
 const int cellRowTo = 1;
+const int cellRowDescription = 2;
 const int cellRowAmount = 3;
 const int cellRowFee = 4;
 
-@interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, DescriptionDelegate>
+@interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;
 @property (nonatomic) uint64_t amount;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) BOOL surgeIsOccurring;
+@property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) ContactTransaction *contactTransaction;
+@property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCTotalAmountView *totalAmountView;
-
 @end
 @implementation BCConfirmPaymentView
 
@@ -65,7 +67,6 @@ const int cellRowFee = 4;
         summaryTableView.scrollEnabled = NO;
         summaryTableView.delegate = self;
         summaryTableView.dataSource = self;
-        [summaryTableView registerClass:[TransactionDetailDescriptionCell class] forCellReuseIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION];
         [self addSubview:summaryTableView];
         
         CGFloat lineWidth = 1.0/[UIScreen mainScreen].scale;
@@ -109,20 +110,10 @@ const int cellRowFee = 4;
     return self;
 }
 
-#pragma mark - Actions
-
-- (void)saveNote
-{
-    self.textViewCursorPosition = self.textView.selectedRange;
-    
-    [self.textView resignFirstResponder];
-    self.textView.editable = NO;
-}
-
 - (void)reallyDoPaymentButtonClicked
 {
     if (!self.contactTransaction) {
-        [self.delegate setupNoteForTransaction:self.textView.text];
+        [self.delegate setupNoteForTransaction:self.descriptionField.text];
     }
 }
 
@@ -164,7 +155,7 @@ const int cellRowFee = 4;
 
 - (void)hideKeyboard
 {
-    [self.textView resignFirstResponder];
+    [self.descriptionField resignFirstResponder];
     
     [self moveViewsDownForSmallScreens];
 }
@@ -196,9 +187,6 @@ const int cellRowFee = 4;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == cellRowDescription && self.textView.text) {
-        return UITableViewAutomaticDimension;
-    }
     return CELL_HEIGHT;
 }
 
@@ -213,13 +201,10 @@ const int cellRowFee = 4;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UIFont *mainFont = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    UIFont *detailFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    
     cell.textLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.textLabel.font = mainFont;
+    cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     cell.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    cell.detailTextLabel.font = detailFont;
+    cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     
     if (indexPath.row == cellRowTo) {
         cell.textLabel.text = BC_STRING_TO;
@@ -238,7 +223,7 @@ const int cellRowFee = 4;
         
         UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         testLabel.textColor = COLOR_TEXT_DARK_GRAY;
-        testLabel.font = mainFont;
+        testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         testLabel.text = BC_STRING_FEE;
         [testLabel sizeToFit];
         
@@ -251,17 +236,30 @@ const int cellRowFee = 4;
         
         if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
     } else if (indexPath.row == cellRowDescription) {
-        TransactionDetailDescriptionCell *descriptionCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
-        descriptionCell.userInteractionEnabled = !self.contactTransaction;
-        descriptionCell.descriptionDelegate = self;
-        CGFloat spacing = 5.5f; // use constant to get ideal cell height
-        [descriptionCell configureWithTransaction:nil spacing:spacing];
-        descriptionCell.mainLabel.font = mainFont;
-        descriptionCell.textViewPlaceholderLabel.font = detailFont;
-        descriptionCell.textView.font = detailFont;
-        self.textView = descriptionCell.textView;
-        descriptionCell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
-        return descriptionCell;
+        cell.textLabel.text = BC_STRING_DESCRIPTION;
+        
+        self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
+        self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
+        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+        self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
+        self.descriptionField.textAlignment = NSTextAlignmentRight;
+        self.descriptionField.returnKeyType = UIReturnKeyDone;
+        
+        if (self.contactTransaction) {
+            self.descriptionField.text = self.contactTransaction.reason;
+            self.descriptionField.userInteractionEnabled = NO;
+            self.descriptionField.placeholder = BC_STRING_NO_DESCRIPTION;
+        } else {
+            // Text will be empty for regular (non-contacts-related) transactions - allow setting a note
+
+            self.descriptionField.delegate = self;
+            self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
+
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+            [self addGestureRecognizer:tapGesture];
+        }
+
+        [cell.contentView addSubview:self.descriptionField];
     }
     return cell;
 }
