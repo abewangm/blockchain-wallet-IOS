@@ -12,6 +12,7 @@
 #import "Blockchain-Swift.h"
 #import "ContactTransaction.h"
 #import "BCTotalAmountView.h"
+#import "BCLine.h"
 
 #define CELL_HEIGHT 44
 #define NUMBER_OF_ROWS 5
@@ -29,9 +30,15 @@ const int cellRowFee = 4;
 @property (nonatomic) uint64_t fee;
 @property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) BCSecureTextField *descriptionField;
+@property (nonatomic) UITextView *descriptionTextView;
 @property (nonatomic) ContactTransaction *contactTransaction;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BCTotalAmountView *totalAmountView;
+@property (nonatomic) NSString *note;
+
+@property (nonatomic) BOOL isEditingDescription;
+@property (nonatomic) UIView *descriptionInputAccessoryView;
+@property (nonatomic) CGFloat descriptionCellHeight;
 @end
 @implementation BCConfirmPaymentView
 
@@ -47,6 +54,9 @@ const int cellRowFee = 4;
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
     
     if (self) {
+        
+        self.descriptionCellHeight = 140;
+        [self setupTextViewInputAccessoryView];
         
         BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
         [self addSubview:totalAmountView];
@@ -113,7 +123,7 @@ const int cellRowFee = 4;
 - (void)reallyDoPaymentButtonClicked
 {
     if (!self.contactTransaction) {
-        [self.delegate setupNoteForTransaction:self.descriptionField.text];
+        [self.delegate setupNoteForTransaction:self.note];
     }
 }
 
@@ -123,6 +133,27 @@ const int cellRowFee = 4;
 }
 
 #pragma mark - View Helpers
+
+- (void)setupTextViewInputAccessoryView
+{
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, BUTTON_HEIGHT)];
+    inputAccessoryView.backgroundColor = [UIColor whiteColor];;
+    
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:topLine];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:bottomLine];
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(endEditingDescription) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:doneButton];
+    
+    self.descriptionInputAccessoryView = inputAccessoryView;
+}
 
 - (void)moveViewsUpForSmallScreens
 {
@@ -153,11 +184,26 @@ const int cellRowFee = 4;
     }
 }
 
-- (void)hideKeyboard
+- (void)endEditingDescription
 {
-    [self.descriptionField resignFirstResponder];
+    self.note = self.descriptionTextView.text;
+    
+    self.isEditingDescription = NO;
+    
+    [self.descriptionTextView resignFirstResponder];
     
     [self moveViewsDownForSmallScreens];
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)beginEditingDescription
+{
+    [self moveViewsUpForSmallScreens];
+    
+    self.isEditingDescription = YES;
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Text Helpers
@@ -169,9 +215,13 @@ const int cellRowFee = 4;
 
 #pragma mark - Text Field Delegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [self moveViewsUpForSmallScreens];
+    textField.hidden = YES;
+    
+    [self beginEditingDescription];
+    
+    return NO;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -187,12 +237,12 @@ const int cellRowFee = 4;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CELL_HEIGHT;
+    return self.isEditingDescription ? self.descriptionCellHeight : CELL_HEIGHT;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return NUMBER_OF_ROWS;
+    return self.isEditingDescription ? 1 : NUMBER_OF_ROWS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,60 +256,75 @@ const int cellRowFee = 4;
     cell.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
     cell.detailTextLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     
-    if (indexPath.row == cellRowTo) {
-        cell.textLabel.text = BC_STRING_TO;
-        cell.detailTextLabel.text = self.to;
-        cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-    } else if (indexPath.row == cellRowFrom) {
-        cell.textLabel.text = BC_STRING_FROM;
-        cell.detailTextLabel.text = self.from;
-        cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-    } else if (indexPath.row == cellRowAmount) {
-        cell.textLabel.text = BC_STRING_AMOUNT;
-        cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.amount];
-    } else if (indexPath.row == cellRowFee) {
-        cell.textLabel.text = BC_STRING_FEE;
-        cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.fee];
-        
-        UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        testLabel.textColor = COLOR_TEXT_DARK_GRAY;
-        testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-        testLabel.text = BC_STRING_FEE;
-        [testLabel sizeToFit];
-        
-        self.feeInformationButton = [[UIButton alloc] initWithFrame:CGRectMake(15 + testLabel.frame.size.width + 8, 0, 19, 19)];
-        [self.feeInformationButton setImage:[[UIImage imageNamed:@"help"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        self.feeInformationButton.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-        self.feeInformationButton.center = CGPointMake(self.feeInformationButton.center.x, cell.contentView.center.y);
-        [self.feeInformationButton addTarget:self action:@selector(feeInformationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-        [cell.contentView addSubview:self.feeInformationButton];
-        
-        if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
-    } else if (indexPath.row == cellRowDescription) {
+    if (self.isEditingDescription) {
         cell.textLabel.text = BC_STRING_DESCRIPTION;
         
-        self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
-        self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
-        self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-        self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
-        self.descriptionField.textAlignment = NSTextAlignmentRight;
-        self.descriptionField.returnKeyType = UIReturnKeyDone;
+        self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width/2 + 8, 8, cell.contentView.frame.size.width/2 - 8 - 8, self.descriptionCellHeight - 16)];
+        self.descriptionTextView.textColor = COLOR_TEXT_DARK_GRAY;
+        self.descriptionTextView.textContainerInset = UIEdgeInsetsZero;
+        self.descriptionTextView.textAlignment = NSTextAlignmentRight;
+        self.descriptionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.descriptionTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+        self.descriptionTextView.inputAccessoryView = self.descriptionInputAccessoryView;
+        self.descriptionTextView.text = self.note;
+        [cell.contentView addSubview:self.descriptionTextView];
         
-        if (self.contactTransaction) {
-            self.descriptionField.text = self.contactTransaction.reason;
-            self.descriptionField.userInteractionEnabled = NO;
-            self.descriptionField.placeholder = BC_STRING_NO_DESCRIPTION;
-        } else {
-            // Text will be empty for regular (non-contacts-related) transactions - allow setting a note
-
-            self.descriptionField.delegate = self;
-            self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
-
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-            [self addGestureRecognizer:tapGesture];
+        self.descriptionTextView.hidden = NO;
+        [self.descriptionTextView becomeFirstResponder];
+    } else {
+        if (indexPath.row == cellRowTo) {
+            cell.textLabel.text = BC_STRING_TO;
+            cell.detailTextLabel.text = self.to;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        } else if (indexPath.row == cellRowFrom) {
+            cell.textLabel.text = BC_STRING_FROM;
+            cell.detailTextLabel.text = self.from;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        } else if (indexPath.row == cellRowAmount) {
+            cell.textLabel.text = BC_STRING_AMOUNT;
+            cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.amount];
+        } else if (indexPath.row == cellRowFee) {
+            cell.textLabel.text = BC_STRING_FEE;
+            cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.fee];
+            
+            UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            testLabel.textColor = COLOR_TEXT_DARK_GRAY;
+            testLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+            testLabel.text = BC_STRING_FEE;
+            [testLabel sizeToFit];
+            
+            self.feeInformationButton = [[UIButton alloc] initWithFrame:CGRectMake(15 + testLabel.frame.size.width + 8, 0, 19, 19)];
+            [self.feeInformationButton setImage:[[UIImage imageNamed:@"help"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+            self.feeInformationButton.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+            self.feeInformationButton.center = CGPointMake(self.feeInformationButton.center.x, cell.contentView.center.y);
+            [self.feeInformationButton addTarget:self action:@selector(feeInformationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            [cell.contentView addSubview:self.feeInformationButton];
+            
+            if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
+        } else if (indexPath.row == cellRowDescription) {
+            cell.textLabel.text = BC_STRING_DESCRIPTION;
+            
+            self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
+            self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
+            self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+            self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
+            self.descriptionField.textAlignment = NSTextAlignmentRight;
+            self.descriptionField.returnKeyType = UIReturnKeyDone;
+            
+            if (self.contactTransaction) {
+                self.descriptionField.text = self.contactTransaction.reason;
+                self.descriptionField.userInteractionEnabled = NO;
+                self.descriptionField.placeholder = BC_STRING_NO_DESCRIPTION;
+            } else {
+                // Text will be empty for regular (non-contacts-related) transactions - allow setting a note
+                
+                self.descriptionField.delegate = self;
+                self.descriptionField.placeholder = BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER;
+                self.descriptionField.text = self.note;
+            }
+            
+            [cell.contentView addSubview:self.descriptionField];
         }
-
-        [cell.contentView addSubview:self.descriptionField];
     }
     return cell;
 }
