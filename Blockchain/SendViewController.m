@@ -1215,9 +1215,7 @@ BOOL displayingLocalSymbolSend;
         [feeTappableView changeXPosition:0];
 
         self.feeWarningLabel.hidden = YES;
-        if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-        }
+        [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
 
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -1518,9 +1516,7 @@ BOOL displayingLocalSymbolSend;
         
         if (newString.length == 0) {
             self.feeWarningLabel.hidden = YES;
-            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            }
+            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
         }
 
         [self performSelector:@selector(updateSatoshiPerByteAfterTextChange) withObject:nil afterDelay:0.1f];
