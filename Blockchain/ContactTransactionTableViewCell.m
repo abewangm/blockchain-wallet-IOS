@@ -56,9 +56,9 @@
     self.iconImageView.image = [UIImage imageNamed:@"icon_contact_small"];
     self.actionImageView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     
-    CGFloat bottomRightLabelWidth = 132;
-    [self.bottomRightLabel changeXPosition:self.contentView.frame.size.width - bottomRightLabelWidth - 8];
-    [self.bottomRightLabel changeWidth:bottomRightLabelWidth];
+    self.toFromLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.bottomRightLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.actionImageView.translatesAutoresizingMaskIntoConstraints = NO;
     
     if (transaction.transactionState == ContactTransactionStateSendWaitingForQR) {
         self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_QR uppercaseString];
@@ -73,9 +73,7 @@
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
         self.bottomRightLabel.text = BC_STRING_ACCEPT_OR_DECLINE;
         self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-        [self.bottomRightLabel sizeToFit];
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
-        [self.actionImageView changeXPosition:self.bottomRightLabel.frame.origin.x - self.actionImageView.frame.size.width - 8];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
@@ -87,9 +85,7 @@
             self.bottomRightLabel.text = BC_STRING_READY_TO_SEND;
         }
         self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-        [self.bottomRightLabel sizeToFit];
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
-        [self.actionImageView changeXPosition:self.bottomRightLabel.frame.origin.x - self.actionImageView.frame.size.width - 8];
     } else if (transaction.transactionState == ContactTransactionStateReceiveWaitingForPayment) {
         self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_PR_INITIATOR] ?  [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST uppercaseString] : [BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
@@ -141,9 +137,19 @@
         self.statusLabel.text = [NSString stringWithFormat:@"state: %@ role: %@", transaction.state, transaction.role];
     }
     
-    self.bottomRightLabel.center = CGPointMake(self.bottomRightLabel.center.x, self.toFromLabel.center.y);
+    CGFloat maxBottomRightLabelWidth = 132;
+    
+    [self.bottomRightLabel sizeToFit];
+    
+    if (self.bottomRightLabel.frame.size.width > maxBottomRightLabelWidth) [self.bottomRightLabel changeWidth:maxBottomRightLabelWidth];
+    
     [self.bottomRightLabel changeXPosition:self.contentView.frame.size.width - self.bottomRightLabel.frame.size.width - 8];
     [self.actionImageView changeXPosition:self.bottomRightLabel.frame.origin.x - self.actionImageView.frame.size.width - 8];
+    
+    CGFloat toFromLabelRightEnd = self.actionImageView.image ? self.actionImageView.frame.origin.x : self.bottomRightLabel.frame.origin.x;
+    [self.toFromLabel changeWidth: toFromLabelRightEnd - self.toFromLabel.frame.origin.x - 8];
+    
+    self.bottomRightLabel.center = CGPointMake(self.bottomRightLabel.center.x, self.toFromLabel.center.y);
 
     self.accessoryType = UITableViewCellAccessoryNone;
 }
