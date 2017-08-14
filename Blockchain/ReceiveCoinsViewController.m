@@ -983,11 +983,16 @@ NSString *detailLabel;
 
     self.descriptionField.text = self.view.note;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
-        [self.descriptionContainerView changeHeight:49];
+        [self resetDescriptionContainerView];
     }];
 
     [self moveViewsUpForSmallScreens];
+}
+
+- (void)resetDescriptionContainerView
+{
+    [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
+    [self.descriptionContainerView changeHeight:49];
 }
 
 # pragma mark - UITextField delegates
@@ -1215,6 +1220,8 @@ NSString *detailLabel;
             [self changeTopView:NO];
         }
     }
+    
+    [self resetDescriptionContainerView];
 }
 
 @end
