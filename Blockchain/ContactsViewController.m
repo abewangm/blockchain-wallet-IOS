@@ -43,7 +43,6 @@ const int sectionContacts = 0;
 
 @property (nonatomic, copy) void (^onCompleteRelation)();
 @property (nonatomic, copy) void (^onFailCompleteRelation)();
-@property (nonatomic, copy) void (^onCreateInvitation)();
 
 @end
 
@@ -447,12 +446,7 @@ const int sectionContacts = 0;
     submitAction.enabled = NO;
     [newContactAlert addAction:submitAction];
     [newContactAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.returnKeyType = UIReturnKeyNext;
-        [secureTextField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+        [self configureTextField:textField];
     }];
     
     [self presentViewController:newContactAlert animated:YES completion:nil];
@@ -460,8 +454,7 @@ const int sectionContacts = 0;
 
 - (void)promptForUserNameWithContactName:(NSString *)contactName
 {
-    UIAlertController *userNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:[NSString stringWithFormat:BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY, contactName] preferredStyle:UIAlertControllerStyleAlert];
-    [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    UIAlertController *userNameAlert = [self alertControllerForPromptingNameWithContactName:contactName];
     UIAlertAction *submitAction = [UIAlertAction actionWithTitle:BC_STRING_CONFIRM style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *senderName = [[userNameAlert textFields] firstObject].text;
         if ([app checkInternetConnection]) {
@@ -471,14 +464,6 @@ const int sectionContacts = 0;
     }];
     submitAction.enabled = NO;
     [userNameAlert addAction:submitAction];
-    [userNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
-        secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
-        secureTextField.returnKeyType = UIReturnKeyNext;
-        [secureTextField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    }];
     
     [self presentViewController:userNameAlert animated:YES completion:nil];
 }
@@ -532,15 +517,15 @@ const int sectionContacts = 0;
 
 - (void)resendInvitationForContact:(Contact *)contact
 {
-    if ([app checkInternetConnection]) {
-        
-        self.onCreateInvitation = ^() {
-            [app.wallet deleteContact:contact.identifier];
-        };
-        
-        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_INVITATION];
-        [app.wallet createContactWithName:contact.senderName ID:contact.name];
-    }
+    UIAlertController *userNameAlert = [self alertControllerForPromptingNameWithContactName:contact.name];
+    UIAlertAction *submitAction = [UIAlertAction actionWithTitle:BC_STRING_CONFIRM style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *senderName = [[userNameAlert textFields] firstObject].text;
+        [self didCreateInvitation:@{DICTIONARY_KEY_INVITATION_RECEIVED : contact.invitationSent, DICTIONARY_KEY_NAME : senderName}];
+    }];
+    submitAction.enabled = NO;
+    [userNameAlert addAction:submitAction];
+    
+    [self presentViewController:userNameAlert animated:YES completion:nil];
 }
 
 - (void)contactAcceptedInvitation:(NSString *)invitationSent
@@ -606,6 +591,27 @@ const int sectionContacts = 0;
     return controller;
 }
 
+- (void)configureTextField:(UITextField *)textField
+{
+    BCSecureTextField *secureTextField = (BCSecureTextField *)textField;
+    secureTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    secureTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    secureTextField.spellCheckingType = UITextSpellCheckingTypeNo;
+    secureTextField.returnKeyType = UIReturnKeyNext;
+    [secureTextField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (UIAlertController *)alertControllerForPromptingNameWithContactName:(NSString *)contactName
+{
+    UIAlertController *userNameAlert = [UIAlertController alertControllerWithTitle:BC_STRING_INVITE_CONTACT message:[NSString stringWithFormat:BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY, contactName] preferredStyle:UIAlertControllerStyleAlert];
+    [userNameAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [userNameAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        [self configureTextField:textField];
+    }];
+    
+    return userNameAlert;
+}
+
 #pragma mark - Wallet Callbacks
 
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier
@@ -663,11 +669,6 @@ const int sectionContacts = 0;
 - (void)didCreateInvitation:(NSDictionary *)invitationDict
 {
     [app hideBusyView];
-    
-    if (self.onCreateInvitation) {
-        self.onCreateInvitation();
-        self.onCreateInvitation = nil;
-    }
     
     self.lastCreatedInvitation = invitationDict;
     
