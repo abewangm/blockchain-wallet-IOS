@@ -377,6 +377,9 @@ NSString *detailLabel;
 - (void)resetContactInfo
 {
     [self didSelectContact:nil];
+    
+    self.view.note = nil;
+    self.descriptionField.text = nil;
 }
 
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
