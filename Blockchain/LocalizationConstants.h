@@ -507,8 +507,10 @@
 #define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
 #define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
 #define BC_STRING_DECLINE_PAYMENT NSLocalizedString(@"Decline Payment", nil)
+#define BC_STRING_DECLINE_PAYMENT_FOR_ARGUMENT NSLocalizedString(@"Decline Payment for \"%@\"", nil)
 #define BC_STRING_YES_DECLINE_PAYMENT NSLocalizedString(@"Yes, decline this payment", nil)
 #define BC_STRING_CANCEL_PAYMENT NSLocalizedString(@"Cancel Payment", nil)
+#define BC_STRING_CANCEL_PAYMENT_FOR_ARGUMENT NSLocalizedString(@"Cancel Payment for \"%@\"", nil)
 #define BC_STRING_YES_CANCEL_PAYMENT NSLocalizedString(@"Yes, cancel this payment", nil)
 #define BC_STRING_CANCELLED NSLocalizedString(@"Cancelled", nil)
 
