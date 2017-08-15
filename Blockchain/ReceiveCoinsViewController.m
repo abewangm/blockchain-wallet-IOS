@@ -1206,7 +1206,7 @@ NSString *detailLabel;
         [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
     } else if (contact == self.fromContact || contact == nil) {
         self.fromContact = nil;
-        self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT;
+        self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT_OPTIONAL;
         self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
 
         [self changeTopView:YES];

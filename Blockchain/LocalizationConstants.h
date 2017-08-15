@@ -472,6 +472,7 @@
 #define BC_STRING_ENTER_NAME_CONTACT NSLocalizedString(@"Enter a name for your contact.", nil)
 #define BC_STRING_SEARCH NSLocalizedString(@"Search", nil)
 #define BC_STRING_SELECT_CONTACT NSLocalizedString(@"Select Contact", nil)
+#define BC_STRING_SELECT_CONTACT_OPTIONAL NSLocalizedString(@"Select Contact (optional)", nil)
 
 #define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add New Contact...", nil)
 #define BC_STRING_SOMEONE_IS_INVITING_ME NSLocalizedString(@"Someone is inviting me", nil)
