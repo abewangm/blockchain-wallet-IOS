@@ -52,7 +52,7 @@
     NSString *dateString = [NSDateFormatter timeAgoStringFromDate:date];
     self.lastUpdatedLabel.text = dateString;
     
-    self.toFromLabel.text = name;
+    self.toFromLabel.text = transaction.reason && transaction.reason.length > 0 ? [name stringByAppendingFormat:@" - %@", transaction.reason] : name;
     self.iconImageView.image = [UIImage imageNamed:@"icon_contact_small"];
     self.actionImageView.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     
@@ -64,7 +64,6 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment) {
-        self.toFromLabel.text = [name stringByAppendingFormat:@" - %@", transaction.reason];
         self.statusLabel.text = [BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
@@ -72,7 +71,6 @@
         self.bottomRightLabel.textColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
         self.actionImageView.image = [UIImage imageNamed:@"backup_blue_circle"];
     } else if (transaction.transactionState == ContactTransactionStateSendReadyToSend) {
-        self.toFromLabel.text = [name stringByAppendingFormat:@" - %@", transaction.reason];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
         if ([transaction.role isEqualToString:TRANSACTION_ROLE_PR_RECEIVER]) {
@@ -92,6 +90,7 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateCompletedSend) {
+        self.toFromLabel.text = name;
         self.statusLabel.text = [transaction.role isEqualToString:TRANSACTION_ROLE_RPR_INITIATOR] ? [BC_STRING_SENT uppercaseString] : [BC_STRING_PAID uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_SENT;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_SENT;
@@ -99,6 +98,7 @@
         self.bottomRightLabel.textColor = COLOR_LIGHT_GRAY;
         self.actionImageView.image = nil;
     } else if (transaction.transactionState == ContactTransactionStateCompletedReceive) {
+        self.toFromLabel.text = name;
         self.statusLabel.text = [BC_STRING_RECEIVED uppercaseString];
         self.statusLabel.textColor = COLOR_TRANSACTION_RECEIVED;
         self.amountButton.backgroundColor = COLOR_TRANSACTION_RECEIVED;
