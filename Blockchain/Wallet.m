@@ -37,7 +37,6 @@
 
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
-@property (nonatomic) JSContext *backgroundContext;
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @end
@@ -185,68 +184,6 @@
         
         return uuid;
     };
-}
-
-- (void)loadBackgroundJS
-{
-    self.backgroundContext = [[JSContext alloc] init];
-    
-    [self.backgroundContext evaluateScript:[self getConsoleScript]];
-    
-    NSSet *names = [self getConsoleFunctionNames];
-    
-    for (NSString *name in names) {
-        self.backgroundContext[@"console"][name] = ^(NSString *message) {
-            DLog(@"Javascript %@: %@", name, message);
-        };
-    }
-    
-    __weak Wallet *weakSelf = self;
-
-    self.backgroundContext.exceptionHandler = [self getExceptionHandler];
-    
-    self.backgroundContext[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
-    self.backgroundContext[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
-    self.backgroundContext[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
-    
-    self.backgroundContext[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
-        });
-    };
-    
-    self.backgroundContext[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf on_get_fiat_at_time_error:error];
-        });
-    };
-    
-    self.backgroundContext[@"objc_getRandomValues"] = ^(JSValue *intArray) {
-        DLog(@"objc_getRandomValues_background");
-        
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:@"/dev/urandom"];
-        
-        if (!fileHandle) {
-            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
-                                           reason:@"fileHandleForReadingAtPath:/dev/urandom returned nil" userInfo:nil];
-        }
-        
-        NSUInteger length = [[intArray toArray] count];
-        NSData *data = [fileHandle readDataOfLength:length];
-        
-        if ([data length] != length) {
-            @throw [NSException exceptionWithName:@"GetRandomValues Exception"
-                                           reason:@"Data length is not equal to intArray length" userInfo:nil];
-        }
-        
-        return [data hexadecimalString];
-    };
-    
-    [self.backgroundContext evaluateScript:[self getJSSource]];
-    
-    self.backgroundContext[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
-    self.backgroundContext[@"Bitcoin"][@"HDNode"] = [HDNode class];
-    self.backgroundContext[@"HDNode"] = [HDNode class];
 }
 
 - (void)loadJS
@@ -929,8 +866,6 @@
     self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
     self.context[@"HDNode"] = [HDNode class];
     
-    [self loadBackgroundJS];
-    
     [self login];
 }
 
@@ -1163,6 +1098,11 @@
     }
     
     return isInitialized;
+}
+
+- (NSString *)getAPICode
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getAPICode()"] toString];
 }
 
 - (BOOL)hasEncryptedWalletData
@@ -2193,14 +2133,21 @@
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [URL_SERVER escapeStringForJS]]];
-
-        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
-    });
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [self on_get_fiat_at_time_error:[error localizedDescription]];
+            } else {
+                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                [self on_get_fiat_at_time_success:result currencyCode:currencyCode];
+            }
+        });
+    }];
+    
+    [task resume];
 }
-
 
 - (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction
 {

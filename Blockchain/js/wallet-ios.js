@@ -82,6 +82,10 @@ WalletStore.addEventListener(function (event, obj) {
 
 // My Wallet phone functions
 
+MyWalletPhone.getAPICode = function() {
+    return API_CODE;
+}
+
 MyWalletPhone.upgradeToV3 = function(firstAccountName) {
     var success = function () {
         console.log('Upgraded legacy wallet to HD wallet');
@@ -1574,22 +1578,6 @@ MyWalletPhone.getAllCurrencySymbols = function () {
 
     var promise = BlockchainAPI.getTicker();
     promise.then(success, error);
-}
-
-MyWalletPhone.getFiatAtTime = function(time, value, currencyCode) {
-
-    var success = function (amount) {
-        console.log('Get fiat at time success');
-        objc_on_get_fiat_at_time_success(amount, currencyCode);
-    };
-
-    var error = function (e) {
-        var message = JSON.stringify(e);
-        console.log('Error getting fiat at time: ' + message[initial_error]);
-        objc_on_get_fiat_at_time_error(message[initial_error]);
-    };
-
-    BlockchainAPI.getFiatAtTime(time, value, currencyCode).then(success).catch(error);
 }
 
 MyWalletPhone.getPasswordStrength = function(password) {
