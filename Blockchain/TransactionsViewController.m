@@ -393,7 +393,9 @@ int lastNumberTransactions = INT_MAX;
     self.sectionContactsPending = app.wallet.pendingContactTransactions.count > 0 ? 0 : -1;
     self.sectionMain = app.wallet.pendingContactTransactions.count > 0 ? 1 : 0;
     
-    self.finishedTransactions = [[app.wallet.rejectedContactTransactions arrayByAddingObjectsFromArray:data.transactions] sortedArrayUsingSelector:@selector(reverseCompareLastUpdated:)];
+    NSArray *rejectedTransactions = app.wallet.rejectedContactTransactions ? : @[];
+    
+    self.finishedTransactions = [[rejectedTransactions arrayByAddingObjectsFromArray:data.transactions] sortedArrayUsingSelector:@selector(reverseCompareLastUpdated:)];
     
     [self setText];
     

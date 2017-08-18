@@ -2203,12 +2203,16 @@
 
 - (void)loadContacts
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
+#endif
 }
 
 - (void)loadContactsThenGetMessages
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.loadContactsThenGetMessages()"];
+#endif
 }
 
 - (void)getUpdatedContacts:(BOOL)isFirstLoad newMessages:(NSArray *)newMessages
@@ -2271,7 +2275,9 @@
 
 - (void)getMessages
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
+#endif
 }
 
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier
