@@ -2520,7 +2520,7 @@ void (^secondPasswordSuccess)(NSString *);
         _sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
-    [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:0];
+    [_tabViewController setActiveViewController:_sendViewController animated:TRUE index:TAB_SEND];
 }
 
 - (void)showDebugMenu:(int)presenter
@@ -2955,18 +2955,26 @@ void (^secondPasswordSuccess)(NSString *);
     [app.window.rootViewController presentViewController:viewController animated:YES completion:nil];
 }
 
+- (void)dashBoardClicked:(UITabBarItem *)sender
+{
+    UIViewController *blankViewController = [UIViewController new];
+    blankViewController.view.backgroundColor = [UIColor whiteColor];
+    
+    [_tabViewController setActiveViewController:blankViewController animated:TRUE index:TAB_DASHBOARD];
+}
+
 - (void)receiveCoinClicked:(UITabBarItem *)sender
 {
     if (!_receiveViewController) {
         _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
     }
     
-    [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:2];
+    [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:TAB_RECEIVE];
 }
 
 - (void)transactionsClicked:(UITabBarItem *)sender
 {
-    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:1];
+    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:TAB_TRANSACTIONS];
     
     if (sender &&
         [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION] &&

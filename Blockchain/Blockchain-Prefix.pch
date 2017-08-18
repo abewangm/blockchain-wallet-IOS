@@ -776,8 +776,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // TabViewController
 #define TAB_SEND 0
-#define TAB_TRANSACTIONS 1
-#define TAB_RECEIVE 2
+#define TAB_DASHBOARD 1
+#define TAB_TRANSACTIONS 2
+#define TAB_RECEIVE 3
 
 // SideMenuViewController
 #define SECTION_HEADER_HEIGHT 44

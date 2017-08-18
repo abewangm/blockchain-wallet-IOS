@@ -8,6 +8,7 @@
 
 @interface TabViewcontroller : UIViewController <UITabBarDelegate> {
     IBOutlet UITabBarItem *sendButton;
+    IBOutlet UITabBarItem *dashBoardButton;
     IBOutlet UITabBarItem *homeButton;
     IBOutlet UITabBarItem *receiveButton;
     IBOutlet UITabBar *tabBar;

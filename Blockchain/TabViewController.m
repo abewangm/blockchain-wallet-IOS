@@ -42,7 +42,7 @@
 
 - (void)setupTabButtons
 {
-    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_REQUEST:receiveButton};
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_DASHBOARD:dashBoardButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_REQUEST:receiveButton};
     
     for (UITabBarItem *button in [tabButtons allValues]) {
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
@@ -144,6 +144,8 @@
         [app transactionsClicked:item];
     } else if (item == receiveButton) {
         [app receiveCoinClicked:item];
+    } else if (item == dashBoardButton) {
+        [app dashBoardClicked:item];
     }
 }
 

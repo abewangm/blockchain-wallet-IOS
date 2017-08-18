@@ -758,6 +758,7 @@
 #define BC_STRING_SKIP_ALL NSLocalizedString(@"Skip All", nil)
 #define BC_STRING_GET_BITCOIN NSLocalizedString(@"Get Bitcoin", nil)
 #define BC_STRING_OVERVIEW NSLocalizedString(@"Overview", nil)
+#define BC_STRING_DASHBOARD NSLocalizedString(@"Dashboard", nil)
 
 #define BC_STRING_ENABLED_EXCLAMATION NSLocalizedString(@"Enabled!", nil)
 

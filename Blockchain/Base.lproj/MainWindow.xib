@@ -560,6 +560,9 @@
                             <tabBarItem title="Send" image="send" selectedImage="send_blue" id="GXY-NY-C2f">
                                 <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                             </tabBarItem>
+                            <tabBarItem title="Dashboard" id="mM0-lV-4tK">
+                                <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                            </tabBarItem>
                             <tabBarItem title="Overview" image="tx" selectedImage="tx_blue" id="mk4-R4-oj0">
                                 <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                             </tabBarItem>
@@ -577,6 +580,7 @@
             <size key="freeformSize" width="320" height="480"/>
             <connections>
                 <outlet property="contentView" destination="290" id="291"/>
+                <outlet property="dashBoardButton" destination="mM0-lV-4tK" id="RbH-2q-PEV"/>
                 <outlet property="homeButton" destination="mk4-R4-oj0" id="Hdv-6Q-LhG"/>
                 <outlet property="receiveButton" destination="vd6-98-LQG" id="Llf-CK-yVb"/>
                 <outlet property="sendButton" destination="GXY-NY-C2f" id="YeQ-nQ-WY3"/>

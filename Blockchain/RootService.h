@@ -196,6 +196,7 @@
 - (void)showHdUpgrade;
 - (void)showBackupReminder:(BOOL)firstReceive;
 
+- (void)dashBoardClicked:(UITabBarItem *)sender;
 - (void)receiveCoinClicked:(UITabBarItem *)sender;
 - (void)transactionsClicked:(UITabBarItem *)sender;
 - (void)sendCoinsClicked:(UITabBarItem *)sender;
