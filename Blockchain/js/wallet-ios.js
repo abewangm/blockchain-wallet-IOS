@@ -1328,10 +1328,6 @@ MyWalletPhone.getSecondPassword = function(callback) {
 
 // Overrides
 
-Contacts.prototype.uuid = function() {
-    return objc_uuid();
-}
-
 MyWallet.socketConnect = function() {
     // override socketConnect to prevent memory leaks
 }
