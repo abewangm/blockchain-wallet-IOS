@@ -321,13 +321,9 @@ int lastNumberTransactions = INT_MAX;
         }
 #endif
         // Balance
-        
-        if (app.assetType == AssetTypeEther) {
-            [balanceBigButton setTitle:[app.wallet getEthBalance] forState:UIControlStateNormal];
-        } else {
-            [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-            [self changeFilterLabel:[self getFilterLabel]];
-        }
+        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+        [self changeFilterLabel:[self getFilterLabel]];
+
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {
@@ -557,15 +553,15 @@ int lastNumberTransactions = INT_MAX;
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {
-        app.transactionsViewController.detailViewController = nil;
+        app.tabControllerManager.transactionsViewController.detailViewController = nil;
     };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.transactionsViewController.detailViewController = detailViewController;
+    app.tabControllerManager.transactionsViewController.detailViewController = detailViewController;
     
     if (app.topViewControllerDelegate) {
         [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
     } else {
-        [app.tabViewController presentViewController:navigationController animated:YES completion:nil];
+        [app.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
     }
 }
 
@@ -705,7 +701,7 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendDeclination:transaction];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
-    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)promptDeclinePayment:(ContactTransaction *)transaction forContact:(Contact *)contact
@@ -717,7 +713,7 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendDeclination:transaction];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
-    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)promptCancelPayment:(ContactTransaction *)transaction forContact:(Contact *)contact
@@ -729,7 +725,7 @@ int lastNumberTransactions = INT_MAX;
         [app.wallet sendCancellation:transaction];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_BACK style:UIAlertActionStyleCancel handler:nil]];
-    [app.tabViewController presentViewController:alert animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)sendPayment:(ContactTransaction *)transaction toContact:(Contact *)contact
@@ -1152,7 +1148,7 @@ int lastNumberTransactions = INT_MAX;
         actionType == ActionTypeBuyBitcoinAvailableNow) {
         [app buyBitcoinClicked:nil];
     } else if (actionType == ActionTypeShowReceive) {
-        [app receiveCoinClicked:nil];
+        [app.tabControllerManager receiveCoinClicked:nil];
     } else if (actionType == ActionTypeScanQR) {
         [app QRCodebuttonClicked:nil];
     }
@@ -1294,7 +1290,7 @@ int lastNumberTransactions = INT_MAX;
     if ([app.wallet isBuyEnabled]) {
         [app buyBitcoinClicked:nil];
     } else {
-        [app receiveCoinClicked:nil];
+        [app.tabControllerManager receiveCoinClicked:nil];
     }
 }
 

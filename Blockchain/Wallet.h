@@ -357,7 +357,7 @@ typedef enum {
 - (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
-- (void)createNewPayment;
+- (void)createNewBitcoinPayment;
 - (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentToAccount:(int)toInt;

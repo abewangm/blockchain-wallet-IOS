@@ -139,13 +139,13 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
     if (item == sendButton) {
-        [app sendCoinsClicked:item];
+        [app.tabControllerManager sendCoinsClicked:item];
     } else if (item == homeButton) {
-        [app transactionsClicked:item];
+        [app.tabControllerManager transactionsClicked:item];
     } else if (item == receiveButton) {
-        [app receiveCoinClicked:item];
+        [app.tabControllerManager receiveCoinClicked:item];
     } else if (item == dashBoardButton) {
-        [app dashBoardClicked:item];
+        [app.tabControllerManager dashBoardClicked:item];
     }
 }
 

@@ -1766,13 +1766,13 @@
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]]] toString];
 }
 
-- (void)createNewPayment
+- (void)createNewBitcoinPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.createNewPayment()"];
+    [self.context evaluateScript:@"MyWalletPhone.createNewBitcoinPayment()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
@@ -2690,7 +2690,7 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.transactionsViewController.filterIndex;
+    int filterIndex = (int)app.tabControllerManager.transactionsViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";

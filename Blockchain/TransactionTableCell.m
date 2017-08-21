@@ -116,10 +116,10 @@
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {
-        app.transactionsViewController.detailViewController = nil;
+        app.tabControllerManager.transactionsViewController.detailViewController = nil;
     };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.transactionsViewController.detailViewController = detailViewController;
+    app.tabControllerManager.transactionsViewController.detailViewController = detailViewController;
     
     if (app.topViewControllerDelegate) {
         [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];

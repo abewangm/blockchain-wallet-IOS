@@ -22,25 +22,20 @@
 #import "SettingsNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AccountsAndAddressesNavigationController.h"
-#import "TransactionsViewController.h"
 #import "TransferAllFundsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
 #import <UserNotifications/UserNotifications.h>
 #import "ReminderModalViewController.h"
 #import "WalletSetupViewController.h"
+#import "TabControllerManager.h"
 #import <WebKit/WebKit.h>
-
-typedef enum {
-    AssetTypeBitcoin,
-    AssetTypeEther
-} AssetType;
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
+@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendBitcoinViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate, SetupDelegate> {
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate, SetupDelegate, TabControllerDelegate> {
 
     Wallet *wallet;
     
@@ -80,15 +75,10 @@ typedef enum {
     BOOL symbolLocal;
 }
 
-@property (nonatomic) AssetType assetType;
-
 @property (nonatomic, weak) UIViewController <TopViewController> *topViewControllerDelegate;
 
 @property (strong, nonatomic) IBOutlet ECSlidingViewController *slidingViewController;
-@property (strong, nonatomic) IBOutlet TabViewcontroller *tabViewController;
-@property (strong, nonatomic) IBOutlet TransactionsViewController *transactionsViewController;
-@property (strong, nonatomic) IBOutlet ReceiveCoinsViewController *receiveViewController;
-@property (strong, nonatomic) IBOutlet SendViewController *sendViewController;
+@property (nonatomic) TabControllerManager *tabControllerManager;
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 @property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
@@ -142,8 +132,6 @@ typedef enum {
 - (void)playBeepSound;
 - (void)playAlertSound;
 
-- (TabViewcontroller*)tabViewController;
-- (TransactionsViewController*)transactionsViewController;
 
 - (void)showWelcome;
 - (void)logout;
@@ -203,10 +191,6 @@ typedef enum {
 - (void)showHdUpgrade;
 - (void)showBackupReminder:(BOOL)firstReceive;
 
-- (void)dashBoardClicked:(UITabBarItem *)sender;
-- (void)receiveCoinClicked:(UITabBarItem *)sender;
-- (void)transactionsClicked:(UITabBarItem *)sender;
-- (void)sendCoinsClicked:(UITabBarItem *)sender;
 - (IBAction)merchantClicked:(UIButton *)sender;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)forgetWalletClicked:(id)sender;

@@ -769,7 +769,7 @@ NSString *detailLabel;
     
     [[NSNotificationCenter defaultCenter] addObserver:alertForWatchOnly selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
-    [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
 - (void)storeRequestedAmount
@@ -956,7 +956,7 @@ NSString *detailLabel;
     [self.receiveBtcField resignFirstResponder];
     [self.receiveFiatField resignFirstResponder];
     
-    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)clearAmounts
@@ -1207,7 +1207,7 @@ NSString *detailLabel;
     if (contact && !contact.mdid) {
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+        [app.tabControllerManager.tabViewController presentViewController:errorAlert animated:YES completion:nil];
     } else if (contact == self.fromContact || contact == nil) {
         self.fromContact = nil;
         self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT_OPTIONAL;

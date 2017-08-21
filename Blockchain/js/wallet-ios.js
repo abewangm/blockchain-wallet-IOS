@@ -345,8 +345,8 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
     }
 }
 
-MyWalletPhone.createNewPayment = function() {
-    console.log('Creating new payment')
+MyWalletPhone.createNewBitcoinPayment = function() {
+    console.log('Creating new bitcoin payment')
     currentPayment = MyWallet.wallet.createPayment();
 
     currentPayment.on('error', function(errorObject) {
@@ -359,6 +359,10 @@ MyWalletPhone.createNewPayment = function() {
     currentPayment.on('message', function(object) {
       objc_on_payment_notice(object['text']);
     });
+}
+
+MyWalletPhone.createNewEtherPayment = function() {
+    console.log('Creating new ether payment');
 }
 
 MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {

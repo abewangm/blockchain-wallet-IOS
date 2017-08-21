@@ -11,7 +11,7 @@
 #import "AccountsAndAddressesDetailViewController.h"
 #import "RootService.h"
 #import "PrivateKeyReader.h"
-#import "SendViewController.h"
+#import "SendBitcoinViewController.h"
 
 @interface AccountsAndAddressesNavigationController ()
 

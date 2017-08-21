@@ -134,25 +134,27 @@ int accountEntries = 0;
 
 - (void)setSideMenuGestures
 {
+    TabViewcontroller *tabViewController = app.tabControllerManager.tabViewController;
+    
     // Hide status bar
     if (!app.pinEntryViewController.inSettings) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     }
     
     // Disable all interactions on main view
-    for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
+    for (UIView *view in tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:NO];
     }
-    [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
+    [tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
     
     // Enable Pan gesture and tap gesture to close sideMenu
-    [app.tabViewController.activeViewController.view setUserInteractionEnabled:YES];
+    [tabViewController.activeViewController.view setUserInteractionEnabled:YES];
     ECSlidingViewController *sideMenu = app.slidingViewController;
-    [app.tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
     
-    [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    [tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizerViewController];
     
-    [app.tabViewController addTapGestureRecognizerToTabBar:tapToCloseGestureRecognizerTabBar];
+    [tabViewController addTapGestureRecognizerToTabBar:tapToCloseGestureRecognizerTabBar];
     
     // Show shadow on current viewController in tabBarView
     UIView *castsShadowView = app.slidingViewController.topViewController.view;
@@ -163,22 +165,24 @@ int accountEntries = 0;
 
 - (void)resetSideMenuGestures
 {
+    TabViewcontroller *tabViewController = app.tabControllerManager.tabViewController;
+
     // Show status bar again
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     // Disable Pan and Tap gesture on main view
-    [app.tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
-    [app.tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizerViewController];
-    [app.tabViewController removeTapGestureRecognizerFromTabBar:tapToCloseGestureRecognizerTabBar];
+    [tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    [tabViewController removeTapGestureRecognizerFromTabBar:tapToCloseGestureRecognizerTabBar];
 
     // Enable interaction on main view
-    for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
+    for (UIView *view in tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:YES];
     }
     
     // Enable swipe to open side menu gesture on small bar on the left of main view
-    [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
-    [app.tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
+    [tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
 }
 
 - (void)reload

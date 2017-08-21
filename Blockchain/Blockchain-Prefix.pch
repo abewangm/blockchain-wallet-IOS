@@ -715,6 +715,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
 
+#define NIB_NAME_TAB_CONTROLLER @"TabController"
+#define NIB_NAME_TRANSACTIONS @"Transactions"
 #define NIB_NAME_SEND_COINS @"SendCoins"
 #define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
 #define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
