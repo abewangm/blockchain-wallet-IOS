@@ -860,6 +860,16 @@
         [weakSelf on_delete_contact_after_storing_info_success:info];
     };
     
+#pragma mark - Ethereum
+    
+    self.context[@"objc_on_fetch_eth_history_success"] = ^() {
+        [weakSelf on_fetch_eth_history_success];
+    };
+    
+    self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
+        [weakSelf on_fetch_eth_history_error:[error toString]];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2423,6 +2433,25 @@
     return NO;
 }
 
+# pragma mark - Ethereum
+
+- (NSString *)getEthBalance
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toString];
+    } else {
+        DLog(@"Warning: getting eth balance when not initialized - returning 0");
+        return 0;
+    }
+}
+
+- (void)getEthHistory
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getEthHistory()"];
+    }
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3821,6 +3850,20 @@
 - (void)on_get_pending_trades_error:(JSValue *)error
 {
     [app standardNotify:[error toString]];
+}
+
+- (void)on_fetch_eth_history_success
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchEthHistory)]) {
+        [self.delegate didFetchEthHistory];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchEthHistory!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_eth_history_error:(NSString *)error
+{
+    
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

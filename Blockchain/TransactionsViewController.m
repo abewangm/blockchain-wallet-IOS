@@ -321,9 +321,13 @@ int lastNumberTransactions = INT_MAX;
         }
 #endif
         // Balance
-        [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
-        [self changeFilterLabel:[self getFilterLabel]];
-
+        
+        if (app.assetType == AssetTypeEther) {
+            [balanceBigButton setTitle:[app.wallet getEthBalance] forState:UIControlStateNormal];
+        } else {
+            [balanceBigButton setTitle:[NSNumberFormatter formatMoney:[self getBalance] localCurrency:app->symbolLocal] forState:UIControlStateNormal];
+            [self changeFilterLabel:[self getFilterLabel]];
+        }
     }
     // Data loaded and we have a balance - display the balance and transactions
     else {

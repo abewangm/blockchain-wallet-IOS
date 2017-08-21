@@ -153,6 +153,11 @@ void (^secondPasswordSuccess)(NSString *);
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [userDefaults registerDefaults:@{USER_DEFAULTS_KEY_ASSET_TYPE : [NSNumber numberWithInt:AssetTypeBitcoin]}];
+    app.assetType = [[userDefaults objectForKey:USER_DEFAULTS_KEY_ASSET_TYPE] intValue];
+
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
 #ifndef ENABLE_DEBUG_MENU
@@ -1031,6 +1036,8 @@ void (^secondPasswordSuccess)(NSString *);
     showType = ShowTypeNone;
 
     [self.wallet loadContactsThenGetMessages];
+    
+    [self.wallet performSelector:@selector(getEthHistory) withObject:nil afterDelay:1];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
@@ -2443,6 +2450,11 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [self.pinEntryViewController setupQRCode];
+}
+
+- (void)didFetchEthHistory
+{
+    [self reload];
 }
 
 #pragma mark - Show Screens

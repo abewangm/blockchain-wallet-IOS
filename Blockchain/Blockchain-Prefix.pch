@@ -617,6 +617,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define USER_DEFAULTS_KEY_ASSET_TYPE @"assetType"
+
 #define USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED @"lastNameUsed"
 
 #define USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT @"defaultAccountLabelledAddressesCount"

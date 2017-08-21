@@ -31,6 +31,11 @@
 #import "WalletSetupViewController.h"
 #import <WebKit/WebKit.h>
 
+typedef enum {
+    AssetTypeBitcoin,
+    AssetTypeEther
+} AssetType;
+
 @protocol TopViewController;
 
 @class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
@@ -74,6 +79,8 @@
     
     BOOL symbolLocal;
 }
+
+@property (nonatomic) AssetType assetType;
 
 @property (nonatomic, weak) UIViewController <TopViewController> *topViewControllerDelegate;
 
