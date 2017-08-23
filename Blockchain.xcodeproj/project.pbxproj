@@ -232,6 +232,7 @@
 		C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C79261B41E8ADF0300C87CED /* BCCardView.m */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
 		C7B6855B1F17AE2A00A18A5C /* BCEmptyPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */; };
+		C7CE34B81F4DCB7E00032806 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CE34B71F4DCB7E00032806 /* CardsViewController.m */; };
 		C7EEB8451EA95505002F28B9 /* UIView+ChangeFrameAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */; };
 		C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F041951E3BD4A6004E8B4A /* BuyBitcoinViewController.m */; };
 		C9BE917B1945D8F600FD516D /* PENumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE91681945D8F600FD516D /* PENumpadView.m */; };
@@ -1074,6 +1075,8 @@
 		C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEmptyPageView.h; sourceTree = "<group>"; };
 		C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEmptyPageView.m; sourceTree = "<group>"; };
 		C7CE34B51F4DB8C100032806 /* Assets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Assets.h; sourceTree = "<group>"; };
+		C7CE34B61F4DCB7E00032806 /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
+		C7CE34B71F4DCB7E00032806 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
 		C7EEB8431EA95505002F28B9 /* UIView+ChangeFrameAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChangeFrameAttribute.h"; sourceTree = "<group>"; };
 		C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrameAttribute.m"; sourceTree = "<group>"; };
 		C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinViewController.h; sourceTree = "<group>"; };
@@ -1580,6 +1583,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7CE34B61F4DCB7E00032806 /* CardsViewController.h */,
+				C7CE34B71F4DCB7E00032806 /* CardsViewController.m */,
 				C71859521F4B647100745A87 /* SendEtherViewController.h */,
 				C71859531F4B647100745A87 /* SendEtherViewController.m */,
 				232D7DDF1E018E7800A7A2ED /* ContactNewMessageViewController.h */,
@@ -2229,6 +2234,7 @@
 				C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */,
 				6762507D1A2CC5800052B63F /* BCEditAccountView.m in Sources */,
 				C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */,
+				C7CE34B81F4DCB7E00032806 /* CardsViewController.m in Sources */,
 				6780DB951A40BDCF0048EED2 /* InOut.m in Sources */,
 				23444F901DCD21AB00573C8C /* BTCCurvePoint.m in Sources */,
 				C75CBD041F1FB12F00CACE0D /* BCTotalAmountView.m in Sources */,

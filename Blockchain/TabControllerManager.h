@@ -12,7 +12,7 @@
 #import "TransactionsViewController.h"
 #import "SendBitcoinViewController.h"
 #import "ReceiveCoinsViewController.h"
-
+#import "CardsViewController.h"
 #import "SendEtherViewController.h"
 
 @protocol TabControllerDelegate
@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) TabViewcontroller *tabViewController;
 
+@property (strong, nonatomic) CardsViewController *cardsViewController;
 @property (strong, nonatomic) TransactionsViewController *transactionsViewController;
 @property (strong, nonatomic) ReceiveCoinsViewController *receiveViewController;
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
