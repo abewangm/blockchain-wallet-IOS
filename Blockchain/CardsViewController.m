@@ -13,6 +13,9 @@
 
 @interface CardsViewController () <CardViewDelegate, UIScrollViewDelegate>
 
+@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) UIView *contentView;
+
 // Onboarding cards
 @property (nonatomic) BOOL showCards;
 @property (nonatomic) BOOL showBuyAvailableNow;
@@ -32,10 +35,14 @@
 {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.view.frame = CGRectMake(0,
                               TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_HEADER_HEIGHT,
                               [UIScreen mainScreen].bounds.size.width,
                               [UIScreen mainScreen].bounds.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)reloadCards
@@ -50,8 +57,7 @@
     } else if (self.showBuyAvailableNow) {
         [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
     } else if (app.latestResponse.symbol_local) {
-        [self.cardsView removeFromSuperview];
-        self.cardsView = nil;
+        [self removeCardsView];
     }
 }
 
@@ -59,7 +65,7 @@
 {
     [self.cardsView removeFromSuperview];
     
-    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.cardsViewHeight)];
+    UIView *cardsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.cardsViewHeight)];
     cardsView.clipsToBounds = YES;
     cardsView.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
@@ -69,7 +75,9 @@
         self.cardsView = [self configureCardsViewBuyAvailableNow:cardsView];
     }
     
-    [self.view addSubview:self.cardsView];
+    [self.scrollView addSubview:self.cardsView];
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.cardsViewHeight + self.contentView.frame.size.height);
 }
 
 #pragma mark - New Wallet Cards
@@ -329,11 +337,17 @@
     [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
         [self.cardsView changeHeight:0];
     } completion:^(BOOL finished) {
-        [self.cardsView removeFromSuperview];
-        self.cardsView = nil;
+        [self removeCardsView];
     }];
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
+}
+
+- (void)removeCardsView
+{
+    [self.cardsView removeFromSuperview];
+    self.cardsView = nil;
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView ? self.contentView.frame.size.height : 0);
 }
 
 @end
