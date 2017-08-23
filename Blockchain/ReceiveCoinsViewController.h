@@ -47,8 +47,6 @@
 @property(nonatomic, strong) NSString *clickedAddress;
 
 @property(nonatomic) UIView *bottomContainerView;
-@property(nonatomic) UITextField *receiveBtcField;
-@property(nonatomic) UITextField *receiveFiatField;
 @property(nonatomic) UILabel *receiveToLabel;
 @property(nonatomic) UILabel *receiveFromLabel;
 @property(nonatomic) UIButton *selectFromButton;
