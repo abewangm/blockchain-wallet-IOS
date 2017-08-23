@@ -43,6 +43,11 @@
                               [UIScreen mainScreen].bounds.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
+    
+    // This contentView can be any custom view - intended to be placed at the top of the scroll view, moved down when the cards view is present, and moved back up when the cards view is dismissed
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
+    self.contentView.backgroundColor = [UIColor purpleColor];
+    [self.scrollView addSubview:self.contentView];
 }
 
 - (void)reloadCards
@@ -76,6 +81,8 @@
     }
     
     [self.scrollView addSubview:self.cardsView];
+    
+    [self.contentView changeYPosition:self.cardsViewHeight];
     
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.cardsViewHeight + self.contentView.frame.size.height);
 }
@@ -336,6 +343,8 @@
 {    
     [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
         [self.cardsView changeHeight:0];
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView ? self.contentView.frame.size.height : 0);
+        [self.contentView changeYPosition:0];
     } completion:^(BOOL finished) {
         [self removeCardsView];
     }];
@@ -348,6 +357,7 @@
     [self.cardsView removeFromSuperview];
     self.cardsView = nil;
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView ? self.contentView.frame.size.height : 0);
+    [self.contentView changeYPosition:0];
 }
 
 @end
