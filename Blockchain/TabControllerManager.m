@@ -37,7 +37,7 @@
 
 - (void)reloadAfterMultiAddressResponse
 {
-    [_cardsViewController reloadCards];
+    [_dashboardViewController reload];
     [_sendBitcoinViewController reloadAfterMultiAddressResponse];
     [_transactionsViewController reload];
     [_receiveViewController reload];
@@ -388,12 +388,12 @@
 
 - (void)dashBoardClicked:(UITabBarItem *)sender
 {
-    if (!_cardsViewController) {
-        CardsViewController *cardsViewController = [CardsViewController new];
-        self.cardsViewController = cardsViewController;
+    if (!_dashboardViewController) {
+        DashboardViewController *dashboardViewController = [DashboardViewController new];
+        self.dashboardViewController = dashboardViewController;
     }
     
-    [_tabViewController setActiveViewController:self.cardsViewController animated:TRUE index:TAB_DASHBOARD];
+    [_tabViewController setActiveViewController:self.dashboardViewController animated:TRUE index:TAB_DASHBOARD];
 }
 
 - (void)receiveCoinClicked:(UITabBarItem *)sender

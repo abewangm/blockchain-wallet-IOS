@@ -43,11 +43,6 @@
                               [UIScreen mainScreen].bounds.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
-    
-    // This contentView can be any custom view - intended to be placed at the top of the scroll view, moved down when the cards view is present, and moved back up when the cards view is dismissed
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
-    self.contentView.backgroundColor = [UIColor purpleColor];
-    [self.scrollView addSubview:self.contentView];
 }
 
 - (void)reloadCards
