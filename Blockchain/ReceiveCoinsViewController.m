@@ -182,7 +182,7 @@ NSString *detailLabel;
 {
     CGFloat containerHeightPlusButtonSpace = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT;
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y + self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
     self.bottomContainerView.clipsToBounds = YES;
     [self.view addSubview:self.bottomContainerView];
     
@@ -361,9 +361,9 @@ NSString *detailLabel;
 - (void)reload
 {
     [self reloadAddresses];
-    
+#ifdef ENABLE_CONTACTS
     [self resetContactInfo];
-    
+#endif
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (!mainAddress) {
@@ -584,7 +584,7 @@ NSString *detailLabel;
 {
     UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
     UIView *viewToShow = shouldShowQR ? self.headerView : self.view.topView;
-    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.view.topView.frame.size.height;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.origin.y + self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.view.topView.frame.size.height;
     
     viewToShow.alpha = 0;
     viewToShow.hidden = NO;
