@@ -14,10 +14,19 @@
 {
     if (self == [super init]) {
         self.tabViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TAB_CONTROLLER owner:self options:nil] firstObject];
+        self.tabViewController.assetDelegate = self;
+        
+        NSInteger assetType = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ASSET_TYPE] integerValue];
+        self.assetType = assetType;
+        [self.tabViewController.assetSegmentedControl setSelectedSegmentIndex:assetType];
     }
     return self;
 }
 
+- (void)didSetAssetType:(AssetType)assetType
+{
+    self.assetType = assetType;
+}
 
 - (void)reload
 {
@@ -66,7 +75,11 @@
         
         [_tabViewController setActiveViewController:_sendBitcoinViewController animated:TRUE index:TAB_SEND];
     } else if (self.assetType == AssetTypeEther) {
+        if (!_sendEtherViewController) {
+            _sendEtherViewController = [[SendEtherViewController alloc] init];
+        }
         
+        [_tabViewController setActiveViewController:_sendEtherViewController animated:TRUE index:TAB_SEND];
     }
 }
 
@@ -337,7 +350,7 @@
         _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
     }
     
-    [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:1];
+    [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:TAB_TRANSACTIONS];
 }
 
 - (void)updateTransactionsViewControllerData:(MultiAddressResponse *)data
@@ -391,6 +404,10 @@
 
 - (void)transactionsClicked:(UITabBarItem *)sender
 {
+    if (!_transactionsViewController) {
+        _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
+    }
+    
     [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:TAB_TRANSACTIONS];
     
     if (sender &&

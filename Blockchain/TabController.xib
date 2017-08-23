@@ -30,7 +30,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snH-rE-AXa" userLabel="Top Bar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8Y-ha-CAe" userLabel="Merchant Directory Button">
@@ -69,6 +69,22 @@
                                     <action selector="menuButtonClicked:" destination="-1" eventType="touchUpInside" id="0hA-1h-dqU"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-tG-hu9">
+                                <rect key="frame" x="0.0" y="107" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4kG-Jh-1wj">
+                                        <rect key="frame" x="8" y="11" width="304" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -99,12 +115,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="320" height="480"/>
             <connections>
+                <outlet property="assetControlContainer" destination="yGQ-tG-hu9" id="KSg-gS-SFf"/>
+                <outlet property="assetSegmentedControl" destination="4kG-Jh-1wj" id="PAw-bg-vGu"/>
                 <outlet property="contentView" destination="vAg-ut-JLJ" id="u5N-1G-QS0"/>
                 <outlet property="dashBoardButton" destination="960-nk-vFa" id="kMa-cI-Pzs"/>
                 <outlet property="homeButton" destination="19B-8E-KvF" id="s8k-H6-bk4"/>
                 <outlet property="receiveButton" destination="xq7-77-Dge" id="ONh-Mv-iXK"/>
                 <outlet property="sendButton" destination="Wrt-JU-kt6" id="jlu-XM-ivK"/>
                 <outlet property="tabBar" destination="8Xr-hd-GFa" id="c4D-Qi-cXn"/>
+                <outlet property="titleLabel" destination="S7k-0J-4kw" id="3xv-4e-TQh"/>
+                <outlet property="topBar" destination="snH-rE-AXa" id="ryB-oS-ADd"/>
             </connections>
             <point key="canvasLocation" x="-241" y="-310"/>
         </viewController>

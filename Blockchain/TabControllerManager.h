@@ -8,21 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "TabViewController.h"
-
+#import "Assets.h"
 #import "TransactionsViewController.h"
 #import "SendBitcoinViewController.h"
 #import "ReceiveCoinsViewController.h"
 
-typedef enum {
-    AssetTypeBitcoin,
-    AssetTypeEther
-} AssetType;
+#import "SendEtherViewController.h"
 
 @protocol TabControllerDelegate
 - (void)toggleSideMenu;
 @end
 
-@interface TabControllerManager : NSObject
+@interface TabControllerManager : NSObject <AssetDelegate>
 @property (nonatomic) AssetType assetType;
 
 @property (weak, nonatomic) id <TabControllerDelegate> delegate;
@@ -32,6 +29,9 @@ typedef enum {
 @property (strong, nonatomic) TransactionsViewController *transactionsViewController;
 @property (strong, nonatomic) ReceiveCoinsViewController *receiveViewController;
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
+
+@property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
+
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
 - (void)reloadMessageViews;

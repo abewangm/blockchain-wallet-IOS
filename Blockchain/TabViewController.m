@@ -8,6 +8,7 @@
 
 #import "TabViewController.h"
 #import "RootService.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 @implementation TabViewcontroller
 
@@ -18,6 +19,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    [self.assetSegmentedControl setTitle:BC_STRING_BITCOIN forSegmentAtIndex:0];
+    [self.assetSegmentedControl setTitle:BC_STRING_ETHER forSegmentAtIndex:1];
+    [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
     
     tabBar.delegate = self;
     
@@ -87,6 +92,8 @@
     }
     
     [self setSelectedIndex:newIndex];
+    
+    [self updateTopBarForIndex:newIndex];
 }
 
 - (void)insertActiveView
@@ -117,6 +124,29 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         tabBar.selectedItem = [[tabBar items] objectAtIndex:selectedIndex];
     });
+    
+    NSArray *titles = @[BC_STRING_SEND, BC_STRING_DASHBOARD, BC_STRING_OVERVIEW, BC_STRING_REQUEST];
+    
+    if (nindex < titles.count) {
+        [self setTitleLabelText:[titles objectAtIndex:nindex]];
+    } else {
+        DLog(@"TabViewController Warning: no title found for selected index (array out of bounds)");
+    }
+}
+
+- (void)updateTopBarForIndex:(int)newIndex
+{
+    if (newIndex == TAB_SEND || newIndex == TAB_RECEIVE) {
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.assetControlContainer changeYPosition:ASSET_CONTAINER_Y_POSITION_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET];
+            [topBar changeHeight:TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET];
+        }];
+    } else if (newIndex == TAB_DASHBOARD || newIndex == TAB_TRANSACTIONS) {
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.assetControlContainer changeYPosition:ASSET_CONTAINER_Y_POSITION_DEFAULT];
+            [topBar changeHeight:TAB_HEADER_HEIGHT_DEFAULT];
+        }];
+    }
 }
 
 - (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer
@@ -153,6 +183,18 @@
 {
     NSString *badgeString = number > 0 ? [NSString stringWithFormat:@"%lu", number] : nil;
     [[[tabBar items] objectAtIndex:index] setBadgeValue:badgeString];
+}
+
+- (void)setTitleLabelText:(NSString *)text
+{
+    titleLabel.text = text;
+    titleLabel.hidden = NO;
+}
+
+- (void)assetSegmentedControlChanged
+{
+    AssetType asset = self.assetSegmentedControl.selectedSegmentIndex;
+    [self.assetDelegate didSetAssetType:asset];
 }
 
 @end

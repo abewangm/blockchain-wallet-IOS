@@ -813,8 +813,10 @@ int lastNumberTransactions = INT_MAX;
     
     self.loadedAllTransactions = NO;
     
-    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
-                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
+    self.view.frame = CGRectMake(0,
+                                 TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_HEADER_HEIGHT,
+                                 app.window.frame.size.width,
+                                 app.window.frame.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
     
     self.originalHeaderFrame = headerView.frame;
     headerView.clipsToBounds = YES;
@@ -1274,7 +1276,7 @@ int lastNumberTransactions = INT_MAX;
 - (void)resetHeaderFrame
 {
     CGRect headerFrame = self.originalHeaderFrame;
-    headerFrame.size.height = 80;
+    headerFrame.size.height = 0;
     headerView.frame = headerFrame;
     
     [self resetTableViewFrame];

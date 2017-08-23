@@ -7,6 +7,9 @@
 //
 #import <Foundation/Foundation.h>
 
+#define BC_STRING_BITCOIN NSLocalizedString(@"Bitcoin", nil)
+#define BC_STRING_ETHER NSLocalizedString(@"Ether", nil)
+
 #define BC_STRING_WALLETS NSLocalizedString(@"Wallets", nil)
 
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)

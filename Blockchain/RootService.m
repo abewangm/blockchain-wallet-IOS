@@ -158,7 +158,6 @@ void (^secondPasswordSuccess)(NSString *);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     [userDefaults registerDefaults:@{USER_DEFAULTS_KEY_ASSET_TYPE : [NSNumber numberWithInt:AssetTypeBitcoin]}];
-    self.tabControllerManager.assetType = [@1 intValue];
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING : @YES}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED : @YES}];
@@ -210,8 +209,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     [app.window makeKeyAndVisible];
     
-    // Default view in TabViewController: transactionsViewController
-    [self.tabControllerManager showTransactions];
+    // Default view in TabViewController: dashboard
+    [self.tabControllerManager dashBoardClicked:nil];
     [app.window.rootViewController.view addSubview:busyView];
     
     busyView.frame = app.window.frame;

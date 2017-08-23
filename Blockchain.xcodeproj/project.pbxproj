@@ -1073,6 +1073,7 @@
 		C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletSetupViewController.m; sourceTree = "<group>"; };
 		C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEmptyPageView.h; sourceTree = "<group>"; };
 		C7B6855A1F17AE2A00A18A5C /* BCEmptyPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCEmptyPageView.m; sourceTree = "<group>"; };
+		C7CE34B51F4DB8C100032806 /* Assets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Assets.h; sourceTree = "<group>"; };
 		C7EEB8431EA95505002F28B9 /* UIView+ChangeFrameAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChangeFrameAttribute.h"; sourceTree = "<group>"; };
 		C7EEB8441EA95505002F28B9 /* UIView+ChangeFrameAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrameAttribute.m"; sourceTree = "<group>"; };
 		C7F041941E3BD4A6004E8B4A /* BuyBitcoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyBitcoinViewController.h; sourceTree = "<group>"; };
@@ -1446,6 +1447,7 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7CE34B51F4DB8C100032806 /* Assets.h */,
 				C71859551F4B695700745A87 /* TabControllerManager.h */,
 				C71859561F4B695700745A87 /* TabControllerManager.m */,
 				C75F70E81E2685CA005B4EAF /* ContactTransaction.h */,

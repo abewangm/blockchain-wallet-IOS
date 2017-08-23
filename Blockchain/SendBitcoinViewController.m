@@ -100,8 +100,10 @@ BOOL displayingLocalSymbolSend;
     
     CGFloat statusBarAdjustment = [[UIApplication sharedApplication] statusBarFrame].size.height > DEFAULT_STATUS_BAR_HEIGHT ? DEFAULT_STATUS_BAR_HEIGHT : 0;
     
-    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
-                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
+    self.view.frame = CGRectMake(0,
+                                 TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET - DEFAULT_HEADER_HEIGHT,
+                                 app.window.frame.size.width,
+                                 app.window.frame.size.height - (TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET) - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
     [containerView changeWidth:WINDOW_WIDTH];
 
