@@ -26,6 +26,10 @@
 - (void)didSetAssetType:(AssetType)assetType
 {
     self.assetType = assetType;
+    
+    if (self.tabViewController.selectedIndex == TAB_SEND) {
+        [self showSendCoins];
+    }
 }
 
 - (void)reload
