@@ -29,10 +29,10 @@
 #define BOTTOM_CONTAINER_HEIGHT_PARTIAL 101
 #endif
 #define BOTTOM_CONTAINER_HEIGHT_FULL 201
-#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
 
-@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
+@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate, UIScrollViewDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
@@ -67,7 +67,13 @@ NSString *detailLabel;
 - (void)loadView
 {
     self.view = [[BCDescriptionView alloc] init];
+    self.view.delegate = self;
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) self.view.descriptionCellHeight = BOTTOM_CONTAINER_HEIGHT_FULL - 2;
+}
+
+ -(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    DLog(@"%f", scrollView.contentOffset.y);
 }
 
 - (void)viewDidLoad
@@ -88,7 +94,7 @@ NSString *detailLabel;
     
     float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 32, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 0, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -395,7 +401,7 @@ NSString *detailLabel;
     // Show table header with the QR code of an address from the default account
     float imageWidth = qrCodeMainImageView.frame.size.width;
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75 + 4)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 35 + 4)];
     
     [self.view addSubview:self.headerView];
     
@@ -561,7 +567,7 @@ NSString *detailLabel;
 {
     UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
     UIView *viewToShow = shouldShowQR ? self.headerView : self.view.topView;
-    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.origin.y + self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.view.topView.frame.size.height;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.origin.y + self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) - app.tabControllerManager.tabViewController.assetControlContainer.frame.size.height : self.view.topView.frame.size.height;
     
     viewToShow.alpha = 0;
     viewToShow.hidden = NO;
@@ -587,45 +593,15 @@ NSString *detailLabel;
     }];
 }
 
-- (void)moveViewsUpForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        BOOL receivingFromContact = self.fromContact != nil;
-        
-        if (receivingFromContact) {
-            self.view.topView.alpha = 0;
-            self.view.topView.hidden = NO;
-        } else {
-            self.headerView.alpha = 0;
-            self.headerView.hidden = NO;
-        }
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            if (receivingFromContact) {
-                [self.bottomContainerView changeYPosition:self.view.topView.frame.size.height];
-            } else {
-                [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
-            }
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                if (receivingFromContact) {
-                    self.view.topView.alpha = 1;
-                } else {
-                    self.headerView.alpha = 1;
-                }
-            }];
-        }];
-    }
-}
-
 #pragma mark - Actions
 
 - (IBAction)doneButtonClicked:(UIButton *)sender
 {
     [self hideKeyboard];
     
-    [self moveViewsUpForSmallScreens];
+    self.view.scrollEnabled = NO;
+    [self.view scrollRectToVisible:CGRectZero animated:YES];
+    self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -970,8 +946,6 @@ NSString *detailLabel;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self resetDescriptionContainerView];
     }];
-
-    [self moveViewsUpForSmallScreens];
 }
 
 - (void)resetDescriptionContainerView
@@ -994,17 +968,11 @@ NSString *detailLabel;
     }
     
     if (textField == self.amountInputView.fiatField || textField == self.amountInputView.btcField) {
-        self.lastSelectedField = textField; 
-    }
-    
-    if (IS_USING_SCREEN_SIZE_4S) {
+        self.lastSelectedField = textField;
         
-        self.headerView.hidden = YES;
-        self.view.topView.hidden = YES;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.bottomContainerView changeYPosition:0];
-        }];
+        self.view.scrollEnabled = YES;
+        self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + (self.view.frame.size.height - self.bottomContainerView.frame.origin.y));
+        [self.view scrollRectToVisible:CGRectMake(0, self.bottomContainerView.frame.origin.y + self.amountInputView.frame.size.height + 205.5, 1, 1) animated:YES];
     }
     
     if (textField == self.descriptionField) {
@@ -1032,8 +1000,6 @@ NSString *detailLabel;
         return YES;
     }
 
-    [self moveViewsUpForSmallScreens];
-    
     [textField resignFirstResponder];
     return YES;
 }

@@ -16,6 +16,8 @@
 {
     if (self = [super initWithFrame:frame]) {
         self.descriptionCellHeight = 132;
+        self.scrollEnabled = NO;
+        self.showsVerticalScrollIndicator = NO;
     }
     return self;
 }

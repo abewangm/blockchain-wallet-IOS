@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BCDescriptionView : UIView
+@interface BCDescriptionView : UIScrollView
 @property (nonatomic) UITableView *tableView;
 
 @property (nonatomic) UITextView *descriptionTextView;
