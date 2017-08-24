@@ -31,8 +31,9 @@
 #define BOTTOM_CONTAINER_HEIGHT_FULL 201
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
+#define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
-@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate, UIScrollViewDelegate>
+@interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
@@ -67,13 +68,7 @@ NSString *detailLabel;
 - (void)loadView
 {
     self.view = [[BCDescriptionView alloc] init];
-    self.view.delegate = self;
     if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) self.view.descriptionCellHeight = BOTTOM_CONTAINER_HEIGHT_FULL - 2;
-}
-
- -(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    DLog(@"%f", scrollView.contentOffset.y);
 }
 
 - (void)viewDidLoad
@@ -94,7 +89,7 @@ NSString *detailLabel;
     
     float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 0, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 27, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -105,7 +100,7 @@ NSString *detailLabel;
         
         // Smaller QR Code Image
         qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
-                                               qrCodeMainImageView.frame.origin.y - 10,
+                                               qrCodeMainImageView.frame.origin.y,
                                                qrCodeMainImageView.frame.size.width - reduceImageSizeBy,
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
     }
@@ -401,7 +396,7 @@ NSString *detailLabel;
     // Show table header with the QR code of an address from the default account
     float imageWidth = qrCodeMainImageView.frame.size.width;
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 35 + 4)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 45)];
     
     [self.view addSubview:self.headerView];
     
@@ -598,10 +593,6 @@ NSString *detailLabel;
 - (IBAction)doneButtonClicked:(UIButton *)sender
 {
     [self hideKeyboard];
-    
-    self.view.scrollEnabled = NO;
-    [self.view scrollRectToVisible:CGRectZero animated:YES];
-    self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -689,6 +680,10 @@ NSString *detailLabel;
     [labelTextField resignFirstResponder];
     [self.descriptionField resignFirstResponder];
     [self.amountInputView hideKeyboard];
+    
+    self.view.scrollEnabled = NO;
+    [self.view scrollRectToVisible:CGRectZero animated:YES];
+    self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
@@ -972,7 +967,7 @@ NSString *detailLabel;
         
         self.view.scrollEnabled = YES;
         self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + (self.view.frame.size.height - self.bottomContainerView.frame.origin.y));
-        [self.view scrollRectToVisible:CGRectMake(0, self.bottomContainerView.frame.origin.y + self.amountInputView.frame.size.height + 205.5, 1, 1) animated:YES];
+        [self.view scrollRectToVisible:CGRectMake(0, self.bottomContainerView.frame.origin.y + self.amountInputView.frame.size.height + ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT, 1, 1) animated:YES];
     }
     
     if (textField == self.descriptionField) {
