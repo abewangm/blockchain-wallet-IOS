@@ -29,7 +29,7 @@
 #define BOTTOM_CONTAINER_HEIGHT_PARTIAL 101
 #endif
 #define BOTTOM_CONTAINER_HEIGHT_FULL 201
-#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 220
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
 #define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
@@ -89,7 +89,7 @@ NSString *detailLabel;
     
     float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 27, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 35, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -294,7 +294,7 @@ NSString *detailLabel;
     self.descriptionField.delegate = self;
     [self.descriptionContainerView addSubview:self.descriptionField];
     
-    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    CGFloat spacing = 12;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
     requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
@@ -393,20 +393,33 @@ NSString *detailLabel;
 
 - (void)setupHeaderView
 {
-    // Show table header with the QR code of an address from the default account
-    float imageWidth = qrCodeMainImageView.frame.size.width;
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.bottomContainerView.frame.origin.y)];
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 45)];
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 42)];
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.numberOfLines = 0;
+    instructionsLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
+    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    [instructionsLabel sizeToFit];
+    if (instructionsLabel.frame.size.height > 40) [instructionsLabel changeHeight:40];
+    instructionsLabel.center = CGPointMake(self.view.frame.size.width/2, instructionsLabel.center.y);
+    [self.headerView addSubview:instructionsLabel];
     
     [self.view addSubview:self.headerView];
     
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
-        qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+        BOOL isUsing4SScreenSize = IS_USING_SCREEN_SIZE_4S;
         
+        qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+        if (!isUsing4SScreenSize) {
+            [qrCodeMainImageView changeYPosition:57];
+            instructionsLabel.center = CGPointMake(self.headerView.center.x, qrCodeMainImageView.frame.origin.y/2);
+        }
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + 8, self.view.frame.size.width - 40, 20)];
+        CGFloat yOffset = isUsing4SScreenSize ? 4 : 16;
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + yOffset, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;

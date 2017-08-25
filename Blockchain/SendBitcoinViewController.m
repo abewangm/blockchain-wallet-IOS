@@ -1373,7 +1373,7 @@ BOOL displayingLocalSymbolSend;
 
 - (CGFloat)continuePaymentButtonOriginY
 {
-    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    CGFloat spacing = 12;
     return self.view.frame.size.height - BUTTON_HEIGHT - spacing;
 }
 
