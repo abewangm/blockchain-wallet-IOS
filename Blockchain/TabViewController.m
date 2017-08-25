@@ -21,6 +21,7 @@
     [super awakeFromNib];
     
     [self.assetSegmentedControl setTitle:BC_STRING_BITCOIN forSegmentAtIndex:0];
+    [self.assetSegmentedControl setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL]} forState:UIControlStateNormal];
     [self.assetSegmentedControl setTitle:BC_STRING_ETHER forSegmentAtIndex:1];
     [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
     
