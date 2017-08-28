@@ -23,6 +23,9 @@ function NativeEthSocket () {
   this.handlers = []
 }
 
+NativeEthSocket.prototype.on = function (type, callback) {
+}
+
 NativeEthSocket.prototype.onMessage = function (msg) {
   this.handlers.forEach(function (handler) {
     handler(msg)
