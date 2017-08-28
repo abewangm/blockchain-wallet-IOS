@@ -860,7 +860,7 @@
         [weakSelf on_delete_contact_after_storing_info_success:info];
     };
     
-#pragma mark - Ethereum
+#pragma mark Ethereum
     
     self.context[@"objc_on_fetch_eth_history_success"] = ^() {
         [weakSelf on_fetch_eth_history_success];
@@ -868,6 +868,10 @@
     
     self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
         [weakSelf on_fetch_eth_history_error:[error toString]];
+    };
+    
+    self.context[@"objc_update_eth_payment"] = ^(JSValue *etherPayment) {
+        [weakSelf on_update_eth_payment:[etherPayment toDictionary]];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -1773,6 +1777,15 @@
     }
     
     [self.context evaluateScript:@"MyWalletPhone.createNewBitcoinPayment()"];
+}
+
+- (void)createNewEtherPayment
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.createNewEtherPayment()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
@@ -3864,6 +3877,15 @@
 - (void)on_fetch_eth_history_error:(NSString *)error
 {
     
+}
+
+- (void)on_update_eth_payment:(NSDictionary *)payment
+{
+    if ([self.delegate respondsToSelector:@selector(didUpdateEthPayment:)]) {
+        [self.delegate didUpdateEthPayment:payment];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

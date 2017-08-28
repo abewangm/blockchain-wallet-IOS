@@ -31,6 +31,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
+var currentEtherPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
@@ -2299,4 +2300,96 @@ function WalletOptions (api) {
     var base = 'wallet-options';
     return base + '.json';
   };
+}
+
+// Ethereum
+MyWalletPhone.getEthBalance = function() {
+    return MyWallet.wallet.eth.balance;
+}
+
+MyWalletPhone.getEthHistory = function() {
+    
+    var success = function() {
+        console.log('Success fetching eth history')
+        console.log(MyWallet.wallet.eth.balance);
+        objc_on_fetch_eth_history_success();
+    };
+    
+    var error = function(error) {
+        console.log('Error fetching eth history')
+        console.log(error);
+        objc_on_fetch_eth_history_error(error);
+    };
+    
+    console.log(JSON.stringify(MyWallet.wallet.eth));
+    MyWallet.wallet.eth.fetchHistory().then(success).catch(error);
+}
+
+MyWalletPhone.createNewEtherPayment = function() {
+    console.log('Creating new ether payment');
+    
+    var eth = MyWallet.wallet.eth;
+    
+    currentEtherPayment = eth.defaultAccount.createPayment();
+    
+    eth.fetchFees().then(function(fees) {
+                         currentEtherPayment.setGasPrice(fees.regular);
+                         currentEtherPayment.setGasLimit(fees.gasLimit);
+                         
+                         MyWalletPhone.updateEtherPayment(currentEtherPayment);
+                         });
+}
+
+MyWalletPhone.updateEtherPayment = function() {
+    
+    var paymentInfo = {
+        amount : currentEtherPayment.amount,
+        available : currentEtherPayment.available,
+        fee : currentEtherPayment.fee,
+    };
+    
+    console.log(JSON.stringify(paymentInfo));
+    
+    objc_update_eth_payment(paymentInfo);
+}
+
+MyWalletPhone.setEtherPaymentTo = function(to) {
+    currentEtherPayment.setTo(to);
+}
+
+MyWalletPhone.setEtherPaymentAmount = function(amount) {
+    currentEtherPayment.setValue(amount);
+}
+
+MyWalletPhone.getEthPaymentTotal = function() {
+    return currentEtherPayment.amount + currentEtherPayment.fee;
+}
+
+MyWalletPhone.sendEtherPayment = function() {
+    
+    var eth = MyWallet.wallet.eth;
+    
+    var success = function() {
+        
+    }
+    
+    var error = function() {
+        
+    }
+    
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+                                        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount, pw);
+                                        currentEtherPayment.sign(privateKey);
+                                        currentEtherPayment
+                                        .publish()
+                                        .then(success).catch(error);
+                                        });
+    } else {
+        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount);
+        currentEtherPayment.sign(privateKey);
+        currentEtherPayment
+        .publish()
+        .then(success).catch(error);
+    }
 }

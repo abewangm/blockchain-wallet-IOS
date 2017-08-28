@@ -131,6 +131,7 @@
 - (void)showCompletedTrade:(NSString *)txHash;
 - (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses;
 - (void)didFetchEthHistory;
+- (void)didUpdateEthPayment:(NSDictionary *)payment;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -415,4 +416,7 @@ typedef enum {
 // Ethereum
 - (NSString *)getEthBalance;
 - (void)getEthHistory;
+
+// Ether send
+- (void)createNewEtherPayment;
 @end

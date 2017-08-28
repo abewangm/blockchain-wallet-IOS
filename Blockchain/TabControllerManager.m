@@ -27,6 +27,8 @@
 {
     self.assetType = assetType;
     
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:self.assetType] forKey:USER_DEFAULTS_KEY_ASSET_TYPE];
+    
     if (self.tabViewController.selectedIndex == TAB_SEND) {
         [self showSendCoins];
     }
@@ -66,6 +68,8 @@
     self.receiveViewController = nil;
     [_transactionsViewController setData:nil];
 }
+
+#pragma mark - BTC Send
 
 - (BOOL)isSending
 {
@@ -214,6 +218,15 @@
     [_receiveViewController storeRequestedAmount];
 }
 
+#pragma mark - Eth Send
+
+- (void)didUpdateEthPayment:(NSDictionary *)ethPayment
+{
+    [_sendEtherViewController didUpdatePayment:ethPayment];
+}
+
+#pragma mark - Receive
+
 - (void)clearReceiveAmounts
 {
     [self.receiveViewController clearAmounts];
@@ -228,6 +241,8 @@
 {
     [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
 }
+
+#pragma mark - Transactions
 
 - (void)didChangeLocalCurrency
 {
@@ -294,6 +309,8 @@
     [_tabViewController setActiveViewController:_transactionsViewController animated:FALSE index:1];
 }
 
+#pragma mark - Reloading
+
 - (void)reloadSymbols
 {
     [_sendBitcoinViewController reloadSymbols];
@@ -351,15 +368,6 @@
     }
 }
 
-- (void)showTransactions
-{
-    if (!_transactionsViewController) {
-        _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
-    }
-    
-    [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:TAB_TRANSACTIONS];
-}
-
 - (void)updateTransactionsViewControllerData:(MultiAddressResponse *)data
 {
     [_transactionsViewController updateData:data];
@@ -382,6 +390,8 @@
 {
     [self.tabViewController updateBadgeNumber:number forSelectedIndex:index];
 }
+
+#pragma mark - Navigation
 
 - (IBAction)menuButtonClicked:(UIButton *)sender
 {
@@ -450,6 +460,15 @@
 - (void)sendCoinsClicked:(UITabBarItem *)sender
 {
     [self showSendCoins];
+}
+
+- (void)showTransactions
+{
+    if (!_transactionsViewController) {
+        _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
+    }
+    
+    [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:TAB_TRANSACTIONS];
 }
 
 @end

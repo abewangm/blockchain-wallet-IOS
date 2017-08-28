@@ -48,7 +48,7 @@
 - (void)transactionsClicked:(UITabBarItem *)sender;
 - (void)sendCoinsClicked:(UITabBarItem *)sender;
 
-// Send View Controller
+// Send Bitcoin View Controller
 - (BOOL)isSending;
 - (void)showSendCoins;
 - (void)setupTransferAllFunds;
@@ -77,6 +77,9 @@
 - (DestinationAddressSource)getSendAddressSource;
 - (void)setupPaymentRequest:(ContactTransaction *)transaction;
 - (void)setupSendToAddress:(NSString *)address;
+
+// Send Eth View Controller
+- (void)didUpdateEthPayment:(NSDictionary *)ethPayment;
 
 // Receive View Controller
 - (void)clearReceiveAmounts;

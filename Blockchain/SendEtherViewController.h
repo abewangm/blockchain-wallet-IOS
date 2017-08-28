@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface SendEtherViewController : UIViewController
 - (void)reload;
 - (void)getHistory;
+- (void)didUpdatePayment:(NSDictionary *)payment;
 @end

@@ -61,13 +61,12 @@
     self.amountInputView = amountInputView;
     
     CGFloat useAllButtonOriginY = amountInputView.frame.origin.y + amountInputView.frame.size.height;
-    UIButton *fundsAvailableButton = [[UIButton alloc] initWithFrame:CGRectMake(15, useAllButtonOriginY, self.view.frame.size.width - 15, 112 -useAllButtonOriginY)];
+    UIButton *fundsAvailableButton = [[UIButton alloc] initWithFrame:CGRectMake(15, useAllButtonOriginY, self.view.frame.size.width - 15 - 8, 112 -useAllButtonOriginY)];
     fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     [fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [fundsAvailableButton setTitle:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT forState:UIControlStateNormal];
     self.fundsAvailableButton = fundsAvailableButton;
     
     [self.view addSubview:fundsAvailableButton];
@@ -105,12 +104,26 @@
 
 - (void)reload
 {
-    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [app.wallet getEthBalance]] forState:UIControlStateNormal];
+    [app.wallet createNewEtherPayment];
 }
 
 - (void)getHistory
 {
     [app.wallet getEthHistory];
+}
+
+- (void)didUpdatePayment:(NSDictionary *)payment;
+{
+    id dictAmount = payment[DICTIONARY_KEY_AMOUNT];
+    id dictAvailable = payment[DICTIONARY_KEY_AVAILABLE];
+    id dictFee = payment[DICTIONARY_KEY_FEE];
+    
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithDecimal:[dictAmount decimalValue]];
+    NSDecimalNumber *available = [NSDecimalNumber decimalNumberWithDecimal:[dictAvailable decimalValue]];
+    NSDecimalNumber *fee = [NSDecimalNumber decimalNumberWithDecimal:[dictFee decimalValue]];
+
+    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, available] forState:UIControlStateNormal];
+    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH, nil];
 }
 
 #pragma mark - View Helpers

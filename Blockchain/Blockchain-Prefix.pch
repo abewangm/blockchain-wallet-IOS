@@ -593,6 +593,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_SURGE @"surge"
 #define DICTIONARY_KEY_LAST @"last"
 #define DICTIONARY_KEY_USD @"USD"
+#define DICTIONARY_KEY_AVAILABLE @"available"
 
 #define DICTIONARY_KEY_SYMBOL @"symbol"
 #define DICTIONARY_KEY_CONVERSION @"conversion"

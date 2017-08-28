@@ -2425,6 +2425,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self reload];
 }
 
+- (void)didUpdateEthPayment:(NSDictionary *)ethPayment
+{
+    [self.tabControllerManager didUpdateEthPayment:ethPayment];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts
