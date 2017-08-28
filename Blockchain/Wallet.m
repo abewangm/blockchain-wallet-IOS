@@ -878,6 +878,10 @@
         [weakSelf on_fetch_eth_exchange_rate_success:rate];
     };
     
+    self.context[@"objc_eth_socket_send"] = ^(JSValue *message) {
+        [weakSelf eth_socket_send:[message toString]];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -887,11 +891,43 @@
     [self login];
 }
 
+- (SRWebSocket *)ethSocket
+{
+    if (!_ethSocket) {
+        _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest]];
+        _ethSocket.delegate = self;
+    }
+    
+    return _ethSocket;
+}
+
+- (NSMutableArray *)pendingEthSocketMessages
+{
+    if (!_pendingEthSocketMessages) _pendingEthSocketMessages = [NSMutableArray new];
+    return _pendingEthSocketMessages;
+}
+
 - (void)setupWebSocket
+{
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest]];
+    self.webSocket.delegate = self;
+    
+    [self.webSocketTimer invalidate];
+    self.webSocketTimer = nil;
+    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                     target:self
+                                   selector:@selector(pingWebSocket)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [self.webSocket open];
+}
+
+- (NSURLRequest *)getWebSocketRequest
 {
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
     [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
-
+    
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
         NSString *cerPath = [[NSBundle mainBundle] pathForResource:[app.certificatePinner getCertificateName] ofType:@"der"];
@@ -907,18 +943,7 @@
     }
 #endif
     
-    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
-    self.webSocket.delegate = self;
-    
-    [self.webSocketTimer invalidate];
-    self.webSocketTimer = nil;
-    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
-                                     target:self
-                                   selector:@selector(pingWebSocket)
-                                   userInfo:nil
-                                    repeats:YES];
-    
-    [self.webSocket open];
+    return webSocketRequest;
 }
 
 - (void)pingWebSocket
@@ -1035,17 +1060,26 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
-    DLog(@"websocket opened");
-    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
-    
-    NSError *error;
-    [webSocket sendString:message error:&error];
-    if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    if (webSocket == self.ethSocket) {
+        DLog(@"eth websocket opened");
+        for (NSString *message in [self.pendingEthSocketMessages reverseObjectEnumerator]) {
+            DLog(@"Sending queued eth socket message %@", message);
+            [self sendEthSocketMessage:message];
+            [self.pendingEthSocketMessages removeObject:message];
+        }
+    } else {
+        DLog(@"websocket opened");
+        NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+        
+        NSError *error;
+        [webSocket sendString:message error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
-    DLog(@"websocket failed with error: %@", [error localizedDescription]);
+    DLog(@"%@ failed with error: %@", webSocket == self.ethSocket ? @"eth socket" : @"web socket", [error localizedDescription]);
     if ([error.localizedDescription isEqualToString:WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE]) {
         [app failedToValidateCertificate:[error localizedDescription]];
     }
@@ -1053,55 +1087,64 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
-    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
-        // Socket will reopen when app becomes active and after decryption
-        return;
-    }
-    
-    DLog(@"websocket closed: code %li, reason: %@", code, reason);
-    if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        DLog(@"reconnecting websocket");
-        [self setupWebSocket];
+    if (webSocket == self.ethSocket) {
+        DLog(@"eth websocket closed: code %li, reason: %@", code, reason);
+    } else if (webSocket == self.webSocket) {
+        if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
+            // Socket will reopen when app becomes active and after decryption
+            return;
+        }
+        
+        DLog(@"websocket closed: code %li, reason: %@", code, reason);
+        if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            DLog(@"reconnecting websocket");
+            [self setupWebSocket];
+        }
     }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
 {
-    DLog(@"received websocket message string");
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
-    
-    if (self.swipeAddressToSubscribe) {
-        NSDictionary *message = [string getJSONObject];
-        NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
-        NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]]];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    if (webSocket == self.ethSocket) {
+        DLog(@"received eth socket message string");
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.didReceiveEthSocketMessage(\"%@\")", [string escapeStringForJS]]];
+    } else if (webSocket == self.webSocket) {
+        DLog(@"received websocket message string");
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
         
-        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (self.swipeAddressToSubscribe) {
+            NSDictionary *message = [string getJSONObject];
+            NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
+            NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            if (error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // TODO: add alert for error here
-                });
-                return;
-            }
-            
-            uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
-            if (amountReceived > 0) {
-                if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
-                    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                        [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
-                    }
-                } else {
-                    DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+            NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // TODO: add alert for error here
+                    });
+                    return;
                 }
-            }
-        }];
-        
-        [task resume];
-        
-        self.swipeAddressToSubscribe = nil;
-        
-        [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
+                
+                uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
+                if (amountReceived > 0) {
+                    if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                            [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
+                        }
+                    } else {
+                        DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+                    }
+                }
+            }];
+            
+            [task resume];
+            
+            self.swipeAddressToSubscribe = nil;
+            
+            [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
+        }
     }
 }
 
@@ -3906,6 +3949,25 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
     }
+}
+
+- (void)eth_socket_send:(NSString *)message
+{
+    if (self.webSocket && self.webSocket.readyState == 1) {
+        DLog(@"Sending eth socket message %@", message);
+        [self sendEthSocketMessage:message];
+    } else {
+        DLog(@"Will send eth socket message %@", message);
+        [self.pendingEthSocketMessages insertObject:message atIndex:0];
+        [self.ethSocket open];
+    }
+}
+
+- (void)sendEthSocketMessage:(NSString *)message
+{
+    NSError *error;
+    [self.ethSocket sendString:message error:&error];
+    if (error) DLog(@"Error sending eth socket message: %@", [error localizedDescription]);
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

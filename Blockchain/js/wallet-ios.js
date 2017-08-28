@@ -40,25 +40,13 @@ NativeEthSocket.prototype.subscribeToAccount = function (account) {
 }
 
 NativeEthSocket.prototype.subscribeToBlocks = function (ethWallet) {
-  var blockMsg = EthSocket.blocksSub(account)
+  var blockMsg = EthSocket.blocksSub(ethWallet)
   objc_eth_socket_send(blockMsg)
   var handler = EthSocket.blockMessageHandler(ethWallet)
   this.handlers.push(handler)
 }
 
-/*
-  Create a socket instance:
-
-    var socketInstance = new NativeEthSocket()
-
-  When the objective-c websocket receives a message, call:
-
-    socketInstance.onMessage(msg)
-
-  Call this to tell v3 to use the socket instance:
-
-    MyWallet.wallet.useEthSocket(socketInstance)
-*/
+var ethSocketInstance = new NativeEthSocket();
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -713,6 +701,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         objc_loading_stop();
 
         objc_did_load_wallet();
+        
+        MyWallet.wallet.useEthSocket(ethSocketInstance);
     };
 
     var history_error = function(error) {console.log(error);
@@ -2453,4 +2443,8 @@ MyWalletPhone.sendEtherPayment = function() {
         .publish()
         .then(success).catch(error);
     }
+}
+
+MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
+    ethSocketInstance.onMessage(msg);
 }

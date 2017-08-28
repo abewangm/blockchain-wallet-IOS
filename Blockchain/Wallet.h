@@ -175,8 +175,10 @@
 @property NSString *twoFactorInput;
 @property (nonatomic) NSDictionary *currencySymbols;
 
-@property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
+@property (nonatomic) SRWebSocket *ethSocket;
+@property (nonatomic) NSMutableArray *pendingEthSocketMessages;
+
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
 
