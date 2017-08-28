@@ -874,6 +874,10 @@
         [weakSelf on_update_eth_payment:[etherPayment toDictionary]];
     };
     
+    self.context[@"objc_on_fetch_eth_exchange_rate_success"] = ^(JSValue *rate) {
+        [weakSelf on_fetch_eth_exchange_rate_success:rate];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2465,6 +2469,13 @@
     }
 }
 
+- (void)getEthExchangeRate
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getEthExchangeRate()"];
+    }
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -3883,6 +3894,15 @@
 {
     if ([self.delegate respondsToSelector:@selector(didUpdateEthPayment:)]) {
         [self.delegate didUpdateEthPayment:payment];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_eth_exchange_rate_success:(JSValue *)rate
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchEthExchangeRate:)]) {
+        [self.delegate didFetchEthExchangeRate:[rate toNumber]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
     }

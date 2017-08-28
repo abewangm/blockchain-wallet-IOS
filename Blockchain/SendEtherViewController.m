@@ -13,9 +13,13 @@
 #import "BCAmountInputView.h"
 #import "RootService.h"
 
+@interface EtherAmountInputViewController ()
+@property (nonatomic) BCAmountInputView *amountInputView;
+@property (nonatomic) UITextField *toField;
+@end
+
 @interface SendEtherViewController ()
 @property (nonatomic) UILabel *feeAmountLabel;
-@property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) UIButton *fundsAvailableButton;
 @end
 
@@ -44,7 +48,9 @@
     BCSecureTextField *toField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(toLabel.frame.origin.x + toLabel.frame.size.width + 8, 6, 222, 39)];
     toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     toField.placeholder = BC_STRING_ENTER_ETHER_ADDRESS_OR_SELECT;
+    toField.delegate = self;
     [self.view addSubview:toField];
+    self.toField = toField;
     
     BCLine *lineBelowToField = [self offsetLineWithYPosition:51];
     [self.view addSubview:lineBelowToField];
@@ -58,6 +64,8 @@
     toField.inputAccessoryView = inputAccessoryView;
     amountInputView.btcField.inputAccessoryView = inputAccessoryView;
     amountInputView.fiatField.inputAccessoryView = inputAccessoryView;
+    amountInputView.btcField.delegate = self;
+    amountInputView.fiatField.delegate = self;
     self.amountInputView = amountInputView;
     
     CGFloat useAllButtonOriginY = amountInputView.frame.origin.y + amountInputView.frame.size.height;
@@ -105,6 +113,8 @@
 - (void)reload
 {
     [app.wallet createNewEtherPayment];
+    
+    [app.wallet getEthExchangeRate];
 }
 
 - (void)getHistory
@@ -149,6 +159,7 @@
     CGFloat closeButtonWidth = 50;
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.bounds.size.width - closeButtonWidth, 0, closeButtonWidth, BUTTON_HEIGHT)];
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [closeButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchUpInside];
     closeButton.backgroundColor = COLOR_BUTTON_DARK_GRAY;
     [inputAccessoryView addSubview:closeButton];
     
@@ -158,6 +169,13 @@
 - (void)continueButtonClicked
 {
     
+}
+
+- (void)hideKeyboard
+{
+    [self.toField resignFirstResponder];
+    [self.amountInputView.fiatField resignFirstResponder];
+    [self.amountInputView.btcField resignFirstResponder];
 }
 
 @end

@@ -225,6 +225,11 @@
     [_sendEtherViewController didUpdatePayment:ethPayment];
 }
 
+- (void)didFetchEthExchangeRate:(NSNumber *)rate
+{
+    
+}
+
 #pragma mark - Receive
 
 - (void)clearReceiveAmounts

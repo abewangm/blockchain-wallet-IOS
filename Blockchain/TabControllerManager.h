@@ -42,6 +42,8 @@
 - (void)logout;
 - (void)forgetWallet;
 
+- (void)didFetchEthExchangeRate:(NSNumber *)rate;
+
 // Navigation
 - (void)dashBoardClicked:(UITabBarItem *)sender;
 - (void)receiveCoinClicked:(UITabBarItem *)sender;

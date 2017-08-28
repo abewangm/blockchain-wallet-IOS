@@ -847,6 +847,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
+#define ETH_DECIMAL_LIMIT 18
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 

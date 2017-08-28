@@ -2303,6 +2303,23 @@ function WalletOptions (api) {
 }
 
 // Ethereum
+
+MyWalletPhone.getEthExchangeRate = function(currencyCode) {
+    
+    var success = function() {
+        console.log('Success fetching eth exchange rate')
+        objc_on_fetch_eth_exchange_rate_success();
+    };
+    
+    var error = function(error) {
+        console.log('Error fetching eth exchange rate')
+        console.log(error);
+        objc_on_fetch_eth_exchange_rate_error(error);
+    };
+    
+    BlockchainAPI.getExchangeRate(currencyCode, 'ETH').then(success).catch(error);
+}
+
 MyWalletPhone.getEthBalance = function() {
     return MyWallet.wallet.eth.balance;
 }

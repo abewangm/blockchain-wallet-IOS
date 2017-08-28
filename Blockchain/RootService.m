@@ -2430,6 +2430,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didUpdateEthPayment:ethPayment];
 }
 
+- (void)didFetchEthExchangeRate:(NSNumber *)rate
+{
+    [self.tabControllerManager didFetchEthExchangeRate:rate];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

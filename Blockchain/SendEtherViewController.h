@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface SendEtherViewController : UIViewController
+#import "EtherAmountInputViewController.h"
+
+@interface SendEtherViewController : EtherAmountInputViewController
 - (void)reload;
 - (void)getHistory;
 - (void)didUpdatePayment:(NSDictionary *)payment;
