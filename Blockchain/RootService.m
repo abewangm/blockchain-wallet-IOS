@@ -1015,7 +1015,7 @@ void (^secondPasswordSuccess)(NSString *);
 
     [self.wallet loadContactsThenGetMessages];
     
-    [self.wallet performSelector:@selector(getEthHistory) withObject:nil afterDelay:1];
+    [self.wallet getEthHistory];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response

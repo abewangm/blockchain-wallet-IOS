@@ -2261,8 +2261,8 @@ var watchTrade = function (trade) {
 
 MyWalletPhone.getPendingTrades = function(shouldSync) {
 
-    var watchTrades = function(errorCallBack) {
-      MyWalletPhone.getExchangeAccount().then(function (exchange) {
+      var watchTrades = function() {
+        var exchange = MyWalletPhone.getExchangeAccount();
         if (exchange) {
           console.log('Getting pending trades');
           exchange.getTrades().then(function () {
@@ -2273,23 +2273,35 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
               .forEach(watchTrade);
           });
         }
-      }).catch(errorCallBack);
-    }
+      }
 
-    var error = function(e) {
-      console.log(e);
-      objc_on_get_pending_trades_error(e);
-    };
+      var loadMetadataIfNeeded = function(errorCallBack) {
+        if (MyWallet.wallet.isMetadataReady) {
+          watchTrades();
+        } else {
+          var wallet = MyWallet.wallet;
+          var p = wallet.loadMetadata();
+          return p.then(function () {
+            objc_loading_stop();
+            watchTrades();
+          }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
+        }
+      }
 
-    if (shouldSync) {
-        console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(function() {
-            watchTrades(error);
-        }, error);
-    } else {
-        console.log('Watching trades');
-        watchTrades(error);
-    }
+      var error = function(e) {
+        console.log(e);
+        objc_on_get_pending_trades_error(e);
+      };
+
+      if (shouldSync) {
+          console.log('Getting wallet then watching trades');
+          MyWallet.getWallet(function() {
+              loadMetadataIfNeeded(error);
+          }, error);
+      } else {
+          console.log('Watching trades');
+          loadMetadataIfNeeded(error);
+      }
 }
 
 MyWalletPhone.getWebViewLoginData = function () {
@@ -2347,18 +2359,18 @@ function WalletOptions (api) {
 // Ethereum
 
 MyWalletPhone.getEthExchangeRate = function(currencyCode) {
-    
+
     var success = function() {
         console.log('Success fetching eth exchange rate')
         objc_on_fetch_eth_exchange_rate_success();
     };
-    
+
     var error = function(error) {
         console.log('Error fetching eth exchange rate')
         console.log(error);
         objc_on_fetch_eth_exchange_rate_error(error);
     };
-    
+
     BlockchainAPI.getExchangeRate(currencyCode, 'ETH').then(success).catch(error);
 }
 
@@ -2367,48 +2379,48 @@ MyWalletPhone.getEthBalance = function() {
 }
 
 MyWalletPhone.getEthHistory = function() {
-    
+
     var success = function() {
         console.log('Success fetching eth history')
         console.log(MyWallet.wallet.eth.balance);
         objc_on_fetch_eth_history_success();
     };
-    
+
     var error = function(error) {
         console.log('Error fetching eth history')
         console.log(error);
         objc_on_fetch_eth_history_error(error);
     };
-    
+
     console.log(JSON.stringify(MyWallet.wallet.eth));
     MyWallet.wallet.eth.fetchHistory().then(success).catch(error);
 }
 
 MyWalletPhone.createNewEtherPayment = function() {
     console.log('Creating new ether payment');
-    
+
     var eth = MyWallet.wallet.eth;
-    
+
     currentEtherPayment = eth.defaultAccount.createPayment();
-    
+
     eth.fetchFees().then(function(fees) {
                          currentEtherPayment.setGasPrice(fees.regular);
                          currentEtherPayment.setGasLimit(fees.gasLimit);
-                         
+
                          MyWalletPhone.updateEtherPayment(currentEtherPayment);
                          });
 }
 
 MyWalletPhone.updateEtherPayment = function() {
-    
+
     var paymentInfo = {
         amount : currentEtherPayment.amount,
         available : currentEtherPayment.available,
         fee : currentEtherPayment.fee,
     };
-    
+
     console.log(JSON.stringify(paymentInfo));
-    
+
     objc_update_eth_payment(paymentInfo);
 }
 
@@ -2425,17 +2437,17 @@ MyWalletPhone.getEthPaymentTotal = function() {
 }
 
 MyWalletPhone.sendEtherPayment = function() {
-    
+
     var eth = MyWallet.wallet.eth;
-    
+
     var success = function() {
-        
+
     }
-    
+
     var error = function() {
-        
+
     }
-    
+
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
                                         var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount, pw);
