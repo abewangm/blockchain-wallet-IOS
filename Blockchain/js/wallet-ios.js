@@ -2215,32 +2215,22 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 }
 
 MyWalletPhone.getExchangeAccount = function () {
-  console.log('Getting exchange account');
-
-  var wallet = MyWallet.wallet;
-  var p = wallet.loadMetadata();
-  return p.then(function () {
-
-    objc_loading_stop();
-
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
-
+    
     if (sfox.user) {
-      console.log('Found sfox user');
-      sfox.api.production = true;
-      sfox.api.apiKey = partners.sfox.apiKey;
-      return sfox;
+        console.log('Found sfox user');
+        sfox.api.production = true;
+        sfox.api.apiKey = partners.sfox.apiKey;
+        return sfox;
     } else if (coinify.user) {
-      console.log('Found coinify user');
-      coinify.partnerId = partners.coinify.partnerId;
-      return coinify;
+        console.log('Found coinify user');
+        coinify.partnerId = partners.coinify.partnerId;
+        return coinify;
     } else {
-      console.log('Found no sfox or coinify user');
+        console.log('Found no sfox or coinify user');
     }
-
-  }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
 var tradeToObject = function (trade) {
