@@ -17,6 +17,45 @@ var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
 var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
+var EthSocket = Blockchain.EthSocket;
+
+function NativeEthSocket () {
+  this.handlers = []
+}
+
+NativeEthSocket.prototype.onMessage = function (msg) {
+  this.handlers.forEach(function (handler) {
+    handler(msg)
+  })
+}
+
+NativeEthSocket.prototype.subscribeToAccount = function (account) {
+  var accountMsg = EthSocket.accountSub(account)
+  objc_eth_socket_send(accountMsg)
+  var handler = EthSocket.accountMessageHandler(ethWallet)
+  this.handlers.push(handler)
+}
+
+NativeEthSocket.prototype.subscribeToBlocks = function (ethWallet) {
+  var blockMsg = EthSocket.blocksSub(account)
+  objc_eth_socket_send(blockMsg)
+  var handler = EthSocket.blockMessageHandler(ethWallet)
+  this.handlers.push(handler)
+}
+
+/*
+  Create a socket instance:
+
+    var socketInstance = new NativeEthSocket()
+
+  When the objective-c websocket receives a message, call:
+
+    socketInstance.onMessage(msg)
+
+  Call this to tell v3 to use the socket instance:
+
+    MyWallet.wallet.useEthSocket(socketInstance)
+*/
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -1883,7 +1922,7 @@ MyWalletPhone.getContacts = function() {
     console.log('Getting contacts');
     console.log(JSON.stringify(MyWallet.wallet.contacts.list));
     var list = MyWallet.wallet.contacts.list;
-    
+
     var listToReturn = Blockchain.R.map(function(contact) {
       return {
         company: contact.company,
@@ -1902,7 +1941,7 @@ MyWalletPhone.getContacts = function() {
         facilitatedTxList: contact.facilitatedTxList
       }
     }, list);
-    
+
     return listToReturn;
 }
 
@@ -1912,54 +1951,54 @@ MyWalletPhone.getSaveContactsFunction = function() {
             return info;
         });
     }
-    
+
     return save;
 }
 
 MyWalletPhone.createContact = function(name, id) {
-    
+
     var success = function(invitation) {
         objc_on_create_invitation_success(invitation);
     };
-    
+
     var error = function(e) {
         objc_on_create_invitation_error(e);
         onsole.log('Error creating contact');
         console.log(e);
     };
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
-    
+
     MyWallet.wallet.contacts.createInvitation({name: name}, {name: id, senderName: name}).then(save).then(success).catch(error);
 }
 
 MyWalletPhone.sendDeclination = function(userId, txIdentifier) {
-    
+
     var success = function() {
         objc_on_send_declination_success();
     };
-    
+
     var error = function(e) {
         objc_on_send_declination_error();
         console.log('Error sending declination');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.sendDeclination(userId, txIdentifier).then(success).catch(error);
 }
 
 MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
-    
+
     var success = function() {
         objc_on_send_cancellation_success();
     };
-    
+
     var error = function(e) {
         objc_on_send_cancellation_error();
         console.log('Error sending cancellation');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier).then(success).catch(error);
 }
 
@@ -1968,26 +2007,26 @@ MyWalletPhone.readInvitation = function(invitation, invitationString) {
 }
 
 MyWalletPhone.completeRelation = function(invitation) {
-    
+
     var success = function() {
         objc_on_complete_relation_success();
     };
-    
+
     var error = function(e) {
         objc_on_complete_relation_error();
         console.log('Error completing relation');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(error);
 }
 
 MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
-    
+
     var success = function() {
         objc_on_accept_relation_success(name, identifier);
     };
-    
+
     var error = function(e) {
         objc_on_accept_relation_error(name);
         console.log('Error accepting relation');
@@ -1998,29 +2037,29 @@ MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
 }
 
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
-    
+
     var success = function(xpub) {
         objc_on_fetch_xpub_success(xpub);
     };
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
-    
+
     MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
 
 MyWalletPhone.getMessages = function(isFirstLoad) {
-    
+
     var success = function(messages) {
         console.log('digested new messages');
         objc_on_get_messages_success(messages, isFirstLoad);
     };
-    
+
     var error = function(error) {
         console.log('Error getting messages');
         console.log(error);
         objc_on_get_messages_error(error);
     };
-    
+
     if (MyWallet.wallet.contacts) {
         MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
     } else {
@@ -2029,39 +2068,39 @@ MyWalletPhone.getMessages = function(isFirstLoad) {
 }
 
 MyWalletPhone.changeName = function(newName, identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         objc_on_change_contact_name_success(info);
     };
-    
+
     MyWallet.wallet.contacts.list[identifier].name = newName;
-    
+
     save().then(success);
 }
 
 MyWalletPhone.deleteContact = function(identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         objc_on_delete_contact_success(info);
     };
 
     MyWallet.wallet.contacts.delete(identifier);
-    
+
     save().then(success);
 }
 
 MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         console.log('Deleted contact because user did not complete create contact sequence');
         objc_on_delete_contact_after_storing_info_success(info);
     };
-    
+
     var contactInfo;
-    
+
     var filtered = Blockchain.R.filter(function(contact) {
         if (contact.invitationSent == identifier) {
              contactInfo = contact;
@@ -2071,52 +2110,52 @@ MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
         }, MyWallet.wallet.contacts.list);
 
     MyWallet.wallet.contacts.delete(contactInfo.id);
-    
+
     save().then(success);
 }
 
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
-    
+
     var success = function(info) {
         objc_on_send_payment_request_success(info, intendedAmount, userId, requestIdentifier);
     };
-    
+
     var error = function(error) {
         console.log('Error sending payment request')
         console.log(error);
         objc_on_send_payment_request_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
-                                                          
+
 MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
-    
+
     var success = function(info) {
         objc_on_request_payment_request_success(info, userId);
     };
-    
+
     var error = function(error) {
         console.log('Error requesting payment request')
         console.log(error);
         objc_on_request_payment_request_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
-    
+
     var success = function(info) {
         objc_on_send_payment_request_response_success(info);
     };
-    
+
     var error = function(error) {
         console.log('Error sending payment request response')
         console.log(error);
         objc_on_send_payment_request_response_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){error});
 }
 
@@ -2126,19 +2165,19 @@ MyWalletPhone.getEthBalance = function() {
 }
 
 MyWalletPhone.getEthHistory = function() {
-    
+
     var success = function() {
         console.log('Success fetching eth history')
         console.log(MyWallet.wallet.eth.balance);
         objc_on_fetch_eth_history_success();
     };
-    
+
     var error = function(error) {
         console.log('Error fetching eth history')
         console.log(error);
         objc_on_fetch_eth_history_error(error);
     };
-    
+
     console.log(JSON.stringify(MyWallet.wallet.eth));
     MyWallet.wallet.eth.fetchHistory().then(success).catch(error);
 }
