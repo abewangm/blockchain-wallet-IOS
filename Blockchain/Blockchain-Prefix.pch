@@ -52,6 +52,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_GREEN UIColorFromRGB(0x199D69)
 #define COLOR_BLOCKCHAIN_RED_WARNING UIColorFromRGB(0xB83940)
 
+#define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0x7c7d7f)
+
 #define COLOR_DARK_GRAY UIColorFromRGB(0x4c4c4c)
 #define COLOR_TEXT_DARK_GRAY COLOR_DARK_GRAY
 #define COLOR_LIGHT_GRAY UIColorFromRGB(0xB0B0B0)
@@ -480,6 +482,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BTC @"BTC"
 #define CURRENCY_CODE_MBC @"MBC"
 #define CURRENCY_CODE_UBC @"UBC"
+
+#define CURRENCY_SYMBOL_ETH @"ETH"
 
 #define CURRENCY_SYMBOL_BTC @"BTC"
 #define CURRENCY_SYMBOL_MBC @"mBTC"

@@ -35,6 +35,7 @@
 - (void)reload
 {
     [_sendBitcoinViewController reload];
+    [_sendEtherViewController reload];
     [_transactionsViewController reload];
     [_receiveViewController reload];
 }
@@ -85,6 +86,7 @@
         }
         
         [_tabViewController setActiveViewController:_sendEtherViewController animated:TRUE index:TAB_SEND];
+        [_sendEtherViewController getHistory];
     }
 }
 

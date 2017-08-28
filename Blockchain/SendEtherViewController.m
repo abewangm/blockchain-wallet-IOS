@@ -11,10 +11,12 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "Blockchain-Swift.h"
 #import "BCAmountInputView.h"
+#import "RootService.h"
 
 @interface SendEtherViewController ()
 @property (nonatomic) UILabel *feeAmountLabel;
 @property (nonatomic) BCAmountInputView *amountInputView;
+@property (nonatomic) UIButton *fundsAvailableButton;
 @end
 
 @implementation SendEtherViewController
@@ -48,18 +50,25 @@
     [self.view addSubview:lineBelowToField];
 
     BCAmountInputView *amountInputView = [[BCAmountInputView alloc] init];
+    amountInputView.btcLabel.text = CURRENCY_SYMBOL_ETH;
     [amountInputView changeYPosition:51];
     [amountInputView changeHeight:amountInputView.btcLabel.frame.origin.y + amountInputView.btcLabel.frame.size.height];
     [self.view addSubview:amountInputView];
+    UIView *inputAccessoryView = [self getInputAccessoryView];
+    toField.inputAccessoryView = inputAccessoryView;
+    amountInputView.btcField.inputAccessoryView = inputAccessoryView;
+    amountInputView.fiatField.inputAccessoryView = inputAccessoryView;
     self.amountInputView = amountInputView;
     
     CGFloat useAllButtonOriginY = amountInputView.frame.origin.y + amountInputView.frame.size.height;
-    UIButton *fundsAvailableButton = [[UIButton alloc] initWithFrame:CGRectMake(0, useAllButtonOriginY, self.view.frame.size.width, 112 -useAllButtonOriginY)];
+    UIButton *fundsAvailableButton = [[UIButton alloc] initWithFrame:CGRectMake(15, useAllButtonOriginY, self.view.frame.size.width - 15, 112 -useAllButtonOriginY)];
+    fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     [fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [fundsAvailableButton setTitle:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT forState:UIControlStateNormal];
+    self.fundsAvailableButton = fundsAvailableButton;
     
     [self.view addSubview:fundsAvailableButton];
 
@@ -94,6 +103,16 @@
     [self.view addSubview:continueButton];
 }
 
+- (void)reload
+{
+    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [app.wallet getEthBalance]] forState:UIControlStateNormal];
+}
+
+- (void)getHistory
+{
+    [app.wallet getEthHistory];
+}
+
 #pragma mark - View Helpers
 
 - (BCLine *)offsetLineWithYPosition:(CGFloat)yPosition
@@ -101,6 +120,26 @@
     BCLine *line = [[BCLine alloc] initWithYPosition:yPosition];
     [line changeXPosition:15];
     return line;
+}
+
+- (UIView *)getInputAccessoryView
+{
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
+    
+    UIButton *continueButton = [[UIButton alloc] initWithFrame:inputAccessoryView.bounds];
+    [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
+    continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
+    [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [inputAccessoryView addSubview:continueButton];
+    
+    CGFloat closeButtonWidth = 50;
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.bounds.size.width - closeButtonWidth, 0, closeButtonWidth, BUTTON_HEIGHT)];
+    [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    closeButton.backgroundColor = COLOR_BUTTON_DARK_GRAY;
+    [inputAccessoryView addSubview:closeButton];
+    
+    return inputAccessoryView;
 }
 
 - (void)continueButtonClicked
