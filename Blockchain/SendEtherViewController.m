@@ -17,6 +17,7 @@
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) UITextField *toField;
+@property (nonatomic) NSDecimalNumber *ethAmount;
 - (void)doCurrencyConversion;
 @end
 
@@ -51,6 +52,8 @@
     toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     toField.placeholder = BC_STRING_ENTER_ETHER_ADDRESS_OR_SELECT;
     toField.delegate = self;
+    toField.textColor = COLOR_TEXT_DARK_GRAY;
+    toField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:toField];
     self.toField = toField;
     
@@ -131,6 +134,13 @@
     [self doCurrencyConversion];
 }
 
+- (void)doCurrencyConversion
+{
+    [super doCurrencyConversion];
+    
+    [app.wallet changeEtherPaymentAmount:self.ethAmount];
+}
+
 - (void)didUpdatePayment:(NSDictionary *)payment;
 {
     id dictAmount = payment[DICTIONARY_KEY_AMOUNT];
@@ -145,6 +155,12 @@
     
     self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
                                 [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
+}
+
+- (void)selectToAddress:(NSString *)address
+{
+    self.toField.text = address;
+    [app.wallet changeEtherPaymentTo:address];
 }
 
 #pragma mark - View Helpers
@@ -187,6 +203,11 @@
     [self.toField resignFirstResponder];
     [self.amountInputView.fiatField resignFirstResponder];
     [self.amountInputView.btcField resignFirstResponder];
+}
+
+- (BOOL)isEtherAddress:(NSString *)address
+{
+    return [app.wallet isEthAddress:address];
 }
 
 @end

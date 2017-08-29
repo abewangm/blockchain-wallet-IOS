@@ -423,4 +423,7 @@ typedef enum {
 
 // Ether send
 - (void)createNewEtherPayment;
+- (void)changeEtherPaymentTo:(NSString *)to;
+- (void)changeEtherPaymentAmount:(id)amount;
+- (BOOL)isEthAddress:(NSString *)address;
 @end

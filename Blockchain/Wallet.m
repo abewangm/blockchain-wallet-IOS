@@ -1826,15 +1826,6 @@
     [self.context evaluateScript:@"MyWalletPhone.createNewBitcoinPayment()"];
 }
 
-- (void)createNewEtherPayment
-{
-    if (![self isInitialized]) {
-        return;
-    }
-    
-    [self.context evaluateScript:@"MyWalletPhone.createNewEtherPayment()"];
-}
-
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
 {
     if (![self isInitialized]) {
@@ -2517,6 +2508,38 @@
     if ([self isInitialized]) {
         [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getEthExchangeRate(\"%@\")", app.latestResponse.symbol_local.code]];
     }
+}
+
+- (void)createNewEtherPayment
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.createNewEtherPayment()"];
+}
+
+- (void)changeEtherPaymentTo:(NSString *)to
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setEtherPaymentTo(\"%@\")", [to escapeStringForJS]]];
+    }
+}
+
+- (void)changeEtherPaymentAmount:(id)amount
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setEtherPaymentAmount(\"%@\")", amount ? : @0]];
+    }
+}
+
+- (BOOL)isEthAddress:(NSString *)address
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isEthAddress(\"%@\")", address]] toBool];
+    }
+    
+    return NO;
 }
 
 # pragma mark - Transaction handlers

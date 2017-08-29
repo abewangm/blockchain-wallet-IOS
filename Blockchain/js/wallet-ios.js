@@ -392,10 +392,6 @@ MyWalletPhone.createNewBitcoinPayment = function() {
     });
 }
 
-MyWalletPhone.createNewEtherPayment = function() {
-    console.log('Creating new ether payment');
-}
-
 MyWalletPhone.changePaymentFrom = function(from, isAdvanced) {
     if (currentPayment) {
         currentPayment.from(from).then(function(x) {
@@ -2409,7 +2405,13 @@ MyWalletPhone.setEtherPaymentTo = function(to) {
 }
 
 MyWalletPhone.setEtherPaymentAmount = function(amount) {
+    if (amount == null) amount = 0;
     currentEtherPayment.setValue(amount);
+    MyWalletPhone.updateEtherPayment();
+}
+
+MyWalletPhone.isEthAddress = function(address) {
+    return Helpers.isEtherAddress(address);
 }
 
 MyWalletPhone.getEthPaymentTotal = function() {
