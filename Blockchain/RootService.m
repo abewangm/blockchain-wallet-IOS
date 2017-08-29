@@ -47,6 +47,7 @@
 #import "ContactTransaction.h"
 #import "BuyBitcoinNavigationController.h"
 #import "BCEmptyPageView.h"
+#import "WebLoginViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
@@ -2931,6 +2932,13 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)presentViewControllerAnimated:(UIViewController *)viewController
 {
     [app.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+}
+
+- (IBAction)webLoginClicked:(id)sender
+{
+    WebLoginViewController *webLoginViewController = [[WebLoginViewController alloc] init];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:webLoginViewController title:BC_STRING_LOG_IN_TO_WEB_WALLET];
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (IBAction)merchantClicked:(UIButton *)sender
