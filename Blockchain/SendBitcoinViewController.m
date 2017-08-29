@@ -25,6 +25,7 @@
 #import "BCNavigationController.h"
 #import "BCFeeSelectionView.h"
 #import "StoreKit/StoreKit.h"
+#import "BCConfirmPaymentViewModel.h"
 
 typedef enum {
     TransactionTypeRegular = 100,
@@ -811,15 +812,17 @@ BOOL displayingLocalSymbolSend;
         
         BOOL surgePresent = self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
         
-        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window
-                                                                          from:from
+        BCConfirmPaymentViewModel *confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc] initWithFrom:from
                                                                             To:to
                                                                         amount:amountInSatoshi
                                                                            fee:feeTotal
                                                                          total:amountTotal
                                                             contactTransaction:self.contactTransaction
                                                                          surge:surgePresent];
-        self.confirmPaymentView.delegate = self;
+        
+        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window viewModel:confirmPaymentViewModel];
+        
+        self.confirmPaymentView.confirmDelegate = self;
         
         if (customFromLabel) {
             [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(transferAllFundsToDefaultAccount) forControlEvents:UIControlEventTouchUpInside];

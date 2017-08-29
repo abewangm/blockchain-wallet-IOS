@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BCDescriptionView.h"
-@class ContactTransaction;
+@class ContactTransaction, BCConfirmPaymentViewModel;
 
 @protocol ConfirmPaymentViewDelegate
 - (void)setupNoteForTransaction:(NSString *)note;
@@ -16,17 +16,10 @@
 @end
 @interface BCConfirmPaymentView : BCDescriptionView
 
-- (id)initWithWindow:(UIView *)window
-                from:(NSString *)from
-                  To:(NSString *)to
-              amount:(uint64_t)amount
-                 fee:(uint64_t)fee
-               total:(uint64_t)total
-         contactTransaction:(ContactTransaction *)contactTransaction
-               surge:(BOOL)surgePresent;
+- (id)initWithWindow:(UIView *)window viewModel:(BCConfirmPaymentViewModel *)viewModel;
 
 @property (nonatomic) UIButton *reallyDoPaymentButton;
 @property (nonatomic) UIButton *feeInformationButton;
 
-@property (weak, nonatomic) id <ConfirmPaymentViewDelegate> delegate;
+@property (weak, nonatomic) id <ConfirmPaymentViewDelegate> confirmDelegate;
 @end

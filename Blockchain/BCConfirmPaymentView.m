@@ -7,11 +7,11 @@
 //
 
 #import "BCConfirmPaymentView.h"
-#import "NSNumberFormatter+Currencies.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "Blockchain-Swift.h"
 #import "ContactTransaction.h"
 #import "BCTotalAmountView.h"
+#import "BCConfirmPaymentViewModel.h"
 
 #define CELL_HEIGHT 44
 #define NUMBER_OF_ROWS 5
@@ -23,42 +23,30 @@ const int cellRowAmount = 3;
 const int cellRowFee = 4;
 
 @interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
-@property (nonatomic) NSString *from;
-@property (nonatomic) NSString *to;
-@property (nonatomic) uint64_t amount;
-@property (nonatomic) uint64_t fee;
-@property (nonatomic) BOOL surgeIsOccurring;
 @property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) ContactTransaction *contactTransaction;
 @property (nonatomic) BCTotalAmountView *totalAmountView;
+@property (nonatomic) BCConfirmPaymentViewModel *viewModel;
 @end
 @implementation BCConfirmPaymentView
 
-- (id)initWithWindow:(UIView *)window
-                from:(NSString *)from
-                  To:(NSString *)to
-              amount:(uint64_t)amount
-                 fee:(uint64_t)fee
-               total:(uint64_t)total
-         contactTransaction:(ContactTransaction *)contactTransaction
-               surge:(BOOL)surgePresent
+- (id)initWithWindow:(UIView *)window viewModel:(BCConfirmPaymentViewModel *)viewModel
 {
     self = [super initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, window.frame.size.width, window.frame.size.height - DEFAULT_HEADER_HEIGHT)];
     
     if (self) {
-                
-        BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:total];
+        
+        self.viewModel = viewModel;
+        
+        BCTotalAmountView *totalAmountView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_RED amount:0];
+        
+        totalAmountView.btcAmountLabel.text = self.viewModel.btcTotalAmountText;
+        totalAmountView.fiatAmountLabel.text = self.viewModel.fiatTotalAmountText;
+        
         [self addSubview:totalAmountView];
         self.topView = totalAmountView;
         
         CGFloat tableViewHeight = CELL_HEIGHT * NUMBER_OF_ROWS;
-        
-        self.from = from;
-        self.to = to;
-        self.amount = amount;
-        self.fee = fee;
-        self.contactTransaction = contactTransaction;
-        self.surgeIsOccurring = surgePresent;
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -112,20 +100,13 @@ const int cellRowFee = 4;
 - (void)reallyDoPaymentButtonClicked
 {
     if (!self.contactTransaction) {
-        [self.delegate setupNoteForTransaction:self.note];
+        [self.confirmDelegate setupNoteForTransaction:self.note];
     }
 }
 
 - (void)feeInformationButtonClicked
 {
-    [self.delegate feeInformationButtonClicked];
-}
-
-#pragma mark - Text Helpers
-
-- (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
-{
-    return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:amount localCurrency:NO], [NSNumberFormatter formatMoney:amount localCurrency:YES]];
+    [self.confirmDelegate feeInformationButtonClicked];
 }
 
 #pragma mark - Text Field Delegate
@@ -167,18 +148,18 @@ const int cellRowFee = 4;
     } else {
         if (indexPath.row == cellRowTo) {
             cell.textLabel.text = BC_STRING_TO;
-            cell.detailTextLabel.text = self.to;
+            cell.detailTextLabel.text = self.viewModel.to;
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         } else if (indexPath.row == cellRowFrom) {
             cell.textLabel.text = BC_STRING_FROM;
-            cell.detailTextLabel.text = self.from;
+            cell.detailTextLabel.text = self.viewModel.from;
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         } else if (indexPath.row == cellRowAmount) {
             cell.textLabel.text = BC_STRING_AMOUNT;
-            cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.amount];
+            cell.detailTextLabel.text = self.viewModel.btcWithFiatAmountText;
         } else if (indexPath.row == cellRowFee) {
             cell.textLabel.text = BC_STRING_FEE;
-            cell.detailTextLabel.text = [self formatAmountInBTCAndFiat:self.fee];
+            cell.detailTextLabel.text = self.viewModel.btcWithFiatFeeText;
             
             UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectZero];
             testLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -193,7 +174,7 @@ const int cellRowFee = 4;
             [self.feeInformationButton addTarget:self action:@selector(feeInformationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:self.feeInformationButton];
             
-            if (self.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
+            if (self.viewModel.surgeIsOccurring) cell.detailTextLabel.textColor = COLOR_WARNING_RED;
         } else if (indexPath.row == cellRowDescription) {
             cell.textLabel.text = nil;
             
@@ -214,8 +195,8 @@ const int cellRowFee = 4;
             self.descriptionField.textAlignment = NSTextAlignmentRight;
             self.descriptionField.returnKeyType = UIReturnKeyDone;
             
-            if (self.contactTransaction) {
-                self.descriptionField.text = self.contactTransaction.reason;
+            if (self.viewModel.noteText) {
+                self.descriptionField.text = self.viewModel.noteText;
                 self.descriptionField.userInteractionEnabled = NO;
                 self.descriptionField.placeholder = BC_STRING_NO_DESCRIPTION;
             } else {

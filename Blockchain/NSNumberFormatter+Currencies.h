@@ -18,6 +18,7 @@
 + (NSString *)appendStringToFiatSymbol:(NSString *)number;
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value;
 
++ (NSString *)formatEth:(NSDecimalNumber *)ethAmount;
 + (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
 + (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
 

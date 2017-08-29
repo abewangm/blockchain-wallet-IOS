@@ -12,6 +12,8 @@
 #import "Blockchain-Swift.h"
 #import "BCAmountInputView.h"
 #import "RootService.h"
+#import "BCConfirmPaymentView.h"
+#import "BCConfirmPaymentViewModel.h"
 
 @interface EtherAmountInputViewController ()
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
@@ -22,8 +24,13 @@
 @end
 
 @interface SendEtherViewController ()
+@property (nonatomic) NSDecimalNumber *ethFee;
 @property (nonatomic) UILabel *feeAmountLabel;
 @property (nonatomic) UIButton *fundsAvailableButton;
+@property (nonatomic) UIButton *continuePaymentButton;
+@property (nonatomic) UIButton *continuePaymentAccessoryButton;
+@property (nonatomic) BCConfirmPaymentView *confirmPaymentView;
+
 @end
 
 @implementation SendEtherViewController
@@ -113,6 +120,7 @@
     [continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:continueButton];
+    self.continuePaymentButton = continueButton;
 }
 
 - (void)reload
@@ -148,19 +156,49 @@
     id dictFee = payment[DICTIONARY_KEY_FEE];
     
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithDecimal:[dictAmount decimalValue]];
+    DLog(@"Amount is %@", amount);
     NSDecimalNumber *available = [NSDecimalNumber decimalNumberWithDecimal:[dictAvailable decimalValue]];
     NSDecimalNumber *fee = [NSDecimalNumber decimalNumberWithDecimal:[dictFee decimalValue]];
-
+    
     [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, available] forState:UIControlStateNormal];
     
+    self.ethFee = fee;
     self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
                                 [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
+    
+    if ([available compare:amount] == NSOrderedDescending) {
+        [self enablePaymentButtons];
+    } else {
+        [self disablePaymentButtons];
+    }
 }
 
 - (void)selectToAddress:(NSString *)address
 {
     self.toField.text = address;
     [app.wallet changeEtherPaymentTo:address];
+}
+
+- (void)disablePaymentButtons
+{
+    self.continuePaymentButton.enabled = NO;
+    [self.continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.continuePaymentButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+    
+    self.continuePaymentAccessoryButton.enabled = NO;
+    [self.continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+}
+
+- (void)enablePaymentButtons
+{
+    self.continuePaymentButton.enabled = YES;
+    [self.continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.continuePaymentButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+    
+    [self.continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.continuePaymentAccessoryButton.enabled = YES;
+    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
 #pragma mark - View Helpers
@@ -182,6 +220,7 @@
     [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [inputAccessoryView addSubview:continueButton];
+    self.continuePaymentAccessoryButton = continueButton;
     
     CGFloat closeButtonWidth = 50;
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.bounds.size.width - closeButtonWidth, 0, closeButtonWidth, BUTTON_HEIGHT)];
@@ -194,6 +233,25 @@
 }
 
 - (void)continueButtonClicked
+{
+    NSDecimalNumber *totalDecimalNumber = [self.ethAmount decimalNumberByAdding:self.ethFee];
+    
+    BCConfirmPaymentViewModel *confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc]
+                                                          initWithTo:self.toField.text
+                                                          ethAmount:[NSNumberFormatter formatEth:self.ethAmount]
+                                                          ethFee:[NSNumberFormatter formatEth:self.ethFee]
+                                                          ethTotal:[NSNumberFormatter formatEth:totalDecimalNumber]
+                                                          fiatAmount:[NSNumberFormatter appendStringToFiatSymbol:self.amountInputView.fiatField.text]
+                                                          fiatFee:[NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]
+                                                          fiatTotal:[NSNumberFormatter formatEthToFiatWithSymbol:[NSString stringWithFormat:@"%@", totalDecimalNumber] exchangeRate:self.latestExchangeRate]];
+    
+    self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:self.view.window viewModel:confirmPaymentViewModel];
+    self.confirmPaymentView.confirmDelegate = self;
+    
+    [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT];
+}
+
+- (void)feeInformationButtonClicked
 {
     
 }

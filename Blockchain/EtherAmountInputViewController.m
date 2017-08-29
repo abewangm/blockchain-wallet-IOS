@@ -88,7 +88,6 @@
             self.ethAmount = [NSDecimalNumber decimalNumberWithString:newString];
         }
         
-
         [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
         return YES;
     } else if (textField == self.toField) {

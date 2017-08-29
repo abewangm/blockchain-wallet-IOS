@@ -12,8 +12,6 @@
 
 @interface BCTotalAmountView ()
 @property (nonatomic) UILabel *totalLabel;
-@property (nonatomic) UILabel *btcAmountLabel;
-@property (nonatomic) UILabel *fiatAmountLabel;
 @end
 
 @implementation BCTotalAmountView

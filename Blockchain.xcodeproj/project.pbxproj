@@ -204,6 +204,7 @@
 		C72D6CC71EC647200000F922 /* dev.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC51EC647090000F922 /* dev.der */; };
 		C72D6CC81EC6472D0000F922 /* testnet.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC61EC647090000F922 /* testnet.der */; };
 		C73406221F54791C00143100 /* EtherAmountInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73406211F54791C00143100 /* EtherAmountInputViewController.m */; };
+		C7559CAF1F55E874005B2375 /* BCConfirmPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */; };
 		C75CBD041F1FB12F00CACE0D /* BCTotalAmountView.m in Sources */ = {isa = PBXBuildFile; fileRef = C75CBD031F1FB12F00CACE0D /* BCTotalAmountView.m */; };
 		C75F70E41E241D69005B4EAF /* BCContactRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E31E241D69005B4EAF /* BCContactRequestView.m */; };
 		C75F70E71E2684FF005B4EAF /* ContactTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E61E2684FF005B4EAF /* ContactTransactionTableViewCell.m */; };
@@ -1038,6 +1039,8 @@
 		C73406201F54791C00143100 /* EtherAmountInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherAmountInputViewController.h; sourceTree = "<group>"; };
 		C73406211F54791C00143100 /* EtherAmountInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherAmountInputViewController.m; sourceTree = "<group>"; };
 		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
+		C7559CAD1F55E874005B2375 /* BCConfirmPaymentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentViewModel.h; sourceTree = "<group>"; };
+		C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentViewModel.m; sourceTree = "<group>"; };
 		C75CBD021F1FB12F00CACE0D /* BCTotalAmountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTotalAmountView.h; sourceTree = "<group>"; };
 		C75CBD031F1FB12F00CACE0D /* BCTotalAmountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTotalAmountView.m; sourceTree = "<group>"; };
 		C75F70E21E241D69005B4EAF /* BCContactRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactRequestView.h; sourceTree = "<group>"; };
@@ -1459,6 +1462,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7559CAD1F55E874005B2375 /* BCConfirmPaymentViewModel.h */,
+				C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */,
 				C7CE34B51F4DB8C100032806 /* Assets.h */,
 				C71859551F4B695700745A87 /* TabControllerManager.h */,
 				C71859561F4B695700745A87 /* TabControllerManager.m */,
@@ -2309,6 +2314,7 @@
 				2322DCC11D771831000E5AC1 /* SRSIMDHelpers.m in Sources */,
 				9F2780B715343A7D0015F83F /* UncaughtExceptionHandler.m in Sources */,
 				673107F219F6D49F00BE6899 /* PrivateKeyReader.m in Sources */,
+				C7559CAF1F55E874005B2375 /* BCConfirmPaymentViewModel.m in Sources */,
 				84FC02FE19815F1B00B97D5B /* sha256.c in Sources */,
 				2322DCBF1D771831000E5AC1 /* SRMutex.m in Sources */,
 				2322DCC41D771831000E5AC1 /* NSURLRequest+SRWebSocket.m in Sources */,

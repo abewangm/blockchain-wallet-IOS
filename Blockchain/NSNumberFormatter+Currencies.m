@@ -112,6 +112,11 @@
 
 #pragma mark - Ether
 
++ (NSString *)formatEth:(NSDecimalNumber *)ethAmount
+{
+    return [NSString stringWithFormat:@"%@ %@", ethAmount, CURRENCY_SYMBOL_ETH];
+}
+
 + (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
     if (ethAmount == 0) return 0;
