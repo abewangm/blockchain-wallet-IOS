@@ -8,11 +8,14 @@
 
 #import "EtherAmountInputViewController.h"
 #import "BCAmountInputView.h"
+#import "NSNumberFormatter+Currencies.h"
 
 @interface EtherAmountInputViewController ()
+@property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) UITextField *toField;
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) NSString *toAddress;
+@property (nonatomic) NSDecimalNumber *ethAmount;
 @end
 
 @implementation EtherAmountInputViewController
@@ -36,7 +39,7 @@
             }
         }
         
-        // When entering amount in BTC, max 8 decimal places
+        // When entering amount in ETH, max 18 decimal places
         if (textField == self.amountInputView.btcField) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = ETH_DECIMAL_LIMIT;
@@ -77,10 +80,12 @@
             if (![amountString containsString:@"."]) {
                 amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
             }
-//            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+            
+            NSDecimalNumber *amountStringDecimalNumber = amountString && [amountString doubleValue] > 0 ? [NSDecimalNumber decimalNumberWithString:amountString] : 0;
+            self.ethAmount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:self.latestExchangeRate];
         }
         else if (textField == self.amountInputView.btcField) {
-//            amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
+            self.ethAmount = [NSDecimalNumber decimalNumberWithString:newString];
         }
         
 
@@ -106,7 +111,11 @@
 
 - (void)doCurrencyConversion
 {
-    
+    if ([self.amountInputView.btcField isFirstResponder]) {
+        self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:self.amountInputView.btcField.text exchangeRate:self.latestExchangeRate];
+    } else if ([self.amountInputView.fiatField isFirstResponder]){
+        self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:self.amountInputView.fiatField.text exchangeRate:self.latestExchangeRate];
+    }
 }
 
 - (BOOL)isEtherAddress:(NSString *)address

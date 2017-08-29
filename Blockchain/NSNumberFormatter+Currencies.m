@@ -110,4 +110,61 @@
     return [self formatMoney:value localCurrency:app->symbolLocal];
 }
 
+#pragma mark - Ether
+
++ (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (ethAmount == 0) return 0;
+    
+    return [ethAmount decimalNumberByMultiplyingBy:exchangeRate];
+}
+
++ (NSString *)formatEthToFiat:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (ethAmount != nil && [ethAmount doubleValue] > 0) {
+        NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:ethAmount];
+        return [NSString stringWithFormat:@"%@", [NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatEthToFiatWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatEthToFiat:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formatString];
+    }
+}
+
++ (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount == 0) return 0;
+    
+    return [fiatAmount decimalNumberByDividingBy:exchangeRate];
+}
+
++ (NSString *)formatFiatToEth:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount != nil && [fiatAmount doubleValue] > 0) {
+        NSDecimalNumber *fiatAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:fiatAmount];
+        return [NSString stringWithFormat:@"%@", [NSNumberFormatter convertFiatToEth:fiatAmountDecimalNumber exchangeRate:exchangeRate]];
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatFiatToEthWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatFiatToEth:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", app.latestResponse.symbol_local.code, formatString];
+    }
+}
+
+
 @end

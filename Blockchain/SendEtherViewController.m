@@ -14,8 +14,10 @@
 #import "RootService.h"
 
 @interface EtherAmountInputViewController ()
+@property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) UITextField *toField;
+- (void)doCurrencyConversion;
 @end
 
 @interface SendEtherViewController ()
@@ -122,6 +124,13 @@
     [app.wallet getEthHistory];
 }
 
+- (void)updateExchangeRate:(NSDecimalNumber *)rate
+{
+    self.latestExchangeRate = rate;
+    
+    [self doCurrencyConversion];
+}
+
 - (void)didUpdatePayment:(NSDictionary *)payment;
 {
     id dictAmount = payment[DICTIONARY_KEY_AMOUNT];
@@ -133,7 +142,9 @@
     NSDecimalNumber *fee = [NSDecimalNumber decimalNumberWithDecimal:[dictFee decimalValue]];
 
     [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, available] forState:UIControlStateNormal];
-    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH, nil];
+    
+    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
+                                [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
 }
 
 #pragma mark - View Helpers

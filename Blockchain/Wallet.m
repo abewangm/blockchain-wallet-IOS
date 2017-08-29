@@ -874,8 +874,8 @@
         [weakSelf on_update_eth_payment:[etherPayment toDictionary]];
     };
     
-    self.context[@"objc_on_fetch_eth_exchange_rate_success"] = ^(JSValue *rate) {
-        [weakSelf on_fetch_eth_exchange_rate_success:rate];
+    self.context[@"objc_on_fetch_eth_exchange_rate_success"] = ^(JSValue *rate, JSValue *code) {
+        [weakSelf on_fetch_eth_exchange_rate_success:rate code:code];
     };
     
     self.context[@"objc_eth_socket_send"] = ^(JSValue *message) {
@@ -2515,7 +2515,7 @@
 - (void)getEthExchangeRate
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getEthExchangeRate()"];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getEthExchangeRate(\"%@\")", app.latestResponse.symbol_local.code]];
     }
 }
 
@@ -3942,10 +3942,11 @@
     }
 }
 
-- (void)on_fetch_eth_exchange_rate_success:(JSValue *)rate
+- (void)on_fetch_eth_exchange_rate_success:(JSValue *)rate code:(JSValue *)code
 {
     if ([self.delegate respondsToSelector:@selector(didFetchEthExchangeRate:)]) {
-        [self.delegate didFetchEthExchangeRate:[rate toNumber]];
+        NSDictionary *codeDict = [[rate toDictionary] objectForKey:[code toString]];
+        [self.delegate didFetchEthExchangeRate:[codeDict objectForKey:DICTIONARY_KEY_LAST]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
     }

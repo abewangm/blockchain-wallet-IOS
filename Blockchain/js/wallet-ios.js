@@ -2340,9 +2340,9 @@ function WalletOptions (api) {
 
 MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 
-    var success = function() {
-        console.log('Success fetching eth exchange rate')
-        objc_on_fetch_eth_exchange_rate_success();
+    var success = function(result) {
+        console.log('Success fetching eth exchange rate');
+        objc_on_fetch_eth_exchange_rate_success(result, currencyCode);
     };
 
     var error = function(error) {

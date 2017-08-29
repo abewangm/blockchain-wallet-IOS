@@ -227,7 +227,9 @@
 
 - (void)didFetchEthExchangeRate:(NSNumber *)rate
 {
-    
+    self.latestEthExchangeRate = [NSDecimalNumber decimalNumberWithDecimal:[rate decimalValue]];
+
+    [_sendEtherViewController updateExchangeRate:self.latestEthExchangeRate];
 }
 
 #pragma mark - Receive

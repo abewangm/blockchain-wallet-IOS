@@ -13,4 +13,5 @@
 - (void)reload;
 - (void)getHistory;
 - (void)didUpdatePayment:(NSDictionary *)payment;
+- (void)updateExchangeRate:(NSDecimalNumber *)rate;
 @end

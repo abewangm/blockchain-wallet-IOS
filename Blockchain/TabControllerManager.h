@@ -21,6 +21,7 @@
 
 @interface TabControllerManager : NSObject <AssetDelegate>
 @property (nonatomic) AssetType assetType;
+@property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
 
 @property (weak, nonatomic) id <TabControllerDelegate> delegate;
 
