@@ -55,13 +55,13 @@ contactTransaction:(ContactTransaction *)contactTransaction
        fiatTotal:(NSString *)fiatTotal
 {
     if (self == [super init]) {
+        self.hideDescription = YES;
         self.to = to;
         self.fiatAmountText = fiatAmount;
         self.btcAmountText = ethAmount;
         self.fiatTotalAmountText = fiatTotal;
         self.btcTotalAmountText = ethTotal;
         self.btcWithFiatFeeText = [NSString stringWithFormat:@"%@ (%@)", ethFee, fiatFee];
-        self.btcWithFiatAmountText = [NSString stringWithFormat:@"%@ (%@)", ethAmount, fiatAmount];
     }
     return self;
 }

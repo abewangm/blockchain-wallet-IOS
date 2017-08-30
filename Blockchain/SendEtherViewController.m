@@ -23,7 +23,7 @@
 - (void)doCurrencyConversion;
 @end
 
-@interface SendEtherViewController ()
+@interface SendEtherViewController () <ConfirmPaymentViewDelegate>
 @property (nonatomic) NSDecimalNumber *ethFee;
 @property (nonatomic) UILabel *feeAmountLabel;
 @property (nonatomic) UIButton *fundsAvailableButton;
@@ -251,6 +251,11 @@
     self.confirmPaymentView.confirmDelegate = self;
     
     [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT];
+}
+
+- (void)setupNoteForTransaction:(NSString *)note
+{
+    DLog(@"Not setting up note - Ether payment");
 }
 
 - (void)feeInformationButtonClicked
