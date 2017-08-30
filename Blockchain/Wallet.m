@@ -29,6 +29,7 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
 #import "PrivateHeaders.h"
+#import "Assets.h"
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -894,7 +895,7 @@
 - (SRWebSocket *)ethSocket
 {
     if (!_ethSocket) {
-        _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest]];
+        _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeEther]];
         _ethSocket.delegate = self;
     }
     
@@ -909,7 +910,7 @@
 
 - (void)setupWebSocket
 {
-    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest]];
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeBitcoin]];
     self.webSocket.delegate = self;
     
     [self.webSocketTimer invalidate];
@@ -923,8 +924,16 @@
     [self.webSocket open];
 }
 
-- (NSURLRequest *)getWebSocketRequest
+- (NSURLRequest *)getWebSocketRequest:(AssetType)assetType
 {
+    NSString *websocketURL;
+    
+    if (assetType == AssetTypeBitcoin) {
+        websocketURL = URL_WEBSOCKET;
+    } else if (assetType == AssetTypeEther) {
+        websocketURL = URL_WEBSOCKET_ETH;
+    }
+    
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
     [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
     
