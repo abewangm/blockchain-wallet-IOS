@@ -2542,6 +2542,13 @@
     return NO;
 }
 
+- (void)sendEtherPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.sendEtherPayment()"];
+    }
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

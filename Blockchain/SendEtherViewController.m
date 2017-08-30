@@ -250,6 +250,8 @@
     self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:self.view.window viewModel:confirmPaymentViewModel];
     self.confirmPaymentView.confirmDelegate = self;
     
+    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment) forControlEvents:UIControlEventTouchUpInside];
+    
     [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT];
 }
 
@@ -268,6 +270,29 @@
     [self.toField resignFirstResponder];
     [self.amountInputView.fiatField resignFirstResponder];
     [self.amountInputView.btcField resignFirstResponder];
+}
+
+- (void)reallyDoPayment
+{
+    UIView *sendView = [[UIView alloc] initWithFrame:self.view.frame];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 60, 20, 20)];
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    spinner.center = CGPointMake(self.view.center.x, spinner.center.y);
+    [spinner startAnimating];
+    [sendView addSubview:spinner];
+    
+    UILabel *sendLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 240, 120)];
+    sendLabel.textAlignment = NSTextAlignmentCenter;
+    sendLabel.center = CGPointMake(self.view.center.x, sendLabel.center.y);
+    sendLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    sendLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    sendLabel.text = BC_STRING_SENDING;
+    [sendView addSubview:sendLabel];
+    
+    [app showModalWithContent:sendView closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
+    
+//    [app.wallet sendEtherPayment];
 }
 
 - (BOOL)isEtherAddress:(NSString *)address

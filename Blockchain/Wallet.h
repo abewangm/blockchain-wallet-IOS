@@ -426,4 +426,5 @@ typedef enum {
 - (void)changeEtherPaymentTo:(NSString *)to;
 - (void)changeEtherPaymentAmount:(id)amount;
 - (BOOL)isEthAddress:(NSString *)address;
+- (void)sendEtherPayment;
 @end

@@ -2423,11 +2423,12 @@ MyWalletPhone.sendEtherPayment = function() {
     var eth = MyWallet.wallet.eth;
 
     var success = function() {
-
+        console.log('Send ether success');
     }
 
-    var error = function() {
-
+    var error = function(e) {
+        console.log('Send ether error');
+        console.log(e);
     }
 
     if (MyWallet.wallet.isDoubleEncrypted) {
