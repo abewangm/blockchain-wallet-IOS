@@ -2486,6 +2486,16 @@
 
 # pragma mark - Ethereum
 
+- (NSArray *)getEthTransactions
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getEthTransactions()"] toArray];
+    } else {
+        DLog(@"Warning: getting eth transactions when not initialized - returning nil");
+        return nil;
+    }
+}
+
 - (NSString *)getEthBalance
 {
     if ([self isInitialized]) {

@@ -601,6 +601,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_NAME @"name"
 #define DICTIONARY_KEY_LAST @"last"
 
+#define DICTIONARY_KEY_FROM @"from"
+#define DICTIONARY_KEY_TO @"to"
+
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_FIAT @"currency"

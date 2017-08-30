@@ -43,7 +43,7 @@
         } else {
             NSError *jsonError;
             NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
-            DLog(@"%@", jsonResponse);
+            // DLog(@"%@", jsonResponse);
         }
     }];
     

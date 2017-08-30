@@ -2354,6 +2354,10 @@ MyWalletPhone.getEthBalance = function() {
     return MyWallet.wallet.eth.balance;
 }
 
+MyWalletPhone.getEthTransactions = function() {
+    return MyWallet.wallet.eth.accounts[0].txs;
+}
+
 MyWalletPhone.getEthHistory = function() {
 
     var success = function() {

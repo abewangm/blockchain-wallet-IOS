@@ -9,10 +9,12 @@
 #import "TransactionsEtherViewController.h"
 #import "RootService.h"
 #import "TransactionEtherTableViewCell.h"
+#import "EtherTransaction.h"
 
 @interface TransactionsEtherViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) NSArray *transactions;
 @end
 
 @implementation TransactionsEtherViewController
@@ -27,12 +29,13 @@
                                  app.window.frame.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    [self.tableView registerClass:[TransactionEtherTableViewCell class] forCellReuseIdentifier:@"transaction"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
     [self setupPullToRefresh];
+    
+    [self loadTransactions];
 }
 
 - (void)setupPullToRefresh
@@ -49,19 +52,34 @@
 
 - (void)loadTransactions
 {
-    
+    self.transactions = [app.wallet getEthTransactions];
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Table View Data Source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.transactions.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    TransactionEtherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"transaction"];
+    
+    EtherTransaction *transaction = [EtherTransaction fromJSONDict:self.transactions[indexPath.row]];
+    
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionEtherCell" owner:nil options:nil] objectAtIndex:0];
+    }
+    
+    return cell;
 }
 
 @end
