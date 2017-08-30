@@ -4003,7 +4003,7 @@
 
 - (void)eth_socket_send:(NSString *)message
 {
-    if (self.webSocket && self.webSocket.readyState == 1) {
+    if (self.ethSocket && self.ethSocket.readyState == 1) {
         DLog(@"Sending eth socket message %@", message);
         [self sendEthSocketMessage:message];
     } else {
