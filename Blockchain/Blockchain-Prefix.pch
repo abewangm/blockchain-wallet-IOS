@@ -452,6 +452,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #endif
 
+#define CHARTS_URL_SUFFIX @"/charts/market-price?timespan=5weeks&rollingAverage=8hours&format=json"
 #define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
 #define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 

@@ -7,6 +7,7 @@
 //
 
 #import "DashboardViewController.h"
+#import "SessionManager.h"
 
 @interface CardsViewController ()
 @property (nonatomic) UIScrollView *scrollView;
@@ -32,6 +33,21 @@
 - (void)reload
 {
     [self reloadCards];
+    
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:CHARTS_URL_SUFFIX]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            DLog(@"Error getting chart data - %@", [error localizedDescription]);
+        } else {
+            NSError *jsonError;
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+            DLog(@"%@", jsonResponse);
+        }
+    }];
+    
+    [task resume];
 }
 
 @end
