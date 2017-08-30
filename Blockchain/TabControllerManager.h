@@ -14,6 +14,7 @@
 #import "ReceiveCoinsViewController.h"
 #import "DashboardViewController.h"
 #import "SendEtherViewController.h"
+#import "TransactionsEtherViewController.h"
 
 @protocol TabControllerDelegate
 - (void)toggleSideMenu;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
 
 @property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
+@property (strong, nonatomic) TransactionsEtherViewController *transactionsEtherViewController;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;

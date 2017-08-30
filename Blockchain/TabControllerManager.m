@@ -31,6 +31,8 @@
     
     if (self.tabViewController.selectedIndex == TAB_SEND) {
         [self showSendCoins];
+    } else if (self.tabViewController.selectedIndex == TAB_TRANSACTIONS) {
+        [self showTransactions];
     }
 }
 
@@ -251,6 +253,23 @@
 
 #pragma mark - Transactions
 
+- (void)showTransactions
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        if (!_transactionsViewController) {
+            _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
+        }
+        
+        [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:TAB_TRANSACTIONS];
+    } else if (self.assetType == AssetTypeEther) {
+        if (!_transactionsEtherViewController) {
+            _transactionsEtherViewController = [[TransactionsEtherViewController alloc] init];
+        }
+        
+        [_tabViewController setActiveViewController:_transactionsEtherViewController animated:NO index:TAB_TRANSACTIONS];
+    }
+}
+
 - (void)didChangeLocalCurrency
 {
     [self.sendBitcoinViewController reloadFeeAmountLabel];
@@ -430,11 +449,7 @@
 
 - (void)transactionsClicked:(UITabBarItem *)sender
 {
-    if (!_transactionsViewController) {
-        _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
-    }
-    
-    [_tabViewController setActiveViewController:_transactionsViewController animated:TRUE index:TAB_TRANSACTIONS];
+    [self showTransactions];
     
     if (sender &&
         [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION] &&
@@ -467,15 +482,6 @@
 - (void)sendCoinsClicked:(UITabBarItem *)sender
 {
     [self showSendCoins];
-}
-
-- (void)showTransactions
-{
-    if (!_transactionsViewController) {
-        _transactionsViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
-    }
-    
-    [_tabViewController setActiveViewController:_transactionsViewController animated:NO index:TAB_TRANSACTIONS];
 }
 
 @end
