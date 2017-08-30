@@ -2149,29 +2149,6 @@ MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier
     MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){error});
 }
 
-// Ethereum
-MyWalletPhone.getEthBalance = function() {
-    return MyWallet.wallet.eth.balance;
-}
-
-MyWalletPhone.getEthHistory = function() {
-
-    var success = function() {
-        console.log('Success fetching eth history')
-        console.log(MyWallet.wallet.eth.balance);
-        objc_on_fetch_eth_history_success();
-    };
-
-    var error = function(error) {
-        console.log('Error fetching eth history')
-        console.log(error);
-        objc_on_fetch_eth_history_error(error);
-    };
-
-    console.log(JSON.stringify(MyWallet.wallet.eth));
-    MyWallet.wallet.eth.fetchHistory().then(success).catch(error);
-}
-
 MyWalletPhone.changeNetwork = function(newNetwork) {
     console.log('Changing network to ');
     console.log(newNetwork);
