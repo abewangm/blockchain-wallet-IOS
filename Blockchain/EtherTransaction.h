@@ -17,5 +17,7 @@
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;
 @property (nonatomic) NSString *myHash;
+@property (nonatomic) NSString *txType;
+@property (nonatomic) uint64_t time;
 
 @end

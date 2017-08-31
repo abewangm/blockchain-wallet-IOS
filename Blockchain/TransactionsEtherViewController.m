@@ -72,12 +72,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TransactionEtherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"transaction"];
-    
-    EtherTransaction *transaction = [EtherTransaction fromJSONDict:self.transactions[indexPath.row]];
-    
+
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionEtherCell" owner:nil options:nil] objectAtIndex:0];
     }
+    
+    EtherTransaction *transaction = [EtherTransaction fromJSONDict:self.transactions[indexPath.row]];
+
+    cell.transaction = transaction;
+    
+    [cell reload];
     
     return cell;
 }

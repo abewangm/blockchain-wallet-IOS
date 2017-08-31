@@ -2568,6 +2568,15 @@
     }
 }
 
+- (NSString *)getEtherAddress
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"] toString];
+    }
+    
+    return nil;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

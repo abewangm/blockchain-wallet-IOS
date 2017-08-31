@@ -18,7 +18,9 @@
     transaction.fee = [dict objectForKey:DICTIONARY_KEY_FEE];
     transaction.from = [dict objectForKey:DICTIONARY_KEY_FROM];
     transaction.to = [dict objectForKey:DICTIONARY_KEY_TO];
-    
+    transaction.time = [[dict objectForKey:DICTIONARY_KEY_TIME] longLongValue];
+    transaction.txType = [dict objectForKey:DICTIONARY_KEY_TRANSACTION_TX_TYPE];
+
     return transaction;
 }
 

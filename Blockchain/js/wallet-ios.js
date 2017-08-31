@@ -2332,7 +2332,18 @@ MyWalletPhone.getEthBalance = function() {
 }
 
 MyWalletPhone.getEthTransactions = function() {
-    return MyWallet.wallet.eth.accounts[0].txs;
+    
+    var transactions = MyWallet.wallet.eth.accounts[0].txs;
+    
+    if (transactions != null) {
+        return transactions.map(function (tx) {
+          var result = tx.toJSON();
+          result.txType = tx.getTxType(MyWallet.wallet.eth.activeAccountsWithLegacy);
+          return result;
+        });
+    } else {
+        return {};
+    }
 }
 
 MyWalletPhone.getEthHistory = function() {
@@ -2431,4 +2442,8 @@ MyWalletPhone.sendEtherPayment = function() {
 
 MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
     ethSocketInstance.onMessage(msg);
+}
+
+MyWalletPhone.getEtherAddress = function() {
+    return MyWallet.wallet.eth.accounts[0].address;
 }
