@@ -33,6 +33,8 @@
         [self showSendCoins];
     } else if (self.tabViewController.selectedIndex == TAB_TRANSACTIONS) {
         [self showTransactions];
+    } else if (self.tabViewController.selectedIndex == TAB_RECEIVE) {
+        [self showReceive];
     }
 }
 
@@ -235,6 +237,23 @@
 }
 
 #pragma mark - Receive
+
+- (void)showReceive
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        if (!_receiveViewController) {
+            _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
+        }
+        
+        [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:TAB_RECEIVE];
+    } else if (self.assetType == AssetTypeEther) {
+        if (!_receiveEtherViewController) {
+            _receiveEtherViewController = [[ReceiveEtherViewController alloc] init];
+        }
+        
+        [_tabViewController setActiveViewController:_receiveEtherViewController animated:TRUE index:TAB_RECEIVE];
+    }
+}
 
 - (void)clearReceiveAmounts
 {
@@ -440,11 +459,7 @@
 
 - (void)receiveCoinClicked:(UITabBarItem *)sender
 {
-    if (!_receiveViewController) {
-        _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
-    }
-    
-    [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:TAB_RECEIVE];
+    [self showReceive];
 }
 
 - (void)transactionsClicked:(UITabBarItem *)sender

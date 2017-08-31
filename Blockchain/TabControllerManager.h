@@ -15,6 +15,7 @@
 #import "DashboardViewController.h"
 #import "SendEtherViewController.h"
 #import "TransactionsEtherViewController.h"
+#import "ReceiveEtherViewController.h"
 
 @protocol TabControllerDelegate
 - (void)toggleSideMenu;
@@ -35,6 +36,7 @@
 
 @property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
 @property (strong, nonatomic) TransactionsEtherViewController *transactionsEtherViewController;
+@property (strong, nonatomic) ReceiveEtherViewController *receiveEtherViewController;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
