@@ -52,7 +52,9 @@
 
 - (void)loadTransactions
 {
-    self.transactions = [app.wallet getEthTransactions];
+    self.transactions = [[app.wallet getEthTransactions] sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+        return [obj1 objectForKey:DICTIONARY_KEY_TIME] < [obj2 objectForKey:DICTIONARY_KEY_TIME];
+    }];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }

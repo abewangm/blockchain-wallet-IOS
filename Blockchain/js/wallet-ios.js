@@ -2335,15 +2335,32 @@ MyWalletPhone.getEthTransactions = function() {
     
     var transactions = MyWallet.wallet.eth.accounts[0].txs;
     
+    var getLegacyTransactions = function() {
+        var legacyTransactions = MyWallet.wallet.eth.legacyAccount.txs;
+        if (legacyTransactions != null) {
+            return MyWalletPhone.convertEthTransactionsToJSON(legacyTransactions);
+        } else {
+            return {};
+        }
+    }
+    
     if (transactions != null) {
-        return transactions.map(function (tx) {
-          var result = tx.toJSON();
-          result.txType = tx.getTxType(MyWallet.wallet.eth.activeAccountsWithLegacy);
-          return result;
+        transactions = MyWalletPhone.convertEthTransactionsToJSON(transactions);
+        getLegacyTransactions().map(function(legacyTransaction) {
+            if (legacyTransaction.txType != 'transfer') transactions.push(legacyTransaction);
         });
+        return transactions;
     } else {
         return {};
     }
+}
+
+MyWalletPhone.convertEthTransactionsToJSON = function(transactions) {
+    return transactions.map(function (tx) {
+       var result = tx.toJSON();
+       result.txType = tx.getTxType(MyWallet.wallet.eth.activeAccountsWithLegacy);
+       return result;
+    });
 }
 
 MyWalletPhone.getEthHistory = function() {
