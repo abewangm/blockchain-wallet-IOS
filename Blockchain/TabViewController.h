@@ -9,6 +9,8 @@
 
 @protocol AssetDelegate
 - (void)didSetAssetType:(AssetType)assetType;
+- (void)selectorButtonClicked;
+- (void)qrCodeButtonClicked;
 @end
 
 @interface TabViewcontroller : UIViewController <UITabBarDelegate> {
@@ -19,6 +21,7 @@
     IBOutlet UITabBar *tabBar;
     IBOutlet UIView *topBar;
 	
+    IBOutlet UIView *bannerView;
     IBOutlet UILabel *titleLabel;
 	UIViewController *activeViewController;
 	UIViewController *oldViewController;
@@ -33,6 +36,12 @@
 @property (strong, nonatomic) IBOutlet UIView *assetControlContainer;
 @property(nonatomic, retain) UIView *menuSwipeRecognizerView;
 @property(nonatomic) UIView *tabBarGestureView;
+
+@property (nonatomic) UIView *bannerPricesView;
+@property (nonatomic) UILabel *ethPriceLabel;
+@property (nonatomic) UILabel *btcPriceLabel;
+
+@property (nonatomic) UIView *bannerSelectorView;
 @property(weak, nonatomic) id <AssetDelegate> assetDelegate;
 - (void)setActiveViewController:(UIViewController *)nviewcontroller animated:(BOOL)animated index:(int)index;
 - (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer;
@@ -40,5 +49,9 @@
 - (int)selectedIndex;
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 - (void)setTitleLabelText:(NSString *)text;
-
+- (void)didFetchEthExchangeRate;
+- (void)setupTransferToNewEtherAddress;
+- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
+- (void)didSendEther;
+- (void)didErrorDuringEtherSend:(NSString *)error;
 @end

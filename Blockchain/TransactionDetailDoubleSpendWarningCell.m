@@ -18,9 +18,9 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
+    [super configureWithTransactionModel:transactionModel];
 
     if (self.isSetup) {
         self.warningLabel.text = BC_STRING_DOUBLE_SPEND_WARNING;

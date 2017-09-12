@@ -15,11 +15,18 @@
 #import "BCConfirmPaymentView.h"
 #import "BCConfirmPaymentViewModel.h"
 
+@interface QRCodeScannerSendViewController ()
+- (void)stopReadingQRCode;
+@end
+
 @interface EtherAmountInputViewController ()
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) UITextField *toField;
 @property (nonatomic) NSDecimalNumber *ethAmount;
+@property (nonatomic) NSDecimalNumber *ethAvailable;
+@property (nonatomic) BOOL displayingLocalSymbolSend;
+
 - (void)doCurrencyConversion;
 @end
 
@@ -55,7 +62,8 @@
     toLabel.text = BC_STRING_TO;
     [self.view addSubview:toLabel];
     
-    BCSecureTextField *toField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(toLabel.frame.origin.x + toLabel.frame.size.width + 8, 6, 222, 39)];
+    CGFloat toFieldOriginX = toLabel.frame.origin.x + toLabel.frame.size.width + 8;
+    BCSecureTextField *toField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(toFieldOriginX, 6, self.view.frame.size.width - 8 - toFieldOriginX, 39)];
     toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     toField.placeholder = BC_STRING_ENTER_ETHER_ADDRESS_OR_SELECT;
     toField.delegate = self;
@@ -82,10 +90,9 @@
     
     CGFloat useAllButtonOriginY = amountInputView.frame.origin.y + amountInputView.frame.size.height;
     UIButton *fundsAvailableButton = [[UIButton alloc] initWithFrame:CGRectMake(15, useAllButtonOriginY, self.view.frame.size.width - 15 - 8, 112 -useAllButtonOriginY)];
-    fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    fundsAvailableButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
-    fundsAvailableButton.titleLabel.textAlignment = NSTextAlignmentLeft;
-    fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.fundsAvailableButton = fundsAvailableButton;
     
@@ -163,6 +170,8 @@
     NSDecimalNumber *fee = [NSDecimalNumber decimalNumberWithDecimal:[dictFee decimalValue]];
     
     [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, available] forState:UIControlStateNormal];
+    
+    self.ethAvailable = available;
     
     self.ethFee = fee;
     self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
@@ -292,12 +301,55 @@
     
     [app showModalWithContent:sendView closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
-//    [app.wallet sendEtherPayment];
+    [app.wallet sendEtherPayment];
 }
 
 - (BOOL)isEtherAddress:(NSString *)address
 {
     return [app.wallet isEthAddress:address];
+}
+
+#pragma mark - Text Field Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [super textFieldDidBeginEditing:textField];
+    
+    NSString *availableAmount;
+    
+    if (self.displayingLocalSymbolSend) {
+        availableAmount = [NSNumberFormatter formatEthToFiatWithSymbol:[self.ethAvailable stringValue] exchangeRate:self.latestExchangeRate];
+    } else {
+        availableAmount = [NSNumberFormatter formatEth:self.ethAvailable];
+    }
+    
+    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, availableAmount] forState:UIControlStateNormal];
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
+    if (metadataObjects != nil && [metadataObjects count] > 0) {
+        AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects firstObject];
+        
+        if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
+            [self performSelectorOnMainThread:@selector(stopReadingQRCode) withObject:nil waitUntilDone:NO];
+            
+            // do something useful with results
+            dispatch_sync(dispatch_get_main_queue(), ^{
+
+                NSString *address = [metadataObj stringValue];
+                
+                if (address == nil || ![self isEtherAddress:address]) {
+                    [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT, address]];
+                    return;
+                }
+                
+                [self selectToAddress:address];
+                DLog(@"toAddress: %@", address);
+                
+            });
+        }
+    }
 }
 
 @end

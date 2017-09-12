@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TransactionsViewController.h"
 
-@interface TransactionsEtherViewController : UIViewController
+@interface TransactionsEtherViewController : TransactionsViewController
 
 @end

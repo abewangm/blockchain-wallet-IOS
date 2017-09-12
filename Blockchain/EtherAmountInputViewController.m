@@ -16,9 +16,21 @@
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) NSString *toAddress;
 @property (nonatomic) NSDecimalNumber *ethAmount;
+@property (nonatomic) NSDecimalNumber *ethAvailable;
+@property (nonatomic) BOOL displayingLocalSymbolSend;
 @end
 
 @implementation EtherAmountInputViewController
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.amountInputView.btcField) {
+        self.displayingLocalSymbolSend = NO;
+    }
+    else if (textField == self.amountInputView.fiatField) {
+        self.displayingLocalSymbolSend = YES;
+    }
+}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

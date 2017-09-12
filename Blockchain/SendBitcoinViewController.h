@@ -21,13 +21,13 @@
 #import <UIKit/UIKit.h>
 #import "BCAddressSelectionView.h"
 #import "BCConfirmPaymentView.h"
-#import <AVFoundation/AVFoundation.h>
 #import "BCLine.h"
 #import "FeeTypes.h"
+#import "QRCodeScannerSendViewController.h"
 
 @class Wallet, ContactTransaction;
 
-@interface SendBitcoinViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, AddressSelectionDelegate> {
+@interface SendBitcoinViewController : QRCodeScannerSendViewController < AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
     
     IBOutlet UILabel *fromLabel;
@@ -106,7 +106,6 @@ typedef enum {
 - (BOOL)transferAllMode;
 
 - (IBAction)selectFromAddressClicked:(id)sender;
-- (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)addressBookClicked:(id)sender;
 - (IBAction)closeKeyboardClicked:(id)sender;
 - (IBAction)feeOptionsClicked:(UIButton *)sender;

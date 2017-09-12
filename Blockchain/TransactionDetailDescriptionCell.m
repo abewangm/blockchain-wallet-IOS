@@ -11,13 +11,13 @@
 
 @implementation TransactionDetailDescriptionCell
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
-    
+    [super configureWithTransactionModel:transactionModel];
+
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_DESCRIPTION;
-        NSString *note = [self getNoteForTransaction:transaction];
+        NSString *note = [self getNoteForTransaction:transactionModel];
         if (note.length > 0) {
             self.textView.text = note;
             self.textViewPlaceholderLabel.hidden = YES;
@@ -61,11 +61,11 @@
     
     [self addEditButton];
 
-    self.editButton.enabled = ![transaction isMemberOfClass:[ContactTransaction class]];
+    self.editButton.enabled = !transactionModel.isContactTransaction;
     
     [self addPlaceholderLabel];
 
-    NSString *note = [self getNoteForTransaction:transaction];
+    NSString *note = [self getNoteForTransaction:transactionModel];
 
     if (note.length > 0) {
         self.textView.text = note;
@@ -242,13 +242,12 @@
     [self.descriptionDelegate textViewDidChange:self.textView];
 }
 
-- (NSString *)getNoteForTransaction:(Transaction *)transaction
+- (NSString *)getNoteForTransaction:(TransactionDetailViewModel *)transactionModel
 {
-    if ([transaction isMemberOfClass:[ContactTransaction class]]) {
-        ContactTransaction *contactTransaction = (ContactTransaction *)transaction;
-        return contactTransaction.reason;
+    if (transactionModel.isContactTransaction) {
+        return transactionModel.reason;
     } else {
-        return transaction.note;
+        return transactionModel.note;
     }
 }
 

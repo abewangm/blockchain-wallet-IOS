@@ -128,7 +128,7 @@
 {
     if (ethAmount != nil && [ethAmount doubleValue] > 0) {
         NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:ethAmount];
-        return [NSString stringWithFormat:@"%@", [NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        return [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
     } else {
         return nil;
     }
@@ -138,7 +138,7 @@
 {
     NSString *formatString = [NSNumberFormatter formatEthToFiat:ethAmount exchangeRate:exchangeRate];
     if (!formatString) {
-        return nil;
+        return [NSString stringWithFormat:@"%@0.00", app.latestResponse.symbol_local.symbol];
     } else {
         return [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formatString];
     }

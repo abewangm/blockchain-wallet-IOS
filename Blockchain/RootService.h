@@ -33,7 +33,7 @@
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendBitcoinViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
+@class TransactionsBitcoinViewController, BCFadeView, ReceiveCoinsViewController, SendBitcoinViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
 
 @interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate, SetupDelegate, TabControllerDelegate> {
 
@@ -110,6 +110,7 @@
 @property (nonatomic) NSTimer *loginTimer;
 
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
+@property(nonatomic, strong) NSNumberFormatter *ethFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;

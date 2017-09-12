@@ -29,11 +29,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snH-rE-AXa" userLabel="Top Bar">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snH-rE-AXa" userLabel="Top Bar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8Y-ha-CAe" userLabel="Merchant Directory Button">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8Y-ha-CAe" userLabel="Scan QR Code Button">
                                 <rect key="frame" x="271" y="24" width="49" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -45,6 +45,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="qrCodeButtonClicked:" destination="kt7-my-FeU" eventType="touchUpInside" id="914-If-cVK"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7k-0J-4kw">
                                 <rect key="frame" x="60" y="27" width="200" height="30"/>
@@ -69,6 +72,11 @@
                                     <action selector="menuButtonClicked:" destination="-1" eventType="touchUpInside" id="0hA-1h-dqU"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dP-yq-ZKn">
+                                <rect key="frame" x="8" y="65" width="304" height="36"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-tG-hu9">
                                 <rect key="frame" x="0.0" y="107" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -96,7 +104,7 @@
                             <tabBarItem title="Send" image="send" selectedImage="send_blue" id="Wrt-JU-kt6">
                                 <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                             </tabBarItem>
-                            <tabBarItem title="Dashboard" id="960-nk-vFa">
+                            <tabBarItem title="Dashboard" image="dashboard" selectedImage="dashboard_blue" id="960-nk-vFa">
                                 <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
                             </tabBarItem>
                             <tabBarItem title="Overview" image="tx" selectedImage="tx_blue" id="19B-8E-KvF">
@@ -117,6 +125,7 @@
             <connections>
                 <outlet property="assetControlContainer" destination="yGQ-tG-hu9" id="KSg-gS-SFf"/>
                 <outlet property="assetSegmentedControl" destination="4kG-Jh-1wj" id="PAw-bg-vGu"/>
+                <outlet property="bannerView" destination="4dP-yq-ZKn" id="XCp-tm-9v3"/>
                 <outlet property="contentView" destination="vAg-ut-JLJ" id="u5N-1G-QS0"/>
                 <outlet property="dashBoardButton" destination="960-nk-vFa" id="kMa-cI-Pzs"/>
                 <outlet property="homeButton" destination="19B-8E-KvF" id="s8k-H6-bk4"/>
@@ -130,6 +139,8 @@
         </viewController>
     </objects>
     <resources>
+        <image name="dashboard" width="24" height="24"/>
+        <image name="dashboard_blue" width="24" height="24"/>
         <image name="menu" width="20" height="14"/>
         <image name="qrscanner" width="18" height="18"/>
         <image name="receive" width="24" height="24"/>

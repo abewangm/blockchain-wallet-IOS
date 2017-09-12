@@ -18,7 +18,7 @@
 #import "Wallet.h"
 #import "BCFadeView.h"
 #import "TabViewController.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "BCCreateWalletView.h"
 #import "BCManualPairView.h"
 #import "Transaction.h"
@@ -312,8 +312,8 @@ void (^secondPasswordSuccess)(NSString *);
         [_settingsNavigationController dismissViewControllerAnimated:NO completion:nil];
     }
     
-    app.tabControllerManager.transactionsViewController.loadedAllTransactions = NO;
-    app.tabControllerManager.transactionsViewController.messageIdentifier = nil;
+    app.tabControllerManager.transactionsBitcoinViewController.loadedAllTransactions = NO;
+    app.tabControllerManager.transactionsBitcoinViewController.messageIdentifier = nil;
     app.wallet.isFetchingTransactions = NO;
     app.wallet.isFilteringTransactions = NO;
     
@@ -1021,9 +1021,6 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
 {
-    CurrencySymbol *localSymbol = self.latestResponse.symbol_local;
-    CurrencySymbol *btcSymbol = self.latestResponse.symbol_btc;
-    
     self.latestResponse = response;
     
     [self.tabControllerManager updateTransactionsViewControllerData:response];
@@ -1038,8 +1035,6 @@ void (^secondPasswordSuccess)(NSString *);
 #else
     if (app.wallet.isFilteringTransactions) {
         app.wallet.isFilteringTransactions = NO;
-        self.latestResponse.symbol_local = localSymbol;
-        self.latestResponse.symbol_btc = btcSymbol;
         [self reloadAfterMultiAddressResponse];
     } else {
         [self getAccountInfo];
@@ -1105,7 +1100,7 @@ void (^secondPasswordSuccess)(NSString *);
         }
     }
     
-    [self reloadAfterMultiAddressResponse];
+    [self.wallet getEthExchangeRate];
 }
 
 - (void)walletFailedToDecrypt
@@ -1994,7 +1989,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     BOOL didFindTransaction = NO;
     for (Transaction *transaction in app.latestResponse.transactions) {
-        if ([transaction.myHash isEqualToString:self.tabControllerManager.transactionsViewController.detailViewController.transaction.myHash]) {
+        if ([transaction.myHash isEqualToString:self.tabControllerManager.transactionsBitcoinViewController.detailViewController.transactionModel.myHash]) {
             NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
             if (components.count > 1 && [[components lastObject] length] == 1) {
                 fiatAmount = [fiatAmount stringByAppendingString:@"0"];
@@ -2189,7 +2184,7 @@ void (^secondPasswordSuccess)(NSString *);
                     alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
                     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_NOT_NOW style:UIAlertActionStyleCancel handler:nil]];
                     
-                    if (self.tabControllerManager.tabViewController.activeViewController == self.tabControllerManager.transactionsViewController) {
+                    if (self.tabControllerManager.tabViewController.activeViewController == self.tabControllerManager.transactionsBitcoinViewController) {
                         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_GO_TO_REQUEST style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                             [app closeAllModals];
                             [app closeSideMenu];
@@ -2433,7 +2428,29 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFetchEthExchangeRate:(NSNumber *)rate
 {
+    [self reloadAfterMultiAddressResponse];
+    
     [self.tabControllerManager didFetchEthExchangeRate:rate];
+}
+
+- (void)promptEthTransferToNewAddress
+{
+    [self.tabControllerManager promptEthTransferToNewAddress];
+}
+
+- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee
+{
+    [self.tabControllerManager showConfirmTransferToNewEthAddress:from to:to amount:amount fee:fee];
+}
+
+- (void)didSendEther
+{
+    [self.tabControllerManager didSendEther];
+}
+
+- (void)didErrorDuringEtherSend:(NSString *)error
+{
+    [self.tabControllerManager didErrorDuringEtherSend:error];
 }
 
 #pragma mark - Show Screens
@@ -2951,16 +2968,6 @@ void (^secondPasswordSuccess)(NSString *);
         _merchantViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self.tabControllerManager.tabViewController presentViewController:_merchantViewController animated:YES completion:nil];
     }
-}
-
--(IBAction)QRCodebuttonClicked:(id)sender
-{
-    if (![app.wallet isInitialized]) {
-        DLog(@"Tried to access QR scanner when not initialized!");
-        return;
-    }
-    
-    [self.tabControllerManager QRCodeButtonClicked];
 }
 
 - (IBAction)mainPasswordClicked:(id)sender

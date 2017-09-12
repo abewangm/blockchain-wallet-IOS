@@ -24,6 +24,8 @@
 
 #import "PEViewController.h"
 
+#define USER_DEFAULTS_KEY_SWIPE_ASSET @"preferredSwipeAsset"
+
 @interface PEViewController ()
 
 - (void)setPin:(int)pin enabled:(BOOL)yes;
@@ -113,6 +115,24 @@
     self.swipeLabelImageView.image = [self.swipeLabelImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.swipeLabelImageView setTintColor:COLOR_BLOCKCHAIN_BLUE];
     
+    self.assetSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[BC_STRING_BITCOIN, BC_STRING_ETHER]];
+    [self.assetSegmentedControl setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL]} forState:UIControlStateNormal];
+    [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
+    self.assetSegmentedControl.tintColor = COLOR_BLOCKCHAIN_BLUE;
+    self.assetSegmentedControl.frame = CGRectMake(0, 60 - 29 - 16, 304, 29);
+    self.assetSegmentedControl.center = CGPointMake(WINDOW_WIDTH * 1.5, self.assetSegmentedControl.center.y);
+    
+    id selectedAsset = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_SWIPE_ASSET];
+    
+    if (!selectedAsset) {
+        self.assetSegmentedControl.selectedSegmentIndex = AssetTypeBitcoin;
+        [self assetSegmentedControlChanged];
+    } else {
+        self.assetSegmentedControl.selectedSegmentIndex = [selectedAsset integerValue];
+    }
+    
+    [self.scrollView addSubview:self.assetSegmentedControl];
+    
     [self setupTapActionForSwipeQR];
 }
 
@@ -196,6 +216,12 @@
     if (!self.swipeLabel.hidden) {
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
     }
+}
+
+- (void)assetSegmentedControlChanged
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:self.assetSegmentedControl.selectedSegmentIndex] forKey:USER_DEFAULTS_KEY_SWIPE_ASSET];
+    [self.delegate didSelectAsset];
 }
 
 @end

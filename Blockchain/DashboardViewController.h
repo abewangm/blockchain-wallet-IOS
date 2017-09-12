@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CardsViewController.h"
+#import "Assets.h"
 
 @interface DashboardViewController : CardsViewController
+@property (nonatomic) AssetType assetType;
 - (void)reload;
+- (void)updateEthExchangeRate:(NSDecimalNumber *)rate;
 @end

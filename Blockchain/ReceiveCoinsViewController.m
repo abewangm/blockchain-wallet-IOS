@@ -22,6 +22,7 @@
 #import "BCTotalAmountView.h"
 #import "BCDescriptionView.h"
 #import "BCAmountInputView.h"
+#import "UILabel+Animations.h"
 
 #ifdef ENABLE_CONTACTS
 #define BOTTOM_CONTAINER_HEIGHT_PARTIAL 151
@@ -397,6 +398,7 @@ NSString *detailLabel;
     
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 42)];
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
     instructionsLabel.numberOfLines = 0;
     instructionsLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
     instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
@@ -545,32 +547,6 @@ NSString *detailLabel;
     [totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
-{
-    gestureReceiver.userInteractionEnabled = NO;
-    
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        labelToAnimate.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            labelToAnimate.text = intermediateText;
-            labelToAnimate.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    labelToAnimate.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        labelToAnimate.text = originalText;
-                        labelToAnimate.alpha = 1.0;
-                        gestureReceiver.userInteractionEnabled = YES;
-                    }];
-                }];
-            });
-        }];
-    }];
-}
-
 - (void)changeTopView:(BOOL)shouldShowQR
 {
     UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
@@ -639,7 +615,7 @@ NSString *detailLabel;
 {
     if ([mainAddress isKindOfClass:[NSString class]]) {
         [UIPasteboard generalPasteboard].string = mainAddress;
-        [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+        [mainAddressLabel animateFromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_ERROR_COPYING_TO_CLIPBOARD];
     }

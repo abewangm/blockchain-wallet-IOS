@@ -14,4 +14,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (nonatomic) EtherTransaction *transaction;
 - (void)reload;
+- (void)transactionClicked;
 @end

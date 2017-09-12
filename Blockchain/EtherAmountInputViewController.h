@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QRCodeScannerSendViewController.h"
 
-@interface EtherAmountInputViewController : UIViewController <UITextFieldDelegate>
+@interface EtherAmountInputViewController : QRCodeScannerSendViewController <UITextFieldDelegate>
 
 @end

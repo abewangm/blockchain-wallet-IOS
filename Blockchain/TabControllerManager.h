@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TabViewController.h"
 #import "Assets.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "SendBitcoinViewController.h"
 #import "ReceiveCoinsViewController.h"
 #import "DashboardViewController.h"
@@ -30,7 +30,7 @@
 @property (strong, nonatomic) TabViewcontroller *tabViewController;
 
 @property (strong, nonatomic) DashboardViewController *dashboardViewController;
-@property (strong, nonatomic) TransactionsViewController *transactionsViewController;
+@property (strong, nonatomic) TransactionsBitcoinViewController *transactionsBitcoinViewController;
 @property (strong, nonatomic) ReceiveCoinsViewController *receiveViewController;
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
 
@@ -59,7 +59,6 @@
 - (BOOL)isSending;
 - (void)showSendCoins;
 - (void)setupTransferAllFunds;
-- (void)QRCodeButtonClicked;
 - (void)hideSendKeyboard;
 - (void)reloadSendController;
 - (void)clearSendToAddressAndAmountFields;
@@ -87,6 +86,10 @@
 
 // Send Eth View Controller
 - (void)didUpdateEthPayment:(NSDictionary *)ethPayment;
+- (void)promptEthTransferToNewAddress;
+- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
+- (void)didSendEther;
+- (void)didErrorDuringEtherSend:(NSString *)error;
 
 // Receive View Controller
 - (void)clearReceiveAmounts;

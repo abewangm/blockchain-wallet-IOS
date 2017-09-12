@@ -19,15 +19,15 @@
     [self.accessoryLabel setText:nil];
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
+    [super configureWithTransactionModel:transactionModel];
 
     if (self.isSetup) {
-        if (transaction.to.count > 1) {
-            self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
+        if (transactionModel.to.count > 1) {
+            self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transactionModel.to.count];
         } else {
-            self.accessoryLabel.text = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
+            self.accessoryLabel.text = [transactionModel.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         }
         self.mainLabel.text = BC_STRING_TO;
         return;
@@ -43,8 +43,8 @@
     self.mainLabel.center = CGPointMake(self.mainLabel.center.x, self.contentView.center.y);
     [self.contentView addSubview:self.mainLabel];
     
-    if (transaction.to.count > 1) {
-        self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transaction.to.count];
+    if (transactionModel.to.count > 1) {
+        self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transactionModel.to.count];
         self.detailTextLabel.textColor = COLOR_TEXT_DARK_GRAY;
         self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -53,7 +53,7 @@
         self.accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(accessoryLabelXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryLabelXPosition, 20.5)];
         self.accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
         self.accessoryLabel.textAlignment = NSTextAlignmentRight;
-        self.accessoryLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] && [transaction.txType isEqualToString:TX_TYPE_SENT] ? transaction.contactName : [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
+        self.accessoryLabel.text = transactionModel.isContactTransaction && [transactionModel.txType isEqualToString:TX_TYPE_SENT] ? transactionModel.contactName : transactionModel.toString;
         self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
         self.accessoryLabel.center = CGPointMake(self.accessoryLabel.center.x, self.contentView.center.y);
         self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;

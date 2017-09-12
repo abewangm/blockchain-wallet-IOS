@@ -59,6 +59,8 @@
     } else if (app.latestResponse.symbol_local) {
         [self removeCardsView];
     }
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showBuyAvailableNow || self.showCards ? self.cardsViewHeight : 0));
 }
 
 - (void)setupCardsViewWithConfiguration:(CardConfiguration)configuration
@@ -78,8 +80,6 @@
     [self.scrollView addSubview:self.cardsView];
     
     [self.contentView changeYPosition:self.cardsViewHeight];
-    
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.cardsViewHeight + self.contentView.frame.size.height);
 }
 
 #pragma mark - New Wallet Cards

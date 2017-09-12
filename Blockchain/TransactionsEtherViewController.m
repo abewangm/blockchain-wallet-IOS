@@ -11,6 +11,16 @@
 #import "TransactionEtherTableViewCell.h"
 #import "EtherTransaction.h"
 
+@interface TransactionsViewController ()
+@property (nonatomic) UILabel *noTransactionsTitle;
+@property (nonatomic) UILabel *noTransactionsDescription;
+@property (nonatomic) UIButton *getBitcoinButton;
+
+@property (nonatomic) UIView *noTransactionsView;
+
+- (void)setupNoTransactionsViewInView:(UIView *)view assetType:(AssetType)assetType;
+@end
+
 @interface TransactionsEtherViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
@@ -31,9 +41,13 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:self.tableView];
     
     [self setupPullToRefresh];
+    
+    [self setupNoTransactionsViewInView:self.tableView assetType:AssetTypeEther];
     
     [self loadTransactions];
 }
@@ -52,9 +66,10 @@
 
 - (void)loadTransactions
 {
-    self.transactions = [[app.wallet getEthTransactions] sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-        return [obj1 objectForKey:DICTIONARY_KEY_TIME] < [obj2 objectForKey:DICTIONARY_KEY_TIME];
-    }];
+    self.transactions = [app.wallet getEthTransactions];
+    
+    self.noTransactionsView.hidden = self.transactions.count > 0;
+    
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
@@ -86,6 +101,15 @@
     [cell reload];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TransactionEtherTableViewCell *cell = (TransactionEtherTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell transactionClicked];
 }
 
 @end

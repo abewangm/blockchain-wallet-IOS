@@ -13,6 +13,7 @@
 + (EtherTransaction *)fromJSONDict:(NSDictionary *)dict;
 
 @property (nonatomic) NSString *amount;
+@property (nonatomic) NSString *amountTruncated;
 @property (nonatomic) NSString *fee;
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;

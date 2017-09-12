@@ -18,7 +18,7 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "ModuleXMLHttpRequest.h"
@@ -881,6 +881,22 @@
     
     self.context[@"objc_eth_socket_send"] = ^(JSValue *message) {
         [weakSelf eth_socket_send:[message toString]];
+    };
+    
+    self.context[@"objc_prompt_transfer_eth_to_new_address"] = ^() {
+        [weakSelf prompt_transfer_eth_to_new_address];
+    };
+    
+    self.context[@"objc_show_confirm_transfer_eth_to_new_address"] = ^(JSValue *from, JSValue *to, JSValue *amount, JSValue *fee) {
+        [weakSelf show_confirm_transfer_eth_to_new_address:from to:to amount:amount fee:fee];
+    };
+    
+    self.context[@"objc_on_send_ether_payment_success"] = ^() {
+        [weakSelf on_send_ether_payment_success];
+    };
+    
+    self.context[@"objc_on_send_ether_payment_error"] = ^(JSValue *error) {
+        [weakSelf on_send_ether_payment_error:error];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -2219,9 +2235,9 @@
     [task resume];
 }
 
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction
+- (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", transaction.myHash]] toString];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", myHash]] toString];
 }
 
 - (NSArray *)getSwipeAddresses:(int)numberOfAddresses label:(NSString *)label
@@ -2515,6 +2531,17 @@
     }
 }
 
+- (NSString *)getEthBalanceTruncated
+{
+    if ([self isInitialized]) {
+        NSNumber *balanceNumber = [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toNumber];
+        return [app.btcFormatter stringFromNumber:balanceNumber];
+    } else {
+        DLog(@"Warning: getting eth balance when not initialized - returning 0");
+        return @"0";
+    }
+}
+
 - (void)getEthHistory
 {
     if ([self isInitialized]) {
@@ -2571,10 +2598,18 @@
 - (NSString *)getEtherAddress
 {
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"] toString];
+        NSString *etherAddress = [[self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"] toString];
+        return etherAddress;
     }
     
     return nil;
+}
+
+- (void)setupTransferToNewEtherAddress
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.setupTransferToNewEtherAddress()"];
+    }
 }
 
 # pragma mark - Transaction handlers
@@ -2815,7 +2850,7 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.tabControllerManager.transactionsViewController.filterIndex;
+    int filterIndex = (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
@@ -4027,6 +4062,42 @@
     NSError *error;
     [self.ethSocket sendString:message error:&error];
     if (error) DLog(@"Error sending eth socket message: %@", [error localizedDescription]);
+}
+
+- (void)prompt_transfer_eth_to_new_address
+{
+    if ([self.delegate respondsToSelector:@selector(promptEthTransferToNewAddress)]) {
+        [self.delegate promptEthTransferToNewAddress];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector promptEthTransferToNewAddress!", [delegate class]);
+    }
+}
+
+- (void)show_confirm_transfer_eth_to_new_address:(JSValue *)from to:(JSValue *)to amount:(JSValue *)amount fee:(JSValue *)fee
+{
+    if ([self.delegate respondsToSelector:@selector(showConfirmTransferToNewEthAddress:to:amount:fee:)]) {
+        [self.delegate showConfirmTransferToNewEthAddress:[from toString] to:[to toString] amount:[amount toString] fee:[fee toString]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector showConfirmTransferToNewEthAddress!", [delegate class]);
+    }
+}
+
+- (void)on_send_ether_payment_success
+{
+    if ([self.delegate respondsToSelector:@selector(didSendEther)]) {
+        [self.delegate didSendEther];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendEther!", [delegate class]);
+    }
+}
+
+- (void)on_send_ether_payment_error:(JSValue *)error
+{
+    if ([self.delegate respondsToSelector:@selector(didErrorDuringEtherSend:)]) {
+        [self.delegate didErrorDuringEtherSend:[error toString]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didErrorDuringEtherSend!", [delegate class]);
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

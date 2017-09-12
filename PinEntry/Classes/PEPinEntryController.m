@@ -132,8 +132,7 @@ static PEViewController *VerifyController()
 {
 #ifdef ENABLE_SWIPE_TO_RECEIVE
     if (self.verifyOnly &&
-        [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED] &&
-        [KeychainItemWrapper getSwipeAddresses]) {
+        [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED]) {
         
         pinController.swipeLabel.alpha = 1;
         pinController.swipeLabel.hidden = NO;
@@ -156,72 +155,72 @@ static PEViewController *VerifyController()
             [pinController.scrollView addSubview:self.addressLabel];
         }
         
-        NSString *nextAddress = [[KeychainItemWrapper getSwipeAddresses] firstObject];
-        
-        if (nextAddress) {
+        if (pinController.assetSegmentedControl.selectedSegmentIndex == AssetTypeBitcoin) {
             
-            void (^error)() = ^() {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_INTERNET_CONNECTION message:BC_STRING_SWIPE_TO_RECEIVE_NO_INTERNET_CONNECTION_WARNING preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    self.qrCodeImageView.hidden = YES;
-                    self.addressLabel.text = BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION;
-                }]];
-                [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [app.wallet subscribeToSwipeAddress:nextAddress];
-                    
-                    if (!self.qrCodeImageView) {
-                        
-                        CGFloat width = [self getQRCodeImageViewWidth];
-                        CGFloat height = width;
-                        
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
-                        self.qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
-                        [pinController.scrollView addSubview:self.qrCodeImageView];
-                    }
-                    
-                    QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-                    
-                    self.qrCodeImageView.hidden = NO;
-                    self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-                    self.addressLabel.text = nextAddress;
-                }]];
-                self.errorAlert = alert;
-            };
-
-            void (^success)(NSString *, BOOL) = ^(NSString *address, BOOL isUnused) {
+            NSString *nextAddress = [[KeychainItemWrapper getSwipeAddresses] firstObject];
+            
+            if (nextAddress) {
                 
-                if (isUnused) {
-                    [app.wallet subscribeToSwipeAddress:nextAddress];
+                void (^error)() = ^() {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_INTERNET_CONNECTION message:BC_STRING_SWIPE_TO_RECEIVE_NO_INTERNET_CONNECTION_WARNING preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        self.qrCodeImageView.hidden = YES;
+                        self.addressLabel.text = BC_STRING_REQUEST_FAILED_PLEASE_CHECK_INTERNET_CONNECTION;
+                    }]];
+                    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [app.wallet subscribeToSwipeAddress:nextAddress];
+                        
+                        if (!self.qrCodeImageView) {
+                            
+                            CGFloat width = [self getQRCodeImageViewWidth];
+                            CGFloat height = width;
+                            
+                            self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
+                            self.qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
+                            [pinController.scrollView addSubview:self.qrCodeImageView];
+                        }
+                        
+                        QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
+                        
+                        self.qrCodeImageView.hidden = NO;
+                        self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                        self.addressLabel.text = nextAddress;
+                    }]];
+                    self.errorAlert = alert;
+                };
+                
+                void (^success)(NSString *, BOOL) = ^(NSString *address, BOOL isUnused) {
                     
-                    if (!self.qrCodeImageView) {
+                    if (isUnused) {
+                        [app.wallet subscribeToSwipeAddress:nextAddress];
                         
-                        CGFloat width = [self getQRCodeImageViewWidth];
-                        CGFloat height = width;
+                        QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
                         
-                        self.qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
-                        self.qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
-                        [pinController.scrollView addSubview:self.qrCodeImageView];
+                        self.qrCodeImageView.hidden = NO;
+                        self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
+                        self.addressLabel.text = nextAddress;
+                        self.errorAlert = nil;
+                    } else {
+                        [KeychainItemWrapper removeFirstSwipeAddress];
+                        [self setupQRCode];
+                        self.errorAlert = nil;
                     }
-                    
-                    QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
-                    
-                    self.qrCodeImageView.hidden = NO;
-                    self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:nextAddress];
-                    self.addressLabel.text = nextAddress;
-                    self.errorAlert = nil;
-                } else {
-                    [KeychainItemWrapper removeFirstSwipeAddress];
-                    [self setupQRCode];
-                    self.errorAlert = nil;
-                }
-            };
-            
-            [app checkForUnusedAddress:nextAddress success:success error:error];
+                };
+                
+                [app checkForUnusedAddress:nextAddress success:success error:error];
+                
+            } else {
+                self.qrCodeImageView.hidden = YES;
+                self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
+            }
+        } else if (pinController.assetSegmentedControl.selectedSegmentIndex == AssetTypeEther) {
+            QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
 
-        } else {
-            self.qrCodeImageView.hidden = YES;
-            self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
+            self.qrCodeImageView.hidden = NO;
+            self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:@"etherAddress"];
+            self.addressLabel.text = @"etherAddress";
         }
+        
     } else {
         pinController.swipeLabel.hidden = YES;
         pinController.swipeLabelImageView.hidden = YES;
@@ -230,6 +229,20 @@ static PEViewController *VerifyController()
     pinController.swipeLabel.hidden = YES;
     pinController.swipeLabelImageView.hidden = YES;
 #endif
+}
+
+- (UIImageView *)qrCodeImageView
+{
+    if (!_qrCodeImageView) {
+        CGFloat width = [self getQRCodeImageViewWidth];
+        CGFloat height = width;
+        
+        _qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
+        _qrCodeImageView.center = CGPointMake(self.view.center.x + self.view.frame.size.width, self.qrCodeImageView.center.y);
+        [pinController.scrollView addSubview:_qrCodeImageView];
+    }
+    
+    return _qrCodeImageView;
 }
 
 - (CGFloat)getQRCodeImageViewWidth
@@ -369,6 +382,11 @@ static PEViewController *VerifyController()
     } else {
         self.didScrollToQRCode = NO;
     }
+}
+
+- (void)didSelectAsset
+{
+    [self setupQRCode];
 }
 
 @end

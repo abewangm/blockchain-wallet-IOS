@@ -10,7 +10,7 @@
 
 @implementation TransactionDetailTableCell
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.clipsToBounds = YES;

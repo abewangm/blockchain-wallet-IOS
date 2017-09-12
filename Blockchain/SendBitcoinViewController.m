@@ -15,7 +15,7 @@
 #import "UITextField+Blocks.h"
 #import "UIViewController+AutoDismiss.h"
 #import "LocalizationConstants.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "PrivateKeyReader.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "TransferAllFundsBuilder.h"
@@ -37,6 +37,10 @@ typedef enum {
     RejectionTypeDecline,
     RejectionTypeCancel
 } RejectionType;
+
+@interface QRCodeScannerSendViewController ()
+- (void)stopReadingQRCode;
+@end
 
 @interface SendBitcoinViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
@@ -81,12 +85,8 @@ typedef enum {
 
 @end
 
+
 @implementation SendBitcoinViewController
-
-AVCaptureSession *captureSession;
-AVCaptureVideoPreviewLayer *videoPreviewLayer;
-
-float containerOffset;
 
 uint64_t amountInSatoshi = 0.0;
 uint64_t availableAmount = 0.0;
@@ -588,12 +588,12 @@ BOOL displayingLocalSymbolSend;
              
              // Close transaction modal, go to transactions view, scroll to top and animate new transaction
              [app closeModalWithTransition:kCATransitionFade];
-             [app.tabControllerManager.transactionsViewController didReceiveTransactionMessage];
+             [app.tabControllerManager.transactionsBitcoinViewController didReceiveTransactionMessage];
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  [app.tabControllerManager transactionsClicked:nil];
              });
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                 [app.tabControllerManager.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+                 [app.tabControllerManager.transactionsBitcoinViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
              });
              
              if (self.noteToSet) {
@@ -734,12 +734,12 @@ BOOL displayingLocalSymbolSend;
     
     // Close transaction modal, go to transactions view, scroll to top and animate new transaction
     [app closeAllModals];
-    [app.tabControllerManager.transactionsViewController didReceiveTransactionMessage];
+    [app.tabControllerManager.transactionsBitcoinViewController didReceiveTransactionMessage];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [app.tabControllerManager transactionsClicked:nil];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [app.tabControllerManager.transactionsViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+        [app.tabControllerManager.transactionsBitcoinViewController.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     });
     
     [self reload];
@@ -2007,54 +2007,6 @@ BOOL displayingLocalSymbolSend;
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];
 }
 
-- (BOOL)startReadingQRCode
-{
-    AVCaptureDeviceInput *input = [app getCaptureDeviceInput:nil];
-    
-    if (!input) {
-        return NO;
-    }
-    
-    captureSession = [[AVCaptureSession alloc] init];
-    [captureSession addInput:input];
-    
-    AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [captureSession addOutput:captureMetadataOutput];
-    
-    dispatch_queue_t dispatchQueue;
-    dispatchQueue = dispatch_queue_create("myQueue", NULL);
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
-    [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
-    
-    videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
-    [videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    CGRect frame = CGRectMake(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-    
-    [videoPreviewLayer setFrame:frame];
-    
-    UIView *view = [[UIView alloc] initWithFrame:frame];
-    [view.layer addSublayer:videoPreviewLayer];
-    
-    [app showModalWithContent:view closeType:ModalCloseTypeClose headerText:BC_STRING_SCAN_QR_CODE onDismiss:^{
-        [captureSession stopRunning];
-        captureSession = nil;
-        [videoPreviewLayer removeFromSuperlayer];
-    } onResume:nil];
-    
-    [captureSession startRunning];
-    
-    return YES;
-}
-
-- (void)stopReadingQRCode
-{
-    [app closeModalWithTransition:kCATransitionFade];
-    
-    // Go to the send scren if we are not already on it
-    [app showSendCoins];
-}
-
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
     if (metadataObjects != nil && [metadataObjects count] > 0) {
@@ -2070,7 +2022,7 @@ BOOL displayingLocalSymbolSend;
                 NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 
                 if (address == nil || ![app.wallet isBitcoinAddress:address]) {
-                    [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ADDRESS_ARGUMENT, address]];
+                    [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_BITCOIN_ADDRESS_ARGUMENT, address]];
                     return;
                 }
                 
@@ -2106,13 +2058,6 @@ BOOL displayingLocalSymbolSend;
                 
             });
         }
-    }
-}
-
-- (IBAction)QRCodebuttonClicked:(id)sender
-{
-    if (!captureSession) {
-        [self startReadingQRCode];
     }
 }
 

@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+ #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
@@ -351,6 +351,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_API @"api.blockchain.info"
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
+#define HOST_NAME_ETHERSCAN @"etherscan.io"
+#define URL_ETHERSCAN @"https://etherscan.io"
+
 #define PRODUCTION_WALLET_SERVER @"https://blockchain.info"
 #define PRODUCTION_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
 #define PRODUCTION_WEBSOCKET_SERVER_ETH @"wss://ws.blockchain.info/eth/inv"
@@ -467,7 +470,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #endif
 
-#define CHARTS_URL_SUFFIX @"/charts/market-price?timespan=5weeks&rollingAverage=8hours&format=json"
+#define CHARTS_URL_SUFFIX_ARGUMENT_TIME_SPAN @"/charts/market-price?timespan=%@&rollingAverage=8hours&format=json"
 #define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
 #define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 
@@ -603,6 +606,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_VALUE @"value"
 #define DICTIONARY_KEY_HASH @"hash"
 #define DICTIONARY_KEY_ACCOUNT_INDEX @"accountIndex"
+
+#define DICTIONARY_KEY_VALUES @"values"
+#define DICTIONARY_KEY_X @"x"
+#define DICTIONARY_KEY_Y @"y"
 
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"
@@ -823,7 +830,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
-#define MENU_BITCOIN_TICKER_HEIGHT 145
+#define MENU_TOP_BANNER_HEIGHT 65
 
 #define MENU_CELL_INDEX_UPGRADE 0
 

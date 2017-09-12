@@ -133,6 +133,10 @@
 - (void)didFetchEthHistory;
 - (void)didUpdateEthPayment:(NSDictionary *)payment;
 - (void)didFetchEthExchangeRate:(NSNumber *)rate;
+- (void)promptEthTransferToNewAddress;
+- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
+- (void)didSendEther;
+- (void)didErrorDuringEtherSend:(NSString *)error;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -393,7 +397,7 @@ typedef enum {
 // Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction;
+- (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash;
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
@@ -418,6 +422,7 @@ typedef enum {
 
 // Ethereum
 - (NSString *)getEthBalance;
+- (NSString *)getEthBalanceTruncated;
 - (NSArray *)getEthTransactions;
 - (void)getEthHistory;
 - (void)getEthExchangeRate;
@@ -429,4 +434,5 @@ typedef enum {
 - (BOOL)isEthAddress:(NSString *)address;
 - (void)sendEtherPayment;
 - (NSString *)getEtherAddress;
+- (void)setupTransferToNewEtherAddress;
 @end
