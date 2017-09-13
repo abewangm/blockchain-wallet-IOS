@@ -119,7 +119,7 @@ int accountEntries = 0;
 #endif
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_BITCOIN_ADDRESSES icon:@"wallet"];
     [self addMenuEntry:entryKeyWebLogin text:BC_STRING_LOG_IN_TO_WEB_WALLET icon:@"web"];
-    [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
+    [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_BITCOIN_MERCHANT_MAP icon:@"merchant"];
     [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
     [self addMenuEntry:entryKeyLogout text:BC_STRING_LOGOUT icon:@"logout"];
 

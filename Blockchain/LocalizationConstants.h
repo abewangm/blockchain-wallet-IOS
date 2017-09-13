@@ -262,7 +262,7 @@
 #define BC_STRING_LOADING_CREATING_INVITATION NSLocalizedString(@"Creating invitation", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
-#define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
+#define BC_STRING_BITCOIN_MERCHANT_MAP NSLocalizedString(@"Bitcoin Merchant Map", nil)
 #define BC_STRING_MERCHANT NSLocalizedString(@"Merchant", nil)
 #define BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE NSLocalizedString(@"Enable Location Services", nil)
 #define BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE NSLocalizedString(@"Blockchain needs Location Services enabled in order to access your location.", nil)
