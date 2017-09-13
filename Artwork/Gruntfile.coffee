@@ -80,6 +80,7 @@ module.exports = (grunt) ->
     "shell:svg:dashboard:24"
     "shell:svg:dashboard_blue:24"
     "shell:svg:ether_partial:110"
+    "shell:svg:buy:36"
     "shell:svg:web:60"
     "shell:svg:logo_and_banner_white:30:161"
     "shell:svg:buy_available:110:110"

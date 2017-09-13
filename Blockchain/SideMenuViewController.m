@@ -105,7 +105,7 @@ int accountEntries = 0;
     [self clearMenuEntries];
     
     if ([app.wallet isBuyEnabled]) {
-        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"buy"];
     }
     if (!app.wallet.didUpgradeToHd) {
         [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
