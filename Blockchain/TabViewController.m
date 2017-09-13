@@ -48,7 +48,7 @@
 
 - (void)setupTabButtons
 {
-    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_DASHBOARD:dashBoardButton, BC_STRING_OVERVIEW:homeButton, BC_STRING_REQUEST:receiveButton};
+    NSDictionary *tabButtons = @{BC_STRING_SEND:sendButton, BC_STRING_DASHBOARD:dashBoardButton, BC_STRING_TRANSACTIONS:homeButton, BC_STRING_REQUEST:receiveButton};
     
     for (UITabBarItem *button in [tabButtons allValues]) {
         NSString *label = [[tabButtons allKeysForObject:button] firstObject];
@@ -126,7 +126,7 @@
         tabBar.selectedItem = [[tabBar items] objectAtIndex:selectedIndex];
     });
     
-    NSArray *titles = @[BC_STRING_SEND, BC_STRING_DASHBOARD, BC_STRING_OVERVIEW, BC_STRING_REQUEST];
+    NSArray *titles = @[BC_STRING_SEND, BC_STRING_DASHBOARD, BC_STRING_TRANSACTIONS, BC_STRING_REQUEST];
     
     if (nindex < titles.count) {
         [self setTitleLabelText:[titles objectAtIndex:nindex]];
