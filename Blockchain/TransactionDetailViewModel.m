@@ -55,6 +55,7 @@
 {
     if (self == [super init]) {
         self.assetType = AssetTypeEther;
+        self.txType = etherTransaction.txType;
         self.fromString = etherTransaction.from;
         self.to = @[etherTransaction.to];
         self.toString = etherTransaction.to;
