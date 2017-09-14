@@ -806,5 +806,7 @@
 
 #define BC_STRING_BITCOIN_PRICE NSLocalizedString(@"Bitcoin Price", nil)
 #define BC_STRING_ETHER_PRICE NSLocalizedString(@"Ether Price", nil)
+#define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_TITLE NSLocalizedString(@"Contract addresses are not supported.", nil)
+#define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_MESSAGE NSLocalizedString(@"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP.", nil)
 #define BC_STRING_YOUR_ETHER_ADDRESS NSLocalizedString(@"Your Ether Address", nil)
 #define BC_STRING_ETHER_TRANSFER_INFO NSLocalizedString(@"As we leave our beta program, we want to make sure your ether address is compatible with other wallets in the ecosystem. Because of this, we’ve updated your address and are requiring a one-time transfer of your funds. You’ll still receive any remaining funds to your old address.", nil)

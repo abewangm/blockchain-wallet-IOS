@@ -184,12 +184,6 @@
     }
 }
 
-- (void)selectToAddress:(NSString *)address
-{
-    self.toField.text = address;
-    [app.wallet changeEtherPaymentTo:address];
-}
-
 - (void)disablePaymentButtons
 {
     self.continuePaymentButton.enabled = NO;
@@ -304,11 +298,6 @@
     [app.wallet sendEtherPayment];
 }
 
-- (BOOL)isEtherAddress:(NSString *)address
-{
-    return [app.wallet isEthAddress:address];
-}
-
 #pragma mark - Text Field Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -339,17 +328,42 @@
 
                 NSString *address = [metadataObj stringValue];
                 
-                if (address == nil || ![self isEtherAddress:address]) {
-                    [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT, address]];
-                    return;
-                }
-                
                 [self selectToAddress:address];
                 DLog(@"toAddress: %@", address);
                 
             });
         }
     }
+}
+
+#pragma mark - Overrides
+
+- (BOOL)isEtherAddress:(NSString *)address
+{
+    return [app.wallet isEthAddress:address];
+}
+
+- (void)selectToAddress:(NSString *)address
+{
+    if (address == nil || ![self isEtherAddress:address]) {
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT, address]];
+        return;
+    }
+    
+    self.toField.text = address;
+    
+    [app.wallet isEtherContractAddress:address completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSError *jsonError;
+        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+        BOOL isContract = [[[jsonResponse allValues] firstObject] boolValue];
+        if (isContract) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_TITLE message:BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction: [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+            [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [app.wallet changeEtherPaymentTo:address];
+        }
+    }];
 }
 
 @end

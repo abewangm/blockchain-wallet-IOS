@@ -325,6 +325,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
 #define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
 
+#define URL_SUFFIX_ETH_IS_CONTRACT_ADDRESS_ARGUMENT @"/eth/account/%@/isContract"
 #define URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE @"/frombtc?value=%lld&currency=%@&time=%lld&textual=false&nosavecurrency=true&api_code=%@"
 
 #define URL_API_COINIFY @"app-api.coinify.com"
