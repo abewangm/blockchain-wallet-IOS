@@ -162,7 +162,6 @@
         } else {
             NSError *jsonError;
             NSArray *values = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
-             DLog(@"%@", values);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.graphView setGraphValues:values];
