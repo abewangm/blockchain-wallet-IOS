@@ -146,12 +146,12 @@
     NSString *base;
     
     if (self.assetType == AssetTypeBitcoin) {
-        base = @"eth";
+        base = [CURRENCY_SYMBOL_BTC lowercaseString];
     } else {
-        base = @"btc";
+        base = [CURRENCY_SYMBOL_ETH lowercaseString];
     }
     
-    NSString *quote = @"usd";
+    NSString *quote = [NSNumberFormatter localCurrencyCode];
     
     NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], @"86400"]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];

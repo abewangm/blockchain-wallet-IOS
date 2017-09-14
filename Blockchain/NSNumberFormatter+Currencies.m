@@ -13,6 +13,11 @@
 
 #pragma mark - Format helpers
 
++ (NSString *)localCurrencyCode
+{
+    return app.latestResponse.symbol_local.code;
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {

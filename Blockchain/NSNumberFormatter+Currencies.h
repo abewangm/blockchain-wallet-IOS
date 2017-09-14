@@ -10,6 +10,8 @@
 
 @interface NSNumberFormatter (Currencies)
 
++ (NSString *)localCurrencyCode;
+
 + (NSString*)formatMoney:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;
 + (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency;
