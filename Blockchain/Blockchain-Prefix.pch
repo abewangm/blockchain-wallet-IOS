@@ -470,7 +470,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #endif
 
-#define CHARTS_URL_SUFFIX_ARGUMENT_TIME_SPAN @"/charts/market-price?timespan=%@&rollingAverage=8hours&format=json"
+#define CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE @"/historicalprices?base=%@&quote=%@&start=%@&scale=%@"
 #define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
 #define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 
@@ -607,9 +607,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_HASH @"hash"
 #define DICTIONARY_KEY_ACCOUNT_INDEX @"accountIndex"
 
-#define DICTIONARY_KEY_VALUES @"values"
-#define DICTIONARY_KEY_X @"x"
-#define DICTIONARY_KEY_Y @"y"
+#define DICTIONARY_KEY_PRICE @"price"
+#define DICTIONARY_KEY_TIMESTAMP @"timestamp"
 
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"

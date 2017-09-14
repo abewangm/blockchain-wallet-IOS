@@ -132,8 +132,28 @@
     [self reloadCards];
     
     NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    NSDate *today = [NSDate date];
+    NSInteger startDate = 0;
     
-    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENT_TIME_SPAN, timeSpan]]];
+    if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-604800.0] timeIntervalSince1970]);
+    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-2592000.0] timeIntervalSince1970]);
+    } else {
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-31536000.0] timeIntervalSince1970]);
+    }
+    
+    NSString *base;
+    
+    if (self.assetType == AssetTypeBitcoin) {
+        base = @"eth";
+    } else {
+        base = @"btc";
+    }
+    
+    NSString *quote = @"usd";
+    
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], @"86400"]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -141,11 +161,10 @@
             DLog(@"Error getting chart data - %@", [error localizedDescription]);
         } else {
             NSError *jsonError;
-            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
-//             DLog(@"%@", jsonResponse);
+            NSArray *values = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+             DLog(@"%@", values);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSArray *values = [jsonResponse objectForKey:DICTIONARY_KEY_VALUES];
                 [self.graphView setGraphValues:values];
                 [self updateAxisLabelsWithGraphValues:values];
             });
@@ -340,7 +359,7 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"MMM dd";
-    return [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[graphInfo objectForKey:DICTIONARY_KEY_X] floatValue]]];
+    return [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[graphInfo objectForKey:DICTIONARY_KEY_TIMESTAMP] floatValue]]];
 }
 
 @end
