@@ -20,6 +20,7 @@
 @end
 
 @interface EtherAmountInputViewController ()
+@property (nonatomic) NSString *toAddress;
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) UITextField *toField;
@@ -253,23 +254,33 @@
 
 - (void)continueButtonClicked
 {
-    NSDecimalNumber *totalDecimalNumber = [self.ethAmount decimalNumberByAdding:self.ethFee];
+    if (self.toAddress == nil || ![self isEtherAddress:self.toAddress]) {
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT, self.toAddress]];
+        return;
+    }
     
-    BCConfirmPaymentViewModel *confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc]
-                                                          initWithTo:self.toField.text
-                                                          ethAmount:[NSNumberFormatter formatEth:self.ethAmount]
-                                                          ethFee:[NSNumberFormatter formatEth:self.ethFee]
-                                                          ethTotal:[NSNumberFormatter formatEth:totalDecimalNumber]
-                                                          fiatAmount:[NSNumberFormatter appendStringToFiatSymbol:self.amountInputView.fiatField.text]
-                                                          fiatFee:[NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]
-                                                          fiatTotal:[NSNumberFormatter formatEthToFiatWithSymbol:[NSString stringWithFormat:@"%@", totalDecimalNumber] exchangeRate:self.latestExchangeRate]];
-    
-    self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:self.view.window viewModel:confirmPaymentViewModel];
-    self.confirmPaymentView.confirmDelegate = self;
-    
-    [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment) forControlEvents:UIControlEventTouchUpInside];
-    
-    [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT];
+    [self checkIfEtherContractAddress:self.toAddress successHandler:^(NSString *nonContractAddress) {
+        
+        [app.wallet changeEtherPaymentTo:nonContractAddress];
+
+        NSDecimalNumber *totalDecimalNumber = [self.ethAmount decimalNumberByAdding:self.ethFee];
+        
+        BCConfirmPaymentViewModel *confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc]
+                                                              initWithTo:self.toAddress
+                                                              ethAmount:[NSNumberFormatter formatEth:self.ethAmount]
+                                                              ethFee:[NSNumberFormatter formatEth:self.ethFee]
+                                                              ethTotal:[NSNumberFormatter formatEth:totalDecimalNumber]
+                                                              fiatAmount:[NSNumberFormatter appendStringToFiatSymbol:self.amountInputView.fiatField.text]
+                                                              fiatFee:[NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]
+                                                              fiatTotal:[NSNumberFormatter formatEthToFiatWithSymbol:[NSString stringWithFormat:@"%@", totalDecimalNumber] exchangeRate:self.latestExchangeRate]];
+        
+        self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:self.view.window viewModel:confirmPaymentViewModel];
+        self.confirmPaymentView.confirmDelegate = self;
+        
+        [self.confirmPaymentView.reallyDoPaymentButton addTarget:self action:@selector(reallyDoPayment) forControlEvents:UIControlEventTouchUpInside];
+        
+        [app showModalWithContent:self.confirmPaymentView closeType:ModalCloseTypeBack headerText:BC_STRING_CONFIRM_PAYMENT];
+    }];
 }
 
 - (void)setupNoteForTransaction:(NSString *)note
@@ -366,6 +377,11 @@
     
     self.toField.text = address;
     
+    [self checkIfEtherContractAddress:address successHandler:nil];
+}
+
+- (void)checkIfEtherContractAddress:(NSString *)address successHandler:(void (^ _Nullable)(NSString *))success
+{
     [app.wallet isEtherContractAddress:address completion:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSError *jsonError;
         NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
@@ -375,7 +391,7 @@
             [alert addAction: [UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
             [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
         } else {
-            [app.wallet changeEtherPaymentTo:address];
+            if (success) success(address);
         }
     }];
 }
