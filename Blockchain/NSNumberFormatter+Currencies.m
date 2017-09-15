@@ -151,7 +151,7 @@
 
 + (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
-    if (fiatAmount == 0) return 0;
+    if (fiatAmount == 0 || !exchangeRate) return 0;
     
     return [fiatAmount decimalNumberByDividingBy:exchangeRate];
 }

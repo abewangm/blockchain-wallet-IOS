@@ -62,7 +62,7 @@
         self.amountString = etherTransaction.amount;
         self.myHash = etherTransaction.myHash;
         self.feeString = etherTransaction.fee;
-        self.note = nil;
+        self.note = etherTransaction.note;
         self.time = etherTransaction.time;
         self.dateString = [self getDate];
         self.detailButtonTitle = [[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, HOST_NAME_ETHERSCAN] uppercaseString];

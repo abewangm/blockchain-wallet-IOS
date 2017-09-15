@@ -697,7 +697,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         objc_loading_stop();
 
         objc_did_load_wallet();
-        
+
         MyWallet.wallet.useEthSocket(ethSocketInstance);
     };
 
@@ -2181,7 +2181,7 @@ MyWalletPhone.getExchangeAccount = function () {
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
-    
+
     if (sfox.user) {
         console.log('Found sfox user');
         sfox.api.production = true;
@@ -2407,11 +2407,12 @@ MyWalletPhone.getEthPaymentTotal = function() {
     return currentEtherPayment.amount + currentEtherPayment.fee;
 }
 
-MyWalletPhone.sendEtherPayment = function() {
+MyWalletPhone.sendEtherPaymentWithNote = function(note) {
 
     var eth = MyWallet.wallet.eth;
 
-    var success = function() {
+    var success = function(tx) {
+        eth.setTxNote(tx.txHash, note);
         console.log('Send ether success');
         objc_on_send_ether_payment_success();
     }
@@ -2423,20 +2424,25 @@ MyWalletPhone.sendEtherPayment = function() {
     }
 
     if (MyWallet.wallet.isDoubleEncrypted) {
-        MyWalletPhone.getSecondPassword(function (pw) {
-                                        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount, pw);
-                                        currentEtherPayment.sign(privateKey);
-                                        currentEtherPayment
-                                        .publish()
-                                        .then(success).catch(error);
-                                        });
-    } else {
-        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount);
+      MyWalletPhone.getSecondPassword(function (pw) {
+        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount, pw);
         currentEtherPayment.sign(privateKey);
         currentEtherPayment
         .publish()
         .then(success).catch(error);
+      });
+    } else {
+      var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount);
+      currentEtherPayment.sign(privateKey);
+      currentEtherPayment
+      .publish()
+      .then(success).catch(error);
     }
+}
+
+MyWalletPhone.saveEtherNote = function(txHash, note) {
+    MyWallet.wallet.eth.setTxNote(txHash, note);
+    MyWalletPhone.getEthHistory();
 }
 
 MyWalletPhone.didReceiveEthSocketMessage = function(msg) {

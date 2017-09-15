@@ -140,12 +140,14 @@ const CGFloat rowHeightValueReceived = 80;
     
     [self.textView resignFirstResponder];
     self.textView.editable = NO;
-
-    [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    [app.wallet saveNote:self.textView.text forTransaction:self.transactionModel.myHash];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistoryAfterSavingNote) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    if (self.transactionModel.assetType == AssetTypeBitcoin) {
+        [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        [app.wallet saveNote:self.textView.text forTransaction:self.transactionModel.myHash];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistoryAfterSavingNote) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    } else if (self.transactionModel.assetType == AssetTypeEther) {
+        [app.wallet saveEtherNote:self.textView.text forTransaction:self.transactionModel.myHash];
+    }
 }
 
 - (void)getHistoryAfterSavingNote

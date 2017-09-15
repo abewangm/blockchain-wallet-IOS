@@ -10,5 +10,5 @@
 #import "TransactionsViewController.h"
 
 @interface TransactionsEtherViewController : TransactionsViewController
-
+- (void)reload;
 @end

@@ -52,6 +52,11 @@
     [self loadTransactions];
 }
 
+- (void)reload
+{
+    [self loadTransactions];
+}
+
 - (void)setupPullToRefresh
 {
     // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094

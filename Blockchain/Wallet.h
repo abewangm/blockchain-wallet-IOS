@@ -394,6 +394,7 @@ typedef enum {
 
 // Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)saveEtherNote:(NSString *)note forTransaction:(NSString *)hash;
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
 - (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash;
 
@@ -430,7 +431,7 @@ typedef enum {
 - (void)changeEtherPaymentTo:(NSString *)to;
 - (void)changeEtherPaymentAmount:(id)amount;
 - (BOOL)isEthAddress:(NSString *)address;
-- (void)sendEtherPayment;
+- (void)sendEtherPaymentWithNote:(NSString *)note;
 - (NSString *)getEtherAddress;
 - (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
 - (void)sweepEtherPayment;

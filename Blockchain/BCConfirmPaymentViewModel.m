@@ -55,7 +55,6 @@ contactTransaction:(ContactTransaction *)contactTransaction
        fiatTotal:(NSString *)fiatTotal
 {
     if (self == [super init]) {
-        self.hideDescription = YES;
         self.to = to;
         self.fiatAmountText = fiatAmount;
         self.btcAmountText = ethAmount;

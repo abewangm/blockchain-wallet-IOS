@@ -2209,6 +2209,13 @@
     }
 }
 
+- (void)saveEtherNote:(NSString *)note forTransaction:(NSString *)hash
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.saveEtherNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    }
+}
+
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
     NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
@@ -2580,10 +2587,10 @@
     return NO;
 }
 
-- (void)sendEtherPayment
+- (void)sendEtherPaymentWithNote:(NSString *)note
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.sendEtherPayment()"];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendEtherPaymentWithNote(\"%@\")", [note escapeStringForJS]]];
     }
 }
 

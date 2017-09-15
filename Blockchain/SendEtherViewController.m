@@ -36,6 +36,7 @@
 @property (nonatomic) UILabel *feeAmountLabel;
 @property (nonatomic) UIButton *fundsAvailableButton;
 @property (nonatomic) UIButton *continuePaymentButton;
+@property (nonatomic) NSString *noteToSet;
 @property (nonatomic) UIButton *continuePaymentAccessoryButton;
 @property (nonatomic) BCConfirmPaymentView *confirmPaymentView;
 
@@ -285,7 +286,7 @@
 
 - (void)setupNoteForTransaction:(NSString *)note
 {
-    DLog(@"Not setting up note - Ether payment");
+    self.noteToSet = note;
 }
 
 - (void)feeInformationButtonClicked
@@ -320,7 +321,7 @@
     
     [app showModalWithContent:sendView closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
-    [app.wallet sendEtherPayment];
+    [app.wallet sendEtherPaymentWithNote:self.noteToSet];
 }
 
 #pragma mark - Text Field Delegate
