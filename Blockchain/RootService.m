@@ -2435,16 +2435,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didFetchEthExchangeRate:rate];
 }
 
-- (void)promptEthTransferToNewAddress
-{
-    [self.tabControllerManager promptEthTransferToNewAddress];
-}
-
-- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee
-{
-    [self.tabControllerManager showConfirmTransferToNewEthAddress:from to:to amount:amount fee:fee];
-}
-
 - (void)didSendEther
 {
     [self.tabControllerManager didSendEther];

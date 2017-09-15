@@ -86,8 +86,6 @@
 
 // Send Eth View Controller
 - (void)didUpdateEthPayment:(NSDictionary *)ethPayment;
-- (void)promptEthTransferToNewAddress;
-- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
 

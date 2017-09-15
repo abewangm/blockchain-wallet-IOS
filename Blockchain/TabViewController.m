@@ -297,16 +297,6 @@
     [self.assetDelegate selectorButtonClicked];
 }
 
-- (void)setupTransferToNewEtherAddress
-{
-    [app.wallet setupTransferToNewEtherAddress];
-}
-
-- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee
-{
-    
-}
-
 - (void)didSendEther
 {
     [app closeAllModals];

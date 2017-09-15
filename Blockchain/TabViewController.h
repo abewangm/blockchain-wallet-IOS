@@ -50,8 +50,6 @@
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 - (void)setTitleLabelText:(NSString *)text;
 - (void)didFetchEthExchangeRate;
-- (void)setupTransferToNewEtherAddress;
-- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
 @end

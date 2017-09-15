@@ -2328,16 +2328,7 @@ MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 }
 
 MyWalletPhone.getEthBalance = function() {
-    
-    var eth = MyWallet.wallet.eth;
-    
-    if (eth.legacyAccount && eth.legacyAccount.balance > 0) {
-        console.log('Eth legacy address balance is ');
-        console.log(eth.legacyAccount.balance);
-        objc_prompt_transfer_eth_to_new_address();
-    }
-    
-    return eth.balance;
+    return MyWallet.wallet.eth.balance;
 }
 
 MyWalletPhone.getEthTransactions = function() {
@@ -2454,20 +2445,6 @@ MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
 
 MyWalletPhone.getEtherAddress = function() {
     return MyWallet.wallet.eth.accounts[0].address;
-}
-
-MyWalletPhone.setupTransferToNewEtherAddress = function() {
-    
-    var eth = MyWallet.wallet.eth;
-    
-    var fromAddress = eth.legacyAccount.address;
-    var toAddress = eth.defaultAccount.address;
-    
-    eth.legacyAccount.getAvailableBalance().then(function(maxAvailable) {
-        var amount = maxAvailable.amount;
-        var fee = maxAvailable.fee;
-        objc_show_confirm_transfer_eth_to_new_address(fromAddress, toAddress, amount, fee);
-    });
 }
 
 MyWalletPhone.sweepEtherPayment = function() {

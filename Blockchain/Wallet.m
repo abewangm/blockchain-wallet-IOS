@@ -883,14 +883,6 @@
         [weakSelf eth_socket_send:[message toString]];
     };
     
-    self.context[@"objc_prompt_transfer_eth_to_new_address"] = ^() {
-        [weakSelf prompt_transfer_eth_to_new_address];
-    };
-    
-    self.context[@"objc_show_confirm_transfer_eth_to_new_address"] = ^(JSValue *from, JSValue *to, JSValue *amount, JSValue *fee) {
-        [weakSelf show_confirm_transfer_eth_to_new_address:from to:to amount:amount fee:fee];
-    };
-    
     self.context[@"objc_on_send_ether_payment_success"] = ^() {
         [weakSelf on_send_ether_payment_success];
     };
@@ -2605,13 +2597,6 @@
     return nil;
 }
 
-- (void)setupTransferToNewEtherAddress
-{
-    if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.setupTransferToNewEtherAddress()"];
-    }
-}
-
 - (void)isEtherContractAddress:(NSString *)address completion:(void (^ _Nullable)(NSData *, NSURLResponse *, NSError *))completion
 {
     NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_ETH_IS_CONTRACT_ADDRESS_ARGUMENT, address]]];
@@ -4081,24 +4066,6 @@
     NSError *error;
     [self.ethSocket sendString:message error:&error];
     if (error) DLog(@"Error sending eth socket message: %@", [error localizedDescription]);
-}
-
-- (void)prompt_transfer_eth_to_new_address
-{
-    if ([self.delegate respondsToSelector:@selector(promptEthTransferToNewAddress)]) {
-        [self.delegate promptEthTransferToNewAddress];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector promptEthTransferToNewAddress!", [delegate class]);
-    }
-}
-
-- (void)show_confirm_transfer_eth_to_new_address:(JSValue *)from to:(JSValue *)to amount:(JSValue *)amount fee:(JSValue *)fee
-{
-    if ([self.delegate respondsToSelector:@selector(showConfirmTransferToNewEthAddress:to:amount:fee:)]) {
-        [self.delegate showConfirmTransferToNewEthAddress:[from toString] to:[to toString] amount:[amount toString] fee:[fee toString]];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector showConfirmTransferToNewEthAddress!", [delegate class]);
-    }
 }
 
 - (void)on_send_ether_payment_success

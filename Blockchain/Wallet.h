@@ -133,8 +133,6 @@
 - (void)didFetchEthHistory;
 - (void)didUpdateEthPayment:(NSDictionary *)payment;
 - (void)didFetchEthExchangeRate:(NSNumber *)rate;
-- (void)promptEthTransferToNewAddress;
-- (void)showConfirmTransferToNewEthAddress:(NSString *)from to:(NSString *)to amount:(NSString *)amount fee:(NSString *)fee;
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
 @end
@@ -434,7 +432,6 @@ typedef enum {
 - (BOOL)isEthAddress:(NSString *)address;
 - (void)sendEtherPayment;
 - (NSString *)getEtherAddress;
-- (void)setupTransferToNewEtherAddress;
 - (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
 - (void)sweepEtherPayment;
 @end
