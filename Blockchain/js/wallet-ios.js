@@ -2377,19 +2377,20 @@ MyWalletPhone.createNewEtherPayment = function() {
     currentEtherPayment = eth.defaultAccount.createPayment();
 
     eth.fetchFees().then(function(fees) {
-                         currentEtherPayment.setGasPrice(fees.regular);
-                         currentEtherPayment.setGasLimit(fees.gasLimit);
+         currentEtherPayment.setGasPrice(fees.regular);
+         currentEtherPayment.setGasLimit(fees.gasLimit);
 
-                         MyWalletPhone.updateEtherPayment(currentEtherPayment);
-                         });
+         MyWalletPhone.updateEtherPayment();
+     });
 }
 
-MyWalletPhone.updateEtherPayment = function() {
+MyWalletPhone.updateEtherPayment = function(isSweep) {
 
     var paymentInfo = {
         amount : currentEtherPayment.amount,
         available : currentEtherPayment.available,
         fee : currentEtherPayment.fee,
+        sweep : isSweep
     };
 
     console.log(JSON.stringify(paymentInfo));
@@ -2467,4 +2468,9 @@ MyWalletPhone.setupTransferToNewEtherAddress = function() {
         var fee = maxAvailable.fee;
         objc_show_confirm_transfer_eth_to_new_address(fromAddress, toAddress, amount, fee);
     });
+}
+
+MyWalletPhone.sweepEtherPayment = function() {
+    currentEtherPayment.setSweep();
+    MyWalletPhone.updateEtherPayment(true);
 }

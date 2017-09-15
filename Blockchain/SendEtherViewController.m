@@ -94,6 +94,7 @@
     [fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     fundsAvailableButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     fundsAvailableButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [fundsAvailableButton addTarget:self action:@selector(useAllClicked) forControlEvents:UIControlEventTouchUpInside];
     self.fundsAvailableButton = fundsAvailableButton;
     
     [self.view addSubview:fundsAvailableButton];
@@ -161,6 +162,7 @@
     id dictAmount = payment[DICTIONARY_KEY_AMOUNT];
     id dictAvailable = payment[DICTIONARY_KEY_AVAILABLE];
     id dictFee = payment[DICTIONARY_KEY_FEE];
+    BOOL dictSweep = [payment[DICTIONARY_KEY_SWEEP] boolValue];
     
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithDecimal:[dictAmount decimalValue]];
     DLog(@"Amount is %@", amount);
@@ -169,7 +171,12 @@
     NSDecimalNumber *available = [NSDecimalNumber decimalNumberWithDecimal:[dictAvailable decimalValue]];
     NSDecimalNumber *fee = [NSDecimalNumber decimalNumberWithDecimal:[dictFee decimalValue]];
     
-    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, available] forState:UIControlStateNormal];
+    if (dictSweep) {
+        self.amountInputView.btcField.text = [amount compare:@0] == NSOrderedSame ? nil : [amount stringValue];
+        self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:[amount stringValue] exchangeRate:self.latestExchangeRate];
+    }
+
+    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSString stringWithFormat:@"%@ %@", available, CURRENCY_SYMBOL_ETH]] forState:UIControlStateNormal];
     
     self.ethAvailable = available;
     
@@ -177,7 +184,9 @@
     self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
                                 [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
     
-    if ([available compare:amount] == NSOrderedDescending) {
+    NSComparisonResult result = [available compare:amount];
+    
+    if (result == NSOrderedDescending || result == NSOrderedSame) {
         [self enablePaymentButtons];
     } else {
         [self disablePaymentButtons];
@@ -204,6 +213,11 @@
     [self.continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.continuePaymentAccessoryButton.enabled = YES;
     [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+}
+
+- (void)useAllClicked
+{
+    [app.wallet sweepEtherPayment];
 }
 
 #pragma mark - View Helpers

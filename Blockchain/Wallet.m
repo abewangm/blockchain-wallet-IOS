@@ -2624,6 +2624,13 @@
     [task resume];
 }
 
+- (void)sweepEtherPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.sweepEtherPayment()"];
+    }
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
