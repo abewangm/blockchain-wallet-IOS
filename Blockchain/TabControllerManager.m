@@ -314,13 +314,13 @@
             _transactionsBitcoinViewController = [[[NSBundle mainBundle] loadNibNamed:NIB_NAME_TRANSACTIONS owner:self options:nil] firstObject];
         }
         
-        [_tabViewController setActiveViewController:_transactionsBitcoinViewController animated:NO index:TAB_TRANSACTIONS];
+        [_tabViewController setActiveViewController:_transactionsBitcoinViewController animated:YES index:TAB_TRANSACTIONS];
     } else if (self.assetType == AssetTypeEther) {
         if (!_transactionsEtherViewController) {
             _transactionsEtherViewController = [[TransactionsEtherViewController alloc] init];
         }
         
-        [_tabViewController setActiveViewController:_transactionsEtherViewController animated:NO index:TAB_TRANSACTIONS];
+        [_tabViewController setActiveViewController:_transactionsEtherViewController animated:YES index:TAB_TRANSACTIONS];
     }
 }
 
