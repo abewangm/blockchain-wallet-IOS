@@ -200,6 +200,8 @@
 		C718595B1F4B85E800745A87 /* Transactions.xib in Resources */ = {isa = PBXBuildFile; fileRef = C718595A1F4B85E800745A87 /* Transactions.xib */; };
 		C723F3461F61D35300A858A9 /* TransactionDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C723F3451F61D35300A858A9 /* TransactionDetailViewModel.m */; };
 		C723F3491F64413400A858A9 /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C723F3481F64413400A858A9 /* TransactionsViewController.m */; };
+		C71859501F460C8900745A87 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C718594E1F460C8900745A87 /* Fabric.framework */; };
+		C71859511F460C8900745A87 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C718594F1F460C8900745A87 /* Crashlytics.framework */; };
 		C72D6CBF1EC0B4AB0000F922 /* BCFeeSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */; };
 		C72D6CC21EC0B7F80000F922 /* FeeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C72D6CC11EC0B7F80000F922 /* FeeTableCell.m */; };
 		C72D6CC41EC646F30000F922 /* staging.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC31EC646F30000F922 /* staging.der */; };
@@ -1042,6 +1044,8 @@
 		C723F3451F61D35300A858A9 /* TransactionDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailViewModel.m; sourceTree = "<group>"; };
 		C723F3471F64413400A858A9 /* TransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsViewController.h; sourceTree = "<group>"; };
 		C723F3481F64413400A858A9 /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsViewController.m; sourceTree = "<group>"; };
+		C718594E1F460C8900745A87 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C718594F1F460C8900745A87 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C72D6CBD1EC0B4AB0000F922 /* BCFeeSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFeeSelectionView.h; sourceTree = "<group>"; };
 		C72D6CBE1EC0B4AB0000F922 /* BCFeeSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFeeSelectionView.m; sourceTree = "<group>"; };
 		C72D6CC01EC0B7F80000F922 /* FeeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeeTableCell.h; sourceTree = "<group>"; };
@@ -1179,9 +1183,11 @@
 			files = (
 				23C543A31D0F4197007A5F58 /* libicucore.tbd in Frameworks */,
 				23C543A11D0F415C007A5F58 /* CFNetwork.framework in Frameworks */,
+				C71859511F460C8900745A87 /* Crashlytics.framework in Frameworks */,
 				67812A7D1A4A0E6800B04EBF /* CoreImage.framework in Frameworks */,
 				67812A791A4A0E1800B04EBF /* QuartzCore.framework in Frameworks */,
 				67812A771A4A0DDA00B04EBF /* CoreGraphics.framework in Frameworks */,
+				C71859501F460C8900745A87 /* Fabric.framework in Frameworks */,
 				FA6323431A44758700EB3974 /* MapKit.framework in Frameworks */,
 				673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */,
 				220348AC19A4D60000611AC3 /* Social.framework in Frameworks */,
@@ -1569,6 +1575,8 @@
 			isa = PBXGroup;
 			children = (
 				23C543A21D0F4197007A5F58 /* libicucore.tbd */,
+				C718594E1F460C8900745A87 /* Fabric.framework */,
+				C718594F1F460C8900745A87 /* Crashlytics.framework */,
 				23C543A01D0F415C007A5F58 /* CFNetwork.framework */,
 				67812A7C1A4A0E6800B04EBF /* CoreImage.framework */,
 				67812A781A4A0E1800B04EBF /* QuartzCore.framework */,
@@ -1979,6 +1987,7 @@
 				23321D781BB072AB0005624F /* Update, Clean, Build My-Wallet-V3 */,
 				23321D7B1BB084320005624F /* Build Image Assets from PSDs */,
 				23FDEFA31D6E22C900FC80D6 /* Get SSL Certificate */,
+				C718594D1F460C4A00745A87 /* Run Fabric */,
 				9FB3636F14B60128004BEA02 /* Resources */,
 			);
 			buildRules = (
@@ -2198,6 +2207,20 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "cd ${SRCROOT} && sh ./scripts/update-certs.sh";
+		};
+		C718594D1F460C4A00745A87 /* Run Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Fabric";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 697b88bc5b5646cd6ac3aebf86e525ff14c51426 5363de5bd3f55e431daa7e96f98e3c71eb89a36580e67612a5d5dd9a9a948aee";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2975,7 +2998,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NZ6PH75U7K;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Blockchain/Blockchain-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -3013,7 +3039,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NZ6PH75U7K;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Blockchain/Blockchain-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;

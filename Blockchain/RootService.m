@@ -49,6 +49,8 @@
 #import "BCEmptyPageView.h"
 #import "WebLoginViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #define URL_SUPPORT_FORGOT_PASSWORD @"https://support.blockchain.com/hc/en-us/articles/211205343-I-forgot-my-password-What-can-you-do-to-help-"
 #define USER_DEFAULTS_KEY_DID_FAIL_TOUCH_ID_SETUP @"didFailTouchIDSetup"
@@ -153,6 +155,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Fabric with:@[[Crashlytics class]]];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.window = appDelegate.window;
     
