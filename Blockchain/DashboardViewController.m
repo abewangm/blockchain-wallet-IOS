@@ -13,6 +13,7 @@
 #define TIME_INTERVAL_WEEK 604800.0
 #define TIME_INTERVAL_MONTH 2592000.0
 #define TIME_INTERVAL_YEAR 31536000.0
+#define STRING_SCALE_SECONDS_IN_A_DAY @"86400"
 
 #import "DashboardViewController.h"
 #import "SessionManager.h"
@@ -157,7 +158,7 @@
     
     NSString *quote = [NSNumberFormatter localCurrencyCode];
     
-    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], @"86400"]]];
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], STRING_SCALE_SECONDS_IN_A_DAY]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
