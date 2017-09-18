@@ -60,8 +60,7 @@
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SWIPE_ADDRESSES accessGroup:nil];
     [keychain resetKeychainItem];
     
-    KeychainItemWrapper *etherKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_ETHER_ADDRESS accessGroup:nil];
-    [etherKeychain resetKeychainItem];
+    [self removeSwipeEtherAddress];
 }
 
 + (void)setSwipeEtherAddress:(NSString *)swipeAddress
@@ -71,6 +70,12 @@
     
     [keychain setObject:KEYCHAIN_KEY_ETHER_ADDRESS forKey:(__bridge id)kSecAttrAccount];
     [keychain setObject:[swipeAddress dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
+}
+
++ (void)removeSwipeEtherAddress
+{
+    KeychainItemWrapper *etherKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_ETHER_ADDRESS accessGroup:nil];
+    [etherKeychain resetKeychainItem];
 }
 
 + (NSString *)getSwipeEtherAddress

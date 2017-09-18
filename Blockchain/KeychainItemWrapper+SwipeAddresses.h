@@ -16,5 +16,5 @@
 
 + (void)setSwipeEtherAddress:(NSString *)swipeAddress;
 + (NSString *)getSwipeEtherAddress;
-
++ (void)removeSwipeEtherAddress;
 @end

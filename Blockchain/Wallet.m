@@ -2597,7 +2597,9 @@
 - (NSString *)getEtherAddress
 {
     if ([self isInitialized]) {
-        NSString *etherAddress = [[self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"] toString];
+        JSValue *result = [self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"];
+        if ([result isUndefined]) return nil;
+        NSString *etherAddress = [result toString];
         return etherAddress;
     }
     

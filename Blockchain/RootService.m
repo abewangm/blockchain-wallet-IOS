@@ -289,7 +289,12 @@ void (^secondPasswordSuccess)(NSString *);
         [self.wallet isInitialized] &&
         [self.wallet didUpgradeToHd]) {
         
-        [KeychainItemWrapper setSwipeEtherAddress:[app.wallet getEtherAddress]];
+        NSString *etherAddress = [app.wallet getEtherAddress];
+        if (etherAddress) {
+            [KeychainItemWrapper setSwipeEtherAddress:etherAddress];
+        } else {
+            [KeychainItemWrapper removeSwipeEtherAddress];
+        }
         
         int numberOfAddressesToDerive = SWIPE_TO_RECEIVE_ADDRESS_COUNT;
         NSArray *swipeAddresses = [KeychainItemWrapper getSwipeAddresses];

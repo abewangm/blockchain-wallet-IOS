@@ -218,8 +218,12 @@ static PEViewController *VerifyController()
 
             NSString *etherAddress = [KeychainItemWrapper getSwipeEtherAddress];
             
-            self.qrCodeImageView.hidden = NO;
-            self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:etherAddress];
+            if (etherAddress) {
+                self.qrCodeImageView.hidden = NO;
+                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:etherAddress];
+            } else {
+                self.qrCodeImageView.hidden = YES;
+            }
             self.addressLabel.text = etherAddress;
         }
         
