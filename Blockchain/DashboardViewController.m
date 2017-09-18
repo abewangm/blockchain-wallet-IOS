@@ -10,6 +10,9 @@
 #define GRAPH_TIME_FRAME_WEEK @"1weeks"
 #define GRAPH_TIME_FRAME_MONTH @"4weeks"
 #define GRAPH_TIME_FRAME_YEAR @"52weeks"
+#define TIME_INTERVAL_WEEK 604800.0
+#define TIME_INTERVAL_MONTH 2592000.0
+#define TIME_INTERVAL_YEAR 31536000.0
 
 #import "DashboardViewController.h"
 #import "SessionManager.h"
@@ -136,11 +139,11 @@
     NSInteger startDate = 0;
     
     if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-604800.0] timeIntervalSince1970]);
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_WEEK] timeIntervalSince1970]);
     } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-2592000.0] timeIntervalSince1970]);
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_MONTH] timeIntervalSince1970]);
     } else {
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-31536000.0] timeIntervalSince1970]);
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_YEAR] timeIntervalSince1970]);
     }
     
     NSString *base;
