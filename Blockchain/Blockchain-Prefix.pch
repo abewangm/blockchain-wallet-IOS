@@ -729,6 +729,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define KEYCHAIN_KEY_GUID @"guid"
 #define KEYCHAIN_KEY_PIN @"pin"
 #define KEYCHAIN_KEY_SWIPE_ADDRESSES @"swipeAddresses"
+#define KEYCHAIN_KEY_ETHER_ADDRESS @"etherAddress"
 
 #define QR_CODE_KEY_GUID @"guid"
 #define QR_CODE_KEY_SHARED_KEY @"sharedKey"

@@ -13,4 +13,8 @@
 + (void)addSwipeAddress:(NSString *)swipeAddress;
 + (void)removeFirstSwipeAddress;
 + (void)removeAllSwipeAddresses;
+
++ (void)setSwipeEtherAddress:(NSString *)swipeAddress;
++ (NSString *)getSwipeEtherAddress;
+
 @end

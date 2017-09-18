@@ -147,7 +147,7 @@ static PEViewController *VerifyController()
         [pinController.scrollView setUserInteractionEnabled:YES];
         
         if (!self.addressLabel) {
-            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(WINDOW_WIDTH, 60 + [self getQRCodeImageViewWidth] + 16, WINDOW_WIDTH, 30)];
+            self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(WINDOW_WIDTH + 10, 60 + [self getQRCodeImageViewWidth] + 16, WINDOW_WIDTH - 20, 30)];
             [self.addressLabel setTextAlignment:NSTextAlignmentCenter];
             [self.addressLabel setTextColor:COLOR_BLOCKCHAIN_BLUE];
             [self.addressLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL]];
@@ -216,9 +216,11 @@ static PEViewController *VerifyController()
         } else if (pinController.assetSegmentedControl.selectedSegmentIndex == AssetTypeEther) {
             QRCodeGenerator *qrCodeGenerator = [[QRCodeGenerator alloc] init];
 
+            NSString *etherAddress = [KeychainItemWrapper getSwipeEtherAddress];
+            
             self.qrCodeImageView.hidden = NO;
-            self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:@"etherAddress"];
-            self.addressLabel.text = @"etherAddress";
+            self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:etherAddress];
+            self.addressLabel.text = etherAddress;
         }
         
     } else {
