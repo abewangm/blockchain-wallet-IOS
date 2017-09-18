@@ -300,6 +300,10 @@
 - (void)didSendEther
 {
     [app closeAllModals];
+    
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_SUCCESS message:BC_STRING_PAYMENT_SENT_ETHER preferredStyle:UIAlertControllerStyleAlert];
+    [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:errorAlert animated:YES completion:nil];
 }
 
 - (void)didErrorDuringEtherSend:(NSString *)error
