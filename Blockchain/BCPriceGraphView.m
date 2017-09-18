@@ -18,11 +18,8 @@
 {
     _graphValues = values;
     
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
     NSArray *sortedYCoordinates = [self.graphValues sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-        return [[numberFormatter numberFromString:[obj1 objectForKey:DICTIONARY_KEY_PRICE]] compare:[numberFormatter numberFromString:[obj2 objectForKey:DICTIONARY_KEY_PRICE]]];
+        return [[obj1 objectForKey:DICTIONARY_KEY_PRICE] compare:[obj2 objectForKey:DICTIONARY_KEY_PRICE]];
     }];
     
     CGFloat minY = [[[sortedYCoordinates firstObject] objectForKey:DICTIONARY_KEY_PRICE] floatValue];

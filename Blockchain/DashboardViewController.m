@@ -158,6 +158,11 @@
     
     NSString *quote = [NSNumberFormatter localCurrencyCode];
     
+    if (!quote) {
+        [self showError:BC_STRING_ERROR_CHARTS];
+        return;
+    }
+    
     NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], STRING_SCALE_SECONDS_IN_A_DAY]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
@@ -194,22 +199,18 @@
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    firstLabel.text = @"test";
     firstLabel.center = CGPointMake(labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
     [labelContainerView addSubview:firstLabel];
     
     UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    secondLabel.text = @"test";
     secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2 - labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
     [labelContainerView addSubview:secondLabel];
     
     UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    thirdLabel.text = @"test";
     thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2 + labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
     [labelContainerView addSubview:thirdLabel];
     
     UILabel *fourthLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    fourthLabel.text = @"test";
     fourthLabel.center = CGPointMake(labelContainerView.frame.size.width*7/8, labelContainerView.frame.size.height/2);
     [labelContainerView addSubview:fourthLabel];
     
@@ -227,22 +228,18 @@
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    firstLabel.text = @"test";
     firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height*7/8);
     [labelContainerView addSubview:firstLabel];
     
     UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    secondLabel.text = @"test";
     secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 + labelContainerView.frame.size.height/8);
     [labelContainerView addSubview:secondLabel];
 
     UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    thirdLabel.text = @"test";
     thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 - labelContainerView.frame.size.height/8);
     [labelContainerView addSubview:thirdLabel];
 
     UILabel *fourthLabel = [self axisLabelWithFrame:CGRectMake(0, labelContainerView.frame.size.height/8, 60, labelContainerView.frame.size.height)];
-    fourthLabel.text = @"test";
     fourthLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/8);
     [labelContainerView addSubview:fourthLabel];
     
