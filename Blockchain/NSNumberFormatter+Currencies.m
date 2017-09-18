@@ -119,7 +119,7 @@
 
 + (NSString *)formatEth:(NSDecimalNumber *)ethAmount
 {
-    return [NSString stringWithFormat:@"%@ %@", ethAmount, CURRENCY_SYMBOL_ETH];
+    return [NSString stringWithFormat:@"%@ %@", ethAmount ? : @"0", CURRENCY_SYMBOL_ETH];
 }
 
 + (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
