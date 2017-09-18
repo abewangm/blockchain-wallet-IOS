@@ -367,7 +367,7 @@
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!app.pinEntryViewController)
-        [self presentViewController:alert animated:YES completion:nil];
+        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
     });
 }
 
