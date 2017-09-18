@@ -1794,7 +1794,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFailToImportPrivateKey:(NSString *)error
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self.tabControllerManager.receiveViewController name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self.tabControllerManager.receiveBitcoinViewController name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
     
     [self hideBusyView];
     self.wallet.isSyncing = NO;

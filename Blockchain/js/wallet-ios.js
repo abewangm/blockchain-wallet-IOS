@@ -35,7 +35,7 @@ NativeEthSocket.prototype.onMessage = function (msg) {
 NativeEthSocket.prototype.subscribeToAccount = function (account) {
   var accountMsg = EthSocket.accountSub(account)
   objc_eth_socket_send(accountMsg)
-  var handler = EthSocket.accountMessageHandler(ethWallet)
+  var handler = EthSocket.accountMessageHandler(account)
   this.handlers.push(handler)
 }
 
@@ -2450,7 +2450,22 @@ MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
 }
 
 MyWalletPhone.getEtherAddress = function() {
-    return MyWallet.wallet.eth.accounts[0].address;
+    
+    var eth = MyWallet.wallet.eth;
+    
+    if (eth.accounts.length > 0) {
+        return eth.accounts[0].address;
+    } else {
+        if (MyWallet.wallet.isDoubleEncrypted) {
+            MyWalletPhone.getSecondPassword(function (pw) {
+               eth.createAccount(void 0, pw);
+               return eth.accounts[0].address;
+            });
+        } else {
+            eth.createAccount(void 0);
+            return eth.accounts[0].address;
+        }
+    }
 }
 
 MyWalletPhone.sweepEtherPayment = function() {

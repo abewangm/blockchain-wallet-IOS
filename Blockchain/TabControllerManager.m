@@ -46,7 +46,8 @@
     [_sendEtherViewController reload];
     [_transactionsBitcoinViewController reload];
     [_transactionsEtherViewController reload];
-    [_receiveViewController reload];
+    [_receiveBitcoinViewController reload];
+    [_receiveEtherViewController reload];
 }
 
 - (void)reloadAfterMultiAddressResponse
@@ -54,7 +55,8 @@
     [_dashboardViewController reload];
     [_sendBitcoinViewController reloadAfterMultiAddressResponse];
     [_transactionsBitcoinViewController reload];
-    [_receiveViewController reload];
+    [_receiveBitcoinViewController reload];
+    [_receiveEtherViewController reload];
 }
 
 - (void)reloadMessageViews
@@ -67,12 +69,13 @@
 - (void)logout
 {
     [self updateTransactionsViewControllerData:nil];
-    [_receiveViewController clearAmounts];
+    [_receiveBitcoinViewController clearAmounts];
 }
 
 - (void)forgetWallet
 {
-    self.receiveViewController = nil;
+    self.receiveBitcoinViewController = nil;
+    self.receiveEtherViewController = nil;
     [_transactionsBitcoinViewController setData:nil];
 }
 
@@ -118,8 +121,8 @@
         _sendBitcoinViewController = [[SendBitcoinViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
     }
     
-    if (_receiveViewController) {
-        [_receiveViewController hideKeyboard];
+    if (_receiveBitcoinViewController) {
+        [_receiveBitcoinViewController hideKeyboard];
     }
     
     [_sendBitcoinViewController QRCodebuttonClicked:nil];
@@ -222,7 +225,7 @@
 {
     [_transactionsBitcoinViewController didReceiveTransactionMessage];
     
-    [_receiveViewController storeRequestedAmount];
+    [_receiveBitcoinViewController storeRequestedAmount];
 }
 
 #pragma mark - Eth Send
@@ -257,11 +260,11 @@
 - (void)showReceive
 {
     if (self.assetType == AssetTypeBitcoin) {
-        if (!_receiveViewController) {
-            _receiveViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
+        if (!_receiveBitcoinViewController) {
+            _receiveBitcoinViewController = [[ReceiveCoinsViewController alloc] initWithNibName:NIB_NAME_RECEIVE_COINS bundle:[NSBundle mainBundle]];
         }
         
-        [_tabViewController setActiveViewController:_receiveViewController animated:TRUE index:TAB_RECEIVE];
+        [_tabViewController setActiveViewController:_receiveBitcoinViewController animated:TRUE index:TAB_RECEIVE];
     } else if (self.assetType == AssetTypeEther) {
         if (!_receiveEtherViewController) {
             _receiveEtherViewController = [[ReceiveEtherViewController alloc] init];
@@ -273,17 +276,17 @@
 
 - (void)clearReceiveAmounts
 {
-    [self.receiveViewController clearAmounts];
+    [self.receiveBitcoinViewController clearAmounts];
 }
 
 - (void)didSetDefaultAccount
 {
-    [self.receiveViewController reloadMainAddress];
+    [self.receiveBitcoinViewController reloadMainAddress];
 }
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
 {
-    [_receiveViewController paymentReceived:amount showBackupReminder:showBackupReminder];
+    [_receiveBitcoinViewController paymentReceived:amount showBackupReminder:showBackupReminder];
 }
 
 - (NSDecimalNumber *)lastEthExchangeRate
@@ -327,7 +330,7 @@
 - (void)didChangeLocalCurrency
 {
     [self.sendBitcoinViewController reloadFeeAmountLabel];
-    [self.receiveViewController doCurrencyConversion];
+    [self.receiveBitcoinViewController doCurrencyConversion];
 }
 
 - (void)setupBitcoinPaymentFromURLHandlerWithAmountString:(NSString *)amountString address:(NSString *)address
@@ -348,7 +351,7 @@
     [_transactionsBitcoinViewController changeFilterLabel:filterLabel];
     
     [_sendBitcoinViewController resetFromAddress];
-    [_receiveViewController reloadMainAddress];
+    [_receiveBitcoinViewController reloadMainAddress];
 }
 
 - (NSInteger)getFilterIndex
@@ -448,8 +451,8 @@
     }
     
     // Dismiss receiveCoinsViewController keyboard
-    if (_receiveViewController) {
-        [_receiveViewController hideKeyboardForced];
+    if (_receiveBitcoinViewController) {
+        [_receiveBitcoinViewController hideKeyboardForced];
     }
 }
 

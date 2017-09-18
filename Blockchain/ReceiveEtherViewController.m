@@ -70,6 +70,11 @@
     self.addressLabel = addressLabel;
 }
 
+- (void)reload
+{
+    self.addressLabel.text = self.address;
+}
+
 - (QRCodeGenerator *)qrCodeGenerator
 {
     if (!_qrCodeGenerator) {

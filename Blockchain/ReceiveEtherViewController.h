@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ReceiveEtherViewController : UIViewController
-
+- (void)reload;
 @end

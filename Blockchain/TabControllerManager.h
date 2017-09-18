@@ -31,7 +31,7 @@
 
 @property (strong, nonatomic) DashboardViewController *dashboardViewController;
 @property (strong, nonatomic) TransactionsBitcoinViewController *transactionsBitcoinViewController;
-@property (strong, nonatomic) ReceiveCoinsViewController *receiveViewController;
+@property (strong, nonatomic) ReceiveCoinsViewController *receiveBitcoinViewController;
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
 
 @property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
