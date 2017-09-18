@@ -19,6 +19,7 @@
 #import "BCPriceGraphView.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
+#import "RootService.h"
 
 @interface CardsViewController ()
 @property (nonatomic) UIScrollView *scrollView;
@@ -162,14 +163,18 @@
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             DLog(@"Error getting chart data - %@", [error localizedDescription]);
+            [self showError:[error localizedDescription]];
         } else {
             NSError *jsonError;
             NSArray *values = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.graphView setGraphValues:values];
-                [self updateAxisLabelsWithGraphValues:values];
-            });
+            if (jsonError || !values) {
+                [self showError:BC_STRING_ERROR_CHARTS];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.graphView setGraphValues:values];
+                    [self updateAxisLabelsWithGraphValues:values];
+                });
+            }
         }
     }];
     
@@ -353,6 +358,16 @@
     [button setAttributedTitle:attrSelected forState:UIControlStateSelected];
     [button addTarget:self action:@selector(timeSpanButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     return button;
+}
+
+- (void)showError:(NSString *)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!app.pinEntryViewController)
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 #pragma mark - Text Helpers
