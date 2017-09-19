@@ -2284,6 +2284,15 @@
     return [self.context evaluateScript:command];
 }
 
+- (BOOL)isWaitingOnEtherTransaction
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.isWaitingOnTransaction()"] toBool];
+    }
+    
+    return NO;
+}
+
 #pragma mark - Contacts
 
 - (void)loadContacts

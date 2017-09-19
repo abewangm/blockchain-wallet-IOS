@@ -49,6 +49,8 @@
 #define BC_STRING_SUCCESS NSLocalizedString(@"Success", nil)
 #define BC_STRING_PAYMENT_SENT NSLocalizedString(@"Payment Sent!", nil)
 #define BC_STRING_PAYMENT_SENT_ETHER NSLocalizedString(@"Payment Sent! Your balance and transactions will update soon.", nil)
+#define BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_TITLE NSLocalizedString(@"Waiting for payment", nil)
+#define BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE NSLocalizedString(@"Please wait until your last ether transaction confirms.", nil)
 #define BC_STRING_PAYMENTS_SENT NSLocalizedString(@"Payments Sent", nil)
 #define BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT NSLocalizedString(@"Transferred funds from %d %@", nil)
 #define BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL NSLocalizedString(@"Transferred funds from %d %@. Outputs for %d %@ were too small.", nil)

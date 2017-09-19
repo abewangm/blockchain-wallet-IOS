@@ -2412,6 +2412,7 @@ MyWalletPhone.sendEtherPaymentWithNote = function(note) {
     var eth = MyWallet.wallet.eth;
 
     var success = function(tx) {
+        MyWalletPhone.recordLastTransaction(tx.txHash);
         eth.setTxNote(tx.txHash, note);
         console.log('Send ether success');
         objc_on_send_ether_payment_success();
@@ -2471,4 +2472,17 @@ MyWalletPhone.getEtherAddress = function() {
 MyWalletPhone.sweepEtherPayment = function() {
     currentEtherPayment.setSweep();
     MyWalletPhone.updateEtherPayment(true);
+}
+
+MyWalletPhone.recordLastTransaction = function(hash) {
+    MyWallet.wallet.eth.setLastTx(hash);
+}
+
+MyWalletPhone.isWaitingOnTransaction = function() {
+    
+    var eth = MyWallet.wallet.eth;
+
+    return null != eth.lastTx && null == eth.txs.find(function(tx) {
+       return tx.hash === eth.lastTx;
+    });
 }

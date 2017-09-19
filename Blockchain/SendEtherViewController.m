@@ -135,6 +135,10 @@
 
 - (void)reload
 {
+    if ([self checkIfWaitingOnEtherTransaction]) {
+        return;
+    }
+    
     [app.wallet createNewEtherPayment];
     
     [app.wallet getEthExchangeRate];
@@ -303,6 +307,8 @@
 
 - (void)reallyDoPayment
 {
+    if ([self checkIfWaitingOnEtherTransaction]) return;
+    
     UIView *sendView = [[UIView alloc] initWithFrame:self.view.frame];
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 60, 20, 20)];
@@ -322,6 +328,19 @@
     [app showModalWithContent:sendView closeType:ModalCloseTypeNone headerText:BC_STRING_SENDING_TRANSACTION];
     
     [app.wallet sendEtherPaymentWithNote:self.noteToSet];
+}
+
+- (BOOL)checkIfWaitingOnEtherTransaction
+{
+    BOOL isWaiting = [app.wallet isWaitingOnEtherTransaction];
+    
+    if (isWaiting) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_TITLE message:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.view.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+    }
+    
+    return isWaiting;
 }
 
 #pragma mark - Text Field Delegate
