@@ -904,20 +904,16 @@
     [self login];
 }
 
-- (SRWebSocket *)ethSocket
-{
-    if (!_ethSocket) {
-        _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeEther]];
-        _ethSocket.delegate = self;
-    }
-    
-    return _ethSocket;
-}
-
 - (NSMutableArray *)pendingEthSocketMessages
 {
     if (!_pendingEthSocketMessages) _pendingEthSocketMessages = [NSMutableArray new];
     return _pendingEthSocketMessages;
+}
+
+- (void)setupEthSocket
+{
+    _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeEther]];
+    _ethSocket.delegate = self;
 }
 
 - (void)setupWebSocket
@@ -3059,6 +3055,8 @@
         [self setupWebSocket];
     }
     
+    [self setupEthSocket];
+    
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
     
@@ -4074,7 +4072,7 @@
 
 - (void)eth_socket_send:(NSString *)message
 {
-    if (self.ethSocket && self.ethSocket.readyState == 1) {
+    if (self.ethSocket && self.ethSocket.readyState == SR_OPEN) {
         DLog(@"Sending eth socket message %@", message);
         [self sendEthSocketMessage:message];
     } else {

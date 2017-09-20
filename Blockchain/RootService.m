@@ -378,6 +378,7 @@ void (^secondPasswordSuccess)(NSString *);
     [self setupBuyWebView];
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
+    [self.wallet.ethSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     
     if (hasGuidAndSharedKey) {
         [SessionManager resetSessionWithCompletionHandler:^{
@@ -1666,6 +1667,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self reload];
     
+    [self.wallet.ethSocket closeWithCode:WEBSOCKET_CODE_LOGGED_OUT reason:WEBSOCKET_CLOSE_REASON_LOGGED_OUT];
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_LOGGED_OUT reason:WEBSOCKET_CLOSE_REASON_LOGGED_OUT];
 }
 
