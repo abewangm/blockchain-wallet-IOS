@@ -64,9 +64,16 @@
     tableViewController.tableView = self.tableView;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
-                       action:@selector(loadTransactions)
+                       action:@selector(getHistory)
              forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
+}
+
+- (void)getHistory
+{
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    
+    [app.wallet performSelector:@selector(getEthHistory) withObject:nil afterDelay:0.1f];
 }
 
 - (void)loadTransactions

@@ -2433,6 +2433,8 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)didFetchEthHistory
 {
+    [self hideBusyView];
+    
     [self reload];
 }
 
