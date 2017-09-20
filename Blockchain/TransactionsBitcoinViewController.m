@@ -212,11 +212,15 @@ int lastNumberTransactions = INT_MAX;
 
 - (CGFloat)tableView:(UITableView *)_tableView heightForHeaderInSection:(NSInteger)section
 {
+#ifdef ENABLE_CONTACTS
     return self.noTransactionsView.hidden ? 30 : 0;
+#endif
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)_tableView viewForHeaderInSection:(NSInteger)section
 {
+#ifdef ENABLE_CONTACTS
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
@@ -239,6 +243,8 @@ int lastNumberTransactions = INT_MAX;
     label.text = [labelString uppercaseString];
     
     return view;
+#endif
+    return nil;
 }
 
 - (void)drawRect:(CGRect)rect
