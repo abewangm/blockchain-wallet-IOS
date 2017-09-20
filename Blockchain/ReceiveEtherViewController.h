@@ -10,4 +10,5 @@
 
 @interface ReceiveEtherViewController : UIViewController
 - (void)reload;
+- (void)showEtherAddress;
 @end

@@ -1351,11 +1351,11 @@ MyWalletPhone.getPrivateKeyPassword = function(callback) {
     });
 };
 
-MyWalletPhone.getSecondPassword = function(callback) {
+MyWalletPhone.getSecondPassword = function(callback, helperText) {
     // Due to the way the JSBridge handles calls with success/error callbacks, we need a first argument that can be ignored
     objc_get_second_password(function(pw) {
         callback(pw);
-    });
+    }, helperText);
 };
 
 
@@ -2450,21 +2450,21 @@ MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
     ethSocketInstance.onMessage(msg);
 }
 
-MyWalletPhone.getEtherAddress = function() {
+MyWalletPhone.getEtherAddress = function(helperText) {
     
     var eth = MyWallet.wallet.eth;
     
-    if (eth.accounts.length > 0) {
-        return eth.accounts[0].address;
+    if (eth && eth.defaultAccount) {
+        return eth.defaultAccount.address;
     } else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             MyWalletPhone.getSecondPassword(function (pw) {
                eth.createAccount(void 0, pw);
-               return eth.accounts[0].address;
-            });
+               objc_did_get_ether_address_with_second_password();
+            }, helperText);
         } else {
             eth.createAccount(void 0);
-            return eth.accounts[0].address;
+            return eth.defaultAccount.address;
         }
     }
 }

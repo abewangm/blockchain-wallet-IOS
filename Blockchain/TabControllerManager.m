@@ -271,7 +271,13 @@
         }
         
         [_tabViewController setActiveViewController:_receiveEtherViewController animated:TRUE index:TAB_RECEIVE];
+        [_receiveEtherViewController showEtherAddress];
     }
+}
+
+- (void)didGetEtherAddressWithSecondPassword
+{
+    [_receiveEtherViewController showEtherAddress];
 }
 
 - (void)clearReceiveAmounts

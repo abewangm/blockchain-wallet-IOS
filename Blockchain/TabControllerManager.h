@@ -90,6 +90,7 @@
 - (void)didErrorDuringEtherSend:(NSString *)error;
 
 // Receive View Controller
+- (void)didGetEtherAddressWithSecondPassword;
 - (void)clearReceiveAmounts;
 - (void)didSetDefaultAccount;
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;

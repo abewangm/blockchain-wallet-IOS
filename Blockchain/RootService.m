@@ -1349,9 +1349,9 @@ void (^secondPasswordSuccess)(NSString *);
     secondPasswordTextField.text = nil;
 }
 
-- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error
+- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error helperText:(NSString *)helperText
 {
-    secondPasswordDescriptionLabel.text = BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD;
+    secondPasswordDescriptionLabel.text = helperText ? : BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD;
     
     validateSecondPassword = TRUE;
     
@@ -2454,6 +2454,11 @@ void (^secondPasswordSuccess)(NSString *);
 - (void)didErrorDuringEtherSend:(NSString *)error
 {
     [self.tabControllerManager didErrorDuringEtherSend:error];
+}
+
+- (void)didGetEtherAddressWithSecondPassword
+{
+    [self.tabControllerManager didGetEtherAddressWithSecondPassword];
 }
 
 #pragma mark - Show Screens

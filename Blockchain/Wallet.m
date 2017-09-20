@@ -484,8 +484,8 @@
         [weakSelf on_pin_code_put_response:response];
     };
     
-    self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword) {
-        [weakSelf getSecondPassword:nil success:secondPassword error:nil];
+    self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword, JSValue *helperText) {
+        [weakSelf getSecondPassword:nil success:secondPassword error:nil helperText:[helperText toString]];
     };
     
     self.context[@"objc_get_private_key_password"] = ^(JSValue *privateKeyPassword) {
@@ -889,6 +889,10 @@
     
     self.context[@"objc_on_send_ether_payment_error"] = ^(JSValue *error) {
         [weakSelf on_send_ether_payment_error:error];
+    };
+    
+    self.context[@"objc_did_get_ether_address_with_second_password"] = ^() {
+        [weakSelf did_get_ether_address_with_second_password];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -2606,7 +2610,8 @@
 - (NSString *)getEtherAddress
 {
     if ([self isInitialized]) {
-        JSValue *result = [self.context evaluateScript:@"MyWalletPhone.getEtherAddress()"];
+        NSString *setupHelperText = BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT;
+        JSValue *result = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getEtherAddress(\"%@\")", [setupHelperText escapeStringForJS]]];
         if ([result isUndefined]) return nil;
         NSString *etherAddress = [result toString];
         return etherAddress;
@@ -2945,11 +2950,11 @@
     } error:_error];
 }
 
-- (void)getSecondPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
+- (void)getSecondPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error helperText:(NSString *)helperText
 {
     [app getSecondPassword:^(NSString *secondPassword) {
         [success callWithArguments:@[secondPassword]];
-    } error:_error];
+    } error:_error helperText:(NSString *)helperText];
 }
 
 - (void)setLoadingText:(NSString*)message
@@ -4101,6 +4106,15 @@
         [self.delegate didErrorDuringEtherSend:[error toString]];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didErrorDuringEtherSend!", [delegate class]);
+    }
+}
+
+- (void)did_get_ether_address_with_second_password
+{
+    if ([self.delegate respondsToSelector:@selector(didGetEtherAddressWithSecondPassword)]) {
+        [self.delegate didGetEtherAddressWithSecondPassword];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
     }
 }
 

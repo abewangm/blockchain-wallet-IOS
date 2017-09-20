@@ -135,6 +135,7 @@
 - (void)didFetchEthExchangeRate:(NSNumber *)rate;
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
+- (void)didGetEtherAddressWithSecondPassword;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {

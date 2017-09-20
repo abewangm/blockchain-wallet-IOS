@@ -14,7 +14,9 @@
 
 @interface ReceiveEtherViewController ()
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
+@property (nonatomic) UIImageView *qrCodeImageView;
 @property (nonatomic) UILabel *addressLabel;
+@property (nonatomic) UILabel *instructionsLabel;
 @property (nonatomic) NSString *address;
 @end
 
@@ -23,9 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSString *etherAddress = [app.wallet getEtherAddress];
-    self.address = etherAddress;
     
     CGFloat statusBarAdjustment = [[UIApplication sharedApplication] statusBarFrame].size.height > DEFAULT_STATUS_BAR_HEIGHT ? DEFAULT_STATUS_BAR_HEIGHT : 0;
 
@@ -37,13 +36,13 @@
     
     UIImageView *qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 120 - 12, imageWidth, imageWidth)];
     qrCodeImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height/2);
-    qrCodeImageView.image = [self.qrCodeGenerator createQRImageFromString:etherAddress];
     [self.view addSubview:qrCodeImageView];
     
     UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked)];
     [qrCodeImageView addGestureRecognizer:tapMainQRGestureRecognizer];
     qrCodeImageView.userInteractionEnabled = YES;
-    
+    self.qrCodeImageView = qrCodeImageView;
+
     UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 0)];
     instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
     instructionsLabel.textAlignment = NSTextAlignmentCenter;
@@ -54,12 +53,12 @@
     [instructionsLabel changeYPosition:qrCodeImageView.frame.origin.y - instructionsLabel.frame.size.height - 8];
     instructionsLabel.center = CGPointMake(self.view.center.x, instructionsLabel.center.y);
     [self.view addSubview:instructionsLabel];
+    self.instructionsLabel = instructionsLabel;
     
     UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 40)];
     addressLabel.textColor = COLOR_TEXT_DARK_GRAY;
     addressLabel.textAlignment = NSTextAlignmentCenter;
     addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
-    addressLabel.text = etherAddress;
     [addressLabel changeYPosition:qrCodeImageView.frame.origin.y + qrCodeImageView.frame.size.height];
     addressLabel.center = CGPointMake(self.view.center.x, addressLabel.center.y);
     [self.view addSubview:addressLabel];
@@ -72,7 +71,17 @@
 
 - (void)reload
 {
+    [self showEtherAddress];
+}
+
+- (void)showEtherAddress
+{
+    NSString *etherAddress = [app.wallet getEtherAddress];
+    self.instructionsLabel.hidden = etherAddress == nil;
+    self.address = etherAddress;
     self.addressLabel.text = self.address;
+    
+    self.qrCodeImageView.image = [self.qrCodeGenerator createQRImageFromString:self.address];
 }
 
 - (QRCodeGenerator *)qrCodeGenerator

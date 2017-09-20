@@ -170,7 +170,7 @@
 - (void)hideBusyView;
 
 // Request Second Password From User
-- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
+- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error helperText:(NSString *)helperText;
 - (void)getPrivateKeyPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
 
 - (void)reload;
