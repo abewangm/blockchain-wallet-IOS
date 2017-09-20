@@ -813,7 +813,9 @@
 #define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_TITLE NSLocalizedString(@"Contract addresses are not supported.", nil)
 #define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_MESSAGE NSLocalizedString(@"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP.", nil)
 #define BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT NSLocalizedString(@"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet.", nil)
+#define BC_STRING_RECEIVE_ETHER_REENTER_SECOND_PASSWORD_INSTRUCTIONS NSLocalizedString(@"Tap the Request tab to setup your ether address.", nil)
 
 #define BC_STRING_NOW_SUPPORTING_ETHER_TITLE NSLocalizedString(@"Now supporting Ether", nil)
 #define BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION NSLocalizedString(@"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!", nil)
 #define BC_STRING_GET_STARTED_WITH_ETHER NSLocalizedString(@"Get Started with Ether", nil)
+

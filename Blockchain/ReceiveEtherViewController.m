@@ -77,7 +77,7 @@
 - (void)showEtherAddress
 {
     NSString *etherAddress = [app.wallet getEtherAddress];
-    self.instructionsLabel.hidden = etherAddress == nil;
+    self.instructionsLabel.text = etherAddress == nil ? BC_STRING_RECEIVE_ETHER_REENTER_SECOND_PASSWORD_INSTRUCTIONS : BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
     self.address = etherAddress;
     self.addressLabel.text = self.address;
     
