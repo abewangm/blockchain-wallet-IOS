@@ -396,6 +396,7 @@
     }
     
     self.toField.text = address;
+    self.toAddress = address;
     
     [self checkIfEtherContractAddress:address successHandler:nil];
 }
