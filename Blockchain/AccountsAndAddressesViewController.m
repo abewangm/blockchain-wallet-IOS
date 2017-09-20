@@ -44,7 +44,7 @@
 {
     [super viewWillAppear:animated];
     AccountsAndAddressesNavigationController *navigationController = (AccountsAndAddressesNavigationController *)self.navigationController;
-    navigationController.headerLabel.text = BC_STRING_ADDRESSES;
+    navigationController.headerLabel.text = BC_STRING_BITCOIN_ADDRESSES;
     
     if (IS_USING_SCREEN_SIZE_4S) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
