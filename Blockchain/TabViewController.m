@@ -84,7 +84,7 @@
         [animation setType:kCATransitionPush];
         [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
         
-        if (newIndex > selectedIndex)
+        if (newIndex > selectedIndex || (newIndex == selectedIndex && self.assetSegmentedControl.selectedSegmentIndex == AssetTypeEther))
             [animation setSubtype:kCATransitionFromRight];
         else
             [animation setSubtype:kCATransitionFromLeft];
