@@ -54,9 +54,9 @@
             actionName = BC_STRING_BUY_BITCOIN;
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
             titleColor = actionColor;
-        } else if (actionType == ActionTypeBuyBitcoinAvailableNow) {
-            actionName = BC_STRING_BUY_BITCOIN;
-            actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        } else if (actionType == ActionTypeBuyEther) {
+            actionName = BC_STRING_GET_STARTED_WITH_ETHER;
+            actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = COLOR_BLOCKCHAIN_BLUE;
         }
         

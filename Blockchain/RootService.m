@@ -347,13 +347,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     BOOL hasGuidAndSharedKey = [KeychainItemWrapper guid] && [KeychainItemWrapper sharedKey];
     
-    BOOL hasTransactions;
-    BOOL hideBuyNotificationCardUntilTransactionsExist = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
-    
     if ([wallet isInitialized]) {
-        
-        if (hideBuyNotificationCardUntilTransactionsExist) hasTransactions = [app.wallet getTotalActiveBalance] > 0 || app.latestResponse.transactions.count > 0;
-        
+                
         if (hasGuidAndSharedKey) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
         
         [self beginBackgroundUpdateTask];
@@ -370,11 +365,6 @@ void (^secondPasswordSuccess)(NSString *);
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
     }
     
-    if (hideBuyNotificationCardUntilTransactionsExist && hasTransactions) {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
-    }
-
     [self setupBuyWebView];
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
@@ -513,7 +503,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
 }
 
 #pragma mark - Setup
@@ -1714,7 +1704,6 @@ void (^secondPasswordSuccess)(NSString *);
     
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self transitionToIndex:1];

@@ -55,6 +55,8 @@
 - (void)transactionsClicked:(UITabBarItem *)sender;
 - (void)sendCoinsClicked:(UITabBarItem *)sender;
 
+- (void)showReceiveEther;
+
 // Send Bitcoin View Controller
 - (BOOL)isSending;
 - (void)showSendCoins;

@@ -506,6 +506,18 @@
     [self showReceive];
 }
 
+- (void)showReceiveEther
+{
+    _tabViewController.assetSegmentedControl.selectedSegmentIndex = AssetTypeEther;
+    
+    if (!_receiveEtherViewController) {
+        _receiveEtherViewController = [[ReceiveEtherViewController alloc] init];
+    }
+    
+    [_tabViewController setActiveViewController:_receiveEtherViewController animated:TRUE index:TAB_RECEIVE];
+    [_receiveEtherViewController showEtherAddress];
+}
+
 - (void)transactionsClicked:(UITabBarItem *)sender
 {
     [self showTransactions];

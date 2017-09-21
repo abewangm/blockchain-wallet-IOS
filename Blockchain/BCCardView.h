@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, CardConfiguration){
 };
 
 enum {
-    ActionTypeBuyBitcoinAvailableNow,
+    ActionTypeBuyEther,
     ActionTypeBuyBitcoin,
     ActionTypeShowReceive,
     ActionTypeScanQR,

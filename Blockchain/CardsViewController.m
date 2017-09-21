@@ -18,7 +18,7 @@
 
 // Onboarding cards
 @property (nonatomic) BOOL showCards;
-@property (nonatomic) BOOL showBuyAvailableNow;
+@property (nonatomic) BOOL showEther;
 @property (nonatomic) CGFloat cardsViewHeight;
 @property (nonatomic) UIScrollView *cardsScrollView;
 @property (nonatomic) UIView *cardsView;
@@ -48,19 +48,19 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showBuyAvailableNow = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD] && [app.wallet isBuyEnabled];
+    self.showEther = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
     
-    self.cardsViewHeight = self.showBuyAvailableNow ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
+    self.cardsViewHeight = self.showEther ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
     if (self.showCards && app.latestResponse.symbol_local) {
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
-    } else if (self.showBuyAvailableNow) {
+    } else if (self.showEther) {
         [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
     } else if (app.latestResponse.symbol_local) {
         [self removeCardsView];
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showBuyAvailableNow || self.showCards ? self.cardsViewHeight : 0));
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showEther || self.showCards ? self.cardsViewHeight : 0));
 }
 
 - (void)setupCardsViewWithConfiguration:(CardConfiguration)configuration
@@ -74,7 +74,7 @@
     if (configuration == CardConfigurationWelcome) {
         self.cardsView = [self configureCardsViewWelcome:cardsView];
     } else if (configuration == CardConfigurationBuyAvailableNow) {
-        self.cardsView = [self configureCardsViewBuyAvailableNow:cardsView];
+        self.cardsView = [self configureCardsViewEther:cardsView];
     }
     
     [self.scrollView addSubview:self.cardsView];
@@ -84,17 +84,17 @@
 
 #pragma mark - New Wallet Cards
 
-- (UIView *)configureCardsViewBuyAvailableNow:(UIView *)cardsView
+- (UIView *)configureCardsViewEther:(UIView *)cardsView
 {
-    BCCardView *buyAvailableNowCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@ %@", [BC_STRING_BUY_AVAILABLE_NOW_TITLE uppercaseString], @"🎉"] description:BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION actionType:ActionTypeBuyBitcoinAvailableNow imageName:@"buy_available" reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *etherCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@", [BC_STRING_NOW_SUPPORTING_ETHER_TITLE uppercaseString]] description:BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION actionType:ActionTypeBuyEther imageName:@"ether_partial" reducedHeightForPageIndicator:NO delegate:self];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(buyAvailableNowCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(etherCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     closeButton.tintColor = COLOR_TEXT_DARK_GRAY;
-    [closeButton addTarget:self action:@selector(closeBuyAvailableNowCard) forControlEvents:UIControlEventTouchUpInside];
-    [buyAvailableNowCard addSubview:closeButton];
+    [closeButton addTarget:self action:@selector(closeEtherAvailableCard) forControlEvents:UIControlEventTouchUpInside];
+    [etherCard addSubview:closeButton];
     
-    [cardsView addSubview:buyAvailableNowCard];
+    [cardsView addSubview:etherCard];
     return cardsView;
 }
 
@@ -237,22 +237,23 @@
     return cardLength * page;
 }
 
-- (void)closeBuyAvailableNowCard
+- (void)closeEtherAvailableCard
 {
     [self closeCardsView];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
 }
 
 - (void)cardActionClicked:(ActionType)actionType
 {
-    if (actionType == ActionTypeBuyBitcoin ||
-        actionType == ActionTypeBuyBitcoinAvailableNow) {
+    if (actionType == ActionTypeBuyBitcoin) {
         [app buyBitcoinClicked:nil];
     } else if (actionType == ActionTypeShowReceive) {
         [app.tabControllerManager receiveCoinClicked:nil];
     } else if (actionType == ActionTypeScanQR) {
         [app QRCodebuttonClicked:nil];
+    } else if (actionType == ActionTypeBuyEther) {
+        [app.tabControllerManager showReceiveEther];
     }
 }
 
