@@ -35,8 +35,10 @@
 @property (nonatomic) NSString *reason;
 @property (nonatomic) NSString *contactName;
 
+@property (nonatomic) NSDecimalNumber *ethExchangeRate;
+
 - (id)initWithTransaction:(Transaction *)transaction;
-- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction;
+- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate;
 - (NSString *)getAmountString;
 - (NSString *)getFeeString;
 @end

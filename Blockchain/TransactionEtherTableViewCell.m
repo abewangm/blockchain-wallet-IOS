@@ -30,7 +30,7 @@
     
     self.ethButton.titleLabel.minimumScaleFactor = 0.75f;
     self.ethButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.ethButton setTitle:self.transaction.amountTruncated forState:UIControlStateNormal];
+    [self.ethButton setTitle:app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:self.transaction.amount exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth: self.transaction.amountTruncated] forState:UIControlStateNormal];
     [self.ethButton addTarget:self action:@selector(ethButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     if ([self.transaction.txType isEqualToString:TX_TYPE_TRANSFER]) {
@@ -51,7 +51,7 @@
 - (void)transactionClicked
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    TransactionDetailViewModel *model = [[TransactionDetailViewModel alloc] initWithEtherTransaction:self.transaction];
+    TransactionDetailViewModel *model = [[TransactionDetailViewModel alloc] initWithEtherTransaction:self.transaction exchangeRate:app.tabControllerManager.latestEthExchangeRate];
     detailViewController.transactionModel = model;
 
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
@@ -59,10 +59,10 @@
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {
-        app.tabControllerManager.transactionsBitcoinViewController.detailViewController = nil;
+        app.tabControllerManager.transactionsEtherViewController.detailViewController = nil;
     };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.tabControllerManager.transactionsBitcoinViewController.detailViewController = detailViewController;
+    app.tabControllerManager.transactionsEtherViewController.detailViewController = detailViewController;
     
     if (app.topViewControllerDelegate) {
         [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
@@ -73,7 +73,7 @@
 
 - (void)ethButtonClicked
 {
-    [self transactionClicked];
+    [app toggleSymbol];
 }
 
 @end

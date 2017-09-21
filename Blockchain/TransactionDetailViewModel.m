@@ -51,7 +51,7 @@
     return self;
 }
 
-- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction
+- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate
 {
     if (self == [super init]) {
         self.assetType = AssetTypeEther;
@@ -67,6 +67,7 @@
         self.dateString = [self getDate];
         self.detailButtonTitle = [[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, HOST_NAME_ETHERSCAN] uppercaseString];
         self.detailButtonLink = [URL_ETHERSCAN stringByAppendingFormat:@"/tx/%@", self.myHash];
+        self.ethExchangeRate = exchangeRate;
     }
     return self;
 }
@@ -87,7 +88,7 @@
     if (self.assetType == AssetTypeBitcoin) {
         return [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(self.amountInSatoshi)];
     } else if (self.assetType == AssetTypeEther) {
-        return self.amountString;
+        return [NSNumberFormatter formatEthWithLocalSymbol:self.amountString exchangeRate:self.ethExchangeRate];
     }
     return nil;
 }
