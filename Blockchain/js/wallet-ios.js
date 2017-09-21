@@ -2328,11 +2328,22 @@ MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 }
 
 MyWalletPhone.getEthBalance = function() {
-    return MyWallet.wallet.eth.defaultAccount.balance;
+    var eth = MyWallet.wallet.eth;
+    
+    if (eth.defaultAccount) {
+        return eth.defaultAccount.balance;
+    } else {
+        return 0;
+    }
 }
 
 MyWalletPhone.getEthTransactions = function() {
-    return MyWalletPhone.convertEthTransactionsToJSON(MyWallet.wallet.eth.defaultAccount.txs);
+    var eth = MyWallet.wallet.eth;
+    if (eth.defaultAccount) {
+        return MyWalletPhone.convertEthTransactionsToJSON(eth.defaultAccount.txs);
+    } else {
+        return {};
+    }
 }
 
 MyWalletPhone.convertEthTransactionsToJSON = function(transactions) {
@@ -2347,7 +2358,6 @@ MyWalletPhone.getEthHistory = function() {
 
     var success = function() {
         console.log('Success fetching eth history')
-        console.log(MyWallet.wallet.eth.defaultAccount.balance);
         objc_on_fetch_eth_history_success();
     };
 
