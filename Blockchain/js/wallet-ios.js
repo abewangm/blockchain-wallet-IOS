@@ -2413,7 +2413,7 @@ MyWalletPhone.sendEtherPaymentWithNote = function(note) {
 
     var success = function(tx) {
         MyWalletPhone.recordLastTransaction(tx.txHash);
-        if (note != null) eth.setTxNote(tx.txHash, note);
+        if (note != '') eth.setTxNote(tx.txHash, note);
         console.log('Send ether success');
         objc_on_send_ether_payment_success();
     }

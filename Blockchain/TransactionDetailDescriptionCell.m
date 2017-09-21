@@ -247,7 +247,7 @@
     if (transactionModel.isContactTransaction) {
         return transactionModel.reason;
     } else {
-        return [transactionModel.note isMemberOfClass:[NSNull class]] ? nil : transactionModel.note;
+        return transactionModel.note;
     }
 }
 

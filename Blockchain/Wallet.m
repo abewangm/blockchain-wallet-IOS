@@ -2599,7 +2599,7 @@
 - (void)sendEtherPaymentWithNote:(NSString *)note
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendEtherPaymentWithNote(\"%@\")", [note escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendEtherPaymentWithNote(\"%@\")", note ? [note escapeStringForJS] : @""]];
     }
 }
 
