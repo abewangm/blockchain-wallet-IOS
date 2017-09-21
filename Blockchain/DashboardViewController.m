@@ -338,7 +338,7 @@
 {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = COLOR_LIGHT_GRAY;
+    label.textColor = COLOR_TEXT_DARK_GRAY;
     label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     return label;
 }
