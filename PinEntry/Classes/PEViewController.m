@@ -120,7 +120,8 @@
     [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
     self.assetSegmentedControl.tintColor = COLOR_BLOCKCHAIN_BLUE;
     self.assetSegmentedControl.frame = CGRectMake(0, 60 - 29 - 16, 304, 29);
-    self.assetSegmentedControl.center = CGPointMake(WINDOW_WIDTH * 1.5, self.assetSegmentedControl.center.y);
+    CGFloat width = WINDOW_WIDTH;
+    self.assetSegmentedControl.center = CGPointMake(width * 1.5, self.assetSegmentedControl.center.y);
     
     id selectedAsset = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_SWIPE_ASSET];
     
