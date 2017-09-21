@@ -155,7 +155,7 @@
             titleLabel.hidden = YES;
             balanceLabel.hidden = NO;
             NSDecimalNumber *btcBalance = [NSNumberFormatter formatSatoshiInLocalCurrency:[app.wallet getTotalActiveBalance]];
-            NSDecimalNumber *ethBalance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate]];
+            NSDecimalNumber *ethBalance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
             NSDecimalNumber *sum = [btcBalance decimalNumberByAdding:ethBalance];
             balanceLabel.text = [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:sum]];
             
