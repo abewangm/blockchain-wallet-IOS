@@ -14,8 +14,5 @@
 @property (nonatomic) UITextField *btcField;
 @property (nonatomic) UITextField *fiatField;
 - (void)hideKeyboard;
-// Input accessory view needs to be configured
-// Text field delegate needs to be configured
-// 
-
+- (void)clearFields;
 @end

@@ -48,6 +48,12 @@
     return self;
 }
 
+- (void)clearFields
+{
+    self.btcField.text = nil;
+    self.fiatField.text = nil;
+}
+
 - (void)hideKeyboard
 {
     [self.btcField resignFirstResponder];

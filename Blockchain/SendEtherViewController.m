@@ -135,9 +135,8 @@
 
 - (void)reload
 {
-    if ([self checkIfWaitingOnEtherTransaction]) {
-        return;
-    }
+    self.toField.text = nil;
+    [self.amountInputView clearFields];
     
     [app.wallet createNewEtherPayment];
     

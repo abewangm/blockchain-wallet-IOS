@@ -237,6 +237,7 @@
 
 - (void)didSendEther
 {
+    [self.sendEtherViewController reload];
     [self.tabViewController didSendEther];
     [self showTransactions];
 }
