@@ -25,6 +25,8 @@
     [self.assetSegmentedControl setTitle:BC_STRING_ETHER forSegmentAtIndex:1];
     [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
     
+    balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
+    
     tabBar.delegate = self;
     
     // Default selected: transactions
@@ -137,6 +139,9 @@
 
 - (void)updateTopBarForIndex:(int)newIndex
 {
+    titleLabel.hidden = NO;
+    balanceLabel.hidden = YES;
+    
     if (newIndex == TAB_SEND || newIndex == TAB_RECEIVE) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [self.assetControlContainer changeYPosition:ASSET_CONTAINER_Y_POSITION_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET];
@@ -146,6 +151,14 @@
         
         if (newIndex == TAB_DASHBOARD) {
             [self showBalances];
+            
+            titleLabel.hidden = YES;
+            balanceLabel.hidden = NO;
+            NSDecimalNumber *btcBalance = [NSNumberFormatter formatSatoshiInLocalCurrency:[app.wallet getTotalActiveBalance]];
+            NSDecimalNumber *ethBalance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate]];
+            NSDecimalNumber *sum = [btcBalance decimalNumberByAdding:ethBalance];
+            balanceLabel.text = [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:sum]];
+            
         } else if (newIndex == TAB_TRANSACTIONS) {
             [self.bannerPricesView removeFromSuperview];
 
@@ -228,6 +241,10 @@
         
         self.bannerPricesView = [[UIView alloc] initWithFrame:bannerView.bounds];
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSymbol)];
+        [self.bannerPricesView addGestureRecognizer:tapGesture];
+        self.bannerPricesView.userInteractionEnabled = YES;
+        
         UIImageView *btcIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, imageViewHeightOffset/2, imageViewWidth, imageViewHeight)];
         btcIcon.contentMode = UIViewContentModeScaleAspectFit;
         btcIcon.image = [UIImage imageNamed:@"bitcoin_white"];
@@ -238,6 +255,7 @@
         btcPriceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_EXTRALIGHT size:FONT_SIZE_SMALL];
         btcPriceLabel.textColor = [UIColor whiteColor];
         btcPriceLabel.text = CURRENCY_SYMBOL_BTC;
+        
         [self.bannerPricesView addSubview:btcPriceLabel];
         self.btcPriceLabel = btcPriceLabel;
         
@@ -250,15 +268,20 @@
         UILabel *ethPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(ethPriceLabelOriginX, 0, bannerView.frame.size.width - ethPriceLabelOriginX, bannerViewHeight)];
         ethPriceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_EXTRALIGHT size:FONT_SIZE_SMALL];
         ethPriceLabel.textColor = [UIColor whiteColor];
+
         [self.bannerPricesView addSubview:ethPriceLabel];
         self.ethPriceLabel = ethPriceLabel;
-        
     }
     
     [bannerView addSubview:self.bannerPricesView];
 
-    self.ethPriceLabel.text = [NSString stringWithFormat:@"%@ %@", [app.wallet getEthBalanceTruncated], CURRENCY_SYMBOL_ETH];
-    self.btcPriceLabel.text = [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:NO];
+    if (app->symbolLocal) {
+        self.ethPriceLabel.text = [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+        self.btcPriceLabel.text = [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:YES];
+    } else {
+        self.ethPriceLabel.text = [NSString stringWithFormat:@"%@ %@", [app.wallet getEthBalanceTruncated], CURRENCY_SYMBOL_ETH];
+        self.btcPriceLabel.text = [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:NO];
+    }
     
     [self.bannerSelectorView removeFromSuperview];
 }
@@ -318,6 +341,11 @@
 - (IBAction)qrCodeButtonClicked:(UIButton *)sender
 {
     [self.assetDelegate qrCodeButtonClicked];
+}
+
+- (void)reloadSymbols
+{
+    [self updateTopBarForIndex:self.selectedIndex];
 }
 
 @end

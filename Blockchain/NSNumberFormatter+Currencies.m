@@ -18,6 +18,15 @@
     return app.latestResponse.symbol_local.code;
 }
 
++ (NSDecimalNumber *)formatSatoshiInLocalCurrency:(uint64_t)value
+{
+    if (app.latestResponse.symbol_local.conversion) {
+        return [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
+    } else {
+        return nil;
+    }
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {

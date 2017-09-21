@@ -23,7 +23,8 @@
 	
     IBOutlet UIView *bannerView;
     IBOutlet UILabel *titleLabel;
-	UIViewController *activeViewController;
+    IBOutlet UILabel *balanceLabel;
+    UIViewController *activeViewController;
 	UIViewController *oldViewController;
     
 	int selectedIndex;
@@ -52,4 +53,5 @@
 - (void)didFetchEthExchangeRate;
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
+- (void)reloadSymbols;
 @end
