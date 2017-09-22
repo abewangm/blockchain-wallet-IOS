@@ -136,7 +136,7 @@
     
     [self reloadCards];
     
-    NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME] ? : GRAPH_TIME_FRAME_WEEK;
     NSDate *today = [NSDate date];
     NSInteger startDate = 0;
     
