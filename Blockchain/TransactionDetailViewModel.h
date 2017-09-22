@@ -39,6 +39,8 @@
 
 @property (nonatomic) NSDecimalNumber *ethExchangeRate;
 
+@property (nonatomic) NSDecimalNumber *decimalAmount;
+
 - (id)initWithTransaction:(Transaction *)transaction;
 - (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress;
 - (NSString *)getAmountString;

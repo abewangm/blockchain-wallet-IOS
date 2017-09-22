@@ -2209,15 +2209,16 @@
     }
 }
 
-- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
+- (void)getFiatAtTime:(uint64_t)time value:(NSDecimalNumber *)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
-    NSURL *URL;
-    
+    NSString *symbol;
     if (assetType == AssetTypeBitcoin) {
-        URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+        symbol = CURRENCY_SYMBOL_BTC;
     } else if (assetType == AssetTypeEther) {
-        URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, CURRENCY_SYMBOL_ETH, currencyCode, time]]];
+        symbol = CURRENCY_SYMBOL_ETH;
     }
+    
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, symbol, currencyCode, time]]];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -2227,10 +2228,13 @@
             } else {
                 NSError *jsonError;
                 NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                if (jsonError) {
-                    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    [self on_get_fiat_at_time_success:result currencyCode:currencyCode assetType:assetType];
-                }
+                if (jsonError) DLog(@"JSON error getting fiat at time: %@", [error localizedDescription]);
+                if ([dictResult objectForKey:DICTIONARY_KEY_ERROR]) return;
+                
+                NSNumber *result = [dictResult objectForKey:DICTIONARY_KEY_PRICE];
+                NSDecimalNumber *amount = [value decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithDecimal:[result decimalValue]]];
+                
+                [self on_get_fiat_at_time_success:amount currencyCode:currencyCode assetType:assetType];
             }
         });
     }];
@@ -3761,7 +3765,7 @@
     [app authorizationRequired];
 }
 
-- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
+- (void)on_get_fiat_at_time_success:(NSNumber *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
     DLog(@"on_get_fiat_at_time_success");
     if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:assetType:)]) {

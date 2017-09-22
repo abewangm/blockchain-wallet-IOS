@@ -1989,7 +1989,7 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
+- (void)didGetFiatAtTime:(NSNumber *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
     BOOL didFindTransaction = NO;
     
@@ -2006,12 +2006,7 @@ void (^secondPasswordSuccess)(NSString *);
 
     for (Transaction *transaction in transactions) {
         if ([transaction.myHash isEqualToString:targetHash]) {
-            NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
-            if (components.count > 1 && [[components lastObject] length] == 1) {
-                fiatAmount = [fiatAmount stringByAppendingString:@"0"];
-            }
-            
-            [transaction.fiatAmountsAtTime setObject:fiatAmount forKey:currencyCode];
+            [transaction.fiatAmountsAtTime setObject:[app.localCurrencyFormatter stringFromNumber:fiatAmount] forKey:currencyCode];
             didFindTransaction = YES;
             break;
         }

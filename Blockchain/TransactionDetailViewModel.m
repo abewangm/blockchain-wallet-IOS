@@ -15,6 +15,7 @@
 @property (nonatomic) NSString *amountString;
 @property (nonatomic) uint64_t feeInSatoshi;
 @property (nonatomic) NSString *feeString;
+@property (nonatomic) NSDecimalNumber *exchangeRate;
 @end
 @implementation TransactionDetailViewModel
 
@@ -40,6 +41,7 @@
         self.replaceByFee = transaction.replaceByFee;
         self.dateString = [self getDate];
         self.myHash = transaction.myHash;
+        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatAmount:imaxabs(self.amountInSatoshi) localCurrency:NO]];
         
         if ([transaction isMemberOfClass:[ContactTransaction class]]) {
             ContactTransaction *contactTransaction = (ContactTransaction *)transaction;
@@ -56,6 +58,7 @@
 - (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress
 {
     if (self == [super init]) {
+        self.exchangeRate = exchangeRate;
         self.assetType = AssetTypeEther;
         self.txType = etherTransaction.txType;
         self.fromString = etherTransaction.from;
@@ -63,6 +66,7 @@
         self.to = @[etherTransaction.to];
         self.toString = etherTransaction.to;
         self.amountString = etherTransaction.amount;
+        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:etherTransaction.amount];
         self.myHash = etherTransaction.myHash;
         self.feeString = etherTransaction.fee;
         self.note = etherTransaction.note;
@@ -73,6 +77,7 @@
         self.ethExchangeRate = exchangeRate;
         self.confirmations = [NSString stringWithFormat:@"%lld/%u", etherTransaction.confirmations, kConfirmationEtherThreshold];
         self.confirmed = etherTransaction.confirmations >= kConfirmationEtherThreshold;
+        self.fiatAmountsAtTime = etherTransaction.fiatAmountsAtTime;
     }
     return self;
 }
@@ -101,11 +106,21 @@
 - (NSString *)getFeeString
 {
     if (self.assetType == AssetTypeBitcoin) {
-        return [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(self.feeInSatoshi)];
+        return [self getBtcFeeString];
     } else if (self.assetType == AssetTypeEther) {
-        return self.amountString;
+        return [self getEthFeeString];
     }
     return nil;
+}
+
+- (NSString *)getBtcFeeString
+{
+    return [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(self.feeInSatoshi)];
+}
+
+- (NSString *)getEthFeeString
+{
+    return [NSNumberFormatter formatEthWithLocalSymbol:self.feeString exchangeRate:self.exchangeRate];
 }
 
 @end

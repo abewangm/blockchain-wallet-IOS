@@ -105,7 +105,7 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)getFiatAtTime
 {
-    [app.wallet getFiatAtTime:self.transactionModel.time * MSEC_PER_SEC value:imaxabs(self.transactionModel.amountInSatoshi) currencyCode:[app.latestResponse.symbol_local.code lowercaseString] assetType:self.transactionModel.assetType];
+    [app.wallet getFiatAtTime:self.transactionModel.time value:self.transactionModel.decimalAmount currencyCode:[app.latestResponse.symbol_local.code lowercaseString] assetType:self.transactionModel.assetType];
     self.isGettingFiatAtTime = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
