@@ -485,7 +485,7 @@
     };
     
     self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword, JSValue *helperText) {
-        [weakSelf getSecondPassword:nil success:secondPassword error:nil helperText:[helperText toString]];
+        [weakSelf getSecondPassword:nil success:secondPassword error:nil helperText:[helperText isUndefined] ? nil :  [helperText toString]];
     };
     
     self.context[@"objc_get_private_key_password"] = ^(JSValue *privateKeyPassword) {
