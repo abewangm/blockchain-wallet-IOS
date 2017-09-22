@@ -20,7 +20,7 @@
 #define BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY NSLocalizedString(@"Some funds cannot be transferred automatically.", nil)
 
 #define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil)
-#define BC_STRING_ENTER_ETHER_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Ether address or select", nil)
+#define BC_STRING_ENTER_ETHER_ADDRESS NSLocalizedString(@"Enter Ether address", nil)
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
 #define BC_STRING_INVALID_TO_BITCOIN_ADDRESS NSLocalizedString(@"Invalid to bitcoin address", nil)
 #define BC_STRING_FROM_TO_DIFFERENT NSLocalizedString(@"From and destination have to be different", nil)
