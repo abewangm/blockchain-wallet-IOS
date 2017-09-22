@@ -32,7 +32,8 @@
         self.txType = transaction.txType;
         self.time = transaction.time;
         self.note = transaction.note;
-        self.confirmations = transaction.confirmations;
+        self.confirmations = [NSString stringWithFormat:@"%u/%u", transaction.confirmations, kConfirmationBitcoinThreshold];
+        self.confirmed = transaction.confirmations >= kConfirmationBitcoinThreshold;
         self.fiatAmountsAtTime = transaction.fiatAmountsAtTime;
         self.doubleSpend = transaction.doubleSpend;
         self.replaceByFee = transaction.replaceByFee;
@@ -68,6 +69,8 @@
         self.detailButtonTitle = [[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, HOST_NAME_ETHERSCAN] uppercaseString];
         self.detailButtonLink = [URL_ETHERSCAN stringByAppendingFormat:@"/tx/%@", self.myHash];
         self.ethExchangeRate = exchangeRate;
+        self.confirmations = [NSString stringWithFormat:@"%lld/%u", etherTransaction.confirmations, kConfirmationEtherThreshold];
+        self.confirmed = etherTransaction.confirmations >= kConfirmationEtherThreshold;
     }
     return self;
 }

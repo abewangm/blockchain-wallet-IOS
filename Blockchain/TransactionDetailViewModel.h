@@ -29,7 +29,8 @@
 @property (nonatomic) NSMutableDictionary *fiatAmountsAtTime;
 @property (nonatomic) BOOL doubleSpend;
 @property (nonatomic) BOOL replaceByFee;
-@property (nonatomic) uint32_t confirmations;
+@property (nonatomic) NSString *confirmations;
+@property (nonatomic) BOOL confirmed;
 
 @property (nonatomic) BOOL isContactTransaction;
 @property (nonatomic) NSString *reason;

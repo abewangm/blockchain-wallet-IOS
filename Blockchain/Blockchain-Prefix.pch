@@ -809,7 +809,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
-#define kConfirmationThreshold 3
+#define kConfirmationBitcoinThreshold 3
+#define kConfirmationEtherThreshold 12
 
 #define CORNER_RADIUS_BUTTON 4
 

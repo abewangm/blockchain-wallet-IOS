@@ -28,6 +28,14 @@
         self.dateLabel.hidden = YES;
     }
     
+    if (self.transaction.confirmations >= kConfirmationEtherThreshold) {
+        self.ethButton.alpha = 1;
+        self.actionLabel.alpha = 1;
+    } else {
+        self.ethButton.alpha = 0.5;
+        self.actionLabel.alpha = 0.5;
+    }
+    
     self.ethButton.titleLabel.minimumScaleFactor = 0.75f;
     self.ethButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self.ethButton setTitle:app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:self.transaction.amount exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth: self.transaction.amountTruncated] forState:UIControlStateNormal];

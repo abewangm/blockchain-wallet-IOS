@@ -82,7 +82,7 @@
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
     }
     
-    if (transaction.confirmations >= kConfirmationThreshold) {
+    if (transaction.confirmations >= kConfirmationBitcoinThreshold) {
         btcButton.alpha = 1;
         actionLabel.alpha = 1;
     } else {

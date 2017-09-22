@@ -22,6 +22,7 @@
     transaction.time = [[dict objectForKey:DICTIONARY_KEY_TIME] longLongValue];
     transaction.txType = [dict objectForKey:DICTIONARY_KEY_TRANSACTION_TX_TYPE];
     transaction.myHash = [dict objectForKey:DICTIONARY_KEY_HASH];
+    transaction.confirmations = [[dict objectForKey:DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS] longLongValue];
     
     id noteObject = [dict objectForKey:DICTIONARY_KEY_NOTE];
     transaction.note = [noteObject isKindOfClass:[NSString class]] ? noteObject : nil;
