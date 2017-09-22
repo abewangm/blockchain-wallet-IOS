@@ -62,7 +62,7 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:self.contentView];
     
-    UIView *titleContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    UIView *titleContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.view.frame.size.width, 60)];
     titleContainerView.backgroundColor = [UIColor clearColor];
     titleContainerView.center = CGPointMake(self.contentView.center.x, titleContainerView.center.y);
     
@@ -79,7 +79,7 @@
     
     [self.contentView addSubview:titleContainerView];
     
-    self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectInset(self.contentView.bounds, 60, 60)];
+    self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectInset(self.contentView.bounds, 60, titleContainerView.frame.origin.y + 60)];
     self.graphView.backgroundColor = [UIColor whiteColor];
     [self.graphView changeWidth:self.contentView.frame.size.width - self.graphView.frame.origin.x - 30];
     [self.graphView changeHeight:self.contentView.frame.size.height - 150];
