@@ -191,14 +191,28 @@
         self.amountInputView.btcField.text = [amount compare:@0] == NSOrderedSame ? nil : [amount stringValue];
         self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:[amount stringValue] exchangeRate:self.latestExchangeRate];
     }
-
-    [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSString stringWithFormat:@"%@ %@", available, CURRENCY_SYMBOL_ETH]] forState:UIControlStateNormal];
     
     self.ethAvailable = available;
     
     self.ethFee = fee;
     self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
                                 [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
+
+    if ([app.wallet isWaitingOnEtherTransaction]) {
+        [self.fundsAvailableButton setTitle:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE forState:UIControlStateNormal];
+        [self.fundsAvailableButton setTitleColor:COLOR_WARNING_RED forState:UIControlStateNormal];
+        self.toField.userInteractionEnabled = NO;
+        self.fundsAvailableButton.userInteractionEnabled = NO;
+        self.amountInputView.userInteractionEnabled = NO;
+        [self disablePaymentButtons];
+        return;
+    } else {
+        [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSString stringWithFormat:@"%@ %@", available, CURRENCY_SYMBOL_ETH]] forState:UIControlStateNormal];
+        [self.fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+        self.toField.userInteractionEnabled = YES;
+        self.fundsAvailableButton.userInteractionEnabled = YES;
+        self.amountInputView.userInteractionEnabled = YES;
+    }
     
     NSComparisonResult result = [available compare:amount];
     
