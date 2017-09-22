@@ -135,12 +135,23 @@
 
 - (void)reload
 {
-    self.toField.text = nil;
+    [app.wallet createNewEtherPayment];
+
+    if (self.addressToSet) {
+        [self selectToAddress:self.addressToSet];
+        self.addressToSet = nil;
+    } else {
+        self.toField.text = nil;
+    }
+    
     [self.amountInputView clearFields];
     
-    [app.wallet createNewEtherPayment];
-    
     [app.wallet getEthExchangeRate];
+}
+
+- (void)setAddress:(NSString *)address
+{
+    [self selectToAddress:address];
 }
 
 - (void)getHistory

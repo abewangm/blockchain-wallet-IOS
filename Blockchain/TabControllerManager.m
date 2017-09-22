@@ -152,8 +152,12 @@
 {
     [self showSendCoins];
     
-    self.sendBitcoinViewController.addressFromURLHandler = address;
-    [self.sendBitcoinViewController reload];
+    if (self.assetType == AssetTypeBitcoin) {
+        self.sendBitcoinViewController.addressFromURLHandler = address;
+        [self.sendBitcoinViewController reload];
+    } else if (self.assetType == AssetTypeEther) {
+        self.sendEtherViewController.addressToSet = address;
+    }
 }
 
 - (void)sendFromWatchOnlyAddress

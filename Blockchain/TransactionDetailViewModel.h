@@ -13,7 +13,8 @@
 @property (nonatomic) AssetType assetType;
 @property (nonatomic) NSString *fromString;
 @property (nonatomic) NSString *fromAddress;
-@property (nonatomic) BOOL fromWithinWallet;
+@property (nonatomic) BOOL hasFromLabel;
+@property (nonatomic) BOOL hasToLabel;
 @property (nonatomic) NSArray *to;
 @property (nonatomic) NSString *toString;
 @property (nonatomic) uint64_t amountInSatoshi;
@@ -39,7 +40,7 @@
 @property (nonatomic) NSDecimalNumber *ethExchangeRate;
 
 - (id)initWithTransaction:(Transaction *)transaction;
-- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate;
+- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress;
 - (NSString *)getAmountString;
 - (NSString *)getFeeString;
 @end

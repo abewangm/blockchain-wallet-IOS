@@ -59,7 +59,7 @@
 - (void)transactionClicked
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    TransactionDetailViewModel *model = [[TransactionDetailViewModel alloc] initWithEtherTransaction:self.transaction exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+    TransactionDetailViewModel *model = [[TransactionDetailViewModel alloc] initWithEtherTransaction:self.transaction exchangeRate:app.tabControllerManager.latestEthExchangeRate defaultAddress:[app.wallet getEtherAddress]];
     detailViewController.transactionModel = model;
 
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];

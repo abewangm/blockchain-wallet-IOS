@@ -24,7 +24,8 @@
         self.assetType = AssetTypeBitcoin;
         self.fromString = [transaction.from objectForKey:DICTIONARY_KEY_LABEL];
         self.fromAddress = [transaction.from objectForKey:DICTIONARY_KEY_ADDRESS];
-        self.fromWithinWallet = [transaction.from objectForKey:DICTIONARY_KEY_ACCOUNT_INDEX] || ![[transaction.from objectForKey:DICTIONARY_KEY_LABEL] isEqualToString:self.fromAddress];
+        self.hasFromLabel = [transaction.from objectForKey:DICTIONARY_KEY_ACCOUNT_INDEX] || ![[transaction.from objectForKey:DICTIONARY_KEY_LABEL] isEqualToString:self.fromAddress];
+        self.hasToLabel = [[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ACCOUNT_INDEX] || ![[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_LABEL] isEqualToString:[[transaction.to firstObject] objectForKey:DICTIONARY_KEY_ADDRESS]];
         self.to = transaction.to;
         self.toString = [transaction.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
         self.amountInSatoshi = ABS(transaction.amount);
@@ -52,12 +53,13 @@
     return self;
 }
 
-- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate
+- (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress
 {
     if (self == [super init]) {
         self.assetType = AssetTypeEther;
         self.txType = etherTransaction.txType;
         self.fromString = etherTransaction.from;
+        self.fromAddress = etherTransaction.from;
         self.to = @[etherTransaction.to];
         self.toString = etherTransaction.to;
         self.amountString = etherTransaction.amount;

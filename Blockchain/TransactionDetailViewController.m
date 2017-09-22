@@ -361,21 +361,30 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)showToAddressOptions
 {
-    [self showAddressOptions:[self.transactionModel.to firstObject]];
+    [self showAddressOptionsFrom:NO];
 }
 
 - (void)showFromAddressOptions
 {
-    [self showAddressOptions:self.transactionModel];
+    [self showAddressOptionsFrom:YES];
 }
 
-- (void)showAddressOptions:(TransactionDetailViewModel *)transactionModel
+- (void)showAddressOptionsFrom:(BOOL)willSelectFrom
 {
-    NSString *address = transactionModel.fromAddress;
+    NSString *address;
+    NSString *labelString;
     
-    if (transactionModel.fromWithinWallet) return;
+    if (willSelectFrom) {
+        if (self.transactionModel.hasFromLabel) return;
+        address = self.transactionModel.fromAddress;
+        labelString = self.transactionModel.fromString;
+    } else {
+        if (self.transactionModel.hasToLabel) return;
+        address = [self.transactionModel.to firstObject];
+        labelString = self.transactionModel.toString;
+    }
     
-    UIAlertController *copyAddressController = [UIAlertController alertControllerWithTitle:transactionModel.fromString message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *copyAddressController = [UIAlertController alertControllerWithTitle:labelString message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [UIPasteboard generalPasteboard].string = address;
     }]];

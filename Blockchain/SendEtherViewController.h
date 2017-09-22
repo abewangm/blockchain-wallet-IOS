@@ -10,6 +10,7 @@
 #import "EtherAmountInputViewController.h"
 
 @interface SendEtherViewController : EtherAmountInputViewController
+@property (nonatomic) NSString *addressToSet;
 - (void)reload;
 - (void)getHistory;
 - (void)didUpdatePayment:(NSDictionary *)payment;
