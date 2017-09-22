@@ -1004,8 +1004,9 @@ void (^secondPasswordSuccess)(NSString *);
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
+#ifdef ENABLE_CONTACTS
     [self registerDeviceForPushNotifications];
-    
+#endif
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
     } else if (showType == ShowTypeNewPayment) {
