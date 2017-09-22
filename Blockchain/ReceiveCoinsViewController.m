@@ -21,6 +21,8 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "BCTotalAmountView.h"
 #import "BCDescriptionView.h"
+#import "BCAmountInputView.h"
+#import "UILabel+Animations.h"
 
 #ifdef ENABLE_CONTACTS
 #define BOTTOM_CONTAINER_HEIGHT_PARTIAL 151
@@ -28,8 +30,9 @@
 #define BOTTOM_CONTAINER_HEIGHT_PARTIAL 101
 #endif
 #define BOTTOM_CONTAINER_HEIGHT_FULL 201
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 220
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
-#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 260
+#define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
@@ -41,6 +44,7 @@
 @property (nonatomic) BCLine *lineBelowFromField;
 @property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) UIView *descriptionContainerView;
+@property (nonatomic) BCAmountInputView *amountInputView;
 @property (nonatomic) BCDescriptionView *view;
 @end
 
@@ -74,8 +78,10 @@ NSString *detailLabel;
     
     self.firstLoading = YES;
     
-    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
-                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
+    self.view.frame = CGRectMake(0,
+                                 TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET - DEFAULT_HEADER_HEIGHT,
+                                 app.window.frame.size.width,
+                                 app.window.frame.size.height - (TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET) - DEFAULT_FOOTER_HEIGHT);
     
     [self setupAmountInputAccessoryView];
     [self setupTotalAmountView];
@@ -84,7 +90,7 @@ NSString *detailLabel;
     
     float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 32, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 35, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
@@ -95,7 +101,7 @@ NSString *detailLabel;
         
         // Smaller QR Code Image
         qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
-                                               qrCodeMainImageView.frame.origin.y - 10,
+                                               qrCodeMainImageView.frame.origin.y,
                                                qrCodeMainImageView.frame.size.width - reduceImageSizeBy,
                                                qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
     }
@@ -180,7 +186,7 @@ NSString *detailLabel;
 {
     CGFloat containerHeightPlusButtonSpace = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT;
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y + self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
     self.bottomContainerView.clipsToBounds = YES;
     [self.view addSubview:self.bottomContainerView];
     
@@ -204,39 +210,14 @@ NSString *detailLabel;
     lineBelowDescripton.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineBelowDescripton];
     
-    CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
-    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 15, labelWidth, 21)];
-    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
-    [self.bottomContainerView addSubview:receiveBtcLabel];
-    
-    // Field width will be space remaining after subtracting widths of all other subviews and spacing in the row
-    CGFloat fieldWidth = (self.view.frame.size.width - labelWidth*2 - 8*6)/2;
-    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + receiveBtcLabel.frame.size.width + 8, 10, fieldWidth, 30)];
-    self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
-    self.receiveBtcField.delegate = self;
-    self.receiveBtcField.textColor = COLOR_TEXT_DARK_GRAY;
-    [self.bottomContainerView addSubview:self.receiveBtcField];
-    
-    receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.receiveBtcField.frame.origin.x + self.receiveBtcField.frame.size.width + 8, 15, labelWidth, 21)];
-    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    receiveFiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-    [self.bottomContainerView addSubview:receiveFiatLabel];
-    
-    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + receiveFiatLabel.frame.size.width + 8;
-    self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatFieldOriginX, 10, fieldWidth, 30)];
-    self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    self.receiveFiatField.textColor = COLOR_TEXT_DARK_GRAY;
-    self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
-    self.receiveFiatField.delegate = self;
-    [self.bottomContainerView addSubview:self.receiveFiatField];
+    BCAmountInputView *amountView = [[BCAmountInputView alloc] init];
+    amountView.btcLabel.text = app.latestResponse.symbol_btc.symbol;
+    amountView.btcField.inputAccessoryView = amountKeyboardAccessoryView;
+    amountView.btcField.delegate = self;
+    amountView.fiatField.inputAccessoryView = amountKeyboardAccessoryView;
+    amountView.fiatField.delegate = self;
+    [self.bottomContainerView addSubview:amountView];
+    self.amountInputView = amountView;
     
     UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 65, 50, 21)];
     toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
@@ -314,7 +295,7 @@ NSString *detailLabel;
     self.descriptionField.delegate = self;
     [self.descriptionContainerView addSubview:self.descriptionField];
     
-    CGFloat spacing = IS_USING_SCREEN_SIZE_4S ? 20 : 28;
+    CGFloat spacing = 12;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
     UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
     requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
@@ -359,9 +340,9 @@ NSString *detailLabel;
 - (void)reload
 {
     [self reloadAddresses];
-    
+#ifdef ENABLE_CONTACTS
     [self resetContactInfo];
-    
+#endif
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (!mainAddress) {
@@ -413,20 +394,34 @@ NSString *detailLabel;
 
 - (void)setupHeaderView
 {
-    // Show table header with the QR code of an address from the default account
-    float imageWidth = qrCodeMainImageView.frame.size.width;
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.bottomContainerView.frame.origin.y)];
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75 + 4)];
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 42)];
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    instructionsLabel.numberOfLines = 0;
+    instructionsLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
+    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    [instructionsLabel sizeToFit];
+    if (instructionsLabel.frame.size.height > 40) [instructionsLabel changeHeight:40];
+    instructionsLabel.center = CGPointMake(self.view.frame.size.width/2, instructionsLabel.center.y);
+    [self.headerView addSubview:instructionsLabel];
     
     [self.view addSubview:self.headerView];
     
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
-        qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+        BOOL isUsing4SScreenSize = IS_USING_SCREEN_SIZE_4S;
         
+        qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+        if (!isUsing4SScreenSize) {
+            [qrCodeMainImageView changeYPosition:57];
+            instructionsLabel.center = CGPointMake(self.headerView.center.x, qrCodeMainImageView.frame.origin.y/2);
+        }
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + 8, self.view.frame.size.width - 40, 20)];
+        CGFloat yOffset = isUsing4SScreenSize ? 4 : 16;
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + yOffset, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
@@ -468,11 +463,11 @@ NSString *detailLabel;
 - (uint64_t)getInputAmountInSatoshi
 {
     if ([self shouldUseBtcField]) {
-        return [app.wallet parseBitcoinValueFromTextField:self.receiveBtcField];
+        return [app.wallet parseBitcoinValueFromTextField:self.amountInputView.btcField];
     } else {
-        NSString *language = self.receiveFiatField.textInputMode.primaryLanguage;
+        NSString *language = self.amountInputView.fiatField.textInputMode.primaryLanguage;
         NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        NSString *requestedAmountString = [self.receiveFiatField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        NSString *requestedAmountString = [self.amountInputView.fiatField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         if (![requestedAmountString containsString:@"."]) {
             requestedAmountString = [requestedAmountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
         }
@@ -489,14 +484,14 @@ NSString *detailLabel;
 {
     BOOL shouldUseBtcField = YES;
     
-    if ([self.receiveBtcField isFirstResponder]) {
+    if ([self.amountInputView.btcField isFirstResponder]) {
         shouldUseBtcField = YES;
-    } else if ([self.receiveFiatField isFirstResponder]) {
+    } else if ([self.amountInputView.fiatField isFirstResponder]) {
         shouldUseBtcField = NO;
         
-    } else if (self.lastSelectedField == self.receiveBtcField) {
+    } else if (self.lastSelectedField == self.amountInputView.btcField) {
         shouldUseBtcField = YES;
-    } else if (self.lastSelectedField == self.receiveFiatField) {
+    } else if (self.lastSelectedField == self.amountInputView.fiatField) {
         shouldUseBtcField = NO;
     }
     
@@ -511,9 +506,9 @@ NSString *detailLabel;
 - (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
     if ([self shouldUseBtcField]) {
-        self.receiveFiatField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
+        self.amountInputView.fiatField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     } else {
-        self.receiveBtcField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
+        self.amountInputView.btcField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
 }
 
@@ -552,37 +547,11 @@ NSString *detailLabel;
     [totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
-{
-    gestureReceiver.userInteractionEnabled = NO;
-    
-    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        labelToAnimate.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            labelToAnimate.text = intermediateText;
-            labelToAnimate.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    labelToAnimate.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        labelToAnimate.text = originalText;
-                        labelToAnimate.alpha = 1.0;
-                        gestureReceiver.userInteractionEnabled = YES;
-                    }];
-                }];
-            });
-        }];
-    }];
-}
-
 - (void)changeTopView:(BOOL)shouldShowQR
 {
     UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
     UIView *viewToShow = shouldShowQR ? self.headerView : self.view.topView;
-    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) : self.view.topView.frame.size.height;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.origin.y + self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) - app.tabControllerManager.tabViewController.assetControlContainer.frame.size.height : self.view.topView.frame.size.height;
     
     viewToShow.alpha = 0;
     viewToShow.hidden = NO;
@@ -608,45 +577,11 @@ NSString *detailLabel;
     }];
 }
 
-- (void)moveViewsUpForSmallScreens
-{
-    if (IS_USING_SCREEN_SIZE_4S) {
-        
-        BOOL receivingFromContact = self.fromContact != nil;
-        
-        if (receivingFromContact) {
-            self.view.topView.alpha = 0;
-            self.view.topView.hidden = NO;
-        } else {
-            self.headerView.alpha = 0;
-            self.headerView.hidden = NO;
-        }
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            if (receivingFromContact) {
-                [self.bottomContainerView changeYPosition:self.view.topView.frame.size.height];
-            } else {
-                [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
-            }
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                if (receivingFromContact) {
-                    self.view.topView.alpha = 1;
-                } else {
-                    self.headerView.alpha = 1;
-                }
-            }];
-        }];
-    }
-}
-
 #pragma mark - Actions
 
 - (IBAction)doneButtonClicked:(UIButton *)sender
 {
     [self hideKeyboard];
-    
-    [self moveViewsUpForSmallScreens];
 }
 
 - (IBAction)labelSaveClicked:(id)sender
@@ -680,7 +615,7 @@ NSString *detailLabel;
 {
     if ([mainAddress isKindOfClass:[NSString class]]) {
         [UIPasteboard generalPasteboard].string = mainAddress;
-        [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+        [mainAddressLabel animateFromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_ERROR_COPYING_TO_CLIPBOARD];
     }
@@ -725,16 +660,19 @@ NSString *detailLabel;
 - (void)hideKeyboardForced
 {
     // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
-    [self.receiveFiatField becomeFirstResponder];
+    [self.amountInputView.fiatField becomeFirstResponder];
     [self hideKeyboard];
 }
 
 - (void)hideKeyboard
 {
     [labelTextField resignFirstResponder];
-    [self.receiveFiatField resignFirstResponder];
-    [self.receiveBtcField resignFirstResponder];
     [self.descriptionField resignFirstResponder];
+    [self.amountInputView hideKeyboard];
+    
+    self.view.scrollEnabled = NO;
+    [self.view scrollRectToVisible:CGRectZero animated:YES];
+    self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
@@ -744,7 +682,7 @@ NSString *detailLabel;
         
         if (showBackupReminder) {
             [app showBackupReminder:YES];
-        } else if ([self.receiveBtcField isFirstResponder] || [self.receiveFiatField isFirstResponder]) {
+        } else if ([self.amountInputView.btcField isFirstResponder] || [self.amountInputView.fiatField isFirstResponder]) {
             [self.lastSelectedField becomeFirstResponder];
         }
         
@@ -769,12 +707,12 @@ NSString *detailLabel;
     
     [[NSNotificationCenter defaultCenter] addObserver:alertForWatchOnly selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
-    [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
 - (void)storeRequestedAmount
 {
-    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:self.receiveBtcField];
+    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:self.amountInputView.btcField];
 }
 
 - (void)updateUI
@@ -953,16 +891,16 @@ NSString *detailLabel;
     
     [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
     
-    [self.receiveBtcField resignFirstResponder];
-    [self.receiveFiatField resignFirstResponder];
+    [self.amountInputView.btcField resignFirstResponder];
+    [self.amountInputView.fiatField resignFirstResponder];
     
-    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)clearAmounts
 {
-    self.receiveBtcField.text = nil;
-    self.receiveFiatField.text = nil;
+    self.amountInputView.btcField.text = nil;
+    self.amountInputView.fiatField.text = nil;
 }
 
 - (void)dismiss
@@ -992,8 +930,6 @@ NSString *detailLabel;
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self resetDescriptionContainerView];
     }];
-
-    [self moveViewsUpForSmallScreens];
 }
 
 - (void)resetDescriptionContainerView
@@ -1015,18 +951,12 @@ NSString *detailLabel;
         return NO;
     }
     
-    if (textField == self.receiveFiatField || textField == self.receiveBtcField) {
-        self.lastSelectedField = textField; 
-    }
-    
-    if (IS_USING_SCREEN_SIZE_4S) {
+    if (textField == self.amountInputView.fiatField || textField == self.amountInputView.btcField) {
+        self.lastSelectedField = textField;
         
-        self.headerView.hidden = YES;
-        self.view.topView.hidden = YES;
-        
-        [UIView animateWithDuration:ANIMATION_DURATION_LONG animations:^{
-            [self.bottomContainerView changeYPosition:0];
-        }];
+        self.view.scrollEnabled = YES;
+        self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + (self.view.frame.size.height - self.bottomContainerView.frame.origin.y + 50));
+        [self.view scrollRectToVisible:CGRectMake(0, self.bottomContainerView.frame.origin.y + self.amountInputView.frame.size.height + ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT, 1, 1) animated:YES];
     }
     
     if (textField == self.descriptionField) {
@@ -1054,15 +984,13 @@ NSString *detailLabel;
         return YES;
     }
 
-    [self moveViewsUpForSmallScreens];
-    
     [textField resignFirstResponder];
     return YES;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == self.receiveBtcField || textField == self.receiveFiatField) {
+    if (textField == self.amountInputView.btcField || textField == self.amountInputView.fiatField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
         NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
@@ -1080,7 +1008,7 @@ NSString *detailLabel;
         }
         
         // When entering amount in BTC, max 8 decimal places
-        if ([self.receiveBtcField isFirstResponder]) {
+        if ([self.amountInputView.btcField isFirstResponder]) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
             
@@ -1099,7 +1027,7 @@ NSString *detailLabel;
         }
         
         // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else if ([self.receiveFiatField isFirstResponder]) {
+        else if ([self.amountInputView.fiatField isFirstResponder]) {
             if (points.count == 2) {
                 NSString *decimalString = points[1];
                 if (decimalString.length > 2) {
@@ -1116,7 +1044,7 @@ NSString *detailLabel;
         
         uint64_t amountInSatoshi = 0;
 
-        if (textField == self.receiveFiatField) {
+        if (textField == self.amountInputView.fiatField) {
             // Convert input amount to internal value
             NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
             if (![amountString containsString:@"."]) {
@@ -1207,7 +1135,7 @@ NSString *detailLabel;
     if (contact && !contact.mdid) {
         UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
         [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-        [app.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+        [app.tabControllerManager.tabViewController presentViewController:errorAlert animated:YES completion:nil];
     } else if (contact == self.fromContact || contact == nil) {
         self.fromContact = nil;
         self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT_OPTIONAL;

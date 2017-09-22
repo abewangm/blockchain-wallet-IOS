@@ -20,13 +20,13 @@
     [self.accessoryButton setHidden:YES];
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
+    [super configureWithTransactionModel:transactionModel];
 
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_FROM;
-        self.accessoryLabel.text = [transaction.from objectForKey:DICTIONARY_KEY_LABEL];
+        self.accessoryLabel.text = transactionModel.fromString;
         return;
     }
     
@@ -44,7 +44,7 @@
     self.accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
     self.accessoryLabel.textAlignment = NSTextAlignmentRight;
     self.accessoryLabel.adjustsFontSizeToFitWidth = YES;
-    self.accessoryLabel.text = [transaction isMemberOfClass:[ContactTransaction class]] && [transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? transaction.contactName : [transaction.from objectForKey:DICTIONARY_KEY_LABEL];
+    self.accessoryLabel.text = transactionModel.isContactTransaction && [transactionModel.txType isEqualToString:TX_TYPE_RECEIVED] ? transactionModel.contactName : transactionModel.fromString;
     
     CGFloat mainLabelHeight = self.mainLabel.frame.size.height;
     CGFloat accessoryLabelHeight = self.accessoryLabel.frame.size.height;

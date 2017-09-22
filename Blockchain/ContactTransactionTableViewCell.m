@@ -12,6 +12,7 @@
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
 #import "Transaction.h"
+#import "TransactionDetailViewModel.h"
 #import "RootService.h"
 #import "UIView+ChangeFrameAttribute.h"
 
@@ -157,16 +158,16 @@
     } else if (self.transaction.transactionState == ContactTransactionStateCompletedSend || self.transaction.transactionState == ContactTransactionStateCompletedReceive) {
         
         TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-        detailViewController.transaction = self.transaction;
+        detailViewController.transactionModel = [[TransactionDetailViewModel alloc] initWithTransaction:self.transaction];
         
         TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
         
         detailViewController.busyViewDelegate = navigationController;
         navigationController.onDismiss = ^() {
-            app.transactionsViewController.detailViewController = nil;
+            app.tabControllerManager.transactionsBitcoinViewController.detailViewController = nil;
         };
         navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        app.transactionsViewController.detailViewController = detailViewController;
+        app.tabControllerManager.transactionsBitcoinViewController.detailViewController = detailViewController;
         
         if (app.topViewControllerDelegate) {
             [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];

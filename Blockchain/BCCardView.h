@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CardConfiguration){
+    CardConfigurationWelcome,
+    CardConfigurationBuyAvailableNow,
+};
+
 enum {
-    ActionTypeBuyBitcoinAvailableNow,
+    ActionTypeBuyEther,
     ActionTypeBuyBitcoin,
     ActionTypeShowReceive,
     ActionTypeScanQR,

@@ -9,6 +9,7 @@
 #import "Wallet.h"
 #import "RootService.h"
 #import "Transaction.h"
+#import "EtherTransaction.h"
 #import "Contact.h"
 #import "ContactTransaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
@@ -18,7 +19,7 @@
 #import "NSString+NSString_EscapeQuotes.h"
 #import "crypto_scrypt.h"
 #import "NSData+Hex.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "NSArray+EncodedJSONString.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "ModuleXMLHttpRequest.h"
@@ -29,6 +30,7 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 #import "HDNode.h"
 #import "PrivateHeaders.h"
+#import "Assets.h"
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -375,14 +377,6 @@
         [weakSelf update_loaded_all_transactions:index];
     };
     
-    self.context[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
-        [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
-    };
-    
-    self.context[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
-        [weakSelf on_get_fiat_at_time_error:error];
-    };
-    
 #pragma mark Send Screen
     
     self.context[@"objc_update_send_balance_fees"] = ^(NSNumber *balance, NSDictionary *fees) {
@@ -483,8 +477,8 @@
         [weakSelf on_pin_code_put_response:response];
     };
     
-    self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword) {
-        [weakSelf getSecondPassword:nil success:secondPassword error:nil];
+    self.context[@"objc_get_second_password"] = ^(JSValue *secondPassword, JSValue *helperText) {
+        [weakSelf getSecondPassword:nil success:secondPassword error:nil helperText:[helperText isUndefined] ? nil :  [helperText toString]];
     };
     
     self.context[@"objc_get_private_key_password"] = ^(JSValue *privateKeyPassword) {
@@ -860,6 +854,40 @@
         [weakSelf on_delete_contact_after_storing_info_success:info];
     };
     
+#pragma mark Ethereum
+    
+    self.context[@"objc_on_fetch_eth_history_success"] = ^() {
+        [weakSelf on_fetch_eth_history_success];
+    };
+    
+    self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
+        [weakSelf on_fetch_eth_history_error:[error toString]];
+    };
+    
+    self.context[@"objc_update_eth_payment"] = ^(JSValue *etherPayment) {
+        [weakSelf on_update_eth_payment:[etherPayment toDictionary]];
+    };
+    
+    self.context[@"objc_on_fetch_eth_exchange_rate_success"] = ^(JSValue *rate, JSValue *code) {
+        [weakSelf on_fetch_eth_exchange_rate_success:rate code:code];
+    };
+    
+    self.context[@"objc_eth_socket_send"] = ^(JSValue *message) {
+        [weakSelf eth_socket_send:[message toString]];
+    };
+    
+    self.context[@"objc_on_send_ether_payment_success"] = ^() {
+        [weakSelf on_send_ether_payment_success];
+    };
+    
+    self.context[@"objc_on_send_ether_payment_error"] = ^(JSValue *error) {
+        [weakSelf on_send_ether_payment_error:error];
+    };
+    
+    self.context[@"objc_did_get_ether_address_with_second_password"] = ^() {
+        [weakSelf did_get_ether_address_with_second_password];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -869,11 +897,47 @@
     [self login];
 }
 
+- (NSMutableArray *)pendingEthSocketMessages
+{
+    if (!_pendingEthSocketMessages) _pendingEthSocketMessages = [NSMutableArray new];
+    return _pendingEthSocketMessages;
+}
+
+- (void)setupEthSocket
+{
+    _ethSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeEther]];
+    _ethSocket.delegate = self;
+}
+
 - (void)setupWebSocket
 {
+    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:[self getWebSocketRequest:AssetTypeBitcoin]];
+    self.webSocket.delegate = self;
+    
+    [self.webSocketTimer invalidate];
+    self.webSocketTimer = nil;
+    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                     target:self
+                                   selector:@selector(pingWebSocket)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [self.webSocket open];
+}
+
+- (NSURLRequest *)getWebSocketRequest:(AssetType)assetType
+{
+    NSString *websocketURL;
+    
+    if (assetType == AssetTypeBitcoin) {
+        websocketURL = URL_WEBSOCKET;
+    } else if (assetType == AssetTypeEther) {
+        websocketURL = URL_WEBSOCKET_ETH;
+    }
+    
     NSMutableURLRequest *webSocketRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_WEBSOCKET]];
     [webSocketRequest addValue:URL_SERVER forHTTPHeaderField:@"Origin"];
-
+    
 #ifdef ENABLE_CERTIFICATE_PINNING
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_ENABLE_CERTIFICATE_PINNING]) {
         NSString *cerPath = [[NSBundle mainBundle] pathForResource:[app.certificatePinner getCertificateName] ofType:@"der"];
@@ -889,18 +953,7 @@
     }
 #endif
     
-    self.webSocket = [[SRWebSocket alloc] initWithURLRequest:webSocketRequest];
-    self.webSocket.delegate = self;
-    
-    [self.webSocketTimer invalidate];
-    self.webSocketTimer = nil;
-    self.webSocketTimer = [NSTimer scheduledTimerWithTimeInterval:15.0
-                                     target:self
-                                   selector:@selector(pingWebSocket)
-                                   userInfo:nil
-                                    repeats:YES];
-    
-    [self.webSocket open];
+    return webSocketRequest;
 }
 
 - (void)pingWebSocket
@@ -1017,17 +1070,26 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
-    DLog(@"websocket opened");
-    NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
-    
-    NSError *error;
-    [webSocket sendString:message error:&error];
-    if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    if (webSocket == self.ethSocket) {
+        DLog(@"eth websocket opened");
+        for (NSString *message in [self.pendingEthSocketMessages reverseObjectEnumerator]) {
+            DLog(@"Sending queued eth socket message %@", message);
+            [self sendEthSocketMessage:message];
+            [self.pendingEthSocketMessages removeObject:message];
+        }
+    } else {
+        DLog(@"websocket opened");
+        NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
+        
+        NSError *error;
+        [webSocket sendString:message error:&error];
+        if (error) DLog(@"Error subscribing to address: %@", [error localizedDescription]);
+    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
-    DLog(@"websocket failed with error: %@", [error localizedDescription]);
+    DLog(@"%@ failed with error: %@", webSocket == self.ethSocket ? @"eth socket" : @"web socket", [error localizedDescription]);
     if ([error.localizedDescription isEqualToString:WEBSOCKET_ERROR_INVALID_SERVER_CERTIFICATE]) {
         [app failedToValidateCertificate:[error localizedDescription]];
     }
@@ -1035,55 +1097,64 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
-    if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
-        // Socket will reopen when app becomes active and after decryption
-        return;
-    }
-    
-    DLog(@"websocket closed: code %li, reason: %@", code, reason);
-    if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        DLog(@"reconnecting websocket");
-        [self setupWebSocket];
+    if (webSocket == self.ethSocket) {
+        DLog(@"eth websocket closed: code %li, reason: %@", code, reason);
+    } else if (webSocket == self.webSocket) {
+        if (code == WEBSOCKET_CODE_BACKGROUNDED_APP || code == WEBSOCKET_CODE_LOGGED_OUT || code == WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS) {
+            // Socket will reopen when app becomes active and after decryption
+            return;
+        }
+        
+        DLog(@"websocket closed: code %li, reason: %@", code, reason);
+        if (self.webSocket.readyState != 1 && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            DLog(@"reconnecting websocket");
+            [self setupWebSocket];
+        }
     }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string
 {
-    DLog(@"received websocket message string");
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
-    
-    if (self.swipeAddressToSubscribe) {
-        NSDictionary *message = [string getJSONObject];
-        NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
-        NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]]];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    if (webSocket == self.ethSocket) {
+        DLog(@"received eth socket message string");
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.didReceiveEthSocketMessage(\"%@\")", [string escapeStringForJS]]];
+    } else if (webSocket == self.webSocket) {
+        DLog(@"received websocket message string");
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.getSocketOnMessage(\"%@\", { checksum: null })", [string escapeStringForJS]]];
         
-        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (self.swipeAddressToSubscribe) {
+            NSDictionary *message = [string getJSONObject];
+            NSString *hash = message[@"x"][DICTIONARY_KEY_HASH];
+            NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT, hash, self.swipeAddressToSubscribe]]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            if (error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // TODO: add alert for error here
-                });
-                return;
-            }
-            
-            uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
-            if (amountReceived > 0) {
-                if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
-                    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                        [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
-                    }
-                } else {
-                    DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+            NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // TODO: add alert for error here
+                    });
+                    return;
                 }
-            }
-        }];
-        
-        [task resume];
-        
-        self.swipeAddressToSubscribe = nil;
-        
-        [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
+                
+                uint64_t amountReceived = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] longLongValue];
+                if (amountReceived > 0) {
+                    if ([delegate respondsToSelector:@selector(paymentReceivedOnPINScreen:)]) {
+                        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                            [delegate paymentReceivedOnPINScreen:[NSNumberFormatter formatMoney:amountReceived localCurrency:NO]];
+                        }
+                    } else {
+                        DLog(@"Error: delegate of class %@ does not respond to selector paymentReceivedOnPINScreen:!", [delegate class]);
+                    }
+                }
+            }];
+            
+            [task resume];
+            
+            self.swipeAddressToSubscribe = nil;
+            
+            [self.webSocket closeWithCode:WEBSOCKET_CODE_RECEIVED_TO_SWIPE_ADDRESS reason:WEBSOCKET_CLOSE_REASON_RECEIVED_TO_SWIPE_ADDRESS];
+        }
     }
 }
 
@@ -1756,13 +1827,13 @@
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.detectPrivateKeyFormat(\"%@\")", [privateKeyString escapeStringForJS]]] toString];
 }
 
-- (void)createNewPayment
+- (void)createNewBitcoinPayment
 {
     if (![self isInitialized]) {
         return;
     }
     
-    [self.context evaluateScript:@"MyWalletPhone.createNewPayment()"];
+    [self.context evaluateScript:@"MyWalletPhone.createNewBitcoinPayment()"];
 }
 
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced
@@ -2131,17 +2202,39 @@
     }
 }
 
-- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
+- (void)saveEtherNote:(NSString *)note forTransaction:(NSString *)hash
 {
-    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.saveEtherNote(\"%@\", \"%@\")", [hash escapeStringForJS], [note escapeStringForJS]]];
+    }
+}
+
+- (void)getFiatAtTime:(uint64_t)time value:(NSDecimalNumber *)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
+{
+    NSString *symbol;
+    if (assetType == AssetTypeBitcoin) {
+        symbol = CURRENCY_SYMBOL_BTC;
+    } else if (assetType == AssetTypeEther) {
+        symbol = CURRENCY_SYMBOL_ETH;
+    }
+    
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, symbol, currencyCode, time]]];
+
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 [self on_get_fiat_at_time_error:[error localizedDescription]];
             } else {
-                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                [self on_get_fiat_at_time_success:result currencyCode:currencyCode];
+                NSError *jsonError;
+                NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                if (jsonError) DLog(@"JSON error getting fiat at time: %@", [error localizedDescription]);
+                if ([dictResult objectForKey:DICTIONARY_KEY_ERROR]) return;
+                
+                NSNumber *result = [dictResult objectForKey:DICTIONARY_KEY_PRICE];
+                NSDecimalNumber *amount = [value decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithDecimal:[result decimalValue]]];
+                
+                [self on_get_fiat_at_time_success:amount currencyCode:currencyCode assetType:assetType];
             }
         });
     }];
@@ -2149,9 +2242,9 @@
     [task resume];
 }
 
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction
+- (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash
 {
-    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", transaction.myHash]] toString];
+    return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getNotePlaceholder(\"%@\")", myHash]] toString];
 }
 
 - (NSArray *)getSwipeAddresses:(int)numberOfAddresses label:(NSString *)label
@@ -2197,6 +2290,15 @@
 - (JSValue *)executeJSSynchronous:(NSString *)command
 {
     return [self.context evaluateScript:command];
+}
+
+- (BOOL)isWaitingOnEtherTransaction
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.isWaitingOnTransaction()"] toBool];
+    }
+    
+    return NO;
 }
 
 #pragma mark - Contacts
@@ -2421,6 +2523,131 @@
     }
     
     return NO;
+}
+
+# pragma mark - Ethereum
+
+- (NSArray *)getEthTransactions
+{
+    if ([self isInitialized]) {
+        NSArray *transactions = [[self.context evaluateScript:@"MyWalletPhone.getEthTransactions()"] toArray];
+        NSMutableArray *convertedTransactions = [NSMutableArray new];
+        for (NSDictionary *dict in transactions) {
+            EtherTransaction *transaction = [EtherTransaction fromJSONDict:dict];
+            [convertedTransactions addObject:transaction];
+        }
+        self.etherTransactions = [convertedTransactions copy];
+        return self.etherTransactions;
+    } else {
+        DLog(@"Warning: getting eth transactions when not initialized - returning nil");
+        return nil;
+    }
+}
+
+- (NSString *)getEthBalance
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toString];
+    } else {
+        DLog(@"Warning: getting eth balance when not initialized - returning 0");
+        return 0;
+    }
+}
+
+- (NSString *)getEthBalanceTruncated
+{
+    if ([self isInitialized]) {
+        NSNumber *balanceNumber = [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toNumber];
+        return [app.btcFormatter stringFromNumber:balanceNumber];
+    } else {
+        DLog(@"Warning: getting eth balance when not initialized - returning 0");
+        return @"0";
+    }
+}
+
+- (void)getEthHistory
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getEthHistory()"];
+    }
+}
+
+- (void)getEthExchangeRate
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getEthExchangeRate(\"%@\")", app.latestResponse.symbol_local.code]];
+    }
+}
+
+- (void)createNewEtherPayment
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.createNewEtherPayment()"];
+}
+
+- (void)changeEtherPaymentTo:(NSString *)to
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setEtherPaymentTo(\"%@\")", [to escapeStringForJS]]];
+    }
+}
+
+- (void)changeEtherPaymentAmount:(id)amount
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setEtherPaymentAmount(\"%@\")", amount ? : @0]];
+    }
+}
+
+- (BOOL)isEthAddress:(NSString *)address
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isEthAddress(\"%@\")", address]] toBool];
+    }
+    
+    return NO;
+}
+
+- (void)sendEtherPaymentWithNote:(NSString *)note
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendEtherPaymentWithNote(\"%@\")", note ? [note escapeStringForJS] : @""]];
+    }
+}
+
+- (NSString *)getEtherAddress
+{
+    if ([self isInitialized]) {
+        NSString *setupHelperText = BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT;
+        JSValue *result = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getEtherAddress(\"%@\")", [setupHelperText escapeStringForJS]]];
+        if ([result isUndefined]) return nil;
+        NSString *etherAddress = [result toString];
+        return etherAddress;
+    }
+    
+    return nil;
+}
+
+- (void)isEtherContractAddress:(NSString *)address completion:(void (^ _Nullable)(NSData *, NSURLResponse *, NSError *))completion
+{
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_ETH_IS_CONTRACT_ADDRESS_ARGUMENT, address]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) completion(data, response, error);
+        });
+    }];
+    [task resume];
+}
+
+- (void)sweepEtherPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.sweepEtherPayment()"];
+    }
 }
 
 # pragma mark - Transaction handlers
@@ -2661,7 +2888,7 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.transactionsViewController.filterIndex;
+    int filterIndex = (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
@@ -2734,11 +2961,11 @@
     } error:_error];
 }
 
-- (void)getSecondPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error
+- (void)getSecondPassword:(NSString *)canDiscard success:(JSValue *)success error:(void(^)(id))_error helperText:(NSString *)helperText
 {
     [app getSecondPassword:^(NSString *secondPassword) {
         [success callWithArguments:@[secondPassword]];
-    } error:_error];
+    } error:_error helperText:(NSString *)helperText];
 }
 
 - (void)setLoadingText:(NSString*)message
@@ -2842,6 +3069,8 @@
     } else {
         [self setupWebSocket];
     }
+    
+    [self setupEthSocket];
     
     self.sharedKey = [[self.context evaluateScript:@"MyWallet.wallet.sharedKey"] toString];
     self.guid = [[self.context evaluateScript:@"MyWallet.wallet.guid"] toString];
@@ -3536,11 +3765,11 @@
     [app authorizationRequired];
 }
 
-- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
+- (void)on_get_fiat_at_time_success:(NSNumber *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
     DLog(@"on_get_fiat_at_time_success");
-    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:)]) {
-        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode];
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:assetType:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode assetType:assetType];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime:currencyCode!", [delegate class]);
     }
@@ -3821,6 +4050,85 @@
 - (void)on_get_pending_trades_error:(JSValue *)error
 {
     [app standardNotify:[error toString]];
+}
+
+- (void)on_fetch_eth_history_success
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchEthHistory)]) {
+        [self.delegate didFetchEthHistory];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchEthHistory!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_eth_history_error:(NSString *)error
+{
+    
+}
+
+- (void)on_update_eth_payment:(NSDictionary *)payment
+{
+    if ([self.delegate respondsToSelector:@selector(didUpdateEthPayment:)]) {
+        [self.delegate didUpdateEthPayment:payment];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
+    }
+}
+
+- (void)on_fetch_eth_exchange_rate_success:(JSValue *)rate code:(JSValue *)code
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchEthExchangeRate:)]) {
+        NSDictionary *codeDict = [[rate toDictionary] objectForKey:[code toString]];
+        [self.delegate didFetchEthExchangeRate:[codeDict objectForKey:DICTIONARY_KEY_LAST]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
+    }
+}
+
+- (void)eth_socket_send:(NSString *)message
+{
+    if (self.ethSocket && self.ethSocket.readyState == SR_OPEN) {
+        DLog(@"Sending eth socket message %@", message);
+        [self sendEthSocketMessage:message];
+    } else {
+        DLog(@"Will send eth socket message %@", message);
+        [self.pendingEthSocketMessages insertObject:message atIndex:0];
+        [self.ethSocket open];
+    }
+}
+
+- (void)sendEthSocketMessage:(NSString *)message
+{
+    NSError *error;
+    [self.ethSocket sendString:message error:&error];
+    if (error) DLog(@"Error sending eth socket message: %@", [error localizedDescription]);
+}
+
+- (void)on_send_ether_payment_success
+{
+    if ([self.delegate respondsToSelector:@selector(didSendEther)]) {
+        [self.delegate didSendEther];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendEther!", [delegate class]);
+    }
+}
+
+- (void)on_send_ether_payment_error:(JSValue *)error
+{
+    if ([self.delegate respondsToSelector:@selector(didErrorDuringEtherSend:)]) {
+        [self.delegate didErrorDuringEtherSend:[error toString]];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didErrorDuringEtherSend!", [delegate class]);
+    }
+}
+
+- (void)did_get_ether_address_with_second_password
+{
+    if ([self.delegate respondsToSelector:@selector(didGetEtherAddressWithSecondPassword)]) {
+        [self.delegate didGetEtherAddressWithSecondPassword];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
 }
 
 # pragma mark - Calls from Obj-C to JS for HD wallet

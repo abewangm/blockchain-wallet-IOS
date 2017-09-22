@@ -17,6 +17,36 @@ var ECDSA = Blockchain.ECDSA;
 var Metadata = Blockchain.Metadata;
 var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
+var EthSocket = Blockchain.EthSocket;
+
+function NativeEthSocket () {
+  this.handlers = []
+}
+
+NativeEthSocket.prototype.on = function (type, callback) {
+}
+
+NativeEthSocket.prototype.onMessage = function (msg) {
+  this.handlers.forEach(function (handler) {
+    handler(msg)
+  })
+}
+
+NativeEthSocket.prototype.subscribeToAccount = function (account) {
+  var accountMsg = EthSocket.accountSub(account)
+  objc_eth_socket_send(accountMsg)
+  var handler = EthSocket.accountMessageHandler(account)
+  this.handlers.push(handler)
+}
+
+NativeEthSocket.prototype.subscribeToBlocks = function (ethWallet) {
+  var blockMsg = EthSocket.blocksSub(ethWallet)
+  objc_eth_socket_send(blockMsg)
+  var handler = EthSocket.blockMessageHandler(ethWallet)
+  this.handlers.push(handler)
+}
+
+var ethSocketInstance = new NativeEthSocket();
 
 APP_NAME = 'javascript_iphone_app';
 APP_VERSION = '3.0';
@@ -31,6 +61,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
 var MyWalletPhone = {};
 var currentPayment = null;
+var currentEtherPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
@@ -345,8 +376,8 @@ MyWalletPhone.archiveTransferredAddresses = function(addresses) {
     }
 }
 
-MyWalletPhone.createNewPayment = function() {
-    console.log('Creating new payment')
+MyWalletPhone.createNewBitcoinPayment = function() {
+    console.log('Creating new bitcoin payment')
     currentPayment = MyWallet.wallet.createPayment();
 
     currentPayment.on('error', function(errorObject) {
@@ -666,6 +697,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         objc_loading_stop();
 
         objc_did_load_wallet();
+
+        MyWallet.wallet.useEthSocket(ethSocketInstance);
     };
 
     var history_error = function(error) {console.log(error);
@@ -1318,11 +1351,11 @@ MyWalletPhone.getPrivateKeyPassword = function(callback) {
     });
 };
 
-MyWalletPhone.getSecondPassword = function(callback) {
+MyWalletPhone.getSecondPassword = function(callback, helperText) {
     // Due to the way the JSBridge handles calls with success/error callbacks, we need a first argument that can be ignored
     objc_get_second_password(function(pw) {
         callback(pw);
-    });
+    }, helperText);
 };
 
 
@@ -1861,6 +1894,8 @@ MyWalletPhone.getECDSA = function() {
     return ECDSA;
 }
 
+// Contacts
+
 MyWalletPhone.loadContacts = function() {
     console.log('Loading contacts');
     MyWallet.wallet.loadContacts();
@@ -1877,7 +1912,7 @@ MyWalletPhone.getContacts = function() {
     console.log('Getting contacts');
     console.log(JSON.stringify(MyWallet.wallet.contacts.list));
     var list = MyWallet.wallet.contacts.list;
-    
+
     var listToReturn = Blockchain.R.map(function(contact) {
       return {
         company: contact.company,
@@ -1896,7 +1931,7 @@ MyWalletPhone.getContacts = function() {
         facilitatedTxList: contact.facilitatedTxList
       }
     }, list);
-    
+
     return listToReturn;
 }
 
@@ -1906,54 +1941,54 @@ MyWalletPhone.getSaveContactsFunction = function() {
             return info;
         });
     }
-    
+
     return save;
 }
 
 MyWalletPhone.createContact = function(name, id) {
-    
+
     var success = function(invitation) {
         objc_on_create_invitation_success(invitation);
     };
-    
+
     var error = function(e) {
         objc_on_create_invitation_error(e);
         onsole.log('Error creating contact');
         console.log(e);
     };
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
-    
+
     MyWallet.wallet.contacts.createInvitation({name: name}, {name: id, senderName: name}).then(save).then(success).catch(error);
 }
 
 MyWalletPhone.sendDeclination = function(userId, txIdentifier) {
-    
+
     var success = function() {
         objc_on_send_declination_success();
     };
-    
+
     var error = function(e) {
         objc_on_send_declination_error();
         console.log('Error sending declination');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.sendDeclination(userId, txIdentifier).then(success).catch(error);
 }
 
 MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
-    
+
     var success = function() {
         objc_on_send_cancellation_success();
     };
-    
+
     var error = function(e) {
         objc_on_send_cancellation_error();
         console.log('Error sending cancellation');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier).then(success).catch(error);
 }
 
@@ -1962,26 +1997,26 @@ MyWalletPhone.readInvitation = function(invitation, invitationString) {
 }
 
 MyWalletPhone.completeRelation = function(invitation) {
-    
+
     var success = function() {
         objc_on_complete_relation_success();
     };
-    
+
     var error = function(e) {
         objc_on_complete_relation_error();
         console.log('Error completing relation');
         console.log(e);
     };
-    
+
     MyWallet.wallet.contacts.completeRelation(invitation).then(success).catch(error);
 }
 
 MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
-    
+
     var success = function() {
         objc_on_accept_relation_success(name, identifier);
     };
-    
+
     var error = function(e) {
         objc_on_accept_relation_error(name);
         console.log('Error accepting relation');
@@ -1992,29 +2027,29 @@ MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
 }
 
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
-    
+
     var success = function(xpub) {
         objc_on_fetch_xpub_success(xpub);
     };
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
-    
+
     MyWallet.wallet.contacts.fetchXPUB(contactIdentifier).then(save).then(success).catch(function(e){console.log('Error fetching xpub');console.log(e)});
 }
 
 MyWalletPhone.getMessages = function(isFirstLoad) {
-    
+
     var success = function(messages) {
         console.log('digested new messages');
         objc_on_get_messages_success(messages, isFirstLoad);
     };
-    
+
     var error = function(error) {
         console.log('Error getting messages');
         console.log(error);
         objc_on_get_messages_error(error);
     };
-    
+
     if (MyWallet.wallet.contacts) {
         MyWallet.wallet.contacts.digestNewMessages().then(success).catch(error);
     } else {
@@ -2023,39 +2058,39 @@ MyWalletPhone.getMessages = function(isFirstLoad) {
 }
 
 MyWalletPhone.changeName = function(newName, identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         objc_on_change_contact_name_success(info);
     };
-    
+
     MyWallet.wallet.contacts.list[identifier].name = newName;
-    
+
     save().then(success);
 }
 
 MyWalletPhone.deleteContact = function(identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         objc_on_delete_contact_success(info);
     };
 
     MyWallet.wallet.contacts.delete(identifier);
-    
+
     save().then(success);
 }
 
 MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
-    
+
     var save = MyWalletPhone.getSaveContactsFunction();
     var success = function(info) {
         console.log('Deleted contact because user did not complete create contact sequence');
         objc_on_delete_contact_after_storing_info_success(info);
     };
-    
+
     var contactInfo;
-    
+
     var filtered = Blockchain.R.filter(function(contact) {
         if (contact.invitationSent == identifier) {
              contactInfo = contact;
@@ -2065,52 +2100,52 @@ MyWalletPhone.deleteContactAfterStoringInfo = function(identifier) {
         }, MyWallet.wallet.contacts.list);
 
     MyWallet.wallet.contacts.delete(contactInfo.id);
-    
+
     save().then(success);
 }
 
 MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
-    
+
     var success = function(info) {
         objc_on_send_payment_request_success(info, intendedAmount, userId, requestIdentifier);
     };
-    
+
     var error = function(error) {
         console.log('Error sending payment request')
         console.log(error);
         objc_on_send_payment_request_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
-                                                          
+
 MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
-    
+
     var success = function(info) {
         objc_on_request_payment_request_success(info, userId);
     };
-    
+
     var error = function(error) {
         console.log('Error requesting payment request')
         console.log(error);
         objc_on_request_payment_request_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
-    
+
     var success = function(info) {
         objc_on_send_payment_request_response_success(info);
     };
-    
+
     var error = function(error) {
         console.log('Error sending payment request response')
         console.log(error);
         objc_on_send_payment_request_response_error(error);
     };
-    
+
     MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){error});
 }
 
@@ -2143,32 +2178,22 @@ MyWalletPhone.precisionToSatoshiBN = function (x, conversion) {
 }
 
 MyWalletPhone.getExchangeAccount = function () {
-  console.log('Getting exchange account');
-
-  var wallet = MyWallet.wallet;
-  var p = wallet.loadMetadata();
-  return p.then(function () {
-
-    objc_loading_stop();
-
     var sfox = MyWallet.wallet.external.sfox;
     var coinify = MyWallet.wallet.external.coinify;
     var partners = walletOptions.getValue().partners;
 
     if (sfox.user) {
-      console.log('Found sfox user');
-      sfox.api.production = true;
-      sfox.api.apiKey = partners.sfox.apiKey;
-      return sfox;
+        console.log('Found sfox user');
+        sfox.api.production = true;
+        sfox.api.apiKey = partners.sfox.apiKey;
+        return sfox;
     } else if (coinify.user) {
-      console.log('Found coinify user');
-      coinify.partnerId = partners.coinify.partnerId;
-      return coinify;
+        console.log('Found coinify user');
+        coinify.partnerId = partners.coinify.partnerId;
+        return coinify;
     } else {
-      console.log('Found no sfox or coinify user');
+        console.log('Found no sfox or coinify user');
     }
-
-  }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
 }
 
 var tradeToObject = function (trade) {
@@ -2189,8 +2214,8 @@ var watchTrade = function (trade) {
 
 MyWalletPhone.getPendingTrades = function(shouldSync) {
 
-    var watchTrades = function(errorCallBack) {
-      MyWalletPhone.getExchangeAccount().then(function (exchange) {
+      var watchTrades = function() {
+        var exchange = MyWalletPhone.getExchangeAccount();
         if (exchange) {
           console.log('Getting pending trades');
           exchange.getTrades().then(function () {
@@ -2201,23 +2226,35 @@ MyWalletPhone.getPendingTrades = function(shouldSync) {
               .forEach(watchTrade);
           });
         }
-      }).catch(errorCallBack);
-    }
+      }
 
-    var error = function(e) {
-      console.log(e);
-      objc_on_get_pending_trades_error(e);
-    };
+      var loadMetadataIfNeeded = function(errorCallBack) {
+        if (MyWallet.wallet.isMetadataReady) {
+          watchTrades();
+        } else {
+          var wallet = MyWallet.wallet;
+          var p = wallet.loadMetadata();
+          return p.then(function () {
+            objc_loading_stop();
+            watchTrades();
+          }).catch(function(e){console.log('Error getting exchange account:'); console.log(e)});
+        }
+      }
 
-    if (shouldSync) {
-        console.log('Getting wallet then watching trades');
-        MyWallet.getWallet(function() {
-            watchTrades(error);
-        }, error);
-    } else {
-        console.log('Watching trades');
-        watchTrades(error);
-    }
+      var error = function(e) {
+        console.log(e);
+        objc_on_get_pending_trades_error(e);
+      };
+
+      if (shouldSync) {
+          console.log('Getting wallet then watching trades');
+          MyWallet.getWallet(function() {
+              loadMetadataIfNeeded(error);
+          }, error);
+      } else {
+          console.log('Watching trades');
+          loadMetadataIfNeeded(error);
+      }
 }
 
 MyWalletPhone.getWebViewLoginData = function () {
@@ -2270,4 +2307,192 @@ function WalletOptions (api) {
     var base = 'wallet-options';
     return base + '.json';
   };
+}
+
+// Ethereum
+
+MyWalletPhone.getEthExchangeRate = function(currencyCode) {
+
+    var success = function(result) {
+        console.log('Success fetching eth exchange rate');
+        objc_on_fetch_eth_exchange_rate_success(result, currencyCode);
+    };
+
+    var error = function(error) {
+        console.log('Error fetching eth exchange rate')
+        console.log(error);
+        objc_on_fetch_eth_exchange_rate_error(error);
+    };
+
+    BlockchainAPI.getExchangeRate(currencyCode, 'ETH').then(success).catch(error);
+}
+
+MyWalletPhone.getEthBalance = function() {
+    var eth = MyWallet.wallet.eth;
+    
+    if (eth.defaultAccount) {
+        return eth.defaultAccount.balance;
+    } else {
+        return 0;
+    }
+}
+
+MyWalletPhone.getEthTransactions = function() {
+    var eth = MyWallet.wallet.eth;
+    if (eth.defaultAccount) {
+        return MyWalletPhone.convertEthTransactionsToJSON(eth.defaultAccount.txs);
+    } else {
+        return {};
+    }
+}
+
+MyWalletPhone.convertEthTransactionsToJSON = function(transactions) {
+    return transactions.map(function (tx) {
+       var result = tx.toJSON();
+       result.txType = tx.getTxType(MyWallet.wallet.eth.activeAccountsWithLegacy);
+       return result;
+    });
+}
+
+MyWalletPhone.getEthHistory = function() {
+
+    var success = function() {
+        console.log('Success fetching eth history')
+        objc_on_fetch_eth_history_success();
+    };
+
+    var error = function(error) {
+        console.log('Error fetching eth history')
+        console.log(error);
+        objc_on_fetch_eth_history_error(error);
+    };
+
+    MyWallet.wallet.eth.fetchHistory().then(success).catch(error);
+}
+
+MyWalletPhone.createNewEtherPayment = function() {
+    console.log('Creating new ether payment');
+
+    var eth = MyWallet.wallet.eth;
+
+    currentEtherPayment = eth.defaultAccount.createPayment();
+
+    eth.fetchFees().then(function(fees) {
+         currentEtherPayment.setGasPrice(fees.regular);
+         currentEtherPayment.setGasLimit(fees.gasLimit);
+
+         MyWalletPhone.updateEtherPayment();
+     });
+}
+
+MyWalletPhone.updateEtherPayment = function(isSweep) {
+
+    var paymentInfo = {
+        amount : currentEtherPayment.amount,
+        available : currentEtherPayment.available,
+        fee : currentEtherPayment.fee,
+        sweep : isSweep
+    };
+
+    console.log(JSON.stringify(paymentInfo));
+
+    objc_update_eth_payment(paymentInfo);
+}
+
+MyWalletPhone.setEtherPaymentTo = function(to) {
+    currentEtherPayment.setTo(to);
+}
+
+MyWalletPhone.setEtherPaymentAmount = function(amount) {
+    if (amount == null) amount = 0;
+    currentEtherPayment.setValue(amount);
+    MyWalletPhone.updateEtherPayment();
+}
+
+MyWalletPhone.isEthAddress = function(address) {
+    return Helpers.isEtherAddress(address);
+}
+
+MyWalletPhone.getEthPaymentTotal = function() {
+    return currentEtherPayment.amount + currentEtherPayment.fee;
+}
+
+MyWalletPhone.sendEtherPaymentWithNote = function(note) {
+
+    var eth = MyWallet.wallet.eth;
+
+    var success = function(tx) {
+        MyWalletPhone.recordLastTransaction(tx.txHash);
+        if (note != '') eth.setTxNote(tx.txHash, note);
+        console.log('Send ether success');
+        objc_on_send_ether_payment_success();
+    }
+
+    var error = function(e) {
+        console.log('Send ether error');
+        console.log(e);
+        objc_on_send_ether_payment_error(e);
+    }
+
+    if (MyWallet.wallet.isDoubleEncrypted) {
+      MyWalletPhone.getSecondPassword(function (pw) {
+        var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount, pw);
+        currentEtherPayment.sign(privateKey);
+        currentEtherPayment
+        .publish()
+        .then(success).catch(error);
+      });
+    } else {
+      var privateKey = eth.getPrivateKeyForAccount(eth.defaultAccount);
+      currentEtherPayment.sign(privateKey);
+      currentEtherPayment
+      .publish()
+      .then(success).catch(error);
+    }
+}
+
+MyWalletPhone.saveEtherNote = function(txHash, note) {
+    MyWallet.wallet.eth.setTxNote(txHash, note);
+    MyWalletPhone.getEthHistory();
+}
+
+MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
+    ethSocketInstance.onMessage(msg);
+}
+
+MyWalletPhone.getEtherAddress = function(helperText) {
+    
+    var eth = MyWallet.wallet.eth;
+    
+    if (eth && eth.defaultAccount) {
+        return eth.defaultAccount.address;
+    } else {
+        if (MyWallet.wallet.isDoubleEncrypted) {
+            MyWalletPhone.getSecondPassword(function (pw) {
+               eth.createAccount(void 0, pw);
+               objc_did_get_ether_address_with_second_password();
+            }, helperText);
+        } else {
+            eth.createAccount(void 0);
+            return eth.defaultAccount.address;
+        }
+    }
+}
+
+MyWalletPhone.sweepEtherPayment = function() {
+    currentEtherPayment.setSweep();
+    MyWalletPhone.updateEtherPayment(true);
+}
+
+MyWalletPhone.recordLastTransaction = function(hash) {
+    MyWallet.wallet.eth.setLastTx(hash);
+}
+
+MyWalletPhone.isWaitingOnTransaction = function() {
+    
+    var eth = MyWallet.wallet.eth;
+
+    return null != eth.lastTx && null == eth.txs.find(function(tx) {
+       return tx.hash === eth.lastTx;
+    });
 }

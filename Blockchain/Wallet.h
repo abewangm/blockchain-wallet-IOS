@@ -21,6 +21,7 @@
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
 #import "FeeTypes.h"
+#import "Assets.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
@@ -105,7 +106,7 @@
 - (void)receivedTransactionMessage;
 - (void)paymentReceivedOnPINScreen:(NSString *)amount;
 - (void)didReceivePaymentNotice:(NSString *)notice;
-- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
+- (void)didGetFiatAtTime:(NSNumber *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType;
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 - (void)didSetDefaultAccount;
 - (void)didChangeLocalCurrency;
@@ -130,6 +131,12 @@
 - (void)didPushTransaction;
 - (void)showCompletedTrade:(NSString *)txHash;
 - (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses;
+- (void)didFetchEthHistory;
+- (void)didUpdateEthPayment:(NSDictionary *)payment;
+- (void)didFetchEthExchangeRate:(NSNumber *)rate;
+- (void)didSendEther;
+- (void)didErrorDuringEtherSend:(NSString *)error;
+- (void)didGetEtherAddressWithSecondPassword;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -172,8 +179,10 @@
 @property NSString *twoFactorInput;
 @property (nonatomic) NSDictionary *currencySymbols;
 
-@property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
+@property (nonatomic) SRWebSocket *ethSocket;
+@property (nonatomic) NSMutableArray *pendingEthSocketMessages;
+
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
 
@@ -184,6 +193,8 @@
 @property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
 @property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
 @property (nonatomic) NSNumber *contactsActionCount;
+
+@property (nonatomic) NSArray *etherTransactions;
 
 typedef enum {
     ContactActionRequiredNone,
@@ -356,7 +367,7 @@ typedef enum {
 - (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
-- (void)createNewPayment;
+- (void)createNewBitcoinPayment;
 - (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentToAccount:(int)toInt;
@@ -387,8 +398,9 @@ typedef enum {
 
 // Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
-- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction;
+- (void)saveEtherNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)getFiatAtTime:(uint64_t)time value:(NSDecimalNumber *)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType;
+- (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash;
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
@@ -410,4 +422,22 @@ typedef enum {
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
 - (BOOL)actionRequiredForContact:(Contact *)contact;
 - (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier;
+
+// Ethereum
+- (NSString *)getEthBalance;
+- (NSString *)getEthBalanceTruncated;
+- (NSArray *)getEthTransactions;
+- (void)getEthHistory;
+- (void)getEthExchangeRate;
+
+// Ether send
+- (void)createNewEtherPayment;
+- (void)changeEtherPaymentTo:(NSString *)to;
+- (void)changeEtherPaymentAmount:(id)amount;
+- (BOOL)isEthAddress:(NSString *)address;
+- (void)sendEtherPaymentWithNote:(NSString *)note;
+- (NSString *)getEtherAddress;
+- (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
+- (void)sweepEtherPayment;
+- (BOOL)isWaitingOnEtherTransaction;
 @end

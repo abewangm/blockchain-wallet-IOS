@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Transaction.h"
+#import "TransactionDetailViewModel.h"
 
 @interface TransactionDetailTableCell : UITableViewCell <UITextViewDelegate>
 @property (nonatomic) BOOL isSetup;
 
-- (void)configureWithTransaction:(Transaction *)transaction;
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel;
 
 @end

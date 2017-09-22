@@ -7,6 +7,10 @@
 //
 #import <Foundation/Foundation.h>
 
+#define BC_STRING_BITCOIN NSLocalizedString(@"Bitcoin", nil)
+#define BC_STRING_ETHER NSLocalizedString(@"Ether", nil)
+
+#define BC_STRING_BITCOIN_BALANCES NSLocalizedString(@"Bitcoin Balances", nil)
 #define BC_STRING_WALLETS NSLocalizedString(@"Wallets", nil)
 
 #define BC_STRING_ANY_ADDRESS NSLocalizedString(@"Any address", nil)
@@ -15,7 +19,8 @@
 #define BC_STRING_NO_ADDRESSES_WITH_SPENDABLE_BALANCE_ABOVE_OR_EQUAL_TO_DUST NSLocalizedString(@"You have no addresses with a spendable balance greater than or equal to the required dust threshold.", nil)
 #define BC_STRING_SOME_FUNDS_CANNOT_BE_TRANSFERRED_AUTOMATICALLY NSLocalizedString(@"Some funds cannot be transferred automatically.", nil)
 
-#define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil);
+#define BC_STRING_ENTER_BITCOIN_ADDRESS_OR_SELECT NSLocalizedString(@"Enter Bitcoin address or select", nil)
+#define BC_STRING_ENTER_ETHER_ADDRESS NSLocalizedString(@"Enter Ether address", nil)
 #define BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS NSLocalizedString(@"You must enter a destination address", nil)
 #define BC_STRING_INVALID_TO_BITCOIN_ADDRESS NSLocalizedString(@"Invalid to bitcoin address", nil)
 #define BC_STRING_FROM_TO_DIFFERENT NSLocalizedString(@"From and destination have to be different", nil)
@@ -43,6 +48,9 @@
 
 #define BC_STRING_SUCCESS NSLocalizedString(@"Success", nil)
 #define BC_STRING_PAYMENT_SENT NSLocalizedString(@"Payment Sent!", nil)
+#define BC_STRING_PAYMENT_SENT_ETHER NSLocalizedString(@"Payment Sent! Your balance and transactions will update soon.", nil)
+#define BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_TITLE NSLocalizedString(@"Waiting for payment", nil)
+#define BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE NSLocalizedString(@"Please wait until your last ether transaction confirms.", nil)
 #define BC_STRING_PAYMENTS_SENT NSLocalizedString(@"Payments Sent", nil)
 #define BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT NSLocalizedString(@"Transferred funds from %d %@", nil)
 #define BC_STRING_PAYMENT_TRANSFERRED_FROM_ARGUMENT_ARGUMENT_OUTPUTS_ARGUMENT_ARGUMENT_TOO_SMALL NSLocalizedString(@"Transferred funds from %d %@. Outputs for %d %@ were too small.", nil)
@@ -166,6 +174,7 @@
 #define BC_STRING_USER_DECLINED NSLocalizedString(@"User Declined", nil)
 #define BC_STRING_CHANGE_PIN NSLocalizedString(@"Change PIN", nil)
 #define BC_STRING_ADDRESS NSLocalizedString(@"Address", nil)
+#define BC_STRING_BITCOIN_ADDRESSES NSLocalizedString(@"Bitcoin Addresses", nil)
 #define BC_STRING_ADDRESSES NSLocalizedString(@"Addresses", nil)
 #define BC_STRING_SETTINGS NSLocalizedString(@"Settings", nil)
 #define BC_STRING_BACKUP NSLocalizedString(@"Backup", nil)
@@ -256,7 +265,7 @@
 #define BC_STRING_LOADING_CREATING_INVITATION NSLocalizedString(@"Creating invitation", nil)
 #define BC_STRING_IDENTIFIER NSLocalizedString(@"Identifier", nil)
 
-#define BC_STRING_MERCHANT_MAP NSLocalizedString(@"Merchant Map", nil)
+#define BC_STRING_BITCOIN_MERCHANT_MAP NSLocalizedString(@"Bitcoin Merchant Map", nil)
 #define BC_STRING_MERCHANT NSLocalizedString(@"Merchant", nil)
 #define BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_TITLE NSLocalizedString(@"Enable Location Services", nil)
 #define BC_STRING_MERCHANT_MAP_ASK_TO_ENABLE_LOCATION_SERVICES_ALERTVIEW_MESSAGE NSLocalizedString(@"Blockchain needs Location Services enabled in order to access your location.", nil)
@@ -326,6 +335,8 @@
 
 #define BC_STRING_INVALID_ADDRESS NSLocalizedString(@"Address is not valid", nil)
 #define BC_STRING_INVALID_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid address: %@", nil)
+#define BC_STRING_INVALID_BITCOIN_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid Bitcoin address: %@", nil)
+#define BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT NSLocalizedString(@"Invalid Ether address: %@", nil)
 
 #define BC_STRING_UPDATE NSLocalizedString(@"Update", nil)
 #define BC_STRING_DISABLED NSLocalizedString(@"Disabled", nil)
@@ -670,6 +681,7 @@
 #define BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES NSLocalizedString(@"Please login to load more addresses.", nil)
 
 #define BC_STRING_ERROR_TICKER NSLocalizedString(@"An error occurred while retrieving currency conversion rates. Please try again later.", nil)
+#define BC_STRING_ERROR_CHARTS NSLocalizedString(@"An error occurred while retrieving the latest chart data. Please try again later.", nil)
 
 #define BC_STRING_DESCRIPTION NSLocalizedString(@"Description", nil)
 #define BC_STRING_DETAILS NSLocalizedString(@"Details", nil)
@@ -716,7 +728,9 @@
 
 #define BC_STRING_BALANCES NSLocalizedString(@"Balances", nil)
 #define BC_STRING_NO_TRANSACTIONS_TITLE NSLocalizedString(@"No Transactions", nil)
-#define BC_STRING_NO_TRANSACTIONS_TEXT NSLocalizedString(@"Transactions occur when you send and request bitcoin.", nil)
+#define BC_STRING_NO_TRANSACTIONS_TEXT_BITCOIN NSLocalizedString(@"Transactions occur when you send and request bitcoin.", nil)
+#define BC_STRING_NO_TRANSACTIONS_TEXT_ETHER NSLocalizedString(@"Transactions occur when you send and request ether.", nil)
+
 #define BC_STRING_YOUR_TRANSACTIONS NSLocalizedString(@"Your Transactions", nil)
 
 #define BC_STRING_VIEW_ON_URL_ARGUMENT NSLocalizedString(@"View on", nil)
@@ -757,7 +771,9 @@
 #define BC_STRING_SCAN_ADDRESS NSLocalizedString(@"Scan Address", nil)
 #define BC_STRING_SKIP_ALL NSLocalizedString(@"Skip All", nil)
 #define BC_STRING_GET_BITCOIN NSLocalizedString(@"Get Bitcoin", nil)
+#define BC_STRING_REQUEST_ETHER NSLocalizedString(@"Request Ether", nil)
 #define BC_STRING_OVERVIEW NSLocalizedString(@"Overview", nil)
+#define BC_STRING_DASHBOARD NSLocalizedString(@"Dashboard", nil)
 
 #define BC_STRING_ENABLED_EXCLAMATION NSLocalizedString(@"Enabled!", nil)
 
@@ -787,3 +803,19 @@
 #define BC_STRING_WEB_LOGIN_QR_INSTRUCTION_LABEL_SHOWN_TWO NSLocalizedString(@"Do not share it with others.", nil)
 #define BC_STRING_SHOW_QR_CODE NSLocalizedString(@"Show QR Code", nil)
 #define BC_STRING_HIDE_QR_CODE NSLocalizedString(@"Hide QR Code", nil)
+
+#define BC_STRING_WEEK NSLocalizedString(@"Week", nil)
+#define BC_STRING_MONTH NSLocalizedString(@"Month", nil)
+#define BC_STRING_YEAR NSLocalizedString(@"Year", nil)
+
+#define BC_STRING_BITCOIN_PRICE NSLocalizedString(@"Bitcoin Price", nil)
+#define BC_STRING_ETHER_PRICE NSLocalizedString(@"Ether Price", nil)
+#define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_TITLE NSLocalizedString(@"Contract addresses are not supported.", nil)
+#define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_MESSAGE NSLocalizedString(@"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP.", nil)
+#define BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT NSLocalizedString(@"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet.", nil)
+#define BC_STRING_RECEIVE_ETHER_REENTER_SECOND_PASSWORD_INSTRUCTIONS NSLocalizedString(@"Tap the Request tab to setup your ether address.", nil)
+
+#define BC_STRING_NOW_SUPPORTING_ETHER_TITLE NSLocalizedString(@"Now supporting Ether", nil)
+#define BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION NSLocalizedString(@"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!", nil)
+#define BC_STRING_GET_STARTED_WITH_ETHER NSLocalizedString(@"Get Started with Ether", nil)
+

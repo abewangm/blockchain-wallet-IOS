@@ -13,6 +13,20 @@
 
 #pragma mark - Format helpers
 
++ (NSString *)localCurrencyCode
+{
+    return app.latestResponse.symbol_local.code;
+}
+
++ (NSDecimalNumber *)formatSatoshiInLocalCurrency:(uint64_t)value
+{
+    if (app.latestResponse.symbol_local.conversion) {
+        return [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
+    } else {
+        return nil;
+    }
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {
@@ -108,6 +122,76 @@
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value
 {
     return [self formatMoney:value localCurrency:app->symbolLocal];
+}
+
+#pragma mark - Ether
+
++ (NSString *)formatEth:(id)ethAmount
+{
+    return [NSString stringWithFormat:@"%@ %@", ethAmount ? : @"0", CURRENCY_SYMBOL_ETH];
+}
+
++ (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (ethAmount == 0) return 0;
+    
+    return [ethAmount decimalNumberByMultiplyingBy:exchangeRate];
+}
+
++ (NSString *)formatEthToFiat:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (ethAmount != nil && [ethAmount doubleValue] > 0) {
+        NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:ethAmount];
+        return [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatEthToFiatWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatEthToFiat:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return [NSString stringWithFormat:@"%@0.00", app.latestResponse.symbol_local.symbol];
+    } else {
+        return [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formatString];
+    }
+}
+
++ (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount == 0 || !exchangeRate) return 0;
+    
+    return [fiatAmount decimalNumberByDividingBy:exchangeRate];
+}
+
++ (NSString *)formatFiatToEth:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount != nil && [fiatAmount doubleValue] > 0) {
+        NSDecimalNumber *fiatAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:fiatAmount];
+        return [NSString stringWithFormat:@"%@", [NSNumberFormatter convertFiatToEth:fiatAmountDecimalNumber exchangeRate:exchangeRate]];
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatFiatToEthWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatFiatToEth:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", app.latestResponse.symbol_local.code, formatString];
+    }
+}
+
++ (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (app->symbolLocal) {
+        return [NSNumberFormatter formatEthToFiatWithSymbol:ethAmount exchangeRate:exchangeRate];
+    } else {
+        return [NSNumberFormatter formatEth:ethAmount];
+    }
 }
 
 @end

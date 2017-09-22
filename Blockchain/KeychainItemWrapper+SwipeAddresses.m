@@ -58,8 +58,33 @@
 + (void)removeAllSwipeAddresses
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_SWIPE_ADDRESSES accessGroup:nil];
-    
     [keychain resetKeychainItem];
+    
+    [self removeSwipeEtherAddress];
+}
+
++ (void)setSwipeEtherAddress:(NSString *)swipeAddress
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_ETHER_ADDRESS accessGroup:nil];
+    [keychain setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
+    
+    [keychain setObject:KEYCHAIN_KEY_ETHER_ADDRESS forKey:(__bridge id)kSecAttrAccount];
+    [keychain setObject:[swipeAddress dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
+}
+
++ (void)removeSwipeEtherAddress
+{
+    KeychainItemWrapper *etherKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_ETHER_ADDRESS accessGroup:nil];
+    [etherKeychain resetKeychainItem];
+}
+
++ (NSString *)getSwipeEtherAddress
+{
+    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:KEYCHAIN_KEY_ETHER_ADDRESS accessGroup:nil];
+    NSData *etherAddressData = [keychain objectForKey:(__bridge id)kSecValueData];
+    NSString *etherAddress = [[NSString alloc] initWithData:etherAddressData encoding:NSUTF8StringEncoding];
+    
+    return etherAddress.length == 0 ? nil : etherAddress;
 }
 
 @end

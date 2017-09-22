@@ -8,8 +8,6 @@
 
 #import "TransactionDetailStatusCell.h"
 
-#define URL_BLOCKCHAIN_INFO @"blockchain.info"
-
 @implementation TransactionDetailStatusCell
 
 - (void)prepareForReuse
@@ -21,10 +19,10 @@
     [self.accessoryButton setHidden:YES];
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
-
+    [super configureWithTransactionModel:transactionModel];
+    
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_STATUS;
         self.accessoryButton.hidden = NO;
@@ -40,7 +38,7 @@
     
     CGFloat accessoryButtonXPosition = self.mainLabel.frame.origin.x + self.mainLabel.frame.size.width + 8;
     self.accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(accessoryButtonXPosition, 0, self.frame.size.width - self.contentView.layoutMargins.right - accessoryButtonXPosition, 60)];
-    NSString *buttonTitle = transaction.confirmations >= kConfirmationThreshold ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, [NSString stringWithFormat:@"%u/%u", transaction.confirmations, kConfirmationThreshold]];
+    NSString *buttonTitle = transactionModel.confirmed ? BC_STRING_CONFIRMED : [NSString stringWithFormat:BC_STRING_PENDING_ARGUMENT_CONFIRMATIONS, transactionModel.confirmations];
     
     self.accessoryButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.accessoryButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
@@ -56,7 +54,7 @@
     self.bannerButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     self.bannerButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE];
     self.bannerButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    [self.bannerButton setTitle:[[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, URL_BLOCKCHAIN_INFO] uppercaseString] forState:UIControlStateNormal];
+    [self.bannerButton setTitle:transactionModel.detailButtonTitle forState:UIControlStateNormal];
     self.bannerButton.layer.cornerRadius = 4;
     [self.bannerButton addTarget:self action:@selector(showWebviewDetail) forControlEvents:UIControlEventTouchUpInside];
     self.bannerButton.center = CGPointMake(self.contentView.center.x, self.bannerButton.center.y);

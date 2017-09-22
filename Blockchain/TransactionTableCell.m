@@ -9,7 +9,7 @@
 #import "TransactionTableCell.h"
 #import "Transaction.h"
 #import "RootService.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "TransactionDetailViewController.h"
 #import "TransactionDetailNavigationController.h"
 #import "NSDateFormatter+TimeAgoString.h"
@@ -82,7 +82,7 @@
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
     }
     
-    if (transaction.confirmations >= kConfirmationThreshold) {
+    if (transaction.confirmations >= kConfirmationBitcoinThreshold) {
         btcButton.alpha = 1;
         actionLabel.alpha = 1;
     } else {
@@ -109,17 +109,17 @@
 - (IBAction)transactionClicked:(UIButton *)button
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
-    detailViewController.transaction = transaction;
+    detailViewController.transactionModel = [[TransactionDetailViewModel alloc] initWithTransaction:transaction];
     
     TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
     navigationController.transactionHash = transaction.myHash;
     
     detailViewController.busyViewDelegate = navigationController;
     navigationController.onDismiss = ^() {
-        app.transactionsViewController.detailViewController = nil;
+        app.tabControllerManager.transactionsBitcoinViewController.detailViewController = nil;
     };
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    app.transactionsViewController.detailViewController = detailViewController;
+    app.tabControllerManager.transactionsBitcoinViewController.detailViewController = detailViewController;
     
     if (app.topViewControllerDelegate) {
         [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
@@ -130,7 +130,7 @@
 
 - (IBAction)btcbuttonclicked:(id)sender
 {
-    [self transactionClicked:nil];
+    [app toggleSymbol];
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "Wallet.h"
 #import "RootService.h"
 #import "ReceiveTableCell.h"
-#import "SendViewController.h"
+#import "SendBitcoinViewController.h"
 #import "Contact.h"
 
 @implementation BCAddressSelectionView
@@ -113,7 +113,7 @@ int legacyAddressesSectionNumber;
                 // Show the address book
                 for (NSString * addr in [_wallet.addressBook allKeys]) {
                     [addressBookAddresses addObject:addr];
-                    [addressBookAddressLabels addObject:[app.sendViewController labelForLegacyAddress:addr]];
+                    [addressBookAddressLabels addObject:[app.tabControllerManager.sendBitcoinViewController labelForLegacyAddress:addr]];
                 }
                 
                 // Then show the HD accounts

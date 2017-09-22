@@ -10,6 +10,9 @@
 
 @interface NSNumberFormatter (Currencies)
 
++ (NSString *)localCurrencyCode;
+
++ (NSDecimalNumber *)formatSatoshiInLocalCurrency:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;
 + (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)localCurrency;
@@ -17,4 +20,16 @@
 + (BOOL)stringHasBitcoinValue:(NSString *)string;
 + (NSString *)appendStringToFiatSymbol:(NSString *)number;
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value;
+
++ (NSString *)formatEth:(id)ethAmount; // NSString or NSDecimalNumber
++ (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
++ (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
+
++ (NSString *)formatEthToFiat:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
++ (NSString *)formatFiatToEth:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
+
++ (NSString *)formatEthToFiatWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
++ (NSString *)formatFiatToEthWithSymbol:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
++ (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
+
 @end

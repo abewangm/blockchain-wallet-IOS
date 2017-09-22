@@ -99,7 +99,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
                           [self appNameAndVersionNumberDisplayString],
                           [[UIDevice currentDevice] systemName],
                           [[UIDevice currentDevice] systemVersion],
-                          [app.tabViewController.activeViewController class],
+                          [app.tabControllerManager.tabViewController.activeViewController class],
                           walletIsLoaded ? @"TRUE" : @"FALSE",
                           walletIsInitialized? @"TRUE" : @"FALSE",
                           [DeviceIdentifier deviceName],

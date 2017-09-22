@@ -36,17 +36,6 @@
     return transaction;
 }
 
-- (NSString *)getDate
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setAMSymbol:@"am"];
-    [dateFormatter setPMSymbol:@"pm"];
-    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.time];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
-}
-
 - (NSComparisonResult)reverseCompareLastUpdated:(Transaction *)transaction
 {
     return [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:transaction.lastUpdated] decimalValue]] compare:[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:self.lastUpdated] decimalValue]]];

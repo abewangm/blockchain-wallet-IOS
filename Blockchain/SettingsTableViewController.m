@@ -34,9 +34,15 @@ const int preferencesEmailNotifications = 0;
 const int preferencesSMSNotifications = 1;
 
 #ifdef ENABLE_DEBUG_MENU
+#ifdef ENABLE_CONTACTS
 const int preferencesPushNotifications = 2;
 const int preferencesLocalCurrency = 3;
 const int preferencesBtcUnit = 4;
+#else
+const int preferencesPushNotifications = -1;
+const int preferencesLocalCurrency = 2;
+const int preferencesBtcUnit = 3;
+#endif
 #else
 const int preferencesPushNotifications = -1;
 const int preferencesLocalCurrency = 2;
