@@ -32,7 +32,9 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 100, 100)];
+        CGFloat imageViewHeight = actionType == ActionTypeBuyEther ? self.frame.size.height - 32 : 100;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 100, imageViewHeight)];
         imageView.image = [UIImage imageNamed:imageName];
         [self addSubview:imageView];
         
@@ -69,7 +71,7 @@
         [titleLabel sizeToFit];
         [self addSubview:titleLabel];
         
-        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, imageView.frame.size.height - titleLabel.frame.size.height)];
+        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, 100 - titleLabel.frame.size.height)];
         descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
         descriptionLabel.numberOfLines = 0;
         descriptionLabel.adjustsFontSizeToFitWidth = YES;
