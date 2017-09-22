@@ -76,10 +76,8 @@ const CGFloat rowHeightValueReceived = 80;
     [self setupPullToRefresh];
     [self setupTextViewInputAccessoryView];
 
-    if (self.transactionModel.assetType == AssetTypeBitcoin && ![self.transactionModel.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
+    if (![self.transactionModel.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
         [self getFiatAtTime];
-    } else {
-        [self reloadEtherData];
     }
 }
 
@@ -107,7 +105,7 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)getFiatAtTime
 {
-    [app.wallet getFiatAtTime:self.transactionModel.time * MSEC_PER_SEC value:imaxabs(self.transactionModel.amountInSatoshi) currencyCode:[app.latestResponse.symbol_local.code lowercaseString]];
+    [app.wallet getFiatAtTime:self.transactionModel.time * MSEC_PER_SEC value:imaxabs(self.transactionModel.amountInSatoshi) currencyCode:[app.latestResponse.symbol_local.code lowercaseString] assetType:self.transactionModel.assetType];
     self.isGettingFiatAtTime = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
@@ -173,7 +171,7 @@ const CGFloat rowHeightValueReceived = 80;
 {
     [self.busyViewDelegate hideBusyView];
     
-    NSArray *newTransactions = app.latestResponse.transactions;
+    NSArray *newTransactions = self.transactionModel.assetType == AssetTypeBitcoin ?  app.latestResponse.transactions : app.wallet.etherTransactions;
     
     [self findAndUpdateTransaction:newTransactions];
     
@@ -198,10 +196,10 @@ const CGFloat rowHeightValueReceived = 80;
 - (void)findAndUpdateTransaction:(NSArray *)newTransactions
 {
     BOOL didFindTransaction = NO;
+    
     for (Transaction *transaction in newTransactions) {
         if ([transaction.myHash isEqualToString:self.transactionModel.myHash]) {
-            transaction.fiatAmountsAtTime = self.transactionModel.fiatAmountsAtTime;
-            self.transactionModel = [[TransactionDetailViewModel alloc] initWithTransaction:transaction];
+            self.transactionModel.fiatAmountsAtTime = transaction.fiatAmountsAtTime;
             didFindTransaction = YES;
             break;
         }

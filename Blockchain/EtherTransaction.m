@@ -27,6 +27,8 @@
     id noteObject = [dict objectForKey:DICTIONARY_KEY_NOTE];
     transaction.note = [noteObject isKindOfClass:[NSString class]] ? noteObject : nil;
 
+    transaction.fiatAmountsAtTime = [[NSMutableDictionary alloc] init];
+    
     return transaction;
 }
 

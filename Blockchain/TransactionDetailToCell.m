@@ -27,7 +27,7 @@
         if (transactionModel.to.count > 1) {
             self.detailTextLabel.text = [NSString stringWithFormat:BC_STRING_ARGUMENT_RECIPIENTS, transactionModel.to.count];
         } else {
-            self.accessoryLabel.text = [transactionModel.to.firstObject objectForKey:DICTIONARY_KEY_LABEL];
+            self.accessoryLabel.text = transactionModel.toString;
         }
         self.mainLabel.text = BC_STRING_TO;
         return;

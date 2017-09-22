@@ -23,4 +23,6 @@
 @property (nonatomic) uint64_t time;
 @property (nonatomic) uint64_t confirmations;
 
+@property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
+
 @end

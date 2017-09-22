@@ -1989,11 +1989,23 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
-- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
+- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
     BOOL didFindTransaction = NO;
-    for (Transaction *transaction in app.latestResponse.transactions) {
-        if ([transaction.myHash isEqualToString:self.tabControllerManager.transactionsBitcoinViewController.detailViewController.transactionModel.myHash]) {
+    
+    NSArray *transactions;
+    NSString *targetHash;
+    
+    if (assetType == AssetTypeBitcoin) {
+        transactions = app.latestResponse.transactions;
+        targetHash = self.tabControllerManager.transactionsBitcoinViewController.detailViewController.transactionModel.myHash;
+    } else if (assetType == AssetTypeEther) {
+        transactions = app.wallet.etherTransactions;
+        targetHash = self.tabControllerManager.transactionsEtherViewController.detailViewController.transactionModel.myHash;
+    }
+
+    for (Transaction *transaction in transactions) {
+        if ([transaction.myHash isEqualToString:targetHash]) {
             NSArray *components = [fiatAmount componentsSeparatedByString:@"."];
             if (components.count > 1 && [[components lastObject] length] == 1) {
                 fiatAmount = [fiatAmount stringByAppendingString:@"0"];

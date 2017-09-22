@@ -113,7 +113,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TransactionEtherCell" owner:nil options:nil] objectAtIndex:0];
     }
     
-    EtherTransaction *transaction = [EtherTransaction fromJSONDict:self.transactions[indexPath.row]];
+    EtherTransaction *transaction = self.transactions[indexPath.row];
 
     cell.transaction = transaction;
     

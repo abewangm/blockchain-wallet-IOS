@@ -9,6 +9,7 @@
 #import "Wallet.h"
 #import "RootService.h"
 #import "Transaction.h"
+#import "EtherTransaction.h"
 #import "Contact.h"
 #import "ContactTransaction.h"
 #import "NSString+NSString_EscapeQuotes.h"
@@ -374,14 +375,6 @@
     
     self.context[@"objc_update_loaded_all_transactions"] = ^(NSNumber *index) {
         [weakSelf update_loaded_all_transactions:index];
-    };
-    
-    self.context[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
-        [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
-    };
-    
-    self.context[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
-        [weakSelf on_get_fiat_at_time_error:error];
     };
     
 #pragma mark Send Screen
@@ -2216,17 +2209,28 @@
     }
 }
 
-- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
+- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
-    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+    NSURL *URL;
+    
+    if (assetType == AssetTypeBitcoin) {
+        URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+    } else if (assetType == AssetTypeEther) {
+        URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, CURRENCY_SYMBOL_ETH, currencyCode, time]]];
+    }
+
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 [self on_get_fiat_at_time_error:[error localizedDescription]];
             } else {
-                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                [self on_get_fiat_at_time_success:result currencyCode:currencyCode];
+                NSError *jsonError;
+                NSDictionary *dictResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                if (jsonError) {
+                    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    [self on_get_fiat_at_time_success:result currencyCode:currencyCode assetType:assetType];
+                }
             }
         });
     }];
@@ -2522,7 +2526,14 @@
 - (NSArray *)getEthTransactions
 {
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.getEthTransactions()"] toArray];
+        NSArray *transactions = [[self.context evaluateScript:@"MyWalletPhone.getEthTransactions()"] toArray];
+        NSMutableArray *convertedTransactions = [NSMutableArray new];
+        for (NSDictionary *dict in transactions) {
+            EtherTransaction *transaction = [EtherTransaction fromJSONDict:dict];
+            [convertedTransactions addObject:transaction];
+        }
+        self.etherTransactions = [convertedTransactions copy];
+        return self.etherTransactions;
     } else {
         DLog(@"Warning: getting eth transactions when not initialized - returning nil");
         return nil;
@@ -3750,11 +3761,11 @@
     [app authorizationRequired];
 }
 
-- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode
+- (void)on_get_fiat_at_time_success:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType
 {
     DLog(@"on_get_fiat_at_time_success");
-    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:)]) {
-        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode];
+    if ([self.delegate respondsToSelector:@selector(didGetFiatAtTime:currencyCode:assetType:)]) {
+        [self.delegate didGetFiatAtTime:fiatAmount currencyCode:currencyCode assetType:assetType];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetFiatAtTime:currencyCode!", [delegate class]);
     }
