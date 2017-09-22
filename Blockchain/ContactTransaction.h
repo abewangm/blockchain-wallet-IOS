@@ -22,15 +22,13 @@ typedef enum {
 
 @interface ContactTransaction : Transaction
 
-@property (nonatomic, readonly) ContactTransactionState transactionState;
+@property (nonatomic) ContactTransactionState transactionState;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *state;
 @property (nonatomic, readonly) uint64_t intendedAmount;
 @property (nonatomic, readonly) NSString *role;
 @property (nonatomic, readonly) NSString *address;
 @property (nonatomic, readonly) NSString *reason;
-@property (nonatomic, readonly) id initiatorSource;
-@property (nonatomic, readonly) BOOL read;
 
 // Pending requests
 @property (nonatomic, readonly) NSString *contactIdentifier;

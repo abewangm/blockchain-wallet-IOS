@@ -25,7 +25,7 @@ API_CODE = '35e77459-723f-48b0-8c9e-6e9e8f54fbd3';
 min = false;
 
 // Set the API code for the iOS Wallet for the server calls
-//BlockchainAPI.API_CODE = API_CODE;
+BlockchainAPI.API_CODE = API_CODE;
 BlockchainAPI.AJAX_TIMEOUT = 30000; // 30 seconds
 BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 
@@ -81,6 +81,10 @@ WalletStore.addEventListener(function (event, obj) {
 
 
 // My Wallet phone functions
+
+MyWalletPhone.getAPICode = function() {
+    return API_CODE;
+}
 
 MyWalletPhone.upgradeToV3 = function(firstAccountName) {
     var success = function () {
@@ -1100,7 +1104,7 @@ MyWalletPhone.hasEncryptedWalletData = function() {
     return data && data.length > 0;
 };
 
-MyWalletPhone.get_history = function() {
+MyWalletPhone.get_history = function(hideBusyView) {
     var success = function () {
         console.log('Got wallet history');
         objc_on_get_history_success();
@@ -1111,7 +1115,7 @@ MyWalletPhone.get_history = function() {
         objc_loading_stop();
     };
 
-    objc_loading_start_get_history();
+    if (!hideBusyView) objc_loading_start_get_history();
 
     var getHistory = MyWallet.wallet.getHistory();
     getHistory.then(success).catch(error);
@@ -1572,22 +1576,6 @@ MyWalletPhone.getAllCurrencySymbols = function () {
     promise.then(success, error);
 }
 
-MyWalletPhone.getFiatAtTime = function(time, value, currencyCode) {
-
-    var success = function (amount) {
-        console.log('Get fiat at time success');
-        objc_on_get_fiat_at_time_success(amount, currencyCode);
-    };
-
-    var error = function (e) {
-        var message = JSON.stringify(e);
-        console.log('Error getting fiat at time: ' + message[initial_error]);
-        objc_on_get_fiat_at_time_error(message[initial_error]);
-    };
-
-    BlockchainAPI.getFiatAtTime(time, value, currencyCode).then(success).catch(error);
-}
-
 MyWalletPhone.getPasswordStrength = function(password) {
     var strength = Helpers.scorePassword(password);
     return strength;
@@ -1969,11 +1957,6 @@ MyWalletPhone.sendCancellation = function(userId, txIdentifier) {
     MyWallet.wallet.contacts.sendCancellation(userId, txIdentifier).then(success).catch(error);
 }
 
-MyWalletPhone.hideNotificationBadgeForContactTransaction = function(userId, txIdentifier) {
-    MyWallet.wallet.contacts.read(userId, txIdentifier);
-    MyWalletPhone.getMessages();
-}
-
 MyWalletPhone.readInvitation = function(invitation, invitationString) {
     objc_on_read_invitation_success(invitation, invitationString);
 }
@@ -1998,8 +1981,14 @@ MyWalletPhone.acceptRelation = function(invitation, name, identifier) {
     var success = function() {
         objc_on_accept_relation_success(name, identifier);
     };
+    
+    var error = function(e) {
+        objc_on_accept_relation_error(name);
+        console.log('Error accepting relation');
+        console.log(e);
+    };
 
-    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(function(e){console.log('Error accepting invitation');console.log(e)});
+    MyWallet.wallet.contacts.acceptRelation({name: name, invitationReceived:identifier}).then(success).catch(error);
 }
 
 MyWalletPhone.fetchExtendedPublicKey = function(contactIdentifier) {
@@ -2087,7 +2076,7 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
     };
     
     var error = function(error) {
-        console.log('Error sending message')
+        console.log('Error sending payment request')
         console.log(error);
         objc_on_send_payment_request_error(error);
     };
@@ -2095,19 +2084,19 @@ MyWalletPhone.sendPaymentRequest = function(userId, intendedAmount, requestIdent
     MyWallet.wallet.contacts.sendPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
 }
                                                           
-MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note, initiatorSource) {
+MyWalletPhone.requestPaymentRequest = function(userId, intendedAmount, requestIdentifier, note) {
     
     var success = function(info) {
         objc_on_request_payment_request_success(info, userId);
     };
     
     var error = function(error) {
-        console.log('Error sending message')
+        console.log('Error requesting payment request')
         console.log(error);
         objc_on_request_payment_request_error(error);
     };
     
-    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note, initiatorSource).then(success).catch(error);
+    MyWallet.wallet.contacts.sendRPR(userId, intendedAmount, requestIdentifier, note).then(success).catch(error);
 }
 
 MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier) {
@@ -2116,7 +2105,13 @@ MyWalletPhone.sendPaymentRequestResponse = function(userId, txHash, txIdentifier
         objc_on_send_payment_request_response_success(info);
     };
     
-    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){console.log('Error sending message');console.log(e)});
+    var error = function(error) {
+        console.log('Error sending payment request response')
+        console.log(error);
+        objc_on_send_payment_request_response_error(error);
+    };
+    
+    MyWallet.wallet.contacts.sendPRR(userId, txHash, txIdentifier).then(success).catch(function(e){error});
 }
 
 MyWalletPhone.changeNetwork = function(newNetwork) {

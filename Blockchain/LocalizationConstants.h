@@ -216,6 +216,7 @@
 #define BC_STRING_AMOUNT NSLocalizedString(@"Amount", nil)
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
 #define BC_STRING_PAYMENT_REQUEST_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
+#define BC_STRING_CONTACT_REQUEST_SUBJECT NSLocalizedString(@"Blockchain Wallet Contact Request", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
 
 #define BC_STRING_TRANSACTION_DETAILS NSLocalizedString(@"Transaction details", nil)
@@ -447,6 +448,7 @@
 
 #define BC_STRING_ACCEPTED_RELATION_ALERT_TITLE_NAME_ARGUMENT NSLocalizedString(@"Accepted Invite by %@", nil)
 #define BC_STRING_ACCEPTED_RELATION_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"When %@ logs into their wallet, you will be able to exchange payment requests.", nil)
+#define BC_STRING_ACCEPT_RELATION_ERROR_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"Something went wrong when accepting the invitation from %@. Please try again.", nil)
 #define BC_STRING_RESEND_INVITE NSLocalizedString(@"Resend invite", nil)
 #define BC_STRING_WHAT_NAME_DOES_ARGUMENT_KNOW_YOU_BY NSLocalizedString(@"What name does %@ know you by?", nil)
 #define BC_STRING_PLEASE_ENTER_A_NAME NSLocalizedString(@"Please enter a name.", nil)
@@ -470,6 +472,7 @@
 #define BC_STRING_ENTER_NAME_CONTACT NSLocalizedString(@"Enter a name for your contact.", nil)
 #define BC_STRING_SEARCH NSLocalizedString(@"Search", nil)
 #define BC_STRING_SELECT_CONTACT NSLocalizedString(@"Select Contact", nil)
+#define BC_STRING_SELECT_CONTACT_OPTIONAL NSLocalizedString(@"Select Contact (optional)", nil)
 
 #define BC_STRING_ADD_NEW_CONTACT NSLocalizedString(@"Add New Contact...", nil)
 #define BC_STRING_SOMEONE_IS_INVITING_ME NSLocalizedString(@"Someone is inviting me", nil)
@@ -497,14 +500,19 @@
 #define BC_STRING_NO_TRANSACTIONS_WITH_ARGUMENT_YET NSLocalizedString(@"No transactions with %@ yet", nil)
 
 #define BC_STRING_RECEIVING_PAYMENT NSLocalizedString(@"Receiving Payment", nil)
-#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ for %@", nil)
+#define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT_FOR_ARGUMENT NSLocalizedString(@"%@ would like to send you %@ - \"%@\"", nil)
 #define BC_STRING_ARGUMENT_WANTS_TO_SEND_YOU_ARGUMENT NSLocalizedString(@"%@ wants to send you %@", nil)
 
 #define BC_STRING_GO_BACK NSLocalizedString(@"Go back", nil)
 #define BC_STRING_REJECT_PAYMENT_MESSAGE NSLocalizedString(@"Once you cancel or decline a payment, no further action can be taken on it.", nil)
 #define BC_STRING_DECLINE NSLocalizedString(@"Decline", nil)
 #define BC_STRING_DECLINED NSLocalizedString(@"Declined", nil)
+#define BC_STRING_DECLINE_PAYMENT NSLocalizedString(@"Decline Payment", nil)
+#define BC_STRING_DECLINE_PAYMENT_FOR_ARGUMENT NSLocalizedString(@"Decline Payment for \"%@\"", nil)
+#define BC_STRING_YES_DECLINE_PAYMENT NSLocalizedString(@"Yes, decline this payment", nil)
 #define BC_STRING_CANCEL_PAYMENT NSLocalizedString(@"Cancel Payment", nil)
+#define BC_STRING_CANCEL_PAYMENT_FOR_ARGUMENT NSLocalizedString(@"Cancel Payment for \"%@\"", nil)
+#define BC_STRING_YES_CANCEL_PAYMENT NSLocalizedString(@"Yes, cancel this payment", nil)
 #define BC_STRING_CANCELLED NSLocalizedString(@"Cancelled", nil)
 
 #define BC_STRING_RECEIVING NSLocalizedString(@"Receiving", nil)
@@ -518,7 +526,7 @@
 #define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_RECEIVER BC_STRING_PAYMENT_REQUEST
 #define BC_STRING_CONTACT_TRANSACTION_STATE_READY_TO_SEND_INITIATOR BC_STRING_SENDING
 #define BC_STRING_CONTACT_TRANSACTION_STATE_ACCEPT_OR_DECLINE_PAYMENT BC_STRING_RECEIVING
-#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST BC_STRING_RECEIVING
+#define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_PAYMENT_REQUEST BC_STRING_REQUESTED
 #define BC_STRING_CONTACT_TRANSACTION_STATE_WAITING_FOR_PAYMENT_REQUEST_PAYMENT_REQUEST BC_STRING_RECEIVING
 
 #define BC_STRING_PENDING_CONTACT NSLocalizedString(@"Pending Contact", nil)
@@ -531,6 +539,7 @@
 #define BC_STRING_AWAITING_RESPONSE NSLocalizedString(@"Awaiting Response", nil)
 #define BC_STRING_REQUESTED_ARGUMENT_FROM_NAME_ARGUMENT NSLocalizedString(@"Requested %@ from %@", nil)
 #define BC_STRING_WAITING_FOR_PAYMENT NSLocalizedString(@"Waiting for payment", nil)
+#define BC_STRING_PAYMENT_REQUESTED NSLocalizedString(@"Payment Requested", nil)
 #define BC_STRING_SENT_ARGUMENT_TO_ARGUMENT NSLocalizedString(@"Sent %@ to %@", nil)
 #define BC_STRING_RECEIVED_ARGUMENT_FROM_ARGUMENT NSLocalizedString(@"Received %@ from %@", nil)
 
@@ -548,6 +557,7 @@
 #define BC_STRING_DELETE_CONTACT_ALERT_TITLE NSLocalizedString(@"Delete contact?", nil)
 #define BC_STRING_DELETE_CONTACT_ALERT_MESSAGE NSLocalizedString(@"Once removed, you will have to invite this contact again.", nil)
 #define BC_STRING_RENAME_CONTACT_ALERT_MESSAGE_NAME_ARGUMENT NSLocalizedString(@"Enter a new name for %@.", nil)
+#define BC_STRING_INVITE_HELPER_TEXT NSLocalizedString(@"%@ wants to add you as a Blockchain Wallet contact. Tap on the link below to accept the invitation.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET NSLocalizedString(@"%@ has not accepted your invitation yet.", nil)
 #define BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION NSLocalizedString(@"%@ must accept your invitation before you can send each other requests.", nil)
 

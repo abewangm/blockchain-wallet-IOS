@@ -23,12 +23,14 @@
                 <outlet property="bottomContainerView" destination="UFr-og-Lbi" id="lgK-g1-LV7"/>
                 <outlet property="btcAmountField" destination="52" id="YXL-6B-QU6"/>
                 <outlet property="btcLabel" destination="7ho-GV-ikp" id="e2a-3k-kXk"/>
+                <outlet property="contactLabel" destination="qkl-tN-HpA" id="8W4-Q3-S0p"/>
                 <outlet property="containerView" destination="Gzr-Wy-8Rh" id="DL3-hD-g0C"/>
                 <outlet property="continuePaymentAccessoryButton" destination="pPu-bJ-k6p" id="ymH-4D-0a6"/>
                 <outlet property="continuePaymentButton" destination="4" id="xDx-7s-gZq"/>
                 <outlet property="feeField" destination="p7q-Ud-nYh" id="A0V-si-4g2"/>
                 <outlet property="feeLabel" destination="Zhm-Jw-P4C" id="Piy-45-yLj"/>
                 <outlet property="feeOptionsButton" destination="8CA-Iw-4Gl" id="2WT-Lj-bjR"/>
+                <outlet property="feeTappableView" destination="FK0-bF-ZTY" id="fS4-ED-Z12"/>
                 <outlet property="fiatAmountField" destination="qx4-XV-uhn" id="Ns6-YO-Z1m"/>
                 <outlet property="fiatLabel" destination="vGH-md-Ck3" id="LhR-Tz-aN6"/>
                 <outlet property="fromLabel" destination="7" id="oF6-bR-xhe"/>
@@ -212,6 +214,10 @@
                                         <outlet property="delegate" destination="-1" id="MPG-3J-rVc"/>
                                     </connections>
                                 </textField>
+                                <view contentMode="scaleToFill" misplaced="YES" id="FK0-bF-ZTY">
+                                    <rect key="frame" x="0.0" y="61" width="320" height="52"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
@@ -252,6 +258,14 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
+                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Contact Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="qkl-tN-HpA">
+                            <rect key="frame" x="63" y="51" width="222" height="39"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                            <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>

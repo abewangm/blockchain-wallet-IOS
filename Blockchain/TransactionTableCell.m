@@ -106,7 +106,7 @@
 
 #pragma mark button interactions
 
-- (IBAction)transactionClicked:(UIButton *)button indexPath:(NSIndexPath *)indexPath
+- (IBAction)transactionClicked:(UIButton *)button
 {
     TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
     detailViewController.transaction = transaction;
@@ -130,7 +130,7 @@
 
 - (IBAction)btcbuttonclicked:(id)sender
 {
-    [app toggleSymbol];
+    [self transactionClicked:nil];
 }
 
 @end

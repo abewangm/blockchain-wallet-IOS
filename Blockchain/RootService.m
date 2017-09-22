@@ -528,7 +528,10 @@ void (^secondPasswordSuccess)(NSString *);
 {
     // TODO: test deregistering from the server
     
-    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT, URL_SERVER, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length]]]];
+    NSString *preferredLanguage = [[NSLocale preferredLanguages] firstObject];
+    const char *languageString = [preferredLanguage UTF8String];
+
+    NSMutableURLRequest *notificationsRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT_LANGUAGE_ARGUMENT, URL_SERVER, [self.wallet guid], [self.wallet sharedKey], self.deviceToken, (unsigned long)[self.deviceToken length], languageString]]];
     [notificationsRequest setHTTPMethod:@"POST"];
     
     NSURLSessionDataTask *dataTask = [[SessionManager sharedSession] dataTaskWithRequest:notificationsRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -1037,7 +1040,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.latestResponse = response;
     
-    _transactionsViewController.data = response;
+    [_transactionsViewController updateData:response];
     
 #if defined(ENABLE_TRANSACTION_FILTERING) && defined(ENABLE_TRANSACTION_FETCHING)
     if (app.wallet.isFetchingTransactions) {
@@ -1664,7 +1667,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     self.latestResponse = nil;
     
-    _transactionsViewController.data = nil;
+    [_transactionsViewController updateData:nil];
     _settingsNavigationController = nil;
     [_receiveViewController clearAmounts];
     
@@ -2070,6 +2073,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.contactsViewController didFailCompleteRelation];
 }
 
+- (void)didFailAcceptRelation:(NSString *)name
+{
+    [self.contactsViewController didFailAcceptRelation:name];
+}
+
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name
 {
     [self.contactsViewController didAcceptRelation:invitation name:name];
@@ -2253,11 +2261,11 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self.sendViewController hideSelectFromAndToButtonsIfAppropriate];
 
-    [_transactionsViewController reload];
+    [_transactionsViewController didGetMessages];
     [sideMenuViewController reloadTableView];
     [self.contactsViewController didGetMessages];
     
-    NSInteger badgeNumber = self.wallet.contactsUnreadCount && self.wallet.contactsUnreadCount > 0 ? [self.wallet.contactsUnreadCount integerValue] : 0;
+    NSInteger badgeNumber = self.wallet.contactsActionCount && self.wallet.contactsActionCount > 0 ? [self.wallet.contactsActionCount integerValue] : 0;
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
     
@@ -2335,6 +2343,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     if (!requestId) {
         [app hideBusyView];
+        [self.receiveViewController clearAmounts];
 
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"success_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
         imageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
@@ -2389,6 +2398,11 @@ void (^secondPasswordSuccess)(NSString *);
     [app showModalWithContent:confirmationView closeType:ModalCloseTypeDone headerText:BC_STRING_CONFIRMATION onDismiss:^{
         [self showTransactions];
     } onResume:nil];
+}
+
+- (void)didSendPaymentRequestResponse
+{
+    [self.wallet getHistoryWithoutBusyView];
 }
 
 - (void)didChangeContactName:(NSDictionary *)info
@@ -3224,7 +3238,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [self playBeepSound];
     
-    [_transactionsViewController animateNextCellAfterReload];
+    [_transactionsViewController didReceiveTransactionMessage];
     
     [_receiveViewController storeRequestedAmount];
 }

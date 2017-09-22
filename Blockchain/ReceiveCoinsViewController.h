@@ -19,6 +19,8 @@
  */
 
 #import "Wallet.h"
+#import "BCDescriptionView.h"
+
 @class BCTotalAmountView;
 @interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
@@ -34,9 +36,9 @@
     UILabel *receiveBtcLabel;
     UILabel *receiveFiatLabel;
     
-    IBOutlet UIButton *doneButton;
+    UIButton *doneButton;
     // Keyboard accessory view
-    IBOutlet UIView *amountKeyboardAccessoryView;
+    UIView *amountKeyboardAccessoryView;
 }
 
 @property(nonatomic, strong) NSArray *activeKeys;
@@ -45,7 +47,6 @@
 @property(nonatomic, strong) NSString *clickedAddress;
 
 @property(nonatomic) UIView *bottomContainerView;
-@property(nonatomic) BCTotalAmountView *totalAmountView;
 @property(nonatomic) UITextField *receiveBtcField;
 @property(nonatomic) UITextField *receiveFiatField;
 @property(nonatomic) UILabel *receiveToLabel;

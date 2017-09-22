@@ -82,12 +82,14 @@
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
     
+    CGFloat leftMargin = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
+    
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:15]];
+                                                                multiplier:1.f constant:leftMargin]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeTop
@@ -96,12 +98,19 @@
                                                                  attribute:NSLayoutAttributeTop
                                                                 multiplier:1.f constant:23]];
     
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                    toItem:nil
+                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                multiplier:1.f constant:90]];
+    
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:15]];
+                                                                multiplier:1.f constant:leftMargin]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
                                                                  attribute:NSLayoutAttributeTop

@@ -35,12 +35,8 @@
 #import "KeyPair.h"
 #import "NSData+BTCData.h"
 
-#define DICTIONARY_KEY_NUMBER_ACTION @"numberAction"
-#define DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION @"numberBadgeNotification"
-
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
-@property (nonatomic) JSContext *backgroundContext;
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @end
@@ -91,7 +87,7 @@
     NSString *walletJSSource = [NSString stringWithContentsOfFile:walletJSPath encoding:NSUTF8StringEncoding error:nil];
     NSString *walletiOSSource = [NSString stringWithContentsOfFile:walletiOSPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSString *jsSource = [NSString stringWithFormat:JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT, JAVASCRIPTCORE_GLOBAL_CRYPTO, walletJSSource, walletiOSSource];
+    NSString *jsSource = [NSString stringWithFormat:@"%@\n%@\n%@", JAVASCRIPTCORE_PREFIX_JS_SOURCE, walletJSSource, walletiOSSource];
     
     return jsSource;
 }
@@ -188,47 +184,6 @@
         
         return uuid;
     };
-}
-
-- (void)loadBackgroundJS
-{
-    self.backgroundContext = [[JSContext alloc] init];
-    
-    [self.backgroundContext evaluateScript:[self getConsoleScript]];
-    
-    NSSet *names = [self getConsoleFunctionNames];
-    
-    for (NSString *name in names) {
-        self.backgroundContext[@"console"][name] = ^(NSString *message) {
-            DLog(@"Javascript %@: %@", name, message);
-        };
-    }
-    
-    __weak Wallet *weakSelf = self;
-
-    self.backgroundContext.exceptionHandler = [self getExceptionHandler];
-    
-    self.backgroundContext[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
-    self.backgroundContext[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
-    self.backgroundContext[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
-    
-    self.backgroundContext[@"objc_on_get_fiat_at_time_success"] = ^(NSString *fiatAmount, NSString *currencyCode) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf on_get_fiat_at_time_success:fiatAmount currencyCode:currencyCode];
-        });
-    };
-    
-    self.backgroundContext[@"objc_on_get_fiat_at_time_error"] = ^(NSString *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf on_get_fiat_at_time_error:error];
-        });
-    };
-    
-    [self.backgroundContext evaluateScript:[self getJSSource]];
-    
-    self.backgroundContext[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
-    self.backgroundContext[@"Bitcoin"][@"HDNode"] = [HDNode class];
-    self.backgroundContext[@"HDNode"] = [HDNode class];
 }
 
 - (void)loadJS
@@ -837,6 +792,10 @@
         [weakSelf on_accept_relation_success:invitation name:name];
     };
     
+    self.context[@"objc_on_accept_relation_error"] = ^(NSString *name) {
+        [weakSelf on_accept_relation_error:name];
+    };
+    
     self.context[@"objc_on_fetch_xpub_success"] = ^(NSString *xpub) {
         [weakSelf on_fetch_xpub_success:xpub];
     };
@@ -906,8 +865,6 @@
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
     self.context[@"Bitcoin"][@"HDNode"] = [HDNode class];
     self.context[@"HDNode"] = [HDNode class];
-    
-    [self loadBackgroundJS];
     
     [self login];
 }
@@ -1143,6 +1100,11 @@
     return isInitialized;
 }
 
+- (NSString *)getAPICode
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getAPICode()"] toString];
+}
+
 - (BOOL)hasEncryptedWalletData
 {
     if ([self isInitialized])
@@ -1180,6 +1142,12 @@
     [self.context evaluateScript:@"MyWalletPhone.get_history()"];
 }
 
+- (void)getHistoryWithoutBusyView
+{
+    if ([self isInitialized])
+        [self.context evaluateScript:@"MyWalletPhone.get_history(true)"];
+}
+
 - (void)getWalletAndHistory
 {
     if ([self isInitialized])
@@ -1190,7 +1158,7 @@
 {
     if (!self.didReceiveMessageForLastTransaction) {
         DLog(@"Did not receive tx message for %f seconds - getting history", DELAY_GET_HISTORY_BACKUP);
-        [self getHistory];
+        [self getHistoryWithoutBusyView];
     }
 }
 
@@ -2165,14 +2133,21 @@
 
 - (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode
 {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [URL_SERVER escapeStringForJS]]];
-
-        [self.backgroundContext evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getFiatAtTime(%lld, %lld, \"%@\")", time, value, [currencyCode escapeStringForJS]]];
-    });
+    NSURL *URL = [NSURL URLWithString:[URL_SERVER stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE, value, currencyCode, time, [self getAPICode]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [self on_get_fiat_at_time_error:[error localizedDescription]];
+            } else {
+                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                [self on_get_fiat_at_time_success:result currencyCode:currencyCode];
+            }
+        });
+    }];
+    
+    [task resume];
 }
-
 
 - (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction
 {
@@ -2228,12 +2203,16 @@
 
 - (void)loadContacts
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.loadContacts()"];
+#endif
 }
 
 - (void)loadContactsThenGetMessages
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.loadContactsThenGetMessages()"];
+#endif
 }
 
 - (void)getUpdatedContacts:(BOOL)isFirstLoad newMessages:(NSArray *)newMessages
@@ -2296,7 +2275,9 @@
 
 - (void)getMessages
 {
+#ifdef ENABLE_CONTACTS
     [self.context evaluateScript:@"MyWalletPhone.getMessages()"];
+#endif
 }
 
 - (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier
@@ -2325,7 +2306,11 @@
         escapedInitiatorSourceString = initiatorSource;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
+    if (note && note.length > 0) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendPaymentRequest(\"%@\", %lld, %@, null, %@)", [userId escapeStringForJS], amount, requestIdArgument, escapedInitiatorSourceString]];
+    }
 }
 
 - (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource
@@ -2339,7 +2324,11 @@
         escapedInitiatorSourceString = initiatorSource;
     }
     
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\", %@)", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS], escapedInitiatorSourceString]];
+    if (note && note.length > 0) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@, \"%@\")", [userId escapeStringForJS], amount, requestIdArgument, [note escapeStringForJS]]];
+    } else {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.requestPaymentRequest(\"%@\", %lld, %@)", [userId escapeStringForJS], amount, requestIdArgument]];
+    }
 }
 
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier
@@ -2357,15 +2346,9 @@
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.sendCancellation(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
 }
 
-- (void)hideNotificationBadgeForContactTransaction:(ContactTransaction *)transaction
-{
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.hideNotificationBadgeForContactTransaction(\"%@\", \"%@\")", [transaction.contactIdentifier escapeStringForJS], [transaction.identifier escapeStringForJS]]];
-}
-
 - (void)iterateAndUpdateContacts:(NSArray *)allContacts
 {
     int actionCount = 0;
-    int badgeCount = 0;
     ContactActionRequired firstAction;
     
     NSMutableDictionary *allContactsDict = [NSMutableDictionary new];
@@ -2386,14 +2369,10 @@
             }
         }
         
-        NSDictionary *info = [self iterateThroughTransactionsForContact:contact];
+        int actionCountForContact = [self iterateThroughTransactionsForContact:contact];
         
-        int actionCountForContact = [[info objectForKey:DICTIONARY_KEY_NUMBER_ACTION] intValue];
         if (actionCountForContact > 0) firstAction = ContactActionRequiredSinglePayment;
         actionCount = actionCount + actionCountForContact;
-        
-        int badgeCountForContact = [[info objectForKey:DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION] intValue];
-        badgeCount = badgeCount + badgeCountForContact;
     }
     
     if (actionCount == 0) {
@@ -2404,23 +2383,18 @@
         self.contactsActionRequired = ContactActionRequiredMultiple;
     }
     
-    self.contactsUnreadCount = [NSNumber numberWithInt:badgeCount];
+    self.contactsActionCount = [NSNumber numberWithInt:actionCount];
     
     self.contacts = [[NSDictionary alloc] initWithDictionary:allContactsDict];
 }
 
-- (NSDictionary *)iterateThroughTransactionsForContact:(Contact *)contact
+- (int)iterateThroughTransactionsForContact:(Contact *)contact
 {
     int numberOfActionsRequired = 0;
-    int numberOfActionsRead = 0;
     // Check for any pending requests
     for (ContactTransaction *transaction in [contact.transactionList allValues]) {
         if (transaction.transactionState == ContactTransactionStateReceiveAcceptOrDeclinePayment || transaction.transactionState == ContactTransactionStateSendReadyToSend) {
             numberOfActionsRequired++;
-            
-            if (transaction.read) {
-                numberOfActionsRead++;
-            }
         }
         
         if (transaction.transactionState == ContactTransactionStateDeclined || transaction.transactionState == ContactTransactionStateCancelled) {
@@ -2434,10 +2408,7 @@
     
     [self.pendingContactTransactions sortUsingSelector:@selector(reverseCompareLastUpdated:)];
     
-    int notificationBadgeNumber = numberOfActionsRequired - numberOfActionsRead;
-    
-    return @{ DICTIONARY_KEY_NUMBER_ACTION : [NSNumber numberWithInt:numberOfActionsRequired],
-              DICTIONARY_KEY_NUMBER_BADGE_NOTIFICATION : [NSNumber numberWithInt:notificationBadgeNumber]};
+    return numberOfActionsRequired;
 }
 
 - (BOOL)actionRequiredForContact:(Contact *)contact
@@ -3234,8 +3205,6 @@
     DLog(@"on_get_history_success");
     
     [self getMessages];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_KEY_GET_HISTORY_SUCCESS object:nil];
 }
 
 - (void)did_get_fee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize
@@ -3626,6 +3595,16 @@
     }
 }
 
+- (void)on_accept_relation_error:(NSString *)name
+{
+    DLog(@"on_accept_relation_error");
+    if ([self.delegate respondsToSelector:@selector(didFailAcceptRelation:)]) {
+        [self.delegate didFailAcceptRelation:name];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFailAcceptRelation!", [delegate class]);
+    }
+}
+
 - (void)on_complete_relation_error
 {
     DLog(@"on_complete_relation_error");
@@ -3737,7 +3716,11 @@
 {
     DLog(@"on_send_payment_request_response_success");
     
-    [self getMessages];
+    if ([self.delegate respondsToSelector:@selector(didSendPaymentRequestResponse)]) {
+        [self.delegate didSendPaymentRequestResponse];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didSendPaymentRequestResponse!", [delegate class]);
+    }
 }
 
 - (void)on_change_contact_name_success:(JSValue *)info

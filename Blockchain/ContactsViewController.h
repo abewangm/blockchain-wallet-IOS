@@ -20,6 +20,7 @@
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didCompleteRelation;
 - (void)didFailCompleteRelation;
+- (void)didFailAcceptRelation:(NSString *)name;
 - (void)didDeleteContactAfterStoringInfo;
 
 // Messages Controller

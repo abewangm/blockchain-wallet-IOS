@@ -7,20 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BCDescriptionView.h"
 @class ContactTransaction;
-
-typedef enum {
-    RejectionTypeDecline,
-    RejectionTypeCancel
-} RejectionType;
 
 @protocol ConfirmPaymentViewDelegate
 - (void)setupNoteForTransaction:(NSString *)note;
 - (void)feeInformationButtonClicked;
-- (void)confirmRejectPayment:(RejectionType)rejectionType;
 @end
-@interface BCConfirmPaymentView : UIView
+@interface BCConfirmPaymentView : BCDescriptionView
 
 - (id)initWithWindow:(UIView *)window
                 from:(NSString *)from

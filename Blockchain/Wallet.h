@@ -114,12 +114,14 @@
 - (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
 - (void)didCompleteRelation;
 - (void)didFailCompleteRelation;
+- (void)didFailAcceptRelation:(NSString *)name;
 - (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
 - (void)didFetchExtendedPublicKey;
 - (void)didGetNewMessages:(NSArray *)newMessages;
 - (void)didGetMessagesOnFirstLoad;
 - (void)didSendPaymentRequest:(NSDictionary *)info amount:(uint64_t)amount name:(NSString *)name requestId:(NSString *)requestId;
 - (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didSendPaymentRequestResponse;
 - (void)didChangeContactName:(NSDictionary *)info;
 - (void)didDeleteContact:(NSDictionary *)info;
 - (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
@@ -181,7 +183,7 @@
 @property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
 @property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
 @property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
-@property (nonatomic) NSNumber *contactsUnreadCount;
+@property (nonatomic) NSNumber *contactsActionCount;
 
 typedef enum {
     ContactActionRequiredNone,
@@ -239,6 +241,7 @@ typedef enum {
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
 - (void)getHistory;
+- (void)getHistoryWithoutBusyView;
 - (void)getHistoryIfNoTransactionMessage;
 - (void)getWalletAndHistory;
 
@@ -407,5 +410,4 @@ typedef enum {
 - (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
 - (BOOL)actionRequiredForContact:(Contact *)contact;
 - (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier;
-- (void)hideNotificationBadgeForContactTransaction:(ContactTransaction *)transaction;
 @end

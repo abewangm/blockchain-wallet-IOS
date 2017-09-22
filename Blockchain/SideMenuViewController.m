@@ -113,7 +113,9 @@ int accountEntries = 0;
     }
 
     [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
+#ifdef ENABLE_CONTACTS
     [self addMenuEntry:entryKeyContacts text:BC_STRING_CONTACTS icon:@"icon_contact_small"];
+#endif
     [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
     
     [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];

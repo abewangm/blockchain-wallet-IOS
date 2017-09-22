@@ -32,6 +32,11 @@ typedef enum {
     TransactionTypeSweepAndConfirm = 300,
 } TransactionType;
 
+typedef enum {
+    RejectionTypeDecline,
+    RejectionTypeCancel
+} RejectionType;
+
 @interface SendViewController () <UITextFieldDelegate, TransferAllFundsDelegate, FeeSelectionDelegate, ContactRequestDelegate, ConfirmPaymentViewDelegate>
 
 @property (nonatomic) TransactionType transactionType;
@@ -139,6 +144,8 @@ BOOL displayingLocalSymbolSend;
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_LOADING_TEXT object:nil];
+    
+    if (self.addressSource == DestinationAddressSourceContact && app.tabViewController.selectedIndex != TAB_SEND) [self reload];
 }
 
 - (void)viewDidLoad
@@ -181,6 +188,9 @@ BOOL displayingLocalSymbolSend;
     continuePaymentButton.center = CGPointMake(self.view.center.x, continuePaymentButton.center.y);
     
     rejectPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(feeOptionsClicked:)];
+    [feeTappableView addGestureRecognizer:tapGestureRecognizer];
     
     [self reload];
     
@@ -298,6 +308,8 @@ BOOL displayingLocalSymbolSend;
     sendProgressCancelButton.hidden = YES;
     
     [self enableAmountViews];
+    [self enableToField];
+    [self hideContactLabel];
 
     [self hideRejectPaymentButton];
     
@@ -373,6 +385,19 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)showContactLabelWithName:(NSString *)name reason:(NSString *)reason
+{
+    CGFloat originX = toField.frame.origin.x;
+    CGFloat originY = lineBelowFromField.frame.origin.y + 4;
+    contactLabel.frame = CGRectMake(originX, originY, addressBookButton.frame.origin.x - originX, lineBelowToField.frame.origin.y - originY - 4);
+    contactLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    contactLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    
+    contactLabel.hidden = NO;
+    contactLabel.text = IS_USING_SCREEN_SIZE_4S ? [NSString stringWithFormat:@"%@ - %@", name, reason] : [NSString stringWithFormat:@"%@\n%@", name, reason];
+    contactLabel.alpha = 0.5;
+}
+
 - (void)reloadFromAndToFields
 {
     [self reloadFromField];
@@ -429,16 +454,6 @@ BOOL displayingLocalSymbolSend;
     } else if (app.latestResponse.symbol_btc) {
         displayingLocalSymbol = FALSE;
         displayingLocalSymbolSend = FALSE;
-    }
-}
-
-- (void)setAddressSource:(DestinationAddressSource)addressSource
-{
-    _addressSource = addressSource;
-    
-    if (_addressSource != DestinationAddressSourceContact) {
-        [self enableAmountViews];
-        [self hideRejectPaymentButton];
     }
 }
 
@@ -569,7 +584,7 @@ BOOL displayingLocalSymbolSend;
              
              // Close transaction modal, go to transactions view, scroll to top and animate new transaction
              [app closeModalWithTransition:kCATransitionFade];
-             [app.transactionsViewController animateNextCellAfterReload];
+             [app.transactionsViewController didReceiveTransactionMessage];
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  [app transactionsClicked:nil];
              });
@@ -715,7 +730,7 @@ BOOL displayingLocalSymbolSend;
     
     // Close transaction modal, go to transactions view, scroll to top and animate new transaction
     [app closeAllModals];
-    [app.transactionsViewController animateNextCellAfterReload];
+    [app.transactionsViewController didReceiveTransactionMessage];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [app transactionsClicked:nil];
     });
@@ -944,8 +959,10 @@ BOOL displayingLocalSymbolSend;
     self.onViewDidLoad = ^(){
         weakSelf.contactTransaction = transaction;
         [weakSelf selectFromAccount:fromAccount];
+        [weakSelf disableToField];
         [weakSelf disableAmountViews];
         [weakSelf showRejectPaymentButtonWithRejectionType:rejectionType];
+        [weakSelf showContactLabelWithName:transaction.contactName reason:transaction.reason];
     };
     
     // Call the getter for self.view to invoke viewDidLoad so that reload is called only once
@@ -955,9 +972,11 @@ BOOL displayingLocalSymbolSend;
             self.onViewDidLoad = nil;
             [self reload];
             self.contactTransaction = transaction;
-            [weakSelf selectFromAccount:fromAccount];
-            [weakSelf disableAmountViews];
+            [self selectFromAccount:fromAccount];
+            [self disableToField];
+            [self disableAmountViews];
             [self showRejectPaymentButtonWithRejectionType:rejectionType];
+            [self showContactLabelWithName:transaction.contactName reason:transaction.reason];
         }
     }
 }
@@ -1089,6 +1108,7 @@ BOOL displayingLocalSymbolSend;
             [fiatAmountField changeYPosition:-15];
             [lineBelowAmountFields changeYPosition:28];
             
+            [feeTappableView changeYPosition:28];
             [feeField changeYPosition:38];
             [feeLabel changeYPosition:41];
             [self.feeTypeLabel changeYPosition:37];
@@ -1182,6 +1202,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.feeType == FeeTypeCustom) {
         feeField.hidden = NO;
+        [feeTappableView changeXPosition:self.feeAmountLabel.frame.origin.x];
         
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_LIGHT_GRAY;
@@ -1191,11 +1212,10 @@ BOOL displayingLocalSymbolSend;
         self.feeTypeLabel.hidden = YES;
     } else {
         feeField.hidden = YES;
-        
+        [feeTappableView changeXPosition:0];
+
         self.feeWarningLabel.hidden = YES;
-        if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-        }
+        [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
 
         self.feeAmountLabel.hidden = NO;
         self.feeAmountLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -1294,9 +1314,36 @@ BOOL displayingLocalSymbolSend;
     }];
 }
 
+- (void)hideContactLabel
+{
+    contactLabel.hidden = YES;
+}
+
+- (void)disableToField
+{
+    CGFloat alpha = 0.0;
+
+    toField.enabled = NO;
+    toField.alpha = alpha;
+    
+    addressBookButton.enabled = NO;
+    addressBookButton.alpha = alpha;
+}
+
+- (void)enableToField
+{
+    CGFloat alpha = 1.0;
+    
+    toField.enabled = YES;
+    toField.alpha = alpha;
+    
+    addressBookButton.enabled = YES;
+    addressBookButton.alpha = alpha;
+}
+
 - (void)disableAmountViews
 {
-    CGFloat alpha = 0.25;
+    CGFloat alpha = 0.5;
     
     btcAmountField.enabled = NO;
     btcAmountField.alpha = alpha;
@@ -1469,9 +1516,7 @@ BOOL displayingLocalSymbolSend;
         
         if (newString.length == 0) {
             self.feeWarningLabel.hidden = YES;
-            if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
-                [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
-            }
+            [lineBelowFeeField changeYPositionAnimated:[self defaultYPositionForWarningLabel] completion:nil];
         }
 
         [self performSelector:@selector(updateSatoshiPerByteAfterTextChange) withObject:nil afterDelay:0.1f];

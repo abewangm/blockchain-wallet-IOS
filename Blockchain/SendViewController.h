@@ -35,6 +35,7 @@
     IBOutlet UIButton *selectFromButton;
     IBOutlet UIButton *fundsAvailableButton;
     
+    IBOutlet UILabel *contactLabel;
     IBOutlet UILabel *toLabel;
     IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
@@ -62,6 +63,7 @@
     IBOutlet UILabel *feeLabel;
     IBOutlet UIButton *feeOptionsButton;
     IBOutlet UITextField *feeField;
+    IBOutlet UIView *feeTappableView;
     
     IBOutlet BCLine *lineBelowFromField;
     IBOutlet BCLine *lineBelowToField;

@@ -22,6 +22,7 @@
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
 #define ENABLE_CERTIFICATE_PINNING 1
+// #define ENABLE_CONTACTS 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
@@ -176,7 +177,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
-#define URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT @"%@/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu"
+#define URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT_LANGUAGE_ARGUMENT @"%@/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu&lang=%s"
 
 #define COPYRIGHT_YEAR @"2017"
 
@@ -302,7 +303,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
-#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS @"ChangeMobileNumber"
@@ -318,6 +318,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
 #define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
+
+#define URL_SUFFIX_FROM_BTC_ARGUMENTS_VALUE_CURRENCY_TIME_CODE @"/frombtc?value=%lld&currency=%@&time=%lld&textual=false&nosavecurrency=true&api_code=%@"
 
 #define URL_API_COINIFY @"app-api.coinify.com"
 #define URL_API_SFOX @"api.sfox.com"
@@ -519,8 +521,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TX_HASH @"tx_hash"
 #define DICTIONARY_KEY_REASON @"reason"
 #define DICTIONARY_KEY_LAST_UPDATED @"last_updated"
-#define DICTIONARY_KEY_INITIATOR_SOURCE @"initiator_source"
-#define DICTIONARY_KEY_READ @"read"
 
 #define DICTIONARY_KEY_APS @"aps"
 #define DICTIONARY_KEY_TYPE @"type"
@@ -734,8 +734,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
-#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@\n%@"
-#define JAVASCRIPTCORE_GLOBAL_CRYPTO @"var objcBufferStore; var objcCrypto = function (Buffer) { return {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray); if (Buffer) objcBufferStore = Buffer; intArray.set(new objcBufferStore(result, 'hex')); }}};"
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE @"var window = this; var navigator = {userAgent : {match : function() {return 0;}}}; Promise = undefined;"
 #define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
 #define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
 #define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
