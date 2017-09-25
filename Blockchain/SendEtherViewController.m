@@ -148,6 +148,7 @@
         [self selectToAddress:self.addressToSet];
         self.addressToSet = nil;
     } else {
+        self.toAddress = nil;
         self.toField.text = nil;
     }
     
