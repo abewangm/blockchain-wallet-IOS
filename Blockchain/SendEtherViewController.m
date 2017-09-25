@@ -133,6 +133,13 @@
     self.continuePaymentButton = continueButton;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self getHistory];
+}
+
 - (void)reload
 {
     [app.wallet createNewEtherPayment];

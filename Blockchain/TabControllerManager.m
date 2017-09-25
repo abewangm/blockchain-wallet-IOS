@@ -100,7 +100,6 @@
         }
         
         [_tabViewController setActiveViewController:_sendEtherViewController animated:TRUE index:TAB_SEND];
-        [_sendEtherViewController getHistory];
     }
 }
 

@@ -70,7 +70,7 @@ AVCaptureVideoPreviewLayer *videoPreviewLayer;
 {
     [app closeModalWithTransition:kCATransitionFade];
     
-    // Go to the send scren if we are not already on it
+    // Go to the send screen if we are not already on it
     [app showSendCoins];
 }
 
