@@ -291,7 +291,12 @@
 
 - (void)continueButtonClicked
 {
-    if (self.toAddress == nil || ![self isEtherAddress:self.toAddress]) {
+    self.toAddress = self.toField.text;
+    
+    if (self.toAddress == nil || self.toAddress.length == 0) {
+        [app standardNotify:BC_STRING_YOU_MUST_ENTER_DESTINATION_ADDRESS];
+        return;
+    } else if (![self isEtherAddress:self.toAddress]) {
         [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_ETHER_ADDRESS_ARGUMENT, self.toAddress]];
         return;
     }
