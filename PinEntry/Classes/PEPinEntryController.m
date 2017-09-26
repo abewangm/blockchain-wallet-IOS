@@ -220,7 +220,7 @@ static PEViewController *VerifyController()
             
             if (etherAddress) {
                 self.qrCodeImageView.hidden = NO;
-                self.qrCodeImageView.image = [qrCodeGenerator qrImageFromAddress:etherAddress];
+                self.qrCodeImageView.image = [qrCodeGenerator createQRImageFromString:etherAddress];
             } else {
                 self.qrCodeImageView.hidden = YES;
             }
