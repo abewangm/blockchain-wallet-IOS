@@ -7,13 +7,18 @@
 //
 
 #define USER_DEFAULTS_KEY_GRAPH_TIME_FRAME @"graphTimeFrame"
+#define GRAPH_TIME_FRAME_DAY @"1day"
 #define GRAPH_TIME_FRAME_WEEK @"1weeks"
 #define GRAPH_TIME_FRAME_MONTH @"4weeks"
 #define GRAPH_TIME_FRAME_YEAR @"52weeks"
+#define TIME_INTERVAL_DAY 86400.0
 #define TIME_INTERVAL_WEEK 604800.0
 #define TIME_INTERVAL_MONTH 2592000.0
 #define TIME_INTERVAL_YEAR 31536000.0
-#define STRING_SCALE_SECONDS_IN_A_DAY @"86400"
+#define STRING_SCALE_ONE_DAY @"86400"
+#define STRING_SCALE_TWO_HOURS @"7200"
+#define STRING_SCALE_ONE_HOUR @"3600"
+#define STRING_SCALE_FIFTEEN_MINUTES @"900"
 
 #import "DashboardViewController.h"
 #import "SessionManager.h"
@@ -139,12 +144,19 @@
     NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME] ? : GRAPH_TIME_FRAME_WEEK;
     NSDate *today = [NSDate date];
     NSInteger startDate = 0;
+    NSString *scale;
     
-    if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
+    if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_DAY]) {
+        scale = STRING_SCALE_FIFTEEN_MINUTES;
+        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_DAY] timeIntervalSince1970]);
+    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
+        scale = STRING_SCALE_ONE_HOUR;
         startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_WEEK] timeIntervalSince1970]);
     } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
+        scale = STRING_SCALE_TWO_HOURS;
         startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_MONTH] timeIntervalSince1970]);
     } else {
+        scale = STRING_SCALE_ONE_DAY;
         startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_YEAR] timeIntervalSince1970]);
     }
     
@@ -163,7 +175,7 @@
         return;
     }
     
-    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], STRING_SCALE_SECONDS_IN_A_DAY]]];
+    NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE, base, quote, [NSString stringWithFormat:@"%lu", startDate], scale]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
