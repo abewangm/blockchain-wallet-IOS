@@ -86,18 +86,19 @@
             }
         }
         
+        NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        if (![amountString containsString:@"."]) {
+            amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+        }
+        
         if (textField == self.amountInputView.fiatField) {
             // Convert input amount to internal value
-            NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            if (![amountString containsString:@"."]) {
-                amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
-            }
             
             NSDecimalNumber *amountStringDecimalNumber = amountString && [amountString doubleValue] > 0 ? [NSDecimalNumber decimalNumberWithString:amountString] : 0;
             self.ethAmount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:self.latestExchangeRate];
         }
         else if (textField == self.amountInputView.btcField) {
-            self.ethAmount = [NSDecimalNumber decimalNumberWithString:newString];
+            self.ethAmount = [NSDecimalNumber decimalNumberWithString:amountString];
         }
         
         [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
@@ -123,9 +124,9 @@
 - (void)doCurrencyConversion
 {
     if ([self.amountInputView.btcField isFirstResponder]) {
-        self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:self.amountInputView.btcField.text exchangeRate:self.latestExchangeRate];
+        self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
     } else if ([self.amountInputView.fiatField isFirstResponder]){
-        self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:self.amountInputView.fiatField.text exchangeRate:self.latestExchangeRate];
+        self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
     }
 }
 
