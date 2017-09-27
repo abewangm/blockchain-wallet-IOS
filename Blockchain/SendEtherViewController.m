@@ -323,6 +323,11 @@
         return;
     }
     
+    if ([self.ethAmount isEqualToNumber:@0]) {
+        [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+        return;
+    }
+    
     [self checkIfEtherContractAddress:self.toAddress successHandler:^(NSString *nonContractAddress) {
         
         [app.wallet changeEtherPaymentTo:nonContractAddress];
