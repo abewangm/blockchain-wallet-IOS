@@ -370,8 +370,8 @@ NSString *detailLabel;
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
-        receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-        receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
+        self.amountInputView.fiatLabel.text = app.latestResponse.symbol_local.code;
+        self.amountInputView.btcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
 }
 

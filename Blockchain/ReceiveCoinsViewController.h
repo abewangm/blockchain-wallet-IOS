@@ -33,9 +33,6 @@
     // Amount buttons and field
     IBOutlet UITextField *entryField;
 
-    UILabel *receiveBtcLabel;
-    UILabel *receiveFiatLabel;
-    
     UIButton *doneButton;
     // Keyboard accessory view
     UIView *amountKeyboardAccessoryView;
