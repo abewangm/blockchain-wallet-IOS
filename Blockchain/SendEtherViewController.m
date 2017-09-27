@@ -155,6 +155,9 @@
     }
     
     self.ethAmount = 0;
+    self.ethFee = 0;
+    self.ethAvailable = 0;
+    
     [app.wallet createNewEtherPayment];
 
     if (self.addressToSet) {
@@ -194,6 +197,13 @@
     self.latestExchangeRate = rate;
     
     [self doCurrencyConversion];
+    [self updateFeeLabel];
+}
+
+- (void)updateFeeLabel
+{
+    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", self.ethFee, CURRENCY_SYMBOL_ETH,
+                                [NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]];
 }
 
 - (void)doCurrencyConversion
@@ -225,8 +235,7 @@
     self.ethAvailable = available;
     
     self.ethFee = fee;
-    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", fee, CURRENCY_SYMBOL_ETH,
-                                [NSNumberFormatter formatEthToFiatWithSymbol:[fee stringValue] exchangeRate:self.latestExchangeRate]];
+    [self updateFeeLabel];
 
     if ([app.wallet isWaitingOnEtherTransaction]) {
         [self.fundsAvailableButton setTitle:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE forState:UIControlStateNormal];
