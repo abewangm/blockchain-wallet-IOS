@@ -194,4 +194,12 @@
     }
 }
 
++ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setMaximumFractionDigits:ETH_DECIMAL_LIMIT];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    return [formatter stringFromNumber:amount];
+}
+
 @end

@@ -32,4 +32,6 @@
 + (NSString *)formatFiatToEthWithSymbol:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
 + (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
 
++ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount;
+
 @end

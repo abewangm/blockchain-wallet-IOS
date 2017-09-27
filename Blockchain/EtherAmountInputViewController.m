@@ -144,7 +144,8 @@
         amountString = [self.amountInputView.fiatField.text stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
     }
     
-    self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:amountString exchangeRate:self.latestExchangeRate];
+    NSString *result = [NSNumberFormatter formatFiatToEth:amountString exchangeRate:self.latestExchangeRate];
+    self.amountInputView.btcField.text = [NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:result]];
 }
 
 - (BOOL)isEtherAddress:(NSString *)address
