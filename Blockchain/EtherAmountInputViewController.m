@@ -139,7 +139,12 @@
 
 - (void)convertToBtcField
 {
-    self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
+    NSString *amountString = [self.amountInputView.fiatField.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    if (![amountString containsString:@"."]) {
+        amountString = [self.amountInputView.fiatField.text stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+    }
+    
+    self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:amountString exchangeRate:self.latestExchangeRate];
 }
 
 - (BOOL)isEtherAddress:(NSString *)address
