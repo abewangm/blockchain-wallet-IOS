@@ -39,6 +39,7 @@
 @property (nonatomic) NSString *noteToSet;
 @property (nonatomic) UIButton *continuePaymentAccessoryButton;
 @property (nonatomic) BCConfirmPaymentView *confirmPaymentView;
+@property (nonatomic) BOOL shouldKeepCurrentPayment;
 
 @end
 
@@ -140,8 +141,20 @@
     [self getHistory];
 }
 
+- (void)keepCurrentPayment
+{
+    self.shouldKeepCurrentPayment = YES;
+}
+
 - (void)reload
 {
+    if (self.shouldKeepCurrentPayment) {
+        self.shouldKeepCurrentPayment = NO;
+        [app.wallet getEthExchangeRate];
+        return;
+    }
+    
+    self.ethAmount = 0;
     [app.wallet createNewEtherPayment];
 
     if (self.addressToSet) {
@@ -155,6 +168,15 @@
     [self.amountInputView clearFields];
     
     [app.wallet getEthExchangeRate];
+}
+
+- (void)reloadAfterMultiAddressResponse
+{
+    if (app.latestResponse.symbol_local) {
+        self.amountInputView.fiatLabel.text = app.latestResponse.symbol_local.code;
+    }
+    
+    self.displayingLocalSymbolSend = (app->symbolLocal && app.latestResponse.symbol_local && app.latestResponse.symbol_local.conversion > 0);
 }
 
 - (void)setAddress:(NSString *)address

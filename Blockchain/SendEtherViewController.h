@@ -12,7 +12,9 @@
 @interface SendEtherViewController : EtherAmountInputViewController
 @property (nonatomic) NSString *addressToSet;
 - (void)reload;
+- (void)reloadAfterMultiAddressResponse;
 - (void)getHistory;
+- (void)keepCurrentPayment;
 - (void)didUpdatePayment:(NSDictionary *)payment;
 - (void)updateExchangeRate:(NSDecimalNumber *)rate;
 @end

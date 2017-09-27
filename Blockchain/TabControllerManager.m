@@ -54,6 +54,7 @@
 {
     [_dashboardViewController reload];
     [_sendBitcoinViewController reloadAfterMultiAddressResponse];
+    [_sendEtherViewController reloadAfterMultiAddressResponse];
     [_transactionsBitcoinViewController reload];
     [_receiveBitcoinViewController reload];
     [_receiveEtherViewController reload];
@@ -340,6 +341,7 @@
 - (void)didChangeLocalCurrency
 {
     [self.sendBitcoinViewController reloadFeeAmountLabel];
+    [self.sendEtherViewController keepCurrentPayment];
     [self.receiveBitcoinViewController doCurrencyConversion];
 }
 

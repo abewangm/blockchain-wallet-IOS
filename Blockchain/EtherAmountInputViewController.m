@@ -124,10 +124,22 @@
 - (void)doCurrencyConversion
 {
     if ([self.amountInputView.btcField isFirstResponder]) {
-        self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
+        [self convertToFiatField];
     } else if ([self.amountInputView.fiatField isFirstResponder]){
-        self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
+        [self convertToBtcField];
+    } else {
+        [self convertToFiatField];
     }
+}
+
+- (void)convertToFiatField
+{
+    self.amountInputView.fiatField.text = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
+}
+
+- (void)convertToBtcField
+{
+    self.amountInputView.btcField.text = [NSNumberFormatter formatFiatToEth:[self.ethAmount stringValue] exchangeRate:self.latestExchangeRate];
 }
 
 - (BOOL)isEtherAddress:(NSString *)address
