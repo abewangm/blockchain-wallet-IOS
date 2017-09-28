@@ -15,4 +15,6 @@
 @property (nonatomic) UITextField *fiatField;
 - (void)hideKeyboard;
 - (void)clearFields;
+- (void)highlightInvalidAmounts;
+- (void)removeHighlightFromAmounts;
 @end

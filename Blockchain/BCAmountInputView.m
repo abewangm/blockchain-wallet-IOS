@@ -48,6 +48,18 @@
     return self;
 }
 
+- (void)highlightInvalidAmounts
+{
+    self.btcField.textColor = COLOR_WARNING_RED;
+    self.fiatField.textColor = COLOR_WARNING_RED;
+}
+
+- (void)removeHighlightFromAmounts
+{
+    self.btcField.textColor = COLOR_TEXT_DARK_GRAY;
+    self.fiatField.textColor = COLOR_TEXT_DARK_GRAY;
+}
+
 - (void)clearFields
 {
     self.btcField.text = nil;

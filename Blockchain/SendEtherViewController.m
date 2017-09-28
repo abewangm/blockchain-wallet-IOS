@@ -257,8 +257,10 @@
     
     if (result == NSOrderedDescending || result == NSOrderedSame) {
         [self enablePaymentButtons];
+        [self.amountInputView removeHighlightFromAmounts];
     } else {
         [self disablePaymentButtons];
+        [self.amountInputView highlightInvalidAmounts];
     }
 }
 
