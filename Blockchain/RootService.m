@@ -1040,6 +1040,7 @@ void (^secondPasswordSuccess)(NSString *);
 #else
     if (app.wallet.isFilteringTransactions) {
         app.wallet.isFilteringTransactions = NO;
+        [self updateSymbols];
         [self reloadAfterMultiAddressResponse];
     } else {
         [self getAccountInfo];
@@ -1089,6 +1090,13 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS object:nil];
     
+    [self updateSymbols];
+    
+    [self.wallet getEthExchangeRate];
+}
+
+- (void)updateSymbols
+{
     {
         NSString *fiatCode = app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_CURRENCY_FIAT];
         NSMutableDictionary *symbolLocalDict = [[NSMutableDictionary alloc] initWithDictionary:[app.wallet.currencySymbols objectForKey:fiatCode]];
@@ -1104,8 +1112,6 @@ void (^secondPasswordSuccess)(NSString *);
             app.latestResponse.symbol_btc = [CurrencySymbol btcSymbolFromCode:btcCode];
         }
     }
-    
-    [self.wallet getEthExchangeRate];
 }
 
 - (void)walletFailedToDecrypt
