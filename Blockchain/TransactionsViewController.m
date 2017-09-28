@@ -74,7 +74,7 @@
     self.getBitcoinButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     [self.getBitcoinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.getBitcoinButton setTitle:[buttonText uppercaseString] forState:UIControlStateNormal];
-    [self.getBitcoinButton addTarget:self action:@selector(getBitcoinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.getBitcoinButton addTarget:self action:@selector(getAssetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.noTransactionsView addSubview:self.getBitcoinButton];
     
     [self centerNoTransactionSubviews];
@@ -82,9 +82,9 @@
     [view addSubview:self.noTransactionsView];
 }
 
-- (void)getBitcoinButtonClicked
+- (void)getAssetButtonClicked
 {
-    DLog(@"Warning! getBitcoinButtonClicked not overriden!");
+    DLog(@"Warning! getAssetButtonClicked not overriden!");
 }
 
 - (void)centerNoTransactionSubviews

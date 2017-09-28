@@ -884,7 +884,7 @@ int lastNumberTransactions = INT_MAX;
     tableViewController.refreshControl = refreshControl;
 }
 
-- (void)getBitcoinButtonClicked
+- (void)getAssetButtonClicked
 {
     if ([app.wallet isBuyEnabled]) {
         [app buyBitcoinClicked:nil];

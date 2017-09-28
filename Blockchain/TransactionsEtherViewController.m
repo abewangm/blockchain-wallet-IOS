@@ -93,6 +93,11 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)getAssetButtonClicked
+{
+    [app.tabControllerManager receiveCoinClicked:nil];
+}
+
 #pragma mark - Table View Data Source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
