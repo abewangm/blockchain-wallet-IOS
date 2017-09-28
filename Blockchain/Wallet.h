@@ -440,4 +440,8 @@ typedef enum {
 - (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
 - (void)sweepEtherPayment;
 - (BOOL)isWaitingOnEtherTransaction;
+
+// Top Bar Display
+- (NSDecimalNumber *)btcDecimalBalance;
+- (NSDecimalNumber *)ethDecimalBalance;
 @end

@@ -1066,6 +1066,16 @@
     }
 }
 
+- (NSDecimalNumber *)btcDecimalBalance
+{
+    return [NSNumberFormatter formatSatoshiInLocalCurrency:[app.wallet getTotalActiveBalance]];
+}
+
+- (NSDecimalNumber *)ethDecimalBalance
+{
+    return [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
+}
+
 # pragma mark - Socket Delegate
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket

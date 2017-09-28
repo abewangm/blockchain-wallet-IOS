@@ -149,22 +149,26 @@
         }];
     } else if (newIndex == TAB_DASHBOARD || newIndex == TAB_TRANSACTIONS) {
         
+        titleLabel.hidden = YES;
+        balanceLabel.hidden = NO;
+
+        NSDecimalNumber *btcBalance = [app.wallet btcDecimalBalance];
+        NSDecimalNumber *ethBalance = [app.wallet ethDecimalBalance];
+        
         if (newIndex == TAB_DASHBOARD) {
             [self showBalances];
             
-            titleLabel.hidden = YES;
-            balanceLabel.hidden = NO;
-            NSDecimalNumber *btcBalance = [NSNumberFormatter formatSatoshiInLocalCurrency:[app.wallet getTotalActiveBalance]];
-            NSDecimalNumber *ethBalance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
             NSDecimalNumber *sum = [btcBalance decimalNumberByAdding:ethBalance];
             balanceLabel.text = [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:sum]];
             
         } else if (newIndex == TAB_TRANSACTIONS) {
             [self.bannerPricesView removeFromSuperview];
-
+            
             if (self.assetSegmentedControl.selectedSegmentIndex == AssetTypeBitcoin) {
+                balanceLabel.text = [NSNumberFormatter formatMoneyWithLocalSymbol:[app.wallet getTotalActiveBalance]];
                 [self showSelector];
             } else {
+                balanceLabel.text = [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalanceTruncated] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
                 [self.bannerSelectorView removeFromSuperview];
             }
         }
