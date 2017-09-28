@@ -194,7 +194,6 @@
 
 - (IBAction)webLoginClicked:(id)sender;
 - (IBAction)merchantClicked:(UIButton *)sender;
-- (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)forgetWalletClicked:(id)sender;
 - (IBAction)scanAccountQRCodeclicked:(id)sender;
 - (IBAction)secondPasswordClicked:(id)sender;

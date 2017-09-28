@@ -251,7 +251,7 @@
     } else if (actionType == ActionTypeShowReceive) {
         [app.tabControllerManager receiveCoinClicked:nil];
     } else if (actionType == ActionTypeScanQR) {
-        [app QRCodebuttonClicked:nil];
+        [app.tabControllerManager qrCodeButtonClicked];
     } else if (actionType == ActionTypeBuyEther) {
         [app.tabControllerManager showReceiveEther];
     }

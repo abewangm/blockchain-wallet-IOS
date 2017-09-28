@@ -54,6 +54,7 @@
 - (void)receiveCoinClicked:(UITabBarItem *)sender;
 - (void)transactionsClicked:(UITabBarItem *)sender;
 - (void)sendCoinsClicked:(UITabBarItem *)sender;
+- (void)qrCodeButtonClicked;
 
 - (void)showReceiveEther;
 
