@@ -33,6 +33,7 @@
 @end
 
 @interface DashboardViewController ()
+@property (nonatomic) UIView *graphContainerView;
 @property (nonatomic) BCPriceGraphView *graphView;
 @property (nonatomic) UILabel *priceLabel;
 @property (nonatomic) UILabel *titleLabel;
@@ -84,17 +85,25 @@
     
     [self.contentView addSubview:titleContainerView];
     
-    self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectInset(self.contentView.bounds, 60, titleContainerView.frame.origin.y + 60)];
-    self.graphView.backgroundColor = [UIColor whiteColor];
-    [self.graphView changeWidth:self.contentView.frame.size.width - self.graphView.frame.origin.x - 30];
-    [self.graphView changeHeight:self.contentView.frame.size.height - 150];
-    [self.contentView addSubview:self.graphView];
+    UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.contentView.bounds, 60, titleContainerView.frame.origin.y + 60)];
+    [graphContainerView changeWidth:self.contentView.frame.size.width - graphContainerView.frame.origin.x - 30];
+    [graphContainerView changeHeight:self.contentView.frame.size.height - 150];
     
-    UIView *verticalBorder = [[UIView alloc] initWithFrame:CGRectMake(self.graphView.frame.origin.x - 1, self.graphView.frame.origin.y, 1, self.graphView.frame.size.height + 1)];
+    CGFloat verticalSpacing = 8;
+    CGFloat horizontalSpacing = 8;
+
+    self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
+    self.graphView.backgroundColor = [UIColor whiteColor];
+    [graphContainerView addSubview:self.graphView];
+    
+    [self.contentView addSubview:graphContainerView];
+    self.graphContainerView = graphContainerView;
+    
+    UIView *verticalBorder = [[UIView alloc] initWithFrame:CGRectMake(graphContainerView.frame.origin.x - 1, graphContainerView.frame.origin.y, 1, graphContainerView.frame.size.height + 1)];
     verticalBorder.backgroundColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:verticalBorder];
     
-    UIView *horizontalBorder = [[UIView alloc] initWithFrame:CGRectMake(self.graphView.frame.origin.x, self.graphView.frame.origin.y + self.graphView.frame.size.height, self.graphView.frame.size.width, 1)];
+    UIView *horizontalBorder = [[UIView alloc] initWithFrame:CGRectMake(graphContainerView.frame.origin.x, graphContainerView.frame.origin.y + graphContainerView.frame.size.height, graphContainerView.frame.size.width, 1)];
     horizontalBorder.backgroundColor = COLOR_LIGHT_GRAY;
     [self.contentView addSubview:horizontalBorder];
     
@@ -207,7 +216,7 @@
 
 - (void)setupXAxis
 {
-    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphView.frame.origin.x, self.graphView.frame.origin.y + self.graphView.frame.size.height + 8, self.graphView.frame.size.width, 30)];
+    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 8, self.graphContainerView.frame.size.width, 30)];
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
@@ -236,7 +245,7 @@
 
 - (void)setupYAxis
 {
-    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphView.frame.origin.x - 60, self.graphView.frame.origin.y, 60, self.graphView.frame.size.height)];
+    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x - 60, self.graphContainerView.frame.origin.y, 60, self.graphContainerView.frame.size.height)];
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
@@ -266,7 +275,7 @@
 - (void)setupTimeSpanButtons
 {
     CGFloat buttonContainerViewWidth = 210;
-    UIView *buttonContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.graphView.frame.origin.y + self.graphView.frame.size.height + 50, buttonContainerViewWidth, 30)];
+    UIView *buttonContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 50, buttonContainerViewWidth, 30)];
     
     CGFloat buttonWidth = buttonContainerViewWidth/3;
     
