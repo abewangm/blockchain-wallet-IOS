@@ -81,7 +81,7 @@
 
 - (void)ethButtonClicked
 {
-    [app toggleSymbol];
+    [self transactionClicked];
 }
 
 @end

@@ -130,7 +130,7 @@
 
 - (IBAction)btcbuttonclicked:(id)sender
 {
-    [app toggleSymbol];
+    [self transactionClicked:nil];
 }
 
 @end
