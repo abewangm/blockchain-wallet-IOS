@@ -221,10 +221,12 @@
 #define BC_STRING_PIN_COMMON_CODE_WARNING_MESSAGE NSLocalizedString(@"The PIN you have selected is extremely common and may be easily guessed by someone with access to your phone within 3 tries. Would you like to use this PIN anyway?", nil)
 #define BC_STRING_TRY_AGAIN NSLocalizedString(@"Try again", nil)
 
-#define BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT NSLocalizedString(@"Please send %@ to bitcoin address.\n%@", nil)
+#define BC_STRING_PAYMENT_REQUEST_BITCOIN_ARGUMENT_ARGUMENT NSLocalizedString(@"Please send %@ to bitcoin address.\n%@", nil)
+#define BC_STRING_PAYMENT_REQUEST_ETHER_ARGUMENT NSLocalizedString(@"Please send ether to %@.", nil)
 #define BC_STRING_AMOUNT NSLocalizedString(@"Amount", nil)
 #define BC_STRING_PAYMENT_REQUEST_HTML NSLocalizedString(@"Please send payment to bitcoin address (<a href=\"https://blockchain.info/wallet/bitcoin-faq\">help?</a>): %@", nil)
-#define BC_STRING_PAYMENT_REQUEST_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
+#define BC_STRING_PAYMENT_REQUEST_BITCOIN_SUBJECT NSLocalizedString(@"Bitcoin payment request", nil)
+#define BC_STRING_PAYMENT_REQUEST_ETHER_SUBJECT NSLocalizedString(@"Ether payment request", nil)
 #define BC_STRING_CONTACT_REQUEST_SUBJECT NSLocalizedString(@"Blockchain Wallet Contact Request", nil)
 #define BC_STRING_CLOSE NSLocalizedString(@"Close", nil)
 

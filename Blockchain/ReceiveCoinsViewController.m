@@ -623,7 +623,7 @@ NSString *detailLabel;
 
 - (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
 {
-    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT, amount, url];
+    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_BITCOIN_ARGUMENT_ARGUMENT, amount, url];
 }
 
 - (NSString*)formatPaymentRequestHTML:(NSString*)url
@@ -889,7 +889,7 @@ NSString *detailLabel;
     
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
     
-    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_BITCOIN_SUBJECT forKey:@"subject"];
     
     [self.amountInputView.btcField resignFirstResponder];
     [self.amountInputView.fiatField resignFirstResponder];

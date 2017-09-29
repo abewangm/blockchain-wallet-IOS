@@ -67,6 +67,18 @@
     [addressLabel addGestureRecognizer:tapGestureForAddressLabel];
     addressLabel.userInteractionEnabled = YES;
     self.addressLabel = addressLabel;
+    
+    CGFloat spacing = 12;
+    CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
+    requestButton.center = CGPointMake(self.view.center.x, requestButton.center.y);
+    [requestButton setTitle:BC_STRING_REQUEST_PAYMENT forState:UIControlStateNormal];
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton addTarget:self action:@selector(requestButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:requestButton];
 }
 
 - (void)reload
@@ -96,6 +108,26 @@
 {
     [self.addressLabel animateFromText:self.address toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.addressLabel];
     [UIPasteboard generalPasteboard].string = self.address;
+}
+
+- (void)requestButtonClicked
+{
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access share button when not initialized!");
+        return;
+    }
+
+    NSString *message = [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_ETHER_ARGUMENT, self.address];
+    
+    NSArray *activityItems = @[message, self];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
+    
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_ETHER_SUBJECT forKey:@"subject"];
+    
+    [app.tabControllerManager.tabViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end
