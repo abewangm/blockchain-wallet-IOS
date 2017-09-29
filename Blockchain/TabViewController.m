@@ -25,7 +25,8 @@
     [self.assetSegmentedControl setTitle:BC_STRING_ETHER forSegmentAtIndex:1];
     [self.assetSegmentedControl addTarget:self action:@selector(assetSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
     
-    balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
+    balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_LARGE];
+    balanceLabel.adjustsFontSizeToFitWidth = YES;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSymbol)];
     [balanceLabel addGestureRecognizer:tapGesture];
