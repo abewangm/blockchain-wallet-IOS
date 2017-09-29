@@ -54,6 +54,9 @@
         self.actionLabel.text = [BC_STRING_SENT uppercaseString];
         self.actionLabel.textColor = COLOR_TRANSACTION_SENT;
     }
+    
+    self.actionLabel.frame = CGRectMake(self.actionLabel.frame.origin.x, 29, self.actionLabel.frame.size.width, self.actionLabel.frame.size.height);
+    self.dateLabel.frame = CGRectMake(self.dateLabel.frame.origin.x, 11, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
 }
 
 - (void)transactionClicked
