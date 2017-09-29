@@ -7,14 +7,22 @@
 //
 
 #define USER_DEFAULTS_KEY_GRAPH_TIME_FRAME @"graphTimeFrame"
+
+#define ENTRY_TIME_BTC 1282089600
+#define ENTRY_TIME_ETH 1438992000
+
 #define GRAPH_TIME_FRAME_DAY @"1day"
 #define GRAPH_TIME_FRAME_WEEK @"1weeks"
 #define GRAPH_TIME_FRAME_MONTH @"4weeks"
 #define GRAPH_TIME_FRAME_YEAR @"52weeks"
+#define GRAPH_TIME_FRAME_ALL @"all"
+
 #define TIME_INTERVAL_DAY 86400.0
 #define TIME_INTERVAL_WEEK 604800.0
 #define TIME_INTERVAL_MONTH 2592000.0
 #define TIME_INTERVAL_YEAR 31536000.0
+
+#define STRING_SCALE_FIVE_DAYS @"432000"
 #define STRING_SCALE_ONE_DAY @"86400"
 #define STRING_SCALE_TWO_HOURS @"7200"
 #define STRING_SCALE_ONE_HOUR @"3600"
@@ -37,9 +45,11 @@
 @property (nonatomic) BCPriceGraphView *graphView;
 @property (nonatomic) UILabel *priceLabel;
 @property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UIButton *allTimeButton;
 @property (nonatomic) UIButton *yearButton;
 @property (nonatomic) UIButton *monthButton;
 @property (nonatomic) UIButton *weekButton;
+@property (nonatomic) UIButton *dayButton;
 @property (nonatomic) NSString *lastEthExchangeRate;
 
 // X axis
@@ -118,6 +128,7 @@
     [self.weekButton setSelected:NO];
     [self.monthButton setSelected:NO];
     [self.yearButton setSelected:NO];
+    [self.allTimeButton setSelected:NO];
     
     if (!timeFrame || [timeFrame isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
         selectedButton = self.weekButton;
@@ -125,6 +136,10 @@
         selectedButton = self.monthButton;
     } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_YEAR]) {
         selectedButton = self.yearButton;
+    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_ALL]) {
+        selectedButton = self.allTimeButton;
+    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_DAY]) {
+        selectedButton = self.dayButton;
     }
 
     [selectedButton setSelected:YES];
@@ -164,11 +179,18 @@
     } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
         scale = STRING_SCALE_TWO_HOURS;
         startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_MONTH] timeIntervalSince1970]);
-    } else {
+    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_YEAR]) {
         scale = STRING_SCALE_ONE_DAY;
         startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_YEAR] timeIntervalSince1970]);
+    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_ALL]) {
+        scale = STRING_SCALE_FIVE_DAYS;
+        if (self.assetType == AssetTypeBitcoin) {
+            startDate = ENTRY_TIME_BTC;
+        } else if (self.assetType == AssetTypeEther) {
+            startDate = ENTRY_TIME_ETH;
+        }
     }
-    
+        
     NSString *base;
     
     if (self.assetType == AssetTypeBitcoin) {
@@ -274,22 +296,28 @@
 
 - (void)setupTimeSpanButtons
 {
-    CGFloat buttonContainerViewWidth = 210;
+    CGFloat buttonContainerViewWidth = 280;
     UIView *buttonContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 50, buttonContainerViewWidth, 30)];
     
-    CGFloat buttonWidth = buttonContainerViewWidth/3;
+    CGFloat buttonWidth = buttonContainerViewWidth/5;
     
-    self.weekButton = [self timeSpanButtonWithFrame:CGRectMake(0, 0, buttonWidth, 30) title:BC_STRING_WEEK];
-    [buttonContainerView addSubview:self.weekButton];
-    
-    self.monthButton = [self timeSpanButtonWithFrame:CGRectMake(self.weekButton.frame.origin.x + buttonWidth, 0, buttonWidth, 30) title:BC_STRING_MONTH];
-    [buttonContainerView addSubview:self.monthButton];
-    
-    self.yearButton = [self timeSpanButtonWithFrame:CGRectMake(self.monthButton.frame.origin.x + buttonWidth, 0, buttonWidth, 30) title:BC_STRING_YEAR];
+    self.allTimeButton = [self timeSpanButtonWithFrame:CGRectMake(0, 0, buttonWidth, 30) title:BC_STRING_ALL];
+    [buttonContainerView addSubview:self.allTimeButton];
+
+    self.yearButton = [self timeSpanButtonWithFrame:CGRectMake(self.allTimeButton.frame.origin.x + self.allTimeButton.frame.size.width, 0, buttonWidth, 30) title:BC_STRING_YEAR];
     [buttonContainerView addSubview:self.yearButton];
     
+    self.monthButton = [self timeSpanButtonWithFrame:CGRectMake(self.yearButton.frame.origin.x + self.yearButton.frame.size.width, 0, buttonWidth, 30) title:BC_STRING_MONTH];
+    [buttonContainerView addSubview:self.monthButton];
+    
+    self.weekButton = [self timeSpanButtonWithFrame:CGRectMake(self.monthButton.frame.origin.x + self.monthButton.frame.size.width, 0, buttonWidth, 30) title:BC_STRING_WEEK];
+    [buttonContainerView addSubview:self.weekButton];
+    
+    self.dayButton = [self timeSpanButtonWithFrame:CGRectMake(self.weekButton.frame.origin.x + self.weekButton.frame.size.width, 0, buttonWidth, 30) title:BC_STRING_DAY];
+    [buttonContainerView addSubview:self.dayButton];
+    
     [self.contentView addSubview:buttonContainerView];
-    buttonContainerView.center = CGPointMake(self.contentView.center.x, buttonContainerView.center.y);
+    buttonContainerView.center = CGPointMake(self.graphContainerView.center.x, buttonContainerView.center.y);
 }
 
 - (void)updateAxisLabelsWithGraphValues:(NSArray *)graphValues
@@ -329,17 +357,23 @@
     [self.weekButton setSelected:NO];
     [self.monthButton setSelected:NO];
     [self.yearButton setSelected:NO];
+    [self.dayButton setSelected:NO];
+    [self.allTimeButton setSelected:NO];
 
     [button setSelected:YES];
     
     NSString *timeFrame;
     
-    if (button == self.weekButton) {
+    if (button == self.dayButton) {
+        timeFrame = GRAPH_TIME_FRAME_DAY;
+    } else if (button == self.weekButton) {
         timeFrame = GRAPH_TIME_FRAME_WEEK;
     } else if (button == self.monthButton) {
         timeFrame = GRAPH_TIME_FRAME_MONTH;
     } else if (button == self.yearButton) {
         timeFrame = GRAPH_TIME_FRAME_YEAR;
+    } else {
+        timeFrame = GRAPH_TIME_FRAME_ALL;
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:timeFrame forKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
@@ -376,6 +410,13 @@
     [button setAttributedTitle:attrNormal forState:UIControlStateNormal];
     [button setAttributedTitle:attrSelected forState:UIControlStateSelected];
     [button addTarget:self action:@selector(timeSpanButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *testButton = [UIButton new];
+    [testButton setTitle:title forState:UIControlStateNormal];
+    [testButton sizeToFit];
+    
+    [button changeWidth:testButton.frame.size.width];
+    [button changeXPosition:frame.origin.x + 8];
     return button;
 }
 

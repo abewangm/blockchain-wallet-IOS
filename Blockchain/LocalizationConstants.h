@@ -804,9 +804,11 @@
 #define BC_STRING_SHOW_QR_CODE NSLocalizedString(@"Show QR Code", nil)
 #define BC_STRING_HIDE_QR_CODE NSLocalizedString(@"Hide QR Code", nil)
 
+#define BC_STRING_DAY NSLocalizedString(@"Day", nil)
 #define BC_STRING_WEEK NSLocalizedString(@"Week", nil)
 #define BC_STRING_MONTH NSLocalizedString(@"Month", nil)
 #define BC_STRING_YEAR NSLocalizedString(@"Year", nil)
+#define BC_STRING_ALL NSLocalizedString(@"All", nil)
 
 #define BC_STRING_BITCOIN_PRICE NSLocalizedString(@"Bitcoin Price", nil)
 #define BC_STRING_ETHER_PRICE NSLocalizedString(@"Ether Price", nil)
