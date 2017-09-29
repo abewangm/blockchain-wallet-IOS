@@ -86,7 +86,7 @@
 
 - (UIView *)configureCardsViewEther:(UIView *)cardsView
 {
-    BCCardView *etherCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"\n%@", [BC_STRING_NOW_SUPPORTING_ETHER_TITLE uppercaseString]] description:BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION actionType:ActionTypeBuyEther imageName:@"ether_partial" reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *etherCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@", BC_STRING_NOW_SUPPORTING_ETHER_TITLE] description:BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION actionType:ActionTypeBuyEther imageName:@"ether_partial" reducedHeightForPageIndicator:NO delegate:self];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(etherCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
