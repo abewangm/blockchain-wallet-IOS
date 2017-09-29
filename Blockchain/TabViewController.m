@@ -27,6 +27,9 @@
     
     balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSymbol)];
+    [balanceLabel addGestureRecognizer:tapGesture];
+    
     tabBar.delegate = self;
     
     // Default selected: transactions
@@ -141,6 +144,7 @@
 {
     titleLabel.hidden = NO;
     balanceLabel.hidden = YES;
+    balanceLabel.userInteractionEnabled = NO;
     
     if (newIndex == TAB_SEND || newIndex == TAB_RECEIVE) {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
@@ -164,6 +168,8 @@
         } else if (newIndex == TAB_TRANSACTIONS) {
             [self.bannerPricesView removeFromSuperview];
             
+            balanceLabel.userInteractionEnabled = YES;
+
             if (self.assetSegmentedControl.selectedSegmentIndex == AssetTypeBitcoin) {
                 balanceLabel.text = [NSNumberFormatter formatMoneyWithLocalSymbol:[app.wallet getTotalActiveBalance]];
                 [self showSelector];
