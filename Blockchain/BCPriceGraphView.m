@@ -26,36 +26,38 @@
     CGFloat maxY = [[[sortedYCoordinates lastObject] objectForKey:DICTIONARY_KEY_PRICE] floatValue];
 
     int digitsToKeep = 0;
-//
-//    if ([self greatestPlaceValueFloor:maxY digitsToKeep:0] - [self greatestPlaceValueFloor:minY digitsToKeep:0] < 1) {
-//        digitsToKeep = 1;
-//    } else if ([self greatestPlaceValueFloor:maxY digitsToKeep:1] - [self greatestPlaceValueFloor:minY digitsToKeep:1] < 1) {
-//        digitsToKeep = 2;
-//    }
     
-    CGFloat greatestPlaceValueMinY = [self greatestPlaceValueFloor:minY digitsToKeep:0];
-    CGFloat greatestPlaceValueMaxY = [self greatestPlaceValueFloor:maxY digitsToKeep:0];
+    CGFloat greatestPlaceValueMinY = [BCPriceGraphView greatestPlaceValueFloor:minY digitsToKeep:0];
+    CGFloat greatestPlaceValueMaxY = [BCPriceGraphView greatestPlaceValueCeiling:maxY digitsToKeep:0];
     
-    while (greatestPlaceValueMaxY - greatestPlaceValueMinY < 1) {
+    while ([BCPriceGraphView greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep] == greatestPlaceValueMinY) {
         digitsToKeep++;
-        greatestPlaceValueMinY = [self greatestPlaceValueFloor:minY digitsToKeep:digitsToKeep];
-        greatestPlaceValueMaxY = [self greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep];
+        greatestPlaceValueMinY = [BCPriceGraphView greatestPlaceValueFloor:minY digitsToKeep:digitsToKeep];
+        greatestPlaceValueMaxY = [BCPriceGraphView greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep];
     }
     
     self.minY = greatestPlaceValueMinY;
-    self.maxY = [self greatestPlaceValueCeiling:maxY digitsToKeep:digitsToKeep];
+    self.maxY = [BCPriceGraphView greatestPlaceValueCeiling:maxY digitsToKeep:digitsToKeep];
+    
+    CGFloat median = (self.maxY + self.minY)/2;
+    CGFloat firstQuarter = (median + self.minY)/2;
+    CGFloat thirdQuarter = (median + self.maxY)/2;
+    
+    self.firstQuarter = firstQuarter;
+    self.secondQuarter = median;
+    self.thirdQuarter = thirdQuarter;
     
     [self setNeedsDisplay];
 }
 
-- (CGFloat)greatestPlaceValueCeiling:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
++ (CGFloat)greatestPlaceValueCeiling:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
 {
     CGFloat digits = floorf(log10(value)) - digitsToKeep;
     CGFloat roundedInterval = pow(10.0, digits) * ceilf(value/pow(10.0, digits));
     return roundedInterval;
 }
 
-- (CGFloat)greatestPlaceValueFloor:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
++ (CGFloat)greatestPlaceValueFloor:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
 {
     CGFloat digits = floorf(log10(value)) - digitsToKeep;
     CGFloat roundedInterval = pow(10.0, digits) * floorf(value/pow(10.0, digits));

@@ -11,5 +11,9 @@
 @interface BCPriceGraphView : UIView
 @property (nonatomic) float maxY;
 @property (nonatomic) float minY;
+@property (nonatomic) CGFloat firstQuarter;
+@property (nonatomic) CGFloat secondQuarter;
+@property (nonatomic) CGFloat thirdQuarter;
+
 - (void)setGraphValues:(NSArray *)values;
 @end

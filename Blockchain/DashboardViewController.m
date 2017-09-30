@@ -64,7 +64,6 @@
 @property (nonatomic) UILabel *yAxisLabelFirst;
 @property (nonatomic) UILabel *yAxisLabelSecond;
 @property (nonatomic) UILabel *yAxisLabelThird;
-@property (nonatomic) UILabel *yAxisLabelFourth;
 
 @end
 
@@ -273,27 +272,22 @@
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height);
+    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height*3/4);
     [labelContainerView addSubview:firstLabel];
     
     UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 + labelContainerView.frame.size.height/6);
+    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2);
     [labelContainerView addSubview:secondLabel];
 
     UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 - labelContainerView.frame.size.height/6);
+    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/4);
     [labelContainerView addSubview:thirdLabel];
-
-    UILabel *fourthLabel = [self axisLabelWithFrame:CGRectMake(0, labelContainerView.frame.size.height/8, labelContainerView.frame.size.width, 30)];
-    fourthLabel.center = CGPointMake(labelContainerView.frame.size.width/2, 0);
-    [labelContainerView addSubview:fourthLabel];
     
     [self.contentView addSubview:labelContainerView];
     
     self.yAxisLabelFirst = firstLabel;
     self.yAxisLabelSecond = secondLabel;
     self.yAxisLabelThird = thirdLabel;
-    self.yAxisLabelFourth = fourthLabel;
 }
 
 - (void)setupTimeSpanButtons
@@ -336,22 +330,13 @@
     self.xAxisLabelThird.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:thirdTimeIndex]];
     self.xAxisLabelFourth.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:fourthTimeIndex]];
     
-    CGFloat maxPrice = self.graphView.maxY;
-    CGFloat minPrice = self.graphView.minY;
-    
-    CGFloat median = (maxPrice + minPrice) / 2;
-    CGFloat firstQuarter = (median + minPrice) / 2;
-    CGFloat lastQuarter = (maxPrice + median) / 2;
-    
-    CGFloat firstPrice = minPrice;
-    CGFloat secondPrice = (median + firstQuarter) / 2;
-    CGFloat thirdPrice = (lastQuarter + median) / 2;
-    CGFloat fourthPrice = maxPrice;
+    CGFloat firstPrice = self.graphView.firstQuarter;
+    CGFloat secondPrice = self.graphView.secondQuarter;
+    CGFloat thirdPrice = self.graphView.thirdQuarter;
 
     self.yAxisLabelFirst.text = [NSString stringWithFormat:@"%.f", roundf(firstPrice)];
     self.yAxisLabelSecond.text = [NSString stringWithFormat:@"%.f", roundf(secondPrice)];
     self.yAxisLabelThird.text = [NSString stringWithFormat:@"%.f", roundf(thirdPrice)];
-    self.yAxisLabelFourth.text = [NSString stringWithFormat:@"%.f", roundf(fourthPrice)];
 }
 
 - (void)timeSpanButtonTapped:(UIButton *)button
