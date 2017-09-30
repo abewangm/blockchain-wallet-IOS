@@ -30,14 +30,16 @@
     CGFloat greatestPlaceValueMinY = [BCPriceGraphView greatestPlaceValueFloor:minY digitsToKeep:0];
     CGFloat greatestPlaceValueMaxY = [BCPriceGraphView greatestPlaceValueCeiling:maxY digitsToKeep:0];
     
-    while ([BCPriceGraphView greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep] == greatestPlaceValueMinY) {
+    while ([BCPriceGraphView greatestPlaceValue:minY digitsToKeep:digitsToKeep] == [BCPriceGraphView greatestPlaceValue:maxY digitsToKeep:digitsToKeep]) {
         digitsToKeep++;
-        greatestPlaceValueMinY = [BCPriceGraphView greatestPlaceValueFloor:minY digitsToKeep:digitsToKeep];
-        greatestPlaceValueMaxY = [BCPriceGraphView greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep];
+        CGFloat minYRounded = [BCPriceGraphView greatestPlaceValue:minY digitsToKeep:digitsToKeep];
+        greatestPlaceValueMinY = minY < minYRounded ? [BCPriceGraphView greatestPlaceValueFloor:minY digitsToKeep:digitsToKeep] : minYRounded;
+        CGFloat maxYRounded = [BCPriceGraphView greatestPlaceValue:minY digitsToKeep:digitsToKeep];
+        greatestPlaceValueMaxY = maxY > maxYRounded ? [BCPriceGraphView greatestPlaceValueCeiling:maxY digitsToKeep:digitsToKeep] : maxYRounded;
     }
     
     self.minY = greatestPlaceValueMinY;
-    self.maxY = [BCPriceGraphView greatestPlaceValueCeiling:maxY digitsToKeep:digitsToKeep];
+    self.maxY = greatestPlaceValueMaxY;
     
     CGFloat median = (self.maxY + self.minY)/2;
     CGFloat firstQuarter = (median + self.minY)/2;
@@ -48,6 +50,13 @@
     self.thirdQuarter = thirdQuarter;
     
     [self setNeedsDisplay];
+}
+
++ (CGFloat)greatestPlaceValue:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
+{
+    CGFloat digits = floorf(log10(value)) - digitsToKeep;
+    CGFloat roundedInterval = pow(10.0, digits) * roundf(value/pow(10.0, digits));
+    return roundedInterval;
 }
 
 + (CGFloat)greatestPlaceValueCeiling:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
