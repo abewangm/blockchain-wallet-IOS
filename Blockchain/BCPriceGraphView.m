@@ -24,11 +24,42 @@
     
     CGFloat minY = [[[sortedYCoordinates firstObject] objectForKey:DICTIONARY_KEY_PRICE] floatValue];
     CGFloat maxY = [[[sortedYCoordinates lastObject] objectForKey:DICTIONARY_KEY_PRICE] floatValue];
+
+    int digitsToKeep = 0;
+//
+//    if ([self greatestPlaceValueFloor:maxY digitsToKeep:0] - [self greatestPlaceValueFloor:minY digitsToKeep:0] < 1) {
+//        digitsToKeep = 1;
+//    } else if ([self greatestPlaceValueFloor:maxY digitsToKeep:1] - [self greatestPlaceValueFloor:minY digitsToKeep:1] < 1) {
+//        digitsToKeep = 2;
+//    }
     
-    self.minY = minY;
-    self.maxY = maxY;
+    CGFloat greatestPlaceValueMinY = [self greatestPlaceValueFloor:minY digitsToKeep:0];
+    CGFloat greatestPlaceValueMaxY = [self greatestPlaceValueFloor:maxY digitsToKeep:0];
+    
+    while (greatestPlaceValueMaxY - greatestPlaceValueMinY < 1) {
+        digitsToKeep++;
+        greatestPlaceValueMinY = [self greatestPlaceValueFloor:minY digitsToKeep:digitsToKeep];
+        greatestPlaceValueMaxY = [self greatestPlaceValueFloor:maxY digitsToKeep:digitsToKeep];
+    }
+    
+    self.minY = greatestPlaceValueMinY;
+    self.maxY = [self greatestPlaceValueCeiling:maxY digitsToKeep:digitsToKeep];
     
     [self setNeedsDisplay];
+}
+
+- (CGFloat)greatestPlaceValueCeiling:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
+{
+    CGFloat digits = floorf(log10(value)) - digitsToKeep;
+    CGFloat roundedInterval = pow(10.0, digits) * ceilf(value/pow(10.0, digits));
+    return roundedInterval;
+}
+
+- (CGFloat)greatestPlaceValueFloor:(CGFloat)value digitsToKeep:(CGFloat)digitsToKeep
+{
+    CGFloat digits = floorf(log10(value)) - digitsToKeep;
+    CGFloat roundedInterval = pow(10.0, digits) * floorf(value/pow(10.0, digits));
+    return roundedInterval;
 }
 
 - (void)drawRect:(CGRect)rect

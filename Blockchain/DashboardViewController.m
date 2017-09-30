@@ -28,6 +28,8 @@
 #define STRING_SCALE_ONE_HOUR @"3600"
 #define STRING_SCALE_FIFTEEN_MINUTES @"900"
 
+#define X_INSET_GRAPH_CONTAINER 80
+
 #import "DashboardViewController.h"
 #import "SessionManager.h"
 #import "BCPriceGraphView.h"
@@ -95,12 +97,12 @@
     
     [self.contentView addSubview:titleContainerView];
     
-    UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.contentView.bounds, 60, titleContainerView.frame.origin.y + 60)];
+    UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.contentView.bounds, X_INSET_GRAPH_CONTAINER, titleContainerView.frame.origin.y + 60)];
     [graphContainerView changeWidth:self.contentView.frame.size.width - graphContainerView.frame.origin.x - 30];
     [graphContainerView changeHeight:self.contentView.frame.size.height - 150];
     
-    CGFloat verticalSpacing = 8;
-    CGFloat horizontalSpacing = 8;
+    CGFloat verticalSpacing = 0;
+    CGFloat horizontalSpacing = 0;
 
     self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
     self.graphView.backgroundColor = [UIColor whiteColor];
@@ -267,23 +269,23 @@
 
 - (void)setupYAxis
 {
-    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x - 60, self.graphContainerView.frame.origin.y, 60, self.graphContainerView.frame.size.height)];
+    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x - X_INSET_GRAPH_CONTAINER, self.graphContainerView.frame.origin.y, X_INSET_GRAPH_CONTAINER, self.graphContainerView.frame.size.height)];
     labelContainerView.backgroundColor = [UIColor clearColor];
     
     UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height*7/8);
+    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height);
     [labelContainerView addSubview:firstLabel];
     
     UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 + labelContainerView.frame.size.height/8);
+    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 + labelContainerView.frame.size.height/6);
     [labelContainerView addSubview:secondLabel];
 
     UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 - labelContainerView.frame.size.height/8);
+    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2 - labelContainerView.frame.size.height/6);
     [labelContainerView addSubview:thirdLabel];
 
     UILabel *fourthLabel = [self axisLabelWithFrame:CGRectMake(0, labelContainerView.frame.size.height/8, labelContainerView.frame.size.width, 30)];
-    fourthLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/8);
+    fourthLabel.center = CGPointMake(labelContainerView.frame.size.width/2, 0);
     [labelContainerView addSubview:fourthLabel];
     
     [self.contentView addSubview:labelContainerView];
@@ -341,10 +343,10 @@
     CGFloat firstQuarter = (median + minPrice) / 2;
     CGFloat lastQuarter = (maxPrice + median) / 2;
     
-    CGFloat firstPrice = (firstQuarter + minPrice) / 2;
+    CGFloat firstPrice = minPrice;
     CGFloat secondPrice = (median + firstQuarter) / 2;
     CGFloat thirdPrice = (lastQuarter + median) / 2;
-    CGFloat fourthPrice = (maxPrice + lastQuarter) / 2;
+    CGFloat fourthPrice = maxPrice;
 
     self.yAxisLabelFirst.text = [NSString stringWithFormat:@"%.f", roundf(firstPrice)];
     self.yAxisLabelSecond.text = [NSString stringWithFormat:@"%.f", roundf(secondPrice)];
