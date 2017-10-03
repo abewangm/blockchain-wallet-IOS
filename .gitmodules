@@ -10,3 +10,6 @@
 [submodule "Submodules/CoreBitcoin"]
 	path = Submodules/CoreBitcoin
 	url = git@github.com:oleganza/CoreBitcoin.git
+[submodule "Submodules/Charts"]
+	path = Submodules/Charts
+	url = https://github.com/danielgindi/Charts

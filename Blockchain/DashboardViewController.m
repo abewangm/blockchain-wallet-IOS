@@ -28,7 +28,7 @@
 #define STRING_SCALE_ONE_HOUR @"3600"
 #define STRING_SCALE_FIFTEEN_MINUTES @"900"
 
-#define X_INSET_GRAPH_CONTAINER 80
+#define X_INSET_GRAPH_CONTAINER 16
 
 #import "DashboardViewController.h"
 #import "SessionManager.h"
@@ -36,15 +36,16 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
+#import <Charts/Charts.h>
 
 @interface CardsViewController ()
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UIView *contentView;
 @end
 
-@interface DashboardViewController ()
+@interface DashboardViewController () <IChartAxisValueFormatter>
+@property (nonatomic) LineChartView *chartView;
 @property (nonatomic) UIView *graphContainerView;
-@property (nonatomic) BCPriceGraphView *graphView;
 @property (nonatomic) UILabel *priceLabel;
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UIButton *allTimeButton;
@@ -53,17 +54,6 @@
 @property (nonatomic) UIButton *weekButton;
 @property (nonatomic) UIButton *dayButton;
 @property (nonatomic) NSString *lastEthExchangeRate;
-
-// X axis
-@property (nonatomic) UILabel *xAxisLabelFirst;
-@property (nonatomic) UILabel *xAxisLabelSecond;
-@property (nonatomic) UILabel *xAxisLabelThird;
-@property (nonatomic) UILabel *xAxisLabelFourth;
-
-// Y axis
-@property (nonatomic) UILabel *yAxisLabelFirst;
-@property (nonatomic) UILabel *yAxisLabelSecond;
-@property (nonatomic) UILabel *yAxisLabelThird;
 
 @end
 
@@ -98,27 +88,39 @@
     
     UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.contentView.bounds, X_INSET_GRAPH_CONTAINER, titleContainerView.frame.origin.y + 60)];
     [graphContainerView changeWidth:self.contentView.frame.size.width - graphContainerView.frame.origin.x - 30];
-    [graphContainerView changeHeight:self.contentView.frame.size.height - 150];
+    [graphContainerView changeHeight:self.contentView.frame.size.height - 120];
     
     CGFloat verticalSpacing = 0;
     CGFloat horizontalSpacing = 0;
 
-    self.graphView = [[BCPriceGraphView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
-    self.graphView.backgroundColor = [UIColor whiteColor];
-    [graphContainerView addSubview:self.graphView];
+    LineChartView *chartView = [[LineChartView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
+    chartView.drawGridBackgroundEnabled = NO;
+    chartView.drawBordersEnabled = NO;
+    chartView.scaleXEnabled = NO;
+    chartView.scaleYEnabled = NO;
+    chartView.pinchZoomEnabled = NO;
+    chartView.doubleTapToZoomEnabled = NO;
+    chartView.chartDescription.enabled = NO;
+    chartView.legend.enabled = NO;
+    chartView.leftAxis.drawGridLinesEnabled = NO;
+    chartView.leftAxis.labelTextColor = COLOR_TEXT_GRAY;
+    chartView.rightAxis.enabled = NO;
+    chartView.xAxis.drawGridLinesEnabled = NO;
+    chartView.xAxis.labelTextColor = COLOR_TEXT_GRAY;
+    chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
+    chartView.xAxis.granularityEnabled = YES;
+    [chartView setExtraOffsetsWithLeft:8.0 top:0 right:0 bottom:10.0];
+    chartView.noDataTextColor = COLOR_TEXT_GRAY;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMM dd";
+    chartView.xAxis.valueFormatter = self;
+    
+    self.chartView = chartView;
+    [graphContainerView addSubview:self.chartView];
     
     [self.contentView addSubview:graphContainerView];
     self.graphContainerView = graphContainerView;
-    
-    UIView *verticalBorder = [[UIView alloc] initWithFrame:CGRectMake(graphContainerView.frame.origin.x - 1, graphContainerView.frame.origin.y, 1, graphContainerView.frame.size.height + 1)];
-    verticalBorder.backgroundColor = COLOR_LIGHT_GRAY;
-    [self.contentView addSubview:verticalBorder];
-    
-    UIView *horizontalBorder = [[UIView alloc] initWithFrame:CGRectMake(graphContainerView.frame.origin.x, graphContainerView.frame.origin.y + graphContainerView.frame.size.height, graphContainerView.frame.size.width, 1)];
-    horizontalBorder.backgroundColor = COLOR_LIGHT_GRAY;
-    [self.contentView addSubview:horizontalBorder];
-    
-    [self setupAxes];
     
     [self setupTimeSpanButtons];
     
@@ -221,8 +223,7 @@
                 [self showError:BC_STRING_ERROR_CHARTS];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.graphView setGraphValues:values];
-                    [self updateAxisLabelsWithGraphValues:values];
+                    [self setChartValues:values];
                 });
             }
         }
@@ -231,69 +232,36 @@
     [task resume];
 }
 
-- (void)setupAxes
+- (void)setChartValues:(NSArray *)values
 {
-    [self setupXAxis];
-    [self setupYAxis];
-}
-
-- (void)setupXAxis
-{
-    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 8, self.graphContainerView.frame.size.width, 30)];
-    labelContainerView.backgroundColor = [UIColor clearColor];
+    NSMutableArray *finalValues = [NSMutableArray new];
     
-    UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
-    [labelContainerView addSubview:firstLabel];
+    for (NSDictionary *dict in values) {
+        double x = [[dict objectForKey:DICTIONARY_KEY_TIMESTAMP] doubleValue];
+        double y = [[dict objectForKey:DICTIONARY_KEY_PRICE] doubleValue];
+        ChartDataEntry *value = [[ChartDataEntry alloc] initWithX:x y:y];
+        [finalValues addObject:value];
+    }
     
-    UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2 - labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
-    [labelContainerView addSubview:secondLabel];
-    
-    UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2 + labelContainerView.frame.size.width/8, labelContainerView.frame.size.height/2);
-    [labelContainerView addSubview:thirdLabel];
-    
-    UILabel *fourthLabel = [self axisLabelWithFrame:CGRectMake(0, 0, 60, labelContainerView.frame.size.height)];
-    fourthLabel.center = CGPointMake(labelContainerView.frame.size.width*7/8, labelContainerView.frame.size.height/2);
-    [labelContainerView addSubview:fourthLabel];
-    
-    [self.contentView addSubview:labelContainerView];
-    
-    self.xAxisLabelFirst = firstLabel;
-    self.xAxisLabelSecond = secondLabel;
-    self.xAxisLabelThird = thirdLabel;
-    self.xAxisLabelFourth = fourthLabel;
-}
-
-- (void)setupYAxis
-{
-    UIView *labelContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.graphContainerView.frame.origin.x - X_INSET_GRAPH_CONTAINER, self.graphContainerView.frame.origin.y, X_INSET_GRAPH_CONTAINER, self.graphContainerView.frame.size.height)];
-    labelContainerView.backgroundColor = [UIColor clearColor];
-    
-    UILabel *firstLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    firstLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height*3/4);
-    [labelContainerView addSubview:firstLabel];
-    
-    UILabel *secondLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    secondLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/2);
-    [labelContainerView addSubview:secondLabel];
-
-    UILabel *thirdLabel = [self axisLabelWithFrame:CGRectMake(0, 0, labelContainerView.frame.size.width, 30)];
-    thirdLabel.center = CGPointMake(labelContainerView.frame.size.width/2, labelContainerView.frame.size.height/4);
-    [labelContainerView addSubview:thirdLabel];
-    
-    [self.contentView addSubview:labelContainerView];
-    
-    self.yAxisLabelFirst = firstLabel;
-    self.yAxisLabelSecond = secondLabel;
-    self.yAxisLabelThird = thirdLabel;
+    LineChartDataSet *dataSet = [[LineChartDataSet alloc] initWithValues:finalValues label:nil];
+    dataSet.lineWidth = 3.0f;
+    dataSet.colors = @[COLOR_BLOCKCHAIN_BLUE];
+    dataSet.mode = LineChartModeLinear;
+    dataSet.drawValuesEnabled = NO;
+    dataSet.circleRadius = 1.5f;
+    dataSet.drawCircleHoleEnabled = NO;
+    dataSet.circleColors = @[COLOR_BLOCKCHAIN_BLUE];
+    dataSet.drawFilledEnabled = NO;
+    dataSet.highlightEnabled = NO;
+    dataSet.drawVerticalHighlightIndicatorEnabled = NO;
+    dataSet.drawHorizontalHighlightIndicatorEnabled = NO;
+    self.chartView.data = [[LineChartData alloc] initWithDataSet:dataSet];
 }
 
 - (void)setupTimeSpanButtons
 {
     CGFloat buttonContainerViewWidth = 280;
-    UIView *buttonContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 50, buttonContainerViewWidth, 30)];
+    UIView *buttonContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.graphContainerView.frame.origin.y + self.graphContainerView.frame.size.height + 16, buttonContainerViewWidth, 30)];
     
     CGFloat buttonWidth = buttonContainerViewWidth/5;
     
@@ -313,30 +281,7 @@
     [buttonContainerView addSubview:self.dayButton];
     
     [self.contentView addSubview:buttonContainerView];
-    buttonContainerView.center = CGPointMake(self.graphContainerView.center.x, buttonContainerView.center.y);
-}
-
-- (void)updateAxisLabelsWithGraphValues:(NSArray *)graphValues
-{
-    NSUInteger firstTimeIndex = roundf(graphValues.count / 8.0);
-    NSUInteger secondTimeIndex = roundf(graphValues.count / 2.0 - graphValues.count / 8.0);
-    NSUInteger thirdTimeIndex = roundf(graphValues.count / 2.0 + graphValues.count / 8.0);
-    NSUInteger fourthTimeIndex = roundf(graphValues.count * 7.0 / 8.0);
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MMM dd";
-    self.xAxisLabelFirst.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:firstTimeIndex]];
-    self.xAxisLabelSecond.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:secondTimeIndex]];
-    self.xAxisLabelThird.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:thirdTimeIndex]];
-    self.xAxisLabelFourth.text = [self dateStringFromGraphValue:[graphValues objectAtIndex:fourthTimeIndex]];
-    
-    CGFloat firstPrice = self.graphView.firstQuarter;
-    CGFloat secondPrice = self.graphView.secondQuarter;
-    CGFloat thirdPrice = self.graphView.thirdQuarter;
-
-    self.yAxisLabelFirst.text = [NSString stringWithFormat:@"%.f", roundf(firstPrice)];
-    self.yAxisLabelSecond.text = [NSString stringWithFormat:@"%.f", roundf(secondPrice)];
-    self.yAxisLabelThird.text = [NSString stringWithFormat:@"%.f", roundf(thirdPrice)];
+    buttonContainerView.center = CGPointMake(self.graphContainerView.center.x + 20, buttonContainerView.center.y);
 }
 
 - (void)timeSpanButtonTapped:(UIButton *)button
@@ -376,15 +321,6 @@
 
 #pragma mark - View Helpers
 
-- (UILabel *)axisLabelWithFrame:(CGRect)frame
-{
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = COLOR_TEXT_DARK_GRAY;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    return label;
-}
-
 - (UIButton *)timeSpanButtonWithFrame:(CGRect)frame title:(NSString *)title
 {
     UIFont *normalFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
@@ -419,11 +355,23 @@
 
 #pragma mark - Text Helpers
 
-- (NSString *)dateStringFromGraphValue:(NSDictionary *)graphInfo
+- (NSString *)stringForValue:(double)value axis:(ChartAxisBase *)axis
+{
+    if (axis == self.chartView.leftAxis) {
+        return [NSString stringWithFormat:@"%f", value];
+    } else if (axis == self.chartView.xAxis) {
+        return [self dateStringFromGraphValue:value];
+    } else {
+        DLog(@"Warning: no axis found!");
+        return nil;
+    }
+}
+
+- (NSString *)dateStringFromGraphValue:(double)value
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"MMM dd";
-    return [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[graphInfo objectForKey:DICTIONARY_KEY_TIMESTAMP] floatValue]]];
+    return [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:value]];
 }
 
 @end
