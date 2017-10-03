@@ -32,7 +32,6 @@
 
 #import "DashboardViewController.h"
 #import "SessionManager.h"
-#import "BCPriceGraphView.h"
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
