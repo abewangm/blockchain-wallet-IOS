@@ -37,7 +37,7 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setMaximumFractionDigits:8];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    return [formatter stringFromNumber:[formatter numberFromString:amountString]];
+    return [formatter stringFromNumber:[NSDecimalNumber decimalNumberWithString:amountString]];
 }
 
 @end
