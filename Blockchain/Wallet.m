@@ -1085,8 +1085,8 @@
         for (NSString *message in [self.pendingEthSocketMessages reverseObjectEnumerator]) {
             DLog(@"Sending queued eth socket message %@", message);
             [self sendEthSocketMessage:message];
-            [self.pendingEthSocketMessages removeObject:message];
         }
+        [self.pendingEthSocketMessages removeAllObjects];
     } else {
         DLog(@"websocket opened");
         NSString *message = self.swipeAddressToSubscribe ? [NSString stringWithFormat:@"{\"op\":\"addr_sub\",\"addr\":\"%@\"}", self.swipeAddressToSubscribe] : [[self.context evaluateScript:@"MyWallet.getSocketOnOpenMessage()"] toString];
