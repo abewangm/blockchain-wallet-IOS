@@ -36,7 +36,7 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
-#import <Charts/Charts.h>
+@import Charts;
 
 @interface CardsViewController ()
 @property (nonatomic) UIScrollView *scrollView;
@@ -115,7 +115,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"MMM dd";
     chartView.xAxis.valueFormatter = self;
-    
+    chartView.leftAxis.valueFormatter = self;
+
     self.chartView = chartView;
     [graphContainerView addSubview:self.chartView];
     
@@ -358,7 +359,7 @@
 - (NSString *)stringForValue:(double)value axis:(ChartAxisBase *)axis
 {
     if (axis == self.chartView.leftAxis) {
-        return [NSString stringWithFormat:@"%f", value];
+        return [NSString stringWithFormat:@"%@%.f", app.latestResponse.symbol_local.symbol, value];
     } else if (axis == self.chartView.xAxis) {
         return [self dateStringFromGraphValue:value];
     } else {
