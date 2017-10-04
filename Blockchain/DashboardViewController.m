@@ -35,6 +35,7 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
+
 @import Charts;
 
 @interface CardsViewController ()
@@ -45,8 +46,13 @@
 @interface DashboardViewController () <IChartAxisValueFormatter>
 @property (nonatomic) LineChartView *chartView;
 @property (nonatomic) UIView *graphContainerView;
-@property (nonatomic) UILabel *priceLabel;
 @property (nonatomic) UILabel *titleLabel;
+
+@property (nonatomic) UIView *priceContainerView;
+@property (nonatomic) UILabel *priceLabel;
+@property (nonatomic) UILabel *percentageChangeLabel;
+@property (nonatomic) UIImageView *arrowImageView;
+
 @property (nonatomic) UIButton *allTimeButton;
 @property (nonatomic) UIButton *yearButton;
 @property (nonatomic) UIButton *monthButton;
@@ -78,10 +84,22 @@
     [titleContainerView addSubview:titleLabel];
     self.titleLabel = titleLabel;
     
+    self.priceContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     self.priceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.priceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_LARGE];
     self.priceLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
-    [titleContainerView addSubview:self.priceLabel];
+    [self.priceContainerView addSubview:self.priceLabel];
+    
+    self.percentageChangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    self.percentageChangeLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    self.percentageChangeLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    [self.priceContainerView addSubview:self.percentageChangeLabel];
+    
+    self.arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 15)];
+    self.arrowImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.priceContainerView addSubview:self.arrowImageView];
+    
+    [titleContainerView addSubview:self.priceContainerView];
     
     [self.contentView addSubview:titleContainerView];
     
@@ -157,15 +175,6 @@
 
 - (void)reload
 {
-    self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
-    [self.titleLabel sizeToFit];
-    self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
-    
-    self.priceLabel.text = self.assetType == AssetTypeBitcoin ? [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES] : self.lastEthExchangeRate;
-    self.priceLabel.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, 0, 0);
-    [self.priceLabel sizeToFit];
-    self.priceLabel.center = CGPointMake(self.contentView.center.x, self.priceLabel.center.y);
-    
     [self reloadCards];
     
     NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME] ? : GRAPH_TIME_FRAME_WEEK;
@@ -223,6 +232,7 @@
                 [self showError:BC_STRING_ERROR_CHARTS];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self updateTitleContainer:values];
                     [self setChartValues:values];
                 });
             }
@@ -232,10 +242,42 @@
     [task resume];
 }
 
+- (void)updateTitleContainer:(NSArray *)values
+{
+    self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
+    [self.titleLabel sizeToFit];
+    self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
+    
+    self.priceLabel.text = self.assetType == AssetTypeBitcoin ? [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES] : self.lastEthExchangeRate;
+    [self.priceLabel sizeToFit];
+    
+    double firstPrice = [[[values firstObject] objectForKey:DICTIONARY_KEY_PRICE] doubleValue];
+    double lastPrice = [[[values lastObject] objectForKey:DICTIONARY_KEY_PRICE] doubleValue];
+    double difference = lastPrice - firstPrice;
+    double percentChange = (difference / firstPrice) * 100;
+    
+    self.arrowImageView.image = [[UIImage imageNamed:@"send_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
+    [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
+    [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
+    
+    if (percentChange > 0) {
+        self.arrowImageView.transform = CGAffineTransformMakeScale(-1, 1);
+    }
+    
+    self.percentageChangeLabel.text = [NSString stringWithFormat:@"%.1f%%", percentChange];
+    [self.percentageChangeLabel sizeToFit];
+    [self.percentageChangeLabel changeYPosition:self.priceLabel.frame.size.height - self.percentageChangeLabel.frame.size.height - 1.5];
+    [self.percentageChangeLabel changeXPosition:self.priceLabel.frame.origin.x + self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width];
+    
+    self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width + self.percentageChangeLabel.frame.size.width, 30);
+    self.priceContainerView.center = CGPointMake(self.contentView.center.x, self.priceContainerView.center.y);
+}
+
 - (void)setChartValues:(NSArray *)values
 {
     NSMutableArray *finalValues = [NSMutableArray new];
-    
+
     for (NSDictionary *dict in values) {
         double x = [[dict objectForKey:DICTIONARY_KEY_TIMESTAMP] doubleValue];
         double y = [[dict objectForKey:DICTIONARY_KEY_PRICE] doubleValue];
