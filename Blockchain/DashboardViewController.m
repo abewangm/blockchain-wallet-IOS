@@ -100,20 +100,23 @@
     chartView.doubleTapToZoomEnabled = NO;
     chartView.chartDescription.enabled = NO;
     chartView.legend.enabled = NO;
+    
     chartView.leftAxis.drawGridLinesEnabled = NO;
     chartView.leftAxis.labelTextColor = COLOR_TEXT_GRAY;
     chartView.leftAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
+    chartView.leftAxis.labelCount = 4;
+    
     chartView.rightAxis.enabled = NO;
+    
     chartView.xAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     chartView.xAxis.drawGridLinesEnabled = NO;
     chartView.xAxis.labelTextColor = COLOR_TEXT_GRAY;
     chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
     chartView.xAxis.granularityEnabled = YES;
+    chartView.xAxis.labelCount = 4;
     [chartView setExtraOffsetsWithLeft:8.0 top:0 right:0 bottom:10.0];
     chartView.noDataTextColor = COLOR_TEXT_GRAY;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MMM dd";
     chartView.xAxis.valueFormatter = self;
     chartView.leftAxis.valueFormatter = self;
 
