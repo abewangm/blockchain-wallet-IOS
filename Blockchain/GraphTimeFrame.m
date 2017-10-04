@@ -114,4 +114,14 @@
     return timeFrame;
 }
 
+- (NSInteger)startDateEther
+{
+    return ENTRY_TIME_ETH;
+}
+
+- (NSInteger)startDateBitcoin
+{
+    return ENTRY_TIME_BTC;
+}
+
 @end
