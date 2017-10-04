@@ -6,27 +6,7 @@
 //  Copyright © 2017 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#define USER_DEFAULTS_KEY_GRAPH_TIME_FRAME @"graphTimeFrame"
-
-#define ENTRY_TIME_BTC 1282089600
-#define ENTRY_TIME_ETH 1438992000
-
-#define GRAPH_TIME_FRAME_DAY @"1day"
-#define GRAPH_TIME_FRAME_WEEK @"1weeks"
-#define GRAPH_TIME_FRAME_MONTH @"4weeks"
-#define GRAPH_TIME_FRAME_YEAR @"52weeks"
-#define GRAPH_TIME_FRAME_ALL @"all"
-
-#define TIME_INTERVAL_DAY 86400.0
-#define TIME_INTERVAL_WEEK 604800.0
-#define TIME_INTERVAL_MONTH 2592000.0
-#define TIME_INTERVAL_YEAR 31536000.0
-
-#define STRING_SCALE_FIVE_DAYS @"432000"
-#define STRING_SCALE_ONE_DAY @"86400"
-#define STRING_SCALE_TWO_HOURS @"7200"
-#define STRING_SCALE_ONE_HOUR @"3600"
-#define STRING_SCALE_FIFTEEN_MINUTES @"900"
+#define USER_DEFAULTS_KEY_GRAPH_TIME_FRAME @"timeFrame"
 
 #define X_INSET_GRAPH_CONTAINER 16
 
@@ -35,6 +15,7 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
+#import "GraphTimeFrame.h"
 
 @import Charts;
 
@@ -121,7 +102,9 @@
     chartView.legend.enabled = NO;
     chartView.leftAxis.drawGridLinesEnabled = NO;
     chartView.leftAxis.labelTextColor = COLOR_TEXT_GRAY;
+    chartView.leftAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     chartView.rightAxis.enabled = NO;
+    chartView.xAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     chartView.xAxis.drawGridLinesEnabled = NO;
     chartView.xAxis.labelTextColor = COLOR_TEXT_GRAY;
     chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
@@ -142,7 +125,8 @@
     
     [self setupTimeSpanButtons];
     
-    NSString *timeFrame = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     UIButton *selectedButton;
     
@@ -151,15 +135,15 @@
     [self.yearButton setSelected:NO];
     [self.allTimeButton setSelected:NO];
     
-    if (!timeFrame || [timeFrame isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
+    if (!timeFrame || timeFrame.timeFrame == TimeFrameWeek) {
         selectedButton = self.weekButton;
-    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
+    } else if (timeFrame.timeFrame == TimeFrameMonth) {
         selectedButton = self.monthButton;
-    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_YEAR]) {
+    } else if (timeFrame.timeFrame == TimeFrameYear) {
         selectedButton = self.yearButton;
-    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_ALL]) {
+    } else if (timeFrame.timeFrame == TimeFrameAll) {
         selectedButton = self.allTimeButton;
-    } else if ([timeFrame isEqualToString:GRAPH_TIME_FRAME_DAY]) {
+    } else if (timeFrame.timeFrame == TimeFrameDay) {
         selectedButton = self.dayButton;
     }
 
@@ -177,31 +161,10 @@
 {
     [self reloadCards];
     
-    NSString *timeSpan = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME] ? : GRAPH_TIME_FRAME_WEEK;
-    NSDate *today = [NSDate date];
-    NSInteger startDate = 0;
-    NSString *scale;
-    
-    if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_DAY]) {
-        scale = STRING_SCALE_FIFTEEN_MINUTES;
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_DAY] timeIntervalSince1970]);
-    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_WEEK]) {
-        scale = STRING_SCALE_ONE_HOUR;
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_WEEK] timeIntervalSince1970]);
-    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_MONTH]) {
-        scale = STRING_SCALE_TWO_HOURS;
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_MONTH] timeIntervalSince1970]);
-    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_YEAR]) {
-        scale = STRING_SCALE_ONE_DAY;
-        startDate = (NSInteger)fabs([[today dateByAddingTimeInterval:-TIME_INTERVAL_YEAR] timeIntervalSince1970]);
-    } else if ([timeSpan isEqualToString:GRAPH_TIME_FRAME_ALL]) {
-        scale = STRING_SCALE_FIVE_DAYS;
-        if (self.assetType == AssetTypeBitcoin) {
-            startDate = ENTRY_TIME_BTC;
-        } else if (self.assetType == AssetTypeEther) {
-            startDate = ENTRY_TIME_ETH;
-        }
-    }
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data] ? : [GraphTimeFrame timeFrameWeek];
+    NSInteger startDate = timeFrame.startDate;
+    NSString *scale = timeFrame.scale;
         
     NSString *base;
     
@@ -336,21 +299,23 @@
 
     [button setSelected:YES];
     
-    NSString *timeFrame;
+    GraphTimeFrame *timeFrame;
     
     if (button == self.dayButton) {
-        timeFrame = GRAPH_TIME_FRAME_DAY;
+        timeFrame = [GraphTimeFrame timeFrameDay];
     } else if (button == self.weekButton) {
-        timeFrame = GRAPH_TIME_FRAME_WEEK;
+        timeFrame = [GraphTimeFrame timeFrameWeek];
     } else if (button == self.monthButton) {
-        timeFrame = GRAPH_TIME_FRAME_MONTH;
+        timeFrame = [GraphTimeFrame timeFrameMonth];
     } else if (button == self.yearButton) {
-        timeFrame = GRAPH_TIME_FRAME_YEAR;
+        timeFrame = [GraphTimeFrame timeFrameYear];
     } else {
-        timeFrame = GRAPH_TIME_FRAME_ALL;
+        timeFrame = [GraphTimeFrame timeFrameAll:self.assetType];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:timeFrame forKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:timeFrame];
+    [currentDefaults setObject:data forKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     
     [self reload];
 }
@@ -412,8 +377,15 @@
 - (NSString *)dateStringFromGraphValue:(double)value
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MMM dd";
+    dateFormatter.dateFormat = [self getDateFormat];
     return [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:value]];
+}
+
+- (NSString *)getDateFormat
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
+    GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return timeFrame.dateFormat;
 }
 
 @end
