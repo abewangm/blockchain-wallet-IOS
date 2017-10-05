@@ -219,7 +219,7 @@
 
 - (void)updateFeeLabel
 {
-    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", self.ethFee, CURRENCY_SYMBOL_ETH,
+    self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", self.ethFee ? : @0, CURRENCY_SYMBOL_ETH,
                                 [NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]];
 }
 
