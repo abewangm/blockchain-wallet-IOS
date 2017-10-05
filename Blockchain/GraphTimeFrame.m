@@ -89,7 +89,7 @@
     GraphTimeFrame *timeFrame = [GraphTimeFrame new];
     timeFrame.timeFrame = TimeFrameWeek;
     timeFrame.scale = STRING_SCALE_ONE_HOUR;
-    timeFrame.startDate = (NSInteger)fabs([[[NSDate date] dateByAddingTimeInterval:-TIME_INTERVAL_DAY] timeIntervalSince1970]);
+    timeFrame.startDate = (NSInteger)fabs([[[NSDate date] dateByAddingTimeInterval:-TIME_INTERVAL_WEEK] timeIntervalSince1970]);
     timeFrame.dateFormat = @"dd.MMM";
     return timeFrame;
 }
