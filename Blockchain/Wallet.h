@@ -45,7 +45,6 @@
 
 @protocol ExchangeAccountDelegate
 - (void)watchPendingTrades:(BOOL)shouldSync;
-- (void)fetchExchangeAccount;
 - (void)showCompletedTrade:(NSString *)txHash;
 @end
 
