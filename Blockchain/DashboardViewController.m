@@ -77,7 +77,7 @@
     [self.priceContainerView addSubview:self.percentageChangeLabel];
     
     self.arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 15)];
-    self.arrowImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.priceContainerView addSubview:self.arrowImageView];
     
     [titleContainerView addSubview:self.priceContainerView];
@@ -228,9 +228,15 @@
     self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
     [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
     [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
+ 
+    UIImage *arrowImage = [UIImage imageNamed:@"down_triangle"];
     
     if (percentChange > 0) {
-        self.arrowImageView.transform = CGAffineTransformMakeScale(-1, 1);
+        self.arrowImageView.image = [[UIImage imageWithCGImage:arrowImage.CGImage scale:1.0f orientation:UIImageOrientationDownMirrored] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
+    } else {
+        self.arrowImageView.image = [arrowImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_RED;
     }
     
     self.percentageChangeLabel.text = [NSString stringWithFormat:@"%.1f%%", percentChange];
