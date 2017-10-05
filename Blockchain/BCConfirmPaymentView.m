@@ -13,7 +13,7 @@
 #import "BCTotalAmountView.h"
 #import "BCConfirmPaymentViewModel.h"
 
-#define CELL_HEIGHT 44
+#define CELL_HEIGHT 60
 
 const int cellRowFrom = 0;
 const int cellRowTo = 1;
@@ -175,10 +175,10 @@ const int cellRowFee = 4;
             testLabel.text = BC_STRING_FEE;
             [testLabel sizeToFit];
             
-            self.feeInformationButton = [[UIButton alloc] initWithFrame:CGRectMake(15 + testLabel.frame.size.width + 8, 0, 19, 19)];
+            CGFloat feeInformationButtonWidth = 19;
+            self.feeInformationButton = [[UIButton alloc] initWithFrame:CGRectMake(15 + testLabel.frame.size.width + 8, CELL_HEIGHT/2 - feeInformationButtonWidth/2, feeInformationButtonWidth, feeInformationButtonWidth)];
             [self.feeInformationButton setImage:[[UIImage imageNamed:@"help"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
             self.feeInformationButton.tintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-            self.feeInformationButton.center = CGPointMake(self.feeInformationButton.center.x, cell.contentView.center.y);
             [self.feeInformationButton addTarget:self action:@selector(feeInformationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:self.feeInformationButton];
             
@@ -189,15 +189,15 @@ const int cellRowFee = 4;
             CGFloat leftMargin = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
             CGFloat labelHeight = 16;
             
-            UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftMargin, 14, self.frame.size.width/2 - 8 - leftMargin, labelHeight)];
+            UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftMargin, 20, self.frame.size.width/2 - 8 - leftMargin, labelHeight)];
             descriptionLabel.text = BC_STRING_DESCRIPTION;
             descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
             descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
             
             [cell.contentView addSubview:descriptionLabel];
             
-            self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, 0, self.frame.size.width/2 - 16 - 15, 20)];
-            self.descriptionField.center = CGPointMake(self.descriptionField.center.x, cell.contentView.center.y);
+            CGFloat descriptionFieldHeight = 20;
+            self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 16, CELL_HEIGHT/2 - descriptionFieldHeight/2, self.frame.size.width/2 - 16 - 15, descriptionFieldHeight)];
             self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
             self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
             self.descriptionField.textAlignment = NSTextAlignmentRight;
