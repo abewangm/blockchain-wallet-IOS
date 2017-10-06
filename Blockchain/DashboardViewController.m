@@ -261,11 +261,11 @@
     }
     
     LineChartDataSet *dataSet = [[LineChartDataSet alloc] initWithValues:finalValues label:nil];
-    dataSet.lineWidth = 3.0f;
+    dataSet.lineWidth = 1.5f;
     dataSet.colors = @[COLOR_BLOCKCHAIN_BLUE];
     dataSet.mode = LineChartModeLinear;
     dataSet.drawValuesEnabled = NO;
-    dataSet.circleRadius = 1.5f;
+    dataSet.circleRadius = 1.0f;
     dataSet.drawCircleHoleEnabled = NO;
     dataSet.circleColors = @[COLOR_BLOCKCHAIN_BLUE];
     dataSet.drawFilledEnabled = NO;
