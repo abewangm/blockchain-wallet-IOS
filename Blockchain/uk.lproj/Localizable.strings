@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Російський рубль";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Баланси Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Введіть або виберіть Ether адресу";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Платіж відправлено! Ваш баланс та інформація про транзакції незабаром оновляться.";
+
+/* (No Commment) */
+"Waiting for payment" = "Очікування платежу";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Будь ласка, зачекайте, поки не підтвердиться ваша остання ether транзакція.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Адреси";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Мапа Bitcoin Merchant";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Неправильна Ether адреса: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "При отриманні останніх даних діаграм стався збій. Будь ласка, спробуйте ще раз.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Транзакції відбуваються, коли ви надсилаєте та запитуєте ether.";
+
+/* (No Commment) */
+"Request Ether" = "Запит на Ether";
+
+/* (No Commment) */
+"Dashboard" = "Моніторингова панель";
+
+/* (No Commment) */
+"Week" = "Тиждень";
+
+/* (No Commment) */
+"Month" = "Місяць";
+
+/* (No Commment) */
+"Year" = "Рік";
+
+/* (No Commment) */
+"Bitcoin Price" = "Вартість Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Вартість Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Контрактові адреси не підтримуються.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "На даний момент ми підтримуємо лише ETH. Ви не можете отримати REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Тепер ми підтримуємо Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ви попросили, ми виконали. З радістю повідомляємо, що відтепер Ваш гаманець Blockchain дозволяє без проблем відправляти та отримувати ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Починайте роботу з Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Щоб скористатися цією послугою, будь ласка, введіть свій другий пароль. Щоб налаштувати свій Ether-гаманець, Вам треба буде ввести його лише один раз.";

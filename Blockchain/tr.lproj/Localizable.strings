@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rus Rublesi";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Bakiyeleri";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Ya Ether adresi girin ya da seçin";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Ödeme Gönderildi! Bakiyeniz ve işlemleriniz yakında güncellenecek.";
+
+/* (No Commment) */
+"Waiting for payment" = "Ödeme bekleniyor";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Son ether işlemi onaylanana kadar lütfen bekleyin.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresleri";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Tacir Haritası";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Geçersiz Ether adresi: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "En güncel grafik verileri alınırken bir hata oluştu. Lütfen daha sonra tekrar deneyin.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Ether gönderdiğinizde veya istediğinizde işlemler meydana gelir.";
+
+/* (No Commment) */
+"Request Ether" = "Ether İsteyin";
+
+/* (No Commment) */
+"Dashboard" = "Pano";
+
+/* (No Commment) */
+"Week" = "Hafta";
+
+/* (No Commment) */
+"Month" = "Ay";
+
+/* (No Commment) */
+"Year" = "Yıl";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Fiyatı";
+
+/* (No Commment) */
+"Ether Price" = "Ether Fiyatı";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontrakt adresleri desteklenmiyor.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Şu aşamada sadece ETH'yi destekliyoruz. REP, ICN, GNT, GNO, DGD ve BCP alamıyoruz.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Şimdi Ether'i destekliyoruz";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Siz istediniz, biz gerçekleştirdik. Artık Blockchain cüzdanınızın sorunsuz bir şekilde ether gönderip alabileceğini size bildirmekten dolayı heyecanlıyız!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Ether ile Başlayın";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Bu hizmeti kullanmak için ikinci şifrenizi girmeniz gerekir. Bunu Ether cüzdanınızı oluşturmak için sadece bir kez girmeniz gerekir.";

@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Российский рубль";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Балансы биткойн";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Введите адрес Эфириум или выберите";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Платеж отправлен! Ваш баланс и список операций скоро обновятся.";
+
+/* (No Commment) */
+"Waiting for payment" = "Ожидание платежа";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Дождитесь подтверждения вашей последней операции с эфириумом.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Адреса Биткойн";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Карта торговых точек, принимающих Биткойн";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Неверный адрес Эфириум: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Произошел сбой при извлечении последних данных таблицы. Повторите попытку позже.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Операции осуществляются, когда вы отправляете и запрашиваете эфириум.";
+
+/* (No Commment) */
+"Request Ether" = "Запросить эфириум";
+
+/* (No Commment) */
+"Dashboard" = "Личный кабинет";
+
+/* (No Commment) */
+"Week" = "Неделя";
+
+/* (No Commment) */
+"Month" = "Месяц";
+
+/* (No Commment) */
+"Year" = "Год";
+
+/* (No Commment) */
+"Bitcoin Price" = "Цена Биткойна";
+
+/* (No Commment) */
+"Ether Price" = "Цена Эфириума";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Контрактные адреса не поддерживаются.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "В настоящее время мы поддерживаем только ETH. Вы не сможете получать REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Теперь поддерживается Эфириум";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Вы просили, мы услышали. Мы рады сообщить о том, что ваш кошелек Blockchain теперь позволит вам без проблем отправлять и получать эфириум!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Начать работу с Эфириумом";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Чтобы использовать этот сервис, вам необходимо ввести свой второй пароль. Ввести второй пароль потребуется только один раз, чтобы завести ваш кошелек Эфириум.";

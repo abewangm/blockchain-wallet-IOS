@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "ロシアルーブル";
+
+/* (No Commment) */
+"Bitcoin Balances" = "ビットコイン残高";
+
+/* (No Commment) */
+"Enter Ether address or select" = "イーサアドレスを入力または選択";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "決済が送信されました！残高と取引はまもなく更新されます。";
+
+/* (No Commment) */
+"Waiting for payment" = "決済を待機しています";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "最後のイーサ取引が確認されるまでお待ちください。";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "ビットコインアドレス";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "ビットコインマーチャントマップ";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "無効なイーサアドレス: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "最新のグラフデータの取得中にエラーが発生しました。後で再試行してください。";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "取引はイーサの送信とリクエストを行う際に発生します。";
+
+/* (No Commment) */
+"Request Ether" = "イーサをリクエスト";
+
+/* (No Commment) */
+"Dashboard" = "ダッシュボード";
+
+/* (No Commment) */
+"Week" = "週";
+
+/* (No Commment) */
+"Month" = "月";
+
+/* (No Commment) */
+"Year" = "年";
+
+/* (No Commment) */
+"Bitcoin Price" = "ビットコイン価格";
+
+/* (No Commment) */
+"Ether Price" = "イーサ価格";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "契約アドレスはサポートされていません。";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "現時点では、ETHのみをサポートしています。REP、ICN、GNT、GNO、DGD、BCPは受け取れません。";
+
+/* (No Commment) */
+"Now supporting Ether" = "イーサをサポートしておりません";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "皆さまの声にお応えしました。ブロックチェーンウォレットでスムーズなイーサの送受信が可能になりました！";
+
+/* (No Commment) */
+"Get Started with Ether" = "イーサ取引を開始";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "このサービスを利用するには、2つ目のパスワードを入力する必要があります。イーサウォレットの設定の際に入力が一度のみ必要です。";

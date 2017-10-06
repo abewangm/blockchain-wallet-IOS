@@ -1772,3 +1772,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rúp Nga";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Số dư Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Nhập địa chỉ Ether hoặc chọn";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Đã gửi Thanh toán! Số dư và giao dịch của bạn sẽ sớm được cập nhật.";
+
+/* (No Commment) */
+"Waiting for payment" = "Đang chờ thanh toán";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Vui lòng chờ cho đến khi xác nhận giao dịch ether vừa rồi của bạn.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Địa chỉ Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bản đồ Cổng thanh toán Bitcoin";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Địa chỉ Ether không hợp lệ: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Đã xảy ra lỗi khi truy xuất dữ liệu biểu đồ mới nhất. Vui lòng thử lại sau.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Các giao dịch xảy ra khi bạn gửi và yêu cầu ether.";
+
+/* (No Commment) */
+"Request Ether" = "Yêu cầu Ether";
+
+/* (No Commment) */
+"Dashboard" = "Bảng điều khiển";
+
+/* (No Commment) */
+"Week" = "Tuần";
+
+/* (No Commment) */
+"Month" = "Tháng";
+
+/* (No Commment) */
+"Year" = "Năm";
+
+/* (No Commment) */
+"Bitcoin Price" = "Giá Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Giá Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Địa chỉ hợp đồng không được hỗ trợ.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Hiện tại chúng tôi chỉ hỗ trợ ETH. Bạn không thể nhận REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Hiện nay chúng tôi đang hỗ trợ Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Chúng tôi lắng nghe yêu cầu của bạn. Chúng tôi rất vui mừng thông báo ví Blockchain giờ đây đã cho phép bạn tự do gửi và nhận ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Bắt Đầu Với Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Để sử dụng dịch vụ này, chúng tôi yêu cầu bạn nhập mật khẩu cấp hai của mình. Bạn chỉ cần nhập mật khẩu cấp hai một lần để thiết lập ví Ether của mình.";

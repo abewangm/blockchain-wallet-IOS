@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "รูเบิลรัสเซีย";
+
+/* (No Commment) */
+"Bitcoin Balances" = "ยอดคงเหลือ Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "กรอกที่อยู่ Ether หรือเลือก";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "ส่งการชำระเงินแล้ว! ยอดคงเหลือและธุรกรรมของคุณจะอัปเดตในเร็ว ๆ นี้";
+
+/* (No Commment) */
+"Waiting for payment" = "กำลังรอการชำระเงิน";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "โปรดรอจนกว่าธุรกรรม ether ครั้งสุดท้ายของคุณได้รับการยืนยัน";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "ที่อยู่ Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "แผนที่ผู้ค้า Bitcoin";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "ที่อยู่ Ether ไม่ถูกต้อง: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "เกิดข้อผิดพลาดในขณะรับข้อมูลแผนภูมิล่าสุด โปรดลองอีกครั้งในภายหลัง";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "มีธุรกรรมระหว่างที่คุณส่งและร้องขอ ether";
+
+/* (No Commment) */
+"Request Ether" = "ร้องขอ Ether";
+
+/* (No Commment) */
+"Dashboard" = "แผงควบคุม";
+
+/* (No Commment) */
+"Week" = "สัปดาห์";
+
+/* (No Commment) */
+"Month" = "เดือน";
+
+/* (No Commment) */
+"Year" = "ปี";
+
+/* (No Commment) */
+"Bitcoin Price" = "ราคา Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "ราคา Ether ";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "ไม่รองรับที่อยู่สัญญา";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "ในขณะนี้เรารองรับเพียง ETH เท่านั้น คุณไม่สามารถรับ REP, ICN, GNT, GNO, DGD, BCP ได้";
+
+/* (No Commment) */
+"Now supporting Ether" = "รองรับ Ether ในตอนนี้";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "คุณขอ เรารับฟัง เราตื่นเต้นที่จะประกาศว่ากระเป๋าเงิน Blockchain ของคุณจะอนุญาตให้คุณส่งและรับ ether ได้อย่างราบรื่นแล้วในตอนนี้!";
+
+/* (No Commment) */
+"Get Started with Ether" = "เริ่มต้นกับ Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "ในการใช้บริการนี้ คุณจำเป็นต้องกรอกรหัสผ่านที่สองของคุณ คุณควรจะต้องกรอกรหัสนี้เพียงครั้งเดียวเพื่อตั้งค่ากระเป๋าเงิน Ether ของคุณ";

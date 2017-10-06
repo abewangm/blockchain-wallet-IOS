@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "러시아 루블";
+
+/* (No Commment) */
+"Bitcoin Balances" = "비트코인 잔액";
+
+/* (No Commment) */
+"Enter Ether address or select" = "에테르 주소를 입력하거나 선택";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "돈 보냄! 귀하의 잔액과 거래는 곧 업데이트 될겁니다.";
+
+/* (No Commment) */
+"Waiting for payment" = "결제 대기 중";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "귀하 최종 에테르 거래가 확인될 때까지 기다려 주세요";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "비트코인 주소";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "비트코인 상인 맵";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "유효하지 않은 에테르 주소: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "최신 차트 데이터 가져오는 도중 오류 발생. 나중에 다시 해보세요.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "거래는 귀하가 에테르를 보내고 요청할 때 일어납니다.";
+
+/* (No Commment) */
+"Request Ether" = "에테르 요청";
+
+/* (No Commment) */
+"Dashboard" = "대시보드";
+
+/* (No Commment) */
+"Week" = "주";
+
+/* (No Commment) */
+"Month" = "달";
+
+/* (No Commment) */
+"Year" = "년";
+
+/* (No Commment) */
+"Bitcoin Price" = "비트코인 가격";
+
+/* (No Commment) */
+"Ether Price" = "에테르 가격";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "계약 주소 지원 안됨.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "지금은 ETH만 지원하고 있습니다. REP, ICN, GNT, GNO, DGD, BCP는 받을 수 없습니다.";
+
+/* (No Commment) */
+"Now supporting Ether" = "이제 에테르 지원함";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "요청하신 것, 우리가 들었습니다. Blockchain 지갑이 이제 에테르를 깔끔하게 보내고 받게 되었음을 알리게 되어 기쁩니다!";
+
+/* (No Commment) */
+"Get Started with Ether" = "에테르로 시작하기";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "이 서비스를 쓰려면, 귀하의 두 번째 암호를 입력해야 합니다. 귀하 에테르 지갑 설정 때 한 번만 입력하면 됩니다.";

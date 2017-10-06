@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "俄罗斯卢布";
+
+/* (No Commment) */
+"Bitcoin Balances" = "比特币余额";
+
+/* (No Commment) */
+"Enter Ether address or select" = "输入或者选择以太币地址";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "已发送付款！您的余额和交易将很快更新。";
+
+/* (No Commment) */
+"Waiting for payment" = "正在等待付款";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "请等待您的最后一次以太币交易确认。";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "比特币地址";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "比特币商户地图";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "无效以太网地址：%@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "检索最新图表数据时出错。请稍后重试。";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "交易在您发送和请求以太币时发生。";
+
+/* (No Commment) */
+"Request Ether" = "请求以太币";
+
+/* (No Commment) */
+"Dashboard" = "控制面板";
+
+/* (No Commment) */
+"Week" = "周";
+
+/* (No Commment) */
+"Month" = "月";
+
+/* (No Commment) */
+"Year" = "年";
+
+/* (No Commment) */
+"Bitcoin Price" = "比特币价格";
+
+/* (No Commment) */
+"Ether Price" = "以太币价格";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "联系地址不被支持。";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "目前，我们仅支持ETH。您不能接受 REP、ICN、GNT、GNO、DGD、BCP。";
+
+/* (No Commment) */
+"Now supporting Ether" = "现在支持以太币";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "您提问了，我们聆听了您的问题。我们很高兴地宣布，现在，您可以通过您的Blockchain钱包无缝发送和接收以太币！";
+
+/* (No Commment) */
+"Get Started with Ether" = "开始使用以太币";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "若要使用该服务，我们要求您输入您的第二密码。仅需输入这个一次便可设置您的以太币钱包。";

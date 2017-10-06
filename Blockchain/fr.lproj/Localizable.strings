@@ -1847,3 +1847,72 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rouble russe";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Solde Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Saisir l'adresse d'Ether ou sélectionner";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Paiement envoyé ! Votre solde et vos transactions seront bientôt mises à jour.";
+
+/* (No Commment) */
+"Waiting for payment" = "En attente de paiement";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Veuillez patienter jusqu'à la confirmation de votre dernière transaction Ether.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Adresses Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Carte des marchands Bitcoin";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Adresse Ether incorrecte : %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Une erreur est survenue lors de la récupération des dernières données graphiques. Veuillez réessayer ultérieurement.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Les transactions se produisent quand vous envoyez et demandez des Ether.";
+
+/* (No Commment) */
+"Request Ether" = "Demander des Ether";
+
+/* (No Commment) */
+"Dashboard" = "Tableau de bord";
+
+/* (No Commment) */
+"Week" = "Semaine";
+
+/* (No Commment) */
+"Month" = "Mois";
+
+/* (No Commment) */
+"Year" = "Année";
+
+/* (No Commment) */
+"Bitcoin Price" = "Prix du Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Prix de l'Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Les adresses de contact ne sont pas prises en charge.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "À l'heure actuelle, nous ne prenons en charge que les ETH. Vous ne pouvez pas recevoir les monnaies suivantes : REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Les Ether sont désormais pris en charge";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Vous avez demandé, nous avons écouté. Nous avons la joie de vous annoncer que votre portefeuille Blockchain vous permettra désormais d'envoyer et de recevoir des Ether sans soucis!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Commencez avec Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Pour utiliser ce service, vous devez saisir votre deuxième mot de passe. Vous ne devrez le saisir qu'une fois pour paramétrer votre portefeuille Ether.";
