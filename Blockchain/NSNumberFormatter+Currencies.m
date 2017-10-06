@@ -194,9 +194,10 @@
     }
 }
 
-+ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount
++ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount locale:(NSLocale *)preferredLocale
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    if (preferredLocale) formatter.locale = preferredLocale;
     [formatter setMaximumFractionDigits:8];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     return [formatter stringFromNumber:amount];

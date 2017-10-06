@@ -33,6 +33,6 @@
 + (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate;
 
 + (NSString *)ethAmount:(NSDecimalNumber *)amount;
-+ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount;
++ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount locale:(NSLocale *)preferredLocale;
 
 @end

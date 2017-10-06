@@ -1073,7 +1073,12 @@
 
 - (NSDecimalNumber *)ethDecimalBalance
 {
-    return [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
+    NSLocale *currentLocale = app.localCurrencyFormatter.locale;
+    app.localCurrencyFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+    
+    NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
+    app.localCurrencyFormatter.locale = currentLocale;
+    return balance;
 }
 
 # pragma mark - Socket Delegate

@@ -11,6 +11,8 @@
 #import "Transaction.h"
 #import "EtherTransaction.h"
 #import "NSNumberFormatter+Currencies.h"
+#import "RootService.h"
+
 @interface TransactionDetailViewModel ()
 @property (nonatomic) NSString *amountString;
 @property (nonatomic) uint64_t feeInSatoshi;
@@ -41,7 +43,11 @@
         self.replaceByFee = transaction.replaceByFee;
         self.dateString = [self getDate];
         self.myHash = transaction.myHash;
+        
+        NSLocale *currentLocale = app.btcFormatter.locale;
+        app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
         self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatAmount:imaxabs(self.amountInSatoshi) localCurrency:NO]];
+        app.btcFormatter.locale = currentLocale;
         
         if ([transaction isMemberOfClass:[ContactTransaction class]]) {
             ContactTransaction *contactTransaction = (ContactTransaction *)transaction;
@@ -65,8 +71,8 @@
         self.fromAddress = etherTransaction.from;
         self.to = @[etherTransaction.to];
         self.toString = etherTransaction.to;
-        self.amountString = [NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount]];
-        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount]]];
+        self.amountString = [NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount] locale:nil];
+        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount] locale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]]];
         self.myHash = etherTransaction.myHash;
         self.feeString = etherTransaction.fee;
         self.note = etherTransaction.note;
