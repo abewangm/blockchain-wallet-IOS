@@ -145,7 +145,7 @@
     }
     
     NSString *result = [NSNumberFormatter formatFiatToEth:amountString exchangeRate:self.latestExchangeRate];
-    self.amountInputView.btcField.text = result ? [NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:result]] : nil;
+    self.amountInputView.btcField.text = result ? [NSNumberFormatter ethAmount:[NSDecimalNumber decimalNumberWithString:result]] : nil;
 }
 
 - (BOOL)isEtherAddress:(NSString *)address

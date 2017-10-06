@@ -374,7 +374,7 @@
                                                               initWithTo:self.toAddress
                                                               ethAmount:[NSNumberFormatter formatEth:self.ethAmount]
                                                               ethFee:[NSNumberFormatter formatEth:self.ethFee]
-                                                              ethTotal:[NSNumberFormatter formatEth:totalDecimalNumber]
+                                                              ethTotal:[NSNumberFormatter formatEth:[NSNumberFormatter truncatedEthAmount:totalDecimalNumber]]
                                                               fiatAmount:[NSNumberFormatter appendStringToFiatSymbol:self.amountInputView.fiatField.text]
                                                               fiatFee:[NSNumberFormatter formatEthToFiatWithSymbol:[self.ethFee stringValue] exchangeRate:self.latestExchangeRate]
                                                               fiatTotal:[NSNumberFormatter formatEthToFiatWithSymbol:[NSString stringWithFormat:@"%@", totalDecimalNumber] exchangeRate:self.latestExchangeRate]];
