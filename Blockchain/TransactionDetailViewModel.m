@@ -65,8 +65,8 @@
         self.fromAddress = etherTransaction.from;
         self.to = @[etherTransaction.to];
         self.toString = etherTransaction.to;
-        self.amountString = etherTransaction.amount;
-        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:etherTransaction.amount];
+        self.amountString = [NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount]];
+        self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter truncatedEthAmount:[NSDecimalNumber decimalNumberWithString:etherTransaction.amount]]];
         self.myHash = etherTransaction.myHash;
         self.feeString = etherTransaction.fee;
         self.note = etherTransaction.note;
