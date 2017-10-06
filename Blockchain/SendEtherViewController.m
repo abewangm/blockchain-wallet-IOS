@@ -271,7 +271,7 @@
         [self disablePaymentButtons];
         return;
     } else {
-        [self.fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSString stringWithFormat:@"%@ %@", available, CURRENCY_SYMBOL_ETH]] forState:UIControlStateNormal];
+        [self updateFundsAvailable];
         [self.fundsAvailableButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
         self.toField.userInteractionEnabled = YES;
         self.fundsAvailableButton.userInteractionEnabled = YES;
@@ -449,8 +449,13 @@
 {
     [super textFieldDidBeginEditing:textField];
     
+    [self updateFundsAvailable];
+}
+
+- (void)updateFundsAvailable
+{
     NSString *availableAmount;
-    
+
     if (self.displayingLocalSymbolSend) {
         availableAmount = [NSNumberFormatter formatEthToFiatWithSymbol:[self.ethAvailable stringValue] exchangeRate:self.latestExchangeRate];
     } else {
