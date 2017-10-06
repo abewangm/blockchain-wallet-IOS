@@ -363,12 +363,13 @@
 
 - (void)showError:(NSString *)error
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (!app.pinEntryViewController)
-        [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    });
+    if (!app.pinEntryViewController && [app.wallet isInitialized] && app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD && !app.modalView) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        });
+    }
 }
 
 #pragma mark - Text Helpers
