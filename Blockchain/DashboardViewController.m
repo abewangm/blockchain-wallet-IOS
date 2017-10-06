@@ -115,6 +115,7 @@
     chartView.xAxis.granularityEnabled = YES;
     chartView.xAxis.labelCount = 4;
     [chartView setExtraOffsetsWithLeft:8.0 top:0 right:0 bottom:10.0];
+    chartView.noDataFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
     chartView.noDataTextColor = COLOR_TEXT_GRAY;
     
     chartView.xAxis.valueFormatter = self;
