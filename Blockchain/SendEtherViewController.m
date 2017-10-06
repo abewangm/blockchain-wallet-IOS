@@ -478,6 +478,8 @@
 
                 NSString *address = [metadataObj stringValue];
                 
+                if ([address hasPrefix:PREFIX_ETHEREUM_URI]) address = [address stringByReplacingOccurrencesOfString:PREFIX_ETHEREUM_URI withString:@""];
+                
                 [self selectToAddress:address];
                 DLog(@"toAddress: %@", address);
                 
