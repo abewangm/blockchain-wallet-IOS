@@ -2385,6 +2385,10 @@ MyWalletPhone.createNewEtherPayment = function() {
      });
 }
 
+MyWalletPhone.hasEthAccount = function() {
+    return MyWallet.wallet.eth.defaultAccount != null;
+}
+
 MyWalletPhone.updateEtherPayment = function(isSweep) {
 
     var paymentInfo = {

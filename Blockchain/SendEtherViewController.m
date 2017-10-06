@@ -175,6 +175,14 @@
     self.ethFee = 0;
     self.ethAvailable = 0;
     
+    if (![app.wallet hasEthAccount]) {
+        [self disablePaymentButtons];
+        self.amountInputView.userInteractionEnabled = NO;
+    } else {
+        [self enablePaymentButtons];
+        self.amountInputView.userInteractionEnabled = YES;
+    }
+
     [app.wallet createNewEtherPayment];
 
     if (self.addressToSet) {

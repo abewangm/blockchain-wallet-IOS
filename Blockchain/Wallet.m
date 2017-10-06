@@ -2653,6 +2653,15 @@
     }
 }
 
+- (BOOL)hasEthAccount
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.hasEthAccount()"] toBool];
+    }
+    
+    return NO;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

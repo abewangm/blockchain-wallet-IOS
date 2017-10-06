@@ -438,6 +438,7 @@ typedef enum {
 - (NSString *)getEtherAddress;
 - (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
 - (void)sweepEtherPayment;
+- (BOOL)hasEthAccount;
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Top Bar Display
