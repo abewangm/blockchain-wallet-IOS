@@ -665,6 +665,8 @@
 #define BC_STRING_FEE_INFORMATION_MESSAGE_APPEND_REGULAR_SEND NSLocalizedString (@" We recommend the fee shown for the transaction at this time.", nil)
 #define BC_STRING_FEE_INFORMATION_DUST NSLocalizedString(@"This transaction requires a higher fee for dust consumption due to the small amount of change to be returned.", nil)
 
+#define BC_STRING_FEE_INFORMATION_MESSAGE_ETHER NSLocalizedString (@"Miners receive this fee to process this transaction.", nil)
+
 #define BC_STRING_TRANSACTION_DESCRIPTION_PLACEHOLDER NSLocalizedString(@"What's this for?", nil)
 #define BC_STRING_NO_DESCRIPTION NSLocalizedString(@"No description", nil)
 

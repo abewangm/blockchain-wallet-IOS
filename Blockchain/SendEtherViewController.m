@@ -395,7 +395,9 @@
 
 - (void)feeInformationButtonClicked
 {
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FEE_INFORMATION_TITLE message:BC_STRING_FEE_INFORMATION_MESSAGE_ETHER preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+    [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)hideKeyboard
