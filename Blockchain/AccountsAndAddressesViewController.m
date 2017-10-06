@@ -17,6 +17,8 @@
 #import "Blockchain-Swift.h"
 #import "UIView+ChangeFrameAttribute.h"
 
+#define CELL_HEIGHT_DEFAULT 44.0f
+
 @interface AccountsAndAddressesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) NSString *clickedAddress;
 @property (nonatomic) int clickedAccount;
@@ -223,7 +225,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 44.0f;
+        return CELL_HEIGHT_DEFAULT;
     }
     
     return 70.0f;
@@ -358,8 +360,9 @@
                     [cell.watchLabel changeWidth:newWidth];
                 }
                 
-                cell.balanceLabel.frame = CGRectMake(minimumBalanceButtonOriginX, 11, WINDOW_WIDTH - minimumBalanceButtonOriginX - 20, 21);
-                cell.balanceButton.frame = CGRectMake(minimumBalanceButtonOriginX, 0, WINDOW_WIDTH - minimumBalanceButtonOriginX, cell.contentView.frame.size.height);
+                CGFloat windowWidth = WINDOW_WIDTH;
+                cell.balanceLabel.frame = CGRectMake(minimumBalanceButtonOriginX, 11, windowWidth - minimumBalanceButtonOriginX - 20, 21);
+                cell.balanceButton.frame = CGRectMake(minimumBalanceButtonOriginX, 0, windowWidth - minimumBalanceButtonOriginX, CELL_HEIGHT_DEFAULT);
             } else {
                 
                 // Don't show the watch only tag and resize the label and balance labels to use up the freed up space
