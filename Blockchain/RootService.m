@@ -1680,6 +1680,13 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
+- (void)exchangeClicked:(id)sender
+{
+    UIViewController *exchangeViewController = [UIViewController new];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeViewController title:BC_STRING_EXCHANGE];
+    [self.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
 - (void)forgetWallet
 {
     [self clearPin];
