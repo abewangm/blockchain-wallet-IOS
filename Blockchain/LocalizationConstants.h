@@ -828,3 +828,4 @@
 #define BC_STRING_MY_ETHER_WALLET NSLocalizedString(@"My Ether Wallet", nil)
 
 #define BC_STRING_EXCHANGE NSLocalizedString(@"Exchange", nil)
+#define BC_STRING_NEW_EXCHANGE NSLocalizedString(@"New Exchange", nil)
