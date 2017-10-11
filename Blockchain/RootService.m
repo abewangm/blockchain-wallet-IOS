@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "ExchangeOverviewViewController.h"
 #import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
 #import "SharedSessionDelegate.h"
@@ -1682,7 +1683,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)exchangeClicked:(id)sender
 {
-    UIViewController *exchangeViewController = [UIViewController new];
+    ExchangeOverviewViewController *exchangeViewController = [ExchangeOverviewViewController new];
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeViewController title:BC_STRING_EXCHANGE];
     [self.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
 }

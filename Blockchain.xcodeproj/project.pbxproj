@@ -241,6 +241,7 @@
 		C790E1211E5345160063D141 /* BCVerifyEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1201E5345160063D141 /* BCVerifyEmailViewController.m */; };
 		C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */; };
 		C79261B51E8ADF0300C87CED /* BCCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C79261B41E8ADF0300C87CED /* BCCardView.m */; };
+		C793E1FC1F8E7921001F171C /* ExchangeOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C793E1FB1F8E7921001F171C /* ExchangeOverviewViewController.m */; };
 		C79ABF321F852C2B0062726C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79ABF291F852C040062726C /* Charts.framework */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
 		C7A923E41F852DC7003D9DAF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79ABF291F852C040062726C /* Charts.framework */; };
@@ -1160,6 +1161,8 @@
 		C790E1231E5358540063D141 /* BCVerifyMobileNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCVerifyMobileNumberViewController.m; sourceTree = "<group>"; };
 		C79261B31E8ADF0300C87CED /* BCCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCCardView.h; sourceTree = "<group>"; };
 		C79261B41E8ADF0300C87CED /* BCCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCCardView.m; sourceTree = "<group>"; };
+		C793E1FA1F8E7921001F171C /* ExchangeOverviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeOverviewViewController.h; sourceTree = "<group>"; };
+		C793E1FB1F8E7921001F171C /* ExchangeOverviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeOverviewViewController.m; sourceTree = "<group>"; };
 		C79ABD841F852C030062726C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C79ABD851F852C030062726C /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		C79ABD861F852C030062726C /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -2069,6 +2072,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C793E1FA1F8E7921001F171C /* ExchangeOverviewViewController.h */,
+				C793E1FB1F8E7921001F171C /* ExchangeOverviewViewController.m */,
 				C7618B5F1F66C817003E7589 /* QRCodeScannerSendViewController.h */,
 				C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */,
 				C723F3471F64413400A858A9 /* TransactionsViewController.h */,
@@ -3595,6 +3600,7 @@
 				23F601A41D09C931009102BF /* Reachability.m in Sources */,
 				23444F931DCD21B700573C8C /* BTCBase58.m in Sources */,
 				23EA61C51B54258D0032B907 /* SettingsTableViewController.m in Sources */,
+				C793E1FC1F8E7921001F171C /* ExchangeOverviewViewController.m in Sources */,
 				23FB5C161D9ABBB20008C6AB /* TransactionDetailValueCell.m in Sources */,
 				23444F841DCD217000573C8C /* NSData+BTCData.m in Sources */,
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
