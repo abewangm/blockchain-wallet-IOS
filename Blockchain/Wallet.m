@@ -2309,6 +2309,17 @@
     return NO;
 }
 
+- (NSString *)getMobileMessage
+{
+    if ([self isInitialized]) {
+        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] languageCode]]];
+        if ([message isUndefined] || [message isNull]) return nil;
+        return [message toString];
+    }
+    
+    return nil;
+}
+
 #pragma mark - Contacts
 
 - (void)loadContacts

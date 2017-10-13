@@ -853,6 +853,17 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager hideSendAndReceiveKeyboards];
 }
 
+- (void)showMobileNotice
+{
+    NSString *message = [app.wallet getMobileMessage];
+    
+    if (message) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -1018,7 +1029,9 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     showType = ShowTypeNone;
-
+    
+    [self showMobileNotice];
+    
     [self.wallet loadContactsThenGetMessages];
     
     [self.wallet getEthHistory];
