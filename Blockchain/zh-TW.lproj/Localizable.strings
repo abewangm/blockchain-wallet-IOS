@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "俄罗斯卢布";
+
+/* (No Commment) */
+"Bitcoin Balances" = "特币余额";
+
+/* (No Commment) */
+"Enter Ether address or select" = "该醚地址或选择";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "付款发送的！ 你的余额和交易将更新很快。";
+
+/* (No Commment) */
+"Waiting for payment" = "在等待付款";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "请等待，直到你的最后一醚的交易证实。";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "特币地址";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "特币商地图";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "无效醚地址：%@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "发生了错误的同时检索最新的图表数据。 请稍后再试一次。";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "交易发生时你发送的和请求醚。";
+
+/* (No Commment) */
+"Request Ether" = "请求醚";
+
+/* (No Commment) */
+"Dashboard" = "仪表板";
+
+/* (No Commment) */
+"Week" = "周";
+
+/* (No Commment) */
+"Month" = "一个月";
+
+/* (No Commment) */
+"Year" = "年";
+
+/* (No Commment) */
+"Bitcoin Price" = "币价";
+
+/* (No Commment) */
+"Ether Price" = "醚的价格";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "合同地址都不支持。";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "目前，我们仅支持ETH的。 你无法接收代表、ICN,合租的，GNO,DGD,BCP。";
+
+/* (No Commment) */
+"Now supporting Ether" = "现在支持醚";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "你问的，我们听。 我们很高兴地宣布，你块链的钱包里现在将允许你无缝地发送和接收醚了。";
+
+/* (No Commment) */
+"Get Started with Ether" = "开始醚";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "使用这项服务，我们需要你进入你的第二个密码。 你应该只需要输入此一旦设置你醚的钱包。";
+
+/* (No Commment) */
+"Enter Ether address" = "该醚的地址";
+
+/* (No Commment) */
+"Day" = "一天";
+
+/* (No Commment) */
+"All" = "所有";
+
+/* (No Commment) */
+"Please send ether to %@." = "请给醚%@的。";
+
+/* (No Commment) */
+"Bitcoin payment request" = "特币付款请求";
+
+/* (No Commment) */
+"Ether payment request" = "醚的付款请求";
+
+/* (No Commment) */
+"My Ether Wallet" = "我醚的钱包";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "工采矿者收到这笔费用来处理这一事务。";

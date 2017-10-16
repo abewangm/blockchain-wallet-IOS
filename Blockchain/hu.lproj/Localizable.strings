@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Orosz Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "A Bitcoin Egyenlegek";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Adja meg Éter címet vagy válassza ki a";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Fizetési Küldött! A mérleg, tranzakciók lesz frissítés hamarosan.";
+
+/* (No Commment) */
+"Waiting for payment" = "Vár fizetés";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Kérjük, várjon, amíg az utolsó éter tranzakció megerősíti.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin-Címek";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "A Bitcoin Kereskedő Térkép";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Érvénytelen Éter cím: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Hiba történt, mialatt a legújabb diagram adatait. Kérjük, próbálja meg újra később.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Tranzakciók fordulhat elő, ha küld, illetve kérés-éter.";
+
+/* (No Commment) */
+"Request Ether" = "Kérés-Éter";
+
+/* (No Commment) */
+"Dashboard" = "Műszerfal";
+
+/* (No Commment) */
+"Week" = "Hét";
+
+/* (No Commment) */
+"Month" = "Hónap";
+
+/* (No Commment) */
+"Year" = "Év";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Ára";
+
+/* (No Commment) */
+"Ether Price" = "Éter Ár";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Szerződés címeket nem támogatott.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Abban a pillanatban csak támogatása ETH. Nem fogadhatunk KÉPVISELŐ, ICN, emberiség nevében erre kérjük, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Most már támogatja Éter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Kérte, meghallgattuk. Izgatottan várjuk, hogy be, hogy a Blokklánc tárca most lehetővé teszi, hogy zökkenőmentesen küldeni éter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Ismerkedjen meg az Éter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "A szolgáltatás használatához szükségünk, hogy adja meg a második jelszó. Csak meg kell adnia ezt egyszer kell beállítani az Éter tárca.";
+
+/* (No Commment) */
+"Enter Ether address" = "Adja meg Éter cím";
+
+/* (No Commment) */
+"Day" = "Nap";
+
+/* (No Commment) */
+"All" = "Összes";
+
+/* (No Commment) */
+"Please send ether to %@." = "Kérjük, küldje el éter, hogy %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "A Bitcoin kifizetési kérelem";
+
+/* (No Commment) */
+"Ether payment request" = "Éter kifizetési kérelem";
+
+/* (No Commment) */
+"My Ether Wallet" = "Az Éter Pénztárca";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "A bányászok is megkapja ezt a díjat, hogy a folyamat, ez a tranzakció.";

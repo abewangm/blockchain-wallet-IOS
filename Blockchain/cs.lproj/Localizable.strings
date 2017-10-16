@@ -1966,3 +1966,96 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Chcete-li používat tuto službu, vyžadujeme, abyste zadali druhé heslo. Toto budete muset zadat pouze jednou, když nastavíte svou peněženku Ether.";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Zůstatky";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Zadejte Ether adresu nebo vyberte";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Platba Odeslána! Váš zůstatek a transakce bude aktualizovat brzy.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čekání na platbu";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Prosím, vyčkejte, dokud vaše poslední éteru transakce potvrzuje.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresy";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Mapa";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neplatná Ether adresu: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Došlo k chybě při načítání nejnovější data grafu. Zkuste to prosím znovu později.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transakce se vyskytují, když jsi odesílat a požádat o éteru.";
+
+/* (No Commment) */
+"Request Ether" = "Žádost Éteru";
+
+/* (No Commment) */
+"Dashboard" = "Palubní deska";
+
+/* (No Commment) */
+"Week" = "Týden";
+
+/* (No Commment) */
+"Month" = "Měsíc";
+
+/* (No Commment) */
+"Year" = "Rok";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Cena";
+
+/* (No Commment) */
+"Ether Price" = "Éter Cena";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Smlouva adresy nejsou podporovány.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "V současné době podporuje pouze ETH. Nelze přijímat REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nyní podporuje Éteru";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ptali jste se, jsme poslouchali. Jsme rádi, oznámit, že vaše Blockchain peněženka bude nyní umožní bezproblémově odesílat a přijímat éteru!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Začínáme s Éterem";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Chcete-li používat tuto službu, budeme požadovat, abyste zadali své druhé heslo. Měli byste potřebovat pouze zadat jednou nastavit Éteru peněženku.";
+
+/* (No Commment) */
+"Enter Ether address" = "Zadejte Ether adresu";
+
+/* (No Commment) */
+"Day" = "Den";
+
+/* (No Commment) */
+"All" = "Všechny";
+
+/* (No Commment) */
+"Please send ether to %@." = "Prosím, pošlete do éteru %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin žádosti o platbu";
+
+/* (No Commment) */
+"Ether payment request" = "Éter žádosti o platbu";
+
+/* (No Commment) */
+"My Ether Wallet" = "Můj Éter Peněženku";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Horníci dostávat tento poplatek na zpracování této transakce.";

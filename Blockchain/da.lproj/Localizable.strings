@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Russiske Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldi";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Indtast Ether-adresse, eller vælge";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Betaling Sendt! Din saldo og transaktioner vil opdatere snart.";
+
+/* (No Commment) */
+"Waiting for payment" = "Venter på betaling";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Vent, indtil din sidste ether transaktion bekræfter.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresser";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Købmand Kort";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Ugyldig Ether adresse: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Der opstod en fejl under hentning af de nyeste kortdata. Prøv venligst igen senere.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaktioner forekomme, når du sender og eter anmodning.";
+
+/* (No Commment) */
+"Request Ether" = "Eter Anmodning";
+
+/* (No Commment) */
+"Dashboard" = "Dashboard";
+
+/* (No Commment) */
+"Week" = "Uge";
+
+/* (No Commment) */
+"Month" = "Måned";
+
+/* (No Commment) */
+"Year" = "År";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Pris";
+
+/* (No Commment) */
+"Ether Price" = "Ether Pris";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontrakt-adresser er ikke understøttet.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "I øjeblikket understøtter vi kun ETH. Du kan ikke modtage REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nu støtter Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Du spurgte vi lyttede. Vi er glade for at meddele, at din Blokkæden wallet vil nu kan du uden problemer sende og modtage ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Komme i Gang med Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "For at bruge denne service, vil vi anmode dig om at indtaste din anden adgangskode. Du bør kun nødvendigt at indtaste denne gang for at oprette din Ether tegnebog.";
+
+/* (No Commment) */
+"Enter Ether address" = "Indtast Ether-adresse";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Send ether at %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin anmodning om betaling";
+
+/* (No Commment) */
+"Ether payment request" = "Eter anmodning om betaling";
+
+/* (No Commment) */
+"My Ether Wallet" = "Min Ether Tegnebog";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Minearbejdere modtage dette gebyr for at behandle transaktionen.";
