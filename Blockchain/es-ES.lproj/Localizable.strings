@@ -1111,7 +1111,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta acción requiere una clave privada para la dirección Bitcoin %@. Escanea el código QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para tu monedero Bitcoin. Introdúcelo a continuación y haz clic en continuar.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para tu monedero. Introdúcelo a continuación y haz clic en continuar.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Esta dirección ya está siendo utilizada Por favor inicie sesión.";
@@ -1624,79 +1624,79 @@
 "Wallets" = "Monederos";
 
 /* (No Commment) */
-"START BACKUP" = "YEDEKLEMEYİ BAŞLAT";
+"START BACKUP" = "INICIAR RESPALDO";
 
 /* (No Commment) */
-"Backup Needed" = "Yedekleme Gerekli";
+"Backup Needed" = "Se necesita respaldo";
 
 /* (No Commment) */
-"Create a Wallet" = "Bir Cüzdan Oluştur";
+"Create a Wallet" = "Crear una billetera";
 
 /* (No Commment) */
-"Log In" = "Oturum Aç";
+"Log In" = "Iniciar sesión";
 
 /* (No Commment) */
-"Please enter your password to log into your Blockchain wallet." = "Blockchain cüzdanınıza giriş yapmak için lütfen şifrenizi girin.";
+"Please enter your password to log into your Blockchain wallet." = "Por favor, introduzca su contraseña para iniciar sesión en su billetera de Blockchain.";
 
 /* (No Commment) */
-"Forgot Password?" = "Şifrenizi mi unuttunuz?";
+"Forgot Password?" = "¿Olvidó su contraseña?";
 
 /* (No Commment) */
-"Or start over and " = "Veya yeniden başlayın ve ";
+"Or start over and " = "O inicie de nuevo y ";
 
 /* (No Commment) */
-"Update Email" = "E-postanızı Güncelleyin";
+"Update Email" = "Actualizar correo electrónico";
 
 /* (No Commment) */
-"Enter Email Address" = "E-posta Adresi Girin";
+"Enter Email Address" = "Introduzca su dirección de correo electrónico";
 
 /* (No Commment) */
-"Update Mobile" = "Cep Telefonu Numarasını Güncelleyin";
+"Update Mobile" = "Actualizar teléfono móvil";
 
 /* (No Commment) */
-"Enter Mobile Number" = "Cep Telefonu Numarasını Girin";
+"Enter Mobile Number" = "Introduzca su teléfono móvil";
 
 /* (No Commment) */
-"Balances" = "Bakiyeler";
+"Balances" = "Saldos";
 
 /* (No Commment) */
-"Transactions occur when you send and receive bitcoin." = "İşlemler bitcoin gönderip aldığınız zaman gerçekleşir.";
+"Transactions occur when you send and receive bitcoin." = "Las transacciones ocurren cuando envía y recibe bitcoins.";
 
 /* (No Commment) */
-"Your Transactions" = "İşlemleriniz";
+"Your Transactions" = "Sus transacciones";
 
 /* (No Commment) */
-"Backup Complete" = "Yedekleme Tamamlandı";
+"Backup Complete" = "Respaldo terminado";
 
 /* (No Commment) */
-"Backup Needed" = "Yedekleme Gerekli";
+"Backup Needed" = "Se necesita respaldo";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Şifrenizi kaybetmeniz durumunda paranızı geri almak için Kurtarma İfadenizi kullanın. Kurtarma İfadenize erişebilen herkes bitcoinlerinize erişebilir, bu yüzden çevrimdışı güvenli ve emniyetli bir yerde tutun.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Use su frase de recuperación para restablecer sus fondos en caso de que pierda su contraseña.  Cualquier persona con acceso a su frase de recuperación puede acceder a sus fondos, así que téngala segura en algún lugar, lejos de Internet.";
 
 /* (No Commment) */
-"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Aşağıdaki 12 sözcüklü Kurtarma İfadesi şifrenizi kaybetmeniz durumunda paranıza erişim sağlayacaktır.";
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "La siguiente frase de recuperación de doce palabras le dará acceso a sus fondos en caso de que pierda su contraseña.";
 
 /* (No Commment) */
-"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "İfadenizi bir kağıt parçasına yazdığınızdan ve güvenli ve emniyetli bir yerde tuttuğunuzdan emin olun.";
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Asegúrese de escribir su frase en un papel, y consérvelo en un lugar seguro.";
 
 /* (No Commment) */
-"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Aşağıdaki 12 sözcüklü Kurtarma İfadesini tıpkı göründüğü şekilde ve bu sıraya göre yazın:";
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escriba la siguiente frase de recuperación de doce palabras, exactamente como aparece en este pedido:";
 
 /* (No Commment) */
-"PREVIOUS" = "ÖNCEKİ";
+"PREVIOUS" = "ANTERIOR";
 
 /* (No Commment) */
-"NEXT" = "SONRAKİ";
+"NEXT" = "SIGUIENTE";
 
 /* (No Commment) */
-"BACKUP AGAIN" = "YENİDEN YEDEKLE";
+"BACKUP AGAIN" = "RESPALDAR DE NUEVO";
 
 /* (No Commment) */
-"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Doğrulanmış e-posta adresiniz, ödeme uyarıları, Kimlik hatırlatmaları ve oturum açma kodlarını göndermek için kullanılır.";
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Su dirección verificada de correo electrónico se usa para enviar alertas de pago, recordatorios de identificación y códigos de inicio de sesión.";
 
 /* (No Commment) */
-"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Cep telefonu numaranız iki-faktörlü doğrulamayı etkinleştirmek veya uyarı almak için kullanılabilir.";
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Puede usar su teléfono celular para habilitar la autenticación de dos pasos o para recibir alertas.";
 
 /* (No Commment) */
 "Trade Completed" = "Transacción completada";
@@ -1844,3 +1844,73 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rublo ruso";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Saldos de bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Introduzca una dirección de ether o seleccione";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "¡Pago enviado! Su saldo y transacciones se actualizarán pronto.";
+
+/* (No Commment) */
+"Waiting for payment" = "Esperando el pago";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Por favor, espere hasta que su última transacción de ether se confirme.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Direcciones de bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Mapa de comerciantes de bitcoins";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Dirección de ether no válida: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ocurrió un error al obtener los últimos datos de gráfica. Por favor, inténtelo de nuevo más tarde.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Las transacciones ocurren cuando envía y pide ether.";
+
+/* (No Commment) */
+"Request Ether" = "Pedir ether";
+
+/* (No Commment) */
+"Dashboard" = "Panel de control";
+
+/* (No Commment) */
+"Week" = "Semana";
+
+/* (No Commment) */
+"Month" = "Mes";
+
+/* (No Commment) */
+"Year" = "Año";
+
+/* (No Commment) */
+"Bitcoin Price" = "Precio de bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Precio de ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "No se admiten direcciones de contrato.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Por el momento solo admitimos ETH. No es posible recibir REP, ICN, GNT, GNO, DGD ni BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Ahora admitimos ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Porque usted lo pidió: ¡nos emociona anunciar que su cartera de Blockchain ahora le permitirá enviar y recibir ether de forma fácil!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Comience a usar ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Para usar este servicio, es necesario que introduzca su segunda contraseña. Solo necesita hacer esto una vez para configurar su cartera de ether.";
+

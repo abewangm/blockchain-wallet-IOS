@@ -173,13 +173,13 @@
 "Automatically" = "Automaticamente";
 
 /* No comment provided by engineer. */
-"BACKUP FUNDS" = "FUNDOS DE RESERVA";
+"BACKUP FUNDS" = "BACKUP DE FUNDOS";
 
 /* (No Commment) */
 "Backup" = "Backup de";
 
 /* No comment provided by engineer. */
-"Backup Funds" = "Fundos de reserva";
+"Backup Funds" = "Backup de Fundos";
 
 /* (No Commment) */
 "Backup Phrase" = "Frase de backup";
@@ -278,7 +278,7 @@
 "Connection timed out. Please check your internet connection." = "Conexão expirou. Por favor, verifique sua conexão de internet.";
 
 /* (No Commment) */
-"Continue" = "Continue";
+"Continue" = "Continuar";
 
 /* (No Commment) */
 "Copied to clipboard" = "Copiado para a área de transferência";
@@ -377,7 +377,7 @@
 "Done" = "Feito";
 
 /* (No Commment) */
-"Downloading Wallet" = "Transferindo a carteira";
+"Downloading Wallet" = "A transferir carteira";
 
 /* (No Commment) */
 "Easy one time wallet backup keeps you in control of your funds" = "Backup de carteira de fácil um tempo mantém você no controle de seus fundos";
@@ -937,7 +937,7 @@
 "Regular" = "Regular";
 
 /* (No Commment) */
-"Request" = "Solicitação de";
+"Request" = "Enviar pedido";
 
 /* (No Commment) */
 "Request Amount" = "Quantidade de pedido";
@@ -1075,13 +1075,13 @@
 "Surge Occurring" = "Pico ocorrendo";
 
 /* (No Commment) */
-"Swipe to Receive" = "Furto a Receber";
+"Swipe to Receive" = "Deslize para Receber";
 
 /* No comment provided by engineer. */
 "Syncing Wallet" = "Sincronização de carteira";
 
 /* (No Commment) */
-"Tap to copy this address. Share it with the sender via email or text." = "Torneira para copiar este endereço. Compartilhá-lo com o remetente via email ou texto.";
+"Tap to copy this address. Share it with the sender via email or text." = "Toque para copiar este endereço. Compartilhe com o remetente via email ou texto.";
 
 /* (No Commment) */
 "Terms of Service" = "Termos de serviço";
@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta ação requer a chave particular para o %@ de endereço Bitcoin. Por favor verificar o código QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha para a sua carteira de bitcoin. Digite-a abaixo e pressione continuar.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha para a sua carteira. Digite-a abaixo e pressione continuar.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Este endereço já foi usado. Faça o login.";
@@ -1628,13 +1628,13 @@
 
 "START BACKUP" = "INICIAR CÓPIA DE SEGURANÇA";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
 "Create a Wallet" = "Criar uma carteira";
 
 "Log In" = "Iniciar sessão";
 
-"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar em sua carteira de Blockchain.";
+"Please enter your password to log into your Blockchain wallet." = "Por favor, digite sua senha para entrar na sua carteira de Blockchain.";
 
 "Forgot Password?" = "Esqueceu a senha?";
 
@@ -1644,27 +1644,27 @@
 
 "Enter Email Address" = "Digite o endereço de E-mail";
 
-"Update Mobile" = "Mobile de atualização";
+"Update Mobile" = "Atualização Mobile";
 
-"Enter Mobile Number" = "Digite o número do celular";
+"Enter Mobile Number" = "Digite o número do telemóvel";
 
 "Balances" = "Saldos";
 
 "Transactions occur when you send and receive bitcoin." = "As transações ocorrem quando você envia e recebe bitcoin.";
 
-"Your Transactions" = "Suas transações";
+"Your Transactions" = "As suas transações";
 
 "Backup Complete" = "Backup completo";
 
-"Backup Needed" = "Precisava de reforços";
+"Backup Needed" = "Cópia de segurança necessária";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso a sua frase de recuperação pode acessar seu bitcoin, então mantê-lo off-line em algum lugar seguro.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu fundos, então mantenha-a off-line e em algum lugar seguro.";
 
-"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A palavra 12 seguinte frase de recuperação dará acesso aos seus fundos no caso de você perder sua senha.";
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A seguinte frase de recuperação de 12 palavras dará acesso aos seus fundos no caso de você perder a sua senha.";
 
 "Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Não se esqueça de escrever sua frase em um pedaço de papel e mantê-lo em algum lugar seguro.";
 
-"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a seguinte palavra 12 recuperação frase exatamente como eles aparecem e nesta ordem:";
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Escreva a frase de recuperação de 12 palavras exatamente pela mesma ordem que aparecem:";
 
 "PREVIOUS" = "ANTERIOR";
 
@@ -1822,3 +1822,97 @@
 
 /* (No Commment) */
 "Russian Ruble" = "O Rublo Russo";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldos";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Digite Éter endereço ou seleccione";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Pagamento Enviado! O seu saldo e transações de atualização em breve.";
+
+/* (No Commment) */
+"Waiting for payment" = "Aguardando pagamento";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Por favor, aguarde até que o último éter confirma a transação.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Endereços Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Comerciante Mapa";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Inválido Éter endereço: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ocorreu um erro ao obter os mais recentes dados do gráfico. Por favor, tente novamente mais tarde.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "As transações ocorrem quando você enviar e solicitação de éter.";
+
+/* (No Commment) */
+"Request Ether" = "Pedido De Éter";
+
+/* (No Commment) */
+"Dashboard" = "Painel";
+
+/* (No Commment) */
+"Week" = "Semana";
+
+/* (No Commment) */
+"Month" = "Mês";
+
+/* (No Commment) */
+"Year" = "Ano";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Preço";
+
+/* (No Commment) */
+"Ether Price" = "Éter Preço";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Contrato de endereços não são suportados.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "No momento oferecemos suporte somente para a ETH. Você não pode receber REP, ICN, GNT, GENDEO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Agora apoiando Éter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Você pediu, a gente atendeu. Estamos animado para anunciar que seu Blockchain carteira de agora irá permitir que você facilmente enviar e receber éter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Começar com Éter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Para utilizar este serviço, necessita de introduzir o seu segundo senha. Você só precisa de introduzir este uma vez, para configurar a sua Éter carteira.";
+
+/* (No Commment) */
+"Enter Ether address" = "Introduza o endereço de Éter";
+
+/* (No Commment) */
+"Day" = "Dia";
+
+/* (No Commment) */
+"All" = "Todos";
+
+/* (No Commment) */
+"Please send ether to %@." = "Por favor, envie éter, para %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin pedido de pagamento";
+
+/* (No Commment) */
+"Ether payment request" = "Éter pedido de pagamento";
+
+/* (No Commment) */
+"My Ether Wallet" = "Minha Éter Carteira";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Mineiros receber esta taxa para processar essa transação.";
+
