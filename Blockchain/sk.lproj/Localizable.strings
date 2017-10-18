@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Zálohovanie potreby";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Použiť výraz obnovenie obnoviť svoje prostriedky v prípade stratené heslo.  Ktokoľvek s prístupom k obnovenie frázy môžete prístup vaše bitcoin, tak ju offline niekam bezpečné.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Použiť výraz obnovenie obnoviť svoje prostriedky v prípade stratené heslo.  Ktokoľvek s prístupom k obnovenie frázy môžete prístup vaše zdroje, tak ju offline niekam bezpečné.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Nasledujúce 12 slovo oživenie frázu v prípade, že stratíte heslo vám umožní prístup k svojim financiám.";
 

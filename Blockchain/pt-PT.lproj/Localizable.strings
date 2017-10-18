@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Cópia de segurança necessária";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu bitcoin, então mantenha-a off-line e em algum lugar seguro.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu fundos, então mantenha-a off-line e em algum lugar seguro.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A seguinte frase de recuperação de 12 palavras dará acesso aos seus fundos no caso de você perder a sua senha.";
 

@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "النسخة الاحتياطية اللازمة";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "استخدم \"عبارتك الاسترداد\" لاستعادة الأموال الخاصة بك في حالة كلمة مرور المفقودة.  أي شخص لديه إمكانية الوصول إلى \"العبارة الاسترداد\" الخاصة بك يمكن الوصول الخاص بك بيتكوين، حتى تبقى أنه دون اتصال في مكان آمنة ومأمونة.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "استخدم \"عبارتك الاسترداد\" لاستعادة الأموال الخاصة بك في حالة كلمة مرور المفقودة.  أي شخص لديه إمكانية الوصول إلى \"العبارة الاسترداد\" الخاصة بك يمكن الوصول الخاص بك بيتكوين، حتى تبقى أنه دون اتصال في مكان آمنة ومأمونة.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "كلمة 12 التالية \"عبارة الانتعاش\" سوف تعطيك الوصول إلى الأموال الخاصة بك في حالة فقدان كلمة المرور الخاصة بك.";
 

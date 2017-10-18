@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Потребує резервного копіювання";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Використайте свою Фразу для відновлення доступу, якщо ви втратили свій пароль. Будь-хто, хто знає вашу Фразу для вдновлення доступу, матиме доступ до ваших коштів, тому не зберігайте її на своєму пристрої, а десь в іншому надійному та безпечному місці.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Використайте свою Фразу для відновлення доступу, якщо ви втратили свій пароль. Будь-хто, хто знає вашу Фразу для вдновлення доступу, матиме доступ до ваших коштів, тому не зберігайте її на своєму пристрої, а десь в іншому надійному та безпечному місці.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Ось ці 12 слів - це фраза для відновлення доступу, яка дасть вам доступ до своїх коштів, якщо ви забудете чи втратите свій пароль.";

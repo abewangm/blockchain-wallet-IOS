@@ -1675,7 +1675,7 @@
 "Backup Needed" = "백업 필요";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 비트코인에 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 자금 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "다음 12 단어 복구 구절이 암호를 잊었을 때 자금에 접근하게 해 줄 겁니다.";

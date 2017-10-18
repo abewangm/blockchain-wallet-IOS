@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Zálohování potřeby";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k bitcoin, tak ať je offline někde bezpečné a spolehlivé.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k prostředky, tak ať je offline někde bezpečné a spolehlivé.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující 12 slovo fráze obnovení vám umožní přístup k financím, v případě, že ztratíte své heslo.";
 
@@ -1725,7 +1725,7 @@
 "Backup Needed" = "Nutné zálohování";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "V případě, že ztratíte heslo, použijte svou frázi pro obnovení.  Kdokoliv, kdo má přístup k vaší frázi pro obnovení, má přístup k vašemu bitcoinu. Proti ji uschovejte offline někde na bezpečném a zabezpečeném místě.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "V případě, že ztratíte heslo, použijte svou frázi pro obnovení.  Kdokoliv, kdo má přístup k vaší frázi pro obnovení, má přístup k vašemu bitcoinu. Proti ji uschovejte offline někde na bezpečném a zabezpečeném místě.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující fráze pro obnovení v délce 12 slov vám poskytne přístup k vašim financím v případě, že ztratíte své heslo.";

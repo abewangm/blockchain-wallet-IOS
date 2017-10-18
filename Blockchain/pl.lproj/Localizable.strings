@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie środków. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
@@ -1750,7 +1750,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";

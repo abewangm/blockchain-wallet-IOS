@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Copie de rezervă necesare";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Utilizaţi dumneavoastră fraza de recuperare pentru a restabili fondurile dumneavoastră în cazul în care o parolă pierdută.  Cineva cu acces la dumneavoastră fraza de recuperare poate accesa ţi bitcoin, aşa-l păstraţi offline undeva sigur.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Utilizaţi dumneavoastră fraza de recuperare pentru a restabili fondurile dumneavoastră în cazul în care o parolă pierdută.  Cineva cu acces la dumneavoastră fraza de recuperare poate accesa ţi fondurile, aşa-l păstraţi offline undeva sigur.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Următoarele 12 cuvântul fraza de recuperare va oferi acces la fondurile tale în cazul în care ai pierdut parola.";
 

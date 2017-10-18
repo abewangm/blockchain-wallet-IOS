@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "所需的備份";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "你恢復短語用於恢復您丟失的密碼時的資金。 你恢復短語訪問任何人都可以訪問您的比特幣，所以離線地方安全和有保障。";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "你恢復短語用於恢復您丟失的密碼時的資金。 你恢復短語訪問任何人都可以訪問您的資金，所以離線地方安全和有保障。";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "萬一你丟失了您的密碼，以下 12 字恢復短語會您可以訪問您的資金。";
 

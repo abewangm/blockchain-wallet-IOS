@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Backup tarvitaan";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän bitcoin, niin pitää se offline jonnekin turvallisia.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän rahat, niin pitää se offline jonnekin turvallisia.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "12 sanan hyödyntämistä lause antaa sinulle pääsyn rahat, jos menetät sinun tunnussana.";
 

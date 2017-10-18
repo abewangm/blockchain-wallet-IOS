@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Δημιουργία αντιγράφων ασφαλείας απαιτείται";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας bitcoin, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας ταμεία, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Η παρακάτω λέξη 12 αποκατάστασης φράση θα σας δώσει πρόσβαση στα χρήματά σας σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 

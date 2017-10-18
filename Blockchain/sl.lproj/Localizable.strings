@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Varnostno kopiranje, ki so potrebne";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Uporabite vaše besede izterjave obnoviti vaših sredstev v primeru izgubljen parola.  Vsak, ki ima dostop do vaše okrevanje besede lahko dostop do vaše bitcoin, zato naj bo brez povezave nekje varno.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Uporabite vaše besede izterjave obnoviti vaših sredstev v primeru izgubljen parola.  Vsak, ki ima dostop do vaše okrevanje besede lahko dostop do vaše sredstev, zato naj bo brez povezave nekje varno.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Naslednjih 12 beseda okrevanje stavek bo vam dostop do vaših sredstev, v primeru, da ste izgubili geslo.";
 

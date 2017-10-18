@@ -1655,7 +1655,7 @@
 
 "Backup Needed" = "Backup behövs";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din bitcoin, så håll det offline någonstans säkert.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din medel, så håll det offline någonstans säkert.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Följande 12 ordet återhämtning fras ger dig tillgång till dina pengar om du förlorar ditt lösenord.";
 

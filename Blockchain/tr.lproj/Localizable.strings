@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Yedekleme Gerekli";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Şifrenizi kaybetmeniz durumunda paranızı geri almak için Kurtarma İfadenizi kullanın. Kurtarma İfadenize erişebilen herkes bitcoinlerinize erişebilir, bu yüzden çevrimdışı güvenli ve emniyetli bir yerde tutun.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Şifrenizi kaybetmeniz durumunda paranızı geri almak için Kurtarma İfadenizi kullanın. Kurtarma İfadenize erişebilen herkes fonları, bu yüzden çevrimdışı güvenli ve emniyetli bir yerde tutun.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Aşağıdaki 12 sözcüklü Kurtarma İfadesi şifrenizi kaybetmeniz durumunda paranıza erişim sağlayacaktır.";

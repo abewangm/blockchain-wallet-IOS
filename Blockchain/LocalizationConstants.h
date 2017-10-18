@@ -743,7 +743,7 @@
 
 #define BC_STRING_BACKUP_COMPLETE NSLocalizedString(@"Backup Complete", nil)
 #define BC_STRING_BACKUP_NEEDED NSLocalizedString(@"Backup Needed", nil)
-#define BC_STRING_BACKUP_COMPLETED_EXPLANATION NSLocalizedString(@"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure.", nil)
+#define BC_STRING_BACKUP_COMPLETED_EXPLANATION NSLocalizedString(@"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure.", nil)
 #define BC_STRING_BACKUP_NEEDED_BODY_TEXT_ONE NSLocalizedString(@"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password.", nil)
 #define BC_STRING_BACKUP_NEEDED_BODY_TEXT_TWO NSLocalizedString(@"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure.", nil)
 #define BC_STRING_BACKUP_WORDS_INSTRUCTIONS NSLocalizedString(@"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", nil)

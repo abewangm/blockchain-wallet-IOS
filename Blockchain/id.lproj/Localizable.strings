@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Pencadangan Dibutuhkan";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Gunakan Frasa Pemulihan Anda untuk mengembalikan dana Anda dalam kasus kata sandi yang hilang.  Siapa pun dengan akses ke Frasa Pemulihan Anda dapat mengakses bitcoin Anda, jadi tetap jaga secara offline di tempat yang aman.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Gunakan Frasa Pemulihan Anda untuk mengembalikan dana Anda dalam kasus kata sandi yang hilang.  Siapa pun dengan akses ke Frasa Pemulihan Anda dapat mengakses dana Anda, jadi tetap jaga secara offline di tempat yang aman.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut ini 12 kata Frasa Pemulihan yang akan memberikan Anda akses ke dana Anda jika Anda kehilangan kata sandi Anda.";

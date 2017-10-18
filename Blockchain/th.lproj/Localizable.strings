@@ -1675,7 +1675,7 @@
 "Backup Needed" = "จำเป็นต้องมีการสำรองข้อมูล";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงบิตคอยน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงเงินน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "วลีเพื่อการกู้คืน 12 คำต่อไปนี้จะมอบการเข้าถึงเงินของคุณในกรณีที่คุณทำรหัสผ่านของคุณสูญหาย";
