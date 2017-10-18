@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini membutuhkan kunci pribadi untuk alamat Bitcoin %@. Silakan Pindai kode QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata sandi kedua untuk bitcoin dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata sandi kedua untuk dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Alamat ini sudah digunakan. Silakan masuk.";

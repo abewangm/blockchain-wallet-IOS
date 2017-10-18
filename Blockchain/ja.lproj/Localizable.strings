@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "このアクションにはビットコインアドレス%@の秘密鍵が必要です。 QRコードをスキャンしてください。";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "このアクションにはビットコインウォレットの二番目のパスワードが必要です。 以下に入力して続行を押してください。";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "このアクションにはウォレットの二番目のパスワードが必要です。 以下に入力して続行を押してください。";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "このアドレスはすでに使用されています。 ログインしてください。";

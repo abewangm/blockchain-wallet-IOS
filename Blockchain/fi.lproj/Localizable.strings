@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tämä toiminto edellyttää yksityisen avaimen Bitcoin osoite %@. Skannaa QR-koodi.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana lompakon. Kirjoita se ja paina Jatka.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Tämä osoite on jo käytössä. Kirjaudu sisään.";

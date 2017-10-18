@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Hành động này yêu cầu khóa riêng cho địa chỉ Bitcoin %@. Vui lòng quét mã QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu cấp 2 cho ví bitcoin. Vui lòng nhập vào bên dưới và nhấn tiếp tục.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu cấp 2 cho ví. Vui lòng nhập vào bên dưới và nhấn tiếp tục.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Địa chỉ này đã được sử dụng. Vui lòng đăng nhập.";

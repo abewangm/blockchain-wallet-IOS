@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ez a művelet megköveteli a személyes kulcsot a Bitcoin cím %@. Legyen szíves átkutat a QR-kód.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó bitcoin tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ez a cím már használatban van. Kérjük, jelentkezzen be.";

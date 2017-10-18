@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Αυτή η ενέργεια απαιτεί το ιδιωτικό κλειδί για το Bitcoin διεύθυνση %@. Παρακαλούμε να Σκανάρετε τον κωδικό QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Αυτή η διεύθυνση έχει ήδη χρησιμοποιηθεί. Παρακαλούμε συνδεθείτε.";

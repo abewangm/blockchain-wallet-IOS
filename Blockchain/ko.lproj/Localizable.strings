@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "이 행동을 하려면 비트코인 주소 %@에 대한 개인 열쇠가 필요합니다. QR 코드를 스캔 하세요.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 비트코인 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "이 주소는 이미 사용된 것입니다. 로그인 하세요.";

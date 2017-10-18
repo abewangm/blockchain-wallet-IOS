@@ -1111,7 +1111,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta acción requiere una clave privada para la dirección Bitcoin %@. Escanea el código QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para tu monedero Bitcoin. Introdúcelo a continuación y haz clic en continuar.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Esta acción requiere la segunda contraseña para tu monedero. Introdúcelo a continuación y haz clic en continuar.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Esta dirección ya está siendo utilizada Por favor inicie sesión.";

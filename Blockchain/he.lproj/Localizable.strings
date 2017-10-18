@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "פעולה זו דורשת את המפתח הפרטי עבור %@ כתובת ביטקוין. בבקשה לסרוק קוד QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "כתובת זו כבר היה בשימוש. אנא התחבר.";

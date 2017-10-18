@@ -1111,7 +1111,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "इस क्रिया के लिए Bitcoin पता %@ निजी कुंजी की आवश्यकता है। कृपया QR कोड स्कैन करें।";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "इस कार्रवाई के लिए अपना bitcoin बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "इस कार्रवाई के लिए अपना बटुआ दूसरा पासवर्ड की आवश्यकता है। कृपया उसे नीचे दर्ज करें और प्रेस जारी रखें।";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "इस पता पहले से ही इस्तेमाल किया गया है। कृपया लॉगिन करें।";

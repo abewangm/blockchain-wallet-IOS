@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Táto akcia vyžaduje súkromný kľúč pre Bitcoin adresu %@. Prosím scan QR kód.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Táto akcia vyžaduje druhé heslo pre bitcoin peňaženku. Prosím, zadajte ju nižšie a stlačte tlačidlo pokračovať.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Táto akcia vyžaduje druhé heslo pre peňaženku. Prosím, zadajte ju nižšie a stlačte tlačidlo pokračovať.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Táto adresa sa už používa. Prihláste sa prosím.";

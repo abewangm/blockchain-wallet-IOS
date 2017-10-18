@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "يتطلب هذا الإجراء المفتاح الخاص ل %@ عنوان بيتكوين. الرجاء مسح رمز ريال قطري.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "تم بالفعل استخدام هذا العنوان. الرجاء تسجيل الدخول.";

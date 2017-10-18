@@ -158,7 +158,7 @@
 #define BC_STRING_NO_PASSWORD_ENTERED NSLocalizedString(@"No Password Entered", nil)
 #define BC_STRING_SECOND_PASSWORD_INCORRECT NSLocalizedString(@"Second Password Incorrect", nil)
 
-#define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your bitcoin wallet. Please enter it below and press continue.", nil)
+#define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your wallet. Please enter it below and press continue.", nil)
 #define BC_STRING_INVALID_GUID NSLocalizedString(@"Invalid Wallet ID", nil)
 #define BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN NSLocalizedString(@"An error occurred due to interruptions during PIN verification. Please close the app and try again.", nil)
 

@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "To działanie wymaga klucza prywatnego dla adresu bitcoin %@. Proszę zeskanować kod QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela bitcoin. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ten adres został już użyty. Zaloguj się.";

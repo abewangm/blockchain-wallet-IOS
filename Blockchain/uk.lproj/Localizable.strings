@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ця дія вимагає особистий ключ для Bitcoin адреси %@. Будь ласка, відскануйте QR-код.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Для цієї дії потрібно другий пароль вашого гаманця. Будь ласка, введіть пароль знизу і натисніть Продовжити.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Для цієї дії потрібно другий пароль вашого гаманця. Будь ласка, введіть пароль знизу і натисніть Продовжити.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ця адреса вже використовувалась. Увійдіть, будь ласка.";

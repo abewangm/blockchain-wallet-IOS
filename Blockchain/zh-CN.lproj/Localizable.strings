@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "该动作要求比特币地址%@的密钥。 请扫描二维码。";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "该操作要求您的比特币钱包的副密码。 请在下方输入并按“继续”。";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "该操作要求您的比特币钱包的副密码。 请在下方输入并按“继续”。";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "这个地址已被使用。 请登录。";
