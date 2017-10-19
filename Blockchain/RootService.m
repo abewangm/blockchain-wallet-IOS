@@ -855,7 +855,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)showMobileNotice
 {
-    NSString *message = @" ";// = [app.wallet getMobileMessage];
+    NSString *message = [app.wallet getMobileMessage];
     
     if (message) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:message preferredStyle:UIAlertControllerStyleAlert];
