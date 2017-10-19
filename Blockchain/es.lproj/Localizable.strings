@@ -1913,3 +1913,49 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Para usar este servicio, es necesario que introduzca su segunda contraseña. Solo necesita hacer esto una vez para configurar su cartera de ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Introduzca la dirección de ether";
+
+/* (No Commment) */
+"Day" = "Día";
+
+/* (No Commment) */
+"All" = "Todo";
+
+/* (No Commment) */
+"Please send ether to %@." = "Por favor, envíe ether a %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Solicitud de pago de bitcoins";
+
+/* (No Commment) */
+"Ether payment request" = "Solicitud de pago de ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mi billetera de ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Introduzca la dirección de ether";
+
+/* (No Commment) */
+"Day" = "Dia";
+
+/* (No Commment) */
+"All" = "Todo";
+
+/* (No Commment) */
+"Please send ether to %@." = "Por favor, envíe ether a %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Solicitud de pago de bitcoins";
+
+/* (No Commment) */
+"Ether payment request" = "Solicitação de pagamento ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mi billetera de ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Se aplica esta tasa a los mineros para procesar la transacción.";
+

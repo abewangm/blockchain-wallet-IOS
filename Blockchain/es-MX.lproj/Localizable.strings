@@ -1939,19 +1939,22 @@
 "Miners receive this fee to process this transaction." = "Introduzca la dirección de ether";
 
 /* (No Commment) */
- = "Día";
+"Day" = "Dia";
 
 /* (No Commment) */
- = "Todo";
+"All" = "Todo";
 
 /* (No Commment) */
- = "Por favor, envíe ether a %@.";
+"Please send ether to %@." = "Por favor, envíe ether a %@.";
 
 /* (No Commment) */
- = "Solicitud de pago de bitcoins";
+"Bitcoin payment request" = "Solicitud de pago de bitcoins";
 
 /* (No Commment) */
- = "Solicitud de pago de ether";
+"Ether payment request" = "Solicitação de pagamento ether";
 
 /* (No Commment) */
- = "Mi billetera de ether";
+"My Ether Wallet" = "Mi billetera de ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Se aplica esta tasa a los mineros para procesar la transacción.";
