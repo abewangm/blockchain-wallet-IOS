@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Чтобы использовать этот сервис, вам необходимо ввести свой второй пароль. Ввести второй пароль потребуется только один раз, чтобы завести ваш кошелек Эфириум.";
+
+/* (No Commment) */
+"Enter Ether address" = "Введите Ether адрес";
+
+/* (No Commment) */
+"Day" = "День";
+
+/* (No Commment) */
+"All" = "Все";
+
+/* (No Commment) */
+"Please send ether to %@." = "Пожалуйста, отправьте ether на %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Требование платежа Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Требование платежа Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Мой Ether кошелек";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Майнеры получают комиссию за обработку этой транзакции.";

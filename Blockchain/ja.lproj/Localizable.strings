@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "このサービスを利用するには、2つ目のパスワードを入力する必要があります。イーサウォレットの設定の際に入力が一度のみ必要です。";
+
+/* (No Commment) */
+"Enter Ether address" = "Etherアドレスを入力";
+
+/* (No Commment) */
+"Day" = "日";
+
+/* (No Commment) */
+"All" = "すべて";
+
+/* (No Commment) */
+"Please send ether to %@." = "Etherを%@に送信してください。";
+
+/* (No Commment) */
+"Bitcoin payment request" = "ビットコイン決済リクエスト";
+
+/* (No Commment) */
+"Ether payment request" = "Ether決済リクエスト";
+
+/* (No Commment) */
+"My Ether Wallet" = "マイEtherウォレット";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "この手数料は取引処理のために採掘者に支払われます。";

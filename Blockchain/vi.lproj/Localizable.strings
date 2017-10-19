@@ -1891,3 +1891,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Để sử dụng dịch vụ này, chúng tôi yêu cầu bạn nhập mật khẩu cấp hai của mình. Bạn chỉ cần nhập mật khẩu cấp hai một lần để thiết lập ví Ether của mình.";
+
+/* (No Commment) */
+"Enter Ether address" = "Nhập Địa chỉ Ether";
+
+/* (No Commment) */
+"Day" = "Ngày";
+
+/* (No Commment) */
+"All" = "Tất cả";
+
+/* (No Commment) */
+"Please send ether to %@." = "Vui lòng gửi ether đến %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Yêu cầu thanh toán Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Ví Ether của tôi";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Các thợ đào nhận được khoản phí này để thực hiện giao dịch này.";

@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "若要使用该服务，我们要求您输入您的第二密码。仅需输入这个一次便可设置您的以太币钱包。";
+
+/* (No Commment) */
+"Enter Ether address" = "输入以太地址";
+
+/* (No Commment) */
+"Day" = "天";
+
+/* (No Commment) */
+"All" = "全部";
+
+/* (No Commment) */
+"Please send ether to %@." = "请发送以太币至 %@。";
+
+/* (No Commment) */
+"Bitcoin payment request" = "比特币支付请求";
+
+/* (No Commment) */
+"Ether payment request" = "以太币支付请求";
+
+/* (No Commment) */
+"My Ether Wallet" = "我的以太币钱包";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "矿工接收这笔费用用于处理该交易";

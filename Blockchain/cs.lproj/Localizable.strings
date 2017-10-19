@@ -2059,3 +2059,27 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Horníci dostávat tento poplatek na zpracování této transakce.";
+
+/* (No Commment) */
+"Enter Ether address" = "Zadejte adresu Ether";
+
+/* (No Commment) */
+"Day" = "Den";
+
+/* (No Commment) */
+"All" = "Vše";
+
+/* (No Commment) */
+"Please send ether to %@." = "Pošlete prosím Ether na %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Požadavek na platbu Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Požadavek na platbu Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Má peněženka Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Tento poplatek obdrží těžitelé za zpracování této transakce.";

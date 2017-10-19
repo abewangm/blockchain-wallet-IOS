@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "ในการใช้บริการนี้ คุณจำเป็นต้องกรอกรหัสผ่านที่สองของคุณ คุณควรจะต้องกรอกรหัสนี้เพียงครั้งเดียวเพื่อตั้งค่ากระเป๋าเงิน Ether ของคุณ";
+
+/* (No Commment) */
+"Enter Ether address" = "กรอกที่อยู่ Ether";
+
+/* (No Commment) */
+"Day" = "วัน";
+
+/* (No Commment) */
+"All" = "ทั้งหมด";
+
+/* (No Commment) */
+"Please send ether to %@." = "โปรดส่ง ether ไปยัง %@";
+
+/* (No Commment) */
+"Bitcoin payment request" = "คำร้องขอการชำระเงิน Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "คำร้องขอการชำระเงิน Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "กระเป๋าเงิน Ether ของฉัน";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "นักทำเหมืองจะได้รับค่าธรรมเนียมนี้เพื่อประมวลผลต่อธุรกรรมนี้";

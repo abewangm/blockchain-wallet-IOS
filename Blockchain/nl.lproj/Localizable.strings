@@ -2009,3 +2009,27 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Mijnwerkers ontvangt deze toeslag tot het verwerken van deze transactie.";
+
+/* (No Commment) */
+"Enter Ether address" = "Voer Ether-adres in";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Stuur ether naar %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Verzoek om Bitcoin-betaling";
+
+/* (No Commment) */
+"Ether payment request" = "Verzoek om Ether-betaling";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mijn Ether-Portemonnee";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Mijners ontvangen deze vergoeding om deze transactie te verwerken.";

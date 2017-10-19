@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Bu hizmeti kullanmak için ikinci şifrenizi girmeniz gerekir. Bunu Ether cüzdanınızı oluşturmak için sadece bir kez girmeniz gerekir.";
+
+/* (No Commment) */
+"Enter Ether address" = "Ether adresini girin";
+
+/* (No Commment) */
+"Day" = "Gün";
+
+/* (No Commment) */
+"All" = "Tümü";
+
+/* (No Commment) */
+"Please send ether to %@." = "Lütfen ether'i şuraya gönderin: %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin ödeme talebi";
+
+/* (No Commment) */
+"Ether payment request" = "Ether ödeme talebi";
+
+/* (No Commment) */
+"My Ether Wallet" = "Ether Cüzdanım";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Madenciler bu işlemi gerçekleştirmek için bu ücreti alır.";

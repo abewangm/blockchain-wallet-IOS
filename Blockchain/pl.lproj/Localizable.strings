@@ -1991,3 +1991,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Aby móc korzystać z tej usługi, musisz wprowadzić drugie hasło. Będzie to konieczne tylko jeden raz - do skonfigurowania portfela Ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Wprowadź adres Ether";
+
+/* (No Commment) */
+"Day" = "Dzień";
+
+/* (No Commment) */
+"All" = "Wszystkie";
+
+/* (No Commment) */
+"Please send ether to %@." = "Wyślij ether do %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Żądanie płatności Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Żądanie płatności Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mój portfel Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Górnicy otrzymują tę opłatę, aby przetworzyć tę transakcję.";

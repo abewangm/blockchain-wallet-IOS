@@ -1916,3 +1916,45 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Untuk menggunakan layanan ini, kami meminta Anda untuk memasukkan kata sandi kedua Anda. Anda hanya perlu memasukkan ini sekali untuk mengatur dompet Ether Anda.";
+
+/* (No Commment) */
+"Enter Ether address" = "Masukkan alamat Ether";
+
+/* (No Commment) */
+"Day" = "Hari";
+
+/* (No Commment) */
+"All" = "Semua";
+
+/* (No Commment) */
+"Please send ether to %@." = "Harap kirimkan ether ke %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Permintaan pembayaran bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Permintaan pembayaran ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Wallet Ether Saya";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Masukkan alamat Ether";
+
+/* (No Commment) */
+ = "Hari";
+
+/* (No Commment) */
+ = "Semua";
+
+/* (No Commment) */
+ = "Harap kirimkan ether ke %@.";
+
+/* (No Commment) */
+ = "Permintaan pembayaran bitcoin";
+
+/* (No Commment) */
+ = "Permintaan pembayaran ether";
+
+/* (No Commment) */
+ = "Wallet Ether Saya";

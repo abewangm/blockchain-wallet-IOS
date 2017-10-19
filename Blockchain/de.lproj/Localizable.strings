@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Zur Verwendung dieses Service müssen Sie Ihr zweites Passwort eingeben. Diese Angabe ist in der Regel nur einmal zur Einrichtiung Ihrer Ether-Wallet erforderlich.";
+
+/* (No Commment) */
+"Enter Ether address" = "Ether-Adresse eingeben";
+
+/* (No Commment) */
+"Day" = "Tag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Bitte Ether an %@ senden.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin-Zahlungsantrag";
+
+/* (No Commment) */
+"Ether payment request" = "Ether-Zahlungsantrag";
+
+/* (No Commment) */
+"My Ether Wallet" = "Meine Ether-Wallet";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Miners erhalten diese Gebühr zur Bearbeitung dieser Transaktion.";
