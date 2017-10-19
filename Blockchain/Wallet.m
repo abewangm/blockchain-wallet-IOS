@@ -2315,7 +2315,7 @@
 - (NSString *)getMobileMessage
 {
     if ([self isInitialized]) {
-        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] languageCode]]];
+        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode]]];
         if ([message isUndefined] || [message isNull]) return nil;
         return [message toString];
     }
