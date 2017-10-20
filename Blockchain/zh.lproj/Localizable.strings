@@ -254,7 +254,7 @@
 "Checking for Wallet updates" = "检查钱包更新";
 
 /* (No Commment) */
-"Checking for more: Step %d of %d" = "检查更多：%d步的第%d步";
+"Checking for more: Step %d of %d" = "检查更多：%1$d步的第%2$d步";
 
 /* No comment provided by engineer. */
 "Close" = "关闭";
