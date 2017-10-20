@@ -31,7 +31,7 @@
 #endif
 #define BOTTOM_CONTAINER_HEIGHT_FULL 201
 #define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 220
-#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 220
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 210
 #define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
@@ -94,17 +94,6 @@ NSString *detailLabel;
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
-    
-    // iPhone4/4S
-    if (IS_USING_SCREEN_SIZE_4S) {
-        int reduceImageSizeBy = 40;
-        
-        // Smaller QR Code Image
-        qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
-                                               qrCodeMainImageView.frame.origin.y,
-                                               qrCodeMainImageView.frame.size.width - reduceImageSizeBy,
-                                               qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
-    }
     
     [self reload];
     
@@ -401,7 +390,7 @@ NSString *detailLabel;
     instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
     instructionsLabel.numberOfLines = 0;
     instructionsLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
-    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    instructionsLabel.text = IS_USING_SCREEN_SIZE_4S ? nil : BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
     [instructionsLabel sizeToFit];
     if (instructionsLabel.frame.size.height > 40) [instructionsLabel changeHeight:40];
     instructionsLabel.center = CGPointMake(self.view.frame.size.width/2, instructionsLabel.center.y);
@@ -414,10 +403,14 @@ NSString *detailLabel;
         BOOL isUsing4SScreenSize = IS_USING_SCREEN_SIZE_4S;
         
         qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
+        
         if (!isUsing4SScreenSize) {
             [qrCodeMainImageView changeYPosition:57];
             instructionsLabel.center = CGPointMake(self.headerView.center.x, qrCodeMainImageView.frame.origin.y/2);
+        } else {
+            [qrCodeMainImageView changeYPosition:0];
         }
+        
         [self.headerView addSubview:qrCodeMainImageView];
         
         CGFloat yOffset = isUsing4SScreenSize ? 4 : 16;
