@@ -11,7 +11,7 @@
 "257.text" = "0 BTC";
 
 /* Class = "UILabel"; text = "loading"; ObjectID = "263"; */
-"263.text" = "加载";
+"263.text" = "正在加载";
 
 /* (No Commment) */
 "353.text" = "自动配对";
@@ -23,23 +23,22 @@
 "360.text" = "1";
 
 /* Class = "UILabel"; text = "Login to your Blockchain Wallet via your PC or Mac at\nhttp://blockchain.info/wallet"; ObjectID = "361"; */
-"361.text" = "通过您的 PC 或 Mac 登录您的 Blockchain 钱包，网址为:
-https://blockchain.info/wallet/login";
+"361.text" = "使用您的PC或Mac在https://blockchain.info/wallet/login登录您的Blockchain钱包";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "363"; */
 "363.text" = "2";
 
 /* Class = "UILabel"; text = "Click the [Account Settings] button. Then choose the [Devices] tab."; ObjectID = "364"; */
-"364.text" = "如果您使用的是旧钱包，请单击“帐户设置”按钮并选择“设备”选项卡。如果您使用的是的测试版钱包，请转到“设置”/“钱包信息”。";
+"364.text" = "点击“账户设置”。选择“设备”选项。";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "368"; */
 "368.text" = "3";
 
 /* Class = "UILabel"; text = "Click 'Show Pairing Code' to reveal a QR Code (a square black & white barcode). Scan the code with your camera."; ObjectID = "369"; */
-"369.text" = "单击“显示配对代码”可显示二维码，这是一个方形黑白条码。使用您的相机扫描该代码。";
+"369.text" = "单击“显示配对码”可显示二维码（一个正方形的黑白条码）。使用您的的相机扫描该代码。";
 
 /* Class = "UIButton"; normalTitle = "Scan Pairing Code"; ObjectID = "370"; */
-"370.normalTitle" = "扫描配对代码";
+"370.normalTitle" = "扫描配对码";
 
 /* (No Commment) */
 "376.normalTitle" = "按钮 2";
@@ -48,13 +47,13 @@ https://blockchain.info/wallet/login";
 "377.normalTitle" = "按钮 1";
 
 /* (No Commment) */
-"378.text" = "如果您已经有一个 Blockchain 钱包，请选择“配对设备”；否则请选择“创建钱包”。  它是免费的!没有所需的电子邮件。";
+"378.text" = "如果您已经有一个 Blockchain 钱包，请选择“配对设备”；否则请选择“创建钱包”。 该钱包是免费的!没有所需的电子邮件。";
 
 /* (No Commment) */
 "380.text" = "欢迎使用 Blockchain 钱包";
 
 /* Class = "UILabel"; text = "Welcome to Blockchain Wallet. This screen shows your transactions. If you have already made transactions with this wallet, there may have been an error contacting our server. Please make sure your account is correctly setup and you have an active internet connection."; ObjectID = "387"; */
-"387.text" = "没有最近的交易";
+"387.text" = "欢迎来到Blockchain钱包。这个界面将显示您的交易。如果您已经使用这个钱包进行了交易，与我们的服务器的连接过程中可能出现错误。请确保您的账户已经进行了正确设置，您已经进行了活跃互联网连接。";
 
 /* (No Commment) */
 "394.text" = "密码:";
@@ -126,10 +125,10 @@ https://blockchain.info/wallet/login";
 "DIx-fJ-eKX.text" = "标题";
 
 /* Class = "UITextField"; placeholder = "Recovery passphrase"; ObjectID = "L1x-Mw-4H5"; */
-"L1x-Mw-4H5.placeholder" = "恢复密码短语";
+"L1x-Mw-4H5.placeholder" = "找回密码短语";
 
 /* Class = "UITextField"; placeholder = "Your email"; ObjectID = "LsW-69-Qon"; */
-"LsW-69-Qon.placeholder" = "您的电子邮件";
+"LsW-69-Qon.placeholder" = "您的电子邮箱";
 
 /* Class = "UILabel"; text = "Weak"; ObjectID = "Mk4-63-3pL"; */
 "Mk4-63-3pL.text" = "弱";
@@ -159,7 +158,7 @@ https://blockchain.info/wallet/login";
 "kK3-Xs-d3Q.text" = "0 笔交易";
 
 /* Class = "UILabel"; text = "Enter your 12 recovery words with spaces to recover your funds & transactions"; ObjectID = "pEh-08-oZW"; */
-"pEh-08-oZW.text" = "输入带空格的 12 个词的恢复短语，恢复您的资金和交易";
+"pEh-08-oZW.text" = "输入带空格的 12 个词的找回短语，恢复您的资金和交易";
 
 /* (No Commment) */
 "qIf-DM-Gtq.text" = "手动配对";
