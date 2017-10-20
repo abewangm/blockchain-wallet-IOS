@@ -1077,7 +1077,7 @@
     app.localCurrencyFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
     
     NSString *fiatString = [NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
-    NSString *separator = app.localCurrencyFormatter.locale.groupingSeparator;
+    NSString *separator = [app.localCurrencyFormatter.locale objectForKey:NSLocaleGroupingSeparator];
     fiatString = [fiatString stringByReplacingOccurrencesOfString:separator withString:@""];
     NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:fiatString ? : @"0"];
     app.localCurrencyFormatter.locale = currentLocale;
