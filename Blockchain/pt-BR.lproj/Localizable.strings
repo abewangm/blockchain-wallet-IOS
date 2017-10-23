@@ -1117,7 +1117,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta ação requer a chave privada de seu endereço Bitcoin %@. Por favor, escaneie o código QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha da sua carteira de bitcoin. Digite-a abaixo e pressione Continuar.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha da sua carteira. Digite-a abaixo e pressione Continuar.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Este endereço já foi utilizado. Por favor, faça seu login.";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Backup Necessário";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua Frase de Recuperação para restaurar seus fundos em caso de perda de senha.  Qualquer pessoa com acesso à sua Frase de Recuperação pode acessar seus bitcoin; portanto, guarde-a off-line em um lugar seguro e protegido.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Use sua Frase de Recuperação para restaurar seus fundos em caso de perda de senha.  Qualquer pessoa com acesso à sua Frase de Recuperação pode acessar seus fundos; portanto, guarde-a off-line em um lugar seguro e protegido.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A Frase de Recuperação de 12 palavras a seguir dará acesso aos seus fundos caso você perca a sua senha.";
@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Para usar esse serviço, pedimos que você insira a sua segunda senha. Você precisará inseri-la apenas uma vez para configurar a sua carteira Ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Insira o endereço Ether";
+
+/* (No Commment) */
+"Day" = "Dia";
+
+/* (No Commment) */
+"All" = "Todos";
+
+/* (No Commment) */
+"Please send ether to %@." = "Por favor, envie ether para %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Solicitação de pagamento bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Solicitação de pagamento ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Minha Carteira Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Os mineradores recebem esta taxa para processarem esta transação.";

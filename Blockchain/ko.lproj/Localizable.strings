@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "이 행동을 하려면 비트코인 주소 %@에 대한 개인 열쇠가 필요합니다. QR 코드를 스캔 하세요.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 비트코인 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "이 주소는 이미 사용된 것입니다. 로그인 하세요.";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "백업 필요";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 비트코인에 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 자금 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "다음 12 단어 복구 구절이 암호를 잊었을 때 자금에 접근하게 해 줄 겁니다.";
@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "이 서비스를 쓰려면, 귀하의 두 번째 암호를 입력해야 합니다. 귀하 에테르 지갑 설정 때 한 번만 입력하면 됩니다.";
+
+/* (No Commment) */
+"Enter Ether address" = "에테르 주소 입력";
+
+/* (No Commment) */
+"Day" = "일";
+
+/* (No Commment) */
+"All" = "모두";
+
+/* (No Commment) */
+"Please send ether to %@." = "에테르를 %@에게 보내세요.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "비트코인 결제 요청";
+
+/* (No Commment) */
+"Ether payment request" = "에테르 결제 요청";
+
+/* (No Commment) */
+"My Ether Wallet" = "내 에테르 지갑";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "채굴자는 이 거래 처리를 위해 이 수수료를 받습니다.";

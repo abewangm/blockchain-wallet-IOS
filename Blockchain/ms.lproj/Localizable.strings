@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini memerlukan kunci peribadi untuk %@ alamat Bitcoin. Sila imbas Kod QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk bitcoin dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Alamat ini telah digunakan. Sila log masuk.";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Sandaran yang diperlukan";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Menggunakan frasa pemulihan anda untuk mengambil semula wang anda jika laluan hilang.  Sesiapa dengan capaian ke frasa pemulihan anda boleh mengakses bitcoin anda, jadi pastikan ia di luar talian di suatu tempat selamat dan terjamin.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Menggunakan frasa pemulihan anda untuk mengambil semula wang anda jika laluan hilang.  Sesiapa dengan capaian ke frasa pemulihan anda boleh mengakses dana, jadi pastikan ia di luar talian di suatu tempat selamat dan terjamin.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut 12 perkataan frasa pemulihan akan memberi anda akses kepada wang anda sekiranya anda hilang kata laluan anda.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rusia Sebelum Ini";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Kripto Baki";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Masukkan Eter alamat atau pilih";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Pembayaran Dihantar! Baki anda dan transaksi akan update tidak lama lagi.";
+
+/* (No Commment) */
+"Waiting for payment" = "Menunggu untuk pembayaran";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Sila tunggu sehingga anda terakhir eter transaksi mengesahkan.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Kripto Alamat";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Kripto Saudagar Peta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Tidak sah Eter alamat: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ralat yang berlaku semasa mendapatkan kembali terkini carta data. Silakan coba lagi nanti.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaksi berlaku apabila anda menghantar dan meminta eter.";
+
+/* (No Commment) */
+"Request Ether" = "Permintaan Eter";
+
+/* (No Commment) */
+"Dashboard" = "Pemuka";
+
+/* (No Commment) */
+"Week" = "Minggu";
+
+/* (No Commment) */
+"Month" = "Bulan";
+
+/* (No Commment) */
+"Year" = "Tahun";
+
+/* (No Commment) */
+"Bitcoin Price" = "Kripto Harga";
+
+/* (No Commment) */
+"Ether Price" = "Eter Harga";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontrak alamat tidak disokong.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Di masa kita hanya sokongan ETH. Anda tidak dapat menerima REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Sekarang menyokong Eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Anda bertanya, kita mendengar. Kami senang untuk mengumumkan bahwa anda Menerima dompet sekarang akan membenarkan anda untuk lancar mengirim dan menerima eter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Bermula dengan Eter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Untuk perkhidmatan ini, kami memerlukan anda untuk memasukkan kata kunci kedua. Anda hanya perlu masukkan sekali ini untuk anda Eter dompet.";
+
+/* (No Commment) */
+"Enter Ether address" = "Masukkan alamat Eter";
+
+/* (No Commment) */
+"Day" = "Hari";
+
+/* (No Commment) */
+"All" = "Semua";
+
+/* (No Commment) */
+"Please send ether to %@." = "Sila hantar eter untuk %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Kripto pembayaran permintaan";
+
+/* (No Commment) */
+"Ether payment request" = "Eter pembayaran permintaan";
+
+/* (No Commment) */
+"My Ether Wallet" = "Saya Eter Dompet";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Pelombong menerima bayaran ini untuk proses ini transaksi.";

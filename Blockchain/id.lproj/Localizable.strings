@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini membutuhkan kunci pribadi untuk alamat Bitcoin %@. Silakan Pindai kode QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata sandi kedua untuk bitcoin dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata sandi kedua untuk dompet Anda. Silakan masukkan di bawah ini dan tekan lanjutkan.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Alamat ini sudah digunakan. Silakan masuk.";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Pencadangan Dibutuhkan";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Gunakan Frasa Pemulihan Anda untuk mengembalikan dana Anda dalam kasus kata sandi yang hilang.  Siapa pun dengan akses ke Frasa Pemulihan Anda dapat mengakses bitcoin Anda, jadi tetap jaga secara offline di tempat yang aman.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Gunakan Frasa Pemulihan Anda untuk mengembalikan dana Anda dalam kasus kata sandi yang hilang.  Siapa pun dengan akses ke Frasa Pemulihan Anda dapat mengakses dana Anda, jadi tetap jaga secara offline di tempat yang aman.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut ini 12 kata Frasa Pemulihan yang akan memberikan Anda akses ke dana Anda jika Anda kehilangan kata sandi Anda.";
@@ -1916,3 +1916,45 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Untuk menggunakan layanan ini, kami meminta Anda untuk memasukkan kata sandi kedua Anda. Anda hanya perlu memasukkan ini sekali untuk mengatur dompet Ether Anda.";
+
+/* (No Commment) */
+"Enter Ether address" = "Masukkan alamat Ether";
+
+/* (No Commment) */
+"Day" = "Hari";
+
+/* (No Commment) */
+"All" = "Semua";
+
+/* (No Commment) */
+"Please send ether to %@." = "Harap kirimkan ether ke %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Permintaan pembayaran bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Permintaan pembayaran ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Wallet Ether Saya";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Masukkan alamat Ether";
+
+/* (No Commment) */
+ = "Hari";
+
+/* (No Commment) */
+ = "Semua";
+
+/* (No Commment) */
+ = "Harap kirimkan ether ke %@.";
+
+/* (No Commment) */
+ = "Permintaan pembayaran bitcoin";
+
+/* (No Commment) */
+ = "Permintaan pembayaran ether";
+
+/* (No Commment) */
+ = "Wallet Ether Saya";

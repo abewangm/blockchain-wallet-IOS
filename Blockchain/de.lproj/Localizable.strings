@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Diese Aktion benötigt den privaten Schlüssel für die Bitcoin-Adresse %@. Bitte QR-Code scannen.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Für diese Aktion ist das zweite Passwort Ihrer Bitcoin-Wallet erforderlich. Bitte geben Sie es im Folgenden ein und drücken Sie auf 'Weiter'.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Für diese Aktion ist das zweite Passwort Ihrer Wallet erforderlich. Bitte geben Sie es im Folgenden ein und drücken Sie auf 'Weiter'.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Diese Adresse wurde bereits verwendet. Bitte anmelden.";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Backup erforderlich";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Verwenden Sie bei Passwortverlust zur Wiederherstellung Ihres Guthabens Ihr Wiederherstellungspasswort. Da mithilfe Ihres Wiederherstellungspassworts jeder Zugriff auf Ihr Bitcoin hat, sollte es an einem sicheren und geschützten Ort offline aufbewahrt werden.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Verwenden Sie bei Passwortverlust zur Wiederherstellung Ihres Guthabens Ihr Wiederherstellungspasswort. Da mithilfe Ihres Wiederherstellungspassworts jeder Zugriff auf Ihr Guthaben haben könnte, sollte es an einem sicheren und geschützten Ort offline aufbewahrt werden.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Das folgende aus 12 Wörtern bestehende Wiederherstellungspasswort ermöglicht Ihnen den Zugriff auf Ihr Guthaben im Falle eines Passwortverlusts.";
@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Zur Verwendung dieses Service müssen Sie Ihr zweites Passwort eingeben. Diese Angabe ist in der Regel nur einmal zur Einrichtiung Ihrer Ether-Wallet erforderlich.";
+
+/* (No Commment) */
+"Enter Ether address" = "Ether-Adresse eingeben";
+
+/* (No Commment) */
+"Day" = "Tag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Bitte Ether an %@ senden.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin-Zahlungsantrag";
+
+/* (No Commment) */
+"Ether payment request" = "Ether-Zahlungsantrag";
+
+/* (No Commment) */
+"My Ether Wallet" = "Meine Ether-Wallet";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Miners erhalten diese Gebühr zur Bearbeitung dieser Transaktion.";

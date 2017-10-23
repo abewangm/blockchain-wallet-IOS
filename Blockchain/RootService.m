@@ -854,6 +854,22 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager hideSendAndReceiveKeyboards];
 }
 
+- (void)showMobileNotice
+{
+    NSString *message = [app.wallet getMobileMessage];
+    
+    if (message) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_INFORMATION message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        
+        if (self.window.rootViewController.presentedViewController) {
+            [self.window.rootViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+    }
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -1019,7 +1035,14 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     showType = ShowTypeNone;
-
+    
+    if ([self isPinSet]) {
+        
+        if (self.topViewControllerDelegate == self.settingsNavigationController && self.settingsNavigationController) return;
+        
+        [self showMobileNotice];
+    }
+    
     [self.wallet loadContactsThenGetMessages];
     
     [self.wallet getEthHistory];
@@ -3595,7 +3618,9 @@ void (^secondPasswordSuccess)(NSString *);
         [self didFailPutPin:BC_STRING_PIN_RESPONSE_OBJECT_KEY_OR_VALUE_LENGTH_0];
     } else {
         
-        if (self.pinEntryViewController.inSettings) {
+        BOOL inSettings = self.pinEntryViewController.inSettings;
+        
+        if (inSettings) {
             [self showSettings];
         }
         //Encrypt the wallet password with the random value
@@ -3616,6 +3641,8 @@ void (^secondPasswordSuccess)(NSString *);
         
         // Update your info to new pin code
         [self closePINModal:YES];
+        
+        if ([app.wallet isInitialized] && !inSettings) [self showMobileNotice];
         
         if (!app.wallet.didUpgradeToHd) {
             [self forceHDUpgradeForLegacyWallets];

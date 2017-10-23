@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "פעולה זו דורשת את המפתח הפרטי עבור %@ כתובת ביטקוין. בבקשה לסרוק קוד QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "כתובת זו כבר היה בשימוש. אנא התחבר.";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "הגיבוי הדרוש";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "להשתמש את הביטוי השחזור כדי לשחזר את הכספים שלך במקרה של סיסמה אבודה.  כל אחד עם גישה הביטוי השחזור שלך יכולים לגשת ביטקוין שלך, חבל במצב לא מקוון במקום בטוח ומאובטח.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "להשתמש את הביטוי השחזור כדי לשחזר את הכספים שלך במקרה של סיסמה אבודה.  כל אחד עם גישה הביטוי השחזור שלך יכולים לגשת קרנות, חבל במצב לא מקוון במקום בטוח ומאובטח.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "המילה 12 הבאים הביטוי שחזור ייתן לך גישה לקרנות שלך במקרה אתה מאבד את הסיסמה שלך.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "הרובל הרוסי";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin יתרות";
+
+/* (No Commment) */
+"Enter Ether address or select" = "הזן את כתובת אתר או בחר";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "התשלום נשלח! שיווי המשקל שלך ואת עסקאות נעדכן בקרוב.";
+
+/* (No Commment) */
+"Waiting for payment" = "מחכה תשלום";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "חכה בבקשה, עד האחרון שלך אתר מאשרת את העסקה.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "כתובות ביטקוין";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin סוחר מפה";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "חוקי האתר כתובת: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "אירעה שגיאה בעת איחזור האחרון נתוני הטבלה. אנא נסה שוב מאוחר יותר.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "עסקאות להתרחש בעת שליחת הבקשה אתר.";
+
+/* (No Commment) */
+"Request Ether" = "בקשה אתר";
+
+/* (No Commment) */
+"Dashboard" = "לוח המחוונים.";
+
+/* (No Commment) */
+"Week" = "שבוע";
+
+/* (No Commment) */
+"Month" = "בחודש";
+
+/* (No Commment) */
+"Year" = "שנה";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin מחיר";
+
+/* (No Commment) */
+"Ether Price" = "אתר מחיר";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "חוזה כתובות אינן נתמכות.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "כרגע אנחנו רק תומכים ETH. לא ניתן לקבל מוניטין, ICN, GNT, הגמד, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "עכשיו תומך אתר";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "אתה שאלת, הקשבנו. אנו שמחים להודיע שלך Blockchain הארנק עכשיו מאפשרים לך בקלות לשלוח ולקבל אתר!";
+
+/* (No Commment) */
+"Get Started with Ether" = "נתחיל עם אתר";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "כדי להשתמש בשירות זה, אנו דורשים ממך להזין את סיסמא שנייה. אתה צריך רק צריך להזין את זה פעם אחת כדי להגדיר את אתר הארנק.";
+
+/* (No Commment) */
+"Enter Ether address" = "הזן כתובת אתר";
+
+/* (No Commment) */
+"Day" = "יום";
+
+/* (No Commment) */
+"All" = "כל";
+
+/* (No Commment) */
+"Please send ether to %@." = "נא לשלוח אתר כדי %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin תשלום הבקשה.";
+
+/* (No Commment) */
+"Ether payment request" = "אתר התשלומים בקשה";
+
+/* (No Commment) */
+"My Ether Wallet" = "שלי אתר הארנק";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "הכורים מקבלים תשלום זה תהליך העסקה.";

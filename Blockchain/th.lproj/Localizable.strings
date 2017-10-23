@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "การดำเนินการนี้ต้องการคีย์ส่วนตัวสำหรับที่อยู่ Bitcoin %@ โปรดสแกนรหัส QR";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "การดำเนินการนี้ต้องการใช้รหัสผ่านที่สองสำหรับกระเป๋าเงิน bitcoin ของคุณ โปรดกรอกมันด้านล่างและกด ดำเนินการต่อ";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "การดำเนินการนี้ต้องการใช้รหัสผ่านที่สองสำหรับกระเป๋าเงิน ของคุณ โปรดกรอกมันด้านล่างและกด ดำเนินการต่อ";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "ที่อยู่นี้ได้ถูกใช้แล้ว โปรดล็อกอิน";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "จำเป็นต้องมีการสำรองข้อมูล";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงบิตคอยน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงเงินน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "วลีเพื่อการกู้คืน 12 คำต่อไปนี้จะมอบการเข้าถึงเงินของคุณในกรณีที่คุณทำรหัสผ่านของคุณสูญหาย";
@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "ในการใช้บริการนี้ คุณจำเป็นต้องกรอกรหัสผ่านที่สองของคุณ คุณควรจะต้องกรอกรหัสนี้เพียงครั้งเดียวเพื่อตั้งค่ากระเป๋าเงิน Ether ของคุณ";
+
+/* (No Commment) */
+"Enter Ether address" = "กรอกที่อยู่ Ether";
+
+/* (No Commment) */
+"Day" = "วัน";
+
+/* (No Commment) */
+"All" = "ทั้งหมด";
+
+/* (No Commment) */
+"Please send ether to %@." = "โปรดส่ง ether ไปยัง %@";
+
+/* (No Commment) */
+"Bitcoin payment request" = "คำร้องขอการชำระเงิน Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "คำร้องขอการชำระเงิน Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "กระเป๋าเงิน Ether ของฉัน";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "นักทำเหมืองจะได้รับค่าธรรมเนียมนี้เพื่อประมวลผลต่อธุรกรรมนี้";

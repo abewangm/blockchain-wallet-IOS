@@ -46,7 +46,10 @@
         
         NSLocale *currentLocale = app.btcFormatter.locale;
         app.btcFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+        CurrencySymbol *currentSymbol = app.latestResponse.symbol_btc;
+        app.latestResponse.symbol_btc = [CurrencySymbol btcSymbolFromCode:CURRENCY_CODE_BTC];
         self.decimalAmount = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatAmount:imaxabs(self.amountInSatoshi) localCurrency:NO]];
+        app.latestResponse.symbol_btc = currentSymbol;
         app.btcFormatter.locale = currentLocale;
         
         if ([transaction isMemberOfClass:[ContactTransaction class]]) {

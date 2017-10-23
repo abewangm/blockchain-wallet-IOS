@@ -444,4 +444,6 @@ typedef enum {
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;
 - (NSDecimalNumber *)ethDecimalBalance;
+
+- (NSString *)getMobileMessage;
 @end

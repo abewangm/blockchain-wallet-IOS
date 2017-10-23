@@ -53,28 +53,28 @@
 "67.text" = "标签地址";
 
 /* Class = "UIButton"; normalTitle = "Customize Fee"; ObjectID = "Cbp-Qe-FKP"; */
-"Cbp-Qe-FKP.normalTitle" = "自定义费用";
+"Cbp-Qe-FKP.normalTitle" = "自定义手续费";
 
 /* Class = "UILabel"; text = "Fee: "; ObjectID = "FB0-NP-5do"; */
-"FB0-NP-5do.text" = "费用: ";
+"FB0-NP-5do.text" = "手续费: ";
 
 /* Class = "UILabel"; text = "BtcAmt"; ObjectID = "IUn-6N-qeo"; */
 "IUn-6N-qeo.text" = "BtcAmt";
 
 /* Class = "UIButton"; normalTitle = "Cancel next"; ObjectID = "Pgx-k8-cTb"; */
-"Pgx-k8-cTb.normalTitle" = "下一步取消";
+"Pgx-k8-cTb.normalTitle" = "取消下一步";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "Ubr-KG-egH"; */
 "Ubr-KG-egH.text" = "总计:";
 
 /* Class = "UILabel"; text = "From:"; ObjectID = "ZcA-OM-4nq"; */
-"ZcA-OM-4nq.text" = "发送者:";
+"ZcA-OM-4nq.text" = "从:";
 
 /* Class = "UILabel"; text = "Please Wait"; ObjectID = "Zgn-Wx-Uwx"; */
 "Zgn-Wx-Uwx.text" = "请稍候";
 
 /* Class = "UILabel"; text = "Fee"; ObjectID = "Zhm-Jw-P4C"; */
-"Zhm-Jw-P4C.text" = "费用";
+"Zhm-Jw-P4C.text" = "手续费";
 
 /* (No Commment) */
 "aKC-Q2-phD.text" = "发送付款";
@@ -83,7 +83,7 @@
 "aeG-gf-oXV.text" = "金额： ";
 
 /* Class = "UIButton"; normalTitle = "Funds available"; ObjectID = "d7n-Ue-QXL"; */
-"d7n-Ue-QXL.normalTitle" = "可用总额";
+"d7n-Ue-QXL.normalTitle" = "可用资金";
 
 /* Class = "UILabel"; text = "To"; ObjectID = "fpY-AA-We5"; */
 "fpY-AA-We5.text" = "至";
@@ -110,7 +110,7 @@
 "vzP-xG-GPO.text" = "BtcTotal";
 
 /* Class = "UILabel"; text = "To:"; ObjectID = "yGR-Eh-YG1"; */
-"yGR-Eh-YG1.text" = "接收者:";
+"yGR-Eh-YG1.text" = "至:";
 
 /* Class = "UITextField"; text = "Any Address"; ObjectID = "zyc-E3-FOM"; */
 "zyc-E3-FOM.text" = "任何地址";

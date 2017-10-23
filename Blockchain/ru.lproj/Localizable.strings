@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Для этого действия требуется личный ключ для Bitcoin-адреса %@. Сканируйте QR-код.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Введите его ниже и нажмите продолжить.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька. Введите его ниже и нажмите продолжить.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Этот адрес уже используется. Войдите в систему.";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Необходимо резервное копирование";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Используйте фразу для восстановления доступа, чтобы восстановить средства в случае потери пароля. Любой человек, знающий вашу фразу для восстановления, сможет получить доступ к вашим биткоинам, поэтому храните фразу для восстановления доступа в надежном месте не в Интернете.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Используйте фразу для восстановления доступа, чтобы восстановить средства в случае потери пароля. Любой человек, знающий вашу фразу для восстановления, сможет получить доступ к вашим средствам, поэтому храните фразу для восстановления доступа в надежном месте не в Интернете.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Следующая фраза для восстановления доступа из 12 слов даст вам доступ к вашим деньгам, если вы потеряете пароль.";
@@ -1916,3 +1916,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Чтобы использовать этот сервис, вам необходимо ввести свой второй пароль. Ввести второй пароль потребуется только один раз, чтобы завести ваш кошелек Эфириум.";
+
+/* (No Commment) */
+"Enter Ether address" = "Введите Ether адрес";
+
+/* (No Commment) */
+"Day" = "День";
+
+/* (No Commment) */
+"All" = "Все";
+
+/* (No Commment) */
+"Please send ether to %@." = "Пожалуйста, отправьте ether на %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Требование платежа Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Требование платежа Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Мой Ether кошелек";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Майнеры получают комиссию за обработку этой транзакции.";

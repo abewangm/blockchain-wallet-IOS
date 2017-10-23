@@ -170,7 +170,8 @@
     
     if (requestedAmountString != nil && [requestedAmountString doubleValue] > 0) {
         NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:requestedAmountString];
-        return [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        NSString *result = [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        return result;
     } else {
         return nil;
     }
@@ -234,6 +235,7 @@
 + (NSString *)ethAmount:(NSDecimalNumber *)amount
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.usesGroupingSeparator = NO;
     [formatter setMaximumFractionDigits:ETH_DECIMAL_LIMIT];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     return [formatter stringFromNumber:amount];

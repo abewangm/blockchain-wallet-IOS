@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "يتطلب هذا الإجراء المفتاح الخاص ل %@ عنوان بيتكوين. الرجاء مسح رمز ريال قطري.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "هذا الإجراء يتطلب كلمة مرور الثانية محفظتك بيتكوين. الرجاء إدخال أدناه والصحافة.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "تم بالفعل استخدام هذا العنوان. الرجاء تسجيل الدخول.";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "النسخة الاحتياطية اللازمة";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "استخدم \"عبارتك الاسترداد\" لاستعادة الأموال الخاصة بك في حالة كلمة مرور المفقودة.  أي شخص لديه إمكانية الوصول إلى \"العبارة الاسترداد\" الخاصة بك يمكن الوصول الخاص بك بيتكوين، حتى تبقى أنه دون اتصال في مكان آمنة ومأمونة.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "استخدم \"عبارتك الاسترداد\" لاستعادة الأموال الخاصة بك في حالة كلمة مرور المفقودة.  أي شخص لديه إمكانية الوصول إلى \"العبارة الاسترداد\" الخاصة بك يمكن الوصول الخاص بك بيتكوين، حتى تبقى أنه دون اتصال في مكان آمنة ومأمونة.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "كلمة 12 التالية \"عبارة الانتعاش\" سوف تعطيك الوصول إلى الأموال الخاصة بك في حالة فقدان كلمة المرور الخاصة بك.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "الروبل الروسي";
+
+/* (No Commment) */
+"Bitcoin Balances" = "بيتكوين أرصدة";
+
+/* (No Commment) */
+"Enter Ether address or select" = "أدخل الأثير العنوان أو تحديد";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "الدفع المرسلة! رصيدك المعاملات سيتم تحديث قريبا.";
+
+/* (No Commment) */
+"Waiting for payment" = "في انتظار الدفع";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "يرجى الانتظار حتى آخر الأثير الصفقة يؤكد.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "عناوين البت كوين";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "بيتكوين التاجر خريطة";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "صالح الأثير العنوان: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "حدث خطأ أثناء استرداد أحدث بيانات الرسم البياني. يرجى المحاولة مرة أخرى في وقت لاحق.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "المعاملات تحدث عند إرسال طلب الأثير.";
+
+/* (No Commment) */
+"Request Ether" = "طلب الأثير";
+
+/* (No Commment) */
+"Dashboard" = "لوحة القيادة";
+
+/* (No Commment) */
+"Week" = "الأسبوع";
+
+/* (No Commment) */
+"Month" = "الشهر";
+
+/* (No Commment) */
+"Year" = "العام";
+
+/* (No Commment) */
+"Bitcoin Price" = "سعر بيتكوين";
+
+/* (No Commment) */
+"Ether Price" = "الأثير السعر";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "عقد عناوين غير معتمدة.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "في هذه اللحظة نحن فقط دعم ETH. لا يمكنك تلقي مندوب ICN, GNT, GNO, DGD BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "الآن دعم الأثير";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "طلبت استمعنا. نحن متحمسون ليعلن أن Blockchain المحفظة الآن يسمح لك بسهولة إرسال واستقبال الأثير!";
+
+/* (No Commment) */
+"Get Started with Ether" = "نبدأ مع الأثير";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "لاستخدام هذه الخدمة تتطلب منك إدخال كلمة السر الثانية. تحتاج فقط إلى إدخال هذا مرة واحدة لإعداد الأثير المحفظة.";
+
+/* (No Commment) */
+"Enter Ether address" = "أدخل عنوان الأثير";
+
+/* (No Commment) */
+"Day" = "اليوم";
+
+/* (No Commment) */
+"All" = "كل";
+
+/* (No Commment) */
+"Please send ether to %@." = "يرجى إرسال الأثير إلى %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "بيتكوين طلب الدفع";
+
+/* (No Commment) */
+"Ether payment request" = "الأثير طلب الدفع";
+
+/* (No Commment) */
+"My Ether Wallet" = "بلدي الأثير المحفظة";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "عمال المناجم تتلقى هذه الرسوم لمعالجة هذه الصفقة.";

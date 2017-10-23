@@ -2500,3 +2500,13 @@ MyWalletPhone.isWaitingOnTransaction = function() {
        return tx.hash === eth.lastTx;
     });
 }
+
+MyWalletPhone.getMobileMessage = function(languageCode) {
+    var options = walletOptions.getValue();
+    
+    if (!options.mobile_notice || options.mobile_notice == null) return null;
+    
+    var notice = options.mobile_notice[languageCode];
+    if (!notice || notice == null) return options.mobile_notice['en'];
+    return notice;
+}

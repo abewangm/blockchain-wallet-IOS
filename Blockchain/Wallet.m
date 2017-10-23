@@ -188,6 +188,17 @@
     };
 }
 
+- (id)getClearInterval
+{
+    __weak Wallet *weakSelf = self;
+    
+    return ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+}
+
 - (void)loadJS
 {
     self.context = [[JSContext alloc] init];
@@ -207,8 +218,9 @@
     self.context.exceptionHandler = [self getExceptionHandler];
     
     self.context[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
     self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.context[JAVASCRIPTCORE_CLEAR_INTERVAL] = [self getClearInterval];
     
 #pragma mark Decryption
     
@@ -1076,7 +1088,10 @@
     NSLocale *currentLocale = app.localCurrencyFormatter.locale;
     app.localCurrencyFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
     
-    NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
+    NSString *fiatString = [NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+    NSString *separator = [app.localCurrencyFormatter.locale objectForKey:NSLocaleGroupingSeparator];
+    fiatString = [fiatString stringByReplacingOccurrencesOfString:separator withString:@""];
+    NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:fiatString ? : @"0"];
     app.localCurrencyFormatter.locale = currentLocale;
     return balance;
 }
@@ -2307,6 +2322,17 @@
     }
     
     return NO;
+}
+
+- (NSString *)getMobileMessage
+{
+    if ([self isInitialized]) {
+        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode]]];
+        if ([message isUndefined] || [message isNull]) return nil;
+        return [message toString];
+    }
+    
+    return nil;
 }
 
 #pragma mark - Contacts

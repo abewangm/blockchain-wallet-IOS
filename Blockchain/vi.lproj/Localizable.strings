@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Hành động này yêu cầu khóa riêng cho địa chỉ Bitcoin %@. Vui lòng quét mã QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu cấp 2 cho ví bitcoin. Vui lòng nhập vào bên dưới và nhấn tiếp tục.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Hành động này yêu cầu mật khẩu cấp 2 cho ví. Vui lòng nhập vào bên dưới và nhấn tiếp tục.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Địa chỉ này đã được sử dụng. Vui lòng đăng nhập.";
@@ -1626,6 +1626,56 @@
 /* (No Commment) */
 "Wallets" = "Ví";
 
+"START BACKUP" = "BẮT ĐẦU SAO LƯU";
+
+"Backup Needed" = "Cần thiết Sao lưu";
+
+"Create a Wallet" = "Tạo Ví";
+
+"Log In" = "Đăng nhập";
+
+"Please enter your password to log into your Blockchain wallet." = "Vui lòng nhập mật khẩu để đăng nhập ví Blockchain của bạn.";
+
+"Forgot Password?" = "Quên Mật khẩu?";
+
+"Or start over and " = "Hoặc bắt đầu lại và ";
+
+"Update Email" = "Cập nhật Email";
+
+"Enter Email Address" = "Nhập Địa chỉ Email";
+
+"Update Mobile" = "Cập nhật Số Điện thoại";
+
+"Enter Mobile Number" = "Nhập Số Điện thoại";
+
+"Balances" = "Số dư";
+
+"Transactions occur when you send and receive bitcoin." = "Giao dịch xuất hiện khi bạn gửi hoặc nhận bitcoin.";
+
+"Your Transactions" = "Giao dịch của bạn";
+
+"Backup Complete" = "Sao lưu Hoàn tất";
+
+"Backup Needed" = "Cần thiết Sao lưu";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Sử dụng Nhóm từ Khôi phục để khôi phục các khoản tiền của bạn trong trường hợp quên mật khẩu.  Bất kỳ ai truy cập vào Nhóm từ Khôi phục của bạn đều có thể truy cập khoản tiền của bạn, vì vậy hãy lưu trữ nó tại một nơi an toàn và đảm bảo.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Nhóm từ Khôi phục gồm 12 từ sau đây sẽ cho phép bạn truy cập vào các khoản tiền của mình trong trường hợp quên mật khẩu.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Hãy viết nhóm từ của bạn vào một tờ giấy và lưu trữ tại một nơi an toàn và đảm bảo.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Hãy viết Nhóm từ Khôi phục gồm 12 từ sau đây chính xác theo thứ tự:";
+
+"PREVIOUS" = "TRƯỚC";
+
+"NEXT" = "SAU";
+
+"BACKUP AGAIN" = "SAO LƯU LẠI";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Địa chỉ email đã xác nhận của bạn được sử dụng để gửi thông báo thanh toán, nhắc nhở ID và mã đăng nhập.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Số điện thoại của bạn có thể được dùng để kích hoạt bảo mật 2 lớp để nhận thông báo.";
+
 /* (No Commment) */
 "Trade Completed" = "Giao dịch Hoàn tất";
 
@@ -1841,3 +1891,27 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Để sử dụng dịch vụ này, chúng tôi yêu cầu bạn nhập mật khẩu cấp hai của mình. Bạn chỉ cần nhập mật khẩu cấp hai một lần để thiết lập ví Ether của mình.";
+
+/* (No Commment) */
+"Enter Ether address" = "Nhập Địa chỉ Ether";
+
+/* (No Commment) */
+"Day" = "Ngày";
+
+/* (No Commment) */
+"All" = "Tất cả";
+
+/* (No Commment) */
+"Please send ether to %@." = "Vui lòng gửi ether đến %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Yêu cầu thanh toán Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Yêu cầu thanh toán Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Ví Ether của tôi";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Các thợ đào nhận được khoản phí này để thực hiện giao dịch này.";

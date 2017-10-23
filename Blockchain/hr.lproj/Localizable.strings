@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ova akcija zahtijeva privatni ključ za Bitcoin adresa %@. Skenirajte QR kod.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ova akcija zahtijeva drugu lozinku za novčanik bitcoin. Molimo unesite ga ispod i pritisnite dalje.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Ova akcija zahtijeva drugu lozinku za novčanik. Molimo unesite ga ispod i pritisnite dalje.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ova adresa se već koristi. Molimo prijavite se.";
@@ -1643,7 +1643,7 @@
 
 "Backup Needed" = "Sigurnosna kopija potrebno";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Sredstva u slučaju izgubljene lozinke pomoću oporavka izraz.  Svatko tko ima pristup tvoj oporavak fraza možete pristupiti tvoj bitcoin, neka to radi negdje sigurno.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Sredstva u slučaju izgubljene lozinke pomoću oporavka izraz.  Svatko tko ima pristup tvoj oporavak fraza možete pristupiti tvoj fondova, neka to radi negdje sigurno.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Sljedećih 12 riječ oporavak izraz dobit ćete pristup k svojim novčanim sredstvima u slučaju da izgubite lozinku.";
 
@@ -1807,3 +1807,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Ruska Rublja";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Ostaci Биткоин";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Unesite adresu ili izaberite eter";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Plaćanje Poslan! Svoje stanje i transakcija će se ažurirati u bilo koje vrijeme uskoro.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čekam plaćanja";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Molimo pričekajte dok se vaš posljednji posao eter potvrđuje.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Биткоин Adresa";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Биткоин МАП trgovačke usluge";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neispravno eter adresa: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Došlo je do greške prilikom dobivanje najnovijih kartografskih podataka. Molimo vas, pokušajte ponovno kasnije.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Zaključak bavi se događa kada se poslati i zahtjev za eter.";
+
+/* (No Commment) */
+"Request Ether" = "Na Zahtjev Eter";
+
+/* (No Commment) */
+"Dashboard" = "Ploče s instrumentima";
+
+/* (No Commment) */
+"Week" = "Tjedno";
+
+/* (No Commment) */
+"Month" = "Mjesec";
+
+/* (No Commment) */
+"Year" = "Godine";
+
+/* (No Commment) */
+"Bitcoin Price" = "Cijena Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Cijena Eter";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Adrese ugovor ne podržava.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "U ovom trenutku mi podržavamo samo osmijeh. Vi ne možete primati ugled, INC, ГНТ, ГНО, DSU, PDA.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Sada podržava eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Vi ste pitali smo slušali. Mi smo zadovoljstvom, da vaš blockchain novčanik sada će vam omogućiti da lako mogu slati i primati eter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Počnimo s airwaves";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Da biste koristili ovu uslugu, trebate unijeti svoj drugi lozinku. Morate samo jednom upisati ove postavke za eterična novčanik.";
+
+/* (No Commment) */
+"Enter Ether address" = "Unesite svoju adresu airwaves";
+
+/* (No Commment) */
+"Day" = "Dan";
+
+/* (No Commment) */
+"All" = "Sve";
+
+/* (No Commment) */
+"Please send ether to %@." = "Molimo, pošaljite eter %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Биткоин zahtjev za plaćanje";
+
+/* (No Commment) */
+"Ether payment request" = "Zahtjev za plaćanje eter";
+
+/* (No Commment) */
+"My Ether Wallet" = "Moj Eter Novčanik";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Rudari primaju ovu naknadu za obavljanje ove operacije.";

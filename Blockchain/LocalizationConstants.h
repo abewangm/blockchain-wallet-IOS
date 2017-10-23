@@ -158,7 +158,7 @@
 #define BC_STRING_NO_PASSWORD_ENTERED NSLocalizedString(@"No Password Entered", nil)
 #define BC_STRING_SECOND_PASSWORD_INCORRECT NSLocalizedString(@"Second Password Incorrect", nil)
 
-#define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your bitcoin wallet. Please enter it below and press continue.", nil)
+#define BC_STRING_ACTION_REQUIRES_SECOND_PASSWORD NSLocalizedString(@"This action requires the second password for your wallet. Please enter it below and press continue.", nil)
 #define BC_STRING_INVALID_GUID NSLocalizedString(@"Invalid Wallet ID", nil)
 #define BC_STRING_INTERRUPTED_DECRYPTION_PLEASE_CLOSE_THE_APP_AND_TRY_AGAIN NSLocalizedString(@"An error occurred due to interruptions during PIN verification. Please close the app and try again.", nil)
 
@@ -743,7 +743,7 @@
 
 #define BC_STRING_BACKUP_COMPLETE NSLocalizedString(@"Backup Complete", nil)
 #define BC_STRING_BACKUP_NEEDED NSLocalizedString(@"Backup Needed", nil)
-#define BC_STRING_BACKUP_COMPLETED_EXPLANATION NSLocalizedString(@"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure.", nil)
+#define BC_STRING_BACKUP_COMPLETED_EXPLANATION NSLocalizedString(@"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure.", nil)
 #define BC_STRING_BACKUP_NEEDED_BODY_TEXT_ONE NSLocalizedString(@"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password.", nil)
 #define BC_STRING_BACKUP_NEEDED_BODY_TEXT_TWO NSLocalizedString(@"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure.", nil)
 #define BC_STRING_BACKUP_WORDS_INSTRUCTIONS NSLocalizedString(@"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:", nil)
