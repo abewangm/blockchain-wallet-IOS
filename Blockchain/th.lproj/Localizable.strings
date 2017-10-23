@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "อาจมีความเสี่ยงสำหรับการใช้จ่ายสองครั้ง";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า bitcoin ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า งเงิน ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
 
 /* (No Commment) */
 "Wallets" = "กระเป๋าสตางค์";

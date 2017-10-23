@@ -1618,7 +1618,7 @@
 "May be at risk for a double spend." = "Kan vara i riskzonen för en dubbel spendera.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina bitcoins är säkra om du förlorar ditt lösenord.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina medel är säkra om du förlorar ditt lösenord.";
 
 /* (No Commment) */
 "Wallets" = "Plånböcker";

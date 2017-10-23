@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "可能是在花的雙重風險。";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "為了您的安全，我們沒有做任何的密碼檔。備份你的錢包，以確保您的比特幣是安全的以防你失去您的密碼。";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "為了您的安全，我們沒有做任何的密碼檔。備份你的錢包，以確保您的资金是安全的以防你失去您的密碼。";
 
 /* (No Commment) */
 "Wallets" = "錢包";

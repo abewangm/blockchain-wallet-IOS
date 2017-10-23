@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Mungkin berisiko untuk pembelanjaan ganda.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Untuk keamanan Anda, kami tidak menyimpan kata sandi pada berkas. Cadangan dompet Anda untuk memastikan Bitcoin Anda aman jika Anda kehilangan kata sandi Anda.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Untuk keamanan Anda, kami tidak menyimpan kata sandi pada berkas. Cadangan dompet Anda untuk memastikan dana anda aman jika Anda kehilangan kata sandi Anda.";
 
 /* (No Commment) */
 "Wallets" = "Dompet";

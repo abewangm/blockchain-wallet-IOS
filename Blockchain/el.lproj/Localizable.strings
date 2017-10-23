@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Μπορεί να είναι σε κίνδυνο για μια διπλή δαπάνη.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα bitcoins σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα ταμεία σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 
 /* (No Commment) */
 "Wallets" = "πορτοφόλια";

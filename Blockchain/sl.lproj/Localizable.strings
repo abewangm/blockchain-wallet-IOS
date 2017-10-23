@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Lahko obstaja tveganje za dvojno preživijo.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašo varnost, ne hranimo poljuben parola naprej pila. Varnostno kopiranje vaše denarnice za zagotovitev vaš bitcoins so varne, v primeru, da ste izgubili geslo.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Za vašo varnost, ne hranimo poljuben parola naprej pila. Varnostno kopiranje vaše denarnice za zagotovitev vaš sredstev so varne, v primeru, da ste izgubili geslo.";
 
 /* (No Commment) */
 "Wallets" = "Denarnice";

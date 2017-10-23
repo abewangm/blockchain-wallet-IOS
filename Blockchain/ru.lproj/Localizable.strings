@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Может быть опасность возникновения двойной расходов.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";
 
 /* (No Commment) */
 "Wallets" = "кошелкам";
