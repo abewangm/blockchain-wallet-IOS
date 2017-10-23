@@ -794,6 +794,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
 #define JAVASCRIPTCORE_CLEAR_TIMEOUT @"clearTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
+#define JAVASCRIPTCORE_CLEAR_INTERVAL @"clearInterval"
 
 #define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
