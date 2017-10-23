@@ -601,6 +601,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_LABEL @"label"
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
+#define DICTIONARY_KEY_DISPLAY_AMOUNT @"displayAmount"
 #define DICTIONARY_KEY_CODE @"code"
 #define DICTIONARY_KEY_ERROR @"error"
 #define DICTIONARY_KEY_THRESHOLD @"threshold"

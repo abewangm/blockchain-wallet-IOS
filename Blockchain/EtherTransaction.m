@@ -14,8 +14,8 @@
 {
     EtherTransaction *transaction = [[EtherTransaction alloc] init];
     
-    transaction.amount = [dict objectForKey:DICTIONARY_KEY_AMOUNT];
-    transaction.amountTruncated = [EtherTransaction truncatedAmount:[dict objectForKey:DICTIONARY_KEY_AMOUNT]];
+    transaction.amount = [[dict objectForKey:DICTIONARY_KEY_AMOUNT] stringValue];
+    transaction.amountTruncated = [EtherTransaction truncatedAmount:transaction.amount];
     transaction.fee = [dict objectForKey:DICTIONARY_KEY_FEE];
     transaction.from = [dict objectForKey:DICTIONARY_KEY_FROM];
     transaction.to = [dict objectForKey:DICTIONARY_KEY_TO];
