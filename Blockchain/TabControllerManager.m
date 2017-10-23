@@ -343,6 +343,7 @@
     [self.sendBitcoinViewController reloadFeeAmountLabel];
     [self.sendEtherViewController keepCurrentPayment];
     [self.receiveBitcoinViewController doCurrencyConversion];
+    [self.transactionsEtherViewController reload];
 }
 
 - (void)setupBitcoinPaymentFromURLHandlerWithAmountString:(NSString *)amountString address:(NSString *)address
