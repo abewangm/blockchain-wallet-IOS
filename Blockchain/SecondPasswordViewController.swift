@@ -43,6 +43,7 @@ class SecondPasswordViewController: UIViewController, UITextFieldDelegate {
         
         descriptionLabel.center = CGPoint(x: view.center.x, y: descriptionLabel.center.y)
         descriptionLabel.font = UIFont(name:"GillSans", size: Constants.FontSizes.SmallMedium)
+        descriptionLabel.text = NSLocalizedString("This action requires the second password for your wallet. Please enter it below and press continue.", comment: "")
         
         password.center = CGPoint(x: view.center.x, y: password.frame.origin.y)
         password.setupOnePixelLine()
