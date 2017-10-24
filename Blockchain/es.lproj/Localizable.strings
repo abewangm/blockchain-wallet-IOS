@@ -1618,7 +1618,7 @@
 "May be at risk for a double spend." = "Podría correr el riesgo de gastar dos veces.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Para su seguridad, no conservamos ninguna contraseña. Respalde su billetera para asegurar que sus bitcoins estén seguras en caso de que pierda su contraseña.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Para su seguridad, no conservamos ninguna contraseña. Respalde su billetera para asegurar que sus fondos estén seguras en caso de que pierda su contraseña.";
 
 /* (No Commment) */
 "Wallets" = "Monederos";
@@ -1958,4 +1958,3 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Se aplica esta tasa a los mineros para procesar la transacción.";
-
