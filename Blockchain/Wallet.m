@@ -188,6 +188,17 @@
     };
 }
 
+- (id)getClearInterval
+{
+    __weak Wallet *weakSelf = self;
+    
+    return ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+}
+
 - (void)loadJS
 {
     self.context = [[JSContext alloc] init];
@@ -207,8 +218,9 @@
     self.context.exceptionHandler = [self getExceptionHandler];
     
     self.context[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
     self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.context[JAVASCRIPTCORE_CLEAR_INTERVAL] = [self getClearInterval];
     
 #pragma mark Decryption
     

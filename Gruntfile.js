@@ -26,10 +26,6 @@ module.exports = function (grunt) {
               presets: ['es2015'],
               plugins: ['transform-object-assign'],
               global: true,
-              ignore: [
-                '/src/blockchain-socket.js',
-                '/src/ws-browser.js'
-              ]
             }]
           ]
         }
