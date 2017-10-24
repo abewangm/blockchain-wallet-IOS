@@ -364,7 +364,11 @@
 
 - (void)showError:(NSString *)error
 {
-    if (!app.pinEntryViewController && [app.wallet isInitialized] && app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD && !app.modalView) {
+    if ([app isPinSet] &&
+        !app.pinEntryViewController &&
+        [app.wallet isInitialized] &&
+        app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD
+        && !app.modalView) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         dispatch_async(dispatch_get_main_queue(), ^{
