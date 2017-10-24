@@ -72,6 +72,8 @@
     [self updateTransactionsViewControllerData:nil];
     [self.sendEtherViewController clearFundsAvailable];
     [_receiveBitcoinViewController clearAmounts];
+    
+    [self dashBoardClicked:nil];
 }
 
 - (void)forgetWallet
