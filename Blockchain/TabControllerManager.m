@@ -70,6 +70,7 @@
 - (void)logout
 {
     [self updateTransactionsViewControllerData:nil];
+    [self.sendEtherViewController clearFundsAvailable];
     [_receiveBitcoinViewController clearAmounts];
 }
 

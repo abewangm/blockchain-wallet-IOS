@@ -316,6 +316,12 @@
     [app.wallet sweepEtherPayment];
 }
 
+- (void)clearFundsAvailable
+{
+    self.ethAvailable = 0;
+    [self updateFundsAvailable];
+}
+
 #pragma mark - View Helpers
 
 - (BCLine *)offsetLineWithYPosition:(CGFloat)yPosition
