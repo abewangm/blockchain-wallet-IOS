@@ -26,9 +26,9 @@ Prepare OpenSSL:
 
 Create a file named `.env` and define environment variables in it as follows:
 
-    $DEV=""
-    $STAGING=""
-    $TESTNET=""
+    DEV=""
+    STAGING=""
+    TESTNET=""
 
 Get certificates:
 
