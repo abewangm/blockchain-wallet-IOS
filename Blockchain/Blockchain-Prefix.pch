@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+ #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
