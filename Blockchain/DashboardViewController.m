@@ -225,7 +225,6 @@
     double difference = lastPrice - firstPrice;
     double percentChange = (difference / firstPrice) * 100;
     
-    self.arrowImageView.image = [[UIImage imageNamed:@"send_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
     [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
     [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
