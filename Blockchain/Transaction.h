@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Blockchain Luxembourg S.A. All rights reserved.
 //
 
-#import "InOut.h"
-
 @interface Transaction : NSObject
 
 + (Transaction *)fromJSONDict:(NSDictionary *)dict;
@@ -21,6 +19,7 @@
 @property(nonatomic, assign) int64_t amount;
 @property(nonatomic, assign) uint32_t size;
 @property(nonatomic, assign) uint64_t time;
+@property(nonatomic, assign) uint64_t lastUpdated;
 @property(nonatomic, assign) uint32_t tx_index;
 @property(nonatomic, assign) BOOL fromWatchOnly;
 @property(nonatomic, assign) BOOL toWatchOnly;
@@ -28,9 +27,12 @@
 @property(nonatomic, assign) BOOL replaceByFee;
 @property(nonatomic, strong) NSMutableDictionary *fiatAmountsAtTime;
 
-@property(nonatomic, strong) InOut *from;
+@property(nonatomic, strong) NSDictionary *from;
 @property(nonatomic, strong) NSArray *to;
 
-- (NSString *)getDate;
+// For displaying contact names
+@property (nonatomic, strong) NSString *contactName;
+
+- (NSComparisonResult)reverseCompareLastUpdated:(Transaction *)transaction;
 
 @end

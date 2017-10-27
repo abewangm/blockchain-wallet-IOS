@@ -21,13 +21,14 @@
 #import "MultiAddressResponse.h"
 #import "SRWebSocket.h"
 #import "FeeTypes.h"
+#import "Assets.h"
 
 @interface transactionProgressListeners : NSObject
 @property(nonatomic, copy) void (^on_start)();
 @property(nonatomic, copy) void (^on_begin_signing)();
 @property(nonatomic, copy) void (^on_sign_progress)(int input);
 @property(nonatomic, copy) void (^on_finish_signing)();
-@property(nonatomic, copy) void (^on_success)(NSString*secondPassword);
+@property(nonatomic, copy) void (^on_success)(NSString*secondPassword, NSString*transactionHash);
 @property(nonatomic, copy) void (^on_error)(NSString*error, NSString*secondPassword);
 @end
 
@@ -40,11 +41,10 @@
 @property(nonatomic, assign) int tag;
 @end
 
-@class Wallet, Transaction, JSValue, JSContext;
+@class Wallet, Transaction, JSValue, JSContext, Contact, ContactTransaction;
 
 @protocol ExchangeAccountDelegate
 - (void)watchPendingTrades:(BOOL)shouldSync;
-- (void)fetchExchangeAccount;
 - (void)showCompletedTrade:(NSString *)txHash;
 @end
 
@@ -105,15 +105,37 @@
 - (void)receivedTransactionMessage;
 - (void)paymentReceivedOnPINScreen:(NSString *)amount;
 - (void)didReceivePaymentNotice:(NSString *)notice;
-- (void)didGetFiatAtTime:(NSString *)fiatAmount currencyCode:(NSString *)currencyCode;
+- (void)didGetFiatAtTime:(NSNumber *)fiatAmount currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType;
 - (void)didErrorWhenGettingFiatAtTime:(NSString *)error;
 - (void)didSetDefaultAccount;
 - (void)didChangeLocalCurrency;
 - (void)setupBackupTransferAll:(id)transferAllController;
+- (void)didCreateInvitation:(NSDictionary *)invitation;
+- (void)didReadInvitation:(NSDictionary *)invitation identifier:(NSString *)identifier;
+- (void)didCompleteRelation;
+- (void)didFailCompleteRelation;
+- (void)didFailAcceptRelation:(NSString *)name;
+- (void)didAcceptRelation:(NSString *)invitation name:(NSString *)name;
+- (void)didFetchExtendedPublicKey;
+- (void)didGetNewMessages:(NSArray *)newMessages;
+- (void)didGetMessagesOnFirstLoad;
+- (void)didSendPaymentRequest:(NSDictionary *)info amount:(uint64_t)amount name:(NSString *)name requestId:(NSString *)requestId;
+- (void)didRequestPaymentRequest:(NSDictionary *)info name:(NSString *)name;
+- (void)didSendPaymentRequestResponse;
+- (void)didChangeContactName:(NSDictionary *)info;
+- (void)didDeleteContact:(NSDictionary *)info;
+- (void)didDeleteContactAfterStoringInfo:(NSDictionary *)info;
+- (void)didRejectContactTransaction;
 - (void)didCompleteTrade:(NSDictionary *)trade;
 - (void)didPushTransaction;
 - (void)showCompletedTrade:(NSString *)txHash;
 - (void)didGetSwipeAddresses:(NSArray *)newSwipeAddresses;
+- (void)didFetchEthHistory;
+- (void)didUpdateEthPayment:(NSDictionary *)payment;
+- (void)didFetchEthExchangeRate:(NSNumber *)rate;
+- (void)didSendEther;
+- (void)didErrorDuringEtherSend:(NSString *)error;
+- (void)didGetEtherAddressWithSecondPassword;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -156,12 +178,30 @@
 @property NSString *twoFactorInput;
 @property (nonatomic) NSDictionary *currencySymbols;
 
-@property (nonatomic, assign) id <SRWebSocketDelegate> socketDelegate;
 @property (nonatomic) SRWebSocket *webSocket;
+@property (nonatomic) SRWebSocket *ethSocket;
+@property (nonatomic) NSMutableArray *pendingEthSocketMessages;
+
 @property (nonatomic) NSTimer *webSocketTimer;
 @property (nonatomic) NSString *swipeAddressToSubscribe;
 
 @property (nonatomic) int lastLabelledAddressesCount;
+
+@property (nonatomic) NSDictionary<NSString *, Contact *> *contacts;
+@property (nonatomic) NSMutableArray<ContactTransaction *> *pendingContactTransactions;
+@property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
+@property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
+@property (nonatomic) NSNumber *contactsActionCount;
+
+@property (nonatomic) NSArray *etherTransactions;
+
+typedef enum {
+    ContactActionRequiredNone,
+    ContactActionRequiredSingleRequest,
+    ContactActionRequiredSinglePayment,
+    ContactActionRequiredMultiple,
+} ContactActionRequired;
+@property (nonatomic) ContactActionRequired contactsActionRequired;
 
 - (id)init;
 
@@ -211,6 +251,7 @@
 - (BOOL)validateSecondPassword:(NSString *)secondPassword;
 
 - (void)getHistory;
+- (void)getHistoryWithoutBusyView;
 - (void)getHistoryIfNoTransactionMessage;
 - (void)getWalletAndHistory;
 
@@ -325,7 +366,7 @@
 - (int)securityCenterCompletedItemsCount;
 
 // Payment Spender
-- (void)createNewPayment;
+- (void)createNewBitcoinPayment;
 - (void)changePaymentFromAddress:(NSString *)fromString isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentFromAccount:(int)fromInt isAdvanced:(BOOL)isAdvanced;
 - (void)changePaymentToAccount:(int)toInt;
@@ -356,9 +397,53 @@
 
 // Transaction Details
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash;
-- (void)getFiatAtTime:(uint64_t)time value:(int64_t)value currencyCode:(NSString *)currencyCode;
-- (NSString *)getNotePlaceholderForTransaction:(Transaction *)transaction;
+- (void)saveEtherNote:(NSString *)note forTransaction:(NSString *)hash;
+- (void)getFiatAtTime:(uint64_t)time value:(NSDecimalNumber *)value currencyCode:(NSString *)currencyCode assetType:(AssetType)assetType;
+- (NSString *)getNotePlaceholderForTransactionHash:(NSString *)myHash;
 
 - (JSValue *)executeJSSynchronous:(NSString *)command;
 
+// Contacts
+- (void)loadContacts;
+- (void)loadContactsThenGetMessages;
+- (void)getMessages;
+- (void)createContactWithName:(NSString *)name ID:(NSString *)idString;
+- (void)readInvitation:(NSString *)invitation;
+- (void)completeRelation:(NSString *)identifier;
+- (void)sendCancellation:(ContactTransaction *)transaction;
+- (void)sendDeclination:(ContactTransaction *)transaction;
+- (void)acceptRelation:(NSString *)invitation name:(NSString *)name identifier:(NSString *)identifier;
+- (void)fetchExtendedPublicKey:(NSString *)contactIdentifier;
+- (void)changeName:(NSString *)newName forContact:(NSString *)contactIdentifier;
+- (void)deleteContact:(NSString *)contactIdentifier;
+- (void)sendPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource;
+- (void)requestPaymentRequest:(NSString *)userId amount:(uint64_t)amount requestId:(NSString *)requestId note:(NSString *)note initiatorSource:(id)initiatorSource; // from account (NSNumber) or address (NSString)
+- (void)sendPaymentRequestResponse:(NSString *)userId transactionHash:(NSString *)hash transactionIdentifier:(NSString *)transactionIdentifier;
+- (BOOL)actionRequiredForContact:(Contact *)contact;
+- (void)deleteContactAfterStoringInfo:(NSString *)contactIdentifier;
+
+// Ethereum
+- (NSString *)getEthBalance;
+- (NSString *)getEthBalanceTruncated;
+- (NSArray *)getEthTransactions;
+- (void)getEthHistory;
+- (void)getEthExchangeRate;
+
+// Ether send
+- (void)createNewEtherPayment;
+- (void)changeEtherPaymentTo:(NSString *)to;
+- (void)changeEtherPaymentAmount:(id)amount;
+- (BOOL)isEthAddress:(NSString *)address;
+- (void)sendEtherPaymentWithNote:(NSString *)note;
+- (NSString *)getEtherAddress;
+- (void)isEtherContractAddress:(NSString *)address completion:(void (^ __nullable)(NSData *data, NSURLResponse *response, NSError *error))completion;
+- (void)sweepEtherPayment;
+- (BOOL)hasEthAccount;
+- (BOOL)isWaitingOnEtherTransaction;
+
+// Top Bar Display
+- (NSDecimalNumber *)btcDecimalBalance;
+- (NSDecimalNumber *)ethDecimalBalance;
+
+- (NSString *)getMobileMessage;
 @end

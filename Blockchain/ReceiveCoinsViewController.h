@@ -19,7 +19,9 @@
  */
 
 #import "Wallet.h"
+#import "BCDescriptionView.h"
 
+@class BCTotalAmountView;
 @interface ReceiveCoinsViewController : UIViewController <UITextFieldDelegate> {
     IBOutlet UIImageView *qrCodeMainImageView;
     
@@ -30,16 +32,10 @@
     
     // Amount buttons and field
     IBOutlet UITextField *entryField;
-    IBOutlet UILabel *btcLabel;
-    UILabel *receiveBtcLabel;
-    IBOutlet UITextField *btcAmountField;
-    IBOutlet UILabel *fiatLabel;
-    UILabel *receiveFiatLabel;
-    IBOutlet UITextField *fiatAmountField;
-    
-    IBOutlet UIButton *doneButton;
+
+    UIButton *doneButton;
     // Keyboard accessory view
-    IBOutlet UIView *amountKeyboardAccessoryView;
+    UIView *amountKeyboardAccessoryView;
 }
 
 @property(nonatomic, strong) NSArray *activeKeys;
@@ -48,9 +44,10 @@
 @property(nonatomic, strong) NSString *clickedAddress;
 
 @property(nonatomic) UIView *bottomContainerView;
-@property(nonatomic) UITextField *receiveBtcField;
-@property(nonatomic) UITextField *receiveFiatField;
 @property(nonatomic) UILabel *receiveToLabel;
+@property(nonatomic) UILabel *receiveFromLabel;
+@property(nonatomic) UIButton *selectFromButton;
+@property(nonatomic) UIButton *whatsThisButton;
 @property(nonatomic) UIView *headerView;
 
 - (IBAction)archiveAddressClicked:(id)sender;
@@ -65,8 +62,6 @@
 
 - (void)hideKeyboard;
 - (void)hideKeyboardForced;
-- (void)showKeyboard;
 
 - (void)doCurrencyConversion;
-
 @end

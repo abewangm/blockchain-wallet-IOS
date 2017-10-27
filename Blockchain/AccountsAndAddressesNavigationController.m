@@ -11,7 +11,7 @@
 #import "AccountsAndAddressesDetailViewController.h"
 #import "RootService.h"
 #import "PrivateKeyReader.h"
-#import "SendViewController.h"
+#import "SendBitcoinViewController.h"
 
 @interface AccountsAndAddressesNavigationController ()
 
@@ -36,7 +36,7 @@
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.adjustsFontSizeToFitWidth = YES;
-    headerLabel.text = BC_STRING_ADDRESSES;
+    headerLabel.text = BC_STRING_BITCOIN_ADDRESSES;
     headerLabel.center = CGPointMake(topBar.center.x, headerLabel.center.y);
     [topBar addSubview:headerLabel];
     self.headerLabel = headerLabel;

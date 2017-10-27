@@ -1111,7 +1111,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Denna åtgärd kräver den privata nyckeln för Bitcoin adress %@. Vänligen skanna QR-koden.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken. Anger du det nedan och tryck på Fortsätt.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Denna adress har redan använts. Vänligen logga in.";
@@ -1618,7 +1618,7 @@
 "May be at risk for a double spend." = "Kan vara i riskzonen för en dubbel spendera.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina bitcoins är säkra om du förlorar ditt lösenord.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina medel är säkra om du förlorar ditt lösenord.";
 
 /* (No Commment) */
 "Wallets" = "Plånböcker";
@@ -1655,7 +1655,7 @@
 
 "Backup Needed" = "Backup behövs";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din bitcoin, så håll det offline någonstans säkert.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din medel, så håll det offline någonstans säkert.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Följande 12 ordet återhämtning fras ger dig tillgång till dina pengar om du förlorar ditt lösenord.";
 
@@ -1819,3 +1819,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Ryska Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldon";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Ange Eter adress eller välja";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Betalning Skickas! Ditt saldo och transaktioner kommer att uppdatera snart.";
+
+/* (No Commment) */
+"Waiting for payment" = "Väntar på betalning";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Var vänlig vänta tills din sista eter bekräftar transaktionen.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresser";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Karta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Ogiltiga Eter adress: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ett fel inträffade vid hämtning av den senaste diagram data. Vänligen försök igen senare.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaktioner som inträffar när du skickar och begäran eter.";
+
+/* (No Commment) */
+"Request Ether" = "Begäran Eter";
+
+/* (No Commment) */
+"Dashboard" = "Instrumentpanelen";
+
+/* (No Commment) */
+"Week" = "Vecka";
+
+/* (No Commment) */
+"Month" = "Månad";
+
+/* (No Commment) */
+"Year" = "År";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Pris";
+
+/* (No Commment) */
+"Ether Price" = "Eter Pris";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontraktet adresser stöds inte.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Just nu är vi bara stöd för ETH. Du kan inte få REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nu stödja Eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Du frågat, vi har lyssnat. Vi är glada att meddela att din Blockchain plånbok nu kan du smidigt kan skicka och ta emot etern!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Komma Igång med Eter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "För att använda denna tjänst kräver vi att du anger dina andra lösenord. Du bör endast behöver ange denna gång för att ställa in din Ether plånbok.";
+
+/* (No Commment) */
+"Enter Ether address" = "Ange Eter adress";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alla";
+
+/* (No Commment) */
+"Please send ether to %@." = "Vänligen skicka eter att %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin begäran om utbetalning";
+
+/* (No Commment) */
+"Ether payment request" = "Eter begäran om utbetalning";
+
+/* (No Commment) */
+"My Ether Wallet" = "Min Eter Plånbok";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Gruvarbetarna får denna avgift för att behandla denna transaktion.";

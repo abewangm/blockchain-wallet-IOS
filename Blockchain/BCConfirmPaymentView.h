@@ -7,24 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BCDescriptionView.h"
+@class ContactTransaction, BCConfirmPaymentViewModel;
 
-@interface BCConfirmPaymentView : UIView
-@property (strong, nonatomic) IBOutlet UILabel *amountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *feeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *totalLabel;
+@protocol ConfirmPaymentViewDelegate
+- (void)setupNoteForTransaction:(NSString *)note;
+- (void)feeInformationButtonClicked;
+@end
+@interface BCConfirmPaymentView : BCDescriptionView
 
-@property (strong, nonatomic) IBOutlet UILabel *fromLabel;
-@property (strong, nonatomic) IBOutlet UILabel *toLabel;
+- (id)initWithWindow:(UIView *)window viewModel:(BCConfirmPaymentViewModel *)viewModel;
 
-@property (strong, nonatomic) IBOutlet UILabel *fiatAmountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcAmountLabel;
+@property (nonatomic) UIButton *reallyDoPaymentButton;
+@property (nonatomic) UIButton *feeInformationButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *fiatFeeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcFeeLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *fiatTotalLabel;
-@property (strong, nonatomic) IBOutlet UILabel *btcTotalLabel;
-
-@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
-@property (strong, nonatomic) IBOutlet UIButton *reallyDoPaymentButton;
+@property (weak, nonatomic) id <ConfirmPaymentViewDelegate> confirmDelegate;
 @end

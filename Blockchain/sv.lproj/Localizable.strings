@@ -866,9 +866,6 @@
 "Please enter your recovery phrase with words separated by spaces" = "Skriv in din återhämtning fras med ord separerade med blanksteg";
 
 /* (No Commment) */
-"Please login to load more addresses." = "Vänligen logga in för att ladda fler adresser.";
-
-/* (No Commment) */
 "Please lower the fee to an amount that is less than your balance" = "Vänligen sänka avgiften till ett belopp som är mindre än ditt saldo";
 
 /* (No Commment) */
@@ -1114,7 +1111,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Denna åtgärd kräver den privata nyckeln för Bitcoin adress %@. Vänligen skanna QR-koden.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken bitcoin. Anger du det nedan och tryck på Fortsätt.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Denna åtgärd kräver andra lösenordet för plånboken. Anger du det nedan och tryck på Fortsätt.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Denna adress har redan använts. Vänligen logga in.";
@@ -1527,6 +1524,21 @@
 /* No comment provided by engineer. */
 "twelfth word" = "tolfte word";
 
+/* No comment provided by engineer. */
+" We recommend the fee shown for the transaction at this time." = " Vi rekommenderar den angivna avgiften för transaktionen vid denna tid.";
+
+/* No comment provided by engineer. */
+"Fee" = "Avgift";
+
+/* No comment provided by engineer. */
+"Please contact support:\n%@" = "Vänligen kontakta support: \n%@";
+
+/* No comment provided by engineer. */
+"Transfer Amount" = "Överföringsbelopp";
+
+/* No comment provided by engineer. */
+"Value when received: %@" = "Värde när emot: %@";
+
 /* (No Commment) */
 "Transfer All Funds" = "Överföra alla pengar";
 
@@ -1558,4 +1570,346 @@
 "Free Merchant app" = "Köpman gratisapp";
 
 /* (No Commment) */
+"Cannot open Mail App" = "Kan inte öppna appen e-post";
+
+/* (No Commment) */
+"Cannot open URL %@" = "Kan inte öppna URL %@";
+
+/* (No Commment) */
+"Would you like to tell us about your experience with Blockchain?" = "Vill du berätta om din erfarenhet med Blockchain?";
+
+/* (No Commment) */
+"You will be leaving the app." = "Du kommer att lämna appen.";
+
+/* (No Commment) */
+"Check Your Inbox" = "Kontrollera din inkorg";
+
+/* (No Commment) */
+"Continue To Mail" = "Fortsätta till Mail";
+
+/* (No Commment) */
+"Look for an email from Blockchain and click the verification link to complete your wallet setup." = "Leta efter ett e-postmeddelande från Blockchain och klicka på verifieringslänken för att slutföra din plånbok setup.";
+
+/* (No Commment) */
+"Backup Your Funds" = "Säkerhetskopiera dina fonder";
+
+/* (No Commment) */
+"Backup Now" = "Säkerhetskopiera nu";
+
+/* (No Commment) */
+"Congrats, you have bitcoin! Now let’s backup your wallet to ensure you can access your bitcoins if you forget your password." = "Grattis, har du bitcoin! Nu låt oss backningen din plånbok för att säkerställa att du kan komma åt dina bitcoins om du glömmer ditt lösenord.";
+
+/* (No Commment) */
+"2-Step Verification" = "2-stegsverifikation";
+
+/* (No Commment) */
+"Prevent unauthorized access to your wallet. Enable 2-step verification to increase wallet security." = "Förhindra obehörig åtkomst till plånboken. Aktivera 2-stegsverifikation att öka plånbok säkerhet.";
+
+/* (No Commment) */
+"Enable notifications to receive an email or SMS message whenever you receive bitcoin." = "Aktivera meddelanden ta emot en email eller SMS-meddelande när du tar emot bitcoin.";
+
+/* (No Commment) */
+"Not Now" = "Inte nu";
+
+/* (No Commment) */
+"I'll do this later" = "Jag gör det senare";
+
+/* (No Commment) */
+"May be at risk for a double spend." = "Kan vara i riskzonen för en dubbel spendera.";
+
+/* (No Commment) */
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "För din säkerhet håller vi inte någon lösenord på fil. Backup din plånbok för dina medel är säkra om du förlorar ditt lösenord.";
+
+/* (No Commment) */
 "Wallets" = "Plånböcker";
+
+"START BACKUP" = "START BACKUP";
+
+"Backup Needed" = "Backup behövs";
+
+"Create a Wallet" = "Skapa en plånbok";
+
+"Log In" = "Logga in";
+
+"Please enter your password to log into your Blockchain wallet." = "Vänligen ange ditt lösenord för att logga in i plånboken Blockchain.";
+
+"Forgot Password?" = "Glömt lösenord?";
+
+"Or start over and " = "Eller börja om och ";
+
+"Update Email" = "Uppdatera e-";
+
+"Enter Email Address" = "Ange e-postadress";
+
+"Update Mobile" = "Uppdatera Mobile";
+
+"Enter Mobile Number" = "Ange mobilnummer";
+
+"Balances" = "Saldon";
+
+"Transactions occur when you send and receive bitcoin." = "Transaktioner som uppstår när du skickar och tar emot bitcoin.";
+
+"Your Transactions" = "Dina transaktioner";
+
+"Backup Complete" = "Fullständig säkerhetskopiering";
+
+"Backup Needed" = "Backup behövs";
+
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Använd din återhämtning fras för att återställa dina pengar vid ett förlorat lösenord.  Någon med tillgång till din återhämtning fras kan komma åt din medel, så håll det offline någonstans säkert.";
+
+"The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Följande 12 ordet återhämtning fras ger dig tillgång till dina pengar om du förlorar ditt lösenord.";
+
+"Be sure to write down your phrase on a piece of paper and keep it somewhere safe and secure." = "Var noga med att skriva ner din fras på ett papper och hålla den någonstans säkert.";
+
+"Write down the following 12 word Recovery Phrase exactly as they appear and in this order:" = "Skriv ned följande 12 ordet återhämtning fras exakt som de visas och i den här ordningen:";
+
+"PREVIOUS" = "TIDIGARE";
+
+"NEXT" = "NÄSTA";
+
+"BACKUP AGAIN" = "SÄKERHETSKOPIERING IGEN";
+
+"Your verified email address is used to send payment alerts, ID reminders, and login codes." = "Din verifierad e-postadress används för att skicka betalning varningar, ID påminnelser och inloggningskoder.";
+
+"Your mobile phone can be used to enable two-factor authentication or to receive alerts." = "Mobiltelefonen kan användas för att aktivera tvåfaktorsautentisering eller ta emot aviseringar.";
+
+/* (No Commment) */
+"Trade Completed" = "Handel som avslutat";
+
+/* (No Commment) */
+"The trade you created on %@ has been completed!" = "Den handel som du skapat på %@ har slutförts!";
+
+/* (No Commment) */
+"View details" = "Visa Detaljer";
+
+/* (No Commment) */
+"Buy Bitcoin" = "Köpa Bitcoin";
+
+/* (No Commment) */
+"Your Transactions" = "Dina transaktioner";
+
+/* (No Commment) */
+"Transactions occur when you send and receive bitcoin." = "Transaktioner som uppstår när du skickar och tar emot bitcoin.";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy Bitcoin again." = "Något gick fel, försök vänligen återuppta köpa Bitcoin igen.";
+
+/* (No Commment) */
+"Custom" = "Anpassade";
+
+/* (No Commment) */
+"Advanced users only" = "Endast för avancerade användare";
+
+/* (No Commment) */
+"1+ hour" = "1+ timme";
+
+/* (No Commment) */
+"Priority" = "Prioritet";
+
+/* (No Commment) */
+"~0-60 min" = "~0-60 min";
+
+/* (No Commment) */
+"Satoshi per byte" = "Satoshi per byte";
+
+/* (No Commment) */
+"High fee not necessary" = "Hög avgift inte nödvändigt";
+
+/* (No Commment) */
+"Low fee not recommended" = "Låg avgift rekommenderas inte";
+
+/* (No Commment) */
+"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck." = "Denna funktion rekommenderas endast för avancerade användare. Genom att välja ut en egen avgift, riskerar du att betalas eller din transaktion kan fastna.";
+
+/* (No Commment) */
+"Available now" = "Tillgänglig nu";
+
+/* (No Commment) */
+"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure." = "Köpa bitcoin direkt från din mobila plånbok. Den är enkel, smidig och säker.";
+
+/* (No Commment) */
+"Log in to Web Wallet" = "Logga in på Webben Plånbok";
+
+/* (No Commment) */
+"Go to blockchain.info/wallet/login on your computer." = "Gå till blockchain.info/wallet/login på din dator.";
+
+/* (No Commment) */
+"Select Log in via mobile." = "Välj att Logga in via mobilen.";
+
+/* (No Commment) */
+"Using your computer's camera, scan the QR code below." = "Med hjälp av datorns kamera, skanna QR-koden nedan.";
+
+/* (No Commment) */
+"Keep this QR code hidden until you're ready." = "Hålla denna QR-koden dolda tills du är redo.";
+
+/* (No Commment) */
+"Keep this QR code safe!" = "Hålla denna QR-koden på ett säkert ställe.";
+
+/* (No Commment) */
+"Do not share it with others." = "Inte dela det med andra.";
+
+/* (No Commment) */
+"Show QR Code" = "Visa QR-Kod";
+
+/* (No Commment) */
+"Hide QR Code" = "Dölj QR-Kod";
+
+/* (No Commment) */
+"U.S. Dollar" = "AMERIKANSKA Dollar";
+
+/* (No Commment) */
+"Euro" = "Euro";
+
+/* (No Commment) */
+"lcelandic Króna" = "lcelandic Króna";
+
+/* (No Commment) */
+"Hong Kong Dollar" = "Hong Kong Dollar";
+
+/* (No Commment) */
+"New Taiwan Dollar" = "Nya Taiwan Dollar";
+
+/* (No Commment) */
+"Swiss Franc" = "Schweiziska Franc";
+
+/* (No Commment) */
+"Danish Krone" = "Danska Kronor";
+
+/* (No Commment) */
+"Chilean Peso" = "Chilenska Peso";
+
+/* (No Commment) */
+"Canadian Dollar" = "Kanadensiska Dollar";
+
+/* (No Commment) */
+"Indian Rupee" = "Indiska Rupier";
+
+/* (No Commment) */
+"Chinese Yuan" = "Kinesiska Yuan";
+
+/* (No Commment) */
+"Thai Baht" = "Thailändska Baht";
+
+/* (No Commment) */
+"Australian Dollar" = "Australiensiska Dollar";
+
+/* (No Commment) */
+"Singapore Dollar" = "Singapore Dollar";
+
+/* (No Commment) */
+"South Korean Won" = "Sydkoreanska Won";
+
+/* (No Commment) */
+"Japanese Yen" = "Japanska Yen";
+
+/* (No Commment) */
+"Polish Zloty" = "Polska Zloty";
+
+/* (No Commment) */
+"Great British Pound" = "Brittiska Pund";
+
+/* (No Commment) */
+"Swedish Krona" = "Svenska Kronor";
+
+/* (No Commment) */
+"New Zealand Dollar" = "Nya Zeeland Dollar";
+
+/* (No Commment) */
+"Brazil Real" = "Brasilien Real";
+
+/* (No Commment) */
+"Russian Ruble" = "Ryska Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldon";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Ange Eter adress eller välja";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Betalning Skickas! Ditt saldo och transaktioner kommer att uppdatera snart.";
+
+/* (No Commment) */
+"Waiting for payment" = "Väntar på betalning";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Var vänlig vänta tills din sista eter bekräftar transaktionen.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresser";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Karta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Ogiltiga Eter adress: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ett fel inträffade vid hämtning av den senaste diagram data. Vänligen försök igen senare.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaktioner som inträffar när du skickar och begäran eter.";
+
+/* (No Commment) */
+"Request Ether" = "Begäran Eter";
+
+/* (No Commment) */
+"Dashboard" = "Instrumentpanelen";
+
+/* (No Commment) */
+"Week" = "Vecka";
+
+/* (No Commment) */
+"Month" = "Månad";
+
+/* (No Commment) */
+"Year" = "År";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Pris";
+
+/* (No Commment) */
+"Ether Price" = "Eter Pris";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontraktet adresser stöds inte.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Just nu är vi bara stöd för ETH. Du kan inte få REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nu stödja Eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Du frågat, vi har lyssnat. Vi är glada att meddela att din Blockchain plånbok nu kan du smidigt kan skicka och ta emot etern!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Komma Igång med Eter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "För att använda denna tjänst kräver vi att du anger dina andra lösenord. Du bör endast behöver ange denna gång för att ställa in din Ether plånbok.";
+
+/* (No Commment) */
+"Enter Ether address" = "Ange Eter adress";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alla";
+
+/* (No Commment) */
+"Please send ether to %@." = "Vänligen skicka eter att %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin begäran om utbetalning";
+
+/* (No Commment) */
+"Ether payment request" = "Eter begäran om utbetalning";
+
+/* (No Commment) */
+"My Ether Wallet" = "Min Eter Plånbok";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Gruvarbetarna får denna avgift för att behandla denna transaktion.";
+

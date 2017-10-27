@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Questa azione richiede la chiave privata per l'indirizzo Bitcoin %@. Effettua la scansione del codice QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Questa azione richiede la seconda password per il tuo portafoglio bitcoin. Inseriscila qui sotto e premi su continua.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Questa azione richiede la seconda password per il tuo portafoglio. Inseriscila qui sotto e premi su continua.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Questo indirizzo è già stato utilizzato. Accedi.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Potrebbe esserci il rischio di un doppio pagamento.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Per la tua sicurezza, non registriamo nei nostri file nessuna password. Fai un backup del tuo portafoglio per essere certo che i tuoi bitcoin siano al sicuro se dovessi perdere la tua password.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Per la tua sicurezza, non registriamo nei nostri file nessuna password. Fai un backup del tuo portafoglio per essere certo che i tuoi fondi siano al sicuro se dovessi perdere la tua password.";
 
 /* (No Commment) */
 "Wallets" = "Portafogli";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Backup necessario";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Usa la tua Frase di backup per ripristinare i tuoi fondi, nel caso perdessi la password. Chiunque conosca la tua Frase di backup può accedere ai tuoi bitcoin, quindi conservala offline, in un luogo sicuro e protetto.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Usa la tua Frase di backup per ripristinare i tuoi fondi, nel caso perdessi la password. Chiunque conosca la tua Frase di backup può accedere ai tuoi fondi, quindi conservala offline, in un luogo sicuro e protetto.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "La seguente Frase di backup di 12 parole ti darà l'accesso ai tuoi fondi, nel caso perdessi la password.";
@@ -1847,3 +1847,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rublo russo";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Saldi Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Inserisci indirizzo Ether o seleziona";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Pagamento inviato! Il tuo saldo e le transazioni verranno aggiornati presto.";
+
+/* (No Commment) */
+"Waiting for payment" = "In attesa del pagamento";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Attendi fino alla conferma dell'ultima transazione ether.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Indirizzi Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Mappa commercianti Bitcoin";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Indirizzo Ether non valido: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Si è verificato un errore nel recupero dei dati aggiornati della mappa. Riprova più tardi.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Le transazioni avvengono quando invii e richiedi ether.";
+
+/* (No Commment) */
+"Request Ether" = "Richiedi Ether";
+
+/* (No Commment) */
+"Dashboard" = "Dashboard";
+
+/* (No Commment) */
+"Week" = "Settimana";
+
+/* (No Commment) */
+"Month" = "Mese";
+
+/* (No Commment) */
+"Year" = "Anno";
+
+/* (No Commment) */
+"Bitcoin Price" = "Prezzo Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Prezzo Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Gli indirizzi dei contratti non sono supportati.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Al momento, supportiamo solo ETH. Non puoi ricevere REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Supporto disponibile per Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Avete chiesto, vi abbiamo ascoltato. Siamo lieti di annunciare che il tuo wallet Blockchain ti permetterà d'ora in poi, di inviare e ricevere ether senza problemi!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Inizia a fare operazioni con Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Per usare questo servizio, ti chiediamo di inserire la seconda password. Devi inserirla solo una volta per configurare il tuo wallet Ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Inserisci indirizzo Ether";
+
+/* (No Commment) */
+"Day" = "Giorno";
+
+/* (No Commment) */
+"All" = "Tutto";
+
+/* (No Commment) */
+"Please send ether to %@." = "Invia Ether a %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Richiesta di pagamento in Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Richiesta di pagamento in Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Il mio portafoglio Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Penambang menerima biaya ini untuk memproses transaksi ini.";

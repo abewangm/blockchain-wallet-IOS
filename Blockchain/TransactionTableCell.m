@@ -9,8 +9,10 @@
 #import "TransactionTableCell.h"
 #import "Transaction.h"
 #import "RootService.h"
-#import "TransactionsViewController.h"
+#import "TransactionsBitcoinViewController.h"
 #import "TransactionDetailViewController.h"
+#import "TransactionDetailNavigationController.h"
+#import "NSDateFormatter+TimeAgoString.h"
 
 @implementation TransactionTableCell
 
@@ -27,36 +29,7 @@
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:transaction.time];
         
-        long long secondsAgo  = -round([date timeIntervalSinceNow]);
-        
-        if (secondsAgo <= 1) { // Just now
-            dateLabel.text = NSLocalizedString(@"Just now", nil);
-        } else if (secondsAgo < 60) { // 0 - 59 seconds
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld seconds ago", nil), secondsAgo];
-        } else if (secondsAgo / 60 == 1) { // 1 minute
-            dateLabel.text = NSLocalizedString(@"1 minute ago", nil);
-        } else if (secondsAgo < 60 * 60) {  // 1 to 59 minutes
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld minutes ago", nil), secondsAgo / 60];
-        } else if (secondsAgo / 60 / 60 == 1) { // 1 hour ago
-            dateLabel.text = NSLocalizedString(@"1 hour ago", nil);
-        } else if ([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInToday:)] && secondsAgo < 60 * 60 * 24 && [[NSCalendar currentCalendar] isDateInToday:date]) { // 1 to 23 hours ago, but only if today
-            dateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
-        } else if([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInYesterday:)] && [[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
-            dateLabel.text = NSLocalizedString(@"Yesterday", nil);
-        } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            NSString *longFormatWithDateAndYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d y" options:0 locale:[NSLocale currentLocale]];
-            [dateFormatter setDateFormat:longFormatWithDateAndYear];
-            
-            dateLabel.text = [dateFormatter stringFromDate:date];
-        } else { // month + year (last year or earlier)
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            NSString *longFormatWithYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
-            [dateFormatter setDateFormat:longFormatWithYear];
-            
-            dateLabel.text = [dateFormatter stringFromDate:date];
-        }
-
+        dateLabel.text = [NSDateFormatter timeAgoStringFromDate:date];
     } else {
         dateLabel.hidden = YES;
     }
@@ -109,7 +82,7 @@
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, dateLabel.frame.origin.y, 172, dateLabel.frame.size.height);
     }
     
-    if (transaction.confirmations >= kConfirmationThreshold) {
+    if (transaction.confirmations >= kConfirmationBitcoinThreshold) {
         btcButton.alpha = 1;
         actionLabel.alpha = 1;
     } else {
@@ -133,9 +106,31 @@
 
 #pragma mark button interactions
 
+- (IBAction)transactionClicked:(UIButton *)button
+{
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transactionModel = [[TransactionDetailViewModel alloc] initWithTransaction:transaction];
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.transactionHash = transaction.myHash;
+    
+    detailViewController.busyViewDelegate = navigationController;
+    navigationController.onDismiss = ^() {
+        app.tabControllerManager.transactionsBitcoinViewController.detailViewController = nil;
+    };
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    app.tabControllerManager.transactionsBitcoinViewController.detailViewController = detailViewController;
+    
+    if (app.topViewControllerDelegate) {
+        [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [app.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    }
+}
+
 - (IBAction)btcbuttonclicked:(id)sender
 {
-    [app toggleSymbol];
+    [self transactionClicked:nil];
 }
 
 @end

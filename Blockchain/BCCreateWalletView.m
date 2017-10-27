@@ -210,8 +210,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAUTS_KEY_HAS_ENDED_FIRST_SESSION];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DEFAULTS_KEY_REMINDER_MODAL_DATE];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
     
     [app.wallet getAllCurrencySymbols];
 }

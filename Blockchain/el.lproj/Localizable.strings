@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Αυτή η ενέργεια απαιτεί το ιδιωτικό κλειδί για το Bitcoin διεύθυνση %@. Παρακαλούμε να Σκανάρετε τον κωδικό QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Αυτή η διεύθυνση έχει ήδη χρησιμοποιηθεί. Παρακαλούμε συνδεθείτε.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Μπορεί να είναι σε κίνδυνο για μια διπλή δαπάνη.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα bitcoins σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα ταμεία σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 
 /* (No Commment) */
 "Wallets" = "πορτοφόλια";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Δημιουργία αντιγράφων ασφαλείας απαιτείται";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας bitcoin, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας ταμεία, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Η παρακάτω λέξη 12 αποκατάστασης φράση θα σας δώσει πρόσβαση στα χρήματά σας σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Το Ρούβλι Ρωσίας";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Το Bitcoin Υπόλοιπα";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Εισάγετε Αιθέρα διεύθυνση ή επιλέξτε";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Η Πληρωμή Αποστέλλεται! Το υπόλοιπο και τις συναλλαγές σας, θα σας ενημερώσουμε σύντομα.";
+
+/* (No Commment) */
+"Waiting for payment" = "Αναμονή για την πληρωμή";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Παρακαλώ περιμένετε μέχρι την τελευταία αιθέρα συναλλαγή επιβεβαιώνει.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Διευθύνσεις Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Το Bitcoin Έμπορος Χάρτης";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Μη έγκυρη Αιθέρα διεύθυνση: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Παρουσιάστηκε σφάλμα κατά την ανάκτηση τα τελευταία δεδομένα γραφήματος. Παρακαλώ προσπαθήστε ξανά αργότερα.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Συναλλαγές προκύψουν κατά την αποστολή και να ζητήσει αιθέρα.";
+
+/* (No Commment) */
+"Request Ether" = "Αίτημα Αιθέρα";
+
+/* (No Commment) */
+"Dashboard" = "Ταμπλό";
+
+/* (No Commment) */
+"Week" = "Εβδομάδα";
+
+/* (No Commment) */
+"Month" = "Μήνα";
+
+/* (No Commment) */
+"Year" = "Έτος";
+
+/* (No Commment) */
+"Bitcoin Price" = "Η Τιμή Του Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Αιθέρας Τιμή";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Σύμβαση διευθύνσεις δεν υποστηρίζονται.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Αυτή τη στιγμή υποστηρίζονται μόνο ETH. Δεν μπορείτε να λάβετε REP, ICN, εθνικό θέατρο, εθνική λυρική σκηνή, DGD, η BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Τώρα υποστήριξη Αιθέρα";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ρωτήσατε, ακούσαμε. Είμαστε ενθουσιασμένοι για να ανακοινώσει ότι η Blockchain πορτοφόλι θα επιτρέψει σε σας για να απρόσκοπτα να στείλετε και να λάβετε αιθέρα!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Ξεκινώντας με Αιθέρα";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Για να χρησιμοποιήσετε αυτή την υπηρεσία, θα απαιτούν από εσάς να εισάγετε το δεύτερο κωδικό πρόσβασης. Θα πρέπει να το μόνο που χρειάζεται να εισάγετε αυτή τη φορά για να ρυθμίσετε το Αιθέρα πορτοφόλι.";
+
+/* (No Commment) */
+"Enter Ether address" = "Εισάγετε Αιθέρα διεύθυνση";
+
+/* (No Commment) */
+"Day" = "Ημέρα";
+
+/* (No Commment) */
+"All" = "Όλα";
+
+/* (No Commment) */
+"Please send ether to %@." = "Παρακαλούμε να στείλετε αιθέρα να %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Το Bitcoin αίτηση πληρωμής";
+
+/* (No Commment) */
+"Ether payment request" = "Αιθέρας αίτηση πληρωμής";
+
+/* (No Commment) */
+"My Ether Wallet" = "Μου Αιθέρα Πορτοφόλι";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Ανθρακωρύχους λάβετε αυτό το τέλος να επεξεργαστεί αυτή τη συναλλαγή.";

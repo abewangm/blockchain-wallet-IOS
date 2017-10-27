@@ -229,7 +229,11 @@
 - (void)didSelectFromAddress:(NSString *)address
 {
     DLog(@"Error: Selected From Address!");
-    
+}
+
+- (void)didSelectContact:(Contact *)contact
+{
+    DLog(@"Error: Selected Contact!");
 }
 
 @end

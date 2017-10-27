@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "To działanie wymaga klucza prywatnego dla adresu bitcoin %@. Proszę zeskanować kod QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela bitcoin. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ten adres został już użyty. Zaloguj się.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Zachodzi ryzyko podwójnego naliczenia.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "W celu zapewnienia bezpieczeństwa nie przechowujemy żadnych haseł w formie plików. Zabezpiecz swój portfel, aby chronić zgromadzone bitcoiny w przypadku, gdy utracisz hasło.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "W celu zapewnienia bezpieczeństwa nie przechowujemy żadnych haseł w formie plików. Zabezpiecz swój portfel, aby chronić zgromadzone środków w przypadku, gdy utracisz hasło.";
 
 /* (No Commment) */
 "Wallets" = "Portfele";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie środków. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
@@ -1750,7 +1750,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
@@ -1922,3 +1922,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rubel rosyjski";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Salda Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Wprowadź lub wybierz adres Ether";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Płatność wysłana! Saldo i transakcje zostaną wkrótce zaktualizowane.";
+
+/* (No Commment) */
+"Waiting for payment" = "Oczekiwanie na płatność";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Zaczekaj na potwierdzenie ostatniej płatności Ether.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Adresy Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Mapa sprzedawców Bitcoin";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Nieprawidłowy adres Ether: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Podczas pobierania danych z ostatniej tabeli, wystąpił błąd. Spróbuj ponownie później.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transakcje maja miejsce, gdy wysyłasz i zamawiasz Ether.";
+
+/* (No Commment) */
+"Request Ether" = "Zamów Ether";
+
+/* (No Commment) */
+"Dashboard" = "Pulpit";
+
+/* (No Commment) */
+"Week" = "Tydzień";
+
+/* (No Commment) */
+"Month" = "Miesiąc";
+
+/* (No Commment) */
+"Year" = "Rok";
+
+/* (No Commment) */
+"Bitcoin Price" = "Cena Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Cena Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Adresy kontraktowe nie są obsługiwane.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Obecnie obsługujemy tylko ETH. Nie możesz pozyskać: REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Teraz obsługujemy Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Poprosiliście, a my wysłuchaliśmy. Z radością informujemy, że Twój portfel Blockchain potrafi teraz płynnie wysyłać i odbierać walutę Ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Zacznij przygodę z Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Aby móc korzystać z tej usługi, musisz wprowadzić drugie hasło. Będzie to konieczne tylko jeden raz - do skonfigurowania portfela Ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Wprowadź adres Ether";
+
+/* (No Commment) */
+"Day" = "Dzień";
+
+/* (No Commment) */
+"All" = "Wszystkie";
+
+/* (No Commment) */
+"Please send ether to %@." = "Wyślij ether do %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Żądanie płatności Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Żądanie płatności Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mój portfel Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Górnicy otrzymują tę opłatę, aby przetworzyć tę transakcję.";

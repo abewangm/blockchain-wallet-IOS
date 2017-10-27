@@ -13,6 +13,20 @@
 
 #pragma mark - Format helpers
 
++ (NSString *)localCurrencyCode
+{
+    return app.latestResponse.symbol_local.code;
+}
+
++ (NSDecimalNumber *)formatSatoshiInLocalCurrency:(uint64_t)value
+{
+    if (app.latestResponse.symbol_local.conversion) {
+        return [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:(double)app.latestResponse.symbol_local.conversion]];
+    } else {
+        return nil;
+    }
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {
@@ -108,6 +122,126 @@
 + (NSString *)formatMoneyWithLocalSymbol:(uint64_t)value
 {
     return [self formatMoney:value localCurrency:app->symbolLocal];
+}
+
+#pragma mark - Ether
+
++ (NSString *)formatEth:(id)ethAmount
+{
+    return [NSString stringWithFormat:@"%@ %@", ethAmount ? : @"0", CURRENCY_SYMBOL_ETH];
+}
+
++ (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (ethAmount == 0) return 0;
+    
+    return [ethAmount decimalNumberByMultiplyingBy:exchangeRate];
+}
+
++ (NSString *)formatEthToFiat:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    __block NSString *requestedAmountString;
+    if ([ethAmount containsString:@"٫"]) {
+        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
+        NSError *error;
+        NSRange range = NSMakeRange(0, [ethAmount length]);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
+        
+        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
+        
+        NSMutableString *replaced = [ethAmount mutableCopy];
+        __block NSInteger offset = 0;
+        [regex enumerateMatchesInString:ethAmount options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
+            NSString *key = [ethAmount substringWithRange:range1];
+            NSString *value = easternArabicNumeralDictionary[key];
+            if (value != nil) {
+                NSRange range = [result range]; // range of the matched pattern
+                // Update location according to previous modifications:
+                range.location += offset;
+                [replaced replaceCharactersInRange:range withString:value];
+                offset += value.length - range.length; // Update offset
+            }
+            requestedAmountString = [NSString stringWithString:replaced];
+        }];
+    } else {
+        requestedAmountString = [ethAmount stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    }
+    
+    if (requestedAmountString != nil && [requestedAmountString doubleValue] > 0) {
+        NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:requestedAmountString];
+        NSString *result = [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        return result;
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatEthToFiatWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatEthToFiat:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return [NSString stringWithFormat:@"%@0.00", app.latestResponse.symbol_local.symbol];
+    } else {
+        return [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formatString];
+    }
+}
+
++ (NSDecimalNumber *)convertFiatToEth:(NSDecimalNumber *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount == 0 || !exchangeRate) return 0;
+    
+    return [fiatAmount decimalNumberByDividingBy:exchangeRate];
+}
+
++ (NSString *)formatFiatToEth:(NSString *)fiatAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    if (fiatAmount != nil && [fiatAmount doubleValue] > 0) {
+        NSDecimalNumber *fiatAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:fiatAmount];
+        return [NSString stringWithFormat:@"%@", [NSNumberFormatter convertFiatToEth:fiatAmountDecimalNumber exchangeRate:exchangeRate]];
+    } else {
+        return nil;
+    }
+}
+
++ (NSString *)formatFiatToEthWithSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *formatString = [NSNumberFormatter formatFiatToEth:ethAmount exchangeRate:exchangeRate];
+    if (!formatString) {
+        return nil;
+    } else {
+        return [NSString stringWithFormat:@"%@ %@", app.latestResponse.symbol_local.code, formatString];
+    }
+}
+
++ (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
+{
+    NSString *symbol = app.latestResponse.symbol_local.symbol;
+    BOOL hasSymbol = symbol && ![symbol isKindOfClass:[NSNull class]];
+        
+    if (app->symbolLocal && hasSymbol) {
+        return [NSNumberFormatter formatEthToFiatWithSymbol:ethAmount exchangeRate:exchangeRate];
+    } else {
+        return [NSNumberFormatter formatEth:ethAmount];
+    }
+}
+
++ (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount locale:(NSLocale *)preferredLocale
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    if (preferredLocale) formatter.locale = preferredLocale;
+    [formatter setMaximumFractionDigits:8];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    return [formatter stringFromNumber:amount];
+}
+
++ (NSString *)ethAmount:(NSDecimalNumber *)amount
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.usesGroupingSeparator = NO;
+    [formatter setMaximumFractionDigits:ETH_DECIMAL_LIMIT];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    return [formatter stringFromNumber:amount];
 }
 
 @end

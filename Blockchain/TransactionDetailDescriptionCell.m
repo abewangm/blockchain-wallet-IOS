@@ -7,17 +7,19 @@
 //
 
 #import "TransactionDetailDescriptionCell.h"
+#import "ContactTransaction.h"
 
 @implementation TransactionDetailDescriptionCell
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
-    
+    [super configureWithTransactionModel:transactionModel];
+
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_DESCRIPTION;
-        if (transaction.note.length > 0) {
-            self.textView.text = transaction.note;
+        NSString *note = [self getNoteForTransaction:transactionModel];
+        if (note.length > 0) {
+            self.textView.text = note;
             self.textViewPlaceholderLabel.hidden = YES;
         } else {
             self.textView.text = nil;
@@ -37,12 +39,18 @@
     self.mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.contentView addSubview:self.mainLabel];
     
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.mainLabel.frame.origin.x, 0, 30, 30)];
+    self.subtitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:12];
+    self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.subtitleLabel.textColor = COLOR_LIGHT_GRAY;
+    [self.contentView addSubview:self.subtitleLabel];
+    
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 160, 0)];
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
     self.textView.scrollEnabled = NO;
     self.textView.showsVerticalScrollIndicator = NO;
     self.textView.textAlignment = NSTextAlignmentRight;
-    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM_LARGE]];
+    [self.textView setFont:[UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_MEDIUM_LARGE]];
     self.textView.textColor = COLOR_TEXT_DARK_GRAY;
     
     self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width - self.defaultTextViewHeight, self.defaultTextViewHeight);
@@ -52,11 +60,15 @@
     self.textView.editable = NO;
     
     [self addEditButton];
+
+    self.editButton.enabled = !transactionModel.isContactTransaction;
     
     [self addPlaceholderLabel];
 
-    if (transaction.note.length > 0) {
-        self.textView.text = transaction.note;
+    NSString *note = [self getNoteForTransaction:transactionModel];
+
+    if (note.length > 0) {
+        self.textView.text = note;
         if (!self.descriptionDelegate.didSetTextViewCursorPosition) {
             [self.descriptionDelegate setDefaultTextViewCursorPosition:self.textView.text.length];
         }
@@ -66,15 +78,18 @@
     }
     
     self.mainLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     self.editButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    CGFloat leftMargin = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? 20 : 15;
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeLeft
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeLeft
-                                                                multiplier:1.f constant:15]];
+                                                                multiplier:1.f constant:leftMargin]];
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
                                                                  attribute:NSLayoutAttributeTop
@@ -82,6 +97,34 @@
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeTop
                                                                 multiplier:1.f constant:23]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                    toItem:nil
+                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                multiplier:1.f constant:90]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeLeft
+                                                                multiplier:1.f constant:leftMargin]];
+    
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.subtitleLabel
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.mainLabel
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.f constant:4]];
+    
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
+                                                                  attribute:NSLayoutAttributeLeft
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.subtitleLabel
+                                                                  attribute:NSLayoutAttributeRight
+                                                                 multiplier:1.f constant:16]];
     
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem:self.textView
                                                                   attribute:NSLayoutAttributeLeft
@@ -197,6 +240,15 @@
     self.textView.selectedRange = cursorPosition;
     
     [self.descriptionDelegate textViewDidChange:self.textView];
+}
+
+- (NSString *)getNoteForTransaction:(TransactionDetailViewModel *)transactionModel
+{
+    if (transactionModel.isContactTransaction) {
+        return transactionModel.reason;
+    } else {
+        return transactionModel.note;
+    }
 }
 
 #pragma mark - TextView delegate

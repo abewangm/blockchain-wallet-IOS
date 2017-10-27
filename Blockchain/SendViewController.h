@@ -25,7 +25,7 @@
 #import "BCLine.h"
 #import "FeeTypes.h"
 
-@class Wallet;
+@class Wallet, ContactTransaction;
 
 @interface SendViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
@@ -35,6 +35,7 @@
     IBOutlet UIButton *selectFromButton;
     IBOutlet UIButton *fundsAvailableButton;
     
+    IBOutlet UILabel *contactLabel;
     IBOutlet UILabel *toLabel;
     IBOutlet UITextField *toField;
     IBOutlet UIButton *addressBookButton;
@@ -46,7 +47,8 @@
     
     IBOutlet UIButton *continuePaymentButton;
     IBOutlet UIButton *continuePaymentAccessoryButton;
-    
+    IBOutlet UIButton *rejectPaymentButton;
+
     IBOutlet UIView *amountKeyboardAccessoryView;
     
     IBOutlet UIView *labelAddressView;
@@ -61,6 +63,7 @@
     IBOutlet UILabel *feeLabel;
     IBOutlet UIButton *feeOptionsButton;
     IBOutlet UITextField *feeField;
+    IBOutlet UIView *feeTappableView;
     
     IBOutlet BCLine *lineBelowFromField;
     IBOutlet BCLine *lineBelowToField;
@@ -69,11 +72,10 @@
     
     IBOutlet UIView *bottomContainerView;
     
-    IBOutlet UIButton *feeInformationButton;
     BOOL displayingLocalSymbol;
 }
 
-@property (strong, nonatomic) IBOutlet BCConfirmPaymentView *confirmPaymentView;
+@property (strong, nonatomic) BCConfirmPaymentView *confirmPaymentView;
 
 typedef enum {
     DestinationAddressSourceNone,
@@ -81,6 +83,7 @@ typedef enum {
     DestinationAddressSourcePaste,
     DestinationAddressSourceURI,
     DestinationAddressSourceDropDown,
+    DestinationAddressSourceContact
 } DestinationAddressSource;
 
 @property (nonatomic, readonly) DestinationAddressSource addressSource;
@@ -89,6 +92,7 @@ typedef enum {
 
 @property(nonatomic, strong) NSString *fromAddress;
 @property(nonatomic, strong) NSString *toAddress;
+@property(nonatomic, strong) Contact *toContact;
 @property int fromAccount;
 @property int toAccount;
 @property BOOL sendFromAddress;
@@ -107,10 +111,10 @@ typedef enum {
 - (IBAction)closeKeyboardClicked:(id)sender;
 - (IBAction)feeOptionsClicked:(UIButton *)sender;
 
-- (void)didSelectFromAddress:(NSString *)address;
-- (void)didSelectToAddress:(NSString *)address;
-- (void)didSelectFromAccount:(int)account;
-- (void)didSelectToAccount:(int)account;
+- (void)selectFromAddress:(NSString *)address;
+- (void)selectToAddress:(NSString *)address;
+- (void)selectFromAccount:(int)account;
+- (void)selectToAccount:(int)account;
 
 - (void)updateSendBalance:(NSNumber *)balance fees:(NSDictionary *)fees;
 
@@ -118,7 +122,9 @@ typedef enum {
 - (IBAction)labelAddressClicked:(id)sender;
 - (IBAction)useAllClicked:(id)sender;
 
-- (void)setAmountFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction;
+
+- (void)setAmountStringFromUrlHandler:(NSString*)amountString withToAddress:(NSString*)string;
 
 - (NSString *)labelForLegacyAddress:(NSString *)address;
 
@@ -148,6 +154,7 @@ typedef enum {
 
 - (void)enablePaymentButtons;
 
+- (void)hideSelectFromAndToButtonsIfAppropriate;
 // Called on manual logout
 - (void)clearToAddressAndAmountFields;
 

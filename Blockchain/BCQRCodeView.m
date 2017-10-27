@@ -13,6 +13,7 @@ const float imageWidth = 190;
 
 @interface BCQRCodeView ()
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
+@property (nonatomic) BOOL shouldAddAddressPrefix;
 @end
 
 @implementation BCQRCodeView
@@ -27,18 +28,21 @@ const float imageWidth = 190;
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText
+- (id)initWithFrame:(CGRect)frame qrHeaderText:(NSString *)qrHeaderText addAddressPrefix:(BOOL)addPrefix
 {
     self = [super initWithFrame:frame];
     
     if (self) {
         [self setupWithQRHeaderText:qrHeaderText];
+        self.shouldAddAddressPrefix = addPrefix;
     }
     return self;
 }
 
 - (void)setupWithQRHeaderText:(NSString *)qrHeaderText
 {
+    self.backgroundColor = [UIColor whiteColor];
+    
     UILabel *qrCodeHeaderLabel;
     if (qrHeaderText) {
         qrCodeHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 64)];
@@ -68,6 +72,15 @@ const float imageWidth = 190;
     self.qrCodeFooterLabel.userInteractionEnabled = YES;
     
     [self addSubview:self.qrCodeFooterLabel];
+    
+    self.doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    self.doneButton.backgroundColor = COLOR_BUTTON_BLUE;
+    self.doneButton.layer.cornerRadius = 4;
+    [self.doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    self.doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13];
+    [self.doneButton addTarget:self action:@selector(doneButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.doneButton];
+    self.doneButton.center = CGPointMake(self.center.x, self.frame.size.height - 100);
 }
 
 - (QRCodeGenerator *)qrCodeGenerator
@@ -82,7 +95,7 @@ const float imageWidth = 190;
 {
     _address = address;
     
-    self.qrCodeImageView.image = [self.qrCodeGenerator qrImageFromAddress:address];
+    self.qrCodeImageView.image = self.shouldAddAddressPrefix ? [self.qrCodeGenerator qrImageFromAddress:address] : [self.qrCodeGenerator createQRImageFromString:address];
     self.qrCodeFooterLabel.text = address;
 }
 
@@ -90,6 +103,11 @@ const float imageWidth = 190;
 {
     [UIPasteboard generalPasteboard].string = self.address;
     [self animateTextOfLabel:self.qrCodeFooterLabel toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.qrCodeFooterLabel];
+}
+
+- (void)doneButtonClicked
+{
+    [self.doneButtonDelegate doneButtonClicked];
 }
 
 - (void)animateTextOfLabel:(UILabel *)labelToAnimate toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver

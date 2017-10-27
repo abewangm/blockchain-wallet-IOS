@@ -16,18 +16,42 @@
 #import "BCAddressSelectionView.h"
 #import "BCLine.h"
 #import "Blockchain-Swift.h"
+#import "BCContactRequestView.h"
+#import "Contact.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "BCTotalAmountView.h"
+#import "BCDescriptionView.h"
+#import "BCAmountInputView.h"
+#import "UILabel+Animations.h"
+
+#ifdef ENABLE_CONTACTS
+#define BOTTOM_CONTAINER_HEIGHT_PARTIAL 151
+#else
+#define BOTTOM_CONTAINER_HEIGHT_PARTIAL 101
+#endif
+#define BOTTOM_CONTAINER_HEIGHT_FULL 201
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT 220
+#define BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S 210
+#define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
 @property (nonatomic) BOOL firstLoading;
+@property (nonatomic) BCNavigationController *contactRequestNavigationController;
+@property (nonatomic) Contact *fromContact;
+@property (nonatomic) BCLine *lineBelowFromField;
+@property (nonatomic) BCSecureTextField *descriptionField;
+@property (nonatomic) UIView *descriptionContainerView;
+@property (nonatomic) BCAmountInputView *amountInputView;
+@property (nonatomic) BCDescriptionView *view;
 @end
 
 @implementation ReceiveCoinsViewController
 
 @synthesize activeKeys;
+@dynamic view;
 
 Boolean didClickAccount = NO;
 int clickedAccount;
@@ -42,38 +66,34 @@ NSString *detailLabel;
 
 #pragma mark - Lifecycle
 
+- (void)loadView
+{
+    self.view = [[BCDescriptionView alloc] init];
+    if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) self.view.descriptionCellHeight = BOTTOM_CONTAINER_HEIGHT_FULL - 2;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.firstLoading = YES;
     
-    self.view.frame = CGRectMake(0, 0, app.window.frame.size.width,
-                                 app.window.frame.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_FOOTER_HEIGHT);
+    self.view.frame = CGRectMake(0,
+                                 TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET - DEFAULT_HEADER_HEIGHT,
+                                 app.window.frame.size.width,
+                                 app.window.frame.size.height - (TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET) - DEFAULT_FOOTER_HEIGHT);
     
+    [self setupAmountInputAccessoryView];
+    [self setupTotalAmountView];
     [self setupBottomViews];
     [self selectDefaultDestination];
     
-    float imageWidth = 160;
+    float imageWidth = 120;
     
-    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 52, imageWidth, imageWidth)];
+    qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 35, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self setupTapGestureForMainQR];
-    
-    // iPhone4/4S
-    if (IS_USING_SCREEN_SIZE_4S) {
-        int reduceImageSizeBy = 40;
-        
-        // Smaller QR Code Image
-        qrCodeMainImageView.frame = CGRectMake(qrCodeMainImageView.frame.origin.x + reduceImageSizeBy / 2,
-                                               qrCodeMainImageView.frame.origin.y - 10,
-                                               qrCodeMainImageView.frame.size.width - reduceImageSizeBy,
-                                               qrCodeMainImageView.frame.size.height - reduceImageSizeBy);
-    }
-    
-    btcAmountField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    fiatAmountField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
     
     [self reload];
     
@@ -87,7 +107,7 @@ NSString *detailLabel;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    app.mainTitleLabel.text = BC_STRING_RECEIVE;
+    app.mainTitleLabel.text = BC_STRING_REQUEST;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -104,66 +124,96 @@ NSString *detailLabel;
     return _qrCodeGenerator;
 }
 
+- (void)setupTotalAmountView
+{
+    self.view.topView = [[BCTotalAmountView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TOTAL_AMOUNT_VIEW_HEIGHT) color:COLOR_BLOCKCHAIN_AQUA amount:0];
+    self.view.topView.hidden = YES;
+    [self.view addSubview:self.view.topView];
+}
+
+- (void)setupAmountInputAccessoryView
+{
+    amountKeyboardAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
+    amountKeyboardAccessoryView.backgroundColor = [UIColor whiteColor];;
+    
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [amountKeyboardAccessoryView addSubview:topLine];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:BUTTON_HEIGHT - 1];
+    [amountKeyboardAccessoryView addSubview:bottomLine];
+    
+    doneButton = [[UIButton alloc] initWithFrame:CGRectMake(amountKeyboardAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(doneButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [amountKeyboardAccessoryView addSubview:doneButton];
+}
+
+- (UIView *)getTextViewInputAccessoryView
+{
+    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, BUTTON_HEIGHT)];
+    inputAccessoryView.backgroundColor = [UIColor whiteColor];;
+    
+    BCLine *topLine = [[BCLine alloc] initWithYPosition:0];
+    [inputAccessoryView addSubview:topLine];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:BUTTON_HEIGHT];
+    [inputAccessoryView addSubview:bottomLine];
+    
+    UIButton *doneDescriptionButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.frame.size.width - 68, 0, 60, BUTTON_HEIGHT)];
+    doneDescriptionButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:13.0];
+    [doneDescriptionButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [doneDescriptionButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
+    [doneDescriptionButton addTarget:self action:@selector(endEditingDescription) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccessoryView addSubview:doneDescriptionButton];
+    
+    return inputAccessoryView;
+}
+
 - (void)setupBottomViews
 {
-    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - BUTTON_HEIGHT, self.view.frame.size.width, BUTTON_HEIGHT)];
-    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [requestButton setTitle:BC_STRING_REQUEST forState:UIControlStateNormal];
-    [requestButton.titleLabel setFont:[UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? [[NSNumber numberWithFloat:FONT_SIZE_LARGE] longLongValue] - [[NSNumber numberWithFloat:3.0] longLongValue] : FONT_SIZE_LARGE]];
-    [self.view addSubview:requestButton];
-    [requestButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    CGFloat containerHeightPlusButtonSpace = IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT;
     
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 100 - requestButton.frame.size.height, self.view.frame.size.width, 100)];
+    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.origin.y + self.view.frame.size.height - containerHeightPlusButtonSpace, self.view.frame.size.width, BOTTOM_CONTAINER_HEIGHT_PARTIAL)];
+    self.bottomContainerView.clipsToBounds = YES;
     [self.view addSubview:self.bottomContainerView];
     
-    BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 15, 1)];
-    BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.view.frame.size.width - 15, 1)];
+    BCLine *lineAboveAmounts = [[BCLine alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];
     lineAboveAmounts.backgroundColor = COLOR_LINE_GRAY;
-    lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineAboveAmounts];
+
+    BCLine *lineBelowAmounts = [[BCLine alloc] initWithFrame:CGRectMake(15, 50, self.view.frame.size.width - 15, 1)];
+    lineBelowAmounts.backgroundColor = COLOR_LINE_GRAY;
     [self.bottomContainerView addSubview:lineBelowAmounts];
     
-    CGFloat labelWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 48 : 42;
-    receiveBtcLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 15, labelWidth, 21)];
-    receiveBtcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    receiveBtcLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
-    [self.bottomContainerView addSubview:receiveBtcLabel];
+    BCLine *lineBelowToField = [[BCLine alloc] initWithFrame:CGRectMake(15, lineBelowAmounts.frame.origin.y + 50, self.view.frame.size.width - 15, 1)];
+    lineBelowToField.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineBelowToField];
     
-    // Field width will be space remaining after subtracting widths of all other subviews and spacing in the row
-    CGFloat fieldWidth = (self.view.frame.size.width - labelWidth*2 - 8*6)/2;
-    self.receiveBtcField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveBtcLabel.frame.origin.x + receiveBtcLabel.frame.size.width + 8, 10, fieldWidth, 30)];
-    self.receiveBtcField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    self.receiveBtcField.placeholder = [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    self.receiveBtcField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.receiveBtcField.inputAccessoryView = amountKeyboardAccessoryView;
-    self.receiveBtcField.delegate = self;
-    self.receiveBtcField.textColor = COLOR_TEXT_DARK_GRAY;
-    [self.bottomContainerView addSubview:self.receiveBtcField];
+    self.lineBelowFromField = [[BCLine alloc] initWithFrame:CGRectMake(0, lineBelowToField.frame.origin.y + 50, self.view.frame.size.width, 1)];
+    self.lineBelowFromField.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:self.lineBelowFromField];
     
-    receiveFiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.receiveBtcField.frame.origin.x + self.receiveBtcField.frame.size.width + 8, 15, labelWidth, 21)];
-    receiveFiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    receiveFiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-    [self.bottomContainerView addSubview:receiveFiatLabel];
+    BCLine *lineBelowDescripton = [[BCLine alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + 50, self.view.frame.size.width, 1)];
+    lineBelowDescripton.backgroundColor = COLOR_LINE_GRAY;
+    [self.bottomContainerView addSubview:lineBelowDescripton];
     
-    CGFloat receiveFiatFieldOriginX = receiveFiatLabel.frame.origin.x + receiveFiatLabel.frame.size.width + 8;
-    self.receiveFiatField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(receiveFiatFieldOriginX, 10, fieldWidth, 30)];
-    self.receiveFiatField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    self.receiveFiatField.placeholder = [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
-    self.receiveFiatField.textColor = COLOR_TEXT_DARK_GRAY;
-    self.receiveFiatField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.receiveFiatField.inputAccessoryView = amountKeyboardAccessoryView;
-    self.receiveFiatField.delegate = self;
-    [self.bottomContainerView addSubview:self.receiveFiatField];
+    BCAmountInputView *amountView = [[BCAmountInputView alloc] init];
+    amountView.btcLabel.text = app.latestResponse.symbol_btc.symbol;
+    amountView.btcField.inputAccessoryView = amountKeyboardAccessoryView;
+    amountView.btcField.delegate = self;
+    amountView.fiatField.inputAccessoryView = amountKeyboardAccessoryView;
+    amountView.fiatField.delegate = self;
+    [self.bottomContainerView addSubview:amountView];
+    self.amountInputView = amountView;
     
-    UILabel *whereLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineAboveAmounts.frame.origin.x, 65, 50, 21)];
-    whereLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    whereLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    whereLabel.text = BC_STRING_WHERE;
-    whereLabel.adjustsFontSizeToFitWidth = YES;
-    [self.bottomContainerView addSubview:whereLabel];
+    UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowAmounts.frame.origin.x, 65, 50, 21)];
+    toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    toLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    toLabel.text = BC_STRING_TO;
+    toLabel.adjustsFontSizeToFitWidth = YES;
+    [self.bottomContainerView addSubview:toLabel];
     
     UIButton *selectDestinationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35, 60, 35, 30)];
     selectDestinationButton.adjustsImageWhenHighlighted = NO;
@@ -171,26 +221,86 @@ NSString *detailLabel;
     [selectDestinationButton addTarget:self action:@selector(selectDestination) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomContainerView addSubview:selectDestinationButton];
     
-    self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(whereLabel.frame.origin.x + whereLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (whereLabel.frame.origin.x + whereLabel.frame.size.width + 16), 21)];
-    self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    self.receiveToLabel = [[UILabel alloc] initWithFrame:CGRectMake(toLabel.frame.origin.x + toLabel.frame.size.width + 16, 65, selectDestinationButton.frame.origin.x - (toLabel.frame.origin.x + toLabel.frame.size.width + 16), 21)];
+    self.receiveToLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     self.receiveToLabel.textColor = COLOR_TEXT_DARK_GRAY;
     [self.bottomContainerView addSubview:self.receiveToLabel];
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
-    [self.receiveToLabel addGestureRecognizer:tapGesture];
+    UITapGestureRecognizer *tapGestureReceiveTo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDestination)];
+    [self.receiveToLabel addGestureRecognizer:tapGestureReceiveTo];
     self.receiveToLabel.userInteractionEnabled = YES;
     
-    CGFloat keyboardFieldWidth = fieldWidth - doneButton.frame.size.width/2;
-    btcLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    btcAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    fiatAmountField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-
-    [btcLabel changeWidth:receiveBtcLabel.frame.size.width];
-    btcAmountField.frame = CGRectMake(btcLabel.frame.origin.x + btcLabel.frame.size.width + 8, btcAmountField.frame.origin.y, keyboardFieldWidth, btcAmountField.frame.size.height);
-    fiatLabel.frame = CGRectMake(btcAmountField.frame.origin.x + keyboardFieldWidth + 8, fiatLabel.frame.origin.y, receiveFiatLabel.frame.size.width, fiatLabel.frame.size.height);
-    fiatAmountField.frame = CGRectMake(fiatLabel.frame.origin.x + fiatLabel.frame.size.width + 8, fiatAmountField.frame.origin.y, keyboardFieldWidth, fiatAmountField.frame.size.height);
+    UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineBelowToField.frame.origin.x, lineBelowToField.frame.origin.y + 15, 50, 21)];
+    fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fromLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    fromLabel.text = BC_STRING_FROM;
+    fromLabel.adjustsFontSizeToFitWidth = YES;
+    [self.bottomContainerView addSubview:fromLabel];
+    
+    self.receiveFromLabel = [[UILabel alloc] initWithFrame:CGRectMake(fromLabel.frame.origin.x + fromLabel.frame.size.width + 16, lineBelowToField.frame.origin.y + 15, selectDestinationButton.frame.origin.x - (fromLabel.frame.origin.x + fromLabel.frame.size.width + 16), 21)];
+    self.receiveFromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
+    self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT;
+    [self.bottomContainerView addSubview:self.receiveFromLabel];
+    UITapGestureRecognizer *tapGestureReceiveFrom = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectFromClicked)];
+    [self.receiveFromLabel addGestureRecognizer:tapGestureReceiveFrom];
+    self.receiveFromLabel.userInteractionEnabled = YES;
+    
+    self.selectFromButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 35,  lineBelowToField.frame.origin.y + 10, 35, 30)];
+    self.selectFromButton.adjustsImageWhenHighlighted = NO;
+    [self.selectFromButton setImage:[UIImage imageNamed:@"disclosure"] forState:UIControlStateNormal];
+    [self.selectFromButton addTarget:self action:@selector(selectFromClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.selectFromButton.hidden = YES;
+    [self.bottomContainerView addSubview:self.selectFromButton];
+    
+    CGFloat whatsThisButtonWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100;
+    self.whatsThisButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - whatsThisButtonWidth, lineBelowToField.frame.origin.y + 15, whatsThisButtonWidth, 21)];
+    self.whatsThisButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    [self.whatsThisButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [self.whatsThisButton setTitle:BC_STRING_WHATS_THIS forState:UIControlStateNormal];
+    [self.whatsThisButton addTarget:self action:@selector(whatsThisButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomContainerView addSubview:self.whatsThisButton];
+    
+    self.descriptionContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height, self.view.frame.size.width, 49)];
+    self.descriptionContainerView.backgroundColor = [UIColor whiteColor];
+    self.descriptionContainerView.clipsToBounds = YES;
+    self.view.descriptionTextView = [self.view configureTextViewWithFrame:CGRectMake(self.view.frame.size.width/2 + 8, 15, self.view.frame.size.width/2 - 16, self.view.descriptionCellHeight - 30)];
+    self.view.descriptionTextView.hidden = YES;
+    [self.descriptionContainerView addSubview:self.view.descriptionTextView];
+    [self.bottomContainerView addSubview:self.descriptionContainerView];
+    
+    self.view.descriptionTextView.inputAccessoryView = [self getTextViewInputAccessoryView];
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, self.view.frame.size.width/2 - 15, 21)];
+    descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    descriptionLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    descriptionLabel.text = BC_STRING_DESCRIPTION;
+    [self.descriptionContainerView addSubview:descriptionLabel];
+    
+    self.descriptionField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 + 16, 15, self.view.frame.size.width/2 - 16 - 15, 20)];
+    self.descriptionField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    self.descriptionField.textColor = COLOR_TEXT_DARK_GRAY;
+    self.descriptionField.textAlignment = NSTextAlignmentRight;
+    self.descriptionField.returnKeyType = UIReturnKeyDone;
+    self.descriptionField.delegate = self;
+    [self.descriptionContainerView addSubview:self.descriptionField];
+    
+    CGFloat spacing = 12;
+    CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
+    UIButton *requestButton = [[UIButton alloc] initWithFrame:CGRectMake(0, requestButtonOriginY, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
+    requestButton.center = CGPointMake(self.bottomContainerView.center.x, requestButton.center.y);
+    [requestButton setTitle:BC_STRING_REQUEST_PAYMENT forState:UIControlStateNormal];
+    requestButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    requestButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    requestButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [requestButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [requestButton addTarget:self action:@selector(requestButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:requestButton];
+    
     [doneButton setTitle:BC_STRING_DONE forState:UIControlStateNormal];
     doneButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)selectDefaultDestination
@@ -219,7 +329,9 @@ NSString *detailLabel;
 - (void)reload
 {
     [self reloadAddresses];
-    
+#ifdef ENABLE_CONTACTS
+    [self resetContactInfo];
+#endif
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (!mainAddress) {
@@ -236,14 +348,19 @@ NSString *detailLabel;
     self.activeKeys = [app.wallet activeLegacyAddresses];
 }
 
+- (void)resetContactInfo
+{
+    [self didSelectContact:nil];
+    
+    self.view.note = nil;
+    self.descriptionField.text = nil;
+}
+
 - (void)reloadLocalAndBtcSymbolsFromLatestResponse
 {
     if (app.latestResponse.symbol_local && app.latestResponse.symbol_btc) {
-        fiatLabel.text = app.latestResponse.symbol_local.code;
-        receiveFiatLabel.text = app.latestResponse.symbol_local.code;
-
-        btcLabel.text = app.latestResponse.symbol_btc.symbol;
-        receiveBtcLabel.text = app.latestResponse.symbol_btc.symbol;
+        self.amountInputView.fiatLabel.text = app.latestResponse.symbol_local.code;
+        self.amountInputView.btcLabel.text = app.latestResponse.symbol_btc.symbol;
     }
 }
 
@@ -266,30 +383,38 @@ NSString *detailLabel;
 
 - (void)setupHeaderView
 {
-    // Show table header with the QR code of an address from the default account
-    float imageWidth = qrCodeMainImageView.frame.size.width;
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.bottomContainerView.frame.origin.y)];
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageWidth + 75 + 4)];
+    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 42)];
+    instructionsLabel.textAlignment = NSTextAlignmentCenter;
+    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    instructionsLabel.numberOfLines = 0;
+    instructionsLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL];
+    instructionsLabel.text = IS_USING_SCREEN_SIZE_4S ? nil : BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
+    [instructionsLabel sizeToFit];
+    if (instructionsLabel.frame.size.height > 40) [instructionsLabel changeHeight:40];
+    instructionsLabel.center = CGPointMake(self.view.frame.size.width/2, instructionsLabel.center.y);
+    [self.headerView addSubview:instructionsLabel];
     
     [self.view addSubview:self.headerView];
     
-    UILabel *instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, self.view.frame.size.width - 50, 40)];
-    instructionsLabel.font = [[UIScreen mainScreen] bounds].size.height < 568 ? [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_EXTRA_SMALL] : [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-    instructionsLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    instructionsLabel.textAlignment = NSTextAlignmentCenter;
-    instructionsLabel.text = BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
-    instructionsLabel.numberOfLines = 0;
-    instructionsLabel.adjustsFontSizeToFitWidth = YES;
-    instructionsLabel.center = CGPointMake(self.view.center.x, 25);
-    [self.headerView addSubview:instructionsLabel];
-    
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
+        
+        BOOL isUsing4SScreenSize = IS_USING_SCREEN_SIZE_4S;
         
         qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
         
+        if (!isUsing4SScreenSize) {
+            [qrCodeMainImageView changeYPosition:57];
+            instructionsLabel.center = CGPointMake(self.headerView.center.x, qrCodeMainImageView.frame.origin.y/2);
+        } else {
+            [qrCodeMainImageView changeYPosition:0];
+        }
+        
         [self.headerView addSubview:qrCodeMainImageView];
         
-        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imageWidth + 55, self.view.frame.size.width - 40, 20)];
+        CGFloat yOffset = isUsing4SScreenSize ? 4 : 16;
+        mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + yOffset, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
         mainAddressLabel.textAlignment = NSTextAlignmentCenter;
@@ -331,11 +456,11 @@ NSString *detailLabel;
 - (uint64_t)getInputAmountInSatoshi
 {
     if ([self shouldUseBtcField]) {
-        return [app.wallet parseBitcoinValueFromTextField:btcAmountField];
+        return [app.wallet parseBitcoinValueFromTextField:self.amountInputView.btcField];
     } else {
-        NSString *language = fiatAmountField.textInputMode.primaryLanguage;
+        NSString *language = self.amountInputView.fiatField.textInputMode.primaryLanguage;
         NSLocale *locale = [language isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:language] : [NSLocale currentLocale];
-        NSString *requestedAmountString = [fiatAmountField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        NSString *requestedAmountString = [self.amountInputView.fiatField.text stringByReplacingOccurrencesOfString:[locale objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         if (![requestedAmountString containsString:@"."]) {
             requestedAmountString = [requestedAmountString stringByReplacingOccurrencesOfString:@"," withString:@"."];
         }
@@ -352,14 +477,14 @@ NSString *detailLabel;
 {
     BOOL shouldUseBtcField = YES;
     
-    if ([btcAmountField isFirstResponder]) {
+    if ([self.amountInputView.btcField isFirstResponder]) {
         shouldUseBtcField = YES;
-    } else if ([fiatAmountField isFirstResponder]) {
+    } else if ([self.amountInputView.fiatField isFirstResponder]) {
         shouldUseBtcField = NO;
         
-    } else if (self.lastSelectedField == btcAmountField) {
+    } else if (self.lastSelectedField == self.amountInputView.btcField) {
         shouldUseBtcField = YES;
-    } else if (self.lastSelectedField == fiatAmountField) {
+    } else if (self.lastSelectedField == self.amountInputView.fiatField) {
         shouldUseBtcField = NO;
     }
     
@@ -374,13 +499,10 @@ NSString *detailLabel;
 - (void)doCurrencyConversionWithAmount:(uint64_t)amount
 {
     if ([self shouldUseBtcField]) {
-        fiatAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
+        self.amountInputView.fiatField.text = [NSNumberFormatter formatAmount:amount localCurrency:YES];
     } else {
-        btcAmountField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
+        self.amountInputView.btcField.text = [NSNumberFormatter formatAmount:amount localCurrency:NO];
     }
-    
-    self.receiveFiatField.text = fiatAmountField.text;
-    self.receiveBtcField.text = btcAmountField.text;
 }
 
 - (NSString *)getKey:(NSIndexPath*)indexPath
@@ -391,6 +513,12 @@ NSString *detailLabel;
         key = [activeKeys objectAtIndex:[indexPath row]];
     
     return key;
+}
+
+- (void)updateAmounts
+{
+    [self setQRPayment];
+    [self setTotalAmountViewAmount];
 }
 
 - (void)setQRPayment
@@ -406,28 +534,38 @@ NSString *detailLabel;
     [self doCurrencyConversionWithAmount:amount];
 }
 
-- (void)animateTextOfLabel:(UILabel *)labelToAnimate fromText:(NSString *)originalText toIntermediateText:(NSString *)intermediateText speed:(float)speed gestureReceiver:(UIView *)gestureReceiver
+- (void)setTotalAmountViewAmount
 {
-    gestureReceiver.userInteractionEnabled = NO;
+    BCTotalAmountView *totalAmountView = (BCTotalAmountView *)self.view.topView;
+    [totalAmountView updateLabelsWithAmount:[self getInputAmountInSatoshi]];
+}
+
+- (void)changeTopView:(BOOL)shouldShowQR
+{
+    UIView *viewToHide = shouldShowQR ? self.view.topView : self.headerView;
+    UIView *viewToShow = shouldShowQR ? self.headerView : self.view.topView;
+    CGFloat newContainerYPosition = shouldShowQR ? self.view.frame.origin.y + self.view.frame.size.height - (IS_USING_SCREEN_SIZE_4S ? BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S : BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_DEFAULT) - app.tabControllerManager.tabViewController.assetControlContainer.frame.size.height : self.view.topView.frame.size.height;
+    
+    viewToShow.alpha = 0;
+    viewToShow.hidden = NO;
+    
+    viewToHide.alpha = 1;
+    viewToHide.hidden = NO;
+    
+    CGFloat newContainerHeight = shouldShowQR ? BOTTOM_CONTAINER_HEIGHT_PARTIAL : BOTTOM_CONTAINER_HEIGHT_FULL;
+    CGFloat newLineXPosition = shouldShowQR ? 0 : 15;
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        labelToAnimate.alpha = 0.0;
+        viewToHide.alpha = 0;
+        [self.bottomContainerView changeYPosition:newContainerYPosition];
+        [self.bottomContainerView changeHeight:newContainerHeight];
+        [self.lineBelowFromField changeXPosition:newLineXPosition];
     } completion:^(BOOL finished) {
+        
+        viewToHide.hidden = YES;
+        
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            labelToAnimate.text = intermediateText;
-            labelToAnimate.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(speed * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                    labelToAnimate.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-                        labelToAnimate.text = originalText;
-                        labelToAnimate.alpha = 1.0;
-                        gestureReceiver.userInteractionEnabled = YES;
-                    }];
-                }];
-            });
+            viewToShow.alpha = 1;
         }];
     }];
 }
@@ -470,7 +608,7 @@ NSString *detailLabel;
 {
     if ([mainAddress isKindOfClass:[NSString class]]) {
         [UIPasteboard generalPasteboard].string = mainAddress;
-        [self animateTextOfLabel:mainAddressLabel fromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
+        [mainAddressLabel animateFromText:mainAddress toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:qrCodeMainImageView];
     } else {
         [app standardNotifyAutoDismissingController:BC_STRING_ERROR_COPYING_TO_CLIPBOARD];
     }
@@ -478,7 +616,7 @@ NSString *detailLabel;
 
 - (NSString*)formatPaymentRequestWithAmount:(NSString *)amount url:(NSString*)url
 {
-    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_ARGUMENT_ARGUMENT, amount, url];
+    return [NSString stringWithFormat:BC_STRING_PAYMENT_REQUEST_BITCOIN_ARGUMENT_ARGUMENT, amount, url];
 }
 
 - (NSString*)formatPaymentRequestHTML:(NSString*)url
@@ -512,35 +650,22 @@ NSString *detailLabel;
     [app closeModalWithTransition:kCATransitionFade];
 }
 
-- (void)showKeyboard
-{
-    // Select the entry field
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        if ([self.receiveBtcField isFirstResponder]) {
-            [btcAmountField becomeFirstResponder];
-        } else if ([self.receiveFiatField isFirstResponder]){
-            [fiatAmountField becomeFirstResponder];
-        } else {
-            [labelTextField becomeFirstResponder];
-        }
-    });
-}
-
 - (void)hideKeyboardForced
 {
     // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
-    [fiatAmountField becomeFirstResponder];
+    [self.amountInputView.fiatField becomeFirstResponder];
     [self hideKeyboard];
 }
 
 - (void)hideKeyboard
 {
-    [fiatAmountField resignFirstResponder];
-    [btcAmountField resignFirstResponder];
     [labelTextField resignFirstResponder];
-    [self.receiveFiatField resignFirstResponder];
-    [self.receiveBtcField resignFirstResponder];
+    [self.descriptionField resignFirstResponder];
+    [self.amountInputView hideKeyboard];
+    
+    self.view.scrollEnabled = NO;
+    [self.view scrollRectToVisible:CGRectZero animated:YES];
+    self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
 }
 
 - (void)alertUserOfPaymentWithMessage:(NSString *)messageString showBackupReminder:(BOOL)showBackupReminder;
@@ -550,8 +675,8 @@ NSString *detailLabel;
         
         if (showBackupReminder) {
             [app showBackupReminder:YES];
-        } else if ([btcAmountField isFirstResponder] || [fiatAmountField isFirstResponder]) {
-            [self showKeyboard];
+        } else if ([self.amountInputView.btcField isFirstResponder] || [self.amountInputView.fiatField isFirstResponder]) {
+            [self.lastSelectedField becomeFirstResponder];
         }
         
     }]];
@@ -575,22 +700,34 @@ NSString *detailLabel;
     
     [[NSNotificationCenter defaultCenter] addObserver:alertForWatchOnly selector:@selector(autoDismiss) name:NOTIFICATION_KEY_RELOAD_TO_DISMISS_VIEWS object:nil];
     
-    [app.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:alertForWatchOnly animated:YES completion:nil];
 }
 
 - (void)storeRequestedAmount
 {
-    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:btcAmountField];
+    self.lastRequestedAmount = [app.wallet parseBitcoinValueFromTextField:self.amountInputView.btcField];
 }
 
 - (void)updateUI
 {
     if (self.firstLoading) return; // UI will be updated when viewDidLoad finishes
     
+    if (self.bottomContainerView.frame.origin.y == 0) {
+        [self.bottomContainerView changeYPosition:self.view.frame.size.height - BOTTOM_CONTAINER_HEIGHT_PLUS_BUTTON_SPACE_4S];
+    }
+    
+    if (app.wallet.contacts.count > 0) {
+        self.selectFromButton.hidden = NO;
+        self.whatsThisButton.hidden = YES;
+    } else {
+        self.selectFromButton.hidden = YES;
+        self.whatsThisButton.hidden = NO;
+    }
+    
     self.receiveToLabel.text = mainLabel;
     mainAddressLabel.text = mainAddress;
     
-    [self setQRPayment];
+    [self updateAmounts];
 }
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder
@@ -610,10 +747,120 @@ NSString *detailLabel;
     
     [self hideKeyboard];
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeReceiveTo];
+    SelectMode selectMode = self.fromContact ? SelectModeReceiveFromContact : SelectModeReceiveTo;
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode];
     addressSelectionView.delegate = self;
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
+}
+
+- (void)whatsThisButtonClicked
+{
+    UIView *introducingContactsView = [[UIView alloc] initWithFrame:self.view.frame];
+    introducingContactsView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_LARGE];
+    titleLabel.textColor = COLOR_BLOCKCHAIN_MEDIUM_BLUE;
+    titleLabel.text = BC_STRING_INTRODUCING_CONTACTS_TITLE;
+    [titleLabel sizeToFit];
+    titleLabel.center = introducingContactsView.center;
+    [introducingContactsView addSubview:titleLabel];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(25, titleLabel.frame.origin.y - 100, introducingContactsView.frame.size.width - 50, 100)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = [UIImage imageNamed:@"contacts_splash"];
+    [introducingContactsView addSubview:imageView];
+    
+    float onePixelHeight = 1.0/[UIScreen mainScreen].scale;
+    UIView *onePixelLine = [[UIView alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y + titleLabel.frame.size.height + 16, introducingContactsView.frame.size.width - 50, onePixelHeight)];
+    onePixelLine.center = CGPointMake(introducingContactsView.center.x, onePixelLine.center.y);
+    onePixelLine.backgroundColor = COLOR_LINE_GRAY;
+    [introducingContactsView addSubview:onePixelLine];
+    
+    UILabel *descriptionLabelTop = [[UILabel alloc] initWithFrame:CGRectMake(0, onePixelLine.frame.origin.y + 16, self.view.frame.size.width - 30, 0)];
+    descriptionLabelTop.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    descriptionLabelTop.textColor = COLOR_TEXT_GRAY;
+    descriptionLabelTop.textAlignment = NSTextAlignmentCenter;
+    descriptionLabelTop.numberOfLines = 0;
+    descriptionLabelTop.textColor = COLOR_LIGHT_GRAY;
+    descriptionLabelTop.text = BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_TOP;
+    [descriptionLabelTop sizeToFit];
+    descriptionLabelTop.center = CGPointMake(introducingContactsView.center.x, descriptionLabelTop.center.y);
+    [introducingContactsView addSubview:descriptionLabelTop];
+    
+    UILabel *descriptionLabelBottom = [[UILabel alloc] initWithFrame:CGRectMake(0, descriptionLabelTop.frame.origin.y + descriptionLabelTop.frame.size.height + 8, 0, 0)];
+    descriptionLabelBottom.font = descriptionLabelTop.font;
+    descriptionLabelBottom.textColor = COLOR_DARK_GRAY;
+    descriptionLabelBottom.text = BC_STRING_INTRODUCING_CONTACTS_DESCRIPTION_BOTTOM;
+    [descriptionLabelBottom sizeToFit];
+    descriptionLabelBottom.center = CGPointMake(introducingContactsView.center.x, descriptionLabelBottom.center.y);
+    [introducingContactsView addSubview:descriptionLabelBottom];
+
+    UIButton *dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(15, app.window.frame.size.height - BUTTON_HEIGHT - 16, introducingContactsView.frame.size.width - 30, BUTTON_HEIGHT)];
+    [dismissButton setTitle:BC_STRING_ILL_DO_THIS_LATER forState:UIControlStateNormal];
+    [dismissButton setTitleColor:COLOR_MEDIUM_GRAY forState:UIControlStateNormal];
+    dismissButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    dismissButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [dismissButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    [introducingContactsView addSubview:dismissButton];
+    
+    UIButton *getStartedButton = [[UIButton alloc] initWithFrame:CGRectMake(15, dismissButton.frame.origin.y - dismissButton.frame.size.height - 8, introducingContactsView.frame.size.width - 30, BUTTON_HEIGHT)];
+    getStartedButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    [getStartedButton setTitle:BC_STRING_GET_STARTED forState:UIControlStateNormal];
+    getStartedButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    getStartedButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [getStartedButton addTarget:self action:@selector(showContacts) forControlEvents:UIControlEventTouchUpInside];
+    [introducingContactsView addSubview:getStartedButton];
+    
+    BCModalViewController *modalViewController = [BCModalViewController new];
+    modalViewController.view = introducingContactsView;
+    
+    [UIApplication sharedApplication].statusBarStyle = UIBarStyleDefault;
+    
+    [app.window.rootViewController presentViewController:modalViewController animated:YES completion:nil];
+}
+
+- (void)selectFromClicked
+{
+    if (![app.wallet isInitialized]) {
+        DLog(@"Tried to access request button when not initialized!");
+        return;
+    }
+    
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
+    addressSelectionView.previouslySelectedContact = self.fromContact;
+    addressSelectionView.delegate = self;
+    [addressSelectionView reloadTableView];
+    
+    [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
+}
+
+- (void)requestButtonClicked
+{
+    if (self.fromContact) {
+        
+        uint64_t amount = [self getInputAmountInSatoshi];
+        
+        if (amount == 0) {
+            [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
+            return;
+        }
+        
+        id accountOrAddress;
+        if (didClickAccount) {
+            accountOrAddress = [NSNumber numberWithInt:clickedAccount];
+        } else {
+            accountOrAddress = self.clickedAddress;
+
+        }
+        
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_CREATING_REQUEST];
+        [app.wallet sendPaymentRequest:self.fromContact.identifier amount:amount requestId:nil note:self.view.note initiatorSource:accountOrAddress];
+    } else {
+        [self share];
+    }
 }
 
 - (void)share
@@ -635,22 +882,53 @@ NSString *detailLabel;
     
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypePostToFacebook];
     
-    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_SUBJECT forKey:@"subject"];
+    [activityViewController setValue:BC_STRING_PAYMENT_REQUEST_BITCOIN_SUBJECT forKey:@"subject"];
     
-    // Keyboard is behaving a little strangely because of UITextFields in the Keyboard Accessory View
-    // This makes it work correctly - resign first Responder for UITextFields inside the Accessory View...
-    [btcAmountField resignFirstResponder];
-    [fiatAmountField resignFirstResponder];
+    [self.amountInputView.btcField resignFirstResponder];
+    [self.amountInputView.fiatField resignFirstResponder];
     
-    [app.tabViewController presentViewController:activityViewController animated:YES completion:nil];
+    [app.tabControllerManager.tabViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)clearAmounts
 {
-    btcAmountField.text = nil;
-    fiatAmountField.text = nil;
-    self.receiveBtcField.text = nil;
-    self.receiveFiatField.text = nil;
+    self.amountInputView.btcField.text = nil;
+    self.amountInputView.fiatField.text = nil;
+}
+
+- (void)dismiss
+{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showContacts
+{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [app.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [app contactsClicked:nil];
+    }];
+}
+
+- (void)endEditingDescription
+{
+    [self.view endEditingDescription];
+    
+    self.descriptionField.hidden = NO;
+    self.view.descriptionTextView.hidden = YES;
+
+    self.descriptionField.text = self.view.note;
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [self resetDescriptionContainerView];
+    }];
+}
+
+- (void)resetDescriptionContainerView
+{
+    [self.descriptionContainerView changeYPosition:self.lineBelowFromField.frame.origin.y + self.lineBelowFromField.frame.size.height];
+    [self.descriptionContainerView changeHeight:49];
 }
 
 # pragma mark - UITextField delegates
@@ -666,17 +944,29 @@ NSString *detailLabel;
         return NO;
     }
     
-    if (textField == self.receiveFiatField) {
-        [self showKeyboard];
-        return YES;
-    } else if (textField == self.receiveBtcField) {
-        [self showKeyboard];
-        return YES;
+    if (textField == self.amountInputView.fiatField || textField == self.amountInputView.btcField) {
+        self.lastSelectedField = textField;
+        
+        self.view.scrollEnabled = YES;
+        self.view.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + (self.view.frame.size.height - self.bottomContainerView.frame.origin.y + 50));
+        [self.view scrollRectToVisible:CGRectMake(0, self.bottomContainerView.frame.origin.y + self.amountInputView.frame.size.height + ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT, 1, 1) animated:YES];
     }
     
-    if (textField == fiatAmountField || textField == btcAmountField) {
-        self.lastSelectedField = textField; 
+    if (textField == self.descriptionField) {
+        
+        [self.view beginEditingDescription];
+        [self.view.descriptionTextView becomeFirstResponder];
+        self.view.descriptionTextView.hidden = NO;
+        self.descriptionField.hidden = YES;
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [self.descriptionContainerView changeYPosition:1];
+            [self.descriptionContainerView changeHeight:self.view.descriptionCellHeight];
+        }];
+
+        return NO;
     }
+    
     return YES;
 }
 
@@ -686,14 +976,14 @@ NSString *detailLabel;
         [self labelSaveClicked:nil];
         return YES;
     }
-    
+
     [textField resignFirstResponder];
     return YES;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == btcAmountField || textField == fiatAmountField) {
+    if (textField == self.amountInputView.btcField || textField == self.amountInputView.fiatField) {
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         NSArray  *points = [newString componentsSeparatedByString:@"."];
         NSLocale *locale = [textField.textInputMode.primaryLanguage isEqualToString:LOCALE_IDENTIFIER_AR] ? [NSLocale localeWithLocaleIdentifier:textField.textInputMode.primaryLanguage] : [NSLocale currentLocale];
@@ -711,7 +1001,7 @@ NSString *detailLabel;
         }
         
         // When entering amount in BTC, max 8 decimal places
-        if ([btcAmountField isFirstResponder]) {
+        if ([self.amountInputView.btcField isFirstResponder]) {
             // Max number of decimal places depends on bitcoin unit
             NSUInteger maxlength = [@(SATOSHI) stringValue].length - [@(SATOSHI / app.latestResponse.symbol_btc.conversion) stringValue].length;
             
@@ -730,7 +1020,7 @@ NSString *detailLabel;
         }
         
         // Fiat currencies have a max of 3 decimal places, most of them actually only 2. For now we will use 2.
-        else if ([fiatAmountField isFirstResponder]) {
+        else if ([self.amountInputView.fiatField isFirstResponder]) {
             if (points.count == 2) {
                 NSString *decimalString = points[1];
                 if (decimalString.length > 2) {
@@ -747,7 +1037,7 @@ NSString *detailLabel;
         
         uint64_t amountInSatoshi = 0;
 
-        if (textField == fiatAmountField) {
+        if (textField == self.amountInputView.fiatField) {
             // Convert input amount to internal value
             NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
             if (![amountString containsString:@"."]) {
@@ -762,7 +1052,7 @@ NSString *detailLabel;
         if (amountInSatoshi > BTC_LIMIT_IN_SATOSHI) {
             return NO;
         } else {
-            [self performSelector:@selector(setQRPayment) withObject:nil afterDelay:0.1f];
+            [self performSelector:@selector(updateAmounts) withObject:nil afterDelay:0.1f];
             return YES;
         }
     } else {
@@ -831,6 +1121,35 @@ NSString *detailLabel;
 - (void)didSelectWatchOnlyAddress:(NSString *)address
 {
     [self alertUserOfWatchOnlyAddress:address];
+}
+
+- (void)didSelectContact:(Contact *)contact
+{
+    if (contact && !contact.mdid) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_HAS_NOT_ACCEPTED_INVITATION_YET, contact.name] message:[NSString stringWithFormat:BC_STRING_CONTACT_ARGUMENT_MUST_ACCEPT_INVITATION, contact.name] preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+        [app.tabControllerManager.tabViewController presentViewController:errorAlert animated:YES completion:nil];
+    } else if (contact == self.fromContact || contact == nil) {
+        self.fromContact = nil;
+        self.receiveFromLabel.text = BC_STRING_SELECT_CONTACT_OPTIONAL;
+        self.receiveFromLabel.textColor = COLOR_LIGHT_GRAY;
+
+        [self changeTopView:YES];
+        
+    } else {
+        [app closeAllModals];
+        
+        self.descriptionField.placeholder = [NSString stringWithFormat:BC_STRING_SHARED_WITH_CONTACT_NAME_ARGUMENT, contact.name];
+        self.fromContact = contact;
+        self.receiveFromLabel.text = contact.name;
+        self.receiveFromLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        
+        if (self.view.topView.hidden) {
+            [self changeTopView:NO];
+        }
+    }
+    
+    [self resetDescriptionContainerView];
 }
 
 @end

@@ -32,7 +32,9 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 100, 100)];
+        CGFloat imageViewHeight = actionType == ActionTypeBuyEther ? self.frame.size.height - 32 : 100;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 100, imageViewHeight)];
         imageView.image = [UIImage imageNamed:imageName];
         [self addSubview:imageView];
         
@@ -47,16 +49,16 @@
             actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = actionColor;
         } else if (actionType == ActionTypeShowReceive) {
-            actionName = BC_STRING_RECEIVE;
+            actionName = BC_STRING_REQUEST;
             actionColor = COLOR_BLOCKCHAIN_AQUA;
             titleColor = actionColor;
         } else if (actionType == ActionTypeBuyBitcoin) {
             actionName = BC_STRING_BUY_BITCOIN;
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
             titleColor = actionColor;
-        } else if (actionType == ActionTypeBuyBitcoinAvailableNow) {
-            actionName = BC_STRING_BUY_BITCOIN;
-            actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+        } else if (actionType == ActionTypeBuyEther) {
+            actionName = BC_STRING_GET_STARTED_WITH_ETHER;
+            actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = COLOR_BLOCKCHAIN_BLUE;
         }
         
@@ -69,7 +71,7 @@
         [titleLabel sizeToFit];
         [self addSubview:titleLabel];
         
-        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, imageView.frame.size.height - titleLabel.frame.size.height)];
+        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y + titleLabel.frame.size.height, textWidth, 100 - titleLabel.frame.size.height)];
         descriptionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
         descriptionLabel.numberOfLines = 0;
         descriptionLabel.adjustsFontSizeToFitWidth = YES;

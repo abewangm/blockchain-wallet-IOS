@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tämä toiminto edellyttää yksityisen avaimen Bitcoin osoite %@. Skannaa QR-koodi.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana lompakon. Kirjoita se ja paina Jatka.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Tämä osoite on jo käytössä. Kirjaudu sisään.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Saattavat altistua kahden kuluttaa.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa sinun bitcoins ovat turvallisia, jos menetät sinun tunnussana.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa teidän rahat ovat turvallisia, jos menetät sinun tunnussana.";
 
 /* (No Commment) */
 "Wallets" = "Lompakot";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Backup tarvitaan";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän bitcoin, niin pitää se offline jonnekin turvallisia.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän rahat, niin pitää se offline jonnekin turvallisia.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "12 sanan hyödyntämistä lause antaa sinulle pääsyn rahat, jos menetät sinun tunnussana.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Venäjän Rupla";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Talletukset";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Anna Eetteri-osoite tai valitse";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Maksu Lähetetään! Saldosi ja liiketoimet tulee päivitys pian.";
+
+/* (No Commment) */
+"Waiting for payment" = "Odottaa maksua";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Odota, kunnes viime eetteri kauppa vahvistaa.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin-Osoitteet";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Kartta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Virheellinen Eetteri-osoite: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Virhe tapahtui haettaessa uusimmat karttatiedot. Yritä myöhemmin uudelleen.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Liiketoimia esiintyä, kun voit lähettää ja pyytää eetteriin.";
+
+/* (No Commment) */
+"Request Ether" = "Pyyntö Eetteriin";
+
+/* (No Commment) */
+"Dashboard" = "Kojelauta";
+
+/* (No Commment) */
+"Week" = "Viikolla";
+
+/* (No Commment) */
+"Month" = "Kuukausi";
+
+/* (No Commment) */
+"Year" = "Vuonna";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Hinta";
+
+/* (No Commment) */
+"Ether Price" = "Eetteri Hinta";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Sopimus-osoitteita ei tueta.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Tällä hetkellä tuemme ainoastaan ETH. Et voi saada REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Tukee nyt Eetteriin";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Sinä kysyit, me kuuntelimme. Olemme innoissamme voidessamme ilmoittaa, että Blockchain lompakko sallii nyt voit saumattomasti lähettää ja vastaanottaa eetteriin!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Päästä Alkuun Eetteriin";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Voit käyttää tätä palvelua, emme vaadi sinua antamaan toisen salasanan. Sinun pitäisi tarvitsee vain syöttää tämän kerran perustaa oman Eetteri lompakko.";
+
+/* (No Commment) */
+"Enter Ether address" = "Anna Eetteri-osoite";
+
+/* (No Commment) */
+"Day" = "Päivä";
+
+/* (No Commment) */
+"All" = "Kaikki";
+
+/* (No Commment) */
+"Please send ether to %@." = "Lähetä eetteri %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin maksu pyynnöstä";
+
+/* (No Commment) */
+"Ether payment request" = "Eetteri maksupyyntö";
+
+/* (No Commment) */
+"My Ether Wallet" = "Minun Eetteri Lompakko";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Kaivostyöläisten saada tämä maksu prosessi tämän tapahtuman.";

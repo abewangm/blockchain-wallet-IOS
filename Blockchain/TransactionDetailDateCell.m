@@ -19,11 +19,11 @@
     [self.accessoryButton setHidden:YES];
 }
 
-- (void)configureWithTransaction:(Transaction *)transaction
+- (void)configureWithTransactionModel:(TransactionDetailViewModel *)transactionModel
 {
-    [super configureWithTransaction:transaction];
+    [super configureWithTransactionModel:transactionModel];
 
-    NSString *dateString = [transaction getDate];
+    NSString *dateString = transactionModel.dateString;
     
     if (self.isSetup) {
         self.mainLabel.text = BC_STRING_DATE;

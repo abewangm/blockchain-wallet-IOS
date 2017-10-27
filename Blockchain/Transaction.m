@@ -7,8 +7,6 @@
 //
 
 #import "Transaction.h"
-#import "AccountInOut.h"
-#import "AddressInOut.h"
 
 @implementation Transaction
 
@@ -16,10 +14,7 @@
     
     Transaction * transaction = [[Transaction alloc] init];
     
-    transaction.from = [[InOut alloc] init];
-    
-    NSDictionary *fromDict = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
-    transaction.from.label = [fromDict objectForKey:DICTIONARY_KEY_LABEL];
+    transaction.from = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM];
     transaction.to = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO];
 
     transaction.block_height = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_BLOCK_HEIGHT] intValue];
@@ -29,6 +24,7 @@
     transaction.txType = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TX_TYPE];
     transaction.amount = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_AMOUNT] longLongValue];
     transaction.time = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TIME] longLongValue];
+    transaction.lastUpdated = transaction.time;
     transaction.fromWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_FROM_WATCH_ONLY] boolValue];
     transaction.toWatchOnly = [[transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_TO_WATCH_ONLY] boolValue];
     transaction.note = [transactionDict objectForKey:DICTIONARY_KEY_TRANSACTION_NOTE];
@@ -40,16 +36,9 @@
     return transaction;
 }
 
-- (NSString *)getDate
+- (NSComparisonResult)reverseCompareLastUpdated:(Transaction *)transaction
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setAMSymbol:@"am"];
-    [dateFormatter setPMSymbol:@"pm"];
-    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.time];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
+    return [[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:transaction.lastUpdated] decimalValue]] compare:[NSDecimalNumber decimalNumberWithDecimal:[[NSDecimalNumber numberWithLongLong:self.lastUpdated] decimalValue]]];
 }
-
 
 @end

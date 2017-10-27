@@ -14,7 +14,7 @@
     #import "LocalizationConstants.h"
 #endif
 
-// #define ENABLE_DEBUG_MENU 1
+ #define ENABLE_DEBUG_MENU 1
 
 #define ENABLE_TRANSFER_FUNDS 1
 #define ENABLE_TRANSACTION_FILTERING 1
@@ -22,9 +22,13 @@
 #define ENABLE_SWIPE_TO_RECEIVE 1
 #define ENABLE_TOUCH_ID 1
 #define ENABLE_CERTIFICATE_PINNING 1
+// #define ENABLE_CONTACTS 1
 
 #define APP_STORE_LINK_PREFIX @"itms-apps://itunes.apple.com/app/"
 #define APP_STORE_ID @"id493253309"
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 #pragma mark - Colors
 
@@ -48,8 +52,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_BLOCKCHAIN_GREEN UIColorFromRGB(0x199D69)
 #define COLOR_BLOCKCHAIN_RED_WARNING UIColorFromRGB(0xB83940)
 
-#define COLOR_TEXT_DARK_GRAY UIColorFromRGB(0x4c4c4c)
+#define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0x7c7d7f)
+
+#define COLOR_DARK_GRAY UIColorFromRGB(0x4c4c4c)
+#define COLOR_TEXT_DARK_GRAY COLOR_DARK_GRAY
 #define COLOR_LIGHT_GRAY UIColorFromRGB(0xB0B0B0)
+#define COLOR_MEDIUM_GRAY UIColorFromRGB(0x979797)
+
 #define COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
 #define COLOR_TABLE_VIEW_CELL_SELECTED_LIGHT_GRAY UIColorFromRGB(0xF5F7F9)
 
@@ -59,12 +68,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_TRANSACTION_SENT COLOR_BLOCKCHAIN_RED
 #define COLOR_TRANSACTION_TRANSFERRED COLOR_BLOCKCHAIN_GRAY_BLUE
 
+#define COLOR_NOTE_LIGHT_BLUE UIColorFromRGB(0xe8f7fc)
+
 #define COLOR_BUTTON_LIGHT_BLUE UIColorFromRGB(0x5cb2d6)
-#define COLOR_BUTTON_BLUE UIColorFromRGB(0x609dcd)
-#define COLOR_BUTTON_RED UIColorFromRGB(0xe88787)
+#define COLOR_BUTTON_BLUE COLOR_BLOCKCHAIN_LIGHT_BLUE
+#define COLOR_BUTTON_RED COLOR_BLOCKCHAIN_RED
 #define COLOR_BUTTON_GREEN COLOR_BLOCKCHAIN_GREEN
 #define COLOR_BUTTON_GRAY UIColorFromRGB(0xebebeb)
-#define COLOR_BUTTON_DARK_GRAY UIColorFromRGB(0xb9b9b9)
 #define COLOR_BUTTON_KEYPAD_GRAY UIColorFromRGB(0xD4D9DD)
 
 #define COLOR_WARNING_RED UIColorFromRGB(0xAF4F4E)
@@ -80,6 +90,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define COLOR_FOREGROUND_GRAY UIColorFromRGB(0x6d6d72)
 
 #define COLOR_TEXT_GRAY UIColorFromRGB(0x9B9B9B)
+#define COLOR_TEXT_HEADER_GRAY UIColorFromRGB(0x979797)
+#define COLOR_TEXT_SUBHEADER_GRAY UIColorFromRGB(0xBCBCBC)
+#define COLOR_IMAGE_HEADER_GRAY UIColorFromRGB(0xE5E5E5)
 #define COLOR_TEXT_FIELD_GRAY UIColorFromRGB(0xd1d1d1)
 #define COLOR_TEXT_FIELD_BORDER_GRAY UIColorFromRGB(0xcdcdcd)
 
@@ -112,6 +125,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define IPHONE_6_OR_7_PLUS_WIDTH 414.0
 #define IS_USING_SCREEN_SIZE_LARGER_THAN_5S [[UIScreen mainScreen] bounds].size.height > HEIGHT_IPHONE_5S
 #define IS_USING_SCREEN_SIZE_4S [[UIScreen mainScreen] bounds].size.height <= HEIGHT_IPHONE_4S
+#define IS_USING_SCREEN_SIZE_5S [[UIScreen mainScreen] bounds].size.height == HEIGHT_IPHONE_5S
 
 #define WINDOW_HEIGHT IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? HEIGHT_IPHONE_6_PLUS : (IS_USING_6_OR_7_SCREEN_SIZE ? HEIGHT_IPHONE_6 : IS_USING_SCREEN_SIZE_4S ? HEIGHT_IPHONE_4S : HEIGHT_IPHONE_5S)
 #define WINDOW_WIDTH IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? IPHONE_6_OR_7_PLUS_WIDTH : (IS_USING_6_OR_7_SCREEN_SIZE ? IPHONE_6_OR_7_WIDTH : IS_USING_SCREEN_SIZE_4S ? WIDTH_IPHONE_4S : WIDTH_IPHONE_5S)
@@ -126,6 +140,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define FONT_SIZE_LARGE IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 20.0 : 17.0
 #define FONT_SIZE_EXTRA_LARGE IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 21.0 : 18.0
 #define FONT_SIZE_EXTRA_EXTRA_LARGE IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 23.0 : 20.0
+#define FONT_SIZE_EXTRA_EXTRA_EXTRA_LARGE IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 30.0 : 27.0
 
 #define FONT_SIZE_TOP_BAR_TEXT FONT_SIZE_EXTRA_EXTRA_LARGE
 #define FONT_SIZE_TICKER IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 27.0 : 24.0
@@ -137,6 +152,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define IMAGE_EDGE_INSETS_BACK_BUTTON_CHEVRON UIEdgeInsetsMake(10, 8, 0, 0)
 #define IMAGE_EDGE_INSETS_CLOSE_BUTTON_X UIEdgeInsetsMake(3, 0, 0, 18)
 
+#define ASSET_CONTAINER_Y_POSITION_DEFAULT 107
+#define TAB_HEADER_HEIGHT_DEFAULT 157
+#define TAB_HEADER_HEIGHT_SMALL_OFFSET 42
 #define DEFAULT_HEADER_HEIGHT 65
 #define DEFAULT_FOOTER_HEIGHT 49
 #define DEFAULT_STATUS_BAR_HEIGHT 20
@@ -166,7 +184,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Strings
 
+#define URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT_LANGUAGE_ARGUMENT @"%@/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu&lang=%s"
+
 #define COPYRIGHT_YEAR @"2017"
+
 #define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
 #define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
 #define ABOUT_STRING_BLOCKCHAIN_LUXEMBOURG_SA NSLocalizedString(@"Blockchain Luxembourg S.A.", nil)
@@ -211,6 +232,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define CELL_IDENTIFIER_TRANSACTION_RECIPIENT @"transactionRecipient"
 
+#define CELL_IDENTIFIER_CONTACT @"contact"
+#define CELL_IDENTIFIER_CONTACT_TRANSACTION @"contactTransaction"
+#define CELL_IDENTIFIER_CONTACT_MESSAGE @"contactMessage"
+
 #define CELL_IDENTIFIER_LOCAL_CURRENCY @"localCurrency"
 #define CELL_IDENTIFIER_BITCOIN_UNIT @"bitcoinUnit"
 
@@ -220,8 +245,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define INFO_PLIST_KEY_CFBUNDLE_SHORT_VERSION_STRING @"CFBundleShortVersionString"
 
 #define PREFIX_BITCOIN_URI @"bitcoin:"
+#define PREFIX_ETHEREUM_URI @"ethereum:"
 #define PREFIX_BLOCKCHAIN_WALLET_URI @"blockchain-wallet://"
 #define PREFIX_MAIL_URI @"message://"
+#define PREFIX_BLOCKCHAIN_URI @"blockchain://"
 
 #define TX_TYPE_TRANSFER @"transfer"
 #define TX_TYPE_SENT @"sent"
@@ -270,6 +297,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_MULTIADDRESS_RESPONSE_RELOAD @"multiaddressResponseReload"
 #define NOTIFICATION_KEY_GET_FIAT_AT_TIME @"getFiatAtTime"
 
+#define NOTIFICATION_KEY_SHARE_CONTACT_LINK @"shareContactLink"
+
 #define NOTIFICATION_KEY_SYNC_ERROR @"syncError"
 
 #define NOTIFICATION_KEY_MODAL_VIEW_DISMISSED @"modalViewDismissed"
@@ -282,7 +311,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define NOTIFICATION_KEY_RECEIVE_PAYMENT @"ReceivePayment"
 #define NOTIFICATION_KEY_GET_ALL_CURRENCY_SYMBOLS_SUCCESS @"GetAllCurrencySymbols"
 #define NOTIFICATION_KEY_GET_ACCOUNT_INFO_SUCCESS @"GetAccountInfo"
-#define NOTIFICATION_KEY_GET_HISTORY_SUCCESS @"GetHistory"
 #define NOTIFICATION_KEY_CHANGE_EMAIL_SUCCESS @"ChangeEmail"
 #define NOTIFICATION_KEY_RESEND_VERIFICATION_EMAIL_SUCCESS @"ResendVerificationEmail"
 #define NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS @"ChangeMobileNumber"
@@ -298,6 +326,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_SUFFIX_TERMS_OF_SERVICE @"/Resources/TermsofServicePolicy.pdf"
 #define URL_SUFFIX_PRIVACY_POLICY @"/Resources/PrivacyPolicy.pdf"
+
+#define URL_SUFFIX_ETH_IS_CONTRACT_ADDRESS_ARGUMENT @"/eth/account/%@/isContract"
+#define URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME @"/price/index?base=%@&quote=%@&time=%lld"
 
 #define URL_API_COINIFY @"app-api.coinify.com"
 #define URL_API_SFOX @"api.sfox.com"
@@ -323,26 +354,33 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define HOST_NAME_API @"api.blockchain.info"
 #define HOST_NAME_MERCHANT HOST_NAME_API
 
+#define HOST_NAME_ETHERSCAN @"etherscan.io"
+#define URL_ETHERSCAN @"https://etherscan.io"
+
 #define PRODUCTION_WALLET_SERVER @"https://blockchain.info"
 #define PRODUCTION_WEBSOCKET_SERVER @"wss://ws.blockchain.info/inv"
+#define PRODUCTION_WEBSOCKET_SERVER_ETH @"wss://ws.blockchain.info/eth/inv"
 #define PRODUCTION_MERCHANT_URL @"https://api.blockchain.info/merchant"
 #define PRODUCTION_API_URL @"https://api.blockchain.info"
 #define PRODUCTION_BUY_WEBVIEW_URL @"https://blockchain.info/wallet/#/intermediate"
 
 #define DEV_WALLET_SERVER PRODUCTION_WALLET_SERVER
 #define DEV_WEBSOCKET_SERVER PRODUCTION_WEBSOCKET_SERVER
+#define DEV_WEBSOCKET_SERVER_ETH PRODUCTION_WEBSOCKET_SERVER_ETH
 #define DEV_MERCHANT_URL PRODUCTION_MERCHANT_URL
 #define DEV_API_URL PRODUCTION_API_URL
 #define DEV_BUY_WEBVIEW_URL PRODUCTION_BUY_WEBVIEW_URL
 
 #define STAGING_WALLET_SERVER PRODUCTION_WALLET_SERVER
 #define STAGING_WEBSOCKET_SERVER PRODUCTION_WEBSOCKET_SERVER
+#define STAGING_WEBSOCKET_SERVER_ETH PRODUCTION_WEBSOCKET_SERVER_ETH
 #define STAGING_MERCHANT_URL PRODUCTION_MERCHANT_URL
 #define STAGING_API_URL PRODUCTION_API_URL
 #define STAGING_BUY_WEBVIEW_URL PRODUCTION_BUY_WEBVIEW_URL
 
 #define TESTNET_WALLET_SERVER PRODUCTION_WALLET_SERVER
 #define TESTNET_WEBSOCKET_SERVER PRODUCTION_WEBSOCKET_SERVER
+#define TESTNET_WEBSOCKET_SERVER_ETH PRODUCTION_WEBSOCKET_SERVER_ETH
 #define TESTNET_MERCHANT_URL PRODUCTION_MERCHANT_URL
 #define TESTNET_API_URL PRODUCTION_API_URL
 #define TESTNET_BUY_WEBVIEW_URL PRODUCTION_BUY_WEBVIEW_URL
@@ -364,6 +402,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_WEBSOCKET [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? INTERNAL_URL_TESTNET_WEBSOCKET :[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] == nil || [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_PRODUCTION] ? INTERNAL_URL_PRODUCTION_WEBSOCKET :([[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_STAGING] ? INTERNAL_URL_STAGING_WEBSOCKET : INTERNAL_URL_DEV_WEBSOCKET)
 
+#define URL_WEBSOCKET_ETH [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? INTERNAL_URL_TESTNET_WEBSOCKET_ETH :[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] == nil || [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_PRODUCTION] ? INTERNAL_URL_PRODUCTION_WEBSOCKET_ETH :([[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_STAGING] ? INTERNAL_URL_STAGING_WEBSOCKET_ETH : INTERNAL_URL_DEV_WEBSOCKET_ETH)
+
 #define URL_MERCHANT [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? INTERNAL_URL_TESTNET_MERCHANT :[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] == nil || [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_PRODUCTION] ? INTERNAL_URL_PRODUCTION_MERCHANT :([[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_STAGING] ? INTERNAL_URL_STAGING_MERCHANT : INTERNAL_URL_DEV_MERCHANT)
 
 #define URL_API [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_TESTNET] ? INTERNAL_URL_TESTNET_API : [INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] == nil || [[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_PRODUCTION] ? INTERNAL_URL_PRODUCTION_API :([[INTERNAL_GET_URL USER_DEFAULTS_KEY_ENV] isEqual:ENV_INDEX_STAGING] ? INTERNAL_URL_STAGING_API : INTERNAL_URL_DEV_API)
@@ -374,6 +414,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define INTERNAL_URL_PRODUCTION_SERVER [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_PRODUCTION_SERVER_URL] ? : PRODUCTION_WALLET_SERVER
 
 #define INTERNAL_URL_PRODUCTION_WEBSOCKET [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_URL] ? : PRODUCTION_WEBSOCKET_SERVER
+
+#define INTERNAL_URL_PRODUCTION_WEBSOCKET_ETH [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_ETH_URL] ? : PRODUCTION_WEBSOCKET_SERVER_ETH
 
 #define INTERNAL_URL_PRODUCTION_MERCHANT [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_PRODUCTION_MERCHANT_URL] ? : PRODUCTION_MERCHANT_URL
 
@@ -386,6 +428,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define INTERNAL_URL_STAGING_WEBSOCKET [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_STAGING_WEB_SOCKET_URL] ? : STAGING_WEBSOCKET_SERVER
 
+#define INTERNAL_URL_STAGING_WEBSOCKET_ETH [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_STAGING_WEB_SOCKET_ETH_URL] ? : STAGING_WEBSOCKET_SERVER_ETH
+
 #define INTERNAL_URL_STAGING_MERCHANT [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_STAGING_MERCHANT_URL] ? : STAGING_MERCHANT_URL
 
 #define INTERNAL_URL_STAGING_API [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_STAGING_API_URL] ? : STAGING_API_URL
@@ -396,6 +440,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define INTERNAL_URL_DEV_SERVER [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_DEV_SERVER_URL] ? : DEV_WALLET_SERVER
 
 #define INTERNAL_URL_DEV_WEBSOCKET [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_DEV_WEB_SOCKET_URL] ? : DEV_WEBSOCKET_SERVER
+
+#define INTERNAL_URL_DEV_WEBSOCKET_ETH [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_DEV_WEB_SOCKET_ETH_URL] ? : DEV_WEBSOCKET_SERVER_ETH
 
 #define INTERNAL_URL_DEV_MERCHANT [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_DEV_MERCHANT_URL] ? : DEV_MERCHANT_URL
 
@@ -408,6 +454,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define INTERNAL_URL_TESTNET_WEBSOCKET [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_TESTNET_WEB_SOCKET_URL] ? : TESTNET_WEBSOCKET_SERVER
 
+#define INTERNAL_URL_TESTNET_WEBSOCKET_ETH [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_TESTNET_WEB_SOCKET_ETH_URL] ? : TESTNET_WEBSOCKET_SERVER_ETH
+
 #define INTERNAL_URL_TESTNET_MERCHANT [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_TESTNET_MERCHANT_URL] ? : TESTNET_MERCHANT_URL
 
 #define INTERNAL_URL_TESTNET_API [INTERNAL_GET_URL USER_DEFAULTS_KEY_DEBUG_TESTNET_API_URL] ? : TESTNET_API_URL
@@ -418,12 +466,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_SERVER PRODUCTION_WALLET_SERVER
 #define URL_WEBSOCKET PRODUCTION_WEBSOCKET_SERVER
+#define URL_WEBSOCKET_ETH PRODUCTION_WEBSOCKET_SERVER_ETH
 #define URL_MERCHANT PRODUCTION_MERCHANT_URL
 #define URL_API PRODUCTION_API_URL
 #define URL_BUY_WEBVIEW PRODUCTION_BUY_WEBVIEW_URL
 
 #endif
 
+#define CHARTS_URL_SUFFIX_ARGUMENTS_BASE_QUOTE_START_SCALE @"/price/index-series?base=%@&quote=%@&start=%@&scale=%@&omitnull=true"
 #define TRANSACTION_RESULT_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/q/txresult/%@/%@"
 #define ADDRESS_URL_SUFFIX_HASH_ARGUMENT_ADDRESS_ARGUMENT @"/address/%@?format=json"
 
@@ -440,6 +490,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define WALLET_EVENT_TX_FROM_PASTE @"wallet_ios_tx_from_paste"
 #define WALLET_EVENT_TX_FROM_URI @"wallet_ios_tx_from_uri"
 #define WALLET_EVENT_TX_FROM_DROPDOWN @"wallet_ios_tx_from_dropdown"
+#define WALLET_EVENT_TX_FROM_CONTACTS @"wallet_ios_tx_from_contacts"
 
 #define URL_INFORMATION_RECEIVE @"https://support.blockchain.com/hc/en-us/articles/210353663-Why-is-my-bitcoin-address-changing"
 
@@ -453,6 +504,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BTC @"BTC"
 #define CURRENCY_CODE_MBC @"MBC"
 #define CURRENCY_CODE_UBC @"UBC"
+
+#define CURRENCY_SYMBOL_ETH @"ETH"
 
 #define CURRENCY_SYMBOL_BTC @"BTC"
 #define CURRENCY_SYMBOL_MBC @"mBTC"
@@ -489,6 +542,37 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_BRL @"BRL"
 #define CURRENCY_CODE_RUB @"RUB"
 
+#define PUSH_NOTIFICATION_TYPE_PAYMENT @"payment"
+#define PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST @"contact_request"
+
+#define DICTIONARY_KEY_STATE @"state"
+#define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
+#define DICTIONARY_KEY_ROLE @"role"
+#define DICTIONARY_KEY_TX_HASH @"tx_hash"
+#define DICTIONARY_KEY_REASON @"reason"
+#define DICTIONARY_KEY_LAST_UPDATED @"last_updated"
+
+#define DICTIONARY_KEY_APS @"aps"
+#define DICTIONARY_KEY_TYPE @"type"
+#define DICTIONARY_KEY_ALERT @"alert"
+#define DICTIONARY_KEY_TITLE @"title"
+#define DICTIONARY_KEY_BODY @"body"
+#define DICTIONARY_KEY_PAYLOAD @"payload"
+
+#define DICTIONARY_KEY_ID @"id"
+#define DICTIONARY_KEY_COMPANY @"company"
+#define DICTIONARY_KEY_EMAIL @"email"
+#define DICTIONARY_KEY_INVITATION_RECEIVED @"invitationReceived"
+#define DICTIONARY_KEY_INVITATION_SENT @"invitationSent"
+#define DICTIONARY_KEY_MDID @"mdid"
+#define DICTIONARY_KEY_NOTE @"note"
+#define DICTIONARY_KEY_PUBKEY @"pubKey"
+#define DICTIONARY_KEY_SURNAME @"surname"
+#define DICTIONARY_KEY_TRUSTED @"trusted"
+#define DICTIONARY_KEY_XPUB @"xpub"
+#define DICTIONARY_KEY_SENDER_NAME @"senderName"
+#define DICTIONARY_KEY_TRANSACTION_LIST @"facilitatedTxList"
+
 #define DICTIONARY_KEY_FEE_REGULAR @"regular"
 #define DICTIONARY_KEY_FEE_PRIORITY @"priority"
 #define DICTIONARY_KEY_FEE_LIMITS @"limits"
@@ -517,6 +601,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_LABEL @"label"
 #define DICTIONARY_KEY_ADDRESS @"address"
 #define DICTIONARY_KEY_AMOUNT @"amount"
+#define DICTIONARY_KEY_DISPLAY_AMOUNT @"displayAmount"
 #define DICTIONARY_KEY_CODE @"code"
 #define DICTIONARY_KEY_ERROR @"error"
 #define DICTIONARY_KEY_THRESHOLD @"threshold"
@@ -524,17 +609,27 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_KEY @"key"
 #define DICTIONARY_KEY_VALUE @"value"
 #define DICTIONARY_KEY_HASH @"hash"
+#define DICTIONARY_KEY_ACCOUNT_INDEX @"accountIndex"
+
+#define DICTIONARY_KEY_PRICE @"price"
+#define DICTIONARY_KEY_TIMESTAMP @"timestamp"
 
 #define DICTIONARY_KEY_FEE_ESTIMATE @"estimate"
 #define DICTIONARY_KEY_FEE @"fee"
 #define DICTIONARY_KEY_SURGE @"surge"
 #define DICTIONARY_KEY_LAST @"last"
 #define DICTIONARY_KEY_USD @"USD"
+#define DICTIONARY_KEY_AVAILABLE @"available"
+#define DICTIONARY_KEY_SWEEP @"sweep"
 
 #define DICTIONARY_KEY_SYMBOL @"symbol"
 #define DICTIONARY_KEY_CONVERSION @"conversion"
 #define DICTIONARY_KEY_NAME @"name"
 #define DICTIONARY_KEY_LAST @"last"
+
+#define DICTIONARY_KEY_FROM @"from"
+#define DICTIONARY_KEY_TO @"to"
+#define DICTIONARY_KEY_TIME @"time"
 
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL @"email"
 #define DICTIONARY_KEY_ACCOUNT_SETTINGS_EMAIL_VERIFIED @"email_verified"
@@ -562,6 +657,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
 
+#define USER_DEFAULTS_KEY_ASSET_TYPE @"assetType"
+
+#define USER_DEFAULTS_KEY_CONTACTS_LAST_NAME_USED @"lastNameUsed"
+
 #define USER_DEFAULTS_KEY_DEFAULT_ACCOUNT_LABELLED_ADDRESSES_COUNT @"defaultAccountLabelledAddressesCount"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS @"nextReceivingAddress"
 #define USER_DEFAULTS_KEY_NEXT_ADDRESS_USED @"nextReceivingAddressUsed"
@@ -578,7 +677,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_PIN_KEY @"pinKey"
 #define USER_DEFAULTS_KEY_PASSWORD_PART_HASH @"passwordPartHash"
 #define USER_DEFAULTS_KEY_HAS_SEEN_UPGRADE_TO_HD_SCREEN @"hasSeenUpgradeToHdScreen"
-#define USER_DEFAULTS_KEY_BUNDLE_VERSION_STRING @"bundleVersionString"
 #define USER_DEFAULTS_KEY_TOUCH_ID_ENABLED @"touchIDEnabled"
 #define USER_DEFAULTS_KEY_SWIPE_TO_RECEIVE_ENABLED @"swipeToReceive"
 #define USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING @"hideWatchOnlyReceiveWarning"
@@ -587,24 +685,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_SERVER_URL @"productionServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_URL @"productionWebSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_WEB_SOCKET_ETH_URL @"productionWebSocketEthURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_MERCHANT_URL @"productionMerchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_API_URL @"productionApiURL"
 #define USER_DEFAULTS_KEY_DEBUG_PRODUCTION_BUY_WEBVIEW_URL @"productionBuyWebViewURL"
 
 #define USER_DEFAULTS_KEY_DEBUG_DEV_SERVER_URL @"devServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_DEV_WEB_SOCKET_URL @"devWebSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_DEV_WEB_SOCKET_ETH_URL @"devWebSocketEthURL"
 #define USER_DEFAULTS_KEY_DEBUG_DEV_MERCHANT_URL @"devMerchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_DEV_API_URL @"devApiURL"
 #define USER_DEFAULTS_KEY_DEBUG_DEV_BUY_WEBVIEW_URL @"devBuyWebViewURL"
 
 #define USER_DEFAULTS_KEY_DEBUG_STAGING_SERVER_URL @"stagingServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_STAGING_WEB_SOCKET_URL @"stagingWebSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_STAGING_WEB_SOCKET_ETH_URL @"stagingWebSocketEthURL"
 #define USER_DEFAULTS_KEY_DEBUG_STAGING_MERCHANT_URL @"stagingMerchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_STAGING_API_URL @"stagingApiURL"
 #define USER_DEFAULTS_KEY_DEBUG_STAGING_BUY_WEBVIEW_URL @"stagingBuyWebViewURL"
 
 #define USER_DEFAULTS_KEY_DEBUG_TESTNET_SERVER_URL @"testnetServerURL"
 #define USER_DEFAULTS_KEY_DEBUG_TESTNET_WEB_SOCKET_URL @"testnetWebSocketURL"
+#define USER_DEFAULTS_KEY_DEBUG_TESTNET_WEB_SOCKET_ETH_URL @"testnetWebSocketEthURL"
 #define USER_DEFAULTS_KEY_DEBUG_TESTNET_MERCHANT_URL @"testnetMerchantURL"
 #define USER_DEFAULTS_KEY_DEBUG_TESTNET_API_URL @"testnetApiURL"
 #define USER_DEFAULTS_KEY_DEBUG_TESTNET_BUY_WEBVIEW_URL @"testnetBuyWebViewURL"
@@ -620,8 +722,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS @"hasSeenAllCards"
 #define USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS @"shouldHideAllCards"
 #define USER_DEFAULTS_KEY_LAST_CARD_OFFSET @"lastCardOffset"
-#define USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD @"shouldHideBuyNotificationCard"
-#define USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_NOTIFICATION_CARD_UNTIL_TRANSACTIONS_EXIST @"shouldHideBuyNotificationCardUntilTransactionsExist"
+#define USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD @"shouldHideEtherNotificationCard"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER @"hasSeenEmailReminder"
@@ -630,6 +731,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define KEYCHAIN_KEY_GUID @"guid"
 #define KEYCHAIN_KEY_PIN @"pin"
 #define KEYCHAIN_KEY_SWIPE_ADDRESSES @"swipeAddresses"
+#define KEYCHAIN_KEY_ETHER_ADDRESS @"etherAddress"
 
 #define QR_CODE_KEY_GUID @"guid"
 #define QR_CODE_KEY_SHARED_KEY @"sharedKey"
@@ -640,12 +742,25 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define STORYBOARD_NAME_BACKUP @"Backup"
 #define STORYBOARD_NAME_UPGRADE @"Upgrade"
 
+#define TRANSACTION_STATE_WAITING_PAYMENT @"waiting_payment"
+#define TRANSACTION_STATE_WAITING_ADDRESS @"waiting_address"
+#define TRANSACTION_STATE_PAYMENT_BROADCASTED @"payment_broadcasted"
+#define TRANSACTION_STATE_DECLINED @"declined"
+#define TRANSACTION_STATE_CANCELLED @"cancelled"
+
+#define TRANSACTION_ROLE_PR_INITIATOR @"pr_initiator"
+#define TRANSACTION_ROLE_PR_RECEIVER @"pr_receiver"
+#define TRANSACTION_ROLE_RPR_INITIATOR @"rpr_initiator"
+#define TRANSACTION_ROLE_RPR_RECEIVER @"rpr_receiver"
+
 #define NAVIGATION_CONTROLLER_NAME_ACCOUNTS_AND_ADDRESSES @"AccountsAndAddressesNavigationController"
 #define NAVIGATION_CONTROLLER_NAME_SETTINGS @"SettingsNavigationController"
 #define NAVIGATION_CONTROLLER_NAME_BACKUP @"BackupNavigation"
 
 #define VIEW_CONTROLLER_NAME_UPGRADE @"UpgradeViewController"
 
+#define NIB_NAME_TAB_CONTROLLER @"TabController"
+#define NIB_NAME_TRANSACTIONS @"Transactions"
 #define NIB_NAME_SEND_COINS @"SendCoins"
 #define NIB_NAME_MERCHANT_MAP_VIEW @"MerchantMapView"
 #define NIB_NAME_RECEIVE_COINS @"ReceiveCoins"
@@ -667,8 +782,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_RESOURCE_WALLET_IOS @"wallet-ios"
 #define JAVASCRIPTCORE_TYPE_JS @"js"
 
-#define JAVASCRIPTCORE_PREFIX_JS_SOURCE_ARGUMENT_ARGUMENT_ARGUMENT @"var window = this; var navigator = {}; navigator.userAgent = {}; navigator.userAgent.match = function(){return 0}; Promise = undefined;\n%@\n%@\n%@"
-#define JAVASCRIPTCORE_GLOBAL_CRYPTO @"var objcCrypto = function (Buffer) { return {getRandomValues: function(intArray) {var result = objc_getRandomValues(intArray); intArray.set(new Buffer(result, 'hex')); }}};"
+#define JAVASCRIPTCORE_PREFIX_JS_SOURCE @"var window = this; var navigator = {userAgent : {match : function() {return 0;}}}; Promise = undefined;"
 #define JAVASCRIPTCORE_CLASS_HDNODE @"HDNode"
 #define JAVASCRIPTCORE_BITCOIN_INIT @"var Bitcoin = require('bitcoinjs-lib');"
 #define JAVASCRIPTCORE_BITCOIN @"Bitcoin"
@@ -681,6 +795,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define JAVASCRIPTCORE_SET_TIMEOUT @"setTimeout"
 #define JAVASCRIPTCORE_CLEAR_TIMEOUT @"clearTimeout"
 #define JAVASCRIPTCORE_SET_INTERVAL @"setInterval"
+#define JAVASCRIPTCORE_CLEAR_INTERVAL @"clearInterval"
 
 #define WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED @"User backgrounded app"
 #define WEBSOCKET_CLOSE_REASON_LOGGED_OUT @"Logged out"
@@ -698,9 +813,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define ANIMATION_DURATION .2f
 #define ANIMATION_DURATION_LONG .5f
-#define kConfirmationThreshold 3
+#define kConfirmationBitcoinThreshold 3
+#define kConfirmationEtherThreshold 12
 
 #define CORNER_RADIUS_BUTTON 4
+
+#define TOTAL_AMOUNT_VIEW_HEIGHT IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 120 : 100
 
 // TransactionsViewController
 #define FILTER_INDEX_ALL -1
@@ -708,8 +826,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 // TabViewController
 #define TAB_SEND 0
-#define TAB_TRANSACTIONS 1
-#define TAB_RECEIVE 2
+#define TAB_DASHBOARD 1
+#define TAB_TRANSACTIONS 2
+#define TAB_RECEIVE 3
 
 // SideMenuViewController
 #define SECTION_HEADER_HEIGHT 44
@@ -717,7 +836,25 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define MENU_ENTRY_HEIGHT 54
 #define BALANCE_ENTRY_HEIGHT 58
 
-#define MENU_BITCOIN_TICKER_HEIGHT 145
+#define MENU_TOP_BANNER_HEIGHT 65
+
+#define MENU_CELL_INDEX_UPGRADE 0
+
+#ifdef ENABLE_DEBUG_MENU
+#define MENU_CELL_INDEX_CONTACTS 1
+#define MENU_CELL_INDEX_SETTINGS 2
+#define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 3
+#define MENU_CELL_INDEX_MERCHANT 4
+#define MENU_CELL_INDEX_SUPPORT 5
+#define MENU_CELL_INDEX_LOGOUT 6
+#else
+#define MENU_CELL_INDEX_CONTACTS -1
+#define MENU_CELL_INDEX_SETTINGS 1
+#define MENU_CELL_INDEX_ACCOUNTS_AND_ADDRESSES 2
+#define MENU_CELL_INDEX_MERCHANT 3
+#define MENU_CELL_INDEX_SUPPORT 4
+#define MENU_CELL_INDEX_LOGOUT 5
+#endif
 
 #define PIN_API_STATUS_CODE_DELETED 1
 #define PIN_API_STATUS_PIN_INCORRECT 2
@@ -747,6 +884,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PIN_PBKDF2_ITERATIONS 1 // This does not need to be large because the key is already 256 bits
 
 #define BTC_LIMIT_IN_SATOSHI 21e14 // 21,000,000 (Total possible Bitcoins) * 100,000,000 (Satoshi)
+#define ETH_DECIMAL_LIMIT 18
 #define RECOVERY_ACCOUNT_DEFAULT_NUMBER 10
 #define RECOVERY_PHRASE_NUMBER_OF_WORDS 12
 
@@ -778,6 +916,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define TAG_CERTIFICATE_VALIDATION_FAILURE_ALERT 100
 
+#define TAG_TEXTFIELD_CHANGE_CONTACT_NAME 9
+#define TAG_TEXTFIELD_CHANGE_PASSWORD_HINT 8
+#define TAG_TEXTFIELD_VERIFY_MOBILE_NUMBER 7
+#define TAG_TEXTFIELD_CHANGE_MOBILE_NUMBER 6
+
 #pragma mark - Runtime modes
 
 // #define DISABLE_EDITING_ACCOUNTS 1 // comment this line out to enable support for adding/editing accounts
@@ -796,3 +939,4 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define ERROR_TIMEOUT_ERROR @"TimeoutError"
 #define ERROR_INVALID_PASSPHRASE @"invalid passphrase"
 #define ERROR_STATUS_ZERO @"status:0"
+#define ERROR_GAP @"GAP"

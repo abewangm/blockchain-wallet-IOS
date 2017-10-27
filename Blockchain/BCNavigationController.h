@@ -11,14 +11,19 @@
 #import "RootService.h"
 
 @interface BCNavigationController : UINavigationController <TopViewController>
+@property (nonatomic) UIView *topBar;
 @property (nonatomic) BCFadeView *busyView;
 @property (nonatomic) UIButton *backButton;
 @property (nonatomic) UIButton *closeButton;
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UILabel *busyLabel;
 @property (nonatomic) NSString *headerTitle;
+@property (nonatomic) UIButton *topRightButton;
 
 @property (nonatomic) BOOL shouldHideBusyView;
+
+@property(nonatomic, copy) void (^onPopViewController)();
+@property(nonatomic, copy) void (^onViewWillDisappear)();
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController title:(NSString *)title;
 - (void)showBusyViewWithLoadingText:(NSString *)text;

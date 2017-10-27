@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ця дія вимагає особистий ключ для Bitcoin адреси %@. Будь ласка, відскануйте QR-код.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Для цієї дії потрібно другий пароль вашого гаманця. Будь ласка, введіть пароль знизу і натисніть Продовжити.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Для цієї дії потрібно другий пароль вашого гаманця. Будь ласка, введіть пароль знизу і натисніть Продовжити.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ця адреса вже використовувалась. Увійдіть, будь ласка.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Може виникнути небезпека подвійний витрат.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашої ж безпеки, ми не зберігаємо будь-які паролі у файлі. Зробіть резервну копію свого гаманця, щоб бути впевненими, що ви матимете доступ до своїх біткоїнів, якщо втратите свій пароль.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Для вашої ж безпеки, ми не зберігаємо будь-які паролі у файлі. Зробіть резервну копію свого гаманця, щоб бути впевненими, що ви матимете доступ до своїх коштів, якщо втратите свій пароль.";
 
 /* (No Commment) */
 "Wallets" = "гаманців";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Потребує резервного копіювання";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Використайте свою Фразу для відновлення доступу, якщо ви втратили свій пароль. Будь-хто, хто знає вашу Фразу для вдновлення доступу, матиме доступ до ваших коштів, тому не зберігайте її на своєму пристрої, а десь в іншому надійному та безпечному місці.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Використайте свою Фразу для відновлення доступу, якщо ви втратили свій пароль. Будь-хто, хто знає вашу Фразу для вдновлення доступу, матиме доступ до ваших коштів, тому не зберігайте її на своєму пристрої, а десь в іншому надійному та безпечному місці.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Ось ці 12 слів - це фраза для відновлення доступу, яка дасть вам доступ до своїх коштів, якщо ви забудете чи втратите свій пароль.";
@@ -1847,3 +1847,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Російський рубль";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Баланси Bitcoin";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Введіть або виберіть Ether адресу";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Платіж відправлено! Ваш баланс та інформація про транзакції незабаром оновляться.";
+
+/* (No Commment) */
+"Waiting for payment" = "Очікування платежу";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Будь ласка, зачекайте, поки не підтвердиться ваша остання ether транзакція.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Адреси";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Мапа Bitcoin Merchant";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Неправильна Ether адреса: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "При отриманні останніх даних діаграм стався збій. Будь ласка, спробуйте ще раз.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Транзакції відбуваються, коли ви надсилаєте та запитуєте ether.";
+
+/* (No Commment) */
+"Request Ether" = "Запит на Ether";
+
+/* (No Commment) */
+"Dashboard" = "Моніторингова панель";
+
+/* (No Commment) */
+"Week" = "Тиждень";
+
+/* (No Commment) */
+"Month" = "Місяць";
+
+/* (No Commment) */
+"Year" = "Рік";
+
+/* (No Commment) */
+"Bitcoin Price" = "Вартість Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Вартість Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Контрактові адреси не підтримуються.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "На даний момент ми підтримуємо лише ETH. Ви не можете отримати REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Тепер ми підтримуємо Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ви попросили, ми виконали. З радістю повідомляємо, що відтепер Ваш гаманець Blockchain дозволяє без проблем відправляти та отримувати ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Починайте роботу з Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Щоб скористатися цією послугою, будь ласка, введіть свій другий пароль. Щоб налаштувати свій Ether-гаманець, Вам треба буде ввести його лише один раз.";
+
+/* (No Commment) */
+"Enter Ether address" = "Введіть Ether адресу";
+
+/* (No Commment) */
+"Day" = "День";
+
+/* (No Commment) */
+"All" = "Все";
+
+/* (No Commment) */
+"Please send ether to %@." = "Будь ласка, відправте ether на %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Платіжна вимога Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Платіжна вимога Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Мій гаманець Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Щоб обробити цю транзакцію, цю комісію отримують майнери.";

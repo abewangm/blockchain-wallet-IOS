@@ -22,20 +22,21 @@
 #import "SettingsNavigationController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AccountsAndAddressesNavigationController.h"
-#import "TransactionsViewController.h"
 #import "TransferAllFundsViewController.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "CertificatePinner.h"
+#import <UserNotifications/UserNotifications.h>
 #import "ReminderModalViewController.h"
 #import "WalletSetupViewController.h"
+#import "TabControllerManager.h"
 #import <WebKit/WebKit.h>
 
 @protocol TopViewController;
 
-@class TransactionsViewController, BCFadeView, ReceiveCoinsViewController, SendViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, BuyBitcoinViewController;
+@class TransactionsBitcoinViewController, BCFadeView, ReceiveCoinsViewController, SendBitcoinViewController, BCCreateWalletView, BCManualPairView, MultiAddressResponse, PairingCodeParser, MerchantMapViewController, BCWebViewController, BackupNavigationViewController, ContactsViewController, ContactTransaction, BuyBitcoinViewController;
 
-@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, ReminderModalDelegate, SetupDelegate> {
-    
+@interface RootService : NSObject <UIApplicationDelegate, WalletDelegate, PEPinEntryControllerDelegate, MFMailComposeViewControllerDelegate, CertificatePinnerDelegate, UNUserNotificationCenterDelegate, ReminderModalDelegate, SetupDelegate, TabControllerDelegate> {
+
     Wallet *wallet;
     
     SystemSoundID alertSoundID;
@@ -77,15 +78,13 @@
 @property (nonatomic, weak) UIViewController <TopViewController> *topViewControllerDelegate;
 
 @property (strong, nonatomic) IBOutlet ECSlidingViewController *slidingViewController;
-@property (strong, nonatomic) IBOutlet TabViewcontroller *tabViewController;
-@property (strong, nonatomic) IBOutlet TransactionsViewController *transactionsViewController;
-@property (strong, nonatomic) IBOutlet ReceiveCoinsViewController *receiveViewController;
-@property (strong, nonatomic) IBOutlet SendViewController *sendViewController;
+@property (nonatomic) TabControllerManager *tabControllerManager;
 @property (strong, nonatomic) IBOutlet MerchantMapViewController *merchantViewController;
 @property (strong, nonatomic) IBOutlet BCWebViewController *bcWebViewController;
 @property (strong, nonatomic) IBOutlet BackupNavigationViewController *backupNavigationViewController;
 @property (strong, nonatomic) SettingsNavigationController *settingsNavigationController;
 @property (strong, nonatomic) AccountsAndAddressesNavigationController *accountsAndAddressesNavigationController;
+@property (strong, nonatomic) ContactsViewController *contactsViewController;
 
 @property (strong, nonatomic) IBOutlet UILabel *mainTitleLabel;
 
@@ -101,6 +100,7 @@
 
 @property (strong, nonatomic) TransferAllFundsViewController *transferAllFundsModalController;
 
+@property(nonatomic) NSString *deviceToken;
 @property (nonatomic) BuyBitcoinViewController *buyBitcoinViewController;
 
 // PIN Entry
@@ -110,10 +110,13 @@
 @property (nonatomic) NSTimer *loginTimer;
 
 @property(nonatomic, strong) NSNumberFormatter *btcFormatter;
+@property(nonatomic, strong) NSNumberFormatter *ethFormatter;
 @property(nonatomic, strong) NSNumberFormatter *localCurrencyFormatter;
 
 @property (nonatomic) BOOL changedPassword;
 @property (nonatomic) BOOL isVerifyingMobileNumber;
+
+@property (nonatomic) ContactTransaction *pendingPaymentRequestTransaction;
 
 // Certificate Pinning
 @property (nonatomic) CertificatePinner *certificatePinner;
@@ -123,15 +126,13 @@
 - (void)applicationWillResignActive:(UIApplication *)application;
 - (void)applicationDidEnterBackground:(UIApplication *)application;
 - (void)applicationWillEnterForeground:(UIApplication *)application;
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
 
 - (void)setAccountData:(NSString*)guid sharedKey:(NSString*)sharedKey;
 
 - (void)playBeepSound;
 - (void)playAlertSound;
 
-- (TabViewcontroller*)tabViewController;
-- (TransactionsViewController*)transactionsViewController;
 
 - (void)showWelcome;
 - (void)logout;
@@ -151,7 +152,7 @@
 - (void)closeModalWithTransition:(NSString *)transition;
 - (void)closeAllModals;
 
-- (NSDictionary*)parseURI:(NSString*)string;
+- (NSDictionary*)parseURI:(NSString*)urlString prefix:(NSString *)urlPrefix;
 
 // Wallet Delegate
 - (void)didSetLatestBlock:(LatestBlock*)block;
@@ -169,7 +170,7 @@
 - (void)hideBusyView;
 
 // Request Second Password From User
-- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
+- (void)getSecondPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error helperText:(NSString *)helperText;
 - (void)getPrivateKeyPassword:(void (^)(NSString *))success error:(void (^)(NSString *))error;
 
 - (void)reload;
@@ -191,19 +192,16 @@
 - (void)showHdUpgrade;
 - (void)showBackupReminder:(BOOL)firstReceive;
 
-- (IBAction)receiveCoinClicked:(UIButton *)sender;
-- (IBAction)transactionsClicked:(UIButton *)sender;
-- (IBAction)sendCoinsClicked:(UIButton *)sender;
+- (IBAction)webLoginClicked:(id)sender;
 - (IBAction)merchantClicked:(UIButton *)sender;
-- (IBAction)QRCodebuttonClicked:(id)sender;
 - (IBAction)forgetWalletClicked:(id)sender;
-- (IBAction)menuClicked:(id)sender;
 - (IBAction)scanAccountQRCodeclicked:(id)sender;
 - (IBAction)secondPasswordClicked:(id)sender;
 - (IBAction)mainPasswordClicked:(id)sender;
 - (IBAction)manualPairClicked:(id)sender;
 
 - (IBAction)accountsAndAddressesClicked:(id)sender;
+- (IBAction)contactsClicked:(id)sender;
 - (IBAction)accountSettingsClicked:(id)sender;
 - (IBAction)backupFundsClicked:(id)sender;
 - (IBAction)supportClicked:(id)sender;
@@ -211,8 +209,11 @@
 - (IBAction)buyBitcoinClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
+- (void)setupPaymentRequest:(ContactTransaction *)transaction;
+- (void)setupSendToAddress:(NSString *)address;
 
 - (void)paymentReceived:(NSDecimalNumber *)amount showBackupReminder:(BOOL)showBackupReminder;
+- (void)checkIfPaymentRequestFulfilled:(Transaction *)transaction;
 
 - (void)clearPin;
 - (void)showPinModalAsView:(BOOL)asView;

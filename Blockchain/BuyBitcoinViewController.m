@@ -188,7 +188,7 @@ NSString* loginWithJsonScript(NSString* json, NSString* externalJson, NSString* 
     if (self.didInitiateTrade) {
         [self.delegate watchPendingTrades:YES];
     } else {
-        [self.delegate fetchExchangeAccount];
+        [self.delegate watchPendingTrades:NO];
     }
     
     if (self.isReady) {

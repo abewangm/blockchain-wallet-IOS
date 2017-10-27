@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tato akce vyžaduje privátní klíč pro bitcoinovou adresu %@. Naskenujte prosím QR kód.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tato akce vyžaduje druhé heslo k Vaší bitcoinové peněžence. Zadejte ho prosím níže a stiskněte Pokračovat.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tato akce vyžaduje druhé heslo k Vaší peněžence. Zadejte ho prosím níže a stiskněte Pokračovat.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Tato adresa již byla použita. Přihlaste se, prosím.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Může nastat riziko dvojnásobné útraty.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pro vaši bezpečnost neuchováváme žádná hesla. Zálohujte svou peněženku, abyste zajistili, že vaše bitcoiny budou v bezpečí, i když zapomenete své heslo.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Pro vaši bezpečnost neuchováváme žádná hesla. Zálohujte svou peněženku, abyste zajistili, že vaše prostředky budou v bezpečí, i když zapomenete své heslo.";
 
 /* (No Commment) */
 "Wallets" = "Peněženkám";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Zálohování potřeby";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k bitcoin, tak ať je offline někde bezpečné a spolehlivé.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Pomocí výraz obnovení obnovit vaše prostředky v případě ztracené heslo.  Kdokoli s přístupem k zotavení fráze mohou přistupovat k prostředky, tak ať je offline někde bezpečné a spolehlivé.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující 12 slovo fráze obnovení vám umožní přístup k financím, v případě, že ztratíte své heslo.";
 
@@ -1725,7 +1725,7 @@
 "Backup Needed" = "Nutné zálohování";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "V případě, že ztratíte heslo, použijte svou frázi pro obnovení.  Kdokoliv, kdo má přístup k vaší frázi pro obnovení, má přístup k vašemu bitcoinu. Proti ji uschovejte offline někde na bezpečném a zabezpečeném místě.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "V případě, že ztratíte heslo, použijte svou frázi pro obnovení.  Kdokoliv, kdo má přístup k vaší frázi pro obnovení, má přístup k vašemu bitcoinu. Proti ji uschovejte offline někde na bezpečném a zabezpečeném místě.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Následující fráze pro obnovení v délce 12 slov vám poskytne přístup k vašim financím v případě, že ztratíte své heslo.";
@@ -1897,3 +1897,189 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Ruský rubl";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Zůstatky Bitcoinu";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Zadejte adresu Ether nebo vyberte";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Platba odeslána! Vás zůstatek nebo transakce se brzy aktualizují.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čekání na platbu";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Počkejte prosím, než se potvrdí vaše poslední transakce Ether.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoinové adresy";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Mapa bitcoinových obchodníků";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neplatná adresa Ether: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Během získávání nových dat pro grafy se vyskytla chyba. Zkuste to prosím později znovu.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transakce nastanou, když pošlete a vyžádáte ether.";
+
+/* (No Commment) */
+"Request Ether" = "Požádat o Ether";
+
+/* (No Commment) */
+"Dashboard" = "Řídicí panel";
+
+/* (No Commment) */
+"Week" = "Týden";
+
+/* (No Commment) */
+"Month" = "Měsíc";
+
+/* (No Commment) */
+"Year" = "Rok";
+
+/* (No Commment) */
+"Bitcoin Price" = "Cena Bitcoinu";
+
+/* (No Commment) */
+"Ether Price" = "Cena Ether";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Smluvní adresy nejsou podporovány.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "V současné době podporujeme pouze ETH. Nemůžete přijímat REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nyní podporujeme Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ptali jste se, my jsme naslouchali. S radostí oznamujeme, že vaše peněženka Blockchain nyní umožňuje bezproblémově odesílat a přijímat Ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Začněte s Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Chcete-li používat tuto službu, vyžadujeme, abyste zadali druhé heslo. Toto budete muset zadat pouze jednou, když nastavíte svou peněženku Ether.";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Zůstatky";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Zadejte Ether adresu nebo vyberte";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Platba Odeslána! Váš zůstatek a transakce bude aktualizovat brzy.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čekání na platbu";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Prosím, vyčkejte, dokud vaše poslední éteru transakce potvrzuje.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresy";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Mapa";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neplatná Ether adresu: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Došlo k chybě při načítání nejnovější data grafu. Zkuste to prosím znovu později.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transakce se vyskytují, když jsi odesílat a požádat o éteru.";
+
+/* (No Commment) */
+"Request Ether" = "Žádost Éteru";
+
+/* (No Commment) */
+"Dashboard" = "Palubní deska";
+
+/* (No Commment) */
+"Week" = "Týden";
+
+/* (No Commment) */
+"Month" = "Měsíc";
+
+/* (No Commment) */
+"Year" = "Rok";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Cena";
+
+/* (No Commment) */
+"Ether Price" = "Éter Cena";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Smlouva adresy nejsou podporovány.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "V současné době podporuje pouze ETH. Nelze přijímat REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nyní podporuje Éteru";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ptali jste se, jsme poslouchali. Jsme rádi, oznámit, že vaše Blockchain peněženka bude nyní umožní bezproblémově odesílat a přijímat éteru!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Začínáme s Éterem";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Chcete-li používat tuto službu, budeme požadovat, abyste zadali své druhé heslo. Měli byste potřebovat pouze zadat jednou nastavit Éteru peněženku.";
+
+/* (No Commment) */
+"Enter Ether address" = "Zadejte Ether adresu";
+
+/* (No Commment) */
+"Day" = "Den";
+
+/* (No Commment) */
+"All" = "Všechny";
+
+/* (No Commment) */
+"Please send ether to %@." = "Prosím, pošlete do éteru %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin žádosti o platbu";
+
+/* (No Commment) */
+"Ether payment request" = "Éter žádosti o platbu";
+
+/* (No Commment) */
+"My Ether Wallet" = "Můj Éter Peněženku";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Horníci dostávat tento poplatek na zpracování této transakce.";
+
+/* (No Commment) */
+"Enter Ether address" = "Zadejte adresu Ether";
+
+/* (No Commment) */
+"Day" = "Den";
+
+/* (No Commment) */
+"All" = "Vše";
+
+/* (No Commment) */
+"Please send ether to %@." = "Pošlete prosím Ether na %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Požadavek na platbu Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Požadavek na platbu Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Má peněženka Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Tento poplatek obdrží těžitelé za zpracování této transakce.";

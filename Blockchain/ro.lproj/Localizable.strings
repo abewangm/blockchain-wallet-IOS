@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Această acţiune necesită acces la cheia privată pentru Bitcoin adresa %@. Vă rugăm să scanaţi codul QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Această acţiune necesită doua parola pentru portofel bitcoin. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Această acţiune necesită doua parola pentru portofel. Vă rugăm să introduceţi-l mai jos şi apăsaţi continuă.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Aceasta adresa a fost deja utilizat. Rugam sa va logati.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Poate fi la risc pentru un dublu de cheltuieli.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pentru securitate, nu păstrăm nici parolele pe dosar. Rezervă portofel pentru a asigura bitcoins dumneavoastră sunt în siguranţă în cazul în care ai pierdut parola.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Pentru securitate, nu păstrăm nici parolele pe dosar. Rezervă portofel pentru a asigura la fondurile dumneavoastră sunt în siguranţă în cazul în care ai pierdut parola.";
 
 /* (No Commment) */
 "Wallets" = "Portofele";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Copie de rezervă necesare";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Utilizaţi dumneavoastră fraza de recuperare pentru a restabili fondurile dumneavoastră în cazul în care o parolă pierdută.  Cineva cu acces la dumneavoastră fraza de recuperare poate accesa ţi bitcoin, aşa-l păstraţi offline undeva sigur.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Utilizaţi dumneavoastră fraza de recuperare pentru a restabili fondurile dumneavoastră în cazul în care o parolă pierdută.  Cineva cu acces la dumneavoastră fraza de recuperare poate accesa ţi fondurile, aşa-l păstraţi offline undeva sigur.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Următoarele 12 cuvântul fraza de recuperare va oferi acces la fondurile tale în cazul în care ai pierdut parola.";
 
@@ -1822,3 +1822,96 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rubla Rusească";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Soldurile";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Introduceți Eter adresă sau selectați";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "De Plată A Trimis! Soldul și tranzacțiile se va actualiza în curând.";
+
+/* (No Commment) */
+"Waiting for payment" = "De așteptare pentru plata";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Vă rugăm să așteptați până când ultimul eter tranzacție confirmă.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Adrese Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Comerciant Hartă";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Invalid Eter adresa: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "A survenit o eroare la preluarea celor mai recente date diagramă. Vă rugăm să încercați din nou mai târziu.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Tranzactiile apar atunci când trimiteți și să solicite eter.";
+
+/* (No Commment) */
+"Request Ether" = "Cerere Eter";
+
+/* (No Commment) */
+"Dashboard" = "Tabloul de bord";
+
+/* (No Commment) */
+"Week" = "Saptamana";
+
+/* (No Commment) */
+"Month" = "Luna";
+
+/* (No Commment) */
+"Year" = "An";
+
+/* (No Commment) */
+"Bitcoin Price" = "Prețul Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Eter Pret";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Contract de adrese nu sunt acceptate.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "În acest moment ne-am sprijini numai ETH. Nu puteți primi REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Acum, sprijinirea Eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ați întrebat, am ascultat. Suntem încântați să anunțăm că Blockchain portofel va permite să perfect trimite și primi eter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Începeți cu Eter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Pentru a utiliza acest serviciu, aveți nevoie pentru a introduce a doua parola. Tu ar trebui să trebuie doar să introduceți această dată pentru a configura Eter portofel.";
+
+/* (No Commment) */
+"Enter Ether address" = "Introduceți adresa Eter";
+
+/* (No Commment) */
+"Day" = "Zi";
+
+/* (No Commment) */
+"All" = "Toate";
+
+/* (No Commment) */
+"Please send ether to %@." = "Vă rugăm să trimiteți-eter pentru a %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin cerere de plată";
+
+/* (No Commment) */
+"Ether payment request" = "Eter cerere de plată";
+
+/* (No Commment) */
+"My Ether Wallet" = "Eterul Meu Portofel";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Minerii primesc această taxă pentru a procesa această tranzacție.";

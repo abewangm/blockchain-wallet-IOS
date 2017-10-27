@@ -29,11 +29,14 @@
 
 ECSlidingViewController *sideMenu;
 
-UITapGestureRecognizer *tapToCloseGestureRecognizer;
+UITapGestureRecognizer *tapToCloseGestureRecognizerViewController;
+UITapGestureRecognizer *tapToCloseGestureRecognizerTabBar;
 
 NSString *entryKeyUpgradeBackup = @"upgrade_backup";
 NSString *entryKeySettings = @"settings";
 NSString *entryKeyAccountsAndAddresses = @"accounts_and_addresses";
+NSString *entryKeyWebLogin = @"web_login";
+NSString *entryKeyContacts = @"contacts";
 NSString *entryKeyMerchantMap = @"merchant_map";
 NSString *entryKeySupport = @"support";
 NSString *entryKeyLogout = @"logout";
@@ -75,7 +78,8 @@ int accountEntries = 0;
     
     sideMenu.delegate = self;
     
-    tapToCloseGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
+    tapToCloseGestureRecognizerViewController = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
+    tapToCloseGestureRecognizerTabBar = [[UITapGestureRecognizer alloc] initWithTarget:app action:@selector(toggleSideMenu)];
 }
 
 - (NSUInteger)menuEntriesCount {
@@ -101,7 +105,7 @@ int accountEntries = 0;
     [self clearMenuEntries];
     
     if ([app.wallet isBuyEnabled]) {
-        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"bitcoin"];
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"buy"];
     }
     if (!app.wallet.didUpgradeToHd) {
         [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
@@ -110,9 +114,12 @@ int accountEntries = 0;
     }
 
     [self addMenuEntry:entryKeySettings text:BC_STRING_SETTINGS icon:@"settings"];
-    [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_ADDRESSES icon:@"wallet"];
-    
-    [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_MERCHANT_MAP icon:@"merchant"];
+#ifdef ENABLE_CONTACTS
+    [self addMenuEntry:entryKeyContacts text:BC_STRING_CONTACTS icon:@"icon_contact_small"];
+#endif
+    [self addMenuEntry:entryKeyAccountsAndAddresses text:BC_STRING_BITCOIN_ADDRESSES icon:@"wallet"];
+    [self addMenuEntry:entryKeyWebLogin text:BC_STRING_LOG_IN_TO_WEB_WALLET icon:@"web"];
+    [self addMenuEntry:entryKeyMerchantMap text:BC_STRING_BITCOIN_MERCHANT_MAP icon:@"merchant"];
     [self addMenuEntry:entryKeySupport text:BC_STRING_SUPPORT icon:@"help"];
     [self addMenuEntry:entryKeyLogout text:BC_STRING_LOGOUT icon:@"logout"];
 
@@ -128,23 +135,27 @@ int accountEntries = 0;
 
 - (void)setSideMenuGestures
 {
+    TabViewcontroller *tabViewController = app.tabControllerManager.tabViewController;
+    
     // Hide status bar
     if (!app.pinEntryViewController.inSettings) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
     }
     
     // Disable all interactions on main view
-    for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
+    for (UIView *view in tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:NO];
     }
-    [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
+    [tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:NO];
     
     // Enable Pan gesture and tap gesture to close sideMenu
-    [app.tabViewController.activeViewController.view setUserInteractionEnabled:YES];
+    [tabViewController.activeViewController.view setUserInteractionEnabled:YES];
     ECSlidingViewController *sideMenu = app.slidingViewController;
-    [app.tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.activeViewController.view addGestureRecognizer:sideMenu.panGesture];
     
-    [app.tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizer];
+    [tabViewController.activeViewController.view addGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    
+    [tabViewController addTapGestureRecognizerToTabBar:tapToCloseGestureRecognizerTabBar];
     
     // Show shadow on current viewController in tabBarView
     UIView *castsShadowView = app.slidingViewController.topViewController.view;
@@ -155,21 +166,24 @@ int accountEntries = 0;
 
 - (void)resetSideMenuGestures
 {
+    TabViewcontroller *tabViewController = app.tabControllerManager.tabViewController;
+
     // Show status bar again
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
     // Disable Pan and Tap gesture on main view
-    [app.tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
-    [app.tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizer];
-    
+    [tabViewController.activeViewController.view removeGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.activeViewController.view removeGestureRecognizer:tapToCloseGestureRecognizerViewController];
+    [tabViewController removeTapGestureRecognizerFromTabBar:tapToCloseGestureRecognizerTabBar];
+
     // Enable interaction on main view
-    for (UIView *view in app.tabViewController.activeViewController.view.subviews) {
+    for (UIView *view in tabViewController.activeViewController.view.subviews) {
         [view setUserInteractionEnabled:YES];
     }
     
     // Enable swipe to open side menu gesture on small bar on the left of main view
-    [app.tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
-    [app.tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
+    [tabViewController.menuSwipeRecognizerView setUserInteractionEnabled:YES];
+    [tabViewController.menuSwipeRecognizerView addGestureRecognizer:sideMenu.panGesture];
 }
 
 - (void)reload
@@ -197,9 +211,9 @@ int accountEntries = 0;
 
 - (void)reloadTableViewSize
 {
-    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT + MENU_BITCOIN_TICKER_HEIGHT);
+    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + BALANCE_ENTRY_HEIGHT * (balanceEntries + 1) + SECTION_HEADER_HEIGHT + MENU_TOP_BANNER_HEIGHT);
     if (![self showBalances]) {
-        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + MENU_BITCOIN_TICKER_HEIGHT);
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width - sideMenu.anchorLeftPeekAmount, MENU_ENTRY_HEIGHT * self.menuEntriesCount + MENU_TOP_BANNER_HEIGHT);
     }
     
     // If the tableView is bigger than the screen, enable scrolling and resize table view to screen size
@@ -287,7 +301,7 @@ int accountEntries = 0;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     NSString *rowKey = [self getMenuEntry:indexPath.row][@"key"];
 
     if (rowKey == entryKeyUpgradeBackup) {
@@ -301,6 +315,10 @@ int accountEntries = 0;
         [app accountsAndAddressesClicked:nil];
     } else if (rowKey == entryKeySettings) {
         [app accountSettingsClicked:nil];
+    } else if (rowKey == entryKeyContacts) {
+        [app contactsClicked:nil];
+    } else if (rowKey == entryKeyWebLogin) {
+        [app webLoginClicked:nil];
     } else if (rowKey == entryKeyMerchantMap) {
         [app merchantClicked:nil];
     } else if (rowKey == entryKeySupport) {
@@ -338,7 +356,7 @@ int accountEntries = 0;
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return MENU_BITCOIN_TICKER_HEIGHT;
+        return MENU_TOP_BANNER_HEIGHT;
     }
     
     return 0;
@@ -348,19 +366,18 @@ int accountEntries = 0;
 {
     // Total Balance
     if (section == 0) {
-        UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, MENU_BITCOIN_TICKER_HEIGHT)];
-        UIView *backgroundView = [[UIView alloc] initWithFrame:view.frame];
-
-        [backgroundView setBackgroundColor:COLOR_BLOCKCHAIN_BLUE];
+        UITableViewHeaderFooterView *view = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, MENU_TOP_BANNER_HEIGHT)];
+        UIView *backgroundView = [[UIView alloc] initWithFrame:view.bounds];
+        backgroundView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
         view.backgroundView = backgroundView;
-        
-        UILabel *tickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.tableView.frame.size.width - 23, 30)];
-        tickerLabel.adjustsFontSizeToFitWidth = YES;
-        tickerLabel.text = [NSString stringWithFormat:@"%@ = %@", [NSNumberFormatter formatBTC:[CURRENCY_CONVERSION_BTC longLongValue]], [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
-        tickerLabel.textColor = [UIColor whiteColor];
-        tickerLabel.center = CGPointMake(tickerLabel.center.x, view.center.y);
-        tickerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TICKER];
-        [view addSubview:tickerLabel];
+        CGFloat defaultAnchorRevealWidth = 276;
+        CGFloat imageViewOriginY = 15;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, imageViewOriginY, defaultAnchorRevealWidth - 60, MENU_TOP_BANNER_HEIGHT - imageViewOriginY*2)];
+        imageView.clipsToBounds = NO;
+        imageView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageNamed:@"logo_and_banner_white"];
+        [view addSubview:imageView];
         
         return view;
     }
@@ -401,7 +418,13 @@ int accountEntries = 0;
         NSDictionary *entry = [self getMenuEntry:indexPath.row];
         cell.textLabel.text = entry[@"text"];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
-        cell.imageView.image = [UIImage imageNamed:entry[@"icon"]];
+        NSString *imageName = entry[@"icon"];
+        cell.imageView.image = [UIImage imageNamed:imageName];
+        
+        if ([imageName isEqualToString:@"icon_contact_small"]) {
+            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [cell.imageView setTintColor:COLOR_DARK_GRAY];
+        }
         
         return cell;
     }

@@ -99,7 +99,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
                           [self appNameAndVersionNumberDisplayString],
                           [[UIDevice currentDevice] systemName],
                           [[UIDevice currentDevice] systemVersion],
-                          [app.tabViewController.activeViewController class],
+                          [app.tabControllerManager.tabViewController.activeViewController class],
                           walletIsLoaded ? @"TRUE" : @"FALSE",
                           walletIsInitialized? @"TRUE" : @"FALSE",
                           [DeviceIdentifier deviceName],
@@ -118,7 +118,7 @@ const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
     NSHTTPURLResponse * repsonse = NULL;
     NSError * error = NULL;
     
-    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] delegate:app.certificatePinner returningResponse:&repsonse error:&error sessionDescription:nil];
+    [NSURLSession sendSynchronousRequest:[NSURLRequest requestWithURL:url] session:[SessionManager sharedSession] returningResponse:&repsonse error:&error sessionDescription:nil];
 }
 
 - (void)handleException:(NSException *)exception

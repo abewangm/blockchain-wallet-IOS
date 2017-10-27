@@ -7,7 +7,7 @@
 //
 
 #import "TransactionDetailViewController.h"
-
+#import "Transaction.h"
 #import "TransactionDetailDescriptionCell.h"
 #import "TransactionDetailToCell.h"
 #import "TransactionDetailFromCell.h"
@@ -16,12 +16,12 @@
 #import "TransactionDetailValueCell.h"
 #import "TransactionDetailTableCell.h"
 #import "TransactionDetailDoubleSpendWarningCell.h"
-
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
 #import "TransactionDetailNavigationController.h"
 #import "BCWebViewController.h"
 #import "TransactionRecipientsViewController.h"
+#import <SafariServices/SafariServices.h>
 
 #ifdef DEBUG
 #import "UITextView+AssertionFailureFix.h"
@@ -76,7 +76,7 @@ const CGFloat rowHeightValueReceived = 80;
     [self setupPullToRefresh];
     [self setupTextViewInputAccessoryView];
 
-    if (![self.transaction.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
+    if (![self.transactionModel.fiatAmountsAtTime objectForKey:[self getCurrencyCode]]) {
         [self getFiatAtTime];
     }
 }
@@ -105,15 +105,19 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)getFiatAtTime
 {
-    [app.wallet getFiatAtTime:self.transaction.time * MSEC_PER_SEC value:imaxabs(self.transaction.amount) currencyCode:[app.latestResponse.symbol_local.code lowercaseString]];
+    [app.wallet getFiatAtTime:self.transactionModel.time value:self.transactionModel.decimalAmount currencyCode:[app.latestResponse.symbol_local.code lowercaseString] assetType:self.transactionModel.assetType];
     self.isGettingFiatAtTime = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterGetFiatAtTime) name:NOTIFICATION_KEY_GET_FIAT_AT_TIME object:nil];
 }
 
 - (NSString *)getNotePlaceholder
 {
-    NSString *label = [app.wallet getNotePlaceholderForTransaction:self.transaction];
-    return label.length > 0 ? label : nil;
+    if (self.transactionModel.assetType == AssetTypeBitcoin) {
+        NSString *label = [app.wallet getNotePlaceholderForTransactionHash:self.transactionModel.myHash];
+        return label.length > 0 ? label : nil;
+    } else {
+        return nil;
+    }
 }
 
 - (void)cancelEditing
@@ -134,12 +138,14 @@ const CGFloat rowHeightValueReceived = 80;
     
     [self.textView resignFirstResponder];
     self.textView.editable = NO;
-
-    [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
     
-    [app.wallet saveNote:self.textView.text forTransaction:self.transaction.myHash];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistoryAfterSavingNote) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    if (self.transactionModel.assetType == AssetTypeBitcoin) {
+        [self.busyViewDelegate showBusyViewWithLoadingText:BC_STRING_LOADING_SYNCING_WALLET];
+        [app.wallet saveNote:self.textView.text forTransaction:self.transactionModel.myHash];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHistoryAfterSavingNote) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
+    } else if (self.transactionModel.assetType == AssetTypeEther) {
+        [app.wallet saveEtherNote:self.textView.text forTransaction:self.transactionModel.myHash];
+    }
 }
 
 - (void)getHistoryAfterSavingNote
@@ -165,9 +171,20 @@ const CGFloat rowHeightValueReceived = 80;
 {
     [self.busyViewDelegate hideBusyView];
     
-    NSArray *newTransactions = app.latestResponse.transactions;
+    NSArray *newTransactions = self.transactionModel.assetType == AssetTypeBitcoin ?  app.latestResponse.transactions : app.wallet.etherTransactions;
     
     [self findAndUpdateTransaction:newTransactions];
+    
+    [self.tableView reloadData];
+    
+    if (self.refreshControl && self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)reloadEtherData
+{
+    [self.busyViewDelegate hideBusyView];
     
     [self.tableView reloadData];
     
@@ -179,20 +196,20 @@ const CGFloat rowHeightValueReceived = 80;
 - (void)findAndUpdateTransaction:(NSArray *)newTransactions
 {
     BOOL didFindTransaction = NO;
+    
     for (Transaction *transaction in newTransactions) {
-        if ([transaction.myHash isEqualToString:self.transaction.myHash]) {
-            transaction.fiatAmountsAtTime = self.transaction.fiatAmountsAtTime;
-            self.transaction = transaction;
+        if ([transaction.myHash isEqualToString:self.transactionModel.myHash]) {
+            self.transactionModel.fiatAmountsAtTime = transaction.fiatAmountsAtTime;
             didFindTransaction = YES;
             break;
         }
     }
+
     if (!didFindTransaction) {
         [self dismissViewControllerAnimated:YES completion:^{
-            [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transaction.myHash]];
+            [app standardNotify:[NSString stringWithFormat:BC_STRING_COULD_NOT_FIND_TRANSACTION_ARGUMENT, self.transactionModel.myHash]];
         }];
     }
-    
 }
 
 - (CGSize)addVerticalPaddingToSize:(CGSize)size
@@ -208,43 +225,55 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.transaction.doubleSpend || self.transaction.replaceByFee ? 7 : 6;
+    return self.transactionModel.doubleSpend || self.transactionModel.replaceByFee ? 7 : 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == [self getCellRowWarning]) {
         TransactionDetailDoubleSpendWarningCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_WARNING forIndexPath:indexPath];
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
         return cell;
     } else if (indexPath.row == [self getCellRowValue]) {
         TransactionDetailValueCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_VALUE forIndexPath:indexPath];
         cell.valueDelegate = self;
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
         return cell;
     } else if (indexPath.row == [self getCellRowDescription]) {
         TransactionDetailDescriptionCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DESCRIPTION forIndexPath:indexPath];
         cell.descriptionDelegate = self;
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
         self.textView = cell.textView;
         cell.textView.inputAccessoryView = [self getDescriptionInputAccessoryView];
         return cell;
     } else if (indexPath.row == [self getCellRowTo]) {
         TransactionDetailToCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_TO forIndexPath:indexPath];
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToAddressOptions)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.accessoryLabel addGestureRecognizer:tapGestureRecognizer];
+        cell.accessoryLabel.userInteractionEnabled = YES;
+        
         return cell;
     } else if (indexPath.row == [self getCellRowFrom]) {
         TransactionDetailFromCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_FROM forIndexPath:indexPath];
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFromAddressOptions)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.accessoryLabel addGestureRecognizer:tapGestureRecognizer];
+        cell.accessoryLabel.userInteractionEnabled = YES;
+        
         return cell;
     } else if (indexPath.row == [self getCellRowDate]) {
         TransactionDetailDateCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_DATE forIndexPath:indexPath];
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
         return cell;
     } else if (indexPath.row == [self getCellRowStatus]) {
         TransactionDetailStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_TRANSACTION_DETAIL_STATUS forIndexPath:indexPath];
         cell.statusDelegate = self;
-        [cell configureWithTransaction:self.transaction];
+        [cell configureWithTransactionModel:self.transactionModel];
         return cell;
     }
     return nil;
@@ -252,7 +281,7 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [self getCellRowTo] && self.transaction.to.count > 1) {
+    if (indexPath.row == [self getCellRowTo] && self.transactionModel.to.count > 1) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self showRecipients];
         return;
@@ -266,7 +295,7 @@ const CGFloat rowHeightValueReceived = 80;
     if (indexPath.row == [self getCellRowWarning]) {
         return rowHeightWarning;
     } else if (indexPath.row == [self getCellRowValue]) {
-        return [self.transaction.txType isEqualToString:TX_TYPE_RECEIVED] ? rowHeightValueReceived : rowHeightValue;
+        return [self.transactionModel.txType isEqualToString:TX_TYPE_RECEIVED] ? rowHeightValueReceived : rowHeightValue;
     } else if (indexPath.row == [self getCellRowDescription] && self.textView.text) {
         return UITableViewAutomaticDimension;
     } else if (indexPath.row == [self getCellRowTo]) {
@@ -304,7 +333,7 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)showRecipients
 {
-    self.recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transaction.to];
+    self.recipientsViewController = [[TransactionRecipientsViewController alloc] initWithRecipients:self.transactionModel.to];
     self.recipientsViewController.recipientsDelegate = self;
     [self.navigationController pushViewController:self.recipientsViewController animated:YES];
 }
@@ -328,11 +357,49 @@ const CGFloat rowHeightValueReceived = 80;
     [app.wallet performSelector:@selector(getHistory) withObject:nil afterDelay:0.1f];
 }
 
+- (void)showToAddressOptions
+{
+    [self showAddressOptionsFrom:NO];
+}
+
+- (void)showFromAddressOptions
+{
+    [self showAddressOptionsFrom:YES];
+}
+
+- (void)showAddressOptionsFrom:(BOOL)willSelectFrom
+{
+    NSString *address;
+    NSString *labelString;
+    
+    if (willSelectFrom) {
+        if (self.transactionModel.hasFromLabel) return;
+        address = self.transactionModel.fromAddress;
+        labelString = self.transactionModel.fromString;
+    } else {
+        if (self.transactionModel.hasToLabel) return;
+        address = [self.transactionModel.to firstObject];
+        labelString = self.transactionModel.toString;
+    }
+    
+    UIAlertController *copyAddressController = [UIAlertController alertControllerWithTitle:labelString message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_COPY_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [UIPasteboard generalPasteboard].string = address;
+    }]];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_SEND_TO_ADDRESS style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [app setupSendToAddress:address];
+        }];
+    }]];
+    [copyAddressController addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:copyAddressController animated:YES completion:nil];
+}
+
 #pragma mark - Cell Row Getters
 
 - (int)getCellRow:(int)cellConstant
 {
-    return self.transaction.doubleSpend || self.transaction.replaceByFee ? cellConstant : cellConstant - 1;
+    return self.transactionModel.doubleSpend || self.transactionModel.replaceByFee ? cellConstant : cellConstant - 1;
 }
 
 - (int)getCellRowWarning
@@ -401,10 +468,16 @@ const CGFloat rowHeightValueReceived = 80;
 
 - (void)showWebviewDetail
 {
-    BCWebViewController *webViewController = [[BCWebViewController alloc] initWithTitle:BC_STRING_DETAILS];
-    [webViewController loadURL:[URL_SERVER stringByAppendingFormat:@"/tx/%@", self.transaction.myHash]];
-    webViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:webViewController animated:YES completion:nil];
+    NSURL *url = [NSURL URLWithString:self.transactionModel.detailButtonLink];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+        if (safariViewController) {
+            [self presentViewController:safariViewController animated:YES completion:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
 }
 
 - (NSString *)getCurrencyCode

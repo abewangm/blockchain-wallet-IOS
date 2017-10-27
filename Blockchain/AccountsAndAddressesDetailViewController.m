@@ -14,7 +14,7 @@
 #import "BCQRCodeView.h"
 #import "PrivateKeyReader.h"
 #import "UIViewController+AutoDismiss.h"
-#import "SendViewController.h"
+#import "SendBitcoinViewController.h"
 #import "Blockchain-Swift.h"
 
 const int numberOfSectionsAccountUnarchived = 2;
@@ -157,15 +157,11 @@ typedef enum {
     
     app.topViewControllerDelegate = nil;
     
-    if (!app.sendViewController) {
-        app.sendViewController = [[SendViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
-    }
-    
     [app closeSideMenu];
     
     [app showSendCoins];
 
-    [app.sendViewController transferFundsToDefaultAccountFromAddress:self.address];
+    [app.tabControllerManager transferFundsToDefaultAccountFromAddress:self.address];
     
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
@@ -260,8 +256,9 @@ typedef enum {
             
         } else if (detailType == DetailTypeShowExtendedPublicKey) {
             
-            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE];
+            BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame qrHeaderText:BC_STRING_EXTENDED_PUBLIC_KEY_DETAIL_HEADER_TITLE addAddressPrefix:YES];
             qrCodeView.address = [app.wallet getXpubForAccount:self.account];
+            qrCodeView.doneButton.hidden = YES;
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             
@@ -272,6 +269,7 @@ typedef enum {
             
             BCQRCodeView *qrCodeView = [[BCQRCodeView alloc] initWithFrame:self.view.frame];
             qrCodeView.address = self.address;
+            qrCodeView.doneButton.hidden = YES;
             
             [self setupModalView:qrCodeView inViewController:segue.destinationViewController];
             

@@ -167,11 +167,7 @@
 
 - (void)presentAlertController:(UIAlertController *)alertController
 {
-    if (self.presentedViewController) {
-        [self.presentedViewController presentViewController:alertController animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+    [self.visibleViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
