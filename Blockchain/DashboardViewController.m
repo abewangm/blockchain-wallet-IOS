@@ -16,6 +16,7 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
 #import "GraphTimeFrame.h"
+#import "Blockchain-Swift.h"
 
 @import Charts;
 
@@ -24,7 +25,7 @@
 @property (nonatomic) UIView *contentView;
 @end
 
-@interface DashboardViewController () <IChartAxisValueFormatter>
+@interface DashboardViewController () <IChartAxisValueFormatter, ChartViewDelegate>
 @property (nonatomic) LineChartView *chartView;
 @property (nonatomic) UIView *graphContainerView;
 @property (nonatomic) UILabel *titleLabel;
@@ -92,6 +93,7 @@
     CGFloat horizontalSpacing = 0;
 
     LineChartView *chartView = [[LineChartView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
+    chartView.delegate = self;
     chartView.drawGridBackgroundEnabled = NO;
     chartView.drawBordersEnabled = NO;
     chartView.scaleXEnabled = NO;
@@ -101,6 +103,10 @@
     chartView.chartDescription.enabled = NO;
     chartView.legend.enabled = NO;
     
+    BCChartMarkerView *marker = [[BCChartMarkerView alloc] initWithFrame:CGRectMake(0, 0, 175, 60)];
+    marker.chartView = chartView;
+    chartView.marker = marker;
+
     chartView.leftAxis.drawGridLinesEnabled = NO;
     chartView.leftAxis.labelTextColor = COLOR_TEXT_GRAY;
     chartView.leftAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
@@ -268,7 +274,6 @@
     dataSet.drawCircleHoleEnabled = NO;
     dataSet.circleColors = @[COLOR_BLOCKCHAIN_BLUE];
     dataSet.drawFilledEnabled = NO;
-    dataSet.highlightEnabled = NO;
     dataSet.drawVerticalHighlightIndicatorEnabled = NO;
     dataSet.drawHorizontalHighlightIndicatorEnabled = NO;
     self.chartView.data = [[LineChartData alloc] initWithDataSet:dataSet];
@@ -402,6 +407,13 @@
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return timeFrame.dateFormat;
+}
+
+#pragma mark - Chart View Delegate
+
+- (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
+{
+    [chartView.marker refreshContentWithEntry:entry highlight:highlight];
 }
 
 @end
