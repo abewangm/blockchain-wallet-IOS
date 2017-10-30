@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Saattavat altistua kahden kuluttaa.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa sinun bitcoins ovat turvallisia, jos menetät sinun tunnussana.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa teidän rahat ovat turvallisia, jos menetät sinun tunnussana.";
 
 /* (No Commment) */
 "Wallets" = "Lompakot";

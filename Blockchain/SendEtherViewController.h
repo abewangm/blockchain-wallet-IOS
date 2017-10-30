@@ -17,4 +17,5 @@
 - (void)keepCurrentPayment;
 - (void)didUpdatePayment:(NSDictionary *)payment;
 - (void)updateExchangeRate:(NSDecimalNumber *)rate;
+- (void)clearFundsAvailable;
 @end

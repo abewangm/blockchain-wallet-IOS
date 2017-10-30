@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "可能会存在重复支付的风险。";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "为了您的资金安全，我们不会将任何密码保存在文件中。备份您的钱包，从而在您丢失密码时确保您的比特币是安全的。";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "为了您的资金安全，我们不会将任何密码保存在文件中。备份您的钱包，从而在您丢失密码时确保您的资金是安全的。";
 
 /* (No Commment) */
 "Wallets" = "钱包";
@@ -1940,4 +1940,3 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "矿工接收这笔费用用于处理该交易";
-

@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Çift harcama riski altında olabilir.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Güvenliğiniz için hiçbir şifreyi dosyada tutmuyoruz. Şifrenizi kaybetmeniz durumunda bitcoinlerinizin güvende olduğunu garanti etmek için cüzdanınız yedekleyin.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Güvenliğiniz için hiçbir şifreyi dosyada tutmuyoruz. Şifrenizi kaybetmeniz durumunda paralar güvende olduğunu garanti etmek için cüzdanınız yedekleyin.";
 
 /* (No Commment) */
 "Wallets" = "Cüzdanlar";

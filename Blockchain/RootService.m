@@ -107,11 +107,13 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)transitionToIndex:(NSInteger)newIndex
 {
-    if (newIndex == 0)
+    if (newIndex == TAB_SEND)
     [self.tabControllerManager sendCoinsClicked:nil];
-    else if (newIndex == 1)
+    else if (newIndex == TAB_DASHBOARD)
+    [self.tabControllerManager dashBoardClicked:nil];
+    else if (newIndex == TAB_TRANSACTIONS)
     [self.tabControllerManager transactionsClicked:nil];
-    else if (newIndex == 2)
+    else if (newIndex == TAB_RECEIVE)
     [self.tabControllerManager receiveCoinClicked:nil];
 }
 
@@ -1744,7 +1746,7 @@ void (^secondPasswordSuccess)(NSString *);
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_DEFAULTS_KEY_TOUCH_ID_ENABLED];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [self transitionToIndex:1];
+    [self transitionToIndex:TAB_DASHBOARD];
     
     [self setupBuyWebView];
 }
@@ -1904,12 +1906,8 @@ void (^secondPasswordSuccess)(NSString *);
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if ([self isPinSet]) {
-            [self showPinModalAsView:NO];
-        } else {
-            UIApplication *app = [UIApplication sharedApplication];
-            [app performSelector:@selector(suspend)];
-        }
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
     }]];
     
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];

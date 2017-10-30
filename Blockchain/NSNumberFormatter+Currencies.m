@@ -216,7 +216,10 @@
 
 + (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
-    if (app->symbolLocal) {
+    NSString *symbol = app.latestResponse.symbol_local.symbol;
+    BOOL hasSymbol = symbol && ![symbol isKindOfClass:[NSNull class]];
+        
+    if (app->symbolLocal && hasSymbol) {
         return [NSNumberFormatter formatEthToFiatWithSymbol:ethAmount exchangeRate:exchangeRate];
     } else {
         return [NSNumberFormatter formatEth:ethAmount];

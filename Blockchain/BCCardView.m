@@ -49,7 +49,7 @@
             actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = actionColor;
         } else if (actionType == ActionTypeShowReceive) {
-            actionName = BC_STRING_RECEIVE;
+            actionName = BC_STRING_REQUEST;
             actionColor = COLOR_BLOCKCHAIN_AQUA;
             titleColor = actionColor;
         } else if (actionType == ActionTypeBuyBitcoin) {

@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Chi tiêu gấp đôi có thể gặp nguy hiểm.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Để bảo mật cho bạn, chúng tôi không lưu trữ bất kỳ mật khẩu nào. Sao lưu ví của bạn để đảm bảo bitcoin được an toàn trong trường hợp bạn quên mật khẩu.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Để bảo mật cho bạn, chúng tôi không lưu trữ bất kỳ mật khẩu nào. Sao lưu ví của bạn để đảm bảo tiền được an toàn trong trường hợp bạn quên mật khẩu.";
 
 /* (No Commment) */
 "Wallets" = "Ví";

@@ -70,7 +70,10 @@
 - (void)logout
 {
     [self updateTransactionsViewControllerData:nil];
+    [self.sendEtherViewController clearFundsAvailable];
     [_receiveBitcoinViewController clearAmounts];
+    
+    [self dashBoardClicked:nil];
 }
 
 - (void)forgetWallet
@@ -343,6 +346,7 @@
     [self.sendBitcoinViewController reloadFeeAmountLabel];
     [self.sendEtherViewController keepCurrentPayment];
     [self.receiveBitcoinViewController doCurrencyConversion];
+    [self.transactionsEtherViewController reload];
 }
 
 - (void)setupBitcoinPaymentFromURLHandlerWithAmountString:(NSString *)amountString address:(NSString *)address

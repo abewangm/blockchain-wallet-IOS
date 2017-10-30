@@ -225,7 +225,6 @@
     double difference = lastPrice - firstPrice;
     double percentChange = (difference / firstPrice) * 100;
     
-    self.arrowImageView.image = [[UIImage imageNamed:@"send_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
     [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
     [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
@@ -364,7 +363,11 @@
 
 - (void)showError:(NSString *)error
 {
-    if (!app.pinEntryViewController && [app.wallet isInitialized] && app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD && !app.modalView) {
+    if ([app isPinSet] &&
+        !app.pinEntryViewController &&
+        [app.wallet isInitialized] &&
+        app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD
+        && !app.modalView) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         dispatch_async(dispatch_get_main_queue(), ^{

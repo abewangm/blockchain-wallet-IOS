@@ -2350,6 +2350,7 @@ MyWalletPhone.convertEthTransactionsToJSON = function(transactions) {
     return transactions.map(function (tx) {
        var result = tx.toJSON();
        result.txType = tx.getTxType(MyWallet.wallet.eth.activeAccountsWithLegacy);
+       result.amount = result.txType === 'sent' ? parseFloat(result.fee) + parseFloat(result.amount) : parseFloat(result.amount);
        return result;
     });
 }
