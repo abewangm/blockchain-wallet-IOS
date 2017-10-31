@@ -103,7 +103,7 @@
     chartView.chartDescription.enabled = NO;
     chartView.legend.enabled = NO;
     
-    BCChartMarkerView *marker = [[BCChartMarkerView alloc] initWithFrame:CGRectMake(0, 0, 175, 60)];
+    BCChartMarkerView *marker = [[BCChartMarkerView alloc] initWithFrame:CGRectMake(0, 0, 12, 12)];
     marker.chartView = chartView;
     chartView.marker = marker;
 
@@ -411,9 +411,14 @@
 
 #pragma mark - Chart View Delegate
 
+- (void)chartValueNothingSelected:(ChartViewBase *)chartView
+{
+    
+}
+
 - (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
 {
-    [chartView.marker refreshContentWithEntry:entry highlight:highlight];
+    
 }
 
 @end
