@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeOverviewViewController.h"
+#import "ExchangeCreateViewController.h"
 #import "BCLine.h"
 
 #define EXCHANGE_VIEW_HEIGHT 70
@@ -83,7 +84,8 @@
 
 - (void)newExchangeClicked
 {
-    
+    ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
+    [self.navigationController pushViewController:createViewController animated:YES];
 }
 
 #pragma mark - Table View Delegate
