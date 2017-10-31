@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BCModalView.h"
-
-@interface BCModalViewController : UIViewController
+@protocol CloseButtonDelegate
+- (void)closeButtonClicked;
+@end
+@interface BCModalViewController : UIViewController <CloseButtonDelegate>
 @property(nonatomic, strong) IBOutlet UIButton *closeButton;
 @property(nonatomic, strong) IBOutlet UIButton *backButton;
 @property(nonatomic, strong) UIView *myHolderView;

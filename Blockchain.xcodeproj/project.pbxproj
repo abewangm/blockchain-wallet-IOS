@@ -246,6 +246,7 @@
 		C79ABF321F852C2B0062726C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79ABF291F852C040062726C /* Charts.framework */; };
 		C79EEFC21E898E380087DDCD /* WalletSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */; };
 		C7A0E90E1FA796EC004F4267 /* BCChartMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A0E90D1FA796EC004F4267 /* BCChartMarkerView.swift */; };
+		C7A0E9261FA89FE9004F4267 /* ExchangeModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A0E9251FA89FE9004F4267 /* ExchangeModalView.m */; };
 		C7A923E41F852DC7003D9DAF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79ABF291F852C040062726C /* Charts.framework */; };
 		C7A923E51F852DC7003D9DAF /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C79ABF291F852C040062726C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7A923ED1F8531FD003D9DAF /* GraphTimeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A923EC1F8531FD003D9DAF /* GraphTimeFrame.m */; };
@@ -1540,6 +1541,8 @@
 		C79EEFC01E898E380087DDCD /* WalletSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletSetupViewController.h; sourceTree = "<group>"; };
 		C79EEFC11E898E380087DDCD /* WalletSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletSetupViewController.m; sourceTree = "<group>"; };
 		C7A0E90D1FA796EC004F4267 /* BCChartMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCChartMarkerView.swift; sourceTree = "<group>"; };
+		C7A0E9241FA89FE9004F4267 /* ExchangeModalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeModalView.h; sourceTree = "<group>"; };
+		C7A0E9251FA89FE9004F4267 /* ExchangeModalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeModalView.m; sourceTree = "<group>"; };
 		C7A923EB1F8531FD003D9DAF /* GraphTimeFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphTimeFrame.h; sourceTree = "<group>"; };
 		C7A923EC1F8531FD003D9DAF /* GraphTimeFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphTimeFrame.m; sourceTree = "<group>"; };
 		C7B685591F17AE2A00A18A5C /* BCEmptyPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCEmptyPageView.h; sourceTree = "<group>"; };
@@ -3059,6 +3062,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7A0E9241FA89FE9004F4267 /* ExchangeModalView.h */,
+				C7A0E9251FA89FE9004F4267 /* ExchangeModalView.m */,
 				C7A0E90D1FA796EC004F4267 /* BCChartMarkerView.swift */,
 				C7559CB51F570602005B2375 /* TransactionEtherTableViewCell.h */,
 				C7559CB61F570602005B2375 /* TransactionEtherTableViewCell.m */,
@@ -3468,6 +3473,7 @@
 				67D95A281B3DDC900012EBB1 /* Constants.swift in Sources */,
 				9F765F3214BC622E00048EFB /* TransactionsBitcoinViewController.m in Sources */,
 				2322DCC21D771831000E5AC1 /* SRURLUtilities.m in Sources */,
+				C7A0E9261FA89FE9004F4267 /* ExchangeModalView.m in Sources */,
 				23964C031DCA3F19001323BE /* KeyPair.m in Sources */,
 				230FD2DC1C5BFB4300336683 /* QRCodeGenerator.m in Sources */,
 				C7A0E90E1FA796EC004F4267 /* BCChartMarkerView.swift in Sources */,
