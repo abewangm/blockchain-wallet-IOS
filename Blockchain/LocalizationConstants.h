@@ -814,6 +814,7 @@
 #define BC_STRING_YEAR NSLocalizedString(@"Year", nil)
 #define BC_STRING_ALL NSLocalizedString(@"All", nil)
 
+#define BC_STRING_AT NSLocalizedString(@"at", nil)
 #define BC_STRING_BITCOIN_PRICE NSLocalizedString(@"Bitcoin Price", nil)
 #define BC_STRING_ETHER_PRICE NSLocalizedString(@"Ether Price", nil)
 #define BC_STRING_CONTRACT_ADDRESSES_NOT_SUPPORTED_TITLE NSLocalizedString(@"Contract addresses are not supported.", nil)

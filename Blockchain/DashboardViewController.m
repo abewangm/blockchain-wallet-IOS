@@ -42,6 +42,8 @@
 @property (nonatomic) UIButton *dayButton;
 @property (nonatomic) NSString *lastEthExchangeRate;
 
+@property (nonatomic) NSArray *lastUpdatedValues;
+
 @end
 
 @implementation DashboardViewController
@@ -219,6 +221,8 @@
 
 - (void)updateTitleContainer:(NSArray *)values
 {
+    self.lastUpdatedValues = values;
+    
     self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
     [self.titleLabel sizeToFit];
     self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
@@ -231,6 +235,7 @@
     double difference = lastPrice - firstPrice;
     double percentChange = (difference / firstPrice) * 100;
     
+    self.arrowImageView.hidden = NO;
     self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
     [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
     [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
@@ -245,12 +250,35 @@
         self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_RED;
     }
     
+    self.percentageChangeLabel.hidden = NO;
     self.percentageChangeLabel.text = [NSString stringWithFormat:@"%.1f%%", percentChange];
     [self.percentageChangeLabel sizeToFit];
     [self.percentageChangeLabel changeYPosition:self.priceLabel.frame.size.height - self.percentageChangeLabel.frame.size.height - 1.5];
     [self.percentageChangeLabel changeXPosition:self.priceLabel.frame.origin.x + self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width];
     
     self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width + self.percentageChangeLabel.frame.size.width, 30);
+    self.priceContainerView.center = CGPointMake(self.contentView.center.x, self.priceContainerView.center.y);
+}
+
+- (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)dataEntry
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"MMM d, yyyy";
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:dataEntry.x]];
+    dateFormatter.dateFormat = @"h:mm a";
+    NSString *timeString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:dataEntry.x]];
+    
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", dateString, BC_STRING_AT, timeString];
+    [self.titleLabel sizeToFit];
+    self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"%@%.2f", app.latestResponse.symbol_local.symbol, dataEntry.y];
+    [self.priceLabel sizeToFit];
+    
+    self.percentageChangeLabel.hidden = YES;
+    self.arrowImageView.hidden = YES;
+
+    self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width, 30);
     self.priceContainerView.center = CGPointMake(self.contentView.center.x, self.priceContainerView.center.y);
 }
 
@@ -413,12 +441,12 @@
 
 - (void)chartValueNothingSelected:(ChartViewBase *)chartView
 {
-    
+    [self updateTitleContainer:self.lastUpdatedValues];
 }
 
 - (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
 {
-    
+    [self updateTitleContainerWithChartDataEntry:entry];
 }
 
 @end
