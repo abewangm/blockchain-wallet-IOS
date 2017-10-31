@@ -7,6 +7,8 @@
 //
 
 #import "TabControllerManager.h"
+#import "BCNavigationController.h"
+#import "ExchangeOverviewViewController.h"
 
 @implementation TabControllerManager
 
@@ -586,6 +588,13 @@
         
         [_tabViewController setActiveViewController:_sendEtherViewController animated:NO index:TAB_SEND];
     }
+}
+
+- (void)exchangeClicked
+{
+    ExchangeOverviewViewController *exchangeViewController = [ExchangeOverviewViewController new];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeViewController title:BC_STRING_EXCHANGE];
+    [self.tabViewController presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

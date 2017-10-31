@@ -120,4 +120,6 @@
 
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 
+- (void)exchangeClicked;
+
 @end

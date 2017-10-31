@@ -32,7 +32,7 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        CGFloat imageViewHeight = actionType == ActionTypeBuyEther ? self.frame.size.height - 32 : 100;
+        CGFloat imageViewHeight = actionType == ActionTypeAvailableNow ? self.frame.size.height - 32 : 100;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, 100, imageViewHeight)];
         imageView.image = [UIImage imageNamed:imageName];
@@ -56,8 +56,8 @@
             actionName = BC_STRING_BUY_BITCOIN;
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
             titleColor = actionColor;
-        } else if (actionType == ActionTypeBuyEther) {
-            actionName = BC_STRING_GET_STARTED_WITH_ETHER;
+        } else if (actionType == ActionTypeAvailableNow) {
+            actionName = BC_STRING_GET_STARTED;
             actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = COLOR_BLOCKCHAIN_BLUE;
         }

@@ -794,7 +794,7 @@
 #define BC_STRING_NOT_ENOUGH_FUNDS_TO_USE_FEE NSLocalizedString(@"You do not have enough funds to use this fee.", nil)
 #define BC_STRING_CUSTOM_FEE_WARNING NSLocalizedString(@"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck.", nil)
 
-#define BC_STRING_BUY_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
+#define BC_STRING_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
 #define BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION NSLocalizedString(@"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure.", nil)
 #define BC_STRING_BUY_NOT_SUPPORTED_IOS_8_WEB_LOGIN NSLocalizedString(@"Mobile Buy is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer.", nil)
 
@@ -845,3 +845,4 @@
 #define BC_STRING_TERMS_AND_CONDITIONS NSLocalizedString(@"terms and conditions", nil)
 #define BC_STRING_EXCHANGE_IN_PROGRESS NSLocalizedString(@"Exchange In Progress", nil)
 #define BC_STRING_EXCHANGE_COMPLETED NSLocalizedString(@"Exchange Completed", nil)
+#define BC_STRING_GET_STARTED NSLocalizedString(@"Get started", nil)

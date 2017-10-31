@@ -18,7 +18,7 @@
 
 // Onboarding cards
 @property (nonatomic) BOOL showCards;
-@property (nonatomic) BOOL showEther;
+@property (nonatomic) BOOL showExchange;
 @property (nonatomic) CGFloat cardsViewHeight;
 @property (nonatomic) UIScrollView *cardsScrollView;
 @property (nonatomic) UIView *cardsView;
@@ -48,19 +48,19 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showEther = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    self.showExchange = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
     
-    self.cardsViewHeight = self.showEther ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
+    self.cardsViewHeight = self.showExchange ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
     if (self.showCards && app.latestResponse.symbol_local) {
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
-    } else if (self.showEther) {
-        [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
+    } else if (self.showExchange) {
+        [self setupCardsViewWithConfiguration:CardConfigurationAvailableNow];
     } else if (app.latestResponse.symbol_local) {
         [self removeCardsView];
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showEther || self.showCards ? self.cardsViewHeight : 0));
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showExchange || self.showCards ? self.cardsViewHeight : 0));
 }
 
 - (void)setupCardsViewWithConfiguration:(CardConfiguration)configuration
@@ -73,8 +73,8 @@
     
     if (configuration == CardConfigurationWelcome) {
         self.cardsView = [self configureCardsViewWelcome:cardsView];
-    } else if (configuration == CardConfigurationBuyAvailableNow) {
-        self.cardsView = [self configureCardsViewEther:cardsView];
+    } else if (configuration == CardConfigurationAvailableNow) {
+        self.cardsView = [self configureCardsViewExchange:cardsView];
     }
     
     [self.scrollView addSubview:self.cardsView];
@@ -84,17 +84,17 @@
 
 #pragma mark - New Wallet Cards
 
-- (UIView *)configureCardsViewEther:(UIView *)cardsView
+- (UIView *)configureCardsViewExchange:(UIView *)cardsView
 {
-    BCCardView *etherCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@", BC_STRING_NOW_SUPPORTING_ETHER_TITLE] description:BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION actionType:ActionTypeBuyEther imageName:@"ether_partial" reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *exchangeCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@", [BC_STRING_AVAILABLE_NOW_TITLE uppercaseString]] description:BC_STRING_EXCHANGE_CARD_DESCRIPTION actionType:ActionTypeAvailableNow imageName:@"exchange_partial" reducedHeightForPageIndicator:NO delegate:self];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(etherCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(exchangeCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     closeButton.tintColor = COLOR_TEXT_DARK_GRAY;
     [closeButton addTarget:self action:@selector(closeEtherAvailableCard) forControlEvents:UIControlEventTouchUpInside];
-    [etherCard addSubview:closeButton];
+    [exchangeCard addSubview:closeButton];
     
-    [cardsView addSubview:etherCard];
+    [cardsView addSubview:exchangeCard];
     return cardsView;
 }
 
@@ -252,8 +252,8 @@
         [app.tabControllerManager receiveCoinClicked:nil];
     } else if (actionType == ActionTypeScanQR) {
         [app.tabControllerManager qrCodeButtonClicked];
-    } else if (actionType == ActionTypeBuyEther) {
-        [app.tabControllerManager showReceiveEther];
+    } else if (actionType == ActionTypeAvailableNow) {
+        [app.tabControllerManager exchangeClicked];
     }
 }
 

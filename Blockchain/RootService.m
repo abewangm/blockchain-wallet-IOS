@@ -1708,9 +1708,7 @@ void (^secondPasswordSuccess)(NSString *);
 
 - (void)exchangeClicked:(id)sender
 {
-    ExchangeOverviewViewController *exchangeViewController = [ExchangeOverviewViewController new];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeViewController title:BC_STRING_EXCHANGE];
-    [self.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
+    [self.tabControllerManager exchangeClicked];
 }
 
 - (void)forgetWallet
