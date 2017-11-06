@@ -250,6 +250,12 @@
 
 - (void)setChartValues:(NSArray *)values
 {
+    if ([values count] == 0) {
+        [self.chartView clear];
+        [self showError:BC_STRING_ERROR_CHARTS];
+        return;
+    }
+    
     NSMutableArray *finalValues = [NSMutableArray new];
 
     for (NSDictionary *dict in values) {
