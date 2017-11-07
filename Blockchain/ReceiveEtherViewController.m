@@ -32,10 +32,10 @@
                                  TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET - DEFAULT_HEADER_HEIGHT,
                                  [UIScreen mainScreen].bounds.size.width,
                                  [UIScreen mainScreen].bounds.size.height - (TAB_HEADER_HEIGHT_DEFAULT - TAB_HEADER_HEIGHT_SMALL_OFFSET) - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
-    CGFloat imageWidth = 120;
-    
+    CGFloat imageWidth = IS_USING_SCREEN_SIZE_4S ? 170 : 200;
+
     UIImageView *qrCodeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 120 - 12, imageWidth, imageWidth)];
-    qrCodeImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height/2);
+    qrCodeImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height/2 - DEFAULT_HEADER_HEIGHT/2);
     [self.view addSubview:qrCodeImageView];
     
     UITapGestureRecognizer *tapMainQRGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked)];
