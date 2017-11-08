@@ -88,7 +88,7 @@ NSString *detailLabel;
     [self setupBottomViews];
     [self selectDefaultDestination];
     
-    float imageWidth = 120;
+    CGFloat imageWidth = IS_USING_SCREEN_SIZE_LARGER_THAN_5S ? 200 : IS_USING_SCREEN_SIZE_4S ? 120 : 150;
     
     qrCodeMainImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - imageWidth) / 2, 35, imageWidth, imageWidth)];
     qrCodeMainImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -401,11 +401,16 @@ NSString *detailLabel;
     if ([app.wallet getActiveAccountsCount] > 0 || activeKeys.count > 0) {
         
         BOOL isUsing4SScreenSize = IS_USING_SCREEN_SIZE_4S;
-        
+        BOOL isUsing5SScreenSize = IS_USING_SCREEN_SIZE_5S;
+
         qrCodeMainImageView.image = [self.qrCodeGenerator qrImageFromAddress:mainAddress];
         
         if (!isUsing4SScreenSize) {
-            [qrCodeMainImageView changeYPosition:57];
+            if (isUsing5SScreenSize) {
+                [qrCodeMainImageView changeYPosition:42];
+            } else {
+                [qrCodeMainImageView changeYPosition:57];
+            }
             instructionsLabel.center = CGPointMake(self.headerView.center.x, qrCodeMainImageView.frame.origin.y/2);
         } else {
             [qrCodeMainImageView changeYPosition:0];
@@ -413,7 +418,7 @@ NSString *detailLabel;
         
         [self.headerView addSubview:qrCodeMainImageView];
         
-        CGFloat yOffset = isUsing4SScreenSize ? 4 : 16;
+        CGFloat yOffset = isUsing4SScreenSize ? 4 : isUsing5SScreenSize ? 8 : 16;
         mainAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, qrCodeMainImageView.frame.origin.y + qrCodeMainImageView.frame.size.height + yOffset, self.view.frame.size.width - 40, 20)];
         
         mainAddressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
