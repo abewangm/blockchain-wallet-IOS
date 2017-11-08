@@ -35,4 +35,6 @@
 + (NSString *)ethAmount:(NSDecimalNumber *)amount;
 + (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount locale:(NSLocale *)preferredLocale;
 
++ (NSString *)convertedDecimalString:(NSString *)entryString;
+
 @end

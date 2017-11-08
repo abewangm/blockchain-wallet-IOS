@@ -1497,33 +1497,7 @@
 
 - (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
 {
-    __block NSString *requestedAmountString;
-    if ([inputString containsString:@"٫"]) {
-        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
-        NSError *error;
-        NSRange range = NSMakeRange(0, [inputString length]);
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
-        
-        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
-        
-        NSMutableString *replaced = [inputString mutableCopy];
-        __block NSInteger offset = 0;
-        [regex enumerateMatchesInString:inputString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
-            NSString *key = [inputString substringWithRange:range1];
-            NSString *value = easternArabicNumeralDictionary[key];
-            if (value != nil) {
-                NSRange range = [result range]; // range of the matched pattern
-                // Update location according to previous modifications:
-                range.location += offset;
-                [replaced replaceCharactersInRange:range withString:value];
-                offset += value.length - range.length; // Update offset
-            }
-            requestedAmountString = [NSString stringWithString:replaced];
-        }];
-    } else {
-        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    }
+    NSString *requestedAmountString = [NSNumberFormatter convertedDecimalString:inputString];
 
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.precisionToSatoshiBN(\"%@\", %lld).toString()", [requestedAmountString escapeStringForJS], app.latestResponse.symbol_btc.conversion]] toNumber] longLongValue];
 }
