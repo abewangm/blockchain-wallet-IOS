@@ -1719,24 +1719,12 @@ MyWalletPhone.emailNotificationsEnabled = function() {
     return MyWallet.wallet.accountInfo.notifications.email;
 }
 
-MyWalletPhone.SMSNotificationsEnabled = function() {
-    return MyWallet.wallet.accountInfo.notifications.sms;
-}
-
 MyWalletPhone.enableEmailNotifications = function() {
     MyWalletPhone.updateNotification({email: 'enable'});
 }
 
 MyWalletPhone.disableEmailNotifications = function() {
     MyWalletPhone.updateNotification({email: 'disable'});
-}
-
-MyWalletPhone.enableSMSNotifications = function() {
-    MyWalletPhone.updateNotification({sms: 'enable'});
-}
-
-MyWalletPhone.disableSMSNotifications = function() {
-    MyWalletPhone.updateNotification({sms: 'disable'});
 }
 
 MyWalletPhone.updateNotification = function(updates) {

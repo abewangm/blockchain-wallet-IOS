@@ -31,23 +31,9 @@ const int profileWebLogin = 3;
 
 const int sectionPreferences = 1;
 const int preferencesEmailNotifications = 0;
-const int preferencesSMSNotifications = 1;
-
-#ifdef ENABLE_DEBUG_MENU
-#ifdef ENABLE_CONTACTS
-const int preferencesPushNotifications = 2;
-const int preferencesLocalCurrency = 3;
-const int preferencesBtcUnit = 4;
-#else
-const int preferencesPushNotifications = -1;
+const int preferencesPushNotifications = 1;
 const int preferencesLocalCurrency = 2;
 const int preferencesBtcUnit = 3;
-#endif
-#else
-const int preferencesPushNotifications = -1;
-const int preferencesLocalCurrency = 2;
-const int preferencesBtcUnit = 3;
-#endif
 
 const int sectionSecurity = 2;
 const int securityTwoStep = 0;
@@ -354,14 +340,10 @@ const int aboutPrivacyPolicy = 2;
 {
     self.enteredMobileNumberString = newNumber;
     
-    if ([app.wallet SMSNotificationsEnabled]) {
-        [self alertUserAboutDisablingSMSNotifications:newNumber];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
-        
-        [app.wallet changeMobileNumber:newNumber];
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
+    
+    [app.wallet changeMobileNumber:newNumber];
 }
 
 - (BOOL)showVerifyAlertIfNeeded
@@ -449,41 +431,6 @@ const int aboutPrivacyPolicy = 2;
 }
 
 #pragma mark - Change Mobile Number
-
-- (void)alertUserAboutDisablingSMSNotifications:(NSString *)newNumber
-{
-    UIAlertController *alertForChangingEmail = [UIAlertController alertControllerWithTitle:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER message:BC_STRING_SETTINGS_NEW_MOBILE_NUMBER_WARNING_DISABLE_NOTIFICATIONS preferredStyle:UIAlertControllerStyleAlert];
-    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
-    [alertForChangingEmail addAction:[UIAlertAction actionWithTitle:BC_STRING_CONTINUE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self disableNotificationsThenChangeMobileNumber:newNumber];
-    }]];
-    
-    if (self.alertTargetViewController) {
-        [self.alertTargetViewController presentViewController:alertForChangingEmail animated:YES completion:nil];
-    } else {
-        [self presentViewController:alertForChangingEmail animated:YES completion:nil];
-    }
-}
-
-- (void)disableNotificationsThenChangeMobileNumber:(NSString *)newNumber
-{
-    SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
-    [navigationController.busyView fadeIn];
-    
-    [app.wallet disableSMSNotifications];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberAfterDisablingNotifications) name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-}
-
-- (void)changeMobileNumberAfterDisablingNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_KEY_BACKUP_SUCCESS object:nil];
-    
-    [app.wallet changeMobileNumber:self.enteredMobileNumberString];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberSuccess) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMobileNumberError) name:NOTIFICATION_KEY_CHANGE_MOBILE_NUMBER_ERROR object:nil];
-}
 
 - (void)changeMobileNumberSuccess
 {
@@ -655,14 +602,10 @@ const int aboutPrivacyPolicy = 2;
     return [app.wallet emailNotificationsEnabled];
 }
 
-- (BOOL)SMSNotificationsEnabled
-{
-    return [app.wallet SMSNotificationsEnabled];
-}
-
 - (BOOL)pushNotificationsEnabled
 {
-    return NO;
+    BOOL isEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_ENABLE_PUSH_NOTIFICATIONS];
+    return isEnabled;
 }
 
 - (void)toggleEmailNotifications
@@ -710,8 +653,8 @@ const int aboutPrivacyPolicy = 2;
     [navigationController.busyView fadeIn];
     
     UITableViewCell *changeEmailNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesEmailNotifications inSection:sectionPreferences]];
-    UITableViewCell *changeSMSNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesSMSNotifications inSection:sectionPreferences]];
-    changeSMSNotificationsCell.userInteractionEnabled = YES;
+    UITableViewCell *changePushNotificationsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:preferencesPushNotifications inSection:sectionPreferences]];
+    changePushNotificationsCell.userInteractionEnabled = YES;
     changeEmailNotificationsCell.userInteractionEnabled = YES;
 }
 
@@ -726,34 +669,14 @@ const int aboutPrivacyPolicy = 2;
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)toggleSMSNotifications
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesSMSNotifications inSection:sectionPreferences];
-    
-    if ([app checkInternetConnection]) {
-        if ([self SMSNotificationsEnabled]) {
-            [app.wallet disableSMSNotifications];
-        } else {
-            if ([app.wallet.accountInfo[DICTIONARY_KEY_ACCOUNT_SETTINGS_SMS_VERIFIED] boolValue] == YES) {
-                [app.wallet enableSMSNotifications];
-            } else {
-                [self alertUserOfError:BC_STRING_PLEASE_VERIFY_MOBILE_NUMBER_FIRST];
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                return;
-            }
-        }
-        
-        UITableViewCell *changeSMSNotificationsCell = [self.tableView cellForRowAtIndexPath:indexPath];
-        changeSMSNotificationsCell.userInteractionEnabled = NO;
-        [self addObserversForChangingNotifications];
-    } else {
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
-
 - (void)togglePushNotifications
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isEnabled = [userDefaults boolForKey:USER_DEFAULTS_KEY_ENABLE_PUSH_NOTIFICATIONS];
+    [[NSUserDefaults standardUserDefaults] setBool:!isEnabled forKey:USER_DEFAULTS_KEY_ENABLE_PUSH_NOTIFICATIONS];
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:preferencesPushNotifications inSection:sectionPreferences];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Change Two Step
@@ -1311,16 +1234,6 @@ const int aboutPrivacyPolicy = 2;
                     switchForEmailNotifications.on = [self emailNotificationsEnabled];
                     [switchForEmailNotifications addTarget:self action:@selector(toggleEmailNotifications) forControlEvents:UIControlEventTouchUpInside];
                     cell.accessoryView = switchForEmailNotifications;
-                    return cell;
-                }
-                case preferencesSMSNotifications: {
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    cell.textLabel.text = BC_STRING_SETTINGS_SMS_NOTIFICATIONS;
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    UISwitch *switchForSMSNotifications = [[UISwitch alloc] init];
-                    switchForSMSNotifications.on = [self SMSNotificationsEnabled];
-                    [switchForSMSNotifications addTarget:self action:@selector(toggleSMSNotifications) forControlEvents:UIControlEventTouchUpInside];
-                    cell.accessoryView = switchForSMSNotifications;
                     return cell;
                 }
                 case preferencesPushNotifications: {
