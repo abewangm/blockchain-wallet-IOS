@@ -900,6 +900,12 @@
         [weakSelf did_get_ether_address_with_second_password];
     };
     
+#pragma mark - Exchange
+    
+    self.context[@"objc_on_get_exchange_trades_success"] = ^(NSArray *trades) {
+        [weakSelf on_get_exchange_trades_success:trades];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2280,6 +2286,13 @@
     }
     
     return nil;
+}
+
+#pragma mark - Exchange
+
+- (NSArray *)getExchangeTrades
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"] toArray];
 }
 
 #pragma mark - Contacts
@@ -4118,6 +4131,15 @@
         [self.delegate didGetEtherAddressWithSecondPassword];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
+}
+
+- (void)on_get_exchange_trades_success:(NSArray *)trades
+{
+    if ([self.delegate respondsToSelector:@selector(didGetExchangeTrades:)]) {
+        [self.delegate didGetExchangeTrades:trades];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeTrades:!", [delegate class]);
     }
 }
 

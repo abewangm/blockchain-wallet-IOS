@@ -16,6 +16,7 @@
 #import "SendEtherViewController.h"
 #import "TransactionsEtherViewController.h"
 #import "ReceiveEtherViewController.h"
+#import "ExchangeOverviewViewController.h"
 
 @protocol TabControllerDelegate
 - (void)toggleSideMenu;
@@ -37,6 +38,8 @@
 @property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
 @property (strong, nonatomic) TransactionsEtherViewController *transactionsEtherViewController;
 @property (strong, nonatomic) ReceiveEtherViewController *receiveEtherViewController;
+
+@property (strong, nonatomic) ExchangeOverviewViewController *exchangeOverviewViewController;
 
 - (void)reload;
 - (void)reloadAfterMultiAddressResponse;
@@ -121,5 +124,6 @@
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 
 - (void)exchangeClicked;
+- (void)didGetExchangeTrades:(NSArray *)trades;
 
 @end

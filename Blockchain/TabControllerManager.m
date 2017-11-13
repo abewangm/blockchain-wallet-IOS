@@ -8,7 +8,6 @@
 
 #import "TabControllerManager.h"
 #import "BCNavigationController.h"
-#import "ExchangeOverviewViewController.h"
 
 @implementation TabControllerManager
 
@@ -592,9 +591,14 @@
 
 - (void)exchangeClicked
 {
-    ExchangeOverviewViewController *exchangeViewController = [ExchangeOverviewViewController new];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeViewController title:BC_STRING_EXCHANGE];
+    self.exchangeOverviewViewController = [ExchangeOverviewViewController new];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.exchangeOverviewViewController title:BC_STRING_EXCHANGE];
     [self.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)didGetExchangeTrades:(NSArray *)trades
+{
+    [self.exchangeOverviewViewController didGetExchangeTrades:trades];
 }
 
 @end

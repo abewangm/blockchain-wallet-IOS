@@ -2499,3 +2499,18 @@ MyWalletPhone.getMobileMessage = function(languageCode) {
     if (!notice || notice == null) return options.mobile_notice['en'];
     return notice;
 }
+
+MyWalletPhone.getExchangeTrades = function() {
+    
+    var success = function() {
+        var trades = MyWallet.wallet.shapeshift.trades;
+        objc_on_get_exchange_trades_success(trades);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting trades');
+        console.log(e);
+    }
+    
+    return MyWallet.wallet.shapeshift.fetchFullTrades().then(success).catch(error);
+}

@@ -210,6 +210,7 @@
 		C73406221F54791C00143100 /* EtherAmountInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73406211F54791C00143100 /* EtherAmountInputViewController.m */; };
 		C7442E311FBA1E5700695E4C /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7442E301FBA1E5700695E4C /* ExchangeTableViewCell.xib */; };
 		C7442E341FBA1E7800695E4C /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E331FBA1E7800695E4C /* ExchangeTableViewCell.m */; };
+		C7442E371FBA448200695E4C /* ExchangeTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E361FBA448200695E4C /* ExchangeTrade.m */; };
 		C7559CAF1F55E874005B2375 /* BCConfirmPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */; };
 		C7559CB21F56FE09005B2375 /* TransactionsEtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7559CB11F56FE09005B2375 /* TransactionsEtherViewController.m */; };
 		C7559CB41F5705D5005B2375 /* TransactionEtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7559CB31F5705D5005B2375 /* TransactionEtherCell.xib */; };
@@ -1123,6 +1124,8 @@
 		C7442E301FBA1E5700695E4C /* ExchangeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeTableViewCell.xib; sourceTree = "<group>"; };
 		C7442E321FBA1E7800695E4C /* ExchangeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeTableViewCell.h; sourceTree = "<group>"; };
 		C7442E331FBA1E7800695E4C /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeTableViewCell.m; sourceTree = "<group>"; };
+		C7442E351FBA448200695E4C /* ExchangeTrade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeTrade.h; sourceTree = "<group>"; };
+		C7442E361FBA448200695E4C /* ExchangeTrade.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeTrade.m; sourceTree = "<group>"; };
 		C7559CAD1F55E874005B2375 /* BCConfirmPaymentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentViewModel.h; sourceTree = "<group>"; };
 		C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentViewModel.m; sourceTree = "<group>"; };
 		C7559CB01F56FE09005B2375 /* TransactionsEtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsEtherViewController.h; sourceTree = "<group>"; };
@@ -1950,6 +1953,8 @@
 		9F765F3A14BC7C3100048EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7442E351FBA448200695E4C /* ExchangeTrade.h */,
+				C7442E361FBA448200695E4C /* ExchangeTrade.m */,
 				C7A923EB1F8531FD003D9DAF /* GraphTimeFrame.h */,
 				C7A923EC1F8531FD003D9DAF /* GraphTimeFrame.m */,
 				C723F3441F61D35300A858A9 /* TransactionDetailViewModel.h */,
@@ -3461,6 +3466,7 @@
 				237C9E901C482132000754F7 /* AccountsAndAddressesDetailViewController.m in Sources */,
 				23444F8D1DCD219E00573C8C /* BTCData.m in Sources */,
 				C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */,
+				C7442E371FBA448200695E4C /* ExchangeTrade.m in Sources */,
 				9F1831EB1516AE3500FB3D52 /* NSString+URLEncode.m in Sources */,
 				C75F70E71E2684FF005B4EAF /* ContactTransactionTableViewCell.m in Sources */,
 				23EA61CB1B5591260032B907 /* SettingsSelectorTableViewController.m in Sources */,

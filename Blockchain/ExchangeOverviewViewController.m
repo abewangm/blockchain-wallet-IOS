@@ -10,6 +10,7 @@
 #import "ExchangeCreateViewController.h"
 #import "BCLine.h"
 #import "ExchangeTableViewCell.h"
+#import "RootService.h"
 
 #define EXCHANGE_VIEW_HEIGHT 70
 #define EXCHANGE_VIEW_OFFSET 30
@@ -19,6 +20,7 @@
 
 @interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) NSArray *trades;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -29,6 +31,8 @@
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
 
+    [app.wallet getExchangeTrades];
+    
     [self setupExchangeButtonView];
     
     [self setupTableView];
@@ -87,6 +91,11 @@
 {
     ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
     [self.navigationController pushViewController:createViewController animated:YES];
+}
+
+- (void)didGetExchangeTrades:(NSArray *)trades
+{
+    
 }
 
 #pragma mark - Table View Delegate

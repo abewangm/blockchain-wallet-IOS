@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeOverviewViewController : UIViewController
-
+- (void)didGetExchangeTrades:(NSArray *)trades;
 @end

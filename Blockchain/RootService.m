@@ -2494,6 +2494,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetEtherAddressWithSecondPassword];
 }
 
+- (void)didGetExchangeTrades:(NSArray *)trades
+{
+    [self.tabControllerManager didGetExchangeTrades:trades];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts
