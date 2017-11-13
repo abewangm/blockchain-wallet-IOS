@@ -21,14 +21,13 @@ grunt build --base .
 echo "Patching BitcoinJS..."
 sed -i '' '/validateMnemonic: validateMnemonic/s/$/, salt: salt/' dist/my-wallet.js
 
-echo "Adding Fabric API Key..."
-
+cd ../..
 file=".env"
 if [ -f "$file" ]
 then
-  cd ../..
   source "$file" 
-  sed -i '' 's/FabricAPIKey/$FABRICAPIKEY/g' Blockchain/Blockchain-Info.plist 
+  echo "Adding Fabric API Key..."
+  sed -i '' 's/FabricAPIKey/'"$FABRICAPIKEY"'/g' Blockchain/Blockchain-Info.plist 
 fi
 
 echo "Build success"
