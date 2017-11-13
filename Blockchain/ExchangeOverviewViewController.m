@@ -9,9 +9,11 @@
 #import "ExchangeOverviewViewController.h"
 #import "ExchangeCreateViewController.h"
 #import "BCLine.h"
+#import "ExchangeTableViewCell.h"
 
 #define EXCHANGE_VIEW_HEIGHT 70
 #define EXCHANGE_VIEW_OFFSET 30
+#define CELL_HEIGHT 65
 
 #define CELL_IDENTIFIER_EXCHANGE_CELL @"exchangeCell"
 
@@ -75,7 +77,6 @@
     CGFloat windowWidth = WINDOW_WIDTH;
     CGFloat yOrigin = DEFAULT_HEADER_HEIGHT + EXCHANGE_VIEW_OFFSET + EXCHANGE_VIEW_HEIGHT + 16;
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER_EXCHANGE_CELL];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -95,9 +96,19 @@
     return 0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CELL_HEIGHT;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_EXCHANGE_CELL];
+    ExchangeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_EXCHANGE_CELL];
+    
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    }
+    
     return cell;
 }
 
