@@ -7,9 +7,12 @@
 //
 
 #import "ExchangeCreateViewController.h"
+#import "FromToView.h"
+
+#define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
 @interface ExchangeCreateViewController ()
-
+@property (nonatomic) id to;
 @end
 
 @implementation ExchangeCreateViewController
@@ -18,8 +21,11 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = COLOR_LIGHT_GRAY;
+    self.view.backgroundColor = COLOR_EXCHANGE_BACKGROUND_GRAY;
     
+    CGFloat windowWidth = WINDOW_WIDTH;
+    FromToView *fromToView = [[FromToView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16, windowWidth, 96) enableToTextField:NO];
+    [self.view addSubview:fromToView];
 }
 
 - (void)didReceiveMemoryWarning {
