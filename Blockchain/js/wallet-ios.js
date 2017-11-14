@@ -2503,7 +2503,7 @@ MyWalletPhone.getMobileMessage = function(languageCode) {
 MyWalletPhone.getExchangeTrades = function() {
     
     var success = function() {
-        var trades = MyWallet.wallet.shapeshift.trades;
+        var trades = MyWallet.wallet.shapeshift.trades.map(function(trade){return trade.toJSON();});
         objc_on_get_exchange_trades_success(trades);
     }
     
