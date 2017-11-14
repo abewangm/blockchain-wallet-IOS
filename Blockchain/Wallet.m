@@ -2290,9 +2290,9 @@
 
 #pragma mark - Exchange
 
-- (NSArray *)getExchangeTrades
+- (void)getExchangeTrades
 {
-    return [[self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"] toArray];
+     [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
 }
 
 #pragma mark - Contacts

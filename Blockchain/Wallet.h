@@ -440,7 +440,7 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
-- (NSArray *)getExchangeTrades;
+- (void)getExchangeTrades;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;
