@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ExchangeTrade : NSObject
-@property (nonatomic) uint64_t time;
+@property (nonatomic) NSDate *date;
 @property (nonatomic) NSString *status;
 @property (nonatomic) NSString *pair;
 @property (nonatomic) NSString *depositAmount;

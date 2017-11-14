@@ -30,12 +30,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-
-    [app.wallet getExchangeTrades];
     
     [self setupExchangeButtonView];
     
     [self setupTableView];
+    
+    [app.wallet getExchangeTrades];
 }
 
 - (void)setupExchangeButtonView
@@ -95,14 +95,15 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
-    
+    self.trades = trades;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.trades.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,6 +117,8 @@
     
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeTableViewCell" owner:nil options:nil] objectAtIndex:0];
+        ExchangeTrade *trade = [self.trades objectAtIndex:indexPath.row];
+        [cell configureWithTrade:trade];
     }
     
     return cell;

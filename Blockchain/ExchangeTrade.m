@@ -19,7 +19,7 @@
 + (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict
 {
     ExchangeTrade *trade = [[ExchangeTrade alloc] init];
-    trade.time = [[dict objectForKey:DICTIONARY_KEY_TIME] timeIntervalSince1970];
+    trade.date = [dict objectForKey:DICTIONARY_KEY_TIME];
     trade.status = [dict objectForKey:DICTIONARY_KEY_STATUS];
     trade.pair = [dict objectForKey:DICTIONARY_KEY_PAIR];
     
