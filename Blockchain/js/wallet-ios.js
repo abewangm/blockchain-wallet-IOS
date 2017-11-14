@@ -2317,7 +2317,7 @@ MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 
 MyWalletPhone.getEthBalance = function() {
     var eth = MyWallet.wallet.eth;
-    
+
     if (eth.defaultAccount) {
         return eth.defaultAccount.balance;
     } else {
@@ -2454,9 +2454,9 @@ MyWalletPhone.didReceiveEthSocketMessage = function(msg) {
 }
 
 MyWalletPhone.getEtherAddress = function(helperText) {
-    
+
     var eth = MyWallet.wallet.eth;
-    
+
     if (eth && eth.defaultAccount) {
         return eth.defaultAccount.address;
     } else {
@@ -2482,7 +2482,7 @@ MyWalletPhone.recordLastTransaction = function(hash) {
 }
 
 MyWalletPhone.isWaitingOnTransaction = function() {
-    
+
     var eth = MyWallet.wallet.eth;
 
     return null != eth.lastTx && null == eth.txs.find(function(tx) {
@@ -2492,25 +2492,34 @@ MyWalletPhone.isWaitingOnTransaction = function() {
 
 MyWalletPhone.getMobileMessage = function(languageCode) {
     var options = walletOptions.getValue();
-    
+
     if (!options.mobile_notice || options.mobile_notice == null) return null;
-    
+
     var notice = options.mobile_notice[languageCode];
     if (!notice || notice == null) return options.mobile_notice['en'];
     return notice;
 }
 
 MyWalletPhone.getExchangeTrades = function() {
-    
+
     var success = function() {
-        var trades = MyWallet.wallet.shapeshift.trades.map(function(trade){return trade.toJSON();});
-        objc_on_get_exchange_trades_success(trades);
+      var trades = MyWallet.wallet.shapeshift.trades.map(function(trade){
+        return {
+          hashIn : trade.hashIn,
+          hashOut : trade.hashOut,
+          quote : trade.quote.toJSON(),
+          status : trade.status,
+          time : trade.time                                    
+        }
+      });
+
+      objc_on_get_exchange_trades_success(trades);
     }
-    
+
     var error = function(e) {
         console.log('Error getting trades');
         console.log(e);
     }
-    
+
     return MyWallet.wallet.shapeshift.fetchFullTrades().then(success).catch(error);
 }

@@ -14,4 +14,7 @@
 @property (nonatomic) NSString *pair;
 @property (nonatomic) NSString *depositAmount;
 @property (nonatomic) NSString *withdrawalAmount;
+
++ (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict;
+
 @end

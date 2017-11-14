@@ -31,6 +31,7 @@
 #import "HDNode.h"
 #import "PrivateHeaders.h"
 #import "Assets.h"
+#import "ExchangeTrade.h"
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -4136,8 +4137,14 @@
 
 - (void)on_get_exchange_trades_success:(NSArray *)trades
 {
+    NSMutableArray *exchangeTrades = [NSMutableArray new];
+    for (NSDictionary *trade in trades) {
+        ExchangeTrade *exchangeTrade = [ExchangeTrade fromJSONDict:trade];
+        [exchangeTrades addObject:exchangeTrade];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(didGetExchangeTrades:)]) {
-        [self.delegate didGetExchangeTrades:trades];
+        [self.delegate didGetExchangeTrades:exchangeTrades];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeTrades:!", [delegate class]);
     }
