@@ -83,12 +83,14 @@
     BCSecureTextField *bottomLeftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
     bottomLeftField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
+    bottomLeftField.delegate = self;
     [amountView addSubview:bottomLeftField];
     self.bottomLeftField = bottomLeftField;
     
     BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
     bottomRightField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
+    bottomRightField.delegate = self;
     [amountView addSubview:bottomRightField];
     self.bottomRightField = bottomRightField;
 }
