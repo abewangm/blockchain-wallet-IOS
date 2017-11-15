@@ -195,6 +195,7 @@
 @property (nonatomic) NSNumber *contactsActionCount;
 
 @property (nonatomic) NSArray *etherTransactions;
+@property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
 
 typedef enum {
     ContactActionRequiredNone,
