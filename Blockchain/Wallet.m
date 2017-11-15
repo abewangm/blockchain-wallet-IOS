@@ -4083,7 +4083,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didFetchEthExchangeRate:)]) {
         NSDictionary *codeDict = [[rate toDictionary] objectForKey:[code toString]];
-        self.latestEthExchangeRate = [codeDict objectForKey:DICTIONARY_KEY_LAST];
+        self.latestEthExchangeRate = [NSDecimalNumber decimalNumberWithDecimal:[[codeDict objectForKey:DICTIONARY_KEY_LAST] decimalValue]];
         [self.delegate didFetchEthExchangeRate:self.latestEthExchangeRate];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
