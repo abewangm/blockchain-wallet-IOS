@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol FromToButtonDelegate
+- (void)fromButtonClicked;
+- (void)toButtonClicked;
+@end
 
 @interface FromToView : UIView
 @property (nonatomic) UILabel *fromLabel;
@@ -14,6 +18,8 @@
 @property (nonatomic) UILabel *toLabel;
 @property (nonatomic) UITextField *toField;
 @property (nonatomic) UIImageView *toImageView;
+
+@property (nonatomic, weak) id <FromToButtonDelegate> delegate;
 
 // Default height 96
 - (id)initWithFrame:(CGRect)frame enableToTextField:(BOOL)enableToTextField;

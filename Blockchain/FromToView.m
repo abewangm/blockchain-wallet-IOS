@@ -44,6 +44,10 @@
         BCLine *lineAboveToField = [self offsetLineWithYPosition:ROW_HEIGHT_SEND_SMALL];
         [self addSubview:lineAboveToField];
         
+        UIButton *fromButton = [[UIButton alloc] initWithFrame:CGRectMake(fromPlaceholderLabel.frame.origin.x, 0, self.frame.size.width - fromPlaceholderLabel.frame.origin.x, ROW_HEIGHT_SEND_SMALL)];
+        [fromButton addTarget:self action:@selector(fromButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:fromButton];
+        
         UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, ROW_HEIGHT_SEND_SMALL + 16, 40, 21)];
         toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         toLabel.textColor = COLOR_TEXT_DARK_GRAY;
@@ -54,6 +58,7 @@
         
         CGRect toTextFrame = CGRectMake(toFieldOriginX, ROW_HEIGHT_SEND_SMALL + 12, self.frame.size.width - 8 - toFieldOriginX - imageViewWidth - 8, 30);
         CGFloat toVerticalCenterY;
+        
         if (enableToTextField) {
             BCSecureTextField *toField = [[BCSecureTextField alloc] initWithFrame:toTextFrame];
             toField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
@@ -70,6 +75,10 @@
             [self addSubview:toPlaceHolderLabel];
             self.toLabel = toPlaceHolderLabel;
             toVerticalCenterY = toPlaceHolderLabel.center.y;
+            
+            UIButton *toButton = [[UIButton alloc] initWithFrame:CGRectMake(toPlaceHolderLabel.frame.origin.x, ROW_HEIGHT_SEND_SMALL + lineAboveToField.frame.size.height, self.frame.size.width - toPlaceHolderLabel.frame.origin.x, self.frame.size.height - ROW_HEIGHT_SEND_SMALL)];
+            [toButton addTarget:self action:@selector(toButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:toButton];
         }
         
         UIImageView *toImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 8 - imageViewWidth, 0, imageViewWidth, imageViewWidth)];
@@ -89,5 +98,14 @@
     return line;
 }
 
+- (void)fromButtonClicked
+{
+    [self.delegate fromButtonClicked];
+}
+
+- (void)toButtonClicked
+{
+    [self.delegate toButtonClicked];
+}
 
 @end
