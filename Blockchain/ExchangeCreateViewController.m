@@ -12,18 +12,34 @@
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
-@interface ExchangeCreateViewController () <UITextFieldDelegate>
+typedef enum {
+    ConversionTypeBtcToEth,
+    ConversionTypeEthToBtc
+} ConversionType;
 
-@property (nonatomic) BCSecureTextField *bottomLeftField;
-@property (nonatomic) BCSecureTextField *bottomRightField;
+@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate>
 
+@property (nonatomic) FromToView *fromToView;
+
+@property (nonatomic) UILabel *leftLabel;
+@property (nonatomic) UILabel *rightLabel;
+
+// Digital asset input
 @property (nonatomic) BCSecureTextField *topLeftField;
 @property (nonatomic) BCSecureTextField *topRightField;
 @property (nonatomic) BCSecureTextField *btcField;
 @property (nonatomic) BCSecureTextField *ethField;
 
+// Fiat input
+@property (nonatomic) BCSecureTextField *bottomLeftField;
+@property (nonatomic) BCSecureTextField *bottomRightField;
+
 @property (nonatomic) uint64_t btcAmount;
 @property (nonatomic) NSDecimalNumber *ethAmount;
+
+@property (nonatomic) int btcAccount;
+
+@property (nonatomic) ConversionType conversionType;
 @end
 
 @implementation ExchangeCreateViewController
@@ -36,40 +52,45 @@
     
     CGFloat windowWidth = WINDOW_WIDTH;
     FromToView *fromToView = [[FromToView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16, windowWidth, 96) enableToTextField:NO];
+    fromToView.delegate = self;
     [self.view addSubview:fromToView];
+    self.fromToView = fromToView;
     
     UIView *amountView = [[UIView alloc] initWithFrame:CGRectMake(0, fromToView.frame.origin.y + fromToView.frame.size.height + 1, windowWidth, 100)];
     amountView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:amountView];
     
-    UILabel *leftTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 30)];
-    leftTopLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    leftTopLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    leftTopLabel.text = CURRENCY_SYMBOL_BTC;
-    [amountView addSubview:leftTopLabel];
+    UILabel *topLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 30)];
+    topLeftLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    topLeftLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    topLeftLabel.text = CURRENCY_SYMBOL_BTC;
+    self.leftLabel = topLeftLabel;
+    [amountView addSubview:topLeftLabel];
     
     UIButton *assetToggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, 30, 30)];
     assetToggleButton.center = CGPointMake(windowWidth/2, assetToggleButton.center.y);
+    [assetToggleButton addTarget:self action:@selector(assetToggleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [amountView addSubview:assetToggleButton];
     
-    UILabel *rightTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
-    rightTopLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    rightTopLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    rightTopLabel.text = CURRENCY_SYMBOL_ETH;
-    [amountView addSubview:rightTopLabel];
+    UILabel *topRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
+    topRightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    topRightLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    topRightLabel.text = CURRENCY_SYMBOL_ETH;
+    self.rightLabel = topRightLabel;
+    [amountView addSubview:topRightLabel];
     
-    CGFloat leftFieldOriginX = leftTopLabel.frame.origin.x + leftTopLabel.frame.size.width + 8;
+    CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
     BCSecureTextField *leftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
-    leftField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    leftField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     leftField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:leftField];
     leftField.delegate = self;
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
     
-    CGFloat rightFieldOriginX = rightTopLabel.frame.origin.x + rightTopLabel.frame.size.width + 8;
+    CGFloat rightFieldOriginX = topRightLabel.frame.origin.x + topRightLabel.frame.size.width + 8;
     BCSecureTextField *rightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
-    rightField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    rightField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     rightField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:rightField];
     rightField.delegate = self;
@@ -81,18 +102,46 @@
     [amountView addSubview:dividerLine];
     
     BCSecureTextField *bottomLeftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
-    bottomLeftField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    bottomLeftField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomLeftField.delegate = self;
     [amountView addSubview:bottomLeftField];
     self.bottomLeftField = bottomLeftField;
     
     BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
-    bottomRightField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    bottomRightField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomRightField.delegate = self;
     [amountView addSubview:bottomRightField];
     self.bottomRightField = bottomRightField;
+    
+    self.conversionType = ConversionTypeBtcToEth;
+}
+
+- (void)setConversionType:(ConversionType)conversionType
+{
+    _conversionType = conversionType;
+    
+    if (_conversionType == ConversionTypeBtcToEth) {
+        self.btcField = self.topLeftField;
+        self.ethField = self.topRightField;
+
+        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_BTC;
+        self.fromToView.toLabel.text = CURRENCY_SYMBOL_ETH;
+
+        self.leftLabel.text = CURRENCY_SYMBOL_BTC;
+        self.rightLabel.text = CURRENCY_SYMBOL_ETH;
+        
+    } else if (_conversionType == ConversionTypeEthToBtc) {
+        self.ethField = self.topLeftField;
+        self.btcField = self.topRightField;
+
+        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
+        self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
+        
+        self.leftLabel.text = CURRENCY_SYMBOL_ETH;
+        self.rightLabel.text = CURRENCY_SYMBOL_BTC;
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -219,6 +268,32 @@
     } else if ([self.ethField isFirstResponder]) {
         
     }
+}
+
+- (void)assetToggleButtonClicked
+{
+    if (self.conversionType == ConversionTypeEthToBtc) {
+        self.conversionType = ConversionTypeBtcToEth;
+    } else if (self.conversionType == ConversionTypeBtcToEth) {
+        self.conversionType = ConversionTypeEthToBtc;
+    }
+}
+
+- (void)fromButtonClicked
+{
+    
+}
+
+- (void)toButtonClicked
+{
+    
+}
+
+- (void)selectAccountClicked
+{
+    BCAddressSelectionView *accountSelectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendFrom];
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_CREATE view:accountSelectorView];
+    [self.navigationController pushViewController:modalViewController animated:YES];
 }
 
 @end
