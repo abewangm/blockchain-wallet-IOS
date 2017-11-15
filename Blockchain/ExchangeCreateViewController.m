@@ -13,7 +13,10 @@
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
 @interface ExchangeCreateViewController ()
-@property (nonatomic) id to;
+@property (nonatomic) UILabel *leftBottomLabel;
+@property (nonatomic) UILabel *rightBottomLabel;
+@property (nonatomic) BCSecureTextField *leftField;
+@property (nonatomic) BCSecureTextField *rightField;
 @end
 
 @implementation ExchangeCreateViewController
@@ -32,29 +35,55 @@
     amountView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:amountView];
     
-    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 30)];
-    leftLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    leftLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    leftLabel.text = CURRENCY_SYMBOL_BTC;
-    [amountView addSubview:leftLabel];
+    UILabel *leftTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 30)];
+    leftTopLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    leftTopLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    leftTopLabel.text = CURRENCY_SYMBOL_BTC;
+    [amountView addSubview:leftTopLabel];
     
     UIButton *assetToggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, 30, 30)];
     assetToggleButton.center = CGPointMake(windowWidth/2, assetToggleButton.center.y);
     [amountView addSubview:assetToggleButton];
     
-    UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
-    rightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
-    rightLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    rightLabel.text = CURRENCY_SYMBOL_ETH;
-    [amountView addSubview:rightLabel];
+    UILabel *rightTopLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
+    rightTopLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    rightTopLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    rightTopLabel.text = CURRENCY_SYMBOL_ETH;
+    [amountView addSubview:rightTopLabel];
     
-    CGFloat leftFieldOriginX = leftLabel.frame.origin.x + leftLabel.frame.size.width + 8;
+    CGFloat leftFieldOriginX = leftTopLabel.frame.origin.x + leftTopLabel.frame.size.width + 8;
     BCSecureTextField *leftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
+    leftField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    leftField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:leftField];
+    self.leftField = leftField;
     
-    CGFloat rightFieldOriginX = rightLabel.frame.origin.x + rightLabel.frame.size.width + 8;
+    CGFloat rightFieldOriginX = rightTopLabel.frame.origin.x + rightTopLabel.frame.size.width + 8;
     BCSecureTextField *rightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
+    rightField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    rightField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:rightField];
+    self.rightField = rightField;
+    
+    UIView *dividerLine = [[UIView alloc] initWithFrame:CGRectMake(leftFieldOriginX, leftField.frame.origin.y + leftField.frame.size.height + 12, windowWidth - leftFieldOriginX, 0.5)];
+    dividerLine.backgroundColor = COLOR_LINE_GRAY;
+    [amountView addSubview:dividerLine];
+    
+    UILabel *leftBottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
+    leftBottomLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    leftBottomLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [amountView addSubview:leftBottomLabel];
+    leftBottomLabel.text = @"LeftBottomLabelText";
+    self.leftBottomLabel = leftBottomLabel;
+    
+    UILabel *rightBottomLabel = [[UILabel alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
+    rightBottomLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    rightBottomLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    [amountView addSubview:rightBottomLabel];
+    rightBottomLabel.text = @"RightBottomLabelText";
+    self.rightBottomLabel = rightBottomLabel;
 }
+
+
 
 @end
