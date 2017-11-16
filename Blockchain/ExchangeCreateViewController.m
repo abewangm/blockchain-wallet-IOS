@@ -89,9 +89,11 @@ typedef enum {
     self.rightLabel = topRightLabel;
     [amountView addSubview:topRightLabel];
     
+    UIFont *textFieldFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
     BCSecureTextField *leftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
-    leftField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    leftField.font = textFieldFont;
     leftField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:leftField];
     leftField.delegate = self;
@@ -100,7 +102,7 @@ typedef enum {
     
     CGFloat rightFieldOriginX = topRightLabel.frame.origin.x + topRightLabel.frame.size.width + 8;
     BCSecureTextField *rightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
-    rightField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    rightField.font = textFieldFont;
     rightField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:rightField];
     rightField.delegate = self;
@@ -112,14 +114,14 @@ typedef enum {
     [amountView addSubview:dividerLine];
     
     BCSecureTextField *bottomLeftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
-    bottomLeftField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    bottomLeftField.font = textFieldFont;
     bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomLeftField.delegate = self;
     [amountView addSubview:bottomLeftField];
     self.bottomLeftField = bottomLeftField;
     
     BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
-    bottomRightField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    bottomRightField.font = textFieldFont;
     bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomRightField.delegate = self;
     [amountView addSubview:bottomRightField];
@@ -127,6 +129,30 @@ typedef enum {
     
     self.fromToView.fromImageView.image = [UIImage imageNamed:@"chevron_right"];
     self.fromToView.toImageView.image = [UIImage imageNamed:@"chevron_right"];
+    
+    CGFloat buttonHeight = 50;
+    BCLine *lineAboveButtonsView = [[BCLine alloc] initWithYPosition:amountView.frame.origin.y + amountView.frame.size.height];
+    [self.view addSubview:lineAboveButtonsView];
+    UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(0, amountView.frame.origin.y + amountView.frame.size.height + 0.5, windowWidth, buttonHeight)];
+    buttonsView.backgroundColor = COLOR_LINE_GRAY;
+    [self.view addSubview:buttonsView];
+    
+    UIFont *buttonFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    CGFloat dividerLineWidth = 0.5;
+    UIButton *useMinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonsView.frame.size.width/2 - dividerLineWidth/2, buttonHeight)];
+    useMinButton.titleLabel.font = buttonFont;
+    useMinButton.backgroundColor = [UIColor whiteColor];
+    [useMinButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [useMinButton setTitle:BC_STRING_USE_MINIMUM forState:UIControlStateNormal];
+    [buttonsView addSubview:useMinButton];
+    
+    CGFloat useMaxButtonOriginX = buttonsView.frame.size.width/2 + dividerLineWidth/2;
+    UIButton *useMaxButton = [[UIButton alloc] initWithFrame:CGRectMake(useMaxButtonOriginX, 0, buttonsView.frame.size.width - useMaxButtonOriginX, buttonHeight)];
+    useMaxButton.titleLabel.font = buttonFont;
+    useMaxButton.backgroundColor = [UIColor whiteColor];
+    [useMaxButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
+    [useMaxButton setTitle:BC_STRING_USE_MAXIMUM forState:UIControlStateNormal];
+    [buttonsView addSubview:useMaxButton];
 }
 
 - (void)setConversionType:(ConversionType)conversionType
