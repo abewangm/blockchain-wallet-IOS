@@ -70,6 +70,9 @@ typedef enum {
     UIButton *assetToggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, 30, 30)];
     assetToggleButton.center = CGPointMake(windowWidth/2, assetToggleButton.center.y);
     [assetToggleButton addTarget:self action:@selector(assetToggleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *buttonImage = [UIImage imageNamed:@"switch_currencies"];
+    [assetToggleButton setImage:buttonImage forState:UIControlStateNormal];
+    assetToggleButton.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
     [amountView addSubview:assetToggleButton];
     
     UILabel *topRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
