@@ -17,7 +17,7 @@ typedef enum {
     ConversionTypeEthToBtc
 } ConversionType;
 
-@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate>
+@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
 
 @property (nonatomic) FromToView *fromToView;
 
@@ -48,6 +48,13 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    [self setupViews];
+    
+    self.conversionType = ConversionTypeBtcToEth;
+}
+
+- (void)setupViews
+{
     self.view.backgroundColor = COLOR_EXCHANGE_BACKGROUND_GRAY;
     
     CGFloat windowWidth = WINDOW_WIDTH;
@@ -118,7 +125,8 @@ typedef enum {
     [amountView addSubview:bottomRightField];
     self.bottomRightField = bottomRightField;
     
-    self.conversionType = ConversionTypeBtcToEth;
+    self.fromToView.fromImageView.image = [UIImage imageNamed:@"chevron_right"];
+    self.fromToView.toImageView.image = [UIImage imageNamed:@"chevron_right"];
 }
 
 - (void)setConversionType:(ConversionType)conversionType
@@ -138,7 +146,7 @@ typedef enum {
     } else if (_conversionType == ConversionTypeEthToBtc) {
         self.ethField = self.topLeftField;
         self.btcField = self.topRightField;
-
+        
         self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
         self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
         
@@ -284,19 +292,42 @@ typedef enum {
 
 - (void)fromButtonClicked
 {
-    
+    [self selectAccountClicked];
 }
 
 - (void)toButtonClicked
 {
-    
+    [self selectAccountClicked];
 }
 
 - (void)selectAccountClicked
 {
-    BCAddressSelectionView *accountSelectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendFrom];
-    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_CREATE view:accountSelectorView];
-    [self.navigationController pushViewController:modalViewController animated:YES];
+    BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeExchangeAccount];
+    selectorView.delegate = self;
+    selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UIViewController *viewController = [UIViewController new];
+    viewController.automaticallyAdjustsScrollViewInsets = NO;
+    [viewController.view addSubview:selectorView];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - Address Selection Delegate
+
+- (void)didSelectEthAccount
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didSelectFromAccount:(int)account
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didSelectToAccount:(int)account
+{
+    [self didSelectFromAccount:account];
 }
 
 @end

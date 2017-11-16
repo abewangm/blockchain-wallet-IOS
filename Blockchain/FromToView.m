@@ -38,8 +38,10 @@
         self.fromLabel = fromPlaceholderLabel;
         
         UIImageView *fromImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 8 - imageViewWidth, 0, imageViewWidth, imageViewWidth)];
+        fromImageView.contentMode = UIViewContentModeScaleAspectFit;
         fromImageView.center = CGPointMake(fromImageView.center.x, fromPlaceholderLabel.center.y);
         [self addSubview:fromImageView];
+        self.fromImageView = fromImageView;
         
         BCLine *lineAboveToField = [self offsetLineWithYPosition:ROW_HEIGHT_SEND_SMALL];
         [self addSubview:lineAboveToField];
@@ -83,7 +85,9 @@
         
         UIImageView *toImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 8 - imageViewWidth, 0, imageViewWidth, imageViewWidth)];
         toImageView.center = CGPointMake(toImageView.center.x, toVerticalCenterY);
+        toImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:toImageView];
+        self.toImageView = toImageView;
         
         BCLine *lineBelowToField = [self offsetLineWithYPosition:ROW_HEIGHT_SEND_SMALL + ROW_HEIGHT_SEND_LARGE];
         [self addSubview:lineBelowToField];
