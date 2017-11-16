@@ -292,17 +292,17 @@ typedef enum {
 
 - (void)fromButtonClicked
 {
-    [self selectAccountClicked];
+    [self selectAccountClicked:SelectModeExchangeAccountFrom];
 }
 
 - (void)toButtonClicked
 {
-    [self selectAccountClicked];
+    [self selectAccountClicked:SelectModeExchangeAccountTo];
 }
 
-- (void)selectAccountClicked
+- (void)selectAccountClicked:(SelectMode)selectMode
 {
-    BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeExchangeAccount];
+    BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode];
     selectorView.delegate = self;
     selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
     
@@ -315,7 +315,12 @@ typedef enum {
 
 #pragma mark - Address Selection Delegate
 
-- (void)didSelectEthAccount
+- (void)didSelectFromEthAccount
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didSelectToEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -323,11 +328,30 @@ typedef enum {
 - (void)didSelectFromAccount:(int)account
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    self.btcAccount = account;
+    
+    
 }
 
 - (void)didSelectToAccount:(int)account
 {
     [self didSelectFromAccount:account];
+}
+
+- (void)didSelectToAddress:(NSString *)address
+{
+    // required by protocol
+}
+
+- (void)didSelectContact:(Contact *)contact
+{
+    // required by protocol
+}
+
+- (void)didSelectFromAddress:(NSString *)address
+{
+    // required by protocol
 }
 
 @end
