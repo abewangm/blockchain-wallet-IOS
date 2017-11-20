@@ -305,12 +305,59 @@ typedef enum {
     self.btcAmount = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
 }
 
+- (NSString *)convertBtcAmountToFiat
+{
+    return [NSNumberFormatter formatAmount:self.btcAmount localCurrency:YES];
+}
+
+- (NSString *)convertEthAmountToFiat
+{
+    app.localCurrencyFormatter.usesGroupingSeparator = NO;
+    NSString *result = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:app.wallet.latestEthExchangeRate];
+    app.localCurrencyFormatter.usesGroupingSeparator = YES;
+    return result;
+}
+
 - (void)doCurrencyConversion
 {
     if ([self.btcField isFirstResponder]) {
         
+        NSString *result = [self convertBtcAmountToFiat];
+        
+        if (self.conversionType == ConversionTypeEthToBtc) {
+            self.bottomRightField.text = result;
+        } else if (self.conversionType == ConversionTypeBtcToEth) {
+            self.bottomLeftField.text = result;
+        }
+        
     } else if ([self.ethField isFirstResponder]) {
         
+        NSString *result = [self convertEthAmountToFiat];
+
+        if (self.conversionType == ConversionTypeEthToBtc) {
+            self.bottomLeftField.text = result;
+        } else if (self.conversionType == ConversionTypeBtcToEth) {
+            self.bottomRightField.text = result;
+        }
+        
+    } else {
+        
+        NSString *ethString = [self.ethAmount stringValue];
+        NSString *btcString = [NSNumberFormatter formatAmount:self.btcAmount localCurrency:NO];
+        
+        if ([self.bottomLeftField isFirstResponder]) {
+            if (self.topLeftField == self.ethField) {
+                self.ethField.text = ethString;
+            } else if (self.topLeftField == self.btcField) {
+                self.btcField.text = btcString;
+            }
+        } else if ([self.bottomRightField isFirstResponder]) {
+            if (self.topRightField == self.ethField) {
+                self.ethField.text = ethString;
+            } else if (self.topRightField == self.btcField) {
+                self.btcField.text = btcString;
+            }
+        }
     }
 }
 
