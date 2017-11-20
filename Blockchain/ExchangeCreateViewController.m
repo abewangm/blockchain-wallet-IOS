@@ -12,11 +12,6 @@
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
-typedef enum {
-    ConversionTypeBtcToEth,
-    ConversionTypeEthToBtc
-} ConversionType;
-
 @interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
 
 @property (nonatomic) FromToView *fromToView;
@@ -39,7 +34,8 @@ typedef enum {
 @property (nonatomic) uint64_t btcAmount;
 @property (nonatomic) NSDecimalNumber *ethAmount;
 @property (nonatomic) int btcAccount;
-@property (nonatomic) ConversionType conversionType;
+@property (nonatomic) NSString *fromSymbol;
+@property (nonatomic) NSString *toSymbol;
 @end
 
 @implementation ExchangeCreateViewController
@@ -50,7 +46,8 @@ typedef enum {
     
     [self setupViews];
     
-    self.conversionType = ConversionTypeBtcToEth;
+    self.fromSymbol = CURRENCY_SYMBOL_BTC;
+    self.toSymbol = CURRENCY_SYMBOL_ETH;
 }
 
 - (void)setupViews
@@ -160,32 +157,6 @@ typedef enum {
     [self.view addSubview:errorLabel];
     errorLabel.hidden = YES;
     self.errorLabel = errorLabel;
-}
-
-- (void)setConversionType:(ConversionType)conversionType
-{
-    _conversionType = conversionType;
-    
-    if (_conversionType == ConversionTypeBtcToEth) {
-        self.btcField = self.topLeftField;
-        self.ethField = self.topRightField;
-
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_BTC;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_ETH;
-
-        self.leftLabel.text = CURRENCY_SYMBOL_BTC;
-        self.rightLabel.text = CURRENCY_SYMBOL_ETH;
-        
-    } else if (_conversionType == ConversionTypeEthToBtc) {
-        self.ethField = self.topLeftField;
-        self.btcField = self.topRightField;
-        
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
-        
-        self.leftLabel.text = CURRENCY_SYMBOL_ETH;
-        self.rightLabel.text = CURRENCY_SYMBOL_BTC;
-    }
 }
 
 #pragma mark - JS Callbacks
@@ -333,9 +304,9 @@ typedef enum {
         
         NSString *result = [self convertBtcAmountToFiat];
         
-        if (self.conversionType == ConversionTypeEthToBtc) {
+        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
             self.bottomRightField.text = result;
-        } else if (self.conversionType == ConversionTypeBtcToEth) {
+        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
             self.bottomLeftField.text = result;
         }
         
@@ -343,9 +314,9 @@ typedef enum {
         
         NSString *result = [self convertEthAmountToFiat];
 
-        if (self.conversionType == ConversionTypeEthToBtc) {
+        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
             self.bottomLeftField.text = result;
-        } else if (self.conversionType == ConversionTypeBtcToEth) {
+        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
             self.bottomRightField.text = result;
         }
         
@@ -374,10 +345,31 @@ typedef enum {
 
 - (void)assetToggleButtonClicked
 {
-    if (self.conversionType == ConversionTypeEthToBtc) {
-        self.conversionType = ConversionTypeBtcToEth;
-    } else if (self.conversionType == ConversionTypeBtcToEth) {
-        self.conversionType = ConversionTypeEthToBtc;
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        self.fromSymbol = CURRENCY_SYMBOL_ETH;
+        self.toSymbol = CURRENCY_SYMBOL_BTC;
+        
+        self.ethField = self.topLeftField;
+        self.btcField = self.topRightField;
+        
+        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
+        self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
+        
+        self.leftLabel.text = CURRENCY_SYMBOL_ETH;
+        self.rightLabel.text = CURRENCY_SYMBOL_BTC;
+        
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        self.fromSymbol = CURRENCY_SYMBOL_BTC;
+        self.toSymbol = CURRENCY_SYMBOL_ETH;
+        
+        self.btcField = self.topLeftField;
+        self.ethField = self.topRightField;
+        
+        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_BTC;
+        self.fromToView.toLabel.text = CURRENCY_SYMBOL_ETH;
+        
+        self.leftLabel.text = CURRENCY_SYMBOL_BTC;
+        self.rightLabel.text = CURRENCY_SYMBOL_ETH;
     }
     
     [app.wallet getRate:@"btc_eth"];
