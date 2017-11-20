@@ -10,4 +10,5 @@
 
 @interface ExchangeCreateViewController : UIViewController
 - (void)didGetExchangeRate:(NSDictionary *)result;
+- (void)didGetQuote:(NSDictionary *)result;
 @end

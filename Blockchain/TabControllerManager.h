@@ -126,5 +126,5 @@
 - (void)exchangeClicked;
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
-
+- (void)didGetQuote:(NSDictionary *)result;
 @end

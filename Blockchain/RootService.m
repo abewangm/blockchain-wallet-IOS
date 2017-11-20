@@ -2504,6 +2504,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetQuote:result];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

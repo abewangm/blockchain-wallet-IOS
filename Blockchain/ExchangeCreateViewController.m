@@ -34,8 +34,14 @@
 @property (nonatomic) uint64_t btcAmount;
 @property (nonatomic) NSDecimalNumber *ethAmount;
 @property (nonatomic) int btcAccount;
+
 @property (nonatomic) NSString *fromSymbol;
 @property (nonatomic) NSString *toSymbol;
+@property (nonatomic) NSString *fromAddress;
+@property (nonatomic) NSString *toAddress;
+
+@property (nonatomic) id minimum;
+@property (nonatomic) id maximum;
 @end
 
 @implementation ExchangeCreateViewController
@@ -48,6 +54,9 @@
     
     self.fromSymbol = CURRENCY_SYMBOL_BTC;
     self.toSymbol = CURRENCY_SYMBOL_ETH;
+    self.btcAccount = [app.wallet getDefaultAccountIndex];
+    
+    [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
 
 - (void)setupViews
@@ -162,6 +171,11 @@
 #pragma mark - JS Callbacks
 
 - (void)didGetExchangeRate:(NSDictionary *)result
+{
+    
+}
+
+- (void)didGetQuote:(NSDictionary *)result
 {
     
 }
@@ -358,6 +372,9 @@
         self.leftLabel.text = CURRENCY_SYMBOL_ETH;
         self.rightLabel.text = CURRENCY_SYMBOL_BTC;
         
+        self.fromAddress = [app.wallet getEtherAddress];
+        self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+        
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.fromSymbol = CURRENCY_SYMBOL_BTC;
         self.toSymbol = CURRENCY_SYMBOL_ETH;
@@ -370,9 +387,13 @@
         
         self.leftLabel.text = CURRENCY_SYMBOL_BTC;
         self.rightLabel.text = CURRENCY_SYMBOL_ETH;
+        
+        self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+        self.toAddress = [app.wallet getEtherAddress];
+
     }
     
-    [app.wallet getRate:@"btc_eth"];
+    [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
 
 - (void)fromButtonClicked
@@ -396,6 +417,25 @@
     [viewController.view addSubview:selectorView];
     
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - Wallet actions
+
+- (void)getRate:(NSString *)coinPair
+{
+    [app.wallet getRate:[self coinPair]];
+}
+
+- (void)getQuote
+{
+    [app.wallet getQuote:[self coinPair] amount:@"0.1"];
+}
+
+#pragma mark - Helpers
+
+- (NSString *)coinPair
+{
+    return [NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol];
 }
 
 #pragma mark - Address Selection Delegate

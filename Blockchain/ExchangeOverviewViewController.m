@@ -106,6 +106,11 @@
     [self.createViewController didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.createViewController didGetQuote:result];
+}
+
 #pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

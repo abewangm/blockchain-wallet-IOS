@@ -606,4 +606,9 @@
     [self.exchangeOverviewViewController didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetQuote:result];
+}
+
 @end

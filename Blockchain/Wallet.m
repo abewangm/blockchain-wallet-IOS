@@ -911,6 +911,10 @@
         [weakSelf on_get_exchange_rate_success:[result toDictionary]];
     };
     
+    self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
+        [weakSelf on_get_quote_success:[result toDictionary]];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2303,6 +2307,11 @@
 - (void)getRate:(NSString *)coinPair
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
+}
+
+- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
 #pragma mark - Contacts
@@ -4166,6 +4175,15 @@
         [self.delegate didGetExchangeRate:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
+    }
+}
+
+- (void)on_get_quote_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetQuote:)]) {
+        [self.delegate didGetQuote:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
     }
 }
 

@@ -2537,3 +2537,17 @@ MyWalletPhone.getRate = function(coinPair) {
     
     MyWallet.wallet.shapeshift.getRate(coinPair).then(success).catch(error);
 }
+
+MyWalletPhone.getQuote = function(coinPair, amount) {
+    
+    var success = function(result) {
+        objc_on_get_quote_success(result.toJSON());
+    }
+    
+    var error = function(e) {
+        console.log('Error getting quote');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
+}
