@@ -34,11 +34,11 @@ typedef enum {
 @property (nonatomic) BCSecureTextField *bottomLeftField;
 @property (nonatomic) BCSecureTextField *bottomRightField;
 
+@property (nonatomic) UILabel *errorLabel;
+
 @property (nonatomic) uint64_t btcAmount;
 @property (nonatomic) NSDecimalNumber *ethAmount;
-
 @property (nonatomic) int btcAccount;
-
 @property (nonatomic) ConversionType conversionType;
 @end
 
@@ -153,6 +153,13 @@ typedef enum {
     [useMaxButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [useMaxButton setTitle:BC_STRING_USE_MAXIMUM forState:UIControlStateNormal];
     [buttonsView addSubview:useMaxButton];
+    
+    UILabel *errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth, 30)];
+    errorLabel.textColor = COLOR_WARNING_RED;
+    errorLabel.font = buttonFont;
+    [self.view addSubview:errorLabel];
+    errorLabel.hidden = YES;
+    self.errorLabel = errorLabel;
 }
 
 - (void)setConversionType:(ConversionType)conversionType
