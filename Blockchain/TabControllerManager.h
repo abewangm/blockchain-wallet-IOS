@@ -125,5 +125,6 @@
 
 - (void)exchangeClicked;
 - (void)didGetExchangeTrades:(NSArray *)trades;
+- (void)didGetExchangeRate:(NSDictionary *)result;
 
 @end

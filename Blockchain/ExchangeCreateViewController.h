@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeCreateViewController : UIViewController
-
+- (void)didGetExchangeRate:(NSDictionary *)result;
 @end

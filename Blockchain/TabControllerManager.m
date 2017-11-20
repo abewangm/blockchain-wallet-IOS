@@ -601,4 +601,9 @@
     [self.exchangeOverviewViewController didGetExchangeTrades:trades];
 }
 
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetExchangeRate:result];
+}
+
 @end

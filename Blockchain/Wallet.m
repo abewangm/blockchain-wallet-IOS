@@ -901,10 +901,14 @@
         [weakSelf did_get_ether_address_with_second_password];
     };
     
-#pragma mark - Exchange
+#pragma mark Exchange
     
     self.context[@"objc_on_get_exchange_trades_success"] = ^(NSArray *trades) {
         [weakSelf on_get_exchange_trades_success:trades];
+    };
+    
+    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *result) {
+        [weakSelf on_get_exchange_rate_success:[result toDictionary]];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -2294,6 +2298,11 @@
 - (void)getExchangeTrades
 {
      [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
+}
+
+- (void)getRate:(NSString *)coinPair
+{
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
 }
 
 #pragma mark - Contacts
@@ -4148,6 +4157,15 @@
         [self.delegate didGetExchangeTrades:exchangeTrades];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeTrades:!", [delegate class]);
+    }
+}
+
+- (void)on_get_exchange_rate_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetExchangeRate:)]) {
+        [self.delegate didGetExchangeRate:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
     }
 }
 

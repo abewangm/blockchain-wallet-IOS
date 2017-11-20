@@ -188,6 +188,15 @@ typedef enum {
     }
 }
 
+#pragma mark - JS Callbacks
+
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    
+}
+
+#pragma mark - Conversion
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
@@ -361,6 +370,8 @@ typedef enum {
     }
 }
 
+#pragma mark - Gesture Actions
+
 - (void)assetToggleButtonClicked
 {
     if (self.conversionType == ConversionTypeEthToBtc) {
@@ -368,6 +379,8 @@ typedef enum {
     } else if (self.conversionType == ConversionTypeBtcToEth) {
         self.conversionType = ConversionTypeEthToBtc;
     }
+    
+    [app.wallet getRate:@"btc_eth"];
 }
 
 - (void)fromButtonClicked

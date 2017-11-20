@@ -137,6 +137,7 @@
 - (void)didErrorDuringEtherSend:(NSString *)error;
 - (void)didGetEtherAddressWithSecondPassword;
 - (void)didGetExchangeTrades:(NSArray *)trades;
+- (void)didGetExchangeRate:(NSDictionary *)result;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -442,6 +443,7 @@ typedef enum {
 
 // Exchange
 - (void)getExchangeTrades;
+- (void)getRate:(NSString *)coinPair;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;

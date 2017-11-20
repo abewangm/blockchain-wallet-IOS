@@ -21,6 +21,7 @@
 @interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *trades;
+@property (nonatomic) ExchangeCreateViewController *createViewController;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -91,12 +92,18 @@
 {
     ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
     [self.navigationController pushViewController:createViewController animated:YES];
+    self.createViewController = createViewController;
 }
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
     self.trades = trades;
     [self.tableView reloadData];
+}
+
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    [self.createViewController didGetExchangeRate:result];
 }
 
 #pragma mark - Table View Delegate

@@ -2523,3 +2523,17 @@ MyWalletPhone.getExchangeTrades = function() {
 
     return MyWallet.wallet.shapeshift.fetchFullTrades().then(success).catch(error);
 }
+
+MyWalletPhone.getRate = function(coinPair) {
+    
+    var success = function(result) {
+        objc_on_get_exchange_rate_success(result);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting rate');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.getRate(coinPair).then(success).catch(error);
+}

@@ -2499,6 +2499,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetExchangeTrades:trades];
 }
 
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetExchangeRate:result];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

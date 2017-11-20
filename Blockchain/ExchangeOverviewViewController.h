@@ -10,4 +10,5 @@
 
 @interface ExchangeOverviewViewController : UIViewController
 - (void)didGetExchangeTrades:(NSArray *)trades;
+- (void)didGetExchangeRate:(NSDictionary *)result;
 @end
