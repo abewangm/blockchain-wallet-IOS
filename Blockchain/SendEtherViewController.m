@@ -20,7 +20,7 @@
 - (void)stopReadingQRCode;
 @end
 
-@interface EtherAmountInputViewController ()
+@interface EtherAmountInputViewController () <ContinueButtonInputAccessoryViewDelegate>
 @property (nonatomic) NSString *toAddress;
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
@@ -102,6 +102,7 @@
     [amountInputView changeHeight:amountInputView.btcLabel.frame.origin.y + amountInputView.btcLabel.frame.size.height];
     [self.view addSubview:amountInputView];
     ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
+    self.continuePaymentAccessoryButton = inputAccessoryView.continueButton;
     inputAccessoryView.delegate = self;
     toField.inputAccessoryView = inputAccessoryView;
     amountInputView.btcField.inputAccessoryView = inputAccessoryView;

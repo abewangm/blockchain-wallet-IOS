@@ -9,7 +9,6 @@
 #import "ContinueButtonInputAccessoryView.h"
 
 @interface ContinueButtonInputAccessoryView()
-@property (nonatomic) UIButton *continueButton;
 @property (nonatomic) UIButton *closeButton;
 @end
 @implementation ContinueButtonInputAccessoryView
