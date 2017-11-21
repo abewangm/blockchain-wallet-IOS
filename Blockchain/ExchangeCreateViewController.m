@@ -178,12 +178,15 @@
 
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
-    self.minimum = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
-    self.maximum = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
-    
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        NSString *minNumberString = [[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM] stringValue];
+        self.minimum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:minNumberString]];
+        NSString *maxNumberString = [[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT] stringValue];
+        self.maximum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:maxNumberString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        self.minimum = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
+        self.maximum = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         [app.wallet getAvailableEthBalance];
     }
 }
@@ -192,12 +195,45 @@
 {
     self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
+    
+    [self updateAvailableBalance];
 }
 
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result
 {
     self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
+    
+    [self updateAvailableBalance];
+}
+
+- (void)updateAvailableBalance
+{
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        DLog(@"btc amount: %lld", self.btcAmount);
+        DLog(@"available: %lld", [self.availableBalance longLongValue]);
+        DLog(@"max: %lld", [self.maximum longLongValue])
+        
+        if (self.btcAmount > [self.availableBalance longLongValue]) {
+            DLog(@"btc over available");
+        }
+        
+        if (self.btcAmount > [self.maximum longLongValue]) {
+            DLog(@"btc over max");
+        }
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        DLog(@"eth amount: %@", [self.ethAmount stringValue]);
+        DLog(@"available: %@", [self.availableBalance stringValue]);
+        DLog(@"max: %@", [self.maximum stringValue])
+        
+        if ([self.ethAmount compare:self.availableBalance] == NSOrderedAscending) {
+            DLog(@"eth over available");
+        }
+        
+        if ([self.ethAmount compare:self.maximum] == NSOrderedAscending) {
+            DLog(@"eth over max");
+        }
+    }
 }
 
 - (void)didGetQuote:(NSDictionary *)result
