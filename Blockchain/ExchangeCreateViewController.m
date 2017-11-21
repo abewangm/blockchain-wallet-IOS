@@ -9,6 +9,7 @@
 #import "ExchangeCreateViewController.h"
 #import "FromToView.h"
 #import "Blockchain-Swift.h"
+#import "ContinueButtonInputAccessoryView.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
@@ -17,7 +18,7 @@
 
 #define IMAGE_NAME_SWITCH_CURRENCIES @"switch_currencies"
 
-@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
+@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate, ContinueButtonInputAccessoryViewDelegate>
 
 @property (nonatomic) FromToView *fromToView;
 
@@ -113,6 +114,9 @@
     self.rightLabel = topRightLabel;
     [amountView addSubview:topRightLabel];
     
+    ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
+    inputAccessoryView.delegate = self;
+    
     UIFont *textFieldFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
 
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
@@ -121,6 +125,7 @@
     leftField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:leftField];
     leftField.delegate = self;
+    leftField.inputAccessoryView = inputAccessoryView;
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
     
@@ -130,6 +135,7 @@
     rightField.textColor = COLOR_TEXT_DARK_GRAY;
     [amountView addSubview:rightField];
     rightField.delegate = self;
+    rightField.inputAccessoryView = inputAccessoryView;
     self.topRightField = rightField;
     self.ethField = self.topRightField;
     
@@ -142,6 +148,7 @@
     bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomLeftField.delegate = self;
     [amountView addSubview:bottomLeftField];
+    bottomLeftField.inputAccessoryView = inputAccessoryView;
     self.bottomLeftField = bottomLeftField;
     
     BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
@@ -149,6 +156,7 @@
     bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
     bottomRightField.delegate = self;
     [amountView addSubview:bottomRightField];
+    bottomRightField.inputAccessoryView = inputAccessoryView;
     self.bottomRightField = bottomRightField;
     
     self.fromToView.fromImageView.image = [UIImage imageNamed:@"chevron_right"];
@@ -568,6 +576,21 @@
 - (void)didSelectFromAddress:(NSString *)address
 {
     // required by protocol
+}
+
+#pragma mark - Continue Button Input Accessory View Delegate
+
+- (void)continueButtonClicked
+{
+    
+}
+
+- (void)closeButtonClicked
+{
+    [self.topLeftField resignFirstResponder];
+    [self.topRightField resignFirstResponder];
+    [self.bottomLeftField resignFirstResponder];
+    [self.bottomRightField resignFirstResponder];
 }
 
 @end

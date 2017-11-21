@@ -223,6 +223,7 @@
 		C75F70EA1E2685CA005B4EAF /* ContactTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C75F70E91E2685CA005B4EAF /* ContactTransaction.m */; };
 		C76135641F9E55DF0029E159 /* ExchangeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C76135631F9E55DF0029E159 /* ExchangeCreateViewController.m */; };
 		C7618B611F66C817003E7589 /* QRCodeScannerSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */; };
+		C769B2DA1FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */; };
 		C780DF6C1EEF082300D48698 /* SharedSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */; };
 		C790E0F81E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
@@ -1150,6 +1151,8 @@
 		C76135631F9E55DF0029E159 /* ExchangeCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeCreateViewController.m; sourceTree = "<group>"; };
 		C7618B5F1F66C817003E7589 /* QRCodeScannerSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScannerSendViewController.h; sourceTree = "<group>"; };
 		C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScannerSendViewController.m; sourceTree = "<group>"; };
+		C769B2D81FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContinueButtonInputAccessoryView.h; sourceTree = "<group>"; };
+		C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContinueButtonInputAccessoryView.m; sourceTree = "<group>"; };
 		C780DF6A1EEF082300D48698 /* SharedSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedSessionDelegate.h; sourceTree = "<group>"; };
 		C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedSessionDelegate.m; sourceTree = "<group>"; };
 		C790E0F21E4913F00063D141 /* Blockchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blockchain.entitlements; sourceTree = "<group>"; };
@@ -3086,6 +3089,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C769B2D81FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.h */,
+				C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */,
 				C7442E381FBB636300695E4C /* FromToView.h */,
 				C7442E391FBB636300695E4C /* FromToView.m */,
 				C7442E321FBA1E7800695E4C /* ExchangeTableViewCell.h */,
@@ -3587,6 +3592,7 @@
 				237356B91DF8B4EE003940A7 /* ContactDetailViewController.m in Sources */,
 				231FF2CD1B56F9F1009EEB02 /* SettingsWebViewController.m in Sources */,
 				C723F3461F61D35300A858A9 /* TransactionDetailViewModel.m in Sources */,
+				C769B2DA1FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m in Sources */,
 				2322DCC61D771831000E5AC1 /* SRSecurityPolicy.m in Sources */,
 				9F61B89E151519EF0083C57A /* BCAddressSelectionView.m in Sources */,
 				FA6323361A43373300EB3974 /* Merchant.m in Sources */,
