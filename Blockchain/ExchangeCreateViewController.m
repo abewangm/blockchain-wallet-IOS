@@ -15,12 +15,16 @@
 #define DICTIONARY_KEY_TRADE_MINIMUM @"minimum"
 #define DICTIONARY_KEY_TRADE_MAX_LIMIT @"maxLimit"
 
+#define IMAGE_NAME_SWITCH_CURRENCIES @"switch_currencies"
+
 @interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
 
 @property (nonatomic) FromToView *fromToView;
 
 @property (nonatomic) UILabel *leftLabel;
 @property (nonatomic) UILabel *rightLabel;
+
+@property (nonatomic) UIButton *assetToggleButton;
 
 // Digital asset input
 @property (nonatomic) BCSecureTextField *topLeftField;
@@ -48,6 +52,8 @@
 @property (nonatomic) id maximum;
 @property (nonatomic) id availableBalance;
 @property (nonatomic) id fee;
+
+@property (nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation ExchangeCreateViewController
@@ -89,10 +95,16 @@
     UIButton *assetToggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, 30, 30)];
     assetToggleButton.center = CGPointMake(windowWidth/2, assetToggleButton.center.y);
     [assetToggleButton addTarget:self action:@selector(assetToggleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *buttonImage = [UIImage imageNamed:@"switch_currencies"];
+    UIImage *buttonImage = [UIImage imageNamed:IMAGE_NAME_SWITCH_CURRENCIES];
     [assetToggleButton setImage:buttonImage forState:UIControlStateNormal];
     assetToggleButton.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
     [amountView addSubview:assetToggleButton];
+    self.assetToggleButton = assetToggleButton;
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = assetToggleButton.center;
+    [amountView addSubview:self.spinner];
+    self.spinner.hidden = YES;
     
     UILabel *topRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
     topRightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
@@ -209,6 +221,9 @@
 
 - (void)updateAvailableBalance
 {
+    [self enableAssetToggleButton];
+    [self.spinner stopAnimating];
+    
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         DLog(@"btc amount: %lld", self.btcAmount);
         DLog(@"available: %lld", [self.availableBalance longLongValue]);
@@ -484,6 +499,9 @@
 
 - (void)getRate:(NSString *)coinPair
 {
+    [self disableAssetToggleButton];
+    [self.spinner startAnimating];
+    
     [app.wallet getRate:[self coinPair]];
 }
 
@@ -497,6 +515,18 @@
 - (NSString *)coinPair
 {
     return [NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol];
+}
+
+- (void)enableAssetToggleButton
+{
+    self.assetToggleButton.userInteractionEnabled = YES;
+    [self.assetToggleButton setImage:[UIImage imageNamed:IMAGE_NAME_SWITCH_CURRENCIES] forState:UIControlStateNormal];
+}
+
+- (void)disableAssetToggleButton
+{
+    self.assetToggleButton.userInteractionEnabled = NO;
+    [self.assetToggleButton setImage:nil forState:UIControlStateNormal];
 }
 
 #pragma mark - Address Selection Delegate
