@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#define TRADE_STATUS_COMPLETE @"complete"
+
 @interface ExchangeTrade : NSObject
 @property (nonatomic) NSDate *date;
 @property (nonatomic) NSString *status;
 @property (nonatomic) NSString *pair;
-@property (nonatomic) NSString *depositAmount;
+@property (nonatomic) NSDecimalNumber *depositAmount;
 @property (nonatomic) NSString *withdrawalAmount;
 
 + (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict;
