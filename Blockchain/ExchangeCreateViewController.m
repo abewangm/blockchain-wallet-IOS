@@ -12,6 +12,9 @@
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
+#define DICTIONARY_KEY_TRADE_MINIMUM @"minimum"
+#define DICTIONARY_KEY_TRADE_MAX_LIMIT @"maxLimit"
+
 @interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
 
 @property (nonatomic) FromToView *fromToView;
@@ -40,8 +43,11 @@
 @property (nonatomic) NSString *fromAddress;
 @property (nonatomic) NSString *toAddress;
 
+// uint64_t or NSDecimalNumber
 @property (nonatomic) id minimum;
 @property (nonatomic) id maximum;
+@property (nonatomic) id availableBalance;
+@property (nonatomic) id fee;
 @end
 
 @implementation ExchangeCreateViewController
@@ -172,7 +178,26 @@
 
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
+    self.minimum = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
+    self.maximum = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
     
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        [app.wallet getAvailableEthBalance];
+    }
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
+    self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
+    self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
 }
 
 - (void)didGetQuote:(NSDictionary *)result

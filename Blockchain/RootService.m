@@ -2509,6 +2509,16 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetQuote:result];
 }
 
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableBtcBalance:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableEthBalance:result];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

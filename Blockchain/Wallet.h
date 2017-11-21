@@ -139,6 +139,8 @@
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
 - (void)didGetQuote:(NSDictionary *)result;
+- (void)didGetAvailableEthBalance:(NSDictionary *)result;
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -446,6 +448,8 @@ typedef enum {
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
+- (void)getAvailableBtcBalanceForAccount:(int)account;
+- (void)getAvailableEthBalance;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;

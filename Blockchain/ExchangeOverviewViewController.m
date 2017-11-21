@@ -111,6 +111,16 @@
     [self.createViewController didGetQuote:result];
 }
 
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.createViewController didGetAvailableEthBalance:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.createViewController didGetAvailableBtcBalance:result];
+}
+
 #pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

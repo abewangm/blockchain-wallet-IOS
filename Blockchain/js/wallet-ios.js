@@ -2551,3 +2551,30 @@ MyWalletPhone.getQuote = function(coinPair, amount) {
     
     MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
 }
+
+MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
+    
+    var success = function(result) {
+        objc_on_get_available_btc_balance_success(result);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting btc balance');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance().then(success).catch(error);
+}
+
+MyWalletPhone.getAvailableEthBalance = function() {
+    
+    var success = function(result) {
+        objc_on_get_available_eth_balance_success(result.amount, result.fee);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting eth balance');
+        console.log(e);
+    }
+    MyWallet.wallet.eth.accounts[0].getAvailableBalance().then(success).catch(error);
+}

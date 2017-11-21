@@ -611,4 +611,13 @@
     [self.exchangeOverviewViewController didGetQuote:result];
 }
 
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableEthBalance:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableBtcBalance:result];
+}
 @end

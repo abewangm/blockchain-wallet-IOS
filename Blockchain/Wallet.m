@@ -915,6 +915,15 @@
         [weakSelf on_get_quote_success:[result toDictionary]];
     };
     
+    self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
+        [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_success"] = ^(JSValue *amount, JSValue *fee) {
+        NSDictionary *dict = @{DICTIONARY_KEY_AMOUNT : [amount toNumber], DICTIONARY_KEY_FEE : [fee toNumber]};
+        [weakSelf on_get_available_eth_balance_success:dict];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -2301,17 +2310,27 @@
 
 - (void)getExchangeTrades
 {
-     [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
+     if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
 }
 
 - (void)getRate:(NSString *)coinPair
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
 }
 
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
+}
+
+- (void)getAvailableBtcBalanceForAccount:(int)account
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getAvailableBtcBalanceForAccount(\"%d\")", account]];
+}
+
+- (void)getAvailableEthBalance
+{
+    if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getAvailableEthBalance()"];
 }
 
 #pragma mark - Contacts
@@ -4184,6 +4203,24 @@
         [self.delegate didGetQuote:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_btc_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableBtcBalance:)]) {
+        [self.delegate didGetAvailableBtcBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableBtcBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_eth_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableEthBalance:)]) {
+        [self.delegate didGetAvailableEthBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableEthBalance:!", [delegate class]);
     }
 }
 
