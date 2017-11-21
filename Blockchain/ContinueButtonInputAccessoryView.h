@@ -13,5 +13,6 @@
 @end
 @interface ContinueButtonInputAccessoryView : UIView
 @property (nonatomic, weak) id <ContinueButtonInputAccessoryViewDelegate> delegate;
-@property (nonatomic) UIButton *continueButton;
+- (void)disableContinueButton;
+- (void)enableContinueButton;
 @end

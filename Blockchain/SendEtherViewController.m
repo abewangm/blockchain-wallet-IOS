@@ -38,7 +38,7 @@
 @property (nonatomic) UIButton *fundsAvailableButton;
 @property (nonatomic) UIButton *continuePaymentButton;
 @property (nonatomic) NSString *noteToSet;
-@property (nonatomic) UIButton *continuePaymentAccessoryButton;
+@property (nonatomic) ContinueButtonInputAccessoryView *continuePaymentAccessoryView;
 @property (nonatomic) BCConfirmPaymentView *confirmPaymentView;
 @property (nonatomic) BOOL shouldKeepCurrentPayment;
 
@@ -102,9 +102,9 @@
     [amountInputView changeHeight:amountInputView.btcLabel.frame.origin.y + amountInputView.btcLabel.frame.size.height];
     [self.view addSubview:amountInputView];
     ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
-    self.continuePaymentAccessoryButton = inputAccessoryView.continueButton;
     inputAccessoryView.delegate = self;
     toField.inputAccessoryView = inputAccessoryView;
+    self.continuePaymentAccessoryView = inputAccessoryView;
     amountInputView.btcField.inputAccessoryView = inputAccessoryView;
     amountInputView.fiatField.inputAccessoryView = inputAccessoryView;
     amountInputView.btcField.delegate = self;
@@ -298,9 +298,7 @@
     [self.continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [self.continuePaymentButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
     
-    self.continuePaymentAccessoryButton.enabled = NO;
-    [self.continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+    [self.continuePaymentAccessoryView disableContinueButton];
 }
 
 - (void)enablePaymentButtons
@@ -309,9 +307,7 @@
     [self.continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.continuePaymentButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
     
-    [self.continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.continuePaymentAccessoryButton.enabled = YES;
-    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+    [self.continuePaymentAccessoryView enableContinueButton];
 }
 
 - (void)useAllClicked

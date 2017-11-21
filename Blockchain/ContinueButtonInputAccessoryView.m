@@ -9,6 +9,7 @@
 #import "ContinueButtonInputAccessoryView.h"
 
 @interface ContinueButtonInputAccessoryView()
+@property (nonatomic) UIButton *continueButton;
 @property (nonatomic) UIButton *closeButton;
 @end
 @implementation ContinueButtonInputAccessoryView
@@ -44,6 +45,20 @@
 - (void)closeButtonClicked
 {
     [self.delegate closeButtonClicked];
+}
+
+- (void)enableContinueButton
+{
+    self.continueButton.enabled = YES;
+    [self.continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.continueButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+}
+
+- (void)disableContinueButton
+{
+    self.continueButton.enabled = NO;
+    [self.continueButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.continueButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
 }
 
 @end

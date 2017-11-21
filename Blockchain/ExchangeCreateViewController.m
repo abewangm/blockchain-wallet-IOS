@@ -55,6 +55,8 @@
 @property (nonatomic) id fee;
 
 @property (nonatomic) UIActivityIndicatorView *spinner;
+
+@property (nonatomic) ContinueButtonInputAccessoryView *continuePaymentAccessoryView;
 @end
 
 @implementation ExchangeCreateViewController
@@ -116,6 +118,7 @@
     
     ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
     inputAccessoryView.delegate = self;
+    self.continuePaymentAccessoryView = inputAccessoryView;
     
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
     BCSecureTextField *leftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
@@ -243,6 +246,17 @@
             DLog(@"eth over max");
         }
     }
+}
+
+- (void)enablePaymentButtons
+{
+    [self.continuePaymentAccessoryView enableContinueButton];
+}
+
+- (void)disablePaymentButtons
+{
+    [self.continuePaymentAccessoryView disableContinueButton];
+
 }
 
 - (void)didGetQuote:(NSDictionary *)result
