@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExchangeTrade.h"
 
 @interface ExchangeProgressViewController : UIViewController
-
+@property (nonatomic) ExchangeTrade *trade;
 @end
