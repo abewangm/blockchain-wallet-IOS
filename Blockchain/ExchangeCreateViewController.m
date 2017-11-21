@@ -117,24 +117,16 @@
     ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
     inputAccessoryView.delegate = self;
     
-    UIFont *textFieldFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
-    BCSecureTextField *leftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
-    leftField.font = textFieldFont;
-    leftField.textColor = COLOR_TEXT_DARK_GRAY;
+    BCSecureTextField *leftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
     [amountView addSubview:leftField];
-    leftField.delegate = self;
     leftField.inputAccessoryView = inputAccessoryView;
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
     
     CGFloat rightFieldOriginX = topRightLabel.frame.origin.x + topRightLabel.frame.size.width + 8;
-    BCSecureTextField *rightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
-    rightField.font = textFieldFont;
-    rightField.textColor = COLOR_TEXT_DARK_GRAY;
+    BCSecureTextField *rightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
     [amountView addSubview:rightField];
-    rightField.delegate = self;
     rightField.inputAccessoryView = inputAccessoryView;
     self.topRightField = rightField;
     self.ethField = self.topRightField;
@@ -143,18 +135,12 @@
     dividerLine.backgroundColor = COLOR_LINE_GRAY;
     [amountView addSubview:dividerLine];
     
-    BCSecureTextField *bottomLeftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
-    bottomLeftField.font = textFieldFont;
-    bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
-    bottomLeftField.delegate = self;
+    BCSecureTextField *bottomLeftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
     [amountView addSubview:bottomLeftField];
     bottomLeftField.inputAccessoryView = inputAccessoryView;
     self.bottomLeftField = bottomLeftField;
     
-    BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
-    bottomRightField.font = textFieldFont;
-    bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
-    bottomRightField.delegate = self;
+    BCSecureTextField *bottomRightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
     [amountView addSubview:bottomRightField];
     bottomRightField.inputAccessoryView = inputAccessoryView;
     self.bottomRightField = bottomRightField;
@@ -519,6 +505,16 @@
 }
 
 #pragma mark - Helpers
+
+- (BCSecureTextField *)inputTextFieldWithFrame:(CGRect)frame
+{
+    BCSecureTextField *textField = [[BCSecureTextField alloc] initWithFrame:frame];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    textField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    textField.textColor = COLOR_TEXT_DARK_GRAY;
+    textField.delegate = self;
+    return textField;
+}
 
 - (NSString *)coinPair
 {
