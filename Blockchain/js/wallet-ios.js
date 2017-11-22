@@ -692,8 +692,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
 
     var login_success = function() {
-        logTime('fetch history, options, account info');
-
+        logTime('fetch history, account info');
+        
         objc_loading_stop();
 
         objc_did_load_wallet();
@@ -710,9 +710,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var success = function() {
         logTime('wallet login');
         var getHistory = MyWallet.wallet.getHistory().catch(history_error);
-        var fetchOptions = walletOptions.fetch().catch(other_error);
         var fetchAccount = MyWallet.wallet.fetchAccountInfo().catch(other_error);
-        Promise.all([getHistory, fetchOptions, fetchAccount]).then(login_success);
+        Promise.all([getHistory, fetchAccount]).then(login_success);
     };
 
     var other_error = function(e) {
@@ -764,9 +763,11 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         didDecrypt: decrypt_success,
         didBuildHD: build_hd_success
     }
-
-    MyWallet.login(user_guid, inputedPassword, credentials, callbacks)
-      .then(success).catch(other_error);
+    
+    walletOptions.fetch().then(function() {
+        Blockchain.constants.SHAPE_SHIFT_KEY = walletOptions.getValue().shapeshift.apiKey;
+        MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
+    });
 };
 
 MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
@@ -2550,6 +2551,10 @@ MyWalletPhone.getQuote = function(coinPair, amount) {
     }
     
     MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
+}
+
+MyWalletPhone.getShapeshiftApiKey = function() {
+    return walletOptions.getValue().shapeshift.apiKey;
 }
 
 MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
