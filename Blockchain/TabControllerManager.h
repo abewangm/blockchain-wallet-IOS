@@ -127,7 +127,6 @@
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
 - (void)didGetQuote:(NSDictionary *)result;
-- (void)didGetApproximateQuote:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 @end

@@ -267,11 +267,6 @@
     
 }
 
-- (void)didGetApproximateQuote:(NSDictionary *)result
-{
-    
-}
-
 #pragma mark - Conversion
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -524,11 +519,6 @@
 - (void)getQuote
 {
     [app.wallet getQuote:[self coinPair] amount:@"0.1"];
-}
-
-- (void)getApproximateQuote
-{
-    [app.wallet getApproximateQuote:[self coinPair] amount:@"0.1"];
 }
 
 #pragma mark - Helpers

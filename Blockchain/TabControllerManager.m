@@ -611,11 +611,6 @@
     [self.exchangeOverviewViewController didGetQuote:result];
 }
 
-- (void)didGetApproximateQuote:(NSDictionary *)result
-{
-    [self.exchangeOverviewViewController didGetApproximateQuote:result];
-}
-
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
 {
     [self.exchangeOverviewViewController didGetAvailableEthBalance:result];

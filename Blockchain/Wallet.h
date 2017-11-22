@@ -139,7 +139,6 @@
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
 - (void)didGetQuote:(NSDictionary *)result;
-- (void)didGetApproximateQuote:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 @end
@@ -449,7 +448,6 @@ typedef enum {
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
-- (void)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount;
 - (void)getAvailableBtcBalanceForAccount:(int)account;
 - (void)getAvailableEthBalance;
 
