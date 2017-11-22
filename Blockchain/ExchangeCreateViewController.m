@@ -71,6 +71,9 @@
     self.toSymbol = CURRENCY_SYMBOL_ETH;
     self.btcAccount = [app.wallet getDefaultAccountIndex];
     
+    self.btcAmount = 0;
+    self.ethAmount = [NSDecimalNumber decimalNumberWithDecimal:[@0 decimalValue]];
+    
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
 
@@ -238,11 +241,11 @@
         DLog(@"available: %@", [self.availableBalance stringValue]);
         DLog(@"max: %@", [self.maximum stringValue])
         
-        if ([self.ethAmount compare:self.availableBalance] == NSOrderedAscending) {
+        if ([self.ethAmount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
         }
         
-        if ([self.ethAmount compare:self.maximum] == NSOrderedAscending) {
+        if ([self.ethAmount compare:self.maximum] == NSOrderedDescending) {
             DLog(@"eth over max");
         }
     }
