@@ -111,6 +111,11 @@
     [self.createViewController didGetQuote:result];
 }
 
+- (void)didGetApproximateQuote:(NSDictionary *)result
+{
+    [self.createViewController didGetApproximateQuote:result];
+}
+
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
 {
     [self.createViewController didGetAvailableEthBalance:result];

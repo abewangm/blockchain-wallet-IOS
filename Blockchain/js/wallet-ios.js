@@ -2552,6 +2552,20 @@ MyWalletPhone.getQuote = function(coinPair, amount) {
     MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
 }
 
+MyWalletPhone.getApproximateQuote = function(coinPair, amount) {
+    
+    var success = function(result) {
+        objc_on_get_approximate_quote_success(result.toJSON());
+    }
+    
+    var error = function(e) {
+        console.log('Error getting approximate quote');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.getApproximateQuote(coinPair, amount).then(success).catch(error);
+}
+
 MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
     
     var success = function(result) {

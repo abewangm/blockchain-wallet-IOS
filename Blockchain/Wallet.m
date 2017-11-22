@@ -915,6 +915,10 @@
         [weakSelf on_get_quote_success:[result toDictionary]];
     };
     
+    self.context[@"objc_on_get_approximate_quote_success"] = ^(JSValue *result) {
+        [weakSelf on_get_approximate_quote_success:[result toDictionary]];
+    };
+    
     self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
         [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
     };
@@ -2321,6 +2325,11 @@
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
 {
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
+}
+
+- (void)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getApproximateQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
 - (void)getAvailableBtcBalanceForAccount:(int)account
@@ -4203,6 +4212,15 @@
         [self.delegate didGetQuote:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
+    }
+}
+
+- (void)on_get_approximate_quote_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetApproximateQuote:)]) {
+        [self.delegate didGetApproximateQuote:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetApproximateQuote:!", [delegate class]);
     }
 }
 
