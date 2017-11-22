@@ -2323,6 +2323,34 @@
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
+- (void)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount completion:(void (^)(NSData *, NSURLResponse *, NSError *))completion
+{
+    if ([self isInitialized]) {
+        DLog(@"Getting approximate quote");
+        
+        NSURL *URL = [NSURL URLWithString:@"https://shapeshift.io/sendamount"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        
+        NSString *apiKey = [[self.context evaluateScript:@"MyWalletPhone.getShapeshiftApiKey()"] toString];
+        
+        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"depositAmount\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [amount escapeStringForJS], [apiKey escapeStringForJS]];
+        NSData *postData = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:postData];
+
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) completion(data, response, error);
+            });
+        }];
+        
+        [task resume];
+    }
+}
+
 - (void)getAvailableBtcBalanceForAccount:(int)account
 {
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getAvailableBtcBalanceForAccount(\"%d\")", account]];

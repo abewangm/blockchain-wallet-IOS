@@ -440,6 +440,8 @@
             }
         }
     }
+    
+    [self getApproximateQuote];
 }
 
 #pragma mark - Gesture Actions
@@ -519,6 +521,11 @@
 - (void)getQuote
 {
     [app.wallet getQuote:[self coinPair] amount:@"0.1"];
+}
+
+- (void)getApproximateQuote
+{
+    [app.wallet getApproximateQuote:[self coinPair] amount:@"0.1" completion:nil];
 }
 
 #pragma mark - Helpers
