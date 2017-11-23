@@ -48,6 +48,8 @@
 @property (nonatomic) NSString *fromAddress;
 @property (nonatomic) NSString *toAddress;
 
+@property (nonatomic) NSURLSessionDataTask *currentDataTask;
+
 // uint64_t or NSDecimalNumber
 @property (nonatomic) id minimum;
 @property (nonatomic) id maximum;
@@ -267,6 +269,13 @@
     
 }
 
+- (void)didGetApproximateQuote:(NSDictionary *)result
+{
+    [self enablePaymentButtons];
+    [self enableAssetToggleButton];
+    [self.spinner stopAnimating];
+}
+
 #pragma mark - Conversion
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -441,7 +450,7 @@
         }
     }
     
-    [self getApproximateQuote];
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark - Gesture Actions
@@ -525,7 +534,19 @@
 
 - (void)getApproximateQuote
 {
-    [app.wallet getApproximateQuote:[self coinPair] amount:@"0.1" completion:nil];
+    [self disablePaymentButtons];
+    [self disableAssetToggleButton];
+    [self.spinner startAnimating];
+    
+    if (self.currentDataTask) {
+        [self.currentDataTask cancel];
+        self.currentDataTask = nil;
+    }
+    
+    self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] amount:@"0.1" completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
+        DLog(@"result: %@", result);
+        [self didGetApproximateQuote:result];
+    }];
 }
 
 #pragma mark - Helpers

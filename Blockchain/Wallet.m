@@ -2323,7 +2323,7 @@
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
-- (void)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount completion:(void (^)(NSData *, NSURLResponse *, NSError *))completion
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
 {
     if ([self isInitialized]) {
         DLog(@"Getting approximate quote");
@@ -2341,14 +2341,23 @@
         [request setHTTPBody:postData];
 
         NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (completion) completion(data, response, error);
-            });
+            if (error) {
+                DLog(@"Error getting approximate quote: %@", error);
+            } else {
+                NSError *jsonError;
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (completion) completion(result, response, error);
+                });
+            }
         }];
         
         [task resume];
+        
+        return task;
     }
+    
+    return nil;
 }
 
 - (void)getAvailableBtcBalanceForAccount:(int)account
