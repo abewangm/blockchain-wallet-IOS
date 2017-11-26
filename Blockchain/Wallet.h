@@ -448,7 +448,7 @@ typedef enum {
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
-- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount completion:(void (^ __nullable)(NSDictionary *result, NSURLResponse *response, NSError *error))completion;
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion;
 - (void)getAvailableBtcBalanceForAccount:(int)account;
 - (void)getAvailableEthBalance;
 

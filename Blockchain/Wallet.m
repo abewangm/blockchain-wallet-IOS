@@ -2323,7 +2323,7 @@
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
-- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
 {
     if ([self isInitialized]) {
         DLog(@"Getting approximate quote");
@@ -2333,7 +2333,9 @@
         
         NSString *apiKey = [[self.context evaluateScript:@"MyWalletPhone.getShapeshiftApiKey()"] toString];
         
-        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"depositAmount\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [amount escapeStringForJS], [apiKey escapeStringForJS]];
+        NSString *depositOrWithdrawParameter = usingFromField ? @"depositAmount" : @"withdrawalAmount";
+        
+        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"%@\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [depositOrWithdrawParameter escapeStringForJS], [amount escapeStringForJS], [apiKey escapeStringForJS]];
         NSData *postData = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
         
         [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

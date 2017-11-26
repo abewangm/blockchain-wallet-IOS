@@ -543,7 +543,9 @@
         self.currentDataTask = nil;
     }
     
-    self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] amount:@"0.1" completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
+    BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
+    
+    self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:@"0.1" completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
         DLog(@"result: %@", result);
         [self didGetApproximateQuote:result];
     }];
