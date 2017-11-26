@@ -2730,6 +2730,15 @@
     return NO;
 }
 
+- (NSString *)getLabelForEthAccount
+{
+    if ([self isInitialized] && [self hasEthAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForEthAccount()"] toString];
+    }
+    
+    return nil;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

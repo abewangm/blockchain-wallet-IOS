@@ -431,6 +431,7 @@ typedef enum {
 - (NSArray *)getEthTransactions;
 - (void)getEthHistory;
 - (void)getEthExchangeRate;
+- (NSString *)getLabelForEthAccount;
 
 // Ether send
 - (void)createNewEtherPayment;

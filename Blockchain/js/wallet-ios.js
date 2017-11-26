@@ -2583,3 +2583,7 @@ MyWalletPhone.getAvailableEthBalance = function() {
     }
     MyWallet.wallet.eth.accounts[0].getAvailableBalance().then(success).catch(error);
 }
+
+MyWalletPhone.getLabelForEthAccount = function() {
+    return MyWallet.wallet.eth.defaultAccount.label;
+}

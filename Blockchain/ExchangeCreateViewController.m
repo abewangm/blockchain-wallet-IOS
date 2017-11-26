@@ -585,11 +585,17 @@
 - (void)didSelectFromEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
 }
 
 - (void)didSelectToEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -597,13 +603,18 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     self.btcAccount = account;
-    
-    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
 }
 
 - (void)didSelectToAccount:(int)account
 {
-    [self didSelectFromAccount:account];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    self.btcAccount = account;
+    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    
 }
 
 - (void)didSelectToAddress:(NSString *)address
