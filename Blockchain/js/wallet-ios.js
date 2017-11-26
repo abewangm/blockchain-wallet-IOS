@@ -2528,7 +2528,7 @@ MyWalletPhone.getExchangeTrades = function() {
 MyWalletPhone.getRate = function(coinPair) {
     
     var success = function(result) {
-        objc_on_get_exchange_rate_success(result);
+        objc_on_get_exchange_rate_success(result.limit, result.minimum, result.minerFee, result.maxLimit, result.pair, result.rate);
     }
     
     var error = function(e) {

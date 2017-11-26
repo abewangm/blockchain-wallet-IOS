@@ -907,8 +907,8 @@
         [weakSelf on_get_exchange_trades_success:trades];
     };
     
-    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *result) {
-        [weakSelf on_get_exchange_rate_success:[result toDictionary]];
+    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *limit, JSValue *minimum, JSValue *minerFee, JSValue *maxLimit, JSValue *pair, JSValue *rate) {
+        [weakSelf on_get_exchange_rate_success:@{DICTIONARY_KEY_LIMIT : [limit toString], DICTIONARY_KEY_MINIMUM : [minimum toString], DICTIONARY_KEY_MINER_FEE : [minerFee toString], DICTIONARY_KEY_MAX_LIMIT : [maxLimit toString], DICTIONARY_KEY_RATE : [rate toString]}];
     };
     
     self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {

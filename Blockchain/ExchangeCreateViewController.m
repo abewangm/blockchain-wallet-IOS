@@ -170,6 +170,7 @@
     useMinButton.backgroundColor = [UIColor whiteColor];
     [useMinButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [useMinButton setTitle:BC_STRING_USE_MINIMUM forState:UIControlStateNormal];
+    [useMinButton addTarget:self action:@selector(useMinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMinButton];
     
     CGFloat useMaxButtonOriginX = buttonsView.frame.size.width/2 + dividerLineWidth/2;
@@ -178,6 +179,7 @@
     useMaxButton.backgroundColor = [UIColor whiteColor];
     [useMaxButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [useMaxButton setTitle:BC_STRING_USE_MAXIMUM forState:UIControlStateNormal];
+    [useMaxButton addTarget:self action:@selector(useMaxButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMaxButton];
     
     UILabel *errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth, 30)];
@@ -193,9 +195,9 @@
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-        NSString *minNumberString = [[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM] stringValue];
+        NSString *minNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
         self.minimum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:minNumberString]];
-        NSString *maxNumberString = [[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT] stringValue];
+        NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         self.maximum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:maxNumberString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
@@ -517,6 +519,16 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+- (void)useMinButtonClicked
+{
+    
+}
+
+- (void)useMaxButtonClicked
+{
+    
+}
+
 #pragma mark - Wallet actions
 
 - (void)getRate:(NSString *)coinPair
@@ -614,7 +626,6 @@
     self.btcAccount = account;
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
-    
 }
 
 - (void)didSelectToAddress:(NSString *)address
