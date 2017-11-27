@@ -18,6 +18,7 @@ var Metadata = Blockchain.Metadata;
 var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
 var EthSocket = Blockchain.EthSocket;
+var Quote = Blockchain.Quote;
 
 function NativeEthSocket () {
   this.handlers = []
@@ -2586,4 +2587,22 @@ MyWalletPhone.getAvailableEthBalance = function() {
 
 MyWalletPhone.getLabelForEthAccount = function() {
     return MyWallet.wallet.eth.defaultAccount.label;
+}
+
+MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
+    
+    var buildPayment = function(quote) {
+        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, MyWallet.wallet.hdwallet.accounts[0]);
+
+        payment.getFee().then(function() {
+          console.log(JSON.stringify(payment));
+        });
+    };
+    
+    var error = function(e) {
+        console.log('Error building exchange trade');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.getQuote(MyWallet.wallet.hdwallet.accounts[0], MyWallet.wallet.eth.defaultAccount, 0.0001043).then(buildPayment).catch(error);
 }

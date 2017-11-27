@@ -599,18 +599,12 @@
     BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
 
     NSString *amount;
-    if ([self hasAmountGreaterThanZero]) {
+    if ([self hasAmountGreaterThanZero:self.amount]) {
 
         [self disableAssetToggleButton];
         [self.spinner startAnimating];
         
-        if ([self.amount isMemberOfClass:[NSDecimalNumber class]]) {
-            amount = [self.amount stringValue];
-        } else if ([self.amount respondsToSelector:@selector(longLongValue)]) {
-            amount = [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:NO];
-        } else {
-            DLog(@"Error: unknown class for amount: %@", [self.amount class]);
-        }
+        amount = [self amountString:self.amount];
         
         self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:amount completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
             DLog(@"result: %@", result);
@@ -621,19 +615,35 @@
 
 #pragma mark - Helpers
 
-- (BOOL)hasAmountGreaterThanZero
+- (BOOL)hasAmountGreaterThanZero:(id)amount
 {
-    if ([self.amount isMemberOfClass:[NSDecimalNumber class]]) {
-        return [self.amount compare:@0] == NSOrderedDescending;
-    } else if ([self.amount respondsToSelector:@selector(longLongValue)]) {
-        return [self.amount longLongValue] > 0;
-    } else if (!self.amount) {
+    if ([amount isMemberOfClass:[NSDecimalNumber class]]) {
+        return [amount compare:@0] == NSOrderedDescending;
+    } else if ([amount respondsToSelector:@selector(longLongValue)]) {
+        return [amount longLongValue] > 0;
+    } else if (!amount) {
         DLog(@"Nil amount saved");
         return NO;
     } else {
         DLog(@"Error: unknown class for amount: %@", [self.amount class]);
         return NO;
     }
+}
+
+- (NSString *)amountString:(id)amount
+{
+    NSString *amountString;
+    if ([self hasAmountGreaterThanZero:amount]) {
+        if ([amount isMemberOfClass:[NSDecimalNumber class]]) {
+            amountString = [amount stringValue];
+        } else if ([amount respondsToSelector:@selector(longLongValue)]) {
+            amountString = [NSNumberFormatter formatAmount:[amount longLongValue] localCurrency:NO];
+        } else {
+            DLog(@"Error: unknown class for amount: %@", [amount class]);
+        }
+    }
+    
+    return amountString;
 }
 
 - (BCSecureTextField *)inputTextFieldWithFrame:(CGRect)frame
@@ -718,7 +728,7 @@
 
 - (void)continueButtonClicked
 {
-    
+    [app.wallet buildExchangeTrade:[self coinPair] amount:[self amountString:self.amount] fee:[self amountString:self.fee]];
 }
 
 - (void)closeButtonClicked

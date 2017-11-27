@@ -2372,6 +2372,11 @@
     if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getAvailableEthBalance()"];
 }
 
+- (void)buildExchangeTrade:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(\"%@\", \"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [@"15500" escapeStringForJS], [fee escapeStringForJS]]];
+}
+
 #pragma mark - Contacts
 
 - (void)loadContacts
