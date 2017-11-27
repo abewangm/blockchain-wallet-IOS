@@ -848,3 +848,4 @@
 #define BC_STRING_EXCHANGE_IN_PROGRESS NSLocalizedString(@"Exchange In Progress", nil)
 #define BC_STRING_EXCHANGE_COMPLETED NSLocalizedString(@"Exchange Completed", nil)
 #define BC_STRING_GET_STARTED NSLocalizedString(@"Get started", nil)
+#define BC_STRING_BELOW_MINIMUM_LIMIT NSLocalizedString(@"Below minimum limit", nil)

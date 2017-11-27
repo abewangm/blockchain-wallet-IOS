@@ -37,7 +37,7 @@
 @property (nonatomic) BCSecureTextField *bottomLeftField;
 @property (nonatomic) BCSecureTextField *bottomRightField;
 
-@property (nonatomic) UILabel *errorLabel;
+@property (nonatomic) UITextView *errorTextView;
 
 @property (nonatomic) id amount;
 @property (nonatomic) int btcAccount;
@@ -180,12 +180,16 @@
     [useMaxButton addTarget:self action:@selector(useMaxButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMaxButton];
     
-    UILabel *errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth, 30)];
-    errorLabel.textColor = COLOR_WARNING_RED;
-    errorLabel.font = buttonFont;
-    [self.view addSubview:errorLabel];
-    errorLabel.hidden = YES;
-    self.errorLabel = errorLabel;
+    UITextView *errorTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth - 30, 30)];
+    errorTextView.editable = NO;
+    errorTextView.scrollEnabled = NO;
+    errorTextView.selectable = NO;
+    errorTextView.textColor = COLOR_WARNING_RED;
+    errorTextView.font = buttonFont;
+    errorTextView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:errorTextView];
+    errorTextView.hidden = YES;
+    self.errorTextView = errorTextView;
 }
 
 #pragma mark - JS Callbacks
@@ -225,6 +229,10 @@
 {
     [self enableAssetToggleButton];
     [self.spinner stopAnimating];
+ 
+    BOOL showErrorTextView = NO;
+    
+    self.errorTextView.text = @"test";
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         DLog(@"btc amount: %lld", [self.amount longLongValue]);
@@ -233,10 +241,12 @@
         
         if ([self.amount longLongValue] > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
+            showErrorTextView = YES;
         }
         
         if ([self.amount longLongValue] > [self.maximum longLongValue]) {
             DLog(@"btc over max");
+            showErrorTextView = YES;
         }
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         DLog(@"eth amount: %@", [self.amount stringValue]);
@@ -245,12 +255,16 @@
         
         if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
+            showErrorTextView = YES;
         }
         
         if ([self.amount compare:self.maximum] == NSOrderedDescending) {
             DLog(@"eth over max");
+            showErrorTextView = YES;
         }
     }
+    
+    if (showErrorTextView) self.errorTextView.hidden = NO;
 }
 
 - (void)enablePaymentButtons
