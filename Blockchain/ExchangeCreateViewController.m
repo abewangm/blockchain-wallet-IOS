@@ -199,8 +199,8 @@
         self.maximum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:maxNumberString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
-        self.minimum = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
-        self.maximum = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
+        self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
+        self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
         [app.wallet getAvailableEthBalance];
     }
 }
