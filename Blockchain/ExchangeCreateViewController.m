@@ -545,8 +545,6 @@
 - (void)getApproximateQuote
 {
     [self disablePaymentButtons];
-    [self disableAssetToggleButton];
-    [self.spinner startAnimating];
     
     if (self.currentDataTask) {
         [self.currentDataTask cancel];
@@ -554,14 +552,44 @@
     }
     
     BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
-    
-    self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:@"0.1" completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
-        DLog(@"result: %@", result);
-        [self didGetApproximateQuote:result];
-    }];
+
+    NSString *amount;
+    if ([self hasAmountGreaterThanZero]) {
+
+        [self disableAssetToggleButton];
+        [self.spinner startAnimating];
+        
+        if ([self.amount isMemberOfClass:[NSDecimalNumber class]]) {
+            amount = [self.amount stringValue];
+        } else if ([self.amount respondsToSelector:@selector(longLongValue)]) {
+            amount = [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:NO];
+        } else {
+            DLog(@"Error: unknown class for amount: %@", [self.amount class]);
+        }
+        
+        self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:amount completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
+            DLog(@"result: %@", result);
+            [self didGetApproximateQuote:result];
+        }];
+    }
 }
 
 #pragma mark - Helpers
+
+- (BOOL)hasAmountGreaterThanZero
+{
+    if ([self.amount isMemberOfClass:[NSDecimalNumber class]]) {
+        return [self.amount compare:@0] == NSOrderedDescending;
+    } else if ([self.amount respondsToSelector:@selector(longLongValue)]) {
+        return [self.amount longLongValue] > 0;
+    } else if (!self.amount) {
+        DLog(@"Nil amount saved");
+        return NO;
+    } else {
+        DLog(@"Error: unknown class for amount: %@", [self.amount class]);
+        return NO;
+    }
+}
 
 - (BCSecureTextField *)inputTextFieldWithFrame:(CGRect)frame
 {
