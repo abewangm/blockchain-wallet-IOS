@@ -9,6 +9,8 @@
 #import "ExchangeProgressViewController.h"
 #import "ExchangeDetailView.h"
 
+#define DETAIL_VIEW_HEIGHT 283
+
 @interface ExchangeProgressViewController ()
 
 @end
@@ -18,8 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH, 283)];
-    [detailView createPseudoTableWith:_trade.depositAmount receiveAmount:@"" exchangeRate:@"" transactionFee:@"" networkTransactionFee:@""];
+    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH, DETAIL_VIEW_HEIGHT)];
+    [detailView createPseudoTableWithDepositAmount:@"" receiveAmount:@"" exchangeRate:@"" transactionFee:@"" networkTransactionFee:@""];
     [self.view addSubview:detailView];
 }
 
