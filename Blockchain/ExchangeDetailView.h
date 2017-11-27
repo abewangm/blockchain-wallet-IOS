@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeDetailView : UIView
-- (void)createPseudoTableWith:(NSString *)depositAmount receiveAmount:(NSString *)recAmt exchangeRate:(NSString *)rate transactionFee:(NSString *)fee networkTransactionFee:(NSString *)netwkFee;
+- (void)createPseudoTableWithDepositAmount:(NSString *)depositAmount receiveAmount:(NSString *)receiveAmount exchangeRate:(NSString *)exchangeRate transactionFee:(NSString *)transactionFee networkTransactionFee:(NSString *)networkTransactionFee;
 @end

@@ -16,24 +16,27 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    if (self != nil) {
+        //
+    }
     return self;
 }
 
-- (void)createPseudoTableWith:(NSString *)depositAmount receiveAmount:(NSString *)recAmt exchangeRate:(NSString *)rate transactionFee:(NSString *)fee networkTransactionFee:(NSString *)netwkFee
+- (void)createPseudoTableWithDepositAmount:(NSString *)depositAmount receiveAmount:(NSString *)receiveAmount exchangeRate:(NSString *)exchangeRate transactionFee:(NSString *)transactionFee networkTransactionFee:(NSString *)networkTransactionFee
 {
     UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, @""] accessoryText:depositAmount yPosition:DEFAULT_HEADER_HEIGHT];
     [self addSubview:rowDeposit];
 
-    UIView *rowReceive = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_BE_RECEIVED, @""] accessoryText:recAmt yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
+    UIView *rowReceive = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_BE_RECEIVED, @""] accessoryText:receiveAmount yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
     [self addSubview:rowReceive];
 
-    UIView *rowExchangeRate = [self rowViewWithText:BC_STRING_EXCHANGE_RATE accessoryText:rate yPosition:rowReceive.frame.origin.y + rowReceive.frame.size.height];
+    UIView *rowExchangeRate = [self rowViewWithText:BC_STRING_EXCHANGE_RATE accessoryText:exchangeRate yPosition:rowReceive.frame.origin.y + rowReceive.frame.size.height];
     [self addSubview:rowExchangeRate];
 
-    UIView *rowTransactionFee = [self rowViewWithText:BC_STRING_TRANSACTION_FEE accessoryText:fee yPosition:rowExchangeRate.frame.origin.y + rowExchangeRate.frame.size.height];
+    UIView *rowTransactionFee = [self rowViewWithText:BC_STRING_TRANSACTION_FEE accessoryText:transactionFee yPosition:rowExchangeRate.frame.origin.y + rowExchangeRate.frame.size.height];
     [self addSubview:rowTransactionFee];
 
-    UIView *rowWithdrawalFee = [self rowViewWithText:BC_STRING_SHAPESHIFT_WITHDRAWAL_FEE accessoryText:netwkFee yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
+    UIView *rowWithdrawalFee = [self rowViewWithText:BC_STRING_SHAPESHIFT_WITHDRAWAL_FEE accessoryText:networkTransactionFee yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
     [self addSubview:rowWithdrawalFee];
 }
 
