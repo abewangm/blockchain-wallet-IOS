@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExchangeTrade.h"
 
 @interface ExchangeDetailView : UIView
-- (void)createPseudoTableWithDepositAmount:(NSString *)depositAmount receiveAmount:(NSString *)receiveAmount exchangeRate:(NSString *)exchangeRate transactionFee:(NSString *)transactionFee networkTransactionFee:(NSString *)networkTransactionFee;
+- (void)createPseudoTableWithTrade:(ExchangeTrade *)trade;
 @end
