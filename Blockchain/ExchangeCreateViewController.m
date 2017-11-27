@@ -549,6 +549,7 @@
     if (self.currentDataTask) {
         [self.currentDataTask cancel];
         self.currentDataTask = nil;
+        [self.spinner stopAnimating];
     }
     
     BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
