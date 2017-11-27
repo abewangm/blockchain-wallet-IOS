@@ -18,7 +18,6 @@ var Metadata = Blockchain.Metadata;
 var SharedMetadata = Blockchain.SharedMetadata;
 var Contacts = Blockchain.Contacts;
 var EthSocket = Blockchain.EthSocket;
-var Quote = Blockchain.Quote;
 
 function NativeEthSocket () {
   this.handlers = []
