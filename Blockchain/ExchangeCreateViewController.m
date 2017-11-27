@@ -196,6 +196,9 @@
 
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
+    [self enableAssetToggleButton];
+    [self.spinner stopAnimating];
+    
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         NSString *minNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
         self.minimum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:minNumberString]];
@@ -227,44 +230,70 @@
 
 - (void)updateAvailableBalance
 {
-    [self enableAssetToggleButton];
-    [self.spinner stopAnimating];
- 
-    BOOL showErrorTextView = NO;
+    BOOL overAvailable = NO;
+    BOOL overMax = NO;
+    BOOL underMin = NO;
+    BOOL zeroAmount = NO;
     
     self.errorTextView.text = @"test";
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-        DLog(@"btc amount: %lld", [self.amount longLongValue]);
+        
+        uint64_t amount = [self.amount longLongValue];
+        
+        DLog(@"btc amount: %lld", amount);
         DLog(@"available: %lld", [self.availableBalance longLongValue]);
         DLog(@"max: %lld", [self.maximum longLongValue])
         
-        if ([self.amount longLongValue] > [self.availableBalance longLongValue]) {
+        if (amount == 0) zeroAmount = YES;
+        
+        if (amount > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
-            showErrorTextView = YES;
+            overAvailable = YES;
         }
         
-        if ([self.amount longLongValue] > [self.maximum longLongValue]) {
+        if (amount > [self.maximum longLongValue]) {
             DLog(@"btc over max");
-            showErrorTextView = YES;
+            overMax = YES;
         }
+        
+        if (amount < [self.minimum longLongValue] ) {
+            DLog(@"btc under min");
+            underMin = YES;
+        }
+        
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         DLog(@"eth amount: %@", [self.amount stringValue]);
         DLog(@"available: %@", [self.availableBalance stringValue]);
         DLog(@"max: %@", [self.maximum stringValue])
         
+        if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
+            zeroAmount = YES;
+        }
+        
         if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
-            showErrorTextView = YES;
+            overAvailable = YES;
         }
         
         if ([self.amount compare:self.maximum] == NSOrderedDescending) {
             DLog(@"eth over max");
-            showErrorTextView = YES;
+            overMax = YES;
+        }
+        
+        if ([self.amount compare:self.minimum] == NSOrderedAscending) {
+            DLog(@"eth under min");
+            underMin = YES;
         }
     }
     
-    if (showErrorTextView) self.errorTextView.hidden = NO;
+    if (zeroAmount) {
+        self.errorTextView.hidden = YES;
+    } else if (overAvailable || overMax || underMin) {
+        self.errorTextView.hidden = NO;
+    } else {
+        self.errorTextView.hidden = YES;
+    }
 }
 
 - (void)enablePaymentButtons
@@ -464,6 +493,8 @@
         }
     }
     
+    [self updateAvailableBalance];
+    
     [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
@@ -502,7 +533,6 @@
         
         self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
         self.toAddress = [app.wallet getEtherAddress];
-
     }
     
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
