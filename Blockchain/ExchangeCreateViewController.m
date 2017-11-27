@@ -39,8 +39,7 @@
 
 @property (nonatomic) UILabel *errorLabel;
 
-@property (nonatomic) uint64_t btcAmount;
-@property (nonatomic) NSDecimalNumber *ethAmount;
+@property (nonatomic) id amount;
 @property (nonatomic) int btcAccount;
 
 @property (nonatomic) NSString *fromSymbol;
@@ -73,8 +72,7 @@
     self.toSymbol = CURRENCY_SYMBOL_ETH;
     self.btcAccount = [app.wallet getDefaultAccountIndex];
     
-    self.btcAmount = 0;
-    self.ethAmount = [NSDecimalNumber decimalNumberWithDecimal:[@0 decimalValue]];
+    self.amount = 0;
     
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
@@ -229,27 +227,27 @@
     [self.spinner stopAnimating];
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-        DLog(@"btc amount: %lld", self.btcAmount);
+        DLog(@"btc amount: %lld", [self.amount longLongValue]);
         DLog(@"available: %lld", [self.availableBalance longLongValue]);
         DLog(@"max: %lld", [self.maximum longLongValue])
         
-        if (self.btcAmount > [self.availableBalance longLongValue]) {
+        if ([self.amount longLongValue] > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
         }
         
-        if (self.btcAmount > [self.maximum longLongValue]) {
+        if ([self.amount longLongValue] > [self.maximum longLongValue]) {
             DLog(@"btc over max");
         }
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
-        DLog(@"eth amount: %@", [self.ethAmount stringValue]);
+        DLog(@"eth amount: %@", [self.amount stringValue]);
         DLog(@"available: %@", [self.availableBalance stringValue]);
         DLog(@"max: %@", [self.maximum stringValue])
         
-        if ([self.ethAmount compare:self.availableBalance] == NSOrderedDescending) {
+        if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
         }
         
-        if ([self.ethAmount compare:self.maximum] == NSOrderedDescending) {
+        if ([self.amount compare:self.maximum] == NSOrderedDescending) {
             DLog(@"eth over max");
         }
     }
@@ -366,9 +364,9 @@
 - (void)saveAmount:(NSString *)amountString fromField:(UITextField *)textField
 {
     if (textField == self.ethField) {
-        self.ethAmount = [NSDecimalNumber decimalNumberWithString:amountString];
+        self.amount = [NSDecimalNumber decimalNumberWithString:amountString];
     } else if (textField == self.btcField) {
-        self.btcAmount = [app.wallet parseBitcoinValueFromString:amountString];
+        self.amount = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:amountString]];
     } else {
         if (textField == self.bottomLeftField) {
             if (self.topLeftField == self.ethField) {
@@ -389,23 +387,23 @@
 - (void)convertFiatStringToEth:(NSString *)amountString
 {
     NSDecimalNumber *amountStringDecimalNumber = amountString && [amountString doubleValue] > 0 ? [NSDecimalNumber decimalNumberWithString:amountString] : 0;
-    self.ethAmount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:app.wallet.latestEthExchangeRate];
+    self.amount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:app.wallet.latestEthExchangeRate];
 }
 
 - (void)convertFiatStringToBtc:(NSString *)amountString
 {
-    self.btcAmount = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+    self.amount = [NSNumber numberWithLongLong:app.latestResponse.symbol_local.conversion * [amountString doubleValue]];
 }
 
 - (NSString *)convertBtcAmountToFiat
 {
-    return [NSNumberFormatter formatAmount:self.btcAmount localCurrency:YES];
+    return [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:YES];
 }
 
 - (NSString *)convertEthAmountToFiat
 {
     app.localCurrencyFormatter.usesGroupingSeparator = NO;
-    NSString *result = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:app.wallet.latestEthExchangeRate];
+    NSString *result = [NSNumberFormatter formatEthToFiat:[self.amount stringValue] exchangeRate:app.wallet.latestEthExchangeRate];
     app.localCurrencyFormatter.usesGroupingSeparator = YES;
     return result;
 }
@@ -434,8 +432,8 @@
         
     } else {
         
-        NSString *ethString = [self.ethAmount stringValue];
-        NSString *btcString = [NSNumberFormatter formatAmount:self.btcAmount localCurrency:NO];
+        NSString *ethString = [self.amount stringValue];
+        NSString *btcString = [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:NO];
         
         if ([self.bottomLeftField isFirstResponder]) {
             if (self.topLeftField == self.ethField) {
