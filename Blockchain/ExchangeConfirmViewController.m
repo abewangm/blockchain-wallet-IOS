@@ -24,57 +24,9 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self setupRows];
+    // TODO: Instantiate ExchangeDetailView object and add as sub view
     
     [self setupAgreementViews];
-}
-
-- (void)setupRows
-{
-    UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, @""] accessoryText:@"btc" yPosition:DEFAULT_HEADER_HEIGHT];
-    [self.view addSubview:rowDeposit];
-    
-    UIView *rowReceive = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_BE_RECEIVED, @""] accessoryText:@"eth" yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
-    [self.view addSubview:rowReceive];
-    
-    UIView *rowExchangeRate = [self rowViewWithText:BC_STRING_EXCHANGE_RATE accessoryText:@"exr" yPosition:rowReceive.frame.origin.y + rowReceive.frame.size.height];
-    [self.view addSubview:rowExchangeRate];
-    
-    UIView *rowTransactionFee = [self rowViewWithText:BC_STRING_TRANSACTION_FEE accessoryText:@"txfee" yPosition:rowExchangeRate.frame.origin.y + rowExchangeRate.frame.size.height];
-    [self.view addSubview:rowTransactionFee];
-    
-    UIView *rowWithdrawalFee = [self rowViewWithText:BC_STRING_SHAPESHIFT_WITHDRAWAL_FEE accessoryText:@"wfee" yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
-    [self.view addSubview:rowWithdrawalFee];
-    
-    self.bottomLineYPosition = rowWithdrawalFee.frame.origin.y + rowWithdrawalFee.frame.size.height;
-    
-    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:self.bottomLineYPosition];
-    [self.view addSubview:bottomLine];
-}
-
-- (UIView *)rowViewWithText:(NSString *)text accessoryText:(NSString *)accessoryText yPosition:(CGFloat)yPosition
-{
-    CGFloat horizontalMargin = MARGIN_HORIZONTAL;
-    CGFloat rowWidth = WINDOW_WIDTH;
-    CGFloat rowHeight = 60;
-    UIView *rowView = [[UIView alloc] initWithFrame:CGRectMake(0, yPosition, rowWidth, rowHeight)];
-    
-    UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalMargin, 0, rowWidth/2, rowHeight)];
-    mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
-    mainLabel.text = text;
-    [rowView addSubview:mainLabel];
-    
-    UILabel *accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowWidth/2, 0, rowWidth/2 - horizontalMargin, rowHeight)];
-    accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
-    accessoryLabel.text = accessoryText;
-    accessoryLabel.textAlignment = NSTextAlignmentRight;
-    accessoryLabel.numberOfLines = 0;
-    [rowView addSubview:accessoryLabel];
-    
-    BCLine *topLine = [[BCLine alloc] initWithYPosition:yPosition];
-    [self.view addSubview:topLine];
-    
-    return rowView;
 }
 
 - (void)setupAgreementViews
