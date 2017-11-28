@@ -10,5 +10,5 @@
 #import "ExchangeTrade.h"
 
 @interface ExchangeDetailView : UIView
-- (void)createPseudoTableWithTrade:(ExchangeTrade *)trade;
+- (instancetype)initWithFrame:(CGRect)frame trade:(ExchangeTrade *)trade;
 @end

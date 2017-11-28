@@ -20,8 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
-    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH, DETAIL_VIEW_HEIGHT)];
-    [detailView createPseudoTableWithTrade:_trade];
+    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH, DETAIL_VIEW_HEIGHT) trade:self.trade];
     [self.view addSubview:detailView];
 }
 

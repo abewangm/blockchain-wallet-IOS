@@ -14,22 +14,24 @@
 
 @implementation ExchangeDetailView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame trade:(ExchangeTrade *)trade
 {
     self = [super initWithFrame:frame];
-    if (self != nil) {}
+    if (self) {
+        [self setupPseudoTableWithTrade: trade];
+    }
     return self;
 }
 
-- (void)createPseudoTableWithTrade:(ExchangeTrade *)trade
+- (void)setupPseudoTableWithTrade:(ExchangeTrade *)trade
 {
     // Rendering Logic
     NSArray *components = [trade.pair componentsSeparatedByString:@"_"];
-    NSString *depositCurrency = [components[0] isEqual: @"BTC"] ? @"Bitcoin" : @"Ethereum";
-    NSString *receiveCurrency = [components[0] isEqual: @"BTC"] ? @"Ethereum" : @"Bitcoin";
-    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, components[0]];
+    NSString *depositCurrency = [components.firstObject isEqual: @"BTC"] ? @"Bitcoin" : @"Ethereum";
+    NSString *receiveCurrency = [components.firstObject isEqual: @"BTC"] ? @"Ethereum" : @"Bitcoin";
+    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, components.firstObject];
     NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, components[1]];
-    NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, components[0]];
+    NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, components.firstObject];
 
     UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:DEFAULT_HEADER_HEIGHT];
     [self addSubview:rowDeposit];
