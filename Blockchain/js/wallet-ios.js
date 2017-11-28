@@ -2568,7 +2568,7 @@ MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
         console.log(e);
     }
     
-    MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance().then(success).catch(error);
+    MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance('priority').then(success).catch(error);
 }
 
 MyWalletPhone.getAvailableEthBalance = function() {
@@ -2591,10 +2591,11 @@ MyWalletPhone.getLabelForEthAccount = function() {
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     
     var buildPayment = function(quote) {
-        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, MyWallet.wallet.hdwallet.accounts[0]);
+        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
 
-        payment.getFee().then(function() {
-          console.log(JSON.stringify(payment));
+        payment.getFee().then(function(finalFee) {
+          console.log('payment got fee');
+          console.log(finalFee);
         });
     };
     
@@ -2603,5 +2604,16 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
         console.log(e);
     }
     
-    MyWallet.wallet.shapeshift.getQuote(MyWallet.wallet.hdwallet.accounts[0], MyWallet.wallet.eth.defaultAccount, 0.0001043).then(buildPayment).catch(error);
+    var fromArg;
+    var toArg;
+    var coins = coinPair.split('_');
+    if (coins[0] == 'btc') {
+        fromArg = MyWallet.wallet.hdwallet.accounts[from];
+        toArg = MyWallet.wallet.eth.defaultAccount;
+    } else {
+        fromArg = MyWallet.wallet.eth.defaultAccount;
+        toArg = MyWallet.wallet.hdwallet.accounts[to];
+    }
+    
+    MyWallet.wallet.shapeshift.getQuote(fromArg, toArg, amount).then(buildPayment).catch(error);
 }

@@ -2372,9 +2372,9 @@
     if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getAvailableEthBalance()"];
 }
 
-- (void)buildExchangeTrade:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
+- (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
 {
-    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(\"%@\", \"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [@"15500" escapeStringForJS], [fee escapeStringForJS]]];
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS], [fee escapeStringForJS]]];
 }
 
 #pragma mark - Contacts

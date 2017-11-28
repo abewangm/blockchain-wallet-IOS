@@ -728,7 +728,12 @@
 
 - (void)continueButtonClicked
 {
-    [app.wallet buildExchangeTrade:[self coinPair] amount:[self amountString:self.amount] fee:[self amountString:self.fee]];
+    BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
+    int fromAccount = fromBtc ? self.btcAccount : 0;
+    int toAccount = fromBtc ? self.btcAccount : 0;
+    NSString *fee = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
+    
+    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:fee];
 }
 
 - (void)closeButtonClicked
