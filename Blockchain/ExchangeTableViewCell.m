@@ -35,7 +35,7 @@
     self.actionLabel.textColor = statusColor;
     self.actionLabel.text = [status uppercaseString];
     self.amountButton.backgroundColor = statusColor;
-    [self.amountButton setTitle:trade.withdrawalAmount forState:UIControlStateNormal];
+    [self.amountButton setTitle:[trade.withdrawalAmount stringValue] forState:UIControlStateNormal];
     self.dateLabel.text = [NSDateFormatter timeAgoStringFromDate:trade.date];
 }
 
