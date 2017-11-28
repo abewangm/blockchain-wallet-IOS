@@ -13,4 +13,5 @@
 - (void)didGetQuote:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment;
 @end

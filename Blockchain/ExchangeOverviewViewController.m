@@ -125,6 +125,11 @@
     [self.createViewController didGetAvailableBtcBalance:result];
 }
 
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+{
+    [self.createViewController didBuildExchangeTrade:tradeInfo payment:payment];
+}
+
 #pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

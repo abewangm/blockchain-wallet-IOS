@@ -10,6 +10,7 @@
 #import "FromToView.h"
 #import "Blockchain-Swift.h"
 #import "ContinueButtonInputAccessoryView.h"
+#import "ExchangeTrade.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
@@ -317,6 +318,12 @@
     [self enablePaymentButtons];
     [self enableAssetToggleButton];
     [self.spinner stopAnimating];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+{
+    ExchangeTrade *trade = [ExchangeTrade fromJSONDict:tradeInfo];
+    
 }
 
 #pragma mark - Conversion

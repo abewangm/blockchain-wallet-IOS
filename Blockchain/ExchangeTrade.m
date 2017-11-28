@@ -8,14 +8,6 @@
 
 #import "ExchangeTrade.h"
 
-#define DICTIONARY_KEY_STATUS @"status"
-#define DICTIONARY_KEY_PAIR @"pair"
-#define DICTIONARY_KEY_QUOTE @"quote"
-#define DICTIONARY_KEY_ORDER_ID @"orderId"
-#define DICTIONARY_KEY_WITHDRAWAL_AMOUNT @"withdrawalAmount"
-#define DICTIONARY_KEY_DEPOSIT_AMOUNT @"depositAmount"
-#define DICTIONARY_KEY_MINER_FEE @"minerFee"
-
 @implementation ExchangeTrade
 
 + (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict

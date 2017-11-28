@@ -911,6 +911,10 @@
         [weakSelf on_get_exchange_rate_success:@{DICTIONARY_KEY_LIMIT : [limit toString], DICTIONARY_KEY_MINIMUM : [minimum toString], DICTIONARY_KEY_MINER_FEE : [minerFee toString], DICTIONARY_KEY_MAX_LIMIT : [maxLimit toString], DICTIONARY_KEY_RATE : [rate toString]}];
     };
     
+    self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *payment, JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount) {
+        [weakSelf on_build_exchange_trade_success:payment depositAmount:[depositAmount toString] fee:[fee toString] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString]];
+    };
+    
     self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
         [weakSelf on_get_quote_success:[result toDictionary]];
     };
@@ -4274,6 +4278,23 @@
         [self.delegate didGetAvailableEthBalance:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableEthBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_build_exchange_trade_success:(id)payment depositAmount:(NSString *)depositAmount fee:(NSString *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount
+{
+    NSDictionary *tradeInfo = @{
+        DICTIONARY_KEY_DEPOSIT_AMOUNT : depositAmount,
+        DICTIONARY_KEY_FEE : fee,
+        DICTIONARY_KEY_RATE : rate,
+        DICTIONARY_KEY_MINER_FEE : minerFee,
+        DICTIONARY_KEY_WITHDRAWAL_AMOUNT : withdrawalAmount
+    };
+    
+    if ([self.delegate respondsToSelector:@selector(didBuildExchangeTrade:payment:)]) {
+        [self.delegate didBuildExchangeTrade:tradeInfo payment:payment];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBuildExchangeTrade:payment:!", [delegate class]);
     }
 }
 

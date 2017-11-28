@@ -2590,19 +2590,29 @@ MyWalletPhone.getLabelForEthAccount = function() {
 
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     
-    var buildPayment = function(quote) {
-        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
-
-        payment.getFee().then(function(finalFee) {
-          console.log('payment got fee');
-          console.log(finalFee);
-        });
-    };
+    var success = function(payment, depositAmount, fee, rate, minerFee, withdrawalAmount) {
+        objc_on_build_exchange_trade_success(payment, depositAmount, fee, rate, minerFee, withdrawalAmount);
+    }
     
     var error = function(e) {
         console.log('Error building exchange trade');
         console.log(e);
     }
+    
+    var buildPayment = function(quote) {
+        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
+        
+        var depositAmount = payment.quote.depositAmount;
+        var rate = payment.quote.rate;
+        var minerFee = payment.quote.minerFee;
+        var withdrawalAmount = payment.quote.withdrawalAmount;
+
+        payment.getFee().then(function(finalFee) {
+          console.log('payment got fee');
+          console.log(finalFee);
+          success(payment, depositAmount, finalFee, rate, minerFee, withdrawalAmount);
+        });
+    };
     
     var fromArg;
     var toArg;

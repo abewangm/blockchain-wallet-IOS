@@ -14,6 +14,14 @@
 #define TRADE_STATUS_FAILED @"FAILED"
 #define TRADE_STATUS_EXPIRED @"EXPIRED"
 
+#define DICTIONARY_KEY_STATUS @"status"
+#define DICTIONARY_KEY_PAIR @"pair"
+#define DICTIONARY_KEY_QUOTE @"quote"
+#define DICTIONARY_KEY_ORDER_ID @"orderId"
+#define DICTIONARY_KEY_WITHDRAWAL_AMOUNT @"withdrawalAmount"
+#define DICTIONARY_KEY_DEPOSIT_AMOUNT @"depositAmount"
+#define DICTIONARY_KEY_MINER_FEE @"minerFee"
+
 @interface ExchangeTrade : NSObject
 @property (nonatomic) NSString *orderID;
 @property (nonatomic) NSDate *date;
