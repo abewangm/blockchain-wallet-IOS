@@ -482,7 +482,7 @@
             self.bottomRightField.text = result;
         }
         
-    } else {
+    } else if ([self.bottomLeftField isFirstResponder] || [self.bottomRightField isFirstResponder]) {
         
         NSString *ethString = [self.amount stringValue];
         NSString *btcString = [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:NO];
@@ -499,6 +499,15 @@
             } else if (self.topRightField == self.btcField) {
                 self.btcField.text = btcString;
             }
+        }
+    } else {
+        // min or max button clicked without keyboard open - assume topLeftField is first responder
+        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+            NSString *result = [self convertEthAmountToFiat];
+            self.bottomLeftField.text = result;
+        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+            NSString *result = [self convertBtcAmountToFiat];
+            self.bottomLeftField.text = result;
         }
     }
     
@@ -572,12 +581,18 @@
 
 - (void)useMinButtonClicked
 {
-    
+    NSString *amountString = [self amountString:self.minimum];
+    self.topLeftField.text = amountString;
+    [self saveAmount:amountString fromField:self.topLeftField];
+    [self doCurrencyConversion];
 }
 
 - (void)useMaxButtonClicked
 {
-    
+    NSString *amountString = [self amountString:self.maximum];
+    self.topLeftField.text = amountString;
+    [self saveAmount:amountString fromField:self.topLeftField];
+    [self doCurrencyConversion];
 }
 
 #pragma mark - Wallet actions
