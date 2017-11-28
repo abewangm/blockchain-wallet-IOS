@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ExchangeTrade;
 @interface ExchangeConfirmViewController : UIViewController
-
+- (id)initWithExchangeTrade:(ExchangeTrade *)trade;
 @end

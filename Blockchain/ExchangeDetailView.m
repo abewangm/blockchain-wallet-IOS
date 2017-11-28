@@ -9,8 +9,11 @@
 #import "ExchangeDetailView.h"
 #import "ExchangeTrade.h"
 #import "BCLine.h"
+#import "UIView+ChangeFrameAttribute.h"
 
 #define MARGIN_HORIZONTAL 20
+#define NUMBER_OF_ROWS 5
+#define ROW_HEIGHT_EXCHANGE_DETAIL_VIEW 60
 
 @implementation ExchangeDetailView
 
@@ -18,6 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self changeHeight:NUMBER_OF_ROWS * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
         [self setupPseudoTableWithTrade: trade];
     }
     return self;
@@ -33,7 +37,7 @@
     NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, components[1]];
     NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, components.firstObject];
 
-    UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:DEFAULT_HEADER_HEIGHT];
+    UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:0];
     [self addSubview:rowDeposit];
 
     UIView *rowReceive = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_BE_RECEIVED, receiveCurrency] accessoryText:withdrawAmount yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
@@ -47,13 +51,16 @@
 
     UIView *rowOrderID = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_EXCHANGE_ORDER_ID, @""] accessoryText:trade.orderID yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
     [self addSubview:rowOrderID];
+
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:rowOrderID.frame.origin.y + rowOrderID.frame.size.height];
+    [self addSubview:bottomLine];
 }
 
 - (UIView *)rowViewWithText:(NSString *)text accessoryText:(NSString *)accessoryText yPosition:(CGFloat)posY
 {
     CGFloat horizontalMargin = MARGIN_HORIZONTAL;
     CGFloat rowWidth = WINDOW_WIDTH;
-    CGFloat rowHeight = 60;
+    CGFloat rowHeight = ROW_HEIGHT_EXCHANGE_DETAIL_VIEW;
     UIView *rowView = [[UIView alloc] initWithFrame:CGRectMake(0, posY, rowWidth, rowHeight)];
 
     UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalMargin, 0, rowWidth/2, rowHeight)];

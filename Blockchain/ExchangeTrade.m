@@ -10,9 +10,10 @@
 
 @implementation ExchangeTrade
 
-+ (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict
++ (ExchangeTrade *)fetchedTradeFromJSONDict:(NSDictionary *)dict
 {
     ExchangeTrade *trade = [[ExchangeTrade alloc] init];
+    
     trade.date = [dict objectForKey:DICTIONARY_KEY_TIME];
     trade.status = [dict objectForKey:DICTIONARY_KEY_STATUS];
     
@@ -22,6 +23,16 @@
     trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
     trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
     trade.transactionFee = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    return trade;
+}
+
++ (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict
+{
+    ExchangeTrade *trade = [[ExchangeTrade alloc] init];
+    trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
+    trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
+    trade.transactionFee = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    
     return trade;
 }
 

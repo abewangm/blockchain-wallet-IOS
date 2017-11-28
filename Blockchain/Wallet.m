@@ -4234,7 +4234,7 @@
 {
     NSMutableArray *exchangeTrades = [NSMutableArray new];
     for (NSDictionary *trade in trades) {
-        ExchangeTrade *exchangeTrade = [ExchangeTrade fromJSONDict:trade];
+        ExchangeTrade *exchangeTrade = [ExchangeTrade fetchedTradeFromJSONDict:trade];
         [exchangeTrades addObject:exchangeTrade];
     }
     

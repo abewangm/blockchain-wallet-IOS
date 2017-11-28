@@ -9,14 +9,24 @@
 #import "ExchangeConfirmViewController.h"
 #import "BCLine.h"
 #import "UILabel+CGRectForSubstring.h"
+#import "ExchangeDetailView.h"
 
 #define MARGIN_HORIZONTAL 20
 
 @interface ExchangeConfirmViewController ()
-@property (nonatomic) CGFloat bottomLineYPosition;
+@property (nonatomic) ExchangeTrade *trade;
 @end
 
 @implementation ExchangeConfirmViewController
+
+- (id)initWithExchangeTrade:(ExchangeTrade *)trade
+{
+    if (self == [super init]) {
+        self.trade = trade;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -24,17 +34,19 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // TODO: Instantiate ExchangeDetailView object and add as sub view
+    CGFloat windowWidth = WINDOW_WIDTH;
+    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, windowWidth, 0) trade:self.trade];
+    [self.view addSubview:detailView];
     
-    [self setupAgreementViews];
+    [self setupAgreementViewsAtYPosition:detailView.frame.origin.y + detailView.frame.size.height + 16];
 }
 
-- (void)setupAgreementViews
+- (void)setupAgreementViewsAtYPosition:(CGFloat)yPosition
 {
     CGFloat horizontalMargin = MARGIN_HORIZONTAL;
     CGFloat windowWidth = WINDOW_WIDTH;
     
-    UISwitch *agreementSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(horizontalMargin, self.bottomLineYPosition + 16, 0, 0)];
+    UISwitch *agreementSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(horizontalMargin, yPosition, 0, 0)];
     agreementSwitch.onTintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.view addSubview:agreementSwitch];
     

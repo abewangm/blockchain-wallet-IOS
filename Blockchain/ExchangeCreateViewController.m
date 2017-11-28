@@ -11,6 +11,7 @@
 #import "Blockchain-Swift.h"
 #import "ContinueButtonInputAccessoryView.h"
 #import "ExchangeTrade.h"
+#import "ExchangeConfirmViewController.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
@@ -322,8 +323,9 @@
 
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
 {
-    ExchangeTrade *trade = [ExchangeTrade fromJSONDict:tradeInfo];
-    
+    ExchangeTrade *trade = [ExchangeTrade builtTradeFromJSONDict:tradeInfo];
+    ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
+    [self.navigationController pushViewController:confirmViewController animated:YES];
 }
 
 #pragma mark - Conversion
