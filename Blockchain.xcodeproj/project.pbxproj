@@ -302,6 +302,8 @@
 		FA6323431A44758700EB3974 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6323421A44758700EB3974 /* MapKit.framework */; };
 		FACF694F1A570AEF00590E04 /* MerchantDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACF694E1A570AEF00590E04 /* MerchantDetailView.xib */; };
 		FACF69521A57164B00590E04 /* MerchantMapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACF69511A57164B00590E04 /* MerchantMapDetailViewController.m */; };
+		FCB33B6F1FC369D700317E6B /* ExchangeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB33B6E1FC369D700317E6B /* ExchangeDetailView.m */; };
+		FCB33B721FC36EA200317E6B /* ExchangeProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB33B711FC36EA200317E6B /* ExchangeProgressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1627,6 +1629,10 @@
 		FACF694E1A570AEF00590E04 /* MerchantDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantDetailView.xib; sourceTree = "<group>"; };
 		FACF69501A57164B00590E04 /* MerchantMapDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantMapDetailViewController.h; sourceTree = "<group>"; };
 		FACF69511A57164B00590E04 /* MerchantMapDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantMapDetailViewController.m; sourceTree = "<group>"; };
+		FCB33B6D1FC369D700317E6B /* ExchangeDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeDetailView.h; sourceTree = "<group>"; };
+		FCB33B6E1FC369D700317E6B /* ExchangeDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeDetailView.m; sourceTree = "<group>"; };
+		FCB33B701FC36EA200317E6B /* ExchangeProgressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeProgressViewController.h; sourceTree = "<group>"; };
+		FCB33B711FC36EA200317E6B /* ExchangeProgressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeProgressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2107,6 +2113,8 @@
 				C76135631F9E55DF0029E159 /* ExchangeCreateViewController.m */,
 				C793E1FA1F8E7921001F171C /* ExchangeOverviewViewController.h */,
 				C793E1FB1F8E7921001F171C /* ExchangeOverviewViewController.m */,
+				FCB33B701FC36EA200317E6B /* ExchangeProgressViewController.h */,
+				FCB33B711FC36EA200317E6B /* ExchangeProgressViewController.m */,
 				C7618B5F1F66C817003E7589 /* QRCodeScannerSendViewController.h */,
 				C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */,
 				C723F3471F64413400A858A9 /* TransactionsViewController.h */,
@@ -3086,6 +3094,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FCB33B6D1FC369D700317E6B /* ExchangeDetailView.h */,
+				FCB33B6E1FC369D700317E6B /* ExchangeDetailView.m */,
 				C7442E381FBB636300695E4C /* FromToView.h */,
 				C7442E391FBB636300695E4C /* FromToView.m */,
 				C7442E321FBA1E7800695E4C /* ExchangeTableViewCell.h */,
@@ -3554,6 +3564,7 @@
 				23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */,
 				2326C6C21BBD7A8100AB7C4D /* UIViewController+AutoDismiss.m in Sources */,
 				23EA61C81B54282D0032B907 /* SettingsNavigationController.m in Sources */,
+				FCB33B6F1FC369D700317E6B /* ExchangeDetailView.m in Sources */,
 				C7E2750B1F589C8D0054EFA5 /* ReceiveEtherViewController.m in Sources */,
 				9FCA4D1B151494BF00ECDFBE /* SendBitcoinViewController.m in Sources */,
 				237451C91D624C1C00CF7049 /* RootService.m in Sources */,
@@ -3612,6 +3623,7 @@
 				9F1831E21516A39500FB3D52 /* NSData+Hex.m in Sources */,
 				6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */,
 				67EE1DCE19E3325900DBBFC9 /* ECSlidingViewController.m in Sources */,
+				FCB33B721FC36EA200317E6B /* ExchangeProgressViewController.m in Sources */,
 				6780DB981A40BDF40048EED2 /* AccountInOut.m in Sources */,
 				2322D3911D75CEEF000E5AC1 /* SessionManager.m in Sources */,
 				23BF733C1C455DDB00204503 /* AccountsAndAddressesViewController.m in Sources */,

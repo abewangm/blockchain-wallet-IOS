@@ -8,9 +8,13 @@
 
 #import "ExchangeOverviewViewController.h"
 #import "ExchangeCreateViewController.h"
+#import "ExchangeProgressViewController.h"
+#import "BCNavigationController.h"
 #import "BCLine.h"
 #import "ExchangeTableViewCell.h"
 #import "RootService.h"
+
+#import "ExchangeDetailView.h"
 
 #define EXCHANGE_VIEW_HEIGHT 70
 #define EXCHANGE_VIEW_OFFSET 30
@@ -129,6 +133,14 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ExchangeProgressViewController *exchangeProgressVC = [[ExchangeProgressViewController alloc] init];
+    exchangeProgressVC.trade = [self.trades objectAtIndex:indexPath.row];
+    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeProgressVC title:BC_STRING_EXCHANGE];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end
