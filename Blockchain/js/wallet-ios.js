@@ -2640,5 +2640,12 @@ MyWalletPhone.shiftPayment = function() {
         console.log(e);
     }
     
-    MyWallet.wallet.shapeshift.shift(currentShiftPayment).then(success).catch(error);
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.wallet.shapeshift.shift(currentShiftPayment, pw).then(success).catch(error);
+        });
+    }
+    else {
+        MyWallet.wallet.shapeshift.shift(currentShiftPayment).then(success).catch(error);
+    }
 }
