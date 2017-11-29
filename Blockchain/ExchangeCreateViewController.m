@@ -73,6 +73,10 @@
     
     self.fromSymbol = CURRENCY_SYMBOL_BTC;
     self.toSymbol = CURRENCY_SYMBOL_ETH;
+    
+    self.fromToView.fromLabel.text = BC_STRING_BITCOIN;
+    self.fromToView.toLabel.text = BC_STRING_ETHER;
+    
     self.btcAccount = [app.wallet getDefaultAccountIndex];
     
     self.amount = 0;
@@ -516,36 +520,11 @@
 - (void)assetToggleButtonClicked
 {
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-        self.fromSymbol = CURRENCY_SYMBOL_ETH;
-        self.toSymbol = CURRENCY_SYMBOL_BTC;
-        
-        self.ethField = self.topLeftField;
-        self.btcField = self.topRightField;
-        
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
-        
-        self.leftLabel.text = CURRENCY_SYMBOL_ETH;
-        self.rightLabel.text = CURRENCY_SYMBOL_BTC;
-        
-        self.fromAddress = [app.wallet getEtherAddress];
-        self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
-        
+        [self selectFromEther];
+        [self selectToBitcoin];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
-        self.fromSymbol = CURRENCY_SYMBOL_BTC;
-        self.toSymbol = CURRENCY_SYMBOL_ETH;
-        
-        self.btcField = self.topLeftField;
-        self.ethField = self.topRightField;
-        
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_BTC;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_ETH;
-        
-        self.leftLabel.text = CURRENCY_SYMBOL_BTC;
-        self.rightLabel.text = CURRENCY_SYMBOL_ETH;
-        
-        self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
-        self.toAddress = [app.wallet getEtherAddress];
+        [self selectFromBitcoin];
+        [self selectToEther];
     }
     
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
@@ -582,6 +561,44 @@
 - (void)useMaxButtonClicked
 {
     [self autoFillAmount:self.maximum];
+}
+
+#pragma mark - View actions
+
+- (void)selectFromEther
+{
+    self.fromSymbol = CURRENCY_SYMBOL_ETH;
+    self.ethField = self.topLeftField;
+    self.fromToView.fromLabel.text = BC_STRING_ETHER;
+    self.leftLabel.text = CURRENCY_SYMBOL_ETH;
+    self.fromAddress = [app.wallet getEtherAddress];
+}
+
+- (void)selectFromBitcoin
+{
+    self.fromSymbol = CURRENCY_SYMBOL_BTC;
+    self.btcField = self.topLeftField;
+    self.fromToView.fromLabel.text = BC_STRING_BITCOIN;
+    self.leftLabel.text = CURRENCY_SYMBOL_BTC;
+    self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+}
+
+- (void)selectToEther
+{
+    self.toSymbol = CURRENCY_SYMBOL_ETH;
+    self.ethField = self.topRightField;
+    self.fromToView.toLabel.text = BC_STRING_ETHER;
+    self.rightLabel.text = CURRENCY_SYMBOL_ETH;
+    self.toAddress = [app.wallet getEtherAddress];
+}
+
+- (void)selectToBitcoin
+{
+    self.toSymbol = CURRENCY_SYMBOL_BTC;
+    self.btcField = self.topRightField;
+    self.fromToView.toLabel.text = BC_STRING_BITCOIN;
+    self.rightLabel.text = CURRENCY_SYMBOL_BTC;
+    self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
 }
 
 - (void)autoFillAmount:(id)amount
@@ -729,6 +746,9 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
     
+    [self selectFromEther];
+    [self selectToBitcoin];
+    
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
 }
@@ -736,6 +756,9 @@
 - (void)didSelectToEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [self selectFromBitcoin];
+    [self selectToEther];
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
@@ -746,6 +769,10 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     self.btcAccount = account;
+    
+    [self selectFromBitcoin];
+    [self selectToEther];
+    
     self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
 }
@@ -755,6 +782,10 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     self.btcAccount = account;
+    
+    [self selectFromEther];
+    [self selectToBitcoin];
+    
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
 }
