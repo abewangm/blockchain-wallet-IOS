@@ -12,6 +12,7 @@
 #import "ContinueButtonInputAccessoryView.h"
 #import "ExchangeTrade.h"
 #import "ExchangeConfirmViewController.h"
+#import "BCNavigationController.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
@@ -323,6 +324,9 @@
 
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
 {
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    
     ExchangeTrade *trade = [ExchangeTrade builtTradeFromJSONDict:tradeInfo];
     ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
     [self.navigationController pushViewController:confirmViewController animated:YES];
@@ -637,7 +641,25 @@
     }
 }
 
+- (void)buildTrade
+{
+    BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
+    int fromAccount = fromBtc ? self.btcAccount : 0;
+    int toAccount = fromBtc ? self.btcAccount : 0;
+    NSString *fee = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
+    
+    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:fee];
+}
+
 #pragma mark - Helpers
+
+- (void)hideKeyboard
+{
+    [self.bottomRightField resignFirstResponder];
+    [self.bottomLeftField resignFirstResponder];
+    [self.topLeftField resignFirstResponder];
+    [self.topRightField resignFirstResponder];
+}
 
 - (BOOL)hasAmountGreaterThanZero:(id)amount
 {
@@ -752,12 +774,12 @@
 
 - (void)continueButtonClicked
 {
-    BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
-    int fromAccount = fromBtc ? self.btcAccount : 0;
-    int toAccount = fromBtc ? self.btcAccount : 0;
-    NSString *fee = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
+    [self hideKeyboard];
     
-    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:fee];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:BC_STRING_GETTING_QUOTE];
+    
+    [self performSelector:@selector(buildTrade) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
 }
 
 - (void)closeButtonClicked
