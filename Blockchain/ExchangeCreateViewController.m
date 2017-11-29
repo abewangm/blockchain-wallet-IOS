@@ -504,15 +504,6 @@
                 self.btcField.text = btcString;
             }
         }
-    } else {
-        // min or max button clicked without keyboard open - assume topLeftField is first responder
-        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
-            NSString *result = [self convertEthAmountToFiat];
-            self.bottomLeftField.text = result;
-        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-            NSString *result = [self convertBtcAmountToFiat];
-            self.bottomLeftField.text = result;
-        }
     }
     
     [self updateAvailableBalance];
@@ -585,18 +576,31 @@
 
 - (void)useMinButtonClicked
 {
-    NSString *amountString = [self amountString:self.minimum];
-    self.topLeftField.text = amountString;
-    [self saveAmount:amountString fromField:self.topLeftField];
-    [self doCurrencyConversion];
+    [self autoFillAmount:self.minimum];
 }
 
 - (void)useMaxButtonClicked
 {
-    NSString *amountString = [self amountString:self.maximum];
+    [self autoFillAmount:self.maximum];
+}
+
+- (void)autoFillAmount:(id)amount
+{
+    NSString *amountString = [self amountString:amount];
     self.topLeftField.text = amountString;
     [self saveAmount:amountString fromField:self.topLeftField];
-    [self doCurrencyConversion];
+    
+    NSString *fiatResult;
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        fiatResult = [self convertEthAmountToFiat];
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        fiatResult = [self convertBtcAmountToFiat];
+    }
+    self.bottomLeftField.text = fiatResult;
+    
+    [self updateAvailableBalance];
+    
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark - Wallet actions
