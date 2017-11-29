@@ -11,6 +11,7 @@
 #import "UILabel+CGRectForSubstring.h"
 #import "ExchangeDetailView.h"
 #import "RootService.h"
+#import "BCNavigationController.h"
 
 #define MARGIN_HORIZONTAL 20
 
@@ -124,7 +125,10 @@
 
 - (void)confirmButtonClicked
 {
-    [app.wallet shiftPayment];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:BC_STRING_CONFIRMING];
+    
+    [self performSelector:@selector(shiftPayment) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (void)agreementSwitchChanged:(UISwitch *)agreementSwitch
@@ -139,6 +143,11 @@
 - (void)handleTapView
 {
     DLog(@"Terms and conditions tapped");
+}
+
+- (void)shiftPayment
+{
+    [app.wallet shiftPayment];
 }
 
 @end

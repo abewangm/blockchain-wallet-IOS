@@ -851,3 +851,4 @@
 #define BC_STRING_BELOW_MINIMUM_LIMIT NSLocalizedString(@"Below minimum limit", nil)
 #define BC_STRING_EXCHANGE_ORDER_ID NSLocalizedString(@"Order ID", nil)
 #define BC_STRING_GETTING_QUOTE NSLocalizedString(@"Getting quote", nil)
+#define BC_STRING_CONFIRMING NSLocalizedString(@"Confirming", nil)
