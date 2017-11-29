@@ -19,6 +19,7 @@
     UIColor *statusColor;
     if ([status isEqualToString:TRADE_STATUS_COMPLETE]) {
         statusColor = COLOR_BLOCKCHAIN_GREEN;
+        displayStatus = BC_STRING_COMPLETE;
     } else if ([status isEqualToString:TRADE_STATUS_NO_DEPOSITS] ||
                [status isEqualToString:TRADE_STATUS_RECEIVED]) {
         statusColor = COLOR_BLOCKCHAIN_GRAY_BLUE;
