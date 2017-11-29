@@ -275,21 +275,18 @@
         
         if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
             zeroAmount = YES;
-        }
-        
-        if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
+        } else if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
             overAvailable = YES;
-        }
-        
-        if ([self.amount compare:self.maximum] == NSOrderedDescending) {
+            errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
+        } else if ([self.amount compare:self.maximum] == NSOrderedDescending) {
             DLog(@"eth over max");
             overMax = YES;
-        }
-        
-        if ([self.amount compare:self.minimum] == NSOrderedAscending) {
+            errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
+        } else if ([self.amount compare:self.minimum] == NSOrderedAscending) {
             DLog(@"eth under min");
             underMin = YES;
+            errorText = BC_STRING_BELOW_MINIMUM_LIMIT;
         }
     }
     
