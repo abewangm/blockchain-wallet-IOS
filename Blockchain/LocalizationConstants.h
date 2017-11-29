@@ -849,6 +849,8 @@
 #define BC_STRING_EXCHANGE_COMPLETED NSLocalizedString(@"Exchange Completed", nil)
 #define BC_STRING_GET_STARTED NSLocalizedString(@"Get started", nil)
 #define BC_STRING_BELOW_MINIMUM_LIMIT NSLocalizedString(@"Below minimum limit", nil)
+#define BC_STRING_ABOVE_MAXIMUM_LIMIT NSLocalizedString(@"Above maximum limit", nil)
+#define BC_STRING_NOT_ENOUGH_TO_EXCHANGE NSLocalizedString(@"Not enough to exchange", nil)
 #define BC_STRING_EXCHANGE_ORDER_ID NSLocalizedString(@"Order ID", nil)
 #define BC_STRING_GETTING_QUOTE NSLocalizedString(@"Getting quote", nil)
 #define BC_STRING_CONFIRMING NSLocalizedString(@"Confirming", nil)

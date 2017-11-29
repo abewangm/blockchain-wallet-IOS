@@ -238,7 +238,7 @@
     BOOL underMin = NO;
     BOOL zeroAmount = NO;
     
-    self.errorTextView.text = @"test";
+    NSString *errorText;
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         
@@ -248,21 +248,20 @@
         DLog(@"available: %lld", [self.availableBalance longLongValue]);
         DLog(@"max: %lld", [self.maximum longLongValue])
         
-        if (amount == 0) zeroAmount = YES;
-        
-        if (amount > [self.availableBalance longLongValue]) {
+        if (amount == 0) {
+            zeroAmount = YES;
+        } else if (amount > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
             overAvailable = YES;
-        }
-        
-        if (amount > [self.maximum longLongValue]) {
+            errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
+        } else if (amount > [self.maximum longLongValue]) {
             DLog(@"btc over max");
             overMax = YES;
-        }
-        
-        if (amount < [self.minimum longLongValue] ) {
+            errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
+        } else if (amount < [self.minimum longLongValue] ) {
             DLog(@"btc under min");
             underMin = YES;
+            errorText = BC_STRING_BELOW_MINIMUM_LIMIT;
         }
         
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
@@ -294,6 +293,7 @@
         self.errorTextView.hidden = YES;
     } else if (overAvailable || overMax || underMin) {
         self.errorTextView.hidden = NO;
+        self.errorTextView.text = errorText;
     } else {
         self.errorTextView.hidden = YES;
     }
