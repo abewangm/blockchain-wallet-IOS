@@ -71,15 +71,14 @@
     
     [self setupViews];
     
-    self.fromSymbol = CURRENCY_SYMBOL_BTC;
-    self.toSymbol = CURRENCY_SYMBOL_ETH;
-    
-    self.fromToView.fromLabel.text = BC_STRING_BITCOIN;
-    self.fromToView.toLabel.text = BC_STRING_ETHER;
-    
     self.btcAccount = [app.wallet getDefaultAccountIndex];
     
+    [self selectFromBitcoin];
+    [self selectToEther];
+    
     self.amount = 0;
+    
+    [self disablePaymentButtons];
     
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
@@ -292,11 +291,14 @@
     
     if (zeroAmount) {
         self.errorTextView.hidden = YES;
+        [self disablePaymentButtons];
     } else if (overAvailable || overMax || underMin) {
         self.errorTextView.hidden = NO;
         self.errorTextView.text = errorText;
+        [self disablePaymentButtons];
     } else {
         self.errorTextView.hidden = YES;
+        [self enablePaymentButtons];
     }
 }
 
