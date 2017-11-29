@@ -2519,9 +2519,9 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetAvailableEthBalance:result];
 }
 
-- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
 {
-    [self.tabControllerManager didBuildExchangeTrade:tradeInfo payment:payment];
+    [self.tabControllerManager didBuildExchangeTrade:tradeInfo];
 }
 
 #pragma mark - Show Screens

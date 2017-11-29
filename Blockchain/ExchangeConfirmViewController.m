@@ -10,6 +10,7 @@
 #import "BCLine.h"
 #import "UILabel+CGRectForSubstring.h"
 #import "ExchangeDetailView.h"
+#import "RootService.h"
 
 #define MARGIN_HORIZONTAL 20
 
@@ -123,7 +124,7 @@
 
 - (void)confirmButtonClicked
 {
-    
+    [app.wallet shiftPayment];
 }
 
 - (void)agreementSwitchChanged:(UISwitch *)agreementSwitch

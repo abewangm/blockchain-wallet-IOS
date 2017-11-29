@@ -125,9 +125,9 @@
     [self.createViewController didGetAvailableBtcBalance:result];
 }
 
-- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
 {
-    [self.createViewController didBuildExchangeTrade:tradeInfo payment:payment];
+    [self.createViewController didBuildExchangeTrade:tradeInfo];
 }
 
 #pragma mark - Table View Delegate

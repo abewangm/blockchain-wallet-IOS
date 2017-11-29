@@ -62,6 +62,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 var MyWalletPhone = {};
 var currentPayment = null;
 var currentEtherPayment = null;
+var currentShiftPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
@@ -2590,8 +2591,8 @@ MyWalletPhone.getLabelForEthAccount = function() {
 
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     
-    var success = function(payment, depositAmount, fee, rate, minerFee, withdrawalAmount) {
-        objc_on_build_exchange_trade_success(payment, depositAmount, fee, rate, minerFee, withdrawalAmount);
+    var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount) {
+        objc_on_build_exchange_trade_success(depositAmount, fee, rate, minerFee, withdrawalAmount);
     }
     
     var error = function(e) {
@@ -2600,17 +2601,17 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     }
     
     var buildPayment = function(quote) {
-        var payment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
+        currentShiftPayment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
         
-        var depositAmount = payment.quote.depositAmount;
-        var rate = payment.quote.rate;
-        var minerFee = payment.quote.minerFee;
-        var withdrawalAmount = payment.quote.withdrawalAmount;
+        var depositAmount = currentShiftPayment.quote.depositAmount;
+        var rate = currentShiftPayment.quote.rate;
+        var minerFee = currentShiftPayment.quote.minerFee;
+        var withdrawalAmount = currentShiftPayment.quote.withdrawalAmount;
 
-        payment.getFee().then(function(finalFee) {
+        currentShiftPayment.getFee().then(function(finalFee) {
           console.log('payment got fee');
           console.log(finalFee);
-          success(payment, depositAmount, finalFee, rate, minerFee, withdrawalAmount);
+          success(depositAmount, finalFee, rate, minerFee, withdrawalAmount);
         });
     };
     
@@ -2626,4 +2627,18 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     }
     
     MyWallet.wallet.shapeshift.getQuote(fromArg, toArg, amount).then(buildPayment).catch(error);
+}
+
+MyWalletPhone.shiftPayment = function() {
+    
+    var success = function(result) {
+        console.log(result);
+    }
+    
+    var error = function(e) {
+        console.log('Error shifting payment');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.shift(currentShiftPayment).then(success).catch(error);
 }

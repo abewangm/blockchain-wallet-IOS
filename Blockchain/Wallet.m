@@ -911,8 +911,8 @@
         [weakSelf on_get_exchange_rate_success:@{DICTIONARY_KEY_LIMIT : [limit toString], DICTIONARY_KEY_MINIMUM : [minimum toString], DICTIONARY_KEY_MINER_FEE : [minerFee toString], DICTIONARY_KEY_MAX_LIMIT : [maxLimit toString], DICTIONARY_KEY_RATE : [rate toString]}];
     };
     
-    self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *payment, JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount) {
-        [weakSelf on_build_exchange_trade_success:payment depositAmount:[depositAmount toString] fee:[fee toString] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString]];
+    self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount) {
+        [weakSelf on_build_exchange_trade_success_depositAmount:[depositAmount toString] fee:[fee toString] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString]];
     };
     
     self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
@@ -2379,6 +2379,13 @@
 - (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
 {
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS], [fee escapeStringForJS]]];
+}
+
+- (void)shiftPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.shiftPayment()"]];
+    }
 }
 
 #pragma mark - Contacts
@@ -4281,7 +4288,7 @@
     }
 }
 
-- (void)on_build_exchange_trade_success:(id)payment depositAmount:(NSString *)depositAmount fee:(NSString *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount
+- (void)on_build_exchange_trade_success_depositAmount:(NSString *)depositAmount fee:(NSString *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount
 {
     NSDictionary *tradeInfo = @{
         DICTIONARY_KEY_DEPOSIT_AMOUNT : depositAmount,
@@ -4291,10 +4298,10 @@
         DICTIONARY_KEY_WITHDRAWAL_AMOUNT : withdrawalAmount
     };
     
-    if ([self.delegate respondsToSelector:@selector(didBuildExchangeTrade:payment:)]) {
-        [self.delegate didBuildExchangeTrade:tradeInfo payment:payment];
+    if ([self.delegate respondsToSelector:@selector(didBuildExchangeTrade:)]) {
+        [self.delegate didBuildExchangeTrade:tradeInfo];
     } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didBuildExchangeTrade:payment:!", [delegate class]);
+        DLog(@"Error: delegate of class %@ does not respond to selector didBuildExchangeTrade:!", [delegate class]);
     }
 }
 

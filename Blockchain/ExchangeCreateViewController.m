@@ -322,7 +322,7 @@
     [self.spinner stopAnimating];
 }
 
-- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
 {
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     [navigationController hideBusyView];

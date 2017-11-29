@@ -621,9 +621,9 @@
     [self.exchangeOverviewViewController didGetAvailableBtcBalance:result];
 }
 
-- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo payment:(id)payment
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
 {
-    [self.exchangeOverviewViewController didBuildExchangeTrade:tradeInfo payment:payment];
+    [self.exchangeOverviewViewController didBuildExchangeTrade:tradeInfo];
 }
 
 @end
