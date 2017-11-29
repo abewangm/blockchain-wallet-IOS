@@ -15,6 +15,8 @@
 
 @interface ExchangeConfirmViewController ()
 @property (nonatomic) ExchangeTrade *trade;
+@property (nonatomic) UIButton *confirmButton;
+@property (nonatomic) UISwitch *agreementSwitch;
 @end
 
 @implementation ExchangeConfirmViewController
@@ -39,6 +41,8 @@
     [self.view addSubview:detailView];
     
     [self setupAgreementViewsAtYPosition:detailView.frame.origin.y + detailView.frame.size.height + 16];
+    
+    [self setupConfirmButton];
 }
 
 - (void)setupAgreementViewsAtYPosition:(CGFloat)yPosition
@@ -49,7 +53,9 @@
     UISwitch *agreementSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(horizontalMargin, yPosition, 0, 0)];
     agreementSwitch.onTintColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     [self.view addSubview:agreementSwitch];
-    
+    [agreementSwitch addTarget:self action:@selector(agreementSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    self.agreementSwitch = agreementSwitch;
+
     CGFloat agreementLabelOriginX = agreementSwitch.frame.origin.x + agreementSwitch.frame.size.width + 8;
     UILabel *agreementLabel = [[UILabel alloc] initWithFrame:CGRectMake(agreementLabelOriginX, 0, windowWidth - horizontalMargin - agreementLabelOriginX, 30)];
     agreementLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
@@ -83,6 +89,50 @@
                                              action:@selector(handleTapView)]];
     [agreementLabel addSubview:tappableView];
     [self.view addSubview:agreementLabel];
+}
+
+- (void)setupConfirmButton
+{
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH - 32, BUTTON_HEIGHT)];
+    button.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    button.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [button setTitle:BC_STRING_CONFIRM forState:UIControlStateNormal];
+    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(confirmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.confirmButton = button;
+    
+    [self disableConfirmButton];
+}
+
+- (void)enableConfirmButton
+{
+    self.confirmButton.enabled = YES;
+    [self.confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.confirmButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+}
+
+- (void)disableConfirmButton
+{
+    self.confirmButton.enabled = NO;
+    [self.confirmButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.confirmButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+}
+
+- (void)confirmButtonClicked
+{
+    
+}
+
+- (void)agreementSwitchChanged:(UISwitch *)agreementSwitch
+{
+    if (agreementSwitch.on) {
+        [self enableConfirmButton];
+    } else {
+        [self disableConfirmButton];
+    }
 }
 
 - (void)handleTapView
