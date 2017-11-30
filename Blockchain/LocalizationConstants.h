@@ -855,3 +855,4 @@
 #define BC_STRING_GETTING_QUOTE NSLocalizedString(@"Getting quote", nil)
 #define BC_STRING_CONFIRMING NSLocalizedString(@"Confirming", nil)
 #define BC_STRING_COMPLETE NSLocalizedString(@"Complete", nil)
+#define BC_STRING_QUOTE_EXIRES_IN_ARGUMENT NSLocalizedString(@"Quote expires in %@", nil)

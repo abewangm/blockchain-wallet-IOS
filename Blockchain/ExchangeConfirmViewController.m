@@ -19,6 +19,8 @@
 @property (nonatomic) ExchangeTrade *trade;
 @property (nonatomic) UIButton *confirmButton;
 @property (nonatomic) UISwitch *agreementSwitch;
+@property (nonatomic) UIView *timerView;
+@property (nonatomic) UILabel *timerLabel;
 @end
 
 @implementation ExchangeConfirmViewController
@@ -39,12 +41,30 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat windowWidth = WINDOW_WIDTH;
-    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, windowWidth, 0) trade:self.trade];
+    
+    [self setupTimerView];
+    
+    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, self.timerView.frame.origin.y + self.timerView.frame.size.height, windowWidth, 0) trade:self.trade];
     [self.view addSubview:detailView];
+    
+    [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(handleTimerTick:) userInfo: nil repeats: YES];
     
     [self setupAgreementViewsAtYPosition:detailView.frame.origin.y + detailView.frame.size.height + 16];
     
     [self setupConfirmButton];
+}
+
+- (void)setupTimerView
+{
+    CGFloat windowWidth = WINDOW_WIDTH;
+    UIView *timerView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16, windowWidth, 40)];
+    UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 30)];
+    timerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    timerLabel.textColor = COLOR_TEXT_GRAY;
+    [timerView addSubview:timerLabel];
+    self.timerLabel = timerLabel;
+    [self.view addSubview:timerView];
+    self.timerView = timerView;
 }
 
 - (void)setupAgreementViewsAtYPosition:(CGFloat)yPosition
@@ -143,6 +163,26 @@
 - (void)handleTapView
 {
     DLog(@"Terms and conditions tapped");
+}
+
+- (void)handleTimerTick:(NSTimer *)timer
+{
+    NSTimeInterval interval = [self.trade.expirationDate timeIntervalSinceNow];
+    int secondsInAnHour = 3600;
+    int hours = interval / secondsInAnHour;
+    int minutesInAnHour = 60;
+    int minutes = (interval - hours * secondsInAnHour) / minutesInAnHour;
+    int secondsInAMinute = 60;
+    int seconds = interval - hours * secondsInAnHour - minutes * secondsInAMinute;
+    NSString *minutesAndSecondsformatString = minutes > 9 ? @"%02d:%02d" : @"%d:%02d";
+    NSString *timeString = hours > 0 ? [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds] : [NSString stringWithFormat:minutesAndSecondsformatString, minutes, seconds];
+    self.timerLabel.text = [NSString stringWithFormat:BC_STRING_QUOTE_EXIRES_IN_ARGUMENT, timeString];
+    [self.timerLabel sizeToFit];
+    self.timerLabel.frame = CGRectMake(self.timerView.frame.size.width - self.timerLabel.frame.size.width - 16, 0, self.timerLabel.frame.size.width, self.timerLabel.frame.size.height);
+    self.timerLabel.center = CGPointMake(self.timerLabel.center.x, self.timerView.frame.size.height/2);
+    if (hours + minutes + seconds <= 0) {
+        [timer invalidate];
+    }
 }
 
 - (void)shiftPayment
