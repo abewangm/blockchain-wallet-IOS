@@ -2591,8 +2591,8 @@ MyWalletPhone.getLabelForEthAccount = function() {
 
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     
-    var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount) {
-        objc_on_build_exchange_trade_success(depositAmount, fee, rate, minerFee, withdrawalAmount);
+    var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration) {
+        objc_on_build_exchange_trade_success(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration);
     }
     
     var error = function(e) {
@@ -2601,6 +2601,7 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     }
     
     var buildPayment = function(quote) {
+        var expiration = quote.expires;
         currentShiftPayment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
         
         var depositAmount = currentShiftPayment.quote.depositAmount;
@@ -2611,7 +2612,7 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
         currentShiftPayment.getFee().then(function(finalFee) {
           console.log('payment got fee');
           console.log(finalFee);
-          success(depositAmount, finalFee, rate, minerFee, withdrawalAmount);
+          success(depositAmount, finalFee, rate, minerFee, withdrawalAmount, expiration);
         });
     };
     

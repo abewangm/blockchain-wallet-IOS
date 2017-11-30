@@ -21,12 +21,14 @@
 #define DICTIONARY_KEY_QUOTE @"quote"
 #define DICTIONARY_KEY_ORDER_ID @"orderId"
 #define DICTIONARY_KEY_WITHDRAWAL_AMOUNT @"withdrawalAmount"
+#define DICTIONARY_KEY_EXPIRATION_DATE @"expirationDate"
 #define DICTIONARY_KEY_DEPOSIT_AMOUNT @"depositAmount"
 #define DICTIONARY_KEY_MINER_FEE @"minerFee"
 
 @interface ExchangeTrade : NSObject
 @property (nonatomic) NSString *orderID;
 @property (nonatomic) NSDate *date;
+@property (nonatomic) NSDate *expirationDate;
 @property (nonatomic) NSString *status;
 @property (nonatomic) NSString *pair;
 @property (nonatomic) NSDecimalNumber *depositAmount;

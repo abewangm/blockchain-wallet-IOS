@@ -32,6 +32,7 @@
     trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
     trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
     trade.transactionFee = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    trade.expirationDate = [dict objectForKey:DICTIONARY_KEY_EXPIRATION_DATE];
     
     return trade;
 }
