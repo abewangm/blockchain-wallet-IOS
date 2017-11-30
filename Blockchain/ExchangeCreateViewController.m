@@ -323,6 +323,31 @@
     [self enablePaymentButtons];
     [self enableAssetToggleButton];
     [self.spinner stopAnimating];
+    
+    NSDictionary *actualResult = [result objectForKey:@"success"];
+    
+    id depositAmount = [actualResult objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
+    id withdrawalAmount = [actualResult objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
+    
+    self.topLeftField.text = [depositAmount isKindOfClass:[NSString class]] ? depositAmount : [depositAmount stringValue];
+    self.topRightField.text = [withdrawalAmount isKindOfClass:[NSString class]] ? withdrawalAmount : [withdrawalAmount stringValue];
+    
+    NSString *pair = [self coinPair];
+    if ([[pair lowercaseString] isEqualToString: [[actualResult objectForKey:DICTIONARY_KEY_PAIR] lowercaseString]]) {
+        
+        NSString *btcResult = [self convertBtcAmountToFiat:self.btcField.text];
+        NSString *ethResult = [self convertEthAmountToFiat:self.ethField.text];
+        
+        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+            self.bottomRightField.text = btcResult;
+            self.bottomLeftField.text = ethResult;
+        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+            self.bottomLeftField.text = btcResult;
+            self.bottomRightField.text = ethResult;
+        }
+    } else {
+        DLog(@"Wrong coinpair!");
+    }
 }
 
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
@@ -416,7 +441,7 @@
     
     [self saveAmount:amountString fromField:textField];
     
-    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+    [self performSelector:@selector(doCurrencyConversionAfterTyping) withObject:nil afterDelay:0.1f];
     return YES;
 }
 
@@ -456,15 +481,52 @@
 
 - (NSString *)convertBtcAmountToFiat
 {
-    return [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:YES];
+    return [self convertBtcAmountToFiat:self.amount];
 }
 
 - (NSString *)convertEthAmountToFiat
 {
+    return [self convertEthAmountToFiat:self.amount];
+}
+
+- (NSString *)convertBtcAmountToFiat:(id)amount
+{
+    uint64_t amountArg = 0;
+    if ([amount isKindOfClass:[NSString class]]) {
+        amountArg = [app.wallet parseBitcoinValueFromString:amount];
+    } else if ([amount isKindOfClass:[NSNumber class]])  {
+        amountArg = [amount longLongValue];
+    } else {
+        DLog(@"Amount is not a string or number!");
+    }
+    
+    return [NSNumberFormatter formatAmount:amountArg localCurrency:YES];
+}
+
+- (NSString *)convertEthAmountToFiat:(id)amount
+{
+    id amountArg;
+    if ([amount isKindOfClass:[NSString class]]) {
+        amountArg = amount;
+    } else if ([amount isKindOfClass:[NSNumber class]])  {
+        amountArg = [amount stringValue];
+    } else {
+        DLog(@"Amount is not a string or number!");
+    }
+    
     app.localCurrencyFormatter.usesGroupingSeparator = NO;
-    NSString *result = [NSNumberFormatter formatEthToFiat:[self.amount stringValue] exchangeRate:app.wallet.latestEthExchangeRate];
+    NSString *result = [NSNumberFormatter formatEthToFiat:amountArg exchangeRate:app.wallet.latestEthExchangeRate];
     app.localCurrencyFormatter.usesGroupingSeparator = YES;
     return result;
+}
+
+- (void)doCurrencyConversionAfterTyping
+{
+    [self doCurrencyConversion];
+    
+    [self updateAvailableBalance];
+    
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 - (void)doCurrencyConversion
@@ -508,10 +570,6 @@
             }
         }
     }
-    
-    [self updateAvailableBalance];
-    
-    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark - Gesture Actions
@@ -554,12 +612,12 @@
 
 - (void)useMinButtonClicked
 {
-    [self autoFillAmount:self.minimum];
+    [self autoFillFromAmount:self.minimum];
 }
 
 - (void)useMaxButtonClicked
 {
-    [self autoFillAmount:self.maximum];
+    [self autoFillFromAmount:self.maximum];
 }
 
 #pragma mark - View actions
@@ -600,7 +658,7 @@
     self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
 }
 
-- (void)autoFillAmount:(id)amount
+- (void)autoFillFromAmount:(id)amount
 {
     NSString *amountString = [self amountString:amount];
     self.topLeftField.text = amountString;
