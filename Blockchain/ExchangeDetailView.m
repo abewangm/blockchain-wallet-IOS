@@ -12,22 +12,33 @@
 #import "UIView+ChangeFrameAttribute.h"
 
 #define MARGIN_HORIZONTAL 20
-#define NUMBER_OF_ROWS 5
+#define NUMBER_OF_ROWS_FETCHED_TRADE 5
+#define NUMBER_OF_ROWS_BUILT_TRADE 6
 #define ROW_HEIGHT_EXCHANGE_DETAIL_VIEW 60
 
 @implementation ExchangeDetailView
 
-- (instancetype)initWithFrame:(CGRect)frame trade:(ExchangeTrade *)trade
+- (instancetype)initWithFrame:(CGRect)frame fetchedTrade:(ExchangeTrade *)trade
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self changeHeight:NUMBER_OF_ROWS * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
-        [self setupPseudoTableWithTrade: trade];
+        [self changeHeight:NUMBER_OF_ROWS_FETCHED_TRADE * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
+        [self setupPseudoTableWithFetchedTrade:trade];
     }
     return self;
 }
 
-- (void)setupPseudoTableWithTrade:(ExchangeTrade *)trade
+- (instancetype)initWithFrame:(CGRect)frame builtTrade:(ExchangeTrade *)trade
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self changeHeight:NUMBER_OF_ROWS_BUILT_TRADE * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
+        [self setupPseudoTableWithBuiltTrade:trade];
+    }
+    return self;
+}
+
+- (void)setupPseudoTableWithFetchedTrade:(ExchangeTrade *)trade
 {
     // Rendering Logic
     NSArray *components = [trade.pair componentsSeparatedByString:@"_"];
@@ -53,6 +64,38 @@
     [self addSubview:rowOrderID];
 
     BCLine *bottomLine = [[BCLine alloc] initWithYPosition:rowOrderID.frame.origin.y + rowOrderID.frame.size.height];
+    [self addSubview:bottomLine];
+}
+
+- (void)setupPseudoTableWithBuiltTrade:(ExchangeTrade *)trade
+{
+    // Rendering Logic
+    NSArray *components = [trade.pair componentsSeparatedByString:@"_"];
+    NSString *depositCurrency = [components.firstObject isEqual: @"BTC"] ? @"Bitcoin" : @"Ethereum";
+    NSString *receiveCurrency = [components.firstObject isEqual: @"BTC"] ? @"Ethereum" : @"Bitcoin";
+    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, components.firstObject];
+    NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, components[1]];
+    NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, components.firstObject];
+    
+    UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:0];
+    [self addSubview:rowDeposit];
+
+    UIView *rowTransactionFee = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_TRANSACTION_FEE, receiveCurrency] accessoryText:withdrawAmount yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
+    [self addSubview:rowTransactionFee];
+    
+    UIView *rowTotalSpent = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_TOTAL_ARGUMENT_SPENT, @""] accessoryText:@"" yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
+    [self addSubview:rowTotalSpent];
+    
+    UIView *rowExchangeRate = [self rowViewWithText:BC_STRING_EXCHANGE_RATE accessoryText:@"" yPosition:rowTotalSpent.frame.origin.y + rowTotalSpent.frame.size.height];
+    [self addSubview:rowExchangeRate];
+    
+    UIView *rowNetworkTransactionFee = [self rowViewWithText:BC_STRING_NETWORK_TRANSACTION_FEE accessoryText:transactionFee yPosition:rowExchangeRate.frame.origin.y + rowExchangeRate.frame.size.height];
+    [self addSubview:rowNetworkTransactionFee];
+    
+    UIView *rowReceive = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_BE_RECEIVED, receiveCurrency] accessoryText:withdrawAmount yPosition:rowNetworkTransactionFee.frame.origin.y + rowNetworkTransactionFee.frame.size.height];
+    [self addSubview:rowReceive];
+    
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:rowReceive.frame.origin.y + rowReceive.frame.size.height];
     [self addSubview:bottomLine];
 }
 

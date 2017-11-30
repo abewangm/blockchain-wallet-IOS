@@ -44,7 +44,7 @@
     
     [self setupTimerView];
     
-    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, self.timerView.frame.origin.y + self.timerView.frame.size.height, windowWidth, 0) trade:self.trade];
+    ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, self.timerView.frame.origin.y + self.timerView.frame.size.height, windowWidth, 0) builtTrade:self.trade];
     [self.view addSubview:detailView];
     
     [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(handleTimerTick:) userInfo: nil repeats: YES];
