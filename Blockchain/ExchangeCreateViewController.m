@@ -298,7 +298,6 @@
         [self disablePaymentButtons];
     } else {
         self.errorTextView.hidden = YES;
-        [self enablePaymentButtons];
     }
 }
 
