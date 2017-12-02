@@ -107,13 +107,15 @@
     UIView *rowView = [[UIView alloc] initWithFrame:CGRectMake(0, posY, rowWidth, rowHeight)];
 
     UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalMargin, 0, rowWidth/2, rowHeight)];
-    mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    mainLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
+    mainLabel.textColor = COLOR_TEXT_DARK_GRAY;
     mainLabel.text = text;
     [rowView addSubview:mainLabel];
 
     UILabel *accessoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(rowWidth/2, 0, rowWidth/2 - horizontalMargin, rowHeight)];
-    accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
+    accessoryLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     accessoryLabel.text = accessoryText;
+    accessoryLabel.textColor = COLOR_TEXT_DARK_GRAY;
     accessoryLabel.textAlignment = NSTextAlignmentRight;
     accessoryLabel.numberOfLines = 0;
     [rowView addSubview:accessoryLabel];
