@@ -14,7 +14,6 @@
 #define MARGIN_HORIZONTAL 20
 #define NUMBER_OF_ROWS_FETCHED_TRADE 5
 #define NUMBER_OF_ROWS_BUILT_TRADE 6
-#define ROW_HEIGHT_EXCHANGE_DETAIL_VIEW 60
 
 @implementation ExchangeDetailView
 
@@ -22,7 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self changeHeight:NUMBER_OF_ROWS_FETCHED_TRADE * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
+        [self changeHeight:NUMBER_OF_ROWS_FETCHED_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithFetchedTrade:trade];
     }
     return self;
@@ -32,7 +31,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self changeHeight:NUMBER_OF_ROWS_BUILT_TRADE * ROW_HEIGHT_EXCHANGE_DETAIL_VIEW];
+        [self changeHeight:NUMBER_OF_ROWS_BUILT_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithBuiltTrade:trade];
     }
     return self;
@@ -103,7 +102,7 @@
 {
     CGFloat horizontalMargin = MARGIN_HORIZONTAL;
     CGFloat rowWidth = WINDOW_WIDTH;
-    CGFloat rowHeight = ROW_HEIGHT_EXCHANGE_DETAIL_VIEW;
+    CGFloat rowHeight = [ExchangeDetailView rowHeight];
     UIView *rowView = [[UIView alloc] initWithFrame:CGRectMake(0, posY, rowWidth, rowHeight)];
 
     UILabel *mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalMargin, 0, rowWidth/2, rowHeight)];
@@ -124,6 +123,13 @@
     [self addSubview:topLine];
 
     return rowView;
+}
+
++ (CGFloat)rowHeight
+{
+    BOOL isUsingLargeScreenSize = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
+    CGFloat rowHeight = isUsingLargeScreenSize ? 60 : 50;
+    return rowHeight;
 }
 
 @end
