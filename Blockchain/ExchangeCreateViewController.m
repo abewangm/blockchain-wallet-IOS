@@ -324,16 +324,14 @@
     [self enableAssetToggleButton];
     [self.spinner stopAnimating];
     
-    NSDictionary *actualResult = [result objectForKey:@"success"];
-    
-    id depositAmount = [actualResult objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
-    id withdrawalAmount = [actualResult objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
+    id depositAmount = [result objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
+    id withdrawalAmount = [result objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
     
     self.topLeftField.text = [depositAmount isKindOfClass:[NSString class]] ? depositAmount : [depositAmount stringValue];
     self.topRightField.text = [withdrawalAmount isKindOfClass:[NSString class]] ? withdrawalAmount : [withdrawalAmount stringValue];
     
     NSString *pair = [self coinPair];
-    if ([[pair lowercaseString] isEqualToString: [[actualResult objectForKey:DICTIONARY_KEY_PAIR] lowercaseString]]) {
+    if ([[pair lowercaseString] isEqualToString: [[result objectForKey:DICTIONARY_KEY_PAIR] lowercaseString]]) {
         
         NSString *btcResult = [self convertBtcAmountToFiat:self.btcField.text];
         NSString *ethResult = [self convertEthAmountToFiat:self.ethField.text];
@@ -713,8 +711,13 @@
         amount = [self amountString:self.amount];
         
         self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:amount completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
-            DLog(@"result: %@", result);
-            [self didGetApproximateQuote:result];
+            DLog(@"approximate quote result: %@", result);
+            NSDictionary *resultSuccess = [result objectForKey:DICTIONARY_KEY_SUCCESS];
+            if (resultSuccess) {
+                [self didGetApproximateQuote:resultSuccess];
+            } else {
+                DLog(@"Error getting approximate quote:%@", error);
+            }
         }];
     }
 }
