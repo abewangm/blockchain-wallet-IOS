@@ -128,7 +128,8 @@
 + (CGFloat)rowHeight
 {
     BOOL isUsingLargeScreenSize = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
-    CGFloat rowHeight = isUsingLargeScreenSize ? 60 : 50;
+    BOOL isUsing4S = IS_USING_SCREEN_SIZE_4S;
+    CGFloat rowHeight = isUsingLargeScreenSize ? 60 : isUsing4S ? 44 : 50;
     return rowHeight;
 }
 

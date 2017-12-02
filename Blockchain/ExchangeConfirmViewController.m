@@ -57,7 +57,11 @@
 - (void)setupTimerView
 {
     CGFloat windowWidth = WINDOW_WIDTH;
-    UIView *timerView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + 16, windowWidth, 40)];
+    BOOL isUsing4S = IS_USING_SCREEN_SIZE_4S;
+    CGFloat offset = isUsing4S ? 0 : 16;
+    CGFloat timerViewHeight = isUsing4S ? 36 : 40;
+
+    UIView *timerView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT + offset, windowWidth, timerViewHeight)];
     UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 30)];
     timerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
     timerLabel.textColor = COLOR_TEXT_GRAY;
