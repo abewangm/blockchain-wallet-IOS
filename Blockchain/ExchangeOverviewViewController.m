@@ -39,6 +39,14 @@
     [app.wallet getExchangeTrades];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_EXCHANGE;
+}
+
 - (void)setupExchangeButtonView
 {
     CGFloat windowWidth = WINDOW_WIDTH;

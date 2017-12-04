@@ -83,6 +83,14 @@
     [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_EXCHANGE;
+}
+
 - (void)setupViews
 {
     self.view.backgroundColor = COLOR_EXCHANGE_BACKGROUND_GRAY;
@@ -613,6 +621,8 @@
     [viewController.view addSubview:selectorView];
     
     [self.navigationController pushViewController:viewController animated:YES];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = selectMode == SelectModeExchangeAccountTo ? BC_STRING_TO : BC_STRING_FROM;
 }
 
 - (void)useMinButtonClicked

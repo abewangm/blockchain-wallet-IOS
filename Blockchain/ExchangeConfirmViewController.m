@@ -56,6 +56,14 @@
     [self setupConfirmButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_CONFIRM;
+}
+
 - (void)setupTimerView
 {
     CGFloat windowWidth = WINDOW_WIDTH;
