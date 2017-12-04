@@ -132,6 +132,7 @@
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
     BCSecureTextField *leftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
     [amountView addSubview:leftField];
+    leftField.placeholder = [self assetPlaceholder];
     leftField.inputAccessoryView = inputAccessoryView;
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
@@ -139,6 +140,7 @@
     CGFloat rightFieldOriginX = topRightLabel.frame.origin.x + topRightLabel.frame.size.width + 8;
     BCSecureTextField *rightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
     [amountView addSubview:rightField];
+    rightField.placeholder = [self assetPlaceholder];
     rightField.inputAccessoryView = inputAccessoryView;
     self.topRightField = rightField;
     self.ethField = self.topRightField;
@@ -150,10 +152,12 @@
     BCSecureTextField *bottomLeftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
     [amountView addSubview:bottomLeftField];
     bottomLeftField.inputAccessoryView = inputAccessoryView;
+    bottomLeftField.placeholder = [self fiatPlaceholder];
     self.bottomLeftField = bottomLeftField;
     
     BCSecureTextField *bottomRightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
     [amountView addSubview:bottomRightField];
+    bottomRightField.placeholder = [self fiatPlaceholder];
     bottomRightField.inputAccessoryView = inputAccessoryView;
     self.bottomRightField = bottomRightField;
     
@@ -811,6 +815,16 @@
     uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
     app.latestResponse.symbol_btc.conversion = currentConversion;
     return result;
+}
+
+- (NSString *)fiatPlaceholder
+{
+    return [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];;
+}
+
+- (NSString *)assetPlaceholder
+{
+    return [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
 }
 
 #pragma mark - Address Selection Delegate
