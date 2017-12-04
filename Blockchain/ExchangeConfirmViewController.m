@@ -12,8 +12,10 @@
 #import "ExchangeDetailView.h"
 #import "RootService.h"
 #import "BCNavigationController.h"
+#import <SafariServices/SafariServices.h>
 
 #define MARGIN_HORIZONTAL 20
+#define SHAPESHIFT_TERMS_AND_CONDITIONS_URL @"https://info.shapeshift.io/sites/default/files/ShapeShift_Terms_Conditions%20v1.1.pdf"
 
 @interface ExchangeConfirmViewController ()
 @property (nonatomic) ExchangeTrade *trade;
@@ -166,7 +168,8 @@
 
 - (void)handleTapView
 {
-    DLog(@"Terms and conditions tapped");
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:SHAPESHIFT_TERMS_AND_CONDITIONS_URL]];
+    [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
 }
 
 - (void)handleTimerTick:(NSTimer *)timer
