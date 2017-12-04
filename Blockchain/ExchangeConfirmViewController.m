@@ -184,8 +184,14 @@
     [self.timerLabel sizeToFit];
     self.timerLabel.frame = CGRectMake(self.timerView.frame.size.width - self.timerLabel.frame.size.width - 16, 0, self.timerLabel.frame.size.width, self.timerLabel.frame.size.height);
     self.timerLabel.center = CGPointMake(self.timerLabel.center.x, self.timerView.frame.size.height/2);
+    
+    if (hours == 0 && minutes < 5) {
+        self.timerLabel.textColor = COLOR_WARNING_RED;
+    }
+    
     if (hours + minutes + seconds <= 0) {
         [timer invalidate];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
