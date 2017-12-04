@@ -33,7 +33,7 @@
     UITextView *descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, windowWidth, 0)];
     descriptionTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
     descriptionTextView.textColor = COLOR_TEXT_DARK_GRAY;
-    descriptionTextView.text = @"description text";
+    descriptionTextView.text = [self descriptionStringForTrade:self.trade];
     descriptionTextView.textAlignment = NSTextAlignmentCenter;
     descriptionTextView.backgroundColor = [UIColor clearColor];
     descriptionTextView.editable = NO;
@@ -44,7 +44,7 @@
     [summaryView addSubview:descriptionTextView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    titleLabel.text = @"title text";
+    titleLabel.text = [self titleStringForTrade:self.trade];
     titleLabel.textColor = COLOR_LIGHT_GRAY;
     titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];
     [titleLabel sizeToFit];
@@ -64,6 +64,24 @@
     [detailView changeYPosition:summaryView.frame.origin.y + summaryView.frame.size.height + 16];
     
     [self.view addSubview:detailView];
+}
+
+- (NSString *)descriptionStringForTrade:(ExchangeTrade *)trade
+{
+    if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
+        return BC_STRING_COMPLETE;
+    }
+    
+    return nil;
+}
+
+- (NSString *)titleStringForTrade:(ExchangeTrade *)trade
+{
+    if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
+        return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 3, 3];
+    }
+    
+    return nil;
 }
 
 @end
