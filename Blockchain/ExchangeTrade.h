@@ -34,6 +34,7 @@
 @property (nonatomic) NSDecimalNumber *depositAmount;
 @property (nonatomic) NSDecimalNumber *withdrawalAmount;
 @property (nonatomic) NSDecimalNumber *transactionFee;
+@property (nonatomic) NSDecimalNumber *minerFee;
 
 + (ExchangeTrade *)fetchedTradeFromJSONDict:(NSDictionary *)dict;
 + (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict;

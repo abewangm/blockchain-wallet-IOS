@@ -355,6 +355,7 @@
     ExchangeTrade *trade = [ExchangeTrade builtTradeFromJSONDict:tradeInfo];
     // pair is not returned from API call - need to manually set
     trade.pair = [self coinPair];
+    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:[self amountString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]]];
     ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
     [self.navigationController pushViewController:confirmViewController animated:YES];
 }
