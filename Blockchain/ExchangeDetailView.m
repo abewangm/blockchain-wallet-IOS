@@ -76,14 +76,15 @@
     NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, components[1]];
     NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, components.firstObject];
     NSString *minerFee = [NSString stringWithFormat:@"%@ %@", trade.minerFee, components.firstObject];
-
+    NSString *totalSpent = [NSString stringWithFormat:@"%@ %@", [[[trade.depositAmount decimalNumberByAdding:trade.transactionFee] decimalNumberByAdding:trade.minerFee] stringValue], components.firstObject];
+    
     UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:0];
     [self addSubview:rowDeposit];
 
     UIView *rowTransactionFee = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_TRANSACTION_FEE, depositCurrency] accessoryText:transactionFee yPosition:rowDeposit.frame.origin.y + rowDeposit.frame.size.height];
     [self addSubview:rowTransactionFee];
     
-    UIView *rowTotalSpent = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_TOTAL_ARGUMENT_SPENT, depositCurrency] accessoryText:@"" yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
+    UIView *rowTotalSpent = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_TOTAL_ARGUMENT_SPENT, depositCurrency] accessoryText:totalSpent yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
     [self addSubview:rowTotalSpent];
     
     UIView *rowExchangeRate = [self rowViewWithText:BC_STRING_EXCHANGE_RATE accessoryText:trade.exchangeRateString yPosition:rowTotalSpent.frame.origin.y + rowTotalSpent.frame.size.height];
