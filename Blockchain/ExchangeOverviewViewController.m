@@ -36,10 +36,6 @@
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    [self setupExchangeButtonView];
-    
-    [self setupTableView];
-    
     [app.wallet getExchangeTrades];
 }
 
@@ -94,15 +90,28 @@
 
 - (void)newExchangeClicked
 {
+    [self showCreateExchangeControllerAnimated:YES];
+}
+
+- (void)showCreateExchangeControllerAnimated:(BOOL)animated
+{
     ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
-    [self.navigationController pushViewController:createViewController animated:YES];
+    [self.navigationController pushViewController:createViewController animated:animated];
     self.createViewController = createViewController;
 }
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
-    self.trades = trades;
-    [self.tableView reloadData];
+    if (trades.count == 0) {
+        [self showCreateExchangeControllerAnimated:NO];
+        [self removeFromParentViewController];
+        return;
+    } else {
+        [self setupExchangeButtonView];
+        [self setupTableView];
+        self.trades = trades;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)didGetExchangeRate:(NSDictionary *)result
