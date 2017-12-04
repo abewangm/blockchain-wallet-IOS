@@ -207,9 +207,9 @@
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         NSString *minNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
-        self.minimum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:minNumberString]];
+        self.minimum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:minNumberString]];
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
-        self.maximum = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:maxNumberString]];
+        self.maximum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:maxNumberString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
@@ -355,7 +355,8 @@
     ExchangeTrade *trade = [ExchangeTrade builtTradeFromJSONDict:tradeInfo];
     // pair is not returned from API call - need to manually set
     trade.pair = [self coinPair];
-    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:[self amountString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]]];
+    trade.exchangeRateString = [trade exchangeRateString];
+    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]];
     ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
     [self.navigationController pushViewController:confirmViewController animated:YES];
 }
@@ -450,7 +451,7 @@
     if (textField == self.ethField) {
         self.amount = [NSDecimalNumber decimalNumberWithString:amountString];
     } else if (textField == self.btcField) {
-        self.amount = [NSNumber numberWithLongLong:[app.wallet parseBitcoinValueFromString:amountString]];
+        self.amount = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:amountString]];
     } else {
         if (textField == self.bottomLeftField) {
             if (self.topLeftField == self.ethField) {
@@ -493,7 +494,7 @@
 {
     uint64_t amountArg = 0;
     if ([amount isKindOfClass:[NSString class]]) {
-        amountArg = [app.wallet parseBitcoinValueFromString:amount];
+        amountArg = [self parseBitcoinValueFromString:amount];
     } else if ([amount isKindOfClass:[NSNumber class]])  {
         amountArg = [amount longLongValue];
     } else {
@@ -554,7 +555,7 @@
     } else if ([self.bottomLeftField isFirstResponder] || [self.bottomRightField isFirstResponder]) {
         
         NSString *ethString = [self.amount stringValue];
-        NSString *btcString = [NSNumberFormatter formatAmount:[self.amount longLongValue] localCurrency:NO];
+        NSString *btcString = [NSNumberFormatter satoshiToBTC:[self.amount longLongValue]];
         
         if ([self.bottomLeftField isFirstResponder]) {
             if (self.topLeftField == self.ethField) {
@@ -766,7 +767,7 @@
         if ([amount isMemberOfClass:[NSDecimalNumber class]]) {
             amountString = [amount stringValue];
         } else if ([amount respondsToSelector:@selector(longLongValue)]) {
-            amountString = [NSNumberFormatter formatAmount:[amount longLongValue] localCurrency:NO];
+            amountString = [NSNumberFormatter satoshiToBTC:[amount longLongValue]];
         } else {
             DLog(@"Error: unknown class for amount: %@", [amount class]);
         }
@@ -800,6 +801,16 @@
 {
     self.assetToggleButton.userInteractionEnabled = NO;
     [self.assetToggleButton setImage:nil forState:UIControlStateNormal];
+}
+
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
+{
+    // Always use BTC conversion rate
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
 }
 
 #pragma mark - Address Selection Delegate

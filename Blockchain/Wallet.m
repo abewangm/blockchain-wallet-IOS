@@ -912,7 +912,7 @@
     };
     
     self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount, JSValue *expiration) {
-        [weakSelf on_build_exchange_trade_success_depositAmount:[depositAmount toString] fee:[fee toString] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
+        [weakSelf on_build_exchange_trade_success_depositAmount:[depositAmount toString] fee:[[fee toNumber] longLongValue] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
     };
     
     self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
@@ -4288,11 +4288,11 @@
     }
 }
 
-- (void)on_build_exchange_trade_success_depositAmount:(NSString *)depositAmount fee:(NSString *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount expiration:(NSDate *)expirationDate
+- (void)on_build_exchange_trade_success_depositAmount:(NSString *)depositAmount fee:(uint64_t)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount expiration:(NSDate *)expirationDate
 {
     NSDictionary *tradeInfo = @{
         DICTIONARY_KEY_DEPOSIT_AMOUNT : depositAmount,
-        DICTIONARY_KEY_FEE : fee,
+        DICTIONARY_KEY_FEE : [NSNumberFormatter satoshiToBTC:fee],
         DICTIONARY_KEY_RATE : rate,
         DICTIONARY_KEY_MINER_FEE : minerFee,
         DICTIONARY_KEY_WITHDRAWAL_AMOUNT : withdrawalAmount,

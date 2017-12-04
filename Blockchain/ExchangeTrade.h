@@ -19,6 +19,7 @@
 #define DICTIONARY_KEY_STATUS @"status"
 #define DICTIONARY_KEY_PAIR @"pair"
 #define DICTIONARY_KEY_QUOTE @"quote"
+#define DICTIONARY_KEY_QUOTED_RATE @"quotedRate"
 #define DICTIONARY_KEY_ORDER_ID @"orderId"
 #define DICTIONARY_KEY_WITHDRAWAL_AMOUNT @"withdrawalAmount"
 #define DICTIONARY_KEY_EXPIRATION_DATE @"expirationDate"
@@ -35,8 +36,12 @@
 @property (nonatomic) NSDecimalNumber *withdrawalAmount;
 @property (nonatomic) NSDecimalNumber *transactionFee;
 @property (nonatomic) NSDecimalNumber *minerFee;
+@property (nonatomic) NSDecimalNumber *exchangeRate;
+@property (nonatomic) NSString *exchangeRateString;
 
 + (ExchangeTrade *)fetchedTradeFromJSONDict:(NSDictionary *)dict;
 + (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict;
+
+- (NSString *)exchangeRateString;
 
 @end

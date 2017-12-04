@@ -23,6 +23,10 @@
     trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
     trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
     trade.minerFee = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    
+    trade.exchangeRate = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_QUOTED_RATE]];
+    trade.exchangeRateString = [trade exchangeRateString];
+    
     return trade;
 }
 
@@ -33,6 +37,7 @@
     trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
     trade.minerFee = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_MINER_FEE]];
     trade.expirationDate = [dict objectForKey:DICTIONARY_KEY_EXPIRATION_DATE];
+    trade.exchangeRate = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_RATE]];
     
     return trade;
 }
@@ -47,6 +52,15 @@
     }
     
     return decimalNumber;
+}
+
+- (NSString *)exchangeRateString
+{
+    NSArray *coinPairComponents = [self.pair componentsSeparatedByString:@"_"];
+    NSString *from = [[coinPairComponents firstObject] uppercaseString];
+    NSString *to = [[coinPairComponents lastObject] uppercaseString];
+    NSString *amount = [self.exchangeRate stringValue];
+    return [NSString stringWithFormat:@"1 %@ = %@ %@", from, amount, to];
 }
 
 @end
