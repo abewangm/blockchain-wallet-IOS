@@ -929,7 +929,7 @@
     };
     
     self.context[@"objc_on_shift_payment_success"] = ^(JSValue *result) {
-        [weakSelf on_shift_payment_success:result];
+        [weakSelf on_shift_payment_success:[result toDictionary]];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -2315,6 +2315,16 @@
 }
 
 #pragma mark - Exchange
+
+- (NSArray *)availableUSStates
+{
+    if ([self isInitialized]) {
+        NSArray *states = [[self.context evaluateScript:@"MyWalletPhone.availableUSStates()"] toArray];
+        return states.count > 0 ? states : nil;
+    }
+    
+    return nil;
+}
 
 - (void)getExchangeTrades
 {

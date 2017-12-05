@@ -9,6 +9,7 @@
 #import "ExchangeOverviewViewController.h"
 #import "ExchangeCreateViewController.h"
 #import "ExchangeProgressViewController.h"
+#import "ConfirmStateViewController.h"
 #import "ExchangeModalView.h"
 #import "BCNavigationController.h"
 #import "BCLine.h"
@@ -37,7 +38,13 @@
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    [app.wallet getExchangeTrades];
+    NSArray *availableStates = [app.wallet availableUSStates];
+    
+    if (availableStates.count > 0) {
+        [self showStates];
+    } else {
+        [app.wallet getExchangeTrades];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,6 +102,13 @@
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+}
+
+- (void)showStates
+{
+    ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] init];
+    [self.navigationController pushViewController:confirmStateViewController animated:NO];
+    [self removeFromParentViewController];
 }
 
 - (void)newExchangeClicked

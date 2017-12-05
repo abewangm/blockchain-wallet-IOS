@@ -208,6 +208,7 @@
 		C72D6CC71EC647200000F922 /* dev.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC51EC647090000F922 /* dev.der */; };
 		C72D6CC81EC6472D0000F922 /* testnet.der in Resources */ = {isa = PBXBuildFile; fileRef = C72D6CC61EC647090000F922 /* testnet.der */; };
 		C73406221F54791C00143100 /* EtherAmountInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73406211F54791C00143100 /* EtherAmountInputViewController.m */; };
+		C7414E451FD7131C001A89FA /* ConfirmStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7414E441FD7131C001A89FA /* ConfirmStateViewController.m */; };
 		C7442E311FBA1E5700695E4C /* ExchangeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7442E301FBA1E5700695E4C /* ExchangeTableViewCell.xib */; };
 		C7442E341FBA1E7800695E4C /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E331FBA1E7800695E4C /* ExchangeTableViewCell.m */; };
 		C7442E371FBA448200695E4C /* ExchangeTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E361FBA448200695E4C /* ExchangeTrade.m */; };
@@ -1125,6 +1126,8 @@
 		C73406201F54791C00143100 /* EtherAmountInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherAmountInputViewController.h; sourceTree = "<group>"; };
 		C73406211F54791C00143100 /* EtherAmountInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherAmountInputViewController.m; sourceTree = "<group>"; };
 		C73CFBE81EA16B4A00C115F0 /* PrivateHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateHeaders.h; sourceTree = "<group>"; };
+		C7414E431FD7131C001A89FA /* ConfirmStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmStateViewController.h; sourceTree = "<group>"; };
+		C7414E441FD7131C001A89FA /* ConfirmStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmStateViewController.m; sourceTree = "<group>"; };
 		C7442E301FBA1E5700695E4C /* ExchangeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeTableViewCell.xib; sourceTree = "<group>"; };
 		C7442E321FBA1E7800695E4C /* ExchangeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeTableViewCell.h; sourceTree = "<group>"; };
 		C7442E331FBA1E7800695E4C /* ExchangeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeTableViewCell.m; sourceTree = "<group>"; };
@@ -2110,6 +2113,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7414E431FD7131C001A89FA /* ConfirmStateViewController.h */,
+				C7414E441FD7131C001A89FA /* ConfirmStateViewController.m */,
 				C7A0E92C1FA8FFBF004F4267 /* ExchangeConfirmViewController.h */,
 				C7A0E92D1FA8FFBF004F4267 /* ExchangeConfirmViewController.m */,
 				C76135621F9E55DF0029E159 /* ExchangeCreateViewController.h */,
@@ -3636,6 +3641,7 @@
 				2322DCB41D771831000E5AC1 /* SRDelegateController.m in Sources */,
 				9F1831E51516A45700FB3D52 /* NSString+SHA256.m in Sources */,
 				232ACBF51DAE84720072FB5E /* TransferAllFundsViewController.m in Sources */,
+				C7414E451FD7131C001A89FA /* ConfirmStateViewController.m in Sources */,
 				23E579541DB45F3A00220542 /* TransferAmountTableCell.m in Sources */,
 				230FD2D91C5BF1A700336683 /* BCQRCodeView.m in Sources */,
 				2322321A1B44D4CB00E5DF26 /* UpgradeViewController.m in Sources */,

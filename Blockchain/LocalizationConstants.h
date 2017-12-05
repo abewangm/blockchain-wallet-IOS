@@ -861,3 +861,4 @@
 #define BC_STRING_COMPLETE NSLocalizedString(@"Complete", nil)
 #define BC_STRING_QUOTE_EXIRES_IN_ARGUMENT NSLocalizedString(@"Quote expires in %@", nil)
 #define BC_STRING_STEP_ARGUMENT_OF_ARGUMENT NSLocalizedString(@"Step %d of %d", nil)
+#define BC_STRING_SELECT_YOUR_STATE NSLocalizedString(@"Select your State:", nil)

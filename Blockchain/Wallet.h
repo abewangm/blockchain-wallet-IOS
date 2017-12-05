@@ -448,6 +448,7 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
+- (NSArray *)availableUSStates;
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
