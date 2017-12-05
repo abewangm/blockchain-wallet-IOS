@@ -70,6 +70,8 @@
 {
     if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
         return BC_STRING_COMPLETE;
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+        return BC_STRING_IN_PROGRESS;
     }
     
     return nil;
@@ -79,6 +81,8 @@
 {
     if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 3, 3];
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+        return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 2, 3];
     }
     
     return nil;
