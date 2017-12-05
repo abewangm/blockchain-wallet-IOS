@@ -54,8 +54,8 @@
     
     CGFloat imageViewHeight = titleLabel.frame.origin.y - 32;
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 16, imageViewHeight, imageViewHeight)];
-    iconImageView.backgroundColor = [UIColor greenColor];
     iconImageView.center = CGPointMake(summaryView.frame.size.width/2, iconImageView.center.y);
+    iconImageView.image = [self imageForTrade:self.trade];
     
     [summaryView addSubview:iconImageView];
     
@@ -64,6 +64,17 @@
     [detailView changeYPosition:summaryView.frame.origin.y + summaryView.frame.size.height + 16];
     
     [self.view addSubview:detailView];
+}
+
+- (UIImage *)imageForTrade:(ExchangeTrade *)trade
+{
+    if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
+        return [UIImage imageNamed:@"exchange_complete"];
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+        return [UIImage imageNamed:@"exchange_in_progress"];
+    }
+    
+    return nil;
 }
 
 - (NSString *)descriptionStringForTrade:(ExchangeTrade *)trade
