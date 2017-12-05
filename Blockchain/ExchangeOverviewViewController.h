@@ -15,4 +15,5 @@
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
+- (void)didShiftPayment:(NSDictionary *)info;
 @end

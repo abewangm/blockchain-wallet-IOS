@@ -2633,7 +2633,9 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
 MyWalletPhone.shiftPayment = function() {
     
     var success = function(result) {
-        console.log(result);
+        console.log('shift complete');
+        console.log(JSON.stringify(result));
+        objc_on_shift_payment_success();
     }
     
     var error = function(e) {

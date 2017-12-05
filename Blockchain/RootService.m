@@ -2524,6 +2524,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didBuildExchangeTrade:tradeInfo];
 }
 
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.tabControllerManager didShiftPayment:info];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

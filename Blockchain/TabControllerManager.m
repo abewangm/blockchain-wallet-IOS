@@ -626,4 +626,9 @@
     [self.exchangeOverviewViewController didBuildExchangeTrade:tradeInfo];
 }
 
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.exchangeOverviewViewController didShiftPayment:info];
+}
+
 @end

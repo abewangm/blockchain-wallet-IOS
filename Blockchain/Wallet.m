@@ -928,6 +928,10 @@
         [weakSelf on_get_available_eth_balance_success:dict];
     };
     
+    self.context[@"objc_on_shift_payment_success"] = ^(JSValue *result) {
+        [weakSelf on_shift_payment_success:result];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -4285,6 +4289,15 @@
         [self.delegate didGetAvailableEthBalance:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableEthBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_shift_payment_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didShiftPayment:)]) {
+        [self.delegate didShiftPayment:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didShiftPayment:!", [delegate class]);
     }
 }
 

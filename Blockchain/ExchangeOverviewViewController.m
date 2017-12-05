@@ -9,6 +9,7 @@
 #import "ExchangeOverviewViewController.h"
 #import "ExchangeCreateViewController.h"
 #import "ExchangeProgressViewController.h"
+#import "ExchangeModalView.h"
 #import "BCNavigationController.h"
 #import "BCLine.h"
 #import "ExchangeTableViewCell.h"
@@ -22,7 +23,7 @@
 
 #define CELL_IDENTIFIER_EXCHANGE_CELL @"exchangeCell"
 
-@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource, CloseButtonDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
@@ -145,6 +146,26 @@
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
 {
     [self.createViewController didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    
+    ExchangeModalView *exchangeModalView = [[ExchangeModalView alloc] initWithFrame:self.view.frame description:BC_STRING_EXCHANGE_DESCRIPTION_SENDING_FUNDS imageName:nil bottomText:[NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 1, 3] closeButtonText:BC_STRING_CLOSE];
+    exchangeModalView.delegate = self;
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeNone showHeader:YES headerText:BC_STRING_EXCHANGE_TITLE_SENDING_FUNDS view:exchangeModalView];
+    [self.navigationController presentViewController:modalViewController animated:YES completion:nil];
+}
+
+#pragma mark - Close button delegate
+
+- (void)closeButtonClicked
+{
+    [self.navigationController.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 #pragma mark - Table View Delegate
