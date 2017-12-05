@@ -88,5 +88,6 @@ module.exports = (grunt) ->
     "shell:svg:exchange_in_progress:120"
     "shell:svg:exchange_complete:120"
     "shell:svg:exchange_sending:120"
+    "shell:svg:exchange_menu:36"
     "shell:svg:buy_available:110:110"
   ]
