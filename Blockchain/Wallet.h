@@ -449,6 +449,7 @@ typedef enum {
 
 // Exchange
 - (NSArray *)availableUSStates;
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
 - (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;

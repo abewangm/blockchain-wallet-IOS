@@ -37,6 +37,16 @@
     oneRowTableView.delegate = self;
     [self.view addSubview:oneRowTableView];
     self.tableView = oneRowTableView;
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH - 32, BUTTON_HEIGHT)];
+    button.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    button.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [button setTitle:BC_STRING_CONFIRM forState:UIControlStateNormal];
+    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(confirmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,6 +54,20 @@
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_EXCHANGE;
 }
+
+#pragma mark - Actions
+
+- (void)confirmButtonClicked
+{
+    NSString *stateCode = self.selectedState[STATE_KEY_CODE];
+    if ([app.wallet isStateWhitelistedForShapeshift:stateCode]) {
+        DLog(@"Whitelisted");
+    } else {
+        DLog(@"Not whitelisted");
+    }
+}
+
+#pragma mark - Table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

@@ -2326,6 +2326,15 @@
     return nil;
 }
 
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isStateWhitelistedForShapeshift(\"%@\")", stateCode]] toBool];
+    }
+    
+    return NO;
+}
+
 - (void)getExchangeTrades
 {
      if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];

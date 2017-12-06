@@ -2722,3 +2722,8 @@ MyWalletPhone.availableUSStates = function() {
         return [];
     }
 }
+
+MyWalletPhone.isStateWhitelistedForShapeshift = function(stateCode) {
+    var states = walletOptions.getValue().shapeshift.statesWhitelist;
+    return states.indexOf(stateCode) > -1;
+}
