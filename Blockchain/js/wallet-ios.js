@@ -2727,3 +2727,10 @@ MyWalletPhone.isStateWhitelistedForShapeshift = function(stateCode) {
     var states = walletOptions.getValue().shapeshift.statesWhitelist;
     return states.indexOf(stateCode) > -1;
 }
+
+MyWalletPhone.setStateForShapeshift = function(name, code) {
+    MyWallet.wallet.shapeshift.setUSAState({
+       'Name': name,
+       'Code': code
+    });
+}

@@ -2329,10 +2329,17 @@
 - (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode
 {
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isStateWhitelistedForShapeshift(\"%@\")", stateCode]] toBool];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isStateWhitelistedForShapeshift(\"%@\")", [stateCode escapeStringForJS]]] toBool];
     }
     
     return NO;
+}
+
+- (void)selectState:(NSString *)name code:(NSString *)code
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setStateForShapeshift(\"%@\", \"%@\")", [name escapeStringForJS], [code escapeStringForJS]]];
+    }
 }
 
 - (void)getExchangeTrades

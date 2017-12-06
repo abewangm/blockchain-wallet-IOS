@@ -863,3 +863,5 @@
 #define BC_STRING_STEP_ARGUMENT_OF_ARGUMENT NSLocalizedString(@"Step %d of %d", nil)
 #define BC_STRING_SELECT_YOUR_STATE NSLocalizedString(@"Select your State:", nil)
 #define BC_STRING_SELECT_STATE NSLocalizedString(@"Select State", nil)
+#define BC_STRING_EXCHANGE_NOT_AVAILABLE_TITLE NSLocalizedString(@"Not Available", nil)
+#define BC_STRING_EXCHANGE_NOT_AVAILABLE_MESSAGE NSLocalizedString(@"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon.", nil)
