@@ -109,7 +109,7 @@
     ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] initWithStates:states];
     confirmStateViewController.delegate = self;
     [self.navigationController pushViewController:confirmStateViewController animated:NO];
-    [self removeFromParentViewController];
+    self.navigationController.viewControllers = @[confirmStateViewController];
 }
 
 - (void)newExchangeClicked
@@ -128,7 +128,7 @@
 {
     if (trades.count == 0) {
         [self showCreateExchangeControllerAnimated:NO];
-        [self removeFromParentViewController];
+        self.navigationController.viewControllers = @[self.createViewController];
         return;
     } else {
         [self setupExchangeButtonView];
@@ -176,9 +176,12 @@
 
 #pragma mark - Confirm State delegate
 
-- (void)didConfirmState
+- (void)didConfirmState:(UINavigationController *)navigationController
 {
-    [self showCreateExchangeControllerAnimated:YES];
+    ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
+    [navigationController pushViewController:createViewController animated:NO];
+    self.createViewController = createViewController;
+    navigationController.viewControllers = @[createViewController];
 }
 
 #pragma mark - Close button delegate
