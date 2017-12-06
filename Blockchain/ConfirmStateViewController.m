@@ -8,9 +8,12 @@
 
 #import "ConfirmStateViewController.h"
 #import "StateSelectorViewController.h"
+#import "BCNavigationController.h"
 
-@interface ConfirmStateViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ConfirmStateViewController () <UITableViewDelegate, UITableViewDataSource, StateSelectorDelegate>
 @property (nonatomic) NSArray *states;
+@property (nonatomic) NSDictionary *selectedState;
+@property (nonatomic) UITableView *tableView;
 @end
 
 @implementation ConfirmStateViewController
@@ -19,6 +22,7 @@
 {
     if (self == [super init]) {
         self.states = states;
+        self.selectedState = [self.states firstObject];
     }
     
     return self;
@@ -32,6 +36,13 @@
     oneRowTableView.dataSource = self;
     oneRowTableView.delegate = self;
     [self.view addSubview:oneRowTableView];
+    self.tableView = oneRowTableView;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_EXCHANGE;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -44,23 +55,22 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-    cell.textLabel.text = @"test";
+    cell.textLabel.text = self.selectedState[STATE_KEY_NAME];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 60;
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CGFloat windowWidth = WINDOW_WIDTH;
     
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, windowWidth, 60)];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, windowWidth, 50)];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, windowWidth, 30)];
-    headerLabel.center = CGPointMake(headerLabel.center.x, containerView.frame.size.height/2);
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, windowWidth, 30)];
     headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];;
     headerLabel.text = BC_STRING_SELECT_YOUR_STATE;
     [containerView addSubview:headerLabel];
@@ -72,7 +82,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     StateSelectorViewController *stateSelectorController = [[StateSelectorViewController alloc] initWithStates:self.states];
+    stateSelectorController.delegate = self;
     [self.navigationController pushViewController:stateSelectorController animated:YES];
+}
+
+#pragma mark - State selector delegate
+
+- (void)didSelectState:(NSDictionary *)state
+{
+    self.selectedState = state;
+    [self.tableView reloadData];
 }
 
 @end

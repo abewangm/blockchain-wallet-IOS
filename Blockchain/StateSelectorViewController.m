@@ -49,7 +49,7 @@
     [super viewWillAppear:animated];
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
-    navigationController.headerTitle = BC_STRING_SELECT_YOUR_STATE;
+    navigationController.headerTitle = BC_STRING_SELECT_STATE;
 }
 
 - (void)setupTableView
@@ -128,13 +128,22 @@
     if (cell == nil) {
         
         NSArray *states = [self statesForSection:indexPath.section];
-        
         NSDictionary *state = states[indexPath.row];
         
         cell = [[UITableViewCell alloc] init];
-        cell.textLabel.text = [state objectForKey:@"Name"];
+        cell.textLabel.text = [state objectForKey:STATE_KEY_NAME];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *states = [self statesForSection:indexPath.section];
+    NSDictionary *state = states[indexPath.row];
+    
+    [self.delegate didSelectState:state];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table View Helpers

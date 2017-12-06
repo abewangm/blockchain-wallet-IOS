@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define STATE_KEY_NAME @"Name"
+@protocol StateSelectorDelegate
+- (void)didSelectState:(NSDictionary *)state;
+@end
 @interface StateSelectorViewController : UIViewController
+@property (nonatomic, weak) id <StateSelectorDelegate> delegate;
 - (id)initWithStates:(NSArray *)states;
 @end
