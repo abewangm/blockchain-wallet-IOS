@@ -368,7 +368,8 @@
     // pair is not returned from API call - need to manually set
     trade.pair = [self coinPair];
     trade.exchangeRateString = [trade exchangeRateString];
-    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]];
+    NSString *feeString = [NSNumberFormatter convertedDecimalString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]];
+    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:feeString];
     ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
     [self.navigationController pushViewController:confirmViewController animated:YES];
 }

@@ -2362,6 +2362,8 @@
     if ([self isInitialized]) {
         DLog(@"Getting approximate quote");
         
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
         NSURL *URL = [NSURL URLWithString:@"https://shapeshift.io/sendamount"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
         
@@ -2369,7 +2371,7 @@
         
         NSString *depositOrWithdrawParameter = usingFromField ? @"depositAmount" : @"withdrawalAmount";
         
-        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"%@\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [depositOrWithdrawParameter escapeStringForJS], [amount escapeStringForJS], [apiKey escapeStringForJS]];
+        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"%@\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [depositOrWithdrawParameter escapeStringForJS], [convertedAmount escapeStringForJS], [apiKey escapeStringForJS]];
         NSData *postData = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
         
         [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -2408,7 +2410,12 @@
 
 - (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
 {
-    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS], [fee escapeStringForJS]]];
+    if ([self isInitialized]) {
+        
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [convertedAmount escapeStringForJS], [fee escapeStringForJS]]];
+    }
 }
 
 - (void)shiftPayment
