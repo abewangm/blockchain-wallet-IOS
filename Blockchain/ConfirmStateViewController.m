@@ -62,6 +62,8 @@
     NSString *stateCode = self.selectedState[STATE_KEY_CODE];
     if ([app.wallet isStateWhitelistedForShapeshift:stateCode]) {
         [app.wallet selectState:self.selectedState[STATE_KEY_NAME] code:stateCode];
+        [self.delegate didConfirmState];
+        [self removeFromParentViewController];
     } else {
         UIAlertController *alertNotAvailable = [UIAlertController alertControllerWithTitle:BC_STRING_EXCHANGE_NOT_AVAILABLE_TITLE message:BC_STRING_EXCHANGE_NOT_AVAILABLE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
         [alertNotAvailable addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];

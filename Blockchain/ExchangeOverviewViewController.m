@@ -24,7 +24,7 @@
 
 #define CELL_IDENTIFIER_EXCHANGE_CELL @"exchangeCell"
 
-@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource, CloseButtonDelegate>
+@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource, CloseButtonDelegate, ConfirmStateDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
@@ -107,6 +107,7 @@
 - (void)showStates:(NSArray *)states
 {
     ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] initWithStates:states];
+    confirmStateViewController.delegate = self;
     [self.navigationController pushViewController:confirmStateViewController animated:NO];
     [self removeFromParentViewController];
 }
@@ -171,6 +172,13 @@
     exchangeModalView.delegate = self;
     BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeNone showHeader:YES headerText:BC_STRING_EXCHANGE_TITLE_SENDING_FUNDS view:exchangeModalView];
     [self.navigationController presentViewController:modalViewController animated:YES completion:nil];
+}
+
+#pragma mark - Confirm State delegate
+
+- (void)didConfirmState
+{
+    [self showCreateExchangeControllerAnimated:YES];
 }
 
 #pragma mark - Close button delegate

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol ConfirmStateDelegate
+- (void)didConfirmState;
+@end
 @interface ConfirmStateViewController : UIViewController
+@property (nonatomic, weak) id <ConfirmStateDelegate> delegate;
 - (id)initWithStates:(NSArray *)states;
 @end
