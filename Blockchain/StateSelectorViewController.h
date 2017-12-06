@@ -1,5 +1,5 @@
 //
-//  ConfirmStateViewController.h
+//  StateSelectorViewController.h
 //  Blockchain
 //
 //  Created by kevinwu on 12/5/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConfirmStateViewController : UIViewController
+@interface StateSelectorViewController : UIViewController
 - (id)initWithStates:(NSArray *)states;
 @end

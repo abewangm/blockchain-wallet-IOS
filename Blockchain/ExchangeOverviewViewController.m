@@ -41,7 +41,7 @@
     NSArray *availableStates = [app.wallet availableUSStates];
     
     if (availableStates.count > 0) {
-        [self showStates];
+        [self showStates:availableStates];
     } else {
         [app.wallet getExchangeTrades];
     }
@@ -104,9 +104,9 @@
     self.tableView = tableView;
 }
 
-- (void)showStates
+- (void)showStates:(NSArray *)states
 {
-    ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] init];
+    ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] initWithStates:states];
     [self.navigationController pushViewController:confirmStateViewController animated:NO];
     [self removeFromParentViewController];
 }

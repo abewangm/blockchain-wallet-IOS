@@ -7,12 +7,22 @@
 //
 
 #import "ConfirmStateViewController.h"
+#import "StateSelectorViewController.h"
 
 @interface ConfirmStateViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@property (nonatomic) NSArray *states;
 @end
 
 @implementation ConfirmStateViewController
+
+- (id)initWithStates:(NSArray *)states
+{
+    if (self == [super init]) {
+        self.states = states;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -61,6 +71,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    StateSelectorViewController *stateSelectorController = [[StateSelectorViewController alloc] initWithStates:self.states];
+    [self.navigationController pushViewController:stateSelectorController animated:YES];
 }
 
 @end
