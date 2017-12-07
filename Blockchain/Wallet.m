@@ -923,9 +923,17 @@
         [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
     };
     
+    self.context[@"objc_on_get_available_btc_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_BTC];
+    };
+    
     self.context[@"objc_on_get_available_eth_balance_success"] = ^(JSValue *amount, JSValue *fee) {
         NSDictionary *dict = @{DICTIONARY_KEY_AMOUNT : [amount toNumber], DICTIONARY_KEY_FEE : [fee toNumber]};
         [weakSelf on_get_available_eth_balance_success:dict];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_ETH];
     };
     
     self.context[@"objc_on_shift_payment_success"] = ^(JSValue *result) {
@@ -4314,6 +4322,11 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableBtcBalance:!", [delegate class]);
     }
+}
+
+- (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
+{
+    [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
 }
 
 - (void)on_get_available_eth_balance_success:(NSDictionary *)result

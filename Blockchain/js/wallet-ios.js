@@ -2567,6 +2567,7 @@ MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
     var error = function(e) {
         console.log('Error getting btc balance');
         console.log(e);
+        objc_on_get_available_btc_balance_error(e);
     }
     
     MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance('priority').then(success).catch(error);
@@ -2581,6 +2582,7 @@ MyWalletPhone.getAvailableEthBalance = function() {
     var error = function(e) {
         console.log('Error getting eth balance');
         console.log(e);
+        objc_on_get_available_eth_balance_error(e);
     }
     MyWallet.wallet.eth.accounts[0].getAvailableBalance().then(success).catch(error);
 }

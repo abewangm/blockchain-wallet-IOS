@@ -865,3 +865,4 @@
 #define BC_STRING_SELECT_STATE NSLocalizedString(@"Select State", nil)
 #define BC_STRING_EXCHANGE_NOT_AVAILABLE_TITLE NSLocalizedString(@"Not Available", nil)
 #define BC_STRING_EXCHANGE_NOT_AVAILABLE_MESSAGE NSLocalizedString(@"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon.", nil)
+#define BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE NSLocalizedString(@"An error occurred when getting your %@ balance. Please try again later. Details: %@", nil)
