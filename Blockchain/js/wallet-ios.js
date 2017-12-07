@@ -2594,7 +2594,7 @@ MyWalletPhone.getLabelForEthAccount = function() {
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
     
     var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration) {
-        objc_on_build_exchange_trade_success(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration);
+        objc_on_build_exchange_trade_success(coins[0], depositAmount, fee, rate, minerFee, withdrawalAmount, expiration);
     }
     
     var error = function(e) {
