@@ -78,7 +78,7 @@
     
     CGFloat exchangeIconImageViewWidth = 50;
     UIImageView *exchangeIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, newExchangeView.frame.size.height/2 - exchangeIconImageViewWidth/2, exchangeIconImageViewWidth, exchangeIconImageViewWidth)];
-    exchangeIconImageView.backgroundColor = [UIColor greenColor];
+    exchangeIconImageView.image = [UIImage imageNamed:@"exchange_small"];
     [newExchangeView addSubview:exchangeIconImageView];
     
     UIImageView *chevronImageView = [[UIImageView alloc] initWithFrame:CGRectMake(newExchangeView.frame.size.width - 8 - chevronWidth, newExchangeView.frame.size.height/2 - chevronWidth/2, chevronWidth, chevronWidth)];
