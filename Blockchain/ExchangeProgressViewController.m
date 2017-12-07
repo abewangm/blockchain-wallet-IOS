@@ -70,7 +70,7 @@
 {
     if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
         return [UIImage imageNamed:@"exchange_complete"];
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [UIImage imageNamed:@"exchange_in_progress"];
     }
     
@@ -81,7 +81,7 @@
 {
     if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
         return BC_STRING_COMPLETE;
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return BC_STRING_IN_PROGRESS;
     }
     
@@ -92,7 +92,7 @@
 {
     if ([trade.status isEqualToString:TRADE_STATUS_COMPLETE]) {
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 3, 3];
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 2, 3];
     }
     
