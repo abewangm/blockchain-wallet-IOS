@@ -2736,3 +2736,12 @@ MyWalletPhone.setStateForShapeshift = function(name, code) {
        'Code': code
     });
 }
+
+MyWalletPhone.isDepositTransaction = function(txHash) {
+    return MyWallet.wallet.shapeshift.isDepositTx(txHash);
+}
+
+MyWalletPhone.isWithdrawalTransaction = function(txHash) {
+    return MyWallet.wallet.shapeshift.isWithdrawalTx(txHash);
+}
+

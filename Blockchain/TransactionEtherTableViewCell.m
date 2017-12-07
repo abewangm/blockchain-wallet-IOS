@@ -55,8 +55,28 @@
         self.actionLabel.textColor = COLOR_TRANSACTION_SENT;
     }
     
-    self.actionLabel.frame = CGRectMake(self.actionLabel.frame.origin.x, 29, self.actionLabel.frame.size.width, self.actionLabel.frame.size.height);
-    self.dateLabel.frame = CGRectMake(self.dateLabel.frame.origin.x, 11, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
+    self.infoLabel.adjustsFontSizeToFitWidth = YES;
+    self.infoLabel.layer.cornerRadius = 5;
+    self.infoLabel.clipsToBounds = YES;
+    self.infoLabel.customEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
+    self.infoLabel.hidden = NO;
+    
+    self.actionLabel.frame = CGRectMake(self.actionLabel.frame.origin.x, 20, self.actionLabel.frame.size.width, self.actionLabel.frame.size.height);
+    self.dateLabel.frame = CGRectMake(self.dateLabel.frame.origin.x, 3, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
+    
+    if ([app.wallet isDepositTransaction:self.transaction.myHash]) {
+        self.infoLabel.text = BC_STRING_DEPOSITED_TO_SHAPESHIFT;
+        self.infoLabel.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    } else if ([app.wallet isWithdrawalTransaction:self.transaction.myHash]) {
+        self.infoLabel.text = BC_STRING_RECEIVED_FROM_SHAPESHIFT;
+        self.infoLabel.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    } else {
+        self.infoLabel.hidden = YES;
+        self.actionLabel.frame = CGRectMake(self.actionLabel.frame.origin.x, 29, self.actionLabel.frame.size.width, self.actionLabel.frame.size.height);
+        self.dateLabel.frame = CGRectMake(self.dateLabel.frame.origin.x, 11, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
+    }
+    
+    [self.infoLabel sizeToFit];
 }
 
 - (void)transactionClicked

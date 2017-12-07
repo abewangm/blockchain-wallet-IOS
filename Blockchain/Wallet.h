@@ -459,6 +459,8 @@ typedef enum {
 - (void)getAvailableEthBalance;
 - (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee;
 - (void)shiftPayment;
+- (BOOL)isDepositTransaction:(NSString *)txHash;
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;

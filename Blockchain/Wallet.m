@@ -2435,6 +2435,24 @@
     }
 }
 
+- (BOOL)isDepositTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isDepositTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isWithdrawalTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
 #pragma mark - Contacts
 
 - (void)loadContacts

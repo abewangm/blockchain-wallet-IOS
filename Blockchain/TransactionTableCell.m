@@ -53,21 +53,31 @@
         actionLabel.textColor = COLOR_TRANSACTION_SENT;
     }
     
-    watchOnlyLabel.adjustsFontSizeToFitWidth = YES;
-    watchOnlyLabel.layer.cornerRadius = 5;
-    watchOnlyLabel.clipsToBounds = YES;
-    watchOnlyLabel.text = BC_STRING_WATCH_ONLY;
-    watchOnlyLabel.customEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
+    infoLabel.adjustsFontSizeToFitWidth = YES;
+    infoLabel.layer.cornerRadius = 5;
+    infoLabel.clipsToBounds = YES;
+    infoLabel.customEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
+    infoLabel.hidden = NO;
+
+    actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 20, actionLabel.frame.size.width, actionLabel.frame.size.height);
+    dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
     
     if ((([transaction.txType isEqualToString:TX_TYPE_RECEIVED] || [transaction.txType isEqualToString:TX_TYPE_TRANSFER]) && transaction.toWatchOnly) || ([transaction.txType isEqualToString:TX_TYPE_SENT] && transaction.fromWatchOnly)) {
-        watchOnlyLabel.hidden = NO;
-        actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 20, actionLabel.frame.size.width, actionLabel.frame.size.height);
-        dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 3, dateLabel.frame.size.width, dateLabel.frame.size.height);
+        infoLabel.text = BC_STRING_WATCH_ONLY;
+        infoLabel.backgroundColor = COLOR_DARK_GRAY;
+    } else if ([app.wallet isDepositTransaction:transaction.myHash]) {
+        infoLabel.text = BC_STRING_DEPOSITED_TO_SHAPESHIFT;
+        infoLabel.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
+    } else if ([app.wallet isWithdrawalTransaction:transaction.myHash]) {
+        infoLabel.text = BC_STRING_RECEIVED_FROM_SHAPESHIFT;
+        infoLabel.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     } else {
-        watchOnlyLabel.hidden = YES;
+        infoLabel.hidden = YES;
         actionLabel.frame = CGRectMake(actionLabel.frame.origin.x, 29, actionLabel.frame.size.width, actionLabel.frame.size.height);
         dateLabel.frame = CGRectMake(dateLabel.frame.origin.x, 11, dateLabel.frame.size.width, dateLabel.frame.size.height);
     }
+    
+    [infoLabel sizeToFit];
     
     warningImageView.image = [warningImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [warningImageView setTintColor:COLOR_WARNING_RED];
