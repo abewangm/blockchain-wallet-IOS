@@ -866,3 +866,5 @@
 #define BC_STRING_EXCHANGE_NOT_AVAILABLE_TITLE NSLocalizedString(@"Not Available", nil)
 #define BC_STRING_EXCHANGE_NOT_AVAILABLE_MESSAGE NSLocalizedString(@"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon.", nil)
 #define BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE NSLocalizedString(@"An error occurred when getting your %@ balance. Please try again later. Details: %@", nil)
+#define BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE NSLocalizedString(@"An error occurred when getting an approximate quote. Please try again later. Details: %@", nil)
+#define BC_STRING_ERROR_GETTING_QUOTE_ARGUMENT_MESSAGE NSLocalizedString(@"An error occurred when getting a quote. Please try again later. Details: %@", nil)

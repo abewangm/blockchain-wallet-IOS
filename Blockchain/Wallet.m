@@ -2389,6 +2389,7 @@
         NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error) {
                 DLog(@"Error getting approximate quote: %@", error);
+                [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, error]];
             } else {
                 NSError *jsonError;
                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
