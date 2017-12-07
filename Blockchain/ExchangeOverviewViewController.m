@@ -220,6 +220,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     ExchangeProgressViewController *exchangeProgressVC = [[ExchangeProgressViewController alloc] init];
     exchangeProgressVC.trade = [self.trades objectAtIndex:indexPath.row];
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeProgressVC title:BC_STRING_EXCHANGE];
