@@ -25,6 +25,8 @@
 
 @property (nonatomic) FromToView *fromToView;
 
+@property (nonatomic) UILabel *fiatLabel;
+
 @property (nonatomic) UILabel *leftLabel;
 @property (nonatomic) UILabel *rightLabel;
 
@@ -168,6 +170,15 @@
     bottomRightField.placeholder = [self fiatPlaceholder];
     bottomRightField.inputAccessoryView = inputAccessoryView;
     self.bottomRightField = bottomRightField;
+    
+    UILabel *fiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 30)];
+    fiatLabel.center = CGPointMake(fiatLabel.center.x, bottomLeftField.center.y);
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    fiatLabel.text = app.latestResponse.symbol_local.code;
+    [amountView addSubview:fiatLabel];
+    
+    self.fiatLabel = fiatLabel;
     
     self.fromToView.fromImageView.image = [UIImage imageNamed:@"chevron_right"];
     self.fromToView.toImageView.image = [UIImage imageNamed:@"chevron_right"];
