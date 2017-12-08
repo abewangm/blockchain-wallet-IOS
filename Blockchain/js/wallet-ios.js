@@ -2642,7 +2642,8 @@ MyWalletPhone.shiftPayment = function() {
     
     var error = function(e) {
         console.log('Error shifting payment');
-        console.log(e);
+        console.log(JSON.stringify(e));
+        objc_on_shift_payment_error(e);
     }
     
     if (MyWallet.wallet.isDoubleEncrypted) {

@@ -940,6 +940,10 @@
         [weakSelf on_shift_payment_success:[result toDictionary]];
     };
     
+    self.context[@"objc_on_shift_payment_error"] = ^(JSValue *error) {
+        [weakSelf on_shift_payment_error:[error toDictionary]];
+    };
+    
     [self.context evaluateScript:[self getJSSource]];
     
     self.context[@"XMLHttpRequest"] = [ModuleXMLHttpRequest class];
@@ -4365,6 +4369,14 @@
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didShiftPayment:!", [delegate class]);
     }
+}
+
+- (void)on_shift_payment_error:(NSDictionary *)result
+{
+    [app hideBusyView];
+    
+    NSString *errorMessage = [result objectForKey:DICTIONARY_KEY_MESSAGE];
+    [app standardNotify:errorMessage];
 }
 
 - (void)on_build_exchange_trade_success_from:(NSString *)from depositAmount:(NSString *)depositAmount fee:(NSNumber *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount expiration:(NSDate *)expirationDate
