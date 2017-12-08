@@ -28,6 +28,7 @@
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
+@property (nonatomic) BOOL didFinishShift;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -53,6 +54,24 @@
     
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     navigationController.headerTitle = BC_STRING_EXCHANGE;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.didFinishShift) {
+        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+        [navigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+        [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.didFinishShift = NO;
 }
 
 - (void)setupExchangeButtonView
@@ -126,7 +145,13 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
-    if (trades.count == 0) {
+    if (self.didFinishShift) {
+        self.didFinishShift = NO;
+        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+        [navigationController hideBusyView];
+        self.trades = trades;
+        [self.tableView reloadData];
+    } else if (trades.count == 0) {
         [self showCreateExchangeControllerAnimated:NO];
         self.navigationController.viewControllers = @[self.createViewController];
         return;
@@ -188,6 +213,7 @@
 
 - (void)closeButtonClicked
 {
+    self.didFinishShift = YES;
     [self.navigationController.presentedViewController dismissViewControllerAnimated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
