@@ -82,7 +82,7 @@
     
     [self disablePaymentButtons];
     
-    [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
+    [self getRate];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -609,7 +609,7 @@
         [self selectToEther];
     }
     
-    [self getRate:[NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol]];
+    [self getRate];
 }
 
 - (void)fromButtonClicked
@@ -706,7 +706,7 @@
 
 #pragma mark - Wallet actions
 
-- (void)getRate:(NSString *)coinPair
+- (void)getRate
 {
     [self disableAssetToggleButton];
     [self.spinner startAnimating];
@@ -860,6 +860,8 @@
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToEthAccount
@@ -871,6 +873,8 @@
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -884,6 +888,8 @@
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToAccount:(int)account
@@ -897,6 +903,8 @@
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
     self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToAddress:(NSString *)address
