@@ -28,7 +28,7 @@
     
     CGFloat windowWidth = WINDOW_WIDTH;
     BOOL isUsingLargerScreen = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
-    UIView *summaryView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, windowWidth, isUsingLargerScreen ? 250 : self.view.frame.size.height - detailView.frame.size.height - 24 - DEFAULT_HEADER_HEIGHT)];
+    UIView *summaryView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, windowWidth, isUsingLargerScreen ? 220 : self.view.frame.size.height - detailView.frame.size.height - 24 - DEFAULT_HEADER_HEIGHT)];
 
     UITextView *descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, windowWidth, 0)];
     descriptionTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_SMALL];

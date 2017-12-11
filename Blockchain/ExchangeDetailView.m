@@ -10,9 +10,10 @@
 #import "ExchangeTrade.h"
 #import "BCLine.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "NSDateFormatter+VerboseString.h"
 
 #define MARGIN_HORIZONTAL 20
-#define NUMBER_OF_ROWS_FETCHED_TRADE 5
+#define NUMBER_OF_ROWS_FETCHED_TRADE 6
 #define NUMBER_OF_ROWS_BUILT_TRADE 6
 
 @implementation ExchangeDetailView
@@ -61,8 +62,11 @@
 
     UIView *rowOrderID = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_EXCHANGE_ORDER_ID, @""] accessoryText:trade.orderID yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
     [self addSubview:rowOrderID];
+    
+    UIView *rowDate = [self rowViewWithText:BC_STRING_DATE accessoryText:[NSDateFormatter verboseStringFromDate:trade.date] yPosition:rowOrderID.frame.origin.y + rowOrderID.frame.size.height];
+    [self addSubview:rowDate];
 
-    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:rowOrderID.frame.origin.y + rowOrderID.frame.size.height];
+    BCLine *bottomLine = [[BCLine alloc] initWithYPosition:rowDate.frame.origin.y + rowDate.frame.size.height];
     [self addSubview:bottomLine];
 }
 
