@@ -869,3 +869,4 @@
 #define BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE NSLocalizedString(@"An error occurred when getting an approximate quote. Please try again later. Details: %@", nil)
 #define BC_STRING_DEPOSITED_TO_SHAPESHIFT NSLocalizedString(@"Deposited to ShapeShift", nil)
 #define BC_STRING_RECEIVED_FROM_SHAPESHIFT NSLocalizedString(@"Received from ShapeShift", nil)
+#define BC_STRING_ORDER_HISTORY NSLocalizedString(@"Order History", nil)
