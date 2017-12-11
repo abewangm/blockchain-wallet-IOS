@@ -221,7 +221,7 @@
     errorTextView.hidden = YES;
     self.errorTextView = errorTextView;
     
-    UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, BUTTON_HEIGHT)];
+    UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
     continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     continueButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
