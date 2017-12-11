@@ -2328,6 +2328,15 @@
 
 #pragma mark - Exchange
 
+- (BOOL)isCountryWhitelistedForShapeshift
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.isCountryWhitelistedForShapeshift()"] toBool];
+    }
+    
+    return NO;
+}
+
 - (NSArray *)availableUSStates
 {
     if ([self isInitialized]) {

@@ -108,7 +108,9 @@ int accountEntries = 0;
     if ([app.wallet isBuyEnabled]) {
         [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"buy"];
     }
-    [self addMenuEntry:entryKeyExchange text:BC_STRING_EXCHANGE icon:@"exchange_menu"];
+    if ([app.wallet isCountryWhitelistedForShapeshift]) {
+        [self addMenuEntry:entryKeyExchange text:BC_STRING_EXCHANGE icon:@"exchange_menu"];
+    }
     if (!app.wallet.didUpgradeToHd) {
         [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
     } else {

@@ -2656,6 +2656,13 @@ MyWalletPhone.shiftPayment = function() {
     }
 }
 
+MyWalletPhone.isCountryWhitelistedForShapeshift = function() {
+    var country = MyWallet.wallet.accountInfo.countryCodeGuess;
+    var countriesBlacklist = walletOptions.getValue().shapeshift.countriesBlacklist;
+    var isBlacklisted = countriesBlacklist.indexOf(country) > -1;
+    return !isBlacklisted;
+}
+
 MyWalletPhone.availableUSStates = function() {
     var accountInfo = MyWallet.wallet.accountInfo;
     var codeGuess = accountInfo && accountInfo.countryCodeGuess;
