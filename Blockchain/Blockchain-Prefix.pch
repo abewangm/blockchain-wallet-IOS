@@ -545,6 +545,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PUSH_NOTIFICATION_TYPE_PAYMENT @"payment"
 #define PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST @"contact_request"
 
+#define DICTIONARY_KEY_SUCCESS @"success"
+#define DICTIONARY_KEY_ERROR @"error"
+
 #define DICTIONARY_KEY_STATE @"state"
 #define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
 #define DICTIONARY_KEY_ROLE @"role"
@@ -603,7 +606,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_DISPLAY_AMOUNT @"displayAmount"
 #define DICTIONARY_KEY_CODE @"code"
-#define DICTIONARY_KEY_ERROR @"error"
 #define DICTIONARY_KEY_THRESHOLD @"threshold"
 #define DICTIONARY_KEY_SUCCESS @"success"
 #define DICTIONARY_KEY_KEY @"key"
@@ -653,6 +655,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_MULTIADDRESS_ADDRESSES @"addresses"
 #define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL @"symbol_local"
 #define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC @"symbol_btc"
+
+#define DICTIONARY_KEY_LIMIT @"limit"
+#define DICTIONARY_KEY_MINIMUM @"minimum"
+#define DICTIONARY_KEY_MAX_LIMIT @"maxLimit"
+#define DICTIONARY_KEY_PAIR @"pair"
+#define DICTIONARY_KEY_RATE @"rate"
+#define DICTIONARY_KEY_MINER_FEE @"minerFee"
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0

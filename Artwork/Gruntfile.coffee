@@ -85,5 +85,11 @@ module.exports = (grunt) ->
     "shell:svg:logo_and_banner_white:30:161"
     "shell:svg:down_triangle:20"
     "shell:svg:switch_currencies:30"
+    "shell:svg:exchange_in_progress:120"
+    "shell:svg:exchange_complete:120"
+    "shell:svg:exchange_sending:120"
+    "shell:svg:exchange_menu:36"
+    "shell:svg:exchange_error:120"
+    "shell:svg:exchange_small:50"
     "shell:svg:buy_available:110:110"
   ]

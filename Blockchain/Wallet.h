@@ -138,6 +138,11 @@
 - (void)didGetEtherAddressWithSecondPassword;
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
+- (void)didGetQuote:(NSDictionary *)result;
+- (void)didGetAvailableEthBalance:(NSDictionary *)result;
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result;
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
+- (void)didShiftPayment:(NSDictionary *)info;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -428,6 +433,7 @@ typedef enum {
 - (NSArray *)getEthTransactions;
 - (void)getEthHistory;
 - (void)getEthExchangeRate;
+- (NSString *)getLabelForEthAccount;
 
 // Ether send
 - (void)createNewEtherPayment;
@@ -442,8 +448,20 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
+- (BOOL)isCountryWhitelistedForShapeshift;
+- (NSArray *)availableUSStates;
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;
+- (void)selectState:(NSString *)name code:(NSString *)code;
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
+- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion;
+- (void)getAvailableBtcBalanceForAccount:(int)account;
+- (void)getAvailableEthBalance;
+- (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee;
+- (void)shiftPayment;
+- (BOOL)isDepositTransaction:(NSString *)txHash;
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;

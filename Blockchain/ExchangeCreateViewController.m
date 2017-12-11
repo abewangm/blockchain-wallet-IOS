@@ -9,15 +9,28 @@
 #import "ExchangeCreateViewController.h"
 #import "FromToView.h"
 #import "Blockchain-Swift.h"
+#import "ContinueButtonInputAccessoryView.h"
+#import "ExchangeTrade.h"
+#import "ExchangeConfirmViewController.h"
+#import "BCNavigationController.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
-@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate>
+#define DICTIONARY_KEY_TRADE_MINIMUM @"minimum"
+#define DICTIONARY_KEY_TRADE_MAX_LIMIT @"maxLimit"
+
+#define IMAGE_NAME_SWITCH_CURRENCIES @"switch_currencies"
+
+@interface ExchangeCreateViewController () <UITextFieldDelegate, FromToButtonDelegate, AddressSelectionDelegate, ContinueButtonInputAccessoryViewDelegate>
 
 @property (nonatomic) FromToView *fromToView;
 
+@property (nonatomic) UILabel *fiatLabel;
+
 @property (nonatomic) UILabel *leftLabel;
 @property (nonatomic) UILabel *rightLabel;
+
+@property (nonatomic) UIButton *assetToggleButton;
 
 // Digital asset input
 @property (nonatomic) BCSecureTextField *topLeftField;
@@ -29,13 +42,28 @@
 @property (nonatomic) BCSecureTextField *bottomLeftField;
 @property (nonatomic) BCSecureTextField *bottomRightField;
 
-@property (nonatomic) UILabel *errorLabel;
+@property (nonatomic) UITextView *errorTextView;
 
-@property (nonatomic) uint64_t btcAmount;
-@property (nonatomic) NSDecimalNumber *ethAmount;
+@property (nonatomic) id amount;
 @property (nonatomic) int btcAccount;
+
 @property (nonatomic) NSString *fromSymbol;
 @property (nonatomic) NSString *toSymbol;
+@property (nonatomic) NSString *fromAddress;
+@property (nonatomic) NSString *toAddress;
+
+@property (nonatomic) NSURLSessionDataTask *currentDataTask;
+
+// uint64_t or NSDecimalNumber
+@property (nonatomic) id minimum;
+@property (nonatomic) id maximum;
+@property (nonatomic) id availableBalance;
+@property (nonatomic) id fee;
+
+@property (nonatomic) UIActivityIndicatorView *spinner;
+
+@property (nonatomic) ContinueButtonInputAccessoryView *continuePaymentAccessoryView;
+@property (nonatomic) UIButton *continueButton;
 @end
 
 @implementation ExchangeCreateViewController
@@ -46,8 +74,24 @@
     
     [self setupViews];
     
-    self.fromSymbol = CURRENCY_SYMBOL_BTC;
-    self.toSymbol = CURRENCY_SYMBOL_ETH;
+    self.btcAccount = [app.wallet getDefaultAccountIndex];
+    
+    [self selectFromBitcoin];
+    [self selectToEther];
+    
+    self.amount = 0;
+    
+    [self disablePaymentButtons];
+    
+    [self getRate];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_EXCHANGE;
 }
 
 - (void)setupViews
@@ -74,10 +118,16 @@
     UIButton *assetToggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 12, 30, 30)];
     assetToggleButton.center = CGPointMake(windowWidth/2, assetToggleButton.center.y);
     [assetToggleButton addTarget:self action:@selector(assetToggleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *buttonImage = [UIImage imageNamed:@"switch_currencies"];
+    UIImage *buttonImage = [UIImage imageNamed:IMAGE_NAME_SWITCH_CURRENCIES];
     [assetToggleButton setImage:buttonImage forState:UIControlStateNormal];
     assetToggleButton.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
     [amountView addSubview:assetToggleButton];
+    self.assetToggleButton = assetToggleButton;
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = assetToggleButton.center;
+    [amountView addSubview:self.spinner];
+    self.spinner.hidden = YES;
     
     UILabel *topRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(assetToggleButton.frame.origin.x + assetToggleButton.frame.size.width + 15, 12, 40, 30)];
     topRightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
@@ -86,23 +136,23 @@
     self.rightLabel = topRightLabel;
     [amountView addSubview:topRightLabel];
     
-    UIFont *textFieldFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
-
+    ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
+    inputAccessoryView.delegate = self;
+    self.continuePaymentAccessoryView = inputAccessoryView;
+    
     CGFloat leftFieldOriginX = topLeftLabel.frame.origin.x + topLeftLabel.frame.size.width + 8;
-    BCSecureTextField *leftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
-    leftField.font = textFieldFont;
-    leftField.textColor = COLOR_TEXT_DARK_GRAY;
+    BCSecureTextField *leftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, 12, assetToggleButton.frame.origin.x - 8 - leftFieldOriginX, 30)];
     [amountView addSubview:leftField];
-    leftField.delegate = self;
+    leftField.placeholder = [self assetPlaceholder];
+    leftField.inputAccessoryView = inputAccessoryView;
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
     
     CGFloat rightFieldOriginX = topRightLabel.frame.origin.x + topRightLabel.frame.size.width + 8;
-    BCSecureTextField *rightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
-    rightField.font = textFieldFont;
-    rightField.textColor = COLOR_TEXT_DARK_GRAY;
+    BCSecureTextField *rightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, 12, windowWidth - 8 - rightFieldOriginX, 30)];
     [amountView addSubview:rightField];
-    rightField.delegate = self;
+    rightField.placeholder = [self assetPlaceholder];
+    rightField.inputAccessoryView = inputAccessoryView;
     self.topRightField = rightField;
     self.ethField = self.topRightField;
     
@@ -110,19 +160,26 @@
     dividerLine.backgroundColor = COLOR_LINE_GRAY;
     [amountView addSubview:dividerLine];
     
-    BCSecureTextField *bottomLeftField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
-    bottomLeftField.font = textFieldFont;
-    bottomLeftField.textColor = COLOR_TEXT_DARK_GRAY;
-    bottomLeftField.delegate = self;
+    BCSecureTextField *bottomLeftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
     [amountView addSubview:bottomLeftField];
+    bottomLeftField.inputAccessoryView = inputAccessoryView;
+    bottomLeftField.placeholder = [self fiatPlaceholder];
     self.bottomLeftField = bottomLeftField;
     
-    BCSecureTextField *bottomRightField = [[BCSecureTextField alloc] initWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
-    bottomRightField.font = textFieldFont;
-    bottomRightField.textColor = COLOR_TEXT_DARK_GRAY;
-    bottomRightField.delegate = self;
+    BCSecureTextField *bottomRightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
     [amountView addSubview:bottomRightField];
+    bottomRightField.placeholder = [self fiatPlaceholder];
+    bottomRightField.inputAccessoryView = inputAccessoryView;
     self.bottomRightField = bottomRightField;
+    
+    UILabel *fiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 30)];
+    fiatLabel.center = CGPointMake(fiatLabel.center.x, bottomLeftField.center.y);
+    fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
+    fiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    fiatLabel.text = app.latestResponse.symbol_local.code;
+    [amountView addSubview:fiatLabel];
+    
+    self.fiatLabel = fiatLabel;
     
     self.fromToView.fromImageView.image = [UIImage imageNamed:@"chevron_right"];
     self.fromToView.toImageView.image = [UIImage imageNamed:@"chevron_right"];
@@ -141,6 +198,7 @@
     useMinButton.backgroundColor = [UIColor whiteColor];
     [useMinButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [useMinButton setTitle:BC_STRING_USE_MINIMUM forState:UIControlStateNormal];
+    [useMinButton addTarget:self action:@selector(useMinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMinButton];
     
     CGFloat useMaxButtonOriginX = buttonsView.frame.size.width/2 + dividerLineWidth/2;
@@ -149,21 +207,201 @@
     useMaxButton.backgroundColor = [UIColor whiteColor];
     [useMaxButton setTitleColor:COLOR_BLOCKCHAIN_LIGHT_BLUE forState:UIControlStateNormal];
     [useMaxButton setTitle:BC_STRING_USE_MAXIMUM forState:UIControlStateNormal];
+    [useMaxButton addTarget:self action:@selector(useMaxButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMaxButton];
     
-    UILabel *errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth, 30)];
-    errorLabel.textColor = COLOR_WARNING_RED;
-    errorLabel.font = buttonFont;
-    [self.view addSubview:errorLabel];
-    errorLabel.hidden = YES;
-    self.errorLabel = errorLabel;
+    UITextView *errorTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth - 30, 30)];
+    errorTextView.editable = NO;
+    errorTextView.scrollEnabled = NO;
+    errorTextView.selectable = NO;
+    errorTextView.textColor = COLOR_WARNING_RED;
+    errorTextView.font = buttonFont;
+    errorTextView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:errorTextView];
+    errorTextView.hidden = YES;
+    self.errorTextView = errorTextView;
+    
+    UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
+    continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    continueButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
+    continueButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    [self.view addSubview:continueButton];
+    [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.continueButton = continueButton;
 }
 
 #pragma mark - JS Callbacks
 
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
+    [self enableAssetToggleButton];
+    [self.spinner stopAnimating];
     
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        NSString *minNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
+        self.minimum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:minNumberString]];
+        NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
+        self.maximum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:maxNumberString]];
+        [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
+        self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
+        [app.wallet getAvailableEthBalance];
+    }
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
+    self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
+    
+    [self updateAvailableBalance];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
+    self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
+    
+    [self updateAvailableBalance];
+}
+
+- (void)updateAvailableBalance
+{
+    BOOL overAvailable = NO;
+    BOOL overMax = NO;
+    BOOL underMin = NO;
+    BOOL zeroAmount = NO;
+    
+    NSString *errorText;
+    
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        
+        uint64_t amount = [self.amount longLongValue];
+        
+        DLog(@"btc amount: %lld", amount);
+        DLog(@"available: %lld", [self.availableBalance longLongValue]);
+        DLog(@"max: %lld", [self.maximum longLongValue])
+        
+        if (amount == 0) {
+            zeroAmount = YES;
+        } else if (amount > [self.availableBalance longLongValue]) {
+            DLog(@"btc over available");
+            overAvailable = YES;
+            errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
+        } else if (amount > [self.maximum longLongValue]) {
+            DLog(@"btc over max");
+            overMax = YES;
+            errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
+        } else if (amount < [self.minimum longLongValue] ) {
+            DLog(@"btc under min");
+            underMin = YES;
+            errorText = BC_STRING_BELOW_MINIMUM_LIMIT;
+        }
+        
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        DLog(@"eth amount: %@", [self.amount stringValue]);
+        DLog(@"available: %@", [self.availableBalance stringValue]);
+        DLog(@"max: %@", [self.maximum stringValue])
+        
+        if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
+            zeroAmount = YES;
+        } else if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
+            DLog(@"eth over available");
+            overAvailable = YES;
+            errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
+        } else if ([self.amount compare:self.maximum] == NSOrderedDescending) {
+            DLog(@"eth over max");
+            overMax = YES;
+            errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
+        } else if ([self.amount compare:self.minimum] == NSOrderedAscending) {
+            DLog(@"eth under min");
+            underMin = YES;
+            errorText = BC_STRING_BELOW_MINIMUM_LIMIT;
+        }
+    }
+    
+    if (zeroAmount) {
+        self.errorTextView.hidden = YES;
+        [self disablePaymentButtons];
+    } else if (overAvailable || overMax || underMin) {
+        self.errorTextView.hidden = NO;
+        self.errorTextView.text = errorText;
+        [self disablePaymentButtons];
+    } else {
+        self.errorTextView.hidden = YES;
+    }
+}
+
+- (void)enablePaymentButtons
+{
+    [self.continuePaymentAccessoryView enableContinueButton];
+    
+    self.continueButton.enabled = YES;
+    [self.continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.continueButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+}
+
+- (void)disablePaymentButtons
+{
+    [self.continuePaymentAccessoryView disableContinueButton];
+
+    self.continueButton.enabled = NO;
+    [self.continueButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.continueButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+}
+
+- (void)didGetQuote:(NSDictionary *)result
+{
+    
+}
+
+- (void)didGetApproximateQuote:(NSDictionary *)result
+{
+    [self enablePaymentButtons];
+    [self enableAssetToggleButton];
+    [self.spinner stopAnimating];
+    
+    id depositAmount = [result objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
+    id withdrawalAmount = [result objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
+    
+    self.topLeftField.text = [depositAmount isKindOfClass:[NSString class]] ? depositAmount : [depositAmount stringValue];
+    self.topRightField.text = [withdrawalAmount isKindOfClass:[NSString class]] ? withdrawalAmount : [withdrawalAmount stringValue];
+    
+    NSString *pair = [self coinPair];
+    if ([[pair lowercaseString] isEqualToString: [[result objectForKey:DICTIONARY_KEY_PAIR] lowercaseString]]) {
+        
+        NSString *btcResult = [self convertBtcAmountToFiat:self.btcField.text];
+        NSString *ethResult = [self convertEthAmountToFiat:self.ethField.text];
+        
+        if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+            self.bottomRightField.text = btcResult;
+            self.bottomLeftField.text = ethResult;
+        } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+            self.bottomLeftField.text = btcResult;
+            self.bottomRightField.text = ethResult;
+        }
+    } else {
+        DLog(@"Wrong coinpair!");
+    }
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    
+    ExchangeTrade *trade = [ExchangeTrade builtTradeFromJSONDict:tradeInfo];
+    // pair is not returned from API call - need to manually set
+    trade.pair = [self coinPair];
+    trade.exchangeRateString = [trade exchangeRateString];
+    NSString *feeString = [NSNumberFormatter convertedDecimalString:[tradeInfo objectForKey:DICTIONARY_KEY_FEE]];
+    trade.transactionFee = [NSDecimalNumber decimalNumberWithString:feeString];
+    ExchangeConfirmViewController *confirmViewController = [[ExchangeConfirmViewController alloc] initWithExchangeTrade:trade];
+    [self.navigationController pushViewController:confirmViewController animated:YES];
 }
 
 #pragma mark - Conversion
@@ -247,16 +485,16 @@
     
     [self saveAmount:amountString fromField:textField];
     
-    [self performSelector:@selector(doCurrencyConversion) withObject:nil afterDelay:0.1f];
+    [self performSelector:@selector(doCurrencyConversionAfterTyping) withObject:nil afterDelay:0.1f];
     return YES;
 }
 
 - (void)saveAmount:(NSString *)amountString fromField:(UITextField *)textField
 {
     if (textField == self.ethField) {
-        self.ethAmount = [NSDecimalNumber decimalNumberWithString:amountString];
+        self.amount = [NSDecimalNumber decimalNumberWithString:amountString];
     } else if (textField == self.btcField) {
-        self.btcAmount = [app.wallet parseBitcoinValueFromString:amountString];
+        self.amount = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:amountString]];
     } else {
         if (textField == self.bottomLeftField) {
             if (self.topLeftField == self.ethField) {
@@ -277,25 +515,62 @@
 - (void)convertFiatStringToEth:(NSString *)amountString
 {
     NSDecimalNumber *amountStringDecimalNumber = amountString && [amountString doubleValue] > 0 ? [NSDecimalNumber decimalNumberWithString:amountString] : 0;
-    self.ethAmount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:app.wallet.latestEthExchangeRate];
+    self.amount = [NSNumberFormatter convertFiatToEth:amountStringDecimalNumber exchangeRate:app.wallet.latestEthExchangeRate];
 }
 
 - (void)convertFiatStringToBtc:(NSString *)amountString
 {
-    self.btcAmount = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+    self.amount = [NSNumber numberWithLongLong:app.latestResponse.symbol_local.conversion * [amountString doubleValue]];
 }
 
 - (NSString *)convertBtcAmountToFiat
 {
-    return [NSNumberFormatter formatAmount:self.btcAmount localCurrency:YES];
+    return [self convertBtcAmountToFiat:self.amount];
 }
 
 - (NSString *)convertEthAmountToFiat
 {
+    return [self convertEthAmountToFiat:self.amount];
+}
+
+- (NSString *)convertBtcAmountToFiat:(id)amount
+{
+    uint64_t amountArg = 0;
+    if ([amount isKindOfClass:[NSString class]]) {
+        amountArg = [self parseBitcoinValueFromString:amount];
+    } else if ([amount isKindOfClass:[NSNumber class]])  {
+        amountArg = [amount longLongValue];
+    } else {
+        DLog(@"Amount is not a string or number!");
+    }
+    
+    return [NSNumberFormatter formatAmount:amountArg localCurrency:YES];
+}
+
+- (NSString *)convertEthAmountToFiat:(id)amount
+{
+    id amountArg;
+    if ([amount isKindOfClass:[NSString class]]) {
+        amountArg = amount;
+    } else if ([amount isKindOfClass:[NSNumber class]])  {
+        amountArg = [amount stringValue];
+    } else {
+        DLog(@"Amount is not a string or number!");
+    }
+    
     app.localCurrencyFormatter.usesGroupingSeparator = NO;
-    NSString *result = [NSNumberFormatter formatEthToFiat:[self.ethAmount stringValue] exchangeRate:app.wallet.latestEthExchangeRate];
+    NSString *result = [NSNumberFormatter formatEthToFiat:amountArg exchangeRate:app.wallet.latestEthExchangeRate];
     app.localCurrencyFormatter.usesGroupingSeparator = YES;
     return result;
+}
+
+- (void)doCurrencyConversionAfterTyping
+{
+    [self doCurrencyConversion];
+    
+    [self updateAvailableBalance];
+    
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 - (void)doCurrencyConversion
@@ -320,10 +595,10 @@
             self.bottomRightField.text = result;
         }
         
-    } else {
+    } else if ([self.bottomLeftField isFirstResponder] || [self.bottomRightField isFirstResponder]) {
         
-        NSString *ethString = [self.ethAmount stringValue];
-        NSString *btcString = [NSNumberFormatter formatAmount:self.btcAmount localCurrency:NO];
+        NSString *ethString = [self.amount stringValue];
+        NSString *btcString = [NSNumberFormatter satoshiToBTC:[self.amount longLongValue]];
         
         if ([self.bottomLeftField isFirstResponder]) {
             if (self.topLeftField == self.ethField) {
@@ -346,33 +621,14 @@
 - (void)assetToggleButtonClicked
 {
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
-        self.fromSymbol = CURRENCY_SYMBOL_ETH;
-        self.toSymbol = CURRENCY_SYMBOL_BTC;
-        
-        self.ethField = self.topLeftField;
-        self.btcField = self.topRightField;
-        
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_ETH;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_BTC;
-        
-        self.leftLabel.text = CURRENCY_SYMBOL_ETH;
-        self.rightLabel.text = CURRENCY_SYMBOL_BTC;
-        
+        [self selectFromEther];
+        [self selectToBitcoin];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
-        self.fromSymbol = CURRENCY_SYMBOL_BTC;
-        self.toSymbol = CURRENCY_SYMBOL_ETH;
-        
-        self.btcField = self.topLeftField;
-        self.ethField = self.topRightField;
-        
-        self.fromToView.fromLabel.text = CURRENCY_SYMBOL_BTC;
-        self.fromToView.toLabel.text = CURRENCY_SYMBOL_ETH;
-        
-        self.leftLabel.text = CURRENCY_SYMBOL_BTC;
-        self.rightLabel.text = CURRENCY_SYMBOL_ETH;
+        [self selectFromBitcoin];
+        [self selectToEther];
     }
     
-    [app.wallet getRate:@"btc_eth"];
+    [self getRate];
 }
 
 - (void)fromButtonClicked
@@ -396,6 +652,220 @@
     [viewController.view addSubview:selectorView];
     
     [self.navigationController pushViewController:viewController animated:YES];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = selectMode == SelectModeExchangeAccountTo ? BC_STRING_TO : BC_STRING_FROM;
+}
+
+- (void)useMinButtonClicked
+{
+    [self autoFillFromAmount:self.minimum];
+}
+
+- (void)useMaxButtonClicked
+{
+    [self autoFillFromAmount:self.maximum];
+}
+
+#pragma mark - View actions
+
+- (void)selectFromEther
+{
+    self.fromSymbol = CURRENCY_SYMBOL_ETH;
+    self.ethField = self.topLeftField;
+    self.fromToView.fromLabel.text = BC_STRING_ETHER;
+    self.leftLabel.text = CURRENCY_SYMBOL_ETH;
+    self.fromAddress = [app.wallet getEtherAddress];
+}
+
+- (void)selectFromBitcoin
+{
+    self.fromSymbol = CURRENCY_SYMBOL_BTC;
+    self.btcField = self.topLeftField;
+    self.fromToView.fromLabel.text = BC_STRING_BITCOIN;
+    self.leftLabel.text = CURRENCY_SYMBOL_BTC;
+    self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+}
+
+- (void)selectToEther
+{
+    self.toSymbol = CURRENCY_SYMBOL_ETH;
+    self.ethField = self.topRightField;
+    self.fromToView.toLabel.text = BC_STRING_ETHER;
+    self.rightLabel.text = CURRENCY_SYMBOL_ETH;
+    self.toAddress = [app.wallet getEtherAddress];
+}
+
+- (void)selectToBitcoin
+{
+    self.toSymbol = CURRENCY_SYMBOL_BTC;
+    self.btcField = self.topRightField;
+    self.fromToView.toLabel.text = BC_STRING_BITCOIN;
+    self.rightLabel.text = CURRENCY_SYMBOL_BTC;
+    self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+}
+
+- (void)autoFillFromAmount:(id)amount
+{
+    NSString *amountString = [self amountString:amount];
+    self.topLeftField.text = amountString;
+    [self saveAmount:amountString fromField:self.topLeftField];
+    
+    NSString *fiatResult;
+    if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
+        fiatResult = [self convertEthAmountToFiat];
+    } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
+        fiatResult = [self convertBtcAmountToFiat];
+    }
+    self.bottomLeftField.text = fiatResult;
+    
+    [self updateAvailableBalance];
+    
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark - Wallet actions
+
+- (void)getRate
+{
+    [self disableAssetToggleButton];
+    [self.spinner startAnimating];
+    
+    [app.wallet getRate:[self coinPair]];
+}
+
+- (void)getQuote
+{
+    [app.wallet getQuote:[self coinPair] amount:@"0.1"];
+}
+
+- (void)getApproximateQuote
+{
+    [self disablePaymentButtons];
+    
+    if (self.currentDataTask) {
+        [self.currentDataTask cancel];
+        self.currentDataTask = nil;
+        [self.spinner stopAnimating];
+    }
+    
+    BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
+
+    NSString *amount;
+    if ([self hasAmountGreaterThanZero:self.amount]) {
+
+        [self disableAssetToggleButton];
+        [self.spinner startAnimating];
+        
+        amount = [self amountString:self.amount];
+        
+        self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:amount completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
+            DLog(@"approximate quote result: %@", result);
+            NSDictionary *resultSuccess = [result objectForKey:DICTIONARY_KEY_SUCCESS];
+            if (resultSuccess) {
+                [self didGetApproximateQuote:resultSuccess];
+            } else {
+                DLog(@"Error getting approximate quote:%@", error);
+            }
+        }];
+    }
+}
+
+- (void)buildTrade
+{
+    BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
+    int fromAccount = fromBtc ? self.btcAccount : 0;
+    int toAccount = fromBtc ? self.btcAccount : 0;
+    NSString *fee = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
+    
+    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:fee];
+}
+
+#pragma mark - Helpers
+
+- (void)hideKeyboard
+{
+    [self.bottomRightField resignFirstResponder];
+    [self.bottomLeftField resignFirstResponder];
+    [self.topLeftField resignFirstResponder];
+    [self.topRightField resignFirstResponder];
+}
+
+- (BOOL)hasAmountGreaterThanZero:(id)amount
+{
+    if ([amount isMemberOfClass:[NSDecimalNumber class]]) {
+        return [amount compare:@0] == NSOrderedDescending;
+    } else if ([amount respondsToSelector:@selector(longLongValue)]) {
+        return [amount longLongValue] > 0;
+    } else if (!amount) {
+        DLog(@"Nil amount saved");
+        return NO;
+    } else {
+        DLog(@"Error: unknown class for amount: %@", [self.amount class]);
+        return NO;
+    }
+}
+
+- (NSString *)amountString:(id)amount
+{
+    NSString *amountString;
+    if ([self hasAmountGreaterThanZero:amount]) {
+        if ([amount isMemberOfClass:[NSDecimalNumber class]]) {
+            amountString = [amount stringValue];
+        } else if ([amount respondsToSelector:@selector(longLongValue)]) {
+            amountString = [NSNumberFormatter satoshiToBTC:[amount longLongValue]];
+        } else {
+            DLog(@"Error: unknown class for amount: %@", [amount class]);
+        }
+    }
+    
+    return amountString;
+}
+
+- (BCSecureTextField *)inputTextFieldWithFrame:(CGRect)frame
+{
+    BCSecureTextField *textField = [[BCSecureTextField alloc] initWithFrame:frame];
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
+    textField.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
+    textField.textColor = COLOR_TEXT_DARK_GRAY;
+    textField.delegate = self;
+    return textField;
+}
+
+- (NSString *)coinPair
+{
+    return [NSString stringWithFormat:@"%@_%@", self.fromSymbol, self.toSymbol];
+}
+
+- (void)enableAssetToggleButton
+{
+    self.assetToggleButton.userInteractionEnabled = YES;
+    [self.assetToggleButton setImage:[UIImage imageNamed:IMAGE_NAME_SWITCH_CURRENCIES] forState:UIControlStateNormal];
+}
+
+- (void)disableAssetToggleButton
+{
+    self.assetToggleButton.userInteractionEnabled = NO;
+    [self.assetToggleButton setImage:nil forState:UIControlStateNormal];
+}
+
+- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
+{
+    // Always use BTC conversion rate
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
+}
+
+- (NSString *)fiatPlaceholder
+{
+    return [NSString stringWithFormat:FIAT_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];;
+}
+
+- (NSString *)assetPlaceholder
+{
+    return [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
 }
 
 #pragma mark - Address Selection Delegate
@@ -403,11 +873,27 @@
 - (void)didSelectFromEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [self selectFromEther];
+    [self selectToBitcoin];
+    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToEthAccount
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [self selectFromBitcoin];
+    [self selectToEther];
+    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectFromAccount:(int)account
@@ -416,12 +902,28 @@
     
     self.btcAccount = account;
     
+    [self selectFromBitcoin];
+    [self selectToEther];
     
+    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToAccount:(int)account
 {
-    [self didSelectFromAccount:account];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    self.btcAccount = account;
+    
+    [self selectFromEther];
+    [self selectToBitcoin];
+    
+    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    
+    [self getRate];
 }
 
 - (void)didSelectToAddress:(NSString *)address
@@ -437,6 +939,26 @@
 - (void)didSelectFromAddress:(NSString *)address
 {
     // required by protocol
+}
+
+#pragma mark - Continue Button Input Accessory View Delegate
+
+- (void)continueButtonClicked
+{
+    [self hideKeyboard];
+    
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:BC_STRING_GETTING_QUOTE];
+    
+    [self performSelector:@selector(buildTrade) withObject:nil afterDelay:DELAY_KEYBOARD_DISMISSAL];
+}
+
+- (void)closeButtonClicked
+{
+    [self.topLeftField resignFirstResponder];
+    [self.topRightField resignFirstResponder];
+    [self.bottomLeftField resignFirstResponder];
+    [self.bottomRightField resignFirstResponder];
 }
 
 @end

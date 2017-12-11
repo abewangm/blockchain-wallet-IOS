@@ -10,5 +10,6 @@
 #import "ExchangeTrade.h"
 
 @interface ExchangeDetailView : UIView
-- (instancetype)initWithFrame:(CGRect)frame trade:(ExchangeTrade *)trade;
+- (instancetype)initWithFrame:(CGRect)frame fetchedTrade:(ExchangeTrade *)trade;
+- (instancetype)initWithFrame:(CGRect)frame builtTrade:(ExchangeTrade *)trade;
 @end

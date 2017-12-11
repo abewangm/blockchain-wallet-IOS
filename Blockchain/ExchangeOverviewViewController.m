@@ -9,6 +9,8 @@
 #import "ExchangeOverviewViewController.h"
 #import "ExchangeCreateViewController.h"
 #import "ExchangeProgressViewController.h"
+#import "ConfirmStateViewController.h"
+#import "ExchangeModalView.h"
 #import "BCNavigationController.h"
 #import "BCLine.h"
 #import "ExchangeTableViewCell.h"
@@ -22,10 +24,11 @@
 
 #define CELL_IDENTIFIER_EXCHANGE_CELL @"exchangeCell"
 
-@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ExchangeOverviewViewController () <UITableViewDelegate, UITableViewDataSource, CloseButtonDelegate, ConfirmStateDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
+@property (nonatomic) BOOL didFinishShift;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -36,11 +39,47 @@
     
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    [self setupExchangeButtonView];
+    NSArray *availableStates = [app.wallet availableUSStates];
     
-    [self setupTableView];
+    if (availableStates.count > 0) {
+        [self showStates:availableStates];
+    } else {
+        [app.wallet getExchangeTrades];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    [app.wallet getExchangeTrades];
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    navigationController.headerTitle = BC_STRING_EXCHANGE;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.didFinishShift) {
+        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+        [navigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+        [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.didFinishShift = NO;
+}
+
+- (void)setupSubviewsIfNeeded
+{
+    if (!self.tableView) {
+        [self setupExchangeButtonView];
+        [self setupTableView];
+    }
 }
 
 - (void)setupExchangeButtonView
@@ -66,7 +105,7 @@
     
     CGFloat exchangeIconImageViewWidth = 50;
     UIImageView *exchangeIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, newExchangeView.frame.size.height/2 - exchangeIconImageViewWidth/2, exchangeIconImageViewWidth, exchangeIconImageViewWidth)];
-    exchangeIconImageView.backgroundColor = [UIColor greenColor];
+    exchangeIconImageView.image = [UIImage imageNamed:@"exchange_small"];
     [newExchangeView addSubview:exchangeIconImageView];
     
     UIImageView *chevronImageView = [[UIImageView alloc] initWithFrame:CGRectMake(newExchangeView.frame.size.width - 8 - chevronWidth, newExchangeView.frame.size.height/2 - chevronWidth/2, chevronWidth, chevronWidth)];
@@ -88,21 +127,49 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.backgroundView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
 
+- (void)showStates:(NSArray *)states
+{
+    ConfirmStateViewController *confirmStateViewController = [[ConfirmStateViewController alloc] initWithStates:states];
+    confirmStateViewController.delegate = self;
+    [self.navigationController pushViewController:confirmStateViewController animated:NO];
+    self.navigationController.viewControllers = @[confirmStateViewController];
+}
+
 - (void)newExchangeClicked
 {
+    [self showCreateExchangeControllerAnimated:YES];
+}
+
+- (void)showCreateExchangeControllerAnimated:(BOOL)animated
+{
     ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
-    [self.navigationController pushViewController:createViewController animated:YES];
+    [self.navigationController pushViewController:createViewController animated:animated];
     self.createViewController = createViewController;
 }
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
-    self.trades = trades;
-    [self.tableView reloadData];
+    if (self.didFinishShift) {
+        self.didFinishShift = NO;
+        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+        [navigationController hideBusyView];
+        [self setupSubviewsIfNeeded];
+        self.trades = trades;
+        [self.tableView reloadData];
+    } else if (trades.count == 0) {
+        [self showCreateExchangeControllerAnimated:NO];
+        self.navigationController.viewControllers = @[self.createViewController];
+        return;
+    } else {
+        [self setupSubviewsIfNeeded];
+        self.trades = trades;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)didGetExchangeRate:(NSDictionary *)result
@@ -110,7 +177,83 @@
     [self.createViewController didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.createViewController didGetQuote:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.createViewController didGetAvailableEthBalance:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.createViewController didGetAvailableBtcBalance:result];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    [self.createViewController didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    
+    ExchangeModalView *exchangeModalView = [[ExchangeModalView alloc] initWithFrame:self.view.frame description:BC_STRING_EXCHANGE_DESCRIPTION_SENDING_FUNDS imageName:@"exchange_sending" bottomText:[NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 1, 3] closeButtonText:BC_STRING_CLOSE];
+    exchangeModalView.delegate = self;
+    BCModalViewController *modalViewController = [[BCModalViewController alloc] initWithCloseType:ModalCloseTypeNone showHeader:YES headerText:BC_STRING_EXCHANGE_TITLE_SENDING_FUNDS view:exchangeModalView];
+    
+    if (!self.navigationController) {
+        self.createViewController.navigationController.viewControllers = @[self, self.createViewController];
+    }
+    [self.navigationController presentViewController:modalViewController animated:YES completion:nil];
+}
+
+#pragma mark - Confirm State delegate
+
+- (void)didConfirmState:(UINavigationController *)navigationController
+{
+    ExchangeCreateViewController *createViewController = [ExchangeCreateViewController new];
+    [navigationController pushViewController:createViewController animated:NO];
+    self.createViewController = createViewController;
+    navigationController.viewControllers = @[createViewController];
+}
+
+#pragma mark - Close button delegate
+
+- (void)closeButtonClicked
+{
+    self.didFinishShift = YES;
+    [self.navigationController.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+}
+
 #pragma mark - Table View Delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 45.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
+    view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, tableView.frame.size.width, 30)];
+    label.textColor = COLOR_TEXT_DARK_GRAY;
+    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    
+    [view addSubview:label];
+    
+    label.text = [BC_STRING_ORDER_HISTORY uppercaseString];
+    
+    return view;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -137,6 +280,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     ExchangeProgressViewController *exchangeProgressVC = [[ExchangeProgressViewController alloc] init];
     exchangeProgressVC.trade = [self.trades objectAtIndex:indexPath.row];
     BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:exchangeProgressVC title:BC_STRING_EXCHANGE];

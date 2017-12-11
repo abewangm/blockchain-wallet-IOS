@@ -606,4 +606,29 @@
     [self.exchangeOverviewViewController didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetQuote:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableEthBalance:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableBtcBalance:result];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    [self.exchangeOverviewViewController didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.exchangeOverviewViewController didShiftPayment:info];
+}
+
 @end

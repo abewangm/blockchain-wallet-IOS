@@ -27,6 +27,15 @@
     }
 }
 
++ (NSString *)satoshiToBTC:(uint64_t)value
+{
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    NSString *result = [NSNumberFormatter formatAmount:value localCurrency:NO];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {

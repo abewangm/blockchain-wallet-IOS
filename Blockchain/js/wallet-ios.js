@@ -62,6 +62,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 var MyWalletPhone = {};
 var currentPayment = null;
 var currentEtherPayment = null;
+var currentShiftPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
 
@@ -692,8 +693,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     };
 
     var login_success = function() {
-        logTime('fetch history, options, account info');
-
+        logTime('fetch history, account info');
+        
         objc_loading_stop();
 
         objc_did_load_wallet();
@@ -710,9 +711,8 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
     var success = function() {
         logTime('wallet login');
         var getHistory = MyWallet.wallet.getHistory().catch(history_error);
-        var fetchOptions = walletOptions.fetch().catch(other_error);
         var fetchAccount = MyWallet.wallet.fetchAccountInfo().catch(other_error);
-        Promise.all([getHistory, fetchOptions, fetchAccount]).then(login_success);
+        Promise.all([getHistory, fetchAccount]).then(login_success);
     };
 
     var other_error = function(e) {
@@ -764,9 +764,11 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         didDecrypt: decrypt_success,
         didBuildHD: build_hd_success
     }
-
-    MyWallet.login(user_guid, inputedPassword, credentials, callbacks)
-      .then(success).catch(other_error);
+    
+    walletOptions.fetch().then(function() {
+        Blockchain.constants.SHAPE_SHIFT_KEY = walletOptions.getValue().shapeshift.apiKey;
+        MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
+    });
 };
 
 MyWalletPhone.getInfoForTransferAllFundsToAccount = function() {
@@ -2527,7 +2529,7 @@ MyWalletPhone.getExchangeTrades = function() {
 MyWalletPhone.getRate = function(coinPair) {
     
     var success = function(result) {
-        objc_on_get_exchange_rate_success(result);
+        objc_on_get_exchange_rate_success(result.limit, result.minimum, result.minerFee, result.maxLimit, result.pair, result.rate);
     }
     
     var error = function(e) {
@@ -2537,3 +2539,217 @@ MyWalletPhone.getRate = function(coinPair) {
     
     MyWallet.wallet.shapeshift.getRate(coinPair).then(success).catch(error);
 }
+
+MyWalletPhone.getQuote = function(coinPair, amount) {
+    
+    var success = function(result) {
+        objc_on_get_quote_success(result.toJSON());
+    }
+    
+    var error = function(e) {
+        console.log('Error getting quote');
+        console.log(e);
+    }
+    
+    MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
+}
+
+MyWalletPhone.getShapeshiftApiKey = function() {
+    return walletOptions.getValue().shapeshift.apiKey;
+}
+
+MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
+    
+    var success = function(result) {
+        objc_on_get_available_btc_balance_success(result);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting btc balance');
+        console.log(e);
+        objc_on_get_available_btc_balance_error(e);
+    }
+    
+    MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance('priority').then(success).catch(error);
+}
+
+MyWalletPhone.getAvailableEthBalance = function() {
+    
+    var success = function(result) {
+        objc_on_get_available_eth_balance_success(result.amount, result.fee);
+    }
+    
+    var error = function(e) {
+        console.log('Error getting eth balance');
+        console.log(e);
+        objc_on_get_available_eth_balance_error(e);
+    }
+    MyWallet.wallet.eth.accounts[0].getAvailableBalance().then(success).catch(error);
+}
+
+MyWalletPhone.getLabelForEthAccount = function() {
+    return MyWallet.wallet.eth.defaultAccount.label;
+}
+
+MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
+    
+    var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration) {
+        objc_on_build_exchange_trade_success(coins[0], depositAmount, fee, rate, minerFee, withdrawalAmount, expiration);
+    }
+    
+    var error = function(e) {
+        console.log('Error building exchange trade');
+        console.log(e);
+    }
+    
+    var buildPayment = function(quote) {
+        var expiration = quote.expires;
+        currentShiftPayment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
+        
+        var depositAmount = currentShiftPayment.quote.depositAmount;
+        var rate = currentShiftPayment.quote.rate;
+        var minerFee = currentShiftPayment.quote.minerFee;
+        var withdrawalAmount = currentShiftPayment.quote.withdrawalAmount;
+
+        currentShiftPayment.getFee().then(function(finalFee) {
+          console.log('payment got fee');
+          console.log(finalFee);
+          success(depositAmount, finalFee, rate, minerFee, withdrawalAmount, expiration);
+        });
+    };
+    
+    var fromArg;
+    var toArg;
+    var coins = coinPair.split('_');
+    if (coins[0] == 'btc') {
+        fromArg = MyWallet.wallet.hdwallet.accounts[from];
+        toArg = MyWallet.wallet.eth.defaultAccount;
+    } else {
+        fromArg = MyWallet.wallet.eth.defaultAccount;
+        toArg = MyWallet.wallet.hdwallet.accounts[to];
+    }
+    
+    MyWallet.wallet.shapeshift.getQuote(fromArg, toArg, amount).then(buildPayment).catch(error);
+}
+
+MyWalletPhone.shiftPayment = function() {
+    
+    var success = function(result) {
+        console.log('shift complete');
+        console.log(JSON.stringify(result));
+        objc_on_shift_payment_success();
+    }
+    
+    var error = function(e) {
+        console.log('Error shifting payment');
+        console.log(JSON.stringify(e));
+        objc_on_shift_payment_error(e);
+    }
+    
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        MyWalletPhone.getSecondPassword(function (pw) {
+            MyWallet.wallet.shapeshift.shift(currentShiftPayment, pw).then(success).catch(error);
+        });
+    }
+    else {
+        MyWallet.wallet.shapeshift.shift(currentShiftPayment).then(success).catch(error);
+    }
+}
+
+MyWalletPhone.isCountryWhitelistedForShapeshift = function() {
+    var country = MyWallet.wallet.accountInfo.countryCodeGuess;
+    var countriesBlacklist = walletOptions.getValue().shapeshift.countriesBlacklist;
+    var isBlacklisted = countriesBlacklist.indexOf(country) > -1;
+    return !isBlacklisted;
+}
+
+MyWalletPhone.availableUSStates = function() {
+    var accountInfo = MyWallet.wallet.accountInfo;
+    var codeGuess = accountInfo && accountInfo.countryCodeGuess;
+    var storedState = MyWallet.wallet.shapeshift.USAState;
+    
+    if (codeGuess === 'US' && !storedState) {
+        return [{'Name': 'Alabama', 'Code': 'AL'},
+                {'Name': 'Alaska', 'Code': 'AK'},
+                {'Name': 'American Samoa', 'Code': 'AS'},
+                {'Name': 'Arizona', 'Code': 'AZ'},
+                {'Name': 'Arkansas', 'Code': 'AR'},
+                {'Name': 'California', 'Code': 'CA'},
+                {'Name': 'Colorado', 'Code': 'CO'},
+                {'Name': 'Connecticut', 'Code': 'CT'},
+                {'Name': 'Delaware', 'Code': 'DE'},
+                {'Name': 'District Of Columbia', 'Code': 'DC'},
+                {'Name': 'Federated States Of Micronesia', 'Code': 'FM'},
+                {'Name': 'Florida', 'Code': 'FL'},
+                {'Name': 'Georgia', 'Code': 'GA'},
+                {'Name': 'Guam', 'Code': 'GU'},
+                {'Name': 'Hawaii', 'Code': 'HI'},
+                {'Name': 'Idaho', 'Code': 'ID'},
+                {'Name': 'Illinois', 'Code': 'IL'},
+                {'Name': 'Indiana', 'Code': 'IN'},
+                {'Name': 'Iowa', 'Code': 'IA'},
+                {'Name': 'Kansas', 'Code': 'KS'},
+                {'Name': 'Kentucky', 'Code': 'KY'},
+                {'Name': 'Louisiana', 'Code': 'LA'},
+                {'Name': 'Maine', 'Code': 'ME'},
+                {'Name': 'Marshall Islands', 'Code': 'MH'},
+                {'Name': 'Maryland', 'Code': 'MD'},
+                {'Name': 'Massachusetts', 'Code': 'MA'},
+                {'Name': 'Michigan', 'Code': 'MI'},
+                {'Name': 'Minnesota', 'Code': 'MN'},
+                {'Name': 'Mississippi', 'Code': 'MS'},
+                {'Name': 'Missouri', 'Code': 'MO'},
+                {'Name': 'Montana', 'Code': 'MT'},
+                {'Name': 'Nebraska', 'Code': 'NE'},
+                {'Name': 'Nevada', 'Code': 'NV'},
+                {'Name': 'New Hampshire', 'Code': 'NH'},
+                {'Name': 'New Jersey', 'Code': 'NJ'},
+                {'Name': 'New Mexico', 'Code': 'NM'},
+                {'Name': 'New York', 'Code': 'NY'},
+                {'Name': 'North Carolina', 'Code': 'NC'},
+                {'Name': 'North Dakota', 'Code': 'ND'},
+                {'Name': 'Northern Mariana Islands', 'Code': 'MP'},
+                {'Name': 'Ohio', 'Code': 'OH'},
+                {'Name': 'Oklahoma', 'Code': 'OK'},
+                {'Name': 'Oregon', 'Code': 'OR'},
+                {'Name': 'Palau', 'Code': 'PW'},
+                {'Name': 'Pennsylvania', 'Code': 'PA'},
+                {'Name': 'Puerto Rico', 'Code': 'PR'},
+                {'Name': 'Rhode Island', 'Code': 'RI'},
+                {'Name': 'South Carolina', 'Code': 'SC'},
+                {'Name': 'South Dakota', 'Code': 'SD'},
+                {'Name': 'Tennessee', 'Code': 'TN'},
+                {'Name': 'Texas', 'Code': 'TX'},
+                {'Name': 'Utah', 'Code': 'UT'},
+                {'Name': 'Vermont', 'Code': 'VT'},
+                {'Name': 'Virgin Islands', 'Code': 'VI'},
+                {'Name': 'Virginia', 'Code': 'VA'},
+                {'Name': 'Washington', 'Code': 'WA'},
+                {'Name': 'West Virginia', 'Code': 'WV'},
+                {'Name': 'Wisconsin', 'Code': 'WI'},
+                {'Name': 'Wyoming', 'Code': 'WY'}];
+    } else {
+        return [];
+    }
+}
+
+MyWalletPhone.isStateWhitelistedForShapeshift = function(stateCode) {
+    var states = walletOptions.getValue().shapeshift.statesWhitelist;
+    return states.indexOf(stateCode) > -1;
+}
+
+MyWalletPhone.setStateForShapeshift = function(name, code) {
+    MyWallet.wallet.shapeshift.setUSAState({
+       'Name': name,
+       'Code': code
+    });
+}
+
+MyWalletPhone.isDepositTransaction = function(txHash) {
+    return MyWallet.wallet.shapeshift.isDepositTx(txHash);
+}
+
+MyWalletPhone.isWithdrawalTransaction = function(txHash) {
+    return MyWallet.wallet.shapeshift.isWithdrawalTx(txHash);
+}
+

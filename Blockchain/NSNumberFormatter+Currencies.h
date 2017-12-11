@@ -11,7 +11,7 @@
 @interface NSNumberFormatter (Currencies)
 
 + (NSString *)localCurrencyCode;
-
++ (NSString *)satoshiToBTC:(uint64_t)value;
 + (NSDecimalNumber *)formatSatoshiInLocalCurrency:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value;
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal;

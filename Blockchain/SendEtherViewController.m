@@ -14,12 +14,13 @@
 #import "RootService.h"
 #import "BCConfirmPaymentView.h"
 #import "BCConfirmPaymentViewModel.h"
+#import "ContinueButtonInputAccessoryView.h"
 
 @interface QRCodeScannerSendViewController ()
 - (void)stopReadingQRCode;
 @end
 
-@interface EtherAmountInputViewController ()
+@interface EtherAmountInputViewController () <ContinueButtonInputAccessoryViewDelegate>
 @property (nonatomic) NSString *toAddress;
 @property (nonatomic) NSDecimalNumber *latestExchangeRate;
 @property (nonatomic) BCAmountInputView *amountInputView;
@@ -37,7 +38,7 @@
 @property (nonatomic) UIButton *fundsAvailableButton;
 @property (nonatomic) UIButton *continuePaymentButton;
 @property (nonatomic) NSString *noteToSet;
-@property (nonatomic) UIButton *continuePaymentAccessoryButton;
+@property (nonatomic) ContinueButtonInputAccessoryView *continuePaymentAccessoryView;
 @property (nonatomic) BCConfirmPaymentView *confirmPaymentView;
 @property (nonatomic) BOOL shouldKeepCurrentPayment;
 
@@ -100,8 +101,10 @@
     [amountInputView changeYPosition:ROW_HEIGHT_SEND_SMALL + ROW_HEIGHT_SEND_LARGE];
     [amountInputView changeHeight:amountInputView.btcLabel.frame.origin.y + amountInputView.btcLabel.frame.size.height];
     [self.view addSubview:amountInputView];
-    UIView *inputAccessoryView = [self getInputAccessoryView];
+    ContinueButtonInputAccessoryView *inputAccessoryView = [[ContinueButtonInputAccessoryView alloc] init];
+    inputAccessoryView.delegate = self;
     toField.inputAccessoryView = inputAccessoryView;
+    self.continuePaymentAccessoryView = inputAccessoryView;
     amountInputView.btcField.inputAccessoryView = inputAccessoryView;
     amountInputView.fiatField.inputAccessoryView = inputAccessoryView;
     amountInputView.btcField.delegate = self;
@@ -295,9 +298,7 @@
     [self.continuePaymentButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [self.continuePaymentButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
     
-    self.continuePaymentAccessoryButton.enabled = NO;
-    [self.continuePaymentAccessoryButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
+    [self.continuePaymentAccessoryView disableContinueButton];
 }
 
 - (void)enablePaymentButtons
@@ -306,9 +307,7 @@
     [self.continuePaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.continuePaymentButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
     
-    [self.continuePaymentAccessoryButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.continuePaymentAccessoryButton.enabled = YES;
-    [self.continuePaymentAccessoryButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
+    [self.continuePaymentAccessoryView enableContinueButton];
 }
 
 - (void)useAllClicked
@@ -331,27 +330,7 @@
     return line;
 }
 
-- (UIView *)getInputAccessoryView
-{
-    UIView *inputAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, BUTTON_HEIGHT)];
-    
-    UIButton *continueButton = [[UIButton alloc] initWithFrame:inputAccessoryView.bounds];
-    [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
-    continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
-    [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
-    [inputAccessoryView addSubview:continueButton];
-    self.continuePaymentAccessoryButton = continueButton;
-    
-    CGFloat closeButtonWidth = 50;
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccessoryView.bounds.size.width - closeButtonWidth, 0, closeButtonWidth, BUTTON_HEIGHT)];
-    [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-    [closeButton addTarget:self action:@selector(hideKeyboard) forControlEvents:UIControlEventTouchUpInside];
-    closeButton.backgroundColor = COLOR_BUTTON_DARK_GRAY;
-    [inputAccessoryView addSubview:closeButton];
-    
-    return inputAccessoryView;
-}
+#pragma mark - Continue Button Accessory View Delegate
 
 - (void)continueButtonClicked
 {
@@ -394,6 +373,15 @@
     }];
 }
 
+- (void)closeButtonClicked
+{
+    [self.toField resignFirstResponder];
+    [self.amountInputView.fiatField resignFirstResponder];
+    [self.amountInputView.btcField resignFirstResponder];
+}
+
+#pragma mark - Actions
+
 - (void)setupNoteForTransaction:(NSString *)note
 {
     self.noteToSet = note;
@@ -404,13 +392,6 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_FEE_INFORMATION_TITLE message:BC_STRING_FEE_INFORMATION_MESSAGE_ETHER preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
     [app.tabControllerManager.tabViewController presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)hideKeyboard
-{
-    [self.toField resignFirstResponder];
-    [self.amountInputView.fiatField resignFirstResponder];
-    [self.amountInputView.btcField resignFirstResponder];
 }
 
 - (void)reallyDoPayment

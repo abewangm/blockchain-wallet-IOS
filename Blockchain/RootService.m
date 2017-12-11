@@ -2504,6 +2504,31 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetExchangeRate:result];
 }
 
+- (void)didGetQuote:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetQuote:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableBtcBalance:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableEthBalance:result];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    [self.tabControllerManager didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.tabControllerManager didShiftPayment:info];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

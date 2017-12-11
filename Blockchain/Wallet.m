@@ -907,8 +907,41 @@
         [weakSelf on_get_exchange_trades_success:trades];
     };
     
-    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *result) {
-        [weakSelf on_get_exchange_rate_success:[result toDictionary]];
+    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *limit, JSValue *minimum, JSValue *minerFee, JSValue *maxLimit, JSValue *pair, JSValue *rate) {
+        [weakSelf on_get_exchange_rate_success:@{DICTIONARY_KEY_LIMIT : [limit toString], DICTIONARY_KEY_MINIMUM : [minimum toString], DICTIONARY_KEY_MINER_FEE : [minerFee toString], DICTIONARY_KEY_MAX_LIMIT : [maxLimit toString], DICTIONARY_KEY_RATE : [rate toString]}];
+    };
+    
+    self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *from, JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount, JSValue *expiration) {
+        [weakSelf on_build_exchange_trade_success_from:[from toString] depositAmount:[depositAmount toString] fee:[fee toNumber] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
+    };
+    
+    self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
+        [weakSelf on_get_quote_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
+        [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_get_available_btc_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_BTC];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_success"] = ^(JSValue *amount, JSValue *fee) {
+        NSDictionary *dict = @{DICTIONARY_KEY_AMOUNT : [amount toNumber], DICTIONARY_KEY_FEE : [fee toNumber]};
+        [weakSelf on_get_available_eth_balance_success:dict];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_ETH];
+    };
+    
+    self.context[@"objc_on_shift_payment_success"] = ^(JSValue *result) {
+        [weakSelf on_shift_payment_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_shift_payment_error"] = ^(JSValue *error) {
+        [weakSelf on_shift_payment_error:[error toDictionary]];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -2295,14 +2328,142 @@
 
 #pragma mark - Exchange
 
+- (BOOL)isCountryWhitelistedForShapeshift
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.isCountryWhitelistedForShapeshift()"] toBool];
+    }
+    
+    return NO;
+}
+
+- (NSArray *)availableUSStates
+{
+    if ([self isInitialized]) {
+        NSArray *states = [[self.context evaluateScript:@"MyWalletPhone.availableUSStates()"] toArray];
+        return states.count > 0 ? states : nil;
+    }
+    
+    return nil;
+}
+
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isStateWhitelistedForShapeshift(\"%@\")", [stateCode escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
+- (void)selectState:(NSString *)name code:(NSString *)code
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setStateForShapeshift(\"%@\", \"%@\")", [name escapeStringForJS], [code escapeStringForJS]]];
+    }
+}
+
 - (void)getExchangeTrades
 {
-     [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
+     if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
 }
 
 - (void)getRate:(NSString *)coinPair
 {
-    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
+}
+
+- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
+}
+
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
+{
+    if ([self isInitialized]) {
+        DLog(@"Getting approximate quote");
+        
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
+        NSURL *URL = [NSURL URLWithString:@"https://shapeshift.io/sendamount"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        
+        NSString *apiKey = [[self.context evaluateScript:@"MyWalletPhone.getShapeshiftApiKey()"] toString];
+        
+        NSString *depositOrWithdrawParameter = usingFromField ? @"depositAmount" : @"withdrawalAmount";
+        
+        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"%@\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [depositOrWithdrawParameter escapeStringForJS], [convertedAmount escapeStringForJS], [apiKey escapeStringForJS]];
+        NSData *postData = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:postData];
+
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                DLog(@"Error getting approximate quote: %@", error);
+                NSInteger cancelledErrorCode = -999;
+                if (error.code != cancelledErrorCode) [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, error]];
+            } else {
+                NSError *jsonError;
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (completion) completion(result, response, error);
+                });
+            }
+        }];
+        
+        [task resume];
+        
+        return task;
+    }
+    
+    return nil;
+}
+
+- (void)getAvailableBtcBalanceForAccount:(int)account
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getAvailableBtcBalanceForAccount(\"%d\")", account]];
+}
+
+- (void)getAvailableEthBalance
+{
+    if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getAvailableEthBalance()"];
+}
+
+- (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
+{
+    if ([self isInitialized]) {
+        
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [convertedAmount escapeStringForJS], [fee escapeStringForJS]]];
+    }
+}
+
+- (void)shiftPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.shiftPayment()"]];
+    }
+}
+
+- (BOOL)isDepositTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isDepositTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isWithdrawalTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
 }
 
 #pragma mark - Contacts
@@ -2661,6 +2822,15 @@
     }
     
     return NO;
+}
+
+- (NSString *)getLabelForEthAccount
+{
+    if ([self isInitialized] && [self hasEthAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForEthAccount()"] toString];
+    }
+    
+    return nil;
 }
 
 # pragma mark - Transaction handlers
@@ -4149,7 +4319,7 @@
 {
     NSMutableArray *exchangeTrades = [NSMutableArray new];
     for (NSDictionary *trade in trades) {
-        ExchangeTrade *exchangeTrade = [ExchangeTrade fromJSONDict:trade];
+        ExchangeTrade *exchangeTrade = [ExchangeTrade fetchedTradeFromJSONDict:trade];
         [exchangeTrades addObject:exchangeTrade];
     }
     
@@ -4166,6 +4336,73 @@
         [self.delegate didGetExchangeRate:result];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
+    }
+}
+
+- (void)on_get_quote_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetQuote:)]) {
+        [self.delegate didGetQuote:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_btc_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableBtcBalance:)]) {
+        [self.delegate didGetAvailableBtcBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableBtcBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
+{
+    [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
+}
+
+- (void)on_get_available_eth_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableEthBalance:)]) {
+        [self.delegate didGetAvailableEthBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableEthBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_shift_payment_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didShiftPayment:)]) {
+        [self.delegate didShiftPayment:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didShiftPayment:!", [delegate class]);
+    }
+}
+
+- (void)on_shift_payment_error:(NSDictionary *)result
+{
+    [app hideBusyView];
+    
+    NSString *errorMessage = [result objectForKey:DICTIONARY_KEY_MESSAGE];
+    [app standardNotify:errorMessage];
+}
+
+- (void)on_build_exchange_trade_success_from:(NSString *)from depositAmount:(NSString *)depositAmount fee:(NSNumber *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount expiration:(NSDate *)expirationDate
+{
+    NSDictionary *tradeInfo = @{
+        DICTIONARY_KEY_DEPOSIT_AMOUNT : depositAmount,
+        DICTIONARY_KEY_FEE : [[from lowercaseString] isEqualToString:[CURRENCY_SYMBOL_BTC lowercaseString]] ? [NSNumberFormatter satoshiToBTC:[fee longLongValue]] : [fee stringValue],
+        DICTIONARY_KEY_RATE : rate,
+        DICTIONARY_KEY_MINER_FEE : minerFee,
+        DICTIONARY_KEY_WITHDRAWAL_AMOUNT : withdrawalAmount,
+        DICTIONARY_KEY_EXPIRATION_DATE : expirationDate
+    };
+    
+    if ([self.delegate respondsToSelector:@selector(didBuildExchangeTrade:)]) {
+        [self.delegate didBuildExchangeTrade:tradeInfo];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBuildExchangeTrade:!", [delegate class]);
     }
 }
 

@@ -8,29 +8,59 @@
 
 #import "ExchangeTrade.h"
 
-#define DICTIONARY_KEY_STATUS @"status"
-#define DICTIONARY_KEY_PAIR @"pair"
-#define DICTIONARY_KEY_QUOTE @"quote"
-#define DICTIONARY_KEY_ORDER_ID @"orderId"
-#define DICTIONARY_KEY_WITHDRAWAL_AMOUNT @"withdrawalAmount"
-#define DICTIONARY_KEY_DEPOSIT_AMOUNT @"depositAmount"
-#define DICTIONARY_KEY_MINER_FEE @"minerFee"
-
 @implementation ExchangeTrade
 
-+ (ExchangeTrade *)fromJSONDict:(NSDictionary *)dict
++ (ExchangeTrade *)fetchedTradeFromJSONDict:(NSDictionary *)dict
 {
     ExchangeTrade *trade = [[ExchangeTrade alloc] init];
+    
     trade.date = [dict objectForKey:DICTIONARY_KEY_TIME];
     trade.status = [dict objectForKey:DICTIONARY_KEY_STATUS];
     
     NSDictionary *quote = [dict objectForKey:DICTIONARY_KEY_QUOTE];
     trade.orderID = [quote objectForKey:DICTIONARY_KEY_ORDER_ID];
     trade.pair = [quote objectForKey:DICTIONARY_KEY_PAIR];
-    trade.depositAmount = [[NSDecimalNumber alloc] initWithDecimal:[[quote objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT] decimalValue]];
-    trade.withdrawalAmount = [quote objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
-    trade.transactionFee = [quote objectForKey:DICTIONARY_KEY_MINER_FEE];
+    trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
+    trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
+    trade.minerFee = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    
+    trade.exchangeRate = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_QUOTED_RATE]];
+    trade.exchangeRateString = [trade exchangeRateString];
+    
     return trade;
+}
+
++ (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict
+{
+    ExchangeTrade *trade = [[ExchangeTrade alloc] init];
+    trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
+    trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];
+    trade.minerFee = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_MINER_FEE]];
+    trade.expirationDate = [dict objectForKey:DICTIONARY_KEY_EXPIRATION_DATE];
+    trade.exchangeRate = [ExchangeTrade decimalNumberFromDictValue:[dict objectForKey:DICTIONARY_KEY_RATE]];
+    
+    return trade;
+}
+
++ (NSDecimalNumber *)decimalNumberFromDictValue:(id)value
+{
+    NSDecimalNumber *decimalNumber;
+    if ([value isKindOfClass:[NSString class]]) {
+        decimalNumber = [NSDecimalNumber decimalNumberWithString:value];
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        decimalNumber = [[NSDecimalNumber alloc] initWithDecimal:[value decimalValue]];
+    }
+    
+    return decimalNumber;
+}
+
+- (NSString *)exchangeRateString
+{
+    NSArray *coinPairComponents = [self.pair componentsSeparatedByString:@"_"];
+    NSString *from = [[coinPairComponents firstObject] uppercaseString];
+    NSString *to = [[coinPairComponents lastObject] uppercaseString];
+    NSString *amount = [self.exchangeRate stringValue];
+    return [NSString stringWithFormat:@"1 %@ = %@ %@", from, amount, to];
 }
 
 @end
