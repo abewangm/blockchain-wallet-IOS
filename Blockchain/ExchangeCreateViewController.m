@@ -63,6 +63,7 @@
 @property (nonatomic) UIActivityIndicatorView *spinner;
 
 @property (nonatomic) ContinueButtonInputAccessoryView *continuePaymentAccessoryView;
+@property (nonatomic) UIButton *continueButton;
 @end
 
 @implementation ExchangeCreateViewController
@@ -219,6 +220,17 @@
     [self.view addSubview:errorTextView];
     errorTextView.hidden = YES;
     self.errorTextView = errorTextView;
+    
+    UIButton *continueButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240, BUTTON_HEIGHT)];
+    continueButton.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
+    continueButton.layer.cornerRadius = CORNER_RADIUS_BUTTON;
+    [continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
+    [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
+    continueButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    [self.view addSubview:continueButton];
+    [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.continueButton = continueButton;
 }
 
 #pragma mark - JS Callbacks
@@ -327,12 +339,19 @@
 - (void)enablePaymentButtons
 {
     [self.continuePaymentAccessoryView enableContinueButton];
+    
+    self.continueButton.enabled = YES;
+    [self.continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.continueButton setBackgroundColor:COLOR_BLOCKCHAIN_LIGHT_BLUE];
 }
 
 - (void)disablePaymentButtons
 {
     [self.continuePaymentAccessoryView disableContinueButton];
 
+    self.continueButton.enabled = NO;
+    [self.continueButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.continueButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
 }
 
 - (void)didGetQuote:(NSDictionary *)result
