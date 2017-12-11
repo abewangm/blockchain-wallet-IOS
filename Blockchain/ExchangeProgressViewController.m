@@ -72,6 +72,8 @@
         return [UIImage imageNamed:@"exchange_complete"];
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [UIImage imageNamed:@"exchange_in_progress"];
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+        return [UIImage imageNamed:@"exchange_error"];
     }
     
     return nil;
@@ -83,6 +85,8 @@
         return BC_STRING_COMPLETE;
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return BC_STRING_IN_PROGRESS;
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+        return BC_STRING_EXCHANGE_DESCRIPTION_FAILED;
     }
     
     return nil;
@@ -94,6 +98,8 @@
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 3, 3];
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 2, 3];
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+        return BC_STRING_EXCHANGE_TITLE_FAILED;
     }
     
     return nil;

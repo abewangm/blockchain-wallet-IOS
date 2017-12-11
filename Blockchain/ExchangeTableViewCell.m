@@ -26,8 +26,10 @@
         displayStatus = BC_STRING_IN_PROGRESS;
     } else if ([status isEqualToString:TRADE_STATUS_CANCELLED] ||
                [status isEqualToString:TRADE_STATUS_FAILED] ||
-               [status isEqualToString:TRADE_STATUS_EXPIRED]) {
+               [status isEqualToString:TRADE_STATUS_EXPIRED] ||
+               [status isEqualToString:TRADE_STATUS_RESOLVED]) {
         statusColor = COLOR_BLOCKCHAIN_RED;
+        displayStatus = BC_STRING_FAILED;
     }
     
     self.actionLabel.textColor = statusColor;
