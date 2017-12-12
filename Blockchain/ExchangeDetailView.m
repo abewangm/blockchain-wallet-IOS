@@ -22,6 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self changeHeight:NUMBER_OF_ROWS_FETCHED_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithFetchedTrade:trade];
     }
@@ -32,6 +33,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self changeHeight:NUMBER_OF_ROWS_BUILT_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithBuiltTrade:trade];
     }

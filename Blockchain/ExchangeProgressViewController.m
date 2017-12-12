@@ -29,6 +29,7 @@
     CGFloat windowWidth = WINDOW_WIDTH;
     BOOL isUsingLargerScreen = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
     UIView *summaryView = [[UIView alloc] initWithFrame:CGRectMake(0, DEFAULT_HEADER_HEIGHT, windowWidth, isUsingLargerScreen ? 220 : self.view.frame.size.height - detailView.frame.size.height - 24 - DEFAULT_HEADER_HEIGHT)];
+    summaryView.backgroundColor = [UIColor whiteColor];
 
     UITextView *descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, windowWidth - 16, 0)];
     descriptionTextView.font = [self descriptionFontForTrade:self.trade];
@@ -39,7 +40,7 @@
     descriptionTextView.editable = NO;
     descriptionTextView.selectable = NO;
     [descriptionTextView sizeToFit];
-    [descriptionTextView changeYPosition:summaryView.frame.size.height - descriptionTextView.frame.size.height];
+    [descriptionTextView changeYPosition:summaryView.frame.size.height - descriptionTextView.frame.size.height - 8];
     descriptionTextView.center = CGPointMake(summaryView.frame.size.width/2, descriptionTextView.center.y);
     [summaryView addSubview:descriptionTextView];
     
