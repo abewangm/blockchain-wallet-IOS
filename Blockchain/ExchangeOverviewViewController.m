@@ -244,13 +244,23 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
     view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, tableView.frame.size.width, 30)];
-    label.textColor = COLOR_TEXT_DARK_GRAY;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, tableView.frame.size.width/2, 30)];
+    leftLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    leftLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
     
-    [view addSubview:label];
+    [view addSubview:leftLabel];
     
-    label.text = [BC_STRING_ORDER_HISTORY uppercaseString];
+    leftLabel.text = [BC_STRING_ORDER_HISTORY uppercaseString];
+    
+    CGFloat rightLabelOriginX = leftLabel.frame.origin.x + leftLabel.frame.size.width + 8;
+    UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(rightLabelOriginX, 12, self.view.frame.size.width - rightLabelOriginX - 15, 30)];
+    rightLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    rightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    rightLabel.textAlignment = NSTextAlignmentRight;
+    
+    [view addSubview:rightLabel];
+    
+    rightLabel.text = [BC_STRING_INCOMING uppercaseString];
     
     return view;
 }
