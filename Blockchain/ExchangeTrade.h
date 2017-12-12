@@ -44,5 +44,7 @@
 + (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict;
 
 - (NSString *)exchangeRateString;
+- (NSString *)depositCurrency;
+- (NSString *)withdrawalCurrency;
 
 @end
