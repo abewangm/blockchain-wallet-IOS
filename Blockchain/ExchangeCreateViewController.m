@@ -255,7 +255,7 @@
 
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
 {
-    self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
+    self.availableBalance = [NSDecimalNumber decimalNumberWithDecimal:[[result objectForKey:DICTIONARY_KEY_AMOUNT] decimalValue]];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
     [self updateAvailableBalance];
@@ -663,7 +663,8 @@
 
 - (void)useMaxButtonClicked
 {
-    [self autoFillFromAmount:self.maximum];
+    id maxAmount = [self.availableBalance compare:self.maximum] == NSOrderedAscending ? self.availableBalance : self.maximum;
+    [self autoFillFromAmount:maxAmount];
 }
 
 #pragma mark - View actions
@@ -720,6 +721,8 @@
     
     [self updateAvailableBalance];
     
+    [self hideKeyboard];
+    
     [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
@@ -748,7 +751,7 @@
         [self.spinner stopAnimating];
     }
     
-    BOOL usingFromField = [self.topLeftField isFirstResponder] || [self.bottomLeftField isFirstResponder];
+    BOOL usingFromField = ![self.topRightField isFirstResponder] && ![self.bottomRightField isFirstResponder];
 
     NSString *amount;
     if ([self hasAmountGreaterThanZero:self.amount]) {
