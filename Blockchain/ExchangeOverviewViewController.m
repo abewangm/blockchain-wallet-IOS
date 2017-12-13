@@ -29,6 +29,7 @@
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
 @property (nonatomic) BOOL didFinishShift;
+@property (nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -79,6 +80,7 @@
     if (!self.tableView) {
         [self setupExchangeButtonView];
         [self setupTableView];
+        [self setupPullToRefresh];
     }
 }
 
@@ -127,9 +129,30 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.backgroundView.backgroundColor = [UIColor clearColor];
+    UIView *backgroundView = [UIView new];
+    backgroundView.backgroundColor = self.view.backgroundColor;
+    tableView.backgroundView = backgroundView;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+}
+
+- (void)setupPullToRefresh
+{
+    // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(getHistory)
+                  forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+}
+
+- (void)getHistory
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (void)showStates:(NSArray *)states
@@ -154,10 +177,12 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    [self.refreshControl endRefreshing];
+    
     if (self.didFinishShift) {
         self.didFinishShift = NO;
-        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
-        [navigationController hideBusyView];
         [self setupSubviewsIfNeeded];
         self.trades = trades;
         [self.tableView reloadData];
