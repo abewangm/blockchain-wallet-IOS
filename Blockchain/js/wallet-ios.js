@@ -2529,7 +2529,10 @@ MyWalletPhone.getExchangeTrades = function() {
 MyWalletPhone.getRate = function(coinPair) {
     
     var success = function(result) {
-        objc_on_get_exchange_rate_success(result.limit, result.minimum, result.minerFee, result.maxLimit, result.pair, result.rate);
+        MyWalletPhone.getEthExchangeRateForHardLimit().then(function(hardLimit) {
+             var currencyCode = MyWalletPhone.currencyCodeForHardLimit();
+             objc_on_get_exchange_rate_success(result.limit, result.minimum, result.minerFee, result.maxLimit, result.pair, result.rate, hardLimit[currencyCode].last);
+        });
     }
     
     var error = function(e) {
@@ -2663,9 +2666,14 @@ MyWalletPhone.isCountryWhitelistedForShapeshift = function() {
     return !isBlacklisted;
 }
 
-MyWalletPhone.availableUSStates = function() {
+MyWalletPhone.countryCodeGuess = function() {
     var accountInfo = MyWallet.wallet.accountInfo;
     var codeGuess = accountInfo && accountInfo.countryCodeGuess;
+    return codeGuess;
+}
+
+MyWalletPhone.availableUSStates = function() {
+    var codeGuess = MyWalletPhone.countryCodeGuess();
     var storedState = MyWallet.wallet.shapeshift.USAState;
     
     if (codeGuess === 'US' && !storedState) {
@@ -2753,3 +2761,15 @@ MyWalletPhone.isWithdrawalTransaction = function(txHash) {
     return MyWallet.wallet.shapeshift.isWithdrawalTx(txHash);
 }
 
+MyWalletPhone.getEthExchangeRateForHardLimit = function() {
+    var currencyCode = MyWalletPhone.currencyCodeForHardLimit();
+    return BlockchainAPI.getExchangeRate(currencyCode, 'ETH');
+}
+
+MyWalletPhone.currencyCodeForHardLimit = function() {
+    return MyWalletPhone.isCountryWhitelistedForShapeshift() == 'US' ? 'USD' : 'EUR';
+}
+
+MyWalletPhone.fiatExchangeHardLimit = function() {
+    return walletOptions.getValue().shapeshift.upperLimit;
+}

@@ -662,6 +662,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_PAIR @"pair"
 #define DICTIONARY_KEY_RATE @"rate"
 #define DICTIONARY_KEY_MINER_FEE @"minerFee"
+#define DICTIONARY_KEY_BTC_HARD_LIMIT @"btcHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT @"ethHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT_RATE @"ethHardLimitRate"
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0

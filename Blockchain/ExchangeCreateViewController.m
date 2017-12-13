@@ -57,6 +57,7 @@
 // uint64_t or NSDecimalNumber
 @property (nonatomic) id minimum;
 @property (nonatomic) id maximum;
+@property (nonatomic) id maximumHardLimit;
 @property (nonatomic) id availableBalance;
 @property (nonatomic) id fee;
 
@@ -245,10 +246,13 @@
         self.minimum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:minNumberString]];
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         self.maximum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:maxNumberString]];
+        NSString *hardLimitString = [result objectForKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
+        self.maximumHardLimit = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:hardLimitString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
         self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
+        self.maximumHardLimit = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]];
         [app.wallet getAvailableEthBalance];
     }
 }
@@ -292,7 +296,7 @@
             DLog(@"btc over available");
             overAvailable = YES;
             errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
-        } else if (amount > [self.maximum longLongValue]) {
+        } else if (amount > [self.maximum longLongValue] || amount > [self.maximumHardLimit longLongValue]) {
             DLog(@"btc over max");
             overMax = YES;
             errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
@@ -313,7 +317,7 @@
             DLog(@"eth over available");
             overAvailable = YES;
             errorText = BC_STRING_NOT_ENOUGH_TO_EXCHANGE;
-        } else if ([self.amount compare:self.maximum] == NSOrderedDescending) {
+        } else if ([self.amount compare:self.maximum] == NSOrderedDescending || [self.amount compare:self.maximumHardLimit] == NSOrderedDescending) {
             DLog(@"eth over max");
             overMax = YES;
             errorText = BC_STRING_ABOVE_MAXIMUM_LIMIT;
