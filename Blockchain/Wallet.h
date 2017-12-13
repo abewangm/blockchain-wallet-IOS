@@ -448,6 +448,7 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
+- (BOOL)isExchangeEnabled;
 - (BOOL)isCountryWhitelistedForShapeshift;
 - (NSArray *)availableUSStates;
 - (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;

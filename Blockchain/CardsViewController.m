@@ -48,7 +48,7 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showExchange = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    self.showExchange = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD] && [app.wallet isExchangeEnabled];
     
     self.cardsViewHeight = self.showExchange ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     

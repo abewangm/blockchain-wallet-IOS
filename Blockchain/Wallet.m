@@ -2328,6 +2328,11 @@
 
 #pragma mark - Exchange
 
+- (BOOL)isExchangeEnabled
+{
+    return [self isCountryWhitelistedForShapeshift];
+}
+
 - (BOOL)isCountryWhitelistedForShapeshift
 {
     if ([self isInitialized]) {
