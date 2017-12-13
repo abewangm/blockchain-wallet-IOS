@@ -86,7 +86,7 @@
 
 - (UIView *)configureCardsViewExchange:(UIView *)cardsView
 {
-    BCCardView *exchangeCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@", [BC_STRING_AVAILABLE_NOW_TITLE uppercaseString]] description:BC_STRING_EXCHANGE_CARD_DESCRIPTION actionType:ActionTypeAvailableNow imageName:@"exchange_partial" reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *exchangeCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@ 🎉", [BC_STRING_AVAILABLE_NOW_TITLE uppercaseString]] description:BC_STRING_EXCHANGE_CARD_DESCRIPTION actionType:ActionTypeAvailableNow imageName:@"exchange_partial" reducedHeightForPageIndicator:NO delegate:self];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(exchangeCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
