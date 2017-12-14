@@ -631,4 +631,29 @@
     [self.exchangeOverviewViewController didShiftPayment:info];
 }
 
+- (void)showGetAssetsAlert
+{
+    UIAlertController *showGetAssetsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_FUNDS_TO_EXCHANGE_TITLE message:BC_STRING_NO_FUNDS_TO_EXCHANGE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_GET_BITCOIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tabViewController dismissViewControllerAnimated:YES completion:^{
+            if ([app.wallet isBuyEnabled]) {
+                [app buyBitcoinClicked:nil];
+            } else {
+                [app closeSideMenu];
+                [self.tabViewController selectAsset:AssetTypeBitcoin];
+                [self receiveCoinClicked:nil];
+            }
+        }];
+    }]];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_GET_ETHER style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tabViewController dismissViewControllerAnimated:YES completion:^{
+            [app closeSideMenu];
+            [self.tabViewController selectAsset:AssetTypeEther];
+            [self receiveCoinClicked:nil];
+        }];
+    }]];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self.tabViewController.presentedViewController presentViewController:showGetAssetsAlert animated:YES completion:nil];
+}
+
 @end

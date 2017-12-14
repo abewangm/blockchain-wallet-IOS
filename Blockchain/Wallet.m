@@ -4385,7 +4385,15 @@
 
 - (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
 {
-    [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
+    if ([error isEqualToString:ERROR_NO_FREE_OUTPUTS_TO_SPEND]) {
+        if ([self.delegate respondsToSelector:@selector(showGetAssetsAlert)]) {
+            [self.delegate showGetAssetsAlert];
+        } else {
+            DLog(@"Error: delegate of class %@ does not respond to selector showGetAssetsAlert!", [delegate class]);
+        }
+    } else {
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
+    }
 }
 
 - (void)on_get_available_eth_balance_success:(NSDictionary *)result

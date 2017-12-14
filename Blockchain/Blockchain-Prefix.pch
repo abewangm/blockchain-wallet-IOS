@@ -271,6 +271,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define ERROR_NO_FREE_OUTPUTS_TO_SPEND @"No free outputs to spend"
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
 #define ERROR_MISSING_DESTINATION_ADDRESS @"Missing destination address"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
