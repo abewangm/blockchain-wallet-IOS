@@ -2505,13 +2505,16 @@ MyWalletPhone.getMobileMessage = function(languageCode) {
 MyWalletPhone.getExchangeTrades = function() {
 
     var success = function() {
-      var trades = MyWallet.wallet.shapeshift.trades.map(function(trade){
+      var trades = MyWallet.wallet.shapeshift.trades.filter(function(trade) {
+        var containsBch = trade.quote.toJSON().pair.toLowerCase().indexOf('bch') > -1;
+        return !containsBch;
+      }).map(function(trade){
         return {
-          hashIn : trade.hashIn,
-          hashOut : trade.hashOut,
-          quote : trade.quote.toJSON(),
-          status : trade.status,
-          time : trade.time                                    
+            hashIn : trade.hashIn,
+            hashOut : trade.hashOut,
+            quote : trade.quote.toJSON(),
+            status : trade.status,
+            time : trade.time
         }
       });
 
