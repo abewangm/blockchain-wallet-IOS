@@ -216,7 +216,7 @@
     errorTextView.scrollEnabled = NO;
     errorTextView.selectable = NO;
     errorTextView.textColor = COLOR_WARNING_RED;
-    errorTextView.font = buttonFont;
+    errorTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     errorTextView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:errorTextView];
     errorTextView.hidden = YES;
@@ -332,10 +332,13 @@
         self.errorTextView.hidden = YES;
         [self disablePaymentButtons];
     } else if (overAvailable || overMax || underMin) {
+        [self highlightInvalidAmounts];
         self.errorTextView.hidden = NO;
         self.errorTextView.text = errorText;
         [self disablePaymentButtons];
     } else {
+        [self removeHighlightFromAmounts];
+        [self enablePaymentButtons];
         self.errorTextView.hidden = YES;
     }
 }
@@ -365,7 +368,6 @@
 
 - (void)didGetApproximateQuote:(NSDictionary *)result
 {
-    [self enablePaymentButtons];
     [self enableAssetToggleButton];
     [self.spinner stopAnimating];
     
@@ -388,6 +390,8 @@
             self.bottomLeftField.text = btcResult;
             self.bottomRightField.text = ethResult;
         }
+        
+        [self updateAvailableBalance];
     } else {
         DLog(@"Wrong coinpair!");
     }
@@ -795,6 +799,24 @@
     [self.bottomLeftField resignFirstResponder];
     [self.topLeftField resignFirstResponder];
     [self.topRightField resignFirstResponder];
+}
+
+- (void)highlightInvalidAmounts
+{
+    UIColor *newColor = COLOR_WARNING_RED;
+    self.topLeftField.textColor = newColor;
+    self.topRightField.textColor = newColor;
+    self.bottomLeftField.textColor = newColor;
+    self.bottomRightField.textColor = newColor;
+}
+
+- (void)removeHighlightFromAmounts
+{
+    UIColor *newColor = COLOR_TEXT_DARK_GRAY;
+    self.topLeftField.textColor = newColor;
+    self.topRightField.textColor = newColor;
+    self.bottomLeftField.textColor = newColor;
+    self.bottomRightField.textColor = newColor;
 }
 
 - (BOOL)hasAmountGreaterThanZero:(id)amount
