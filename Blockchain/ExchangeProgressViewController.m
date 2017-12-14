@@ -39,6 +39,7 @@
     descriptionTextView.backgroundColor = [UIColor clearColor];
     descriptionTextView.editable = NO;
     descriptionTextView.selectable = NO;
+    descriptionTextView.scrollEnabled = NO;
     [descriptionTextView sizeToFit];
     [descriptionTextView changeYPosition:summaryView.frame.size.height - descriptionTextView.frame.size.height - 8];
     descriptionTextView.center = CGPointMake(summaryView.frame.size.width/2, descriptionTextView.center.y);
