@@ -262,6 +262,11 @@
     self.availableBalance = [NSDecimalNumber decimalNumberWithDecimal:[[result objectForKey:DICTIONARY_KEY_AMOUNT] decimalValue]];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
+    if ([self.availableBalance compare:@0] == NSOrderedSame ||
+        [self.availableBalance compare:@0] == NSOrderedAscending) {
+        [app showGetAssetsAlert];
+    }
+    
     [self updateAvailableBalance];
 }
 
