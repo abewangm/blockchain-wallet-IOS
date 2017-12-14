@@ -183,7 +183,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     SharedSessionDelegate *sharedSessionDelegate = [[SharedSessionDelegate alloc] initWithCertificatePinner:self.certificatePinner];
     
-    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:sharedSessionDelegate queue:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSString *userAgentString = [NSString stringWithFormat:@"Blockchain-iOS/%@ (iOS/%@; %@)", [self getVersionLabelString], [[UIDevice currentDevice] systemVersion], [DeviceIdentifier deviceName]];
+    configuration.HTTPAdditionalHeaders = @{@"User-Agent" : userAgentString};
+
+    [SessionManager setupSharedSessionConfiguration:configuration delegate:sharedSessionDelegate queue:nil];
     
     [self.certificatePinner pinCertificate];
     
