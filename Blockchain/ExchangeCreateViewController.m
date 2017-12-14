@@ -368,9 +368,6 @@
 
 - (void)didGetApproximateQuote:(NSDictionary *)result
 {
-    [self enableAssetToggleButton];
-    [self.spinner stopAnimating];
-    
     id depositAmount = [result objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
     id withdrawalAmount = [result objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
     
@@ -771,6 +768,10 @@
         
         self.currentDataTask = [app.wallet getApproximateQuote:[self coinPair] usingFromField:usingFromField amount:amount completion:^(NSDictionary *result, NSURLResponse *response, NSError *error) {
             DLog(@"approximate quote result: %@", result);
+            
+            [self enableAssetToggleButton];
+            [self.spinner stopAnimating];
+            
             NSDictionary *resultSuccess = [result objectForKey:DICTIONARY_KEY_SUCCESS];
             if (resultSuccess) {
                 [self didGetApproximateQuote:resultSuccess];
