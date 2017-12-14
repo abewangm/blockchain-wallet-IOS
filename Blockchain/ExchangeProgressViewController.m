@@ -89,7 +89,7 @@
         return COLOR_LIGHT_GRAY;
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return COLOR_LIGHT_GRAY;
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED] || [trade.status isEqualToString:TRADE_STATUS_FAILED]) {
         return COLOR_TEXT_DARK_GRAY;
     }
     
@@ -102,7 +102,7 @@
         return [UIImage imageNamed:@"exchange_complete"];
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [UIImage imageNamed:@"exchange_in_progress"];
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED] || [trade.status isEqualToString:TRADE_STATUS_FAILED]) {
         return [UIImage imageNamed:@"exchange_error"];
     }
     
@@ -115,7 +115,7 @@
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 3, 3];
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return [NSString stringWithFormat:BC_STRING_STEP_ARGUMENT_OF_ARGUMENT, 2, 3];
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED] || [trade.status isEqualToString:TRADE_STATUS_FAILED]) {
         return BC_STRING_EXCHANGE_DESCRIPTION_FAILED;
     }
     
@@ -128,7 +128,7 @@
         return BC_STRING_EXCHANGE_COMPLETED;
     } else if ([trade.status isEqualToString:TRADE_STATUS_RECEIVED] || [trade.status isEqualToString:TRADE_STATUS_NO_DEPOSITS]) {
         return BC_STRING_EXCHANGE_IN_PROGRESS;
-    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED]) {
+    } else if ([trade.status isEqualToString:TRADE_STATUS_RESOLVED] || [trade.status isEqualToString:TRADE_STATUS_FAILED]) {
         return BC_STRING_EXCHANGE_TITLE_FAILED;
     }
     
