@@ -132,6 +132,7 @@
     UIView *backgroundView = [UIView new];
     backgroundView.backgroundColor = self.view.backgroundColor;
     tableView.backgroundView = backgroundView;
+    tableView.tableFooterView = [UIView new];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
