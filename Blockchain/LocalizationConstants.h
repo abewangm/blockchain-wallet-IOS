@@ -875,3 +875,5 @@
 #define BC_STRING_RECEIVED_FROM_SHAPESHIFT NSLocalizedString(@"Received from ShapeShift", nil)
 #define BC_STRING_ORDER_HISTORY NSLocalizedString(@"Order History", nil)
 #define BC_STRING_INCOMING NSLocalizedString(@"Incoming", nil)
+#define BC_STRING_TRADE_EXPIRED_TITLE NSLocalizedString(@"Trade Expired", nil)
+#define BC_STRING_TRADE_EXPIRED_MESSAGE NSLocalizedString(@"Your trade has expired. Please return to the Exchange page to start your trade again.", nil)

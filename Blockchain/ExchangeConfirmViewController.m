@@ -202,8 +202,17 @@
     
     if (hours + minutes + seconds <= 0) {
         [timer invalidate];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self showExpiredAlert];
     }
+}
+
+- (void)showExpiredAlert
+{
+    UIAlertController *expiredAlert = [UIAlertController alertControllerWithTitle:BC_STRING_TRADE_EXPIRED_TITLE message:BC_STRING_TRADE_EXPIRED_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    [expiredAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }]];
+    [self.navigationController presentViewController:expiredAlert animated:YES completion:nil];
 }
 
 - (void)shiftPayment
