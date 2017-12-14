@@ -14,9 +14,9 @@
 @interface SettingsChangePasswordViewController () <UITextFieldDelegate>
 @property (nonatomic) IBOutlet UILabel *passwordFeedbackLabel;
 @property (nonatomic) IBOutlet UIProgressView *passwordStrengthMeter;
-@property (nonatomic) IBOutlet BCTextField *mainPasswordTextField;
-@property (nonatomic) IBOutlet BCTextField *newerPasswordTextField;
-@property (nonatomic) IBOutlet BCTextField *confirmNewPasswordTextField;
+@property (nonatomic) IBOutlet BCSecureTextField *mainPasswordTextField;
+@property (nonatomic) IBOutlet BCSecureTextField *newerPasswordTextField;
+@property (nonatomic) IBOutlet BCSecureTextField *confirmNewPasswordTextField;
 
 @property (nonatomic) float passwordStrength;
 @end
@@ -56,16 +56,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     SettingsNavigationController *navigationController = (SettingsNavigationController *)self.navigationController;
     navigationController.headerLabel.text = BC_STRING_SETTINGS_SECURITY_CHANGE_PASSWORD;
+    
     [self clearTextFields];
+    
     self.passwordStrength = 0;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     [self.mainPasswordTextField becomeFirstResponder];
+    
+    [self.mainPasswordTextField setupOnePixelLine];
+    [self.newerPasswordTextField setupOnePixelLine];
+    [self.confirmNewPasswordTextField setupOnePixelLine];
 }
 
 - (void)clearTextFields
