@@ -2516,6 +2516,8 @@ MyWalletPhone.getExchangeTrades = function() {
             status : trade.status,
             time : trade.time
         }
+      }).sort(function(a,b) {
+        return new Date(b.time) - new Date(a.time);
       });
 
       objc_on_get_exchange_trades_success(trades);
