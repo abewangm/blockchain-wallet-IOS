@@ -692,7 +692,7 @@
 {
     self.fromSymbol = CURRENCY_SYMBOL_BTC;
     self.btcField = self.topLeftField;
-    self.fromToView.fromLabel.text = BC_STRING_BITCOIN;
+    self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.leftLabel.text = CURRENCY_SYMBOL_BTC;
     self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
 }
@@ -710,7 +710,7 @@
 {
     self.toSymbol = CURRENCY_SYMBOL_BTC;
     self.btcField = self.topRightField;
-    self.fromToView.toLabel.text = BC_STRING_BITCOIN;
+    self.fromToView.toLabel.text = [self bitcoinLabelText];
     self.rightLabel.text = CURRENCY_SYMBOL_BTC;
     self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
 }
@@ -903,6 +903,11 @@
     return [NSString stringWithFormat:BTC_PLACEHOLDER_DECIMAL_SEPARATOR_ARGUMENT, [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
 }
 
+- (NSString *)bitcoinLabelText
+{
+    return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForAccount:self.btcAccount] : BC_STRING_BITCOIN;
+}
+
 #pragma mark - Address Selection Delegate
 
 - (void)didSelectFromEthAccount
@@ -913,7 +918,7 @@
     [self selectToBitcoin];
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
-    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [self bitcoinLabelText];
     
     [self getRate];
 }
@@ -925,7 +930,7 @@
     [self selectFromBitcoin];
     [self selectToEther];
     
-    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
     
     [self getRate];
@@ -940,7 +945,7 @@
     [self selectFromBitcoin];
     [self selectToEther];
     
-    self.fromToView.fromLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
     
     [self getRate];
@@ -956,7 +961,7 @@
     [self selectToBitcoin];
     
     self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
-    self.fromToView.toLabel.text = [app.wallet getLabelForAccount:self.btcAccount];
+    self.fromToView.toLabel.text = [self bitcoinLabelText];
     
     [self getRate];
 }
