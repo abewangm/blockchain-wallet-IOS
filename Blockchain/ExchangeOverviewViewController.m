@@ -238,6 +238,11 @@
     [self.navigationController presentViewController:modalViewController animated:YES completion:nil];
 }
 
+- (void)reloadSymbols
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - Confirm State delegate
 
 - (void)didConfirmState:(UINavigationController *)navigationController

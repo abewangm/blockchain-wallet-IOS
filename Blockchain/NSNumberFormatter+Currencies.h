@@ -37,4 +37,6 @@
 
 + (NSString *)convertedDecimalString:(NSString *)entryString;
 
++ (uint64_t)parseBtcValueFromString:(NSString *)inputString;
+
 @end

@@ -422,6 +422,7 @@
     [_transactionsBitcoinViewController reloadSymbols];
     [_transactionsEtherViewController reloadSymbols];
     [_tabViewController reloadSymbols];
+    [_exchangeOverviewViewController reloadSymbols];
 }
 
 - (void)reloadSendController

@@ -13,6 +13,7 @@
 #import "ExchangeTrade.h"
 #import "ExchangeConfirmViewController.h"
 #import "BCNavigationController.h"
+#import "NSNumberFormatter+Currencies.h"
 
 #define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
 
@@ -243,11 +244,11 @@
     
     if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
         NSString *minNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM];
-        self.minimum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:minNumberString]];
+        self.minimum = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:minNumberString]];
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
-        self.maximum = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:maxNumberString]];
+        self.maximum = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:maxNumberString]];
         NSString *hardLimitString = [result objectForKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
-        self.maximumHardLimit = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:hardLimitString]];
+        self.maximumHardLimit = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:hardLimitString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
@@ -504,7 +505,7 @@
     if (textField == self.ethField) {
         self.amount = [NSDecimalNumber decimalNumberWithString:amountString];
     } else if (textField == self.btcField) {
-        self.amount = [NSNumber numberWithLongLong:[self parseBitcoinValueFromString:amountString]];
+        self.amount = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:amountString]];
     } else {
         if (textField == self.bottomLeftField) {
             if (self.topLeftField == self.ethField) {
@@ -547,7 +548,7 @@
 {
     uint64_t amountArg = 0;
     if ([amount isKindOfClass:[NSString class]]) {
-        amountArg = [self parseBitcoinValueFromString:amount];
+        amountArg = [NSNumberFormatter parseBtcValueFromString:amount];
     } else if ([amount isKindOfClass:[NSNumber class]])  {
         amountArg = [amount longLongValue];
     } else {
@@ -881,16 +882,6 @@
 {
     self.assetToggleButton.userInteractionEnabled = NO;
     [self.assetToggleButton setImage:nil forState:UIControlStateNormal];
-}
-
-- (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
-{
-    // Always use BTC conversion rate
-    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
-    app.latestResponse.symbol_btc.conversion = SATOSHI;
-    uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
-    app.latestResponse.symbol_btc.conversion = currentConversion;
-    return result;
 }
 
 - (NSString *)fiatPlaceholder
