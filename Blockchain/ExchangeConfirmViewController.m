@@ -129,7 +129,7 @@
 
 - (void)setupConfirmButton
 {
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH - 32, BUTTON_HEIGHT)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, BUTTON_HEIGHT)];
     button.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     button.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
