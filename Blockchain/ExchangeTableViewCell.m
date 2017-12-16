@@ -8,6 +8,8 @@
 
 #import "ExchangeTableViewCell.h"
 #import "NSDateFormatter+TimeAgoString.h"
+#import "RootService.h"
+#import "NSNumberFormatter+Currencies.h"
 
 @implementation ExchangeTableViewCell
 
@@ -38,9 +40,27 @@
     self.amountButton.backgroundColor = statusColor;
     
     NSString *toAsset = [[trade.pair componentsSeparatedByString:@"_"] lastObject];
-    NSString *amountString = [NSString stringWithFormat:@"%@ %@", [trade.withdrawalAmount stringValue], [toAsset uppercaseString]];
+    NSString *amountString;
+    
+    if (app->symbolLocal) {
+        if ([[[trade withdrawalCurrency] lowercaseString] isEqualToString:[CURRENCY_SYMBOL_BTC lowercaseString]]) {
+            amountString = [NSNumberFormatter formatMoney:ABS([NSNumberFormatter parseBtcValueFromString:[trade.withdrawalAmount stringValue]])];
+        } else if ([[[trade withdrawalCurrency] lowercaseString] isEqualToString:[CURRENCY_SYMBOL_ETH lowercaseString]]) {
+            amountString = [NSNumberFormatter formatEthWithLocalSymbol:[trade.withdrawalAmount stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+        } else {
+            DLog(@"Warning: unsupported withdrawal currency for trade: %@", [trade withdrawalCurrency]);
+        }
+    } else {
+        amountString = [NSString stringWithFormat:@"%@ %@", [trade.withdrawalAmount stringValue], [toAsset uppercaseString]];
+    }
+    
     [self.amountButton setTitle:amountString forState:UIControlStateNormal];
     self.dateLabel.text = [NSDateFormatter timeAgoStringFromDate:trade.date];
+}
+
+- (IBAction)amountButtonClicked:(id)sender
+{
+    [app toggleSymbol];
 }
 
 @end

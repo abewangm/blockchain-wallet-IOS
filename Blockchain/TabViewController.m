@@ -229,6 +229,13 @@
     titleLabel.hidden = NO;
 }
 
+- (void)selectAsset:(AssetType)assetType
+{
+    self.assetSegmentedControl.selectedSegmentIndex = assetType;
+    
+    [self assetSegmentedControlChanged];
+}
+
 - (void)assetSegmentedControlChanged
 {
     AssetType asset = self.assetSegmentedControl.selectedSegmentIndex;

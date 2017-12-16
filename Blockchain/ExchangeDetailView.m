@@ -22,6 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self changeHeight:NUMBER_OF_ROWS_FETCHED_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithFetchedTrade:trade];
     }
@@ -32,6 +33,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self changeHeight:NUMBER_OF_ROWS_BUILT_TRADE * [ExchangeDetailView rowHeight]];
         [self setupPseudoTableWithBuiltTrade:trade];
     }
@@ -41,12 +43,13 @@
 - (void)setupPseudoTableWithFetchedTrade:(ExchangeTrade *)trade
 {
     // Rendering Logic
-    NSArray *components = [trade.pair componentsSeparatedByString:@"_"];
-    NSString *depositCurrency = [[components.firstObject uppercaseString] isEqual: CURRENCY_SYMBOL_BTC] ? @"Bitcoin" : @"Ethereum";
-    NSString *receiveCurrency = [[components.firstObject uppercaseString] isEqual:CURRENCY_SYMBOL_BTC] ? @"Ethereum" : @"Bitcoin";
-    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, [components.firstObject uppercaseString]];
-    NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, [components.lastObject uppercaseString]];
-    NSString *minerFee = [NSString stringWithFormat:@"%@ %@", trade.minerFee, [components.firstObject uppercaseString]];
+    NSString *depositCurrencySymbol = [[trade depositCurrency] uppercaseString];
+    NSString *withdrawalCurrencySymbol = [[trade withdrawalCurrency] uppercaseString];
+    NSString *depositCurrency = [depositCurrencySymbol isEqual: CURRENCY_SYMBOL_BTC] ? BC_STRING_BITCOIN : BC_STRING_ETHER;
+    NSString *receiveCurrency = [depositCurrencySymbol isEqual:CURRENCY_SYMBOL_BTC] ? BC_STRING_ETHER : BC_STRING_BITCOIN;
+    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, depositCurrencySymbol];
+    NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, withdrawalCurrencySymbol];
+    NSString *minerFee = [NSString stringWithFormat:@"%@ %@", trade.minerFee, depositCurrencySymbol];
 
     UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:0];
     [self addSubview:rowDeposit];
@@ -73,14 +76,15 @@
 - (void)setupPseudoTableWithBuiltTrade:(ExchangeTrade *)trade
 {
     // Rendering Logic
-    NSArray *components = [trade.pair componentsSeparatedByString:@"_"];
-    NSString *depositCurrency = [[components.firstObject uppercaseString] isEqual: CURRENCY_SYMBOL_BTC] ? @"Bitcoin" : @"Ethereum";
-    NSString *receiveCurrency = [[components.firstObject uppercaseString] isEqual:CURRENCY_SYMBOL_BTC] ? @"Ethereum" : @"Bitcoin";
-    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, [components.firstObject uppercaseString]];
-    NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, [components.lastObject uppercaseString]];
-    NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, [components.firstObject uppercaseString]];
-    NSString *minerFee = [NSString stringWithFormat:@"%@ %@", trade.minerFee, [components.firstObject uppercaseString]];
-    NSString *totalSpent = [NSString stringWithFormat:@"%@ %@", [[[trade.depositAmount decimalNumberByAdding:trade.transactionFee] decimalNumberByAdding:trade.minerFee] stringValue], [components.firstObject uppercaseString]];
+    NSString *depositCurrencySymbol = [[trade depositCurrency] uppercaseString];
+    NSString *withdrawalCurrencySymbol = [[trade withdrawalCurrency] uppercaseString];
+    NSString *depositCurrency = [depositCurrencySymbol isEqual: CURRENCY_SYMBOL_BTC] ? BC_STRING_BITCOIN : BC_STRING_ETHER;
+    NSString *receiveCurrency = [depositCurrencySymbol isEqual:CURRENCY_SYMBOL_BTC] ? BC_STRING_ETHER : BC_STRING_BITCOIN;
+    NSString *depositAmount = [NSString stringWithFormat:@"%@ %@", trade.depositAmount, depositCurrencySymbol];
+    NSString *withdrawAmount = [NSString stringWithFormat:@"%@ %@", trade.withdrawalAmount, withdrawalCurrencySymbol];
+    NSString *transactionFee = [NSString stringWithFormat:@"%@ %@", trade.transactionFee, depositCurrencySymbol];
+    NSString *minerFee = [NSString stringWithFormat:@"%@ %@", trade.minerFee, depositCurrencySymbol];
+    NSString *totalSpent = [NSString stringWithFormat:@"%@ %@", [[[trade.depositAmount decimalNumberByAdding:trade.transactionFee] decimalNumberByAdding:trade.minerFee] stringValue], depositCurrencySymbol];
     
     UIView *rowDeposit = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_ARGUMENT_TO_DEPOSIT, depositCurrency] accessoryText:depositAmount yPosition:0];
     [self addSubview:rowDeposit];

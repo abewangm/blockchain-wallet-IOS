@@ -63,4 +63,17 @@
     return [NSString stringWithFormat:@"1 %@ = %@ %@", from, amount, to];
 }
 
+- (NSString *)depositCurrency
+{
+    NSArray *components = [self.pair componentsSeparatedByString:@"_"];
+    return components.firstObject;
+}
+
+- (NSString *)withdrawalCurrency
+{
+    NSArray *components = [self.pair componentsSeparatedByString:@"_"];
+    return components.lastObject;
+    
+}
+
 @end

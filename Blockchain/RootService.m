@@ -2533,6 +2533,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didShiftPayment:info];
 }
 
+- (void)showGetAssetsAlert
+{
+    [self.tabControllerManager showGetAssetsAlert];
+}
+
 #pragma mark - Show Screens
 
 - (void)showContacts

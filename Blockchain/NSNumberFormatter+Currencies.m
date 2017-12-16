@@ -260,4 +260,14 @@
     return requestedAmountString;
 }
 
++ (uint64_t)parseBtcValueFromString:(NSString *)inputString
+{
+    // Always use BTC conversion rate
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
+}
+
 @end

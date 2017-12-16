@@ -271,6 +271,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define ERROR_NO_FREE_OUTPUTS_TO_SPEND @"No free outputs to spend"
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
 #define ERROR_MISSING_DESTINATION_ADDRESS @"Missing destination address"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
@@ -336,6 +337,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define URL_KYC_SFOX @"sfox-kyc.s3.amazonaws.com"
 #define URL_API_ISIGNTHIS @"verify.isignthis.com"
 #define URL_GOOGLE_ANALYTICS @"www.google-analytics.com"
+#define URL_SHAPESHIFT @"shapeshift.io"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
@@ -662,6 +664,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_PAIR @"pair"
 #define DICTIONARY_KEY_RATE @"rate"
 #define DICTIONARY_KEY_MINER_FEE @"minerFee"
+#define DICTIONARY_KEY_BTC_HARD_LIMIT @"btcHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT @"ethHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT_RATE @"ethHardLimitRate"
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0

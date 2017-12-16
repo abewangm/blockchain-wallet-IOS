@@ -29,6 +29,7 @@
 @property (nonatomic) NSArray *trades;
 @property (nonatomic) ExchangeCreateViewController *createViewController;
 @property (nonatomic) BOOL didFinishShift;
+@property (nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation ExchangeOverviewViewController
@@ -79,6 +80,7 @@
     if (!self.tableView) {
         [self setupExchangeButtonView];
         [self setupTableView];
+        [self setupPullToRefresh];
     }
 }
 
@@ -127,9 +129,31 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.backgroundView.backgroundColor = [UIColor clearColor];
+    UIView *backgroundView = [UIView new];
+    backgroundView.backgroundColor = self.view.backgroundColor;
+    tableView.backgroundView = backgroundView;
+    tableView.tableFooterView = [UIView new];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+}
+
+- (void)setupPullToRefresh
+{
+    // Tricky way to get the refreshController to work on a UIViewController - @see http://stackoverflow.com/a/12502450/2076094
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(getHistory)
+                  forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
+}
+
+- (void)getHistory
+{
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+    [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
 }
 
 - (void)showStates:(NSArray *)states
@@ -154,10 +178,12 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
+    BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
+    [navigationController hideBusyView];
+    [self.refreshControl endRefreshing];
+    
     if (self.didFinishShift) {
         self.didFinishShift = NO;
-        BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
-        [navigationController hideBusyView];
         [self setupSubviewsIfNeeded];
         self.trades = trades;
         [self.tableView reloadData];
@@ -212,6 +238,11 @@
     [self.navigationController presentViewController:modalViewController animated:YES completion:nil];
 }
 
+- (void)reloadSymbols
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - Confirm State delegate
 
 - (void)didConfirmState:(UINavigationController *)navigationController
@@ -244,13 +275,23 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
     view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, tableView.frame.size.width, 30)];
-    label.textColor = COLOR_TEXT_DARK_GRAY;
-    label.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL_MEDIUM];
+    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, tableView.frame.size.width/2, 30)];
+    leftLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    leftLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
     
-    [view addSubview:label];
+    [view addSubview:leftLabel];
     
-    label.text = [BC_STRING_ORDER_HISTORY uppercaseString];
+    leftLabel.text = [BC_STRING_ORDER_HISTORY uppercaseString];
+    
+    CGFloat rightLabelOriginX = leftLabel.frame.origin.x + leftLabel.frame.size.width + 8;
+    UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(rightLabelOriginX, 12, self.view.frame.size.width - rightLabelOriginX - 15, 30)];
+    rightLabel.textColor = COLOR_TEXT_DARK_GRAY;
+    rightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_SMALL];
+    rightLabel.textAlignment = NSTextAlignmentRight;
+    
+    [view addSubview:rightLabel];
+    
+    rightLabel.text = [BC_STRING_INCOMING uppercaseString];
     
     return view;
 }

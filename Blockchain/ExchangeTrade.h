@@ -14,7 +14,7 @@
 #define TRADE_STATUS_RESOLVED @"resolved"
 #define TRADE_STATUS_IN_PROGRESS @"IN_PROGRESS"
 #define TRADE_STATUS_CANCELLED @"CANCELLED"
-#define TRADE_STATUS_FAILED @"FAILED"
+#define TRADE_STATUS_FAILED @"failed"
 #define TRADE_STATUS_EXPIRED @"EXPIRED"
 
 #define DICTIONARY_KEY_STATUS @"status"
@@ -44,5 +44,7 @@
 + (ExchangeTrade *)builtTradeFromJSONDict:(NSDictionary *)dict;
 
 - (NSString *)exchangeRateString;
+- (NSString *)depositCurrency;
+- (NSString *)withdrawalCurrency;
 
 @end
