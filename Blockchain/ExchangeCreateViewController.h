@@ -10,7 +10,6 @@
 
 @interface ExchangeCreateViewController : UIViewController
 - (void)didGetExchangeRate:(NSDictionary *)result;
-- (void)didFetchExchangeRateHardLimit:(NSDictionary *)limits;
 - (void)didGetQuote:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;

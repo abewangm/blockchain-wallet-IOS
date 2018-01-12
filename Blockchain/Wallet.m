@@ -2328,13 +2328,6 @@
 
 #pragma mark - Exchange
 
-- (void)getMaxHardLimit
-{
-    if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getEthExchangeRateForHardLimit()"];
-    }
-}
-
 - (BOOL)isExchangeEnabled
 {
     return [self isCountryWhitelistedForShapeshift];
