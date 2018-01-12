@@ -248,12 +248,12 @@
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         self.maximum = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:maxNumberString]];
         NSString *hardLimitString = [result objectForKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
-        self.maximumHardLimit = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:hardLimitString]];
+        self.maximumHardLimit = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:hardLimitString] - [self.fee longLongValue]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
         self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
-        self.maximumHardLimit = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]];
+        self.maximumHardLimit = [[NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:[self feeString:self.fee]]];
         [app.wallet getAvailableEthBalance];
     }
 }
@@ -794,9 +794,8 @@
     BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
     int fromAccount = fromBtc ? self.btcAccount : 0;
     int toAccount = fromBtc ? self.btcAccount : 0;
-    NSString *fee = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
     
-    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:fee];
+    [app.wallet buildExchangeTradeFromAccount:fromAccount toAccount:toAccount coinPair:[self coinPair] amount:[self amountString:self.amount] fee:[self feeString:self.fee]];
 }
 
 #pragma mark - Helpers
@@ -856,6 +855,13 @@
     }
     
     return amountString;
+}
+
+- (NSString *)feeString:(id)fee
+{
+    BOOL fromBtc = [self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC];
+    NSString *feeString = fromBtc ? [NSString stringWithFormat:@"%lld", [self.fee longLongValue]] : [self amountString:self.fee];
+    return feeString;
 }
 
 - (BCSecureTextField *)inputTextFieldWithFrame:(CGRect)frame
