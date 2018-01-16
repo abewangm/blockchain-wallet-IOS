@@ -10,8 +10,7 @@
 #import "Blockchain-Swift.h"
 #import "UIView+ChangeFrameAttribute.h"
 
-#define ROW_HEIGHT_SEND_SMALL 45
-#define ROW_HEIGHT_SEND_LARGE 51
+#define ROW_HEIGHT_FROM_TO_VIEW 48
 
 @implementation FromToView
 
@@ -21,19 +20,21 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 21)];
+        UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 21)];
         fromLabel.adjustsFontSizeToFitWidth = YES;
         fromLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         fromLabel.textColor = COLOR_TEXT_DARK_GRAY;
         fromLabel.text = BC_STRING_FROM;
+        fromLabel.center = CGPointMake(fromLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
         [self addSubview:fromLabel];
         
         CGFloat imageViewWidth = 16;
         
         CGFloat fromPlaceholderLabelOriginX = fromLabel.frame.origin.x + fromLabel.frame.size.width + 13;
-        UILabel *fromPlaceholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(fromPlaceholderLabelOriginX, 8, self.frame.size.width - fromPlaceholderLabelOriginX - 8 - imageViewWidth - 8, 30)];
+        UILabel *fromPlaceholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(fromPlaceholderLabelOriginX, 0, self.frame.size.width - fromPlaceholderLabelOriginX - 8 - imageViewWidth - 8, 30)];
         fromPlaceholderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
         fromPlaceholderLabel.textColor = COLOR_TEXT_DARK_GRAY;
+        fromPlaceholderLabel.center = CGPointMake(fromPlaceholderLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
         [self addSubview:fromPlaceholderLabel];
         self.fromLabel = fromPlaceholderLabel;
         
@@ -43,22 +44,23 @@
         [self addSubview:fromImageView];
         self.fromImageView = fromImageView;
         
-        BCLine *lineAboveToField = [self offsetLineWithYPosition:ROW_HEIGHT_SEND_SMALL];
+        BCLine *lineAboveToField = [self offsetLineWithYPosition:ROW_HEIGHT_FROM_TO_VIEW];
         [self addSubview:lineAboveToField];
         
-        UIButton *fromButton = [[UIButton alloc] initWithFrame:CGRectMake(fromPlaceholderLabel.frame.origin.x, 0, self.frame.size.width - fromPlaceholderLabel.frame.origin.x, ROW_HEIGHT_SEND_SMALL)];
+        UIButton *fromButton = [[UIButton alloc] initWithFrame:CGRectMake(fromPlaceholderLabel.frame.origin.x, 0, self.frame.size.width - fromPlaceholderLabel.frame.origin.x, ROW_HEIGHT_FROM_TO_VIEW)];
         [fromButton addTarget:self action:@selector(fromButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:fromButton];
         
-        UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, ROW_HEIGHT_SEND_SMALL + 16, 40, 21)];
+        UILabel *toLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 21)];
         toLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
         toLabel.textColor = COLOR_TEXT_DARK_GRAY;
         toLabel.text = BC_STRING_TO;
+        toLabel.center = CGPointMake(toLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
         [self addSubview:toLabel];
         
         CGFloat toFieldOriginX = toLabel.frame.origin.x + toLabel.frame.size.width + 13;
         
-        CGRect toTextFrame = CGRectMake(toFieldOriginX, ROW_HEIGHT_SEND_SMALL + 12, self.frame.size.width - 8 - toFieldOriginX - imageViewWidth - 8, 30);
+        CGRect toTextFrame = CGRectMake(toFieldOriginX, 0, self.frame.size.width - 8 - toFieldOriginX - imageViewWidth - 8, 30);
         CGFloat toVerticalCenterY;
         
         if (enableToTextField) {
@@ -67,6 +69,7 @@
             toField.placeholder = BC_STRING_ENTER_ETHER_ADDRESS;
             toField.textColor = COLOR_TEXT_DARK_GRAY;
             toField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            toField.center = CGPointMake(toField.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
             [self addSubview:toField];
             self.toField = toField;
             toVerticalCenterY = toField.center.y;
@@ -74,11 +77,12 @@
             UILabel *toPlaceHolderLabel = [[UILabel alloc] initWithFrame:toTextFrame];
             toPlaceHolderLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_SMALL];
             toPlaceHolderLabel.textColor = COLOR_TEXT_DARK_GRAY;
+            toPlaceHolderLabel.center = CGPointMake(toPlaceHolderLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
             [self addSubview:toPlaceHolderLabel];
             self.toLabel = toPlaceHolderLabel;
             toVerticalCenterY = toPlaceHolderLabel.center.y;
             
-            UIButton *toButton = [[UIButton alloc] initWithFrame:CGRectMake(toPlaceHolderLabel.frame.origin.x, ROW_HEIGHT_SEND_SMALL + lineAboveToField.frame.size.height, self.frame.size.width - toPlaceHolderLabel.frame.origin.x, self.frame.size.height - ROW_HEIGHT_SEND_SMALL)];
+            UIButton *toButton = [[UIButton alloc] initWithFrame:CGRectMake(toPlaceHolderLabel.frame.origin.x, ROW_HEIGHT_FROM_TO_VIEW + lineAboveToField.frame.size.height, self.frame.size.width - toPlaceHolderLabel.frame.origin.x, self.frame.size.height - ROW_HEIGHT_FROM_TO_VIEW)];
             [toButton addTarget:self action:@selector(toButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:toButton];
         }
@@ -89,7 +93,7 @@
         [self addSubview:toImageView];
         self.toImageView = toImageView;
         
-        BCLine *lineBelowToField = [self offsetLineWithYPosition:ROW_HEIGHT_SEND_SMALL + ROW_HEIGHT_SEND_LARGE];
+        BCLine *lineBelowToField = [self offsetLineWithYPosition:ROW_HEIGHT_FROM_TO_VIEW*2];
         [self addSubview:lineBelowToField];
     }
     return self;
