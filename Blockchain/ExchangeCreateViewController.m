@@ -106,14 +106,15 @@
     [self.view addSubview:fromToView];
     self.fromToView = fromToView;
     
-    UIView *amountView = [[UIView alloc] initWithFrame:CGRectMake(0, fromToView.frame.origin.y + fromToView.frame.size.height + 1, windowWidth, 100)];
+    UIView *amountView = [[UIView alloc] initWithFrame:CGRectMake(0, fromToView.frame.origin.y + fromToView.frame.size.height + 1, windowWidth, 96)];
     amountView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:amountView];
     
-    UILabel *topLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, 40, 30)];
+    UILabel *topLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 30)];
     topLeftLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     topLeftLabel.textColor = COLOR_TEXT_DARK_GRAY;
     topLeftLabel.text = CURRENCY_SYMBOL_BTC;
+    topLeftLabel.center = CGPointMake(topLeftLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
     self.leftLabel = topLeftLabel;
     [amountView addSubview:topLeftLabel];
     
@@ -123,6 +124,7 @@
     UIImage *buttonImage = [UIImage imageNamed:IMAGE_NAME_SWITCH_CURRENCIES];
     [assetToggleButton setImage:buttonImage forState:UIControlStateNormal];
     assetToggleButton.imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+    assetToggleButton.center = CGPointMake(assetToggleButton.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
     [amountView addSubview:assetToggleButton];
     self.assetToggleButton = assetToggleButton;
     
@@ -135,6 +137,7 @@
     topRightLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     topRightLabel.textColor = COLOR_TEXT_DARK_GRAY;
     topRightLabel.text = CURRENCY_SYMBOL_ETH;
+    topRightLabel.center = CGPointMake(topRightLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
     self.rightLabel = topRightLabel;
     [amountView addSubview:topRightLabel];
     
@@ -147,6 +150,7 @@
     [amountView addSubview:leftField];
     leftField.placeholder = [self assetPlaceholder];
     leftField.inputAccessoryView = inputAccessoryView;
+    leftField.center = CGPointMake(leftField.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
     self.topLeftField = leftField;
     self.btcField = self.topLeftField;
     
@@ -155,23 +159,26 @@
     [amountView addSubview:rightField];
     rightField.placeholder = [self assetPlaceholder];
     rightField.inputAccessoryView = inputAccessoryView;
+    rightField.center = CGPointMake(rightField.center.x, ROW_HEIGHT_FROM_TO_VIEW/2);
     self.topRightField = rightField;
     self.ethField = self.topRightField;
     
-    UIView *dividerLine = [[UIView alloc] initWithFrame:CGRectMake(leftFieldOriginX, leftField.frame.origin.y + leftField.frame.size.height + 12, windowWidth - leftFieldOriginX, 0.5)];
+    UIView *dividerLine = [[UIView alloc] initWithFrame:CGRectMake(leftFieldOriginX, ROW_HEIGHT_FROM_TO_VIEW, windowWidth - leftFieldOriginX, 0.5)];
     dividerLine.backgroundColor = COLOR_LINE_GRAY;
     [amountView addSubview:dividerLine];
     
-    BCSecureTextField *bottomLeftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, leftField.frame.size.width, 30)];
+    BCSecureTextField *bottomLeftField = [self inputTextFieldWithFrame:CGRectMake(leftFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 8, leftField.frame.size.width, 30)];
     [amountView addSubview:bottomLeftField];
     bottomLeftField.inputAccessoryView = inputAccessoryView;
     bottomLeftField.placeholder = [self fiatPlaceholder];
+    bottomLeftField.center = CGPointMake(bottomLeftField.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
     self.bottomLeftField = bottomLeftField;
     
-    BCSecureTextField *bottomRightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 12, rightField.frame.size.width, 30)];
+    BCSecureTextField *bottomRightField = [self inputTextFieldWithFrame:CGRectMake(rightFieldOriginX, dividerLine.frame.origin.y + dividerLine.frame.size.height + 8, rightField.frame.size.width, 30)];
     [amountView addSubview:bottomRightField];
     bottomRightField.placeholder = [self fiatPlaceholder];
     bottomRightField.inputAccessoryView = inputAccessoryView;
+    bottomRightField.center = CGPointMake(bottomRightField.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
     self.bottomRightField = bottomRightField;
     
     UILabel *fiatLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 40, 30)];
@@ -179,6 +186,7 @@
     fiatLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     fiatLabel.textColor = COLOR_TEXT_DARK_GRAY;
     fiatLabel.text = app.latestResponse.symbol_local.code;
+    fiatLabel.center = CGPointMake(fiatLabel.center.x, ROW_HEIGHT_FROM_TO_VIEW*1.5);
     [amountView addSubview:fiatLabel];
     
     self.fiatLabel = fiatLabel;

@@ -10,8 +10,6 @@
 #import "Blockchain-Swift.h"
 #import "UIView+ChangeFrameAttribute.h"
 
-#define ROW_HEIGHT_FROM_TO_VIEW 48
-
 @implementation FromToView
 
 - (id)initWithFrame:(CGRect)frame enableToTextField:(BOOL)enableToTextField
