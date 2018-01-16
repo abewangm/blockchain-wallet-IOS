@@ -129,6 +129,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *backgroundView = [UIView new];
     backgroundView.backgroundColor = self.view.backgroundColor;
     tableView.backgroundView = backgroundView;
