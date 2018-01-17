@@ -880,4 +880,5 @@
 #define BC_STRING_TRADE_EXPIRED_MESSAGE NSLocalizedString(@"Your trade has expired. Please return to the Exchange page to start your trade again.", nil)
 #define BC_STRING_NO_FUNDS_TO_EXCHANGE_TITLE NSLocalizedString(@"No Funds to Exchange", nil)
 #define BC_STRING_NO_FUNDS_TO_EXCHANGE_MESSAGE NSLocalizedString(@"You have no funds to exchange 😕 Why not get started by receiving some funds?", nil)
+#define BC_STRING_LOADING_EXCHANGE NSLocalizedString(@"Loading Exchange", nil)
 

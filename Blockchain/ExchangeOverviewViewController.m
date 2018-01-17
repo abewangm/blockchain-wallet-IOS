@@ -45,7 +45,8 @@
     if (availableStates.count > 0) {
         [self showStates:availableStates];
     } else {
-        [app.wallet getExchangeTrades];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_EXCHANGE];
+        [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
     }
 }
 
@@ -179,6 +180,8 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
+    [app hideBusyView];
+    
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     [navigationController hideBusyView];
     [self.refreshControl endRefreshing];
