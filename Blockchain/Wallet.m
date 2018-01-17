@@ -3076,7 +3076,10 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex;
+    
+    TransactionsBitcoinViewController *transactionsBitcoinViewController = app.tabControllerManager.transactionsBitcoinViewController;
+    
+    int filterIndex = transactionsBitcoinViewController ? (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex : FILTER_INDEX_ALL;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
