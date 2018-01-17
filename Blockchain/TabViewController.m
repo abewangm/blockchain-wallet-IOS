@@ -328,6 +328,10 @@
         [selectorButton addTarget:self action:@selector(selectorButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.bannerSelectorView addSubview:selectorButton];
         app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton = selectorButton;
+        
+        BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
+        
+        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton.hidden = !shouldShowFilterButton;
     }
     
     [bannerView addSubview:self.bannerSelectorView];
