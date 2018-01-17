@@ -135,7 +135,7 @@
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [button setTitle:BC_STRING_CONFIRM forState:UIControlStateNormal];
-    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 24 - BUTTON_HEIGHT/2);
     [self.view addSubview:button];
     [button addTarget:self action:@selector(confirmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.confirmButton = button;

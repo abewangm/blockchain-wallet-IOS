@@ -237,7 +237,7 @@
     [continueButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     continueButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [continueButton setTitle:BC_STRING_CONTINUE forState:UIControlStateNormal];
-    continueButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    continueButton.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 24 - BUTTON_HEIGHT/2);
     [self.view addSubview:continueButton];
     [continueButton addTarget:self action:@selector(continueButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.continueButton = continueButton;
