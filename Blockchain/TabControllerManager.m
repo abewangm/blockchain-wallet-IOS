@@ -653,7 +653,10 @@
             [self receiveCoinClicked:nil];
         }];
     }]];
-    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [app closeSideMenu];
+        [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
+    }]];
     [self.tabViewController.presentedViewController presentViewController:showGetAssetsAlert animated:YES completion:nil];
 }
 
