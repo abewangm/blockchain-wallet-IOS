@@ -31,8 +31,6 @@
     IBOutlet UIView *headerView;
     
     IBOutlet UIButton *balanceBigButton;
-    IBOutlet UIButton *filterAccountButton;
-    IBOutlet UIButton *filterAccountChevronButton;
     
     MultiAddressResponse *data;
     LatestBlock *latestBlock;
@@ -47,7 +45,7 @@
 @property(nonatomic) BOOL clickedFetchMore;
 @property(nonatomic) TransactionDetailViewController *detailViewController;
 @property(nonatomic) NSString *messageIdentifier;
-
+@property(nonatomic) UIButton *filterAccountButton;
 - (void)reload;
 - (void)reloadSymbols;
 - (void)didReceiveTransactionMessage;

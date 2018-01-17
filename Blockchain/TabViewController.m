@@ -327,6 +327,7 @@
         selectorButton.titleEdgeInsets = UIEdgeInsetsMake(0, -selectorButton.imageView.bounds.size.width, 0, 0);
         [selectorButton addTarget:self action:@selector(selectorButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.bannerSelectorView addSubview:selectorButton];
+        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton = selectorButton;
     }
     
     [bannerView addSubview:self.bannerSelectorView];
