@@ -48,7 +48,12 @@
     if ([value isKindOfClass:[NSString class]]) {
         decimalNumber = [NSDecimalNumber decimalNumberWithString:value];
     } else if ([value isKindOfClass:[NSNumber class]]) {
-        decimalNumber = [[NSDecimalNumber alloc] initWithDecimal:[value decimalValue]];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        [formatter setMaximumFractionDigits:8];
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+        [formatter setLocale:usLocale];
+        NSString *numberString = [formatter stringFromNumber:value];
+        decimalNumber = [[NSDecimalNumber alloc] initWithString:numberString];
     }
     
     return decimalNumber;
