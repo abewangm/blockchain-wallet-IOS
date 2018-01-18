@@ -375,11 +375,6 @@
     [self.continueButton setBackgroundColor:COLOR_BUTTON_KEYPAD_GRAY];
 }
 
-- (void)didGetQuote:(NSDictionary *)result
-{
-    
-}
-
 - (void)didGetApproximateQuote:(NSDictionary *)result
 {
     id depositAmount = [result objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
@@ -754,11 +749,6 @@
     [self.spinner startAnimating];
     
     [app.wallet getRate:[self coinPair]];
-}
-
-- (void)getQuote
-{
-    [app.wallet getQuote:[self coinPair] amount:@"0.1"];
 }
 
 - (void)getApproximateQuote

@@ -915,10 +915,6 @@
         [weakSelf on_build_exchange_trade_success_from:[from toString] depositAmount:[depositAmount toString] fee:[fee toNumber] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
     };
     
-    self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
-        [weakSelf on_get_quote_success:[result toDictionary]];
-    };
-    
     self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
         [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
     };
@@ -2376,11 +2372,6 @@
 - (void)getRate:(NSString *)coinPair
 {
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
-}
-
-- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
-{
-    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
 }
 
 - (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
@@ -4358,15 +4349,6 @@
         [self.delegate didGetExchangeRate:mutableCopy];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
-    }
-}
-
-- (void)on_get_quote_success:(NSDictionary *)result
-{
-    if ([self.delegate respondsToSelector:@selector(didGetQuote:)]) {
-        [self.delegate didGetQuote:result];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
     }
 }
 

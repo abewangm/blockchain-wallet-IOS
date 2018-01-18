@@ -207,11 +207,6 @@
     [self.createViewController didGetExchangeRate:result];
 }
 
-- (void)didGetQuote:(NSDictionary *)result
-{
-    [self.createViewController didGetQuote:result];
-}
-
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
 {
     [self.createViewController didGetAvailableEthBalance:result];

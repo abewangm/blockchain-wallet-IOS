@@ -2508,11 +2508,6 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didGetExchangeRate:result];
 }
 
-- (void)didGetQuote:(NSDictionary *)result
-{
-    [self.tabControllerManager didGetQuote:result];
-}
-
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result
 {
     [self.tabControllerManager didGetAvailableBtcBalance:result];

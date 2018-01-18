@@ -607,11 +607,6 @@
     [self.exchangeOverviewViewController didGetExchangeRate:result];
 }
 
-- (void)didGetQuote:(NSDictionary *)result
-{
-    [self.exchangeOverviewViewController didGetQuote:result];
-}
-
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
 {
     [self.exchangeOverviewViewController didGetAvailableEthBalance:result];
