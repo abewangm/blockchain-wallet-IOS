@@ -2326,13 +2326,8 @@
 
 - (BOOL)isExchangeEnabled
 {
-    return [self isCountryWhitelistedForShapeshift];
-}
-
-- (BOOL)isCountryWhitelistedForShapeshift
-{
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.isCountryWhitelistedForShapeshift()"] toBool];
+        return [[self.context evaluateScript:@"MyWalletPhone.isExchangeEnabled()"] toBool];
     }
     
     return NO;

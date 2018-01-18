@@ -2650,7 +2650,17 @@ MyWalletPhone.shiftPayment = function() {
     }
 }
 
-MyWalletPhone.isCountryWhitelistedForShapeshift = function() {
+MyWalletPhone.isExchangeEnabled = function() {
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift();
+}
+
+MyWalletPhone.isStateGuessWhitelistedForShapeshift = function() {
+    var state = MyWallet.wallet.accountInfo.stateCodeGuess;
+    var statesWhitelist = walletOptions.getValue().shapeshift.statesWhitelist;
+    return !state ? true : statesWhitelist.indexOf(state) > -1;
+}
+
+MyWalletPhone.isCountryGuessWhitelistedForShapeshift = function() {
     var country = MyWallet.wallet.accountInfo.countryCodeGuess;
     var countriesBlacklist = walletOptions.getValue().shapeshift.countriesBlacklist;
     var isBlacklisted = countriesBlacklist.indexOf(country) > -1;
@@ -2758,7 +2768,7 @@ MyWalletPhone.getEthExchangeRateForHardLimit = function() {
 }
 
 MyWalletPhone.currencyCodeForHardLimit = function() {
-    return MyWalletPhone.isCountryWhitelistedForShapeshift() == 'US' ? 'USD' : 'EUR';
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() == 'US' ? 'USD' : 'EUR';
 }
 
 MyWalletPhone.fiatExchangeHardLimit = function() {

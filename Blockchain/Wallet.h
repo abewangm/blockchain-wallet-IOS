@@ -449,7 +449,6 @@ typedef enum {
 
 // Exchange
 - (BOOL)isExchangeEnabled;
-- (BOOL)isCountryWhitelistedForShapeshift;
 - (NSArray *)availableUSStates;
 - (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;
 - (void)selectState:(NSString *)name code:(NSString *)code;
