@@ -688,7 +688,7 @@
 {
     self.fromSymbol = CURRENCY_SYMBOL_ETH;
     self.ethField = self.topLeftField;
-    self.fromToView.fromLabel.text = BC_STRING_ETHER;
+    self.fromToView.fromLabel.text = [self etherLabelText];
     self.leftLabel.text = CURRENCY_SYMBOL_ETH;
     self.fromAddress = [app.wallet getEtherAddress];
 }
@@ -706,7 +706,7 @@
 {
     self.toSymbol = CURRENCY_SYMBOL_ETH;
     self.ethField = self.topRightField;
-    self.fromToView.toLabel.text = BC_STRING_ETHER;
+    self.fromToView.toLabel.text = [self etherLabelText];;
     self.rightLabel.text = CURRENCY_SYMBOL_ETH;
     self.toAddress = [app.wallet getEtherAddress];
 }
@@ -904,6 +904,11 @@
     return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForAccount:self.btcAccount] : BC_STRING_BITCOIN;
 }
 
+- (NSString *)etherLabelText
+{
+    return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForEthAccount] : BC_STRING_ETHER;
+}
+
 #pragma mark - Address Selection Delegate
 
 - (void)didSelectFromEthAccount
@@ -913,7 +918,7 @@
     [self selectFromEther];
     [self selectToBitcoin];
     
-    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.fromLabel.text = [self etherLabelText];
     self.fromToView.toLabel.text = [self bitcoinLabelText];
     
     [self getRate];
@@ -927,7 +932,7 @@
     [self selectToEther];
     
     self.fromToView.fromLabel.text = [self bitcoinLabelText];
-    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [self etherLabelText];
     
     [self getRate];
 }
@@ -942,7 +947,7 @@
     [self selectToEther];
     
     self.fromToView.fromLabel.text = [self bitcoinLabelText];
-    self.fromToView.toLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.toLabel.text = [self etherLabelText];
     
     [self getRate];
 }
@@ -956,7 +961,7 @@
     [self selectFromEther];
     [self selectToBitcoin];
     
-    self.fromToView.fromLabel.text = [app.wallet getLabelForEthAccount];
+    self.fromToView.fromLabel.text = [self etherLabelText];
     self.fromToView.toLabel.text = [self bitcoinLabelText];
     
     [self getRate];
