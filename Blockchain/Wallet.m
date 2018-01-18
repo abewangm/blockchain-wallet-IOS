@@ -4339,7 +4339,7 @@
     NSDecimalNumber *fiatHardLimit = [NSDecimalNumber decimalNumberWithString:[[self.context evaluateScript:@"MyWalletPhone.fiatExchangeHardLimit()"] toString]];
     
     NSString *btcHardLimit = [app.btcFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:btcRate]];
-    NSString *ethHardLimit = [[fiatHardLimit decimalNumberByDividingBy:ethRate] stringValue];
+    NSString *ethHardLimit = [app.btcFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:ethRate]];
     
     NSMutableDictionary *mutableCopy = [result mutableCopy];
     [mutableCopy setObject:btcHardLimit forKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
