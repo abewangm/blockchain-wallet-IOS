@@ -2425,9 +2425,16 @@
             } else {
                 NSError *jsonError;
                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) completion(result, response, error);
-                });
+                NSString *errorMessage = result[DICTIONARY_KEY_ERROR][DICTIONARY_KEY_MESSAGE];
+                if (errorMessage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, errorMessage]];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (completion) completion(result, response, error);
+                    });
+                }
             }
         }];
         
