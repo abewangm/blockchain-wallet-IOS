@@ -273,7 +273,7 @@
     
     if ([self.availableBalance compare:@0] == NSOrderedSame ||
         [self.availableBalance compare:@0] == NSOrderedAscending) {
-        [app showGetAssetsAlert];
+        [app showGetAssetsAlertForCurrencySymbol:CURRENCY_SYMBOL_ETH];
     }
     
     [self updateAvailableBalance];
@@ -1037,6 +1037,11 @@
     [self.topRightField resignFirstResponder];
     [self.bottomLeftField resignFirstResponder];
     [self.bottomRightField resignFirstResponder];
+}
+
+- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol
+{
+    [self fromButtonClicked];
 }
 
 @end

@@ -2529,9 +2529,9 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didShiftPayment:info];
 }
 
-- (void)showGetAssetsAlert
+- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol
 {
-    [self.tabControllerManager showGetAssetsAlert];
+    [self.tabControllerManager showGetAssetsAlertForCurrencySymbol:currencySymbol];
 }
 
 #pragma mark - Show Screens
