@@ -345,11 +345,13 @@
     if (zeroAmount) {
         self.errorTextView.hidden = YES;
         [self disablePaymentButtons];
+        [self clearRightFields];
     } else if (overAvailable || overMax || underMin) {
         [self highlightInvalidAmounts];
         self.errorTextView.hidden = NO;
         self.errorTextView.text = errorText;
         [self disablePaymentButtons];
+        [self clearRightFields];
     } else {
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
@@ -696,6 +698,12 @@
     self.topLeftField.text = nil;
     self.topRightField.text = nil;
     self.bottomLeftField.text = nil;
+    self.bottomRightField.text = nil;
+}
+
+- (void)clearRightFields
+{
+    self.topRightField.text = nil;
     self.bottomRightField.text = nil;
 }
 
