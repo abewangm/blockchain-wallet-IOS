@@ -261,7 +261,7 @@
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
         self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
-        self.maximumHardLimit = [[NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:[self feeString:self.fee]]];
+        self.maximumHardLimit = self.fee ? [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] : [[NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:[self feeString:self.fee]]];
         [app.wallet getAvailableEthBalance];
     }
 }
