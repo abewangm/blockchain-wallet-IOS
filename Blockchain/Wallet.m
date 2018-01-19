@@ -2124,6 +2124,24 @@
     [self.context evaluateScript:@"MyWalletPhone.disableEmailNotifications()"];
 }
 
+- (void)enableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.enableSMSNotifications()"];
+}
+
+- (void)disableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
+}
+
 - (void)updateServerURL:(NSString *)newURL
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]]];
@@ -2207,6 +2225,15 @@
     }
     
     return [[self.context evaluateScript:@"MyWalletPhone.emailNotificationsEnabled()"] toBool];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
 }
 
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash

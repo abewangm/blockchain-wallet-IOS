@@ -233,7 +233,9 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self showWelcomeOrPinScreen];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_ENABLE_PUSH_NOTIFICATIONS]) [self requestAuthorizationForPushNotifications];
+#ifdef ENABLE_CONTACTS
+    [self requestAuthorizationForPushNotifications];
+#endif
     
     app.mainTitleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
     
@@ -530,9 +532,7 @@ void (^secondPasswordSuccess)(NSString *);
         center.delegate = self;
         [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
              if (!error) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [[UIApplication sharedApplication] registerForRemoteNotifications];
-                 });
+                 [[UIApplication sharedApplication] registerForRemoteNotifications];
                  DLog( @"Push registration success." );
              } else {
                  DLog( @"Push registration FAILED" );
@@ -1027,8 +1027,9 @@ void (^secondPasswordSuccess)(NSString *);
     // Enabling touch ID and immediately backgrounding the app hides the status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_ENABLE_PUSH_NOTIFICATIONS]) [self registerDeviceForPushNotifications];
-
+#ifdef ENABLE_CONTACTS
+    [self registerDeviceForPushNotifications];
+#endif
     if (showType == ShowTypeSendCoins) {
         [self showSendCoins];
     } else if (showType == ShowTypeNewPayment) {

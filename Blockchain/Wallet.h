@@ -361,7 +361,10 @@ typedef enum {
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)enableSMSNotifications;
+- (void)disableSMSNotifications;
 - (BOOL)emailNotificationsEnabled;
+- (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
