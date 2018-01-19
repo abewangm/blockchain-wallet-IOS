@@ -81,7 +81,7 @@
     [self selectFromBitcoin];
     [self selectToEther];
     
-    self.amount = 0;
+    [self clearAmount];
     
     [self disablePaymentButtons];
     
@@ -686,6 +686,19 @@
 
 #pragma mark - View actions
 
+- (void)clearAmount
+{
+    self.amount = 0;
+}
+
+- (void)clearFields
+{
+    self.topLeftField.text = nil;
+    self.topRightField.text = nil;
+    self.bottomLeftField.text = nil;
+    self.bottomRightField.text = nil;
+}
+
 - (void)selectFromEther
 {
     self.fromSymbol = CURRENCY_SYMBOL_ETH;
@@ -693,6 +706,8 @@
     self.fromToView.fromLabel.text = [self etherLabelText];
     self.leftLabel.text = CURRENCY_SYMBOL_ETH;
     self.fromAddress = [app.wallet getEtherAddress];
+    
+    [self didChangeFromOrTo];
 }
 
 - (void)selectFromBitcoin
@@ -702,6 +717,8 @@
     self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.leftLabel.text = CURRENCY_SYMBOL_BTC;
     self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+    
+    [self didChangeFromOrTo];
 }
 
 - (void)selectToEther
@@ -711,6 +728,8 @@
     self.fromToView.toLabel.text = [self etherLabelText];;
     self.rightLabel.text = CURRENCY_SYMBOL_ETH;
     self.toAddress = [app.wallet getEtherAddress];
+    
+    [self didChangeFromOrTo];
 }
 
 - (void)selectToBitcoin
@@ -720,6 +739,8 @@
     self.fromToView.toLabel.text = [self bitcoinLabelText];
     self.rightLabel.text = CURRENCY_SYMBOL_BTC;
     self.toAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
+    
+    [self didChangeFromOrTo];
 }
 
 - (void)autoFillFromAmount:(id)amount
@@ -909,6 +930,12 @@
 - (NSString *)etherLabelText
 {
     return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForEthAccount] : BC_STRING_ETHER;
+}
+
+- (void)didChangeFromOrTo
+{
+    [self clearAmount];
+    [self clearFields];
 }
 
 #pragma mark - Address Selection Delegate
