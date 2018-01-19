@@ -584,6 +584,8 @@
     
     [self updateAvailableBalance];
     
+    [self disablePaymentButtons];
+    
     [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
@@ -738,6 +740,8 @@
     
     [self hideKeyboard];
     
+    [self disablePaymentButtons];
+    
     [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
@@ -753,8 +757,6 @@
 
 - (void)getApproximateQuote
 {
-    [self disablePaymentButtons];
-    
     if (self.currentDataTask) {
         [self.currentDataTask cancel];
         self.currentDataTask = nil;
