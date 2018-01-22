@@ -256,7 +256,7 @@
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         self.maximum = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:maxNumberString]];
         NSString *hardLimitString = [result objectForKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
-        self.maximumHardLimit = hardLimitString;
+        self.maximumHardLimit = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:hardLimitString]];
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
@@ -281,7 +281,7 @@
     self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
-    self.maximumHardLimit = self.fee ? [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:self.maximumHardLimit] - [self.fee longLongValue]] : [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:self.maximumHardLimit]];
+    self.maximumHardLimit = self.fee ? [NSNumber numberWithLongLong:[self.maximumHardLimit longLongValue] - [self.fee longLongValue]] : [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:self.maximumHardLimit]];
 
     [self updateAvailableBalance];
 }
