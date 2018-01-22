@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "عمال المناجم تتلقى هذه الرسوم لمعالجة هذه الصفقة.";
+
+/* (No Commment) */
+"Get Ether" = "على الأثير";
+
+/* (No Commment) */
+"at" = "في";
+
+/* (No Commment) */
+"Exchange" = "تبادل";
+
+/* (No Commment) */
+"New Exchange" = "الصرف الجديد";
+
+/* (No Commment) */
+"Use minimum" = "استخدام الحد الأدنى";
+
+/* (No Commment) */
+"Use maximum" = "استخدام الحد الأقصى";
+
+/* (No Commment) */
+"Sending Funds" = "إرسال الأموال";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "شكرا على وضع التجارة الخاصة بك! تبادل الصفقات يمكن أن تستغرق ما يصل إلى ساعتين ، يمكنك تتبع التجارة التقدم في الترتيب قسم التاريخ.";
+
+/* (No Commment) */
+"In Progress" = "في التقدم";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "تبادل يمكن أن تستغرق ما يصل إلى ساعتين ، يمكنك تتبع تبادل التقدم في تاريخ النظام. مرة واحدة في التجارة كاملة ، الأثير سيصل في محفظتك.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "التجارة الخاصة بك قد تم إلغاؤها. يرجى العودة إلى علامة التبويب exchange لبدء التجارة الخاصة بك مرة أخرى.";
+
+/* (No Commment) */
+"Failed" = "فشل";
+
+/* (No Commment) */
+"Exchange Failed" = "تبادل فشل";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "هذه التجارة قد فشلت. أي الأموال المرسلة من المحفظة الخاصة بك وسوف يكون عاد ناقص رسوم المعاملات. يرجى العودة إلى علامة التبويب exchange البدء تجارية جديدة.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "التجارة الخاصة بك قد انتهت. يرجى العودة إلى علامة التبويب exchange البدء تجارية جديدة.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "يمكنك الآن تبادل البيتكوين الأثير والعكس مباشرة من Blockchain المحفظة!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ إيداع";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ أن تلقى";
+
+/* (No Commment) */
+"Exchange Rate" = "سعر الصرف";
+
+/* (No Commment) */
+"Transaction Fee" = "رسوم المعاملات";
+
+/* (No Commment) */
+"Network Transaction Fee" = "شبكة رسوم المعاملات";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "تتحول رسوم السحب";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "توافق على أن تتحول";
+
+/* (No Commment) */
+"terms and conditions" = "الشروط والأحكام";
+
+/* (No Commment) */
+"Exchange In Progress" = "الصرف في التقدم";
+
+/* (No Commment) */
+"Exchange Completed" = "تبادل الانتهاء";
+
+/* (No Commment) */
+"Get started" = "نبدأ";
+
+/* (No Commment) */
+"Below minimum limit" = "أقل من الحد الأدنى";
+
+/* (No Commment) */
+"Above maximum limit" = "فوق الحد الأقصى";
+
+/* (No Commment) */
+"Not enough to exchange" = "لا يكفي أن الصرف";
+
+/* (No Commment) */
+"Order ID" = "معرف الطلب";
+
+/* (No Commment) */
+"Total %@ spent" = "مجموع %@ قضى";
+
+/* (No Commment) */
+"Getting quote" = "الحصول على الاقتباس";
+
+/* (No Commment) */
+"Confirming" = "مؤكدا";
+
+/* (No Commment) */
+"Exchange In Progress" = "الصرف في التقدم";
+
+/* (No Commment) */
+"Complete" = "كاملة";
+
+/* (No Commment) */
+"Exchange Completed" = "تبادل الانتهاء";
+
+/* (No Commment) */
+"Quote expires in %@" = "اقتباس تنتهي في %@";
+
+/* (No Commment) */
+"Step %d of %d" = "الخطوة %d من %d";
+
+/* (No Commment) */
+"Select your State:" = "اختر الدولة:";
+
+/* (No Commment) */
+"Select State" = "حدد الدولة";
+
+/* (No Commment) */
+"Not Available" = "لا تتوفر";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "تبادل النقود ليست متاحة بعد في جهاز الدولة. سوف يتم طرح المزيد من الدول قريبا.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "حدث خطأ عند الحصول على %@ التوازن. يرجى المحاولة مرة أخرى في وقت لاحق. التفاصيل: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "حدث خطأ عند الحصول على التقريبي الاقتباس. يرجى المحاولة مرة أخرى في وقت لاحق. التفاصيل: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "أودعت أن تتحول";
+
+/* (No Commment) */
+"Received from ShapeShift" = "تلقى تتحول من";
+
+/* (No Commment) */
+"Order History" = "من أجل التاريخ";
+
+/* (No Commment) */
+"Incoming" = "واردة";
+
+/* (No Commment) */
+"Trade Expired" = "التجارة منتهية الصلاحية";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "التجارة الخاصة بك قد انتهت. يرجى العودة إلى تبادل الصفحة لبدء التجارة الخاصة بك مرة أخرى.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "أي أموال إلى تبادل";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "لديك أي أموال إلى تبادل 😕 لماذا لا نبدأ من خلال تلقي بعض الأموال ؟ ";
+
+/* (No Commment) */
+"Loading Exchange" = "تحميل الصرف";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "حدد الأخرى %@ المحفظة";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ الحاجة إلى تبادل";

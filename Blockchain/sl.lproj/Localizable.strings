@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Rudarji so prejeli ta taksa za postopek s to transakcijo.";
+
+/* (No Commment) */
+"Get Ether" = "Dobili Eter";
+
+/* (No Commment) */
+"at" = "na";
+
+/* (No Commment) */
+"Exchange" = "Izmenjava";
+
+/* (No Commment) */
+"New Exchange" = "Nove Menjalne";
+
+/* (No Commment) */
+"Use minimum" = "Uporabite minimalno";
+
+/* (No Commment) */
+"Use maximum" = "Uporabite največjo";
+
+/* (No Commment) */
+"Sending Funds" = "Pošiljanje Sredstev";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Hvala za dajanje v trgovini! Izmenjava poklici, lahko traja do dve uri, lahko vztrajati tir od vaš trgovina je napredek v Vrstnem redu, Zgodovina oddelka.";
+
+/* (No Commment) */
+"In Progress" = "V Teku";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Izmenjava lahko traja do dve uri, lahko vztrajati tir od vaš exchange napredek v Vrstnem redu, Zgodovina. Ko trgovini, je popolna, vaš eter bodo prišli v vašo denarnico.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Vaša trgovina je bila preklicana. Prosimo, da se vrnete na izmenjavo zavihek za začetek vaše trgovine znova.";
+
+/* (No Commment) */
+"Failed" = "Ni uspelo";
+
+/* (No Commment) */
+"Exchange Failed" = "Izmenjava Ni Uspelo";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Ta trgovina je ni. Vsa sredstva, poslana iz vaše denarnice, se bo vrnil, zmanjšano za nadomestilo za transakcijo. Prosimo, da se vrnete na izmenjavo zavihek, da začnete novo trgovino.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Vaša trgovina je potekel. Prosimo, da se vrnete na izmenjavo zavihek, da začnete novo trgovino.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Zdaj lahko izmenja bitcoin za eter in obratno neposredno iz vašega Blockchain denarnice!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ za Depozit";
+
+/* (No Commment) */
+"%@ to be Received" = "%@, da bodo Prejete";
+
+/* (No Commment) */
+"Exchange Rate" = "Menjalni Tečaj";
+
+/* (No Commment) */
+"Transaction Fee" = "Nadomestilo Za Transakcijo, Ki";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Omrežje Nadomestilo Za Transakcijo, Ki";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Umik Taksa";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Strinjate se, da ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "pravila in pogoji";
+
+/* (No Commment) */
+"Exchange In Progress" = "Izmenjava Poteka";
+
+/* (No Commment) */
+"Exchange Completed" = "Izmenjava Končana";
+
+/* (No Commment) */
+"Get started" = "Hitri začetek";
+
+/* (No Commment) */
+"Below minimum limit" = "Pod minimalno omejitev";
+
+/* (No Commment) */
+"Above maximum limit" = "Nad največjo omejitev";
+
+/* (No Commment) */
+"Not enough to exchange" = "Ni dovolj, da izmenjava";
+
+/* (No Commment) */
+"Order ID" = "ID naročila";
+
+/* (No Commment) */
+"Total %@ spent" = "Skupaj %@ preživel";
+
+/* (No Commment) */
+"Getting quote" = "Dobili ponudbo";
+
+/* (No Commment) */
+"Confirming" = "Potrjuje";
+
+/* (No Commment) */
+"Exchange In Progress" = "Izmenjava Poteka";
+
+/* (No Commment) */
+"Complete" = "Skupaj";
+
+/* (No Commment) */
+"Exchange Completed" = "Izmenjava Končana";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citiram poteče v %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Korak %d od %d";
+
+/* (No Commment) */
+"Select your State:" = "Izberite svojo državo:";
+
+/* (No Commment) */
+"Select State" = "Izberite Članica";
+
+/* (No Commment) */
+"Not Available" = "Ni Na Voljo";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Izmenjava kovancev še ni na voljo v vaši državi. Bomo uvajajo več članic kmalu.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Prišlo je do napake pri pridobivanju vaše %@ bilance. Prosimo, poskusite znova pozneje. Podrobnosti: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Prišlo je do napake pri pridobivanju približen citat. Prosimo, poskusite znova pozneje. Podrobnosti: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Naneseni na ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Prejeli iz ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Da Zgodovina";
+
+/* (No Commment) */
+"Incoming" = "Dohodni";
+
+/* (No Commment) */
+"Trade Expired" = "Trgovina Veljavnosti";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Vaša trgovina je potekel. Prosimo, da se vrnete na Izmenjavo strani, da začnete svojo trgovino znova.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Nobena Sredstva za Izmenjavo";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nimate sredstev za izmenjavo 😕 Zakaj ne bi začeli s sprejemanjem nekaj sredstev?";
+
+/* (No Commment) */
+"Loading Exchange" = "Nakladanje Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Izberite druge %@ Denarnice";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ potrebne za izmenjavo";
