@@ -304,12 +304,12 @@
         DLog(@"available: %lld", [self.availableBalance longLongValue]);
         DLog(@"max: %lld", [self.maximum longLongValue])
         
-        if (amount == 0) {
-            zeroAmount = YES;
-        } else if ([self.availableBalance longLongValue] < [self.minimum longLongValue] && [self.minimum longLongValue] > 0) {
+        if ([self.availableBalance longLongValue] < [self.minimum longLongValue] && [self.minimum longLongValue] > 0) {
             DLog(@"not enough btc");
             notEnoughToExchange = YES;
             errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]]];
+        } else if (amount == 0) {
+            zeroAmount = YES;
         } else if (amount > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
             overAvailable = YES;
@@ -329,12 +329,12 @@
         DLog(@"available: %@", [self.availableBalance stringValue]);
         DLog(@"max: %@", [self.maximum stringValue])
         
-        if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
-            zeroAmount = YES;
-        } else if ([self.availableBalance compare:self.minimum] == NSOrderedAscending && [self.minimum compare:@0] == NSOrderedDescending) {
+        if ([self.availableBalance compare:self.minimum] == NSOrderedAscending && [self.minimum compare:@0] == NSOrderedDescending) {
             DLog(@"not enough eth");
             notEnoughToExchange = YES;
             errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [self amountString:self.minimum]];
+        } else if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
+            zeroAmount = YES;
         } else if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
             overAvailable = YES;
