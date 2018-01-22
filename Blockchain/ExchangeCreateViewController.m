@@ -256,12 +256,12 @@
         NSString *maxNumberString = [result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT];
         self.maximum = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:maxNumberString]];
         NSString *hardLimitString = [result objectForKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
-        self.maximumHardLimit = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:hardLimitString] - [self.fee longLongValue]];
+        self.maximumHardLimit = hardLimitString;
         [app.wallet getAvailableBtcBalanceForAccount:self.btcAccount];
     } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
         self.minimum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MINIMUM]];
         self.maximum = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_TRADE_MAX_LIMIT]];
-        self.maximumHardLimit = self.fee ? [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] : [[NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]] decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:[self feeString:self.fee]]];
+        self.maximumHardLimit = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT]];
         [app.wallet getAvailableEthBalance];
     }
 }
@@ -271,10 +271,7 @@
     self.availableBalance = [NSDecimalNumber decimalNumberWithDecimal:[[result objectForKey:DICTIONARY_KEY_AMOUNT] decimalValue]];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
-    if ([self.availableBalance compare:@0] == NSOrderedSame ||
-        [self.availableBalance compare:@0] == NSOrderedAscending) {
-        [app showGetAssetsAlertForCurrencySymbol:CURRENCY_SYMBOL_ETH];
-    }
+    self.maximumHardLimit = self.fee ? [self.maximumHardLimit decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:[self.fee stringValue]]] : self.maximumHardLimit;
     
     [self updateAvailableBalance];
 }
@@ -284,6 +281,8 @@
     self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
+    self.maximumHardLimit = self.fee ? [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:self.maximumHardLimit] - [self.fee longLongValue]] : [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:self.maximumHardLimit]];
+
     [self updateAvailableBalance];
 }
 
@@ -293,6 +292,7 @@
     BOOL overMax = NO;
     BOOL underMin = NO;
     BOOL zeroAmount = NO;
+    BOOL notEnoughToExchange = NO;
     
     NSString *errorText;
     
@@ -306,6 +306,10 @@
         
         if (amount == 0) {
             zeroAmount = YES;
+        } else if ([self.availableBalance longLongValue] < [self.minimum longLongValue] && [self.minimum longLongValue] > 0) {
+            DLog(@"not enough btc");
+            notEnoughToExchange = YES;
+            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]]];
         } else if (amount > [self.availableBalance longLongValue]) {
             DLog(@"btc over available");
             overAvailable = YES;
@@ -327,6 +331,10 @@
         
         if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
             zeroAmount = YES;
+        } else if ([self.availableBalance compare:self.minimum] == NSOrderedAscending && [self.minimum compare:@0] == NSOrderedDescending) {
+            DLog(@"not enough eth");
+            notEnoughToExchange = YES;
+            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [self amountString:self.minimum]];
         } else if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
             DLog(@"eth over available");
             overAvailable = YES;
@@ -346,7 +354,7 @@
         self.errorTextView.hidden = YES;
         [self disablePaymentButtons];
         [self clearRightFields];
-    } else if (overAvailable || overMax || underMin) {
+    } else if (overAvailable || overMax || underMin || notEnoughToExchange) {
         [self highlightInvalidAmounts];
         self.errorTextView.hidden = NO;
         self.errorTextView.text = errorText;
