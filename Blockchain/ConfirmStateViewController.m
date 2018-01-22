@@ -38,13 +38,13 @@
     [self.view addSubview:oneRowTableView];
     self.tableView = oneRowTableView;
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH - 32, BUTTON_HEIGHT)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, windowWidth - 32, BUTTON_HEIGHT)];
     button.backgroundColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
     button.layer.cornerRadius = CORNER_RADIUS_BUTTON;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     [button setTitle:BC_STRING_CONFIRM forState:UIControlStateNormal];
-    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 8 - BUTTON_HEIGHT/2);
+    button.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 24 - BUTTON_HEIGHT/2);
     [self.view addSubview:button];
     [button addTarget:self action:@selector(confirmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
 }
