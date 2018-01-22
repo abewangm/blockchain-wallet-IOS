@@ -690,7 +690,14 @@
 - (void)useMaxButtonClicked
 {
     id maximum = [self.maximum compare:self.maximumHardLimit] == NSOrderedAscending ? self.maximum : self.maximumHardLimit;
-    id maxAmount = [self.availableBalance compare:maximum] == NSOrderedAscending ? self.availableBalance : maximum;
+    
+    id maxAmount;
+    if ([self.availableBalance compare:@0] != NSOrderedSame && [self.availableBalance compare:maximum] == NSOrderedAscending) {
+        maxAmount = self.availableBalance;
+    } else {
+        maxAmount = maximum;
+    }
+    
     [self autoFillFromAmount:maxAmount];
 }
 
