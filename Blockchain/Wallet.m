@@ -873,6 +873,10 @@
         [weakSelf on_fetch_eth_history_success];
     };
     
+    self.context[@"objc_on_create_eth_account_for_exchange_success"] = ^() {
+        [weakSelf on_create_eth_account_for_exchange_success];
+    };
+    
     self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
         [weakSelf on_fetch_eth_history_error:[error toString]];
     };
@@ -2716,6 +2720,14 @@
 
 # pragma mark - Ethereum
 
+- (void)createEthAccountForExchange:(NSString *)secondPassword
+{
+    if ([self isInitialized]) {
+        NSString *setupHelperText = BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT;
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createEthAccountForExchange(\"%@\", \"%@\")", [secondPassword escapeStringForJS], [setupHelperText escapeStringForJS]]];
+    }
+}
+
 - (NSArray *)getEthTransactions
 {
     if ([self isInitialized]) {
@@ -4274,6 +4286,15 @@
 - (void)on_fetch_eth_history_error:(NSString *)error
 {
     
+}
+
+- (void)on_create_eth_account_for_exchange_success
+{
+    if ([self.delegate respondsToSelector:@selector(didCreateEthAccountForExchange)]) {
+        [self.delegate didCreateEthAccountForExchange];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateEthAccountForExchange!", [delegate class]);
+    }
 }
 
 - (void)on_update_eth_payment:(NSDictionary *)payment

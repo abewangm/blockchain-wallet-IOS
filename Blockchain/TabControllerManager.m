@@ -592,9 +592,24 @@
 
 - (void)exchangeClicked
 {
-    self.exchangeOverviewViewController = [ExchangeOverviewViewController new];
-    BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.exchangeOverviewViewController title:BC_STRING_EXCHANGE];
-    [self.tabViewController presentViewController:navigationController animated:YES completion:nil];
+    if ([app.wallet hasEthAccount]) {
+        self.exchangeOverviewViewController = [ExchangeOverviewViewController new];
+        BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.exchangeOverviewViewController title:BC_STRING_EXCHANGE];
+        [self.tabViewController presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        if ([app.wallet needsSecondPassword]) {
+            [app getSecondPassword:^(NSString *secondPassword) {
+                [app.wallet createEthAccountForExchange:secondPassword];
+            } error:nil helperText:BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT];
+        } else {
+            [app.wallet createEthAccountForExchange:nil];
+        }
+    }
+}
+
+- (void)didCreateEthAccountForExchange
+{
+    [self exchangeClicked];
 }
 
 - (void)didGetExchangeTrades:(NSArray *)trades

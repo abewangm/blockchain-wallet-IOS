@@ -143,6 +143,7 @@
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
 - (void)didShiftPayment:(NSDictionary *)info;
 - (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
+- (void)didCreateEthAccountForExchange;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -451,6 +452,7 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
+- (void)createEthAccountForExchange:(NSString *)secondPassword;
 - (BOOL)isExchangeEnabled;
 - (NSArray *)availableUSStates;
 - (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;

@@ -2494,6 +2494,11 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didErrorDuringEtherSend:error];
 }
 
+- (void)didCreateEthAccountForExchange
+{
+    [self.tabControllerManager didCreateEthAccountForExchange];
+}
+
 - (void)didGetEtherAddressWithSecondPassword
 {
     [self.tabControllerManager didGetEtherAddressWithSecondPassword];

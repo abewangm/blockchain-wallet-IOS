@@ -2389,7 +2389,23 @@ MyWalletPhone.createNewEtherPayment = function() {
 }
 
 MyWalletPhone.hasEthAccount = function() {
-    return MyWallet.wallet.eth.defaultAccount != null;
+    var eth = MyWallet.wallet.eth;
+    return eth && eth.defaultAccount;
+}
+
+MyWalletPhone.createEthAccountForExchange = function(secondPassword, helperText) {
+    
+    var eth = MyWallet.wallet.eth;
+
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        eth.createAccount(void 0, secondPassword).then(function() {
+            objc_on_create_eth_account_for_exchange_success();
+        });
+    } else {
+        eth.createAccount(void 0, secondPassword).then(function() {
+            objc_on_create_eth_account_for_exchange_success();
+        });
+    }
 }
 
 MyWalletPhone.updateEtherPayment = function(isSweep) {
@@ -2476,12 +2492,14 @@ MyWalletPhone.getEtherAddress = function(helperText) {
     } else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             MyWalletPhone.getSecondPassword(function (pw) {
-               eth.createAccount(void 0, pw);
-               objc_did_get_ether_address_with_second_password();
+                eth.createAccount(void 0, pw).then(function() {
+                    objc_did_get_ether_address_with_second_password();
+                });
             }, helperText);
         } else {
-            eth.createAccount(void 0);
-            return eth.defaultAccount.address;
+            eth.createAccount(void 0).then(function() {
+               objc_did_get_ether_address_with_second_password();
+            });
         }
     }
 }

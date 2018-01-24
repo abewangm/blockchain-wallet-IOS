@@ -124,6 +124,7 @@
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 
 - (void)exchangeClicked;
+- (void)didCreateEthAccountForExchange;
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
