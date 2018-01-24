@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeTrade.h"
+#import "NSNumberFormatter+Currencies.h"
 
 @implementation ExchangeTrade
 
@@ -64,8 +65,8 @@
     NSArray *coinPairComponents = [self.pair componentsSeparatedByString:@"_"];
     NSString *from = [[coinPairComponents firstObject] uppercaseString];
     NSString *to = [[coinPairComponents lastObject] uppercaseString];
-    NSString *amount = [self.exchangeRate stringValue];
-    return [NSString stringWithFormat:@"1 %@ = %@ %@", from, amount, to];
+    NSString *amount = [NSNumberFormatter localFormattedString:[self.exchangeRate stringValue]];
+    return [NSString stringWithFormat:@"%@ %@ = %@ %@", [NSNumberFormatter localFormattedString:@"1"], from, amount, to];
 }
 
 - (NSString *)depositCurrency

@@ -13,6 +13,7 @@
 #import "RootService.h"
 #import "BCNavigationController.h"
 #import <SafariServices/SafariServices.h>
+#import "NSNumberFormatter+Currencies.h"
 
 #define MARGIN_HORIZONTAL 20
 #define SHAPESHIFT_TERMS_AND_CONDITIONS_URL @"https://info.shapeshift.io/sites/default/files/ShapeShift_Terms_Conditions%20v1.1.pdf"
@@ -189,8 +190,12 @@
     int minutes = (interval - hours * secondsInAnHour) / minutesInAnHour;
     int secondsInAMinute = 60;
     int seconds = interval - hours * secondsInAnHour - minutes * secondsInAMinute;
-    NSString *minutesAndSecondsformatString = minutes > 9 ? @"%02d:%02d" : @"%d:%02d";
-    NSString *timeString = hours > 0 ? [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds] : [NSString stringWithFormat:minutesAndSecondsformatString, minutes, seconds];
+    
+    NSString *hoursString = [NSString stringWithFormat:@"%02d", hours];
+    NSString *minutesString = minutes > 9 ? [NSString stringWithFormat:@"%02d", minutes] : [NSString stringWithFormat:@"%d", minutes];
+    NSString *secondsString = [NSString stringWithFormat:@"%02d", seconds];
+    NSString *timeString = hours > 0 ? [NSString stringWithFormat:@"%@:%@:%@", [NSNumberFormatter localFormattedString:hoursString], [NSNumberFormatter localFormattedString:minutesString], [NSNumberFormatter localFormattedString:secondsString]] : [NSString stringWithFormat:@"%@:%@", [NSNumberFormatter localFormattedString:minutesString], [NSNumberFormatter localFormattedString:secondsString]];
+    
     self.timerLabel.text = [NSString stringWithFormat:BC_STRING_QUOTE_EXIRES_IN_ARGUMENT, timeString];
     [self.timerLabel sizeToFit];
     self.timerLabel.frame = CGRectMake(self.timerView.frame.size.width - self.timerLabel.frame.size.width - 16, 0, self.timerLabel.frame.size.width, self.timerLabel.frame.size.height);
