@@ -286,8 +286,9 @@
     [self updateAvailableBalance];
 }
 
-- (void)updateAvailableBalance
+- (BOOL)updateAvailableBalance
 {
+    BOOL shouldGetQuote = NO;
     BOOL overAvailable = NO;
     BOOL overMax = NO;
     BOOL underMin = NO;
@@ -366,7 +367,10 @@
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
         self.errorTextView.hidden = YES;
+        shouldGetQuote = YES;
     }
+    
+    return shouldGetQuote;
 }
 
 - (void)enablePaymentButtons
@@ -594,11 +598,11 @@
 {
     [self doCurrencyConversion];
     
-    [self updateAvailableBalance];
+    BOOL shouldGetQuote = [self updateAvailableBalance];
     
     [self disablePaymentButtons];
     
-    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
+    if (shouldGetQuote) [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 - (void)doCurrencyConversion
@@ -803,6 +807,8 @@
 
 - (void)getApproximateQuote
 {
+    if (![self hasEnoughFunds:self.fromSymbol]) return;
+    
     if (self.currentDataTask) {
         [self.currentDataTask cancel];
         self.currentDataTask = nil;
