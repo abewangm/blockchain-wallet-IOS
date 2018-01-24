@@ -390,8 +390,11 @@
     id depositAmount = [result objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT];
     id withdrawalAmount = [result objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT];
     
-    self.topLeftField.text = [depositAmount isKindOfClass:[NSString class]] ? depositAmount : [depositAmount stringValue];
-    self.topRightField.text = [withdrawalAmount isKindOfClass:[NSString class]] ? withdrawalAmount : [withdrawalAmount stringValue];
+    NSString *depositAmountString = [depositAmount isKindOfClass:[NSString class]] ? depositAmount : [depositAmount stringValue];
+    NSString *withdrawalAmountString = [withdrawalAmount isKindOfClass:[NSString class]] ? withdrawalAmount : [withdrawalAmount stringValue];
+    
+    self.topLeftField.text = [NSNumberFormatter localFormattedString:depositAmountString];
+    self.topRightField.text = [NSNumberFormatter localFormattedString:withdrawalAmountString];;
     
     NSString *pair = [self coinPair];
     if ([[pair lowercaseString] isEqualToString: [[result objectForKey:DICTIONARY_KEY_PAIR] lowercaseString]]) {
@@ -502,10 +505,7 @@
         }
     }
     
-    NSString *amountString = [newString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    if (![amountString containsString:@"."]) {
-        amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
-    }
+    NSString *amountString = [NSNumberFormatter convertedDecimalString:newString];
     
     [self saveAmount:amountString fromField:textField];
     

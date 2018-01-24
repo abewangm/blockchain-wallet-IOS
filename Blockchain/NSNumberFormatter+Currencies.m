@@ -260,6 +260,19 @@
     return requestedAmountString;
 }
 
++ (NSString *)localFormattedString:(NSString *)amountString
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:8];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLocale *currentLocale = numberFormatter.locale;
+    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+    NSNumber *number = [numberFormatter numberFromString:amountString];
+    numberFormatter.locale = currentLocale;
+    return [numberFormatter stringFromNumber:number];
+}
+
 + (uint64_t)parseBtcValueFromString:(NSString *)inputString
 {
     // Always use BTC conversion rate
