@@ -54,7 +54,7 @@
             DLog(@"Warning: unsupported withdrawal currency for trade: %@", [trade withdrawalCurrency]);
         }
     } else {
-        amountString = [NSString stringWithFormat:@"%@ %@", [trade.withdrawalAmount stringValue], [toAsset uppercaseString]];
+        amountString = [NSString stringWithFormat:@"%@ %@", [NSNumberFormatter localFormattedString:[trade.withdrawalAmount stringValue]], [toAsset uppercaseString]];
     }
     
     [self.amountButton setTitle:amountString forState:UIControlStateNormal];
