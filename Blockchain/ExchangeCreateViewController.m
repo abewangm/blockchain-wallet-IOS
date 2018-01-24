@@ -307,7 +307,7 @@
         if (![self hasEnoughFunds:CURRENCY_SYMBOL_BTC]) {
             DLog(@"not enough btc");
             notEnoughToExchange = YES;
-            NSString *amountText = [[NSNumberFormatter localFormattedString:[NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_BTC];
+            NSString *amountText = [[NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_BTC];
             errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, amountText];
         } else if (amount == 0) {
             zeroAmount = YES;
