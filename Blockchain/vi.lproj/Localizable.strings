@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Các thợ đào nhận được khoản phí này để thực hiện giao dịch này.";
+
+/* (No Commment) */
+"Get Ether" = "Nhận Ether";
+
+/* (No Commment) */
+"at" = "tại";
+
+/* (No Commment) */
+"Exchange" = "Chuyển đổi";
+
+/* (No Commment) */
+"New Exchange" = "Chuyển đổi Mới";
+
+/* (No Commment) */
+"Use minimum" = "Sử dụng tối thiểu";
+
+/* (No Commment) */
+"Use maximum" = "Sử dụng tối đa";
+
+/* (No Commment) */
+"Sending Funds" = "Gửi Khoản Tiền";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Cảm ơn bạn đã đầu tư giao dịch! Các giao dịch chuyển đổi có thể mất đến hai giờ, bạn có thể theo dõi tiến trình giao dịch của mình tại mục Lịch sử Đặt lệnh.";
+
+/* (No Commment) */
+"In Progress" = "Đang tiến hành";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Các chuyển đổi có thể mất đến hai giờ, bạn có thể theo dõi tiến trình chuyển đổi của mình tại Lịch sử Đặt lệnh. Khi hoạt động giao dịch hoàn tất, ether sẽ được chuyển đến ví của bạn.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Giao dịch của bạn đã bị hủy. Vui lòng quay lại thẻ chuyển đổi để bắt đầu giao dịch lại.";
+
+/* (No Commment) */
+"Failed" = "Thất bại";
+
+/* (No Commment) */
+"Exchange Failed" = "Chuyển đổi thất bại";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Giao dịch này đã thất bại. Bất cứ khoản tiền nào được gửi từ ví của bạn sẽ được hoàn trả sau khi trừ phí giao dịch. Vui lòng quay lại thẻ chuyển đổi để bắt đầu một giao dịch mới.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Giao dịch của bạn đã hết hạn. Vui lòng quay lại thẻ chuyển đổi để bắt đầu một giao dịch mới.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Giờ đây bạn có thể chuyển đổi bitcoin của mình sang ether và ngược lại, trực tiếp từ ví Blockchain!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ để Gửi tiền";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ để Được nhận";
+
+/* (No Commment) */
+"Exchange Rate" = "Tỷ Giá";
+
+/* (No Commment) */
+"Transaction Fee" = "Phí Giao dịch";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Phí Giao dịch Mạng lưới";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Phí Rút tiền ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Đồng ý với ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "các điều khoản và điều kiện";
+
+/* (No Commment) */
+"Exchange In Progress" = "Đang Tiến hành Chuyển đổi";
+
+/* (No Commment) */
+"Exchange Completed" = "Chuyển đổi Hoàn tất";
+
+/* (No Commment) */
+"Get started" = "Bắt đầu";
+
+/* (No Commment) */
+"Below minimum limit" = "Dưới mức giới hạn tối thiểu";
+
+/* (No Commment) */
+"Above maximum limit" = "Trên mức giới hạn tối đa";
+
+/* (No Commment) */
+"Not enough to exchange" = "Không đủ để chuyển đổi";
+
+/* (No Commment) */
+"Order ID" = "ID Đặt lệnh";
+
+/* (No Commment) */
+"Total %@ spent" = "Tổng sử dụng %@";
+
+/* (No Commment) */
+"Getting quote" = "Nhận báo giá";
+
+/* (No Commment) */
+"Confirming" = "Xác nhận";
+
+/* (No Commment) */
+"Exchange In Progress" = "Đang Tiến hành Chuyển đổi";
+
+/* (No Commment) */
+"Complete" = "Hoàn tất";
+
+/* (No Commment) */
+"Exchange Completed" = "Chuyển đổi Hoàn tất";
+
+/* (No Commment) */
+"Quote expires in %@" = "Báo giá hết hạn trong %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Bước %d trên %d";
+
+/* (No Commment) */
+"Select your State:" = "Lựa chọn Bang:";
+
+/* (No Commment) */
+"Select State" = "Lựa chọn Bang";
+
+/* (No Commment) */
+"Not Available" = "Không Có";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Chuyển đổi xu hiện chưa có tại bang của bạn. Chúng tôi sẽ sớm phát hành thêm các bang khác.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Xuất hiện lỗi khi tải số dư %@ của bạn. Vui lòng thử lại sau. Chi tiết: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Xuất hiện lỗi khi tải báo giá ước tính. Vui lòng thử lại sau. Chi tiết: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Đã gửi tiền vào ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Đã nhận từ ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Lịch sử Đặt lệnh";
+
+/* (No Commment) */
+"Incoming" = "Doanh thu";
+
+/* (No Commment) */
+"Trade Expired" = "Giao dịch Hết hạn";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Giao dịch của bạn đã hết hạn. Vui lòng quay lại trang Chuyển đổi để bắt đầu lại giao dịch của bạn.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Không có Tiền để Chuyển đổi";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Bạn không có tiền để chuyển đổi 😕 Tại sao không bắt đầu bằng cách nhận một vài khoản tiền?";
+
+/* (No Commment) */
+"Loading Exchange" = "Đang tải Chuyển đổi";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Chọn Ví %@ khác";
+
+/* (No Commment) */
+"%@ needed to exchange" = "Cần %@ để chuyển đổi";
