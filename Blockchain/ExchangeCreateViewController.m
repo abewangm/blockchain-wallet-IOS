@@ -307,7 +307,8 @@
         if (![self hasEnoughFunds:CURRENCY_SYMBOL_BTC]) {
             DLog(@"not enough btc");
             notEnoughToExchange = YES;
-            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]]];
+            NSString *amountText = [[NSNumberFormatter localFormattedString:[NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_BTC];
+            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, amountText];
         } else if (amount == 0) {
             zeroAmount = YES;
         } else if (amount > [self.availableBalance longLongValue]) {
@@ -332,7 +333,8 @@
         if (![self hasEnoughFunds:CURRENCY_SYMBOL_ETH]) {
             DLog(@"not enough eth");
             notEnoughToExchange = YES;
-            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, [self amountString:self.minimum]];
+            NSString *amountString = [[NSNumberFormatter localFormattedString:[self amountString:self.minimum]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_ETH];
+            errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, amountString];
         } else if ([self.amount compare:@0] == NSOrderedSame || !self.amount) {
             zeroAmount = YES;
         } else if ([self.amount compare:self.availableBalance] == NSOrderedDescending) {
