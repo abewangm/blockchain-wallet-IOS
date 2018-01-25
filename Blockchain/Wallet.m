@@ -4417,7 +4417,9 @@
 
 - (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
 {
-    if (![error isEqualToString:ERROR_NO_FREE_OUTPUTS_TO_SPEND]) {
+    if ([error isEqualToString:ERROR_NO_FREE_OUTPUTS_TO_SPEND]) {
+        [self.delegate didGetAvailableBtcBalance:nil];
+    } else {
         [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
     }
 }

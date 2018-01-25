@@ -279,6 +279,13 @@
 
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result
 {
+    if (!result) {
+        NSString *amountText = [[NSNumberFormatter satoshiToBTC:[self.minimum longLongValue]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_BTC];
+        NSString *errorText = [NSString stringWithFormat:BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE, amountText];
+        [self showErrorText:errorText];
+        return;
+    }
+    
     self.availableBalance = [result objectForKey:DICTIONARY_KEY_AMOUNT];
     self.fee = [result objectForKey:DICTIONARY_KEY_FEE];
     
@@ -757,6 +764,8 @@
     self.leftLabel.text = CURRENCY_SYMBOL_ETH;
     self.fromAddress = [app.wallet getEtherAddress];
     
+    [self clearAvailableBalance];
+
     [self didChangeFromOrTo];
 }
 
@@ -768,6 +777,8 @@
     self.leftLabel.text = CURRENCY_SYMBOL_BTC;
     self.fromAddress = [app.wallet getReceiveAddressForAccount:self.btcAccount];
     
+    [self clearAvailableBalance];
+
     [self didChangeFromOrTo];
 }
 
@@ -1033,8 +1044,6 @@
     self.fromToView.fromLabel.text = [self etherLabelText];
     self.fromToView.toLabel.text = [self bitcoinLabelText];
     
-    [self clearAvailableBalance];
-    
     [self getRate];
 }
 
@@ -1062,8 +1071,6 @@
     
     self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.fromToView.toLabel.text = [self etherLabelText];
-    
-    [self clearAvailableBalance];
     
     [self getRate];
 }
