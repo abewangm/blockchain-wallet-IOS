@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeTrade.h"
+#import "NSNumberFormatter+Currencies.h"
 
 @implementation ExchangeTrade
 
@@ -48,7 +49,12 @@
     if ([value isKindOfClass:[NSString class]]) {
         decimalNumber = [NSDecimalNumber decimalNumberWithString:value];
     } else if ([value isKindOfClass:[NSNumber class]]) {
-        decimalNumber = [[NSDecimalNumber alloc] initWithDecimal:[value decimalValue]];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        [formatter setMaximumFractionDigits:8];
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+        [formatter setLocale:usLocale];
+        NSString *numberString = [formatter stringFromNumber:value];
+        decimalNumber = [[NSDecimalNumber alloc] initWithString:numberString];
     }
     
     return decimalNumber;
@@ -59,8 +65,8 @@
     NSArray *coinPairComponents = [self.pair componentsSeparatedByString:@"_"];
     NSString *from = [[coinPairComponents firstObject] uppercaseString];
     NSString *to = [[coinPairComponents lastObject] uppercaseString];
-    NSString *amount = [self.exchangeRate stringValue];
-    return [NSString stringWithFormat:@"1 %@ = %@ %@", from, amount, to];
+    NSString *amount = [NSNumberFormatter localFormattedString:[self.exchangeRate stringValue]];
+    return [NSString stringWithFormat:@"%@ %@ = %@ %@", [NSNumberFormatter localFormattedString:@"1"], from, amount, to];
 }
 
 - (NSString *)depositCurrency

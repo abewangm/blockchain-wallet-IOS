@@ -106,8 +106,10 @@
 
 - (void)mainQRClicked
 {
-    [self.addressLabel animateFromText:self.address toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.addressLabel];
-    [UIPasteboard generalPasteboard].string = self.address;
+    if (self.address) {
+        [self.addressLabel animateFromText:self.address toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.addressLabel];
+        [UIPasteboard generalPasteboard].string = self.address;
+    }
 }
 
 - (void)requestButtonClicked

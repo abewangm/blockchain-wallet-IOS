@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "A bányászok is megkapja ezt a díjat, hogy a folyamat, ez a tranzakció.";
+
+/* (No Commment) */
+"Get Ether" = "Tudjon Éter";
+
+/* (No Commment) */
+"at" = "a";
+
+/* (No Commment) */
+"Exchange" = "Csere";
+
+/* (No Commment) */
+"New Exchange" = "Új Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Használja a minimális";
+
+/* (No Commment) */
+"Use maximum" = "Használja maximális";
+
+/* (No Commment) */
+"Sending Funds" = "Küld Alapok";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Köszönöm forgalomba a kereskedelem! Az Exchange szakmák, akár két óra, pedig tudja nyomon követni a szakma fejlődését abban a Sorrendben, Történelem szekció.";
+
+/* (No Commment) */
+"In Progress" = "Folyamatban";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Cserék akár két óra alatt lehet nyomon követni, hogy az exchange-haladás a Rend Történetében. Ha a kereskedés teljes, az éter érkezik a tárcájában.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "A kereskedelmi törölték. Kérem, térjen vissza a csere fülön, hogy indítsa el a kereskedelmi újra.";
+
+/* (No Commment) */
+"Failed" = "Sikertelen";
+
+/* (No Commment) */
+"Exchange Failed" = "Csere Nem Sikerült";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Ez a kereskedelem nem sikerült. Minden pénzt küldött, a pénztárca lesz visszatért mínusz a tranzakciós díj. Kérem, térjen vissza a csere fülön, hogy egy új kereskedelmi.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "A kereskedelmi lejárt. Kérem, térjen vissza a csere fülön, hogy egy új kereskedelmi.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Most már exchange a bitcoin-éter, illetve fordítva, közvetlenül a Blokklánc pénztárca!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@, hogy Betét";
+
+/* (No Commment) */
+"%@ to be Received" = "%@, hogy Kapott";
+
+/* (No Commment) */
+"Exchange Rate" = "Árfolyam";
+
+/* (No Commment) */
+"Transaction Fee" = "Tranzakciós Díj";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Hálózati Tranzakciós Díj";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Alakváltás Elállási Díj";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Megállapodnak abban, hogy Alakváltás";
+
+/* (No Commment) */
+"terms and conditions" = "általános szerződési feltételek";
+
+/* (No Commment) */
+"Exchange In Progress" = "Csere Folyamatban";
+
+/* (No Commment) */
+"Exchange Completed" = "Csere Befejezése";
+
+/* (No Commment) */
+"Get started" = "Az induláshoz";
+
+/* (No Commment) */
+"Below minimum limit" = "Az alábbi minimális limit";
+
+/* (No Commment) */
+"Above maximum limit" = "A fenti felső határ";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nem elég, hogy az exchange";
+
+/* (No Commment) */
+"Order ID" = "Rendelés AZONOSÍTÓ";
+
+/* (No Commment) */
+"Total %@ spent" = "Teljes %@ töltött";
+
+/* (No Commment) */
+"Getting quote" = "Egyre idézet";
+
+/* (No Commment) */
+"Confirming" = "Megerősítve";
+
+/* (No Commment) */
+"Exchange In Progress" = "Csere Folyamatban";
+
+/* (No Commment) */
+"Complete" = "Teljes";
+
+/* (No Commment) */
+"Exchange Completed" = "Csere Befejezése";
+
+/* (No Commment) */
+"Quote expires in %@" = "Idézet lejár %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Lépés %d a %d";
+
+/* (No Commment) */
+"Select your State:" = "Válassza ki az Állam:";
+
+/* (No Commment) */
+"Select State" = "Válasszuk Az Állam";
+
+/* (No Commment) */
+"Not Available" = "Nem Elérhető";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Cseréje érmék még nem elérhető az ön állapotát. Nyitunk ki több állam hamarosan.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Hiba történt, amikor egyre a %@ egyensúlyt. Kérjük, próbálja meg újra később. Részletek: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Hiba történt, amikor egy hozzávetőleges árajánlatot. Kérjük, próbálja meg újra később. Részletek: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Letétbe, hogy Alakváltás";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Kapott Alakváltás";
+
+/* (No Commment) */
+"Order History" = "Rendelési Előzmények";
+
+/* (No Commment) */
+"Incoming" = "Bejövő";
+
+/* (No Commment) */
+"Trade Expired" = "Kereskedelmi Lejárt";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "A kereskedelmi lejárt. Kérem, térjen vissza a Csere oldal, hogy indítsa el a kereskedelmi újra.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Nem Pénzeszközök Átváltási";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange 😕 Miért nem azzal kezdte, akik egyes alapok?";
+
+/* (No Commment) */
+"Loading Exchange" = "Betöltése Árfolyam";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Válasszuk a más %@ Pénztárca";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ szükséges csere";

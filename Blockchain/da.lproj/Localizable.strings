@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Minearbejdere modtage dette gebyr for at behandle transaktionen.";
+
+/* (No Commment) */
+"Get Ether" = "Få Ether";
+
+/* (No Commment) */
+"at" = "på";
+
+/* (No Commment) */
+"Exchange" = "Udveksling";
+
+/* (No Commment) */
+"New Exchange" = "Ny Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Brug minimum";
+
+/* (No Commment) */
+"Use maximum" = "Brug maksimal";
+
+/* (No Commment) */
+"Sending Funds" = "Sender Penge";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Tak for at placere din handel! Exchange handler kan tage op til to timer, og du kan holde styr på din handel fremskridt i den Rækkefølge, Historie sektion.";
+
+/* (No Commment) */
+"In Progress" = "I Gang";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Udvekslinger kan tage op til to timer, kan du holde styr på din exchange fremskridt i den Rækkefølge Historie. Når handlen er færdig, din ether vil ankomme i din tegnebog.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Din handel er blevet aflyst. Vend venligst tilbage til udveksling tab for at starte din handel igen.";
+
+/* (No Commment) */
+"Failed" = "Mislykkedes";
+
+/* (No Commment) */
+"Exchange Failed" = "Udveksling Mislykkedes";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Denne handel er slået fejl. Alle penge, der sendes fra din konto vil blive returneret minus gebyr. Vend venligst tilbage til udveksling tab for at starte en ny handel.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Din handel er udløbet. Vend venligst tilbage til udveksling tab for at starte en ny handel.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Du kan nu bytte din bitcoin for ether og vice versa direkte fra din Blokkæden tegnebog!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ til Depositum";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ at blive Modtaget";
+
+/* (No Commment) */
+"Exchange Rate" = "Kursen";
+
+/* (No Commment) */
+"Transaction Fee" = "Gebyr";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Netværk Transaktion Gebyr";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Tilbagetrækning Gebyr";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Enig i, at ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "vilkår og betingelser";
+
+/* (No Commment) */
+"Exchange In Progress" = "Udveksling I Gang";
+
+/* (No Commment) */
+"Exchange Completed" = "Udveksling Afsluttet";
+
+/* (No Commment) */
+"Get started" = "Komme i gang";
+
+/* (No Commment) */
+"Below minimum limit" = "Nedenfor minimum grænse";
+
+/* (No Commment) */
+"Above maximum limit" = "Ovennævnte maksimale grænse";
+
+/* (No Commment) */
+"Not enough to exchange" = "Ikke nok til at udveksle";
+
+/* (No Commment) */
+"Order ID" = "Ordre-ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Alt %@ brugt";
+
+/* (No Commment) */
+"Getting quote" = "Få tilbud";
+
+/* (No Commment) */
+"Confirming" = "Bekræftelse";
+
+/* (No Commment) */
+"Exchange In Progress" = "Udveksling I Gang";
+
+/* (No Commment) */
+"Complete" = "Komplet";
+
+/* (No Commment) */
+"Exchange Completed" = "Udveksling Afsluttet";
+
+/* (No Commment) */
+"Quote expires in %@" = "Tilbud udløber i %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Trin %d af %d";
+
+/* (No Commment) */
+"Select your State:" = "Vælg din Tilstand:";
+
+/* (No Commment) */
+"Select State" = "Vælg Tilstand";
+
+/* (No Commment) */
+"Not Available" = "Ikke Tilgængelig";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Udveksling af mønter, er endnu ikke tilgængelig i dit land. Vi vil være rullende ud i flere lande snart.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Der opstod en fejl, når din %@ balance. Prøv venligst igen senere. Detaljer: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Der opstod en fejl når at få en omtrentlig citat. Prøv venligst igen senere. Detaljer: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Deponeret til at ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Modtaget fra ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Ordre Historik";
+
+/* (No Commment) */
+"Incoming" = "Indgående";
+
+/* (No Commment) */
+"Trade Expired" = "Handel Udløb";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Din handel er udløbet. Vend venligst tilbage til Udveksling side for at starte din handel igen.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Ingen Midler til at Udveksle";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Du har ingen midler til at udveksle 😕 Hvorfor ikke komme i gang ved at modtage nogle midler?";
+
+/* (No Commment) */
+"Loading Exchange" = "Ilægning Veksle";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Vælg andre %@ Tegnebog";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ er nødvendige for at udveksle";

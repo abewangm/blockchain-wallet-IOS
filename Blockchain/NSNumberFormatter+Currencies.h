@@ -36,6 +36,7 @@
 + (NSString *)truncatedEthAmount:(NSDecimalNumber *)amount locale:(NSLocale *)preferredLocale;
 
 + (NSString *)convertedDecimalString:(NSString *)entryString;
++ (NSString *)localFormattedString:(NSString *)amountString;
 
 + (uint64_t)parseBtcValueFromString:(NSString *)inputString;
 

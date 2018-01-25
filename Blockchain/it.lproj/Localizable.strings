@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Penambang menerima biaya ini untuk memproses transaksi ini.";
+
+/* (No Commment) */
+"Get Ether" = "Ottieni Ethereum";
+
+/* (No Commment) */
+"at" = "presso";
+
+/* (No Commment) */
+"Exchange" = "Scambio";
+
+/* (No Commment) */
+"New Exchange" = "Nuovo scambio";
+
+/* (No Commment) */
+"Use minimum" = "Usa minimo";
+
+/* (No Commment) */
+"Use maximum" = "Usa massimo";
+
+/* (No Commment) */
+"Sending Funds" = "Invio di fondi";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Grazie per aver effettuato la tua operazione di trading!  Le operazioni di scambio possono richiedere fino a due ore e puoi monitorare i progressi delle tue operazioni di trading presso la sezione Cronologia ordini.";
+
+/* (No Commment) */
+"In Progress" = "In corso";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Le operazioni di scambio possono richiedere fino a due ore e puoi monitorarne i progressi presso la sezione Cronologia ordini. Quando l'operazione di trading sarà conclusa, l'Ethereum arriverà nel tuo portafoglio.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Il tuo scambio è stato annullato. Torna alla scheda 'Scambio' per effettuare una nuova operazione di trading.";
+
+/* (No Commment) */
+"Failed" = "Non riuscito";
+
+/* (No Commment) */
+"Exchange Failed" = "Scambio non riuscito";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Questa operazione di trading non è riuscita. Gli eventuali fondi inviati dal portafoglio saranno restituiti al netto della commissione di transazione. Torna alla scheda 'Scambio' per effettuare una nuova operazione di trading.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "La tua operazione di trading è scaduta. Torna alla scheda 'Scambio' per effettuare una nuova operazione di trading.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Ora puoi scambiare il tuo Bitcoin con Ethereum e viceversa, direttamente dal tuo portafoglio Blockchain!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ da depositare";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ da ricevere";
+
+/* (No Commment) */
+"Exchange Rate" = "Tasso di cambio";
+
+/* (No Commment) */
+"Transaction Fee" = "Costo della transazione";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Costo della transazione del network";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Commissione di prelievo ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Accetta i termini e le condizioni";
+
+/* (No Commment) */
+"terms and conditions" = "di ShapeShift";
+
+/* (No Commment) */
+"Exchange In Progress" = "Scambio In corso";
+
+/* (No Commment) */
+"Exchange Completed" = "Scambio completato";
+
+/* (No Commment) */
+"Get started" = "Per iniziare";
+
+/* (No Commment) */
+"Below minimum limit" = "Sotto il limite minimo";
+
+/* (No Commment) */
+"Above maximum limit" = "Sopra il limite massimo";
+
+/* (No Commment) */
+"Not enough to exchange" = "Non sufficiente per lo scambio";
+
+/* (No Commment) */
+"Order ID" = "ID ordine";
+
+/* (No Commment) */
+"Total %@ spent" = "Totale %@ spesi";
+
+/* (No Commment) */
+"Getting quote" = "Ottieni un preventivo";
+
+/* (No Commment) */
+"Confirming" = "Conferma";
+
+/* (No Commment) */
+"Exchange In Progress" = "Scambio In corso";
+
+/* (No Commment) */
+"Complete" = "Completato";
+
+/* (No Commment) */
+"Exchange Completed" = "Scambio completato";
+
+/* (No Commment) */
+"Quote expires in %@" = "Il preventivo scadrà tra %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Passaggio %d di %d";
+
+/* (No Commment) */
+"Select your State:" = "Seleziona il tuo stato:";
+
+/* (No Commment) */
+"Select State" = "Seleziona stato";
+
+/* (No Commment) */
+"Not Available" = "Non disponibile";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Lo scambio di monete non è ancora disponibile nel tuo stato, ma verrà presto esteso ad altri paesi.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Si è verificato un errore nel tentativo di ottenere il tuo saldo %@. Riprova più tardi. Dettagli: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Si è verificato un errore nel tentativo di ottenere un preventivo approssimativo. Riprova più tardi. Dettagli: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Depositato su ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Ricevuto da ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Cronologia ordini";
+
+/* (No Commment) */
+"Incoming" = "In entrata";
+
+/* (No Commment) */
+"Trade Expired" = "Operazione di trading scaduta";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "La tua operazione di trading è scaduta. Torna alla pagina 'Scambio' per effettuare una nuova operazione di trading.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Assenza di fondi per lo scambio";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Non hai alcun capitale da scambiare 😕 Perché non cominci a ricevere dei fondi?";
+
+/* (No Commment) */
+"Loading Exchange" = "Caricamento Scambio";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Seleziona altro portafoglio %@";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ necessari per lo scambio";

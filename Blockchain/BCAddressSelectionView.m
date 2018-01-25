@@ -479,7 +479,7 @@ int ethAccountsSectionNumber;
             isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
         }
         
-        if ([self showFromAddresses]) {
+        if ([self showFromAddresses] || selectMode == SelectModeExchangeAccountTo) {
             BOOL zeroBalance;
             uint64_t btcBalance = 0;
             if (section == addressBookSectionNumber) {

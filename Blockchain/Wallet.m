@@ -873,6 +873,10 @@
         [weakSelf on_fetch_eth_history_success];
     };
     
+    self.context[@"objc_on_create_eth_account_for_exchange_success"] = ^() {
+        [weakSelf on_create_eth_account_for_exchange_success];
+    };
+    
     self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
         [weakSelf on_fetch_eth_history_error:[error toString]];
     };
@@ -913,10 +917,6 @@
     
     self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *from, JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount, JSValue *expiration) {
         [weakSelf on_build_exchange_trade_success_from:[from toString] depositAmount:[depositAmount toString] fee:[fee toNumber] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
-    };
-    
-    self.context[@"objc_on_get_quote_success"] = ^(JSValue *result) {
-        [weakSelf on_get_quote_success:[result toDictionary]];
     };
     
     self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
@@ -2128,6 +2128,24 @@
     [self.context evaluateScript:@"MyWalletPhone.disableEmailNotifications()"];
 }
 
+- (void)enableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.enableSMSNotifications()"];
+}
+
+- (void)disableSMSNotifications
+{
+    if (![self isInitialized]) {
+        return;
+    }
+    
+    [self.context evaluateScript:@"MyWalletPhone.disableSMSNotifications()"];
+}
+
 - (void)updateServerURL:(NSString *)newURL
 {
     [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.updateServerURL(\"%@\")", [newURL escapeStringForJS]]];
@@ -2211,6 +2229,15 @@
     }
     
     return [[self.context evaluateScript:@"MyWalletPhone.emailNotificationsEnabled()"] toBool];
+}
+
+- (BOOL)SMSNotificationsEnabled
+{
+    if (![self isInitialized]) {
+        return NO;
+    }
+    
+    return [[self.context evaluateScript:@"MyWalletPhone.SMSNotificationsEnabled()"] toBool];
 }
 
 - (void)saveNote:(NSString *)note forTransaction:(NSString *)hash
@@ -2328,22 +2355,10 @@
 
 #pragma mark - Exchange
 
-- (void)getMaxHardLimit
-{
-    if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getEthExchangeRateForHardLimit()"];
-    }
-}
-
 - (BOOL)isExchangeEnabled
 {
-    return [self isCountryWhitelistedForShapeshift];
-}
-
-- (BOOL)isCountryWhitelistedForShapeshift
-{
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.isCountryWhitelistedForShapeshift()"] toBool];
+        return [[self.context evaluateScript:@"MyWalletPhone.isExchangeEnabled()"] toBool];
     }
     
     return NO;
@@ -2385,11 +2400,6 @@
     if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
 }
 
-- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount
-{
-    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getQuote(\"%@\", \"%@\")", [[coinPair lowercaseString] escapeStringForJS], [amount escapeStringForJS]]];
-}
-
 - (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
 {
     if ([self isInitialized]) {
@@ -2419,9 +2429,15 @@
             } else {
                 NSError *jsonError;
                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) completion(result, response, error);
-                });
+                if (result[DICTIONARY_KEY_ERROR] && [result[DICTIONARY_KEY_ERROR] isKindOfClass:[NSDictionary class]]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, result[DICTIONARY_KEY_ERROR][DICTIONARY_KEY_MESSAGE]]];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (completion) completion(result, response, error);
+                    });
+                }
             }
         }];
         
@@ -2703,6 +2719,14 @@
 }
 
 # pragma mark - Ethereum
+
+- (void)createEthAccountForExchange:(NSString *)secondPassword
+{
+    if ([self isInitialized]) {
+        NSString *setupHelperText = BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT;
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createEthAccountForExchange(\"%@\", \"%@\")", [secondPassword escapeStringForJS], [setupHelperText escapeStringForJS]]];
+    }
+}
 
 - (NSArray *)getEthTransactions
 {
@@ -3083,7 +3107,10 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex;
+    
+    TransactionsBitcoinViewController *transactionsBitcoinViewController = app.tabControllerManager.transactionsBitcoinViewController;
+    
+    int filterIndex = transactionsBitcoinViewController ? (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex : FILTER_INDEX_ALL;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
@@ -4261,6 +4288,15 @@
     
 }
 
+- (void)on_create_eth_account_for_exchange_success
+{
+    if ([self.delegate respondsToSelector:@selector(didCreateEthAccountForExchange)]) {
+        [self.delegate didCreateEthAccountForExchange];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateEthAccountForExchange!", [delegate class]);
+    }
+}
+
 - (void)on_update_eth_payment:(NSDictionary *)payment
 {
     if ([self.delegate respondsToSelector:@selector(didUpdateEthPayment:)]) {
@@ -4351,8 +4387,13 @@
     
     NSDecimalNumber *fiatHardLimit = [NSDecimalNumber decimalNumberWithString:[[self.context evaluateScript:@"MyWalletPhone.fiatExchangeHardLimit()"] toString]];
     
-    NSString *btcHardLimit = [app.btcFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:btcRate]];
-    NSString *ethHardLimit = [[fiatHardLimit decimalNumberByDividingBy:ethRate] stringValue];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:8];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
+    
+    NSString *btcHardLimit = [numberFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:btcRate]];
+    NSString *ethHardLimit = [numberFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:ethRate]];
     
     NSMutableDictionary *mutableCopy = [result mutableCopy];
     [mutableCopy setObject:btcHardLimit forKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
@@ -4362,15 +4403,6 @@
         [self.delegate didGetExchangeRate:mutableCopy];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
-    }
-}
-
-- (void)on_get_quote_success:(NSDictionary *)result
-{
-    if ([self.delegate respondsToSelector:@selector(didGetQuote:)]) {
-        [self.delegate didGetQuote:result];
-    } else {
-        DLog(@"Error: delegate of class %@ does not respond to selector didGetQuote:!", [delegate class]);
     }
 }
 
@@ -4386,11 +4418,7 @@
 - (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
 {
     if ([error isEqualToString:ERROR_NO_FREE_OUTPUTS_TO_SPEND]) {
-        if ([self.delegate respondsToSelector:@selector(showGetAssetsAlert)]) {
-            [self.delegate showGetAssetsAlert];
-        } else {
-            DLog(@"Error: delegate of class %@ does not respond to selector showGetAssetsAlert!", [delegate class]);
-        }
+        [self.delegate didGetAvailableBtcBalance:nil];
     } else {
         [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
     }

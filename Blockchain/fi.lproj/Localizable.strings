@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Kaivostyöläisten saada tämä maksu prosessi tämän tapahtuman.";
+
+/* (No Commment) */
+"Get Ether" = "Saada Eetteriin";
+
+/* (No Commment) */
+"at" = "klo";
+
+/* (No Commment) */
+"Exchange" = "Vaihto";
+
+/* (No Commment) */
+"New Exchange" = "Uusi Vaihto";
+
+/* (No Commment) */
+"Use minimum" = "Käytä vähintään";
+
+/* (No Commment) */
+"Use maximum" = "Käytä enintään";
+
+/* (No Commment) */
+"Sending Funds" = "Lähettää Varoja";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Kiitos asettamalla kaupan! Vaihto kaupat voi kestää jopa kaksi tuntia, ja voit seurata oman kaupan edistymisestä, Jotta Historia-osiossa.";
+
+/* (No Commment) */
+"In Progress" = "Käynnissä";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Vaihto voi kestää jopa kaksi tuntia, voit seurata oman vaihto edistymistä, Jotta Historia. Kun kauppa on valmis, eetteriin saapuu lompakossa.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Kauppa on peruttu. Palauta exchange-välilehti, jos haluat aloittaa oman kaupan uudelleen.";
+
+/* (No Commment) */
+"Failed" = "Ei";
+
+/* (No Commment) */
+"Exchange Failed" = "Vaihto Epäonnistui";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Tämä kauppa on epäonnistunut. Kaikki varat lähetetään lompakko palautetaan vähennettynä palvelumaksu. Palauta exchange-välilehti, jos haluat aloittaa uuden kaupan.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Kauppa on päättynyt. Palauta exchange-välilehti, jos haluat aloittaa uuden kaupan.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Voit nyt vaihtaa bitcoin eetteriin ja päinvastoin suoraan Blockchain lompakko!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ Tallettaa";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ Saanut";
+
+/* (No Commment) */
+"Exchange Rate" = "Valuuttakurssi";
+
+/* (No Commment) */
+"Transaction Fee" = "Palvelumaksu";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Verkko Palvelumaksu";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Muotoaan Peruuttaminen Maksu";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Samaa mieltä Muotoaan";
+
+/* (No Commment) */
+"terms and conditions" = "ehdot ja edellytykset";
+
+/* (No Commment) */
+"Exchange In Progress" = "Vaihto Käynnissä";
+
+/* (No Commment) */
+"Exchange Completed" = "Vaihto Suoritettu";
+
+/* (No Commment) */
+"Get started" = "Päästä alkuun";
+
+/* (No Commment) */
+"Below minimum limit" = "Alle minimirajan";
+
+/* (No Commment) */
+"Above maximum limit" = "Edellä enimmäismäärä";
+
+/* (No Commment) */
+"Not enough to exchange" = "Ei riitä, että vaihto";
+
+/* (No Commment) */
+"Order ID" = "Jotta ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Yhteensä vietti %@";
+
+/* (No Commment) */
+"Getting quote" = "Saada lainaus";
+
+/* (No Commment) */
+"Confirming" = "Vahvistaa";
+
+/* (No Commment) */
+"Exchange In Progress" = "Vaihto Käynnissä";
+
+/* (No Commment) */
+"Complete" = "Täydellinen";
+
+/* (No Commment) */
+"Exchange Completed" = "Vaihto Suoritettu";
+
+/* (No Commment) */
+"Quote expires in %@" = "Lainaus päättyy %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Vaihe %d ja %d";
+
+/* (No Commment) */
+"Select your State:" = "Valitse oman Valtion:";
+
+/* (No Commment) */
+"Select State" = "Valitse Tila";
+
+/* (No Commment) */
+"Not Available" = "Ei Saatavilla";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Vaihtaa kolikoita ei ole vielä saatavilla teidän valtio. Olemme liikkuvan ulos enemmän valtioiden pian.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Virhe tapahtui, kun saada %@ tasapaino. Yritä myöhemmin uudelleen. Lisätietoja: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Virhe tapahtui, kun saada likimääräinen lainaus. Yritä myöhemmin uudelleen. Lisätietoja: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Talletetaan Muotoaan";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Saadut Muotoaan";
+
+/* (No Commment) */
+"Order History" = "Tilaushistoria";
+
+/* (No Commment) */
+"Incoming" = "Saapuvat";
+
+/* (No Commment) */
+"Trade Expired" = "Kaupan Päättynyt";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Kauppa on päättynyt. Palauta Exchange-sivu aloittaa oman kaupan uudelleen.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Ei Varat Vaihto";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto 😕 Miksi ei aloita by vastaanottaminen joitakin varoja?";
+
+/* (No Commment) */
+"Loading Exchange" = "Lastaus Vaihto";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Valitse muut %@ Lompakko";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ tarvitaan vaihtamaan";

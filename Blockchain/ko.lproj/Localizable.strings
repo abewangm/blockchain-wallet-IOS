@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "채굴자는 이 거래 처리를 위해 이 수수료를 받습니다.";
+
+/* (No Commment) */
+"Get Ether" = "에테르 받기";
+
+/* (No Commment) */
+"at" = "에서";
+
+/* (No Commment) */
+"Exchange" = "교환";
+
+/* (No Commment) */
+"New Exchange" = "새 교환";
+
+/* (No Commment) */
+"Use minimum" = "최소 사용";
+
+/* (No Commment) */
+"Use maximum" = "최대 사용";
+
+/* (No Commment) */
+"Sending Funds" = "돈 보내는 중";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "거래 주문 감사합니다! 교환 거래는 두 시간까지 걸릴 수 있습니다. 주문 이력 섹션에서 거래 진도를 볼 수 있습니다.";
+
+/* (No Commment) */
+"In Progress" = "진행 중";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "거래 주문 감사합니다! 교환 거래는 두 시간까지 걸릴 수 있습니다. 주문 이력에서 거래 진도를 볼 수 있습니다. 거래가 끝나면, 에테르가 귀하 지갑에 도착할 겁니다.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "거래가 취소되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"Failed" = "실패";
+
+/* (No Commment) */
+"Exchange Failed" = "교환 실패";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "이 거래는 실패 했습니다. 지갑에서 보낸 돈은 거래 수수료를 빼고 반환됩니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "거래가 만료되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "이제 블록체인 지갑에서 직접 비트코인과 에테르를 서로 교환할 수 있습니다!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ 예치";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ 수령 예정";
+
+/* (No Commment) */
+"Exchange Rate" = "환율";
+
+/* (No Commment) */
+"Transaction Fee" = "거래 수수료";
+
+/* (No Commment) */
+"Network Transaction Fee" = "네트워크 거래 수수료";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift 인출 수수료";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ShapeShift에 동의";
+
+/* (No Commment) */
+"terms and conditions" = "조건";
+
+/* (No Commment) */
+"Exchange In Progress" = "교환 진행 중";
+
+/* (No Commment) */
+"Exchange Completed" = "교환 완료";
+
+/* (No Commment) */
+"Get started" = "시작하기";
+
+/* (No Commment) */
+"Below minimum limit" = "최소 한도 아래";
+
+/* (No Commment) */
+"Above maximum limit" = "최대 한도 위";
+
+/* (No Commment) */
+"Not enough to exchange" = "교환하기에 불충분";
+
+/* (No Commment) */
+"Order ID" = "주문 ID";
+
+/* (No Commment) */
+"Total %@ spent" = "총 %@ 사용";
+
+/* (No Commment) */
+"Getting quote" = "견적 받는 중";
+
+/* (No Commment) */
+"Confirming" = "확인 중";
+
+/* (No Commment) */
+"Exchange In Progress" = "교환 진행 중";
+
+/* (No Commment) */
+"Complete" = "완료";
+
+/* (No Commment) */
+"Exchange Completed" = "교환 완료";
+
+/* (No Commment) */
+"Quote expires in %@" = "%@ 후 견적 만료";
+
+/* (No Commment) */
+"Step %d of %d" = "%d 중 %d 단계";
+
+/* (No Commment) */
+"Select your State:" = "귀하 주 선택:";
+
+/* (No Commment) */
+"Select State" = "주 선택";
+
+/* (No Commment) */
+"Not Available" = "없음";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "귀하 주에서는 아직 코인 교환이 안 됩니다. 곧 더 많은 주에서 되게 하겠습니다.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "귀하 %@ 잔액 가져오기에서 오류 발생. 나중에 다시 해보세요. 상세 사항: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "대략 견적 가져오기에서 오류 발생. 나중에 다시 해보세요. 상세 사항: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "ShapeShift에 예치됨";
+
+/* (No Commment) */
+"Received from ShapeShift" = "ShapeShift로부터 받음";
+
+/* (No Commment) */
+"Order History" = "주문 이력";
+
+/* (No Commment) */
+"Incoming" = "들어오는";
+
+/* (No Commment) */
+"Trade Expired" = "거래 만료됨";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "거래가 만료되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "교환할 돈 없음";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "교환할 돈이 없습니다 😕 돈을 좀 받기 시작하세요";
+
+/* (No Commment) */
+"Loading Exchange" = "교환 로딩 중";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "다른 %@ 지갑 선택";
+
+/* (No Commment) */
+"%@ needed to exchange" = "교환하려면 %@가 필요함";

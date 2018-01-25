@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "矿工接收这笔费用用于处理该交易";
+
+/* (No Commment) */
+"Get Ether" = "获取以太币";
+
+/* (No Commment) */
+"at" = "在";
+
+/* (No Commment) */
+"Exchange" = "兑换";
+
+/* (No Commment) */
+"New Exchange" = "新兑换";
+
+/* (No Commment) */
+"Use minimum" = "使用最低";
+
+/* (No Commment) */
+"Use maximum" = "使用最高";
+
+/* (No Commment) */
+"Sending Funds" = "发送资金";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "感谢您进行交易！兑换交易可能需要最长两个小时的时间，您可以在'订单历史'部分对您的交易进度进行跟进。";
+
+/* (No Commment) */
+"In Progress" = "进行中";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "兑换交易可能需要最长两个小时的时间，您可以在'订单历史'中对您的交易进度进行跟进。交易完成后，您的以太币便会到达您的钱包中。";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "您的交易已取消。请返回到兑换选项卡重新开始您的交易。";
+
+/* (No Commment) */
+"Failed" = "失败";
+
+/* (No Commment) */
+"Exchange Failed" = "兑换失败";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "该交易失败。从您的钱包发出的任何资金都会在扣除交易费后退还。请返回到兑换选项卡开始新的交易。";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "您的交易已过期。请返回到兑换选项卡开始新的交易。";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "现在，您可以直接从您的Blockchain钱包用您的比特币兑换以太币，反之亦然！";
+
+/* (No Commment) */
+"%@ to Deposit" = "要充值%@";
+
+/* (No Commment) */
+"%@ to be Received" = "要接收%@";
+
+/* (No Commment) */
+"Exchange Rate" = "兑换率";
+
+/* (No Commment) */
+"Transaction Fee" = "交易费";
+
+/* (No Commment) */
+"Network Transaction Fee" = "网络交易费";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift提款费";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "同意ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "条款和条件";
+
+/* (No Commment) */
+"Exchange In Progress" = "正在兑换";
+
+/* (No Commment) */
+"Exchange Completed" = "兑换完成";
+
+/* (No Commment) */
+"Get started" = "开始";
+
+/* (No Commment) */
+"Below minimum limit" = "低于最低限额";
+
+/* (No Commment) */
+"Above maximum limit" = "高于最高限额";
+
+/* (No Commment) */
+"Not enough to exchange" = "不足以兑换";
+
+/* (No Commment) */
+"Order ID" = "订单ID";
+
+/* (No Commment) */
+"Total %@ spent" = "花费了总共%@";
+
+/* (No Commment) */
+"Getting quote" = "获取报价";
+
+/* (No Commment) */
+"Confirming" = "确认";
+
+/* (No Commment) */
+"Exchange In Progress" = "正在兑换";
+
+/* (No Commment) */
+"Complete" = "完成";
+
+/* (No Commment) */
+"Exchange Completed" = "兑换完成";
+
+/* (No Commment) */
+"Quote expires in %@" = "报价会在%@后过期";
+
+/* (No Commment) */
+"Step %d of %d" = "第%d/%d步";
+
+/* (No Commment) */
+"Select your State:" = "选择您的州：";
+
+/* (No Commment) */
+"Select State" = "选择州";
+
+/* (No Commment) */
+"Not Available" = "不可用";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "在您的州尚不提供代币兑换服务。我们很快会推出更多的州。";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "获取您的%@余额时出错。请稍后重试。详情：%@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "获取大致报价时出错。请稍后重试。详情：%@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "已存入ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "已从ShapeShift接收";
+
+/* (No Commment) */
+"Order History" = "订单历史";
+
+/* (No Commment) */
+"Incoming" = "接收";
+
+/* (No Commment) */
+"Trade Expired" = "交易已过期";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "您的交易已过期。请返回到兑换选项卡重新开始您的交易。";
+
+/* (No Commment) */
+"No Funds to Exchange" = "无可兑换资金";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "您没有可兑换的资金 😕 为什么不先接收一些资金呢？";
+
+/* (No Commment) */
+"Loading Exchange" = "正在载入兑换";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "选择另一个%@钱包";
+
+/* (No Commment) */
+"%@ needed to exchange" = "需要兑换%@";

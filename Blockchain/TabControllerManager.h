@@ -124,12 +124,12 @@
 - (void)updateBadgeNumber:(NSInteger)number forSelectedIndex:(int)index;
 
 - (void)exchangeClicked;
+- (void)didCreateEthAccountForExchange;
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
-- (void)didGetQuote:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
 - (void)didShiftPayment:(NSDictionary *)info;
-- (void)showGetAssetsAlert;
+- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
 @end
