@@ -10,7 +10,7 @@
 #import "ExchangeDetailView.h"
 #import "UIView+ChangeFrameAttribute.h"
 
-@interface ExchangeProgressViewController ()
+@interface ExchangeProgressViewController () <ExchangeDetailViewDelegate>
 
 @end
 
@@ -25,6 +25,7 @@
     self.view.backgroundColor = COLOR_TABLE_VIEW_BACKGROUND_LIGHT_GRAY;
     
     ExchangeDetailView *detailView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_WIDTH, 0) fetchedTrade:self.trade];
+    detailView.delegate = self;
     
     CGFloat windowWidth = WINDOW_WIDTH;
     BOOL isUsingLargerScreen = IS_USING_SCREEN_SIZE_LARGER_THAN_5S;
@@ -134,6 +135,18 @@
     }
     
     return nil;
+}
+
+#pragma mark - Exchange Detail View Delegate
+
+- (void)orderIDTapped:(NSString *)orderID
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:orderID message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:BC_STRING_COPY_TO_CLIPBOARD style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [UIPasteboard generalPasteboard].string = orderID;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

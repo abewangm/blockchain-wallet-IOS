@@ -17,6 +17,9 @@
 #define NUMBER_OF_ROWS_FETCHED_TRADE 6
 #define NUMBER_OF_ROWS_BUILT_TRADE 6
 
+@interface ExchangeDetailView ()
+@property (nonatomic) NSString *orderID;
+@end
 @implementation ExchangeDetailView
 
 - (instancetype)initWithFrame:(CGRect)frame fetchedTrade:(ExchangeTrade *)trade
@@ -65,6 +68,11 @@
     [self addSubview:rowTransactionFee];
 
     UIView *rowOrderID = [self rowViewWithText:[NSString stringWithFormat:BC_STRING_EXCHANGE_ORDER_ID, @""] accessoryText:trade.orderID yPosition:rowTransactionFee.frame.origin.y + rowTransactionFee.frame.size.height];
+    self.orderID = trade.orderID;
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+    [tapGestureRecognizer addTarget:self action:@selector(orderIDTapped)];
+    [rowOrderID addGestureRecognizer:tapGestureRecognizer];
+    rowOrderID.userInteractionEnabled = YES;
     [self addSubview:rowOrderID];
     
     UIView *rowDate = [self rowViewWithText:BC_STRING_DATE accessoryText:[NSDateFormatter verboseStringFromDate:trade.date] yPosition:rowOrderID.frame.origin.y + rowOrderID.frame.size.height];
@@ -142,6 +150,11 @@
     BOOL isUsing4S = IS_USING_SCREEN_SIZE_4S;
     CGFloat rowHeight = isUsingLargeScreenSize ? 60 : isUsing4S ? 44 : 50;
     return rowHeight;
+}
+
+- (void)orderIDTapped
+{
+    [self.delegate orderIDTapped:self.orderID];
 }
 
 @end
