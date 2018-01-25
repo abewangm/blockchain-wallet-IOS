@@ -154,7 +154,9 @@
 
 - (void)orderIDTapped
 {
-    [self.delegate orderIDTapped:self.orderID];
+    if (self.orderID) {
+        [self.delegate orderIDTapped:self.orderID];
+    }
 }
 
 @end
