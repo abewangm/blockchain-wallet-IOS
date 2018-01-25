@@ -1915,3 +1915,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Baníci dostali tento poplatok na spracovanie tejto transakcie.";
+
+/* (No Commment) */
+"Get Ether" = "Získajte Éter";
+
+/* (No Commment) */
+"at" = "na";
+
+/* (No Commment) */
+"Exchange" = "Výmena";
+
+/* (No Commment) */
+"New Exchange" = "Nový Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Použite minimálne";
+
+/* (No Commment) */
+"Use maximum" = "Použiť maximálne";
+
+/* (No Commment) */
+"Sending Funds" = "Poslanie Peňazí";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Vďaka za uvedenie váš obchod! Výmenné obchody môže trvať až dve hodiny, a môžete sledovať váš obchod pokrok v Poradí, v Histórii oddielu.";
+
+/* (No Commment) */
+"In Progress" = "V Pokrok";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Výmenu môže trvať až dve hodiny, môžete sledovať vaše exchange pokrok v Poradí, v Histórii. Akonáhle je obchod dokončiť, váš ether budú prichádzať do vašej peňaženky.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Váš obchodný bola zrušená. Prosím, vráťte sa na kartu výmena začať obchodu znova.";
+
+/* (No Commment) */
+"Failed" = "Zlyhalo";
+
+/* (No Commment) */
+"Exchange Failed" = "Výmena Nepodarilo";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Tento obchod sa nepodarilo. Všetky finančné prostriedky, odoslaná z vašej peňaženky budú vrátené mínus transakcie poplatok. Prosím, vráťte sa na kartu výmena začať nový obchod.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Váš obchod uplynula. Prosím, vráťte sa na kartu výmena začať nový obchod.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Teraz môžete vymeniť váš bitcoin pre éter a naopak priamo z vášho Blockchain peňaženky!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ na Vklad";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ byť Prijaté";
+
+/* (No Commment) */
+"Exchange Rate" = "Výmenný Kurz";
+
+/* (No Commment) */
+"Transaction Fee" = "Transakcie Poplatok";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Sieť Transakcie Poplatok";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Odstúpenie Od Zmluvy Poplatok";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Súhlasíte s tým, aby ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "podmienky";
+
+/* (No Commment) */
+"Exchange In Progress" = "Výmena Prebieha";
+
+/* (No Commment) */
+"Exchange Completed" = "Výmena Ukončené";
+
+/* (No Commment) */
+"Get started" = "Začíname";
+
+/* (No Commment) */
+"Below minimum limit" = "Nižšie minimálny limit";
+
+/* (No Commment) */
+"Above maximum limit" = "Vyššie maximálny limit";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nie dosť na výmenu";
+
+/* (No Commment) */
+"Order ID" = "ID objednávky";
+
+/* (No Commment) */
+"Total %@ spent" = "Celkovo strávil %@";
+
+/* (No Commment) */
+"Getting quote" = "Stále citovať";
+
+/* (No Commment) */
+"Confirming" = "Potvrdzuje";
+
+/* (No Commment) */
+"Exchange In Progress" = "Výmena Prebieha";
+
+/* (No Commment) */
+"Complete" = "Kompletné";
+
+/* (No Commment) */
+"Exchange Completed" = "Výmena Ukončené";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citát uplynie v %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Krok %d z %d";
+
+/* (No Commment) */
+"Select your State:" = "Vyberte Štát:";
+
+/* (No Commment) */
+"Select State" = "Vyberte Štátu";
+
+/* (No Commment) */
+"Not Available" = "Nie Je K Dispozícii";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Výmena mincí zatiaľ nie je k dispozícii vo vašom štáte. Budeme sa vyvaliť viac štátov čoskoro.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Sa vyskytla chyba pri získavaní vaše %@ rovnováhu. Prosím, skúste znovu / a neskôr. Podrobnosti: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Sa vyskytla chyba pri získavaní a približnú cenovú ponuku. Prosím, skúste znovu / a neskôr. Podrobnosti: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Uložené na ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Prijaté od ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Aby História";
+
+/* (No Commment) */
+"Incoming" = "Prichádzajúce";
+
+/* (No Commment) */
+"Trade Expired" = "Obchod Skončila";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Váš obchod uplynula. Prosím vráťte na Výmenu stránke spustite váš obchod znova.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Žiadne Prostriedky na Výmenu";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemáte prostriedky na výmenu 😕 Prečo nie začíname prijatím niektorých fondov?";
+
+/* (No Commment) */
+"Loading Exchange" = "Nakladanie Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Vyberte iné %@ Peňaženky";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ potrebné na výmenu";

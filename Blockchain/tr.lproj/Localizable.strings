@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Madenciler bu işlemi gerçekleştirmek için bu ücreti alır.";
+
+/* (No Commment) */
+"Get Ether" = "Ether Alın";
+
+/* (No Commment) */
+"at" = ":";
+
+/* (No Commment) */
+"Exchange" = "Dönüştürme";
+
+/* (No Commment) */
+"New Exchange" = "Yeni Dönüştürme";
+
+/* (No Commment) */
+"Use minimum" = "Minimum tutarı kullanın";
+
+/* (No Commment) */
+"Use maximum" = "Maksimum tutarı kullanın";
+
+/* (No Commment) */
+"Sending Funds" = "Para Gönderiliyor";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = " İşleminizi gerçekleştirdiğiniz için teşekkürler!  Dönüştürme işlemleri iki saate kadar sürebilir, işleminizi Sipariş Geçmişi kısmından takip edebilirsiniz.";
+
+/* (No Commment) */
+"In Progress" = "Devam Ediyor";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Dönüştürme işlemleri iki saate kadar sürebilir, işleminizi Sipariş Geçmişi kısmından takip edebilirsiniz. İşlem tamamlandığında ether'iniz cüzdanınıza yatacaktır";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "İşleminiz iptal edildi. İşleminizi yeniden başlatmak için lütfen dönüştürme sekmesine geri dönün.";
+
+/* (No Commment) */
+"Failed" = "Başarısız";
+
+/* (No Commment) */
+"Exchange Failed" = "Dönüştürme Başarısız";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Bu işlem başarısız oldu. Cüzdanınızdan gönderilen tüm para, işlem ücreti çıkarıldıktan sonra cüzdanınıza iade edilecektir. Yeni bir işlem başlatmak için lütfen dönüştürme sekmesine geri dönün.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "İşleminiz başarısız oldu. Yeni bir işlem başlatmak için lütfen dönüştürme sekmesine geri dönün.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Şimdi doğrudan Blockchain cüzdanınızdan bitcoin'inizi ether ile ve ether'inizi bitcoin ile dönüştürebilirsiniz!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ Yatırılacak";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ Alınacak";
+
+/* (No Commment) */
+"Exchange Rate" = "Dönüştürme Kuru";
+
+/* (No Commment) */
+"Transaction Fee" = "İşlem Ücreti";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Ağ İşlem Ücreti";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Para Çekme Ücreti";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "şart ve koşullarını kabul edersiniz";
+
+/* (No Commment) */
+"Exchange In Progress" = "Dönüştürme Devam Ediyor";
+
+/* (No Commment) */
+"Exchange Completed" = "Dönüştürme Tamamlandı";
+
+/* (No Commment) */
+"Get started" = "Başlayın";
+
+/* (No Commment) */
+"Below minimum limit" = "Minimum limitin altında";
+
+/* (No Commment) */
+"Above maximum limit" = "Minimum limitin üzerinde";
+
+/* (No Commment) */
+"Not enough to exchange" = "Dönüştürme için yeterli değil";
+
+/* (No Commment) */
+"Order ID" = "Sipariş Numarası";
+
+/* (No Commment) */
+"Total %@ spent" = "Toplam %@ harcandı";
+
+/* (No Commment) */
+"Getting quote" = "Fiyat teklifi alınıyor";
+
+/* (No Commment) */
+"Confirming" = "Onaylanıyor";
+
+/* (No Commment) */
+"Exchange In Progress" = "Dönüştürme Devam Ediyor";
+
+/* (No Commment) */
+"Complete" = "Tamamlayın";
+
+/* (No Commment) */
+"Exchange Completed" = "Dönüştürme Tamamlandı";
+
+/* (No Commment) */
+"Quote expires in %@" = "Fiyat teklifi %@ içinde sona eriyor";
+
+/* (No Commment) */
+"Step %d of %d" = "Adım %d/%d ";
+
+/* (No Commment) */
+"Select your State:" = "Ülkenizi Seçin:";
+
+/* (No Commment) */
+"Select State" = "Ülke Seçin";
+
+/* (No Commment) */
+"Not Available" = "Kullanılamıyor";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Para dönüştürme işlemi ülkenizde henüz kullanılamıyor. Yakında daha fazla ülkeyi dahil edeceğiz.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "%@ bakiyenizi oluştururken bir hata oluştu. Lütfen tekrar deneyin. Ayrıntılar: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Tahmini bir fiyat teklifi alınırken bir hata oluştu. Lütfen tekrar deneyin. Ayrıntılar: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "ShapeShift'e yatırıldı";
+
+/* (No Commment) */
+"Received from ShapeShift" = "ShapeShift'ten alındı";
+
+/* (No Commment) */
+"Order History" = "Sipariş Geçmişi";
+
+/* (No Commment) */
+"Incoming" = "Gelen";
+
+/* (No Commment) */
+"Trade Expired" = "İşlemin Süresi Sona Erdi";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "İşleminizin süresi sona erdi. İşleminizi yeniden başlatmak için lütfen Dönüştürme sekmesine geri dönün.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Dönüştürülecek Para Yok";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Dönüştürecek paranız yok 😕 Neden biraz para almaya başlamıyorsunuz?";
+
+/* (No Commment) */
+"Loading Exchange" = "Dönüştürme Yükleniyor";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Diğer %@ Cüzdanı seçin";
+
+/* (No Commment) */
+"%@ needed to exchange" = "Dönüştürme için %@ gereklidir";

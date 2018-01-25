@@ -1958,3 +1958,171 @@
 
 /* (No Commment) */
  = "Wallet Ether Saya";
+
+/* (No Commment) */
+"Get Ether" = "Dapatkan Ether";
+
+/* (No Commment) */
+"at" = "di";
+
+/* (No Commment) */
+"Exchange" = "Exchange";
+
+/* (No Commment) */
+"New Exchange" = "Exchange Baru";
+
+/* (No Commment) */
+"Use minimum" = "Gunakan minimal";
+
+/* (No Commment) */
+"Use maximum" = "Gunakan maksimal";
+
+/* (No Commment) */
+"Sending Funds" = "Kirim Dana";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Trims sudah melakukan trade!  Perdagangan Exchange dapat berlangsung hingga dua jam, dan Anda dapat memantau progres trade Anda di bagian Riwayat Order.";
+
+/* (No Commment) */
+"In Progress" = "Sedang Progres";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Exchange dapat berlangsung hingga dua jam, dan Anda dapat memantau progres trade Anda di bagian Riwayat Order. Ether akan masuk ke wallet Anda begitu perdagangan selesai.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Trade Anda telah dibatalkan. Silakan kembali untuk memulai trade Anda.";
+
+/* (No Commment) */
+"Failed" = "Gagal";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange Gagal";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Trade ini gagal. Setiap dana yang dikirim dari wallet Anda akan dikembalikan potong biaya transaksi. Silakan kembali ke tab exchange untuk memulai trade baru.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Trade Anda telah kedaluwarsa. Silakan kembali ke tab exchange untuk memulai trade baru.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Kini Anda dapat menukar bitcoin dengan ether dan sebaliknya secara langsung dari wallet Blockchain Anda!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ untuk Setoran";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ yang akan Diterima";
+
+/* (No Commment) */
+"Exchange Rate" = "Kurs Exchange";
+
+/* (No Commment) */
+"Transaction Fee" = "Biaya Transaksi";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Biaya Transaksi Jaringan";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Biaya Penarikan ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Setuju pada syarat dan ketentuan";
+
+/* (No Commment) */
+"terms and conditions" = "ShapeShift";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange Sedang Progres";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Selesai";
+
+/* (No Commment) */
+"Get started" = "Mulai Start";
+
+/* (No Commment) */
+"Below minimum limit" = "Di bawah limit minimal";
+
+/* (No Commment) */
+"Above maximum limit" = "Di atas limit maksimal";
+
+/* (No Commment) */
+"Not enough to exchange" = "Tidak cukup untuk exchange";
+
+/* (No Commment) */
+"Order ID" = "ID Order";
+
+/* (No Commment) */
+"Total %@ spent" = "Total %@ dihabiskan";
+
+/* (No Commment) */
+"Getting quote" = "Mendapat Kutipan";
+
+/* (No Commment) */
+"Confirming" = "Mengonfirmasi";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange sedang Progres";
+
+/* (No Commment) */
+"Complete" = "Selesai";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Selesai";
+
+/* (No Commment) */
+"Quote expires in %@" = "Kutipan akan hilang dalam %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Langkah %d dari %d";
+
+/* (No Commment) */
+"Select your State:" = "Pilih propinsi Anda:";
+
+/* (No Commment) */
+"Select State" = "Pilih Propinsi";
+
+/* (No Commment) */
+"Not Available" = "Tidak Tersedia";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Menukar koin tidak tersedia di propinsi Anda. Kami akan rilis lebih banyak propinsi.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Suatu galat terjadi saat saat memperlihatkan saldo %@ Anda. Silakan dicoba kembali. Detail: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Suatu galat terjadi ketika kutipan ditampilkan. Silakan dicoba kembali. Detail %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Disetorkan ke ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Diterima dari ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Riwayat Order";
+
+/* (No Commment) */
+"Incoming" = "Sedang Masuk";
+
+/* (No Commment) */
+"Trade Expired" = "Trade Kedaluwarsa";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Trade Anda telah kedaluwarsa. Silakan kembali ke laman Exchange untuk memulai trade Anda kembali.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Dana nihil untuk Exchange";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Dana Anda nihil untuk exchange 😕 Mengapa tidak mulai dengan menerima dana?";
+
+/* (No Commment) */
+"Loading Exchange" = "Memuat Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Pilih Wallet %@ lainnya";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ akan ditukar";

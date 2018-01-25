@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -51,11 +51,6 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzF-wF-kZX">
-                                        <rect key="frame" x="278" y="48" width="22" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="chevron_right"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.023529411760000001" green="0.21960784310000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -81,14 +76,10 @@
             <connections>
                 <outlet property="balanceBigButton" destination="zSG-vv-ac3" id="o3Q-W4-AY5"/>
                 <outlet property="filterAccountButton" destination="xlp-Yi-lq2" id="6aK-7Q-gHY"/>
-                <outlet property="filterAccountChevronButton" destination="yzF-wF-kZX" id="4nw-Nd-hsy"/>
                 <outlet property="headerView" destination="QNE-4f-2C5" id="hBb-au-Iog"/>
                 <outlet property="tableView" destination="5kW-Wd-IHm" id="EA7-au-eGQ"/>
             </connections>
             <point key="canvasLocation" x="133" y="-310"/>
         </viewController>
     </objects>
-    <resources>
-        <image name="chevron_right" width="12" height="20"/>
-    </resources>
 </document>

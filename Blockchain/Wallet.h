@@ -138,12 +138,12 @@
 - (void)didGetEtherAddressWithSecondPassword;
 - (void)didGetExchangeTrades:(NSArray *)trades;
 - (void)didGetExchangeRate:(NSDictionary *)result;
-- (void)didGetQuote:(NSDictionary *)result;
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
 - (void)didShiftPayment:(NSDictionary *)info;
-- (void)showGetAssetsAlert;
+- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
+- (void)didCreateEthAccountForExchange;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -362,7 +362,10 @@ typedef enum {
 - (BOOL)isCorrectPassword:(NSString *)inputedPassword;
 - (void)enableEmailNotifications;
 - (void)disableEmailNotifications;
+- (void)enableSMSNotifications;
+- (void)disableSMSNotifications;
 - (BOOL)emailNotificationsEnabled;
+- (BOOL)SMSNotificationsEnabled;
 
 // Security Center
 - (BOOL)hasVerifiedEmail;
@@ -449,14 +452,13 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Exchange
+- (void)createEthAccountForExchange:(NSString *)secondPassword;
 - (BOOL)isExchangeEnabled;
-- (BOOL)isCountryWhitelistedForShapeshift;
 - (NSArray *)availableUSStates;
 - (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;
 - (void)selectState:(NSString *)name code:(NSString *)code;
 - (void)getExchangeTrades;
 - (void)getRate:(NSString *)coinPair;
-- (void)getQuote:(NSString *)coinPair amount:(NSString *)amount;
 - (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion;
 - (void)getAvailableBtcBalanceForAccount:(int)account;
 - (void)getAvailableEthBalance;

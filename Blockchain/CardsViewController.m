@@ -48,7 +48,7 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showExchange = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD] && [app.wallet isExchangeEnabled];
+    self.showExchange = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_EXCHANGE_CARD] && [app.wallet isExchangeEnabled];
     
     self.cardsViewHeight = self.showExchange ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
@@ -91,7 +91,7 @@
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(exchangeCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     closeButton.tintColor = COLOR_TEXT_DARK_GRAY;
-    [closeButton addTarget:self action:@selector(closeEtherAvailableCard) forControlEvents:UIControlEventTouchUpInside];
+    [closeButton addTarget:self action:@selector(closeExchangeAvailableCard) forControlEvents:UIControlEventTouchUpInside];
     [exchangeCard addSubview:closeButton];
     
     [cardsView addSubview:exchangeCard];
@@ -237,11 +237,11 @@
     return cardLength * page;
 }
 
-- (void)closeEtherAvailableCard
+- (void)closeExchangeAvailableCard
 {
     [self closeCardsView];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_EXCHANGE_CARD];
 }
 
 - (void)cardActionClicked:(ActionType)actionType

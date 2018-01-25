@@ -1721,12 +1721,24 @@ MyWalletPhone.emailNotificationsEnabled = function() {
     return MyWallet.wallet.accountInfo.notifications.email;
 }
 
+MyWalletPhone.SMSNotificationsEnabled = function() {
+    return MyWallet.wallet.accountInfo.notifications.sms;
+}
+
 MyWalletPhone.enableEmailNotifications = function() {
     MyWalletPhone.updateNotification({email: 'enable'});
 }
 
 MyWalletPhone.disableEmailNotifications = function() {
     MyWalletPhone.updateNotification({email: 'disable'});
+}
+
+MyWalletPhone.enableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'enable'});
+}
+
+MyWalletPhone.disableSMSNotifications = function() {
+    MyWalletPhone.updateNotification({sms: 'disable'});
 }
 
 MyWalletPhone.updateNotification = function(updates) {
@@ -2377,7 +2389,23 @@ MyWalletPhone.createNewEtherPayment = function() {
 }
 
 MyWalletPhone.hasEthAccount = function() {
-    return MyWallet.wallet.eth.defaultAccount != null;
+    var eth = MyWallet.wallet.eth;
+    return eth && eth.defaultAccount;
+}
+
+MyWalletPhone.createEthAccountForExchange = function(secondPassword, helperText) {
+    
+    var eth = MyWallet.wallet.eth;
+
+    if (MyWallet.wallet.isDoubleEncrypted) {
+        eth.createAccount(void 0, secondPassword).then(function() {
+            objc_on_create_eth_account_for_exchange_success();
+        });
+    } else {
+        eth.createAccount(void 0, secondPassword).then(function() {
+            objc_on_create_eth_account_for_exchange_success();
+        });
+    }
 }
 
 MyWalletPhone.updateEtherPayment = function(isSweep) {
@@ -2464,12 +2492,14 @@ MyWalletPhone.getEtherAddress = function(helperText) {
     } else {
         if (MyWallet.wallet.isDoubleEncrypted) {
             MyWalletPhone.getSecondPassword(function (pw) {
-               eth.createAccount(void 0, pw);
-               objc_did_get_ether_address_with_second_password();
+                eth.createAccount(void 0, pw).then(function() {
+                    objc_did_get_ether_address_with_second_password();
+                });
             }, helperText);
         } else {
-            eth.createAccount(void 0);
-            return eth.defaultAccount.address;
+            eth.createAccount(void 0).then(function() {
+               objc_did_get_ether_address_with_second_password();
+            });
         }
     }
 }
@@ -2546,20 +2576,6 @@ MyWalletPhone.getRate = function(coinPair) {
     }
     
     MyWallet.wallet.shapeshift.getRate(coinPair).then(success).catch(error);
-}
-
-MyWalletPhone.getQuote = function(coinPair, amount) {
-    
-    var success = function(result) {
-        objc_on_get_quote_success(result.toJSON());
-    }
-    
-    var error = function(e) {
-        console.log('Error getting quote');
-        console.log(e);
-    }
-    
-    MyWallet.wallet.shapeshift.getQuote(coinPair, amount).then(success).catch(error);
 }
 
 MyWalletPhone.getShapeshiftApiKey = function() {
@@ -2664,7 +2680,17 @@ MyWalletPhone.shiftPayment = function() {
     }
 }
 
-MyWalletPhone.isCountryWhitelistedForShapeshift = function() {
+MyWalletPhone.isExchangeEnabled = function() {
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift();
+}
+
+MyWalletPhone.isStateGuessWhitelistedForShapeshift = function() {
+    var state = MyWallet.wallet.accountInfo.stateCodeGuess;
+    var statesWhitelist = walletOptions.getValue().shapeshift.statesWhitelist;
+    return !state ? true : statesWhitelist.indexOf(state) > -1;
+}
+
+MyWalletPhone.isCountryGuessWhitelistedForShapeshift = function() {
     var country = MyWallet.wallet.accountInfo.countryCodeGuess;
     var countriesBlacklist = walletOptions.getValue().shapeshift.countriesBlacklist;
     var isBlacklisted = countriesBlacklist.indexOf(country) > -1;
@@ -2772,7 +2798,7 @@ MyWalletPhone.getEthExchangeRateForHardLimit = function() {
 }
 
 MyWalletPhone.currencyCodeForHardLimit = function() {
-    return MyWalletPhone.isCountryWhitelistedForShapeshift() == 'US' ? 'USD' : 'EUR';
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() == 'US' ? 'USD' : 'EUR';
 }
 
 MyWalletPhone.fiatExchangeHardLimit = function() {

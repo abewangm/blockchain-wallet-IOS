@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "この手数料は取引処理のために採掘者に支払われます。";
+
+/* (No Commment) */
+"Get Ether" = "Etherを取得";
+
+/* (No Commment) */
+"at" = "で";
+
+/* (No Commment) */
+"Exchange" = "取引";
+
+/* (No Commment) */
+"New Exchange" = "新取引";
+
+/* (No Commment) */
+"Use minimum" = "最小値を使用";
+
+/* (No Commment) */
+"Use maximum" = "最大値を使用";
+
+/* (No Commment) */
+"Sending Funds" = "資金の送信";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "取引を実行していただきありがとうございます！取引の完了には最大2時間かかります。進捗状況は注文履歴のセクションから確認することができます。";
+
+/* (No Commment) */
+"In Progress" = "実行中";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "取引の完了には最大2時間かかります。進捗状況は注文履歴のセクションから確認することができます。取引が完了すると、Etherがウォレットに入金されます。";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "取引はキャンセルされました。取引タブから取引を再開してください。";
+
+/* (No Commment) */
+"Failed" = "失敗しました";
+
+/* (No Commment) */
+"Exchange Failed" = "取引に失敗しました";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "この取引に失敗しました。ウォレットから送信された資金は取引手数料を差し引いて返金されます。取引タブから取引を再開してください。";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "取引の期限が切れました。取引タブから取引を再開してください。";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "ブロックチェーンウォレットから直接BitocoinとEtherの両替ができるようになりました！";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@を入金";
+
+/* (No Commment) */
+"%@ to be Received" = "%@を受け取る";
+
+/* (No Commment) */
+"Exchange Rate" = "両替レート";
+
+/* (No Commment) */
+"Transaction Fee" = "取引手数料";
+
+/* (No Commment) */
+"Network Transaction Fee" = "ネットワークトランザクション手数料";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift引出し手数料";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ShapeShiftに同意";
+
+/* (No Commment) */
+"terms and conditions" = "利用規約";
+
+/* (No Commment) */
+"Exchange In Progress" = "取引を実行中";
+
+/* (No Commment) */
+"Exchange Completed" = "取引完了";
+
+/* (No Commment) */
+"Get started" = "開始する";
+
+/* (No Commment) */
+"Below minimum limit" = "最少額未満";
+
+/* (No Commment) */
+"Above maximum limit" = "最大額以上";
+
+/* (No Commment) */
+"Not enough to exchange" = "十分な取引額がありません";
+
+/* (No Commment) */
+"Order ID" = "注文ID";
+
+/* (No Commment) */
+"Total %@ spent" = "消費合計額%@";
+
+/* (No Commment) */
+"Getting quote" = "見積を取得";
+
+/* (No Commment) */
+"Confirming" = "確認中";
+
+/* (No Commment) */
+"Exchange In Progress" = "取引を実行中";
+
+/* (No Commment) */
+"Complete" = "完了";
+
+/* (No Commment) */
+"Exchange Completed" = "取引完了";
+
+/* (No Commment) */
+"Quote expires in %@" = "%@で見積が失効します";
+
+/* (No Commment) */
+"Step %d of %d" = "ステップ%d／%d";
+
+/* (No Commment) */
+"Select your State:" = "州を選択:";
+
+/* (No Commment) */
+"Select State" = "州を選択";
+
+/* (No Commment) */
+"Not Available" = "利用できません";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "コイン取引はお住いの地域でご利用いただけません。今後対象地域が追加される予定です。";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "%@の残高取得中にエラーが発生しました。後で再試行してください。詳細: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "おおよその見積の取得に失敗しました。後で再試行してください。詳細: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "ShapeShiftに入金しました";
+
+/* (No Commment) */
+"Received from ShapeShift" = "ShapeShiftから受信しました";
+
+/* (No Commment) */
+"Order History" = "注文履歴";
+
+/* (No Commment) */
+"Incoming" = "受け取り";
+
+/* (No Commment) */
+"Trade Expired" = "取引が失効しました";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "取引に失敗しました。取引ページから取引を再開してください。";
+
+/* (No Commment) */
+"No Funds to Exchange" = "取引する資金がありません";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "取引する資金がありません 😕 まぜ資金を受信してみましょう。";
+
+/* (No Commment) */
+"Loading Exchange" = "取引を読み込むことができませんでした";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "別の%@ウォレットを選択";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@を取引する必要があります";

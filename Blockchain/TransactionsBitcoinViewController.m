@@ -274,7 +274,7 @@ int lastNumberTransactions = INT_MAX;
     
     BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
     
-    filterAccountButton.hidden = !shouldShowFilterButton;
+    self.filterAccountButton.hidden = !shouldShowFilterButton;
     
     // Data not loaded yet
     if (!self.data) {
@@ -545,17 +545,17 @@ int lastNumberTransactions = INT_MAX;
 
 - (void)changeFilterLabel:(NSString *)newText
 {
-    [filterAccountButton setTitle:newText forState:UIControlStateNormal];
+    [self.filterAccountButton setTitle:newText forState:UIControlStateNormal];
     
     if (newText.length > 0) {
-        CGFloat currentCenterY = filterAccountButton.center.y;
-        [filterAccountButton sizeToFit];
-        filterAccountButton.center = CGPointMake(self.view.center.x, currentCenterY);
+        UIButton *buttonForTitleWidth = [[UIButton alloc] initWithFrame:self.filterAccountButton.frame];
+        buttonForTitleWidth.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_EXTRALIGHT size:FONT_SIZE_SMALL];
+        [buttonForTitleWidth setTitle:newText forState:UIControlStateNormal];
+        [buttonForTitleWidth sizeToFit];
         
-        filterAccountChevronButton.frame = CGRectMake(filterAccountButton.frame.origin.x + filterAccountButton.frame.size.width, filterAccountButton.frame.origin.y, filterAccountButton.frame.size.height, filterAccountButton.frame.size.height);
+        self.filterAccountButton.imageEdgeInsets = UIEdgeInsetsMake(0, -self.filterAccountButton.imageView.bounds.size.width + self.filterAccountButton.frame.size.width/2 + buttonForTitleWidth.frame.size.width/2 + 20, 0, 0);
+        self.filterAccountButton.titleEdgeInsets = UIEdgeInsetsMake(0, -self.filterAccountButton.imageView.bounds.size.width, 0, 0);
     }
-    
-    filterAccountChevronButton.hidden = filterAccountButton.hidden;
 }
 
 - (CGFloat)heightForFilterTableView
@@ -584,7 +584,7 @@ int lastNumberTransactions = INT_MAX;
 {
 #ifdef ENABLE_TRANSACTION_FILTERING
     if (self.filterIndex == FILTER_INDEX_ALL) {
-        return BC_STRING_TOTAL_BALANCE;
+        return BC_STRING_BITCOIN_BALANCES;
     } else if (self.filterIndex == FILTER_INDEX_IMPORTED_ADDRESSES) {
         return BC_STRING_IMPORTED_ADDRESSES;
     } else {
@@ -825,13 +825,10 @@ int lastNumberTransactions = INT_MAX;
     
 #ifdef ENABLE_TRANSACTION_FILTERING
     
-    filterAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-    [filterAccountButton.titleLabel setMinimumScaleFactor:1];
-    [filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
-    [filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
-    [filterAccountChevronButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
-    filterAccountChevronButton.imageView.transform = CGAffineTransformMakeScale(-1, 1);
-    filterAccountChevronButton.imageEdgeInsets = UIEdgeInsetsMake(9, 4, 8, 12);
+    self.filterAccountButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    [self.filterAccountButton.titleLabel setMinimumScaleFactor:1];
+    [self.filterAccountButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.filterAccountButton addTarget:self action:@selector(showFilterMenu) forControlEvents:UIControlEventTouchUpInside];
 
     self.filterIndex = FILTER_INDEX_ALL;
 #else

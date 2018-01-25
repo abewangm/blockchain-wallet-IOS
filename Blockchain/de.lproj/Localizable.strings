@@ -1940,3 +1940,171 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Miners erhalten diese Gebühr zur Bearbeitung dieser Transaktion.";
+
+/* (No Commment) */
+"Get Ether" = "Ether erhalten";
+
+/* (No Commment) */
+"at" = "bei";
+
+/* (No Commment) */
+"Exchange" = "Exchange";
+
+/* (No Commment) */
+"New Exchange" = "Neuer Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Minimum verwenden";
+
+/* (No Commment) */
+"Use maximum" = "Maximum verwenden";
+
+/* (No Commment) */
+"Sending Funds" = "Sende Geld";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Vielen Dank für das Platzieren Ihres Trades! Exchange Trades können bis zu zwei Stunden dauern und Sie können den Fortschritt Ihres Trades im Abschnitt Order-Verlauf verfolgen.";
+
+/* (No Commment) */
+"In Progress" = "In Bearbeitung";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Exchange Trades können bis zu zwei Stunden dauern, Sie können den Fortschritt Ihres Trades im Order-Verlauf verfolgen. Sobald der Trade abgeschlossen ist, landet Ihr Ether in Ihrem Wallet.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Ihr Trade wurde abgebrochen. Bitte gehen Sie zum Exchange-Reiter zurück, um Ihren Trade erneut zu starten.";
+
+/* (No Commment) */
+"Failed" = "Fehlgeschlagen";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange fehlgeschlagen";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Dieser Trade ist fehlgeschlagen. Jegliches von Ihrem Wallet gesendete Geld wird abzüglich der Transaktionsgebühr zurückerstattet. Bitte gehen Sie zum Exchange-Reiter zurück, um einen neuen Trade zu starten.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Ihr Trade ist abgelaufen. Bitte gehen Sie zum Exchange-Reiter zurück, um einen neuen Trade zu starten.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Jetzt können Sie Ihre Bitcoins gegen Ether und umgekehrt wechseln - direkt in Ihrem Blockchain-Wallet!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ einzuzahlen";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ zu empfangen";
+
+/* (No Commment) */
+"Exchange Rate" = "Wechselgebühr";
+
+/* (No Commment) */
+"Transaction Fee" = "Transaktionsgebühr";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Netzwerk-Transaktionsgebühr";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift-Auszahlungsgebühr";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ShapeShift-AGB";
+
+/* (No Commment) */
+"terms and conditions" = "akzeptieren";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange wird durchgeführt";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange abgeschlossen";
+
+/* (No Commment) */
+"Get started" = "Loslegen";
+
+/* (No Commment) */
+"Below minimum limit" = "Unterhalb der Minimum-Grenze";
+
+/* (No Commment) */
+"Above maximum limit" = "Oberhalb der Maximum-Grenze";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nicht genug verfügbar für Exchange";
+
+/* (No Commment) */
+"Order ID" = "Order-ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Insgesamt %@ ausgegeben";
+
+/* (No Commment) */
+"Getting quote" = "Angebot wird abgerufen";
+
+/* (No Commment) */
+"Confirming" = "Bestätige";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange wird durchgeführt";
+
+/* (No Commment) */
+"Complete" = "Abgeschlossen";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange abgeschlossen";
+
+/* (No Commment) */
+"Quote expires in %@" = "Angebot läuft in %@ ab";
+
+/* (No Commment) */
+"Step %d of %d" = "Schritt %d von %d";
+
+/* (No Commment) */
+"Select your State:" = "Wählen Sie Ihr Land:";
+
+/* (No Commment) */
+"Select State" = "Land wählen";
+
+/* (No Commment) */
+"Not Available" = "Nicht verfügbar";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Das Wechseln von Coins ist in Ihrem Land noch nicht verfügbar. Wir führen bald weitere Länder ein.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Beim Aufrufen Ihres %@ Guthabens ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut. Details: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Beim Aufrufen Ihres Näherungsangebots ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut. Details: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Eingezahlt bei ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Empfangen von ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Order-Verlauf";
+
+/* (No Commment) */
+"Incoming" = "Eingehend";
+
+/* (No Commment) */
+"Trade Expired" = "Trade abgelaufen";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Ihr Trade ist abgelaufen. Bitte gehen Sie zurück zur Wechsel-Seite, um Ihren Trade erneut zu starten.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Kein Geld für Exchange vorhanden";
+
+/* (No Commment) */
+"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Sie haben kein Geld für den Exchange 😕 Wie wäre es, zunächst Geld zu empfangen?";
+
+/* (No Commment) */
+"Loading Exchange" = "Lade Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Andere %@ Geldbörse auswählen";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ für Exchange benötigt";

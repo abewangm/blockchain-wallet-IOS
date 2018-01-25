@@ -45,7 +45,8 @@
     if (availableStates.count > 0) {
         [self showStates:availableStates];
     } else {
-        [app.wallet getExchangeTrades];
+        [app showBusyViewWithLoadingText:BC_STRING_LOADING_EXCHANGE];
+        [app.wallet performSelector:@selector(getExchangeTrades) withObject:nil afterDelay:ANIMATION_DURATION];
     }
 }
 
@@ -129,6 +130,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOrigin, windowWidth, self.view.frame.size.height - 16 - yOrigin) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *backgroundView = [UIView new];
     backgroundView.backgroundColor = self.view.backgroundColor;
     tableView.backgroundView = backgroundView;
@@ -178,6 +180,8 @@
 
 - (void)didGetExchangeTrades:(NSArray *)trades
 {
+    [app hideBusyView];
+    
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     [navigationController hideBusyView];
     [self.refreshControl endRefreshing];
@@ -201,11 +205,6 @@
 - (void)didGetExchangeRate:(NSDictionary *)result
 {
     [self.createViewController didGetExchangeRate:result];
-}
-
-- (void)didGetQuote:(NSDictionary *)result
-{
-    [self.createViewController didGetQuote:result];
 }
 
 - (void)didGetAvailableEthBalance:(NSDictionary *)result
@@ -241,6 +240,11 @@
 - (void)reloadSymbols
 {
     [self.tableView reloadData];
+}
+
+- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol
+{
+    [self.createViewController selectExchangeWalletForSymbol:currencySymbol];
 }
 
 #pragma mark - Confirm State delegate
