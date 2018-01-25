@@ -506,7 +506,7 @@ int ethAccountsSectionNumber;
                 NSDecimalNumber *ethBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getEthBalanceTruncated]];
                 NSComparisonResult result = [ethBalance compare:[NSDecimalNumber numberWithInt:0]];
                 zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
-                cell.balanceLabel.text = [NSNumberFormatter formatEth:ethBalance];
+                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:ethBalance];
             } else {
                 zeroBalance = btcBalance == 0;
                 cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
