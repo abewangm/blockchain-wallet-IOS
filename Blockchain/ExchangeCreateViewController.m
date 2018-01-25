@@ -82,6 +82,7 @@
     [self selectToEther];
     
     [self clearAmount];
+    [self clearAvailableBalance];
     
     [self disablePaymentButtons];
     
@@ -286,9 +287,8 @@
     [self updateAvailableBalance];
 }
 
-- (BOOL)updateAvailableBalance
+- (void)updateAvailableBalance
 {
-    BOOL shouldGetQuote = NO;
     BOOL overAvailable = NO;
     BOOL overMax = NO;
     BOOL underMin = NO;
@@ -356,21 +356,13 @@
     if (zeroAmount) {
         self.errorTextView.hidden = YES;
         [self disablePaymentButtons];
-        [self clearRightFields];
     } else if (overAvailable || overMax || underMin || notEnoughToExchange) {
-        [self highlightInvalidAmounts];
-        self.errorTextView.hidden = NO;
-        self.errorTextView.text = errorText;
-        [self disablePaymentButtons];
-        [self clearRightFields];
+        [self showErrorText:errorText];
     } else {
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
         self.errorTextView.hidden = YES;
-        shouldGetQuote = YES;
     }
-    
-    return shouldGetQuote;
 }
 
 - (void)enablePaymentButtons
@@ -411,9 +403,11 @@
         if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH]) {
             self.bottomRightField.text = btcResult;
             self.bottomLeftField.text = ethResult;
+            self.amount = [NSDecimalNumber decimalNumberWithString:depositAmountString];
         } else if ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_BTC]) {
             self.bottomLeftField.text = btcResult;
             self.bottomRightField.text = ethResult;
+            self.amount = [NSNumber numberWithLongLong:[NSNumberFormatter parseBtcValueFromString:depositAmountString]];
         }
         
         [self updateAvailableBalance];
@@ -515,6 +509,8 @@
     
     [self saveAmount:amountString fromField:textField];
     
+    [self clearOppositeFields];
+    
     [self performSelector:@selector(doCurrencyConversionAfterTyping) withObject:nil afterDelay:0.1f];
     return YES;
 }
@@ -598,11 +594,13 @@
 {
     [self doCurrencyConversion];
     
-    BOOL shouldGetQuote = [self updateAvailableBalance];
+    if ([self.bottomLeftField isFirstResponder] || [self.topLeftField isFirstResponder]) {
+        [self updateAvailableBalance];
+    }
     
     [self disablePaymentButtons];
     
-    if (shouldGetQuote) [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
 - (void)doCurrencyConversion
@@ -714,6 +712,14 @@
     self.amount = 0;
 }
 
+- (void)clearAvailableBalance
+{
+    self.availableBalance = 0;
+    
+    self.errorTextView.hidden = YES;
+    [self disablePaymentButtons];
+}
+
 - (void)clearFields
 {
     self.topLeftField.text = nil;
@@ -722,10 +728,25 @@
     self.bottomRightField.text = nil;
 }
 
+- (void)clearOppositeFields
+{
+    if ([self.topRightField isFirstResponder] || [self.bottomRightField isFirstResponder]) {
+        [self clearLeftFields];
+    } else {
+        [self clearRightFields];
+    }
+}
+
 - (void)clearRightFields
 {
     self.topRightField.text = nil;
     self.bottomRightField.text = nil;
+}
+
+- (void)clearLeftFields
+{
+    self.topLeftField.text = nil;
+    self.bottomLeftField.text = nil;
 }
 
 - (void)selectFromEther
@@ -774,6 +795,8 @@
 
 - (void)autoFillFromAmount:(id)amount
 {
+    [self clearRightFields];
+    
     NSString *amountString = [self amountString:amount];
     self.topLeftField.text = amountString;
     [self saveAmount:amountString fromField:self.topLeftField];
@@ -795,6 +818,14 @@
     [self performSelector:@selector(getApproximateQuote) withObject:nil afterDelay:0.5];
 }
 
+- (void)showErrorText:(NSString *)errorText
+{
+    [self highlightInvalidAmounts];
+    self.errorTextView.hidden = NO;
+    self.errorTextView.text = errorText;
+    [self disablePaymentButtons];
+}
+
 #pragma mark - Wallet actions
 
 - (void)getRate
@@ -807,7 +838,10 @@
 
 - (void)getApproximateQuote
 {
-    if (![self hasEnoughFunds:self.fromSymbol]) return;
+    if (![self hasEnoughFunds:self.fromSymbol]) {
+        if ([self.topRightField isFirstResponder] || [self.bottomRightField isFirstResponder]) [self showErrorText:BC_STRING_NOT_ENOUGH_TO_EXCHANGE];
+        return;
+    }
     
     if (self.currentDataTask) {
         [self.currentDataTask cancel];
@@ -835,7 +869,14 @@
             if (resultSuccess) {
                 [self didGetApproximateQuote:resultSuccess];
             } else {
-                DLog(@"Error getting approximate quote:%@", error);
+                DLog(@"Error getting approximate quote:%@", result);
+                if ([[result objectForKey:DICTIONARY_KEY_ERROR] containsString:ERROR_MAXIMUM]) {
+                    [self showErrorText:BC_STRING_ABOVE_MAXIMUM_LIMIT];
+                } else if ([[result objectForKey:DICTIONARY_KEY_ERROR] containsString:ERROR_MINIMUM]) {
+                    [self showErrorText:BC_STRING_BELOW_MINIMUM_LIMIT];
+                } else {
+                    [self showErrorText:BC_STRING_FAILED_TO_LOAD_EXCHANGE_DATA];
+                }
             }
         }];
     }
@@ -992,6 +1033,8 @@
     self.fromToView.fromLabel.text = [self etherLabelText];
     self.fromToView.toLabel.text = [self bitcoinLabelText];
     
+    [self clearAvailableBalance];
+    
     [self getRate];
 }
 
@@ -1019,6 +1062,8 @@
     
     self.fromToView.fromLabel.text = [self bitcoinLabelText];
     self.fromToView.toLabel.text = [self etherLabelText];
+    
+    [self clearAvailableBalance];
     
     [self getRate];
 }

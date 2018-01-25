@@ -883,3 +883,4 @@
 #define BC_STRING_LOADING_EXCHANGE NSLocalizedString(@"Loading Exchange", nil)
 #define BC_STRING_SELECT_ARGUMENT_WALLET NSLocalizedString(@"Select other %@ Wallet", nil)
 #define BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE NSLocalizedString(@"%@ needed to exchange", nil)
+#define BC_STRING_FAILED_TO_LOAD_EXCHANGE_DATA NSLocalizedString(@"Failed to load exchange data", nil)
