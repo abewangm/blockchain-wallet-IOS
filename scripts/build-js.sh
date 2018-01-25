@@ -15,7 +15,7 @@ globalCrypto='global.crypto = {getRandomValues: function(intArray) {var result =
 sed -i '' 's/'"$buffer"'/'"$buffer"'\'$'\n'"$globalCrypto"'/' src/index.js
 
 echo "Building..."
-grunt build --base .
+npm run build
 
 # Required for overriding methods in Objective-C
 echo "Patching BitcoinJS..."
