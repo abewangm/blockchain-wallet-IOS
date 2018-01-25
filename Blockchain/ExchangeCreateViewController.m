@@ -850,7 +850,6 @@
 - (void)getApproximateQuote
 {
     if (![self hasEnoughFunds:self.fromSymbol]) {
-        if ([self.topRightField isFirstResponder] || [self.bottomRightField isFirstResponder]) [self showErrorText:BC_STRING_NOT_ENOUGH_TO_EXCHANGE];
         return;
     }
     
