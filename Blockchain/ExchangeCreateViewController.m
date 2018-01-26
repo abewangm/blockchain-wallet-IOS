@@ -86,7 +86,11 @@
     
     [self disablePaymentButtons];
     
-    [self getRate];
+    if ([app.wallet getTotalActiveBalance] > 0 || [[NSDecimalNumber decimalNumberWithString:[app.wallet getEthBalance]] compare:@0] == NSOrderedDescending) {
+        [self getRate];
+    } else {
+        [app showGetAssetsAlert];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -1127,11 +1131,6 @@
     [self.topRightField resignFirstResponder];
     [self.bottomLeftField resignFirstResponder];
     [self.bottomRightField resignFirstResponder];
-}
-
-- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol
-{
-    [self fromButtonClicked];
 }
 
 @end
