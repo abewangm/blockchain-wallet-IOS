@@ -272,7 +272,8 @@
     [self.titleLabel sizeToFit];
     self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
     
-    self.priceLabel.text = [NSString stringWithFormat:@"%@%.2f", app.latestResponse.symbol_local.symbol, dataEntry.y];
+    NSString *formattedString = [NSNumberFormatter localFormattedString:[NSString stringWithFormat:@"%.2f", dataEntry.y]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formattedString];
     [self.priceLabel sizeToFit];
     
     self.percentageChangeLabel.hidden = YES;
