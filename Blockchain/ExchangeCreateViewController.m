@@ -221,7 +221,7 @@
     [useMaxButton addTarget:self action:@selector(useMaxButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [buttonsView addSubview:useMaxButton];
     
-    UITextView *errorTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth - 30, 30)];
+    UITextView *errorTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, buttonsView.frame.origin.y + buttonsView.frame.size.height + 8, windowWidth - 30, 60)];
     errorTextView.editable = NO;
     errorTextView.scrollEnabled = NO;
     errorTextView.selectable = NO;
@@ -301,6 +301,7 @@
     BOOL underMin = NO;
     BOOL zeroAmount = NO;
     BOOL notEnoughToExchange = NO;
+    BOOL isWaitingOnTransaction = NO;
     
     NSString *errorText;
     
@@ -338,7 +339,11 @@
         DLog(@"available: %@", [self.availableBalance stringValue]);
         DLog(@"max: %@", [self.maximum stringValue])
         
-        if (![self hasEnoughFunds:CURRENCY_SYMBOL_ETH]) {
+        if ([app.wallet isWaitingOnEtherTransaction]) {
+            DLog(@"waiting on eth transaction");
+            isWaitingOnTransaction = YES;
+            errorText = BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE;
+        } else if (![self hasEnoughFunds:CURRENCY_SYMBOL_ETH]) {
             DLog(@"not enough eth");
             notEnoughToExchange = YES;
             NSString *amountString = [[NSNumberFormatter localFormattedString:[self amountString:self.minimum]] stringByAppendingFormat:@" %@", CURRENCY_SYMBOL_ETH];
@@ -363,7 +368,7 @@
     if (zeroAmount) {
         self.errorTextView.hidden = YES;
         [self disablePaymentButtons];
-    } else if (overAvailable || overMax || underMin || notEnoughToExchange) {
+    } else if (overAvailable || overMax || underMin || notEnoughToExchange || isWaitingOnTransaction) {
         [self showErrorText:errorText];
     } else {
         [self removeHighlightFromAmounts];

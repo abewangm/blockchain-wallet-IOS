@@ -243,6 +243,8 @@
 
 - (NSString *)getVersionLabelString;
 - (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock;
+
+- (BOOL)checkIfWaitingOnEtherTransaction;
 @end
 
 extern RootService *app;
