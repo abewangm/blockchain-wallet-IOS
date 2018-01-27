@@ -242,11 +242,6 @@
     [self.tableView reloadData];
 }
 
-- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol
-{
-    [self.createViewController selectExchangeWalletForSymbol:currencySymbol];
-}
-
 #pragma mark - Confirm State delegate
 
 - (void)didConfirmState:(UINavigationController *)navigationController
