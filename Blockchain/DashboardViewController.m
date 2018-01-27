@@ -251,7 +251,18 @@
     }
     
     self.percentageChangeLabel.hidden = NO;
-    self.percentageChangeLabel.text = [NSString stringWithFormat:@"%.1f%%", percentChange];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:1];
+    [numberFormatter setMinimumFractionDigits:1];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLocale *currentLocale = numberFormatter.locale;
+    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+    NSNumber *number = [numberFormatter numberFromString:[NSString stringWithFormat:@"%.1f", percentChange]];
+    numberFormatter.locale = currentLocale;
+    
+    self.percentageChangeLabel.text = [[numberFormatter stringFromNumber:number] stringByAppendingString:@"%"];
     [self.percentageChangeLabel sizeToFit];
     [self.percentageChangeLabel changeYPosition:self.priceLabel.frame.size.height - self.percentageChangeLabel.frame.size.height - 1.5];
     [self.percentageChangeLabel changeXPosition:self.priceLabel.frame.origin.x + self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width];
