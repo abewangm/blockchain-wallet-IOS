@@ -858,7 +858,8 @@
 
 - (void)getApproximateQuote
 {
-    if (![self hasEnoughFunds:self.fromSymbol]) {
+    if (![self hasEnoughFunds:self.fromSymbol] || ([self.fromSymbol isEqualToString:CURRENCY_SYMBOL_ETH] && [app.wallet isWaitingOnEtherTransaction])) {
+        DLog(@"Not enough funds or waiting on ether transaction - will not get approximate quote");
         return;
     }
     
