@@ -2661,6 +2661,9 @@ MyWalletPhone.shiftPayment = function() {
     var success = function(result) {
         console.log('shift complete');
         console.log(JSON.stringify(result));
+        if (result.fromCurrency == 'eth') {
+            MyWalletPhone.recordLastTransaction(result.depositHash);
+        }
         objc_on_shift_payment_success();
     }
     

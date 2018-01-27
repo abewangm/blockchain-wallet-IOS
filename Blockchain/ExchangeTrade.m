@@ -9,6 +9,8 @@
 #import "ExchangeTrade.h"
 #import "NSNumberFormatter+Currencies.h"
 
+#define ORDER_NUMBER_PREFIX @"SFT-"
+
 @implementation ExchangeTrade
 
 + (ExchangeTrade *)fetchedTradeFromJSONDict:(NSDictionary *)dict
@@ -19,7 +21,7 @@
     trade.status = [dict objectForKey:DICTIONARY_KEY_STATUS];
     
     NSDictionary *quote = [dict objectForKey:DICTIONARY_KEY_QUOTE];
-    trade.orderID = [quote objectForKey:DICTIONARY_KEY_ORDER_ID];
+    trade.orderID = [ORDER_NUMBER_PREFIX stringByAppendingString:[quote objectForKey:DICTIONARY_KEY_ORDER_ID]];
     trade.pair = [quote objectForKey:DICTIONARY_KEY_PAIR];
     trade.depositAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_DEPOSIT_AMOUNT]];
     trade.withdrawalAmount = [ExchangeTrade decimalNumberFromDictValue:[quote objectForKey:DICTIONARY_KEY_WITHDRAWAL_AMOUNT]];

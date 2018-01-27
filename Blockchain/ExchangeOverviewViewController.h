@@ -15,6 +15,5 @@
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
 - (void)didShiftPayment:(NSDictionary *)info;
-- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol;
 - (void)reloadSymbols;
 @end

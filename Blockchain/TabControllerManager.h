@@ -131,5 +131,5 @@
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
 - (void)didShiftPayment:(NSDictionary *)info;
-- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
+- (void)showGetAssetsAlert;
 @end

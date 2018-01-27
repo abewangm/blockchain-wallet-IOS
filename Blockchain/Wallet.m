@@ -2747,7 +2747,7 @@
 
 - (NSString *)getEthBalance
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app.wallet hasEthAccount]) {
         return [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toString];
     } else {
         DLog(@"Warning: getting eth balance when not initialized - returning 0");
@@ -2757,7 +2757,7 @@
 
 - (NSString *)getEthBalanceTruncated
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app.wallet hasEthAccount]) {
         NSNumber *balanceNumber = [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toNumber];
         return [app.btcFormatter stringFromNumber:balanceNumber];
     } else {

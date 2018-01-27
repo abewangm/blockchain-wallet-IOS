@@ -10,12 +10,12 @@
 #import "RootService.h"
 #import "QRCodeGenerator.h"
 #import "UIView+ChangeFrameAttribute.h"
-#import "UILabel+Animations.h"
+#import "UITextView+Animations.h"
 
 @interface ReceiveEtherViewController ()
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) UIImageView *qrCodeImageView;
-@property (nonatomic) UILabel *addressLabel;
+@property (nonatomic) UITextView *addressTextView;
 @property (nonatomic) UILabel *instructionsLabel;
 @property (nonatomic) NSString *address;
 @end
@@ -55,18 +55,21 @@
     [self.view addSubview:instructionsLabel];
     self.instructionsLabel = instructionsLabel;
     
-    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 40)];
-    addressLabel.textColor = COLOR_TEXT_DARK_GRAY;
-    addressLabel.textAlignment = NSTextAlignmentCenter;
-    addressLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
-    [addressLabel changeYPosition:qrCodeImageView.frame.origin.y + qrCodeImageView.frame.size.height];
-    addressLabel.center = CGPointMake(self.view.center.x, addressLabel.center.y);
-    [self.view addSubview:addressLabel];
+    UITextView *addressTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, 50)];
+    addressTextView.textColor = COLOR_TEXT_DARK_GRAY;
+    addressTextView.textAlignment = NSTextAlignmentCenter;
+    addressTextView.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
+    [addressTextView changeYPosition:qrCodeImageView.frame.origin.y + qrCodeImageView.frame.size.height];
+    addressTextView.scrollEnabled = NO;
+    addressTextView.editable = NO;
+    addressTextView.selectable = NO;
+    addressTextView.center = CGPointMake(self.view.center.x, addressTextView.center.y);
+    [self.view addSubview:addressTextView];
     
     UITapGestureRecognizer *tapGestureForAddressLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mainQRClicked)];
-    [addressLabel addGestureRecognizer:tapGestureForAddressLabel];
-    addressLabel.userInteractionEnabled = YES;
-    self.addressLabel = addressLabel;
+    [addressTextView addGestureRecognizer:tapGestureForAddressLabel];
+    addressTextView.userInteractionEnabled = YES;
+    self.addressTextView = addressTextView;
     
     CGFloat spacing = 12;
     CGFloat requestButtonOriginY = self.view.frame.size.height - BUTTON_HEIGHT - spacing;
@@ -91,7 +94,7 @@
     NSString *etherAddress = [app.wallet getEtherAddress];
     self.instructionsLabel.text = etherAddress == nil ? BC_STRING_RECEIVE_ETHER_REENTER_SECOND_PASSWORD_INSTRUCTIONS : BC_STRING_RECEIVE_SCREEN_INSTRUCTIONS;
     self.address = etherAddress;
-    self.addressLabel.text = self.address;
+    self.addressTextView.text = self.address;
     
     self.qrCodeImageView.image = [self.qrCodeGenerator createQRImageFromString:self.address];
 }
@@ -107,7 +110,7 @@
 - (void)mainQRClicked
 {
     if (self.address) {
-        [self.addressLabel animateFromText:self.address toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.addressLabel];
+        [self.addressTextView animateFromText:self.address toIntermediateText:BC_STRING_COPIED_TO_CLIPBOARD speed:1 gestureReceiver:self.addressTextView];
         [UIPasteboard generalPasteboard].string = self.address;
     }
 }
