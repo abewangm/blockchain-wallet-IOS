@@ -503,10 +503,10 @@ int ethAccountsSectionNumber;
             }
             
             if (section == ethAccountsSectionNumber) {
-                NSDecimalNumber *ethBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getEthBalanceTruncated]];
+                NSDecimalNumber *ethBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getEthBalance]];
                 NSComparisonResult result = [ethBalance compare:[NSDecimalNumber numberWithInt:0]];
                 zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
-                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:ethBalance];
+                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[ethBalance stringValue]]];
             } else {
                 zeroBalance = btcBalance == 0;
                 cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
