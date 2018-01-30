@@ -160,6 +160,8 @@
 
 - (void)confirmButtonClicked
 {
+    if ([[self.trade.depositCurrency uppercaseString] isEqualToString:CURRENCY_SYMBOL_ETH] && [app checkIfWaitingOnEtherTransaction]) return;
+    
     BCNavigationController *navigationController = (BCNavigationController *)self.navigationController;
     [navigationController showBusyViewWithLoadingText:BC_STRING_CONFIRMING];
     
@@ -194,7 +196,8 @@
     NSString *hoursString = [NSString stringWithFormat:@"%02d", hours];
     NSString *minutesString = minutes > 9 ? [NSString stringWithFormat:@"%02d", minutes] : [NSString stringWithFormat:@"%d", minutes];
     NSString *secondsString = [NSString stringWithFormat:@"%02d", seconds];
-    NSString *timeString = hours > 0 ? [NSString stringWithFormat:@"%@:%@:%@", [NSNumberFormatter localFormattedString:hoursString], [NSNumberFormatter localFormattedString:minutesString], [NSNumberFormatter localFormattedString:secondsString]] : [NSString stringWithFormat:@"%@:%@", [NSNumberFormatter localFormattedString:minutesString], [NSNumberFormatter localFormattedString:secondsString]];
+    NSString *secondsFormattedString = seconds < 10 ? [[NSNumberFormatter localFormattedString:@"0"] stringByAppendingString:[NSNumberFormatter localFormattedString:secondsString]] : [NSNumberFormatter localFormattedString:secondsString];
+    NSString *timeString = hours > 0 ? [NSString stringWithFormat:@"%@:%@:%@", [NSNumberFormatter localFormattedString:hoursString], [NSNumberFormatter localFormattedString:minutesString], secondsFormattedString] : [NSString stringWithFormat:@"%@:%@", [NSNumberFormatter localFormattedString:minutesString], secondsFormattedString];
     
     self.timerLabel.text = [NSString stringWithFormat:BC_STRING_QUOTE_EXIRES_IN_ARGUMENT, timeString];
     [self.timerLabel sizeToFit];

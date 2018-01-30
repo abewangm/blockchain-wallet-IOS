@@ -13,5 +13,4 @@
 - (void)didGetAvailableEthBalance:(NSDictionary *)result;
 - (void)didGetAvailableBtcBalance:(NSDictionary *)result;
 - (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
-- (void)selectExchangeWalletForSymbol:(NSString *)currencySymbol;
 @end

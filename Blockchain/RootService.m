@@ -876,6 +876,24 @@ void (^secondPasswordSuccess)(NSString *);
     }
 }
 
+- (BOOL)checkIfWaitingOnEtherTransaction
+{
+    BOOL isWaiting = [app.wallet isWaitingOnEtherTransaction];
+    
+    if (isWaiting) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_TITLE message:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+
+        if (self.window.rootViewController.presentedViewController) {
+            [self.window.rootViewController.presentedViewController presentViewController:errorAlert animated:YES completion:nil];
+        } else {
+            [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+        }
+    }
+    
+    return isWaiting;
+}
+
 #pragma mark - AlertView Helpers
 
 - (void)standardNotifyAutoDismissingController:(NSString *)message
@@ -2534,9 +2552,9 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didShiftPayment:info];
 }
 
-- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol
+- (void)showGetAssetsAlert
 {
-    [self.tabControllerManager showGetAssetsAlertForCurrencySymbol:currencySymbol];
+    [self.tabControllerManager showGetAssetsAlert];
 }
 
 #pragma mark - Show Screens
