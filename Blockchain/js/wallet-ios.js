@@ -2279,8 +2279,20 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   if (whiteListedGuids.indexOf(wallet.guid) > -1) {
       userHasAccess = true;
   }
+    
+  var canBuy = function(accountInfo, options) {
+     var external = MyWallet.wallet && MyWallet.wallet.external;
+     var userHasAccount = external && (
+                          (external.coinify && external.coinify.hasAccount) ||
+                          (external.sfox && external.sfox.hasAccount)
+                          );
+     var isCoinifyCountry = accountInfo && options.partners.coinify.countries.indexOf(accountInfo.countryCodeGuess) > -1;
+     var isSFOXCountryState = accountInfo && options.partners.sfox.countries.indexOf(accountInfo.countryCodeGuess) > -1 && options.partners.sfox.states.indexOf(accountInfo.stateCodeGuess) > -1;
+     var isSFOXInvited = accountInfo && accountInfo.invited && accountInfo.invited.sfox;
+     return userHasAccount || isCoinifyCountry || (isSFOXInvited && isSFOXCountryState);
+  }
 
-  return userHasAccess && wallet.external && wallet.external.canBuy(wallet.accountInfo, options)
+  return userHasAccess && wallet.external && canBuy(wallet.accountInfo, options)
 }
 
 MyWalletPhone.getNetworks = function() {
