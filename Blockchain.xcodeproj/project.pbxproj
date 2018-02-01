@@ -227,6 +227,7 @@
 		C76135641F9E55DF0029E159 /* ExchangeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C76135631F9E55DF0029E159 /* ExchangeCreateViewController.m */; };
 		C7618B611F66C817003E7589 /* QRCodeScannerSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */; };
 		C769B2DA1FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */; };
+		C780A446202228A400E49274 /* BCPriceChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C780A445202228A400E49274 /* BCPriceChartView.m */; };
 		C780DF6C1EEF082300D48698 /* SharedSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */; };
 		C790E0F81E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m in Sources */ = {isa = PBXBuildFile; fileRef = C790E0F71E4E60AE0063D141 /* NSDateFormatter+TimeAgoString.m */; };
 		C790E10D1E52061B0063D141 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C790E0FB1E5206010063D141 /* Montserrat-Black.ttf */; };
@@ -1165,6 +1166,8 @@
 		C7618B601F66C817003E7589 /* QRCodeScannerSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScannerSendViewController.m; sourceTree = "<group>"; };
 		C769B2D81FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContinueButtonInputAccessoryView.h; sourceTree = "<group>"; };
 		C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContinueButtonInputAccessoryView.m; sourceTree = "<group>"; };
+		C780A444202228A400E49274 /* BCPriceChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCPriceChartView.h; sourceTree = "<group>"; };
+		C780A445202228A400E49274 /* BCPriceChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCPriceChartView.m; sourceTree = "<group>"; };
 		C780DF6A1EEF082300D48698 /* SharedSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedSessionDelegate.h; sourceTree = "<group>"; };
 		C780DF6B1EEF082300D48698 /* SharedSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedSessionDelegate.m; sourceTree = "<group>"; };
 		C790E0F21E4913F00063D141 /* Blockchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blockchain.entitlements; sourceTree = "<group>"; };
@@ -3117,6 +3120,8 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C780A444202228A400E49274 /* BCPriceChartView.h */,
+				C780A445202228A400E49274 /* BCPriceChartView.m */,
 				C769B2D81FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.h */,
 				C769B2D91FC4ABA9009632B6 /* ContinueButtonInputAccessoryView.m */,
 				FCB33B6D1FC369D700317E6B /* ExchangeDetailView.h */,
@@ -3566,6 +3571,7 @@
 				84B601C7197ACD6300DA1829 /* UITextField+Blocks.m in Sources */,
 				9F765F4714BC8AEF00048EFB /* MultiAddressResponse.m in Sources */,
 				237356B61DF894CF003940A7 /* Contact.m in Sources */,
+				C780A446202228A400E49274 /* BCPriceChartView.m in Sources */,
 				FA6323391A433B1C00EB3974 /* Foundation-Utility.m in Sources */,
 				239CD5681C122BDE00997DF5 /* SettingsTwoStepViewController.m in Sources */,
 				23BF73391C454B8C00204503 /* AccountsAndAddressesNavigationController.m in Sources */,

@@ -11,7 +11,8 @@
 
 typedef NS_ENUM(NSInteger, AssetType) {
     AssetTypeBitcoin,
-    AssetTypeEther
+    AssetTypeEther,
+    AssetTypeBitcoinCash
 };
 
 #endif /* Assets_h */
