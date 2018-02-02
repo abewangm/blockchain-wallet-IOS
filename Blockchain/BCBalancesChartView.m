@@ -8,6 +8,7 @@
 
 #import "BCBalancesChartView.h"
 #import "UIView+ChangeFrameAttribute.h"
+#import "BCBalanceChartLegendKeyView.h"
 
 @import Charts;
 
@@ -16,6 +17,9 @@
 @property (nonatomic) double bitcoinBalance;
 @property (nonatomic) double etherBalance;
 @property (nonatomic) double bitcoinCashBalance;
+@property (nonatomic) BCBalanceChartLegendKeyView *bitcoinLegendKey;
+@property (nonatomic) BCBalanceChartLegendKeyView *etherLegendKey;
+@property (nonatomic) BCBalanceChartLegendKeyView *bitcoinCashLegendKey;
 @end
 
 @implementation BCBalancesChartView
@@ -49,7 +53,22 @@
 
 - (void)setupLegendWithFrame:(CGRect)frame
 {
+    CGFloat containerViewHorizontalPadding = 20;
+    UIView *legendKeyContainerView = [[UIView alloc] initWithFrame:CGRectMake(containerViewHorizontalPadding, frame.size.height * 3/4, frame.size.width - containerViewHorizontalPadding*2, frame.size.height/4)];
+    [self addSubview:legendKeyContainerView];
     
+    CGFloat legendKeySpacing = 12;
+    CGFloat legendKeyWidth = (legendKeyContainerView.frame.size.width - legendKeySpacing*2)/3;
+    CGFloat legendKeyHeight = legendKeyContainerView.frame.size.height;
+    
+    self.bitcoinLegendKey = [[BCBalanceChartLegendKeyView alloc] initWithFrame:CGRectMake(0, 0, legendKeyWidth, legendKeyHeight) assetColor:COLOR_BLOCKCHAIN_BLUE assetName:BC_STRING_BITCOIN balance:@"1" fiatBalance:@"$8000"];
+    [legendKeyContainerView addSubview:self.bitcoinLegendKey];
+    
+    self.etherLegendKey = [[BCBalanceChartLegendKeyView alloc] initWithFrame:CGRectMake(legendKeyWidth + legendKeySpacing, 0, legendKeyWidth, legendKeyHeight) assetColor:COLOR_BLOCKCHAIN_LIGHT_BLUE assetName:BC_STRING_ETHER balance:@"1" fiatBalance:@"$1000"];
+    [legendKeyContainerView addSubview:self.etherLegendKey];
+    
+    self.bitcoinCashLegendKey = [[BCBalanceChartLegendKeyView alloc] initWithFrame:CGRectMake((legendKeyWidth + legendKeySpacing)*2, 0, legendKeyWidth, legendKeyHeight) assetColor:COLOR_BLOCKCHAIN_LIGHTEST_BLUE assetName:BC_STRING_BITCOIN_CASH balance:@"1" fiatBalance:@"$5000"];
+    [legendKeyContainerView addSubview:self.bitcoinCashLegendKey];
 }
 
 - (void)updateBitcoinBalance:(uint64_t)balance
