@@ -37,9 +37,9 @@
     [super viewDidLoad];
     
     // This contentView can be any custom view - intended to be placed at the top of the scroll view, moved down when the cards view is present, and moved back up when the cards view is dismissed
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 500)];
     self.contentView.clipsToBounds = YES;
-    self.contentView.backgroundColor = [UIColor whiteColor];
+    self.contentView.backgroundColor = COLOR_BACKGROUND_LIGHT_GRAY;
     [self.scrollView addSubview:self.contentView];
     
     [self setupPieChart];
@@ -54,8 +54,20 @@
 
 - (void)setupPieChart
 {
-    self.balancesChartView = [[BCBalancesChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
-    [self.view addSubview:self.balancesChartView];
+    CGFloat horizontalPadding = 15;
+
+    UILabel *balancesLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, 16, self.view.frame.size.width/2, 40)];
+    balancesLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    balancesLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_LARGE];
+    balancesLabel.text = [BC_STRING_BALANCES uppercaseString];
+    [self.contentView addSubview:balancesLabel];
+    
+    self.balancesChartView = [[BCBalancesChartView alloc] initWithFrame:CGRectMake(horizontalPadding, balancesLabel.frame.origin.y + balancesLabel.frame.size.height, self.view.frame.size.width - horizontalPadding*2, 320)];
+    self.balancesChartView.layer.masksToBounds = NO;
+    self.balancesChartView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.balancesChartView.layer.shadowRadius = 3;
+    self.balancesChartView.layer.shadowOpacity = 0.25;
+    [self.contentView addSubview:self.balancesChartView];
 }
 
 - (void)reload

@@ -10,6 +10,8 @@
 #import "UIView+ChangeFrameAttribute.h"
 #import "BCBalanceChartLegendKeyView.h"
 
+#define CHART_VIEW_BOTTOM_PADDING 16
+
 @import Charts;
 
 @interface BCBalancesChartView ()
@@ -27,6 +29,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self == [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
         [self setupChartViewWithFrame:frame];
         [self setupLegendWithFrame:frame];
     }
@@ -36,7 +39,8 @@
 
 - (void)setupChartViewWithFrame:(CGRect)frame
 {
-    self.chartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height * 3/4)];
+    CGFloat bottomPadding = CHART_VIEW_BOTTOM_PADDING;
+    self.chartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height * 3/4 - bottomPadding)];
     self.chartView.drawCenterTextEnabled = YES;
     self.chartView.centerAttributedText = [self centerText];
     self.chartView.drawHoleEnabled = YES;
@@ -53,8 +57,9 @@
 
 - (void)setupLegendWithFrame:(CGRect)frame
 {
+    CGFloat bottomPadding = CHART_VIEW_BOTTOM_PADDING;
     CGFloat containerViewHorizontalPadding = 20;
-    UIView *legendKeyContainerView = [[UIView alloc] initWithFrame:CGRectMake(containerViewHorizontalPadding, frame.size.height * 3/4, frame.size.width - containerViewHorizontalPadding*2, frame.size.height/4)];
+    UIView *legendKeyContainerView = [[UIView alloc] initWithFrame:CGRectMake(containerViewHorizontalPadding, frame.size.height * 3/4 - bottomPadding, frame.size.width - containerViewHorizontalPadding*2, (frame.size.height - bottomPadding)/4)];
     [self addSubview:legendKeyContainerView];
     
     CGFloat legendKeySpacing = 12;

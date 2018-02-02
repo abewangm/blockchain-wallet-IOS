@@ -15,7 +15,7 @@
 #import "BCNavigationController.h"
 #import "NSNumberFormatter+Currencies.h"
 
-#define COLOR_EXCHANGE_BACKGROUND_GRAY UIColorFromRGB(0xf5f6f8)
+#define COLOR_EXCHANGE_BACKGROUND_GRAY COLOR_BACKGROUND_LIGHT_GRAY
 
 #define DICTIONARY_KEY_TRADE_MINIMUM @"minimum"
 #define DICTIONARY_KEY_TRADE_MAX_LIMIT @"maxLimit"
