@@ -17,6 +17,7 @@
 #import "Blockchain-Swift.h"
 #import "BCPriceChartView.h"
 #import "BCBalancesChartView.h"
+#import "BCPricePreviewView.h"
 
 @import Charts;
 
@@ -37,12 +38,14 @@
     [super viewDidLoad];
     
     // This contentView can be any custom view - intended to be placed at the top of the scroll view, moved down when the cards view is present, and moved back up when the cards view is dismissed
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 500)];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1000)];
     self.contentView.clipsToBounds = YES;
     self.contentView.backgroundColor = COLOR_BACKGROUND_LIGHT_GRAY;
     [self.scrollView addSubview:self.contentView];
     
     [self setupPieChart];
+    
+    [self setupPriceCharts];
 }
 
 - (void)setAssetType:(AssetType)assetType
@@ -68,6 +71,42 @@
     self.balancesChartView.layer.shadowRadius = 3;
     self.balancesChartView.layer.shadowOpacity = 0.25;
     [self.contentView addSubview:self.balancesChartView];
+}
+
+- (void)setupPriceCharts
+{
+    CGFloat horizontalPadding = 15;
+    
+    UILabel *balancesLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, self.balancesChartView.frame.origin.y + self.balancesChartView.frame.size.height + 16, self.view.frame.size.width/2, 40)];
+    balancesLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
+    balancesLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_LARGE];
+    balancesLabel.text = [BC_STRING_PRICE_CHARTS uppercaseString];
+    [self.contentView addSubview:balancesLabel];
+    
+    CGSize shadowOffset = CGSizeMake(0, 2);
+    CGFloat shadowRadius = 3;
+    float shadowOpacity = 0.25;
+    
+    BCPricePreviewView *bitcoinPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, balancesLabel.frame.origin.y + balancesLabel.frame.size.height, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN price:@"8000"];
+    bitcoinPreviewView.layer.masksToBounds = NO;
+    bitcoinPreviewView.layer.shadowOffset = shadowOffset;
+    bitcoinPreviewView.layer.shadowRadius = shadowRadius;
+    bitcoinPreviewView.layer.shadowOpacity = shadowOpacity;
+    [self.contentView addSubview:bitcoinPreviewView];
+    
+    BCPricePreviewView *etherPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, bitcoinPreviewView.frame.origin.y + bitcoinPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_ETHER price:@"1000"];
+    etherPreviewView.layer.masksToBounds = NO;
+    etherPreviewView.layer.shadowOffset = shadowOffset;
+    etherPreviewView.layer.shadowRadius = shadowRadius;
+    etherPreviewView.layer.shadowOpacity = shadowOpacity;
+    [self.contentView addSubview:etherPreviewView];
+    
+    BCPricePreviewView *bitcoinCashPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, etherPreviewView.frame.origin.y + etherPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN_CASH price:@"5000"];
+    bitcoinCashPreviewView.layer.masksToBounds = NO;
+    bitcoinCashPreviewView.layer.shadowOffset = shadowOffset;
+    bitcoinCashPreviewView.layer.shadowRadius = shadowRadius;
+    bitcoinCashPreviewView.layer.shadowOpacity = shadowOpacity;
+    [self.contentView addSubview:bitcoinCashPreviewView];
 }
 
 - (void)reload

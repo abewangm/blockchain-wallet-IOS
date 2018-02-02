@@ -885,4 +885,8 @@
 #define BC_STRING_ARGUMENT_NEEDED_TO_EXCHANGE NSLocalizedString(@"%@ needed to exchange", nil)
 #define BC_STRING_FAILED_TO_LOAD_EXCHANGE_DATA NSLocalizedString(@"Failed to load exchange data", nil)
 
+#define BC_STRING_PRICE NSLocalizedString(@"Price", nil)
+#define BC_STRING_SEE_CHARTS NSLocalizedString(@"See charts", nil)
+#define BC_STRING_PRICE_CHARTS NSLocalizedString(@"Price charts", nil)
+
 #define BC_STRING_BITCOIN_CASH NSLocalizedString(@"Bitcoin Cash", nil)
