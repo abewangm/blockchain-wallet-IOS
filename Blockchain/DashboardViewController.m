@@ -16,6 +16,7 @@
 #import "GraphTimeFrame.h"
 #import "Blockchain-Swift.h"
 #import "BCPriceChartView.h"
+#import "BCBalancesChartView.h"
 
 @import Charts;
 
@@ -25,7 +26,8 @@
 @end
 
 @interface DashboardViewController () <IChartAxisValueFormatter, ChartViewDelegate, BCPriceChartViewDelegate>
-@property (nonatomic) BCPriceChartView *chartView;
+@property (nonatomic) BCBalancesChartView *balancesChartView;
+@property (nonatomic) BCPriceChartView *priceChartView;
 @end
 
 @implementation DashboardViewController
@@ -39,6 +41,8 @@
     self.contentView.clipsToBounds = YES;
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:self.contentView];
+    
+    [self setupPieChart];
 }
 
 - (void)setAssetType:(AssetType)assetType
@@ -48,8 +52,19 @@
     [self reload];
 }
 
+- (void)setupPieChart
+{
+    self.balancesChartView = [[BCBalancesChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
+    [self.view addSubview:self.balancesChartView];
+}
+
 - (void)reload
 {
+    [self.balancesChartView updateBitcoinBalance:0];
+    [self.balancesChartView updateEtherBalance:@""];
+    [self.balancesChartView updateBitcoinCashBalance:0];
+    [self.balancesChartView updateChart];
+
     [self reloadCards];
     
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
@@ -89,10 +104,10 @@
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if ([values count] == 0) {
-                        [self.chartView clear];
+                        [self.priceChartView clear];
                         [self showError:BC_STRING_ERROR_CHARTS];
                     } else {
-                        [self.chartView updateWithValues:values];
+                        [self.priceChartView updateWithValues:values];
                     }
                 });
             }
@@ -104,7 +119,7 @@
 
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
-    [self.chartView updateEthExchangeRate:rate];
+    [self.priceChartView updateEthExchangeRate:rate];
 }
 
 #pragma mark - View Helpers
@@ -128,9 +143,9 @@
 
 - (NSString *)stringForValue:(double)value axis:(ChartAxisBase *)axis
 {
-    if (axis == [self.chartView leftAxis]) {
+    if (axis == [self.priceChartView leftAxis]) {
         return [NSString stringWithFormat:@"%@%.f", app.latestResponse.symbol_local.symbol, value];
-    } else if (axis == [self.chartView xAxis]) {
+    } else if (axis == [self.priceChartView xAxis]) {
         return [self dateStringFromGraphValue:value];
     } else {
         DLog(@"Warning: no axis found!");
@@ -156,12 +171,12 @@
 
 - (void)chartValueNothingSelected:(ChartViewBase *)chartView
 {
-    [self.chartView updateTitleContainer];
+    [self.priceChartView updateTitleContainer];
 }
 
 - (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
 {
-    [self.chartView updateTitleContainerWithChartDataEntry:entry];
+    [self.priceChartView updateTitleContainerWithChartDataEntry:entry];
 }
 
 #pragma mark - BCPriceChartView Delegate
