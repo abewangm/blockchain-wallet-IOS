@@ -48,6 +48,8 @@
         self.assetType = assetType;
         self.delegate = delegate;
         
+        self.backgroundColor = [UIColor whiteColor];
+        
         UIView *titleContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.frame.size.width, 60)];
         titleContainerView.backgroundColor = [UIColor clearColor];
         titleContainerView.center = CGPointMake(self.center.x, titleContainerView.center.y);

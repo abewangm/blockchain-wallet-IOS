@@ -7,9 +7,10 @@
 //
 
 #import "BCPriceChartContainerViewController.h"
-
+#import "BCPriceChartView.h"
+@class ChartAxisBase;
 @interface BCPriceChartContainerViewController ()
-
+@property BCPriceChartView *priceChartView;
 @end
 
 @implementation BCPriceChartContainerViewController
@@ -18,8 +19,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor blackColor];
-    self.view.alpha = BUSY_VIEW_LABEL_ALPHA;
+    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:BUSY_VIEW_LABEL_ALPHA];
     
     CGFloat buttonWidth = 50;
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 8 - buttonWidth, 30, buttonWidth, buttonWidth)];
@@ -31,6 +31,42 @@
 - (void)closeButtonTapped
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addPriceChartView:(BCPriceChartView *)priceChartView
+{
+    self.priceChartView = priceChartView;
+    [self.view addSubview:priceChartView];
+}
+
+- (void)clearChart
+{
+    [self.priceChartView clear];
+}
+
+- (void)updateChartWithValues:(NSArray *)values
+{
+    [self.priceChartView updateWithValues:values];
+}
+
+- (ChartAxisBase *)leftAxis
+{
+    return [self.priceChartView leftAxis];
+}
+
+- (ChartAxisBase *)xAxis
+{
+    return [self.priceChartView xAxis];
+}
+
+- (void)updateTitleContainer
+{
+    [self.priceChartView updateTitleContainer];
+}
+
+- (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)entry
+{
+    [self.priceChartView updateTitleContainerWithChartDataEntry:entry];
 }
 
 @end
