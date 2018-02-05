@@ -18,6 +18,9 @@
 #import "BCPriceChartView.h"
 #import "BCBalancesChartView.h"
 #import "BCPricePreviewView.h"
+#import "BCPriceChartContainerViewController.h"
+
+#define DASHBOARD_HORIZONTAL_PADDING 15
 
 @import Charts;
 
@@ -57,7 +60,7 @@
 
 - (void)setupPieChart
 {
-    CGFloat horizontalPadding = 15;
+    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
 
     UILabel *balancesLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, 16, self.view.frame.size.width/2, 40)];
     balancesLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
@@ -75,7 +78,7 @@
 
 - (void)setupPriceCharts
 {
-    CGFloat horizontalPadding = 15;
+    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
     
     UILabel *balancesLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, self.balancesChartView.frame.origin.y + self.balancesChartView.frame.size.height + 16, self.view.frame.size.width/2, 40)];
     balancesLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
@@ -94,6 +97,9 @@
     bitcoinPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinPreviewView];
     
+    UITapGestureRecognizer *bitcoinChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bitcoinChartTapped)];
+    [bitcoinPreviewView addGestureRecognizer:bitcoinChartTapGesture];
+    
     BCPricePreviewView *etherPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, bitcoinPreviewView.frame.origin.y + bitcoinPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_ETHER price:@"1000"];
     etherPreviewView.layer.masksToBounds = NO;
     etherPreviewView.layer.shadowOffset = shadowOffset;
@@ -101,12 +107,18 @@
     etherPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:etherPreviewView];
     
+    UITapGestureRecognizer *etherChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(etherChartTapped)];
+    [etherPreviewView addGestureRecognizer:etherChartTapGesture];
+    
     BCPricePreviewView *bitcoinCashPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, etherPreviewView.frame.origin.y + etherPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN_CASH price:@"5000"];
     bitcoinCashPreviewView.layer.masksToBounds = NO;
     bitcoinCashPreviewView.layer.shadowOffset = shadowOffset;
     bitcoinCashPreviewView.layer.shadowRadius = shadowRadius;
     bitcoinCashPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinCashPreviewView];
+    
+    UITapGestureRecognizer *bitcoinCashChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bitcoinCashChartTapped)];
+    [bitcoinCashPreviewView addGestureRecognizer:bitcoinCashChartTapGesture];
 }
 
 - (void)reload
@@ -171,6 +183,33 @@
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
     [self.priceChartView updateEthExchangeRate:rate];
+}
+
+- (void)bitcoinChartTapped
+{
+    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
+
+    BCPriceChartContainerViewController *chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
+    chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [app.tabControllerManager.tabViewController presentViewController:chartContainerViewController animated:YES completion:nil];
+    
+    self.priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
+}
+
+- (void)etherChartTapped
+{
+    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
+
+    self.priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeEther dataPoints:nil delegate:self];
+    [self.contentView addSubview:self.priceChartView];
+}
+
+- (void)bitcoinCashChartTapped
+{
+    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
+    
+    self.priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeBitcoinCash dataPoints:nil delegate:self];
+    [self.contentView addSubview:self.priceChartView];
 }
 
 #pragma mark - View Helpers

@@ -216,6 +216,7 @@
 		C7442E3A1FBB636300695E4C /* FromToView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E391FBB636300695E4C /* FromToView.m */; };
 		C74E21C12024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21C02024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m */; };
 		C74E21C72024E6D700A9FBB1 /* BCPricePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21C62024E6D700A9FBB1 /* BCPricePreviewView.m */; };
+		C74E21CD2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21CC2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m */; };
 		C7559CAF1F55E874005B2375 /* BCConfirmPaymentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */; };
 		C7559CB21F56FE09005B2375 /* TransactionsEtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7559CB11F56FE09005B2375 /* TransactionsEtherViewController.m */; };
 		C7559CB41F5705D5005B2375 /* TransactionEtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7559CB31F5705D5005B2375 /* TransactionEtherCell.xib */; };
@@ -1148,6 +1149,8 @@
 		C74E21C02024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCBalanceChartLegendKeyView.m; sourceTree = "<group>"; };
 		C74E21C52024E6D700A9FBB1 /* BCPricePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCPricePreviewView.h; sourceTree = "<group>"; };
 		C74E21C62024E6D700A9FBB1 /* BCPricePreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCPricePreviewView.m; sourceTree = "<group>"; };
+		C74E21CB2028A61F00A9FBB1 /* BCPriceChartContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCPriceChartContainerViewController.h; sourceTree = "<group>"; };
+		C74E21CC2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCPriceChartContainerViewController.m; sourceTree = "<group>"; };
 		C7559CAD1F55E874005B2375 /* BCConfirmPaymentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCConfirmPaymentViewModel.h; sourceTree = "<group>"; };
 		C7559CAE1F55E874005B2375 /* BCConfirmPaymentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCConfirmPaymentViewModel.m; sourceTree = "<group>"; };
 		C7559CB01F56FE09005B2375 /* TransactionsEtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsEtherViewController.h; sourceTree = "<group>"; };
@@ -2138,6 +2141,8 @@
 		9FCA4D18151494A300ECDFBE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C74E21CB2028A61F00A9FBB1 /* BCPriceChartContainerViewController.h */,
+				C74E21CC2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m */,
 				C7414E431FD7131C001A89FA /* ConfirmStateViewController.h */,
 				C7414E441FD7131C001A89FA /* ConfirmStateViewController.m */,
 				C7414E511FD72574001A89FA /* StateSelectorViewController.h */,
@@ -3661,6 +3666,7 @@
 				238FC4D21DEC79E200591D5F /* TransactionDetailDoubleSpendWarningCell.m in Sources */,
 				23FDEF9A1D6CBC7000FC80D6 /* TransactionDetailViewController.m in Sources */,
 				67EE1DCA19E3325900DBBFC9 /* ECPercentDrivenInteractiveTransition.m in Sources */,
+				C74E21CD2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m in Sources */,
 				C71859471F3E227D00745A87 /* BCDescriptionView.m in Sources */,
 				23FDEF9D1D6E180100FC80D6 /* CertificatePinner.m in Sources */,
 				678CD7481A2777E600748AA5 /* BCCreateAccountView.m in Sources */,
