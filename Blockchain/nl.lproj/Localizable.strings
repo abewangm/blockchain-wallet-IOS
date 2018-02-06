@@ -2191,7 +2191,7 @@
 "No Funds to Exchange" = "Geen Geld te Wisselen";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Je hebt geen middelen om de uitwisseling 😕 Waarom niet beginnen met het ontvangen van enkele fondsen?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Je hebt geen middelen om de uitwisseling. Waarom niet beginnen met het ontvangen van enkele fondsen?";
 
 /* (No Commment) */
 "Loading Exchange" = "Het Laden Van Exchange";
@@ -2359,7 +2359,7 @@
 "No Funds to Exchange" = "Geen fondsen om te wisselen";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "U heeft geen fondsen om te wisselen 😕 Waarom begint u niet met het ontvangen van wat fondsen?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "U heeft geen fondsen om te wisselen. Waarom begint u niet met het ontvangen van wat fondsen?";
 
 /* (No Commment) */
 "Loading Exchange" = "Wisselopdracht aan het laden";

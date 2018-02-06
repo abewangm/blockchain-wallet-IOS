@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Nem Pénzeszközök Átváltási";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange 😕 Miért nem azzal kezdte, akik egyes alapok?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange. Miért nem azzal kezdte, akik egyes alapok?";
 
 /* (No Commment) */
 "Loading Exchange" = "Betöltése Árfolyam";

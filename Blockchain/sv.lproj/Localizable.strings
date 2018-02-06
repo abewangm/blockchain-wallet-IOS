@@ -2070,7 +2070,7 @@
 "No Funds to Exchange" = "Inga Medel för att Utbyta";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Du har inga medel för att utbyta 😕 Varför inte komma igång genom att ta emot några pengar?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Du har inga medel för att utbyta. Varför inte komma igång genom att ta emot några pengar?";
 
 /* (No Commment) */
 "Loading Exchange" = "Laddar Utbyte";

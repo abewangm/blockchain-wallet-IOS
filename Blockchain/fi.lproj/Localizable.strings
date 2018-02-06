@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Ei Varat Vaihto";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto 😕 Miksi ei aloita by vastaanottaminen joitakin varoja?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto. Miksi ei aloita by vastaanottaminen joitakin varoja?";
 
 /* (No Commment) */
 "Loading Exchange" = "Lastaus Vaihto";

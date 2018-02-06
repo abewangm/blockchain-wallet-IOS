@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "Відсутні кошти для обміну";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "У вас немає коштів для обміну 😕 Чому б не розпочати отримувати кошти?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "У вас немає коштів для обміну. Чому б не розпочати отримувати кошти?";
 
 /* (No Commment) */
 "Loading Exchange" = "Завантаження обміну";
