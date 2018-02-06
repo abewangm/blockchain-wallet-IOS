@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 @class BCPriceChartView, ChartDataEntry, ChartAxisBase;
 @interface BCPriceChartContainerViewController : UIViewController
-- (void)addPriceChartView:(BCPriceChartView *)priceChartView;
+- (void)addPriceChartView:(BCPriceChartView *)priceChartView atIndex:(NSInteger)pageIndex;
 - (void)clearChart;
 - (void)updateChartWithValues:(NSArray *)values;
 - (ChartAxisBase *)leftAxis;
 - (ChartAxisBase *)xAxis;
 - (void)updateTitleContainer;
 - (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)entry;
+- (void)updateEthExchangeRate:(NSDecimalNumber *)rate;
 @end

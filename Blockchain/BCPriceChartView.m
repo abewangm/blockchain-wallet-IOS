@@ -231,7 +231,7 @@
 
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
-    self.lastEthExchangeRate = [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:rate];
+    self.lastEthExchangeRate = [rate stringValue];
     [self.delegate reloadPriceChartView];
 }
 
@@ -252,7 +252,7 @@
     
     self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
     [self.titleLabel sizeToFit];
-    self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
+    self.titleLabel.center = CGPointMake([self.titleLabel superview].bounds.size.width/2, self.titleLabel.center.y);
     
     self.priceLabel.text = self.assetType == AssetTypeBitcoin ? [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES] : self.lastEthExchangeRate;
     [self.priceLabel sizeToFit];
@@ -295,7 +295,7 @@
     [self.percentageChangeLabel changeXPosition:self.priceLabel.frame.origin.x + self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width];
     
     self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width + self.percentageChangeLabel.frame.size.width, 30);
-    self.priceContainerView.center = CGPointMake(self.center.x, self.priceContainerView.center.y);
+    self.priceContainerView.center = CGPointMake(self.bounds.size.width/2, self.priceContainerView.center.y);
 }
 
 - (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)dataEntry

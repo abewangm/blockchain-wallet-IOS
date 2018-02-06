@@ -32,6 +32,7 @@
 @interface DashboardViewController () <IChartAxisValueFormatter, ChartViewDelegate, BCPriceChartViewDelegate>
 @property (nonatomic) BCBalancesChartView *balancesChartView;
 @property (nonatomic) BCPriceChartContainerViewController *chartContainerViewController;
+@property (nonatomic) NSDecimalNumber *lastEthExchangeRate;
 @end
 
 @implementation DashboardViewController
@@ -185,7 +186,7 @@
 
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
-//    [self.priceChartView updateEthExchangeRate:rate];
+    self.lastEthExchangeRate = rate;
 }
 
 - (void)bitcoinChartTapped
@@ -195,23 +196,30 @@
     [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
     
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
-    [self.chartContainerViewController addPriceChartView:priceChartView];
-    
+    [self.chartContainerViewController addPriceChartView:priceChartView atIndex:0];
     [self fetchChartData];
 }
 
 - (void)etherChartTapped
 {
-    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
-
-    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeEther dataPoints:nil delegate:self];
+    self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
+    self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
+    
+    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeEther dataPoints:nil delegate:self];
+    [self.chartContainerViewController addPriceChartView:priceChartView atIndex:1];
+    [self.chartContainerViewController updateEthExchangeRate:self.lastEthExchangeRate];
 }
 
 - (void)bitcoinCashChartTapped
 {
-    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
+    self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
+    self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
     
-    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeBitcoinCash dataPoints:nil delegate:self];
+    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoinCash dataPoints:nil delegate:self];
+    [self.chartContainerViewController addPriceChartView:priceChartView atIndex:2];
+    [self fetchChartData];
 }
 
 #pragma mark - View Helpers
