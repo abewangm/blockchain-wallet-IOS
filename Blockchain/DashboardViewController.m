@@ -190,14 +190,11 @@
 
 - (void)bitcoinChartTapped
 {
-    CGFloat horizontalPadding = DASHBOARD_HORIZONTAL_PADDING;
-
     self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
     self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
     
-    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(horizontalPadding, 0, self.view.frame.size.width - horizontalPadding, self.view.frame.size.height*2/3) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
-    priceChartView.center = CGPointMake(priceChartView.center.x, self.chartContainerViewController.view.frame.size.height/2);
+    BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView];
     
     [self fetchChartData];

@@ -79,7 +79,7 @@
         
         [self addSubview:titleContainerView];
         
-        UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, X_INSET_GRAPH_CONTAINER, titleContainerView.frame.origin.y + 60)];
+        UIView *graphContainerView = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, X_INSET_GRAPH_CONTAINER, titleContainerView.frame.origin.y + 44)];
         [graphContainerView changeWidth:self.frame.size.width - graphContainerView.frame.origin.x - 30];
         [graphContainerView changeHeight:self.frame.size.height - 120];
         
