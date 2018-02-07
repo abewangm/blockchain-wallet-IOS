@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "无可兑换资金";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "您没有可兑换的资金 😕 为什么不先接收一些资金呢？";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "您没有可兑换的资金. 为什么不先接收一些资金呢？";
 
 /* (No Commment) */
 "Loading Exchange" = "正在载入兑换";

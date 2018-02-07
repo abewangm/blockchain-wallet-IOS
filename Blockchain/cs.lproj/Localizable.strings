@@ -2241,7 +2241,7 @@
 "No Funds to Exchange" = "Žádné finanční Prostředky na Výměnu";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemáte žádné finanční prostředky na výměnu 😕 Proč ne začít tím, že obdrží určité finanční prostředky?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemáte žádné finanční prostředky na výměnu. Proč ne začít tím, že obdrží určité finanční prostředky?";
 
 /* (No Commment) */
 "Loading Exchange" = "Načítání Exchange";
@@ -2409,7 +2409,7 @@
 "No Funds to Exchange" = "Žádné prostředky ke směně";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemáte žádné prostředky ke směně 😕 Proč nezačít přijetím nějakých prostředků?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemáte žádné prostředky ke směně. Proč nezačít přijetím nějakých prostředků?";
 
 /* (No Commment) */
 "Loading Exchange" = "Načítání směny";

@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "Dönüştürülecek Para Yok";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Dönüştürecek paranız yok 😕 Neden biraz para almaya başlamıyorsunuz?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Dönüştürecek paranız yok. Neden biraz para almaya başlamıyorsunuz?";
 
 /* (No Commment) */
 "Loading Exchange" = "Dönüştürme Yükleniyor";
