@@ -38,6 +38,8 @@
 @property (nonatomic) NSString *lastEthExchangeRate;
 
 @property (nonatomic) NSArray *lastUpdatedValues;
+
+@property (nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation BCPriceChartView
@@ -211,6 +213,8 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:timeFrame];
     [currentDefaults setObject:data forKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     
+    self.isLoading = YES;
+    
     [self.delegate reloadPriceChartView:self.assetType];
 }
 
@@ -343,8 +347,9 @@
     dataSet.drawVerticalHighlightIndicatorEnabled = NO;
     dataSet.drawHorizontalHighlightIndicatorEnabled = NO;
     self.chartView.data = [[LineChartData alloc] initWithDataSet:dataSet];
+    
+    self.isLoading = NO;
 }
-
 
 #pragma mark - View Helpers
 
@@ -368,6 +373,36 @@
     [button changeWidth:testButton.frame.size.width];
     [button changeXPosition:frame.origin.x + 8];
     return button;
+}
+
+- (void)setIsLoading:(BOOL)isLoading
+{
+    _isLoading = isLoading;
+    
+    if (isLoading) {
+        [self showSpinner];
+    } else {
+        [self hideSpinner];
+    }
+}
+
+- (void)showSpinner
+{
+    if (!self.spinner) {
+        self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        self.spinner.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+        [self addSubview:self.spinner];
+    }
+    
+    self.spinner.hidden = NO;
+    [self.spinner startAnimating];
+}
+
+- (void)hideSpinner
+{
+    [self.spinner stopAnimating];
+    self.spinner.hidden = YES;
 }
 
 #pragma mark - Chart View Delegate

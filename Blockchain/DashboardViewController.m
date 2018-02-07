@@ -189,11 +189,19 @@
     self.lastEthExchangeRate = [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:rate];
 }
 
+- (void)showChartContainerViewController
+{
+    if (!self.chartContainerViewController) {
+        self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
+        self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        self.chartContainerViewController.delegate = self;
+        [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
+    }
+}
+
 - (void)bitcoinChartTapped
 {
-    self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
-    self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
+    [self showChartContainerViewController];
     
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:0];
@@ -202,9 +210,7 @@
 
 - (void)etherChartTapped
 {
-    self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
-    self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
+    [self showChartContainerViewController];
     
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeEther dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:1];
@@ -214,10 +220,8 @@
 
 - (void)bitcoinCashChartTapped
 {
-    self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
-    self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [app.tabControllerManager.tabViewController presentViewController:self.chartContainerViewController animated:YES completion:nil];
-    
+    [self showChartContainerViewController];
+
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoinCash dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:2];
     [self fetchChartDataForAsset:AssetTypeBitcoinCash];
@@ -269,6 +273,15 @@
 }
 
 #pragma mark - BCPriceChartView Delegate
+
+- (void)addPriceChartView:(AssetType)assetType
+{
+    switch (assetType) {
+        case AssetTypeBitcoin: [self bitcoinChartTapped]; return;
+        case AssetTypeEther: [self etherChartTapped]; return;
+        case AssetTypeBitcoinCash: [self bitcoinCashChartTapped]; return;
+    }
+}
 
 - (void)reloadPriceChartView:(AssetType)assetType
 {

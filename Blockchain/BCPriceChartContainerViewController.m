@@ -7,11 +7,16 @@
 //
 
 #import "BCPriceChartContainerViewController.h"
-#import "BCPriceChartView.h"
+
+#define DICTIONARY_KEY_BITCOIN @"bitcoin"
+#define DICTIONARY_KEY_ETHER @"ether"
+#define DICTIONARY_KEY_BITCOIN_CASH @"bitcoinCash"
+
 @class ChartAxisBase;
 @interface BCPriceChartContainerViewController ()
-@property BCPriceChartView *priceChartView;
-@property UIScrollView *scrollView;
+@property (nonatomic) BCPriceChartView *priceChartView;
+@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) NSMutableDictionary *addedCharts;
 @end
 
 @implementation BCPriceChartContainerViewController
@@ -27,6 +32,8 @@
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closeButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
+    
+    self.addedCharts = [NSMutableDictionary new];
 }
 
 - (void)closeButtonTapped
@@ -44,18 +51,20 @@
         self.scrollView.scrollEnabled = NO;
         [self.scrollView setContentOffset:CGPointMake(pageIndex * self.scrollView.frame.size.width, 0) animated:NO];
         [self.view addSubview:self.scrollView];
+        
+        UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.scrollView.frame.origin.y + self.scrollView.frame.size.height + 16, 100, 30)];
+        pageControl.numberOfPages = 3;
+        [pageControl setCurrentPage:pageIndex];
+        [pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
+        pageControl.center = CGPointMake(self.view.frame.size.width/2, pageControl.center.y);
+        [self.view addSubview:pageControl];
     }
 
     priceChartView.center = CGPointMake(pageIndex * self.scrollView.frame.size.width + self.scrollView.frame.size.width/2, self.scrollView.frame.size.height/2);
     self.priceChartView = priceChartView;
     [self.scrollView addSubview:priceChartView];
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.scrollView.frame.origin.y + self.scrollView.frame.size.height + 16, 100, 30)];
-    pageControl.numberOfPages = 3;
-    [pageControl setCurrentPage:pageIndex];
-    [pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
-    pageControl.center = CGPointMake(self.view.frame.size.width/2, pageControl.center.y);
-    [self.view addSubview:pageControl];
+    [self.addedCharts setObject:priceChartView forKey:[self dictionaryKeyForPage:pageIndex]];
 }
 
 - (void)clearChart
@@ -91,11 +100,27 @@
 - (void)pageControlChanged:(UIPageControl *)pageControl
 {
     [self.scrollView setContentOffset:CGPointMake(pageControl.currentPage * self.scrollView.frame.size.width, 0) animated:YES];
+    
+    if (![self.addedCharts objectForKey:[self dictionaryKeyForPage:pageControl.currentPage]]) {
+        [self.delegate addPriceChartView:pageControl.currentPage];
+    } else {
+        [self.delegate reloadPriceChartView:pageControl.currentPage];
+    }
 }
 
 - (void)updateEthExchangeRate:(NSString *)rate
 {
     [self.priceChartView updateEthExchangeRate:rate];
+}
+
+- (NSString *)dictionaryKeyForPage:(NSInteger)pageIndex
+{
+    switch (pageIndex) {
+        case AssetTypeBitcoin: return DICTIONARY_KEY_BITCOIN;
+        case AssetTypeEther: return DICTIONARY_KEY_ETHER;
+        case AssetTypeBitcoinCash: return DICTIONARY_KEY_BITCOIN_CASH;
+        default: return nil;
+    }
 }
 
 @end
