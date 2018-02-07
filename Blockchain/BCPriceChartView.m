@@ -16,9 +16,9 @@
 
 @import Charts;
 
-@interface BCPriceChartView ()
+@interface BCPriceChartView () <ChartViewDelegate>
 
-@property (nonatomic) id <IChartAxisValueFormatter, ChartViewDelegate, BCPriceChartViewDelegate> delegate;
+@property (nonatomic) id <IChartAxisValueFormatter, BCPriceChartViewDelegate> delegate;
 
 @property (nonatomic) AssetType assetType;
 @property (nonatomic) LineChartView *chartView;
@@ -87,7 +87,7 @@
         CGFloat horizontalSpacing = 0;
         
         LineChartView *chartView = [[LineChartView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
-        chartView.delegate = delegate;
+        chartView.delegate = self;
         chartView.drawGridBackgroundEnabled = NO;
         chartView.drawBordersEnabled = NO;
         chartView.scaleXEnabled = NO;
@@ -211,7 +211,7 @@
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:timeFrame];
     [currentDefaults setObject:data forKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     
-    [self.delegate reloadPriceChartView];
+    [self.delegate reloadPriceChartView:self.assetType];
 }
 
 - (ChartAxisBase *)leftAxis
@@ -229,10 +229,9 @@
     [self.chartView clear];
 }
 
-- (void)updateEthExchangeRate:(NSDecimalNumber *)rate
+- (void)updateEthExchangeRate:(NSString *)rate
 {
-    self.lastEthExchangeRate = [rate stringValue];
-    [self.delegate reloadPriceChartView];
+    self.lastEthExchangeRate = rate;
 }
 
 - (void)updateWithValues:(NSArray *)values
@@ -318,7 +317,7 @@
     self.arrowImageView.hidden = YES;
     
     self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width, 30);
-    self.priceContainerView.center = CGPointMake(self.center.x, self.priceContainerView.center.y);
+    self.priceContainerView.center = CGPointMake(self.bounds.size.width/2, self.priceContainerView.center.y);
 }
 
 - (void)setChartValues:(NSArray *)values
@@ -369,6 +368,18 @@
     [button changeWidth:testButton.frame.size.width];
     [button changeXPosition:frame.origin.x + 8];
     return button;
+}
+
+#pragma mark - Chart View Delegate
+
+- (void)chartValueNothingSelected:(ChartViewBase *)chartView
+{
+    [self updateTitleContainer];
+}
+
+- (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
+{
+    [self updateTitleContainerWithChartDataEntry:entry];
 }
 
 @end

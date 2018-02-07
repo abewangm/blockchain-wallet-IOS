@@ -12,20 +12,19 @@
 #define USER_DEFAULTS_KEY_GRAPH_TIME_FRAME @"timeFrame"
 
 @class ChartAxisBase, ChartDataEntry;
-@protocol IChartAxisValueFormatter, ChartViewDelegate;
+@protocol IChartAxisValueFormatter;
 @protocol BCPriceChartViewDelegate
-- (void)reloadPriceChartView;
+- (void)reloadPriceChartView:(AssetType)assetType;
 @end
 
 @interface BCPriceChartView : UIView
-- (id)initWithFrame:(CGRect)frame assetType:(AssetType)assetType dataPoints:(NSArray *)dataPoints delegate:(id<IChartAxisValueFormatter, ChartViewDelegate, BCPriceChartViewDelegate>)delegate;
+- (id)initWithFrame:(CGRect)frame assetType:(AssetType)assetType dataPoints:(NSArray *)dataPoints delegate:(id<IChartAxisValueFormatter, BCPriceChartViewDelegate>)delegate;
 
 - (void)updateWithValues:(NSArray *)values;
 - (void)clear;
-- (void)updateEthExchangeRate:(NSDecimalNumber *)rate;
 - (void)updateTitleContainer;
 - (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)dataEntry;
-- (void)updateEthExchangeRate:(NSDecimalNumber *)rate;
+- (void)updateEthExchangeRate:(NSString *)rate;
 - (ChartAxisBase *)leftAxis;
 - (ChartAxisBase *)xAxis;
 @end

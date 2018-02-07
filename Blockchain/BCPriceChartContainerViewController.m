@@ -93,7 +93,7 @@
     [self.scrollView setContentOffset:CGPointMake(pageControl.currentPage * self.scrollView.frame.size.width, 0) animated:YES];
 }
 
-- (void)updateEthExchangeRate:(NSDecimalNumber *)rate
+- (void)updateEthExchangeRate:(NSString *)rate
 {
     [self.priceChartView updateEthExchangeRate:rate];
 }

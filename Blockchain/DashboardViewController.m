@@ -29,10 +29,10 @@
 @property (nonatomic) UIView *contentView;
 @end
 
-@interface DashboardViewController () <IChartAxisValueFormatter, ChartViewDelegate, BCPriceChartViewDelegate>
+@interface DashboardViewController () <IChartAxisValueFormatter, BCPriceChartViewDelegate>
 @property (nonatomic) BCBalancesChartView *balancesChartView;
 @property (nonatomic) BCPriceChartContainerViewController *chartContainerViewController;
-@property (nonatomic) NSDecimalNumber *lastEthExchangeRate;
+@property (nonatomic) NSString *lastEthExchangeRate;
 @end
 
 @implementation DashboardViewController
@@ -132,7 +132,7 @@
     [self reloadCards];
 }
 
-- (void)fetchChartData
+- (void)fetchChartDataForAsset:(AssetType)assetType
 {
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data] ? : [GraphTimeFrame timeFrameWeek];
@@ -141,7 +141,7 @@
         
     NSString *base;
     
-    if (self.assetType == AssetTypeBitcoin) {
+    if (assetType == AssetTypeBitcoin) {
         base = [CURRENCY_SYMBOL_BTC lowercaseString];
         startDate = timeFrame.timeFrame == TimeFrameAll ? [timeFrame startDateBitcoin] : timeFrame.startDate;
     } else {
@@ -186,7 +186,7 @@
 
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
-    self.lastEthExchangeRate = rate;
+    self.lastEthExchangeRate = [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:rate];
 }
 
 - (void)bitcoinChartTapped
@@ -197,7 +197,7 @@
     
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoin dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:0];
-    [self fetchChartData];
+    [self fetchChartDataForAsset:AssetTypeBitcoin];
 }
 
 - (void)etherChartTapped
@@ -209,6 +209,7 @@
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeEther dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:1];
     [self.chartContainerViewController updateEthExchangeRate:self.lastEthExchangeRate];
+    [self fetchChartDataForAsset:AssetTypeEther];
 }
 
 - (void)bitcoinCashChartTapped
@@ -219,7 +220,7 @@
     
     BCPriceChartView *priceChartView = [[BCPriceChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height*3/4) assetType:AssetTypeBitcoinCash dataPoints:nil delegate:self];
     [self.chartContainerViewController addPriceChartView:priceChartView atIndex:2];
-    [self fetchChartData];
+    [self fetchChartDataForAsset:AssetTypeBitcoinCash];
 }
 
 #pragma mark - View Helpers
@@ -267,23 +268,11 @@
     return timeFrame.dateFormat;
 }
 
-#pragma mark - Chart View Delegate
-
-- (void)chartValueNothingSelected:(ChartViewBase *)chartView
-{
-    [self.chartContainerViewController updateTitleContainer];
-}
-
-- (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
-{
-    [self.chartContainerViewController updateTitleContainerWithChartDataEntry:entry];
-}
-
 #pragma mark - BCPriceChartView Delegate
 
-- (void)reloadPriceChartView
+- (void)reloadPriceChartView:(AssetType)assetType
 {
-    [self fetchChartData];
+    [self fetchChartDataForAsset:assetType];
 }
 
 @end
