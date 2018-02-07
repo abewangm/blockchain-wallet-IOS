@@ -57,7 +57,7 @@
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
             titleColor = actionColor;
         } else if (actionType == ActionTypeAvailableNow) {
-            actionName = BC_STRING_GET_STARTED;
+            actionName = BC_STRING_BUY_SELL_CARD_ACTION_TITLE;
             actionColor = COLOR_BLOCKCHAIN_BLUE;
             titleColor = COLOR_BLOCKCHAIN_BLUE;
         }
