@@ -1140,6 +1140,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self updateSymbols];
     
+    [self.wallet getBitcoinCashExchangeRates];
+}
+
+- (void)didGetBitcoinCashExchangeRates
+{
     [self.wallet getEthExchangeRate];
 }
 

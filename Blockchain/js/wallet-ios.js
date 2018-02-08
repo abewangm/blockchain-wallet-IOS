@@ -2822,3 +2822,16 @@ MyWalletPhone.currencyCodeForHardLimit = function() {
 MyWalletPhone.fiatExchangeHardLimit = function() {
     return walletOptions.getValue().shapeshift.upperLimit;
 }
+
+MyWalletPhone.getBitcoinCashExchangeRates = function() {
+    
+    var success = function(result) {
+        objc_did_get_bitcoin_cash_exchange_rates(result);
+    }
+    
+    var error = function(e) {
+        console.log(e);
+    }
+    
+    BlockchainAPI.getExchangeRate('USD', 'ETH').then(success).catch(error);
+}

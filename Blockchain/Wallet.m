@@ -38,10 +38,13 @@
 #import "KeyPair.h"
 #import "NSData+BTCData.h"
 
+#define DICTIONARY_KEY_CURRENCY @"currency"
+
 @interface Wallet ()
 @property (nonatomic) JSContext *context;
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
+@property (nonatomic) NSDictionary *bitcoinCashExchangeRates;
 @end
 
 @implementation transactionProgressListeners
@@ -903,6 +906,12 @@
     
     self.context[@"objc_did_get_ether_address_with_second_password"] = ^() {
         [weakSelf did_get_ether_address_with_second_password];
+    };
+    
+#pragma mark Bitcoin Cash
+    
+    self.context[@"objc_did_get_bitcoin_cash_exchange_rates"] = ^(JSValue *result) {
+        [weakSelf did_get_bitcoin_cash_exchange_rates:[result toDictionary]];
     };
     
 #pragma mark Exchange
@@ -2869,6 +2878,25 @@
     return nil;
 }
 
+# pragma mark - Bitcoin cash
+
+- (void)getBitcoinCashExchangeRates
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashExchangeRates()"];
+    }
+}
+
+- (NSString *)bitcoinCashExchangeRate
+{
+    if (self.bitcoinCashExchangeRates) {
+        NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
+        return [[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST];
+    }
+    
+    return nil;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
@@ -4360,6 +4388,16 @@
         [self.delegate didGetEtherAddressWithSecondPassword];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
+}
+
+- (void)did_get_bitcoin_cash_exchange_rates:(NSDictionary *)rates
+{
+    if ([self.delegate respondsToSelector:@selector(didGetBitcoinCashExchangeRates)]) {
+        self.bitcoinCashExchangeRates = rates;
+        [self.delegate didGetBitcoinCashExchangeRates];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetBitcoinCashExchangeRates!", [delegate class]);
     }
 }
 
