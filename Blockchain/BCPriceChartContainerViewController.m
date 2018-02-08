@@ -101,9 +101,11 @@
 {
     [self.scrollView setContentOffset:CGPointMake(pageControl.currentPage * self.scrollView.frame.size.width, 0) animated:YES];
     
-    if (![self.addedCharts objectForKey:[self dictionaryKeyForPage:pageControl.currentPage]]) {
+    BCPriceChartView *priceChartView = [self.addedCharts objectForKey:[self dictionaryKeyForPage:pageControl.currentPage]];
+    if (!priceChartView) {
         [self.delegate addPriceChartView:pageControl.currentPage];
     } else {
+        self.priceChartView = priceChartView;
         [self.delegate reloadPriceChartView:pageControl.currentPage];
     }
 }
