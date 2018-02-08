@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "교환할 돈 없음";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "교환할 돈이 없습니다 😕 돈을 좀 받기 시작하세요";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "교환할 돈이 없습니다. 돈을 좀 받기 시작하세요";
 
 /* (No Commment) */
 "Loading Exchange" = "교환 로딩 중";

@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "取引する資金がありません";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "取引する資金がありません 😕 まぜ資金を受信してみましょう。";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "取引する資金がありません. まぜ資金を受信してみましょう。";
 
 /* (No Commment) */
 "Loading Exchange" = "取引を読み込むことができませんでした";

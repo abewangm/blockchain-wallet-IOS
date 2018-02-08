@@ -2528,10 +2528,13 @@ MyWalletPhone.recordLastTransaction = function(hash) {
 MyWalletPhone.isWaitingOnTransaction = function() {
 
     var eth = MyWallet.wallet.eth;
-
+    var options = walletOptions.getValue();
+    var lastTxFuse = options.ethereum.lastTxFuse;
+    
     return null != eth.lastTx && null == eth.txs.find(function(tx) {
        return tx.hash === eth.lastTx;
-    });
+    }) &&
+    eth.lastTxTimestamp + lastTxFuse * 1000 > new Date().getTime();
 }
 
 MyWalletPhone.getMobileMessage = function(languageCode) {

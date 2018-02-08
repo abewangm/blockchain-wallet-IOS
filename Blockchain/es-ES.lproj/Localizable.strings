@@ -2116,7 +2116,7 @@
 "No Funds to Exchange" = "No hay fondos para intercambiar";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "No tiene fondos para intercambiar 😕 ¿No es un buen momento para comenzar a recibir saldo?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "No tiene fondos para intercambiar. ¿No es un buen momento para comenzar a recibir saldo?";
 
 /* (No Commment) */
 "Loading Exchange" = "Cargando intercambio";
