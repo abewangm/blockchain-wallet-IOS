@@ -191,7 +191,7 @@
 
 - (void)showChartContainerViewController
 {
-    if (!self.chartContainerViewController) {
+    if (!self.chartContainerViewController.view.window) {
         self.chartContainerViewController = [[BCPriceChartContainerViewController alloc] init];
         self.chartContainerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         self.chartContainerViewController.delegate = self;
