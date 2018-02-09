@@ -1916,3 +1916,128 @@
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "工采矿者收到这笔费用来处理这一事务。";
 
+"Get Ether" = "获得醚";
+
+"at" = "在";
+
+"Exchange" = "交换";
+
+"New Exchange" = "新的交换";
+
+"Use minimum" = "使用最小";
+
+"Use maximum" = "使用最大的";
+
+"Sending Funds" = "发送资金，";
+
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "谢谢你把你的交易！ 汇交易可能需要两个小时，你就可以跟踪交易的进展的顺序历史的部分。";
+
+"In Progress" = "在进行";
+
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "交易所可能需要两个小时，你就可以跟踪你的交换进展顺序历史。 一旦贸易完成后，你醚会在你的钱包。";
+
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "你贸易已被取消。 请回到交换标签以开始交易了。";
+
+"Failed" = "失败的";
+
+"Exchange Failed" = "交流失败的";
+
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "这种贸易已经失败。 任何资金送从你的钱包，将返回减交易费用。 请回到交换标签以开始一个新的贸易。";
+
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "你贸易已经过期。 请回到交换标签以开始一个新的贸易。";
+
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "你现在可以兑换币为醚，反之亦然直接从你的块链的钱包！";
+
+"%@ to Deposit" = "%@存款";
+
+"%@ to be Received" = "%@收到";
+
+"Exchange Rate" = "汇率";
+
+"Transaction Fee" = "交易费用";
+
+"Network Transaction Fee" = "网络事务费用";
+
+"ShapeShift Withdrawal Fee" = "变身撤离费用";
+
+"Agree to ShapeShift" = "同意变身";
+
+"terms and conditions" = "条款和条件";
+
+"Exchange In Progress" = "交换在进行中";
+
+"Exchange Completed" = "交换完毕";
+
+"Get started" = "开始";
+
+"Below minimum limit" = "最低限";
+
+"Above maximum limit" = "上述最高限额";
+
+"Not enough to exchange" = "没有足够的交换";
+
+"Order ID" = "以ID";
+
+"Total %@ spent" = "总%@花了";
+
+"Getting quote" = "获得的报价";
+
+"Confirming" = "确认";
+
+"Exchange In Progress" = "交换在进行中";
+
+"Complete" = "完整的";
+
+"Exchange Completed" = "交换完毕";
+
+"Quote expires in %@" = "引到期%@";
+
+"Step %d of %d" = "步骤%d的%d";
+
+"Select your State:" = "选择你的状态：";
+
+"Select State" = "选择国家";
+
+"Not Available" = "不提供";
+
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "交换硬币尚不可用的状态。 我们将推出有更多的国家很快。";
+
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "时发生错误让你%@平衡。 请稍后再试一次。 详细信息：%@";
+
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "错误发生时获得一个近似报价单。 请稍后再试一次。 详细信息：%@";
+
+"Deposited to ShapeShift" = "沉积来变身";
+
+"Received from ShapeShift" = "从收到的变身";
+
+"Order History" = "为了历史";
+
+"Incoming" = "呼入";
+
+"Trade Expired" = "贸易过期";
+
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "你贸易已经过期。 请回到交换页开始你贸易。";
+
+"No Funds to Exchange" = "没有资金来交换";
+
+"You have no funds to exchange. Why not get started by receiving some funds?" = "你有没有资金来交换。 为什么不开始收到一些资金？";
+
+"Loading Exchange" = "载入交换";
+
+"Select other %@ Wallet" = "选择其他%@的钱包";
+
+"%@ needed to exchange" = "%@需要交流";
+
+"Start trading" = "开始交易";
+
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "贸易币直接从你的块链的钱包。 开始通过创建一个帐户在购买和出售标签。";
+
+"The wait is over" = "等到了";
+
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "事了，请尽量重新开放购买和出售特币。";
+
+"Buy & Sell Bitcoin" = "购买和出售特币";
+
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "我们的工作与交换世界各地的合作伙伴，所以你可以购买和出售特币直接从你的钱包。";
+
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "移动购买和销售支持iOS9。 请运行的软件更新或登录在blockchain.info/wallet/login 上你的计算机。";
