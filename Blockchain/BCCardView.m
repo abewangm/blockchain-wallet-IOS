@@ -53,7 +53,7 @@
             actionColor = COLOR_BLOCKCHAIN_AQUA;
             titleColor = actionColor;
         } else if (actionType == ActionTypeBuyBitcoin) {
-            actionName = BC_STRING_BUY_BITCOIN;
+            actionName = BC_STRING_BUY_AND_SELL_BITCOIN;
             actionColor = COLOR_BLOCKCHAIN_LIGHT_BLUE;
             titleColor = actionColor;
         } else if (actionType == ActionTypeAvailableNow) {

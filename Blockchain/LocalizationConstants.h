@@ -62,7 +62,7 @@
 #define BC_STRING_TRADE_COMPLETED NSLocalizedString(@"Trade Completed", nil)
 #define BC_STRING_THE_TRADE_YOU_CREATED_ON_DATE_ARGUMENT_HAS_BEEN_COMPLETED NSLocalizedString(@"The trade you created on %@ has been completed!", nil)
 #define BC_STRING_VIEW_DETAILS NSLocalizedString(@"View details", nil)
-#define BC_STRING_BUY_WEBVIEW_ERROR_MESSAGE NSLocalizedString(@"Something went wrong, please try reopening Buy Bitcoin again.", nil)
+#define BC_STRING_BUY_WEBVIEW_ERROR_MESSAGE NSLocalizedString(@"Something went wrong, please try reopening Buy & Sell Bitcoin again.", nil)
 
 #define BC_STRING_CONFIRM_PAYMENT NSLocalizedString(@"Confirm Payment", nil)
 #define BC_STRING_ADJUST_FEE NSLocalizedString(@"Adjust Fee", nil)
@@ -183,7 +183,7 @@
 #define BC_STRING_BACKUP_NEEDED NSLocalizedString(@"Backup Needed", nil)
 #define BC_STRING_ADD_EMAIL NSLocalizedString(@"Add Email", nil)
 #define BC_STRING_LOGOUT NSLocalizedString(@"Logout", nil)
-#define BC_STRING_BUY_BITCOIN NSLocalizedString(@"Buy Bitcoin", nil)
+#define BC_STRING_BUY_AND_SELL_BITCOIN NSLocalizedString(@"Buy & Sell Bitcoin", nil)
 #define BC_STRING_REALLY_LOGOUT NSLocalizedString(@"Do you really want to log out?", nil)
 
 #define BC_STRING_WARNING NSLocalizedString(@"Warning!!!", nil)
@@ -763,7 +763,7 @@
 #define BC_STRING_TOUCH_ID NSLocalizedString(@"Touch ID", nil)
 #define BC_STRING_ENABLE_TOUCH_ID NSLocalizedString(@"Enable Touch ID", nil)
 #define BC_STRING_OVERVIEW_MARKET_PRICE_TITLE NSLocalizedString(@"Current Price", nil)
-#define BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION NSLocalizedString (@"We work with exchange partners all over the world, so you can buy bitcoin directly from your wallet.", nil)
+#define BC_STRING_OVERVIEW_MARKET_PRICE_DESCRIPTION NSLocalizedString (@"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet.", nil)
 #define BC_STRING_OVERVIEW_REQUEST_FUNDS_TITLE NSLocalizedString(@"Request Funds", nil)
 #define BC_STRING_OVERVIEW_REQUEST_FUNDS_DESCRIPTION NSLocalizedString (@"Send your wallet address to a friend to request funds. An address is a string of random letters and numbers that change for each transaction.", nil)
 #define BC_STRING_OVERVIEW_QR_CODES_TITLE NSLocalizedString(@"QR Codes", nil)
@@ -796,8 +796,7 @@
 #define BC_STRING_CUSTOM_FEE_WARNING NSLocalizedString(@"This feature is recommended for advanced users only. By choosing a custom fee, you risk overpaying or your transaction may get stuck.", nil)
 
 #define BC_STRING_AVAILABLE_NOW_TITLE NSLocalizedString(@"Available now", nil)
-#define BC_STRING_BUY_AVAILABLE_NOW_DESCRIPTION NSLocalizedString(@"Buy bitcoin directly from your mobile wallet. It's simple, seamless, and secure.", nil)
-#define BC_STRING_BUY_NOT_SUPPORTED_IOS_8_WEB_LOGIN NSLocalizedString(@"Mobile Buy is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer.", nil)
+#define BC_STRING_BUY_SELL_NOT_SUPPORTED_IOS_8_WEB_LOGIN NSLocalizedString(@"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer.", nil)
 
 #define BC_STRING_LOG_IN_TO_WEB_WALLET NSLocalizedString(@"Log in to Web Wallet", nil)
 #define BC_STRING_WEB_LOGIN_INSTRUCTION_STEP_ONE NSLocalizedString(@"Go to blockchain.info/wallet/login on your computer.", nil)
