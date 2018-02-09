@@ -2241,7 +2241,7 @@
 "No Funds to Exchange" = "Žádné finanční Prostředky na Výměnu";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemáte žádné finanční prostředky na výměnu 😕 Proč ne začít tím, že obdrží určité finanční prostředky?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemáte žádné finanční prostředky na výměnu. Proč ne začít tím, že obdrží určité finanční prostředky?";
 
 /* (No Commment) */
 "Loading Exchange" = "Načítání Exchange";
@@ -2409,7 +2409,7 @@
 "No Funds to Exchange" = "Žádné prostředky ke směně";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemáte žádné prostředky ke směně 😕 Proč nezačít přijetím nějakých prostředků?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemáte žádné prostředky ke směně. Proč nezačít přijetím nějakých prostředků?";
 
 /* (No Commment) */
 "Loading Exchange" = "Načítání směny";
@@ -2419,3 +2419,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "Ke směně potřebujete %@";
+
+/* (No Commment) */
+"Start trading" = "Začít obchodovat";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Obchod bitcoin přímo z vašeho Blockchain peněženky. Začněte tím, že vytvoří účet na Nákup A Prodej tab.";
+
+/* (No Commment) */
+"The wait is over" = "Čekání je u konce";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Něco se pokazilo, zkuste znovuotevření Koupit A Prodat Bitcoin znovu.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Koupit A Prodat Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Spolupracujeme s výměnou partnerů po celém světě, takže si můžete koupit a prodat bitcoin přímo z vaší peněženky.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobilní Nákup A Prodej je podporován pro iOS 9 a nahoru. Spusťte aktualizaci softwaru, nebo se přihlásit na blockchain.info/wallet/login na vašem počítači.";

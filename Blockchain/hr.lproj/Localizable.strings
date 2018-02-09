@@ -2058,7 +2058,7 @@
 "No Funds to Exchange" = "Nema sredstava za razmjenu";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nemate sredstava za razmjenu 😕 zašto ne početi primati neki način?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemate sredstava za razmjenu. zašto ne početi primati neki način?";
 
 /* (No Commment) */
 "Loading Exchange" = "Razmjena Preuzimanje";
@@ -2068,3 +2068,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ potrebnih za razmjenu";
+
+/* (No Commment) */
+"Start trading" = "Početak trgovanja";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Trgovanje bitcoin izravno s Vašeg novčanika blockchain. Počnite sa stvaranjem računa u odjeljku za Kupiti i prodati.";
+
+/* (No Commment) */
+"The wait is over" = "Čekanje je završilo";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Nešto je pošlo po zlu, molimo vas, pokušajte ponovno otvoriti Kupiti i opet prodaju bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Za Kupnju I Prodaju Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Mi radimo s poslovnim partnerima širom svijeta, tako da možete kupiti i prodati bitcoin izravno s Vašeg novčanika.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobilni Kupiti i prodati održava na iOS 9 i gore. Molimo vas ažurirajte softver ili se prijavite na blockchain.info/wallet/login na vašem računalu.";

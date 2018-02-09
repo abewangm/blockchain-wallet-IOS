@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "Dönüştürülecek Para Yok";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Dönüştürecek paranız yok 😕 Neden biraz para almaya başlamıyorsunuz?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Dönüştürecek paranız yok. Neden biraz para almaya başlamıyorsunuz?";
 
 /* (No Commment) */
 "Loading Exchange" = "Dönüştürme Yükleniyor";
@@ -2108,3 +2108,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "Dönüştürme için %@ gereklidir";
+
+/* (No Commment) */
+"Start trading" = "Ticareti başlatmak ";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Ticaret doğrudan Blockchain cüzdanından bitcoin. Satın almak Ve Satmak sekmesinde bir hesap oluşturarak başlayın.";
+
+/* (No Commment) */
+"The wait is over" = "Bekleme sona erdi";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Bir şeyler yanlış gitti, tekrar Bitcoin Satın almak Ve Satmak açmayı deneyin lütfen.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Satın Almak Ve Satmak Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Exchange ortakları ile çalışıyoruz tüm dünyada, doğrudan cüzdanından bitcoin satın almak ve satmak.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobil Satın almak Ve Satmak, 9 ve iOS için desteklenir. Bilgisayarınızda blockchain.info/wallet/login yazılım güncellemesi veya giriş çalıştırın.";

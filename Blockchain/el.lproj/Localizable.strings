@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Χωρίς τα Κεφάλαια για την Ανταλλαγή";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Δεν έχετε χρήματα για την ανταλλαγή 😕 Γιατί να μην ξεκινήσετε με τη λήψη κάποια κεφάλαια;";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Δεν έχετε χρήματα για την ανταλλαγή. Γιατί να μην ξεκινήσετε με τη λήψη κάποια κεφάλαια;";
 
 /* (No Commment) */
 "Loading Exchange" = "Φόρτωση Ανταλλαγή";
@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ που απαιτούνται για την ανταλλαγή";
+
+/* (No Commment) */
+"Start trading" = "Ξεκινήστε τις συναλλαγές";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Συναλλαγές bitcoin απευθείας από το Blockchain πορτοφόλι. Ξεκινήστε δημιουργώντας ένα λογαριασμό στο Buy & sell στην καρτέλα.";
+
+/* (No Commment) */
+"The wait is over" = "Η αναμονή τελείωσε";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Κάτι πήγε λάθος, παρακαλώ δοκιμάστε την επαναλειτουργία Αγοράζουν και να Πωλούν Bitcoin και πάλι.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Αγοράζουν Και Να Πωλούν Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Συνεργαζόμαστε με τις συναλλαγματικές συνεργάτες σε όλο τον κόσμο, ώστε να μπορείτε να αγοράζουν και να πωλούν bitcoin απευθείας από το πορτοφόλι σας.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Κινητό αγορά & πώληση υποστηρίζεται για iOS 9 και πάνω. Παρακαλούμε να εκτελέσετε μια ενημέρωση λογισμικού ή να συνδεθείτε στο blockchain.info/wallet/login στον υπολογιστή σας.";

@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "Assenza di fondi per lo scambio";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Non hai alcun capitale da scambiare 😕 Perché non cominci a ricevere dei fondi?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Non hai alcun capitale da scambiare. Perché non cominci a ricevere dei fondi?";
 
 /* (No Commment) */
 "Loading Exchange" = "Caricamento Scambio";
@@ -2108,3 +2108,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ necessari per lo scambio";
+
+/* (No Commment) */
+"Start trading" = "Iniziare a fare trading";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Il commercio bitcoin direttamente dalla Blockchain portafoglio. Iniziare creando un account nel Comprare e Vendere tab.";
+
+/* (No Commment) */
+"The wait is over" = "L'attesa è finita";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Qualcosa è andato storto, si prega di provare a riaprire Comprare e Vendere Bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Comprare E Vendere Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Lavoriamo con partner di scambio in tutto il mondo, in modo che si può comprare e vendere bitcoin direttamente dal vostro portafoglio.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Buy & Sell è supportato per iOS 9 e fino. Si prega di eseguire un aggiornamento del software o di accesso a blockchain.info/wallet/login sul tuo computer.";

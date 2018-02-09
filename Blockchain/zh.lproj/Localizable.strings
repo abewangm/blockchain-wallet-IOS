@@ -2098,7 +2098,7 @@
 "No Funds to Exchange" = "无可兑换资金";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "您没有可兑换的资金 😕 为什么不先接收一些资金呢？";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "您没有可兑换的资金. 为什么不先接收一些资金呢？";
 
 /* (No Commment) */
 "Loading Exchange" = "正在载入兑换";
@@ -2108,4 +2108,25 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "需要兑换%@";
+
+/* (No Commment) */
+"Start trading" = "开始交易";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "贸易币直接从你的块链的钱包。 开始通过创建一个帐户在购买和出售标签。";
+
+/* (No Commment) */
+"The wait is over" = "等到了";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "事了，请尽量重新开放购买和出售特币。";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "购买和出售特币";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "我们的工作与交换世界各地的合作伙伴，所以你可以购买和出售特币直接从你的钱包。";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "移动购买和销售支持iOS9。 请运行的软件更新或登录在blockchain.info/wallet/login 上你的计算机。";
 

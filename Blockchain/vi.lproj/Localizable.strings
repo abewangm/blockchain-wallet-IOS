@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Không có Tiền để Chuyển đổi";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Bạn không có tiền để chuyển đổi 😕 Tại sao không bắt đầu bằng cách nhận một vài khoản tiền?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Bạn không có tiền để chuyển đổi. Tại sao không bắt đầu bằng cách nhận một vài khoản tiền?";
 
 /* (No Commment) */
 "Loading Exchange" = "Đang tải Chuyển đổi";
@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "Cần %@ để chuyển đổi";
+
+/* (No Commment) */
+"Start trading" = "Bắt đầu kinh doanh";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Thương mại bitcoin trực tiếp từ Tiểu ví. Bắt đầu bằng cách tạo ra một tài khoản ở đảo Mua Và Bán tab.";
+
+/* (No Commment) */
+"The wait is over" = "Chờ đợi là hơn";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Có gì đó không đúng, vui lòng thử mở lại Và Mua cho tiền một lần nữa.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Mua Cho Tiền";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Chúng tôi làm việc trao đổi với các đối tác, tất cả các nơi trên thế giới, do đó bạn có thể mua cho tiền trực tiếp từ ví của bạn.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Điện thoại di động Mua Và Bán được hỗ trợ cho trên windows 9 và lên. Xin vui lòng chạy một phần hoặc nhập vào blockchain.info/wallet/login trên máy tính.";

@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Nem Pénzeszközök Átváltási";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange 😕 Miért nem azzal kezdte, akik egyes alapok?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange. Miért nem azzal kezdte, akik egyes alapok?";
 
 /* (No Commment) */
 "Loading Exchange" = "Betöltése Árfolyam";
@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ szükséges csere";
+
+/* (No Commment) */
+"Start trading" = "Kereskedéshez";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Kereskedelmi bitcoin közvetlenül a Blokklánc tárca. Először hozzon létre egy fiókot a Buy & Eladni a lapot.";
+
+/* (No Commment) */
+"The wait is over" = "A várakozásnak vége";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Valami elromlott, kérjük, próbálkozzon újra Vásárolni & Eladni a Bitcoin újra.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Vásárolni & Eladni A Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Dolgozunk az exchange partnerek a világ minden tájáról, így meg lehet vásárolni, illetve eladni a bitcoin közvetlenül a tárca.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobil Vásárlás & Eladni támogatott iOS 9. Kérjük, fuss egy szoftver frissítés vagy a bejelentkezési blockchain.info/wallet/login a számítógépen.";

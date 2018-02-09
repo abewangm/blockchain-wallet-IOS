@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "أي أموال إلى تبادل";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "لديك أي أموال إلى تبادل 😕 لماذا لا نبدأ من خلال تلقي بعض الأموال ؟ ";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "لديك أي أموال إلى تبادل. لماذا لا نبدأ من خلال تلقي بعض الأموال ؟ ";
 
 /* (No Commment) */
 "Loading Exchange" = "تحميل الصرف";
@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ الحاجة إلى تبادل";
+
+/* (No Commment) */
+"Start trading" = "بدء التداول";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "تجارة بيتكوين الخاص بك مباشرة من Blockchain المحفظة. تبدأ عن طريق إنشاء حساب في شراء وبيع علامة التبويب.";
+
+/* (No Commment) */
+"The wait is over" = "الانتظار هو أكثر";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "شيء ذهب على نحو خاطئ, يرجى محاولة إعادة شراء و بيع بيتكوين مرة أخرى.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "شراء و بيع بيتكوين";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "نحن نعمل مع تبادل الشركاء في جميع أنحاء العالم ، حتى تتمكن من شراء و بيع بيتكوين مباشرة من محفظتك.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "المحمول شراء وبيع يتم اعتماد دائرة الرقابة الداخلية 9 وما فوق. الرجاء تشغيل برنامج التحديث أو الدخول في blockchain.info/wallet/login على جهاز الكمبيوتر الخاص بك.";

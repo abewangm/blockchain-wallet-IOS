@@ -2073,7 +2073,7 @@
 "No Funds to Exchange" = "Ei Varat Vaihto";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto 😕 Miksi ei aloita by vastaanottaminen joitakin varoja?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto. Miksi ei aloita by vastaanottaminen joitakin varoja?";
 
 /* (No Commment) */
 "Loading Exchange" = "Lastaus Vaihto";
@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ tarvitaan vaihtamaan";
+
+/* (No Commment) */
+"Start trading" = "Aloittaa kaupankäynnin";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Kauppa bitcoin suoraan Blockchain lompakko. Aloita luomalla tilin Ostaa Ja Myydä-välilehti.";
+
+/* (No Commment) */
+"The wait is over" = "Odotus on ohi";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Jotain meni pieleen, yritä uudelleen Ostaa Ja Myydä Bitcoin uudelleen.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Ostaa Ja Myydä Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Työskentelemme vaihto kumppaneita ympäri maailmaa, joten voit ostaa ja myydä bitcoin suoraan lompakon.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Ostaa Ja Myydä on tuettu iOS 9 ja ylös. Suorita ohjelmiston päivitys tai kirjautuminen klo blockchain.info/wallet/login teidän tietokone.";

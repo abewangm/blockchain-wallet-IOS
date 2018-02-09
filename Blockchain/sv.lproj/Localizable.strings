@@ -2070,7 +2070,7 @@
 "No Funds to Exchange" = "Inga Medel för att Utbyta";
 
 /* (No Commment) */
-"You have no funds to exchange 😕 Why not get started by receiving some funds?" = "Du har inga medel för att utbyta 😕 Varför inte komma igång genom att ta emot några pengar?";
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Du har inga medel för att utbyta. Varför inte komma igång genom att ta emot några pengar?";
 
 /* (No Commment) */
 "Loading Exchange" = "Laddar Utbyte";
@@ -2080,3 +2080,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ som behövs för att byta";
+
+/* (No Commment) */
+"Start trading" = "Börja handla";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Handel med bitcoin direkt från din Blockchain plånbok. Börja med att skapa ett konto i Köp & Sälj-fliken.";
+
+/* (No Commment) */
+"The wait is over" = "Väntan är över";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Något gick fel, vänligen försök att återuppta Köpa Och Sälja Bitcoin igen.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Köpa Och Sälja Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Vi arbetar med utbyte partners över hela världen, så att du kan köpa och sälja bitcoin direkt från din plånbok.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobila Köp & Sälj är stöd för iOS-9 och uppåt. Kör en uppdatering av programvaran eller logga in på blockchain.info/wallet/login på din dator.";
