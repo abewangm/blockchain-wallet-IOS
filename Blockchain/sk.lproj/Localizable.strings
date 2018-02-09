@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ potrebné na výmenu";
+
+/* (No Commment) */
+"Start trading" = "Začať obchodovať";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Obchod bitcoin priamo z vášho Blockchain peňaženky. Začnite vytvorením účtu v Buy & Sell tab.";
+
+/* (No Commment) */
+"The wait is over" = "To, že čakanie je u konca";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Niečo sa pokazilo, skúste to prosím znovu otvorenie Kúpiť A Predať Bitcoin znova.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Kúpiť A Predať Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Pracujeme s výmenou partnerov po celom svete, takže môžete nakupovať a predávať bitcoin priamo z peňaženky.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Kúpiť A Predať je podporované pre iOS 9 a hore. Prosím, spustite aktualizáciu softvéru, alebo sa prihlásiť na blockchain.info/wallet/login na vašom počítači.";

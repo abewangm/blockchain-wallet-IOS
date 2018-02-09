@@ -2108,3 +2108,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "교환하려면 %@가 필요함";
+
+/* (No Commment) */
+"Start trading" = "거래 시작";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "무역 비트코인에서 직접 Blockchain 지갑니다. 시작으로 계정을 만들에서 구매 및 판매하는 탭입니다.";
+
+/* (No Commment) */
+"The wait is over" = "이";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "무언가 잘못 되었고,시도하시기 바랍 재개 구매 및 판매하는 비트코인이 다시합니다.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "구매 및 판매하는 비트코인";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "우리는 작품으로 교환 파트너가 세계의 모든,그래서 당신은 살 수 있다고 판매하고 비트코인에서 직접 지갑니다.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "모바일 구매 및 판매 지원에 대한 iOS9 니다. 실행하십시오 소프트웨어 업데이트하거나 로그인 blockchain.info/wallet/login 에서 귀하의 컴퓨터입니다.";

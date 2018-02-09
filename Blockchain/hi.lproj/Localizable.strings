@@ -1876,3 +1876,96 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Miners receive this fee to process this transaction.";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Balances";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Enter Ether address or select";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Payment Sent! Your balance and transactions will update soon.";
+
+/* (No Commment) */
+"Waiting for payment" = "Waiting for payment";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Please wait until your last ether transaction confirms.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Addresses";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Map";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Invalid Ether address: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "An error occurred while retrieving the latest chart data. Please try again later.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transactions occur when you send and request ether.";
+
+/* (No Commment) */
+"Request Ether" = "Request Ether";
+
+/* (No Commment) */
+"Dashboard" = "Dashboard";
+
+/* (No Commment) */
+"Week" = "Week";
+
+/* (No Commment) */
+"Month" = "Month";
+
+/* (No Commment) */
+"Year" = "Year";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Price";
+
+/* (No Commment) */
+"Ether Price" = "Ether Price";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Contract addresses are not supported.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Now supporting Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Get Started with Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet.";
+
+/* (No Commment) */
+"Enter Ether address" = "Enter Ether address";
+
+/* (No Commment) */
+"Day" = "Day";
+
+/* (No Commment) */
+"All" = "All";
+
+/* (No Commment) */
+"Please send ether to %@." = "Please send ether to %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin payment request";
+
+/* (No Commment) */
+"Ether payment request" = "Ether payment request";
+
+/* (No Commment) */
+"My Ether Wallet" = "My Ether Wallet";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Miners receive this fee to process this transaction.";
