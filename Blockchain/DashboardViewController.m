@@ -137,17 +137,23 @@
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data] ? : [GraphTimeFrame timeFrameWeek];
     NSInteger startDate;
+    NSInteger entryDate;
     NSString *scale = timeFrame.scale;
         
     NSString *base;
     
     if (assetType == AssetTypeBitcoin) {
         base = [CURRENCY_SYMBOL_BTC lowercaseString];
-        startDate = timeFrame.timeFrame == TimeFrameAll ? [timeFrame startDateBitcoin] : timeFrame.startDate;
-    } else {
+        entryDate = [timeFrame startDateBitcoin];
+    } else if (assetType == AssetTypeEther) {
         base = [CURRENCY_SYMBOL_ETH lowercaseString];
-        startDate = timeFrame.timeFrame == TimeFrameAll ? [timeFrame startDateEther] : timeFrame.startDate;
+        entryDate = [timeFrame startDateEther];
+    } else if (assetType == AssetTypeBitcoinCash) {
+        base = [CURRENCY_SYMBOL_BCH lowercaseString];
+        entryDate = [timeFrame startDateBitcoinCash];
     }
+    
+    startDate = timeFrame.timeFrame == TimeFrameAll || timeFrame.startDate < entryDate ? entryDate : timeFrame.startDate;
     
     NSString *quote = [NSNumberFormatter localCurrencyCode];
     

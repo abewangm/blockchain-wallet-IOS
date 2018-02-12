@@ -253,11 +253,11 @@
 {
     self.lastUpdatedValues = values;
     
-    self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
+    self.titleLabel.text = [self getChartTitleText];
     [self.titleLabel sizeToFit];
     self.titleLabel.center = CGPointMake([self.titleLabel superview].bounds.size.width/2, self.titleLabel.center.y);
     
-    self.priceLabel.text = self.assetType == AssetTypeBitcoin ? [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES] : self.lastEthExchangeRate;
+    self.priceLabel.text = [self getPriceLabelText];
     [self.priceLabel sizeToFit];
     
     double firstPrice = [[[values firstObject] objectForKey:DICTIONARY_KEY_PRICE] doubleValue];
@@ -403,6 +403,34 @@
 {
     [self.spinner stopAnimating];
     self.spinner.hidden = YES;
+}
+
+- (NSString *)getChartTitleText
+{
+    AssetType assetType = self.assetType;
+    if (assetType == AssetTypeBitcoin) {
+        return [BC_STRING_BITCOIN_PRICE uppercaseString];
+    } else if (assetType == AssetTypeEther) {
+        return [BC_STRING_ETHER_PRICE uppercaseString];
+    } else if (assetType == AssetTypeBitcoinCash) {
+        return [BC_STRING_BITCOIN_CASH_PRICE uppercaseString];
+    }
+    DLog(@"Error: unknown asset type!");
+    return nil;
+}
+
+- (NSString *)getPriceLabelText
+{
+    AssetType assetType = self.assetType;
+    if (assetType == AssetTypeBitcoin) {
+        return [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES];
+    } else if (assetType == AssetTypeEther) {
+        return self.lastEthExchangeRate;
+    } else if (assetType == AssetTypeBitcoinCash) {
+        return [NSNumberFormatter formatBCH:SATOSHI localCurrency:YES];
+    }
+    DLog(@"Error: unknown asset type!");
+    return nil;
 }
 
 #pragma mark - Chart View Delegate

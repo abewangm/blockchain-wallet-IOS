@@ -283,4 +283,43 @@
     return result;
 }
 
+#pragma mark - Bitcoin Cash
+
+// Format amount in satoshi as NSString (with symbol)
++ (NSString*)formatBCH:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
+{
+    if (fsymbolLocal && [app.wallet bitcoinCashExchangeRate]) {
+        @try {
+            
+            NSString *lastRate = [app.wallet bitcoinCashExchangeRate];
+            
+            NSDecimalNumber *conversion = [[NSDecimalNumber decimalNumberWithDecimal:[[NSNumber numberWithDouble:SATOSHI] decimalValue]] decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:lastRate]];
+            
+            NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:conversion];
+            
+            return [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:number]];
+            
+        } @catch (NSException * e) {
+            DLog(@"Exception: %@", e);
+        }
+    } else {
+        NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:app.latestResponse.symbol_btc.conversion]];
+        
+        // mBTC display -> Always 2 decimal places
+        if (app.latestResponse.symbol_btc.conversion == 100) {
+            [app.btcFormatter setMinimumFractionDigits:2];
+        }
+        // otherwise -> no min decimal places
+        else {
+            [app.btcFormatter setMinimumFractionDigits:0];
+        }
+        
+        NSString * string = [app.btcFormatter stringFromNumber:number];
+        
+        return [string stringByAppendingFormat:@" %@", app.latestResponse.symbol_btc.symbol];
+    }
+    
+    return [NSNumberFormatter formatBTC:value];
+}
+
 @end

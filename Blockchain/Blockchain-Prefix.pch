@@ -509,6 +509,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_UBC @"UBC"
 
 #define CURRENCY_SYMBOL_ETH @"ETH"
+#define CURRENCY_SYMBOL_BCH @"BCH"
 
 #define CURRENCY_SYMBOL_BTC @"BTC"
 #define CURRENCY_SYMBOL_MBC @"mBTC"

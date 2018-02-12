@@ -893,3 +893,4 @@
 #define BC_STRING_PRICE_CHARTS NSLocalizedString(@"Price charts", nil)
 
 #define BC_STRING_BITCOIN_CASH NSLocalizedString(@"Bitcoin Cash", nil)
+#define BC_STRING_BITCOIN_CASH_PRICE NSLocalizedString(@"Bitcoin Cash Price", nil)

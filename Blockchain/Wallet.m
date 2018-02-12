@@ -2880,10 +2880,10 @@
 
 # pragma mark - Bitcoin cash
 
-- (void)getBitcoinCashExchangeRates
+- (void)fetchBitcoinCashExchangeRates
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashExchangeRates()"];
+        [self.context evaluateScript:@"MyWalletPhone.fetchBitcoinCashExchangeRates()"];
     }
 }
 
@@ -2891,7 +2891,8 @@
 {
     if (self.bitcoinCashExchangeRates) {
         NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
-        return [[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST];
+        double lastPrice = [[[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
+        return [NSString stringWithFormat:@"%.2f", lastPrice];
     }
     
     return nil;

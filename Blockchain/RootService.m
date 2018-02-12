@@ -1140,7 +1140,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self updateSymbols];
     
-    [self.wallet getBitcoinCashExchangeRates];
+    [self.wallet fetchBitcoinCashExchangeRates];
 }
 
 - (void)didGetBitcoinCashExchangeRates

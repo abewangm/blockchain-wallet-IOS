@@ -28,6 +28,8 @@ typedef enum {
 + (GraphTimeFrame *)timeFrameMonth;
 + (GraphTimeFrame *)timeFrameWeek;
 + (GraphTimeFrame *)timeFrameDay;
+
 - (NSInteger)startDateBitcoin;
 - (NSInteger)startDateEther;
+- (NSInteger)startDateBitcoinCash;
 @end

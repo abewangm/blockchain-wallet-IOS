@@ -2823,7 +2823,7 @@ MyWalletPhone.fiatExchangeHardLimit = function() {
     return walletOptions.getValue().shapeshift.upperLimit;
 }
 
-MyWalletPhone.getBitcoinCashExchangeRates = function() {
+MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
     
     var success = function(result) {
         objc_did_get_bitcoin_cash_exchange_rates(result);
@@ -2833,5 +2833,5 @@ MyWalletPhone.getBitcoinCashExchangeRates = function() {
         console.log(e);
     }
     
-    BlockchainAPI.getExchangeRate('USD', 'ETH').then(success).catch(error);
+    BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
 }
