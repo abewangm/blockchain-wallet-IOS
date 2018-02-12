@@ -2108,3 +2108,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "Для обмена нужно %@";
+
+/* (No Commment) */
+"Start trading" = "Начать торговать";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Торговля bitcoin напрямую с Вашего кошелька blockchain. Начните с создания учетной записи в разделе Купить и продать.";
+
+/* (No Commment) */
+"The wait is over" = "Ожидание закончилось";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Что-то пошло не так, пожалуйста, попробуйте вновь открыть Купить и снова продать bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Купить И Продать Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Мы работаем с деловыми партнерами по всему миру, так что вы можете купить и продать bitcoin напрямую с Вашего кошелька.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Мобильный Купить и продать поддерживается на iOS 9 и выше. Пожалуйста, выполните обновление программного обеспечения или войдите на blockchain.info/wallet/login на вашем компьютере.";

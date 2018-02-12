@@ -106,7 +106,7 @@ int accountEntries = 0;
     [self clearMenuEntries];
     
     if ([app.wallet isBuyEnabled]) {
-        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"buy"];
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_AND_SELL_BITCOIN icon:@"buy"];
     }
     if ([app.wallet isExchangeEnabled]) {
         [self addMenuEntry:entryKeyExchange text:BC_STRING_EXCHANGE icon:@"exchange_menu"];

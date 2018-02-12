@@ -2083,3 +2083,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "%@ necesare pentru schimb";
+
+/* (No Commment) */
+"Start trading" = "Începe de tranzacționare";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Schimb bitcoin direct de pe Blockchain portofel. Începeți prin crearea unui cont în Cumpar & vand tab.";
+
+/* (No Commment) */
+"The wait is over" = "Așteptați este de peste";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Ceva a mers greșit, vă rugăm să încercați redeschiderea Cumpăra Și Vinde Bitcoin din nou.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Cumpăra Și Vinde Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Noi lucram cu parteneri de schimb peste tot în lume, astfel încât să puteți cumpăra și vinde bitcoin direct din portofel.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Cumpara Si Vinde este acceptată pentru iOS 9 și în sus. Vă rugăm să executați o actualizare de software sau de conectare la blockchain.info/wallet/login de pe computer.";

@@ -2183,3 +2183,24 @@
 
 /* (No Commment) */
 "%@ needed to exchange" = "Potrzeba %@ do wymiany";
+
+/* (No Commment) */
+"Start trading" = "Rozpocząć handel";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Handel bitcoin bezpośrednio na Twój portfel blockchain. Zacznij od utworzenia konta w dziale Kupić i sprzedać.";
+
+/* (No Commment) */
+"The wait is over" = "Oczekiwanie się skończyło";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Coś poszło nie tak, spróbuj ponownie otworzyć Kupić i ponownie sprzedać bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Kupić I Sprzedać Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Współpracujemy z partnerami na całym świecie, tak, że można kupić i sprzedać bitcoin bezpośrednio z Twojego portfela.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Telefon Kupić i sprzedać obsługiwane na iOS 9 i wyżej. Proszę wykonać aktualizację oprogramowania lub zaloguj się na blockchain.info/wallet/login na swoim komputerze.";
