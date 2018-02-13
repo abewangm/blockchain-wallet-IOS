@@ -2835,3 +2835,7 @@ MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
     
     BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
 }
+
+MyWalletPhone.bitcoinCashTotalBalance = function() {
+    return MyWallet.wallet.bch.balance;
+}

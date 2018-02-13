@@ -130,9 +130,9 @@
 
 - (void)reload
 {
-    [self.balancesChartView updateBitcoinBalance:0];
-    [self.balancesChartView updateEtherBalance:@""];
-    [self.balancesChartView updateBitcoinCashBalance:0];
+    [self.balancesChartView updateBitcoinBalance:[self getBtcBalance]];
+    [self.balancesChartView updateEtherBalance:[self getEthBalance]];
+    [self.balancesChartView updateBitcoinCashBalance:[self getBchBalance]];
     [self.balancesChartView updateChart];
     
     [self reloadPricePreviews];
@@ -300,6 +300,27 @@
 - (NSString *)getEthPrice
 {
     return self.lastEthExchangeRate ? [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:self.lastEthExchangeRate] : nil;
+}
+
+- (double)getBtcBalance
+{
+    return [self doubleFromString:[NSNumberFormatter formatAmount:[app.wallet getTotalActiveBalance] localCurrency:YES]];
+}
+
+- (double)getEthBalance
+{
+    return [self doubleFromString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:self.lastEthExchangeRate]];
+}
+
+- (double)getBchBalance
+{
+    return [self doubleFromString:[NSNumberFormatter formatAmount:[app.wallet bitcoinCashTotalBalance] localCurrency:YES]];
+}
+
+- (double)doubleFromString:(NSString *)string
+{
+    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+    return [[numberFormatter numberFromString:string] doubleValue];
 }
 
 - (void)reloadPricePreviews

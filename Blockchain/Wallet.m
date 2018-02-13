@@ -2898,6 +2898,15 @@
     return nil;
 }
 
+- (uint64_t)bitcoinCashTotalBalance
+{
+    if ([self isInitialized]) {
+        return [[[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTotalBalance()"] toNumber] longLongValue];
+    }
+    
+    return 0;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID

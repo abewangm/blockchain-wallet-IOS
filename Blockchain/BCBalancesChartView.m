@@ -76,19 +76,19 @@
     [legendKeyContainerView addSubview:self.bitcoinCashLegendKey];
 }
 
-- (void)updateBitcoinBalance:(uint64_t)balance
+- (void)updateBitcoinBalance:(double)balance
 {
-    self.bitcoinBalance = 50.0;
+    self.bitcoinBalance = balance;
 }
 
-- (void)updateEtherBalance:(NSString *)balance
+- (void)updateEtherBalance:(double)balance
 {
-    self.etherBalance = 50.0;
+    self.etherBalance = balance;
 }
 
-- (void)updateBitcoinCashBalance:(uint64_t)balance
+- (void)updateBitcoinCashBalance:(double)balance
 {
-    self.bitcoinCashBalance = 50.0;
+    self.bitcoinCashBalance = balance;
 }
 
 - (void)updateChart

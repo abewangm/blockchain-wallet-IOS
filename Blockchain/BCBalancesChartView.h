@@ -10,9 +10,9 @@
 
 @interface BCBalancesChartView : UIView
 
-- (void)updateBitcoinBalance:(uint64_t)balance;
-- (void)updateEtherBalance:(NSString *)balance;
-- (void)updateBitcoinCashBalance:(uint64_t)balance;
+- (void)updateBitcoinBalance:(double)balance;
+- (void)updateEtherBalance:(double)balance;
+- (void)updateBitcoinCashBalance:(double)balance;
 - (void)updateChart;
 
 @end
