@@ -300,7 +300,7 @@
 
 - (NSString *)getBchPrice
 {
-    return [NSNumberFormatter formatBCH:SATOSHI localCurrency:YES];
+    return [NSNumberFormatter formatBchWithSymbol:SATOSHI localCurrency:YES];
 }
 
 - (NSString *)getEthPrice
@@ -320,7 +320,7 @@
 
 - (double)getBchBalance
 {
-    return [self doubleFromString:[NSNumberFormatter formatBCH:[app.wallet bitcoinCashTotalBalance] localCurrency:YES]];
+    return [self doubleFromString:[NSNumberFormatter formatBch:[app.wallet bitcoinCashTotalBalance] localCurrency:YES]];
 }
 
 - (double)doubleFromString:(NSString *)string

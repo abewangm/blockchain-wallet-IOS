@@ -427,7 +427,7 @@
     } else if (assetType == AssetTypeEther) {
         return [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:self.lastEthExchangeRate];
     } else if (assetType == AssetTypeBitcoinCash) {
-        return [NSNumberFormatter formatBCH:SATOSHI localCurrency:YES];
+        return [NSNumberFormatter formatBchWithSymbol:SATOSHI localCurrency:YES];
     }
     DLog(@"Error: unknown asset type!");
     return nil;
