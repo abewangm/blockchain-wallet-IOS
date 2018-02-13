@@ -35,7 +35,7 @@
 @property (nonatomic) UIButton *monthButton;
 @property (nonatomic) UIButton *weekButton;
 @property (nonatomic) UIButton *dayButton;
-@property (nonatomic) NSString *lastEthExchangeRate;
+@property (nonatomic) NSDecimalNumber *lastEthExchangeRate;
 
 @property (nonatomic) NSArray *lastUpdatedValues;
 
@@ -233,7 +233,7 @@
     [self.chartView clear];
 }
 
-- (void)updateEthExchangeRate:(NSString *)rate
+- (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
     self.lastEthExchangeRate = rate;
 }
@@ -425,7 +425,7 @@
     if (assetType == AssetTypeBitcoin) {
         return [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES];
     } else if (assetType == AssetTypeEther) {
-        return self.lastEthExchangeRate;
+        return [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:self.lastEthExchangeRate];
     } else if (assetType == AssetTypeBitcoinCash) {
         return [NSNumberFormatter formatBCH:SATOSHI localCurrency:YES];
     }

@@ -11,5 +11,6 @@
 @interface BCPricePreviewView : UIView
 
 - (id)initWithFrame:(CGRect)frame assetName:(NSString *)name price:(NSString *)price;
+- (void)updatePrice:(NSString *)price;
 
 @end

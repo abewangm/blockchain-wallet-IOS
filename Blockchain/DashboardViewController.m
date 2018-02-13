@@ -32,7 +32,10 @@
 @interface DashboardViewController () <IChartAxisValueFormatter, BCPriceChartViewDelegate>
 @property (nonatomic) BCBalancesChartView *balancesChartView;
 @property (nonatomic) BCPriceChartContainerViewController *chartContainerViewController;
-@property (nonatomic) NSString *lastEthExchangeRate;
+@property (nonatomic) BCPricePreviewView *bitcoinPricePreview;
+@property (nonatomic) BCPricePreviewView *etherPricePreview;
+@property (nonatomic) BCPricePreviewView *bitcoinCashPricePreview;
+@property (nonatomic) NSDecimalNumber *lastEthExchangeRate;
 @end
 
 @implementation DashboardViewController
@@ -91,32 +94,35 @@
     CGFloat shadowRadius = 3;
     float shadowOpacity = 0.25;
     
-    BCPricePreviewView *bitcoinPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, balancesLabel.frame.origin.y + balancesLabel.frame.size.height, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN price:@"8000"];
+    BCPricePreviewView *bitcoinPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, balancesLabel.frame.origin.y + balancesLabel.frame.size.height, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN price:[NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
     bitcoinPreviewView.layer.masksToBounds = NO;
     bitcoinPreviewView.layer.shadowOffset = shadowOffset;
     bitcoinPreviewView.layer.shadowRadius = shadowRadius;
     bitcoinPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinPreviewView];
+    self.bitcoinPricePreview = bitcoinPreviewView;
     
     UITapGestureRecognizer *bitcoinChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bitcoinChartTapped)];
     [bitcoinPreviewView addGestureRecognizer:bitcoinChartTapGesture];
     
-    BCPricePreviewView *etherPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, bitcoinPreviewView.frame.origin.y + bitcoinPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_ETHER price:@"1000"];
+    BCPricePreviewView *etherPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, bitcoinPreviewView.frame.origin.y + bitcoinPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_ETHER price:[self getEthPrice]];
     etherPreviewView.layer.masksToBounds = NO;
     etherPreviewView.layer.shadowOffset = shadowOffset;
     etherPreviewView.layer.shadowRadius = shadowRadius;
     etherPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:etherPreviewView];
+    self.etherPricePreview = etherPreviewView;
     
     UITapGestureRecognizer *etherChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(etherChartTapped)];
     [etherPreviewView addGestureRecognizer:etherChartTapGesture];
     
-    BCPricePreviewView *bitcoinCashPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, etherPreviewView.frame.origin.y + etherPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN_CASH price:@"5000"];
+    BCPricePreviewView *bitcoinCashPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, etherPreviewView.frame.origin.y + etherPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN_CASH price:[self getBchPrice]];
     bitcoinCashPreviewView.layer.masksToBounds = NO;
     bitcoinCashPreviewView.layer.shadowOffset = shadowOffset;
     bitcoinCashPreviewView.layer.shadowRadius = shadowRadius;
     bitcoinCashPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinCashPreviewView];
+    self.bitcoinCashPricePreview = bitcoinCashPreviewView;
     
     UITapGestureRecognizer *bitcoinCashChartTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bitcoinCashChartTapped)];
     [bitcoinCashPreviewView addGestureRecognizer:bitcoinCashChartTapGesture];
@@ -128,6 +134,8 @@
     [self.balancesChartView updateEtherBalance:@""];
     [self.balancesChartView updateBitcoinCashBalance:0];
     [self.balancesChartView updateChart];
+    
+    [self reloadPricePreviews];
 
     [self reloadCards];
 }
@@ -192,7 +200,8 @@
 
 - (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
-    self.lastEthExchangeRate = [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:rate];
+    self.lastEthExchangeRate = rate;
+    [self reloadPricePreviews];
 }
 
 - (void)showChartContainerViewController
@@ -276,6 +285,28 @@
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return timeFrame.dateFormat;
+}
+
+- (NSString *)getBtcPrice
+{
+    return [NSNumberFormatter formatMoney:SATOSHI localCurrency:YES];
+}
+
+- (NSString *)getBchPrice
+{
+    return [NSNumberFormatter formatBCH:SATOSHI localCurrency:YES];
+}
+
+- (NSString *)getEthPrice
+{
+    return self.lastEthExchangeRate ? [NSNumberFormatter formatEthToFiatWithSymbol:@"1" exchangeRate:self.lastEthExchangeRate] : nil;
+}
+
+- (void)reloadPricePreviews
+{
+    [self.bitcoinPricePreview updatePrice:[self getBtcPrice]];
+    [self.etherPricePreview updatePrice:[self getEthPrice]];
+    [self.bitcoinCashPricePreview updatePrice:[self getBchPrice]];
 }
 
 #pragma mark - BCPriceChartView Delegate

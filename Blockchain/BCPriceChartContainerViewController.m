@@ -110,7 +110,7 @@
     }
 }
 
-- (void)updateEthExchangeRate:(NSString *)rate
+- (void)updateEthExchangeRate:(NSDecimalNumber *)rate
 {
     [self.priceChartView updateEthExchangeRate:rate];
 }

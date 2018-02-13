@@ -19,5 +19,5 @@
 - (ChartAxisBase *)xAxis;
 - (void)updateTitleContainer;
 - (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)entry;
-- (void)updateEthExchangeRate:(NSString *)rate;
+- (void)updateEthExchangeRate:(NSDecimalNumber *)rate;
 @end

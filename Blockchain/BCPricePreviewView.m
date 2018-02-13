@@ -9,6 +9,11 @@
 #import "BCPricePreviewView.h"
 #import "UIView+ChangeFrameAttribute.h"
 
+@interface BCPricePreviewView ()
+@property (nonatomic) UILabel *priceLabel;
+@property (nonatomic) UIView *containerView;
+@end
+
 @implementation BCPricePreviewView
 
 - (id)initWithFrame:(CGRect)frame assetName:(NSString *)name price:(NSString *)price
@@ -31,6 +36,8 @@
         priceLabel.center = CGPointMake(self.frame.size.width/2, priceLabel.center.y);
         [self addSubview:priceLabel];
         
+        self.priceLabel = priceLabel;
+        
         CGFloat buttonWidth = 40;
         
         UILabel *seeChartsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -50,9 +57,19 @@
         [self addSubview:containerView];
         
         containerView.center = CGPointMake(frame.size.width/2, containerView.center.y);
+        self.containerView = containerView;
     }
     
     return self;
+}
+
+- (void)updatePrice:(NSString *)price
+{
+    self.priceLabel.text = price;
+    [self.priceLabel sizeToFit];
+    self.priceLabel.center = CGPointMake(self.frame.size.width/2, self.priceLabel.center.y);
+    
+    [self.containerView changeYPosition:self.priceLabel.frame.origin.y + self.priceLabel.frame.size.height + 8];
 }
 
 @end
