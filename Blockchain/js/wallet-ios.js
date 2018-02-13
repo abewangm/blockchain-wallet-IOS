@@ -710,7 +710,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
 
     var success = function() {
         logTime('wallet login');
-        var getHistory = MyWallet.wallet.getHistory().catch(history_error);
+        var getHistory = MyWalletPhone.getHistoryForAllAssets().catch(history_error);
         var fetchAccount = MyWallet.wallet.fetchAccountInfo().catch(other_error);
         Promise.all([getHistory, fetchAccount]).then(login_success);
     };
@@ -2838,4 +2838,11 @@ MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
 
 MyWalletPhone.bitcoinCashTotalBalance = function() {
     return MyWallet.wallet.bch.balance;
+}
+
+MyWalletPhone.getHistoryForAllAssets = function() {
+    var getBitcoinHistory = MyWallet.wallet.getHistory();
+    var getEtherHistory = MyWallet.wallet.eth.fetchHistory();
+    var getBitcoinCashHistory = MyWallet.wallet.bch.getHistory();
+    return Promise.all([getBitcoinHistory, getEtherHistory, getBitcoinCashHistory]);
 }

@@ -13,6 +13,7 @@
 - (void)updateBitcoinBalance:(double)balance;
 - (void)updateEtherBalance:(double)balance;
 - (void)updateBitcoinCashBalance:(double)balance;
+- (void)updateTotalBalance:(NSString *)balance;
 - (void)updateChart;
 
 @end

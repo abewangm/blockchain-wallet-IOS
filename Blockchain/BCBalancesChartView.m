@@ -42,7 +42,6 @@
     CGFloat bottomPadding = CHART_VIEW_BOTTOM_PADDING;
     self.chartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height * 3/4 - bottomPadding)];
     self.chartView.drawCenterTextEnabled = YES;
-    self.chartView.centerAttributedText = [self centerText];
     self.chartView.drawHoleEnabled = YES;
     self.chartView.holeColor = [UIColor clearColor];
     self.chartView.holeRadiusPercent = 0.6;
@@ -91,6 +90,11 @@
     self.bitcoinCashBalance = balance;
 }
 
+- (void)updateTotalBalance:(NSString *)balance
+{
+    self.chartView.centerAttributedText = balance ? [self balanceAttributedStringWithText:balance] : nil;
+}
+
 - (void)updateChart
 {
     ChartDataEntry *bitcoinValue = [[PieChartDataEntry alloc] initWithValue:self.bitcoinBalance];
@@ -109,13 +113,13 @@
     self.chartView.data = data;
 }
 
-- (NSAttributedString *)centerText
+- (NSAttributedString *)balanceAttributedStringWithText:(NSString *)text
 {
     UIFont *font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_MEDIUM];
     
     NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjects:@[COLOR_TEXT_DARK_GRAY, font] forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
     
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"balance" attributes:attributesDictionary];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:text attributes:attributesDictionary];
     
     return attributedString;
 }

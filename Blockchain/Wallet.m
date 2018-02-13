@@ -1290,6 +1290,12 @@
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getPasswordStrength(\"%@\")", [passwordString escapeStringForJS]]] toDouble];
 }
 
+- (void)getHistoryForAllAssets
+{
+    if ([self isInitialized])
+        [self.context evaluateScript:@"MyWalletPhone.getHistoryForAllAssets()"];
+}
+
 - (void)getHistory
 {
     if ([self isInitialized])

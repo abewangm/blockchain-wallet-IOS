@@ -1068,8 +1068,6 @@ void (^secondPasswordSuccess)(NSString *);
     }
     
     [self.wallet loadContactsThenGetMessages];
-    
-    [self.wallet getEthHistory];
 }
 
 - (void)didGetMultiAddressResponse:(MultiAddressResponse*)response
