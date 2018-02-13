@@ -90,15 +90,7 @@
     balancesLabel.text = [BC_STRING_PRICE_CHARTS uppercaseString];
     [self.contentView addSubview:balancesLabel];
     
-    CGSize shadowOffset = CGSizeMake(0, 2);
-    CGFloat shadowRadius = 3;
-    float shadowOpacity = 0.25;
-    
     BCPricePreviewView *bitcoinPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, balancesLabel.frame.origin.y + balancesLabel.frame.size.height, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN price:[NSNumberFormatter formatMoney:SATOSHI localCurrency:YES]];
-    bitcoinPreviewView.layer.masksToBounds = NO;
-    bitcoinPreviewView.layer.shadowOffset = shadowOffset;
-    bitcoinPreviewView.layer.shadowRadius = shadowRadius;
-    bitcoinPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinPreviewView];
     self.bitcoinPricePreview = bitcoinPreviewView;
     
@@ -106,10 +98,6 @@
     [bitcoinPreviewView addGestureRecognizer:bitcoinChartTapGesture];
     
     BCPricePreviewView *etherPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, bitcoinPreviewView.frame.origin.y + bitcoinPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_ETHER price:[self getEthPrice]];
-    etherPreviewView.layer.masksToBounds = NO;
-    etherPreviewView.layer.shadowOffset = shadowOffset;
-    etherPreviewView.layer.shadowRadius = shadowRadius;
-    etherPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:etherPreviewView];
     self.etherPricePreview = etherPreviewView;
     
@@ -117,10 +105,6 @@
     [etherPreviewView addGestureRecognizer:etherChartTapGesture];
     
     BCPricePreviewView *bitcoinCashPreviewView = [[BCPricePreviewView alloc] initWithFrame:CGRectMake(horizontalPadding, etherPreviewView.frame.origin.y + etherPreviewView.frame.size.height + 16, self.view.frame.size.width - horizontalPadding*2, 140) assetName:BC_STRING_BITCOIN_CASH price:[self getBchPrice]];
-    bitcoinCashPreviewView.layer.masksToBounds = NO;
-    bitcoinCashPreviewView.layer.shadowOffset = shadowOffset;
-    bitcoinCashPreviewView.layer.shadowRadius = shadowRadius;
-    bitcoinCashPreviewView.layer.shadowOpacity = shadowOpacity;
     [self.contentView addSubview:bitcoinCashPreviewView];
     self.bitcoinCashPricePreview = bitcoinCashPreviewView;
     

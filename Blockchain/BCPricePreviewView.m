@@ -20,6 +20,15 @@
 {
     if (self == [super initWithFrame:frame]) {
         
+        CGSize shadowOffset = CGSizeMake(0, 2);
+        CGFloat shadowRadius = 3;
+        float shadowOpacity = 0.25;
+        
+        self.layer.masksToBounds = NO;
+        self.layer.shadowOffset = shadowOffset;
+        self.layer.shadowRadius = shadowRadius;
+        self.layer.shadowOpacity = shadowOpacity;
+        
         self.backgroundColor = [UIColor whiteColor];
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 16, 0, 24)];
