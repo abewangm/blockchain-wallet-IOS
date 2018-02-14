@@ -53,6 +53,7 @@
     self.chartView.rotationEnabled = NO;
     self.chartView.legend.enabled = NO;
     self.chartView.chartDescription.enabled = NO;
+    self.chartView.highlightPerTapEnabled = NO;
     self.chartView.transparentCircleColor = [UIColor whiteColor];
     
     [self addSubview:self.chartView];
