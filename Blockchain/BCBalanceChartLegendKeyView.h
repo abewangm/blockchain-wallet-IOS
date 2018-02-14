@@ -12,8 +12,9 @@
 
 - (id)initWithFrame:(CGRect)frame
          assetColor:(UIColor *)color
-          assetName:(NSString *)name
-            balance:(NSString *)balance
-        fiatBalance:(NSString *)fiatBalance;
+          assetName:(NSString *)name;
+
+- (void)changeBalance:(NSString *)balance;
+- (void)changeFiatBalance:(NSString *)balance;
 
 @end

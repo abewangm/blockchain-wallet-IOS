@@ -119,10 +119,16 @@
     double bchBalance = [self getBchBalance];
     double totalFiatBalance = btcBalance + ethBalance + bchBalance;
     
-    [self.balancesChartView updateBitcoinBalance:btcBalance];
-    [self.balancesChartView updateEtherBalance:ethBalance];
-    [self.balancesChartView updateBitcoinCashBalance:bchBalance];
-    [self.balancesChartView updateTotalBalance:[NSNumberFormatter appendStringToFiatSymbol:[NSString stringWithFormat:@"%.2f", totalFiatBalance]]];
+    [self.balancesChartView updateFiatSymbol:app.latestResponse.symbol_local.symbol];
+    [self.balancesChartView updateBitcoinFiatBalance:btcBalance];
+    [self.balancesChartView updateEtherFiatBalance:ethBalance];
+    [self.balancesChartView updateBitcoinCashFiatBalance:bchBalance];
+    [self.balancesChartView updateTotalFiatBalance:[NSNumberFormatter appendStringToFiatSymbol:[NSString stringWithFormat:@"%.2f", totalFiatBalance]]];
+    
+    [self.balancesChartView updateBitcoinBalance:[NSNumberFormatter formatAmount:[app.wallet getTotalActiveBalance] localCurrency:NO]];
+    [self.balancesChartView updateEtherBalance:[app.wallet getEthBalanceTruncated]];
+    [self.balancesChartView updateBitcoinCashBalance:[NSNumberFormatter formatAmount:[app.wallet bitcoinCashTotalBalance] localCurrency:NO]];
+    
     [self.balancesChartView updateChart];
     
     [self reloadPricePreviews];
