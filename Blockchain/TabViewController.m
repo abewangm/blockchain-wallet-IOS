@@ -23,7 +23,7 @@
 {
     [super awakeFromNib];
     
-    self.assetSelectorView = [[AssetSelectorView alloc] initWithFrame:CGRectZero delegate:self];
+    self.assetSelectorView = [[AssetSelectorView alloc] initWithFrame:CGRectMake(0, 0, bannerView.bounds.size.width, bannerView.bounds.size.height) delegate:self];
     [bannerView addSubview:self.assetSelectorView];
     
     balanceLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_EXTRA_EXTRA_LARGE];
@@ -153,10 +153,12 @@
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [topBar changeHeight:DEFAULT_HEADER_HEIGHT];
         }];
+        [self.assetSelectorView hide];
     } else {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
         }];
+        [self.assetSelectorView show];
     }
     
     if (newIndex == TAB_TRANSACTIONS) {
@@ -307,9 +309,28 @@
     [self updateTopBarForIndex:self.selectedIndex];
 }
 
+# pragma mark - Asset Selector Table View Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.assetSelectorView.isOpen) {
+        [self.assetSelectorView close];
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
+        }];
+    } else {
+        [self.assetSelectorView selectorClicked];
+        
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET + 36*3];
+        }];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return bannerView.frame.size.height;
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Assets.h"
 
 @interface AssetSelectionTableViewCell : UITableViewCell
-
+@property (nonatomic, readonly) AssetType assetType;
+- (id)initWithAsset:(AssetType)assetType;
 @end
