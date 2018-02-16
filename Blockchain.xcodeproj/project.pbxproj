@@ -214,6 +214,8 @@
 		C7442E341FBA1E7800695E4C /* ExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E331FBA1E7800695E4C /* ExchangeTableViewCell.m */; };
 		C7442E371FBA448200695E4C /* ExchangeTrade.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E361FBA448200695E4C /* ExchangeTrade.m */; };
 		C7442E3A1FBB636300695E4C /* FromToView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7442E391FBB636300695E4C /* FromToView.m */; };
+		C7448A962034BF2F0041947E /* AssetSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7448A952034BF2F0041947E /* AssetSelectionTableViewCell.m */; };
+		C7448A9C2034DDF80041947E /* AssetSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7448A9B2034DDF80041947E /* AssetSelectorView.m */; };
 		C74E21C12024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21C02024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m */; };
 		C74E21C72024E6D700A9FBB1 /* BCPricePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21C62024E6D700A9FBB1 /* BCPricePreviewView.m */; };
 		C74E21CD2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E21CC2028A61F00A9FBB1 /* BCPriceChartContainerViewController.m */; };
@@ -1145,6 +1147,10 @@
 		C7442E361FBA448200695E4C /* ExchangeTrade.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeTrade.m; sourceTree = "<group>"; };
 		C7442E381FBB636300695E4C /* FromToView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FromToView.h; sourceTree = "<group>"; };
 		C7442E391FBB636300695E4C /* FromToView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FromToView.m; sourceTree = "<group>"; };
+		C7448A942034BF2F0041947E /* AssetSelectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetSelectionTableViewCell.h; sourceTree = "<group>"; };
+		C7448A952034BF2F0041947E /* AssetSelectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetSelectionTableViewCell.m; sourceTree = "<group>"; };
+		C7448A9A2034DDF80041947E /* AssetSelectorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetSelectorView.h; sourceTree = "<group>"; };
+		C7448A9B2034DDF80041947E /* AssetSelectorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetSelectorView.m; sourceTree = "<group>"; };
 		C74E21BF2024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCBalanceChartLegendKeyView.h; sourceTree = "<group>"; };
 		C74E21C02024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCBalanceChartLegendKeyView.m; sourceTree = "<group>"; };
 		C74E21C52024E6D700A9FBB1 /* BCPricePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCPricePreviewView.h; sourceTree = "<group>"; };
@@ -3134,6 +3140,10 @@
 		C9D4B2B2193E032200EDA9EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7448A9A2034DDF80041947E /* AssetSelectorView.h */,
+				C7448A9B2034DDF80041947E /* AssetSelectorView.m */,
+				C7448A942034BF2F0041947E /* AssetSelectionTableViewCell.h */,
+				C7448A952034BF2F0041947E /* AssetSelectionTableViewCell.m */,
 				C74E21C52024E6D700A9FBB1 /* BCPricePreviewView.h */,
 				C74E21C62024E6D700A9FBB1 /* BCPricePreviewView.m */,
 				C74E21BF2024BA1C00A9FBB1 /* BCBalanceChartLegendKeyView.h */,
@@ -3639,6 +3649,7 @@
 				6762507D1A2CC5800052B63F /* BCEditAccountView.m in Sources */,
 				C723F3491F64413400A858A9 /* TransactionsViewController.m in Sources */,
 				C7F041961E3BD4A6004E8B4A /* BuyBitcoinViewController.m in Sources */,
+				C7448A9C2034DDF80041947E /* AssetSelectorView.m in Sources */,
 				C7CE34B81F4DCB7E00032806 /* CardsViewController.m in Sources */,
 				6780DB951A40BDCF0048EED2 /* InOut.m in Sources */,
 				23444F901DCD21AB00573C8C /* BTCCurvePoint.m in Sources */,
@@ -3727,6 +3738,7 @@
 				2322DCB81D771831000E5AC1 /* SRRunLoopThread.m in Sources */,
 				2330AA9D1E085F5700281E6F /* ContactTableViewCell.m in Sources */,
 				C790E1241E5358540063D141 /* BCVerifyMobileNumberViewController.m in Sources */,
+				C7448A962034BF2F0041947E /* AssetSelectionTableViewCell.m in Sources */,
 				C7B6855B1F17AE2A00A18A5C /* BCEmptyPageView.m in Sources */,
 				84CCFAAF197D859C00DA4482 /* NSString+NSString_EscapeQuotes.m in Sources */,
 				232D7DE11E018E7800A7A2ED /* ContactNewMessageViewController.m in Sources */,

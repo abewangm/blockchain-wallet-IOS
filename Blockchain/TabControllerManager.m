@@ -19,7 +19,7 @@
         
         NSInteger assetType = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_ASSET_TYPE] integerValue];
         self.assetType = assetType;
-        [self.tabViewController.assetSegmentedControl setSelectedSegmentIndex:assetType];
+        [self.tabViewController.assetSelectorView setSelectedAsset:assetType];
     }
     return self;
 }
@@ -522,7 +522,7 @@
 
 - (void)showReceiveEther
 {
-    _tabViewController.assetSegmentedControl.selectedSegmentIndex = AssetTypeEther;
+    _tabViewController.assetSelectorView.selectedAsset = AssetTypeEther;
     
     if (!_receiveEtherViewController) {
         _receiveEtherViewController = [[ReceiveEtherViewController alloc] init];

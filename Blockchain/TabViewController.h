@@ -6,6 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 #import "Assets.h"
+#import "AssetSelectorView.h"
 
 @protocol AssetDelegate
 - (void)didSetAssetType:(AssetType)assetType;
@@ -33,7 +34,7 @@
 @property(nonatomic, retain) UIViewController *activeViewController;
 @property(nonatomic, retain) UIViewController *oldViewController;
 @property(nonatomic, retain) IBOutlet UIView *contentView;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *assetSegmentedControl;
+@property (nonatomic) IBOutlet AssetSelectorView *assetSelectorView;
 @property (strong, nonatomic) IBOutlet UIView *assetControlContainer;
 @property(nonatomic, retain) UIView *menuSwipeRecognizerView;
 @property(nonatomic) UIView *tabBarGestureView;

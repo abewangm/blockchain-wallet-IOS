@@ -38,9 +38,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.frame = CGRectMake(0,
-                              TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_HEADER_HEIGHT,
-                              [UIScreen mainScreen].bounds.size.width,
-                              [UIScreen mainScreen].bounds.size.height - TAB_HEADER_HEIGHT_DEFAULT - DEFAULT_FOOTER_HEIGHT);
+                                 0,
+                                 [UIScreen mainScreen].bounds.size.width,
+                                 [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET);
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
 }
