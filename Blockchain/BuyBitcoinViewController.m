@@ -63,12 +63,19 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
     NSURL *reqUrl = navigationAction.request.URL;
 
     if (reqUrl != nil && navigationAction.navigationType == WKNavigationTypeLinkActivated && [[UIApplication sharedApplication] canOpenURL:reqUrl]) {
-        SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:reqUrl];
-        if (safariViewController) {
-            [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
-        } else {
+        
+        if (![[reqUrl.absoluteString lowercaseString] hasPrefix:@"http://"] &&
+            ![[reqUrl.absoluteString lowercaseString] hasPrefix:@"https://"]) {
             [[UIApplication sharedApplication] openURL:reqUrl];
+        } else {
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:reqUrl];
+            if (safariViewController) {
+                [self.navigationController presentViewController:safariViewController animated:YES completion:nil];
+            } else {
+                [[UIApplication sharedApplication] openURL:reqUrl];
+            }
         }
+        
         return decisionHandler(WKNavigationActionPolicyCancel);
     }
 
