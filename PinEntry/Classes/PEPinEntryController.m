@@ -221,10 +221,11 @@ static PEViewController *VerifyController()
             if (etherAddress) {
                 self.qrCodeImageView.hidden = NO;
                 self.qrCodeImageView.image = [qrCodeGenerator createQRImageFromString:etherAddress];
+                self.addressLabel.text = etherAddress;
             } else {
                 self.qrCodeImageView.hidden = YES;
+                self.addressLabel.text = BC_STRING_PLEASE_LOGIN_TO_LOAD_MORE_ADDRESSES;
             }
-            self.addressLabel.text = etherAddress;
         }
         
     } else {

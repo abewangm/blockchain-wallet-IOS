@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "이 행동을 하려면 비트코인 주소 %@에 대한 개인 열쇠가 필요합니다. QR 코드를 스캔 하세요.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 비트코인 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "이 행동을 하려면 귀하 지갑 두 번째 암호가 필요합니다. 아래에 입력한 후 계속을 누르세요";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "이 주소는 이미 사용된 것입니다. 로그인 하세요.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "이중 지출 위험 있음.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "귀하 보안을 위해 우리는 암호를 보관하지 않습니다. 암호를 잊더라도 비트코인이 안전하게 하려면 지갑을 백업하세요.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "귀하 보안을 위해 우리는 암호를 보관하지 않습니다. 암호를 잊더라도 자금 안전하게 하려면 지갑을 백업하세요.";
 
 /* (No Commment) */
 "Wallets" = "지갑";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "백업 필요";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 비트코인에 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "암호를 잊었으면 복구 구절을 써서 자금을 복구하세요. 복구 구절을 아는 사람은 귀하 자금 접근할 수 있으니 복구 구절은 안전한 오프라인 장소에 보관하세요.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "다음 12 단어 복구 구절이 암호를 잊었을 때 자금에 접근하게 해 줄 겁니다.";
@@ -1916,3 +1916,216 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "이 서비스를 쓰려면, 귀하의 두 번째 암호를 입력해야 합니다. 귀하 에테르 지갑 설정 때 한 번만 입력하면 됩니다.";
+
+/* (No Commment) */
+"Enter Ether address" = "에테르 주소 입력";
+
+/* (No Commment) */
+"Day" = "일";
+
+/* (No Commment) */
+"All" = "모두";
+
+/* (No Commment) */
+"Please send ether to %@." = "에테르를 %@에게 보내세요.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "비트코인 결제 요청";
+
+/* (No Commment) */
+"Ether payment request" = "에테르 결제 요청";
+
+/* (No Commment) */
+"My Ether Wallet" = "내 에테르 지갑";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "채굴자는 이 거래 처리를 위해 이 수수료를 받습니다.";
+
+/* (No Commment) */
+"Get Ether" = "에테르 받기";
+
+/* (No Commment) */
+"at" = "에서";
+
+/* (No Commment) */
+"Exchange" = "교환";
+
+/* (No Commment) */
+"New Exchange" = "새 교환";
+
+/* (No Commment) */
+"Use minimum" = "최소 사용";
+
+/* (No Commment) */
+"Use maximum" = "최대 사용";
+
+/* (No Commment) */
+"Sending Funds" = "돈 보내는 중";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "거래 주문 감사합니다! 교환 거래는 두 시간까지 걸릴 수 있습니다. 주문 이력 섹션에서 거래 진도를 볼 수 있습니다.";
+
+/* (No Commment) */
+"In Progress" = "진행 중";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "거래 주문 감사합니다! 교환 거래는 두 시간까지 걸릴 수 있습니다. 주문 이력에서 거래 진도를 볼 수 있습니다. 거래가 끝나면, 에테르가 귀하 지갑에 도착할 겁니다.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "거래가 취소되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"Failed" = "실패";
+
+/* (No Commment) */
+"Exchange Failed" = "교환 실패";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "이 거래는 실패 했습니다. 지갑에서 보낸 돈은 거래 수수료를 빼고 반환됩니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "거래가 만료되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "이제 블록체인 지갑에서 직접 비트코인과 에테르를 서로 교환할 수 있습니다!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ 예치";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ 수령 예정";
+
+/* (No Commment) */
+"Exchange Rate" = "환율";
+
+/* (No Commment) */
+"Transaction Fee" = "거래 수수료";
+
+/* (No Commment) */
+"Network Transaction Fee" = "네트워크 거래 수수료";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift 인출 수수료";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ShapeShift에 동의";
+
+/* (No Commment) */
+"terms and conditions" = "조건";
+
+/* (No Commment) */
+"Exchange In Progress" = "교환 진행 중";
+
+/* (No Commment) */
+"Exchange Completed" = "교환 완료";
+
+/* (No Commment) */
+"Get started" = "시작하기";
+
+/* (No Commment) */
+"Below minimum limit" = "최소 한도 아래";
+
+/* (No Commment) */
+"Above maximum limit" = "최대 한도 위";
+
+/* (No Commment) */
+"Not enough to exchange" = "교환하기에 불충분";
+
+/* (No Commment) */
+"Order ID" = "주문 ID";
+
+/* (No Commment) */
+"Total %@ spent" = "총 %@ 사용";
+
+/* (No Commment) */
+"Getting quote" = "견적 받는 중";
+
+/* (No Commment) */
+"Confirming" = "확인 중";
+
+/* (No Commment) */
+"Exchange In Progress" = "교환 진행 중";
+
+/* (No Commment) */
+"Complete" = "완료";
+
+/* (No Commment) */
+"Exchange Completed" = "교환 완료";
+
+/* (No Commment) */
+"Quote expires in %@" = "%@ 후 견적 만료";
+
+/* (No Commment) */
+"Step %d of %d" = "%d 중 %d 단계";
+
+/* (No Commment) */
+"Select your State:" = "귀하 주 선택:";
+
+/* (No Commment) */
+"Select State" = "주 선택";
+
+/* (No Commment) */
+"Not Available" = "없음";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "귀하 주에서는 아직 코인 교환이 안 됩니다. 곧 더 많은 주에서 되게 하겠습니다.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "귀하 %@ 잔액 가져오기에서 오류 발생. 나중에 다시 해보세요. 상세 사항: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "대략 견적 가져오기에서 오류 발생. 나중에 다시 해보세요. 상세 사항: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "ShapeShift에 예치됨";
+
+/* (No Commment) */
+"Received from ShapeShift" = "ShapeShift로부터 받음";
+
+/* (No Commment) */
+"Order History" = "주문 이력";
+
+/* (No Commment) */
+"Incoming" = "들어오는";
+
+/* (No Commment) */
+"Trade Expired" = "거래 만료됨";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "거래가 만료되었습니다. 거래를 다시 시작하려면, 거래 탭을 반납하십시오.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "교환할 돈 없음";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "교환할 돈이 없습니다. 돈을 좀 받기 시작하세요";
+
+/* (No Commment) */
+"Loading Exchange" = "교환 로딩 중";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "다른 %@ 지갑 선택";
+
+/* (No Commment) */
+"%@ needed to exchange" = "교환하려면 %@가 필요함";
+
+/* (No Commment) */
+"Start trading" = "거래 시작";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "무역 비트코인에서 직접 Blockchain 지갑니다. 시작으로 계정을 만들에서 구매 및 판매하는 탭입니다.";
+
+/* (No Commment) */
+"The wait is over" = "이";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "무언가 잘못 되었고,시도하시기 바랍 재개 구매 및 판매하는 비트코인이 다시합니다.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "구매 및 판매하는 비트코인";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "우리는 작품으로 교환 파트너가 세계의 모든,그래서 당신은 살 수 있다고 판매하고 비트코인에서 직접 지갑니다.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "모바일 구매 및 판매 지원에 대한 iOS9 니다. 실행하십시오 소프트웨어 업데이트하거나 로그인 blockchain.info/wallet/login 에서 귀하의 컴퓨터입니다.";

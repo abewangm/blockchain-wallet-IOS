@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "פעולה זו דורשת את המפתח הפרטי עבור %@ כתובת ביטקוין. בבקשה לסרוק קוד QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "פעולה זו דורשת הסיסמה השנייה לארנק ביטקוין. אנא הכניסו אותה בהמשך והמשך העיתונות.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "כתובת זו כבר היה בשימוש. אנא התחבר.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "עשויים להיות בסיכון לבלות כפול.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "למען ביטחונכם, אנחנו לא שומרים כל הסיסמאות על קובץ. גיבוי את הארנק שלך כדי להבטיח bitcoins שלך בטוחים, אם איבדת את סיסמתך.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "למען ביטחונכם, אנחנו לא שומרים כל הסיסמאות על קובץ. גיבוי את הארנק שלך כדי להבטיח קרנות שלך בטוחים, אם איבדת את סיסמתך.";
 
 /* (No Commment) */
 "Wallets" = "ארנקים";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "הגיבוי הדרוש";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "להשתמש את הביטוי השחזור כדי לשחזר את הכספים שלך במקרה של סיסמה אבודה.  כל אחד עם גישה הביטוי השחזור שלך יכולים לגשת ביטקוין שלך, חבל במצב לא מקוון במקום בטוח ומאובטח.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "להשתמש את הביטוי השחזור כדי לשחזר את הכספים שלך במקרה של סיסמה אבודה.  כל אחד עם גישה הביטוי השחזור שלך יכולים לגשת קרנות, חבל במצב לא מקוון במקום בטוח ומאובטח.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "המילה 12 הבאים הביטוי שחזור ייתן לך גישה לקרנות שלך במקרה אתה מאבד את הסיסמה שלך.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "הרובל הרוסי";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin יתרות";
+
+/* (No Commment) */
+"Enter Ether address or select" = "הזן את כתובת אתר או בחר";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "התשלום נשלח! שיווי המשקל שלך ואת עסקאות נעדכן בקרוב.";
+
+/* (No Commment) */
+"Waiting for payment" = "מחכה תשלום";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "חכה בבקשה, עד האחרון שלך אתר מאשרת את העסקה.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "כתובות ביטקוין";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin סוחר מפה";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "חוקי האתר כתובת: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "אירעה שגיאה בעת איחזור האחרון נתוני הטבלה. אנא נסה שוב מאוחר יותר.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "עסקאות להתרחש בעת שליחת הבקשה אתר.";
+
+/* (No Commment) */
+"Request Ether" = "בקשה אתר";
+
+/* (No Commment) */
+"Dashboard" = "לוח המחוונים.";
+
+/* (No Commment) */
+"Week" = "שבוע";
+
+/* (No Commment) */
+"Month" = "בחודש";
+
+/* (No Commment) */
+"Year" = "שנה";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin מחיר";
+
+/* (No Commment) */
+"Ether Price" = "אתר מחיר";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "חוזה כתובות אינן נתמכות.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "כרגע אנחנו רק תומכים ETH. לא ניתן לקבל מוניטין, ICN, GNT, הגמד, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "עכשיו תומך אתר";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "אתה שאלת, הקשבנו. אנו שמחים להודיע שלך Blockchain הארנק עכשיו מאפשרים לך בקלות לשלוח ולקבל אתר!";
+
+/* (No Commment) */
+"Get Started with Ether" = "נתחיל עם אתר";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "כדי להשתמש בשירות זה, אנו דורשים ממך להזין את סיסמא שנייה. אתה צריך רק צריך להזין את זה פעם אחת כדי להגדיר את אתר הארנק.";
+
+/* (No Commment) */
+"Enter Ether address" = "הזן כתובת אתר";
+
+/* (No Commment) */
+"Day" = "יום";
+
+/* (No Commment) */
+"All" = "כל";
+
+/* (No Commment) */
+"Please send ether to %@." = "נא לשלוח אתר כדי %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin תשלום הבקשה.";
+
+/* (No Commment) */
+"Ether payment request" = "אתר התשלומים בקשה";
+
+/* (No Commment) */
+"My Ether Wallet" = "שלי אתר הארנק";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "הכורים מקבלים תשלום זה תהליך העסקה.";
+
+/* (No Commment) */
+"Get Ether" = "קבל אתר";
+
+/* (No Commment) */
+"at" = "ב";
+
+/* (No Commment) */
+"Exchange" = "Exchange";
+
+/* (No Commment) */
+"New Exchange" = "שערי חליפין חדשים";
+
+/* (No Commment) */
+"Use minimum" = "שימוש מינימלי";
+
+/* (No Commment) */
+"Use maximum" = "שימוש מקסימלית";
+
+/* (No Commment) */
+"Sending Funds" = "שולח כספים";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "תודה על הצבת המסחר שלך! Exchange עסקאות יכול לקחת עד שעתיים, אתה יכול לשמור על מעקב אחר של מסחר התקדמות לפי סדר היסטוריה'.";
+
+/* (No Commment) */
+"In Progress" = "בתהליך";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "חילופי יכול לקחת עד שעתיים, אתה יכול לשמור על מעקב אחר של exchange התקדמות לפי סדר ההיסטוריה. לאחר החילוף המלא, את אתר יגיעו בארנק שלך.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "המסחר שלך בוטל. נא להחזיר את ההחלפה tab כדי להתחיל את המסחר שלך שוב.";
+
+/* (No Commment) */
+"Failed" = "נכשל";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange נכשל";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "יש סחר זה נכשל. כל הכספים שנשלחו מהארנק שלך תוחזר בניכוי את דמי העסקה. נא להחזיר את ההחלפה tab כדי להתחיל עסקה חדשה.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "המסחר שלך פג. נא להחזיר את ההחלפה tab כדי להתחיל עסקה חדשה.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "עכשיו אתה יכול להחליף את ביטקוין עבור אתר ולהיפך ישירות מה-Blockchain הארנק!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ להפקיד";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ להתקבל.";
+
+/* (No Commment) */
+"Exchange Rate" = "שער החליפין";
+
+/* (No Commment) */
+"Transaction Fee" = "עמלת";
+
+/* (No Commment) */
+"Network Transaction Fee" = "רשת עמלת";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "לשנות צורה דמי משיכה";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "מסכים כדי לשנות צורה";
+
+/* (No Commment) */
+"terms and conditions" = "תנאי שימוש";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange בתהליך";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange הושלמה";
+
+/* (No Commment) */
+"Get started" = "נתחיל";
+
+/* (No Commment) */
+"Below minimum limit" = "להלן מגבלת המינימום";
+
+/* (No Commment) */
+"Above maximum limit" = "מעל המרבית המותרת";
+
+/* (No Commment) */
+"Not enough to exchange" = "לא מספיק להחליף";
+
+/* (No Commment) */
+"Order ID" = "מזהה ההזמנה";
+
+/* (No Commment) */
+"Total %@ spent" = "סה \" כ %@ בילה";
+
+/* (No Commment) */
+"Getting quote" = "מקבל ציטוט";
+
+/* (No Commment) */
+"Confirming" = "המאשר";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange בתהליך";
+
+/* (No Commment) */
+"Complete" = "להשלים";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange הושלמה";
+
+/* (No Commment) */
+"Quote expires in %@" = "ציטוט תקפה %@";
+
+/* (No Commment) */
+"Step %d of %d" = "שלב %d של %d";
+
+/* (No Commment) */
+"Select your State:" = "בחר את המדינה שלך:";
+
+/* (No Commment) */
+"Select State" = "בחר מדינה";
+
+/* (No Commment) */
+"Not Available" = "לא זמין";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "החלפת מטבעות הוא עדיין לא זמין במדינה שלך. אנחנו יהיו מתגלגלים החוצה עוד מדינות בקרוב.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "אירעה שגיאה בעת מקבל את %@ איזון. אנא נסה שוב מאוחר יותר. פרטים: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "אירעה שגיאה בעת הגעה משוער ציטוט. אנא נסה שוב מאוחר יותר. פרטים: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "שהופקדו כדי לשנות צורה";
+
+/* (No Commment) */
+"Received from ShapeShift" = "שהתקבלו לשנות צורה";
+
+/* (No Commment) */
+"Order History" = "סדר היסטוריה";
+
+/* (No Commment) */
+"Incoming" = "נכנסות";
+
+/* (No Commment) */
+"Trade Expired" = "סחר פג";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "המסחר שלך פג. נא להחזיר את ההחלפה בדף כדי להתחיל את המסחר שלך שוב.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "אין כספים כדי להחליף";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "אין לך כספים exchange. למה לא להתחיל על ידי קבלת כספים?";
+
+/* (No Commment) */
+"Loading Exchange" = "טעינת Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "בחר אחרות %@ הארנק";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ צריך להחליף";
+
+/* (No Commment) */
+"Start trading" = "להתחיל לסחור";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "מסחר ביטקוין ישירות מה-Blockchain הארנק. התחל על ידי יצירת חשבון לקנות & למכור כרטיסייה.";
+
+/* (No Commment) */
+"The wait is over" = "ההמתנה הסתיימה";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "משהו השתבש, אנא נסה המחודשת לקנות & למכור ביטקוין שוב.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "לקנות & למכור ביטקוין";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "אנחנו עובדים עם exchange שותפים בכל רחבי העולם, אז אתה יכול לקנות ולמכור ביטקוין ישירות לארנק שלך.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "נייד לקנות & למכור נתמך עבור iOS 9 ומעלה. בבקשה להריץ עדכון תוכנה או התחברות ב blockchain.info/wallet/login במחשב שלך.";

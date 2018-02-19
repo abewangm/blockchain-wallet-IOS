@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Αυτή η ενέργεια απαιτεί το ιδιωτικό κλειδί για το Bitcoin διεύθυνση %@. Παρακαλούμε να Σκανάρετε τον κωδικό QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας bitcoin. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Αυτή η ενέργεια απαιτεί τον δεύτερο κωδικό πρόσβασης για το πορτοφόλι σας. Παρακαλώ εισάγετέ τον παρακάτω και πατήστε το πλήκτρο συνεχίσει.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Αυτή η διεύθυνση έχει ήδη χρησιμοποιηθεί. Παρακαλούμε συνδεθείτε.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Μπορεί να είναι σε κίνδυνο για μια διπλή δαπάνη.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα bitcoins σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Για την ασφάλειά σας, δεν κρατάμε τυχόν κωδικούς πρόσβασης για το αρχείο. Αντιγράφων ασφαλείας το πορτοφόλι σας για να εξασφαλίσει τα ταμεία σας είναι ασφαλή σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 
 /* (No Commment) */
 "Wallets" = "πορτοφόλια";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Δημιουργία αντιγράφων ασφαλείας απαιτείται";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας bitcoin, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Χρησιμοποιήστε τη φράση σας αποκατάστασης για να επαναφέρετε σας ταμεία σε περίπτωση ένα χαμένο κωδικό πρόσβασης.  Οποιοσδήποτε έχει πρόσβαση σε φράση σας αποκατάστασης μπορεί να πρόσβαση σας ταμεία, οπότε κρατήστε το χωρίς σύνδεση κάπου ασφαλή και σίγουρη.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Η παρακάτω λέξη 12 αποκατάστασης φράση θα σας δώσει πρόσβαση στα χρήματά σας σε περίπτωση που χάσετε τον κωδικό πρόσβασής σας.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Το Ρούβλι Ρωσίας";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Το Bitcoin Υπόλοιπα";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Εισάγετε Αιθέρα διεύθυνση ή επιλέξτε";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Η Πληρωμή Αποστέλλεται! Το υπόλοιπο και τις συναλλαγές σας, θα σας ενημερώσουμε σύντομα.";
+
+/* (No Commment) */
+"Waiting for payment" = "Αναμονή για την πληρωμή";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Παρακαλώ περιμένετε μέχρι την τελευταία αιθέρα συναλλαγή επιβεβαιώνει.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Διευθύνσεις Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Το Bitcoin Έμπορος Χάρτης";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Μη έγκυρη Αιθέρα διεύθυνση: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Παρουσιάστηκε σφάλμα κατά την ανάκτηση τα τελευταία δεδομένα γραφήματος. Παρακαλώ προσπαθήστε ξανά αργότερα.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Συναλλαγές προκύψουν κατά την αποστολή και να ζητήσει αιθέρα.";
+
+/* (No Commment) */
+"Request Ether" = "Αίτημα Αιθέρα";
+
+/* (No Commment) */
+"Dashboard" = "Ταμπλό";
+
+/* (No Commment) */
+"Week" = "Εβδομάδα";
+
+/* (No Commment) */
+"Month" = "Μήνα";
+
+/* (No Commment) */
+"Year" = "Έτος";
+
+/* (No Commment) */
+"Bitcoin Price" = "Η Τιμή Του Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Αιθέρας Τιμή";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Σύμβαση διευθύνσεις δεν υποστηρίζονται.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Αυτή τη στιγμή υποστηρίζονται μόνο ETH. Δεν μπορείτε να λάβετε REP, ICN, εθνικό θέατρο, εθνική λυρική σκηνή, DGD, η BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Τώρα υποστήριξη Αιθέρα";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Ρωτήσατε, ακούσαμε. Είμαστε ενθουσιασμένοι για να ανακοινώσει ότι η Blockchain πορτοφόλι θα επιτρέψει σε σας για να απρόσκοπτα να στείλετε και να λάβετε αιθέρα!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Ξεκινώντας με Αιθέρα";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Για να χρησιμοποιήσετε αυτή την υπηρεσία, θα απαιτούν από εσάς να εισάγετε το δεύτερο κωδικό πρόσβασης. Θα πρέπει να το μόνο που χρειάζεται να εισάγετε αυτή τη φορά για να ρυθμίσετε το Αιθέρα πορτοφόλι.";
+
+/* (No Commment) */
+"Enter Ether address" = "Εισάγετε Αιθέρα διεύθυνση";
+
+/* (No Commment) */
+"Day" = "Ημέρα";
+
+/* (No Commment) */
+"All" = "Όλα";
+
+/* (No Commment) */
+"Please send ether to %@." = "Παρακαλούμε να στείλετε αιθέρα να %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Το Bitcoin αίτηση πληρωμής";
+
+/* (No Commment) */
+"Ether payment request" = "Αιθέρας αίτηση πληρωμής";
+
+/* (No Commment) */
+"My Ether Wallet" = "Μου Αιθέρα Πορτοφόλι";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Ανθρακωρύχους λάβετε αυτό το τέλος να επεξεργαστεί αυτή τη συναλλαγή.";
+
+/* (No Commment) */
+"Get Ether" = "Πάρτε Αιθέρα";
+
+/* (No Commment) */
+"at" = "στο";
+
+/* (No Commment) */
+"Exchange" = "Ανταλλαγή";
+
+/* (No Commment) */
+"New Exchange" = "Νέα Ανταλλαγή";
+
+/* (No Commment) */
+"Use minimum" = "Χρήση ελάχιστη";
+
+/* (No Commment) */
+"Use maximum" = "Μέγιστη χρήση";
+
+/* (No Commment) */
+"Sending Funds" = "Αποστολή Χρημάτων";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Ευχαριστώ για την τοποθέτηση σου εμπόριο! Ανταλλαγή συναλλαγές μπορεί να διαρκέσει έως και δύο ώρες, και μπορείτε να παρακολουθείτε τις συναλλαγές σας με την πρόοδο της Παραγγελίας τμήμα Ιστορίας.";
+
+/* (No Commment) */
+"In Progress" = "Σε Εξέλιξη";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Ανταλλαγές μπορεί να διαρκέσει έως και δύο ώρες, μπορείτε να παρακολουθείτε exchange σας πρόοδο στο Ιστορικό παραγγελιών. Μόλις είναι πλήρης, σας αιθέρα θα φτάσετε στο πορτοφόλι σας.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Το εμπόριο έχει ακυρωθεί. Επιστρέψτε στην καρτέλα exchange για να ξεκινήσετε τις συναλλαγές σας και πάλι.";
+
+/* (No Commment) */
+"Failed" = "Απέτυχε";
+
+/* (No Commment) */
+"Exchange Failed" = "Ανταλλαγή Απέτυχε";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Το εμπόριο αυτό έχει αποτύχει. Οποιαδήποτε ποσά που αποστέλλονται από το πορτοφόλι σας θα πρέπει να επιστραφεί, μείον το ποσό της συναλλαγής. Επιστρέψτε στην καρτέλα exchange για να ξεκινήσετε ένα νέο εμπόριο.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Το εμπόριο έχει λήξει. Επιστρέψτε στην καρτέλα exchange για να ξεκινήσετε ένα νέο εμπόριο.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Τώρα μπορείτε να ανταλλάξετε το bitcoin για τον αιθέρα και αντίστροφα απευθείας από το Blockchain πορτοφόλι!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ να Καταθέσουν";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ να Λάβει";
+
+/* (No Commment) */
+"Exchange Rate" = "Συναλλαγματική Ισοτιμία";
+
+/* (No Commment) */
+"Transaction Fee" = "Τέλος Συναλλαγής";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Το Δίκτυο Τέλος Συναλλαγής";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Παίρνει Προμήθεια Για Την Ανάληψη";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Συμφωνείτε να Παίρνει";
+
+/* (No Commment) */
+"terms and conditions" = "όροι και προϋποθέσεις";
+
+/* (No Commment) */
+"Exchange In Progress" = "Ανταλλαγή Σε Εξέλιξη";
+
+/* (No Commment) */
+"Exchange Completed" = "Ανταλλαγή Ολοκληρωθεί";
+
+/* (No Commment) */
+"Get started" = "Ξεκινώντας";
+
+/* (No Commment) */
+"Below minimum limit" = "Κάτω από το ελάχιστο όριο";
+
+/* (No Commment) */
+"Above maximum limit" = "Πάνω από το μέγιστο όριο";
+
+/* (No Commment) */
+"Not enough to exchange" = "Δεν είναι αρκετό για την ανταλλαγή";
+
+/* (No Commment) */
+"Order ID" = "ΑΝΑΓΝΩΡΙΣΤΙΚΌ παραγγελίας";
+
+/* (No Commment) */
+"Total %@ spent" = "Συνολικά %@ πέρασε";
+
+/* (No Commment) */
+"Getting quote" = "Να παραθέσω";
+
+/* (No Commment) */
+"Confirming" = "Επιβεβαίωση";
+
+/* (No Commment) */
+"Exchange In Progress" = "Ανταλλαγή Σε Εξέλιξη";
+
+/* (No Commment) */
+"Complete" = "Πλήρης";
+
+/* (No Commment) */
+"Exchange Completed" = "Ανταλλαγή Ολοκληρωθεί";
+
+/* (No Commment) */
+"Quote expires in %@" = "Προσφορά λήγει σε %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Βήμα %d της %d";
+
+/* (No Commment) */
+"Select your State:" = "Επιλέξτε το Κράτος σας:";
+
+/* (No Commment) */
+"Select State" = "Επιλέξτε Μέλος";
+
+/* (No Commment) */
+"Not Available" = "Δεν Είναι Διαθέσιμη";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Ανταλλαγή κερμάτων δεν είναι ακόμη διαθέσιμα, στο κράτος σας. Θα ξεδιπλώσει περισσότερα μέλη σύντομα.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Παρουσιάστηκε σφάλμα κατά τη λήψη σας %@ ισορροπία. Παρακαλώ προσπαθήστε ξανά αργότερα. Λεπτομέρειες: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Παρουσιάστηκε ένα σφάλμα όταν πάρει μια κατά προσέγγιση το απόσπασμα. Παρακαλώ προσπαθήστε ξανά αργότερα. Λεπτομέρειες: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Κατάθεση στον ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Έλαβε από ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Ιστορικό Παραγγελιών";
+
+/* (No Commment) */
+"Incoming" = "Εισερχόμενες";
+
+/* (No Commment) */
+"Trade Expired" = "Το Εμπόριο Έχει Λήξει";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Το εμπόριο έχει λήξει. Επιστρέψτε στην σελίδα Exchange για να ξεκινήσετε τις συναλλαγές σας και πάλι.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Χωρίς τα Κεφάλαια για την Ανταλλαγή";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Δεν έχετε χρήματα για την ανταλλαγή. Γιατί να μην ξεκινήσετε με τη λήψη κάποια κεφάλαια;";
+
+/* (No Commment) */
+"Loading Exchange" = "Φόρτωση Ανταλλαγή";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Επιλέξτε άλλες %@ Πορτοφόλι";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ που απαιτούνται για την ανταλλαγή";
+
+/* (No Commment) */
+"Start trading" = "Ξεκινήστε τις συναλλαγές";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Συναλλαγές bitcoin απευθείας από το Blockchain πορτοφόλι. Ξεκινήστε δημιουργώντας ένα λογαριασμό στο Buy & sell στην καρτέλα.";
+
+/* (No Commment) */
+"The wait is over" = "Η αναμονή τελείωσε";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Κάτι πήγε λάθος, παρακαλώ δοκιμάστε την επαναλειτουργία Αγοράζουν και να Πωλούν Bitcoin και πάλι.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Αγοράζουν Και Να Πωλούν Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Συνεργαζόμαστε με τις συναλλαγματικές συνεργάτες σε όλο τον κόσμο, ώστε να μπορείτε να αγοράζουν και να πωλούν bitcoin απευθείας από το πορτοφόλι σας.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Κινητό αγορά & πώληση υποστηρίζεται για iOS 9 και πάνω. Παρακαλούμε να εκτελέσετε μια ενημέρωση λογισμικού ή να συνδεθείτε στο blockchain.info/wallet/login στον υπολογιστή σας.";

@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Táto akcia vyžaduje súkromný kľúč pre Bitcoin adresu %@. Prosím scan QR kód.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Táto akcia vyžaduje druhé heslo pre bitcoin peňaženku. Prosím, zadajte ju nižšie a stlačte tlačidlo pokračovať.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Táto akcia vyžaduje druhé heslo pre peňaženku. Prosím, zadajte ju nižšie a stlačte tlačidlo pokračovať.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Táto adresa sa už používa. Prihláste sa prosím.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Možné riziko pre double utratiť.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Pre vašu bezpečnosť sme nevedú žiadne heslá v súbore. Záložné vaša peňaženka zabezpečiť vaše Bitcoiny sú bezpečné, v prípade, že heslo stratíte.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Pre vašu bezpečnosť sme nevedú žiadne heslá v súbore. Záložné vaša peňaženka zabezpečiť vaše zdroje sú bezpečné, v prípade, že heslo stratíte.";
 
 /* (No Commment) */
 "Wallets" = "Peňaženky";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Zálohovanie potreby";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Použiť výraz obnovenie obnoviť svoje prostriedky v prípade stratené heslo.  Ktokoľvek s prístupom k obnovenie frázy môžete prístup vaše bitcoin, tak ju offline niekam bezpečné.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Použiť výraz obnovenie obnoviť svoje prostriedky v prípade stratené heslo.  Ktokoľvek s prístupom k obnovenie frázy môžete prístup vaše zdroje, tak ju offline niekam bezpečné.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Nasledujúce 12 slovo oživenie frázu v prípade, že stratíte heslo vám umožní prístup k svojim financiám.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Ruský Rubeľ";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Zostatky";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Zadajte adresu alebo vyberte Éter";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Platba Odoslaná! Váš stav a transakcie, ktoré sa budú aktualizovať čoskoro.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čaká na zaplatenie";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Prosím, počkajte, kým sa váš posledný ether transakcie potvrdzuje.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresy";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Mapu";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neplatné Ether adresa: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Sa vyskytla chyba pri získavaní najnovších údajov grafov. Prosím, skúste znovu / a neskôr.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transakcie sa vyskytujú pri odosielaní a žiadosť éteru.";
+
+/* (No Commment) */
+"Request Ether" = "Žiadosť Éter";
+
+/* (No Commment) */
+"Dashboard" = "Prístrojová doska";
+
+/* (No Commment) */
+"Week" = "Týždeň";
+
+/* (No Commment) */
+"Month" = "Mesiac";
+
+/* (No Commment) */
+"Year" = "Rok";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Cenu";
+
+/* (No Commment) */
+"Ether Price" = "Ether Cenu";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Zmluva adresy nie sú podporované.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "V súčasnosti podporujeme iba ETH. Nemôžete prijímať REP, ICN, GNT, nič zlé, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Teraz podporuje Éter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Budete požiadaní, sme počúvali. Sme radi, oznamujeme, že vaše Blockchain peňaženky vám teraz umožňuje bez problémov posielať a prijímať ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Začíname s Éter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Ak chcete použiť túto službu, budeme požadovať, aby ste zadali svoje druhé heslo. By ste mali potrebovať iba ak chcete zadať tento raz nastaviť váš Ether peňaženky.";
+
+/* (No Commment) */
+"Enter Ether address" = "Zadajte Ether adresu";
+
+/* (No Commment) */
+"Day" = "Deň";
+
+/* (No Commment) */
+"All" = "Všetky";
+
+/* (No Commment) */
+"Please send ether to %@." = "Pošlite éteru na %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin žiadosti o platbu";
+
+/* (No Commment) */
+"Ether payment request" = "Ether žiadosti o platbu";
+
+/* (No Commment) */
+"My Ether Wallet" = "Môj Ether Peňaženky";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Baníci dostali tento poplatok na spracovanie tejto transakcie.";
+
+/* (No Commment) */
+"Get Ether" = "Získajte Éter";
+
+/* (No Commment) */
+"at" = "na";
+
+/* (No Commment) */
+"Exchange" = "Výmena";
+
+/* (No Commment) */
+"New Exchange" = "Nový Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Použite minimálne";
+
+/* (No Commment) */
+"Use maximum" = "Použiť maximálne";
+
+/* (No Commment) */
+"Sending Funds" = "Poslanie Peňazí";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Vďaka za uvedenie váš obchod! Výmenné obchody môže trvať až dve hodiny, a môžete sledovať váš obchod pokrok v Poradí, v Histórii oddielu.";
+
+/* (No Commment) */
+"In Progress" = "V Pokrok";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Výmenu môže trvať až dve hodiny, môžete sledovať vaše exchange pokrok v Poradí, v Histórii. Akonáhle je obchod dokončiť, váš ether budú prichádzať do vašej peňaženky.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Váš obchodný bola zrušená. Prosím, vráťte sa na kartu výmena začať obchodu znova.";
+
+/* (No Commment) */
+"Failed" = "Zlyhalo";
+
+/* (No Commment) */
+"Exchange Failed" = "Výmena Nepodarilo";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Tento obchod sa nepodarilo. Všetky finančné prostriedky, odoslaná z vašej peňaženky budú vrátené mínus transakcie poplatok. Prosím, vráťte sa na kartu výmena začať nový obchod.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Váš obchod uplynula. Prosím, vráťte sa na kartu výmena začať nový obchod.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Teraz môžete vymeniť váš bitcoin pre éter a naopak priamo z vášho Blockchain peňaženky!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ na Vklad";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ byť Prijaté";
+
+/* (No Commment) */
+"Exchange Rate" = "Výmenný Kurz";
+
+/* (No Commment) */
+"Transaction Fee" = "Transakcie Poplatok";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Sieť Transakcie Poplatok";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Odstúpenie Od Zmluvy Poplatok";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Súhlasíte s tým, aby ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "podmienky";
+
+/* (No Commment) */
+"Exchange In Progress" = "Výmena Prebieha";
+
+/* (No Commment) */
+"Exchange Completed" = "Výmena Ukončené";
+
+/* (No Commment) */
+"Get started" = "Začíname";
+
+/* (No Commment) */
+"Below minimum limit" = "Nižšie minimálny limit";
+
+/* (No Commment) */
+"Above maximum limit" = "Vyššie maximálny limit";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nie dosť na výmenu";
+
+/* (No Commment) */
+"Order ID" = "ID objednávky";
+
+/* (No Commment) */
+"Total %@ spent" = "Celkovo strávil %@";
+
+/* (No Commment) */
+"Getting quote" = "Stále citovať";
+
+/* (No Commment) */
+"Confirming" = "Potvrdzuje";
+
+/* (No Commment) */
+"Exchange In Progress" = "Výmena Prebieha";
+
+/* (No Commment) */
+"Complete" = "Kompletné";
+
+/* (No Commment) */
+"Exchange Completed" = "Výmena Ukončené";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citát uplynie v %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Krok %d z %d";
+
+/* (No Commment) */
+"Select your State:" = "Vyberte Štát:";
+
+/* (No Commment) */
+"Select State" = "Vyberte Štátu";
+
+/* (No Commment) */
+"Not Available" = "Nie Je K Dispozícii";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Výmena mincí zatiaľ nie je k dispozícii vo vašom štáte. Budeme sa vyvaliť viac štátov čoskoro.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Sa vyskytla chyba pri získavaní vaše %@ rovnováhu. Prosím, skúste znovu / a neskôr. Podrobnosti: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Sa vyskytla chyba pri získavaní a približnú cenovú ponuku. Prosím, skúste znovu / a neskôr. Podrobnosti: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Uložené na ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Prijaté od ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Aby História";
+
+/* (No Commment) */
+"Incoming" = "Prichádzajúce";
+
+/* (No Commment) */
+"Trade Expired" = "Obchod Skončila";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Váš obchod uplynula. Prosím vráťte na Výmenu stránke spustite váš obchod znova.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Žiadne Prostriedky na Výmenu";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemáte prostriedky na výmenu. Prečo nie začíname prijatím niektorých fondov?";
+
+/* (No Commment) */
+"Loading Exchange" = "Nakladanie Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Vyberte iné %@ Peňaženky";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ potrebné na výmenu";
+
+/* (No Commment) */
+"Start trading" = "Začať obchodovať";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Obchod bitcoin priamo z vášho Blockchain peňaženky. Začnite vytvorením účtu v Buy & Sell tab.";
+
+/* (No Commment) */
+"The wait is over" = "To, že čakanie je u konca";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Niečo sa pokazilo, skúste to prosím znovu otvorenie Kúpiť A Predať Bitcoin znova.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Kúpiť A Predať Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Pracujeme s výmenou partnerov po celom svete, takže môžete nakupovať a predávať bitcoin priamo z peňaženky.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Kúpiť A Predať je podporované pre iOS 9 a hore. Prosím, spustite aktualizáciu softvéru, alebo sa prihlásiť na blockchain.info/wallet/login na vašom počítači.";

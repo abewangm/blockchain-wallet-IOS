@@ -28,16 +28,10 @@
         return [NSString stringWithFormat:NSLocalizedString(@"%lld hours ago", nil), secondsAgo / 60 / 60];
     } else if([[NSCalendar currentCalendar] respondsToSelector:@selector(isDateInYesterday:)] && [[NSCalendar currentCalendar] isDateInYesterday:date]) { // yesterday
         return NSLocalizedString(@"Yesterday", nil);
-    } else if([[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year] == [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate date]] year]) { // month + day (this year)
+    } else {
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         NSString *longFormatWithDateAndYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM d y" options:0 locale:[NSLocale currentLocale]];
         [dateFormatter setDateFormat:longFormatWithDateAndYear];
-        
-        return [dateFormatter stringFromDate:date];
-    } else { // month + year (last year or earlier)
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        NSString *longFormatWithYear = [NSDateFormatter dateFormatFromTemplate:@"MMMM y" options:0 locale:[NSLocale currentLocale]];
-        [dateFormatter setDateFormat:longFormatWithYear];
         
         return [dateFormatter stringFromDate:date];
     }

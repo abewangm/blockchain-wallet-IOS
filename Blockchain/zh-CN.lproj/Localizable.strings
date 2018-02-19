@@ -254,7 +254,7 @@
 "Checking for Wallet updates" = "检查钱包更新";
 
 /* (No Commment) */
-"Checking for more: Step %d of %d" = "检查更多：%d步的第%d步";
+"Checking for more: Step %d of %d" = "检查更多：%1$d步的第%2$d步";
 
 /* No comment provided by engineer. */
 "Close" = "关闭";
@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "此操作要求比特币地址%@的密钥。 请扫描二维码。";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "此操作要求您的比特币钱包的第二密码。 请在下方输入并按“继续”。";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "此操作要求您钱包的第二密码。 请在下方输入并按“继续”。";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "这个地址已被使用。 请登录。";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "可能会存在重复支付的风险。";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "为了您的资金安全，我们不会将任何密码保存在文件中。备份您的钱包，从而在您丢失密码时确保您的比特币是安全的。";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "为了您的资金安全，我们不会将任何密码保存在文件中。备份您的钱包，从而在您丢失密码时确保您的资金是安全的。";
 
 /* (No Commment) */
 "Wallets" = "钱包";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "需要备份";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "在丢失密码时，使用您的找回短语恢复您的资金。任何可以访问您的找回短语的人都能够访问您的比特币，因此，请将它离线保存在某个安全的地方。";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "在丢失密码时，使用您的找回短语恢复您的资金。任何可以访问您的找回短语的人都能够访问您的资金，因此，请将它离线保存在某个安全的地方。";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "以下这个由12个单词组成的找回短语让您可以在丢失密码时访问您的资金。";
@@ -1916,3 +1916,217 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "若要使用该服务，我们要求您输入您的第二密码。您仅需输入这个一次便可设置您的ETH钱包。";
+
+/* (No Commment) */
+"Enter Ether address" = "输入以太地址";
+
+/* (No Commment) */
+"Day" = "天";
+
+/* (No Commment) */
+"All" = "全部";
+
+/* (No Commment) */
+"Please send ether to %@." = "请发送以太币至 %@。";
+
+/* (No Commment) */
+"Bitcoin payment request" = "比特币支付请求";
+
+/* (No Commment) */
+"Ether payment request" = "以太币支付请求";
+
+/* (No Commment) */
+"My Ether Wallet" = "我的以太币钱包";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "矿工接收这笔费用用于处理该交易";
+
+/* (No Commment) */
+"Get Ether" = "获取以太币";
+
+/* (No Commment) */
+"at" = "在";
+
+/* (No Commment) */
+"Exchange" = "兑换";
+
+/* (No Commment) */
+"New Exchange" = "新兑换";
+
+/* (No Commment) */
+"Use minimum" = "使用最低";
+
+/* (No Commment) */
+"Use maximum" = "使用最高";
+
+/* (No Commment) */
+"Sending Funds" = "发送资金";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "感谢您进行交易！兑换交易可能需要最长两个小时的时间，您可以在'订单历史'部分对您的交易进度进行跟进。";
+
+/* (No Commment) */
+"In Progress" = "进行中";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "兑换交易可能需要最长两个小时的时间，您可以在'订单历史'中对您的交易进度进行跟进。交易完成后，您的以太币便会到达您的钱包中。";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "您的交易已取消。请返回到兑换选项卡重新开始您的交易。";
+
+/* (No Commment) */
+"Failed" = "失败";
+
+/* (No Commment) */
+"Exchange Failed" = "兑换失败";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "该交易失败。从您的钱包发出的任何资金都会在扣除交易费后退还。请返回到兑换选项卡开始新的交易。";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "您的交易已过期。请返回到兑换选项卡开始新的交易。";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "现在，您可以直接从您的Blockchain钱包用您的比特币兑换以太币，反之亦然！";
+
+/* (No Commment) */
+"%@ to Deposit" = "要充值%@";
+
+/* (No Commment) */
+"%@ to be Received" = "要接收%@";
+
+/* (No Commment) */
+"Exchange Rate" = "兑换率";
+
+/* (No Commment) */
+"Transaction Fee" = "交易费";
+
+/* (No Commment) */
+"Network Transaction Fee" = "网络交易费";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift提款费";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "同意ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "条款和条件";
+
+/* (No Commment) */
+"Exchange In Progress" = "正在兑换";
+
+/* (No Commment) */
+"Exchange Completed" = "兑换完成";
+
+/* (No Commment) */
+"Get started" = "开始";
+
+/* (No Commment) */
+"Below minimum limit" = "低于最低限额";
+
+/* (No Commment) */
+"Above maximum limit" = "高于最高限额";
+
+/* (No Commment) */
+"Not enough to exchange" = "不足以兑换";
+
+/* (No Commment) */
+"Order ID" = "订单ID";
+
+/* (No Commment) */
+"Total %@ spent" = "花费了总共%@";
+
+/* (No Commment) */
+"Getting quote" = "获取报价";
+
+/* (No Commment) */
+"Confirming" = "确认";
+
+/* (No Commment) */
+"Exchange In Progress" = "正在兑换";
+
+/* (No Commment) */
+"Complete" = "完成";
+
+/* (No Commment) */
+"Exchange Completed" = "兑换完成";
+
+/* (No Commment) */
+"Quote expires in %@" = "报价会在%@后过期";
+
+/* (No Commment) */
+"Step %d of %d" = "第%d/%d步";
+
+/* (No Commment) */
+"Select your State:" = "选择您的州：";
+
+/* (No Commment) */
+"Select State" = "选择州";
+
+/* (No Commment) */
+"Not Available" = "不可用";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "在您的州尚不提供代币兑换服务。我们很快会推出更多的州。";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "获取您的%@余额时出错。请稍后重试。详情：%@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "获取大致报价时出错。请稍后重试。详情：%@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "已存入ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "已从ShapeShift接收";
+
+/* (No Commment) */
+"Order History" = "订单历史";
+
+/* (No Commment) */
+"Incoming" = "接收";
+
+/* (No Commment) */
+"Trade Expired" = "交易已过期";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "您的交易已过期。请返回到兑换选项卡重新开始您的交易。";
+
+/* (No Commment) */
+"No Funds to Exchange" = "无可兑换资金";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "您没有可兑换的资金. 为什么不先接收一些资金呢？";
+
+/* (No Commment) */
+"Loading Exchange" = "正在载入兑换";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "选择另一个%@钱包";
+
+/* (No Commment) */
+"%@ needed to exchange" = "需要兑换%@";
+
+/* (No Commment) */
+"Start trading" = "开始交易";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "贸易币直接从你的块链的钱包。 开始通过创建一个帐户在购买和出售标签。";
+
+/* (No Commment) */
+"The wait is over" = "等到了";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "事了，请尽量重新开放购买和出售特币。";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "购买和出售特币";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "我们的工作与交换世界各地的合作伙伴，所以你可以购买和出售特币直接从你的钱包。";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "移动购买和销售支持iOS9。 请运行的软件更新或登录在blockchain.info/wallet/login 上你的计算机。";
+

@@ -207,6 +207,7 @@
 - (IBAction)supportClicked:(id)sender;
 - (IBAction)logoutClicked:(id)sender;
 - (IBAction)buyBitcoinClicked:(id)sender;
+- (IBAction)exchangeClicked:(id)sender;
 
 - (void)setupTransferAllFunds;
 - (void)setupPaymentRequest:(ContactTransaction *)transaction;
@@ -242,6 +243,10 @@
 
 - (NSString *)getVersionLabelString;
 - (void)checkForUnusedAddress:(NSString *)address success:(void (^)(NSString *, BOOL))successBlock error:(void (^)())errorBlock;
+
+- (BOOL)checkIfWaitingOnEtherTransaction;
+
+- (void)showGetAssetsAlert;
 @end
 
 extern RootService *app;

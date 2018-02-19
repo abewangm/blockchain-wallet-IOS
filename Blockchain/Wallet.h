@@ -136,6 +136,14 @@
 - (void)didSendEther;
 - (void)didErrorDuringEtherSend:(NSString *)error;
 - (void)didGetEtherAddressWithSecondPassword;
+- (void)didGetExchangeTrades:(NSArray *)trades;
+- (void)didGetExchangeRate:(NSDictionary *)result;
+- (void)didGetAvailableEthBalance:(NSDictionary *)result;
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result;
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo;
+- (void)didShiftPayment:(NSDictionary *)info;
+- (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
+- (void)didCreateEthAccountForExchange;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -194,6 +202,7 @@
 @property (nonatomic) NSNumber *contactsActionCount;
 
 @property (nonatomic) NSArray *etherTransactions;
+@property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
 
 typedef enum {
     ContactActionRequiredNone,
@@ -428,6 +437,7 @@ typedef enum {
 - (NSArray *)getEthTransactions;
 - (void)getEthHistory;
 - (void)getEthExchangeRate;
+- (NSString *)getLabelForEthAccount;
 
 // Ether send
 - (void)createNewEtherPayment;
@@ -440,6 +450,22 @@ typedef enum {
 - (void)sweepEtherPayment;
 - (BOOL)hasEthAccount;
 - (BOOL)isWaitingOnEtherTransaction;
+
+// Exchange
+- (void)createEthAccountForExchange:(NSString *)secondPassword;
+- (BOOL)isExchangeEnabled;
+- (NSArray *)availableUSStates;
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode;
+- (void)selectState:(NSString *)name code:(NSString *)code;
+- (void)getExchangeTrades;
+- (void)getRate:(NSString *)coinPair;
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion;
+- (void)getAvailableBtcBalanceForAccount:(int)account;
+- (void)getAvailableEthBalance;
+- (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee;
+- (void)shiftPayment;
+- (BOOL)isDepositTransaction:(NSString *)txHash;
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash;
 
 // Top Bar Display
 - (NSDecimalNumber *)btcDecimalBalance;

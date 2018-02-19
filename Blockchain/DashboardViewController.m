@@ -16,6 +16,7 @@
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
 #import "GraphTimeFrame.h"
+#import "Blockchain-Swift.h"
 
 @import Charts;
 
@@ -24,7 +25,7 @@
 @property (nonatomic) UIView *contentView;
 @end
 
-@interface DashboardViewController () <IChartAxisValueFormatter>
+@interface DashboardViewController () <IChartAxisValueFormatter, ChartViewDelegate>
 @property (nonatomic) LineChartView *chartView;
 @property (nonatomic) UIView *graphContainerView;
 @property (nonatomic) UILabel *titleLabel;
@@ -40,6 +41,8 @@
 @property (nonatomic) UIButton *weekButton;
 @property (nonatomic) UIButton *dayButton;
 @property (nonatomic) NSString *lastEthExchangeRate;
+
+@property (nonatomic) NSArray *lastUpdatedValues;
 
 @end
 
@@ -92,6 +95,7 @@
     CGFloat horizontalSpacing = 0;
 
     LineChartView *chartView = [[LineChartView alloc] initWithFrame:CGRectMake(horizontalSpacing, verticalSpacing, graphContainerView.bounds.size.width - horizontalSpacing*2, graphContainerView.bounds.size.height - verticalSpacing*2)];
+    chartView.delegate = self;
     chartView.drawGridBackgroundEnabled = NO;
     chartView.drawBordersEnabled = NO;
     chartView.scaleXEnabled = NO;
@@ -101,6 +105,10 @@
     chartView.chartDescription.enabled = NO;
     chartView.legend.enabled = NO;
     
+    BCChartMarkerView *marker = [[BCChartMarkerView alloc] initWithFrame:CGRectMake(0, 0, 12, 12)];
+    marker.chartView = chartView;
+    chartView.marker = marker;
+
     chartView.leftAxis.drawGridLinesEnabled = NO;
     chartView.leftAxis.labelTextColor = COLOR_TEXT_GRAY;
     chartView.leftAxis.labelFont = [UIFont fontWithName:FONT_MONTSERRAT_LIGHT size:FONT_SIZE_EXTRA_EXTRA_EXTRA_SMALL];
@@ -213,6 +221,8 @@
 
 - (void)updateTitleContainer:(NSArray *)values
 {
+    self.lastUpdatedValues = values;
+    
     self.titleLabel.text = self.assetType == AssetTypeBitcoin ? [BC_STRING_BITCOIN_PRICE uppercaseString] : [BC_STRING_ETHER_PRICE uppercaseString];
     [self.titleLabel sizeToFit];
     self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
@@ -225,7 +235,7 @@
     double difference = lastPrice - firstPrice;
     double percentChange = (difference / firstPrice) * 100;
     
-    self.arrowImageView.image = [[UIImage imageNamed:@"send_arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.arrowImageView.hidden = NO;
     self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_GREEN;
     [self.arrowImageView changeXPosition:self.priceLabel.frame.size.width + 8];
     [self.arrowImageView changeYPosition:self.priceLabel.frame.size.height - self.arrowImageView.frame.size.height - 3.5];
@@ -240,7 +250,19 @@
         self.arrowImageView.tintColor = COLOR_BLOCKCHAIN_RED;
     }
     
-    self.percentageChangeLabel.text = [NSString stringWithFormat:@"%.1f%%", percentChange];
+    self.percentageChangeLabel.hidden = NO;
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:1];
+    [numberFormatter setMinimumFractionDigits:1];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLocale *currentLocale = numberFormatter.locale;
+    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+    NSNumber *number = [numberFormatter numberFromString:[NSString stringWithFormat:@"%.1f", percentChange]];
+    numberFormatter.locale = currentLocale;
+    
+    self.percentageChangeLabel.text = [[numberFormatter stringFromNumber:number] stringByAppendingString:@"%"];
     [self.percentageChangeLabel sizeToFit];
     [self.percentageChangeLabel changeYPosition:self.priceLabel.frame.size.height - self.percentageChangeLabel.frame.size.height - 1.5];
     [self.percentageChangeLabel changeXPosition:self.priceLabel.frame.origin.x + self.priceLabel.frame.size.width + 8 + self.arrowImageView.frame.size.width];
@@ -249,8 +271,37 @@
     self.priceContainerView.center = CGPointMake(self.contentView.center.x, self.priceContainerView.center.y);
 }
 
+- (void)updateTitleContainerWithChartDataEntry:(ChartDataEntry *)dataEntry
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"MMM d, yyyy";
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:dataEntry.x]];
+    dateFormatter.dateFormat = @"h:mm a";
+    NSString *timeString = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:dataEntry.x]];
+    
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", dateString, BC_STRING_AT, timeString];
+    [self.titleLabel sizeToFit];
+    self.titleLabel.center = CGPointMake([self.titleLabel superview].frame.size.width/2, self.titleLabel.center.y);
+    
+    NSString *formattedString = [NSNumberFormatter localFormattedString:[NSString stringWithFormat:@"%.2f", dataEntry.y]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formattedString];
+    [self.priceLabel sizeToFit];
+    
+    self.percentageChangeLabel.hidden = YES;
+    self.arrowImageView.hidden = YES;
+
+    self.priceContainerView.frame = CGRectMake(0, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height, self.priceLabel.frame.size.width, 30);
+    self.priceContainerView.center = CGPointMake(self.contentView.center.x, self.priceContainerView.center.y);
+}
+
 - (void)setChartValues:(NSArray *)values
 {
+    if ([values count] == 0) {
+        [self.chartView clear];
+        [self showError:BC_STRING_ERROR_CHARTS];
+        return;
+    }
+    
     NSMutableArray *finalValues = [NSMutableArray new];
 
     for (NSDictionary *dict in values) {
@@ -269,7 +320,6 @@
     dataSet.drawCircleHoleEnabled = NO;
     dataSet.circleColors = @[COLOR_BLOCKCHAIN_BLUE];
     dataSet.drawFilledEnabled = NO;
-    dataSet.highlightEnabled = NO;
     dataSet.drawVerticalHighlightIndicatorEnabled = NO;
     dataSet.drawHorizontalHighlightIndicatorEnabled = NO;
     self.chartView.data = [[LineChartData alloc] initWithDataSet:dataSet];
@@ -364,7 +414,11 @@
 
 - (void)showError:(NSString *)error
 {
-    if (!app.pinEntryViewController && [app.wallet isInitialized] && app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD && !app.modalView) {
+    if ([app isPinSet] &&
+        !app.pinEntryViewController &&
+        [app.wallet isInitialized] &&
+        app.tabControllerManager.tabViewController.selectedIndex == TAB_DASHBOARD
+        && !app.modalView) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:BC_STRING_ERROR message:error preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -399,6 +453,18 @@
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_KEY_GRAPH_TIME_FRAME];
     GraphTimeFrame *timeFrame = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return timeFrame.dateFormat;
+}
+
+#pragma mark - Chart View Delegate
+
+- (void)chartValueNothingSelected:(ChartViewBase *)chartView
+{
+    [self updateTitleContainer:self.lastUpdatedValues];
+}
+
+- (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight
+{
+    [self updateTitleContainerWithChartDataEntry:entry];
 }
 
 @end

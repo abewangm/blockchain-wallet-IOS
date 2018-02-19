@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Deze actie vereist de privésleutel voor Bitcoin-adres %@. Scan de QR-code.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Voor deze actie is het tweede wachtwoord voor uw Bitcoin portemonnee vereist. Voer het hieronder in en druk op ga verder.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Voor deze actie is het tweede wachtwoord voor uw portemonnee vereist. Voer het hieronder in en druk op ga verder.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Dit adres is al in gebruik. Log in.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Kan risico lopen voor dubbele uitgave.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Voor uw veiligheid bewaren wij geen wachtwoorden in bestanden. Back-up uw portemonnee om ervoor te zorgen dat uw bitcoins veilig zijn in geval u uw wachtwoord verliest.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Voor uw veiligheid bewaren wij geen wachtwoorden in bestanden. Back-up uw portemonnee om ervoor te zorgen dat uw te middelen veilig zijn in geval u uw wachtwoord verliest.";
 
 /* (No Commment) */
 "Wallets" = "Portemonnees";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Backup gereed";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Gebruik uw herstelregel om uw middelen te herstellen in het geval dat uw wachtwoord verloren is gegaan. Iedereen met toegang tot uw herstelregel heeft toegang tot uw bitcoin, dus bewaar deze regel ergens offline, op een veilige plaats.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Gebruik uw herstelregel om uw middelen te herstellen in het geval dat uw wachtwoord verloren is gegaan. Iedereen met toegang tot uw herstelregel heeft toegang tot uw te middelen, dus bewaar deze regel ergens offline, op een veilige plaats.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "De volgende herstelregel van 12 woorden zal u toegang tot uw middelen geven in het geval dat u uw wachtwoord kwijtraakt.";
@@ -1916,3 +1916,477 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Het is vereist om een tweede wachtwoord in te voeren om gebruik te kunnen maken van deze dienst. U dient dit slechts eenmaal in te voeren om uw ether-portefeuille in te stellen.";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldi";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Voer Ether adres of selecteer";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "De Betaling Verzonden! Uw saldo en transacties zal binnenkort updaten.";
+
+/* (No Commment) */
+"Waiting for payment" = "Wacht op betaling";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Wacht tot je de laatste ether transactie bevestigt.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adressen";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Kaart";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Ongeldige Ether adres: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Er is een fout opgetreden tijdens het ophalen van de nieuwste kaartgegevens. Probeer het later opnieuw.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transacties zich voordoen wanneer u verzenden en verzoek ether.";
+
+/* (No Commment) */
+"Request Ether" = "Verzoek Ether";
+
+/* (No Commment) */
+"Dashboard" = "Dashboard";
+
+/* (No Commment) */
+"Week" = "Week";
+
+/* (No Commment) */
+"Month" = "Maand";
+
+/* (No Commment) */
+"Year" = "Jaar";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Prijs";
+
+/* (No Commment) */
+"Ether Price" = "Ether Prijs";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Contract adressen worden niet ondersteund.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Op het moment zijn we alleen ondersteuning ETH. U kan niet ontvangen REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nu met ondersteuning voor Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Je vroeg, we hebben geluisterd. We zijn verheugd om aan te kondigen dat je Blockchain portemonnee bieden u nu de mogelijkheid om naadloos te verzenden en te ontvangen ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Aan de Slag met Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Om deze service te gebruiken, vragen we u om uw tweede wachtwoord. U hoeft alleen maar om deze eens te stel uw Ether portemonnee.";
+
+/* (No Commment) */
+"Enter Ether address" = "Voer Ether adres";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Stuur ether te %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin betaling aanvraag";
+
+/* (No Commment) */
+"Ether payment request" = "Ether verzoek tot betaling";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mijn Ether Portemonnee";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Mijnwerkers ontvangt deze toeslag tot het verwerken van deze transactie.";
+
+/* (No Commment) */
+"Enter Ether address" = "Voer Ether-adres in";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Stuur ether naar %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Verzoek om Bitcoin-betaling";
+
+/* (No Commment) */
+"Ether payment request" = "Verzoek om Ether-betaling";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mijn Ether-Portemonnee";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Mijners ontvangen deze vergoeding om deze transactie te verwerken.";
+
+/* (No Commment) */
+"Get Ether" = "Voor Ether";
+
+/* (No Commment) */
+"at" = "in";
+
+/* (No Commment) */
+"Exchange" = "Exchange";
+
+/* (No Commment) */
+"New Exchange" = "Nieuwe Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Gebruik minimaal";
+
+/* (No Commment) */
+"Use maximum" = "Gebruik maximaal";
+
+/* (No Commment) */
+"Sending Funds" = "Het Verzenden Van Geld";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Bedankt voor het plaatsen van uw handel! Exchange transacties kan tot twee uur, en u kunt bijhouden van uw handel op de voortgang in de Volgorde sectie Geschiedenis.";
+
+/* (No Commment) */
+"In Progress" = "In Uitvoering";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "De uitwisseling kan tot twee uur, kunt u bijhouden van uw exchange vooruitgang in de Geschiedenis. Zodra de transactie is voltooid, is uw ether zal komen in uw portemonnee.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Uw transactie is geannuleerd. Gelieve terug te keren naar de exchange tabblad start uw handel opnieuw.";
+
+/* (No Commment) */
+"Failed" = "Mislukt";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange Is Mislukt";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Deze handel is mislukt. Alle fondsen die zijn verzonden vanaf uw portemonnee zal worden teruggegeven, verminderd met de transactiekosten. Gelieve terug te keren naar de exchange tabblad start een nieuwe trade.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Uw transactie is verlopen. Gelieve terug te keren naar de exchange tabblad start een nieuwe trade.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "U kunt nu uw exchange bitcoin voor ether en vice versa direct van uw Blockchain portemonnee!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ te Storten";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ te Ontvangen";
+
+/* (No Commment) */
+"Exchange Rate" = "Wisselkoers";
+
+/* (No Commment) */
+"Transaction Fee" = "Transactie Kosten";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Netwerk Transactie Kosten";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Intrekking Vergoeding";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Eens te ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "termen en voorwaarden";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange In Uitvoering";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Voltooid";
+
+/* (No Commment) */
+"Get started" = "Aan de slag";
+
+/* (No Commment) */
+"Below minimum limit" = "Hieronder een minimum beperken";
+
+/* (No Commment) */
+"Above maximum limit" = "Boven de maximale limiet";
+
+/* (No Commment) */
+"Not enough to exchange" = "Niet genoeg om te wisselen";
+
+/* (No Commment) */
+"Order ID" = "Order-ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Totaal besteed %@";
+
+/* (No Commment) */
+"Getting quote" = "Aan offerte";
+
+/* (No Commment) */
+"Confirming" = "Bevestiging";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange In Uitvoering";
+
+/* (No Commment) */
+"Complete" = "Compleet";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Voltooid";
+
+/* (No Commment) */
+"Quote expires in %@" = "Een offerte vervalt in %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Stap %d van %d";
+
+/* (No Commment) */
+"Select your State:" = "Selecteer uw provincie:";
+
+/* (No Commment) */
+"Select State" = "Selecteer State";
+
+/* (No Commment) */
+"Not Available" = "Niet Beschikbaar";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "De uitwisseling van munten is nog niet beschikbaar in uw land. We zullen uitrollen meer lidstaten snel.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Er is een fout opgetreden bij het ophalen van uw %@ balans. Probeer het later opnieuw. Details: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Er is een fout opgetreden bij het ophalen van een geschatte prijsopgave. Probeer het later opnieuw. Details: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Afgezet om ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Ontvangen van ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Geschiedenis";
+
+/* (No Commment) */
+"Incoming" = "Inkomende";
+
+/* (No Commment) */
+"Trade Expired" = "Handel Verlopen";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Uw transactie is verlopen. Gelieve terug te keren naar de Exchange-pagina om te beginnen met uw handel opnieuw.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Geen Geld te Wisselen";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Je hebt geen middelen om de uitwisseling. Waarom niet beginnen met het ontvangen van enkele fondsen?";
+
+/* (No Commment) */
+"Loading Exchange" = "Het Laden Van Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Selecteer andere %@ Portemonnee";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ die nodig zijn voor exchange";
+
+/* (No Commment) */
+"Get Ether" = "Ontvang Ether";
+
+/* (No Commment) */
+"at" = "bij";
+
+/* (No Commment) */
+"Exchange" = "Wisselen";
+
+/* (No Commment) */
+"New Exchange" = "Nieuwe wisselopdracht";
+
+/* (No Commment) */
+"Use minimum" = "Minimum gebruiken";
+
+/* (No Commment) */
+"Use maximum" = "Maximum gebruiken";
+
+/* (No Commment) */
+"Sending Funds" = "Fondsen verzenden";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Bedankt voor het plaatsen van uw opdracht! Wisselopdrachten kunnen tot twee uur duren en u kunt de voortgang ervan bijhouden in de sectie 'bestelgeschiedenis.'";
+
+/* (No Commment) */
+"In Progress" = "Lopend";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Wisselopdrachten kunnen tot twee uur duren en u kunt de voortgang ervan bijhouden in de sectie 'bestelgeschiedenis'. Zodra de opdracht afgerond is, komt de ether in uw portemonnee terecht.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Uw opdracht is geannuleerd. Ga terug naar het wisseltabblad om de opdracht opnieuw te starten.";
+
+/* (No Commment) */
+"Failed" = "Mislukt";
+
+/* (No Commment) */
+"Exchange Failed" = "Wisselen mislukt";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Deze opdracht is mislukt. Fondsen die vanuit uw portemonnee zijn verstuurd, zullen worden teruggestuurd na aftrek van de transactiekosten. Ga terug naar het wisseltabblad om een nieuwe opdracht te starten.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Uw opdracht is verlopen. Ga terug naar het wisseltabblad om een nieuwe opdracht te starten.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "U kunt nu via uw Blockchain-portemonnee uw bitcoin ruilen voor ether en andersom!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ te storten";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ te ontvangen";
+
+/* (No Commment) */
+"Exchange Rate" = "Wisselkoers";
+
+/* (No Commment) */
+"Transaction Fee" = "Transactiekosten";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Netwerktransactiekosten";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift opnamekosten";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Akkoord met ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "algemene voorwaarden";
+
+/* (No Commment) */
+"Exchange In Progress" = "Lopende wisselopdracht";
+
+/* (No Commment) */
+"Exchange Completed" = "Wisselopdracht voltooid";
+
+/* (No Commment) */
+"Get started" = "Beginnen";
+
+/* (No Commment) */
+"Below minimum limit" = "Onder de minimumgrens";
+
+/* (No Commment) */
+"Above maximum limit" = "Boven de maximumgrens";
+
+/* (No Commment) */
+"Not enough to exchange" = "Niet genoeg om te wisselen";
+
+/* (No Commment) */
+"Order ID" = "Bestelnummer";
+
+/* (No Commment) */
+"Total %@ spent" = "Totaal %@ besteed";
+
+/* (No Commment) */
+"Getting quote" = "Offerte aan het ophalen";
+
+/* (No Commment) */
+"Confirming" = "Bevestigen";
+
+/* (No Commment) */
+"Exchange In Progress" = "Wisselen in uitvoering";
+
+/* (No Commment) */
+"Complete" = "Voltooid";
+
+/* (No Commment) */
+"Exchange Completed" = "Wisselopdracht voltooid";
+
+/* (No Commment) */
+"Quote expires in %@" = "Offerte verloopt over %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Stap %d van %d";
+
+/* (No Commment) */
+"Select your State:" = "Selecteer uw land:";
+
+/* (No Commment) */
+"Select State" = "Selecteer land";
+
+/* (No Commment) */
+"Not Available" = "Niet beschikbaar";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Coins wisselen is nog niet beschikbaar in uw land. We zullen binnenkort meer landen uitrollen.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Er is een fout opgetreden bij het ophalen van uw %@-saldo. Probeer het later nog eens. Details: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Er is een fout opgetreden bij het verkrijgen van een offerte. Probeer het later nog eens. Details: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Gestort bij ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Ontvangen van ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Bestelgeschiedenis";
+
+/* (No Commment) */
+"Incoming" = "Inkomend";
+
+/* (No Commment) */
+"Trade Expired" = "Opdracht verlopen";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Uw opdracht is verlopen. Ga terug naar het wisseltabblad om de opdracht opnieuw te starten.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Geen fondsen om te wisselen";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "U heeft geen fondsen om te wisselen. Waarom begint u niet met het ontvangen van wat fondsen?";
+
+/* (No Commment) */
+"Loading Exchange" = "Wisselopdracht aan het laden";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Selecteer een andere %@-portemonnee";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ nodig om te wisselen";
+
+/* (No Commment) */
+"Start trading" = "Start trading";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Handel bitcoin direct van uw Blockchain portemonnee. Begin met het aanmaken van een account in het Kopen & Verkopen tabblad.";
+
+/* (No Commment) */
+"The wait is over" = "Het wachten is voorbij";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Er is iets fout gegaan, probeer het opnieuw openen van Kopen & Verkopen Bitcoin weer.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Kopen & Verkopen Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Wij werken met de partners over de hele wereld, zodat u kunt kopen en verkopen bitcoin rechtstreeks uit uw portemonnee.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobiel Kopen & Verkopen wordt ondersteund voor iOS 9 en hoger. Voer een software-update of login aan blockchain.info/wallet/login op uw computer.";

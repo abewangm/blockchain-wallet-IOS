@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "To działanie wymaga klucza prywatnego dla adresu bitcoin %@. Proszę zeskanować kod QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela bitcoin. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "To działanie wymaga drugiego hasła do Twojego portfela. Wpisz je poniżej i wciśnij \"Kontynuuj\".";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ten adres został już użyty. Zaloguj się.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Zachodzi ryzyko podwójnego naliczenia.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "W celu zapewnienia bezpieczeństwa nie przechowujemy żadnych haseł w formie plików. Zabezpiecz swój portfel, aby chronić zgromadzone bitcoiny w przypadku, gdy utracisz hasło.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "W celu zapewnienia bezpieczeństwa nie przechowujemy żadnych haseł w formie plików. Zabezpiecz swój portfel, aby chronić zgromadzone środków w przypadku, gdy utracisz hasło.";
 
 /* (No Commment) */
 "Wallets" = "Portfele";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie środków. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
@@ -1750,7 +1750,7 @@
 "Backup Needed" = "Kopia zapasowa wymagana";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Użyj zwrotu do odzyskania hasła, aby przywrócić swoje środki w przypadku utraty hasła. Każdy, kto dysponuje Twoim zwrotem do odzyskania hasła może uzyskać dostęp do posiadanych przez Ciebie bitcoinów. Pamiętaj, aby przechowywać hasło w trybie offline, w bezpiecznym miejscu.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Poniższy 12-literowy zwrot do odzyskania hasła pozwoli Ci uzyskać dostęp do Twoich środków w przypadku utraty hasła.";
@@ -1991,3 +1991,216 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Aby móc korzystać z tej usługi, musisz wprowadzić drugie hasło. Będzie to konieczne tylko jeden raz - do skonfigurowania portfela Ether.";
+
+/* (No Commment) */
+"Enter Ether address" = "Wprowadź adres Ether";
+
+/* (No Commment) */
+"Day" = "Dzień";
+
+/* (No Commment) */
+"All" = "Wszystkie";
+
+/* (No Commment) */
+"Please send ether to %@." = "Wyślij ether do %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Żądanie płatności Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Żądanie płatności Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Mój portfel Ether";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Górnicy otrzymują tę opłatę, aby przetworzyć tę transakcję.";
+
+/* (No Commment) */
+"Get Ether" = "Zdobądź Ether";
+
+/* (No Commment) */
+"at" = "w";
+
+/* (No Commment) */
+"Exchange" = "Wymiana";
+
+/* (No Commment) */
+"New Exchange" = "Nowa Wymiana";
+
+/* (No Commment) */
+"Use minimum" = "Wykorzystaj minimum";
+
+/* (No Commment) */
+"Use maximum" = "Wykorzystaj maksimum";
+
+/* (No Commment) */
+"Sending Funds" = "Wysyłanie Środków";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Dziękujemy za wykonanie transakcji!  Transakcje wymiany mogą zająć do dwóch godzin i możesz śledzić postęp realizacji swojej transakcji w dziale Historii Zleceń.";
+
+/* (No Commment) */
+"In Progress" = "W trakcie realizacji";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Transakcje Wymiany mogą zająć do dwóch godzin i możesz śledzić postęp realizacji swojej transakcji w dziale Historii Zleceń. Po wykonaniu transakcji Twoje środki w ether zostaną dodane do Twojego portfela.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Twoja transakcja została anulowana. Wróć do zakładki wymiany, aby ponownie rozpocząć transakcję.";
+
+/* (No Commment) */
+"Failed" = "Nie udało się";
+
+/* (No Commment) */
+"Exchange Failed" = "Wymiana nie powiodła się";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Nie udało się wykonać tej transakcji. Wszelkie środki przesłane z Twojego portfela zostaną zwrócone po potrąceniu opłaty transakcyjnej. Wróć do zakładki wymiany, aby wykonać nową transakcję.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Twoja transakcja wygasła. Wróć do zakładki wymiany, aby wykonać nową transakcję.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Możesz teraz wymieniać swoje środki w bitcoin na środki w ether i odwrotnie, bezpośrednio w swoim portfelu Blockchain!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ do wpłaty";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ do otrzymania";
+
+/* (No Commment) */
+"Exchange Rate" = "Stawka wymiany";
+
+/* (No Commment) */
+"Transaction Fee" = "Opłata transakcyjna";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Opłata za transakcję sieciową";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Opłata za wypłatę ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Zgoda na ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "zasady i warunki";
+
+/* (No Commment) */
+"Exchange In Progress" = "Wymiana w trakcie";
+
+/* (No Commment) */
+"Exchange Completed" = "Wymiana zakończona";
+
+/* (No Commment) */
+"Get started" = "Rozpocznij";
+
+/* (No Commment) */
+"Below minimum limit" = "Poniżej minimalnego limitu";
+
+/* (No Commment) */
+"Above maximum limit" = "Powyżej maksymalnego limitu";
+
+/* (No Commment) */
+"Not enough to exchange" = "Niewystarczające środki do wymiany";
+
+/* (No Commment) */
+"Order ID" = "Numer ID zlecenia";
+
+/* (No Commment) */
+"Total %@ spent" = "Łącznie wydano %@";
+
+/* (No Commment) */
+"Getting quote" = "Pozyskiwanie oferty";
+
+/* (No Commment) */
+"Confirming" = "Potwierdzanie";
+
+/* (No Commment) */
+"Exchange In Progress" = "Wymiana w trakcie";
+
+/* (No Commment) */
+"Complete" = "Zakończono";
+
+/* (No Commment) */
+"Exchange Completed" = "Wymiana zakończona";
+
+/* (No Commment) */
+"Quote expires in %@" = "Oferta wygasa za %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Krok %d z %d";
+
+/* (No Commment) */
+"Select your State:" = "Wybierz swój stan:";
+
+/* (No Commment) */
+"Select State" = "Wybierz stan";
+
+/* (No Commment) */
+"Not Available" = "Niedostępne";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Wymiana monet nie jest dostępna w stanie, w którym mieszkasz. Wkrótce uruchomimy tę usługą w kolejnych stanach.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Podczas odczytu Twojego salda wystąpił błąd %@. Spróbuj ponownie później. Szczegóły: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Podczas pozyskiwania orientacyjnej oferty wystąpił błąd. Spróbuj ponownie później. Szczegóły: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Wpłacono na ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Otrzymano od ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Historia Zleceń";
+
+/* (No Commment) */
+"Incoming" = "Nadchodzące";
+
+/* (No Commment) */
+"Trade Expired" = "Transakcja wygasła";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Twoja transakcja wygasła. Wróć do strony Wymiany, aby ponownie rozpocząć swoją transakcję.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Brak środków do wymiany";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nie posiadasz żadnych środków do wymiany. Możesz zaczniesz od otrzymania jakichś środków?";
+
+/* (No Commment) */
+"Loading Exchange" = "Ładowanie Wymiany";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Wybierz inny %@ Portfel";
+
+/* (No Commment) */
+"%@ needed to exchange" = "Potrzeba %@ do wymiany";
+
+/* (No Commment) */
+"Start trading" = "Rozpocząć handel";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Handel bitcoin bezpośrednio na Twój portfel blockchain. Zacznij od utworzenia konta w dziale Kupić i sprzedać.";
+
+/* (No Commment) */
+"The wait is over" = "Oczekiwanie się skończyło";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Coś poszło nie tak, spróbuj ponownie otworzyć Kupić i ponownie sprzedać bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Kupić I Sprzedać Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Współpracujemy z partnerami na całym świecie, tak, że można kupić i sprzedać bitcoin bezpośrednio z Twojego portfela.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Telefon Kupić i sprzedać obsługiwane na iOS 9 i wyżej. Proszę wykonać aktualizację oprogramowania lub zaloguj się na blockchain.info/wallet/login na swoim komputerze.";

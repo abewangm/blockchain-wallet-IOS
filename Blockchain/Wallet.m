@@ -31,6 +31,7 @@
 #import "HDNode.h"
 #import "PrivateHeaders.h"
 #import "Assets.h"
+#import "ExchangeTrade.h"
 
 #import "BTCKey.h"
 #import "BTCData.h"
@@ -188,6 +189,17 @@
     };
 }
 
+- (id)getClearInterval
+{
+    __weak Wallet *weakSelf = self;
+    
+    return ^(NSString *identifier) {
+        NSTimer *timer = (NSTimer *)[weakSelf.timers objectForKey:identifier];
+        [timer invalidate];
+        [weakSelf.timers removeObjectForKey:identifier];
+    };
+}
+
 - (void)loadJS
 {
     self.context = [[JSContext alloc] init];
@@ -207,8 +219,9 @@
     self.context.exceptionHandler = [self getExceptionHandler];
     
     self.context[JAVASCRIPTCORE_SET_TIMEOUT] = [self getSetTimeout];
-    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
     self.context[JAVASCRIPTCORE_CLEAR_TIMEOUT] = [self getClearTimeout];
+    self.context[JAVASCRIPTCORE_SET_INTERVAL] = [self getSetInterval];
+    self.context[JAVASCRIPTCORE_CLEAR_INTERVAL] = [self getClearInterval];
     
 #pragma mark Decryption
     
@@ -860,6 +873,10 @@
         [weakSelf on_fetch_eth_history_success];
     };
     
+    self.context[@"objc_on_create_eth_account_for_exchange_success"] = ^() {
+        [weakSelf on_create_eth_account_for_exchange_success];
+    };
+    
     self.context[@"objc_on_fetch_eth_history_error"] = ^(JSValue *error) {
         [weakSelf on_fetch_eth_history_error:[error toString]];
     };
@@ -886,6 +903,45 @@
     
     self.context[@"objc_did_get_ether_address_with_second_password"] = ^() {
         [weakSelf did_get_ether_address_with_second_password];
+    };
+    
+#pragma mark Exchange
+    
+    self.context[@"objc_on_get_exchange_trades_success"] = ^(NSArray *trades) {
+        [weakSelf on_get_exchange_trades_success:trades];
+    };
+    
+    self.context[@"objc_on_get_exchange_rate_success"] = ^(JSValue *limit, JSValue *minimum, JSValue *minerFee, JSValue *maxLimit, JSValue *pair, JSValue *rate, JSValue *ethHardLimit) {
+        [weakSelf on_get_exchange_rate_success:@{DICTIONARY_KEY_LIMIT : [limit toString], DICTIONARY_KEY_MINIMUM : [minimum toString], DICTIONARY_KEY_MINER_FEE : [minerFee toString], DICTIONARY_KEY_MAX_LIMIT : [maxLimit toString], DICTIONARY_KEY_RATE : [rate toString], DICTIONARY_KEY_ETH_HARD_LIMIT_RATE : [ethHardLimit toString]}];
+    };
+    
+    self.context[@"objc_on_build_exchange_trade_success"] = ^(JSValue *from, JSValue *depositAmount, JSValue *fee, JSValue *rate, JSValue *minerFee, JSValue *withdrawalAmount, JSValue *expiration) {
+        [weakSelf on_build_exchange_trade_success_from:[from toString] depositAmount:[depositAmount toString] fee:[fee toNumber] rate:[rate toString] minerFee:[minerFee toString] withdrawalAmount:[withdrawalAmount toString] expiration:[expiration toDate]];
+    };
+    
+    self.context[@"objc_on_get_available_btc_balance_success"] = ^(JSValue *result) {
+        [weakSelf on_get_available_btc_balance_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_get_available_btc_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_BTC];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_success"] = ^(JSValue *amount, JSValue *fee) {
+        NSDictionary *dict = @{DICTIONARY_KEY_AMOUNT : [amount toNumber], DICTIONARY_KEY_FEE : [fee toNumber]};
+        [weakSelf on_get_available_eth_balance_success:dict];
+    };
+    
+    self.context[@"objc_on_get_available_eth_balance_error"] = ^(JSValue *result) {
+        [weakSelf on_get_available_balance_error:[result toString] symbol:CURRENCY_SYMBOL_ETH];
+    };
+    
+    self.context[@"objc_on_shift_payment_success"] = ^(JSValue *result) {
+        [weakSelf on_shift_payment_success:[result toDictionary]];
+    };
+    
+    self.context[@"objc_on_shift_payment_error"] = ^(JSValue *error) {
+        [weakSelf on_shift_payment_error:[error toDictionary]];
     };
     
     [self.context evaluateScript:[self getJSSource]];
@@ -1076,7 +1132,10 @@
     NSLocale *currentLocale = app.localCurrencyFormatter.locale;
     app.localCurrencyFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
     
-    NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:[NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] ? : @"0"];
+    NSString *fiatString = [NSNumberFormatter formatEthToFiat:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+    NSString *separator = [app.localCurrencyFormatter.locale objectForKey:NSLocaleGroupingSeparator];
+    fiatString = [fiatString stringByReplacingOccurrencesOfString:separator withString:@""];
+    NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:fiatString ? : @"0"];
     app.localCurrencyFormatter.locale = currentLocale;
     return balance;
 }
@@ -1482,33 +1541,7 @@
 
 - (uint64_t)parseBitcoinValueFromString:(NSString *)inputString
 {
-    __block NSString *requestedAmountString;
-    if ([inputString containsString:@"٫"]) {
-        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
-        NSError *error;
-        NSRange range = NSMakeRange(0, [inputString length]);
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
-        
-        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
-        
-        NSMutableString *replaced = [inputString mutableCopy];
-        __block NSInteger offset = 0;
-        [regex enumerateMatchesInString:inputString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
-            NSString *key = [inputString substringWithRange:range1];
-            NSString *value = easternArabicNumeralDictionary[key];
-            if (value != nil) {
-                NSRange range = [result range]; // range of the matched pattern
-                // Update location according to previous modifications:
-                range.location += offset;
-                [replaced replaceCharactersInRange:range withString:value];
-                offset += value.length - range.length; // Update offset
-            }
-            requestedAmountString = [NSString stringWithString:replaced];
-        }];
-    } else {
-        requestedAmountString = [inputString stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    }
+    NSString *requestedAmountString = [NSNumberFormatter convertedDecimalString:inputString];
 
     return [[[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.precisionToSatoshiBN(\"%@\", %lld).toString()", [requestedAmountString escapeStringForJS], app.latestResponse.symbol_btc.conversion]] toNumber] longLongValue];
 }
@@ -2312,12 +2345,153 @@
 - (NSString *)getMobileMessage
 {
     if ([self isInitialized]) {
-        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] languageCode]]];
+        JSValue *message = [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getMobileMessage(\"%@\")", [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode]]];
         if ([message isUndefined] || [message isNull]) return nil;
         return [message toString];
     }
     
     return nil;
+}
+
+#pragma mark - Exchange
+
+- (BOOL)isExchangeEnabled
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.isExchangeEnabled()"] toBool];
+    }
+    
+    return NO;
+}
+
+- (NSArray *)availableUSStates
+{
+    if ([self isInitialized]) {
+        NSArray *states = [[self.context evaluateScript:@"MyWalletPhone.availableUSStates()"] toArray];
+        return states.count > 0 ? states : nil;
+    }
+    
+    return nil;
+}
+
+- (BOOL)isStateWhitelistedForShapeshift:(NSString *)stateCode
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isStateWhitelistedForShapeshift(\"%@\")", [stateCode escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
+- (void)selectState:(NSString *)name code:(NSString *)code
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.setStateForShapeshift(\"%@\", \"%@\")", [name escapeStringForJS], [code escapeStringForJS]]];
+    }
+}
+
+- (void)getExchangeTrades
+{
+     if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getExchangeTrades()"];
+}
+
+- (void)getRate:(NSString *)coinPair
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getRate(\"%@\")", [coinPair escapeStringForJS]]];
+}
+
+- (NSURLSessionDataTask *)getApproximateQuote:(NSString *)coinPair usingFromField:(BOOL)usingFromField amount:(NSString *)amount completion:(void (^)(NSDictionary *, NSURLResponse *, NSError *))completion
+{
+    if ([self isInitialized]) {
+        DLog(@"Getting approximate quote");
+        
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
+        NSURL *URL = [NSURL URLWithString:@"https://shapeshift.io/sendamount"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        
+        NSString *apiKey = [[self.context evaluateScript:@"MyWalletPhone.getShapeshiftApiKey()"] toString];
+        
+        NSString *depositOrWithdrawParameter = usingFromField ? @"depositAmount" : @"withdrawalAmount";
+        
+        NSString *postParameters = [NSString stringWithFormat:@"{\"pair\":\"%@\",\"%@\":\"%@\",\"apiKey\":\"%@\"}", [coinPair escapeStringForJS], [depositOrWithdrawParameter escapeStringForJS], [convertedAmount escapeStringForJS], [apiKey escapeStringForJS]];
+        NSData *postData = [postParameters dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:postData];
+
+        NSURLSessionDataTask *task = [[SessionManager sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                DLog(@"Error getting approximate quote: %@", error);
+                NSInteger cancelledErrorCode = -999;
+                if (error.code != cancelledErrorCode) [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, error]];
+            } else {
+                NSError *jsonError;
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                if (result[DICTIONARY_KEY_ERROR] && [result[DICTIONARY_KEY_ERROR] isKindOfClass:[NSDictionary class]]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_APPROXIMATE_QUOTE_ARGUMENT_MESSAGE, result[DICTIONARY_KEY_ERROR][DICTIONARY_KEY_MESSAGE]]];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (completion) completion(result, response, error);
+                    });
+                }
+            }
+        }];
+        
+        [task resume];
+        
+        return task;
+    }
+    
+    return nil;
+}
+
+- (void)getAvailableBtcBalanceForAccount:(int)account
+{
+    if ([self isInitialized]) [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.getAvailableBtcBalanceForAccount(\"%d\")", account]];
+}
+
+- (void)getAvailableEthBalance
+{
+    if ([self isInitialized]) [self.context evaluateScript:@"MyWalletPhone.getAvailableEthBalance()"];
+}
+
+- (void)buildExchangeTradeFromAccount:(int)fromAccount toAccount:(int)toAccount coinPair:(NSString *)coinPair amount:(NSString *)amount fee:(NSString *)fee
+{
+    if ([self isInitialized]) {
+        
+        NSString *convertedAmount = [NSNumberFormatter convertedDecimalString:amount];
+        
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.buildExchangeTrade(%d, %d, \"%@\", \"%@\", \"%@\")", fromAccount, toAccount, [[coinPair lowercaseString] escapeStringForJS], [convertedAmount escapeStringForJS], [fee escapeStringForJS]]];
+    }
+}
+
+- (void)shiftPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.shiftPayment()"]];
+    }
+}
+
+- (BOOL)isDepositTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isDepositTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
+}
+
+- (BOOL)isWithdrawalTransaction:(NSString *)txHash
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.isWithdrawalTransaction(\"%@\")", [txHash escapeStringForJS]]] toBool];
+    }
+    
+    return NO;
 }
 
 #pragma mark - Contacts
@@ -2546,6 +2720,14 @@
 
 # pragma mark - Ethereum
 
+- (void)createEthAccountForExchange:(NSString *)secondPassword
+{
+    if ([self isInitialized]) {
+        NSString *setupHelperText = BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT;
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.createEthAccountForExchange(\"%@\", \"%@\")", [secondPassword escapeStringForJS], [setupHelperText escapeStringForJS]]];
+    }
+}
+
 - (NSArray *)getEthTransactions
 {
     if ([self isInitialized]) {
@@ -2565,7 +2747,7 @@
 
 - (NSString *)getEthBalance
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app.wallet hasEthAccount]) {
         return [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toString];
     } else {
         DLog(@"Warning: getting eth balance when not initialized - returning 0");
@@ -2575,7 +2757,7 @@
 
 - (NSString *)getEthBalanceTruncated
 {
-    if ([self isInitialized]) {
+    if ([self isInitialized] && [app.wallet hasEthAccount]) {
         NSNumber *balanceNumber = [[self.context evaluateScript:@"MyWalletPhone.getEthBalance()"] toNumber];
         return [app.btcFormatter stringFromNumber:balanceNumber];
     } else {
@@ -2676,6 +2858,15 @@
     }
     
     return NO;
+}
+
+- (NSString *)getLabelForEthAccount
+{
+    if ([self isInitialized] && [self hasEthAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForEthAccount()"] toString];
+    }
+    
+    return nil;
 }
 
 # pragma mark - Transaction handlers
@@ -2916,7 +3107,10 @@
     
     NSString *filter = @"";
 #ifdef ENABLE_TRANSACTION_FILTERING
-    int filterIndex = (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex;
+    
+    TransactionsBitcoinViewController *transactionsBitcoinViewController = app.tabControllerManager.transactionsBitcoinViewController;
+    
+    int filterIndex = transactionsBitcoinViewController ? (int)app.tabControllerManager.transactionsBitcoinViewController.filterIndex : FILTER_INDEX_ALL;
     
     if (filterIndex == FILTER_INDEX_ALL) {
         filter = @"";
@@ -4094,6 +4288,15 @@
     
 }
 
+- (void)on_create_eth_account_for_exchange_success
+{
+    if ([self.delegate respondsToSelector:@selector(didCreateEthAccountForExchange)]) {
+        [self.delegate didCreateEthAccountForExchange];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didCreateEthAccountForExchange!", [delegate class]);
+    }
+}
+
 - (void)on_update_eth_payment:(NSDictionary *)payment
 {
     if ([self.delegate respondsToSelector:@selector(didUpdateEthPayment:)]) {
@@ -4107,7 +4310,8 @@
 {
     if ([self.delegate respondsToSelector:@selector(didFetchEthExchangeRate:)]) {
         NSDictionary *codeDict = [[rate toDictionary] objectForKey:[code toString]];
-        [self.delegate didFetchEthExchangeRate:[codeDict objectForKey:DICTIONARY_KEY_LAST]];
+        self.latestEthExchangeRate = [NSDecimalNumber decimalNumberWithDecimal:[[codeDict objectForKey:DICTIONARY_KEY_LAST] decimalValue]];
+        [self.delegate didFetchEthExchangeRate:self.latestEthExchangeRate];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didUpdateEthPayment!", [delegate class]);
     }
@@ -4156,6 +4360,111 @@
         [self.delegate didGetEtherAddressWithSecondPassword];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
+}
+
+- (void)on_get_exchange_trades_success:(NSArray *)trades
+{
+    NSMutableArray *exchangeTrades = [NSMutableArray new];
+    for (NSDictionary *trade in trades) {
+        ExchangeTrade *exchangeTrade = [ExchangeTrade fetchedTradeFromJSONDict:trade];
+        [exchangeTrades addObject:exchangeTrade];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(didGetExchangeTrades:)]) {
+        [self.delegate didGetExchangeTrades:exchangeTrades];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeTrades:!", [delegate class]);
+    }
+}
+
+- (void)on_get_exchange_rate_success:(NSDictionary *)result
+{
+    NSNumber *btcRateNumber = [[[self.context evaluateScript:@"MyWalletPhone.currencyCodeForHardLimit()"] toString] isEqualToString:CURRENCY_CODE_USD] ? [[[app.wallet currencySymbols] objectForKey:CURRENCY_CODE_USD] objectForKey:DICTIONARY_KEY_LAST] : [[[app.wallet currencySymbols] objectForKey:CURRENCY_CODE_EUR] objectForKey:DICTIONARY_KEY_LAST];
+    
+    NSDecimalNumber *btcRate = [NSDecimalNumber decimalNumberWithDecimal:[btcRateNumber decimalValue]];
+    NSDecimalNumber *ethRate = [NSDecimalNumber decimalNumberWithString:[result objectForKey:DICTIONARY_KEY_ETH_HARD_LIMIT_RATE]];
+    
+    NSDecimalNumber *fiatHardLimit = [NSDecimalNumber decimalNumberWithString:[[self.context evaluateScript:@"MyWalletPhone.fiatExchangeHardLimit()"] toString]];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:8];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US]];
+    
+    NSString *btcHardLimit = [numberFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:btcRate]];
+    NSString *ethHardLimit = [numberFormatter stringFromNumber:[fiatHardLimit decimalNumberByDividingBy:ethRate]];
+    
+    NSMutableDictionary *mutableCopy = [result mutableCopy];
+    [mutableCopy setObject:btcHardLimit forKey:DICTIONARY_KEY_BTC_HARD_LIMIT];
+    [mutableCopy setObject:ethHardLimit forKey:DICTIONARY_KEY_ETH_HARD_LIMIT];
+
+    if ([self.delegate respondsToSelector:@selector(didGetExchangeRate:)]) {
+        [self.delegate didGetExchangeRate:mutableCopy];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetExchangeRate:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_btc_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableBtcBalance:)]) {
+        [self.delegate didGetAvailableBtcBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableBtcBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_get_available_balance_error:(NSString *)error symbol:(NSString *)currencySymbol
+{
+    if ([error isEqualToString:ERROR_NO_FREE_OUTPUTS_TO_SPEND]) {
+        [self.delegate didGetAvailableBtcBalance:nil];
+    } else {
+        [app standardNotify:[NSString stringWithFormat:BC_STRING_ERROR_GETTING_BALANCE_ARGUMENT_ASSET_ARGUMENT_MESSAGE, currencySymbol, error]];
+    }
+}
+
+- (void)on_get_available_eth_balance_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didGetAvailableEthBalance:)]) {
+        [self.delegate didGetAvailableEthBalance:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didGetAvailableEthBalance:!", [delegate class]);
+    }
+}
+
+- (void)on_shift_payment_success:(NSDictionary *)result
+{
+    if ([self.delegate respondsToSelector:@selector(didShiftPayment:)]) {
+        [self.delegate didShiftPayment:result];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didShiftPayment:!", [delegate class]);
+    }
+}
+
+- (void)on_shift_payment_error:(NSDictionary *)result
+{
+    [app hideBusyView];
+    
+    NSString *errorMessage = [result objectForKey:DICTIONARY_KEY_MESSAGE];
+    [app standardNotify:errorMessage];
+}
+
+- (void)on_build_exchange_trade_success_from:(NSString *)from depositAmount:(NSString *)depositAmount fee:(NSNumber *)fee rate:(NSString *)rate minerFee:(NSString *)minerFee withdrawalAmount:(NSString *)withdrawalAmount expiration:(NSDate *)expirationDate
+{
+    NSDictionary *tradeInfo = @{
+        DICTIONARY_KEY_DEPOSIT_AMOUNT : depositAmount,
+        DICTIONARY_KEY_FEE : [[from lowercaseString] isEqualToString:[CURRENCY_SYMBOL_BTC lowercaseString]] ? [NSNumberFormatter satoshiToBTC:[fee longLongValue]] : [fee stringValue],
+        DICTIONARY_KEY_RATE : rate,
+        DICTIONARY_KEY_MINER_FEE : minerFee,
+        DICTIONARY_KEY_WITHDRAWAL_AMOUNT : withdrawalAmount,
+        DICTIONARY_KEY_EXPIRATION_DATE : expirationDate
+    };
+    
+    if ([self.delegate respondsToSelector:@selector(didBuildExchangeTrade:)]) {
+        [self.delegate didBuildExchangeTrade:tradeInfo];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didBuildExchangeTrade:!", [delegate class]);
     }
 }
 

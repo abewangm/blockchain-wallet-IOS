@@ -89,4 +89,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)closeButtonClicked
+{
+    [self closeModalClicked];
+}
+
 @end

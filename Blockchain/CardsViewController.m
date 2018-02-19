@@ -18,7 +18,7 @@
 
 // Onboarding cards
 @property (nonatomic) BOOL showCards;
-@property (nonatomic) BOOL showEther;
+@property (nonatomic) BOOL showAnnouncementCard;
 @property (nonatomic) CGFloat cardsViewHeight;
 @property (nonatomic) UIScrollView *cardsScrollView;
 @property (nonatomic) UIView *cardsView;
@@ -48,19 +48,19 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showEther = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    self.showAnnouncementCard = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD] && [app.wallet isBuyEnabled];
     
-    self.cardsViewHeight = self.showEther ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
+    self.cardsViewHeight = self.showAnnouncementCard ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
     if (self.showCards && app.latestResponse.symbol_local) {
         [self setupCardsViewWithConfiguration:CardConfigurationWelcome];
-    } else if (self.showEther) {
-        [self setupCardsViewWithConfiguration:CardConfigurationBuyAvailableNow];
+    } else if (self.showAnnouncementCard) {
+        [self setupCardsViewWithConfiguration:CardConfigurationAvailableNow];
     } else if (app.latestResponse.symbol_local) {
         [self removeCardsView];
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showEther || self.showCards ? self.cardsViewHeight : 0));
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height + DEFAULT_HEADER_HEIGHT + (self.showAnnouncementCard || self.showCards ? self.cardsViewHeight : 0));
 }
 
 - (void)setupCardsViewWithConfiguration:(CardConfiguration)configuration
@@ -73,8 +73,8 @@
     
     if (configuration == CardConfigurationWelcome) {
         self.cardsView = [self configureCardsViewWelcome:cardsView];
-    } else if (configuration == CardConfigurationBuyAvailableNow) {
-        self.cardsView = [self configureCardsViewEther:cardsView];
+    } else if (configuration == CardConfigurationAvailableNow) {
+        self.cardsView = [self configureCardsViewBuySell:cardsView];
     }
     
     [self.scrollView addSubview:self.cardsView];
@@ -84,17 +84,17 @@
 
 #pragma mark - New Wallet Cards
 
-- (UIView *)configureCardsViewEther:(UIView *)cardsView
+- (UIView *)configureCardsViewBuySell:(UIView *)cardsView
 {
-    BCCardView *etherCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[NSString stringWithFormat:@"%@", BC_STRING_NOW_SUPPORTING_ETHER_TITLE] description:BC_STRING_NOW_SUPPORTING_ETHER_DESCRIPTION actionType:ActionTypeBuyEther imageName:@"ether_partial" reducedHeightForPageIndicator:NO delegate:self];
+    BCCardView *buySellCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:[BC_STRING_BUY_SELL_CARD_TITLE uppercaseString] description:BC_STRING_BUY_SELL_CARD_DESCRIPTION actionType:ActionTypeAvailableNow imageName:@"buy_sell_partial" reducedHeightForPageIndicator:NO delegate:self];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(etherCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(buySellCard.bounds.size.width - 25, 12.5, 12.5, 12.5)];
     [closeButton setImage:[[UIImage imageNamed:@"close_large"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     closeButton.tintColor = COLOR_TEXT_DARK_GRAY;
-    [closeButton addTarget:self action:@selector(closeEtherAvailableCard) forControlEvents:UIControlEventTouchUpInside];
-    [etherCard addSubview:closeButton];
+    [closeButton addTarget:self action:@selector(closeBuySellCard) forControlEvents:UIControlEventTouchUpInside];
+    [buySellCard addSubview:closeButton];
     
-    [cardsView addSubview:etherCard];
+    [cardsView addSubview:buySellCard];
     return cardsView;
 }
 
@@ -120,7 +120,7 @@
         numberOfPages++;
     }
     
-    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_TITLE description:BC_STRING_OVERVIEW_RECEIVE_BITCOIN_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" reducedHeightForPageIndicator:YES delegate:self];
+    BCCardView *receiveCard = [[BCCardView alloc] initWithContainerFrame:cardsView.bounds title:BC_STRING_OVERVIEW_REQUEST_FUNDS_TITLE description:BC_STRING_OVERVIEW_REQUEST_FUNDS_DESCRIPTION actionType:ActionTypeShowReceive imageName:@"receive_partial" reducedHeightForPageIndicator:YES delegate:self];
     receiveCard.frame = CGRectOffset(receiveCard.frame, [self getPageXPosition:cardsView.frame.size.width page:numberOfCards], 0);
     [scrollView addSubview:receiveCard];
     numberOfCards++;
@@ -237,11 +237,11 @@
     return cardLength * page;
 }
 
-- (void)closeEtherAvailableCard
+- (void)closeBuySellCard
 {
     [self closeCardsView];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD];
 }
 
 - (void)cardActionClicked:(ActionType)actionType
@@ -252,8 +252,8 @@
         [app.tabControllerManager receiveCoinClicked:nil];
     } else if (actionType == ActionTypeScanQR) {
         [app.tabControllerManager qrCodeButtonClicked];
-    } else if (actionType == ActionTypeBuyEther) {
-        [app.tabControllerManager showReceiveEther];
+    } else if (actionType == ActionTypeAvailableNow) {
+        [app buyBitcoinClicked:nil];
     }
 }
 

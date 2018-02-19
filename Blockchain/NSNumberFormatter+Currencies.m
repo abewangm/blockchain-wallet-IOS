@@ -27,6 +27,15 @@
     }
 }
 
++ (NSString *)satoshiToBTC:(uint64_t)value
+{
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    NSString *result = [NSNumberFormatter formatAmount:value localCurrency:NO];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatMoney:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {
@@ -140,37 +149,12 @@
 
 + (NSString *)formatEthToFiat:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
-    __block NSString *requestedAmountString;
-    if ([ethAmount containsString:@"٫"]) {
-        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
-        NSError *error;
-        NSRange range = NSMakeRange(0, [ethAmount length]);
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
-        
-        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
-        
-        NSMutableString *replaced = [ethAmount mutableCopy];
-        __block NSInteger offset = 0;
-        [regex enumerateMatchesInString:ethAmount options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
-            NSString *key = [ethAmount substringWithRange:range1];
-            NSString *value = easternArabicNumeralDictionary[key];
-            if (value != nil) {
-                NSRange range = [result range]; // range of the matched pattern
-                // Update location according to previous modifications:
-                range.location += offset;
-                [replaced replaceCharactersInRange:range withString:value];
-                offset += value.length - range.length; // Update offset
-            }
-            requestedAmountString = [NSString stringWithString:replaced];
-        }];
-    } else {
-        requestedAmountString = [ethAmount stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    }
+    NSString *requestedAmountString = [NSNumberFormatter convertedDecimalString:ethAmount];
     
     if (requestedAmountString != nil && [requestedAmountString doubleValue] > 0) {
         NSDecimalNumber *ethAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:requestedAmountString];
-        return [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        NSString *result = [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertEthToFiat:ethAmountDecimalNumber exchangeRate:exchangeRate]];
+        return result;
     } else {
         return nil;
     }
@@ -215,7 +199,10 @@
 
 + (NSString *)formatEthWithLocalSymbol:(NSString *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
-    if (app->symbolLocal) {
+    NSString *symbol = app.latestResponse.symbol_local.symbol;
+    BOOL hasSymbol = symbol && ![symbol isKindOfClass:[NSNull class]];
+        
+    if (app->symbolLocal && hasSymbol) {
         return [NSNumberFormatter formatEthToFiatWithSymbol:ethAmount exchangeRate:exchangeRate];
     } else {
         return [NSNumberFormatter formatEth:ethAmount];
@@ -234,9 +221,66 @@
 + (NSString *)ethAmount:(NSDecimalNumber *)amount
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.usesGroupingSeparator = NO;
     [formatter setMaximumFractionDigits:ETH_DECIMAL_LIMIT];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     return [formatter stringFromNumber:amount];
+}
+
++ (NSString *)convertedDecimalString:(NSString *)entryString
+{
+    __block NSString *requestedAmountString;
+    if ([entryString containsString:@"٫"]) {
+        // Special case for Eastern Arabic numerals: NSDecimalNumber decimalNumberWithString: returns NaN for Eastern Arabic numerals, and NSNumberFormatter results have precision errors even with generatesDecimalNumbers set to YES.
+        NSError *error;
+        NSRange range = NSMakeRange(0, [entryString length]);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:REGEX_EASTERN_ARABIC_NUMERALS options:NSRegularExpressionCaseInsensitive error:&error];
+        
+        NSDictionary *easternArabicNumeralDictionary = DICTIONARY_EASTERN_ARABIC_NUMERAL;
+        
+        NSMutableString *replaced = [entryString mutableCopy];
+        __block NSInteger offset = 0;
+        [regex enumerateMatchesInString:entryString options:0 range:range usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+            NSRange range1 = [result rangeAtIndex:0]; // range of the matched subgroup
+            NSString *key = [entryString substringWithRange:range1];
+            NSString *value = easternArabicNumeralDictionary[key];
+            if (value != nil) {
+                NSRange range = [result range]; // range of the matched pattern
+                // Update location according to previous modifications:
+                range.location += offset;
+                [replaced replaceCharactersInRange:range withString:value];
+                offset += value.length - range.length; // Update offset
+            }
+            requestedAmountString = [NSString stringWithString:replaced];
+        }];
+    } else {
+        requestedAmountString = [entryString stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    }
+    
+    return requestedAmountString;
+}
+
++ (NSString *)localFormattedString:(NSString *)amountString
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:8];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSLocale *currentLocale = numberFormatter.locale;
+    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:LOCALE_IDENTIFIER_EN_US];
+    NSNumber *number = [numberFormatter numberFromString:amountString];
+    numberFormatter.locale = currentLocale;
+    return [numberFormatter stringFromNumber:number];
+}
+
++ (uint64_t)parseBtcValueFromString:(NSString *)inputString
+{
+    // Always use BTC conversion rate
+    uint64_t currentConversion = app.latestResponse.symbol_btc.conversion;
+    app.latestResponse.symbol_btc.conversion = SATOSHI;
+    uint64_t result = [app.wallet parseBitcoinValueFromString:inputString];
+    app.latestResponse.symbol_btc.conversion = currentConversion;
+    return result;
 }
 
 @end

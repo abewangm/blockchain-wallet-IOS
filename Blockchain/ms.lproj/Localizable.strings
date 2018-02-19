@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tindakan ini memerlukan kunci peribadi untuk %@ alamat Bitcoin. Sila imbas Kod QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk bitcoin dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tindakan ini memerlukan kata laluan kedua untuk dompet anda. Sila masukkannya di bawah dan tekan teruskan.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Alamat ini telah digunakan. Sila log masuk.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Mungkin berisiko untuk menghabiskan satu dua.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Untuk keselamatan anda, kami tidak menyimpan mana-mana kata laluan pada fail. Sandaran dompet anda untuk memastikan anda bitcoins adalah selamat sekiranya anda hilang kata laluan anda.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Untuk keselamatan anda, kami tidak menyimpan mana-mana kata laluan pada fail. Sandaran dompet anda untuk memastikan dana anda adalah selamat sekiranya anda hilang kata laluan anda.";
 
 /* (No Commment) */
 "Wallets" = "Dompet";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Sandaran yang diperlukan";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Menggunakan frasa pemulihan anda untuk mengambil semula wang anda jika laluan hilang.  Sesiapa dengan capaian ke frasa pemulihan anda boleh mengakses bitcoin anda, jadi pastikan ia di luar talian di suatu tempat selamat dan terjamin.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Menggunakan frasa pemulihan anda untuk mengambil semula wang anda jika laluan hilang.  Sesiapa dengan capaian ke frasa pemulihan anda boleh mengakses dana, jadi pastikan ia di luar talian di suatu tempat selamat dan terjamin.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Berikut 12 perkataan frasa pemulihan akan memberi anda akses kepada wang anda sekiranya anda hilang kata laluan anda.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Rusia Sebelum Ini";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Kripto Baki";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Masukkan Eter alamat atau pilih";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Pembayaran Dihantar! Baki anda dan transaksi akan update tidak lama lagi.";
+
+/* (No Commment) */
+"Waiting for payment" = "Menunggu untuk pembayaran";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Sila tunggu sehingga anda terakhir eter transaksi mengesahkan.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Kripto Alamat";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Kripto Saudagar Peta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Tidak sah Eter alamat: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ralat yang berlaku semasa mendapatkan kembali terkini carta data. Silakan coba lagi nanti.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaksi berlaku apabila anda menghantar dan meminta eter.";
+
+/* (No Commment) */
+"Request Ether" = "Permintaan Eter";
+
+/* (No Commment) */
+"Dashboard" = "Pemuka";
+
+/* (No Commment) */
+"Week" = "Minggu";
+
+/* (No Commment) */
+"Month" = "Bulan";
+
+/* (No Commment) */
+"Year" = "Tahun";
+
+/* (No Commment) */
+"Bitcoin Price" = "Kripto Harga";
+
+/* (No Commment) */
+"Ether Price" = "Eter Harga";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontrak alamat tidak disokong.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Di masa kita hanya sokongan ETH. Anda tidak dapat menerima REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Sekarang menyokong Eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Anda bertanya, kita mendengar. Kami senang untuk mengumumkan bahwa anda Menerima dompet sekarang akan membenarkan anda untuk lancar mengirim dan menerima eter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Bermula dengan Eter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Untuk perkhidmatan ini, kami memerlukan anda untuk memasukkan kata kunci kedua. Anda hanya perlu masukkan sekali ini untuk anda Eter dompet.";
+
+/* (No Commment) */
+"Enter Ether address" = "Masukkan alamat Eter";
+
+/* (No Commment) */
+"Day" = "Hari";
+
+/* (No Commment) */
+"All" = "Semua";
+
+/* (No Commment) */
+"Please send ether to %@." = "Sila hantar eter untuk %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Kripto pembayaran permintaan";
+
+/* (No Commment) */
+"Ether payment request" = "Eter pembayaran permintaan";
+
+/* (No Commment) */
+"My Ether Wallet" = "Saya Eter Dompet";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Pelombong menerima bayaran ini untuk proses ini transaksi.";
+
+/* (No Commment) */
+"Get Ether" = "Dapatkan Eter";
+
+/* (No Commment) */
+"at" = "di";
+
+/* (No Commment) */
+"Exchange" = "Pertukaran";
+
+/* (No Commment) */
+"New Exchange" = "Pertukaran Baru";
+
+/* (No Commment) */
+"Use minimum" = "Gunakan minimum";
+
+/* (No Commment) */
+"Use maximum" = "Gunakan maksimum";
+
+/* (No Commment) */
+"Sending Funds" = "Menghantar Dana";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Terima kasih untuk menempatkan perdagangan anda! Pertukaran perdagangan bisa mengambil dua jam, dan anda boleh menjejaki anda perdagangan kemajuan dalam Sejarah Perintah seksyen.";
+
+/* (No Commment) */
+"In Progress" = "Dalam Kemajuan";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Bursa bisa mengambil dua jam, anda boleh menjejaki anda pertukaran kemajuan dalam Sejarah Perintah. Sekali perdagangan selesai, anda eter akan tiba dalam dompet anda.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Perdagangan anda telah dibatalkan. Sila kembali ke pertukaran tab untuk berdagang lagi.";
+
+/* (No Commment) */
+"Failed" = "Gagal";
+
+/* (No Commment) */
+"Exchange Failed" = "Pertukaran Gagal";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Ini perdagangan telah gagal. Mana-mana dana yang dihantar dari dompet anda akan kembali tolak bayaran transaksi. Sila kembali ke pertukaran tab untuk memulakan sebuah perdagangan baru.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Perdagangan anda telah tamat. Sila kembali ke pertukaran tab untuk memulakan sebuah perdagangan baru.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Sekarang anda boleh pertukaran umum untuk eter dan sebaliknya langsung dari anda Menerima dompet!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ untuk Deposit";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ akan Diterima";
+
+/* (No Commment) */
+"Exchange Rate" = "Pertukaran Kadar";
+
+/* (No Commment) */
+"Transaction Fee" = "Transaksi Bayaran";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Rangkaian Transaksi Bayaran";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Yuran Pengeluaran";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Setuju untuk ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "syarat-syarat";
+
+/* (No Commment) */
+"Exchange In Progress" = "Pertukaran Dalam Kemajuan";
+
+/* (No Commment) */
+"Exchange Completed" = "Pertukaran Selesai";
+
+/* (No Commment) */
+"Get started" = "Memulakan";
+
+/* (No Commment) */
+"Below minimum limit" = "Di bawah had minimum";
+
+/* (No Commment) */
+"Above maximum limit" = "Di atas batas maksimum";
+
+/* (No Commment) */
+"Not enough to exchange" = "Tidak cukup untuk pertukaran";
+
+/* (No Commment) */
+"Order ID" = "Perintah ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Jumlah %@ dibelanjakan";
+
+/* (No Commment) */
+"Getting quote" = "Semakin memetik";
+
+/* (No Commment) */
+"Confirming" = "Mengesahkan";
+
+/* (No Commment) */
+"Exchange In Progress" = "Pertukaran Dalam Kemajuan";
+
+/* (No Commment) */
+"Complete" = "Lengkap";
+
+/* (No Commment) */
+"Exchange Completed" = "Pertukaran Selesai";
+
+/* (No Commment) */
+"Quote expires in %@" = "Memetik tamat dalam %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Langkah %d dari %d";
+
+/* (No Commment) */
+"Select your State:" = "Pilih Negeri anda:";
+
+/* (No Commment) */
+"Select State" = "Pilih Negeri";
+
+/* (No Commment) */
+"Not Available" = "Tidak Tersedia";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Bertukar-tukar duit syiling tidak lagi tersedia di negeri anda. Kami akan bergerak di luar negeri-negeri yang lebih lama lagi.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Ralat berlaku apabila anda mendapatkan %@ keseimbangan. Silakan coba lagi nanti. Butir-butir: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Ralat berlaku apabila mendapat anggaran memetik. Silakan coba lagi nanti. Butir-butir: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Disimpan untuk ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Diterima dari ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Perintah Sejarah";
+
+/* (No Commment) */
+"Incoming" = "Masuk";
+
+/* (No Commment) */
+"Trade Expired" = "Perdagangan Tamat";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Perdagangan anda telah tamat. Sila kembali ke halaman Pertukaran untuk berdagang lagi.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Tidak ada Dana untuk Pertukaran";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Anda tidak punya dana untuk pertukaran. Mengapa tidak mulai dengan menerima beberapa dana?";
+
+/* (No Commment) */
+"Loading Exchange" = "Loading Pertukaran";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Pilih yang lain %@ Dompet";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ diperlukan untuk pertukaran";
+
+/* (No Commment) */
+"Start trading" = "Memulakan perniagaan";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Perdagangan kripto langsung dari anda Menerima dompet. Mulailah dengan membuat akaun di Jual Beli tab.";
+
+/* (No Commment) */
+"The wait is over" = "Tunggu selesai";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Sesuatu yang salah, sila cuba pembukaan kembali Membeli dan Menjual dengan Kripto lagi.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Membeli Dan Menjual Dengan Kripto";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Kami bekerja dengan rakan-rakan pertukaran seluruh dunia, jadi kau bisa membeli dan menjual kripto langsung dari dompet anda.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Bergerak Jual Beli disokong hack 9 dan up. Sila menjalankan perangkat kemas atau masuk blockchain.info/wallet/login pada komputer anda.";

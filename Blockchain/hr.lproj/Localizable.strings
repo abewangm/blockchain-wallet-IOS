@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ova akcija zahtijeva privatni ključ za Bitcoin adresa %@. Skenirajte QR kod.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ova akcija zahtijeva drugu lozinku za novčanik bitcoin. Molimo unesite ga ispod i pritisnite dalje.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Ova akcija zahtijeva drugu lozinku za novčanik. Molimo unesite ga ispod i pritisnite dalje.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ova adresa se već koristi. Molimo prijavite se.";
@@ -1606,7 +1606,7 @@
 "May be at risk for a double spend." = "Može postojati rizik za dvostruko potrošiti.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Za vašu sigurnost, ne čuvajte lozinke na datoteku. Sigurnosna kopija novčanik kako bi se osiguralo tvoj bitcoins su sigurna u slučaju da izgubite lozinku.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Za vašu sigurnost, ne čuvajte lozinke na datoteku. Sigurnosna kopija novčanik kako bi se osiguralo tvoj sredstvima su sigurna u slučaju da izgubite lozinku.";
 
 /* (No Commment) */
 "Wallets" = "Novčanike";
@@ -1643,7 +1643,7 @@
 
 "Backup Needed" = "Sigurnosna kopija potrebno";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Sredstva u slučaju izgubljene lozinke pomoću oporavka izraz.  Svatko tko ima pristup tvoj oporavak fraza možete pristupiti tvoj bitcoin, neka to radi negdje sigurno.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Sredstva u slučaju izgubljene lozinke pomoću oporavka izraz.  Svatko tko ima pristup tvoj oporavak fraza možete pristupiti tvoj fondova, neka to radi negdje sigurno.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Sljedećih 12 riječ oporavak izraz dobit ćete pristup k svojim novčanim sredstvima u slučaju da izgubite lozinku.";
 
@@ -1807,3 +1807,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Ruska Rublja";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Ostaci Биткоин";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Unesite adresu ili izaberite eter";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Plaćanje Poslan! Svoje stanje i transakcija će se ažurirati u bilo koje vrijeme uskoro.";
+
+/* (No Commment) */
+"Waiting for payment" = "Čekam plaćanja";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Molimo pričekajte dok se vaš posljednji posao eter potvrđuje.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Биткоин Adresa";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Биткоин МАП trgovačke usluge";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Neispravno eter adresa: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Došlo je do greške prilikom dobivanje najnovijih kartografskih podataka. Molimo vas, pokušajte ponovno kasnije.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Zaključak bavi se događa kada se poslati i zahtjev za eter.";
+
+/* (No Commment) */
+"Request Ether" = "Na Zahtjev Eter";
+
+/* (No Commment) */
+"Dashboard" = "Ploče s instrumentima";
+
+/* (No Commment) */
+"Week" = "Tjedno";
+
+/* (No Commment) */
+"Month" = "Mjesec";
+
+/* (No Commment) */
+"Year" = "Godine";
+
+/* (No Commment) */
+"Bitcoin Price" = "Cijena Bitcoin";
+
+/* (No Commment) */
+"Ether Price" = "Cijena Eter";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Adrese ugovor ne podržava.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "U ovom trenutku mi podržavamo samo osmijeh. Vi ne možete primati ugled, INC, ГНТ, ГНО, DSU, PDA.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Sada podržava eter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Vi ste pitali smo slušali. Mi smo zadovoljstvom, da vaš blockchain novčanik sada će vam omogućiti da lako mogu slati i primati eter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Počnimo s airwaves";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Da biste koristili ovu uslugu, trebate unijeti svoj drugi lozinku. Morate samo jednom upisati ove postavke za eterična novčanik.";
+
+/* (No Commment) */
+"Enter Ether address" = "Unesite svoju adresu airwaves";
+
+/* (No Commment) */
+"Day" = "Dan";
+
+/* (No Commment) */
+"All" = "Sve";
+
+/* (No Commment) */
+"Please send ether to %@." = "Molimo, pošaljite eter %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Биткоин zahtjev za plaćanje";
+
+/* (No Commment) */
+"Ether payment request" = "Zahtjev za plaćanje eter";
+
+/* (No Commment) */
+"My Ether Wallet" = "Moj Eter Novčanik";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Rudari primaju ovu naknadu za obavljanje ove operacije.";
+
+/* (No Commment) */
+"Get Ether" = "Da Eter";
+
+/* (No Commment) */
+"at" = "na";
+
+/* (No Commment) */
+"Exchange" = "Razmjena";
+
+/* (No Commment) */
+"New Exchange" = "Nova Burza";
+
+/* (No Commment) */
+"Use minimum" = "Koristiti najmanje";
+
+/* (No Commment) */
+"Use maximum" = "Maksimalno korištenje";
+
+/* (No Commment) */
+"Sending Funds" = "Slanje Novca";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Hvala za postavljanje svoje trgovine! Tečaj obrta može potrajati i do dva sata, a možete i pratiti napredak vaše trgovine u odjeljku Povijest narudžbi.";
+
+/* (No Commment) */
+"In Progress" = "U Tijeku";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Razmjena može potrajati i do dva sata, možete pratiti vaše razmjena napredak u povijesti reda. Čim se transakcija završi, vaš eter stiže u Vaš novčanik.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Vaša transakcija je otkazana. Molim vas, vratite se na karticu za razmjenu da se ponovno pokrenuti vašu trgovinu.";
+
+/* (No Commment) */
+"Failed" = "Neuspješno";
+
+/* (No Commment) */
+"Exchange Failed" = "Razmjena Ne";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Ova trgovina nije uspjela. Bilo novčanih sredstava, poslanih Vaš novčanik će vam biti vraćen manje provizije platnog sustava. Molim vas, vratite se na karticu za razmjenu početi novu trgovinu.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Vaša trgovina je istekao. Molim vas, vratite se na karticu za razmjenu početi novu trgovinu.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Sada možete razmjenjivati svoje bitcoin u eter i obrnuto izravno iz Vašeg novčanika blockchain!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ na depozit";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ moraju biti dobiveni";
+
+/* (No Commment) */
+"Exchange Rate" = "Tečaj";
+
+/* (No Commment) */
+"Transaction Fee" = "Naknada Za Transakcije";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Naknada Mrežnih Transakcija";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Друидских Naknade Za Podizanje";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Slažem Se Друидских";
+
+/* (No Commment) */
+"terms and conditions" = "uvjeti";
+
+/* (No Commment) */
+"Exchange In Progress" = "Zamjenu Za Napredak";
+
+/* (No Commment) */
+"Exchange Completed" = "Razmjena Završen";
+
+/* (No Commment) */
+"Get started" = "Počnimo";
+
+/* (No Commment) */
+"Below minimum limit" = "Ispod donje granice";
+
+/* (No Commment) */
+"Above maximum limit" = "Iznad gornje granice";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nije dovoljno za razmjenu";
+
+/* (No Commment) */
+"Order ID" = "ID naloga";
+
+/* (No Commment) */
+"Total %@ spent" = "Ukupna %@ proveo";
+
+/* (No Commment) */
+"Getting quote" = "Uzimajući Citat";
+
+/* (No Commment) */
+"Confirming" = "Dokaz o";
+
+/* (No Commment) */
+"Exchange In Progress" = "Zamjenu Za Napredak";
+
+/* (No Commment) */
+"Complete" = "Potpuni";
+
+/* (No Commment) */
+"Exchange Completed" = "Razmjena Završen";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citat istječe u %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Korak %d od %d";
+
+/* (No Commment) */
+"Select your State:" = "Odaberite svoje stanje:";
+
+/* (No Commment) */
+"Select State" = "Odaberite Stanje";
+
+/* (No Commment) */
+"Not Available" = "Nije Dostupan";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Razmjena novca još nije dostupna u vašoj državi. Mi ćemo role više država.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Došlo je do greške prilikom uzimajući vaše %@ ravnotežu. Molimo vas, pokušajte ponovno kasnije. Detalji: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Došlo je do greške prilikom primanja približan Citat. Molimo vas, pokušajte ponovno kasnije. Detalji: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Imajući u Друидских";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Dobiveni iz Друидских";
+
+/* (No Commment) */
+"Order History" = "Povijest Narudžbi";
+
+/* (No Commment) */
+"Incoming" = "Ulazni";
+
+/* (No Commment) */
+"Trade Expired" = "Trgovanje Je Istekao";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Vaša trgovina je istekao. Molim vas, vratite se na stranicu za razmjenu da se ponovno pokrenuti vašu trgovinu.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Nema sredstava za razmjenu";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nemate sredstava za razmjenu. zašto ne početi primati neki način?";
+
+/* (No Commment) */
+"Loading Exchange" = "Razmjena Preuzimanje";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Odaberite drugi %@ novčanik";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ potrebnih za razmjenu";
+
+/* (No Commment) */
+"Start trading" = "Početak trgovanja";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Trgovanje bitcoin izravno s Vašeg novčanika blockchain. Počnite sa stvaranjem računa u odjeljku za Kupiti i prodati.";
+
+/* (No Commment) */
+"The wait is over" = "Čekanje je završilo";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Nešto je pošlo po zlu, molimo vas, pokušajte ponovno otvoriti Kupiti i opet prodaju bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Za Kupnju I Prodaju Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Mi radimo s poslovnim partnerima širom svijeta, tako da možete kupiti i prodati bitcoin izravno s Vašeg novčanika.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobilni Kupiti i prodati održava na iOS 9 i gore. Molimo vas ažurirajte softver ili se prijavite na blockchain.info/wallet/login na vašem računalu.";

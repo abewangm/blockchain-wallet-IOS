@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Denne handling kræver den private nøgle for Bitcoin adresse %@. Venligst scanne QR-koden.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Denne handling kræver en anden adgangskode til tegnebogen bitcoin. Angiv det venligst nedenfor og tryk på Fortsæt.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Denne handling kræver en anden adgangskode til tegnebogen. Angiv det venligst nedenfor og tryk på Fortsæt.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Denne adresse er allerede blevet brugt. Venligst login.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Kan være i fare for en dobbelt forbrug.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "For din sikkerhed, må vi ikke holde eventuelle adgangskoder på fil. Backup din pung til at sikre din bitcoins er sikker, hvis du mister din adgangskode.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "For din sikkerhed, må vi ikke holde eventuelle adgangskoder på fil. Backup din pung til at sikre dine midler er sikker, hvis du mister din adgangskode.";
 
 /* (No Commment) */
 "Wallets" = "Tegnebøger";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Backup behov";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Bruge din opsving sætning til at gendanne dine midler i tilfælde af en mistet kodeord.  Enhver med adgang til din opsving sætning kan få adgang til din bitcoin, så holder det offline et eller andet sted sikkert.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Bruge din opsving sætning til at gendanne dine midler i tilfælde af en mistet kodeord.  Enhver med adgang til din opsving sætning kan få adgang til dine midler, så holder det offline et eller andet sted sikkert.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Følgende 12 ordet opsving sætning vil give dig adgang til dine penge, hvis du mister din adgangskode.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Russiske Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldi";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Indtast Ether-adresse, eller vælge";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Betaling Sendt! Din saldo og transaktioner vil opdatere snart.";
+
+/* (No Commment) */
+"Waiting for payment" = "Venter på betaling";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Vent, indtil din sidste ether transaktion bekræfter.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin Adresser";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Købmand Kort";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Ugyldig Ether adresse: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Der opstod en fejl under hentning af de nyeste kortdata. Prøv venligst igen senere.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Transaktioner forekomme, når du sender og eter anmodning.";
+
+/* (No Commment) */
+"Request Ether" = "Eter Anmodning";
+
+/* (No Commment) */
+"Dashboard" = "Dashboard";
+
+/* (No Commment) */
+"Week" = "Uge";
+
+/* (No Commment) */
+"Month" = "Måned";
+
+/* (No Commment) */
+"Year" = "År";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Pris";
+
+/* (No Commment) */
+"Ether Price" = "Ether Pris";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Kontrakt-adresser er ikke understøttet.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "I øjeblikket understøtter vi kun ETH. Du kan ikke modtage REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Nu støtter Ether";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Du spurgte vi lyttede. Vi er glade for at meddele, at din Blokkæden wallet vil nu kan du uden problemer sende og modtage ether!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Komme i Gang med Ether";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "For at bruge denne service, vil vi anmode dig om at indtaste din anden adgangskode. Du bør kun nødvendigt at indtaste denne gang for at oprette din Ether tegnebog.";
+
+/* (No Commment) */
+"Enter Ether address" = "Indtast Ether-adresse";
+
+/* (No Commment) */
+"Day" = "Dag";
+
+/* (No Commment) */
+"All" = "Alle";
+
+/* (No Commment) */
+"Please send ether to %@." = "Send ether at %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin anmodning om betaling";
+
+/* (No Commment) */
+"Ether payment request" = "Eter anmodning om betaling";
+
+/* (No Commment) */
+"My Ether Wallet" = "Min Ether Tegnebog";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Minearbejdere modtage dette gebyr for at behandle transaktionen.";
+
+/* (No Commment) */
+"Get Ether" = "Få Ether";
+
+/* (No Commment) */
+"at" = "på";
+
+/* (No Commment) */
+"Exchange" = "Udveksling";
+
+/* (No Commment) */
+"New Exchange" = "Ny Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Brug minimum";
+
+/* (No Commment) */
+"Use maximum" = "Brug maksimal";
+
+/* (No Commment) */
+"Sending Funds" = "Sender Penge";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Tak for at placere din handel! Exchange handler kan tage op til to timer, og du kan holde styr på din handel fremskridt i den Rækkefølge, Historie sektion.";
+
+/* (No Commment) */
+"In Progress" = "I Gang";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Udvekslinger kan tage op til to timer, kan du holde styr på din exchange fremskridt i den Rækkefølge Historie. Når handlen er færdig, din ether vil ankomme i din tegnebog.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Din handel er blevet aflyst. Vend venligst tilbage til udveksling tab for at starte din handel igen.";
+
+/* (No Commment) */
+"Failed" = "Mislykkedes";
+
+/* (No Commment) */
+"Exchange Failed" = "Udveksling Mislykkedes";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Denne handel er slået fejl. Alle penge, der sendes fra din konto vil blive returneret minus gebyr. Vend venligst tilbage til udveksling tab for at starte en ny handel.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Din handel er udløbet. Vend venligst tilbage til udveksling tab for at starte en ny handel.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Du kan nu bytte din bitcoin for ether og vice versa direkte fra din Blokkæden tegnebog!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ til Depositum";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ at blive Modtaget";
+
+/* (No Commment) */
+"Exchange Rate" = "Kursen";
+
+/* (No Commment) */
+"Transaction Fee" = "Gebyr";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Netværk Transaktion Gebyr";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Tilbagetrækning Gebyr";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Enig i, at ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "vilkår og betingelser";
+
+/* (No Commment) */
+"Exchange In Progress" = "Udveksling I Gang";
+
+/* (No Commment) */
+"Exchange Completed" = "Udveksling Afsluttet";
+
+/* (No Commment) */
+"Get started" = "Komme i gang";
+
+/* (No Commment) */
+"Below minimum limit" = "Nedenfor minimum grænse";
+
+/* (No Commment) */
+"Above maximum limit" = "Ovennævnte maksimale grænse";
+
+/* (No Commment) */
+"Not enough to exchange" = "Ikke nok til at udveksle";
+
+/* (No Commment) */
+"Order ID" = "Ordre-ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Alt %@ brugt";
+
+/* (No Commment) */
+"Getting quote" = "Få tilbud";
+
+/* (No Commment) */
+"Confirming" = "Bekræftelse";
+
+/* (No Commment) */
+"Exchange In Progress" = "Udveksling I Gang";
+
+/* (No Commment) */
+"Complete" = "Komplet";
+
+/* (No Commment) */
+"Exchange Completed" = "Udveksling Afsluttet";
+
+/* (No Commment) */
+"Quote expires in %@" = "Tilbud udløber i %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Trin %d af %d";
+
+/* (No Commment) */
+"Select your State:" = "Vælg din Tilstand:";
+
+/* (No Commment) */
+"Select State" = "Vælg Tilstand";
+
+/* (No Commment) */
+"Not Available" = "Ikke Tilgængelig";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Udveksling af mønter, er endnu ikke tilgængelig i dit land. Vi vil være rullende ud i flere lande snart.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Der opstod en fejl, når din %@ balance. Prøv venligst igen senere. Detaljer: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Der opstod en fejl når at få en omtrentlig citat. Prøv venligst igen senere. Detaljer: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Deponeret til at ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Modtaget fra ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Ordre Historik";
+
+/* (No Commment) */
+"Incoming" = "Indgående";
+
+/* (No Commment) */
+"Trade Expired" = "Handel Udløb";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Din handel er udløbet. Vend venligst tilbage til Udveksling side for at starte din handel igen.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Ingen Midler til at Udveksle";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Du har ingen midler til at udveksle. Hvorfor ikke komme i gang ved at modtage nogle midler?";
+
+/* (No Commment) */
+"Loading Exchange" = "Ilægning Veksle";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Vælg andre %@ Tegnebog";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ er nødvendige for at udveksle";
+
+/* (No Commment) */
+"Start trading" = "Start handel";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Handel bitcoin direkte fra din Blokkæden tegnebog. Start med at oprette en konto i Køb & Sælg-fanen.";
+
+/* (No Commment) */
+"The wait is over" = "Ventetiden er ovre";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Noget gik galt, så prøv at genåbne Køb & Sælg Bitcoin igen.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Køb & Sælg Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Vi arbejder med exchange partnere over hele verden, så kan du købe og sælge bitcoin direkte fra din tegnebog.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Køb & Sælg understøttes af iOS 9 og op. Skal du køre en software opdatering eller log på blockchain.info/wallet/login på din computer.";

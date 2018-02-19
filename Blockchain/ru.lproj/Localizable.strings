@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Для этого действия требуется личный ключ для Bitcoin-адреса %@. Сканируйте QR-код.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька bitcoin. Введите его ниже и нажмите продолжить.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Это действие требует введения второго пароля для кошелька. Введите его ниже и нажмите продолжить.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Этот адрес уже используется. Войдите в систему.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Может быть опасность возникновения двойной расходов.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Для вашей же безопасности мы не сберегаем какие либо пароли в файле. Создайте резервную копию своего кошелька, чтобы иметь доступ к своим средствам в случае утраты пароля.";
 
 /* (No Commment) */
 "Wallets" = "кошелкам";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "Необходимо резервное копирование";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Используйте фразу для восстановления доступа, чтобы восстановить средства в случае потери пароля. Любой человек, знающий вашу фразу для восстановления, сможет получить доступ к вашим биткоинам, поэтому храните фразу для восстановления доступа в надежном месте не в Интернете.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Используйте фразу для восстановления доступа, чтобы восстановить средства в случае потери пароля. Любой человек, знающий вашу фразу для восстановления, сможет получить доступ к вашим средствам, поэтому храните фразу для восстановления доступа в надежном месте не в Интернете.";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "Следующая фраза для восстановления доступа из 12 слов даст вам доступ к вашим деньгам, если вы потеряете пароль.";
@@ -1916,3 +1916,216 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Чтобы использовать этот сервис, вам необходимо ввести свой второй пароль. Ввести второй пароль потребуется только один раз, чтобы завести ваш кошелек Эфириум.";
+
+/* (No Commment) */
+"Enter Ether address" = "Введите Ether адрес";
+
+/* (No Commment) */
+"Day" = "День";
+
+/* (No Commment) */
+"All" = "Все";
+
+/* (No Commment) */
+"Please send ether to %@." = "Пожалуйста, отправьте ether на %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Требование платежа Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "Требование платежа Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "Мой Ether кошелек";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Майнеры получают комиссию за обработку этой транзакции.";
+
+/* (No Commment) */
+"Get Ether" = "Приобретите Ether";
+
+/* (No Commment) */
+"at" = "в";
+
+/* (No Commment) */
+"Exchange" = "Обмене";
+
+/* (No Commment) */
+"New Exchange" = "Новый обмен";
+
+/* (No Commment) */
+"Use minimum" = "Использовать минимум";
+
+/* (No Commment) */
+"Use maximum" = "Использовать максимум";
+
+/* (No Commment) */
+"Sending Funds" = "Отправить средства";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Спасибо за размещение вашей сделки! Выполнение сделок обмена может занять до двух часов, и вы можете отслеживать ход выполнения вашей сделки в разделе «История заказов».";
+
+/* (No Commment) */
+"In Progress" = "В процессе";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Выполнение обмена может занять до двух часов; вы можете отслеживать ход выполнения вашего обмена в разделе «История ордеров». Как только сделка будет выполнена, ваш ether появится в вашем кошельке.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Ваша сделка отменена. Вернитесь на вкладку обмена, чтобы снова начать вашу сделку.";
+
+/* (No Commment) */
+"Failed" = "Неудача";
+
+/* (No Commment) */
+"Exchange Failed" = "Не удалось обменять";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Эта сделка завершилась неудачей. Любые средства, отправленные из вашего кошелька, будут возвращен за вычетом комиссии за транзакцию. Вернитесь на вкладку обмена, чтобы начать новую сделку.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Срок вашей сделки истек. Вернитесь на вкладку обмена, чтобы начать новую сделку.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Теперь вы можете менять свои bitcoin на ether и наоборот прямо из своего кошелька Blockchain!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ для внесения";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ для получения";
+
+/* (No Commment) */
+"Exchange Rate" = "Обменный курс";
+
+/* (No Commment) */
+"Transaction Fee" = "Комиссия за транзакцию";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Комиссия сети за транзакцию";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Комиссия за вывод средств ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Согласен(на) на ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "положения и условия";
+
+/* (No Commment) */
+"Exchange In Progress" = "Выполняется обмен";
+
+/* (No Commment) */
+"Exchange Completed" = "Обмен завершен";
+
+/* (No Commment) */
+"Get started" = "Начало работы";
+
+/* (No Commment) */
+"Below minimum limit" = "Ниже минимального предела";
+
+/* (No Commment) */
+"Above maximum limit" = "Выше максимального предела";
+
+/* (No Commment) */
+"Not enough to exchange" = "Недостаточно для обмена";
+
+/* (No Commment) */
+"Order ID" = "Идентификатор заказа";
+
+/* (No Commment) */
+"Total %@ spent" = "Итого потрачено %@";
+
+/* (No Commment) */
+"Getting quote" = "Получение котировки...";
+
+/* (No Commment) */
+"Confirming" = "Подтверждение...";
+
+/* (No Commment) */
+"Exchange In Progress" = "Выполняется обмен";
+
+/* (No Commment) */
+"Complete" = "Завершен";
+
+/* (No Commment) */
+"Exchange Completed" = "Обмен завершен";
+
+/* (No Commment) */
+"Quote expires in %@" = "Срок котировки истекает через %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Шаг %d из %d";
+
+/* (No Commment) */
+"Select your State:" = "Выберите свое штат:";
+
+/* (No Commment) */
+"Select State" = "Выбор штата";
+
+/* (No Commment) */
+"Not Available" = "Недоступен";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Обмен монет еще не доступен в вашем штате. Мы скоро внедрим его в большем числе штатов.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "При сохранении вашего баланса %@ произошла ошибка. Повторите попытку позже. Подробные сведения: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "При получении приблизительной котировки произошла ошибка. Повторите попытку позже. Подробные сведения: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Внесено в ShapeShift";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Получено от ShapeShift";
+
+/* (No Commment) */
+"Order History" = "История заказов";
+
+/* (No Commment) */
+"Incoming" = "Входящие";
+
+/* (No Commment) */
+"Trade Expired" = "Срок сделки истек";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Срок вашей сделки истек. Вернитесь на страницу «Обмен», чтобы заново начать свою сделку.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Нет средств для обмена";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "У вас средств нет для обмена. Почему бы не начать с получения некоторой суммы средств?";
+
+/* (No Commment) */
+"Loading Exchange" = "Загрузка обмена...";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Выберите другой кошелек %@";
+
+/* (No Commment) */
+"%@ needed to exchange" = "Для обмена нужно %@";
+
+/* (No Commment) */
+"Start trading" = "Начать торговать";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Торговля bitcoin напрямую с Вашего кошелька blockchain. Начните с создания учетной записи в разделе Купить и продать.";
+
+/* (No Commment) */
+"The wait is over" = "Ожидание закончилось";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Что-то пошло не так, пожалуйста, попробуйте вновь открыть Купить и снова продать bitcoin.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Купить И Продать Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Мы работаем с деловыми партнерами по всему миру, так что вы можете купить и продать bitcoin напрямую с Вашего кошелька.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Мобильный Купить и продать поддерживается на iOS 9 и выше. Пожалуйста, выполните обновление программного обеспечения или войдите на blockchain.info/wallet/login на вашем компьютере.";

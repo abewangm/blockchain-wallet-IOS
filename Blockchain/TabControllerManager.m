@@ -7,6 +7,7 @@
 //
 
 #import "TabControllerManager.h"
+#import "BCNavigationController.h"
 
 @implementation TabControllerManager
 
@@ -70,7 +71,10 @@
 - (void)logout
 {
     [self updateTransactionsViewControllerData:nil];
+    [self.sendEtherViewController clearFundsAvailable];
     [_receiveBitcoinViewController clearAmounts];
+    
+    [self dashBoardClicked:nil];
 }
 
 - (void)forgetWallet
@@ -343,6 +347,7 @@
     [self.sendBitcoinViewController reloadFeeAmountLabel];
     [self.sendEtherViewController keepCurrentPayment];
     [self.receiveBitcoinViewController doCurrencyConversion];
+    [self.transactionsEtherViewController reload];
 }
 
 - (void)setupBitcoinPaymentFromURLHandlerWithAmountString:(NSString *)amountString address:(NSString *)address
@@ -417,6 +422,7 @@
     [_transactionsBitcoinViewController reloadSymbols];
     [_transactionsEtherViewController reloadSymbols];
     [_tabViewController reloadSymbols];
+    [_exchangeOverviewViewController reloadSymbols];
 }
 
 - (void)reloadSendController
@@ -582,6 +588,89 @@
         
         [_tabViewController setActiveViewController:_sendEtherViewController animated:NO index:TAB_SEND];
     }
+}
+
+- (void)exchangeClicked
+{
+    if ([app.wallet hasEthAccount]) {
+        self.exchangeOverviewViewController = [ExchangeOverviewViewController new];
+        BCNavigationController *navigationController = [[BCNavigationController alloc] initWithRootViewController:self.exchangeOverviewViewController title:BC_STRING_EXCHANGE];
+        [self.tabViewController presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        if ([app.wallet needsSecondPassword]) {
+            [app getSecondPassword:^(NSString *secondPassword) {
+                [app.wallet createEthAccountForExchange:secondPassword];
+            } error:nil helperText:BC_STRING_ETHER_ACCOUNT_SECOND_PASSWORD_PROMPT];
+        } else {
+            [app.wallet createEthAccountForExchange:nil];
+        }
+    }
+}
+
+- (void)didCreateEthAccountForExchange
+{
+    [self exchangeClicked];
+}
+
+- (void)didGetExchangeTrades:(NSArray *)trades
+{
+    [self.exchangeOverviewViewController didGetExchangeTrades:trades];
+}
+
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetExchangeRate:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableEthBalance:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.exchangeOverviewViewController didGetAvailableBtcBalance:result];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    [self.exchangeOverviewViewController didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.exchangeOverviewViewController didShiftPayment:info];
+}
+
+- (void)showGetAssetsAlert
+{
+    UIAlertController *showGetAssetsAlert = [UIAlertController alertControllerWithTitle:BC_STRING_NO_FUNDS_TO_EXCHANGE_TITLE message:BC_STRING_NO_FUNDS_TO_EXCHANGE_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+    
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_GET_BITCOIN style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tabViewController dismissViewControllerAnimated:YES completion:^{
+            if ([app.wallet isBuyEnabled]) {
+                [app buyBitcoinClicked:nil];
+            } else {
+                [app closeSideMenu];
+                [self.tabViewController selectAsset:AssetTypeBitcoin];
+                [self receiveCoinClicked:nil];
+            }
+        }];
+    }]];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_GET_ETHER style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tabViewController dismissViewControllerAnimated:YES completion:^{
+            [app closeSideMenu];
+            [self.tabViewController selectAsset:AssetTypeEther];
+            [self receiveCoinClicked:nil];
+        }];
+    }]];
+    [showGetAssetsAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_CANCEL style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [app closeSideMenu];
+        [self.tabViewController dismissViewControllerAnimated:YES completion:nil];
+        [self showDashboard];
+    }]];
+    
+    [self.tabViewController.presentedViewController presentViewController:showGetAssetsAlert animated:YES completion:nil];
 }
 
 @end

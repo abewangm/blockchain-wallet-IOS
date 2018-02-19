@@ -26,6 +26,9 @@
 @synthesize accounts;
 @synthesize accountLabels;
 
+@synthesize ethAccounts;
+@synthesize ethAccountLabels;
+
 @synthesize wallet;
 @synthesize delegate;
 
@@ -35,6 +38,7 @@ int contactsSectionNumber;
 int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
+int ethAccountsSectionNumber;
 
 - (id)initWithWallet:(Wallet *)_wallet selectMode:(SelectMode)_selectMode
 {
@@ -58,6 +62,9 @@ int legacyAddressesSectionNumber;
         legacyAddresses = [NSMutableArray array];
         legacyAddressLabels = [NSMutableArray array];
         
+        ethAccounts = [NSMutableArray array];
+        ethAccountLabels = [NSMutableArray array];
+        
         // Select from address
         if ([self showFromAddresses]) {
             // First show the HD accounts with positive balance
@@ -74,6 +81,11 @@ int legacyAddressesSectionNumber;
                     [accounts addObject:[NSNumber numberWithInt:i]];
                     [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
+            }
+            
+            if (selectMode == SelectModeExchangeAccountFrom && [app.wallet hasEthAccount]) {
+                [ethAccounts addObject:[NSNumber numberWithInt:0]];
+                [ethAccountLabels addObject:BC_STRING_MY_ETHER_WALLET];
             }
             
             // Then show user's active legacy addresses with a positive balance
@@ -97,6 +109,7 @@ int legacyAddressesSectionNumber;
             addressBookSectionNumber = -1;
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
             accountsSectionNumber = contactsSectionNumber + 1;
+            ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
         }
         // Select to address
@@ -122,6 +135,11 @@ int legacyAddressesSectionNumber;
                     [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
                 
+                if (selectMode == SelectModeExchangeAccountTo && [app.wallet hasEthAccount]) {
+                    [ethAccounts addObject:[NSNumber numberWithInt:0]];
+                    [ethAccountLabels addObject:BC_STRING_MY_ETHER_WALLET];
+                }
+                
                 // Finally show all the user's active legacy addresses
                 if (![self accountsOnly]) {
                     for (NSString * addr in _wallet.activeLegacyAddresses) {
@@ -133,6 +151,7 @@ int legacyAddressesSectionNumber;
             
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
             accountsSectionNumber = contactsSectionNumber + 1;
+            ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
             if (addressBookAddresses.count > 0) {
                 addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : accountsSectionNumber + 1;
@@ -178,17 +197,30 @@ int legacyAddressesSectionNumber;
 
 - (BOOL)showFromAddresses
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendFrom || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter;
+    return selectMode == SelectModeReceiveTo ||
+    selectMode == SelectModeSendFrom ||
+    selectMode == SelectModeTransferTo ||
+    selectMode == SelectModeFilter ||
+    selectMode == SelectModeExchangeAccountFrom;
 }
 
 - (BOOL)accountsOnly
 {
-    return selectMode == SelectModeTransferTo || selectMode == SelectModeReceiveFromContact;
+    return selectMode == SelectModeTransferTo ||
+    selectMode == SelectModeReceiveFromContact ||
+    selectMode == SelectModeExchangeAccountFrom ||
+    selectMode == SelectModeExchangeAccountTo;
 }
 
 - (BOOL)allSelectable
 {
-    return selectMode == SelectModeReceiveTo || selectMode == SelectModeSendTo || selectMode == SelectModeTransferTo || selectMode == SelectModeFilter || selectMode == SelectModeReceiveFromContact;
+    return selectMode == SelectModeReceiveTo ||
+    selectMode == SelectModeSendTo ||
+    selectMode == SelectModeTransferTo ||
+    selectMode == SelectModeFilter ||
+    selectMode == SelectModeReceiveFromContact ||
+    selectMode == SelectModeExchangeAccountFrom ||
+    selectMode == SelectModeExchangeAccountTo;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -209,6 +241,9 @@ int legacyAddressesSectionNumber;
             } else {
                 [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
             }
+        }
+        else if (indexPath.section == ethAccountsSectionNumber) {
+            [delegate didSelectFromEthAccount];
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
             
@@ -236,6 +271,9 @@ int legacyAddressesSectionNumber;
         else if (indexPath.section == accountsSectionNumber) {
             [delegate didSelectToAccount:[app.wallet getIndexOfActiveAccount:(int)indexPath.row]];
         }
+        else if (indexPath.section == ethAccountsSectionNumber) {
+            [delegate didSelectToEthAccount];
+        }
         else if (indexPath.section == legacyAddressesSectionNumber) {
             [delegate didSelectToAddress:[legacyAddresses objectAtIndex:[indexPath row]]];
         }
@@ -253,10 +291,16 @@ int legacyAddressesSectionNumber;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self showFromAddresses]) {
-        return  (accounts.count > 0 ? 1 : 0) + (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
+        return (accounts.count > 0 ? 1 : 0) +
+        (ethAccounts.count > 0 ? 1 : 0) +
+        (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
     }
     
-    return (addressBookAddresses.count > 0 ? 1 : 0) + (accounts.count > 0 ? 1 : 0) + (legacyAddresses.count > 0 ? 1 : 0) + (contacts.count > 0 ? 1 : 0);
+    return (addressBookAddresses.count > 0 ? 1 : 0) +
+    (accounts.count > 0 ? 1 : 0) +
+    (ethAccounts.count > 0 ? 1 : 0) +
+    (legacyAddresses.count > 0 ? 1 : 0) +
+    (contacts.count > 0 ? 1 : 0);
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -275,6 +319,9 @@ int legacyAddressesSectionNumber;
     if ([self showFromAddresses]) {
         if (section == accountsSectionNumber) {
             labelString = selectMode == SelectModeFilter ? @"" : BC_STRING_WALLETS;
+        }
+        else if (section == ethAccountsSectionNumber) {
+            labelString = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
             labelString = BC_STRING_IMPORTED_ADDRESSES;
@@ -317,6 +364,9 @@ int legacyAddressesSectionNumber;
                 return accounts.count;
             }
         }
+        else if (section == ethAccountsSectionNumber) {
+            return ethAccounts.count;
+        }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
         }
@@ -330,6 +380,9 @@ int legacyAddressesSectionNumber;
         }
         else if (section == accountsSectionNumber) {
             return accounts.count;
+        }
+        else if (section == ethAccountsSectionNumber) {
+            return ethAccounts.count;
         }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
@@ -350,7 +403,7 @@ int legacyAddressesSectionNumber;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber) {
+    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber || indexPath.section == ethAccountsSectionNumber) {
         return ROW_HEIGHT_ACCOUNT;
     }
     
@@ -389,6 +442,10 @@ int legacyAddressesSectionNumber;
             
             cell.addressLabel.text = nil;
         }
+        else if (section == ethAccountsSectionNumber) {
+            label = BC_STRING_MY_ETHER_WALLET;
+            cell.addressLabel.text = nil;
+        }
         else if (section == legacyAddressesSectionNumber) {
             label = [legacyAddressLabels objectAtIndex:row];
             cell.addressLabel.text = [legacyAddresses objectAtIndex:row];
@@ -422,31 +479,41 @@ int legacyAddressesSectionNumber;
             isWatchOnlyLegacyAddress = [app.wallet isWatchOnlyLegacyAddress:addr];
         }
         
-        if ([self showFromAddresses]) {
-            uint64_t balance = 0;
+        if ([self showFromAddresses] || selectMode == SelectModeExchangeAccountTo) {
+            BOOL zeroBalance;
+            uint64_t btcBalance = 0;
             if (section == addressBookSectionNumber) {
-                balance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
+                btcBalance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
             }
             else if (section == accountsSectionNumber) {
                 if (selectMode == SelectModeFilter) {
                     if (accounts.count == row - 1) {
-                        balance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
+                        btcBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
                     } else if (row == 0) {
-                        balance = [app.wallet getTotalActiveBalance];
+                        btcBalance = [app.wallet getTotalActiveBalance];
                     } else {
-                        balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
+                        btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
                     }
                 } else {
-                    balance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                    btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
                 }
             }
             else if (section == legacyAddressesSectionNumber) {
-                balance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
+                btcBalance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
             }
-            cell.balanceLabel.text = [NSNumberFormatter formatMoney:balance];
+            
+            if (section == ethAccountsSectionNumber) {
+                NSDecimalNumber *ethBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getEthBalance]];
+                NSComparisonResult result = [ethBalance compare:[NSDecimalNumber numberWithInt:0]];
+                zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
+                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[ethBalance stringValue]]];
+            } else {
+                zeroBalance = btcBalance == 0;
+                cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
+            }
             
             // Cells with empty balance can't be clicked and are dimmed
-            if (balance == 0 && ![self allSelectable]) {
+            if (zeroBalance && ![self allSelectable]) {
                 cell.userInteractionEnabled = NO;
                 cell.labelLabel.alpha = 0.5;
                 cell.addressLabel.alpha = 0.5;

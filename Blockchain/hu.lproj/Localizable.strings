@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Ez a művelet megköveteli a személyes kulcsot a Bitcoin cím %@. Legyen szíves átkutat a QR-kód.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó bitcoin tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Ez a művelet megköveteli a második jelszó tárcátok. Kérjük, adja meg alább, és sajtó Folytatódik.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Ez a cím már használatban van. Kérjük, jelentkezzen be.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Lehet, hogy veszélyezteti a kettős költeni.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Az Ön biztonsága érdekében a jelszó, a fájl nem tartjuk. Hát a pénztárca annak biztosítása érdekében, a bitcoins biztonságosak abban az esetben, ha elveszíti a jelszavát.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Az Ön biztonsága érdekében a jelszó, a fájl nem tartjuk. Hát a pénztárca annak biztosítása érdekében, a alapok biztonságosak abban az esetben, ha elveszíti a jelszavát.";
 
 /* (No Commment) */
 "Wallets" = "Pénztárca";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Hát szükséges";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "A helyreállítási mondat segítségével állítsa vissza a pénzed, ha elveszett jelszó.  Bárki, aki hozzáfér a helyreállítási mondat hozzáférést a bitcoin, tehát eltartás ez offline valahol biztonságos.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "A helyreállítási mondat segítségével állítsa vissza a pénzed, ha elveszett jelszó.  Bárki, aki hozzáfér a helyreállítási mondat hozzáférést a pénzed, tehát eltartás ez offline valahol biztonságos.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A következő 12 szó helyreállítási mondat kapsz hozzáférést a források, abban az esetben, ha elveszíti a jelszavát.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Orosz Rubel";
+
+/* (No Commment) */
+"Bitcoin Balances" = "A Bitcoin Egyenlegek";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Adja meg Éter címet vagy válassza ki a";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Fizetési Küldött! A mérleg, tranzakciók lesz frissítés hamarosan.";
+
+/* (No Commment) */
+"Waiting for payment" = "Vár fizetés";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Kérjük, várjon, amíg az utolsó éter tranzakció megerősíti.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin-Címek";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "A Bitcoin Kereskedő Térkép";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Érvénytelen Éter cím: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Hiba történt, mialatt a legújabb diagram adatait. Kérjük, próbálja meg újra később.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Tranzakciók fordulhat elő, ha küld, illetve kérés-éter.";
+
+/* (No Commment) */
+"Request Ether" = "Kérés-Éter";
+
+/* (No Commment) */
+"Dashboard" = "Műszerfal";
+
+/* (No Commment) */
+"Week" = "Hét";
+
+/* (No Commment) */
+"Month" = "Hónap";
+
+/* (No Commment) */
+"Year" = "Év";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Ára";
+
+/* (No Commment) */
+"Ether Price" = "Éter Ár";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Szerződés címeket nem támogatott.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Abban a pillanatban csak támogatása ETH. Nem fogadhatunk KÉPVISELŐ, ICN, emberiség nevében erre kérjük, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Most már támogatja Éter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Kérte, meghallgattuk. Izgatottan várjuk, hogy be, hogy a Blokklánc tárca most lehetővé teszi, hogy zökkenőmentesen küldeni éter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Ismerkedjen meg az Éter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "A szolgáltatás használatához szükségünk, hogy adja meg a második jelszó. Csak meg kell adnia ezt egyszer kell beállítani az Éter tárca.";
+
+/* (No Commment) */
+"Enter Ether address" = "Adja meg Éter cím";
+
+/* (No Commment) */
+"Day" = "Nap";
+
+/* (No Commment) */
+"All" = "Összes";
+
+/* (No Commment) */
+"Please send ether to %@." = "Kérjük, küldje el éter, hogy %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "A Bitcoin kifizetési kérelem";
+
+/* (No Commment) */
+"Ether payment request" = "Éter kifizetési kérelem";
+
+/* (No Commment) */
+"My Ether Wallet" = "Az Éter Pénztárca";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "A bányászok is megkapja ezt a díjat, hogy a folyamat, ez a tranzakció.";
+
+/* (No Commment) */
+"Get Ether" = "Tudjon Éter";
+
+/* (No Commment) */
+"at" = "a";
+
+/* (No Commment) */
+"Exchange" = "Csere";
+
+/* (No Commment) */
+"New Exchange" = "Új Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Használja a minimális";
+
+/* (No Commment) */
+"Use maximum" = "Használja maximális";
+
+/* (No Commment) */
+"Sending Funds" = "Küld Alapok";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Köszönöm forgalomba a kereskedelem! Az Exchange szakmák, akár két óra, pedig tudja nyomon követni a szakma fejlődését abban a Sorrendben, Történelem szekció.";
+
+/* (No Commment) */
+"In Progress" = "Folyamatban";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Cserék akár két óra alatt lehet nyomon követni, hogy az exchange-haladás a Rend Történetében. Ha a kereskedés teljes, az éter érkezik a tárcájában.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "A kereskedelmi törölték. Kérem, térjen vissza a csere fülön, hogy indítsa el a kereskedelmi újra.";
+
+/* (No Commment) */
+"Failed" = "Sikertelen";
+
+/* (No Commment) */
+"Exchange Failed" = "Csere Nem Sikerült";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Ez a kereskedelem nem sikerült. Minden pénzt küldött, a pénztárca lesz visszatért mínusz a tranzakciós díj. Kérem, térjen vissza a csere fülön, hogy egy új kereskedelmi.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "A kereskedelmi lejárt. Kérem, térjen vissza a csere fülön, hogy egy új kereskedelmi.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Most már exchange a bitcoin-éter, illetve fordítva, közvetlenül a Blokklánc pénztárca!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@, hogy Betét";
+
+/* (No Commment) */
+"%@ to be Received" = "%@, hogy Kapott";
+
+/* (No Commment) */
+"Exchange Rate" = "Árfolyam";
+
+/* (No Commment) */
+"Transaction Fee" = "Tranzakciós Díj";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Hálózati Tranzakciós Díj";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Alakváltás Elállási Díj";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Megállapodnak abban, hogy Alakváltás";
+
+/* (No Commment) */
+"terms and conditions" = "általános szerződési feltételek";
+
+/* (No Commment) */
+"Exchange In Progress" = "Csere Folyamatban";
+
+/* (No Commment) */
+"Exchange Completed" = "Csere Befejezése";
+
+/* (No Commment) */
+"Get started" = "Az induláshoz";
+
+/* (No Commment) */
+"Below minimum limit" = "Az alábbi minimális limit";
+
+/* (No Commment) */
+"Above maximum limit" = "A fenti felső határ";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nem elég, hogy az exchange";
+
+/* (No Commment) */
+"Order ID" = "Rendelés AZONOSÍTÓ";
+
+/* (No Commment) */
+"Total %@ spent" = "Teljes %@ töltött";
+
+/* (No Commment) */
+"Getting quote" = "Egyre idézet";
+
+/* (No Commment) */
+"Confirming" = "Megerősítve";
+
+/* (No Commment) */
+"Exchange In Progress" = "Csere Folyamatban";
+
+/* (No Commment) */
+"Complete" = "Teljes";
+
+/* (No Commment) */
+"Exchange Completed" = "Csere Befejezése";
+
+/* (No Commment) */
+"Quote expires in %@" = "Idézet lejár %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Lépés %d a %d";
+
+/* (No Commment) */
+"Select your State:" = "Válassza ki az Állam:";
+
+/* (No Commment) */
+"Select State" = "Válasszuk Az Állam";
+
+/* (No Commment) */
+"Not Available" = "Nem Elérhető";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Cseréje érmék még nem elérhető az ön állapotát. Nyitunk ki több állam hamarosan.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Hiba történt, amikor egyre a %@ egyensúlyt. Kérjük, próbálja meg újra később. Részletek: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Hiba történt, amikor egy hozzávetőleges árajánlatot. Kérjük, próbálja meg újra később. Részletek: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Letétbe, hogy Alakváltás";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Kapott Alakváltás";
+
+/* (No Commment) */
+"Order History" = "Rendelési Előzmények";
+
+/* (No Commment) */
+"Incoming" = "Bejövő";
+
+/* (No Commment) */
+"Trade Expired" = "Kereskedelmi Lejárt";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "A kereskedelmi lejárt. Kérem, térjen vissza a Csere oldal, hogy indítsa el a kereskedelmi újra.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Nem Pénzeszközök Átváltási";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nincs pénz, hogy az exchange. Miért nem azzal kezdte, akik egyes alapok?";
+
+/* (No Commment) */
+"Loading Exchange" = "Betöltése Árfolyam";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Válasszuk a más %@ Pénztárca";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ szükséges csere";
+
+/* (No Commment) */
+"Start trading" = "Kereskedéshez";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Kereskedelmi bitcoin közvetlenül a Blokklánc tárca. Először hozzon létre egy fiókot a Buy & Eladni a lapot.";
+
+/* (No Commment) */
+"The wait is over" = "A várakozásnak vége";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Valami elromlott, kérjük, próbálkozzon újra Vásárolni & Eladni a Bitcoin újra.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Vásárolni & Eladni A Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Dolgozunk az exchange partnerek a világ minden tájáról, így meg lehet vásárolni, illetve eladni a bitcoin közvetlenül a tárca.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobil Vásárlás & Eladni támogatott iOS 9. Kérjük, fuss egy szoftver frissítés vagy a bejelentkezési blockchain.info/wallet/login a számítógépen.";

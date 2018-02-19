@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Esta ação requer a chave particular para o %@ de endereço Bitcoin. Por favor verificar o código QR.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha para a sua carteira de bitcoin. Digite-a abaixo e pressione continuar.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Esta ação requer a segunda senha para a sua carteira. Digite-a abaixo e pressione continuar.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Este endereço já foi usado. Faça o login.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Podem estar em risco para um passe duplo.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Para sua segurança, nós não guardamos qualquer senhas em arquivo. Backup sua carteira para garantir sua bitcoins estão a salvo no caso de você perder sua senha.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Para sua segurança, nós não guardamos qualquer senhas em arquivo. Backup sua carteira para garantir seus fundos estão a salvo no caso de você perder sua senha.";
 
 /* (No Commment) */
 "Wallets" = "Carteiras";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Cópia de segurança necessária";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu bitcoin, então mantenha-a off-line e em algum lugar seguro.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Use sua frase de recuperação para restaurar seus fundos no caso de uma senha perdida.  Qualquer pessoa com acesso à sua frase de recuperação pode aceder ao seu fundos, então mantenha-a off-line e em algum lugar seguro.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "A seguinte frase de recuperação de 12 palavras dará acesso aos seus fundos no caso de você perder a sua senha.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "O Rublo Russo";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Saldos";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Digite Éter endereço ou seleccione";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Pagamento Enviado! O seu saldo e transações de atualização em breve.";
+
+/* (No Commment) */
+"Waiting for payment" = "Aguardando pagamento";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Por favor, aguarde até que o último éter confirma a transação.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Endereços Bitcoin";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Comerciante Mapa";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Inválido Éter endereço: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Ocorreu um erro ao obter os mais recentes dados do gráfico. Por favor, tente novamente mais tarde.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "As transações ocorrem quando você enviar e solicitação de éter.";
+
+/* (No Commment) */
+"Request Ether" = "Pedido De Éter";
+
+/* (No Commment) */
+"Dashboard" = "Painel";
+
+/* (No Commment) */
+"Week" = "Semana";
+
+/* (No Commment) */
+"Month" = "Mês";
+
+/* (No Commment) */
+"Year" = "Ano";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Preço";
+
+/* (No Commment) */
+"Ether Price" = "Éter Preço";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Contrato de endereços não são suportados.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "No momento oferecemos suporte somente para a ETH. Você não pode receber REP, ICN, GNT, GENDEO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Agora apoiando Éter";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Você pediu, a gente atendeu. Estamos animado para anunciar que seu Blockchain carteira de agora irá permitir que você facilmente enviar e receber éter!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Começar com Éter";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Para utilizar este serviço, necessita de introduzir o seu segundo senha. Você só precisa de introduzir este uma vez, para configurar a sua Éter carteira.";
+
+/* (No Commment) */
+"Enter Ether address" = "Introduza o endereço de Éter";
+
+/* (No Commment) */
+"Day" = "Dia";
+
+/* (No Commment) */
+"All" = "Todos";
+
+/* (No Commment) */
+"Please send ether to %@." = "Por favor, envie éter, para %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin pedido de pagamento";
+
+/* (No Commment) */
+"Ether payment request" = "Éter pedido de pagamento";
+
+/* (No Commment) */
+"My Ether Wallet" = "Minha Éter Carteira";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Mineiros receber esta taxa para processar essa transação.";
+
+/* (No Commment) */
+"Get Ether" = "Obter Éter";
+
+/* (No Commment) */
+"at" = "no";
+
+/* (No Commment) */
+"Exchange" = "Troca";
+
+/* (No Commment) */
+"New Exchange" = "Novo Exchange";
+
+/* (No Commment) */
+"Use minimum" = "Use o mínimo de";
+
+/* (No Commment) */
+"Use maximum" = "Usar o máximo de";
+
+/* (No Commment) */
+"Sending Funds" = "O Envio De Fundos";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Obrigado por colocar o seu comércio! Operações de câmbio pode levar até duas horas, e você pode acompanhar o seu comércio progresso da Ordem de seção de História.";
+
+/* (No Commment) */
+"In Progress" = "Em Andamento";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "O intercâmbio pode demorar até duas horas, você pode acompanhar o seu exchange progresso na Ordem da História. Uma vez que a negociação é concluída, o éter, que vai chegar em sua carteira.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "O comércio foi cancelada. Por favor, retornar para a guia exchange para iniciar o seu comércio novamente.";
+
+/* (No Commment) */
+"Failed" = "Falha";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange Falhou";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Este comércio tem falhado. Os fundos enviados a partir de sua carteira será devolvido menos uma taxa de transação. Por favor, retornar para a guia exchange para iniciar um novo comércio.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Seu comércio expirou. Por favor, retornar para a guia exchange para iniciar um novo comércio.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Agora você pode trocar seu bitcoin para o éter e vice-versa, diretamente do seu Blockchain carteira!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ para Depósito";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ para ser Recebido";
+
+/* (No Commment) */
+"Exchange Rate" = "Taxa De Câmbio";
+
+/* (No Commment) */
+"Transaction Fee" = "Taxa De Transação";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Rede De Taxa De Transação";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Alex Retirada Taxa De";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Concorda em se Metamorfosear";
+
+/* (No Commment) */
+"terms and conditions" = "termos e condições";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange Em Andamento";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Concluído";
+
+/* (No Commment) */
+"Get started" = "Introdução";
+
+/* (No Commment) */
+"Below minimum limit" = "Abaixo do limite mínimo";
+
+/* (No Commment) */
+"Above maximum limit" = "Acima do limite máximo";
+
+/* (No Commment) */
+"Not enough to exchange" = "Não o suficiente para exchange";
+
+/* (No Commment) */
+"Order ID" = "ID da encomenda";
+
+/* (No Commment) */
+"Total %@ spent" = "Total %@ passou";
+
+/* (No Commment) */
+"Getting quote" = "Chegando cotação";
+
+/* (No Commment) */
+"Confirming" = "Confirmando";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange Em Andamento";
+
+/* (No Commment) */
+"Complete" = "Completo";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange Concluído";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citação expira em %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Passo %d de %d";
+
+/* (No Commment) */
+"Select your State:" = "Selecione seu Estado:";
+
+/* (No Commment) */
+"Select State" = "Escolha O Estado";
+
+/* (No Commment) */
+"Not Available" = "Não Disponível";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "A troca de moedas ainda não está disponível no seu estado. Lançaremos mais estados em breve.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Ocorreu um erro ao obter a sua %@ equilíbrio. Por favor, tente novamente mais tarde. Detalhes: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Ocorreu um erro ao obter uma estimativa aproximada da citação. Por favor, tente novamente mais tarde. Detalhes: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Depositado para se Metamorfosear";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Recebeu de Alex";
+
+/* (No Commment) */
+"Order History" = "Histórico De Pedidos";
+
+/* (No Commment) */
+"Incoming" = "Entrada";
+
+/* (No Commment) */
+"Trade Expired" = "Comércio Expirou";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Seu comércio expirou. Por favor retorne para a página Exchange para iniciar o seu comércio novamente.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Não há Fundos para o Exchange";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Você não tem fundos para o exchange. Por que não começar pelo recebimento de alguns fundos?";
+
+/* (No Commment) */
+"Loading Exchange" = "Carregamento Do Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Selecione outros %@ Carteira";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ necessário para trocar";
+
+/* (No Commment) */
+"Start trading" = "Iniciar a negociação";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Comércio bitcoin directamente a partir do seu Blockchain carteira. Comece por criar uma conta na Compra & Venda de guia.";
+
+/* (No Commment) */
+"The wait is over" = "A espera acabou";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Algo deu errado, por favor, tente reabrir Comprar E Vender Bitcoin novamente.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Comprar E Vender Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Trabalhamos com troca de parceiros em todo o mundo, assim você pode comprar e vender bitcoin diretamente de sua carteira.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Móveis de Compra & Venda é suportado para iOS de 9 e para cima. Por favor, execute uma atualização de software ou o login em blockchain.info/wallet/login em seu computador.";

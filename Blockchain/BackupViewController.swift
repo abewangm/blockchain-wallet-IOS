@@ -50,7 +50,7 @@ class BackupViewController: UIViewController, TransferAllPromptDelegate {
         
         if wallet!.isRecoveryPhraseVerified() {
             summaryLabel.text = NSLocalizedString("Backup Complete", comment: "")
-            explanation.text = NSLocalizedString("Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure.", comment: "")
+            explanation.text = NSLocalizedString("Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure.", comment: "")
             backupIconImageView.image = UIImage(named: "success")?.withRenderingMode(.alwaysTemplate)
             backupIconImageView.tintColor = Constants.Colors.SuccessGreen
             backupWalletButton.setTitle(NSLocalizedString("BACKUP AGAIN", comment: ""), for: UIControlState())

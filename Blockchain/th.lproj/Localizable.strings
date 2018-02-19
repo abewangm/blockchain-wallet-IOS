@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "การดำเนินการนี้ต้องการคีย์ส่วนตัวสำหรับที่อยู่ Bitcoin %@ โปรดสแกนรหัส QR";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "การดำเนินการนี้ต้องการใช้รหัสผ่านที่สองสำหรับกระเป๋าเงิน bitcoin ของคุณ โปรดกรอกมันด้านล่างและกด ดำเนินการต่อ";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "การดำเนินการนี้ต้องการใช้รหัสผ่านที่สองสำหรับกระเป๋าเงิน ของคุณ โปรดกรอกมันด้านล่างและกด ดำเนินการต่อ";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "ที่อยู่นี้ได้ถูกใช้แล้ว โปรดล็อกอิน";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "อาจมีความเสี่ยงสำหรับการใช้จ่ายสองครั้ง";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า bitcoin ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "เพื่อความปลอดภัย เราจะไม่เก็บรหัสผ่านใด ๆ บนไฟล์ สำรองข้อมูลกระเป๋าเงินของคุณเพื่อยืนยันว่า งเงิน ของคุณจะปลอดภัยหากคุณทำรหัสผ่านสูญหาย";
 
 /* (No Commment) */
 "Wallets" = "กระเป๋าสตางค์";
@@ -1675,7 +1675,7 @@
 "Backup Needed" = "จำเป็นต้องมีการสำรองข้อมูล";
 
 /* (No Commment) */
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงบิตคอยน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "ใช้วลีเพื่อการกู้คืนของคุณเพื่อกู้คืนเงินของคุณในกรณีที่รหัสผ่านสูญหาย ผู้ใดก็ตามที่สามารถเข้าถึงวลีเพื่อการกู้คืนของคุณสามารถเข้าถึงเงินน์ของคุณได้ ดังนั้นเก็บมันไว้ในสถานที่ออฟไลน์ที่ปลอดภัยและมั่นคง";
 
 /* (No Commment) */
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "วลีเพื่อการกู้คืน 12 คำต่อไปนี้จะมอบการเข้าถึงเงินของคุณในกรณีที่คุณทำรหัสผ่านของคุณสูญหาย";
@@ -1916,3 +1916,216 @@
 
 /* (No Commment) */
 "To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "ในการใช้บริการนี้ คุณจำเป็นต้องกรอกรหัสผ่านที่สองของคุณ คุณควรจะต้องกรอกรหัสนี้เพียงครั้งเดียวเพื่อตั้งค่ากระเป๋าเงิน Ether ของคุณ";
+
+/* (No Commment) */
+"Enter Ether address" = "กรอกที่อยู่ Ether";
+
+/* (No Commment) */
+"Day" = "วัน";
+
+/* (No Commment) */
+"All" = "ทั้งหมด";
+
+/* (No Commment) */
+"Please send ether to %@." = "โปรดส่ง ether ไปยัง %@";
+
+/* (No Commment) */
+"Bitcoin payment request" = "คำร้องขอการชำระเงิน Bitcoin";
+
+/* (No Commment) */
+"Ether payment request" = "คำร้องขอการชำระเงิน Ether";
+
+/* (No Commment) */
+"My Ether Wallet" = "กระเป๋าเงิน Ether ของฉัน";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "นักทำเหมืองจะได้รับค่าธรรมเนียมนี้เพื่อประมวลผลต่อธุรกรรมนี้";
+
+/* (No Commment) */
+"Get Ether" = "รับ Ether";
+
+/* (No Commment) */
+"at" = "ที่";
+
+/* (No Commment) */
+"Exchange" = "การแลกเปลี่ยน";
+
+/* (No Commment) */
+"New Exchange" = "การแลกเปลี่ยนใหม่";
+
+/* (No Commment) */
+"Use minimum" = "ใช้ค่าขั้นต่ำ";
+
+/* (No Commment) */
+"Use maximum" = "ใช้ค่าสูงสุด";
+
+/* (No Commment) */
+"Sending Funds" = "กำลังส่งเงินทุน";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "ขอบคุณสำหรับการจัดสรรการเทรดของคุณ! การเทรดแบบแลกเปลี่ยนสามารถใช้เวลาสูงถึงสองชั่วโมงและคุณสามารถติดตามความคืบหน้าของการเทรดของคุณในส่วนประวัติคำสั่งซื้อ";
+
+/* (No Commment) */
+"In Progress" = "กำลังดำเนินการ";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "การแลกเปลี่ยนสามารถใช้เวลาได้สูงถึงสองชั่วโมง คุณสามารถติดตามความคืบหน้าของการแลกเปลี่ยนของคุณในประวัติคำสั่งซื้อ เมื่อการเทรดเสร็จสิ้น ether ของคุณจะเข้าไปยังกระเป๋าเงินของคุณ";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "การเทรดของคุณถูกยกเลิก โปรดย้อนกลับไปยังแถบการแลกเปลี่ยนเพื่อเริ่มการเทรดของคุณอีกครั้ง";
+
+/* (No Commment) */
+"Failed" = "ล้มเหลว";
+
+/* (No Commment) */
+"Exchange Failed" = "การแลกเปลี่ยนล้มเหลว";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "การเทรดนี้ล้มเหลว เงินทุนใด ๆ ที่ส่งจากกระเป๋าเงินของคุณจะได้รับการส่งคืนโดยมีการหักค่าธรรมเนียมธุรกรรม โปรดย้อนกลับไปยังแถบการแลกเปลี่ยนเพื่อเริ่มการเทรดใหม่";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "การเทรดของคุณหมดอายุแล้ว โปรดย้อนกลับไปยังแถบการแลกเปลี่ยนเพื่อเริ่มการเทรดใหม่";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "ตอนนี้คุณสามารถแลกเปลี่ยน bitcoin ของคุณเป็น ether และในทางกลับกันโดยตรงจากกระเป๋าเงิน Blockchain ของคุณ!";
+
+/* (No Commment) */
+"%@ to Deposit" = "จะมีการฝาก %@";
+
+/* (No Commment) */
+"%@ to be Received" = "จะได้รับ %@";
+
+/* (No Commment) */
+"Exchange Rate" = "อัตราแลกเปลี่ยน";
+
+/* (No Commment) */
+"Transaction Fee" = "ค่าธรรมเนียมธุรกรรม";
+
+/* (No Commment) */
+"Network Transaction Fee" = "ค่าธรรมเนียมธุรกรรมเครือข่าย";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ค่าธรรมเนียมการถอน ShapeShift";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "ยอมรับต่อ ShapeShift";
+
+/* (No Commment) */
+"terms and conditions" = "ข้อตกลงและเงื่อนไข";
+
+/* (No Commment) */
+"Exchange In Progress" = "กำลังดำเนินการการแลกเปลี่ยน";
+
+/* (No Commment) */
+"Exchange Completed" = "การแลกเปลี่ยนเสร็จสิ้นแล้ว";
+
+/* (No Commment) */
+"Get started" = "เริ่มต้น";
+
+/* (No Commment) */
+"Below minimum limit" = "ต่ำกว่าขีดจำกัดขั้นต่ำ";
+
+/* (No Commment) */
+"Above maximum limit" = "สูงกว่าขีดจำกัดสูงสุด";
+
+/* (No Commment) */
+"Not enough to exchange" = "ไม่เพียงพอสำหรับการแลกเปลี่ยน";
+
+/* (No Commment) */
+"Order ID" = "ID คำสั่ง";
+
+/* (No Commment) */
+"Total %@ spent" = "ยอดใช้จ่ายรวม %@";
+
+/* (No Commment) */
+"Getting quote" = "รับคำเสนอราคา";
+
+/* (No Commment) */
+"Confirming" = "กำลังยืนยัน";
+
+/* (No Commment) */
+"Exchange In Progress" = "กำลังดำเนินการการแลกเปลี่ยน";
+
+/* (No Commment) */
+"Complete" = "เสร็จสิ้น";
+
+/* (No Commment) */
+"Exchange Completed" = "การแลกเปลี่ยนเสร็จสิ้นแล้ว";
+
+/* (No Commment) */
+"Quote expires in %@" = "คำเสนอราคาหมดอายุใน %@";
+
+/* (No Commment) */
+"Step %d of %d" = "ขั้นตอนที่ %d จาก %d";
+
+/* (No Commment) */
+"Select your State:" = "เลือกรัฐของคุณ:";
+
+/* (No Commment) */
+"Select State" = "เลือกรัฐ";
+
+/* (No Commment) */
+"Not Available" = "ไม่มีให้ใช้งาน";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "การแลกเปลี่ยนคอยน์ยังไม่มีให้ใช้งานในรัฐของคุณ เราจะเปิดตัวในอีกหลายรัฐในเร็ว ๆ นี้";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "มีข้อผิดพลาดเกิดขึ้นระหว่างการรับยอดคงเหลือ %@ ของคุณ โปรดลองอีกครั้งในภายหลัง รายละเอียด: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "มีข้อผิดพลาดเกิดขึ้นระหว่างการรับคำเสนอราคาโดยประมาณ โปรดลองอีกครั้งในภายหลัง รายละเอียด: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "ฝากไปยัง ShapeShift แล้ว";
+
+/* (No Commment) */
+"Received from ShapeShift" = "ได้รับจาก ShapeShift แล้ว";
+
+/* (No Commment) */
+"Order History" = "ประวัติคำสั่งซื้อ";
+
+/* (No Commment) */
+"Incoming" = "ขาเข้า";
+
+/* (No Commment) */
+"Trade Expired" = "การเทรดหมดอายุแล้ว";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "การเทรดของคุณหมดอายุแล้ว โปรดย้อนกลับไปยังหน้าการแลกเปลี่ยนเพื่อเริ่มการเทรดของคุณอีกครั้ง";
+
+/* (No Commment) */
+"No Funds to Exchange" = "ไม่มีเงินทุนให้แลกเปลี่ยน";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "คุณมีเงินทุนไม่เพียงพอสำหรับการแลกเปลี่ยน ลองเริ่มต้นโดยรับเงินทุนบางรายการดีหรือไม่?";
+
+/* (No Commment) */
+"Loading Exchange" = "กำลังโหลดการแลกเปลี่ยน";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "เลือกกระเป๋าเงิน %@ อื่น ๆ";
+
+/* (No Commment) */
+"%@ needed to exchange" = "ต้องการ %@ สำหรับการแลกเปลี่ยน";
+
+/* (No Commment) */
+"Start trading" = "เริ่มแลกเปลี่ยน";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "แลกเปลี่ bitcoin โดยตรงจากของคุณ Blockchain กระเป๋าคุมข้อมูลนะ เริ่มด้วยการสร้างบัญชีในการซื้อ-ขา&ขายแท็บอก";
+
+/* (No Commment) */
+"The wait is over" = "การรอคอยมา";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "มีบางอย่างผิดพลาดเกิดขึ้น,ได้โปรดพยายามเปิดร้านใหม่ซื้อ À ขาย Bitcoin อีกครั้ง";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "ซื้อบัขาย Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "เราทำงานกับการแลกเปลี่ยนคู่ทำแล็บทั่วโลกดังนั้นคุณสามารถซื้อและขาย bitcoin โดยตรงจากกระเป๋าเงินของนาย";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "เคลื่อนที่ซื้อของ&ขายคือการรองรับสำหรับ iOS 9 แล้ว ได้โปรดไปโปรแกรมปรับปรุงหรือล็อกอินที่ blockchain.info/wallet/login บนคอมพิวเตอร์ของคุณ.";

@@ -1114,7 +1114,7 @@
 "This action requires the private key for the Bitcoin address %@. Please scan the QR code." = "Tämä toiminto edellyttää yksityisen avaimen Bitcoin osoite %@. Skannaa QR-koodi.";
 
 /* (No Commment) */
-"This action requires the second password for your bitcoin wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana bitcoin-lompakon. Kirjoita se ja paina Jatka.";
+"This action requires the second password for your wallet. Please enter it below and press continue." = "Tämä toiminto edellyttää sekunnissa salasana lompakon. Kirjoita se ja paina Jatka.";
 
 /* (No Commment) */
 "This address has already been used. Please login." = "Tämä osoite on jo käytössä. Kirjaudu sisään.";
@@ -1621,7 +1621,7 @@
 "May be at risk for a double spend." = "Saattavat altistua kahden kuluttaa.";
 
 /* (No Commment) */
-"For your security, we do not keep any passwords on file. Backup your wallet to ensure your bitcoins are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa sinun bitcoins ovat turvallisia, jos menetät sinun tunnussana.";
+"For your security, we do not keep any passwords on file. Backup your wallet to ensure your funds are safe in case you lose your password." = "Turvallisuussyistä emme pidä salasanat tiedostoon. Varmuuskopio lompakon varmistaa teidän rahat ovat turvallisia, jos menetät sinun tunnussana.";
 
 /* (No Commment) */
 "Wallets" = "Lompakot";
@@ -1658,7 +1658,7 @@
 
 "Backup Needed" = "Backup tarvitaan";
 
-"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your bitcoin, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän bitcoin, niin pitää se offline jonnekin turvallisia.";
+"Use your Recovery Phrase to restore your funds in case of a lost password.  Anyone with access to your Recovery Phrase can access your funds, so keep it offline somewhere safe and secure." = "Palauttaa rahat jos kadonneen salasanan palautus-lauseen avulla.  Kuka Recovery-lause käyttää teidän rahat, niin pitää se offline jonnekin turvallisia.";
 
 "The following 12 word Recovery Phrase will give you access to your funds in case you lose your password." = "12 sanan hyödyntämistä lause antaa sinulle pääsyn rahat, jos menetät sinun tunnussana.";
 
@@ -1822,3 +1822,285 @@
 
 /* (No Commment) */
 "Russian Ruble" = "Venäjän Rupla";
+
+/* (No Commment) */
+"Bitcoin Balances" = "Bitcoin Talletukset";
+
+/* (No Commment) */
+"Enter Ether address or select" = "Anna Eetteri-osoite tai valitse";
+
+/* (No Commment) */
+"Payment Sent! Your balance and transactions will update soon." = "Maksu Lähetetään! Saldosi ja liiketoimet tulee päivitys pian.";
+
+/* (No Commment) */
+"Waiting for payment" = "Odottaa maksua";
+
+/* (No Commment) */
+"Please wait until your last ether transaction confirms." = "Odota, kunnes viime eetteri kauppa vahvistaa.";
+
+/* (No Commment) */
+"Bitcoin Addresses" = "Bitcoin-Osoitteet";
+
+/* (No Commment) */
+"Bitcoin Merchant Map" = "Bitcoin Merchant Kartta";
+
+/* (No Commment) */
+"Invalid Ether address: %@" = "Virheellinen Eetteri-osoite: %@";
+
+/* (No Commment) */
+"An error occurred while retrieving the latest chart data. Please try again later." = "Virhe tapahtui haettaessa uusimmat karttatiedot. Yritä myöhemmin uudelleen.";
+
+/* (No Commment) */
+"Transactions occur when you send and request ether." = "Liiketoimia esiintyä, kun voit lähettää ja pyytää eetteriin.";
+
+/* (No Commment) */
+"Request Ether" = "Pyyntö Eetteriin";
+
+/* (No Commment) */
+"Dashboard" = "Kojelauta";
+
+/* (No Commment) */
+"Week" = "Viikolla";
+
+/* (No Commment) */
+"Month" = "Kuukausi";
+
+/* (No Commment) */
+"Year" = "Vuonna";
+
+/* (No Commment) */
+"Bitcoin Price" = "Bitcoin Hinta";
+
+/* (No Commment) */
+"Ether Price" = "Eetteri Hinta";
+
+/* (No Commment) */
+"Contract addresses are not supported." = "Sopimus-osoitteita ei tueta.";
+
+/* (No Commment) */
+"At the moment we only support ETH. You cannot receive REP, ICN, GNT, GNO, DGD, BCP." = "Tällä hetkellä tuemme ainoastaan ETH. Et voi saada REP, ICN, GNT, GNO, DGD, BCP.";
+
+/* (No Commment) */
+"Now supporting Ether" = "Tukee nyt Eetteriin";
+
+/* (No Commment) */
+"You asked, we listened. We’re excited to announce that your Blockchain wallet will now allow you to seamlessly send and receive ether!" = "Sinä kysyit, me kuuntelimme. Olemme innoissamme voidessamme ilmoittaa, että Blockchain lompakko sallii nyt voit saumattomasti lähettää ja vastaanottaa eetteriin!";
+
+/* (No Commment) */
+"Get Started with Ether" = "Päästä Alkuun Eetteriin";
+
+/* (No Commment) */
+"To use this service, we require you to enter your second password. You should only need to enter this once to set up your Ether wallet." = "Voit käyttää tätä palvelua, emme vaadi sinua antamaan toisen salasanan. Sinun pitäisi tarvitsee vain syöttää tämän kerran perustaa oman Eetteri lompakko.";
+
+/* (No Commment) */
+"Enter Ether address" = "Anna Eetteri-osoite";
+
+/* (No Commment) */
+"Day" = "Päivä";
+
+/* (No Commment) */
+"All" = "Kaikki";
+
+/* (No Commment) */
+"Please send ether to %@." = "Lähetä eetteri %@.";
+
+/* (No Commment) */
+"Bitcoin payment request" = "Bitcoin maksu pyynnöstä";
+
+/* (No Commment) */
+"Ether payment request" = "Eetteri maksupyyntö";
+
+/* (No Commment) */
+"My Ether Wallet" = "Minun Eetteri Lompakko";
+
+/* (No Commment) */
+"Miners receive this fee to process this transaction." = "Kaivostyöläisten saada tämä maksu prosessi tämän tapahtuman.";
+
+/* (No Commment) */
+"Get Ether" = "Saada Eetteriin";
+
+/* (No Commment) */
+"at" = "klo";
+
+/* (No Commment) */
+"Exchange" = "Vaihto";
+
+/* (No Commment) */
+"New Exchange" = "Uusi Vaihto";
+
+/* (No Commment) */
+"Use minimum" = "Käytä vähintään";
+
+/* (No Commment) */
+"Use maximum" = "Käytä enintään";
+
+/* (No Commment) */
+"Sending Funds" = "Lähettää Varoja";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Kiitos asettamalla kaupan! Vaihto kaupat voi kestää jopa kaksi tuntia, ja voit seurata oman kaupan edistymisestä, Jotta Historia-osiossa.";
+
+/* (No Commment) */
+"In Progress" = "Käynnissä";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Vaihto voi kestää jopa kaksi tuntia, voit seurata oman vaihto edistymistä, Jotta Historia. Kun kauppa on valmis, eetteriin saapuu lompakossa.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Kauppa on peruttu. Palauta exchange-välilehti, jos haluat aloittaa oman kaupan uudelleen.";
+
+/* (No Commment) */
+"Failed" = "Ei";
+
+/* (No Commment) */
+"Exchange Failed" = "Vaihto Epäonnistui";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Tämä kauppa on epäonnistunut. Kaikki varat lähetetään lompakko palautetaan vähennettynä palvelumaksu. Palauta exchange-välilehti, jos haluat aloittaa uuden kaupan.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Kauppa on päättynyt. Palauta exchange-välilehti, jos haluat aloittaa uuden kaupan.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Voit nyt vaihtaa bitcoin eetteriin ja päinvastoin suoraan Blockchain lompakko!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ Tallettaa";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ Saanut";
+
+/* (No Commment) */
+"Exchange Rate" = "Valuuttakurssi";
+
+/* (No Commment) */
+"Transaction Fee" = "Palvelumaksu";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Verkko Palvelumaksu";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "Muotoaan Peruuttaminen Maksu";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Samaa mieltä Muotoaan";
+
+/* (No Commment) */
+"terms and conditions" = "ehdot ja edellytykset";
+
+/* (No Commment) */
+"Exchange In Progress" = "Vaihto Käynnissä";
+
+/* (No Commment) */
+"Exchange Completed" = "Vaihto Suoritettu";
+
+/* (No Commment) */
+"Get started" = "Päästä alkuun";
+
+/* (No Commment) */
+"Below minimum limit" = "Alle minimirajan";
+
+/* (No Commment) */
+"Above maximum limit" = "Edellä enimmäismäärä";
+
+/* (No Commment) */
+"Not enough to exchange" = "Ei riitä, että vaihto";
+
+/* (No Commment) */
+"Order ID" = "Jotta ID";
+
+/* (No Commment) */
+"Total %@ spent" = "Yhteensä vietti %@";
+
+/* (No Commment) */
+"Getting quote" = "Saada lainaus";
+
+/* (No Commment) */
+"Confirming" = "Vahvistaa";
+
+/* (No Commment) */
+"Exchange In Progress" = "Vaihto Käynnissä";
+
+/* (No Commment) */
+"Complete" = "Täydellinen";
+
+/* (No Commment) */
+"Exchange Completed" = "Vaihto Suoritettu";
+
+/* (No Commment) */
+"Quote expires in %@" = "Lainaus päättyy %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Vaihe %d ja %d";
+
+/* (No Commment) */
+"Select your State:" = "Valitse oman Valtion:";
+
+/* (No Commment) */
+"Select State" = "Valitse Tila";
+
+/* (No Commment) */
+"Not Available" = "Ei Saatavilla";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Vaihtaa kolikoita ei ole vielä saatavilla teidän valtio. Olemme liikkuvan ulos enemmän valtioiden pian.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "Virhe tapahtui, kun saada %@ tasapaino. Yritä myöhemmin uudelleen. Lisätietoja: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "Virhe tapahtui, kun saada likimääräinen lainaus. Yritä myöhemmin uudelleen. Lisätietoja: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Talletetaan Muotoaan";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Saadut Muotoaan";
+
+/* (No Commment) */
+"Order History" = "Tilaushistoria";
+
+/* (No Commment) */
+"Incoming" = "Saapuvat";
+
+/* (No Commment) */
+"Trade Expired" = "Kaupan Päättynyt";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Kauppa on päättynyt. Palauta Exchange-sivu aloittaa oman kaupan uudelleen.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Ei Varat Vaihto";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Sinulla ei ole varoja vaihto. Miksi ei aloita by vastaanottaminen joitakin varoja?";
+
+/* (No Commment) */
+"Loading Exchange" = "Lastaus Vaihto";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Valitse muut %@ Lompakko";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ tarvitaan vaihtamaan";
+
+/* (No Commment) */
+"Start trading" = "Aloittaa kaupankäynnin";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Kauppa bitcoin suoraan Blockchain lompakko. Aloita luomalla tilin Ostaa Ja Myydä-välilehti.";
+
+/* (No Commment) */
+"The wait is over" = "Odotus on ohi";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Jotain meni pieleen, yritä uudelleen Ostaa Ja Myydä Bitcoin uudelleen.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Ostaa Ja Myydä Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Työskentelemme vaihto kumppaneita ympäri maailmaa, joten voit ostaa ja myydä bitcoin suoraan lompakon.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Ostaa Ja Myydä on tuettu iOS 9 ja ylös. Suorita ohjelmiston päivitys tai kirjautuminen klo blockchain.info/wallet/login teidän tietokone.";

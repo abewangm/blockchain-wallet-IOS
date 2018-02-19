@@ -378,7 +378,8 @@ const CGFloat rowHeightValueReceived = 80;
         labelString = self.transactionModel.fromString;
     } else {
         if (self.transactionModel.hasToLabel) return;
-        address = [self.transactionModel.to firstObject];
+        id toObject = [self.transactionModel.to firstObject];
+        address = [toObject isKindOfClass:[NSString class]] ? toObject : [toObject objectForKey:DICTIONARY_KEY_ADDRESS];
         labelString = self.transactionModel.toString;
     }
     
