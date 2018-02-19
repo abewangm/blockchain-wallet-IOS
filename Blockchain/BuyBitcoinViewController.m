@@ -14,6 +14,8 @@
 #import <SafariServices/SafariServices.h>
 #import "TransactionDetailNavigationController.h"
 
+#define URL_BUY_WEBVIEW_SUFFIX @"/#/intermediate"
+
 @interface BuyBitcoinViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @property (nonatomic) WKWebView *webView;
 @property (nonatomic) BOOL didInitiateTrade;
@@ -47,7 +49,9 @@ NSString* loginWithJsonScript(NSString*, NSString*, NSString*, NSString*, BOOL);
         self.webView.scrollView.scrollEnabled = YES;
         self.automaticallyAdjustsScrollViewInsets = NO;
         
-        NSURL *login = [NSURL URLWithString:URL_BUY_WEBVIEW];
+        NSString *walletOptionsRootURL = [app.wallet buySellWebviewRootURLString];
+        NSString *urlString = walletOptionsRootURL ? [walletOptionsRootURL stringByAppendingString:URL_BUY_WEBVIEW_SUFFIX] : URL_BUY_WEBVIEW;
+        NSURL *login = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest requestWithURL:login cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval: 10.0];
         [self.webView loadRequest:request];
         
