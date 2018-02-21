@@ -23,11 +23,16 @@
 - (id)initWithFrame:(CGRect)frame delegate:(id<AssetSelectorViewDelegate>)delegate
 {
     if (self == [super initWithFrame:frame]) {
+        
+        self.clipsToBounds = YES;
+        
         self.delegate = delegate;
         self.tableView = [[UITableView alloc] initWithFrame:frame];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self addSubview:self.tableView];
+        
+        [self.tableView changeHeight:ASSET_SELECTOR_ROW_HEIGHT * 3];
         
         self.tableView.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
         self.backgroundColor = [UIColor clearColor];
@@ -38,7 +43,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AssetSelectionTableViewCell *cell = [[AssetSelectionTableViewCell alloc] initWithAsset:indexPath.row];
+    AssetType asset = self.isOpen ? indexPath.row : self.selectedAsset;
+    AssetSelectionTableViewCell *cell = [[AssetSelectionTableViewCell alloc] initWithAsset:asset];
     return cell;
 }
 
@@ -50,6 +56,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AssetSelectionTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.selectedAsset = cell.assetType;
     [self.delegate didSelectAsset:cell.assetType];
 }
 
@@ -79,7 +86,6 @@
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self.tableView reloadData];
         [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT * 3];
-        [self.tableView changeHeight:ASSET_SELECTOR_ROW_HEIGHT * 3];
     }];
 }
 
@@ -90,7 +96,6 @@
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self.tableView reloadData];
         [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
-        [self.tableView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
     }];
 }
 

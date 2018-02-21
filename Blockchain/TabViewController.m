@@ -154,11 +154,13 @@
             [topBar changeHeight:DEFAULT_HEADER_HEIGHT];
         }];
         [self.assetSelectorView hide];
+        [self.bannerSelectorView changeHeight:0];
     } else {
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
         }];
         [self.assetSelectorView show];
+        [self.bannerSelectorView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
     }
 }
 
@@ -181,6 +183,8 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
+    [self.assetSelectorView close];
+    
     if (item == sendButton) {
         [app.tabControllerManager sendCoinsClicked:item];
     } else if (item == homeButton) {
