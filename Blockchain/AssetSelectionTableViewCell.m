@@ -10,6 +10,7 @@
 #import "UIView+ChangeFrameAttribute.h"
 
 @interface AssetSelectionTableViewCell ()
+@property (nonatomic, readwrite) AssetType assetType;
 @property (nonatomic) UIView *containerView;
 @property (nonatomic) UILabel *label;
 @property (nonatomic) UIImageView *assetImageView;
@@ -21,6 +22,10 @@
 - (id)initWithAsset:(AssetType)assetType
 {
     if (self == [super init]) {
+        
+        self.assetType = assetType;
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.backgroundColor = [UIColor clearColor];
         

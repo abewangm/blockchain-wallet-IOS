@@ -12,18 +12,20 @@
 
 #define CELL_IDENTIFIER_ASSET_SELECTOR @"assetSelectorCell"
 
-@interface AssetSelectorView () <UITableViewDataSource>
+@interface AssetSelectorView () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic, readwrite) BOOL isOpen;
+@property (nonatomic, weak) id <AssetSelectorViewDelegate> delegate;
 @end
 
 @implementation AssetSelectorView
 
-- (id)initWithFrame:(CGRect)frame delegate:(id<UITableViewDelegate>)delegate
+- (id)initWithFrame:(CGRect)frame delegate:(id<AssetSelectorViewDelegate>)delegate
 {
     if (self == [super initWithFrame:frame]) {
+        self.delegate = delegate;
         self.tableView = [[UITableView alloc] initWithFrame:frame];
-        self.tableView.delegate = delegate;
+        self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self addSubview:self.tableView];
         
@@ -36,13 +38,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AssetSelectionTableViewCell *cell = [[AssetSelectionTableViewCell alloc] initWithAsset:AssetTypeBitcoin];
+    AssetSelectionTableViewCell *cell = [[AssetSelectionTableViewCell alloc] initWithAsset:indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.isOpen ? 3 : 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AssetSelectionTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self.delegate didSelectAsset:cell.assetType];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ASSET_SELECTOR_ROW_HEIGHT;
 }
 
 - (void)hide
@@ -55,7 +68,7 @@
 - (void)show
 {
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-        [self changeHeight:36];
+        [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
     }];
 }
 
@@ -65,7 +78,8 @@
 
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self.tableView reloadData];
-        [self.tableView changeHeight:36 * [self tableView:self.tableView numberOfRowsInSection:0]];
+        [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT * 3];
+        [self.tableView changeHeight:ASSET_SELECTOR_ROW_HEIGHT * 3];
     }];
 }
 
@@ -75,7 +89,8 @@
     
     [UIView animateWithDuration:ANIMATION_DURATION animations:^{
         [self.tableView reloadData];
-        [self.tableView changeHeight:36];
+        [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
+        [self.tableView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
     }];
 }
 

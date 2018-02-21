@@ -104,7 +104,7 @@ BOOL displayingLocalSymbolSend;
     self.view.frame = CGRectMake(0,
                                  DEFAULT_HEADER_HEIGHT_OFFSET,
                                  [UIScreen mainScreen].bounds.size.width,
-                                 [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - statusBarAdjustment);
+                                 [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT - statusBarAdjustment);
     
     [containerView changeWidth:WINDOW_WIDTH];
 

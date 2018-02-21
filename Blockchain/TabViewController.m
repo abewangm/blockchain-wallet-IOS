@@ -10,7 +10,7 @@
 #import "RootService.h"
 #import "UIView+ChangeFrameAttribute.h"
 
-@interface TabViewcontroller () <UITableViewDelegate>
+@interface TabViewcontroller () <AssetSelectorViewDelegate>
 @end
 
 @implementation TabViewcontroller
@@ -160,25 +160,6 @@
         }];
         [self.assetSelectorView show];
     }
-    
-    if (newIndex == TAB_TRANSACTIONS) {
-        
-        titleLabel.hidden = YES;
-        balanceLabel.hidden = NO;
-        
-        [self.bannerPricesView removeFromSuperview];
-        
-        balanceLabel.userInteractionEnabled = YES;
-        
-        if (self.assetSelectorView.selectedAsset == AssetTypeBitcoin) {
-            balanceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatMoneyWithLocalSymbol:[app.wallet getTotalActiveBalance]] : nil;
-            [self showSelector];
-        } else {
-            balanceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalanceTruncated] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : nil;
-            [self.bannerSelectorView removeFromSuperview];
-        }
-
-    }
 }
 
 - (void)addTapGestureRecognizerToTabBar:(UITapGestureRecognizer *)tapGestureRecognizer
@@ -227,10 +208,10 @@
 {
     self.assetSelectorView.selectedAsset = assetType;
     
-    [self assetSegmentedControlChanged];
+    [self assetSelectorChanged];
 }
 
-- (void)assetSegmentedControlChanged
+- (void)assetSelectorChanged
 {
     AssetType asset = self.assetSelectorView.selectedAsset;
     
@@ -240,40 +221,6 @@
 - (void)didFetchEthExchangeRate
 {
     [self updateTopBarForIndex:self.selectedIndex];
-}
-
-- (void)showSelector
-{
-    if (!self.bannerSelectorView) {
-        self.bannerSelectorView = [[UIView alloc] initWithFrame:bannerView.bounds];
-        UIButton *selectorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, bannerView.frame.size.width, bannerView.frame.size.height)];
-        selectorButton.titleLabel.textColor = [UIColor whiteColor];
-        selectorButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        selectorButton.contentEdgeInsets = UIEdgeInsetsZero;
-        selectorButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_EXTRALIGHT size:FONT_SIZE_SMALL];
-        [selectorButton setTitle:BC_STRING_BITCOIN_BALANCES forState:UIControlStateNormal];
-        [selectorButton setImage:[[UIImage imageNamed:@"back_chevron_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        selectorButton.imageView.transform = CGAffineTransformMakeScale(-1, 1);
-        selectorButton.tintColor = [UIColor whiteColor];
-        
-        UIButton *buttonForTitleWidth = [[UIButton alloc] initWithFrame:selectorButton.frame];
-        buttonForTitleWidth.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_EXTRALIGHT size:FONT_SIZE_SMALL];
-        [buttonForTitleWidth setTitle:BC_STRING_BITCOIN_BALANCES forState:UIControlStateNormal];
-        [buttonForTitleWidth sizeToFit];
-        
-        selectorButton.imageEdgeInsets = UIEdgeInsetsMake(0, -selectorButton.imageView.bounds.size.width + selectorButton.frame.size.width/2 + buttonForTitleWidth.frame.size.width/2 + 20, 0, 0);
-        selectorButton.titleEdgeInsets = UIEdgeInsetsMake(0, -selectorButton.imageView.bounds.size.width, 0, 0);
-        [selectorButton addTarget:self action:@selector(selectorButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.bannerSelectorView addSubview:selectorButton];
-        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton = selectorButton;
-        
-        BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
-        
-        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton.hidden = !shouldShowFilterButton;
-    }
-    
-    [bannerView addSubview:self.bannerSelectorView];
-    [self.bannerPricesView removeFromSuperview];
 }
 
 - (void)selectorButtonClicked
@@ -309,28 +256,36 @@
     [self updateTopBarForIndex:self.selectedIndex];
 }
 
-# pragma mark - Asset Selector Table View Delegate
+# pragma mark - Asset Selector Delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)didSelectAsset:(AssetType)assetType
 {
     if (self.assetSelectorView.isOpen) {
         [self.assetSelectorView close];
         
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
+            self.activeViewController.view.frame = CGRectMake(0,
+                                                              DEFAULT_HEADER_HEIGHT_OFFSET,
+                                                              [UIScreen mainScreen].bounds.size.width,
+                                                              [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
+            [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
         }];
+        
+        [self selectAsset:assetType];
+        
     } else {
         [self.assetSelectorView selectorClicked];
         
         [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET + 36*3];
+            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + ASSET_SELECTOR_ROW_HEIGHT*3];
+            self.activeViewController.view.frame = CGRectMake(0,
+                                                              ASSET_SELECTOR_ROW_HEIGHT*3,
+                                                              [UIScreen mainScreen].bounds.size.width,
+                                                              [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
+            [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT*3];
         }];
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return bannerView.frame.size.height;
 }
 
 @end
