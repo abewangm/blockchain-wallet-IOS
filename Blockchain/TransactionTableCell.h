@@ -38,6 +38,6 @@
 
 @property(nonatomic, strong)  Transaction * transaction;
 
--(void)reload;
-
+- (void)reload;
+- (void)changeBtcButtonTitleText:(NSString *)text;
 @end

@@ -285,6 +285,11 @@
 
 #pragma mark - Bitcoin Cash
 
++ (NSString*)formatBchWithSymbol:(uint64_t)value
+{
+    return [self formatBch:value localCurrency:app->symbolLocal];
+}
+
 // Format amount in satoshi as NSString (with symbol)
 + (NSString*)formatBchWithSymbol:(uint64_t)value localCurrency:(BOOL)fsymbolLocal
 {

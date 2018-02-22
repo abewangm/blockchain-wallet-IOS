@@ -143,4 +143,9 @@
     [self transactionClicked:nil];
 }
 
+- (void)changeBtcButtonTitleText:(NSString *)text
+{
+    [btcButton setTitle:text forState:UIControlStateNormal];
+}
+
 @end

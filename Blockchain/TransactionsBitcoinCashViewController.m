@@ -8,7 +8,9 @@
 
 #import "TransactionsBitcoinCashViewController.h"
 #import "RootService.h"
+#import "NSNumberFormatter+Currencies.h"
 #import "TransactionTableCell.h"
+#import "Transaction.h"
 
 @interface TransactionsBitcoinCashViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) UITableView *tableView;
@@ -83,6 +85,8 @@
     cell.transaction = transaction;
     
     [cell reload];
+    
+    [cell changeBtcButtonTitleText:[NSNumberFormatter formatBchWithSymbol:ABS(transaction.amount)]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
