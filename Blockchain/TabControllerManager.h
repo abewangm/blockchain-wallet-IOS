@@ -17,6 +17,7 @@
 #import "TransactionsEtherViewController.h"
 #import "ReceiveEtherViewController.h"
 #import "ExchangeOverviewViewController.h"
+#import "TransactionsBitcoinCashViewController.h"
 
 @protocol TabControllerDelegate
 - (void)toggleSideMenu;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) TabViewcontroller *tabViewController;
 
 @property (strong, nonatomic) DashboardViewController *dashboardViewController;
+
 @property (strong, nonatomic) TransactionsBitcoinViewController *transactionsBitcoinViewController;
 @property (strong, nonatomic) ReceiveCoinsViewController *receiveBitcoinViewController;
 @property (strong, nonatomic) SendBitcoinViewController *sendBitcoinViewController;
@@ -38,6 +40,9 @@
 @property (strong, nonatomic) SendEtherViewController *sendEtherViewController;
 @property (strong, nonatomic) TransactionsEtherViewController *transactionsEtherViewController;
 @property (strong, nonatomic) ReceiveEtherViewController *receiveEtherViewController;
+
+@property (strong, nonatomic) TransactionsBitcoinCashViewController *transactionsBitcoinCashViewController;
+
 
 @property (strong, nonatomic) ExchangeOverviewViewController *exchangeOverviewViewController;
 

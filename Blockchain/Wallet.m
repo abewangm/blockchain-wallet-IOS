@@ -2886,6 +2886,20 @@
 
 # pragma mark - Bitcoin cash
 
+- (NSArray *)bitcoinCashTransactions
+{
+    if ([self isInitialized]) {
+        NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTransactions()"] toArray];
+        NSMutableArray *transactions = [NSMutableArray new];
+        for (NSDictionary *data in fetchedTransactions) {
+            Transaction *transaction = [Transaction fromJSONDict:data];
+            [transactions addObject:transaction];
+        }
+        return transactions;
+    }
+    return nil;
+}
+
 - (void)fetchBitcoinCashExchangeRates
 {
     if ([self isInitialized]) {

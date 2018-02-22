@@ -2840,6 +2840,10 @@ MyWalletPhone.bitcoinCashTotalBalance = function() {
     return MyWallet.wallet.bch.balance;
 }
 
+MyWalletPhone.bitcoinCashTransactions = function() {
+    return MyWallet.wallet.bch.txs;
+}
+
 MyWalletPhone.getHistoryForAllAssets = function() {
     var getBitcoinHistory = MyWallet.wallet.getHistory();
     var getEtherHistory = MyWallet.wallet.eth.fetchHistory();

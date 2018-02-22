@@ -339,6 +339,12 @@
         }
         
         [_tabViewController setActiveViewController:_transactionsEtherViewController animated:YES index:TAB_TRANSACTIONS];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        if (!_transactionsEtherViewController) {
+            _transactionsBitcoinCashViewController = [[TransactionsBitcoinCashViewController alloc] init];
+        }
+        
+        [_tabViewController setActiveViewController:_transactionsBitcoinCashViewController animated:YES index:TAB_TRANSACTIONS];
     }
 }
 
