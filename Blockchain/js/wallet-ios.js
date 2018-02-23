@@ -2269,6 +2269,19 @@ MyWalletPhone.getWebViewLoginData = function () {
   }
 }
 
+MyWalletPhone.canUseSfox = function() {
+    var wallet = MyWallet.wallet
+    var options = walletOptions.getValue()
+    var accountInfo = wallet.accountInfo;
+    var isSfoxCountryState = accountInfo && options.partners.sfox.countries.indexOf(accountInfo.countryCodeGuess) > -1 && options.partners.sfox.states.indexOf(accountInfo.stateCodeGuess) > -1;
+    var isSfoxInvited = accountInfo && accountInfo.invited && accountInfo.invited.sfox;
+    
+    var external = MyWallet.wallet && MyWallet.wallet.external;
+    var userHasSfoxAccount = external && external.sfox && external.sfox.hasAccount;
+    
+    return (userHasSfoxAccount || isSfoxInvited && isSfoxCountryState) && options.ios.showSfox;
+}
+
 MyWalletPhone.isBuyFeatureEnabled = function () {
   var wallet = MyWallet.wallet
   var options = walletOptions.getValue()
@@ -2282,14 +2295,9 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
     
   var canBuy = function(accountInfo, options) {
      var external = MyWallet.wallet && MyWallet.wallet.external;
-     var userHasAccount = external && (
-                          (external.coinify && external.coinify.hasAccount) ||
-                          (external.sfox && external.sfox.hasAccount)
-                          );
+     var userHasCoinifyAccount = external && external.coinify && external.coinify.hasAccount;
      var isCoinifyCountry = accountInfo && options.partners.coinify.countries.indexOf(accountInfo.countryCodeGuess) > -1;
-     var isSFOXCountryState = accountInfo && options.partners.sfox.countries.indexOf(accountInfo.countryCodeGuess) > -1 && options.partners.sfox.states.indexOf(accountInfo.stateCodeGuess) > -1;
-     var isSFOXInvited = accountInfo && accountInfo.invited && accountInfo.invited.sfox;
-     return userHasAccount || isCoinifyCountry || (isSFOXInvited && isSFOXCountryState);
+     return (userHasCoinifyAccount || isCoinifyCountry) || MyWalletPhone.canUseSfox();
   }
 
   return userHasAccess && wallet.external && canBuy(wallet.accountInfo, options)
@@ -2715,7 +2723,8 @@ MyWalletPhone.shiftPayment = function() {
 }
 
 MyWalletPhone.isExchangeEnabled = function() {
-    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift();
+    var showShapeshift = walletOptions.getValue().ios.showShapeshift;
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift() && showShapeshift;
 }
 
 MyWalletPhone.isStateGuessWhitelistedForShapeshift = function() {
