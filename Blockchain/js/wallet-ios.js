@@ -2715,7 +2715,8 @@ MyWalletPhone.shiftPayment = function() {
 }
 
 MyWalletPhone.isExchangeEnabled = function() {
-    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift();
+    var showShapeshift = walletOptions.getValue().ios.showShapeshift;
+    return MyWalletPhone.isCountryGuessWhitelistedForShapeshift() && MyWalletPhone.isStateGuessWhitelistedForShapeshift() && showShapeshift;
 }
 
 MyWalletPhone.isStateGuessWhitelistedForShapeshift = function() {
