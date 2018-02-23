@@ -343,6 +343,7 @@ typedef enum {
 - (int)getDefaultAccountLabelledAddressesCount;
 
 - (BOOL)isBuyEnabled;
+- (BOOL)canUseSfox;
 - (void)setupBuySellWebview;
 - (NSString *)buySellWebviewRootURLString;
 

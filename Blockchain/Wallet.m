@@ -2314,6 +2314,11 @@
     return [[self.context evaluateScript:@"MyWalletPhone.isBuyFeatureEnabled()"] toBool];
 }
 
+- (BOOL)canUseSfox
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.canUseSfox()"] toBool];
+}
+
 - (void)setupBuySellWebview
 {
     [self.context evaluateScript:@"MyWalletPhone.setupBuySellWebview()"];
