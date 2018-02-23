@@ -48,7 +48,7 @@
 - (void)reloadCards
 {
     self.showCards = ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
-    self.showAnnouncementCard = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD] && [app.wallet isBuyEnabled];
+    self.showAnnouncementCard = !self.showCards && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD] && [app.wallet canUseSfox];
     
     self.cardsViewHeight = self.showAnnouncementCard ? 208 : IS_USING_SCREEN_SIZE_4S ? 208 : 240;
     
