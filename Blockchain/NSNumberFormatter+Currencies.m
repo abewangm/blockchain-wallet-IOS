@@ -287,7 +287,7 @@
 
 + (NSString*)formatBchWithSymbol:(uint64_t)value
 {
-    return [self formatBch:value localCurrency:app->symbolLocal];
+    return [self formatBchWithSymbol:value localCurrency:app->symbolLocal];
 }
 
 // Format amount in satoshi as NSString (with symbol)
@@ -321,7 +321,17 @@
         
         NSString * string = [app.btcFormatter stringFromNumber:number];
         
-        return [string stringByAppendingFormat:@" %@", app.latestResponse.symbol_btc.symbol];
+        NSString *symbol;
+        NSString *currencySymbol = app.latestResponse.symbol_btc.symbol;
+        if ([currencySymbol isEqualToString:CURRENCY_SYMBOL_MBC]) {
+            currencySymbol = CURRENCY_SYMBOL_BCH_MILLIBITS;
+        } else if ([currencySymbol isEqualToString:CURRENCY_CODE_UBC]) {
+            currencySymbol = CURRENCY_SYMBOL_BCH_BITS;
+        } else {
+            currencySymbol = CURRENCY_SYMBOL_BCH;
+        }
+        
+        return [string stringByAppendingFormat:@" %@", currencySymbol];
     }
     
     return [NSNumberFormatter formatBTC:value];
