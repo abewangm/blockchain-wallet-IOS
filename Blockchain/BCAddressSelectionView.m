@@ -95,6 +95,11 @@ int bchAccountsSectionNumber;
                 [ethAccountLabels addObject:BC_STRING_MY_ETHER_WALLET];
             }
             
+            if (selectMode == SelectModeExchangeAccountFrom && [app.wallet hasBchAccount]) {
+                [bchAccounts addObject:[NSNumber numberWithInt:0]];
+                [bchAccountLabels addObject:BC_STRING_MY_BITCOIN_CASH_WALLET];
+            }
+
             // Then show user's active legacy addresses with a positive balance
             if (![self accountsOnly]) {
                 for (NSString * addr in _wallet.activeLegacyAddresses) {
@@ -148,6 +153,11 @@ int bchAccountsSectionNumber;
                     [ethAccountLabels addObject:BC_STRING_MY_ETHER_WALLET];
                 }
                 
+                if (selectMode == SelectModeExchangeAccountTo && [app.wallet hasBchAccount]) {
+                    [bchAccounts addObject:[NSNumber numberWithInt:0]];
+                    [bchAccountLabels addObject:BC_STRING_MY_BITCOIN_CASH_WALLET];
+                }
+
                 // Finally show all the user's active legacy addresses
                 if (![self accountsOnly]) {
                     for (NSString * addr in _wallet.activeLegacyAddresses) {
