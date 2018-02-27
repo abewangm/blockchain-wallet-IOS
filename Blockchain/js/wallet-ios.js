@@ -2323,7 +2323,7 @@ function WalletOptions (api) {
   };
 }
 
-// Ethereum
+// MARK: - Ethereum
 
 MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 
@@ -2822,6 +2822,8 @@ MyWalletPhone.currencyCodeForHardLimit = function() {
 MyWalletPhone.fiatExchangeHardLimit = function() {
     return walletOptions.getValue().shapeshift.upperLimit;
 }
+
+// MARK: - Bitcoin Cash
 
 MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
     
