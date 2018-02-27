@@ -29,6 +29,9 @@
 @synthesize ethAccounts;
 @synthesize ethAccountLabels;
 
+@synthesize bchAccounts;
+@synthesize bchAccountLabels;
+
 @synthesize wallet;
 @synthesize delegate;
 
@@ -65,6 +68,9 @@ int ethAccountsSectionNumber;
         ethAccounts = [NSMutableArray array];
         ethAccountLabels = [NSMutableArray array];
         
+        bchAccounts = [NSMutableArray array];
+        bchAccountLabels = [NSMutableArray array];
+
         // Select from address
         if ([self showFromAddresses]) {
             // First show the HD accounts with positive balance
