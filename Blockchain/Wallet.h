@@ -145,6 +145,7 @@
 - (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
 - (void)didCreateEthAccountForExchange;
 - (void)didGetBitcoinCashExchangeRates;
+- (void)didFetchBitcoinCashHistory;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -455,6 +456,7 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Bitcoin cash
+- (void)getBitcoinCashHistory;
 - (void)fetchBitcoinCashExchangeRates;
 - (NSString *)bitcoinCashExchangeRate;
 - (uint64_t)bitcoinCashTotalBalance;

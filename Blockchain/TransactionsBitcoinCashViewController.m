@@ -65,9 +65,16 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)reload
+{
+    [self loadTransactions];
+}
+
 - (void)getHistory
 {
-    
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+
+    [app.wallet performSelector:@selector(getBitcoinCashHistory) withObject:nil afterDelay:0.1f];
 }
 
 #pragma mark - Table View Data Source

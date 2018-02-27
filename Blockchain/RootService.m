@@ -1146,6 +1146,13 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet getEthExchangeRate];
 }
 
+- (void)didFetchBitcoinCashHistory
+{
+    [self hideBusyView];
+    
+    [self reload];
+}
+
 - (void)updateSymbols
 {
     {

@@ -910,6 +910,14 @@
     
 #pragma mark Bitcoin Cash
     
+    self.context[@"objc_on_fetch_bch_history_success"] = ^() {
+        [weakSelf did_fetch_bch_history];
+    };
+    
+    self.context[@"objc_on_fetch_bch_history_error"] = ^(JSValue *error) {
+        [app standardNotify:[error toString]];
+    };
+    
     self.context[@"objc_did_get_bitcoin_cash_exchange_rates"] = ^(JSValue *result) {
         [weakSelf did_get_bitcoin_cash_exchange_rates:[result toDictionary]];
     };
@@ -2888,6 +2896,13 @@
 
 # pragma mark - Bitcoin cash
 
+- (void)getBitcoinCashHistory
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashHistory()"];
+    }
+}
+
 - (NSArray *)getBitcoinCashTransactions
 {
     if ([self isInitialized]) {
@@ -4421,6 +4436,15 @@
         [self.delegate didGetEtherAddressWithSecondPassword];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
+}
+
+- (void)did_fetch_bch_history
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchBitcoinCashHistory)]) {
+        [self.delegate didFetchBitcoinCashHistory];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchBitcoinCashHistory!", [delegate class]);
     }
 }
 

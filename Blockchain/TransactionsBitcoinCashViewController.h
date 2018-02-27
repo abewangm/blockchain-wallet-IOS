@@ -10,4 +10,5 @@
 @class TransactionDetailViewController;
 @interface TransactionsBitcoinCashViewController : UIViewController
 @property(nonatomic) TransactionDetailViewController *detailViewController;
+- (void)reload;
 @end
