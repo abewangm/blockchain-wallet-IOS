@@ -2836,12 +2836,27 @@ MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
     BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
 }
 
+MyWalletPhone.hasBchAccount = function() {
+    var bch = MyWallet.wallet.bch;
+    return bch && bch.defaultAccount;
+}
+
 MyWalletPhone.bitcoinCashTotalBalance = function() {
     return MyWallet.wallet.bch.balance;
 }
 
 MyWalletPhone.bitcoinCashTransactions = function() {
     return MyWallet.wallet.bch.txs;
+}
+
+MyWalletPhone.getBchBalance = function() {
+    var bch = MyWallet.wallet.bch;
+
+    if (bch.defaultAccount) {
+        return bch.defaultAccount.balance;
+    }
+
+    return 0;
 }
 
 MyWalletPhone.getHistoryForAllAssets = function() {

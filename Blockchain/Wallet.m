@@ -2927,6 +2927,23 @@
     return 0;
 }
 
+- (BOOL)hasBchAccount
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.hasBchAccount()"] toBool];
+    }
+    return false;
+}
+
+- (NSString *)getBchBalance
+{
+    if ([self isInitialized] && [app.wallet hasBchAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getBchBalance()"] toString];
+    }
+    DLog(@"Warning: getting bch balance when not initialized - returning 0");
+    return 0;
+}
+
 # pragma mark - Transaction handlers
 
 - (void)tx_on_start:(NSString*)txProgressID
