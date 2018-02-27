@@ -508,7 +508,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define CURRENCY_CODE_UBC @"UBC"
 
 #define CURRENCY_SYMBOL_ETH @"ETH"
+
 #define CURRENCY_SYMBOL_BCH @"BCH"
+#define CURRENCY_SYMBOL_BCH_MILLIBITS @"mBCH"
+#define CURRENCY_SYMBOL_BCH_BITS @"bits"
 
 #define CURRENCY_SYMBOL_BTC @"BTC"
 #define CURRENCY_SYMBOL_MBC @"mBTC"
@@ -595,6 +598,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_TRANSACTION_CONFIRMATIONS @"confirmations"
 #define DICTIONARY_KEY_TRANSACTION_FEE @"fee"
 #define DICTIONARY_KEY_TRANSACTION_MY_HASH @"myHash"
+#define DICTIONARY_KEY_TRANSACTION_HASH @"hash"
 #define DICTIONARY_KEY_TRANSACTION_TX_TYPE @"txType"
 #define DICTIONARY_KEY_TRANSACTION_AMOUNT @"amount"
 #define DICTIONARY_KEY_TRANSACTION_TIME @"time"
