@@ -112,11 +112,12 @@ int bchAccountsSectionNumber;
                     }
                 }
             }
-            
+
             addressBookSectionNumber = -1;
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
             accountsSectionNumber = contactsSectionNumber + 1;
             ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
+            bchAccountsSectionNumber = bchAccounts.count > 0 ? ethAccountsSectionNumber + 1 : -1;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
         }
         // Select to address
@@ -159,6 +160,7 @@ int bchAccountsSectionNumber;
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
             accountsSectionNumber = contactsSectionNumber + 1;
             ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
+            bchAccountsSectionNumber = bchAccounts.count > 0 ? ethAccountsSectionNumber + 1 : -1;
             legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
             if (addressBookAddresses.count > 0) {
                 addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : accountsSectionNumber + 1;
@@ -300,12 +302,14 @@ int bchAccountsSectionNumber;
     if ([self showFromAddresses]) {
         return (accounts.count > 0 ? 1 : 0) +
         (ethAccounts.count > 0 ? 1 : 0) +
+        (bchAccounts.count > 0 ? 1 : 0) +
         (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
     }
     
     return (addressBookAddresses.count > 0 ? 1 : 0) +
     (accounts.count > 0 ? 1 : 0) +
     (ethAccounts.count > 0 ? 1 : 0) +
+    (bchAccounts.count > 0 ? 1 : 0) +
     (legacyAddresses.count > 0 ? 1 : 0) +
     (contacts.count > 0 ? 1 : 0);
 }
@@ -374,6 +378,9 @@ int bchAccountsSectionNumber;
         else if (section == ethAccountsSectionNumber) {
             return ethAccounts.count;
         }
+        else if (section == bchAccountsSectionNumber) {
+            return bchAccounts.count;
+        }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
         }
@@ -390,6 +397,9 @@ int bchAccountsSectionNumber;
         }
         else if (section == ethAccountsSectionNumber) {
             return ethAccounts.count;
+        }
+        else if (section == bchAccountsSectionNumber) {
+            return bchAccounts.count;
         }
         else if (section == legacyAddressesSectionNumber) {
             return legacyAddresses.count;
@@ -410,7 +420,7 @@ int bchAccountsSectionNumber;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber || indexPath.section == ethAccountsSectionNumber) {
+    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber || indexPath.section == ethAccountsSectionNumber || indexPath.section == bchAccountsSectionNumber) {
         return ROW_HEIGHT_ACCOUNT;
     }
     
@@ -451,6 +461,10 @@ int bchAccountsSectionNumber;
         }
         else if (section == ethAccountsSectionNumber) {
             label = BC_STRING_MY_ETHER_WALLET;
+            cell.addressLabel.text = nil;
+        }
+        else if (section == bchAccountsSectionNumber) {
+            label = BC_STRING_MY_BITCOIN_CASH_WALLET;
             cell.addressLabel.text = nil;
         }
         else if (section == legacyAddressesSectionNumber) {
@@ -514,6 +528,11 @@ int bchAccountsSectionNumber;
                 NSComparisonResult result = [ethBalance compare:[NSDecimalNumber numberWithInt:0]];
                 zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
                 cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[ethBalance stringValue]]];
+            } else if (section == bchAccountsSectionNumber) {
+                NSDecimalNumber *bchBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getBchBalance]];
+                NSComparisonResult result = [bchBalance compare:[NSDecimalNumber numberWithInt:0]];
+                zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
+                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatBchToFiatWithSymbol:[bchBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[bchBalance stringValue]]];
             } else {
                 zeroBalance = btcBalance == 0;
                 cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
