@@ -108,8 +108,8 @@ int bchAccountsSectionNumber;
                         [legacyAddressLabels addObject:[_wallet labelForLegacyAddress:addr]];
                     }
                 }
-            
-            // Then show the active legacy addresses with a zero balance
+
+                // Then show the active legacy addresses with a zero balance
                 for (NSString * addr in _wallet.activeLegacyAddresses) {
                     if (!([_wallet getLegacyAddressBalance:addr] > 0)) {
                         [legacyAddresses addObject:addr];
@@ -255,7 +255,6 @@ int bchAccountsSectionNumber;
                     [delegate didSelectFromAccount:FILTER_INDEX_IMPORTED_ADDRESSES];
                 } else {
                     [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
-
                 }
             } else {
                 [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
