@@ -42,6 +42,7 @@ int addressBookSectionNumber;
 int accountsSectionNumber;
 int legacyAddressesSectionNumber;
 int ethAccountsSectionNumber;
+int bchAccountsSectionNumber;
 
 - (id)initWithWallet:(Wallet *)_wallet selectMode:(SelectMode)_selectMode
 {
