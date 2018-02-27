@@ -92,13 +92,23 @@
     return self;
 }
 
+- (id)initWithBitcoinCashTransaction:(Transaction *)transaction
+{
+    TransactionDetailViewModel *model = [self initWithTransaction:transaction];
+    model.assetType = AssetTypeBitcoinCash;
+    return model;
+}
+
 - (NSString *)getAmountString
 {
     if (self.assetType == AssetTypeBitcoin) {
         return [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(self.amountInSatoshi)];
     } else if (self.assetType == AssetTypeEther) {
         return [NSNumberFormatter formatEthWithLocalSymbol:self.amountString exchangeRate:self.ethExchangeRate];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [NSNumberFormatter formatBchWithSymbol:ABS(self.amountInSatoshi)];
     }
+    
     return nil;
 }
 
@@ -108,6 +118,8 @@
         return [self getBtcFeeString];
     } else if (self.assetType == AssetTypeEther) {
         return [self getEthFeeString];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [self getBchFeeString];
     }
     return nil;
 }
@@ -120,6 +132,11 @@
 - (NSString *)getEthFeeString
 {
     return [NSNumberFormatter formatEthWithLocalSymbol:self.feeString exchangeRate:self.exchangeRate];
+}
+
+- (NSString *)getBchFeeString
+{
+    return [NSNumberFormatter formatBchWithSymbol:ABS(self.feeInSatoshi)];
 }
 
 @end

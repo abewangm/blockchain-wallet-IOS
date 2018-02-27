@@ -43,6 +43,7 @@
 
 - (id)initWithTransaction:(Transaction *)transaction;
 - (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress;
+- (id)initWithBitcoinCashTransaction:(Transaction *)transaction;
 - (NSString *)getAmountString;
 - (NSString *)getFeeString;
 @end

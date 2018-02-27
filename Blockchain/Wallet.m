@@ -2279,6 +2279,8 @@
         symbol = CURRENCY_SYMBOL_BTC;
     } else if (assetType == AssetTypeEther) {
         symbol = CURRENCY_SYMBOL_ETH;
+    } else if (assetType == AssetTypeBitcoinCash) {
+        symbol = CURRENCY_SYMBOL_BCH;
     }
     
     NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, symbol, currencyCode, time]]];
@@ -2886,7 +2888,7 @@
 
 # pragma mark - Bitcoin cash
 
-- (NSArray *)bitcoinCashTransactions
+- (NSArray *)getBitcoinCashTransactions
 {
     if ([self isInitialized]) {
         NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTransactions()"] toArray];
@@ -2895,7 +2897,8 @@
             Transaction *transaction = [Transaction fromJSONDict:data];
             [transactions addObject:transaction];
         }
-        return transactions;
+        self.bitcoinCashTransactions = transactions;
+        return self.bitcoinCashTransactions;
     }
     return nil;
 }

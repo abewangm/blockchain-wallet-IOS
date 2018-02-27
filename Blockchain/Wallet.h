@@ -202,6 +202,8 @@
 @property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
 @property (nonatomic) NSNumber *contactsActionCount;
 
+@property (nonatomic) NSArray *bitcoinCashTransactions;
+
 @property (nonatomic) NSArray *etherTransactions;
 @property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
 
@@ -456,7 +458,7 @@ typedef enum {
 - (void)fetchBitcoinCashExchangeRates;
 - (NSString *)bitcoinCashExchangeRate;
 - (uint64_t)bitcoinCashTotalBalance;
-- (NSArray *)bitcoinCashTransactions;
+- (NSArray *)getBitcoinCashTransactions;
 
 // Exchange
 - (void)createEthAccountForExchange:(NSString *)secondPassword;

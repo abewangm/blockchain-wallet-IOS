@@ -171,7 +171,14 @@ const CGFloat rowHeightValueReceived = 80;
 {
     [self.busyViewDelegate hideBusyView];
     
-    NSArray *newTransactions = self.transactionModel.assetType == AssetTypeBitcoin ?  app.latestResponse.transactions : app.wallet.etherTransactions;
+    NSArray *newTransactions;
+    if (self.transactionModel.assetType == AssetTypeBitcoin) {
+        newTransactions = app.latestResponse.transactions;
+    } else if (self.transactionModel.assetType == AssetTypeEther) {
+        newTransactions = app.wallet.etherTransactions;
+    } else if (self.transactionModel.assetType == AssetTypeBitcoinCash) {
+        newTransactions = app.wallet.bitcoinCashTransactions;
+    }
     
     [self findAndUpdateTransaction:newTransactions];
     

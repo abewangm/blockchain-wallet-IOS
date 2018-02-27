@@ -34,6 +34,7 @@
 }
 
 -(IBAction)transactionClicked:(UIButton *)button;
+- (void)bitcoinCashTransactionClicked;
 -(IBAction)btcbuttonclicked:(id)sender;
 
 @property(nonatomic, strong)  Transaction * transaction;
