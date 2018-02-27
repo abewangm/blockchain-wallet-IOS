@@ -321,7 +321,6 @@
         
         NSString * string = [app.btcFormatter stringFromNumber:number];
         
-        NSString *symbol;
         NSString *currencySymbol = app.latestResponse.symbol_btc.symbol;
         if ([currencySymbol isEqualToString:CURRENCY_SYMBOL_MBC]) {
             currencySymbol = CURRENCY_SYMBOL_BCH_MILLIBITS;
