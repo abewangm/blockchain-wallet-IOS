@@ -96,6 +96,7 @@
 {
     TransactionDetailViewModel *model = [self initWithTransaction:transaction];
     model.assetType = AssetTypeBitcoinCash;
+    model.hideNote = YES;
     return model;
 }
 
