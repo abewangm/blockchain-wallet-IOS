@@ -14,6 +14,9 @@
 #import "RootService.h"
 #import "NSDateFormatter+VerboseString.h"
 
+#define URL_BLOCKCHAIR @"blockchair.com"
+#define URL_PREFIX_VIEW_TRANSACTION_BITCOIN_CASH @"https://blockchair.com/bitcoin-cash/transaction/"
+
 @interface TransactionDetailViewModel ()
 @property (nonatomic) NSString *amountString;
 @property (nonatomic) uint64_t feeInSatoshi;
@@ -97,6 +100,8 @@
     TransactionDetailViewModel *model = [self initWithTransaction:transaction];
     model.assetType = AssetTypeBitcoinCash;
     model.hideNote = YES;
+    model.detailButtonTitle = [[BC_STRING_VIEW_ON_URL_ARGUMENT stringByAppendingFormat:@" %@", URL_BLOCKCHAIR] uppercaseString];
+    model.detailButtonLink = [URL_PREFIX_VIEW_TRANSACTION_BITCOIN_CASH stringByAppendingString:model.myHash];
     return model;
 }
 
