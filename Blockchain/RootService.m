@@ -1149,6 +1149,13 @@ void (^secondPasswordSuccess)(NSString *);
     [self.wallet getEthExchangeRate];
 }
 
+- (void)didFetchBitcoinCashHistory
+{
+    [self hideBusyView];
+    
+    [self reload];
+}
+
 - (void)updateSymbols
 {
     {
@@ -2064,6 +2071,9 @@ void (^secondPasswordSuccess)(NSString *);
     } else if (assetType == AssetTypeEther) {
         transactions = app.wallet.etherTransactions;
         targetHash = self.tabControllerManager.transactionsEtherViewController.detailViewController.transactionModel.myHash;
+    } else if (assetType == AssetTypeBitcoinCash) {
+        transactions = app.wallet.bitcoinCashTransactions;
+        targetHash = self.tabControllerManager.transactionsBitcoinCashViewController.detailViewController.transactionModel.myHash;
     }
 
     for (Transaction *transaction in transactions) {

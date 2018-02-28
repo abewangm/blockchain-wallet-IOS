@@ -14,6 +14,9 @@
 #import "RootService.h"
 #import "NSDateFormatter+VerboseString.h"
 
+#define URL_BLOCKCHAIR @"blockchair.com"
+#define URL_PREFIX_VIEW_TRANSACTION_BITCOIN_CASH @"https://blockchair.com/bitcoin-cash/transaction/"
+
 @interface TransactionDetailViewModel ()
 @property (nonatomic) NSString *amountString;
 @property (nonatomic) uint64_t feeInSatoshi;
@@ -92,13 +95,26 @@
     return self;
 }
 
+- (id)initWithBitcoinCashTransaction:(Transaction *)transaction
+{
+    TransactionDetailViewModel *model = [self initWithTransaction:transaction];
+    model.assetType = AssetTypeBitcoinCash;
+    model.hideNote = YES;
+    model.detailButtonTitle = [[BC_STRING_VIEW_ON_URL_ARGUMENT stringByAppendingFormat:@" %@", URL_BLOCKCHAIR] uppercaseString];
+    model.detailButtonLink = [URL_PREFIX_VIEW_TRANSACTION_BITCOIN_CASH stringByAppendingString:model.myHash];
+    return model;
+}
+
 - (NSString *)getAmountString
 {
     if (self.assetType == AssetTypeBitcoin) {
         return [NSNumberFormatter formatMoneyWithLocalSymbol:ABS(self.amountInSatoshi)];
     } else if (self.assetType == AssetTypeEther) {
         return [NSNumberFormatter formatEthWithLocalSymbol:self.amountString exchangeRate:self.ethExchangeRate];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [NSNumberFormatter formatBchWithSymbol:ABS(self.amountInSatoshi)];
     }
+    
     return nil;
 }
 
@@ -108,6 +124,8 @@
         return [self getBtcFeeString];
     } else if (self.assetType == AssetTypeEther) {
         return [self getEthFeeString];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [self getBchFeeString];
     }
     return nil;
 }
@@ -120,6 +138,11 @@
 - (NSString *)getEthFeeString
 {
     return [NSNumberFormatter formatEthWithLocalSymbol:self.feeString exchangeRate:self.exchangeRate];
+}
+
+- (NSString *)getBchFeeString
+{
+    return [NSNumberFormatter formatBchWithSymbol:ABS(self.feeInSatoshi)];
 }
 
 @end

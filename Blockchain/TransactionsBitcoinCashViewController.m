@@ -57,7 +57,7 @@
 
 - (void)loadTransactions
 {
-    self.transactions = [app.wallet bitcoinCashTransactions];
+    self.transactions = [app.wallet getBitcoinCashTransactions];
     
 //    self.noTransactionsView.hidden = self.transactions.count > 0;
     
@@ -65,9 +65,16 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)reload
+{
+    [self loadTransactions];
+}
+
 - (void)getHistory
 {
-    
+    [app showBusyViewWithLoadingText:BC_STRING_LOADING_LOADING_TRANSACTIONS];
+
+    [app.wallet performSelector:@selector(getBitcoinCashHistory) withObject:nil afterDelay:0.1f];
 }
 
 #pragma mark - Table View Data Source
@@ -111,6 +118,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.transactions.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TransactionTableCell *cell = (TransactionTableCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell bitcoinCashTransactionClicked];
 }
 
 @end

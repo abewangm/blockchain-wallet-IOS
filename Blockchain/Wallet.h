@@ -145,6 +145,7 @@
 - (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
 - (void)didCreateEthAccountForExchange;
 - (void)didGetBitcoinCashExchangeRates;
+- (void)didFetchBitcoinCashHistory;
 - (void)initializeWebView;
 @end
 
@@ -202,6 +203,8 @@
 @property (nonatomic) NSMutableDictionary<NSString *, ContactTransaction *> *completedContactTransactions;
 @property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
 @property (nonatomic) NSNumber *contactsActionCount;
+
+@property (nonatomic) NSArray *bitcoinCashTransactions;
 
 @property (nonatomic) NSArray *etherTransactions;
 @property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
@@ -459,10 +462,11 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Bitcoin cash
+- (void)getBitcoinCashHistory;
 - (void)fetchBitcoinCashExchangeRates;
 - (NSString *)bitcoinCashExchangeRate;
 - (uint64_t)bitcoinCashTotalBalance;
-- (NSArray *)bitcoinCashTransactions;
+- (NSArray *)getBitcoinCashTransactions;
 
 // Exchange
 - (void)createEthAccountForExchange:(NSString *)secondPassword;

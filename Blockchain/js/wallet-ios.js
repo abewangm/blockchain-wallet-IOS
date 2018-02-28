@@ -2848,6 +2848,22 @@ MyWalletPhone.fiatExchangeHardLimit = function() {
     return walletOptions.getValue().shapeshift.upperLimit;
 }
 
+MyWalletPhone.getBitcoinCashHistory = function() {
+    
+    var success = function() {
+        console.log('Success fetching bch history')
+        objc_on_fetch_bch_history_success();
+    };
+    
+    var error = function(error) {
+        console.log('Error fetching bch history')
+        console.log(error);
+        objc_on_fetch_bch_history_error(error);
+    };
+
+    MyWallet.wallet.bch.getHistory().then(success).catch(error);
+}
+
 MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
     
     var success = function(result) {
