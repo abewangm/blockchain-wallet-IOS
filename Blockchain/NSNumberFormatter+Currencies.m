@@ -142,7 +142,7 @@
 
 + (NSDecimalNumber *)convertEthToFiat:(NSDecimalNumber *)ethAmount exchangeRate:(NSDecimalNumber *)exchangeRate
 {
-    if (ethAmount == 0) return 0;
+    if (ethAmount == 0 || !exchangeRate) return 0;
     
     return [ethAmount decimalNumberByMultiplyingBy:exchangeRate];
 }

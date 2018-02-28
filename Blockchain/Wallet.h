@@ -146,6 +146,7 @@
 - (void)didCreateEthAccountForExchange;
 - (void)didGetBitcoinCashExchangeRates;
 - (void)didFetchBitcoinCashHistory;
+- (void)initializeWebView;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -217,6 +218,8 @@ typedef enum {
 @property (nonatomic) ContactActionRequired contactsActionRequired;
 
 - (id)init;
+
+- (void)login;
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
 - (void)loadBlankWallet;
@@ -344,6 +347,9 @@ typedef enum {
 - (int)getDefaultAccountLabelledAddressesCount;
 
 - (BOOL)isBuyEnabled;
+- (BOOL)canUseSfox;
+- (void)setupBuySellWebview;
+- (NSString *)buySellWebviewRootURLString;
 
 // Settings
 - (void)getAccountInfo;
