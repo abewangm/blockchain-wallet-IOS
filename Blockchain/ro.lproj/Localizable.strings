@@ -1915,3 +1915,195 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "Minerii primesc această taxă pentru a procesa această tranzacție.";
+
+/* (No Commment) */
+"Get Ether" = "Obține Eter";
+
+/* (No Commment) */
+"at" = "la";
+
+/* (No Commment) */
+"Exchange" = "Schimb";
+
+/* (No Commment) */
+"New Exchange" = "De Schimb Noi";
+
+/* (No Commment) */
+"Use minimum" = "Utilizarea minimă";
+
+/* (No Commment) */
+"Use maximum" = "Utilizarea maximă";
+
+/* (No Commment) */
+"Sending Funds" = "Trimiterea De Fonduri";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "Multumesc pentru introducerea comerțului! Schimb de meserii poate dura până la două ore, și puteți urmări dvs. de marcă de progres în secțiunea Istoric comenzi.";
+
+/* (No Commment) */
+"In Progress" = "În Curs De Desfășurare";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "Schimburile pot dura până la două ore, puteți urmări de schimb progrese în Scopul de Istorie. Odată ce comerțul este completă, eter dumneavoastră va ajunge în portofel.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "Comerțul a fost anulat. Vă rugăm să reveniți la schimb tab-ul pentru a începe dvs. de comerț din nou.";
+
+/* (No Commment) */
+"Failed" = "Nu a reușit";
+
+/* (No Commment) */
+"Exchange Failed" = "Schimb Nu A Reușit";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "Acest comerț nu a reușit. Fondurile trimise din portofel vor fi returnate minus comision de tranzacție. Vă rugăm să reveniți la schimb tab-ul pentru a începe o nouă tranzacție.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "Comerțul a expirat. Vă rugăm să reveniți la schimb tab-ul pentru a începe o nouă tranzacție.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "Acum puteți face schimb de bitcoin pentru eter și vice-versa direct de pe Blockchain portofel!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ la Depozit";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ să fie Primit";
+
+/* (No Commment) */
+"Exchange Rate" = "Rata De Schimb";
+
+/* (No Commment) */
+"Transaction Fee" = "Comision De Tranzacție";
+
+/* (No Commment) */
+"Network Transaction Fee" = "Rețea Comision De Tranzacție";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "ShapeShift Comision De Retragere";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "Sunt de acord pentru a schimba forma";
+
+/* (No Commment) */
+"terms and conditions" = "termeni și condiții";
+
+/* (No Commment) */
+"Exchange In Progress" = "Schimb În Curs De Desfășurare";
+
+/* (No Commment) */
+"Exchange Completed" = "Schimb Finalizat";
+
+/* (No Commment) */
+"Get started" = "Începeți";
+
+/* (No Commment) */
+"Below minimum limit" = "Sub limita minimă";
+
+/* (No Commment) */
+"Above maximum limit" = "Peste limita maximă";
+
+/* (No Commment) */
+"Not enough to exchange" = "Nu suficient pentru a face schimb";
+
+/* (No Commment) */
+"Order ID" = "ID-ul comenzii";
+
+/* (No Commment) */
+"Total %@ spent" = "Total %@ petrecut";
+
+/* (No Commment) */
+"Getting quote" = "Obtinerea citat";
+
+/* (No Commment) */
+"Confirming" = "Confirmarea";
+
+/* (No Commment) */
+"Exchange In Progress" = "Schimb În Curs De Desfășurare";
+
+/* (No Commment) */
+"Complete" = "Complet";
+
+/* (No Commment) */
+"Exchange Completed" = "Schimb Finalizat";
+
+/* (No Commment) */
+"Quote expires in %@" = "Citat expiră în %@";
+
+/* (No Commment) */
+"Step %d of %d" = "Pas %d de %d";
+
+/* (No Commment) */
+"Select your State:" = "Selectați Stat:";
+
+/* (No Commment) */
+"Select State" = "Selectați Stat";
+
+/* (No Commment) */
+"Not Available" = "Nu Este Disponibil";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "Schimbul de monede nu este încă disponibil în stat. Vom fi rulare mai multe membre în curând.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "A apărut o eroare atunci când se %@ echilibru. Vă rugăm să încercați din nou mai târziu. Detalii: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "A apărut o eroare atunci când a obține un citat aproximativ. Vă rugăm să încercați din nou mai târziu. Detalii: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "Depus pentru a schimba forma";
+
+/* (No Commment) */
+"Received from ShapeShift" = "Primit de la ShapeShift";
+
+/* (No Commment) */
+"Order History" = "Pentru Istorie";
+
+/* (No Commment) */
+"Incoming" = "Intrare";
+
+/* (No Commment) */
+"Trade Expired" = "Comerțul Expirat";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "Comerțul a expirat. Vă rugăm să reveniți la pagina Exchange pentru a începe dvs. de comerț din nou.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "Nu există Fonduri pentru a face Schimb";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "Nu aveți fonduri pentru a face schimb. de Ce nu începeți prin primirea unor fonduri?";
+
+/* (No Commment) */
+"Loading Exchange" = "Încărcare De Schimb";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "Selectați alte %@ Portofel";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ necesare pentru schimb";
+
+/* (No Commment) */
+"Start trading" = "Începe de tranzacționare";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Schimb bitcoin direct de pe Blockchain portofel. Începeți prin crearea unui cont în Cumpar & vand tab.";
+
+/* (No Commment) */
+"The wait is over" = "Așteptați este de peste";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "Ceva a mers greșit, vă rugăm să încercați redeschiderea Cumpăra Și Vinde Bitcoin din nou.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "Cumpăra Și Vinde Bitcoin";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "Noi lucram cu parteneri de schimb peste tot în lume, astfel încât să puteți cumpăra și vinde bitcoin direct din portofel.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "Mobile Cumpara Si Vinde este acceptată pentru iOS 9 și în sus. Vă rugăm să executați o actualizare de software sau de conectare la blockchain.info/wallet/login de pe computer.";
+
+/* (No Commment) */
+"Buy and sell bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "Cumpăra și vinde bitcoin direct de pe Blockchain portofel. Începeți prin crearea unui cont în Cumpar & vand tab.";

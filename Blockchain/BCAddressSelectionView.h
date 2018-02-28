@@ -30,6 +30,8 @@
 - (void)didSelectContact:(Contact *)contact;
 @optional
 - (void)didSelectWatchOnlyAddress:(NSString*)address;
+- (void)didSelectToEthAccount;
+- (void)didSelectFromEthAccount;
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {
@@ -44,7 +46,9 @@ typedef enum {
     SelectModeReceiveTo = 300,
     SelectModeReceiveFromContact = 350,
     SelectModeTransferTo = 400,
-    SelectModeContact = 500
+    SelectModeContact = 500,
+    SelectModeExchangeAccountFrom = 600,
+    SelectModeExchangeAccountTo = 700
 }SelectMode;
 
 - (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;
@@ -60,6 +64,9 @@ typedef enum {
 
 @property(nonatomic, strong) NSMutableArray *accounts;
 @property(nonatomic, strong) NSMutableArray *accountLabels;
+
+@property(nonatomic, strong) NSMutableArray *ethAccounts;
+@property(nonatomic, strong) NSMutableArray *ethAccountLabels;
 
 @property(nonatomic, strong) Wallet *wallet;
 @property(nonatomic, strong) Contact *previouslySelectedContact;

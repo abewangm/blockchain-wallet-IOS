@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "ExchangeOverviewViewController.h"
 #import "BuyBitcoinViewController.h"
 #import "SessionManager.h"
 #import "SharedSessionDelegate.h"
@@ -180,7 +181,11 @@ void (^secondPasswordSuccess)(NSString *);
     
     SharedSessionDelegate *sharedSessionDelegate = [[SharedSessionDelegate alloc] initWithCertificatePinner:self.certificatePinner];
     
-    [SessionManager setupSharedSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:sharedSessionDelegate queue:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSString *userAgentString = [NSString stringWithFormat:@"Blockchain-iOS/%@ (iOS/%@; %@)", [self getVersionLabelString], [[UIDevice currentDevice] systemVersion], [DeviceIdentifier deviceName]];
+    configuration.HTTPAdditionalHeaders = @{@"User-Agent" : userAgentString};
+
+    [SessionManager setupSharedSessionConfiguration:configuration delegate:sharedSessionDelegate queue:nil];
     
     [self.certificatePinner pinCertificate];
     
@@ -235,8 +240,6 @@ void (^secondPasswordSuccess)(NSString *);
     secondPasswordDescriptionLabel.font = [UIFont fontWithName:FONT_GILL_SANS_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
     secondPasswordTextField.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL];
     secondPasswordButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
-    
-    [self setupBuyWebView];
     
     return YES;
 }
@@ -365,7 +368,7 @@ void (^secondPasswordSuccess)(NSString *);
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_SHOW_TOUCH_ID_SETUP];
     }
     
-    [self setupBuyWebView];
+    [self setupBuySellWebview];
     
     [self.wallet.webSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
     [self.wallet.ethSocket closeWithCode:WEBSOCKET_CODE_BACKGROUNDED_APP reason:WEBSOCKET_CLOSE_REASON_USER_BACKGROUNDED];
@@ -503,7 +506,7 @@ void (^secondPasswordSuccess)(NSString *);
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD];
 }
 
 #pragma mark - Setup
@@ -669,7 +672,12 @@ void (^secondPasswordSuccess)(NSString *);
     curtainImageView.alpha = 0;
 }
 
-- (void)setupBuyWebView
+- (void)setupBuySellWebview
+{
+    [app.wallet setupBuySellWebview];
+}
+
+- (void)initializeWebview
 {
     self.buyBitcoinViewController = [[BuyBitcoinViewController alloc] init];
 }
@@ -867,6 +875,24 @@ void (^secondPasswordSuccess)(NSString *);
             [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
     }
+}
+
+- (BOOL)checkIfWaitingOnEtherTransaction
+{
+    BOOL isWaiting = [app.wallet isWaitingOnEtherTransaction];
+    
+    if (isWaiting) {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_TITLE message:BC_STRING_WAITING_FOR_ETHER_PAYMENT_TO_FINISH_MESSAGE preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:BC_STRING_OK style:UIAlertActionStyleCancel handler:nil]];
+
+        if (self.window.rootViewController.presentedViewController) {
+            [self.window.rootViewController.presentedViewController presentViewController:errorAlert animated:YES completion:nil];
+        } else {
+            [self.window.rootViewController presentViewController:errorAlert animated:YES completion:nil];
+        }
+    }
+    
+    return isWaiting;
 }
 
 #pragma mark - AlertView Helpers
@@ -1699,8 +1725,13 @@ void (^secondPasswordSuccess)(NSString *);
     NSString *magicHash = [loginData[@"magicHash"] isEqual:[NSNull null]] ? @"" : loginData[@"magicHash"];
     [self.buyBitcoinViewController loginWithJson:walletJson externalJson:externalJson magicHash:magicHash password:self.wallet.password];
     self.buyBitcoinViewController.delegate = app.wallet;
-    BuyBitcoinNavigationController *navigationController = [[BuyBitcoinNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_BITCOIN];
+    BuyBitcoinNavigationController *navigationController = [[BuyBitcoinNavigationController alloc] initWithRootViewController:self.buyBitcoinViewController title:BC_STRING_BUY_AND_SELL_BITCOIN];
     [self.tabControllerManager.tabViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)exchangeClicked:(id)sender
+{
+    [self.tabControllerManager exchangeClicked];
 }
 
 - (void)forgetWallet
@@ -1738,7 +1769,7 @@ void (^secondPasswordSuccess)(NSString *);
     
     [self transitionToIndex:TAB_DASHBOARD];
     
-    [self setupBuyWebView];
+    [self setupBuySellWebview];
 }
 
 - (void)didImportKey:(NSString *)address
@@ -2482,9 +2513,49 @@ void (^secondPasswordSuccess)(NSString *);
     [self.tabControllerManager didErrorDuringEtherSend:error];
 }
 
+- (void)didCreateEthAccountForExchange
+{
+    [self.tabControllerManager didCreateEthAccountForExchange];
+}
+
 - (void)didGetEtherAddressWithSecondPassword
 {
     [self.tabControllerManager didGetEtherAddressWithSecondPassword];
+}
+
+- (void)didGetExchangeTrades:(NSArray *)trades
+{
+    [self.tabControllerManager didGetExchangeTrades:trades];
+}
+
+- (void)didGetExchangeRate:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetExchangeRate:result];
+}
+
+- (void)didGetAvailableBtcBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableBtcBalance:result];
+}
+
+- (void)didGetAvailableEthBalance:(NSDictionary *)result
+{
+    [self.tabControllerManager didGetAvailableEthBalance:result];
+}
+
+- (void)didBuildExchangeTrade:(NSDictionary *)tradeInfo
+{
+    [self.tabControllerManager didBuildExchangeTrade:tradeInfo];
+}
+
+- (void)didShiftPayment:(NSDictionary *)info
+{
+    [self.tabControllerManager didShiftPayment:info];
+}
+
+- (void)showGetAssetsAlert
+{
+    [self.tabControllerManager showGetAssetsAlert];
 }
 
 #pragma mark - Show Screens

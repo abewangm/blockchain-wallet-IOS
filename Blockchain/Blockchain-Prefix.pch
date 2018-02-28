@@ -186,7 +186,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #define URL_PUSH_NOTIFICATIONS_SERVER_ARGUMENT_GUID_ARGUMENT_SHAREDKEY_ARGUMENT_TOKEN_ARGUMENT_LENGTH_ARGUMENT_LANGUAGE_ARGUMENT @"%@/wallet?method=update-ios&guid=%@&sharedKey=%@&payload=%@&length=%lu&lang=%s"
 
-#define COPYRIGHT_YEAR @"2017"
+#define COPYRIGHT_YEAR @"2018"
 
 #define ABOUT_STRING_BLOCKCHAIN_WALLET NSLocalizedString(@"Blockchain Wallet", nil)
 #define ABOUT_STRING_COPYRIGHT_LOGO NSLocalizedString(@"©", nil)
@@ -271,6 +271,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_FEE @"fee"
 
+#define ERROR_NO_FREE_OUTPUTS_TO_SPEND @"No free outputs to spend"
 #define ERROR_FAILED_NETWORK_REQUEST @"Connectivity error, failed to send network request"
 #define ERROR_MISSING_DESTINATION_ADDRESS @"Missing destination address"
 #define ERROR_FEE_TOO_LOW @"Fee is too low / Not sufficient priority\n"
@@ -336,6 +337,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define URL_KYC_SFOX @"sfox-kyc.s3.amazonaws.com"
 #define URL_API_ISIGNTHIS @"verify.isignthis.com"
 #define URL_GOOGLE_ANALYTICS @"www.google-analytics.com"
+#define URL_SHAPESHIFT @"shapeshift.io"
 
 #define SEGUE_IDENTIFIER_CURRENCY @"currency"
 #define SEGUE_IDENTIFIER_BTC_UNIT @"btcUnit"
@@ -545,6 +547,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define PUSH_NOTIFICATION_TYPE_PAYMENT @"payment"
 #define PUSH_NOTIFICATION_TYPE_CONTACT_REQUEST @"contact_request"
 
+#define DICTIONARY_KEY_SUCCESS @"success"
+#define DICTIONARY_KEY_ERROR @"error"
+
 #define DICTIONARY_KEY_STATE @"state"
 #define DICTIONARY_KEY_INTENDED_AMOUNT @"intended_amount"
 #define DICTIONARY_KEY_ROLE @"role"
@@ -603,7 +608,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_AMOUNT @"amount"
 #define DICTIONARY_KEY_DISPLAY_AMOUNT @"displayAmount"
 #define DICTIONARY_KEY_CODE @"code"
-#define DICTIONARY_KEY_ERROR @"error"
 #define DICTIONARY_KEY_THRESHOLD @"threshold"
 #define DICTIONARY_KEY_SUCCESS @"success"
 #define DICTIONARY_KEY_KEY @"key"
@@ -653,6 +657,19 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define DICTIONARY_KEY_MULTIADDRESS_ADDRESSES @"addresses"
 #define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_LOCAL @"symbol_local"
 #define DICTIONARY_KEY_MULTIADDRESS_SYMBOL_BTC @"symbol_btc"
+
+#define DICTIONARY_KEY_LIMIT @"limit"
+#define DICTIONARY_KEY_MINIMUM @"minimum"
+#define DICTIONARY_KEY_MAX_LIMIT @"maxLimit"
+#define DICTIONARY_KEY_PAIR @"pair"
+#define DICTIONARY_KEY_RATE @"rate"
+#define DICTIONARY_KEY_MINER_FEE @"minerFee"
+#define DICTIONARY_KEY_BTC_HARD_LIMIT @"btcHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT @"ethHardLimit"
+#define DICTIONARY_KEY_ETH_HARD_LIMIT_RATE @"ethHardLimitRate"
+
+#define ERROR_MINIMUM @"minimum"
+#define ERROR_MAXIMUM @"maximum"
 
 #define DICTIONARY_VALUE_NOTIFICATION_RECEIVE 2
 #define DICTIONARY_VALUE_NOTIFICATION_SEND_AND_RECEIVE 0
@@ -722,7 +739,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #define USER_DEFAULTS_KEY_HAS_SEEN_ALL_CARDS @"hasSeenAllCards"
 #define USER_DEFAULTS_KEY_SHOULD_HIDE_ALL_CARDS @"shouldHideAllCards"
 #define USER_DEFAULTS_KEY_LAST_CARD_OFFSET @"lastCardOffset"
-#define USER_DEFAULTS_KEY_SHOULD_HIDE_ETHER_CARD @"shouldHideEtherNotificationCard"
+#define USER_DEFAULTS_KEY_SHOULD_HIDE_BUY_SELL_CARD @"shouldHideBuySellNotificationCard"
 
 #define USER_DEFAULTS_KEY_DEBUG_SECURITY_REMINDER_CUSTOM_TIMER @"securiterReminderTimer"
 #define USER_DEFAULTS_KEY_HAS_SEEN_EMAIL_REMINDER @"hasSeenEmailReminder"

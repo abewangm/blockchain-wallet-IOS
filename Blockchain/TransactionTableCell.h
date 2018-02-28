@@ -27,7 +27,7 @@
     Transaction * transaction;
     IBOutlet UILabel * dateLabel;
     IBOutlet UIButton * btcButton;
-    IBOutlet BCInsetLabel *watchOnlyLabel;
+    IBOutlet BCInsetLabel *infoLabel;
     
     IBOutlet UILabel *actionLabel;    
     IBOutlet UIImageView *warningImageView;

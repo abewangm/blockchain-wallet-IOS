@@ -74,4 +74,4 @@ Artwork & images remain Copyright Blockchain Luxembourg S.A.R.L
 
 Security issues can be reported to us in the following venues:
 * Email: security@blockchain.info
-* Bug Bounty: https://www.crowdcurity.com/blockchain-info
+* Bug Bounty: https://hackerone.com/blockchain

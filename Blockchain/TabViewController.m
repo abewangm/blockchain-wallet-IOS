@@ -164,7 +164,7 @@
             [self showBalances];
             
             NSDecimalNumber *sum = [btcBalance decimalNumberByAdding:ethBalance];
-            balanceLabel.text = [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:sum]];
+            balanceLabel.text = [app.wallet isInitialized] ? [app.latestResponse.symbol_local.symbol stringByAppendingString:[app.localCurrencyFormatter stringFromNumber:sum]] : nil;
             
         } else if (newIndex == TAB_TRANSACTIONS) {
             [self.bannerPricesView removeFromSuperview];
@@ -172,10 +172,10 @@
             balanceLabel.userInteractionEnabled = YES;
 
             if (self.assetSegmentedControl.selectedSegmentIndex == AssetTypeBitcoin) {
-                balanceLabel.text = [NSNumberFormatter formatMoneyWithLocalSymbol:[app.wallet getTotalActiveBalance]];
+                balanceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatMoneyWithLocalSymbol:[app.wallet getTotalActiveBalance]] : nil;
                 [self showSelector];
             } else {
-                balanceLabel.text = [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalanceTruncated] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
+                balanceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalanceTruncated] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : nil;
                 [self.bannerSelectorView removeFromSuperview];
             }
         }
@@ -227,6 +227,13 @@
 {
     titleLabel.text = text;
     titleLabel.hidden = NO;
+}
+
+- (void)selectAsset:(AssetType)assetType
+{
+    self.assetSegmentedControl.selectedSegmentIndex = assetType;
+    
+    [self assetSegmentedControlChanged];
 }
 
 - (void)assetSegmentedControlChanged
@@ -287,11 +294,11 @@
     [bannerView addSubview:self.bannerPricesView];
 
     if (app->symbolLocal) {
-        self.ethPriceLabel.text = [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate];
-        self.btcPriceLabel.text = [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:YES];
+        self.ethPriceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatEthWithLocalSymbol:[app.wallet getEthBalance] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : nil;
+        self.btcPriceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:YES] : nil;
     } else {
-        self.ethPriceLabel.text = [NSString stringWithFormat:@"%@ %@", [app.wallet getEthBalanceTruncated], CURRENCY_SYMBOL_ETH];
-        self.btcPriceLabel.text = [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:NO];
+        self.ethPriceLabel.text = [app.wallet isInitialized] ? [NSString stringWithFormat:@"%@ %@", [app.wallet getEthBalanceTruncated], CURRENCY_SYMBOL_ETH] : nil;
+        self.btcPriceLabel.text = [app.wallet isInitialized] ? [NSNumberFormatter formatMoney:[app.wallet getTotalActiveBalance] localCurrency:NO] : nil;
     }
     
     [self.bannerSelectorView removeFromSuperview];
@@ -320,6 +327,11 @@
         selectorButton.titleEdgeInsets = UIEdgeInsetsMake(0, -selectorButton.imageView.bounds.size.width, 0, 0);
         [selectorButton addTarget:self action:@selector(selectorButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.bannerSelectorView addSubview:selectorButton];
+        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton = selectorButton;
+        
+        BOOL shouldShowFilterButton = ([app.wallet didUpgradeToHd] && ([[app.wallet activeLegacyAddresses] count] > 0 || [app.wallet getActiveAccountsCount] >= 2));
+        
+        app.tabControllerManager.transactionsBitcoinViewController.filterAccountButton.hidden = !shouldShowFilterButton;
     }
     
     [bannerView addSubview:self.bannerSelectorView];

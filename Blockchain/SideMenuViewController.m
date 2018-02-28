@@ -41,6 +41,7 @@ NSString *entryKeyMerchantMap = @"merchant_map";
 NSString *entryKeySupport = @"support";
 NSString *entryKeyLogout = @"logout";
 NSString *entryKeyBuyBitcoin = @"buy_bitcoin";
+NSString *entryKeyExchange = @"exchange";
 
 int balanceEntries = 0;
 int accountEntries = 0;
@@ -105,7 +106,10 @@ int accountEntries = 0;
     [self clearMenuEntries];
     
     if ([app.wallet isBuyEnabled]) {
-        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_BITCOIN icon:@"buy"];
+        [self addMenuEntry:entryKeyBuyBitcoin text:BC_STRING_BUY_AND_SELL_BITCOIN icon:@"buy"];
+    }
+    if ([app.wallet isExchangeEnabled]) {
+        [self addMenuEntry:entryKeyExchange text:BC_STRING_EXCHANGE icon:@"exchange_menu"];
     }
     if (!app.wallet.didUpgradeToHd) {
         [self addMenuEntry:entryKeyUpgradeBackup text:BC_STRING_UPGRADE icon:@"icon_upgrade"];
@@ -327,6 +331,8 @@ int accountEntries = 0;
         [app logoutClicked:nil];
     } else if (rowKey == entryKeyBuyBitcoin) {
         [app buyBitcoinClicked:nil];
+    } else if (rowKey == entryKeyExchange) {
+        [app exchangeClicked:nil];
     }
 }
 

@@ -1915,3 +1915,195 @@
 
 /* (No Commment) */
 "Miners receive this fee to process this transaction." = "הכורים מקבלים תשלום זה תהליך העסקה.";
+
+/* (No Commment) */
+"Get Ether" = "קבל אתר";
+
+/* (No Commment) */
+"at" = "ב";
+
+/* (No Commment) */
+"Exchange" = "Exchange";
+
+/* (No Commment) */
+"New Exchange" = "שערי חליפין חדשים";
+
+/* (No Commment) */
+"Use minimum" = "שימוש מינימלי";
+
+/* (No Commment) */
+"Use maximum" = "שימוש מקסימלית";
+
+/* (No Commment) */
+"Sending Funds" = "שולח כספים";
+
+/* (No Commment) */
+"Thanks for placing your trade!  Exchange trades can take up to two hours, and you can keep track of your trade’s progress in the Order History section." = "תודה על הצבת המסחר שלך! Exchange עסקאות יכול לקחת עד שעתיים, אתה יכול לשמור על מעקב אחר של מסחר התקדמות לפי סדר היסטוריה'.";
+
+/* (No Commment) */
+"In Progress" = "בתהליך";
+
+/* (No Commment) */
+"Exchanges can take up to two hours, you can keep track of your exchange progress in the Order History. Once the trade is complete, your ether will arrive in your wallet." = "חילופי יכול לקחת עד שעתיים, אתה יכול לשמור על מעקב אחר של exchange התקדמות לפי סדר ההיסטוריה. לאחר החילוף המלא, את אתר יגיעו בארנק שלך.";
+
+/* (No Commment) */
+"Your trade has been canceled. Please return to the exchange tab to start your trade again." = "המסחר שלך בוטל. נא להחזיר את ההחלפה tab כדי להתחיל את המסחר שלך שוב.";
+
+/* (No Commment) */
+"Failed" = "נכשל";
+
+/* (No Commment) */
+"Exchange Failed" = "Exchange נכשל";
+
+/* (No Commment) */
+"This trade has failed. Any funds sent from your wallet will be returned minus the transaction fee. Please return to the exchange tab to start a new trade." = "יש סחר זה נכשל. כל הכספים שנשלחו מהארנק שלך תוחזר בניכוי את דמי העסקה. נא להחזיר את ההחלפה tab כדי להתחיל עסקה חדשה.";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the exchange tab to start a new trade." = "המסחר שלך פג. נא להחזיר את ההחלפה tab כדי להתחיל עסקה חדשה.";
+
+/* (No Commment) */
+"You can now exchange your bitcoin for ether and vice versa directly from your Blockchain wallet!" = "עכשיו אתה יכול להחליף את ביטקוין עבור אתר ולהיפך ישירות מה-Blockchain הארנק!";
+
+/* (No Commment) */
+"%@ to Deposit" = "%@ להפקיד";
+
+/* (No Commment) */
+"%@ to be Received" = "%@ להתקבל.";
+
+/* (No Commment) */
+"Exchange Rate" = "שער החליפין";
+
+/* (No Commment) */
+"Transaction Fee" = "עמלת";
+
+/* (No Commment) */
+"Network Transaction Fee" = "רשת עמלת";
+
+/* (No Commment) */
+"ShapeShift Withdrawal Fee" = "לשנות צורה דמי משיכה";
+
+/* (No Commment) */
+"Agree to ShapeShift" = "מסכים כדי לשנות צורה";
+
+/* (No Commment) */
+"terms and conditions" = "תנאי שימוש";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange בתהליך";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange הושלמה";
+
+/* (No Commment) */
+"Get started" = "נתחיל";
+
+/* (No Commment) */
+"Below minimum limit" = "להלן מגבלת המינימום";
+
+/* (No Commment) */
+"Above maximum limit" = "מעל המרבית המותרת";
+
+/* (No Commment) */
+"Not enough to exchange" = "לא מספיק להחליף";
+
+/* (No Commment) */
+"Order ID" = "מזהה ההזמנה";
+
+/* (No Commment) */
+"Total %@ spent" = "סה \" כ %@ בילה";
+
+/* (No Commment) */
+"Getting quote" = "מקבל ציטוט";
+
+/* (No Commment) */
+"Confirming" = "המאשר";
+
+/* (No Commment) */
+"Exchange In Progress" = "Exchange בתהליך";
+
+/* (No Commment) */
+"Complete" = "להשלים";
+
+/* (No Commment) */
+"Exchange Completed" = "Exchange הושלמה";
+
+/* (No Commment) */
+"Quote expires in %@" = "ציטוט תקפה %@";
+
+/* (No Commment) */
+"Step %d of %d" = "שלב %d של %d";
+
+/* (No Commment) */
+"Select your State:" = "בחר את המדינה שלך:";
+
+/* (No Commment) */
+"Select State" = "בחר מדינה";
+
+/* (No Commment) */
+"Not Available" = "לא זמין";
+
+/* (No Commment) */
+"Exchanging coins is not yet available in your state. We’ll be rolling out more states soon." = "החלפת מטבעות הוא עדיין לא זמין במדינה שלך. אנחנו יהיו מתגלגלים החוצה עוד מדינות בקרוב.";
+
+/* (No Commment) */
+"An error occurred when getting your %@ balance. Please try again later. Details: %@" = "אירעה שגיאה בעת מקבל את %@ איזון. אנא נסה שוב מאוחר יותר. פרטים: %@";
+
+/* (No Commment) */
+"An error occurred when getting an approximate quote. Please try again later. Details: %@" = "אירעה שגיאה בעת הגעה משוער ציטוט. אנא נסה שוב מאוחר יותר. פרטים: %@";
+
+/* (No Commment) */
+"Deposited to ShapeShift" = "שהופקדו כדי לשנות צורה";
+
+/* (No Commment) */
+"Received from ShapeShift" = "שהתקבלו לשנות צורה";
+
+/* (No Commment) */
+"Order History" = "סדר היסטוריה";
+
+/* (No Commment) */
+"Incoming" = "נכנסות";
+
+/* (No Commment) */
+"Trade Expired" = "סחר פג";
+
+/* (No Commment) */
+"Your trade has expired. Please return to the Exchange page to start your trade again." = "המסחר שלך פג. נא להחזיר את ההחלפה בדף כדי להתחיל את המסחר שלך שוב.";
+
+/* (No Commment) */
+"No Funds to Exchange" = "אין כספים כדי להחליף";
+
+/* (No Commment) */
+"You have no funds to exchange. Why not get started by receiving some funds?" = "אין לך כספים exchange. למה לא להתחיל על ידי קבלת כספים?";
+
+/* (No Commment) */
+"Loading Exchange" = "טעינת Exchange";
+
+/* (No Commment) */
+"Select other %@ Wallet" = "בחר אחרות %@ הארנק";
+
+/* (No Commment) */
+"%@ needed to exchange" = "%@ צריך להחליף";
+
+/* (No Commment) */
+"Start trading" = "להתחיל לסחור";
+
+/* (No Commment) */
+"Trade bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "מסחר ביטקוין ישירות מה-Blockchain הארנק. התחל על ידי יצירת חשבון לקנות & למכור כרטיסייה.";
+
+/* (No Commment) */
+"The wait is over" = "ההמתנה הסתיימה";
+
+/* (No Commment) */
+"Something went wrong, please try reopening Buy & Sell Bitcoin again." = "משהו השתבש, אנא נסה המחודשת לקנות & למכור ביטקוין שוב.";
+
+/* (No Commment) */
+"Buy & Sell Bitcoin" = "לקנות & למכור ביטקוין";
+
+/* (No Commment) */
+"We work with exchange partners all over the world, so you can buy and sell bitcoin directly from your wallet." = "אנחנו עובדים עם exchange שותפים בכל רחבי העולם, אז אתה יכול לקנות ולמכור ביטקוין ישירות לארנק שלך.";
+
+/* (No Commment) */
+"Mobile Buy & Sell is supported for iOS 9 and up. Please run a software update or login at blockchain.info/wallet/login on your computer." = "נייד לקנות & למכור נתמך עבור iOS 9 ומעלה. בבקשה להריץ עדכון תוכנה או התחברות ב blockchain.info/wallet/login במחשב שלך.";
+
+/* (No Commment) */
+"Buy and sell bitcoin directly from your Blockchain wallet. Start by creating an account in the Buy & Sell tab." = "לקנות ולמכור ביטקוין ישירות מה-Blockchain הארנק. התחל על ידי יצירת חשבון לקנות & למכור כרטיסייה.";

@@ -12,6 +12,7 @@
 #import "EtherTransaction.h"
 #import "NSNumberFormatter+Currencies.h"
 #import "RootService.h"
+#import "NSDateFormatter+VerboseString.h"
 
 @interface TransactionDetailViewModel ()
 @property (nonatomic) NSString *amountString;
@@ -41,7 +42,7 @@
         self.fiatAmountsAtTime = transaction.fiatAmountsAtTime;
         self.doubleSpend = transaction.doubleSpend;
         self.replaceByFee = transaction.replaceByFee;
-        self.dateString = [self getDate];
+        self.dateString = [NSDateFormatter verboseStringFromDate:[NSDate dateWithTimeIntervalSince1970:self.time]];
         self.myHash = transaction.myHash;
         
         NSLocale *currentLocale = app.btcFormatter.locale;
@@ -80,7 +81,7 @@
         self.feeString = etherTransaction.fee;
         self.note = etherTransaction.note;
         self.time = etherTransaction.time;
-        self.dateString = [self getDate];
+        self.dateString = [NSDateFormatter verboseStringFromDate:[NSDate dateWithTimeIntervalSince1970:self.time]];
         self.detailButtonTitle = [[NSString stringWithFormat:@"%@ %@",BC_STRING_VIEW_ON_URL_ARGUMENT, HOST_NAME_ETHERSCAN] uppercaseString];
         self.detailButtonLink = [URL_ETHERSCAN stringByAppendingFormat:@"/tx/%@", self.myHash];
         self.ethExchangeRate = exchangeRate;
@@ -89,17 +90,6 @@
         self.fiatAmountsAtTime = etherTransaction.fiatAmountsAtTime;
     }
     return self;
-}
-
-- (NSString *)getDate
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setAMSymbol:@"am"];
-    [dateFormatter setPMSymbol:@"pm"];
-    [dateFormatter setDateFormat:@"MMMM dd, yyyy @ h:mmaa"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.time];
-    NSString *dateString = [dateFormatter stringFromDate:date];
-    return dateString;
 }
 
 - (NSString *)getAmountString

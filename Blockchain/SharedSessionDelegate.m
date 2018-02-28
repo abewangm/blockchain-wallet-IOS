@@ -31,6 +31,7 @@
         [challenge.protectionSpace.host isEqualToString:URL_API_ISIGNTHIS] ||
         [challenge.protectionSpace.host isEqualToString:URL_QUOTES_SFOX] ||
         [challenge.protectionSpace.host isEqualToString:URL_KYC_SFOX] ||
+        [challenge.protectionSpace.host isEqualToString:URL_SHAPESHIFT] ||
         !self.certificatePinner) {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     } else {
