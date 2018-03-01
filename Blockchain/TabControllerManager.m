@@ -47,6 +47,7 @@
     [_sendEtherViewController reload];
     [_transactionsBitcoinViewController reload];
     [_transactionsEtherViewController reload];
+    [_transactionsBitcoinCashViewController reload];
     [_receiveBitcoinViewController reload];
     [_receiveEtherViewController reload];
 }

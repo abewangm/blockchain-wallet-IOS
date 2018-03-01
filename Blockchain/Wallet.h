@@ -145,6 +145,8 @@
 - (void)showGetAssetsAlertForCurrencySymbol:(NSString *)currencySymbol;
 - (void)didCreateEthAccountForExchange;
 - (void)didGetBitcoinCashExchangeRates;
+- (void)didFetchBitcoinCashHistory;
+- (void)initializeWebView;
 @end
 
 @interface Wallet : NSObject <UIWebViewDelegate, SRWebSocketDelegate, ExchangeAccountDelegate> {
@@ -202,6 +204,8 @@
 @property (nonatomic) NSMutableArray<ContactTransaction *> *rejectedContactTransactions;
 @property (nonatomic) NSNumber *contactsActionCount;
 
+@property (nonatomic) NSArray *bitcoinCashTransactions;
+
 @property (nonatomic) NSArray *etherTransactions;
 @property (nonatomic) NSDecimalNumber *latestEthExchangeRate;
 
@@ -214,6 +218,8 @@ typedef enum {
 @property (nonatomic) ContactActionRequired contactsActionRequired;
 
 - (id)init;
+
+- (void)login;
 
 - (void)loadWalletWithGuid:(NSString *)_guid sharedKey:(NSString *)_sharedKey password:(NSString *)_password;
 - (void)loadBlankWallet;
@@ -341,6 +347,9 @@ typedef enum {
 - (int)getDefaultAccountLabelledAddressesCount;
 
 - (BOOL)isBuyEnabled;
+- (BOOL)canUseSfox;
+- (void)setupBuySellWebview;
+- (NSString *)buySellWebviewRootURLString;
 
 // Settings
 - (void)getAccountInfo;
@@ -453,12 +462,13 @@ typedef enum {
 - (BOOL)isWaitingOnEtherTransaction;
 
 // Bitcoin cash
+- (void)getBitcoinCashHistory;
 - (void)fetchBitcoinCashExchangeRates;
 - (BOOL)hasBchAccount;
 - (NSString *_Nonnull)getBchBalance;
 - (NSString *)bitcoinCashExchangeRate;
 - (uint64_t)bitcoinCashTotalBalance;
-- (NSArray *)bitcoinCashTransactions;
+- (NSArray *)getBitcoinCashTransactions;
 
 // Exchange
 - (void)createEthAccountForExchange:(NSString *)secondPassword;

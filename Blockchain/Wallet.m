@@ -676,7 +676,7 @@
         [weakSelf on_error_recover_with_passphrase:error];
     };
     
-#pragma mark Buy
+#pragma mark Buy/Sell
     
     self.context[@"objc_get_whitelisted_guids"] = ^(JSValue *trade) {
         return WHITELISTED_GUIDS;
@@ -688,6 +688,10 @@
     
     self.context[@"objc_on_get_pending_trades_error"] = ^(JSValue *error) {
         [weakSelf on_get_pending_trades_error:error];
+    };
+    
+    self.context[@"objc_initialize_webview"] = ^() {
+        [weakSelf initialize_webview];
     };
     
 #pragma mark Settings
@@ -909,6 +913,14 @@
     };
     
 #pragma mark Bitcoin Cash
+    
+    self.context[@"objc_on_fetch_bch_history_success"] = ^() {
+        [weakSelf did_fetch_bch_history];
+    };
+    
+    self.context[@"objc_on_fetch_bch_history_error"] = ^(JSValue *error) {
+        [app standardNotify:[error toString]];
+    };
     
     self.context[@"objc_did_get_bitcoin_cash_exchange_rates"] = ^(JSValue *result) {
         [weakSelf did_get_bitcoin_cash_exchange_rates:[result toDictionary]];
@@ -2279,6 +2291,8 @@
         symbol = CURRENCY_SYMBOL_BTC;
     } else if (assetType == AssetTypeEther) {
         symbol = CURRENCY_SYMBOL_ETH;
+    } else if (assetType == AssetTypeBitcoinCash) {
+        symbol = CURRENCY_SYMBOL_BCH;
     }
     
     NSURL *URL = [NSURL URLWithString:[URL_API stringByAppendingString:[NSString stringWithFormat:URL_SUFFIX_PRICE_INDEX_ARGUMENTS_BASE_QUOTE_TIME, symbol, currencyCode, time]]];
@@ -2323,6 +2337,22 @@
 - (BOOL)isBuyEnabled
 {
     return [[self.context evaluateScript:@"MyWalletPhone.isBuyFeatureEnabled()"] toBool];
+}
+
+- (BOOL)canUseSfox
+{
+    return [[self.context evaluateScript:@"MyWalletPhone.canUseSfox()"] toBool];
+}
+
+- (void)setupBuySellWebview
+{
+    [self.context evaluateScript:@"MyWalletPhone.setupBuySellWebview()"];
+}
+
+- (NSString *)buySellWebviewRootURLString
+{
+    JSValue *result = [self.context evaluateScript:@"MyWalletPhone.getBuySellWebviewRootURL()"];
+    return [result isNull] ? nil : [result toString];
 }
 
 - (void)watchPendingTrades:(BOOL)shouldSync
@@ -2886,7 +2916,14 @@
 
 # pragma mark - Bitcoin cash
 
-- (NSArray *)bitcoinCashTransactions
+- (void)getBitcoinCashHistory
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashHistory()"];
+    }
+}
+
+- (NSArray *)getBitcoinCashTransactions
 {
     if ([self isInitialized]) {
         NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTransactions()"] toArray];
@@ -2895,7 +2932,8 @@
             Transaction *transaction = [Transaction fromJSONDict:data];
             [transactions addObject:transaction];
         }
-        return transactions;
+        self.bitcoinCashTransactions = transactions;
+        return self.bitcoinCashTransactions;
     }
     return nil;
 }
@@ -4349,6 +4387,11 @@
     [app standardNotify:[error toString]];
 }
 
+- (void)initialize_webview
+{
+    [app initializeWebview];
+}
+
 - (void)on_fetch_eth_history_success
 {
     if ([self.delegate respondsToSelector:@selector(didFetchEthHistory)]) {
@@ -4435,6 +4478,15 @@
         [self.delegate didGetEtherAddressWithSecondPassword];
     } else {
         DLog(@"Error: delegate of class %@ does not respond to selector didGetEtherAddressWithSecondPassword!", [delegate class]);
+    }
+}
+
+- (void)did_fetch_bch_history
+{
+    if ([self.delegate respondsToSelector:@selector(didFetchBitcoinCashHistory)]) {
+        [self.delegate didFetchBitcoinCashHistory];
+    } else {
+        DLog(@"Error: delegate of class %@ does not respond to selector didFetchBitcoinCashHistory!", [delegate class]);
     }
 }
 

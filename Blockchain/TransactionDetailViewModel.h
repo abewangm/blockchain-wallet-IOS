@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL replaceByFee;
 @property (nonatomic) NSString *confirmations;
 @property (nonatomic) BOOL confirmed;
+@property (nonatomic) BOOL hideNote;
 
 @property (nonatomic) BOOL isContactTransaction;
 @property (nonatomic) NSString *reason;
@@ -43,6 +44,7 @@
 
 - (id)initWithTransaction:(Transaction *)transaction;
 - (id)initWithEtherTransaction:(EtherTransaction *)etherTransaction exchangeRate:(NSDecimalNumber *)exchangeRate defaultAddress:(NSString *)defaultAddress;
+- (id)initWithBitcoinCashTransaction:(Transaction *)transaction;
 - (NSString *)getAmountString;
 - (NSString *)getFeeString;
 @end

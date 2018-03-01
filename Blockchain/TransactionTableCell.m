@@ -138,6 +138,28 @@
     }
 }
 
+- (void)bitcoinCashTransactionClicked
+{
+    TransactionDetailViewController *detailViewController = [TransactionDetailViewController new];
+    detailViewController.transactionModel = [[TransactionDetailViewModel alloc] initWithBitcoinCashTransaction:transaction];
+    
+    TransactionDetailNavigationController *navigationController = [[TransactionDetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.transactionHash = transaction.myHash;
+    
+    detailViewController.busyViewDelegate = navigationController;
+    navigationController.onDismiss = ^() {
+        app.tabControllerManager.transactionsBitcoinCashViewController.detailViewController = nil;
+    };
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    app.tabControllerManager.transactionsBitcoinCashViewController.detailViewController = detailViewController;
+    
+    if (app.topViewControllerDelegate) {
+        [app.topViewControllerDelegate presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [app.window.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    }
+}
+
 - (IBAction)btcbuttonclicked:(id)sender
 {
     [self transactionClicked:nil];
