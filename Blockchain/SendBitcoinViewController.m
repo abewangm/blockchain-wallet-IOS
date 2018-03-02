@@ -235,8 +235,8 @@ BOOL displayingLocalSymbolSend;
     self.dust = 0;
     
     self.contactTransaction = nil;
-    
-    [app.wallet createNewBitcoinPayment];
+
+    [self createNewPayment];
     [self resetFromAddress];
     if (app.tabControllerManager.tabViewController.activeViewController == self) {
         [app closeModalWithTransition:kCATransitionPush];
@@ -330,9 +330,9 @@ BOOL displayingLocalSymbolSend;
     [self reloadLocalAndBtcSymbolsFromLatestResponse];
     
     if (self.sendFromAddress) {
-        [app.wallet changePaymentFromAddress:self.fromAddress isAdvanced:self.feeType == FeeTypeCustom];
+        [self changePaymentFromAddress:self.fromAddress];
     } else {
-        [app.wallet changePaymentFromAccount:self.fromAccount isAdvanced:self.feeType == FeeTypeCustom];
+        [self changePaymentFromAccount:self.fromAccount];
     }
     
     if (self.shouldReloadFeeAmountLabel) {
@@ -417,12 +417,12 @@ BOOL displayingLocalSymbolSend;
         }
         else {
             selectAddressTextField.text = [self labelForLegacyAddress:self.fromAddress];
-            availableAmount = [app.wallet getLegacyAddressBalance:self.fromAddress];
+            availableAmount = [self getLegacyAddressBalance:self.fromAddress];
         }
     }
     else {
-        selectAddressTextField.text = [app.wallet getLabelForAccount:self.fromAccount];
-        availableAmount = [app.wallet getBalanceForAccount:self.fromAccount];
+        selectAddressTextField.text = [self getLabelForAccount:self.fromAccount];
+        availableAmount = [self getBalanceForAccount:self.fromAccount];
     }
 }
 
@@ -432,7 +432,7 @@ BOOL displayingLocalSymbolSend;
     
     if (self.sendToAddress) {
         toField.text = [self labelForLegacyAddress:self.toAddress];
-        if ([app.wallet isBitcoinAddress:self.toAddress]) {
+        if ([self isValidAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
         } else {
             toField.text = @"";
@@ -1006,24 +1006,6 @@ BOOL displayingLocalSymbolSend;
     self.addressSource = DestinationAddressSourceURI;
 }
 
-- (NSString *)labelForLegacyAddress:(NSString *)address
-{
-    if ([[app.wallet.addressBook objectForKey:address] length] > 0) {
-        return [app.wallet.addressBook objectForKey:address];
-        
-    }
-    else if ([app.wallet.allLegacyAddresses containsObject:address]) {
-        NSString *label = [app.wallet labelForLegacyAddress:address];
-        if (label && ![label isEqualToString:@""])
-            return label;
-    } else if (self.contactTransaction) {
-        NSString *name = self.contactTransaction.contactName;
-        if (name && ![name isEqualToString:@""]) return name;
-    }
-    
-    return address;
-}
-
 - (void)hideKeyboardForced
 {
     // When backgrounding the app quickly, the input accessory view can remain visible without a first responder, so force the keyboard to appear before dismissing it
@@ -1397,6 +1379,172 @@ BOOL displayingLocalSymbolSend;
     [app.window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark - Asset Agnostic Methods
+
+- (void)createNewPayment
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet createNewBitcoinPayment];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (BOOL)canChangeFromAddress
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return !([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses] && [app.wallet getActiveAccountsCount] == 1);
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return YES;
+}
+
+- (BOOL)isValidAddress:(NSString *)address
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [app.wallet isBitcoinAddress:self.toAddress];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)changePaymentFromAddress:(NSString *)address
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changePaymentFromAddress:address isAdvanced:self.feeType == FeeTypeCustom];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (void)changePaymentFromAccount:(int)account
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changePaymentFromAccount:account isAdvanced:self.feeType == FeeTypeCustom];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        [app.wallet changeBitcoinCashPaymentFromAccount:account];
+    }
+}
+
+- (void)changePaymentToAccount:(int)account
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changePaymentToAccount:account];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (void)changePaymentToAddress:(NSString *)address
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changePaymentToAddress:address];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        [app.wallet changeBitcoinCashPaymentToAddress:address];
+    }
+}
+
+- (NSString *)labelForLegacyAddress:(NSString *)address
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        if ([[app.wallet.addressBook objectForKey:address] length] > 0) {
+            return [app.wallet.addressBook objectForKey:address];
+            
+        }
+        else if ([app.wallet.allLegacyAddresses containsObject:address]) {
+            NSString *label = [app.wallet labelForLegacyAddress:address];
+            if (label && ![label isEqualToString:@""])
+                return label;
+        } else if (self.contactTransaction) {
+            NSString *name = self.contactTransaction.contactName;
+            if (name && ![name isEqualToString:@""]) return name;
+        }
+        
+        return address;
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return nil;
+}
+
+- (uint64_t)getBalanceForAccount:(int)account
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [app.wallet getBalanceForAccount:account];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return 0;
+}
+
+- (uint64_t)getLegacyAddressBalance:(NSString *)address
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [app.wallet getLegacyAddressBalance:address];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return 0;
+}
+
+- (NSString *)getLabelForAccount:(int)account
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [app.wallet getLabelForAccount:account];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return nil;
+}
+
+- (void)getTransactionFeeWithUpdateType:(FeeUpdateType)updateType
+{
+    if (self.assetType == AssetTypeBitcoin) {
+       [app.wallet getTransactionFeeWithUpdateType:updateType];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (void)sweepPaymentRegular
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet sweepPaymentRegular];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (void)sweepPaymentAdvanced
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet sweepPaymentAdvanced];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+- (uint64_t)dust
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [app.wallet dust];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+    return 0;
+}
+
+- (void)checkIfOverspending
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet checkIfOverspending];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
 #pragma mark - Textfield Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -1408,8 +1556,7 @@ BOOL displayingLocalSymbolSend;
     
     if (textField == selectAddressTextField) {
         // If we only have one account and no legacy addresses -> can't change from address
-        if (!([app.wallet hasAccount] && ![app.wallet hasLegacyAddresses]
-              && [app.wallet getActiveAccountsCount] == 1)) {
+        if ([self canChangeFromAddress]) {
             [self selectFromAddressClicked:textField];
         }
         return NO;  // Hide both keyboard and blinking cursor.
@@ -1531,7 +1678,7 @@ BOOL displayingLocalSymbolSend;
     } else if (textField == toField) {
         self.sendToAddress = true;
         self.toAddress = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        if (self.toAddress && [app.wallet isBitcoinAddress:self.toAddress]) {
+        if (self.toAddress && [self isValidAddress:self.toAddress]) {
             [self selectToAddress:self.toAddress];
             self.addressSource = DestinationAddressSourcePaste;
             return NO;
@@ -1566,7 +1713,7 @@ BOOL displayingLocalSymbolSend;
     self.sendFromAddress = true;
     
     NSString *addressOrLabel;
-    NSString *label = [app.wallet labelForLegacyAddress:address];
+    NSString *label = [self labelForLegacyAddress:address];
     if (label && ![label isEqualToString:@""]) {
         addressOrLabel = label;
     }
@@ -1578,7 +1725,7 @@ BOOL displayingLocalSymbolSend;
     self.fromAddress = address;
     DLog(@"fromAddress: %@", address);
     
-    [app.wallet changePaymentFromAddress:address isAdvanced:self.feeType == FeeTypeCustom];
+    [self changePaymentFromAddress:address];
     
     [self doCurrencyConversion];
 }
@@ -1592,7 +1739,7 @@ BOOL displayingLocalSymbolSend;
     self.toAddress = address;
     DLog(@"toAddress: %@", address);
     
-    [app.wallet changePaymentToAddress:address];
+    [self changePaymentToAddress:address];
     
     self.contactTransaction = nil;
     
@@ -1603,13 +1750,13 @@ BOOL displayingLocalSymbolSend;
 {
     self.sendFromAddress = false;
     
-    availableAmount = [app.wallet getBalanceForAccount:account];
+    availableAmount = [self getBalanceForAccount:account];
     
-    selectAddressTextField.text = [app.wallet getLabelForAccount:account];
+    selectAddressTextField.text = [self getLabelForAccount:account];
     self.fromAccount = account;
-    DLog(@"fromAccount: %@", [app.wallet getLabelForAccount:account]);
+    DLog(@"fromAccount: %@", [self getLabelForAccount:account]);
     
-    [app.wallet changePaymentFromAccount:account isAdvanced:self.feeType == FeeTypeCustom];
+    [self changePaymentFromAccount:account];
     
     [self updateFundsAvailable];
     
@@ -1621,12 +1768,12 @@ BOOL displayingLocalSymbolSend;
     self.sendToAddress = false;
     self.toContact = nil;
 
-    toField.text = [app.wallet getLabelForAccount:account];
+    toField.text = [self getLabelForAccount:account];
     self.toAccount = account;
     self.toAddress = @"";
-    DLog(@"toAccount: %@", [app.wallet getLabelForAccount:account]);
+    DLog(@"toAccount: %@", [self getLabelForAccount:account]);
     
-    [app.wallet changePaymentToAccount:account];
+    [self changePaymentToAccount:account];
     
     self.contactTransaction = nil;
     
@@ -1727,7 +1874,7 @@ BOOL displayingLocalSymbolSend;
 {
     self.getTransactionFeeSuccess = success;
     
-    [app.wallet getTransactionFeeWithUpdateType:FeeUpdateTypeConfirm];
+    [self getTransactionFeeWithUpdateType:FeeUpdateTypeConfirm];
 }
 
 - (void)didCheckForOverSpending:(NSNumber *)amount fee:(NSNumber *)fee
@@ -1835,13 +1982,13 @@ BOOL displayingLocalSymbolSend;
     if (updateType == FeeUpdateTypeConfirm) {
         [self showSummary];
     } else if (updateType == FeeUpdateTypeSweep) {
-        [app.wallet sweepPaymentAdvanced];
+        [self sweepPaymentAdvanced];
     }
 }
 
 - (void)checkMaxFee
 {
-    [app.wallet checkIfOverspending];
+    [self checkIfOverspending];
 }
 
 - (void)updateSatoshiPerByteAfterTextChange
@@ -2021,7 +2168,7 @@ BOOL displayingLocalSymbolSend;
                 
                 NSString *address = [dict objectForKey:DICTIONARY_KEY_ADDRESS];
                 
-                if (address == nil || ![app.wallet isBitcoinAddress:address]) {
+                if (address == nil || ![self isValidAddress:address]) {
                     [app standardNotify:[NSString stringWithFormat:BC_STRING_INVALID_BITCOIN_ADDRESS_ARGUMENT, address]];
                     return;
                 }
@@ -2092,7 +2239,7 @@ BOOL displayingLocalSymbolSend;
     [btcAmountField resignFirstResponder];
     [fiatAmountField resignFirstResponder];
     
-    [app.wallet sweepPaymentRegular];
+    [self sweepPaymentRegular];
     
     self.transactionType = TransactionTypeSweep;
 }
@@ -2124,7 +2271,7 @@ BOOL displayingLocalSymbolSend;
 {
     if (self.toContact) {
         
-        uint64_t dust = [app.wallet dust];
+        uint64_t dust = [self dust];
         
         if (amountInSatoshi == 0) {
             [app standardNotify:BC_STRING_INVALID_SEND_VALUE];
@@ -2146,7 +2293,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    if (self.sendToAddress && ![app.wallet isBitcoinAddress:self.toAddress]) {
+    if (self.sendToAddress && ![self isValidAddress:self.toAddress]) {
         [self showErrorBeforeSending:BC_STRING_INVALID_TO_BITCOIN_ADDRESS];
         return;
     }

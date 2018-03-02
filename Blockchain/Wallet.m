@@ -2919,14 +2919,14 @@
 - (void)getBitcoinCashHistory
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashHistory()"];
+        [self.context evaluateScript:@"MyWalletPhone.bch.getHistory()"];
     }
 }
 
 - (NSArray *)getBitcoinCashTransactions
 {
     if ([self isInitialized]) {
-        NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTransactions()"] toArray];
+        NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bch.transactions()"] toArray];
         NSMutableArray *transactions = [NSMutableArray new];
         for (NSDictionary *data in fetchedTransactions) {
             Transaction *transaction = [Transaction fromJSONDict:data];
@@ -2941,8 +2941,37 @@
 - (void)fetchBitcoinCashExchangeRates
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.fetchBitcoinCashExchangeRates()"];
+        [self.context evaluateScript:@"MyWalletPhone.bch.fetchExchangeRates()"];
     }
+}
+
+- (void)createNewBitcoinCashPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.createNewPayment()"];
+    }
+}
+
+- (void)changeBitcoinCashPaymentToAddress:(NSString *)to
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentFrom(\"%@\")", [to escapeStringForJS]]];
+    }
+}
+
+- (void)changeBitcoinCashPaymentFromAccount:(int)account
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentFrom(\"%d\")", account]];
+    }
+}
+
+- (BOOL)isBitcoinCashAddress
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.isValidAddress()"];
+    }
+    return NO;
 }
 
 - (NSString *)bitcoinCashExchangeRate
@@ -2959,7 +2988,7 @@
 - (uint64_t)bitcoinCashTotalBalance
 {
     if ([self isInitialized]) {
-        return [[[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTotalBalance()"] toNumber] longLongValue];
+        return [[[self.context evaluateScript:@"MyWalletPhone.bch.totalBalance()"] toNumber] longLongValue];
     }
     
     return 0;
