@@ -7,21 +7,16 @@
 //
 
 #import "QRCodeScannerSendViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "RootService.h"
 
 @interface QRCodeScannerSendViewController () <AVCaptureMetadataOutputObjectsDelegate>
-
 @end
-
-AVCaptureSession *captureSession;
-AVCaptureVideoPreviewLayer *videoPreviewLayer;
 
 @implementation QRCodeScannerSendViewController
 
 - (IBAction)QRCodebuttonClicked:(id)sender
 {
-    if (!captureSession) {
+    if (!_captureSession) {
         [self startReadingQRCode];
     }
 }
@@ -34,34 +29,34 @@ AVCaptureVideoPreviewLayer *videoPreviewLayer;
         return NO;
     }
     
-    captureSession = [[AVCaptureSession alloc] init];
-    [captureSession addInput:input];
+    _captureSession = [[AVCaptureSession alloc] init];
+    [_captureSession addInput:input];
     
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [captureSession addOutput:captureMetadataOutput];
+    [_captureSession addOutput:captureMetadataOutput];
     
     dispatch_queue_t dispatchQueue;
     dispatchQueue = dispatch_queue_create("myQueue", NULL);
     [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
     [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
     
-    videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
-    [videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+    [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     CGRect frame = CGRectMake(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     
-    [videoPreviewLayer setFrame:frame];
+    [_videoPreviewLayer setFrame:frame];
     
     UIView *view = [[UIView alloc] initWithFrame:frame];
-    [view.layer addSublayer:videoPreviewLayer];
+    [view.layer addSublayer:_videoPreviewLayer];
     
     [app showModalWithContent:view closeType:ModalCloseTypeClose headerText:BC_STRING_SCAN_QR_CODE onDismiss:^{
-        [captureSession stopRunning];
-        captureSession = nil;
-        [videoPreviewLayer removeFromSuperlayer];
+        [_captureSession stopRunning];
+        _captureSession = nil;
+        [_videoPreviewLayer removeFromSuperlayer];
     } onResume:nil];
     
-    [captureSession startRunning];
+    [_captureSession startRunning];
     
     return YES;
 }
