@@ -27,14 +27,6 @@
 #import "UITextView+AssertionFailureFix.h"
 #endif
 
-const int cellRowWarning = 0;
-const int cellRowValue = 1;
-const int cellRowDescription = 2;
-const int cellRowTo = 3;
-const int cellRowFrom = 4;
-const int cellRowDate = 5;
-const int cellRowStatus = 6;
-
 const CGFloat rowHeightDefault = 60;
 const CGFloat rowHeightWarning = 44;
 const CGFloat rowHeightValue = 100;
