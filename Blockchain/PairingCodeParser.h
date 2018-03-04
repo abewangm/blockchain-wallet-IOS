@@ -12,6 +12,8 @@
 
 @property(nonatomic, copy) void (^success)(NSDictionary*);
 @property(nonatomic, copy) void (^error)(NSString*);
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@property (nonatomic) AVCaptureSession *captureSession;
 
 - (id)initWithSuccess:(void (^)(NSDictionary*))__success error:(void (^)(NSString*))__error;
 

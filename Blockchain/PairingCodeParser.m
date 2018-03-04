@@ -11,10 +11,6 @@
 
 @implementation PairingCodeParser
 
-AVCaptureSession *captureSession;
-AVCaptureVideoPreviewLayer *videoPreviewLayer;
-BOOL isReadingQRCode;
-
 - (id)initWithSuccess:(void (^)(NSDictionary*))__success error:(void (^)(NSString*))__error
 {
     self = [super init];
@@ -62,7 +58,7 @@ BOOL isReadingQRCode;
 {
     [self stopReadingQRCode];
     
-    [videoPreviewLayer removeFromSuperlayer];
+    [_videoPreviewLayer removeFromSuperlayer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -79,33 +75,33 @@ BOOL isReadingQRCode;
         return;
     }
     
-    captureSession = [[AVCaptureSession alloc] init];
-    [captureSession addInput:input];
+    _captureSession = [[AVCaptureSession alloc] init];
+    [_captureSession addInput:input];
     
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [captureSession addOutput:captureMetadataOutput];
+    [_captureSession addOutput:captureMetadataOutput];
     
     dispatch_queue_t dispatchQueue;
     dispatchQueue = dispatch_queue_create("myQueue", NULL);
     [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
     [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
     
-    videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
-    [videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+    [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     CGRect frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, app.window.frame.size.width, app.window.frame.size.height - DEFAULT_HEADER_HEIGHT);
     
-    [videoPreviewLayer setFrame:frame];
+    [_videoPreviewLayer setFrame:frame];
     
-    [self.view.layer addSublayer:videoPreviewLayer];
+    [self.view.layer addSublayer:_videoPreviewLayer];
     
-    [captureSession startRunning];
+    [_captureSession startRunning];
 }
 
 - (void)stopReadingQRCode
 {
-    [captureSession stopRunning];
-    captureSession = nil;
+    [_captureSession stopRunning];
+    _captureSession = nil;
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
@@ -117,7 +113,7 @@ BOOL isReadingQRCode;
             
             dispatch_sync(dispatch_get_main_queue(), ^{
                 
-                [videoPreviewLayer removeFromSuperlayer];
+                [_videoPreviewLayer removeFromSuperlayer];
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
 
