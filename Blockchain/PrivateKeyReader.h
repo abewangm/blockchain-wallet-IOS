@@ -15,6 +15,8 @@
 @property(nonatomic, copy) void (^error)(NSString*);
 @property (nonatomic) BOOL acceptsPublicKeys;
 @property (nonatomic) NSString *busyViewText;
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@property (nonatomic) AVCaptureSession *captureSession;
 
 - (id)initWithSuccess:(void (^)(NSString*))__success error:(void (^)(NSString*))__error acceptPublicKeys:(BOOL)acceptPublicKeys busyViewText:(NSString *)text;
 
