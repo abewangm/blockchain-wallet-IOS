@@ -326,6 +326,8 @@
 
 - (void)setChartValues:(NSArray *)values
 {
+    BOOL shouldAnimate = self.chartView.data == nil;
+    
     NSMutableArray *finalValues = [NSMutableArray new];
     
     for (NSDictionary *dict in values) {
@@ -347,7 +349,8 @@
     dataSet.drawVerticalHighlightIndicatorEnabled = NO;
     dataSet.drawHorizontalHighlightIndicatorEnabled = NO;
     self.chartView.data = [[LineChartData alloc] initWithDataSet:dataSet];
-    
+    if (shouldAnimate) [self.chartView animateWithXAxisDuration:1.0];
+
     self.isLoading = NO;
 }
 
