@@ -2952,10 +2952,17 @@
     }
 }
 
+- (void)changeBitcoinCashPaymentAmount:(uint64_t)amount
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentAmount(%lld)", amount]];
+    }
+}
+
 - (void)changeBitcoinCashPaymentToAddress:(NSString *)to
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentFrom(\"%@\")", [to escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentTo(\"%@\")", [to escapeStringForJS]]];
     }
 }
 
@@ -2966,12 +2973,26 @@
     }
 }
 
-- (BOOL)isBitcoinCashAddress
+- (BOOL)isBitcoinCashAddress:(NSString *)address
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.bch.isValidAddress()"];
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.isValidAddress(\"%@\")", [address escapeStringForJS]]] toBool];
     }
     return NO;
+}
+
+- (void)buildBitcoinCashPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.buildPayment()"];
+    }
+}
+
+- (void)sendBitcoinCashPaymentWithListener:(transactionProgressListeners *)listener
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.sendPaymentWithListener()"];
+    }
 }
 
 - (NSString *)bitcoinCashExchangeRate

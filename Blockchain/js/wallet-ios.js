@@ -2884,8 +2884,11 @@ MyWalletPhone.bch = {
         return MyWallet.wallet.bch.txs;
     },
     
-    isValidAddress : function() {
-        return false;
+    isValidAddress : function(address) {
+        var base = 'bitcoincash:';
+        var prefixed = address.includes(base);
+        if (!prefixed) address = base + address;
+        return Helpers.fromBitcoinCash(address);
     },
     
     // Payment
@@ -2925,8 +2928,8 @@ MyWalletPhone.bch = {
         currentBitcoinCashPayment.feePerByte(feePerByte);
     },
     
-    checkForOverSpending : function() {
-        
+    buildPayment : function() {
+        currentBitcoinCashPayment.build();
     },
     
     send : function(secondPassword) {

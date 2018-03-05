@@ -49,7 +49,6 @@ typedef enum {
 @property (nonatomic, readwrite) DestinationAddressSource addressSource;
 
 @property (nonatomic) uint64_t recommendedForcedFee;
-@property (nonatomic) uint64_t maxSendableAmount;
 @property (nonatomic) uint64_t feeFromTransactionProposal;
 @property (nonatomic) uint64_t lastDisplayedFee;
 @property (nonatomic) uint64_t dust;
@@ -652,7 +651,7 @@ BOOL displayingLocalSymbolSend;
          
          app.wallet.didReceiveMessageForLastTransaction = NO;
          
-         [app.wallet sendPaymentWithListener:listener secondPassword:nil];
+         [self sendPaymentWithListener:listener secondPassword:nil];
     });
 }
 
@@ -896,7 +895,7 @@ BOOL displayingLocalSymbolSend;
         [self removeHighlightFromAmounts];
         [self enablePaymentButtons];
         if (!afterMultiAddress) {
-            [app.wallet changePaymentAmount:amountInSatoshi];
+            [self changePaymentAmount:amountInSatoshi];
             [self updateSatoshiPerByteWithUpdateType:FeeUpdateTypeNoAction];
         }
     }
@@ -1238,7 +1237,7 @@ BOOL displayingLocalSymbolSend;
         NSNumber *priorityFee = [self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY];
         self.feeAmountLabel.text = [NSString stringWithFormat:@"%@: %@, %@: %@", BC_STRING_REGULAR, regularFee, BC_STRING_PRIORITY, priorityFee];
     } else {
-        self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:fee localCurrency:NO], [NSNumberFormatter formatMoney:fee localCurrency:YES]];
+        self.feeAmountLabel.text = [NSString stringWithFormat:@"%@ (%@)", [self formatMoney:fee localCurrency:NO], [self formatMoney:fee localCurrency:YES]];
     }
 }
 
@@ -1381,12 +1380,32 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Asset Agnostic Methods
 
+- (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [NSNumberFormatter formatMoney:amount localCurrency:useLocalCurrency];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [NSNumberFormatter formatBch:amount localCurrency:useLocalCurrency];
+    }
+    DLog(@"Warning: Unsupported asset type!");
+    return nil;
+}
+
 - (void)createNewPayment
 {
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet createNewBitcoinPayment];
     } else if (self.assetType == AssetTypeBitcoinCash) {
         
+    }
+}
+
+- (void)changePaymentAmount:(uint64_t)amount
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changePaymentAmount:amount];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        [app.wallet changeBitcoinCashPaymentAmount:amount];
     }
 }
 
@@ -1403,9 +1422,9 @@ BOOL displayingLocalSymbolSend;
 - (BOOL)isValidAddress:(NSString *)address
 {
     if (self.assetType == AssetTypeBitcoin) {
-        return [app.wallet isBitcoinAddress:self.toAddress];
+        return [app.wallet isBitcoinAddress:address];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        return YES;
+        return [app.wallet isBitcoinCashAddress:address];
     }
     return NO;
 }
@@ -1464,7 +1483,7 @@ BOOL displayingLocalSymbolSend;
         
         return address;
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        return address;
     }
     return nil;
 }
@@ -1504,7 +1523,8 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
        [app.wallet getTransactionFeeWithUpdateType:updateType];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+       [app.wallet buildBitcoinCashPayment];
+       [self showSummary];
     }
 }
 
@@ -1526,6 +1546,16 @@ BOOL displayingLocalSymbolSend;
     }
 }
 
+- (void)changeSatoshiPerByte:(uint64_t)satoshiPerByte updateType:(FeeUpdateType)updateType
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet changeSatoshiPerByte:satoshiPerByte updateType:updateType];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        
+    }
+}
+
+
 - (uint64_t)dust
 {
     if (self.assetType == AssetTypeBitcoin) {
@@ -1541,7 +1571,16 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet checkIfOverspending];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        [self didCheckForOverSpending:[NSNumber numberWithLongLong:availableAmount] fee:[NSNumber numberWithLongLong:self.feeFromTransactionProposal]];
+    }
+}
+
+- (void)sendPaymentWithListener:(transactionProgressListeners*)listener secondPassword:(NSString *)secondPassword
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        [app.wallet sendPaymentWithListener:listener secondPassword:secondPassword];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        [app.wallet sendBitcoinCashPaymentWithListener:listener];
     }
 }
 
@@ -1700,10 +1739,10 @@ BOOL displayingLocalSymbolSend;
 - (void)updateFundsAvailable
 {
     if (fiatAmountField.textColor == COLOR_WARNING_RED && btcAmountField.textColor == COLOR_WARNING_RED && [fiatAmountField.text isEqualToString:[NSNumberFormatter formatAmount:availableAmount localCurrency:YES]]) {
-        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [NSNumberFormatter formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
+        [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT, [self formatMoney:availableAmount localCurrency:NO]] forState:UIControlStateNormal];
     } else {
         [fundsAvailableButton setTitle:[NSString stringWithFormat:BC_STRING_USE_TOTAL_AVAILABLE_MINUS_FEE_ARGUMENT,
-                                        [NSNumberFormatter formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
+                                        [self formatMoney:availableAmount localCurrency:displayingLocalSymbolSend]]
                               forState:UIControlStateNormal];
     }
 }
@@ -1885,8 +1924,6 @@ BOOL displayingLocalSymbolSend;
     }
     
     self.feeFromTransactionProposal = [fee longLongValue];
-    uint64_t maxAmount = [amount longLongValue];
-    self.maxSendableAmount = maxAmount;
     
     __weak SendBitcoinViewController *weakSelf = self;
     
@@ -1904,7 +1941,6 @@ BOOL displayingLocalSymbolSend;
     
     self.feeFromTransactionProposal = [fee longLongValue];
     uint64_t maxAmount = [amount longLongValue];
-    self.maxSendableAmount = maxAmount;
     self.dust = dust == nil ? 0 : [dust longLongValue];
     
     DLog(@"SendViewController: got max fee of %lld", [fee longLongValue]);
@@ -1920,6 +1956,8 @@ BOOL displayingLocalSymbolSend;
 {
     availableAmount = [sweepAmount longLongValue];
     uint64_t fee = [finalFee longLongValue];
+    
+    if (self.assetType == AssetTypeBitcoinCash) self.feeFromTransactionProposal = fee;
     
     CGFloat warningLabelYPosition = [self defaultYPositionForWarningLabel];
     
@@ -2050,7 +2088,7 @@ BOOL displayingLocalSymbolSend;
         
     } else if (self.feeType == FeeTypeRegular) {
         uint64_t regularRate = [[self.fees objectForKey:DICTIONARY_KEY_FEE_REGULAR] longLongValue];
-        [app.wallet changeSatoshiPerByte:regularRate updateType:feeUpdateType];
+        [self changeSatoshiPerByte:regularRate updateType:feeUpdateType];
     } else if (self.feeType == FeeTypePriority) {
         uint64_t priorityRate = [[self.fees objectForKey:DICTIONARY_KEY_FEE_PRIORITY] longLongValue];
         [app.wallet changeSatoshiPerByte:priorityRate updateType:feeUpdateType];
