@@ -262,11 +262,10 @@ int bchAccountsSectionNumber;
         }
         else if (indexPath.section == ethAccountsSectionNumber) {
             [delegate didSelectFromEthAccount];
-        }
-        else if (indexPath.section == legacyAddressesSectionNumber) {
-            
+        } else if (indexPath.section == bchAccountsSectionNumber) {
+            [delegate didSelectFromBchAccount];
+        } else if (indexPath.section == legacyAddressesSectionNumber) {
             NSString *legacyAddress = [legacyAddresses objectAtIndex:[indexPath row]];
-            
             if ([self allSelectable] &&
                 [app.wallet isWatchOnlyLegacyAddress:legacyAddress] &&
                 ![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_HIDE_WATCH_ONLY_RECEIVE_WARNING]) {

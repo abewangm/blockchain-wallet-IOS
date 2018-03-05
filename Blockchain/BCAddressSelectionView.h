@@ -32,6 +32,8 @@
 - (void)didSelectWatchOnlyAddress:(NSString*)address;
 - (void)didSelectToEthAccount;
 - (void)didSelectFromEthAccount;
+- (void)didSelectFromBchAccount;
+- (void)didSelectToBchAccount;
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {
