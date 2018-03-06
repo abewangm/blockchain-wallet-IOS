@@ -793,6 +793,16 @@
     [self didChangeFromOrTo];
 }
 
+- (void)selectFromBitcoinCash
+{
+    // TODO: implement
+}
+
+- (void)selectToBitcoinCash
+{
+    // TODO: implement
+}
+
 - (void)selectToEther
 {
     self.toSymbol = CURRENCY_SYMBOL_ETH;
@@ -1019,6 +1029,11 @@
 - (NSString *)bitcoinLabelText
 {
     return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForAccount:self.btcAccount] : BC_STRING_BITCOIN;
+}
+
+- (NSString *)bitcoinCashLabelText
+{
+    return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForBchAccount] : BC_STRING_BITCOIN_CASH;
 }
 
 - (NSString *)etherLabelText
