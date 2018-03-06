@@ -285,12 +285,6 @@
 
 #pragma mark - Bitcoin Cash
 
-+ (NSDecimalNumber *)convertBchToFiat:(NSDecimalNumber *)bchAmount exchangeRate:(NSDecimalNumber *)exchangeRate
-{
-    if (bchAmount == 0) { return 0; }
-    return [bchAmount decimalNumberByMultiplyingBy:exchangeRate];
-}
-
 + (NSString*)formatBchWithSymbol:(uint64_t)value
 {
     return [self formatBchWithSymbol:value localCurrency:app->symbolLocal];
@@ -379,29 +373,6 @@
     }
     
     return returnValue;
-}
-
-+ (NSString *)formatBchToFiat:(NSString *)bchAmount exchangeRate:(NSDecimalNumber *)exchangeRate
-{
-    NSString *requestedAmountString = [NSNumberFormatter convertedDecimalString:bchAmount];
-
-    if (requestedAmountString != nil && [requestedAmountString doubleValue] > 0) {
-        NSDecimalNumber *bchAmountDecimalNumber = [NSDecimalNumber decimalNumberWithString:requestedAmountString];
-        NSString *result = [app.localCurrencyFormatter stringFromNumber:[NSNumberFormatter convertBchToFiat:bchAmountDecimalNumber exchangeRate:exchangeRate]];
-        return result;
-    } else {
-        return nil;
-    }
-}
-
-+ (NSString *)formatBchToFiatWithSymbol:(NSString *)bchAmount exchangeRate:(NSDecimalNumber *)exchangeRate
-{
-    NSString *formatString = [NSNumberFormatter formatBchToFiat:bchAmount exchangeRate:exchangeRate];
-    if (!formatString) {
-        return [NSString stringWithFormat:@"%@0.00", app.latestResponse.symbol_local.symbol];
-    } else {
-        return [NSString stringWithFormat:@"%@%@", app.latestResponse.symbol_local.symbol, formatString];
-    }
 }
 
 @end
