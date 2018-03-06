@@ -27,7 +27,7 @@
 
 @class Wallet, ContactTransaction;
 
-@interface SendBitcoinViewController : QRCodeScannerSendViewController < AddressSelectionDelegate> {
+@interface SendBitcoinViewController : QRCodeScannerSendViewController <AddressSelectionDelegate> {
     IBOutlet UIView *containerView;
     
     IBOutlet UILabel *fromLabel;

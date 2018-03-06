@@ -1650,7 +1650,7 @@
 - (BOOL)needsSecondPassword
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.isDoubleEncrypted"]] toBool];
@@ -1659,7 +1659,7 @@
 - (BOOL)validateSecondPassword:(NSString*)secondPassword
 {
     if (![self isInitialized]) {
-        return FALSE;
+        return NO;
     }
     
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWallet.wallet.validateSecondPassword(\"%@\")", [secondPassword escapeStringForJS]]] toBool];
@@ -1686,7 +1686,7 @@
 - (BOOL)isWatchOnlyLegacyAddress:(NSString*)address
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     if ([self checkIfWalletHasAddress:address]) {
@@ -1739,7 +1739,7 @@
 - (BOOL)isBitcoinAddress:(NSString*)string
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     return [[self.context evaluateScript:[NSString stringWithFormat:@"Helpers.isBitcoinAddress(\"%@\");", [string escapeStringForJS]]] toBool];
@@ -1849,7 +1849,7 @@
 - (BOOL)addKey:(NSString*)privateKeyString
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addKey(\"%@\")", [privateKeyString escapeStringForJS]]] toBool];
@@ -1858,7 +1858,7 @@
 - (BOOL)addKey:(NSString*)privateKeyString toWatchOnlyAddress:(NSString *)watchOnlyAddress
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.addKeyToLegacyAddress(\"%@\", \"%@\")", [privateKeyString escapeStringForJS], [watchOnlyAddress escapeStringForJS]]] toBool];
@@ -2914,6 +2914,14 @@
     return nil;
 }
 
+- (NSString *)getLabelForBchAccount
+{
+    if ([self isInitialized] && [self hasBchAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForBchAccount()"] toString];
+    }
+    return nil;
+}
+
 # pragma mark - Bitcoin cash
 
 - (void)getBitcoinCashHistory
@@ -2962,6 +2970,23 @@
         return [[[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTotalBalance()"] toNumber] longLongValue];
     }
     
+    return 0;
+}
+
+- (BOOL)hasBchAccount
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.hasBchAccount()"] toBool];
+    }
+    return NO;
+}
+
+- (NSString *)getBchBalance
+{
+    if ([self isInitialized] && [app.wallet hasBchAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getBchBalance()"] toString];
+    }
+    DLog(@"Warning: getting bch balance when not initialized - returning 0");
     return 0;
 }
 
@@ -4704,7 +4729,7 @@
 - (BOOL)hasLegacyAddresses
 {
     if (![self isInitialized]) {
-        return false;
+        return NO;
     }
     
     return [[self.context evaluateScript:@"MyWallet.wallet.addresses.length > 0"] toBool];

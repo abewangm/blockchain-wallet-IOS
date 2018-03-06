@@ -15,12 +15,6 @@
 
 #define CELL_HEIGHT 60
 
-const int cellRowFrom = 0;
-const int cellRowTo = 1;
-const int cellRowDescription = 2;
-const int cellRowAmount = 3;
-const int cellRowFee = 4;
-
 @interface BCConfirmPaymentView () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (nonatomic) BCSecureTextField *descriptionField;
 @property (nonatomic) ContactTransaction *contactTransaction;
