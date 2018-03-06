@@ -19,21 +19,21 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "Assets.h"
 
 @class Wallet, Contact;
 
 @protocol AddressSelectionDelegate <NSObject>
+@optional
+- (void)didSelectFromAccount:(int)account;
+- (void)didSelectFromAccount:(int)account assetType:(AssetType)asset;
+- (void)didSelectToAccount:(int)account;
+- (void)didSelectToAccount:(int)account assetType:(AssetType)asset;
 - (void)didSelectFromAddress:(NSString*)address;
 - (void)didSelectToAddress:(NSString*)address;
-- (void)didSelectFromAccount:(int)account;
-- (void)didSelectToAccount:(int)account;
-- (void)didSelectContact:(Contact *)contact;
-@optional
 - (void)didSelectWatchOnlyAddress:(NSString*)address;
-- (void)didSelectToEthAccount;
-- (void)didSelectFromEthAccount;
-- (void)didSelectFromBchAccount;
-- (void)didSelectToBchAccount;
+- (void)didSelectContact:(Contact *)contact;
+- (void)didSelectFilter:(int)filter;
 @end
 
 @interface BCAddressSelectionView : UIView <UITableViewDelegate, UITableViewDataSource> {
@@ -64,8 +64,8 @@ typedef enum {
 @property(nonatomic, strong) NSMutableArray *legacyAddresses;
 @property(nonatomic, strong) NSMutableArray *legacyAddressLabels;
 
-@property(nonatomic, strong) NSMutableArray *accounts;
-@property(nonatomic, strong) NSMutableArray *accountLabels;
+@property(nonatomic, strong) NSMutableArray *btcAccounts;
+@property(nonatomic, strong) NSMutableArray *btcAccountLabels;
 
 @property(nonatomic, strong) NSMutableArray *ethAccounts;
 @property(nonatomic, strong) NSMutableArray *ethAccountLabels;
