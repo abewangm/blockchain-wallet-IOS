@@ -1066,7 +1066,7 @@
 
     switch (asset) {
         case AssetTypeBitcoin:
-            self.bchAccount = account;
+            self.btcAccount = account;
             [self selectFromBitcoin];
             self.fromToView.fromLabel.text = [self bitcoinLabelText];
             break;
@@ -1091,7 +1091,7 @@
 
     switch (asset) {
         case AssetTypeBitcoin:
-            self.bchAccount = account;
+            self.btcAccount = account;
             [self selectToBitcoin];
             self.fromToView.toLabel.text = [self bitcoinLabelText];
             break;
