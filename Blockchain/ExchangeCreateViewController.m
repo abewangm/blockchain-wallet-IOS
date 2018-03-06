@@ -47,6 +47,8 @@
 
 @property (nonatomic) id amount;
 @property (nonatomic) int btcAccount;
+@property (nonatomic) int ethAccount;
+@property (nonatomic) int bchAccount;
 
 @property (nonatomic) NSString *fromSymbol;
 @property (nonatomic) NSString *toSymbol;
