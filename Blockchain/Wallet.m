@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @property (nonatomic) NSDictionary *bitcoinCashExchangeRates;
+@property (nonatomic) uint64_t bitcoinCashConversion;
 @end
 
 @implementation transactionProgressListeners
@@ -1540,9 +1541,9 @@
     }
     
     if (secondPassword) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
     } else {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", true)", [txProgressID escapeStringForJS]]];
     }
 }
 
@@ -1555,9 +1556,9 @@
     }
     
     if (secondPassword) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
     } else {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false)", [txProgressID escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", false)", [txProgressID escapeStringForJS]]];
     }
 }
 
@@ -2998,20 +2999,35 @@
 
 - (void)sendBitcoinCashPaymentWithListener:(transactionProgressListeners *)listener
 {
-    if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.bch.sendPaymentWithListener()"];
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
+    
+    if (listener) {
+        [self.transactionProgressListeners setObject:listener forKey:txProgressID];
     }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
 }
 
 - (NSString *)bitcoinCashExchangeRate
 {
-    if (self.bitcoinCashExchangeRates) {
-        NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
-        double lastPrice = [[[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
-        return [NSString stringWithFormat:@"%.2f", lastPrice];
+    if ([self isInitialized]) {
+        if (self.bitcoinCashExchangeRates) {
+            NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
+            double lastPrice = [[[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
+            return [NSString stringWithFormat:@"%.2f", lastPrice];
+        }
     }
     
     return nil;
+}
+
+- (uint64_t)getBitcoinCashConversion
+{
+    if ([self isInitialized]) {
+        return self.bitcoinCashConversion;
+    }
+    
+    return 0;
 }
 
 - (uint64_t)bitcoinCashTotalBalance
@@ -3031,7 +3047,7 @@
     return NO;
 }
 
-- (uint64_t *)getBchBalance
+- (uint64_t)getBchBalance
 {
     if ([self isInitialized] && [app.wallet hasBchAccount]) {
         return [[[self.context evaluateScript:@"MyWalletPhone.bch.getBalance()"] toNumber] longLongValue];
@@ -4551,6 +4567,9 @@
 - (void)did_get_bitcoin_cash_exchange_rates:(NSDictionary *)rates
 {
     if ([self.delegate respondsToSelector:@selector(didGetBitcoinCashExchangeRates)]) {
+        NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
+        double lastPrice = [[[rates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
+        self.bitcoinCashConversion = [[[(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI] decimalNumberByDividingBy: (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:lastPrice]] stringValue] longLongValue];
         self.bitcoinCashExchangeRates = rates;
         [self.delegate didGetBitcoinCashExchangeRates];
     } else {

@@ -65,11 +65,40 @@ contactTransaction:(ContactTransaction *)contactTransaction
     return self;
 }
 
+- (id)initWithFrom:(NSString *)from
+                To:(NSString *)to
+            bchAmount:(uint64_t)amount
+               fee:(uint64_t)fee
+             total:(uint64_t)total
+             surge:(BOOL)surgePresent
+{
+    self = [super init];
+    
+    if (self) {
+        self.from = from;
+        self.to = to;
+        self.surgeIsOccurring = surgePresent;
+        
+        self.fiatTotalAmountText = [NSNumberFormatter formatBch:total localCurrency:YES];
+        self.btcTotalAmountText = [NSNumberFormatter formatBCH:total];
+        self.fiatAmountText = [NSNumberFormatter formatBch:amount localCurrency:YES];
+        self.btcAmountText = [NSNumberFormatter formatBCH:amount];
+        self.btcWithFiatAmountText = [self formatAmountInBCHAndFiat:amount];
+        self.btcWithFiatFeeText = [self formatAmountInBCHAndFiat:fee];
+    }
+    return self;
+}
+
 #pragma mark - Text Helpers
 
 - (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
 {
     return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:amount localCurrency:NO], [NSNumberFormatter formatMoney:amount localCurrency:YES]];
+}
+
+- (NSString *)formatAmountInBCHAndFiat:(uint64_t)amount
+{
+    return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatBchWithSymbol:amount localCurrency:NO], [NSNumberFormatter formatBchWithSymbol:amount localCurrency:YES]];
 }
 
 @end

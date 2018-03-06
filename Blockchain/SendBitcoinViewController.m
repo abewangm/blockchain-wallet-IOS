@@ -811,13 +811,24 @@ BOOL displayingLocalSymbolSend;
         
         BOOL surgePresent = self.surgeIsOccurring || [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_KEY_DEBUG_SIMULATE_SURGE];
         
-        BCConfirmPaymentViewModel *confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc] initWithFrom:from
-                                                                            To:to
-                                                                        amount:amountInSatoshi
-                                                                           fee:feeTotal
-                                                                         total:amountTotal
-                                                            contactTransaction:self.contactTransaction
-                                                                         surge:surgePresent];
+        BCConfirmPaymentViewModel *confirmPaymentViewModel;
+        
+        if (self.assetType == AssetTypeBitcoinCash) {
+            confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc] initWithFrom:from
+                                                                                   To:to
+                                                                               bchAmount:amountInSatoshi
+                                                                                  fee:feeTotal
+                                                                                total:amountTotal
+                                                                                surge:surgePresent];
+        } else {
+            confirmPaymentViewModel = [[BCConfirmPaymentViewModel alloc] initWithFrom:from
+                                                         To:to
+                                                     amount:amountInSatoshi
+                                                        fee:feeTotal
+                                                      total:amountTotal
+                                         contactTransaction:self.contactTransaction
+                                                      surge:surgePresent];
+        }
         
         self.confirmPaymentView = [[BCConfirmPaymentView alloc] initWithWindow:app.window viewModel:confirmPaymentViewModel];
         
@@ -901,14 +912,14 @@ BOOL displayingLocalSymbolSend;
     }
     
     if ([btcAmountField isFirstResponder]) {
-        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
+        fiatAmountField.text = [self formatAmount:amountInSatoshi localCurrency:YES];
     }
     else if ([fiatAmountField isFirstResponder]) {
-        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
+        btcAmountField.text = [self formatAmount:amountInSatoshi localCurrency:NO];
     }
     else {
-        fiatAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:YES];
-        btcAmountField.text = [NSNumberFormatter formatAmount:amountInSatoshi localCurrency:NO];
+        fiatAmountField.text = [self formatAmount:amountInSatoshi localCurrency:YES];
+        btcAmountField.text = [self formatAmount:amountInSatoshi localCurrency:NO];
     }
     
     [self updateFundsAvailable];
@@ -1380,12 +1391,32 @@ BOOL displayingLocalSymbolSend;
 
 #pragma mark - Asset Agnostic Methods
 
+- (uint64_t)assetConversion
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return app.latestResponse.symbol_local.conversion;
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [app.wallet getBitcoinCashConversion];
+    }
+}
+
+- (NSString *)formatAmount:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency
+{
+    if (self.assetType == AssetTypeBitcoin) {
+        return [NSNumberFormatter formatAmount:amount localCurrency:useLocalCurrency];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        return [NSNumberFormatter formatBch:amount localCurrency:useLocalCurrency];
+    }
+    DLog(@"Warning: Unsupported asset type!");
+    return nil;
+}
+
 - (NSString *)formatMoney:(uint64_t)amount localCurrency:(BOOL)useLocalCurrency
 {
     if (self.assetType == AssetTypeBitcoin) {
         return [NSNumberFormatter formatMoney:amount localCurrency:useLocalCurrency];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        return [NSNumberFormatter formatBch:amount localCurrency:useLocalCurrency];
+        return [NSNumberFormatter formatBchWithSymbol:amount localCurrency:useLocalCurrency];
     }
     DLog(@"Warning: Unsupported asset type!");
     return nil;
@@ -1685,7 +1716,7 @@ BOOL displayingLocalSymbolSend;
             if (![amountString containsString:@"."]) {
                 amountString = [newString stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
             }
-            amountInSatoshi = app.latestResponse.symbol_local.conversion * [amountString doubleValue];
+            amountInSatoshi = [self assetConversion] * [amountString doubleValue];
         }
         else if (textField == btcAmountField) {
             amountInSatoshi = [app.wallet parseBitcoinValueFromString:newString];
@@ -1843,12 +1874,12 @@ BOOL displayingLocalSymbolSend;
     self.addressSource = DestinationAddressSourceDropDown;
 }
 
-- (void)didSelectFromAccount:(int)account
+- (void)didSelectFromAccount:(int)account assetType:(AssetType)asset
 {
     [self selectFromAccount:account];
 }
 
-- (void)didSelectToAccount:(int)account
+- (void)didSelectToAccount:(int)account assetType:(AssetType)asset
 {
     [self selectToAccount:account];
     

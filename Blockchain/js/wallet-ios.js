@@ -929,7 +929,11 @@ MyWalletPhone.createTxProgressId = function() {
     return ''+Math.round(Math.random()*100000);
 }
 
-MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
+MyWalletPhone.quickSendBtc = function(id, onSendScreen, secondPassword) {
+    MyWalletPhone.quickSend(id, onSendScreen, secondPassword, 'btc');
+}
+
+MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword, assetType) {
 
     console.log('quickSend');
 
@@ -947,28 +951,34 @@ MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
         objc_tx_on_error_error_secondPassword(id, ''+error, secondPassword);
     };
 
-    var payment = onSendScreen ? currentPayment : transferAllBackupPayment;
+    var payment;
+    if (assetType == 'btc') {
+        payment = onSendScreen ? currentPayment : transferAllBackupPayment;
+        
+        payment.on('on_start', function () {
+                   objc_tx_on_start(id);
+                   });
+        
+        payment.on('on_begin_signing', function() {
+                   objc_tx_on_begin_signing(id);
+                   });
+        
+        payment.on('on_sign_progress', function(i) {
+                   objc_tx_on_sign_progress_input(id, i);
+                   });
+        
+        payment.on('on_finish_signing', function(i) {
+                   objc_tx_on_finish_signing(id);
+                   });
+
+    } else if (assetType == 'bch') {
+        payment = currentBitcoinCashPayment;
+    }
 
     if (!payment) {
         console.log('Payment error: null payment object!');
         return;
     }
-
-    payment.on('on_start', function () {
-                      objc_tx_on_start(id);
-                      });
-
-    payment.on('on_begin_signing', function() {
-                      objc_tx_on_begin_signing(id);
-                      });
-
-    payment.on('on_sign_progress', function(i) {
-                      objc_tx_on_sign_progress_input(id, i);
-                      });
-
-    payment.on('on_finish_signing', function(i) {
-                      objc_tx_on_finish_signing(id);
-                      });
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         if (secondPassword) {
@@ -2885,6 +2895,10 @@ MyWalletPhone.bch = {
         return MyWallet.wallet.bch.defaultAccount.label;
     },
     
+    totalBalance : function() {
+        return MyWallet.wallet.bch.balance;
+    },
+    
     getBalance : function() {
         return MyWallet.wallet.bch.balance;
     },
@@ -2901,10 +2915,6 @@ MyWalletPhone.bch = {
     },
     
     // Payment
-    
-    createnewPayment : function() {
-        console.log('Creating new bch payment');
-    },
     
     changePaymentFrom : function(from) {
         console.log('Changing bch payment from');
@@ -2924,7 +2934,7 @@ MyWalletPhone.bch = {
     
     changePaymentTo : function(to) {
         console.log('Changing bch payment to');
-        currentBitcoinCashPayment.to(to);
+        currentBitcoinCashPayment.to(Helpers.fromBitcoinCash('bitcoincash:' + to));
     },
     
     changePaymentAmount : function(amount) {
@@ -2932,13 +2942,14 @@ MyWalletPhone.bch = {
         currentBitcoinCashPayment.amount(amount);
     },
     
-    changeFeePerByte : function(feePerByte) {
-        console.log('Changing bch fee per byte');
-        currentBitcoinCashPayment.feePerByte(feePerByte);
+    buildPayment : function() {
+        var options = walletOptions.getValue()
+        currentBitcoinCashPayment.feePerByte(options.bcash.feePerByte);
+        currentBitcoinCashPayment.build();
     },
     
-    buildPayment : function() {
-        currentBitcoinCashPayment.build();
+    quickSend : function(id, onSendScreen, secondPassword) {
+        MyWalletPhone.quickSend(id, onSendScreen, secondPassword, 'bch');
     },
     
     send : function(secondPassword) {

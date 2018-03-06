@@ -285,6 +285,17 @@
 
 #pragma mark - Bitcoin Cash
 
++ (NSString*)formatBCH:(uint64_t)value
+{
+    NSDecimalNumber * number = [(NSDecimalNumber*)[NSDecimalNumber numberWithLongLong:value] decimalNumberByDividingBy:(NSDecimalNumber*)[NSDecimalNumber numberWithDouble:SATOSHI]];
+    
+    [app.btcFormatter setMinimumFractionDigits:0];
+    
+    NSString * string = [app.btcFormatter stringFromNumber:number];
+    
+    return [string stringByAppendingString:@" BCH"];
+}
+
 + (NSString*)formatBchWithSymbol:(uint64_t)value
 {
     return [self formatBchWithSymbol:value localCurrency:app->symbolLocal];

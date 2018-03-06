@@ -27,6 +27,13 @@
          fiatFee:(NSString *)fiatFee
        fiatTotal:(NSString *)fiatTotal;
 
+- (id)initWithFrom:(NSString *)from
+                To:(NSString *)to
+            bchAmount:(uint64_t)amount
+               fee:(uint64_t)fee
+             total:(uint64_t)total
+             surge:(BOOL)surgePresent;
+
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;
 @property (nonatomic) NSString *fiatTotalAmountText;
