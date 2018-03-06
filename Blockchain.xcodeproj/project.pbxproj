@@ -112,6 +112,7 @@
 		23FDEFA21D6E21A800FC80D6 /* blockchain.der in Resources */ = {isa = PBXBuildFile; fileRef = 23FDEFA11D6E21A800FC80D6 /* blockchain.der */; };
 		23FDEFA91D6E43DE00FC80D6 /* TransactionDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */; };
 		23FDEFAC1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */; };
+		515902342049AF5000A4C2D8 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515902332049AF5000A4C2D8 /* WalletTests.swift */; };
 		670595A41AB0F59D00D2D6D9 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */; };
 		6710DA0E1A8E82D80089DDED /* BCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6710DA0D1A8E82D80089DDED /* BCLine.m */; };
 		673107EF19F6BAF200BE6899 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F749DFF1514F1EF00B3A8B8 /* AVFoundation.framework */; };
@@ -320,6 +321,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		515902362049AF5000A4C2D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FB3636814B60128004BEA02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FB3637014B60128004BEA02;
+			remoteInfo = Blockchain;
+		};
 		C79ABF281F852C040062726C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C79ABD8F1F852C030062726C /* Charts.xcodeproj */;
@@ -948,6 +956,9 @@
 		23FDEFA81D6E43DE00FC80D6 /* TransactionDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailTableCell.m; sourceTree = "<group>"; };
 		23FDEFAA1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+SendSynchronousRequest.h"; sourceTree = "<group>"; };
 		23FDEFAB1D6F669100FC80D6 /* NSURLSession+SendSynchronousRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+SendSynchronousRequest.m"; sourceTree = "<group>"; };
+		515902312049AF5000A4C2D8 /* WalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		515902332049AF5000A4C2D8 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		515902352049AF5000A4C2D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670595A21AB0F59D00D2D6D9 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		670595A31AB0F59D00D2D6D9 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		6710DA0C1A8E82D80089DDED /* BCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCLine.h; sourceTree = "<group>"; };
@@ -1675,6 +1686,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5159022E2049AF5000A4C2D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FB3636E14B60128004BEA02 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1850,6 +1868,15 @@
 			);
 			name = CoreBitcoin;
 			path = Submodules/SocketRocket/SocketRocket;
+			sourceTree = "<group>";
+		};
+		515902322049AF5000A4C2D8 /* WalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				515902332049AF5000A4C2D8 /* WalletTests.swift */,
+				515902352049AF5000A4C2D8 /* Info.plist */,
+			);
+			path = WalletTests;
 			sourceTree = "<group>";
 		};
 		670595A11AB0F59D00D2D6D9 /* KeychainItemWrapper */ = {
@@ -2067,6 +2094,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB3637B14B60128004BEA02 /* Blockchain */,
+				515902322049AF5000A4C2D8 /* WalletTests */,
 				9FB3637414B60128004BEA02 /* Frameworks */,
 				9FB3637214B60128004BEA02 /* Products */,
 				C9D4B2AE193E020D00EDA9EA /* Third Party */,
@@ -2077,6 +2105,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB3637114B60128004BEA02 /* Blockchain.app */,
+				515902312049AF5000A4C2D8 /* WalletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3242,6 +3271,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		515902302049AF5000A4C2D8 /* WalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 515902382049AF5000A4C2D8 /* Build configuration list for PBXNativeTarget "WalletTests" */;
+			buildPhases = (
+				5159022D2049AF5000A4C2D8 /* Sources */,
+				5159022E2049AF5000A4C2D8 /* Frameworks */,
+				5159022F2049AF5000A4C2D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				515902372049AF5000A4C2D8 /* PBXTargetDependency */,
+			);
+			name = WalletTests;
+			productName = WalletTests;
+			productReference = 515902312049AF5000A4C2D8 /* WalletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9FB3637014B60128004BEA02 /* Blockchain */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FB3638914B60128004BEA02 /* Build configuration list for PBXNativeTarget "Blockchain" */;
@@ -3272,10 +3319,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Blockchain Luxembourg S.A";
 				TargetAttributes = {
+					515902302049AF5000A4C2D8 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = NZ6PH75U7K;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9FB3637014B60128004BEA02;
+					};
 					9FB3637014B60128004BEA02 = {
 						DevelopmentTeam = NZ6PH75U7K;
 						LastSwiftMigration = 0800;
@@ -3358,6 +3411,7 @@
 			projectRoot = "";
 			targets = (
 				9FB3637014B60128004BEA02 /* Blockchain */,
+				515902302049AF5000A4C2D8 /* WalletTests */,
 			);
 		};
 /* End PBXProject section */
@@ -3394,6 +3448,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5159022F2049AF5000A4C2D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FB3636F14B60128004BEA02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3537,6 +3598,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5159022D2049AF5000A4C2D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515902342049AF5000A4C2D8 /* WalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FB3636D14B60128004BEA02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3761,6 +3830,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		515902372049AF5000A4C2D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FB3637014B60128004BEA02 /* Blockchain */;
+			targetProxy = 515902362049AF5000A4C2D8 /* PBXContainerItemProxy */;
+		};
 		C7A923E71F852DC7003D9DAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
@@ -4262,25 +4336,123 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		515902392049AF5000A4C2D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NZ6PH75U7K;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockchain.WalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blockchain.app/Blockchain";
+			};
+			name = Debug;
+		};
+		5159023A2049AF5000A4C2D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NZ6PH75U7K;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = WalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockchain.WalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blockchain.app/Blockchain";
+			};
+			name = Release;
+		};
 		9FB3638714B60128004BEA02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -4307,13 +4479,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -4321,6 +4501,8 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "ENABLE_CERTIFICATE_PINNING=1";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -4333,6 +4515,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4426,6 +4609,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		515902382049AF5000A4C2D8 /* Build configuration list for PBXNativeTarget "WalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				515902392049AF5000A4C2D8 /* Debug */,
+				5159023A2049AF5000A4C2D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9FB3636B14B60128004BEA02 /* Build configuration list for PBXProject "Blockchain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

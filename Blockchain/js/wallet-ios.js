@@ -695,7 +695,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
 
     var login_success = function() {
         logTime('fetch history, account info');
-        
+
         objc_loading_stop();
 
         objc_did_load_wallet();
@@ -765,7 +765,7 @@ MyWalletPhone.login = function(user_guid, shared_key, resend_code, inputedPasswo
         didDecrypt: decrypt_success,
         didBuildHD: build_hd_success
     }
-    
+
     walletOptions.fetch().then(function() {
         Blockchain.constants.SHAPE_SHIFT_KEY = walletOptions.getValue().shapeshift.apiKey;
         MyWallet.login(user_guid, inputedPassword, credentials, callbacks).then(success).catch(other_error);
@@ -2276,10 +2276,10 @@ MyWalletPhone.canUseSfox = function() {
     var accountInfo = wallet.accountInfo;
     var isSfoxCountryState = accountInfo && options.partners.sfox.countries.indexOf(accountInfo.countryCodeGuess) > -1 && options.partners.sfox.states.indexOf(accountInfo.stateCodeGuess) > -1;
     var isSfoxInvited = accountInfo && accountInfo.invited && accountInfo.invited.sfox;
-    
+
     var external = MyWallet.wallet && MyWallet.wallet.external;
     var userHasSfoxAccount = external && external.sfox && external.sfox.hasAccount;
-    
+
     return (userHasSfoxAccount || isSfoxInvited && isSfoxCountryState) && options.ios.showSfox;
 }
 
@@ -2293,7 +2293,7 @@ MyWalletPhone.isBuyFeatureEnabled = function () {
   if (whiteListedGuids.indexOf(wallet.guid) > -1) {
       userHasAccess = true;
   }
-    
+
   var canBuy = function(accountInfo, options) {
      var external = MyWallet.wallet && MyWallet.wallet.external;
      var userHasCoinifyAccount = external && external.coinify && external.coinify.hasAccount;
@@ -2348,7 +2348,7 @@ function WalletOptions (api) {
   };
 }
 
-// Ethereum
+// MARK: - Ethereum
 
 MyWalletPhone.getEthExchangeRate = function(currencyCode) {
 
@@ -2431,7 +2431,7 @@ MyWalletPhone.hasEthAccount = function() {
 }
 
 MyWalletPhone.createEthAccountForExchange = function(secondPassword, helperText) {
-    
+
     var eth = MyWallet.wallet.eth;
 
     if (MyWallet.wallet.isDoubleEncrypted) {
@@ -2555,7 +2555,7 @@ MyWalletPhone.isWaitingOnTransaction = function() {
     var eth = MyWallet.wallet.eth;
     var options = walletOptions.getValue();
     var lastTxFuse = options.ethereum.lastTxFuse;
-    
+
     return null != eth.lastTx && null == eth.txs.find(function(tx) {
        return tx.hash === eth.lastTx;
     }) &&
@@ -2602,19 +2602,19 @@ MyWalletPhone.getExchangeTrades = function() {
 }
 
 MyWalletPhone.getRate = function(coinPair) {
-    
+
     var success = function(result) {
         MyWalletPhone.getEthExchangeRateForHardLimit().then(function(hardLimit) {
              var currencyCode = MyWalletPhone.currencyCodeForHardLimit();
              objc_on_get_exchange_rate_success(result.limit, result.minimum, result.minerFee, result.maxLimit, result.pair, result.rate, hardLimit[currencyCode].last);
         });
     }
-    
+
     var error = function(e) {
         console.log('Error getting rate');
         console.log(e);
     }
-    
+
     MyWallet.wallet.shapeshift.getRate(coinPair).then(success).catch(error);
 }
 
@@ -2623,26 +2623,26 @@ MyWalletPhone.getShapeshiftApiKey = function() {
 }
 
 MyWalletPhone.getAvailableBtcBalanceForAccount = function(accountIndex) {
-    
+
     var success = function(result) {
         objc_on_get_available_btc_balance_success(result);
     }
-    
+
     var error = function(e) {
         console.log('Error getting btc balance');
         console.log(e);
         objc_on_get_available_btc_balance_error(e);
     }
-    
+
     MyWallet.wallet.hdwallet.accounts[accountIndex].getAvailableBalance('priority').then(success).catch(error);
 }
 
 MyWalletPhone.getAvailableEthBalance = function() {
-    
+
     var success = function(result) {
         objc_on_get_available_eth_balance_success(result.amount, result.fee);
     }
-    
+
     var error = function(e) {
         console.log('Error getting eth balance');
         console.log(e);
@@ -2656,20 +2656,20 @@ MyWalletPhone.getLabelForEthAccount = function() {
 }
 
 MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
-    
+
     var success = function(depositAmount, fee, rate, minerFee, withdrawalAmount, expiration) {
         objc_on_build_exchange_trade_success(coins[0], depositAmount, fee, rate, minerFee, withdrawalAmount, expiration);
     }
-    
+
     var error = function(e) {
         console.log('Error building exchange trade');
         console.log(e);
     }
-    
+
     var buildPayment = function(quote) {
         var expiration = quote.expires;
         currentShiftPayment = MyWallet.wallet.shapeshift.buildPayment(quote, fee, fromArg);
-        
+
         var depositAmount = currentShiftPayment.quote.depositAmount;
         var rate = currentShiftPayment.quote.rate;
         var minerFee = currentShiftPayment.quote.minerFee;
@@ -2681,7 +2681,7 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
           success(depositAmount, finalFee, rate, minerFee, withdrawalAmount, expiration);
         });
     };
-    
+
     var fromArg;
     var toArg;
     var coins = coinPair.split('_');
@@ -2692,12 +2692,12 @@ MyWalletPhone.buildExchangeTrade = function(from, to, coinPair, amount, fee) {
         fromArg = MyWallet.wallet.eth.defaultAccount;
         toArg = MyWallet.wallet.hdwallet.accounts[to];
     }
-    
+
     MyWallet.wallet.shapeshift.getQuote(fromArg, toArg, amount).then(buildPayment).catch(error);
 }
 
 MyWalletPhone.shiftPayment = function() {
-    
+
     var success = function(result) {
         console.log('shift complete');
         console.log(JSON.stringify(result));
@@ -2706,13 +2706,13 @@ MyWalletPhone.shiftPayment = function() {
         }
         objc_on_shift_payment_success();
     }
-    
+
     var error = function(e) {
         console.log('Error shifting payment');
         console.log(JSON.stringify(e));
         objc_on_shift_payment_error(e);
     }
-    
+
     if (MyWallet.wallet.isDoubleEncrypted) {
         MyWalletPhone.getSecondPassword(function (pw) {
             MyWallet.wallet.shapeshift.shift(currentShiftPayment, pw).then(success).catch(error);
@@ -2750,7 +2750,7 @@ MyWalletPhone.countryCodeGuess = function() {
 MyWalletPhone.availableUSStates = function() {
     var codeGuess = MyWalletPhone.countryCodeGuess();
     var storedState = MyWallet.wallet.shapeshift.USAState;
-    
+
     if (codeGuess === 'US' && !storedState) {
         return [{'Name': 'Alabama', 'Code': 'AL'},
                 {'Name': 'Alaska', 'Code': 'AK'},
@@ -2876,7 +2876,16 @@ MyWalletPhone.bch = {
         BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
     },
     
-    totalBalance : function() {
+    hasAccount : function() {
+        var bch = MyWallet.wallet.bch;
+        return bch && bch.defaultAccount;
+    },
+    
+    getLabelForDefaultAccount = function() {
+        return MyWallet.wallet.bch.defaultAccount.label;
+    },
+    
+    getBalance : function() {
         return MyWallet.wallet.bch.balance;
     },
     

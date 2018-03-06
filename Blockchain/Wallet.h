@@ -461,7 +461,7 @@ typedef enum {
 - (BOOL)hasEthAccount;
 - (BOOL)isWaitingOnEtherTransaction;
 
-// Bitcoin cash
+// Bitcoin Cash
 - (void)getBitcoinCashHistory;
 - (void)fetchBitcoinCashExchangeRates;
 - (void)createNewBitcoinCashPayment;
@@ -471,9 +471,12 @@ typedef enum {
 - (void)changeBitcoinCashPaymentAmount:(uint64_t)amount;
 - (void)changeBitcoinCashPaymentFromAccount:(int)account;
 - (void)changeBitcoinCashPaymentToAddress:(NSString *)to;
+- (BOOL)hasBchAccount;
+- (uint64_t)getBchBalance;
 - (NSString *)bitcoinCashExchangeRate;
 - (uint64_t)bitcoinCashTotalBalance;
 - (NSArray *)getBitcoinCashTransactions;
+- (NSString *_Nullable)getLabelForDefaultBchAccount;
 
 // Exchange
 - (void)createEthAccountForExchange:(NSString *)secondPassword;
