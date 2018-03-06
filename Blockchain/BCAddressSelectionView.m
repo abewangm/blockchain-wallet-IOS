@@ -247,23 +247,23 @@ int legacyAddressesSectionNumber;
     BOOL shouldCloseModal = YES;
     
     if ([self showFromAddresses]) {
-        if (indexPath.section == accountsSectionNumber) {
+        if (indexPath.section == btcAccountsSectionNumber) {
             if (selectMode == SelectModeFilter) {
-                if (indexPath.row == 0) {
-                    [delegate didSelectFromAccount:FILTER_INDEX_ALL];
-                } else if (accounts.count == indexPath.row - 1) {
-                    [delegate didSelectFromAccount:FILTER_INDEX_IMPORTED_ADDRESSES];
-                } else {
-                    [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
-                }
+                [self filterWithRow:indexPath.row assetType:AssetTypeBitcoin];
             } else {
-                [delegate didSelectFromAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                int accountIndex = [app.wallet getIndexOfActiveAccount:[[btcAccounts objectAtIndex:indexPath.row] intValue]];
+                [delegate didSelectFromAccount:accountIndex assetType:AssetTypeBitcoin];
             }
         }
         else if (indexPath.section == ethAccountsSectionNumber) {
-            [delegate didSelectFromEthAccount];
+            [delegate didSelectFromAccount:0 assetType:AssetTypeEther];
         } else if (indexPath.section == bchAccountsSectionNumber) {
-            [delegate didSelectFromBchAccount];
+            if (selectMode == SelectModeFilter) {
+                [self filterWithRow:indexPath.row assetType:AssetTypeBitcoin];
+            } else {
+                // TODO: Get bch account index
+                [delegate didSelectFromAccount:0 assetType:AssetTypeBitcoinCash];
+            }
         } else if (indexPath.section == legacyAddressesSectionNumber) {
             NSString *legacyAddress = [legacyAddresses objectAtIndex:[indexPath row]];
             if ([self allSelectable] &&
@@ -280,16 +280,19 @@ int legacyAddressesSectionNumber;
                 [delegate didSelectFromAddress:legacyAddress];
             }
         }
-    }
-    else {
+    } else {
         if (indexPath.section == addressBookSectionNumber) {
             [delegate didSelectToAddress:[addressBookAddresses objectAtIndex:[indexPath row]]];
         }
-        else if (indexPath.section == accountsSectionNumber) {
-            [delegate didSelectToAccount:[app.wallet getIndexOfActiveAccount:(int)indexPath.row]];
+        else if (indexPath.section == btcAccountsSectionNumber) {
+            [delegate didSelectToAccount: [app.wallet getIndexOfActiveAccount:(int)indexPath.row] assetType:AssetTypeBitcoin];
         }
         else if (indexPath.section == ethAccountsSectionNumber) {
-            [delegate didSelectToEthAccount];
+            [delegate didSelectToAccount:0 assetType:AssetTypeEther];
+        }
+        else if (indexPath.section == bchAccountsSectionNumber) {
+            // TODO: Get bch account index
+            [delegate didSelectFromAccount:0 assetType:AssetTypeBitcoinCash];
         }
         else if (indexPath.section == legacyAddressesSectionNumber) {
             [delegate didSelectToAddress:[legacyAddresses objectAtIndex:[indexPath row]]];
