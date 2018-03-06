@@ -498,10 +498,11 @@ int legacyAddressesSectionNumber;
             }
         }
         
-        if (label)
+        if (label) {
             cell.labelLabel.text = label;
-        else
+        } else {
             cell.labelLabel.text = BC_STRING_NO_LABEL;
+        }
         
         NSString *addr = cell.addressLabel.text;
         Boolean isWatchOnlyLegacyAddress = false;
