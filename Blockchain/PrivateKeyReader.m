@@ -11,6 +11,8 @@
 
 @interface PrivateKeyReader()
 @property (nonatomic, copy) void (^onClose)();
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@property (nonatomic) AVCaptureSession *captureSession;
 @end
 @implementation PrivateKeyReader
 
