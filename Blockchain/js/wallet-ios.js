@@ -2881,7 +2881,7 @@ MyWalletPhone.bch = {
         return bch && bch.defaultAccount;
     },
     
-    getLabelForDefaultAccount = function() {
+    getLabelForDefaultAccount : function() {
         return MyWallet.wallet.bch.defaultAccount.label;
     },
     
