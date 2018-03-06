@@ -139,7 +139,7 @@ NSMutableArray *visitedPages;
     if ([hostname rangeOfString:HOST_NAME_WALLET_SERVER].location == NSNotFound) {
         [[UIApplication sharedApplication] openURL:[request URL]];
 
-        return FALSE;
+        return NO;
     }
     
     if (navigationType != UIWebViewNavigationTypeOther) {
@@ -152,10 +152,10 @@ NSMutableArray *visitedPages;
         
         [webView loadRequest:mutableRequest];
 
-        return FALSE;
+        return NO;
     }
     
-    return TRUE;
+    return YES;
 }
 
 # pragma mark - Loading URLs
