@@ -2901,6 +2901,10 @@ MyWalletPhone.getBchBalance = function() {
     return 0;
 }
 
+MyWalletPhone.getLabelForBchAccount = function() {
+    return MyWallet.wallet.bch.defaultAccount.label;
+}
+
 MyWalletPhone.getHistoryForAllAssets = function() {
     var getBitcoinHistory = MyWallet.wallet.getHistory();
     var getEtherHistory = MyWallet.wallet.eth.fetchHistory();
