@@ -597,4 +597,31 @@ int legacyAddressesSectionNumber;
     [tableView reloadData];
 }
 
+# pragma mark - Helper Methods
+
+- (void)filterWithRow:(NSInteger)row assetType:(AssetType)asset
+{
+    NSMutableArray *accounts;
+    switch (asset) {
+        case AssetTypeBitcoin:
+            accounts = btcAccounts;
+            break;
+        case AssetTypeBitcoinCash:
+            accounts = bchAccounts;
+            break;
+        case AssetTypeEther:
+            accounts = ethAccounts;
+            break;
+    }
+
+    if (row == 0) {
+        [delegate didSelectFilter:FILTER_INDEX_ALL];
+    } else if (accounts.count == row - 1) {
+        [delegate didSelectFilter:FILTER_INDEX_IMPORTED_ADDRESSES];
+    } else {
+        int accountIndex = [app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:row - 1] intValue]];
+        [delegate didSelectFilter:accountIndex];
+    }
+}
+
 @end
