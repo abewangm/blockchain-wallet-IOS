@@ -540,10 +540,9 @@ int legacyAddressesSectionNumber;
                 zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
                 cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[ethBalance stringValue]]];
             } else if (section == bchAccountsSectionNumber) {
-                NSDecimalNumber *bchBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getBchBalance]];
-                NSComparisonResult result = [bchBalance compare:[NSDecimalNumber numberWithInt:0]];
-                zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
-                cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatBchToFiatWithSymbol:[bchBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[bchBalance stringValue]]];
+                uint64_t bchBalance = [app.wallet getBchBalance];
+                zeroBalance = btcBalance == 0;
+                cell.balanceLabel.text = [NSNumberFormatter formatBchWithSymbol:bchBalance];
             } else {
                 zeroBalance = btcBalance == 0;
                 cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
