@@ -23,8 +23,8 @@
 @synthesize legacyAddresses;
 @synthesize legacyAddressLabels;
 
-@synthesize accounts;
-@synthesize accountLabels;
+@synthesize btcAccounts;
+@synthesize btcAccountLabels;
 
 @synthesize ethAccounts;
 @synthesize ethAccountLabels;
@@ -39,10 +39,10 @@ SelectMode selectMode;
 
 int contactsSectionNumber;
 int addressBookSectionNumber;
-int accountsSectionNumber;
-int legacyAddressesSectionNumber;
+int btcAccountsSectionNumber;
 int ethAccountsSectionNumber;
 int bchAccountsSectionNumber;
+int legacyAddressesSectionNumber;
 
 - (id)initWithWallet:(Wallet *)_wallet selectMode:(SelectMode)_selectMode
 {
@@ -60,8 +60,8 @@ int bchAccountsSectionNumber;
         addressBookAddresses = [NSMutableArray array];
         addressBookAddressLabels = [NSMutableArray array];
         
-        accounts = [NSMutableArray array];
-        accountLabels = [NSMutableArray array];
+        btcAccounts = [NSMutableArray array];
+        btcAccountLabels = [NSMutableArray array];
         
         legacyAddresses = [NSMutableArray array];
         legacyAddressLabels = [NSMutableArray array];
