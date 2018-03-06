@@ -1060,75 +1060,54 @@
         
 #pragma mark - Address Selection Delegate
 
-- (void)didSelectFromEthAccount
+- (void)didSelectFromAccount:(int)account assetType:(AssetType)asset
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
-    [self selectFromEther];
-    [self selectToBitcoin];
-    
-    self.fromToView.fromLabel.text = [self etherLabelText];
-    self.fromToView.toLabel.text = [self bitcoinLabelText];
-    
+
+    switch (asset) {
+        case AssetTypeBitcoin:
+            self.bchAccount = account;
+            [self selectFromBitcoin];
+            self.fromToView.fromLabel.text = [self bitcoinLabelText];
+            break;
+        case AssetTypeBitcoinCash:
+            self.bchAccount = account;
+            [self selectFromBitcoinCash];
+            self.fromToView.fromLabel.text = [self bitcoinCashLabelText];
+            break;
+        case AssetTypeEther:
+            self.ethAccount = account;
+            [self selectFromEther];
+            self.fromToView.fromLabel.text = [self etherLabelText];
+            break;
+    }
+
     [self getRate];
 }
 
-- (void)didSelectToEthAccount
+- (void)didSelectToAccount:(int)account assetType:(AssetType)asset
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
-    [self selectFromBitcoin];
-    [self selectToEther];
-    
-    self.fromToView.fromLabel.text = [self bitcoinLabelText];
-    self.fromToView.toLabel.text = [self etherLabelText];
-    
+
+    switch (asset) {
+        case AssetTypeBitcoin:
+            self.bchAccount = account;
+            [self selectToBitcoin];
+            self.fromToView.toLabel.text = [self bitcoinLabelText];
+            break;
+        case AssetTypeBitcoinCash:
+            self.bchAccount = account;
+            [self selectToBitcoinCash];
+            self.fromToView.toLabel.text = [self bitcoinCashLabelText];
+            break;
+        case AssetTypeEther:
+            self.ethAccount = account;
+            [self selectToEther];
+            self.fromToView.toLabel.text = [self etherLabelText];
+            break;
+    }
+
     [self getRate];
-}
-
-- (void)didSelectFromAccount:(int)account
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    self.btcAccount = account;
-    
-    [self selectFromBitcoin];
-    [self selectToEther];
-    
-    self.fromToView.fromLabel.text = [self bitcoinLabelText];
-    self.fromToView.toLabel.text = [self etherLabelText];
-    
-    [self getRate];
-}
-
-- (void)didSelectToAccount:(int)account
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    self.btcAccount = account;
-    
-    [self selectFromEther];
-    [self selectToBitcoin];
-    
-    self.fromToView.fromLabel.text = [self etherLabelText];
-    self.fromToView.toLabel.text = [self bitcoinLabelText];
-    
-    [self getRate];
-}
-
-- (void)didSelectToAddress:(NSString *)address
-{
-    // required by protocol
-}
-
-- (void)didSelectContact:(Contact *)contact
-{
-    // required by protocol
-}
-
-- (void)didSelectFromAddress:(NSString *)address
-{
-    // required by protocol
 }
 
 #pragma mark - Continue Button Input Accessory View Delegate
