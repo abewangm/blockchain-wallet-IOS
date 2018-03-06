@@ -77,16 +77,16 @@ int legacyAddressesSectionNumber;
             // First show the HD accounts with positive balance
             for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
                 if ([app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:i]] > 0) {
-                    [accounts addObject:[NSNumber numberWithInt:i]];
-                    [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
+                    [btcAccounts addObject:[NSNumber numberWithInt:i]];
+                    [btcAccountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
             }
             
             // Then show the HD accounts with a zero balance
             for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
                 if (!([app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:i]] > 0)) {
-                    [accounts addObject:[NSNumber numberWithInt:i]];
-                    [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
+                    [btcAccounts addObject:[NSNumber numberWithInt:i]];
+                    [btcAccountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
             }
             
@@ -120,10 +120,10 @@ int legacyAddressesSectionNumber;
 
             addressBookSectionNumber = -1;
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
-            accountsSectionNumber = contactsSectionNumber + 1;
-            ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
+            btcAccountsSectionNumber = contactsSectionNumber + 1;
+            ethAccountsSectionNumber = ethAccounts.count > 0 ? btcAccountsSectionNumber + 1 : -1;
             bchAccountsSectionNumber = bchAccounts.count > 0 ? ethAccountsSectionNumber + 1 : -1;
-            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
+            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? btcAccountsSectionNumber + 1 : -1;
         }
         // Select to address
         else {
@@ -144,8 +144,8 @@ int legacyAddressesSectionNumber;
                 
                 // Then show the HD accounts
                 for (int i = 0; i < app.wallet.getActiveAccountsCount; i++) {
-                    [accounts addObject:[NSNumber numberWithInt:i]];
-                    [accountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
+                    [btcAccounts addObject:[NSNumber numberWithInt:i]];
+                    [btcAccountLabels addObject:[_wallet getLabelForAccount:[app.wallet getIndexOfActiveAccount:i]]];
                 }
                 
                 if (selectMode == SelectModeExchangeAccountTo && [app.wallet hasEthAccount]) {
@@ -168,12 +168,12 @@ int legacyAddressesSectionNumber;
             }
             
             contactsSectionNumber = contacts.count > 0 ? 0 : -1;
-            accountsSectionNumber = contactsSectionNumber + 1;
-            ethAccountsSectionNumber = ethAccounts.count > 0 ? accountsSectionNumber + 1 : -1;
+            btcAccountsSectionNumber = contactsSectionNumber + 1;
+            ethAccountsSectionNumber = ethAccounts.count > 0 ? btcAccountsSectionNumber + 1 : -1;
             bchAccountsSectionNumber = bchAccounts.count > 0 ? ethAccountsSectionNumber + 1 : -1;
-            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? accountsSectionNumber + 1 : -1;
+            legacyAddressesSectionNumber = (legacyAddresses.count > 0) ? btcAccountsSectionNumber + 1 : -1;
             if (addressBookAddresses.count > 0) {
-                addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : accountsSectionNumber + 1;
+                addressBookSectionNumber = (legacyAddressesSectionNumber > 0) ? legacyAddressesSectionNumber + 1 : btcAccountsSectionNumber + 1;
             } else {
                 addressBookSectionNumber = -1;
             }
@@ -308,14 +308,14 @@ int legacyAddressesSectionNumber;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self showFromAddresses]) {
-        return (accounts.count > 0 ? 1 : 0) +
+        return (btcAccounts.count > 0 ? 1 : 0) +
         (ethAccounts.count > 0 ? 1 : 0) +
         (bchAccounts.count > 0 ? 1 : 0) +
         (legacyAddresses.count > 0 && selectMode != SelectModeFilter ? 1 : 0);
     }
     
     return (addressBookAddresses.count > 0 ? 1 : 0) +
-    (accounts.count > 0 ? 1 : 0) +
+    (btcAccounts.count > 0 ? 1 : 0) +
     (ethAccounts.count > 0 ? 1 : 0) +
     (bchAccounts.count > 0 ? 1 : 0) +
     (legacyAddresses.count > 0 ? 1 : 0) +
@@ -336,7 +336,7 @@ int legacyAddressesSectionNumber;
     NSString *labelString;
     
     if ([self showFromAddresses]) {
-        if (section == accountsSectionNumber) {
+        if (section == btcAccountsSectionNumber) {
             labelString = selectMode == SelectModeFilter ? @"" : BC_STRING_WALLETS;
         }
         else if (section == ethAccountsSectionNumber) {
@@ -353,7 +353,7 @@ int legacyAddressesSectionNumber;
         if (section == addressBookSectionNumber) {
             labelString = BC_STRING_ADDRESS_BOOK;
         }
-        else if (section == accountsSectionNumber) {
+        else if (section == btcAccountsSectionNumber) {
             labelString = BC_STRING_WALLETS;
         }
         else if (section == legacyAddressesSectionNumber) {
@@ -372,15 +372,15 @@ int legacyAddressesSectionNumber;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([self showFromAddresses]) {
-        if (section == accountsSectionNumber) {
+        if (section == btcAccountsSectionNumber) {
             if (selectMode == SelectModeFilter) {
                 if (legacyAddresses.count > 0) {
-                    return accounts.count + 2;
+                    return btcAccounts.count + 2;
                 } else {
-                    return accounts.count + 1;
+                    return btcAccounts.count + 1;
                 }
             } else {
-                return accounts.count;
+                return btcAccounts.count;
             }
         }
         else if (section == ethAccountsSectionNumber) {
@@ -400,8 +400,8 @@ int legacyAddressesSectionNumber;
         if (section == addressBookSectionNumber) {
             return addressBookAddresses.count;
         }
-        else if (section == accountsSectionNumber) {
-            return accounts.count;
+        else if (section == btcAccountsSectionNumber) {
+            return btcAccounts.count;
         }
         else if (section == ethAccountsSectionNumber) {
             return ethAccounts.count;
@@ -428,7 +428,7 @@ int legacyAddressesSectionNumber;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == accountsSectionNumber || indexPath.section == contactsSectionNumber || indexPath.section == ethAccountsSectionNumber || indexPath.section == bchAccountsSectionNumber) {
+    if (indexPath.section == btcAccountsSectionNumber || indexPath.section == contactsSectionNumber || indexPath.section == ethAccountsSectionNumber || indexPath.section == bchAccountsSectionNumber) {
         return ROW_HEIGHT_ACCOUNT;
     }
     
@@ -451,18 +451,18 @@ int legacyAddressesSectionNumber;
             label = [addressBookAddressLabels objectAtIndex:row];
             cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
         }
-        else if (section == accountsSectionNumber) {
+        else if (section == btcAccountsSectionNumber) {
             
             if (selectMode == SelectModeFilter) {
-                if (accounts.count == row - 1) {
+                if (btcAccounts.count == row - 1) {
                     label = BC_STRING_IMPORTED_ADDRESSES;
                 } else if (row == 0) {
                     label = BC_STRING_TOTAL_BALANCE;
                 } else {
-                    label = accountLabels[indexPath.row - 1];
+                    label = btcAccountLabels[indexPath.row - 1];
                 }
             } else {
-                label = accountLabels[indexPath.row];
+                label = btcAccountLabels[indexPath.row];
             }
             
             cell.addressLabel.text = nil;
@@ -514,17 +514,17 @@ int legacyAddressesSectionNumber;
             if (section == addressBookSectionNumber) {
                 btcBalance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
             }
-            else if (section == accountsSectionNumber) {
+            else if (section == btcAccountsSectionNumber) {
                 if (selectMode == SelectModeFilter) {
-                    if (accounts.count == row - 1) {
+                    if (btcAccounts.count == row - 1) {
                         btcBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
                     } else if (row == 0) {
                         btcBalance = [app.wallet getTotalActiveBalance];
                     } else {
-                        btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row - 1] intValue]]];
+                        btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[btcAccounts objectAtIndex:indexPath.row - 1] intValue]]];
                     }
                 } else {
-                    btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[accounts objectAtIndex:indexPath.row] intValue]]];
+                    btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[btcAccounts objectAtIndex:indexPath.row] intValue]]];
                 }
             }
             else if (section == legacyAddressesSectionNumber) {
