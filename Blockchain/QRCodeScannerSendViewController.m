@@ -10,6 +10,8 @@
 #import "RootService.h"
 
 @interface QRCodeScannerSendViewController () <AVCaptureMetadataOutputObjectsDelegate>
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @end
 
 @implementation QRCodeScannerSendViewController

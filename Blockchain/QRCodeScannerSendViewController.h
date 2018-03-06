@@ -10,7 +10,5 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface QRCodeScannerSendViewController : UIViewController
-@property (nonatomic) AVCaptureSession *captureSession;
-@property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 - (IBAction)QRCodebuttonClicked:(id)sender;
 @end
