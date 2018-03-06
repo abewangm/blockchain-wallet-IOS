@@ -2914,6 +2914,14 @@
     return nil;
 }
 
+- (NSString *)getLabelForBchAccount
+{
+    if ([self isInitialized] && [self hasBchAccount]) {
+        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForBchAccount()"] toString];
+    }
+    return nil;
+}
+
 # pragma mark - Bitcoin cash
 
 - (void)getBitcoinCashHistory
