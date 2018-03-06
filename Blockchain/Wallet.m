@@ -2978,7 +2978,7 @@
     if ([self isInitialized]) {
         return [[self.context evaluateScript:@"MyWalletPhone.hasBchAccount()"] toBool];
     }
-    return false;
+    return NO;
 }
 
 - (NSString *)getBchBalance
