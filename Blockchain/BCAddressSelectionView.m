@@ -455,7 +455,6 @@ int legacyAddressesSectionNumber;
             cell.addressLabel.text = [addressBookAddresses objectAtIndex:row];
         }
         else if (section == btcAccountsSectionNumber) {
-            
             if (selectMode == SelectModeFilter) {
                 if (btcAccounts.count == row - 1) {
                     label = BC_STRING_IMPORTED_ADDRESSES;
@@ -467,7 +466,6 @@ int legacyAddressesSectionNumber;
             } else {
                 label = btcAccountLabels[indexPath.row];
             }
-            
             cell.addressLabel.text = nil;
         }
         else if (section == ethAccountsSectionNumber) {
@@ -516,8 +514,7 @@ int legacyAddressesSectionNumber;
             uint64_t btcBalance = 0;
             if (section == addressBookSectionNumber) {
                 btcBalance = [app.wallet getLegacyAddressBalance:[addressBookAddresses objectAtIndex:row]];
-            }
-            else if (section == btcAccountsSectionNumber) {
+            } else if (section == btcAccountsSectionNumber) {
                 if (selectMode == SelectModeFilter) {
                     if (btcAccounts.count == row - 1) {
                         btcBalance = [app.wallet getTotalBalanceForActiveLegacyAddresses];
@@ -529,23 +526,22 @@ int legacyAddressesSectionNumber;
                 } else {
                     btcBalance = [app.wallet getBalanceForAccount:[app.wallet getIndexOfActiveAccount:[[btcAccounts objectAtIndex:indexPath.row] intValue]]];
                 }
-            }
-            else if (section == legacyAddressesSectionNumber) {
+            } else if (section == legacyAddressesSectionNumber) {
                 btcBalance = [app.wallet getLegacyAddressBalance:[legacyAddresses objectAtIndex:row]];
             }
-            
-            if (section == ethAccountsSectionNumber) {
+
+            if (section == btcAccountsSectionNumber || (btcAccounts.count > 0 && section == legacyAddressesSectionNumber)) {
+                zeroBalance = btcBalance == 0;
+                cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
+            } else if (section == ethAccountsSectionNumber) {
                 NSDecimalNumber *ethBalance = [[NSDecimalNumber alloc] initWithString:[app.wallet getEthBalance]];
                 NSComparisonResult result = [ethBalance compare:[NSDecimalNumber numberWithInt:0]];
                 zeroBalance = result == NSOrderedDescending || result == NSOrderedSame;
                 cell.balanceLabel.text = app->symbolLocal ? [NSNumberFormatter formatEthToFiatWithSymbol:[ethBalance stringValue] exchangeRate:app.tabControllerManager.latestEthExchangeRate] : [NSNumberFormatter formatEth:[NSNumberFormatter localFormattedString:[ethBalance stringValue]]];
-            } else if (section == bchAccountsSectionNumber) {
-                uint64_t bchBalance = [app.wallet getBchBalance];
-                zeroBalance = btcBalance == 0;
-                cell.balanceLabel.text = [NSNumberFormatter formatBchWithSymbol:bchBalance];
             } else {
-                zeroBalance = btcBalance == 0;
-                cell.balanceLabel.text = [NSNumberFormatter formatMoney:btcBalance];
+                uint64_t bchBalance = [app.wallet getBchBalance];
+                zeroBalance = bchBalance == 0;
+                cell.balanceLabel.text = [NSNumberFormatter formatBchWithSymbol:bchBalance];
             }
             
             // Cells with empty balance can't be clicked and are dimmed
@@ -558,8 +554,7 @@ int legacyAddressesSectionNumber;
                 cell.labelLabel.alpha = 1.0;
                 cell.addressLabel.alpha = 1.0;
             }
-        }
-        else {
+        } else {
             cell.balanceLabel.text = nil;
         }
         
