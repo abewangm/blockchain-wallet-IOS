@@ -332,16 +332,16 @@
         
         NSString * string = [app.btcFormatter stringFromNumber:number];
         
-        NSString *currencySymbol = app.latestResponse.symbol_btc.symbol;
-        if ([currencySymbol isEqualToString:CURRENCY_SYMBOL_MBC]) {
-            currencySymbol = CURRENCY_SYMBOL_BCH_MILLIBITS;
-        } else if ([currencySymbol isEqualToString:CURRENCY_CODE_UBC]) {
-            currencySymbol = CURRENCY_SYMBOL_BCH_BITS;
+        NSString *currencyCode = app.latestResponse.symbol_btc.code;
+        if ([currencyCode isEqualToString:CURRENCY_SYMBOL_MBC]) {
+            currencyCode = CURRENCY_SYMBOL_BCH_MILLIBITS;
+        } else if ([currencyCode isEqualToString:CURRENCY_CODE_UBC]) {
+            currencyCode = CURRENCY_SYMBOL_BCH_BITS;
         } else {
-            currencySymbol = CURRENCY_SYMBOL_BCH;
+            currencyCode = CURRENCY_SYMBOL_BCH;
         }
         
-        return [string stringByAppendingFormat:@" %@", currencySymbol];
+        return [string stringByAppendingFormat:@" %@", currencyCode];
     }
     
     return [NSNumberFormatter formatBTC:value];
