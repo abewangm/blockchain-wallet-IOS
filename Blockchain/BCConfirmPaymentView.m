@@ -99,7 +99,7 @@
     self.rows = [NSMutableArray new];
     if (self.viewModel.from) [self.rows addObject:@[BC_STRING_FROM, self.viewModel.from]];
     if (self.viewModel.to) [self.rows addObject:@[BC_STRING_TO, self.viewModel.to]];
-    [self.rows addObject:@[BC_STRING_DESCRIPTION, self.viewModel.noteText ? : @""]];
+    if (self.viewModel.showDescription) [self.rows addObject:@[BC_STRING_DESCRIPTION, self.viewModel.noteText ? : @""]];
     if (self.viewModel.btcWithFiatAmountText) [self.rows addObject:@[BC_STRING_AMOUNT, self.viewModel.btcWithFiatAmountText]];
     if (self.viewModel.btcWithFiatFeeText) [self.rows addObject:@[BC_STRING_FEE, self.viewModel.btcWithFiatFeeText]];
 }

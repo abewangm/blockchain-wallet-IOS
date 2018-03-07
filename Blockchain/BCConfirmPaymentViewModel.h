@@ -42,5 +42,6 @@
 @property (nonatomic) NSString *btcWithFiatFeeText;
 @property (nonatomic) NSString *noteText;
 @property (nonatomic) NSString *buttonTitle;
+@property (nonatomic) BOOL showDescription;
 @property (nonatomic) BOOL surgeIsOccurring;
 @end

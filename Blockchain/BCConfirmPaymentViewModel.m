@@ -40,6 +40,7 @@ contactTransaction:(ContactTransaction *)contactTransaction
         self.btcTotalAmountText = [NSNumberFormatter formatBTC:total];
         self.btcWithFiatAmountText = [self formatAmountInBTCAndFiat:amount];
         self.btcWithFiatFeeText = [self formatAmountInBTCAndFiat:fee];
+        self.showDescription = YES;
     }
     return self;
 }
@@ -57,6 +58,7 @@ contactTransaction:(ContactTransaction *)contactTransaction
         self.fiatTotalAmountText = fiatTotal;
         self.btcTotalAmountText = ethTotal;
         self.btcWithFiatFeeText = [NSString stringWithFormat:@"%@ (%@)", ethFee, fiatFee];
+        self.showDescription = YES;
     }
     return self;
 }
@@ -79,6 +81,7 @@ contactTransaction:(ContactTransaction *)contactTransaction
         self.btcTotalAmountText = [NSNumberFormatter formatBCH:total];
         self.btcWithFiatAmountText = [self formatAmountInBCHAndFiat:amount];
         self.btcWithFiatFeeText = [self formatAmountInBCHAndFiat:fee];
+        self.showDescription = NO;
     }
     return self;
 }
