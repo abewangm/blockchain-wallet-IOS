@@ -192,8 +192,10 @@ BOOL displayingLocalSymbolSend;
     
     rejectPaymentButton.titleLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:17.0];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(feeOptionsClicked:)];
-    [feeTappableView addGestureRecognizer:tapGestureRecognizer];
+    if (self.assetType == AssetTypeBitcoin) {
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(feeOptionsClicked:)];
+        [feeTappableView addGestureRecognizer:tapGestureRecognizer];
+    }
     
     [self reload];
     
@@ -1119,7 +1121,7 @@ BOOL displayingLocalSymbolSend;
         }
         
         feeLabel.hidden = NO;
-        feeOptionsButton.hidden = NO;
+        feeOptionsButton.hidden = self.assetType == AssetTypeBitcoinCash;
         lineBelowFeeField.hidden = NO;
         
         self.feeAmountLabel.hidden = NO;
