@@ -1059,6 +1059,12 @@
         
 #pragma mark - Address Selection Delegate
 
+- (AssetType)getAssetType
+{
+    // Exhange controller uses all assets
+    return -1;
+}
+
 - (void)didSelectFromAccount:(int)account assetType:(AssetType)asset
 {
     [self.navigationController popViewControllerAnimated:YES];
