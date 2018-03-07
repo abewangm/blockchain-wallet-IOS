@@ -192,8 +192,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 1) {
-        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] selectMode:SelectModeTransferTo];
-        selectorView.delegate = self;
+        BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:[self.transferPaymentBuilder wallet] selectMode:SelectModeTransferTo delegate:self];
         selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
         
         UIViewController *viewController = [UIViewController new];
@@ -207,6 +206,11 @@
 - (void)archiveTransferredAddresses
 {
     [self.transferPaymentBuilder archiveTransferredAddresses];
+}
+
+- (AssetType)getAssetType
+{
+    return AssetTypeBitcoin;
 }
 
 - (void)didSelectFromAccount:(int)account

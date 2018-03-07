@@ -35,6 +35,7 @@
 #define ESTIMATED_KEYBOARD_PLUS_ACCESSORY_VIEW_HEIGHT 205.5
 
 @interface ReceiveCoinsViewController() <UIActivityItemSource, AddressSelectionDelegate>
+@property (nonatomic) AssetType assetType;
 @property (nonatomic) UITextField *lastSelectedField;
 @property (nonatomic) QRCodeGenerator *qrCodeGenerator;
 @property (nonatomic) uint64_t lastRequestedAmount;
@@ -754,8 +755,7 @@ NSString *detailLabel;
     
     SelectMode selectMode = self.fromContact ? SelectModeReceiveFromContact : SelectModeReceiveTo;
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode];
-    addressSelectionView.delegate = self;
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode delegate:self];
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_RECEIVE_TO onDismiss:nil onResume:nil];
 }
@@ -834,9 +834,8 @@ NSString *detailLabel;
         return;
     }
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact];
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeContact delegate:self];
     addressSelectionView.previouslySelectedContact = self.fromContact;
-    addressSelectionView.delegate = self;
     [addressSelectionView reloadTableView];
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_REQUEST_FROM onDismiss:nil onResume:nil];
@@ -1082,6 +1081,11 @@ NSString *detailLabel;
 }
 
 #pragma mark - BCAddressSelectionView Delegate
+
+- (AssetType)getAssetType
+{
+    return self.assetType;
+}
 
 - (void)didSelectFromAddress:(NSString*)address
 {

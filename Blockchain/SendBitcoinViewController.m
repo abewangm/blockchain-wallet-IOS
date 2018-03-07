@@ -1862,6 +1862,11 @@ BOOL displayingLocalSymbolSend;
 
 # pragma mark - AddressBook delegate
 
+- (AssetType)getAssetType
+{
+    return self.assetType;
+}
+
 - (void)didSelectFromAddress:(NSString *)address
 {
     [self selectFromAddress:address];
@@ -2204,8 +2209,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendFrom];
-    addressSelectionView.delegate = self;
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendFrom delegate:self];
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_FROM onDismiss:nil onResume:nil];
 }
@@ -2217,8 +2221,7 @@ BOOL displayingLocalSymbolSend;
         return;
     }
     
-    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendTo];
-    addressSelectionView.delegate = self;
+    BCAddressSelectionView *addressSelectionView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:SelectModeSendTo delegate:self];
     
     [app showModalWithContent:addressSelectionView closeType:ModalCloseTypeBack showHeader:YES headerText:BC_STRING_SEND_TO onDismiss:nil onResume:nil];
 }
