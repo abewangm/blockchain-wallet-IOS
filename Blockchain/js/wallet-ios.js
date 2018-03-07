@@ -2895,6 +2895,10 @@ MyWalletPhone.bch = {
         return MyWallet.wallet.bch.defaultAccount.label;
     },
     
+    getLabelForAccount : function(index) {
+        return MyWallet.wallet.bch.accounts[index].label;
+    },
+    
     totalBalance : function() {
         return MyWallet.wallet.bch.balance;
     },

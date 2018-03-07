@@ -2990,6 +2990,14 @@
     return NO;
 }
 
+- (NSString *)getLabelForBitcoinCashAccount:(int)account
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.getLabelForAccount(\"%d\")", account]] toString];
+    }
+    return nil;
+}
+
 - (void)buildBitcoinCashPayment
 {
     if ([self isInitialized]) {

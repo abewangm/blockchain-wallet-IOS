@@ -1544,7 +1544,7 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         return [app.wallet getLabelForAccount:account];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        return [app.wallet getLabelForBitcoinCashAccount:account];
     }
     return nil;
 }
