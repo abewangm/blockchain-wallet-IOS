@@ -1061,7 +1061,7 @@
 
 - (AssetType)getAssetType
 {
-    // Exhange controller uses all assets
+    // Exchange controller uses all assets 
     return -1;
 }
 
