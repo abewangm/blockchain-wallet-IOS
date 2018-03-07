@@ -1427,7 +1427,7 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet createNewBitcoinPayment];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        [app.wallet changeBitcoinCashPaymentFromAccount:0];
     }
 }
 
