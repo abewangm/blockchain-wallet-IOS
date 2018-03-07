@@ -1564,7 +1564,7 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet sweepPaymentRegular];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        [self didGetMaxFee:[NSNumber numberWithLongLong:self.feeFromTransactionProposal] amount:[NSNumber numberWithLongLong:availableAmount] dust:0 willConfirm:NO];
     }
 }
 
@@ -1573,7 +1573,7 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet sweepPaymentAdvanced];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        // No custom fee in bch
     }
 }
 
@@ -1582,7 +1582,7 @@ BOOL displayingLocalSymbolSend;
     if (self.assetType == AssetTypeBitcoin) {
         [app.wallet changeSatoshiPerByte:satoshiPerByte updateType:updateType];
     } else if (self.assetType == AssetTypeBitcoinCash) {
-        
+        // No custom fee in bch
     }
 }
 
