@@ -38,8 +38,6 @@ contactTransaction:(ContactTransaction *)contactTransaction
         
         self.fiatTotalAmountText = [NSNumberFormatter formatMoney:total localCurrency:YES];
         self.btcTotalAmountText = [NSNumberFormatter formatBTC:total];
-        self.fiatAmountText = [NSNumberFormatter formatMoney:amount localCurrency:YES];
-        self.btcAmountText = [NSNumberFormatter formatBTC:amount];
         self.btcWithFiatAmountText = [self formatAmountInBTCAndFiat:amount];
         self.btcWithFiatFeeText = [self formatAmountInBTCAndFiat:fee];
     }
@@ -56,8 +54,6 @@ contactTransaction:(ContactTransaction *)contactTransaction
 {
     if (self == [super init]) {
         self.to = to;
-        self.fiatAmountText = fiatAmount;
-        self.btcAmountText = ethAmount;
         self.fiatTotalAmountText = fiatTotal;
         self.btcTotalAmountText = ethTotal;
         self.btcWithFiatFeeText = [NSString stringWithFormat:@"%@ (%@)", ethFee, fiatFee];
@@ -79,10 +75,8 @@ contactTransaction:(ContactTransaction *)contactTransaction
         self.to = to;
         self.surgeIsOccurring = surgePresent;
         
-        self.fiatTotalAmountText = [NSNumberFormatter formatBch:total localCurrency:YES];
+        self.fiatTotalAmountText = [NSNumberFormatter formatBchWithSymbol:total localCurrency:YES];
         self.btcTotalAmountText = [NSNumberFormatter formatBCH:total];
-        self.fiatAmountText = [NSNumberFormatter formatBch:amount localCurrency:YES];
-        self.btcAmountText = [NSNumberFormatter formatBCH:amount];
         self.btcWithFiatAmountText = [self formatAmountInBCHAndFiat:amount];
         self.btcWithFiatFeeText = [self formatAmountInBCHAndFiat:fee];
     }
