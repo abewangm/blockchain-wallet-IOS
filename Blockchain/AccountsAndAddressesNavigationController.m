@@ -12,9 +12,12 @@
 #import "RootService.h"
 #import "PrivateKeyReader.h"
 #import "SendBitcoinViewController.h"
+#import "AssetSelectorView.h"
+#import "UIView+ChangeFrameAttribute.h"
 
-@interface AccountsAndAddressesNavigationController ()
-
+@interface AccountsAndAddressesNavigationController () <AssetSelectorViewDelegate>
+@property (nonatomic) AssetSelectorView *assetSelectorView;
+@property (nonatomic) UIView *topBar;
 @end
 
 @implementation AccountsAndAddressesNavigationController
@@ -27,9 +30,10 @@
     
     self.view.frame = CGRectMake(0, 0, app.window.frame.size.width, app.window.frame.size.height);
     
-    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT)];
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, DEFAULT_HEADER_HEIGHT + 8 + ASSET_SELECTOR_ROW_HEIGHT)];
     topBar.backgroundColor = COLOR_BLOCKCHAIN_BLUE;
     [self.view addSubview:topBar];
+    self.topBar = topBar;
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:FRAME_HEADER_LABEL];
     headerLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_TOP_BAR_TEXT];
@@ -61,36 +65,12 @@
     warningButton.hidden = YES;
     self.warningButton = warningButton;
 #endif
-    BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
-    busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
-    textWithSpinnerView.backgroundColor = [UIColor whiteColor];
-    [busyView addSubview:textWithSpinnerView];
-    textWithSpinnerView.center = busyView.center;
+
+    CGFloat assetSelectorViewHorizontalPadding = 8;
+    self.assetSelectorView = [[AssetSelectorView alloc] initWithFrame:CGRectMake(assetSelectorViewHorizontalPadding, headerLabel.frame.origin.y + headerLabel.frame.size.height + 8, self.view.frame.size.width - assetSelectorViewHorizontalPadding*2, ASSET_SELECTOR_ROW_HEIGHT) delegate:self];
+    [topBar addSubview:self.assetSelectorView];
     
-    self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 230, 30)];
-    self.busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
-    self.busyLabel.alpha = 0.75;
-    self.busyLabel.textAlignment = NSTextAlignmentCenter;
-    self.busyLabel.adjustsFontSizeToFitWidth = YES;
-    self.busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
-    self.busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
-    [textWithSpinnerView addSubview:self.busyLabel];
-    
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
-    [textWithSpinnerView addSubview:spinner];
-    [textWithSpinnerView bringSubviewToFront:spinner];
-    [spinner startAnimating];
-    
-    busyView.containerView = textWithSpinnerView;
-    [busyView fadeOut];
-    
-    [self.view addSubview:busyView];
-    
-    [self.view bringSubviewToFront:busyView];
-    
-    self.busyView = busyView;
+    [self setupBusyView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -157,6 +137,40 @@
 
 #pragma mark - UI helpers
 
+- (void)setupBusyView
+{
+    BCFadeView *busyView = [[BCFadeView alloc] initWithFrame:app.window.rootViewController.view.frame];
+    busyView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    UIView *textWithSpinnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 110)];
+    textWithSpinnerView.backgroundColor = [UIColor whiteColor];
+    [busyView addSubview:textWithSpinnerView];
+    textWithSpinnerView.center = busyView.center;
+    
+    self.busyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 230, 30)];
+    self.busyLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_SMALL_MEDIUM];
+    self.busyLabel.alpha = 0.75;
+    self.busyLabel.textAlignment = NSTextAlignmentCenter;
+    self.busyLabel.adjustsFontSizeToFitWidth = YES;
+    self.busyLabel.text = BC_STRING_LOADING_SYNCING_WALLET;
+    self.busyLabel.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 + 15);
+    [textWithSpinnerView addSubview:self.busyLabel];
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(textWithSpinnerView.bounds.origin.x + textWithSpinnerView.bounds.size.width/2, textWithSpinnerView.bounds.origin.y + textWithSpinnerView.bounds.size.height/2 - 15);
+    [textWithSpinnerView addSubview:spinner];
+    [textWithSpinnerView bringSubviewToFront:spinner];
+    [spinner startAnimating];
+    
+    busyView.containerView = textWithSpinnerView;
+    [busyView fadeOut];
+    
+    [self.view addSubview:busyView];
+    
+    [self.view bringSubviewToFront:busyView];
+    
+    self.busyView = busyView;
+}
+
 - (void)presentAlertController:(UIAlertController *)alertController
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ANIMATION_DURATION_LONG * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -221,6 +235,22 @@
         AccountsAndAddressesViewController *accountsAndAddressesViewController = (AccountsAndAddressesViewController *)self.visibleViewController;
         [accountsAndAddressesViewController didGenerateNewAddress];
     }
+}
+
+#pragma mark - Asset Selector View Delegate
+
+- (void)didSelectAsset:(AssetType)assetType
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [self.topBar changeHeight:DEFAULT_HEADER_HEIGHT + 8 + ASSET_SELECTOR_ROW_HEIGHT];
+    }];
+}
+
+- (void)didOpenSelector
+{
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [self.topBar changeHeight:DEFAULT_HEADER_HEIGHT + 8 + ASSET_SELECTOR_ROW_HEIGHT*3];
+    }];
 }
 
 @end

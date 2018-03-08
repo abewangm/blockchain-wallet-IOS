@@ -576,6 +576,10 @@ NSString *detailLabel;
     }];
 }
 
+#pragma mark - Asset Agnostic Methods
+
+
+
 #pragma mark - Actions
 
 - (IBAction)doneButtonClicked:(UIButton *)sender

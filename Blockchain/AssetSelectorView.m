@@ -27,7 +27,7 @@
         self.clipsToBounds = YES;
         
         self.delegate = delegate;
-        self.tableView = [[UITableView alloc] initWithFrame:frame];
+        self.tableView = [[UITableView alloc] initWithFrame:self.bounds];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self addSubview:self.tableView];
@@ -55,9 +55,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AssetSelectionTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    self.selectedAsset = cell.assetType;
-    [self.delegate didSelectAsset:cell.assetType];
+    if (self.isOpen) {
+        AssetSelectionTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        self.selectedAsset = cell.assetType;
+        [self.delegate didSelectAsset:cell.assetType];
+        [self close];
+    } else {
+        [self open];
+        [self.delegate didOpenSelector];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,11 +103,6 @@
         [self.tableView reloadData];
         [self changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
     }];
-}
-
-- (void)selectorClicked
-{
-    [self open];
 }
 
 @end

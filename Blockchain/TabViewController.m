@@ -264,32 +264,28 @@
 
 - (void)didSelectAsset:(AssetType)assetType
 {
-    if (self.assetSelectorView.isOpen) {
-        [self.assetSelectorView close];
-        
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
-            self.activeViewController.view.frame = CGRectMake(0,
-                                                              DEFAULT_HEADER_HEIGHT_OFFSET,
-                                                              [UIScreen mainScreen].bounds.size.width,
-                                                              [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
-            [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
-        }];
-        
-        [self selectAsset:assetType];
-        
-    } else {
-        [self.assetSelectorView selectorClicked];
-        
-        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
-            [topBar changeHeight:DEFAULT_HEADER_HEIGHT + ASSET_SELECTOR_ROW_HEIGHT*3];
-            self.activeViewController.view.frame = CGRectMake(0,
-                                                              ASSET_SELECTOR_ROW_HEIGHT*3,
-                                                              [UIScreen mainScreen].bounds.size.width,
-                                                              [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
-            [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT*3];
-        }];
-    }
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [topBar changeHeight:DEFAULT_HEADER_HEIGHT + DEFAULT_HEADER_HEIGHT_OFFSET];
+        self.activeViewController.view.frame = CGRectMake(0,
+                                                          DEFAULT_HEADER_HEIGHT_OFFSET,
+                                                          [UIScreen mainScreen].bounds.size.width,
+                                                          [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
+        [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT];
+    }];
+    
+    [self selectAsset:assetType];
+}
+
+- (void)didOpenSelector
+{    
+    [UIView animateWithDuration:ANIMATION_DURATION animations:^{
+        [topBar changeHeight:DEFAULT_HEADER_HEIGHT + ASSET_SELECTOR_ROW_HEIGHT*3];
+        self.activeViewController.view.frame = CGRectMake(0,
+                                                          ASSET_SELECTOR_ROW_HEIGHT*3,
+                                                          [UIScreen mainScreen].bounds.size.width,
+                                                          [UIScreen mainScreen].bounds.size.height - DEFAULT_HEADER_HEIGHT - DEFAULT_HEADER_HEIGHT_OFFSET - DEFAULT_FOOTER_HEIGHT);
+        [bannerView changeHeight:ASSET_SELECTOR_ROW_HEIGHT*3];
+    }];
 }
 
 @end

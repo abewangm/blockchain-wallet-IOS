@@ -12,12 +12,12 @@
 #define ASSET_SELECTOR_ROW_HEIGHT 36
 @protocol AssetSelectorViewDelegate
 - (void)didSelectAsset:(AssetType)assetType;
+- (void)didOpenSelector;
 @end
 @interface AssetSelectorView : UIView
 @property (nonatomic) AssetType selectedAsset;
 @property (nonatomic, readonly) BOOL isOpen;
 - (id)initWithFrame:(CGRect)frame delegate:(id<AssetSelectorViewDelegate>)delegate;
-- (void)selectorClicked;
 - (void)close;
 - (void)open;
 
