@@ -24,6 +24,7 @@
 #import "BCLine.h"
 #import "FeeTypes.h"
 #import "QRCodeScannerSendViewController.h"
+#import "Assets.h"
 
 @class Wallet, ContactTransaction;
 
@@ -74,6 +75,9 @@
     
     BOOL displayingLocalSymbol;
 }
+
+// Must be a Bitcoin fork
+@property (nonatomic) AssetType assetType;
 
 @property (strong, nonatomic) BCConfirmPaymentView *confirmPaymentView;
 

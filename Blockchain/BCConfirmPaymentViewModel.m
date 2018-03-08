@@ -38,10 +38,9 @@ contactTransaction:(ContactTransaction *)contactTransaction
         
         self.fiatTotalAmountText = [NSNumberFormatter formatMoney:total localCurrency:YES];
         self.btcTotalAmountText = [NSNumberFormatter formatBTC:total];
-        self.fiatAmountText = [NSNumberFormatter formatMoney:amount localCurrency:YES];
-        self.btcAmountText = [NSNumberFormatter formatBTC:amount];
         self.btcWithFiatAmountText = [self formatAmountInBTCAndFiat:amount];
         self.btcWithFiatFeeText = [self formatAmountInBTCAndFiat:fee];
+        self.showDescription = YES;
     }
     return self;
 }
@@ -56,11 +55,33 @@ contactTransaction:(ContactTransaction *)contactTransaction
 {
     if (self == [super init]) {
         self.to = to;
-        self.fiatAmountText = fiatAmount;
-        self.btcAmountText = ethAmount;
         self.fiatTotalAmountText = fiatTotal;
         self.btcTotalAmountText = ethTotal;
         self.btcWithFiatFeeText = [NSString stringWithFormat:@"%@ (%@)", ethFee, fiatFee];
+        self.showDescription = YES;
+    }
+    return self;
+}
+
+- (id)initWithFrom:(NSString *)from
+                To:(NSString *)to
+            bchAmount:(uint64_t)amount
+               fee:(uint64_t)fee
+             total:(uint64_t)total
+             surge:(BOOL)surgePresent
+{
+    self = [super init];
+    
+    if (self) {
+        self.from = from;
+        self.to = to;
+        self.surgeIsOccurring = surgePresent;
+        
+        self.fiatTotalAmountText = [NSNumberFormatter formatBchWithSymbol:total localCurrency:YES];
+        self.btcTotalAmountText = [NSNumberFormatter formatBCH:total];
+        self.btcWithFiatAmountText = [self formatAmountInBCHAndFiat:amount];
+        self.btcWithFiatFeeText = [self formatAmountInBCHAndFiat:fee];
+        self.showDescription = NO;
     }
     return self;
 }
@@ -70,6 +91,11 @@ contactTransaction:(ContactTransaction *)contactTransaction
 - (NSString *)formatAmountInBTCAndFiat:(uint64_t)amount
 {
     return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatMoney:amount localCurrency:NO], [NSNumberFormatter formatMoney:amount localCurrency:YES]];
+}
+
+- (NSString *)formatAmountInBCHAndFiat:(uint64_t)amount
+{
+    return [NSString stringWithFormat:@"%@ (%@)", [NSNumberFormatter formatBchWithSymbol:amount localCurrency:NO], [NSNumberFormatter formatBchWithSymbol:amount localCurrency:YES]];
 }
 
 @end

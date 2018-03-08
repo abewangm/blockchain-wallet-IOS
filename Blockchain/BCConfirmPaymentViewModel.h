@@ -27,15 +27,21 @@
          fiatFee:(NSString *)fiatFee
        fiatTotal:(NSString *)fiatTotal;
 
+- (id)initWithFrom:(NSString *)from
+                To:(NSString *)to
+            bchAmount:(uint64_t)amount
+               fee:(uint64_t)fee
+             total:(uint64_t)total
+             surge:(BOOL)surgePresent;
+
 @property (nonatomic) NSString *from;
 @property (nonatomic) NSString *to;
 @property (nonatomic) NSString *fiatTotalAmountText;
 @property (nonatomic) NSString *btcTotalAmountText;
-@property (nonatomic) NSString *fiatAmountText;
-@property (nonatomic) NSString *btcAmountText;
 @property (nonatomic) NSString *btcWithFiatAmountText;
 @property (nonatomic) NSString *btcWithFiatFeeText;
 @property (nonatomic) NSString *noteText;
 @property (nonatomic) NSString *buttonTitle;
+@property (nonatomic) BOOL showDescription;
 @property (nonatomic) BOOL surgeIsOccurring;
 @end

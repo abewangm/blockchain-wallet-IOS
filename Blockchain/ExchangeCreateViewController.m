@@ -691,8 +691,7 @@
 
 - (void)selectAccountClicked:(SelectMode)selectMode
 {
-    BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode];
-    selectorView.delegate = self;
+    BCAddressSelectionView *selectorView = [[BCAddressSelectionView alloc] initWithWallet:app.wallet selectMode:selectMode delegate:self];
     selectorView.frame = CGRectMake(0, DEFAULT_HEADER_HEIGHT, self.view.frame.size.width, self.view.frame.size.height);
     
     UIViewController *viewController = [UIViewController new];
@@ -1033,7 +1032,7 @@
 
 - (NSString *)bitcoinCashLabelText
 {
-    return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForBchAccount] : BC_STRING_BITCOIN_CASH;
+    return [app.wallet getActiveAccountsCount] > 1 ? [app.wallet getLabelForDefaultBchAccount] : BC_STRING_BITCOIN_CASH;
 }
 
 - (NSString *)etherLabelText
@@ -1059,6 +1058,12 @@
 }
         
 #pragma mark - Address Selection Delegate
+
+- (AssetType)getAssetType
+{
+    // Exchange controller uses all assets 
+    return -1;
+}
 
 - (void)didSelectFromAccount:(int)account assetType:(AssetType)asset
 {

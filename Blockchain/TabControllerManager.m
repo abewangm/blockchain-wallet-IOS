@@ -106,6 +106,13 @@
         }
         
         [_tabViewController setActiveViewController:_sendEtherViewController animated:TRUE index:TAB_SEND];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        if (!_sendBitcoinCashViewController) {
+            _sendBitcoinCashViewController = [[SendBitcoinViewController alloc] initWithNibName:NIB_NAME_SEND_COINS bundle:[NSBundle mainBundle]];
+            _sendBitcoinCashViewController.assetType = AssetTypeBitcoinCash;
+        }
+        
+        [_tabViewController setActiveViewController:_sendBitcoinCashViewController animated:TRUE index:TAB_SEND];
     }
 }
 
@@ -182,7 +189,11 @@
 
 - (void)didUpdateTotalAvailable:(NSNumber *)sweepAmount finalFee:(NSNumber *)finalFee
 {
-    [_sendBitcoinViewController didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+    if (self.assetType == AssetTypeBitcoin) {
+        [_sendBitcoinViewController didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+    } else if (self.assetType == AssetTypeBitcoinCash) {
+        [_sendBitcoinCashViewController didUpdateTotalAvailable:sweepAmount finalFee:finalFee];
+    }
 }
 
 - (void)didGetFee:(NSNumber *)fee dust:(NSNumber *)dust txSize:(NSNumber *)txSize

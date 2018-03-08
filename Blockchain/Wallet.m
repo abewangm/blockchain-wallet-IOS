@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL isSettingDefaultAccount;
 @property (nonatomic) NSMutableDictionary *timers;
 @property (nonatomic) NSDictionary *bitcoinCashExchangeRates;
+@property (nonatomic) uint64_t bitcoinCashConversion;
 @end
 
 @implementation transactionProgressListeners
@@ -1540,9 +1541,9 @@
     }
     
     if (secondPassword) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", true, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
     } else {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", true)", [txProgressID escapeStringForJS]]];
     }
 }
 
@@ -1555,9 +1556,9 @@
     }
     
     if (secondPassword) {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", false, \"%@\")", [txProgressID escapeStringForJS], [secondPassword escapeStringForJS]]];
     } else {
-        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSend(\"%@\", false)", [txProgressID escapeStringForJS]]];
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.quickSendBtc(\"%@\", false)", [txProgressID escapeStringForJS]]];
     }
 }
 
@@ -2914,10 +2915,10 @@
     return nil;
 }
 
-- (NSString *)getLabelForBchAccount
+- (NSString *)getLabelForDefaultBchAccount
 {
     if ([self isInitialized] && [self hasBchAccount]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.getLabelForBchAccount()"] toString];
+        return [[self.context evaluateScript:@"MyWalletPhone.bch.getLabelForDefaultAccount()"] toString];
     }
     return nil;
 }
@@ -2927,14 +2928,14 @@
 - (void)getBitcoinCashHistory
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.getBitcoinCashHistory()"];
+        [self.context evaluateScript:@"MyWalletPhone.bch.getHistory()"];
     }
 }
 
 - (NSArray *)getBitcoinCashTransactions
 {
     if ([self isInitialized]) {
-        NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTransactions()"] toArray];
+        NSArray *fetchedTransactions = [[self.context evaluateScript:@"MyWalletPhone.bch.transactions()"] toArray];
         NSMutableArray *transactions = [NSMutableArray new];
         for (NSDictionary *data in fetchedTransactions) {
             Transaction *transaction = [Transaction fromJSONDict:data];
@@ -2949,25 +2950,98 @@
 - (void)fetchBitcoinCashExchangeRates
 {
     if ([self isInitialized]) {
-        [self.context evaluateScript:@"MyWalletPhone.fetchBitcoinCashExchangeRates()"];
+        [self.context evaluateScript:@"MyWalletPhone.bch.fetchExchangeRates()"];
     }
+}
+
+- (void)createNewBitcoinCashPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.createNewPayment()"];
+    }
+}
+
+- (void)changeBitcoinCashPaymentAmount:(uint64_t)amount
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentAmount(%lld)", amount]];
+    }
+}
+
+- (void)changeBitcoinCashPaymentToAddress:(NSString *)to
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentTo(\"%@\")", [to escapeStringForJS]]];
+    }
+}
+
+- (void)changeBitcoinCashPaymentFromAccount:(int)account
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.changePaymentFrom(\"%d\")", account]];
+    }
+}
+
+- (BOOL)isBitcoinCashAddress:(NSString *)address
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.isValidAddress(\"%@\")", [address escapeStringForJS]]] toBool];
+    }
+    return NO;
+}
+
+- (NSString *)getLabelForBitcoinCashAccount:(int)account
+{
+    if ([self isInitialized]) {
+        return [[self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.getLabelForAccount(\"%d\")", account]] toString];
+    }
+    return nil;
+}
+
+- (void)buildBitcoinCashPayment
+{
+    if ([self isInitialized]) {
+        [self.context evaluateScript:@"MyWalletPhone.bch.buildPayment()"];
+    }
+}
+
+- (void)sendBitcoinCashPaymentWithListener:(transactionProgressListeners *)listener
+{
+    NSString * txProgressID = [[self.context evaluateScript:@"MyWalletPhone.createTxProgressId()"] toString];
+    
+    if (listener) {
+        [self.transactionProgressListeners setObject:listener forKey:txProgressID];
+    }
+    
+    [self.context evaluateScript:[NSString stringWithFormat:@"MyWalletPhone.bch.quickSend(\"%@\", true)", [txProgressID escapeStringForJS]]];
 }
 
 - (NSString *)bitcoinCashExchangeRate
 {
-    if (self.bitcoinCashExchangeRates) {
-        NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
-        double lastPrice = [[[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
-        return [NSString stringWithFormat:@"%.2f", lastPrice];
+    if ([self isInitialized]) {
+        if (self.bitcoinCashExchangeRates) {
+            NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
+            double lastPrice = [[[self.bitcoinCashExchangeRates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
+            return [NSString stringWithFormat:@"%.2f", lastPrice];
+        }
     }
     
     return nil;
 }
 
+- (uint64_t)getBitcoinCashConversion
+{
+    if ([self isInitialized]) {
+        return self.bitcoinCashConversion;
+    }
+    
+    return 0;
+}
+
 - (uint64_t)bitcoinCashTotalBalance
 {
     if ([self isInitialized]) {
-        return [[[self.context evaluateScript:@"MyWalletPhone.bitcoinCashTotalBalance()"] toNumber] longLongValue];
+        return [[[self.context evaluateScript:@"MyWalletPhone.bch.totalBalance()"] toNumber] longLongValue];
     }
     
     return 0;
@@ -2976,15 +3050,15 @@
 - (BOOL)hasBchAccount
 {
     if ([self isInitialized]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.hasBchAccount()"] toBool];
+        return [[self.context evaluateScript:@"MyWalletPhone.bch.hasAccount()"] toBool];
     }
     return NO;
 }
 
-- (NSString *)getBchBalance
+- (uint64_t)getBchBalance
 {
     if ([self isInitialized] && [app.wallet hasBchAccount]) {
-        return [[self.context evaluateScript:@"MyWalletPhone.getBchBalance()"] toString];
+        return [[[self.context evaluateScript:@"MyWalletPhone.bch.getBalance()"] toNumber] longLongValue];
     }
     DLog(@"Warning: getting bch balance when not initialized - returning 0");
     return 0;
@@ -4501,6 +4575,9 @@
 - (void)did_get_bitcoin_cash_exchange_rates:(NSDictionary *)rates
 {
     if ([self.delegate respondsToSelector:@selector(didGetBitcoinCashExchangeRates)]) {
+        NSString *currency = [self.accountInfo objectForKey:DICTIONARY_KEY_CURRENCY];
+        double lastPrice = [[[rates objectForKey:currency] objectForKey:DICTIONARY_KEY_LAST] doubleValue];
+        self.bitcoinCashConversion = [[[(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:SATOSHI] decimalNumberByDividingBy: (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:lastPrice]] stringValue] longLongValue];
         self.bitcoinCashExchangeRates = rates;
         [self.delegate didGetBitcoinCashExchangeRates];
     } else {

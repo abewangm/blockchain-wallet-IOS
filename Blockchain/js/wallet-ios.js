@@ -62,6 +62,7 @@ BlockchainAPI.API_ROOT_URL = 'https://api.blockchain.info/'
 var MyWalletPhone = {};
 var currentPayment = null;
 var currentEtherPayment = null;
+var currentBitcoinCashPayment = null;
 var currentShiftPayment = null;
 var transferAllBackupPayment = null;
 var transferAllPayments = {};
@@ -928,7 +929,11 @@ MyWalletPhone.createTxProgressId = function() {
     return ''+Math.round(Math.random()*100000);
 }
 
-MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
+MyWalletPhone.quickSendBtc = function(id, onSendScreen, secondPassword) {
+    MyWalletPhone.quickSend(id, onSendScreen, secondPassword, 'btc');
+}
+
+MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword, assetType) {
 
     console.log('quickSend');
 
@@ -946,28 +951,34 @@ MyWalletPhone.quickSend = function(id, onSendScreen, secondPassword) {
         objc_tx_on_error_error_secondPassword(id, ''+error, secondPassword);
     };
 
-    var payment = onSendScreen ? currentPayment : transferAllBackupPayment;
+    var payment;
+    if (assetType == 'btc') {
+        payment = onSendScreen ? currentPayment : transferAllBackupPayment;
+        
+        payment.on('on_start', function () {
+                   objc_tx_on_start(id);
+                   });
+        
+        payment.on('on_begin_signing', function() {
+                   objc_tx_on_begin_signing(id);
+                   });
+        
+        payment.on('on_sign_progress', function(i) {
+                   objc_tx_on_sign_progress_input(id, i);
+                   });
+        
+        payment.on('on_finish_signing', function(i) {
+                   objc_tx_on_finish_signing(id);
+                   });
+
+    } else if (assetType == 'bch') {
+        payment = currentBitcoinCashPayment;
+    }
 
     if (!payment) {
         console.log('Payment error: null payment object!');
         return;
     }
-
-    payment.on('on_start', function () {
-                      objc_tx_on_start(id);
-                      });
-
-    payment.on('on_begin_signing', function() {
-                      objc_tx_on_begin_signing(id);
-                      });
-
-    payment.on('on_sign_progress', function(i) {
-                      objc_tx_on_sign_progress_input(id, i);
-                      });
-
-    payment.on('on_finish_signing', function(i) {
-                      objc_tx_on_finish_signing(id);
-                      });
 
     if (MyWallet.wallet.isDoubleEncrypted) {
         if (secondPassword) {
@@ -2848,62 +2859,116 @@ MyWalletPhone.fiatExchangeHardLimit = function() {
     return walletOptions.getValue().shapeshift.upperLimit;
 }
 
-// MARK: - Bitcoin Cash
-MyWalletPhone.getBitcoinCashHistory = function() {
-
-    var success = function() {
-        console.log('Success fetching bch history')
-        objc_on_fetch_bch_history_success();
-    };
-
-    var error = function(error) {
-        console.log('Error fetching bch history')
-        console.log(error);
-        objc_on_fetch_bch_history_error(error);
-    };
-
-    MyWallet.wallet.bch.getHistory().then(success).catch(error);
-}
-
-MyWalletPhone.fetchBitcoinCashExchangeRates = function() {
-
-    var success = function(result) {
-        objc_did_get_bitcoin_cash_exchange_rates(result);
+MyWalletPhone.bch = {
+    getHistory : function() {
+        var success = function() {
+            console.log('Success fetching bch history')
+            objc_on_fetch_bch_history_success();
+        };
+        
+        var error = function(error) {
+            console.log('Error fetching bch history')
+            console.log(error);
+            objc_on_fetch_bch_history_error(error);
+        };
+        
+        MyWallet.wallet.bch.getHistory().then(success).catch(error);
+    },
+    
+    fetchExchangeRates : function() {
+        var success = function(result) {
+            objc_did_get_bitcoin_cash_exchange_rates(result);
+        }
+        
+        var error = function(e) {
+            console.log(e);
+        }
+        BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
+    },
+    
+    hasAccount : function() {
+        var bch = MyWallet.wallet.bch;
+        return bch && bch.defaultAccount;
+    },
+    
+    getLabelForDefaultAccount : function() {
+        return MyWallet.wallet.bch.defaultAccount.label;
+    },
+    
+    getLabelForAccount : function(index) {
+        return MyWallet.wallet.bch.accounts[index].label;
+    },
+    
+    totalBalance : function() {
+        return MyWallet.wallet.bch.balance;
+    },
+    
+    getBalance : function() {
+        return MyWallet.wallet.bch.balance;
+    },
+    
+    transactions : function() {
+        return MyWallet.wallet.bch.txs;
+    },
+    
+    isValidAddress : function(address) {
+        var base = 'bitcoincash:';
+        var prefixed = address.includes(base);
+        if (!prefixed) address = base + address;
+        return Helpers.fromBitcoinCash(address);
+    },
+    
+    // Payment
+    
+    changePaymentFrom : function(from) {
+        console.log('Changing bch payment from');
+        var bchAccount = MyWallet.wallet.bch.accounts[from];
+        currentBitcoinCashPayment = bchAccount.createPayment();
+        
+        var options = walletOptions.getValue();
+        bchAccount.getAvailableBalance(options.bcash.feePerByte).then(function(balance) {
+            var fee = balance.sweepFee;
+            var maxAvailable = balance.amount;
+            objc_update_total_available_final_fee(maxAvailable, fee);
+        }).catch(function(e) {
+            console.log(e);
+            objc_update_total_available_final_fee(0, 0);
+        });
+    },
+    
+    changePaymentTo : function(to) {
+        console.log('Changing bch payment to');
+        currentBitcoinCashPayment.to(Helpers.fromBitcoinCash('bitcoincash:' + to));
+    },
+    
+    changePaymentAmount : function(amount) {
+        console.log('Changing bch payment amount');
+        currentBitcoinCashPayment.amount(amount);
+    },
+    
+    buildPayment : function() {
+        var options = walletOptions.getValue()
+        currentBitcoinCashPayment.feePerByte(options.bcash.feePerByte);
+        currentBitcoinCashPayment.build();
+    },
+    
+    quickSend : function(id, onSendScreen, secondPassword) {
+        MyWalletPhone.quickSend(id, onSendScreen, secondPassword, 'bch');
+    },
+    
+    send : function(secondPassword) {
+        var success = function () {
+            console.log('Send bch success');
+        };
+        
+        var error = function (e) {
+            console.log('Send bch error');
+            console.log(e);
+        };
+        
+        currentBitcoinCashPayment.sign(secondPassword).publish().then(success).catch(error);
     }
-
-    var error = function(e) {
-        console.log(e);
-    }
-
-    BlockchainAPI.getExchangeRate('USD', 'BCH').then(success).catch(error);
-}
-
-MyWalletPhone.hasBchAccount = function() {
-    var bch = MyWallet.wallet.bch;
-    return bch && bch.defaultAccount;
-}
-
-MyWalletPhone.bitcoinCashTotalBalance = function() {
-    return MyWallet.wallet.bch.balance;
-}
-
-MyWalletPhone.bitcoinCashTransactions = function() {
-    return MyWallet.wallet.bch.txs;
-}
-
-MyWalletPhone.getBchBalance = function() {
-    var bch = MyWallet.wallet.bch;
-
-    if (bch.defaultAccount) {
-        return bch.defaultAccount.balance;
-    }
-
-    return 0;
-}
-
-MyWalletPhone.getLabelForBchAccount = function() {
-    return MyWallet.wallet.bch.defaultAccount.label;
-}
+};
 
 MyWalletPhone.getHistoryForAllAssets = function() {
     var getBitcoinHistory = MyWallet.wallet.getHistory();

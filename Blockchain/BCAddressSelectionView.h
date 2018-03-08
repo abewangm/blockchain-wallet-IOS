@@ -25,6 +25,7 @@
 
 @protocol AddressSelectionDelegate <NSObject>
 @optional
+- (AssetType)getAssetType;
 - (void)didSelectFromAccount:(int)account;
 - (void)didSelectFromAccount:(int)account assetType:(AssetType)asset;
 - (void)didSelectToAccount:(int)account;
@@ -53,7 +54,7 @@ typedef enum {
     SelectModeExchangeAccountTo = 700
 }SelectMode;
 
-- (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode;
+- (id)initWithWallet:(Wallet*)_wallet selectMode:(SelectMode)selectMode delegate:(id<AddressSelectionDelegate>)delegate;
 - (void)reloadTableView;
 
 @property(nonatomic, strong) NSMutableArray *contacts;
