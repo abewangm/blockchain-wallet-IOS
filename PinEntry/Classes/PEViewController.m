@@ -75,9 +75,8 @@
 	pins[3] = pin3;
 	self.pin = @"";
     
-    CGFloat scrollViewHeight;
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
-
+    CGFloat containerViewHeight;
+    
     if (IS_USING_SCREEN_SIZE_4S) {
         CGFloat offsetY = 60;
         pin0.frame = CGRectOffset(pin0.frame, 0, offsetY);
@@ -85,9 +84,8 @@
         pin2.frame = CGRectOffset(pin2.frame, 0, offsetY);
         pin3.frame = CGRectOffset(pin3.frame, 0, offsetY);
         promptLabel.frame = CGRectOffset(promptLabel.frame, 0, offsetY);
-        scrollViewHeight = 380;
-    } else {
-        
+        containerViewHeight = 380;
+    } else {        
         if (IS_USING_SCREEN_SIZE_LARGER_THAN_5S) {
             CGFloat offsetY = IS_USING_6_OR_7_PLUS_SCREEN_SIZE ? -80 : -60;
             pin0.frame = CGRectOffset(pin0.frame, 0, offsetY);
@@ -96,15 +94,15 @@
             pin3.frame = CGRectOffset(pin3.frame, 0, offsetY);
             promptLabel.frame = CGRectOffset(promptLabel.frame, 0, offsetY);
         }
-        
-        scrollViewHeight = screenHeight/HEIGHT_IPHONE_5S * 380;
+        containerViewHeight = [[UIScreen mainScreen] bounds].size.height/HEIGHT_IPHONE_5S * 380;
     }
     
     promptLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_LARGE];
     self.versionLabel.textColor = COLOR_BLOCKCHAIN_BLUE;
     self.versionLabel.font = [UIFont fontWithName:FONT_MONTSERRAT_REGULAR size:FONT_SIZE_EXTRA_SMALL];
     
-    self.scrollView.frame = CGRectMake(0, 480 - scrollViewHeight, WINDOW_WIDTH, scrollViewHeight);
+    CGFloat windowWidth = WINDOW_WIDTH;
+    containerView.frame = CGRectMake(0, 480 - containerViewHeight, windowWidth, containerViewHeight);
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     

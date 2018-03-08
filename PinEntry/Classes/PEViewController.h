@@ -49,6 +49,7 @@
 	NSString *pin;
 	id <PEViewControllerDelegate> __weak delegate;
     IBOutlet PENumpadView *keyboard;
+    IBOutlet UIView *containerView;
 }
 @property (nonatomic, readonly, strong) NSString *pin;
 @property (nonatomic, readwrite, copy) NSString *prompt;
