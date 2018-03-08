@@ -9,8 +9,7 @@
 import Foundation
 import Charts
 
-class BCChartMarkerView : MarkerView
-{
+class BCChartMarkerView : MarkerView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.borderWidth = 3.0
