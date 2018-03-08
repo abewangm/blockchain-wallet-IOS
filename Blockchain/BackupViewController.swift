@@ -8,15 +8,15 @@
 
 import UIKit
 
-class BackupViewController: UIViewController, TransferAllPromptDelegate {
+@objc class BackupViewController: UIViewController, TransferAllPromptDelegate {
     
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var backupWalletButton: UIButton!
     @IBOutlet weak var explanation: UILabel!
     @IBOutlet weak var backupIconImageView: UIImageView!
     
-    var wallet: Wallet?
-    var app: RootService?
+    @objc var wallet: Wallet?
+    @objc var app: RootService?
     var transferredAll = false
     
     override func viewDidLoad() {

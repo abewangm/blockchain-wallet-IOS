@@ -10,8 +10,8 @@ import UIKit
 
 @objc class BackupNavigationViewController: UINavigationController {
 
-    var app : RootService?
-    var wallet : Wallet?
+    @objc var app : RootService?
+    @objc var wallet : Wallet?
     var topBar : UIView!
     var closeButton : UIButton!
     // TODOBackup: Use native back button
@@ -27,11 +27,11 @@ import UIKit
     
     var isVerifying = false
     
-    func finishTransitioning() {
+    @objc func finishTransitioning() {
        isTransitioning = false
     }
     
-    internal func reload() {
+    @objc internal func reload() {
         if !isVerifying {
             self.popToRootViewController(animated: true)
             busyView.fadeOut()
@@ -119,18 +119,18 @@ import UIKit
         }
     }
     
-    func didSucceedSync() {
+    @objc func didSucceedSync() {
         self.popToRootViewController(animated: true)
         busyView.fadeOut()
         isVerifying = false
     }
     
-    func didFailSync() {
+    @objc func didFailSync() {
         busyView.fadeOut()
         isVerifying = false
     }
     
-    func backButtonClicked() {
+    @objc func backButtonClicked() {
         if !isTransitioning {
             if viewControllers.count == 1 {
 				dismiss(animated: true, completion: nil)

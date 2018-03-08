@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BCSecureTextField : UITextField {
+@objc class BCSecureTextField : UITextField {
     
     init() {
         super.init(frame: CGRect.zero)
@@ -30,7 +30,7 @@ class BCSecureTextField : UITextField {
         autocorrectionType = .no
     }
     
-    func setupOnePixelLine() {
+    @objc func setupOnePixelLine() {
         if self.superview == nil {
             return
         }

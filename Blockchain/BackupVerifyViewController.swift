@@ -107,7 +107,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         randomizedIndexes = wordIndexes.shuffle()
     }
     
-    func done() {
+    @objc func done() {
         checkWords()
     }
     
@@ -175,7 +175,7 @@ class BackupVerifyViewController: UIViewController, UITextFieldDelegate, SecondP
         present(alert, animated: true, completion: nil)
     }
     
-    func textFieldDidChange() {
+    @objc func textFieldDidChange() {
         if !word1.text!.isEmpty && !word2.text!.isEmpty && !word3.text!.isEmpty {
             verifyButton?.backgroundColor = Constants.Colors.BlockchainLightBlue
             verifyButton?.isEnabled = true
@@ -237,7 +237,7 @@ extension MutableCollection where Index == Int {
         for i in startIndex..<endIndex - 1 {
             let j = Int(arc4random_uniform(UInt32(endIndex - i))) + i
             guard i != j else { continue }
-            swap(&self[i], &self[j])
+            self.swapAt(i, j)
         }
     }
 }
