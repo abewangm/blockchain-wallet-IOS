@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>API_URL</key>
+	<string>$(API_URL)</string>
+	<key>BUY_WEBVIEW_URL</key>
+	<string>$(BUY_WEBVIEW_URL)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -40,7 +44,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>FabricAPIKey</string>
+		<string>$(FABRIC_API_KEY)</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -86,5 +90,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>WALLET_SERVER</key>
+	<string>$(WALLET_SERVER)</string>
+	<key>WEBSOCKET_SERVER</key>
+	<string>$(WEBSOCKET_SERVER)</string>
+	<key>WEBSOCKET_SERVER_ETH</key>
+	<string>$(WEBSOCKET_SERVER_ETH)</string>
 </dict>
 </plist>
